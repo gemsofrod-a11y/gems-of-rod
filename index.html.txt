@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gems of Rod – Pierres précieuses & bijoux</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      color: #111;
+      background: #fff;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 48px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    header img {
+      height: 50px;
+    }
+    nav a {
+      margin-left: 32px;
+      text-decoration: none;
+      color: #111;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .hero {
+      text-align: center;
+      padding: 120px 24px;
+    }
+    .hero h1 {
+      font-weight: 300;
+      font-size: 42px;
+      margin-bottom: 24px;
+    }
+    .hero p {
+      max-width: 600px;
+      margin: auto;
+      color: #555;
+      font-size: 18px;
+    }
+    .hero button {
+      margin-top: 48px;
+      padding: 16px 40px;
+      border: 1px solid #111;
+      background: none;
+      cursor: pointer;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .products {
+      background: #f7f7f7;
+      padding: 80px 48px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+    .product {
+      background: #fff;
+      padding: 24px;
+      border: 1px solid #e5e5e5;
+    }
+    .product-img {
+      height: 220px;
+      background: #ddd;
+      margin-bottom: 16px;
+    }
+    .product h3 {
+      font-weight: 400;
+      margin: 0 0 8px;
+    }
+    .product p {
+      font-size: 14px;
+      color: #555;
+    }
+    .product span {
+      display: block;
+      margin-top: 12px;
+      font-weight: 600;
+    }
+    footer {
+      padding: 40px 48px;
+      border-top: 1px solid #e5e5e5;
+      font-size: 12px;
+      color: #777;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div>
+    <img src="logo.png" alt="Gems of Rod" />
+  </div>
+  <nav>
+    <a href="#">Accueil</a>
+    <a href="#">Boutique</a>
+    <a href="#">Notre histoire</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Pierres précieuses & bijoux d’exception</h1>
+  <p>
+    Gems of Rod sélectionne des pierres précieuses et fines
+    pour leur rareté, leur éclat et leur authenticité.
+  </p>
+  <button>Découvrir la collection</button>
+</section>
+
+<section class="products">
+  <div class="product">
+    <div class="product-img"></div>
+    <h3>Saphir naturel</h3>
+    <p>Pierre fine sélectionnée pour sa pureté.</p>
+    <span>1 200 €</span>
+  </div>
+
+  <div class="product">
+    <div class="product-img"></div>
+    <h3>Émeraude</h3>
+    <p>Émeraude d’origine certifiée.</p>
+    <span>1 800 €</span>
+  </div>
+
+  <div class="product">
+    <div class="product-img"></div>
+    <h3>Rubis</h3>
+    <p>Rubis naturel à l’éclat profond.</p>
+    <span>2 200 €</span>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Gems of Rod – France</span>
+  <span>Mentions légales · CGV</span>
+</footer>
+
+</body>
+</html>
