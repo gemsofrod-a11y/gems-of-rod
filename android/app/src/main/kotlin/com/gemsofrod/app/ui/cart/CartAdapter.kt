@@ -31,7 +31,7 @@ class CartAdapter(
                 "${item.quantity} × ${item.product.formattedPrice}"
             else
                 item.product.formattedPrice
-            binding.cartItemImage.setImageResource(gemImageFor(item.product.id))
+            binding.cartItemImage.setImageResource(gemImageFor(item.product))
             binding.cartItemRemove.setOnClickListener { onRemove(item.product.id) }
         }
     }

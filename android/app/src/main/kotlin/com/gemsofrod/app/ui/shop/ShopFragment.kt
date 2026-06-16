@@ -29,7 +29,6 @@ class ShopFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupGrid()
         setupFilters()
     }
@@ -38,20 +37,20 @@ class ShopFragment : Fragment() {
         gridAdapter = ProductGridAdapter { product ->
             navigateToDetail(product)
         }
-
         binding.shopRecycler.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = gridAdapter
         }
-
         gridAdapter.submitList(ProductRepository.products)
     }
 
     private fun setupFilters() {
         binding.filterChipGroup.setOnCheckedStateChangeListener { group, _ ->
             val filtered = when (group.checkedChipId) {
-                binding.chipPierres.id -> ProductRepository.getByCategory("Pierre précieuse")
-                binding.chipBijoux.id -> ProductRepository.getByCategory("Bijou")
+                binding.chipCat4.id -> ProductRepository.getByCategory("Précieuse")
+                binding.chipCat3.id -> ProductRepository.getByCategory("Fine noble")
+                binding.chipCat2.id -> ProductRepository.getByCategory("Fine courante")
+                binding.chipCat1.id -> ProductRepository.getByCategory("Commune")
                 else -> ProductRepository.products
             }
             gridAdapter.submitList(filtered)

@@ -3,99 +3,241 @@ package com.gemsofrod.app.model
 data class Product(
     val id: String,
     val name: String,
+    val variety: String,
     val category: String,
-    val price: Int,
-    val origin: String,
-    val weightCarats: Double,
-    val treatment: String,
-    val certification: String,
-    val description: String,
-    val imageResId: Int,
+    val price: Double,
+    val weightCarats: Double? = null,
+    val cut: String? = null,
+    val dimensions: String? = null,
+    val color: String? = null,
+    val clarity: String? = null,
+    val origin: String? = null,
+    val notes: String? = null,
     val isFeatured: Boolean = false
 ) {
-    val formattedPrice: String get() = "${String.format("%,d", price)} €"
+    val formattedPrice: String get() {
+        val nf = java.text.NumberFormat.getNumberInstance(java.util.Locale.FRANCE)
+        if (price == kotlin.math.floor(price)) {
+            nf.maximumFractionDigits = 0
+        } else {
+            nf.minimumFractionDigits = 2
+            nf.maximumFractionDigits = 2
+        }
+        return "${nf.format(price)} €"
+    }
+
+    val description: String get() {
+        val parts = mutableListOf(variety)
+        weightCarats?.let { parts.add("$it ct") }
+        cut?.let { parts.add("taille $it") }
+        color?.let { parts.add(it) }
+        dimensions?.let { parts.add(it) }
+        origin?.let { parts.add("origine : $it") }
+        clarity?.let { parts.add("clarté $it") }
+        val base = parts.joinToString(", ")
+        return if (notes != null) "$base. $notes." else "$base."
+    }
 }
 
 object ProductRepository {
 
     val products = listOf(
         Product(
-            id = "SAP-001",
-            name = "Saphir naturel du Sri Lanka",
-            category = "Pierre précieuse",
-            price = 1200,
-            origin = "Sri Lanka",
-            weightCarats = 3.45,
-            treatment = "Chauffage modéré",
-            certification = "GIA",
-            description = "Un saphir d'une qualité exceptionnelle provenant des mines de Sri Lanka. Sa couleur bleu royal intense et sa clarté remarquable en font une pierre rare et convoitée. Accompagné de son certificat d'authenticité GIA.",
-            imageResId = -1,
+            id = "PIE-001", name = "Saphir", variety = "Saphir bleu Sri Lanka",
+            category = "Précieuse", price = 2200.0,
+            weightCarats = 5.20, cut = "Ovale", dimensions = "10×8 mm",
+            color = "Bleu royal", clarity = "VS", origin = "Sri Lanka",
+            notes = "Beau bleu profond", isFeatured = true
+        ),
+        Product(
+            id = "PIE-002", name = "Topaze", variety = "Topaze",
+            category = "Fine courante", price = 4.20,
+            weightCarats = 0.115, cut = "Carré"
+        ),
+        Product(
+            id = "PIE-003", name = "Topaze", variety = "Topaze",
+            category = "Fine courante", price = 8.40,
+            weightCarats = 0.215, cut = "Carré"
+        ),
+        Product(
+            id = "PIE-004", name = "Topaze", variety = "Topaze",
+            category = "Fine courante", price = 10.80,
+            weightCarats = 0.405, cut = "Ovale"
+        ),
+        Product(
+            id = "PIE-005", name = "Grenat", variety = "Grenat couleur changeante",
+            category = "Fine noble", price = 218.11,
+            weightCarats = 0.655, cut = "Ovale",
+            notes = "Couleur changeante"
+        ),
+        Product(
+            id = "PIE-006", name = "Saphir", variety = "Saphir Bleu",
+            category = "Précieuse", price = 309.42,
+            weightCarats = 0.535, cut = "Poire"
+        ),
+        Product(
+            id = "PIE-007", name = "Saphir", variety = "Saphir Bleu",
+            category = "Précieuse", price = 211.09,
+            weightCarats = 0.365, cut = "Ovale"
+        ),
+        Product(
+            id = "PIE-008", name = "Saphir", variety = "Saphir Bleu",
+            category = "Précieuse", price = 144.0,
+            weightCarats = 0.250, cut = "Ovale"
+        ),
+        Product(
+            id = "PIE-009", name = "Héliodore", variety = "Héliodore",
+            category = "Fine noble", price = 151.32,
+            weightCarats = 2.235, cut = "Rectangle"
+        ),
+        Product(
+            id = "PIE-010", name = "Spinelle", variety = "Spinelle Bleu",
+            category = "Fine noble", price = 2400.0,
+            weightCarats = 0.895, cut = "Ovale",
+            color = "Bleu", isFeatured = true
+        ),
+        Product(
+            id = "PIE-011", name = "Spinelle", variety = "Spinelle Bleu",
+            category = "Fine noble", price = 2964.0,
+            weightCarats = 1.520, cut = "Poire",
+            dimensions = "8,22×5,88×4,25 mm", color = "Bleu", isFeatured = true
+        ),
+        Product(
+            id = "PIE-012", name = "Spinelle", variety = "Spinelle Bleu",
+            category = "Fine noble", price = 750.0,
+            weightCarats = 0.730, cut = "Rectangle coins arrondis",
+            dimensions = "6,93×4,5×2,75 mm", color = "Bleu"
+        ),
+        Product(
+            id = "PIE-013", name = "Spinelle", variety = "Spinelle Bleu",
+            category = "Fine noble", price = 1170.0,
+            weightCarats = 0.810, cut = "Brillant",
+            dimensions = "5,48×3,70 mm", color = "Bleu"
+        ),
+        Product(
+            id = "PIE-014", name = "Péridot", variety = "Péridot",
+            category = "Fine courante", price = 66.0,
+            weightCarats = 1.430, cut = "Ovale"
+        ),
+        Product(
+            id = "PIE-015", name = "Zircon", variety = "Zircon",
+            category = "Fine courante", price = 100.39,
+            weightCarats = 0.750, cut = "Carré bizoté"
+        ),
+        Product(
+            id = "PIE-016", name = "Zircon", variety = "Zircon",
+            category = "Fine courante", price = 95.71,
+            weightCarats = 0.715, cut = "Coussin"
+        ),
+        Product(
+            id = "PIE-017", name = "Zircon", variety = "Zircon",
+            category = "Fine courante", price = 117.80,
+            weightCarats = 0.880, cut = "Baguette"
+        ),
+        Product(
+            id = "PIE-018", name = "Iolite", variety = "Iolite",
+            category = "Fine courante", price = 86.16,
+            weightCarats = 0.470, cut = "Brillant",
+            notes = "Lot de 3 pierres"
+        ),
+        Product(
+            id = "PIE-019", name = "Iolite", variety = "Iolite",
+            category = "Fine courante", price = 318.89,
+            weightCarats = 1.740, cut = "Brillant",
+            notes = "Lot de 13 pierres"
+        ),
+        Product(
+            id = "PIE-020", name = "Iolite", variety = "Iolite",
+            category = "Fine courante", price = 356.32,
+            weightCarats = 1.955, cut = "Brillant",
+            notes = "Lot de 23 pierres"
+        ),
+        Product(
+            id = "PIE-021", name = "Rubis", variety = "Rubis",
+            category = "Précieuse", price = 897.96,
+            weightCarats = 0.265, cut = "Ovale", isFeatured = true
+        ),
+        Product(
+            id = "PIE-022", name = "Diamant", variety = "Diamant",
+            category = "Précieuse", price = 498.48,
+            weightCarats = 0.155, cut = "Brillant",
+            notes = "Lot de 5 pierres"
+        ),
+        Product(
+            id = "PIE-023", name = "Diamant", variety = "Diamant",
+            category = "Précieuse", price = 1384.28,
+            weightCarats = 0.475, cut = "Brillant",
+            notes = "Lot de 10 pierres", isFeatured = true
+        ),
+        Product(
+            id = "PIE-024", name = "Aigue-marine", variety = "Aigue-marine",
+            category = "Fine noble", price = 312.24,
+            weightCarats = 0.420, cut = "Ovale",
+            dimensions = "6,24×4,08×2,86 mm"
+        ),
+        Product(
+            id = "PIE-025", name = "Aigue-marine", variety = "Aigue-marine",
+            category = "Fine noble", price = 576.0,
+            weightCarats = 2.500, cut = "Hexagonale",
+            dimensions = "9,79×7,8×5,67 mm",
+            notes = "Taille Illite"
+        ),
+        Product(
+            id = "PIE-026", name = "Aigue-marine", variety = "Aigue-marine",
+            category = "Fine noble", price = 2131.20,
+            weightCarats = 4.070, cut = "Rectangle coins arrondis",
+            dimensions = "12,91×7,95×5,94 mm", isFeatured = true
+        ),
+        Product(
+            id = "PIE-027", name = "Aigue-marine", variety = "Aigue-marine (brute)",
+            category = "Fine noble", price = 850.0,
+            weightCarats = 22.480, cut = "Rectangle",
+            dimensions = "24×10×11 mm",
+            notes = "Grande pièce brute"
+        ),
+        Product(
+            id = "PIE-028", name = "Aigue-marine", variety = "Aigue-marine",
+            category = "Fine noble", price = 115.56,
+            weightCarats = 2.140, cut = "Trillion",
+            dimensions = "10,03×9,73×4,79 mm"
+        ),
+        Product(
+            id = "PIE-029", name = "Citrine", variety = "Citrine",
+            category = "Commune", price = 468.0,
+            weightCarats = 18.390, cut = "Coussin",
+            dimensions = "18,42×15,4×11,7 mm"
+        ),
+        Product(
+            id = "PIE-030", name = "Topaze", variety = "Topaze Blue London",
+            category = "Fine courante", price = 75.54,
+            weightCarats = 3.0, cut = "Poire",
+            dimensions = "12,18×7,19×4,70 mm",
+            color = "Bleue (London Blue)", notes = "Blue London"
+        ),
+        Product(
+            id = "PIE-031", name = "Spinelle", variety = "Spinelle Rose",
+            category = "Fine noble", price = 614.40,
+            weightCarats = 0.875, cut = "Ovale",
+            dimensions = "6,68×5,01×3,63 mm", color = "Rose"
+        ),
+        Product(
+            id = "PIE-032", name = "Spinelle", variety = "Spinelle Rose",
+            category = "Fine noble", price = 535.20,
+            weightCarats = 0.720, cut = "Coussin",
+            dimensions = "6,07×4,30×3,26 mm", color = "Rose"
+        ),
+        Product(
+            id = "PIE-033", name = "Spinelle", variety = "Spinelle Violet",
+            category = "Fine noble", price = 7560.0,
+            weightCarats = 1.355, cut = "Coussin",
+            dimensions = "6,98×5,71×3,94 mm", color = "Violet",
             isFeatured = true
         ),
         Product(
-            id = "EME-001",
-            name = "Émeraude de Colombie",
-            category = "Pierre précieuse",
-            price = 1800,
-            origin = "Colombie",
-            weightCarats = 2.80,
-            treatment = "Huile de cèdre légère",
-            certification = "AGL",
-            description = "Cette émeraude colombienne présente un vert profond et vivant, caractéristique des plus belles pierres de la région de Muzo. Sa transparence et son feu exceptionnel en font une gemme de collection.",
-            imageResId = -1,
-            isFeatured = true
-        ),
-        Product(
-            id = "RUB-001",
-            name = "Rubis de Birmanie",
-            category = "Pierre précieuse",
-            price = 2200,
-            origin = "Myanmar (Birmanie)",
-            weightCarats = 2.12,
-            treatment = "Aucun",
-            certification = "Gübelin",
-            description = "Un rubis birman de qualité pigeon blood, la couleur la plus prisée et la plus rare. Sans aucun traitement, cette pierre est accompagnée d'un rapport Gübelin attestant son origine et sa pureté naturelle.",
-            imageResId = -1,
-            isFeatured = true
-        ),
-        Product(
-            id = "AME-001",
-            name = "Améthyste royale de Zambie",
-            category = "Pierre fine",
-            price = 450,
-            origin = "Zambie",
-            weightCarats = 8.60,
-            treatment = "Aucun",
-            certification = "IGI",
-            description = "Une améthyste d'un violet profond et royal, extraite des gisements de Zambie. Sa taille coussin met en valeur ses reflets rouge-violet caractéristiques des meilleures améthystes africaines.",
-            imageResId = -1,
-            isFeatured = false
-        ),
-        Product(
-            id = "TOP-001",
-            name = "Topaze impériale du Brésil",
-            category = "Pierre fine",
-            price = 680,
-            origin = "Brésil",
-            weightCarats = 6.25,
-            treatment = "Aucun",
-            certification = "IGI",
-            description = "La topaze impériale est la variété la plus précieuse de la topaze, avec ses reflets orangés à pêche caractéristiques. Cette pierre brésilienne offre une brillance et une pureté remarquables.",
-            imageResId = -1,
-            isFeatured = false
-        ),
-        Product(
-            id = "DIA-001",
-            name = "Diamant taillé brillant",
-            category = "Pierre précieuse",
-            price = 4800,
-            origin = "Botswana",
-            weightCarats = 1.02,
-            treatment = "Aucun",
-            certification = "GIA",
-            description = "Un diamant de couleur F, pureté VS1, taillé brillant rond selon les proportions idéales. Accompagné de son certificat GIA, ce diamant offre un feu et une brillance exceptionnels.",
-            imageResId = -1,
-            isFeatured = false
+            id = "PIE-034", name = "Spinelle", variety = "Spinelle Lavande",
+            category = "Fine noble", price = 1140.0,
+            weightCarats = 1.125, cut = "Ovale",
+            dimensions = "7,21×5,06×3,87 mm", color = "Lavande"
         )
     )
 

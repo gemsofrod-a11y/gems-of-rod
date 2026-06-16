@@ -41,17 +41,17 @@ class ProductDetailFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        binding.collapsingToolbar.title = product.name
+        binding.collapsingToolbar.title = product.variety
         binding.detailCategory.text = product.category
-        binding.detailName.text = product.name
+        binding.detailName.text = product.variety
         binding.detailPrice.text = product.formattedPrice
         binding.detailDescription.text = product.description
-        binding.detailImage.setImageResource(gemImageFor(product.id))
+        binding.detailImage.setImageResource(gemImageFor(product))
 
-        binding.specOriginValue.text = product.origin
-        binding.specWeightValue.text = "${product.weightCarats} ct"
-        binding.specTreatmentValue.text = product.treatment
-        binding.specCertValue.text = product.certification
+        binding.specOriginValue.text = product.origin ?: "—"
+        binding.specWeightValue.text = product.weightCarats?.let { "$it ct" } ?: "—"
+        binding.specTreatmentValue.text = product.cut ?: "—"
+        binding.specCertValue.text = product.color ?: product.clarity ?: "—"
 
         binding.btnAddToCart.setOnClickListener {
             CartManager.add(product)

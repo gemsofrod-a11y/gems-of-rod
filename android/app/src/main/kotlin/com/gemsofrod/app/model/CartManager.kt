@@ -15,9 +15,13 @@ object CartManager {
 
     val itemCount: Int get() = _items.value?.sumOf { it.quantity } ?: 0
 
-    val total: Int get() = _items.value?.sumOf { it.product.price * it.quantity } ?: 0
+    val total: Double get() = _items.value?.sumOf { it.product.price * it.quantity } ?: 0.0
 
-    val formattedTotal: String get() = "${String.format("%,d", total)} €"
+    val formattedTotal: String get() {
+        val nf = java.text.NumberFormat.getNumberInstance(java.util.Locale.FRANCE)
+        nf.maximumFractionDigits = 0
+        return "${nf.format(total)} €"
+    }
 
     fun add(product: Product) {
         val current = _items.value.orEmpty().toMutableList()

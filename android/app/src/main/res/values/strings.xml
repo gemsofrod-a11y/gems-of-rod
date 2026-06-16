@@ -18,8 +18,10 @@
     <string name="shop_title">Notre boutique</string>
     <string name="shop_subtitle">Des pierres d\'une pureté et d\'un éclat exceptionnels</string>
     <string name="shop_filter_all">Tous</string>
-    <string name="shop_filter_pierres">Pierres</string>
-    <string name="shop_filter_bijoux">Bijoux</string>
+    <string name="shop_filter_cat4">Précieuses</string>
+    <string name="shop_filter_cat3">Nobles</string>
+    <string name="shop_filter_cat2">Fines</string>
+    <string name="shop_filter_cat1">Communes</string>
 
     <!-- Product Detail -->
     <string name="detail_certifie">Pierre certifiée authentique</string>
@@ -27,8 +29,8 @@
     <string name="detail_contact_expert">Contacter un expert</string>
     <string name="detail_origine">Origine</string>
     <string name="detail_poids">Poids (carats)</string>
-    <string name="detail_traitement">Traitement</string>
-    <string name="detail_certification">Certification</string>
+    <string name="detail_traitement">Taille/forme</string>
+    <string name="detail_certification">Couleur</string>
 
     <!-- Story -->
     <string name="story_title">Notre histoire</string>

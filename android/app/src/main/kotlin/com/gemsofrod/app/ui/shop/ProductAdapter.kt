@@ -30,10 +30,10 @@ class ProductCardAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(product: Product) {
-            binding.productName.text = product.name
+            binding.productName.text = product.variety
             binding.productCategory.text = product.category
             binding.productPrice.text = product.formattedPrice
-            binding.productImage.setImageResource(gemImageFor(product.id))
+            binding.productImage.setImageResource(gemImageFor(product))
             binding.root.setOnClickListener { onProductClick(product) }
         }
     }
@@ -59,11 +59,11 @@ class ProductGridAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(product: Product) {
-            binding.productName.text = product.name
+            binding.productName.text = product.variety
             binding.productCategory.text = product.category
-            binding.productOrigin.text = product.origin
+            binding.productOrigin.text = product.weightCarats?.let { "${it} ct" } ?: ""
             binding.productPrice.text = product.formattedPrice
-            binding.productImage.setImageResource(gemImageFor(product.id))
+            binding.productImage.setImageResource(gemImageFor(product))
             binding.root.setOnClickListener { onProductClick(product) }
         }
     }
@@ -74,12 +74,22 @@ private class ProductDiffCallback : DiffUtil.ItemCallback<Product>() {
     override fun areContentsTheSame(oldItem: Product, newItem: Product) = oldItem == newItem
 }
 
-fun gemImageFor(productId: String): Int = when {
-    productId.startsWith("SAP") -> R.drawable.gem_placeholder_sapphire
-    productId.startsWith("EME") -> R.drawable.gem_placeholder_emerald
-    productId.startsWith("RUB") -> R.drawable.gem_placeholder_ruby
-    productId.startsWith("AME") -> R.drawable.gem_placeholder_amethyst
-    productId.startsWith("TOP") -> R.drawable.gem_placeholder_topaz
-    productId.startsWith("DIA") -> R.drawable.gem_placeholder_diamond
+fun gemImageFor(product: Product): Int = when (product.name.lowercase()) {
+    "saphir" -> R.drawable.gem_placeholder_sapphire
+    "rubis" -> R.drawable.gem_placeholder_ruby
+    "diamant" -> R.drawable.gem_placeholder_diamond
+    "topaze" -> R.drawable.gem_placeholder_topaz
+    "grenat" -> R.drawable.gem_placeholder_ruby
+    "héliodore" -> R.drawable.gem_placeholder_topaz
+    "spinelle" -> when {
+        product.variety.contains("Bleu", ignoreCase = true) -> R.drawable.gem_placeholder_sapphire
+        product.variety.contains("Rose", ignoreCase = true) -> R.drawable.gem_placeholder_ruby
+        else -> R.drawable.gem_placeholder_amethyst
+    }
+    "péridot" -> R.drawable.gem_placeholder_emerald
+    "zircon" -> R.drawable.gem_placeholder_diamond
+    "iolite" -> R.drawable.gem_placeholder_sapphire
+    "aigue-marine" -> R.drawable.gem_placeholder_sapphire
+    "citrine" -> R.drawable.gem_placeholder_topaz
     else -> R.drawable.gem_placeholder_sapphire
 }
