@@ -10,7 +10,7 @@
         <item name="colorOnSecondary">@color/brand_white</item>
         <item name="colorSurface">@color/brand_white</item>
         <item name="colorOnSurface">@color/brand_black</item>
-        <item name="colorBackground">@color/brand_off_white</item>
+        <item name="android:colorBackground">@color/brand_off_white</item>
         <item name="colorOnBackground">@color/brand_black</item>
         <item name="android:statusBarColor">@color/brand_dark</item>
         <item name="android:navigationBarColor">@color/brand_white</item>

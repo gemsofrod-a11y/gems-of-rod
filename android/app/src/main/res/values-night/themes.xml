@@ -8,7 +8,7 @@
         <item name="colorOnSecondary">@color/brand_black</item>
         <item name="colorSurface">#1C1C1C</item>
         <item name="colorOnSurface">@color/brand_white</item>
-        <item name="colorBackground">#121212</item>
+        <item name="android:colorBackground">#121212</item>
         <item name="colorOnBackground">@color/brand_white</item>
         <item name="android:statusBarColor">@color/brand_dark</item>
     </style>
