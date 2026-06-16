@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+    <path android:fillColor="#E8F5E9" android:pathData="M0,0 L200,0 L200,200 L0,200 Z"/>
+    <!-- Emerald rectangular cut -->
+    <path android:fillColor="#2E7D32" android:pathData="M55,55 L145,55 L165,100 L145,145 L55,145 L35,100 Z"/>
+    <path android:fillColor="#388E3C" android:pathData="M65,65 L135,65 L155,100 L135,135 L65,135 L45,100 Z"/>
+    <path android:fillColor="#66BB6A" android:pathData="M65,65 L135,65 L100,85 Z"/>
+    <path android:fillColor="#A5D6A7" android:pathData="M80,70 L90,80 L70,82 Z"/>
+    <path android:fillColor="#C8E6C9" android:pathData="M72,68 L82,68 L78,75 Z"/>
+</vector>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Hexagon gem shape -->
+    <path
+        android:fillColor="#4DB6AC"
+        android:pathData="M54,8 L90,28 L90,68 L54,88 L18,68 L18,28 Z"/>
+    <!-- Inner gem facets -->
+    <path
+        android:fillColor="#80CBC4"
+        android:pathData="M54,18 L78,31 L78,57 L54,70 L30,57 L30,31 Z"/>
+    <path
+        android:fillColor="#2E8B84"
+        android:pathData="M54,18 L78,31 L54,44 Z"/>
+    <path
+        android:fillColor="#26A69A"
+        android:pathData="M78,31 L78,57 L54,44 Z"/>
+    <path
+        android:fillColor="#1DE9B6"
+        android:pathData="M54,44 L78,57 L54,70 Z"/>
+    <!-- G letter -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M58,38 C55,35 50,35 47,38 C44,41 44,47 47,50 C50,53 55,53 58,50 L58,46 L54,46 L54,44 L60,44 L60,51 C57,54 53,55 49,53 C45,51 43,47 43,43 C43,39 45,35 49,33 C53,31 57,32 60,35 Z"/>
+</vector>

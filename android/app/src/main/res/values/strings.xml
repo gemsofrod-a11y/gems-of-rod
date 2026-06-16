@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gems of Rod</string>
+
+    <!-- Navigation -->
+    <string name="nav_accueil">Accueil</string>
+    <string name="nav_boutique">Boutique</string>
+    <string name="nav_histoire">Notre histoire</string>
+    <string name="nav_contact">Contact</string>
+
+    <!-- Home -->
+    <string name="home_hero_title">Pierres précieuses\n&amp; bijoux d\'exception</string>
+    <string name="home_hero_subtitle">Gems of Rod sélectionne des pierres précieuses et fines pour leur rareté, leur brillance et leur authenticité.</string>
+    <string name="home_cta">Découvrir la collection</string>
+    <string name="home_featured_title">Sélection du moment</string>
+
+    <!-- Shop -->
+    <string name="shop_title">Notre boutique</string>
+    <string name="shop_subtitle">Des pierres d\'une pureté et d\'un éclat exceptionnels</string>
+    <string name="shop_filter_all">Tous</string>
+    <string name="shop_filter_pierres">Pierres</string>
+    <string name="shop_filter_bijoux">Bijoux</string>
+
+    <!-- Product Detail -->
+    <string name="detail_certifie">Pierre certifiée authentique</string>
+    <string name="detail_ajouter_panier">Ajouter au panier</string>
+    <string name="detail_contact_expert">Contacter un expert</string>
+    <string name="detail_origine">Origine</string>
+    <string name="detail_poids">Poids (carats)</string>
+    <string name="detail_traitement">Traitement</string>
+    <string name="detail_certification">Certification</string>
+
+    <!-- Story -->
+    <string name="story_title">Notre histoire</string>
+    <string name="story_subtitle">L\'excellence au service de la beauté</string>
+    <string name="story_text_1">Gems of Rod est né d\'une passion profonde pour les pierres précieuses et les gemmes d\'exception. Fondée par des experts passionnés, notre maison s\'est donnée pour mission de sélectionner avec soin les plus belles pierres du monde entier.</string>
+    <string name="story_text_2">Chaque pierre que nous proposons est le fruit d\'une sélection rigoureuse, basée sur des critères d\'authenticité, de pureté et de brillance. Nous travaillons directement avec des mineurs et des fournisseurs de confiance pour vous garantir l\'origine et la qualité de chaque gemme.</string>
+    <string name="story_text_3">Notre engagement va au-delà de la simple vente : nous vous accompagnons dans le choix de la pierre qui correspond à votre vision, à vos émotions, à votre histoire.</string>
+    <string name="story_value_1_title">Authenticité</string>
+    <string name="story_value_1_desc">Chaque pierre est certifiée et accompagnée de son rapport d\'expertise.</string>
+    <string name="story_value_2_title">Rareté</string>
+    <string name="story_value_2_desc">Nous sélectionnons uniquement des pierres d\'une qualité et d\'une rareté exceptionnelles.</string>
+    <string name="story_value_3_title">Excellence</string>
+    <string name="story_value_3_desc">Un service personnalisé et un accompagnement expert à chaque étape.</string>
+
+    <!-- Contact -->
+    <string name="contact_title">Nous contacter</string>
+    <string name="contact_subtitle">Notre équipe est à votre disposition</string>
+    <string name="contact_name_hint">Votre nom</string>
+    <string name="contact_email_hint">Votre adresse e-mail</string>
+    <string name="contact_subject_hint">Sujet</string>
+    <string name="contact_message_hint">Votre message</string>
+    <string name="contact_send">Envoyer le message</string>
+    <string name="contact_email_label">E-mail</string>
+    <string name="contact_phone_label">Téléphone</string>
+    <string name="contact_address_label">Adresse</string>
+    <string name="contact_email_value">contact@gemsofrod.com</string>
+    <string name="contact_phone_value">+33 1 23 45 67 89</string>
+    <string name="contact_address_value">Paris, France</string>
+    <string name="contact_success">Message envoyé avec succès !</string>
+
+    <!-- Common -->
+    <string name="currency_eur">€</string>
+    <string name="back">Retour</string>
+    <string name="add_to_cart">Ajouter au panier</string>
+</resources>

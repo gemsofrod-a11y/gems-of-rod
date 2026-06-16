@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+    <path android:fillColor="#FFEBEE" android:pathData="M0,0 L200,0 L200,200 L0,200 Z"/>
+    <!-- Ruby oval shape -->
+    <path android:fillColor="#C62828" android:pathData="M100,40 C140,40 165,65 165,100 C165,135 140,160 100,160 C60,160 35,135 35,100 C35,65 60,40 100,40 Z"/>
+    <path android:fillColor="#D32F2F" android:pathData="M100,55 C132,55 148,73 148,100 C148,127 132,145 100,145 C68,145 52,127 52,100 C52,73 68,55 100,55 Z"/>
+    <path android:fillColor="#EF5350" android:pathData="M75,60 C90,55 105,58 100,75 Z"/>
+    <path android:fillColor="#FFCDD2" android:pathData="M78,62 L88,70 L72,72 Z"/>
+    <path android:fillColor="#FF8A80" android:pathData="M68,58 L78,58 L74,65 Z"/>
+</vector>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+    <path android:fillColor="#F3E5F5" android:pathData="M0,0 L200,0 L200,200 L0,200 Z"/>
+    <!-- Amethyst hexagon -->
+    <path android:fillColor="#6A1B9A" android:pathData="M100,35 L148,62 L148,118 L100,145 L52,118 L52,62 Z"/>
+    <path android:fillColor="#7B1FA2" android:pathData="M100,50 L138,72 L138,108 L100,130 L62,108 L62,72 Z"/>
+    <path android:fillColor="#AB47BC" android:pathData="M100,50 L138,72 L100,90 Z"/>
+    <path android:fillColor="#CE93D8" android:pathData="M85,55 L95,65 L78,68 Z"/>
+    <path android:fillColor="#E1BEE7" android:pathData="M78,58 L88,58 L84,65 Z"/>
+</vector>

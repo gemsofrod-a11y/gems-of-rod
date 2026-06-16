@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+    <path android:fillColor="#F5F5F5" android:pathData="M0,0 L200,0 L200,200 L0,200 Z"/>
+    <!-- Diamond brilliant cut -->
+    <path android:fillColor="#E3F2FD" android:pathData="M100,30 L160,80 L140,170 L60,170 L40,80 Z"/>
+    <path android:fillColor="#BBDEFB" android:pathData="M100,40 L150,82 L133,162 L67,162 L50,82 Z"/>
+    <path android:fillColor="#90CAF9" android:pathData="M100,40 L150,82 L100,95 Z"/>
+    <path android:fillColor="#FFFFFF" android:pathData="M85,45 L95,58 L78,62 Z"/>
+    <path android:fillColor="#E1F5FE" android:pathData="M78,48 L88,48 L84,56 Z"/>
+    <path android:fillColor="#B3E5FC" android:pathData="M100,95 L150,82 L133,162 Z"/>
+    <path android:fillColor="#81D4FA" android:pathData="M100,95 L67,162 L50,82 Z"/>
+</vector>

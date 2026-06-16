@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.GemsOfRod" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/brand_teal</item>
+        <item name="colorPrimaryDark">@color/brand_teal_dark</item>
+        <item name="colorPrimaryVariant">@color/brand_teal_dark</item>
+        <item name="colorOnPrimary">@color/brand_white</item>
+        <item name="colorSecondary">@color/brand_black</item>
+        <item name="colorOnSecondary">@color/brand_white</item>
+        <item name="colorSurface">@color/brand_white</item>
+        <item name="colorOnSurface">@color/brand_black</item>
+        <item name="colorBackground">@color/brand_off_white</item>
+        <item name="colorOnBackground">@color/brand_black</item>
+        <item name="android:statusBarColor">@color/brand_dark</item>
+        <item name="android:navigationBarColor">@color/brand_white</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="Theme.GemsOfRod.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/brand_dark</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_gem</item>
+        <item name="postSplashScreenTheme">@style/Theme.GemsOfRod</item>
+    </style>
+
+    <!-- Typography -->
+    <style name="TextAppearance.GemsOfRod.HeroTitle" parent="TextAppearance.Material3.DisplaySmall">
+        <item name="android:textColor">@color/brand_black</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:textSize">28sp</item>
+        <item name="fontFamily">serif</item>
+    </style>
+
+    <style name="TextAppearance.GemsOfRod.SectionTitle" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textColor">@color/brand_black</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="fontFamily">serif</item>
+    </style>
+
+    <style name="TextAppearance.GemsOfRod.Body" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/brand_gray_dark</item>
+    </style>
+
+    <style name="TextAppearance.GemsOfRod.Price" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">@color/brand_teal_dark</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Button Styles -->
+    <style name="Widget.GemsOfRod.Button.Primary" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/brand_black</item>
+        <item name="android:textColor">@color/brand_white</item>
+        <item name="cornerRadius">2dp</item>
+        <item name="android:paddingStart">32dp</item>
+        <item name="android:paddingEnd">32dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+    </style>
+
+    <style name="Widget.GemsOfRod.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/brand_black</item>
+        <item name="android:textColor">@color/brand_black</item>
+        <item name="cornerRadius">2dp</item>
+    </style>
+
+    <!-- Card Style -->
+    <style name="Widget.GemsOfRod.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">4dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="strokeColor">@color/brand_gray_light</item>
+        <item name="strokeWidth">0.5dp</item>
+    </style>
+
+    <!-- Bottom Navigation -->
+    <style name="Widget.GemsOfRod.BottomNavigation" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemIconTint">@color/nav_item_color</item>
+        <item name="itemTextColor">@color/nav_item_color</item>
+        <item name="backgroundTint">@color/brand_white</item>
+    </style>
+
+</resources>

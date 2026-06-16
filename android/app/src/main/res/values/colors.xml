@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand Colors -->
+    <color name="brand_teal">#4DB6AC</color>
+    <color name="brand_teal_dark">#2E8B84</color>
+    <color name="brand_teal_light">#80CBC4</color>
+    <color name="brand_teal_surface">#E0F2F1</color>
+
+    <!-- Neutrals -->
+    <color name="brand_black">#111111</color>
+    <color name="brand_dark">#1A1A2E</color>
+    <color name="brand_gray_dark">#555555</color>
+    <color name="brand_gray">#888888</color>
+    <color name="brand_gray_light">#CCCCCC</color>
+    <color name="brand_off_white">#F7F7F7</color>
+    <color name="brand_white">#FFFFFF</color>
+
+    <!-- Gemstone Accent Colors -->
+    <color name="gem_sapphire">#1565C0</color>
+    <color name="gem_emerald">#2E7D32</color>
+    <color name="gem_ruby">#C62828</color>
+    <color name="gem_diamond">#E3F2FD</color>
+    <color name="gem_amethyst">#6A1B9A</color>
+    <color name="gem_topaz">#F57F17</color>
+
+    <!-- Semantic -->
+    <color name="color_primary">#4DB6AC</color>
+    <color name="color_primary_dark">#2E8B84</color>
+    <color name="color_on_primary">#FFFFFF</color>
+    <color name="color_surface">#F7F7F7</color>
+    <color name="color_background">#FFFFFF</color>
+    <color name="color_on_surface">#111111</color>
+    <color name="color_outline">#CCCCCC</color>
+
+    <!-- Status Bar -->
+    <color name="status_bar_color">#111111</color>
+</resources>
