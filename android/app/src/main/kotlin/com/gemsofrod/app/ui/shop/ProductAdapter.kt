@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.gemsofrod.app.R
 import com.gemsofrod.app.databinding.ItemProductCardBinding
 import com.gemsofrod.app.databinding.ItemProductGridBinding
@@ -33,7 +34,7 @@ class ProductCardAdapter(
             binding.productName.text = product.variety
             binding.productCategory.text = product.category
             binding.productPrice.text = product.formattedPrice
-            binding.productImage.setImageResource(gemImageFor(product))
+            binding.productImage.load(productImageFor(product)) { crossfade(true) }
             binding.root.setOnClickListener { onProductClick(product) }
         }
     }
@@ -63,7 +64,7 @@ class ProductGridAdapter(
             binding.productCategory.text = product.category
             binding.productOrigin.text = product.weightCarats?.let { "${it} ct" } ?: ""
             binding.productPrice.text = product.formattedPrice
-            binding.productImage.setImageResource(gemImageFor(product))
+            binding.productImage.load(productImageFor(product)) { crossfade(true) }
             binding.root.setOnClickListener { onProductClick(product) }
         }
     }
@@ -72,6 +73,23 @@ class ProductGridAdapter(
 private class ProductDiffCallback : DiffUtil.ItemCallback<Product>() {
     override fun areItemsTheSame(oldItem: Product, newItem: Product) = oldItem.id == newItem.id
     override fun areContentsTheSame(oldItem: Product, newItem: Product) = oldItem == newItem
+}
+
+fun productImageFor(product: Product): Int {
+    val real = when (product.id) {
+        "PIE-002" -> R.drawable.gem_pie002
+        "PIE-003" -> R.drawable.gem_pie003
+        "PIE-005" -> R.drawable.gem_pie005
+        "PIE-006" -> R.drawable.gem_pie006
+        "PIE-007" -> R.drawable.gem_pie007
+        "PIE-014" -> R.drawable.gem_pie014
+        "PIE-015" -> R.drawable.gem_pie015
+        "PIE-016" -> R.drawable.gem_pie016
+        "PIE-022" -> R.drawable.gem_pie022
+        "PIE-032" -> R.drawable.gem_pie032
+        else -> null
+    }
+    return real ?: gemImageFor(product)
 }
 
 fun gemImageFor(product: Product): Int = when (product.name.lowercase()) {

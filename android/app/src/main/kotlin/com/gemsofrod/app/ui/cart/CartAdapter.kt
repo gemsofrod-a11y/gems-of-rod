@@ -5,9 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.gemsofrod.app.databinding.ItemCartBinding
 import com.gemsofrod.app.model.CartItem
-import com.gemsofrod.app.ui.shop.gemImageFor
+import com.gemsofrod.app.ui.shop.productImageFor
 
 class CartAdapter(
     private val onRemove: (String) -> Unit
@@ -31,7 +32,7 @@ class CartAdapter(
                 "${item.quantity} × ${item.product.formattedPrice}"
             else
                 item.product.formattedPrice
-            binding.cartItemImage.setImageResource(gemImageFor(item.product))
+            binding.cartItemImage.load(productImageFor(item.product)) { crossfade(true) }
             binding.cartItemRemove.setOnClickListener { onRemove(item.product.id) }
         }
     }
