@@ -93,7 +93,10 @@ fun productImageFor(product: Product): Int {
 }
 
 fun gemImageFor(product: Product): Int = when (product.name.lowercase()) {
-    "saphir" -> R.drawable.gem_placeholder_sapphire
+    "saphir" -> when {
+        product.variety.contains("Padparadscha", ignoreCase = true) -> R.drawable.gem_placeholder_ruby
+        else -> R.drawable.gem_placeholder_sapphire
+    }
     "rubis" -> R.drawable.gem_placeholder_ruby
     "diamant" -> R.drawable.gem_placeholder_diamond
     "topaze" -> R.drawable.gem_placeholder_topaz
@@ -102,6 +105,9 @@ fun gemImageFor(product: Product): Int = when (product.name.lowercase()) {
     "spinelle" -> when {
         product.variety.contains("Bleu", ignoreCase = true) -> R.drawable.gem_placeholder_sapphire
         product.variety.contains("Rose", ignoreCase = true) -> R.drawable.gem_placeholder_ruby
+        product.variety.contains("Rouge", ignoreCase = true) -> R.drawable.gem_placeholder_ruby
+        product.variety.contains("Violet", ignoreCase = true) -> R.drawable.gem_placeholder_amethyst
+        product.variety.contains("Lavande", ignoreCase = true) -> R.drawable.gem_placeholder_amethyst
         else -> R.drawable.gem_placeholder_amethyst
     }
     "péridot" -> R.drawable.gem_placeholder_emerald
@@ -109,5 +115,7 @@ fun gemImageFor(product: Product): Int = when (product.name.lowercase()) {
     "iolite" -> R.drawable.gem_placeholder_sapphire
     "aigue-marine" -> R.drawable.gem_placeholder_sapphire
     "citrine" -> R.drawable.gem_placeholder_topaz
+    "apatite" -> R.drawable.gem_placeholder_sapphire
+    "bague", "pendentif" -> R.drawable.gem_placeholder_amethyst
     else -> R.drawable.gem_placeholder_sapphire
 }

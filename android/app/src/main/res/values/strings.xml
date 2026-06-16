@@ -22,6 +22,7 @@
     <string name="shop_filter_cat3">Nobles</string>
     <string name="shop_filter_cat2">Fines</string>
     <string name="shop_filter_cat1">Communes</string>
+    <string name="shop_filter_bijou">Bijoux</string>
 
     <!-- Product Detail -->
     <string name="detail_certifie">Pierre certifiée authentique</string>

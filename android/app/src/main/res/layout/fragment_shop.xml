@@ -99,6 +99,13 @@
                 android:layout_height="wrap_content"
                 android:text="@string/shop_filter_cat1"/>
 
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_bijou"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/shop_filter_bijou"/>
+
         </com.google.android.material.chip.ChipGroup>
 
     </HorizontalScrollView>

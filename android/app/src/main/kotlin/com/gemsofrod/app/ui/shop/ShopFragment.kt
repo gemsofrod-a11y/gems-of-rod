@@ -51,6 +51,7 @@ class ShopFragment : Fragment() {
                 binding.chipCat3.id -> ProductRepository.getByCategory("Fine noble")
                 binding.chipCat2.id -> ProductRepository.getByCategory("Fine courante")
                 binding.chipCat1.id -> ProductRepository.getByCategory("Commune")
+                binding.chipBijou.id -> ProductRepository.getByCategory("Bijou")
                 else -> ProductRepository.products
             }
             gridAdapter.submitList(filtered)
