@@ -12,6 +12,11 @@
         android:title="@string/nav_boutique"/>
 
     <item
+        android:id="@+id/cartFragment"
+        android:icon="@drawable/ic_nav_cart"
+        android:title="Panier"/>
+
+    <item
         android:id="@+id/storyFragment"
         android:icon="@drawable/ic_nav_story"
         android:title="@string/nav_histoire"/>

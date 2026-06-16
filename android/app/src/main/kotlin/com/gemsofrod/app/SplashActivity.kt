@@ -17,8 +17,6 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        splashScreen.setKeepOnScreenCondition { true }
-
         lifecycleScope.launch {
             delay(1800)
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))

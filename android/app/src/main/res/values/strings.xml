@@ -63,4 +63,13 @@
     <string name="currency_eur">€</string>
     <string name="back">Retour</string>
     <string name="add_to_cart">Ajouter au panier</string>
+
+    <!-- Cart -->
+    <string name="nav_cart">Panier</string>
+    <string name="cart_empty_title">Votre panier est vide</string>
+    <string name="cart_empty_subtitle">Découvrez notre collection de pierres d\'exception.</string>
+    <string name="cart_discover">Voir la boutique</string>
+    <string name="cart_total_label">Total</string>
+    <string name="cart_checkout">Procéder à la commande</string>
+    <string name="cart_confirm_title">Confirmer la commande</string>
 </resources>

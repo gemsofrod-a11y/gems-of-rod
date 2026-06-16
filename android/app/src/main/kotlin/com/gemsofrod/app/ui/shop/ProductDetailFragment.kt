@@ -10,6 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.gemsofrod.app.R
 import com.gemsofrod.app.databinding.FragmentProductDetailBinding
+import com.gemsofrod.app.model.CartManager
 import com.gemsofrod.app.model.ProductRepository
 
 class ProductDetailFragment : Fragment() {
@@ -53,11 +54,14 @@ class ProductDetailFragment : Fragment() {
         binding.specCertValue.text = product.certification
 
         binding.btnAddToCart.setOnClickListener {
+            CartManager.add(product)
             Snackbar.make(
                 binding.root,
-                "« ${product.name} » ajouté à votre panier",
+                "« ${product.name} » ajouté au panier",
                 Snackbar.LENGTH_LONG
-            ).setAction("Voir") {}.show()
+            ).setAction("Voir le panier") {
+                findNavController().navigate(R.id.cartFragment)
+            }.show()
         }
 
         binding.btnContactExpert.setOnClickListener {

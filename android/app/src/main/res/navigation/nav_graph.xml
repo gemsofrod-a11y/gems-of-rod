@@ -39,6 +39,12 @@
     </fragment>
 
     <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.gemsofrod.app.ui.cart.CartFragment"
+        android:label="Panier"
+        tools:layout="@layout/fragment_cart"/>
+
+    <fragment
         android:id="@+id/storyFragment"
         android:name="com.gemsofrod.app.ui.story.StoryFragment"
         android:label="@string/nav_histoire"
