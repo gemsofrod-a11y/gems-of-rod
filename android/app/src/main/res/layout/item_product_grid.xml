@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
+    app:cardBackgroundColor="@color/brand_anthracite_2"
     app:cardCornerRadius="4dp"
-    app:cardElevation="2dp"
-    app:strokeColor="@color/brand_gray_light"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/brand_border"
     app:strokeWidth="1dp">
 
     <LinearLayout
@@ -32,17 +33,17 @@
                 android:id="@+id/product_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/brand_teal"
+                android:textColor="@color/brand_gold"
                 android:textSize="10sp"
-                android:letterSpacing="0.1"
+                android:letterSpacing="0.15"
                 android:textAllCaps="true"/>
 
             <TextView
                 android:id="@+id/product_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textColor="@color/brand_black"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/brand_cream"
                 android:textSize="15sp"
                 android:fontFamily="serif"
                 android:ellipsize="end"
@@ -53,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:textColor="@color/brand_gray"
+                android:textColor="@color/brand_gray_medium"
                 android:textSize="12sp"/>
 
             <TextView
@@ -61,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/brand_gray_dark"
+                android:textColor="@color/brand_gold"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
 

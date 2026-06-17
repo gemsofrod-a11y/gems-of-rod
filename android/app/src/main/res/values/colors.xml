@@ -1,37 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Brand Colors -->
-    <color name="brand_teal">#4DB6AC</color>
-    <color name="brand_teal_dark">#2E8B84</color>
-    <color name="brand_teal_light">#80CBC4</color>
-    <color name="brand_teal_surface">#E0F2F1</color>
+    <!-- Gold Accent -->
+    <color name="brand_gold">#C9A86C</color>
+    <color name="brand_gold_dark">#A07840</color>
+    <color name="brand_gold_light">#E8D5A3</color>
+    <color name="brand_gold_surface">#2A220F</color>
 
-    <!-- Neutrals -->
-    <color name="brand_black">#111111</color>
-    <color name="brand_dark">#1A1A2E</color>
-    <color name="brand_gray_dark">#555555</color>
-    <color name="brand_gray">#888888</color>
-    <color name="brand_gray_light">#CCCCCC</color>
-    <color name="brand_off_white">#F7F7F7</color>
+    <!-- Anthracite Backgrounds -->
+    <color name="brand_anthracite">#161616</color>
+    <color name="brand_anthracite_2">#1E1E1E</color>
+    <color name="brand_anthracite_3">#282828</color>
+    <color name="brand_anthracite_4">#333333</color>
+
+    <!-- Text -->
+    <color name="brand_cream">#F0EBE1</color>
     <color name="brand_white">#FFFFFF</color>
+    <color name="brand_black">#111111</color>
+    <color name="brand_gray_medium">#9E9E9E</color>
+    <color name="brand_gray_muted">#5C5C5C</color>
+    <color name="brand_gray_light">#3A3A3A</color>
 
-    <!-- Gemstone Accent Colors -->
-    <color name="gem_sapphire">#1565C0</color>
-    <color name="gem_emerald">#2E7D32</color>
-    <color name="gem_ruby">#C62828</color>
-    <color name="gem_diamond">#E3F2FD</color>
-    <color name="gem_amethyst">#6A1B9A</color>
-    <color name="gem_topaz">#F57F17</color>
+    <!-- Borders -->
+    <color name="brand_border">#2E2E2E</color>
+    <color name="brand_border_gold">#4A3820</color>
 
-    <!-- Semantic -->
-    <color name="color_primary">#4DB6AC</color>
-    <color name="color_primary_dark">#2E8B84</color>
-    <color name="color_on_primary">#FFFFFF</color>
-    <color name="color_surface">#F7F7F7</color>
-    <color name="color_background">#FFFFFF</color>
-    <color name="color_on_surface">#111111</color>
-    <color name="color_outline">#CCCCCC</color>
-
-    <!-- Status Bar -->
-    <color name="status_bar_color">#111111</color>
+    <!-- Legacy aliases (keep for any remaining references) -->
+    <color name="brand_teal">#C9A86C</color>
+    <color name="brand_teal_dark">#A07840</color>
+    <color name="brand_teal_light">#E8D5A3</color>
+    <color name="brand_teal_surface">#2A220F</color>
+    <color name="brand_dark">#161616</color>
+    <color name="brand_navy">#1E1E1E</color>
+    <color name="brand_gray_dark">#BDBDBD</color>
+    <color name="brand_gray">#9E9E9E</color>
+    <color name="brand_off_white">#1E1E1E</color>
+    <color name="color_primary">#C9A86C</color>
+    <color name="color_primary_dark">#A07840</color>
+    <color name="color_on_primary">#161616</color>
+    <color name="color_surface">#1E1E1E</color>
+    <color name="color_background">#161616</color>
+    <color name="color_on_surface">#F0EBE1</color>
+    <color name="color_outline">#3A3A3A</color>
+    <color name="status_bar_color">#161616</color>
 </resources>

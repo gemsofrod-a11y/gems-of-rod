@@ -35,16 +35,16 @@
 
     <!-- Story -->
     <string name="story_title">Notre histoire</string>
-    <string name="story_subtitle">L\'excellence au service de la beauté</string>
-    <string name="story_text_1">Gems of Rod est né d\'une passion profonde pour les pierres précieuses et les gemmes d\'exception. Fondée par des experts passionnés, notre maison s\'est donnée pour mission de sélectionner avec soin les plus belles pierres du monde entier.</string>
-    <string name="story_text_2">Chaque pierre que nous proposons est le fruit d\'une sélection rigoureuse, basée sur des critères d\'authenticité, de pureté et de brillance. Nous travaillons directement avec des mineurs et des fournisseurs de confiance pour vous garantir l\'origine et la qualité de chaque gemme.</string>
-    <string name="story_text_3">Notre engagement va au-delà de la simple vente : nous vous accompagnons dans le choix de la pierre qui correspond à votre vision, à vos émotions, à votre histoire.</string>
+    <string name="story_subtitle">L\'excellence au service de la beauté des pierres</string>
+    <string name="story_text_1">Gems of Rod est née d\'une passion profonde et sincère pour les pierres précieuses et les gemmes d\'exception. Fondée par Rodrigue, gemologue indépendant, notre maison s\'est donné pour mission de sélectionner avec soin les plus belles pierres du monde entier — des profondeurs de Ceylan aux mines de Madagascar, des vallées de Birmanie aux gisements d\'Afrique de l\'Est.</string>
+    <string name="story_text_2">Chaque pierre que nous proposons est le fruit d\'une sélection rigoureuse fondée sur les quatre critères fondamentaux de la gemologie : la couleur, la clarté, la taille et le poids en carats. Nous travaillons directement avec des mineurs, des lapidaires et des négociants de confiance pour vous garantir l\'authenticité, la traçabilité et la qualité de chaque gemme. La majorité de nos pierres sont accompagnées d\'un certificat géologique reconnu — GRS, GIA, Gübelin ou AGL.</string>
+    <string name="story_text_3">« Une pierre précieuse n\'a pas de prix — elle a une histoire, une lumière, une âme. Notre rôle est de la mettre en valeur et de vous permettre de la faire vôtre. »</string>
     <string name="story_value_1_title">Authenticité</string>
-    <string name="story_value_1_desc">Chaque pierre est certifiée et accompagnée de son rapport d\'expertise.</string>
+    <string name="story_value_1_desc">Chaque pierre est certifiée par des laboratoires gemologiques indépendants reconnus à l\'international.</string>
     <string name="story_value_2_title">Rareté</string>
-    <string name="story_value_2_desc">Nous sélectionnons uniquement des pierres d\'une qualité et d\'une rareté exceptionnelles.</string>
+    <string name="story_value_2_desc">Nous sélectionnons uniquement des pierres d\'une qualité, d\'une origine et d\'une rareté exceptionnelles, introuvables en commerce ordinaire.</string>
     <string name="story_value_3_title">Excellence</string>
-    <string name="story_value_3_desc">Un service personnalisé et un accompagnement expert à chaque étape.</string>
+    <string name="story_value_3_desc">Un conseil personnalisé, une expertise gemologique approfondie et un accompagnement sur mesure à chaque étape de votre achat.</string>
 
     <!-- Contact -->
     <string name="contact_title">Nous contacter</string>

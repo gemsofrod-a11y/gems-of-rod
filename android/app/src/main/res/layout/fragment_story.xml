@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/brand_white">
+    android:background="@color/brand_anthracite">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="NOTRE MAISON"
-                android:textColor="@color/brand_teal"
+                android:textColor="@color/brand_gold"
                 android:textSize="11sp"
                 android:letterSpacing="0.2"
                 android:textAllCaps="true"/>
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/story_title"
-                android:textColor="@color/brand_white"
+                android:textColor="@color/brand_cream"
                 android:textSize="26sp"
                 android:fontFamily="serif"/>
 
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:text="@string/story_subtitle"
-                android:textColor="#AAAAAA"
+                android:textColor="@color/brand_gray_medium"
                 android:textSize="13sp"/>
 
         </LinearLayout>
@@ -63,14 +63,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/story_text_1"
-                android:textColor="@color/brand_gray_dark"
+                android:textColor="@color/brand_gray_medium"
                 android:textSize="15sp"
                 android:lineSpacingMultiplier="1.7"/>
 
             <View
                 android:layout_width="40dp"
                 android:layout_height="2dp"
-                android:background="@color/brand_teal"
+                android:background="@color/brand_gold"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"/>
 
@@ -78,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/story_text_2"
-                android:textColor="@color/brand_gray_dark"
+                android:textColor="@color/brand_gray_medium"
                 android:textSize="15sp"
                 android:lineSpacingMultiplier="1.7"/>
 
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/story_text_3"
-                android:textColor="@color/brand_gray_dark"
+                android:textColor="@color/brand_gray_medium"
                 android:textSize="15sp"
                 android:lineSpacingMultiplier="1.7"
                 android:fontFamily="serif"
@@ -100,7 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@color/brand_off_white"
+            android:background="@color/brand_anthracite_2"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:paddingTop="32dp"
@@ -110,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nos valeurs"
-                android:textColor="@color/brand_black"
+                android:textColor="@color/brand_cream"
                 android:textSize="20sp"
                 android:fontFamily="serif"
                 android:layout_marginBottom="20dp"/>
@@ -120,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@color/brand_white"
+                android:background="@color/brand_anthracite_3"
                 android:padding="16dp"
                 android:layout_marginBottom="12dp">
 
@@ -129,7 +129,7 @@
                     android:layout_height="40dp"
                     android:gravity="center"
                     android:text="✦"
-                    android:textColor="@color/brand_teal"
+                    android:textColor="@color/brand_gold"
                     android:textSize="22sp"
                     android:layout_marginEnd="16dp"/>
 
@@ -143,7 +143,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/story_value_1_title"
-                        android:textColor="@color/brand_black"
+                        android:textColor="@color/brand_cream"
                         android:textSize="16sp"
                         android:fontFamily="serif"/>
 
@@ -152,7 +152,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="@string/story_value_1_desc"
-                        android:textColor="@color/brand_gray_dark"
+                        android:textColor="@color/brand_gray_medium"
                         android:textSize="13sp"
                         android:lineSpacingMultiplier="1.4"/>
 
@@ -165,7 +165,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@color/brand_white"
+                android:background="@color/brand_anthracite_3"
                 android:padding="16dp"
                 android:layout_marginBottom="12dp">
 
@@ -174,7 +174,7 @@
                     android:layout_height="40dp"
                     android:gravity="center"
                     android:text="◆"
-                    android:textColor="@color/brand_teal"
+                    android:textColor="@color/brand_gold"
                     android:textSize="22sp"
                     android:layout_marginEnd="16dp"/>
 
@@ -188,7 +188,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/story_value_2_title"
-                        android:textColor="@color/brand_black"
+                        android:textColor="@color/brand_cream"
                         android:textSize="16sp"
                         android:fontFamily="serif"/>
 
@@ -197,7 +197,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="@string/story_value_2_desc"
-                        android:textColor="@color/brand_gray_dark"
+                        android:textColor="@color/brand_gray_medium"
                         android:textSize="13sp"
                         android:lineSpacingMultiplier="1.4"/>
 
@@ -210,7 +210,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@color/brand_white"
+                android:background="@color/brand_anthracite_3"
                 android:padding="16dp">
 
                 <TextView
@@ -218,7 +218,7 @@
                     android:layout_height="40dp"
                     android:gravity="center"
                     android:text="★"
-                    android:textColor="@color/brand_teal"
+                    android:textColor="@color/brand_gold"
                     android:textSize="22sp"
                     android:layout_marginEnd="16dp"/>
 
@@ -232,7 +232,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/story_value_3_title"
-                        android:textColor="@color/brand_black"
+                        android:textColor="@color/brand_cream"
                         android:textSize="16sp"
                         android:fontFamily="serif"/>
 
@@ -241,7 +241,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="@string/story_value_3_desc"
-                        android:textColor="@color/brand_gray_dark"
+                        android:textColor="@color/brand_gray_medium"
                         android:textSize="13sp"
                         android:lineSpacingMultiplier="1.4"/>
 

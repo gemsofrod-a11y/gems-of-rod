@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/brand_white">
+    android:background="@color/brand_anthracite">
 
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/brand_dark"
+        android:background="@color/brand_anthracite_2"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:paddingTop="24dp"
@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="VOTRE SÉLECTION"
-            android:textColor="@color/brand_teal"
+            android:textColor="@color/brand_gold"
             android:textSize="11sp"
             android:letterSpacing="0.2"
             android:textAllCaps="true"/>
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:text="@string/nav_cart"
-            android:textColor="@color/brand_white"
+            android:textColor="@color/brand_cream"
             android:textSize="22sp"
             android:fontFamily="serif"/>
 
@@ -53,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="◇"
-            android:textColor="@color/brand_gray_light"
+            android:textColor="@color/brand_gray_muted"
             android:textSize="48sp"/>
 
         <TextView
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/cart_empty_title"
-            android:textColor="@color/brand_black"
+            android:textColor="@color/brand_cream"
             android:textSize="18sp"
             android:fontFamily="serif"/>
 
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/cart_empty_subtitle"
-            android:textColor="@color/brand_gray_dark"
+            android:textColor="@color/brand_gray_medium"
             android:textSize="13sp"
             android:gravity="center"
             android:lineSpacingMultiplier="1.4"/>
@@ -101,7 +101,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/brand_off_white"
+        android:background="@color/brand_anthracite_2"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:paddingTop="16dp"
@@ -119,7 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/cart_total_label"
-                android:textColor="@color/brand_black"
+                android:textColor="@color/brand_cream"
                 android:textSize="16sp"
                 android:fontFamily="serif"/>
 
@@ -127,7 +127,7 @@
                 android:id="@+id/cart_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/brand_black"
+                android:textColor="@color/brand_gold"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 

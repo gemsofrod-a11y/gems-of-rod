@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/brand_white">
+    android:background="@color/brand_anthracite">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:contentScrim="@color/brand_dark">
+            app:contentScrim="@color/brand_anthracite">
 
             <ImageView
                 android:id="@+id/detail_image"
@@ -54,7 +54,7 @@
                 android:id="@+id/detail_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/brand_teal"
+                android:textColor="@color/brand_gold"
                 android:textSize="11sp"
                 android:letterSpacing="0.15"
                 android:textAllCaps="true"/>
@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:textColor="@color/brand_black"
+                android:textColor="@color/brand_cream"
                 android:textSize="26sp"
                 android:fontFamily="serif"/>
 
@@ -81,7 +81,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="@color/brand_black"
+                    android:textColor="@color/brand_gold"
                     android:textSize="24sp"
                     android:textStyle="bold"/>
 
@@ -95,7 +95,7 @@
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
                     android:text="@string/detail_certifie"
-                    android:textColor="@color/brand_teal_dark"
+                    android:textColor="@color/brand_gold_light"
                     android:textSize="11sp"/>
 
             </LinearLayout>
@@ -104,7 +104,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/brand_gray_light"
+                android:background="@color/brand_border"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"/>
 
@@ -113,7 +113,7 @@
                 android:id="@+id/detail_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/brand_gray_dark"
+                android:textColor="@color/brand_gray_medium"
                 android:textSize="14sp"
                 android:lineSpacingMultiplier="1.6"/>
 
@@ -121,7 +121,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/brand_gray_light"
+                android:background="@color/brand_border"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"/>
 
@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Caractéristiques"
-                android:textColor="@color/brand_black"
+                android:textColor="@color/brand_cream"
                 android:textSize="16sp"
                 android:fontFamily="serif"
                 android:layout_marginBottom="12dp"/>
@@ -139,7 +139,7 @@
                 android:id="@+id/specs_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/brand_off_white"
+                android:background="@color/brand_anthracite_3"
                 android:padding="16dp">
 
                 <TextView
@@ -147,7 +147,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/detail_origine"
-                    android:textColor="@color/brand_gray"
+                    android:textColor="@color/brand_gray_medium"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
@@ -156,7 +156,7 @@
                     android:id="@+id/spec_origin_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/brand_black"
+                    android:textColor="@color/brand_cream"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -168,7 +168,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@string/detail_poids"
-                    android:textColor="@color/brand_gray"
+                    android:textColor="@color/brand_gray_medium"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/spec_origin_label"/>
@@ -177,7 +177,7 @@
                     android:id="@+id/spec_weight_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/brand_black"
+                    android:textColor="@color/brand_cream"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -189,7 +189,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@string/detail_traitement"
-                    android:textColor="@color/brand_gray"
+                    android:textColor="@color/brand_gray_medium"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/spec_weight_label"/>
@@ -198,7 +198,7 @@
                     android:id="@+id/spec_treatment_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/brand_black"
+                    android:textColor="@color/brand_cream"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -210,7 +210,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@string/detail_certification"
-                    android:textColor="@color/brand_gray"
+                    android:textColor="@color/brand_gray_medium"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/spec_treatment_label"/>
@@ -219,7 +219,7 @@
                     android:id="@+id/spec_cert_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/brand_black"
+                    android:textColor="@color/brand_cream"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
