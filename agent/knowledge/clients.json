@@ -1,0 +1,106 @@
+[
+  {
+    "id": "CLI-001",
+    "prenom": "Sophie",
+    "nom": "Marchand",
+    "email": "sophie.marchand@email.fr",
+    "telephone": "+33 6 XX XX XX XX",
+    "segment": "vip",
+    "preferences": ["saphirs", "bagues sur mesure", "pierres non traitées"],
+    "budget_moyen_eur": 3000,
+    "achats_total_eur": 15200,
+    "historique_achats": [
+      {"date": "2025-06-10", "produit": "Saphir de Ceylan 4ct", "montant": 5200},
+      {"date": "2025-11-20", "produit": "Bague saphir or 18k", "montant": 3800},
+      {"date": "2026-02-14", "produit": "Alexandrite 1.2ct", "montant": 3500}
+    ],
+    "notes": "Collectionneuse passionnée. Très informée sur les pierres. Préfère les pierres non traitées.",
+    "newsletter": true,
+    "langue": "français"
+  },
+  {
+    "id": "CLI-002",
+    "prenom": "Marc",
+    "nom": "Dubois",
+    "email": "m.dubois@entreprise.com",
+    "telephone": "+33 6 XX XX XX XX",
+    "segment": "vip",
+    "preferences": ["investissement", "pierres rares", "certificats GIA"],
+    "budget_moyen_eur": 5000,
+    "achats_total_eur": 22000,
+    "historique_achats": [
+      {"date": "2025-04-15", "produit": "Lot rubis Birmanie 3 pcs", "montant": 8500},
+      {"date": "2025-09-30", "produit": "Alexandrite 2ct", "montant": 7200},
+      {"date": "2026-01-10", "produit": "Saphir Cachemire 2.1ct", "montant": 6300}
+    ],
+    "notes": "Investisseur. Achète les pierres pour constitution de patrimoine. Très sensible aux certifications.",
+    "newsletter": true,
+    "langue": "français"
+  },
+  {
+    "id": "CLI-003",
+    "prenom": "Isabelle",
+    "nom": "Laurent",
+    "email": "isabelle.laurent@mail.fr",
+    "telephone": "+33 6 XX XX XX XX",
+    "segment": "regulier",
+    "preferences": ["émeraudes", "bijoux", "cadeau"],
+    "budget_moyen_eur": 1500,
+    "achats_total_eur": 4600,
+    "historique_achats": [
+      {"date": "2025-03-08", "produit": "Pendentif émeraude", "montant": 1900},
+      {"date": "2025-12-25", "produit": "Émeraude de Colombie 1.8ct", "montant": 1800}
+    ],
+    "notes": "Achète souvent pour offrir. Très sensible à l'emballage et au storytelling.",
+    "newsletter": true,
+    "langue": "français"
+  },
+  {
+    "id": "CLI-004",
+    "prenom": "Antoine",
+    "nom": "Perrin",
+    "email": "antoine.perrin@email.fr",
+    "telephone": "+33 6 XX XX XX XX",
+    "segment": "regulier",
+    "preferences": ["rubis", "spinelle", "pierres colorées"],
+    "budget_moyen_eur": 1200,
+    "achats_total_eur": 3400,
+    "historique_achats": [
+      {"date": "2025-07-20", "produit": "Rubis naturel 1.5ct", "montant": 2200},
+      {"date": "2026-01-05", "produit": "Spinelle rouge 2.3ct", "montant": 1100}
+    ],
+    "notes": "Amateur de pierres rouges. Très intéressé par le spinelle depuis notre newsletter.",
+    "newsletter": true,
+    "langue": "français"
+  },
+  {
+    "id": "CLI-005",
+    "prenom": "Camille",
+    "nom": "Rousseau",
+    "email": "c.rousseau@email.fr",
+    "telephone": "+33 6 XX XX XX XX",
+    "segment": "prospect",
+    "preferences": ["tanzanite", "pierres bleues"],
+    "budget_moyen_eur": 800,
+    "achats_total_eur": 0,
+    "historique_achats": [],
+    "notes": "Inscrite à la newsletter depuis 3 mois. A posé des questions sur la tanzanite.",
+    "newsletter": true,
+    "langue": "français"
+  },
+  {
+    "id": "CLI-006",
+    "prenom": "Thomas",
+    "nom": "Bernard",
+    "email": "thomas.bernard@email.fr",
+    "telephone": "+33 6 XX XX XX XX",
+    "segment": "prospect",
+    "preferences": ["bagues fiançailles", "diamant"],
+    "budget_moyen_eur": 3000,
+    "achats_total_eur": 0,
+    "historique_achats": [],
+    "notes": "A contacté via Instagram pour une bague de fiançailles. En réflexion.",
+    "newsletter": false,
+    "langue": "français"
+  }
+]
