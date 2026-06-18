@@ -22,7 +22,7 @@
 
     <!-- Borders -->
     <color name="brand_border">#2E2E2E</color>
-    <color name="brand_border_gold">#4A3820</color>
+    <color name="brand_border_gold">#5C4520</color>
 
     <!-- Legacy aliases (keep for any remaining references) -->
     <color name="brand_teal">#C9A86C</color>

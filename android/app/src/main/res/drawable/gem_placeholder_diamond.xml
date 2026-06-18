@@ -4,13 +4,18 @@
     android:height="200dp"
     android:viewportWidth="200"
     android:viewportHeight="200">
-    <path android:fillColor="#F5F5F5" android:pathData="M0,0 L200,0 L200,200 L0,200 Z"/>
-    <!-- Diamond brilliant cut -->
-    <path android:fillColor="#E3F2FD" android:pathData="M100,30 L160,80 L140,170 L60,170 L40,80 Z"/>
-    <path android:fillColor="#BBDEFB" android:pathData="M100,40 L150,82 L133,162 L67,162 L50,82 Z"/>
-    <path android:fillColor="#90CAF9" android:pathData="M100,40 L150,82 L100,95 Z"/>
-    <path android:fillColor="#FFFFFF" android:pathData="M85,45 L95,58 L78,62 Z"/>
-    <path android:fillColor="#E1F5FE" android:pathData="M78,48 L88,48 L84,56 Z"/>
-    <path android:fillColor="#B3E5FC" android:pathData="M100,95 L150,82 L133,162 Z"/>
-    <path android:fillColor="#81D4FA" android:pathData="M100,95 L67,162 L50,82 Z"/>
+    <path android:fillColor="#0D0D10"
+          android:pathData="M0,0 H200 V200 H0 Z"/>
+    <path android:fillColor="#607D8B" android:alpha="0.22"
+          android:pathData="M38,100 A62,72 0 1,0 162,100 A62,72 0 1,0 38,100 Z"/>
+    <path android:fillColor="#263238"
+          android:pathData="M100,38 L138,60 L152,100 L138,140 L100,162 L62,140 L48,100 L62,60 Z"/>
+    <path android:fillColor="#455A64"
+          android:pathData="M100,58 L128,75 L138,100 L128,125 L100,142 L72,125 L62,100 L72,75 Z"/>
+    <path android:fillColor="#78909C"
+          android:pathData="M100,38 L62,60 L72,75 L100,58 Z"/>
+    <path android:fillColor="#ECEFF1"
+          android:pathData="M88,48 L94,58 L88,68 L82,58 Z"/>
+    <path android:fillColor="#C9A86C"
+          android:pathData="M162,36 L164,42 L170,44 L164,46 L162,52 L160,46 L154,44 L160,42 Z"/>
 </vector>

@@ -16,10 +16,10 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/hero_section"
             android:layout_width="match_parent"
-            android:layout_height="420dp"
+            android:layout_height="460dp"
             android:background="@drawable/bg_hero_gradient"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp">
+            android:paddingStart="28dp"
+            android:paddingEnd="28dp">
 
             <!-- Logo -->
             <ImageView
@@ -50,12 +50,12 @@
                 android:id="@+id/hero_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="56dp"
                 android:text="@string/home_hero_title"
                 android:textColor="@color/brand_cream"
-                android:textSize="28sp"
+                android:textSize="32sp"
                 android:fontFamily="serif"
-                android:lineSpacingMultiplier="1.2"
+                android:lineSpacingMultiplier="1.25"
                 app:layout_constraintBottom_toTopOf="@+id/hero_subtitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -99,6 +99,13 @@
             android:paddingBottom="16dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp">
+
+            <!-- Gold ornament line -->
+            <View
+                android:layout_width="32dp"
+                android:layout_height="1dp"
+                android:background="@color/brand_gold"
+                android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:id="@+id/featured_label"
