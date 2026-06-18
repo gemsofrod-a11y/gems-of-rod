@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python agent/main.py*)",
+      "Bash(pip install*)",
+      "Bash(python -m pip install*)",
+      "Read(data/**)",
+      "Write(data/**)"
+    ]
+  }
+}

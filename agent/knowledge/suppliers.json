@@ -1,0 +1,103 @@
+[
+  {
+    "id": "SUP-001",
+    "nom": "Maison Berthoud Lapidaires",
+    "type": "lapidaire",
+    "contact": "Jean-Pierre Berthoud",
+    "email": "jp.berthoud@berthoud-lapidaire.fr",
+    "telephone": "+33 1 42 XX XX XX",
+    "adresse": "Paris 2e, France",
+    "pays": "France",
+    "specialites": ["taille brillant", "taille émeraude", "taille coussin", "rétaillage"],
+    "delai_moyen_jours": 21,
+    "langue": "français",
+    "notes": "Partenaire de confiance depuis 2021. Excellent travail sur les pierres précieuses. Délais respectés.",
+    "historique_commandes": [
+      {"date": "2025-11-10", "description": "Retaille 3 saphirs", "montant_eur": 1200},
+      {"date": "2026-01-20", "description": "Taille émeraude brute Colombie", "montant_eur": 800}
+    ]
+  },
+  {
+    "id": "SUP-002",
+    "nom": "GemOrigins International",
+    "type": "negociant",
+    "contact": "Sarah Chen",
+    "email": "sarah.chen@gemorigins.com",
+    "telephone": "+1 212 XXX XXXX",
+    "adresse": "New York, USA",
+    "pays": "USA",
+    "specialites": ["saphirs du Cachemire", "rubis de Birmanie", "alexandrite", "pierres rares"],
+    "delai_moyen_jours": 14,
+    "langue": "anglais",
+    "notes": "Négociant international sérieux. Prix élevés mais qualité premium. Certifications GIA systématiques.",
+    "historique_commandes": [
+      {"date": "2025-10-05", "description": "Lot saphirs Sri Lanka 5 pcs", "montant_eur": 8500},
+      {"date": "2026-02-10", "description": "Alexandrite Brésil 1.2ct", "montant_eur": 3500}
+    ]
+  },
+  {
+    "id": "SUP-003",
+    "nom": "Atelier Leblanc Joaillerie",
+    "type": "joaillier",
+    "contact": "Marie Leblanc",
+    "email": "marie@atelier-leblanc.fr",
+    "telephone": "+33 4 XX XX XX XX",
+    "adresse": "Lyon, France",
+    "pays": "France",
+    "specialites": ["bagues sur mesure", "pendentifs", "serti pavé", "serti griffe"],
+    "delai_moyen_jours": 30,
+    "langue": "français",
+    "notes": "Joaillière artisane talentueuse. Travail soigné, communication excellente. Idéale pour pièces sur mesure.",
+    "historique_commandes": [
+      {"date": "2025-12-01", "description": "Bague saphir et or 18k", "montant_eur": 2800},
+      {"date": "2026-03-15", "description": "Pendentif émeraude Colombie", "montant_eur": 1900}
+    ]
+  },
+  {
+    "id": "SUP-004",
+    "nom": "Atelier Martin Gravure",
+    "type": "joaillier",
+    "contact": "Thierry Martin",
+    "email": "t.martin@atelier-martin-gravure.fr",
+    "telephone": "+33 1 XX XX XX XX",
+    "adresse": "Paris 8e, France",
+    "pays": "France",
+    "specialites": ["gravure sur bijoux", "personnalisation", "émaillage", "filigrane"],
+    "delai_moyen_jours": 15,
+    "langue": "français",
+    "notes": "Spécialiste gravure et finition. Excellent pour pièces personnalisées. Prix raisonnables.",
+    "historique_commandes": []
+  },
+  {
+    "id": "SUP-005",
+    "nom": "Ceylon Premium Gems",
+    "type": "negociant",
+    "contact": "Pradeep Wijesinghe",
+    "email": "pradeep@ceylonpremiumgems.lk",
+    "telephone": "+94 11 XXX XXXX",
+    "adresse": "Ratnapura, Sri Lanka",
+    "pays": "Sri Lanka",
+    "specialites": ["saphirs de Ceylan", "rubis", "spessartites", "pierres brutes"],
+    "delai_moyen_jours": 21,
+    "langue": "anglais",
+    "notes": "Source directe Sri Lanka. Prix compétitifs sur les saphirs de Ceylan. Toujours livré avec certificat origine.",
+    "historique_commandes": [
+      {"date": "2025-09-20", "description": "Saphir bleu padparadscha 3.2ct", "montant_eur": 4200}
+    ]
+  },
+  {
+    "id": "SUP-006",
+    "nom": "Joaillerie Fontaine",
+    "type": "joaillier",
+    "contact": "Aurélie Fontaine",
+    "email": "contact@bijouterie-fontaine.fr",
+    "telephone": "+33 5 XX XX XX XX",
+    "adresse": "Bordeaux, France",
+    "pays": "France",
+    "specialites": ["création bijoux contemporains", "platine", "diamants", "bagues fiançailles"],
+    "delai_moyen_jours": 45,
+    "langue": "français",
+    "notes": "Nouveau partenaire potentiel. Travail haut de gamme vu sur Instagram. Pas encore commandé.",
+    "historique_commandes": []
+  }
+]

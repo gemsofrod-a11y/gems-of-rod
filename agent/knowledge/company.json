@@ -1,0 +1,60 @@
+{
+  "nom": "Gems of Rod",
+  "pays": "France",
+  "annee_creation": 2020,
+  "email_contact": "gemsofrod@gmail.com",
+  "site_web": "gems-of-rod.fr",
+  "instagram": "@gemsofrod",
+  "slogan": "Pierres précieuses & bijoux d'exception",
+  "description": "Maison française indépendante spécialisée dans la sélection, la vente et la valorisation de pierres précieuses, pierres fines, métaux précieux et bijoux d'exception.",
+  "mission": "Rendre accessibles les pierres d'exception en garantissant leur authenticité, leur provenance éthique et leur valeur gemmologique.",
+  "valeurs": [
+    "Authenticité & traçabilité",
+    "Excellence gemmologique",
+    "Transparence sur les prix",
+    "Passion des pierres rares",
+    "Relation client privilégiée"
+  ],
+  "categories_produits": [
+    {
+      "id": "pierres_precieuses",
+      "nom": "Pierres précieuses",
+      "description": "Diamant, rubis, émeraude, saphir. Les quatre pierres précieuses classiques.",
+      "criteres": ["certification GIA/GUBELIN/GFCO", "origine documentée", "traitement déclaré"]
+    },
+    {
+      "id": "pierres_fines",
+      "nom": "Pierres fines",
+      "description": "Alexandrite, tanzanite, spinelle, tourmaline, topaze impériale, grenat démantoïde, kunzite, morganite.",
+      "criteres": ["rareté", "éclat", "authenticité"]
+    },
+    {
+      "id": "metaux_precieux",
+      "nom": "Métaux précieux",
+      "description": "Or 18 carats (jaune, blanc, rose), platine, palladium.",
+      "criteres": ["pureté certifiée", "poinçon officiel"]
+    },
+    {
+      "id": "bijoux",
+      "nom": "Bijoux",
+      "description": "Bijoux sertis sur commande et créations partenaires.",
+      "criteres": ["savoir-faire artisanal", "pierre certifiée", "métal noble"]
+    }
+  ],
+  "tone_of_voice": {
+    "registre": "luxueux, authentique, expert",
+    "langue_principale": "français",
+    "langue_secondaire": "anglais (fournisseurs internationaux)",
+    "a_utiliser": ["rareté", "éclat", "authenticité", "exception", "sélection", "expertise"],
+    "a_eviter": ["pas cher", "promo flash", "limité", "urgent", "gratuit"],
+    "formules_email": {
+      "ouverture_pro": "Madame, Monsieur,",
+      "ouverture_vip": "Cher(e) [Prénom],",
+      "cloture": "Avec mes sincères salutations,\nL'équipe Gems of Rod"
+    }
+  },
+  "certifications_acceptees": ["GIA", "GUBELIN", "GFCO", "AGL", "IGI", "Lotus"],
+  "prix_min_catalogue": 200,
+  "prix_max_catalogue": 50000,
+  "devise": "EUR"
+}
