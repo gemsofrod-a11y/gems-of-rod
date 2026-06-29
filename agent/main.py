@@ -139,10 +139,31 @@ def status():
     console.print()
 
 
+@cli.command()
+def orchestrate():
+    """Affiche les brouillons prêts pour les outils MCP (Gmail, Canva, Drive)."""
+    from agent.orchestrator import get_orchestration_status
+    import json as _json
+
+    status = get_orchestration_status()
+    console.print("\n[bold magenta]✦ Orchestration MCP — Gems of Rod[/bold magenta]\n")
+    console.print(f"  Emails à envoyer (Gmail MCP)      : [bold]{status['emails_en_attente']}[/bold]")
+    console.print(f"  Posts Instagram (Canva MCP)        : [bold]{status['posts_instagram_en_attente']}[/bold]")
+    console.print(f"  Articles approuvés (Drive MCP)     : [bold]{status['articles_approuves']}[/bold]")
+    console.print(f"  Newsletters (Gmail MCP)            : [bold]{status['newsletters_en_attente']}[/bold]")
+    console.print()
+
+    if status["total"] == 0:
+        console.print("[dim]Aucun brouillon en attente. Lancez : python agent/main.py run[/dim]")
+    else:
+        console.print(f"[bold green]{status['total']} brouillon(s) prêt(s) pour orchestration.[/bold green]")
+        console.print("[dim]Claude Code va traiter ces brouillons via les outils MCP.[/dim]")
+
+
 def _check_api_key():
     if not os.getenv("ANTHROPIC_API_KEY"):
         console.print("[bold red]Erreur : ANTHROPIC_API_KEY manquante.[/bold red]")
-        console.print("Copiez .env.example vers .env et renseignez votre clé API.")
+        console.print("Renseignez votre clé API dans le fichier .env (ANTHROPIC_API_KEY=sk-ant-...).")
         sys.exit(1)
 
 
