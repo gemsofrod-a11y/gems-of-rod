@@ -148,3 +148,59 @@ Quand l'agent Python génère du contenu (drafts), Claude Code doit ensuite :
 4. **Poser des questions** à l'utilisateur pour les décisions importantes
 5. **Récapitulatif journalier** : toujours en fin de session
 6. **Ton luxueux** dans toutes les communications
+
+---
+
+## Routines automatiques (planifiées)
+
+Les routines s'exécutent automatiquement selon le planning ci-dessous. Chaque routine :
+1. Lance l'agent Python correspondant
+2. Traite les drafts générés via les MCP (Gmail, Canva, Google Drive)
+3. Crée des **brouillons** — jamais d'envoi automatique sans validation
+
+### Planning hebdomadaire
+
+| Routine | Jours | Heure | Commande agent |
+|---|---|---|---|
+| Instagram | Lun / Mer / Ven | 9h03 | `python agent/main.py instagram` |
+| Fournisseurs | Mardi | 9h07 | `python agent/main.py suppliers` |
+| Articles web | Mercredi | 10h05 | `python agent/main.py articles` |
+| Fiches produits | Jeudi | 9h05 | `python agent/main.py products` |
+| Newsletter | 1er du mois | 8h05 | `python agent/main.py newsletter` |
+| Récapitulatif | Lun–Ven | 18h03 | `python agent/main.py summary` |
+
+### Ce que chaque routine produit
+
+**Instagram (Lun/Mer/Ven 9h03)**
+- Génère 2+ posts via `instagram` agent
+- Crée les visuels sur Canva (`mcp__Canva__*`)
+- Envoie un brouillon Gmail de récapitulatif avec liens Canva
+
+**Fournisseurs (Mar 9h07)**
+- Génère les emails fournisseurs (demandes de prix, relances, devis)
+- Crée des brouillons Gmail (`mcp__Gmail__create_draft`) — prêts à l'envoi
+- NE PAS envoyer sans validation
+
+**Articles web (Mer 10h05)**
+- Propose 1 article de blog gemmologique
+- Sauvegarde dans Google Drive (`mcp__Google_Drive__create_file`)
+- Envoie un brouillon Gmail avec le lien Drive pour validation
+
+**Fiches produits (Jeu 9h05)**
+- Enrichit et met à jour les fiches produits existantes
+- Crée les nouvelles fiches si nécessaire
+- Envoie un brouillon Gmail de synthèse
+
+**Newsletter (1er du mois 8h05)**
+- Génère la newsletter mensuelle HTML
+- Crée un brouillon Gmail avec le contenu HTML
+- Attendre la validation avant envoi à la liste clients
+
+**Récapitulatif journalier (Lun–Ven 18h03)**
+- Synthèse de toutes les actions de la journée
+- Questions en attente de réponse
+- Prochaines étapes suggérées
+- Brouillon Gmail envoyé à gemsofrod@gmail.com
+
+### Fichiers de configuration des routines
+Les routines durables sont stockées dans `.claude/scheduled_tasks.json` et survivent aux redémarrages de session.

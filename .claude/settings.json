@@ -4,8 +4,12 @@
       "Bash(python agent/main.py*)",
       "Bash(pip install*)",
       "Bash(python -m pip install*)",
+      "Bash(find data/drafts*)",
+      "Bash(ls data/**)",
       "Read(data/**)",
-      "Write(data/**)"
+      "Write(data/**)",
+      "Read(agent/**)",
+      "Read(.claude/**)"
     ]
   }
 }
