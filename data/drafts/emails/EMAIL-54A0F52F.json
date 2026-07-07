@@ -1,0 +1,14 @@
+{
+  "id": "EMAIL-54A0F52F",
+  "type": "supplier_email",
+  "email_type": "prise_de_contact",
+  "to_name": "Aurélie Fontaine",
+  "to_email": "contact@bijouterie-fontaine.fr",
+  "supplier_id": "SUP-006",
+  "supplier_name": "Joaillerie Fontaine",
+  "subject": "Gems of Rod — Proposition de partenariat joaillier",
+  "body": "Madame,\n\nNous sommes Gems of Rod, maison française indépendante spécialisée dans la sélection et la valorisation de pierres précieuses, pierres fines et bijoux d'exception.\n\nNous avons découvert votre travail sur les créations contemporaines en platine et diamants, et souhaiterions explorer une collaboration pour la réalisation de montures sur mesure autour de nos pierres certifiées (saphirs, rubis, émeraudes notamment).\n\nSeriez-vous disponible pour un échange afin de discuter de vos délais, de vos tarifs indicatifs pour un serti sur mesure, et des modalités d'une première commande test ?\n\nNous restons à votre disposition pour tout complément d'information.\n\nAvec mes sincères salutations,\nL'équipe Gems of Rod",
+  "produits_concernes": [],
+  "status": "draft",
+  "created_at": "2026-07-07T09:07:00"
+}

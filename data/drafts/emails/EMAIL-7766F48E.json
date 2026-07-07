@@ -1,0 +1,14 @@
+{
+  "id": "EMAIL-7766F48E",
+  "type": "supplier_email",
+  "email_type": "demande_prix",
+  "to_name": "Pradeep Wijesinghe",
+  "to_email": "pradeep@ceylonpremiumgems.lk",
+  "supplier_id": "SUP-005",
+  "supplier_name": "Ceylon Premium Gems",
+  "subject": "Gems of Rod — Availability request: Ceylon sapphires with origin certificate",
+  "body": "Dear Pradeep,\n\nThis is the Gems of Rod team writing — the French gem house. We were delighted with the padparadscha sapphire you sourced for us previously, and our clientele continues to ask for fine Ceylon sapphires with documented origin.\n\nCould you let us know your current stock of natural Ceylon blue and padparadscha sapphires in the 2–4 ct range, along with indicative pricing? As before, we would need each stone accompanied by an origin certificate.\n\nWe would be glad to discuss volumes if pricing is competitive, with a view to a regular sourcing relationship.\n\nLooking forward to your reply.\n\nWith our sincere regards,\nThe Gems of Rod Team",
+  "produits_concernes": [],
+  "status": "draft",
+  "created_at": "2026-07-07T09:07:00"
+}

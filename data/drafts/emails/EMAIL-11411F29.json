@@ -1,0 +1,14 @@
+{
+  "id": "EMAIL-11411F29",
+  "type": "supplier_email",
+  "email_type": "demande_prix",
+  "to_name": "Sarah Chen",
+  "to_email": "sarah.chen@gemorigins.com",
+  "supplier_id": "SUP-002",
+  "supplier_name": "GemOrigins International",
+  "subject": "Gems of Rod — Demande de disponibilité et tarifs : saphirs du Cachemire & alexandrite",
+  "body": "Dear Sarah,\n\nI hope this message finds you well. This is the Gems of Rod team writing — the French gem house you have worked with previously on Kashmir sapphires and Brazilian alexandrite.\n\nOur clients continue to show strong interest in two of the categories you source particularly well:\n\n- Natural, unheated Kashmir sapphires (2–4 ct range, GIA certification preferred)\n- Colour-change alexandrite with a strong green-to-red shift (1–2 ct range)\n\nCould you kindly share your current availability and indicative pricing for these categories? As always, we would appreciate stones accompanied by GIA certification and, where possible, an origin report.\n\nWe are looking to place an order in the coming weeks, so any recent acquisitions you could share photos or lab reports for would be very helpful.\n\nThank you for your continued partnership.\n\nWith our sincere regards,\nThe Gems of Rod Team",
+  "produits_concernes": ["SAP-001", "ALE-001"],
+  "status": "draft",
+  "created_at": "2026-07-07T09:07:00"
+}
