@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.GemsOfRod" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/brand_gold</item>
+        <item name="colorPrimaryDark">@color/brand_gold_dark</item>
+        <item name="colorPrimaryVariant">@color/brand_gold_dark</item>
+        <item name="colorOnPrimary">@color/brand_anthracite</item>
+        <item name="colorSecondary">@color/brand_gold_light</item>
+        <item name="colorOnSecondary">@color/brand_anthracite</item>
+        <item name="colorSurface">@color/brand_anthracite_2</item>
+        <item name="colorOnSurface">@color/brand_cream</item>
+        <item name="android:colorBackground">@color/brand_anthracite</item>
+        <item name="colorOnBackground">@color/brand_cream</item>
+        <item name="android:statusBarColor">@color/brand_anthracite</item>
+        <item name="android:navigationBarColor">@color/brand_anthracite_2</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="colorOutline">@color/brand_border</item>
+    </style>
+
+    <style name="Theme.GemsOfRod.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/brand_anthracite</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_gem</item>
+        <item name="postSplashScreenTheme">@style/Theme.GemsOfRod</item>
+    </style>
+
+    <!-- Typography -->
+    <style name="TextAppearance.GemsOfRod.HeroTitle" parent="TextAppearance.Material3.DisplaySmall">
+        <item name="android:textColor">@color/brand_cream</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:textSize">28sp</item>
+        <item name="fontFamily">serif</item>
+    </style>
+
+    <style name="TextAppearance.GemsOfRod.SectionTitle" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textColor">@color/brand_cream</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="fontFamily">serif</item>
+    </style>
+
+    <style name="TextAppearance.GemsOfRod.Body" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/brand_gray_medium</item>
+    </style>
+
+    <style name="TextAppearance.GemsOfRod.Price" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">@color/brand_gold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Button Styles -->
+    <style name="Widget.GemsOfRod.Button.Primary" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/brand_gold</item>
+        <item name="android:textColor">@color/brand_anthracite</item>
+        <item name="cornerRadius">2dp</item>
+        <item name="android:paddingStart">32dp</item>
+        <item name="android:paddingEnd">32dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.1</item>
+    </style>
+
+    <style name="Widget.GemsOfRod.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/brand_gold</item>
+        <item name="android:textColor">@color/brand_gold</item>
+        <item name="cornerRadius">2dp</item>
+    </style>
+
+    <!-- Card Style -->
+    <style name="Widget.GemsOfRod.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/brand_anthracite_2</item>
+        <item name="cardCornerRadius">4dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/brand_border</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <!-- Bottom Navigation -->
+    <style name="Widget.GemsOfRod.BottomNavigation" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemIconTint">@color/nav_item_color</item>
+        <item name="itemTextColor">@color/nav_item_color</item>
+        <item name="backgroundTint">@color/brand_anthracite_2</item>
+    </style>
+
+</resources>

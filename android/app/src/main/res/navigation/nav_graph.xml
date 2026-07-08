@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.gemsofrod.app.ui.home.HomeFragment"
+        android:label="@string/nav_accueil"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_shop"
+            app:destination="@id/shopFragment"/>
+        <action
+            android:id="@+id/action_home_to_product_detail"
+            app:destination="@id/productDetailFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/shopFragment"
+        android:name="com.gemsofrod.app.ui.shop.ShopFragment"
+        android:label="@string/nav_boutique"
+        tools:layout="@layout/fragment_shop">
+        <action
+            android:id="@+id/action_shop_to_product_detail"
+            app:destination="@id/productDetailFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.gemsofrod.app.ui.shop.ProductDetailFragment"
+        android:label="Détail produit"
+        tools:layout="@layout/fragment_product_detail">
+        <argument
+            android:name="productId"
+            app:argType="string"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.gemsofrod.app.ui.cart.CartFragment"
+        android:label="Panier"
+        tools:layout="@layout/fragment_cart"/>
+
+    <fragment
+        android:id="@+id/storyFragment"
+        android:name="com.gemsofrod.app.ui.story.StoryFragment"
+        android:label="@string/nav_histoire"
+        tools:layout="@layout/fragment_story"/>
+
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.gemsofrod.app.ui.contact.ContactFragment"
+        android:label="@string/nav_contact"
+        tools:layout="@layout/fragment_contact"/>
+
+</navigation>

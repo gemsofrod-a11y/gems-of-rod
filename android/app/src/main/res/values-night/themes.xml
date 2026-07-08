@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.GemsOfRod" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/brand_gold</item>
+        <item name="colorPrimaryDark">@color/brand_gold_dark</item>
+        <item name="colorOnPrimary">@color/brand_anthracite</item>
+        <item name="colorSecondary">@color/brand_gold_light</item>
+        <item name="colorOnSecondary">@color/brand_anthracite</item>
+        <item name="colorSurface">@color/brand_anthracite_2</item>
+        <item name="colorOnSurface">@color/brand_cream</item>
+        <item name="android:colorBackground">@color/brand_anthracite</item>
+        <item name="colorOnBackground">@color/brand_cream</item>
+        <item name="android:statusBarColor">@color/brand_anthracite</item>
+        <item name="android:navigationBarColor">@color/brand_anthracite_2</item>
+        <item name="colorOutline">@color/brand_border</item>
+    </style>
+</resources>
