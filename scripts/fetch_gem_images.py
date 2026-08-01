@@ -294,7 +294,8 @@ def safe_resource_name(gem_id: str, image_type: str) -> str:
 
 
 def kotlin_escape(value: str) -> str:
-    return value.replace("\\", "\\\\").replace("$", "\\$").replace("\"", "\\\"")
+    single_line = re.sub(r"\s*[\r\n]+\s*", " ", value).strip()
+    return single_line.replace("\\", "\\\\").replace("$", "\\$").replace("\"", "\\\"")
 
 
 def download_image(url: str, dest: Path) -> None:
