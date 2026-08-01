@@ -1,6 +1,14 @@
 {
   "aigue-marine": [
     {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_aigue_marine_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Beryl-sd345a.jpg",
+      "title": "File:Beryl-sd345a.jpg",
+      "type": "BRUTE"
+    },
+    {
       "artist": "Gunnar Ries Amphibol",
       "license": "CC BY-SA 2.5",
       "resource_name": "gem_aigue_marine",
@@ -11,6 +19,14 @@
   ],
   "alexandrite": [
     {
+      "artist": "Vzb83",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_alexandrite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Alexandrite.jpg",
+      "title": "File:Alexandrite.jpg",
+      "type": "BRUTE"
+    },
+    {
       "artist": "Parent Géry",
       "license": "CC0",
       "resource_name": "gem_alexandrite",
@@ -19,7 +35,33 @@
       "type": "FACETTEE"
     }
   ],
+  "ambre": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_ambre_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Danburite-34745.jpg",
+      "title": "File:Danburite-34745.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "uploaded with permission from User Lanzi by Ra'ike on de.wikipedia",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_ambre_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Amber_Bernstein_many_stones.jpg",
+      "title": "File:Amber Bernstein many stones.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "amethyste": [
+    {
+      "artist": "Mauro Cateb",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_amethyste_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Amethysts-1ab.JPG",
+      "title": "File:Amethysts-1ab.JPG",
+      "type": "BRUTE"
+    },
     {
       "artist": "JJ Harrison (https://jjharrison.com.au/)",
       "license": "CC BY-SA 3.0",
@@ -29,7 +71,107 @@
       "type": "FACETTEE"
     }
   ],
+  "ammolite": [
+    {
+      "artist": "Auteur non renseigné",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_ammolite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ammolite.jpg",
+      "title": "File:Ammolite.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "andalousite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_andalousite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Andalusite-rh1-24b.jpg",
+      "title": "File:Andalusite-rh1-24b.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "cobalt123",
+      "license": "CC BY-SA 2.0",
+      "resource_name": "gem_andalousite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Andalusite_Jewels.jpg",
+      "title": "File:Andalusite Jewels.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "apatite-bleue": [
+    {
+      "artist": "Montreal Apatite Company\nLambe, William B. (William Busby), 1826-1905\nRobb, Charles, 1819-1887",
+      "license": "Public domain",
+      "resource_name": "gem_apatite_bleue_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Montreal_Apatite_Company,_incorporated_under_27_and_28_Vic.,_cap._23_(microform)_-_capital,_$100,000,_subscribed_$100,000,_shares_$5_each_(IA_cihm_91134).pdf",
+      "title": "File:Montreal Apatite Company, incorporated under 27 and 28 Vic., cap. 23 (microform) - capital, $100,000, subscribed $100,000, shares $5 each (IA cihm 91134).pdf",
+      "type": "BRUTE"
+    }
+  ],
+  "axinite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_axinite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Axinite-60191.jpg",
+      "title": "File:Axinite-60191.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "DonGuennie (G-Empire The World Of Gems)",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_axinite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Axinit-G-EmpireTheWorldOfGems.jpg",
+      "title": "File:Axinit-G-EmpireTheWorldOfGems.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "benitoite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_benitoite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Benitoite-Neptunite-mun05-53b.jpg",
+      "title": "File:Benitoite-Neptunite-mun05-53b.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Didier Descouens",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_benitoite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Benitoite_HD.jpg",
+      "title": "File:Benitoite HD.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "charoite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_charoite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tinaksite,_Charoite-543035.png",
+      "title": "File:Tinaksite, Charoite-543035.png",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Olga-lisenkova",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_charoite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Сувенир_из_Екатеринбурга_из_поделочных_камней.jpg",
+      "title": "File:Сувенир из Екатеринбурга из поделочных камней.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "chrysoberyl": [
+    {
+      "artist": "Matteo Chinellato",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_chrysoberyl_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Chrysoberyl-282796_(cropped).jpg",
+      "title": "File:Chrysoberyl-282796 (cropped).jpg",
+      "type": "BRUTE"
+    },
     {
       "artist": "Matteo Chinellato",
       "license": "CC BY-SA 3.0",
@@ -39,7 +181,33 @@
       "type": "FACETTEE"
     }
   ],
+  "chrysocolle": [
+    {
+      "artist": "Pierre André",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_chrysocolle_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Crisocola_azurite_35è_édition_Fossilium_V.Ascq.JPG",
+      "title": "File:Crisocola azurite 35è édition Fossilium V.Ascq.JPG",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Lloyd.james0615",
+      "license": "CC BY 3.0",
+      "resource_name": "gem_chrysocolle_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Chrysocolla.jpg",
+      "title": "File:Chrysocolla.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "citrine": [
+    {
+      "artist": "Paweł Maliszczak [hardleo.com]",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_citrine_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Rough_Citrine_Cristals_Quartz_from_Brasil.jpg",
+      "title": "File:Rough Citrine Cristals Quartz from Brasil.jpg",
+      "type": "BRUTE"
+    },
     {
       "artist": "AdamStejskal",
       "license": "CC BY 4.0",
@@ -49,7 +217,33 @@
       "type": "FACETTEE"
     }
   ],
+  "cornaline": [
+    {
+      "artist": "Shannon Heinle",
+      "license": "CC0",
+      "resource_name": "gem_cornaline_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Carnelian_(GeoDIL_number_-_781).jpg",
+      "title": "File:Carnelian (GeoDIL number - 781).jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "W.carter",
+      "license": "CC BY 4.0",
+      "resource_name": "gem_cornaline_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Three_oval_carnelian_cabochons_2.jpg",
+      "title": "File:Three oval carnelian cabochons 2.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "cristal-de-roche": [
+    {
+      "artist": "Mauro Cateb",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_cristal_de_roche_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Rough_rock_crystals.JPG",
+      "title": "File:Rough rock crystals.JPG",
+      "type": "BRUTE"
+    },
     {
       "artist": "JJ Harrison (https://www.jjharrison.com.au/)",
       "license": "CC BY-SA 2.5",
@@ -59,7 +253,69 @@
       "type": "FACETTEE"
     }
   ],
+  "cyanite": [
+    {
+      "artist": "James St. John",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_cyanite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tanzanite_(Merelani_Tanzanite_Deposit,_Merelani_Hills,_Arusha,_Tanzania).JPG",
+      "title": "File:Tanzanite (Merelani Tanzanite Deposit, Merelani Hills, Arusha, Tanzania).JPG",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Eurico Zimbres Zimbres (talk) 17:48, 14 September 2008 (UTC)",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_cyanite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Kyanite-cut.jpg",
+      "title": "File:Kyanite-cut.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "danburite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_danburite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Danburite-34745.jpg",
+      "title": "File:Danburite-34745.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Didier Descouens",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_danburite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:DanburiteMexique.jpg",
+      "title": "File:DanburiteMexique.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "demantoide": [
+    {
+      "artist": "James St. John",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_demantoide_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Garnet_coated_with_chlorite_(probably_from_Tyrol,_Austria)_1.jpg",
+      "title": "File:Garnet coated with chlorite (probably from Tyrol, Austria) 1.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Tiffany & Co.",
+      "license": "Public domain",
+      "resource_name": "gem_demantoide_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tiffany_and_Company_-_Pendant_Necklace_-_Walters_572168.jpg",
+      "title": "File:Tiffany and Company - Pendant Necklace - Walters 572168.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "diamant": [
+    {
+      "artist": "Smithsonian Institution",
+      "license": "Public domain",
+      "resource_name": "gem_diamant_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Colorado_Diamond_Crystal,_Freedom_Diamond,_Uncle_Sam_Diamond,_Canary_Diamond.jpg",
+      "title": "File:Colorado Diamond Crystal, Freedom Diamond, Uncle Sam Diamond, Canary Diamond.jpg",
+      "type": "BRUTE"
+    },
     {
       "artist": "Pavel.Somov",
       "license": "CC BY 4.0",
@@ -71,6 +327,14 @@
   ],
   "emeraude": [
     {
+      "artist": "Paweł Maliszczak [hardleo.com]",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_emeraude_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Rough_emerald_crystals_from_Panjshir_Valley_Afghanistan.jpg",
+      "title": "File:Rough emerald crystals from Panjshir Valley Afghanistan.jpg",
+      "type": "BRUTE"
+    },
+    {
       "artist": "Géry PARENT",
       "license": "CC0",
       "resource_name": "gem_emeraude",
@@ -79,7 +343,33 @@
       "type": "FACETTEE"
     }
   ],
+  "fluorine": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_fluorine_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fluorite-Sphalerite-34768.jpg",
+      "title": "File:Fluorite-Sphalerite-34768.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Eurico Zimbres.         Zimbres",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_fluorine_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fluorite_cut.jpg",
+      "title": "File:Fluorite cut.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "goshenite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_goshenite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Beryl-pala17b.jpg",
+      "title": "File:Beryl-pala17b.jpg",
+      "type": "BRUTE"
+    },
     {
       "artist": "Raimond Spekking",
       "license": "CC BY-SA 4.0",
@@ -89,7 +379,33 @@
       "type": "FACETTEE"
     }
   ],
+  "grandidierite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_grandidierite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Grandidierite-169886.jpg",
+      "title": "File:Grandidierite-169886.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "DonGuennie (G-Empire The World Of Gems)",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_grandidierite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fotostrecke_Weltraritaeten-_Grandidierit-G-EmpireTheWorldOfGems.jpg",
+      "title": "File:Fotostrecke Weltraritaeten- Grandidierit-G-EmpireTheWorldOfGems.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "grenat-almandin": [
+    {
+      "artist": "James St. John",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_grenat_almandin_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Almandine_garnet_(Madison_County,_North_Carolina,_USA)_2.jpg",
+      "title": "File:Almandine garnet (Madison County, North Carolina, USA) 2.jpg",
+      "type": "BRUTE"
+    },
     {
       "artist": "Didier Descouens",
       "license": "CC BY-SA 4.0",
@@ -131,6 +447,14 @@
   ],
   "heliodore": [
     {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_heliodore_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Beryl-erongoberylbicolor1.jpg",
+      "title": "File:Beryl-erongoberylbicolor1.jpg",
+      "type": "BRUTE"
+    },
+    {
       "artist": "Ra'ike (see also: de:Benutzer:Ra'ike)",
       "license": "CC BY-SA 3.0",
       "resource_name": "gem_heliodore",
@@ -140,6 +464,14 @@
     }
   ],
   "hessonite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_hessonite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Garnet-Group-Grossular-20680.jpg",
+      "title": "File:Garnet-Group-Grossular-20680.jpg",
+      "type": "BRUTE"
+    },
     {
       "artist": "Aangelo",
       "license": "CC BY-SA 3.0",
@@ -151,6 +483,14 @@
   ],
   "iolite": [
     {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_iolite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Cordierite-pas-16c.jpg",
+      "title": "File:Cordierite-pas-16c.jpg",
+      "type": "BRUTE"
+    },
+    {
       "artist": "Parent Géry",
       "license": "CC BY-SA 3.0",
       "resource_name": "gem_iolite",
@@ -161,6 +501,14 @@
   ],
   "jade-jadeite": [
     {
+      "artist": "Laufer, Berthold, 1874-1934\nField Museum of Natural History",
+      "license": "Public domain",
+      "resource_name": "gem_jade_jadeite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Jade_-_a_study_in_Chinese_archaeology_and_religion_(IA_jadestudyinchine00lauf).pdf",
+      "title": "File:Jade - a study in Chinese archaeology and religion (IA jadestudyinchine00lauf).pdf",
+      "type": "BRUTE"
+    },
+    {
       "artist": "Joe Mabel",
       "license": "CC BY-SA 3.0",
       "resource_name": "gem_jade_jadeite",
@@ -169,7 +517,25 @@
       "type": "FACETTEE"
     }
   ],
+  "jeremejevite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_jeremejevite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Jeremejevite-jerem-3a.jpg",
+      "title": "File:Jeremejevite-jerem-3a.jpg",
+      "type": "BRUTE"
+    }
+  ],
   "kunzite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_kunzite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Spodumene-47517.jpg",
+      "title": "File:Spodumene-47517.jpg",
+      "type": "BRUTE"
+    },
     {
       "artist": "Didier Descouens",
       "license": "CC BY-SA 4.0",
@@ -181,6 +547,14 @@
   ],
   "labradorite": [
     {
+      "artist": "Geological Society of London",
+      "license": "Public domain",
+      "resource_name": "gem_labradorite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:The_Quarterly_journal_of_the_Geological_Society_of_London_(12737024594).jpg",
+      "title": "File:The Quarterly journal of the Geological Society of London (12737024594).jpg",
+      "type": "BRUTE"
+    },
+    {
       "artist": "Marco Hazard from Hong Kong, Hong Kong",
       "license": "CC BY-SA 2.0",
       "resource_name": "gem_labradorite",
@@ -191,6 +565,14 @@
   ],
   "lapis-lazuli": [
     {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_lapis_lazuli_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lazurite-159353.jpg",
+      "title": "File:Lazurite-159353.jpg",
+      "type": "BRUTE"
+    },
+    {
       "artist": "Hannes Grobe",
       "license": "CC BY-SA 2.5",
       "resource_name": "gem_lapis_lazuli",
@@ -200,6 +582,14 @@
     }
   ],
   "morganite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_morganite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Beryl-168631.jpg",
+      "title": "File:Beryl-168631.jpg",
+      "type": "BRUTE"
+    },
     {
       "artist": "Eric Polk",
       "license": "CC BY-SA 4.0",
@@ -213,9 +603,35 @@
     {
       "artist": "James St. John",
       "license": "CC BY 2.0",
+      "resource_name": "gem_obsidienne_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Flint_Ridge_Knap-In_speed_competition_(Flint_Ridge,_Ohio,_USA).jpg",
+      "title": "File:Flint Ridge Knap-In speed competition (Flint Ridge, Ohio, USA).jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "James St. John",
+      "license": "CC BY 2.0",
       "resource_name": "gem_obsidienne",
       "source_url": "https://commons.wikimedia.org/wiki/File:Obsidian_&_devitrified_obsidian_gravel_(Obsidian_Cliff,_Yellowstone,_Wyoming,_USA)_4.jpg",
       "title": "File:Obsidian & devitrified obsidian gravel (Obsidian Cliff, Yellowstone, Wyoming, USA) 4.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "oeil-de-tigre": [
+    {
+      "artist": "James St. John",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_oeil_de_tigre_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tiger's_eye_quartz_11.jpg",
+      "title": "File:Tiger's eye quartz 11.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Marek Novotnak",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_oeil_de_tigre_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tiger's_eye.jpg",
+      "title": "File:Tiger's eye.jpg",
       "type": "FACETTEE"
     }
   ],
@@ -231,6 +647,14 @@
   ],
   "opale-de-feu": [
     {
+      "artist": "Puttick & Simpson",
+      "license": "Public domain",
+      "resource_name": "gem_opale_de_feu_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Catalogue_of_antiquities_and_works_of_art_from_the_collection_of_Ansley_Windus,_Esq.,_comprising_..._(a)_bust_of_Augustus_Ceasar_in_carved_opal,_by_Dioscorides_Esq._(IA_catalogueofantiq00putt).pdf",
+      "title": "File:Catalogue of antiquities and works of art from the collection of Ansley Windus, Esq., comprising ... (a) bust of Augustus Ceasar in carved opal, by Dioscorides Esq. (IA catalogueofantiq00putt).pdf",
+      "type": "BRUTE"
+    },
+    {
       "artist": "James St. John",
       "license": "CC BY 2.0",
       "resource_name": "gem_opale_de_feu",
@@ -241,6 +665,14 @@
   ],
   "opale-precieuse": [
     {
+      "artist": "Dpulitzer",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_opale_precieuse_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Coober_Pedy_Opal.jpg",
+      "title": "File:Coober Pedy Opal.jpg",
+      "type": "BRUTE"
+    },
+    {
       "artist": "James St. John",
       "license": "CC BY 2.0",
       "resource_name": "gem_opale_precieuse",
@@ -249,7 +681,61 @@
       "type": "FACETTEE"
     }
   ],
+  "padparadscha": [
+    {
+      "artist": "W.carter",
+      "license": "CC BY 4.0",
+      "resource_name": "gem_padparadscha_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Gold_ring_with_different_gemstones_set_in_a_rainbow_and_topped_with_diamonds_3.jpg",
+      "title": "File:Gold ring with different gemstones set in a rainbow and topped with diamonds 3.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "painite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_painite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Painite-70635.jpg",
+      "title": "File:Painite-70635.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "DonGuennie (G-Empire The World Of Gems)",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_painite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fotostrecke_Weltraritaeten-Painit-G-EmpireTheWorldOfGems.jpg",
+      "title": "File:Fotostrecke Weltraritaeten-Painit-G-EmpireTheWorldOfGems.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "paraiba-tourmaline": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_paraiba_tourmaline_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Elbaite-Quartz-133547.jpg",
+      "title": "File:Elbaite-Quartz-133547.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "DonGuennie (G-Empire The World Of Gems)",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_paraiba_tourmaline_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Paraiba-Turmalin-G-EmpireTheWorldOfGems.jpg",
+      "title": "File:Paraiba-Turmalin-G-EmpireTheWorldOfGems.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "peridot": [
+    {
+      "artist": "Darla Sondrol",
+      "license": "CC0",
+      "resource_name": "gem_peridot_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Peridot_(GeoDIL_number_-_1027).jpg",
+      "title": "File:Peridot (GeoDIL number - 1027).jpg",
+      "type": "BRUTE"
+    },
     {
       "artist": "AdamStejskal",
       "license": "CC BY 4.0",
@@ -259,7 +745,72 @@
       "type": "FACETTEE"
     }
   ],
+  "perle": [],
+  "pierre-de-lune": [
+    {
+      "artist": "Wouter Hagens",
+      "license": "Public domain",
+      "resource_name": "gem_pierre_de_lune_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Moonstone_mine_3.jpg",
+      "title": "File:Moonstone mine 3.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "pierre-de-soleil": [
+    {
+      "artist": "James St. John",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_pierre_de_soleil_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Sunstone_(Tertiary;_Spectrum_Mine,_Oregon,_USA)_12.jpg",
+      "title": "File:Sunstone (Tertiary; Spectrum Mine, Oregon, USA) 12.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "prehnite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_prehnite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Prehnite-105970.jpg",
+      "title": "File:Prehnite-105970.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_prehnite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Prehnite-Epidote-178957.jpg",
+      "title": "File:Prehnite-Epidote-178957.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "quartz-fume": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_quartz_fume_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Beryl-Quartz-74810.jpg",
+      "title": "File:Beryl-Quartz-74810.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "AdamStejskal",
+      "license": "CC BY 4.0",
+      "resource_name": "gem_quartz_fume_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Citrine_x_Smoky_quartz_gemstone_from_Czech_Republic_South_of_Bohemia.jpg",
+      "title": "File:Citrine x Smoky quartz gemstone from Czech Republic South of Bohemia.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "rhodochrosite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_rhodochrosite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Rhodochrosite-76764.jpg",
+      "title": "File:Rhodochrosite-76764.jpg",
+      "type": "BRUTE"
+    },
     {
       "artist": "JJ Harrison (https://www.jjharrison.com.au/)",
       "license": "CC BY-SA 4.0",
@@ -271,6 +822,14 @@
   ],
   "rubis": [
     {
+      "artist": "Parent Géry",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_rubis_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Rubis,_calcite_14.jpg",
+      "title": "File:Rubis, calcite 14.jpg",
+      "type": "BRUTE"
+    },
+    {
       "artist": "Marco Hazard from Hong Kong, Hong Kong",
       "license": "CC BY-SA 2.0",
       "resource_name": "gem_rubis",
@@ -280,6 +839,14 @@
     }
   ],
   "saphir-bleu": [
+    {
+      "artist": "de Bournon, Count",
+      "license": "Public domain",
+      "resource_name": "gem_saphir_bleu_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Description_of_the_Corundum_Stone,_and_Its_Varieties,_Commonly_Known_by_the_Names_of_Oriental_Ruby,_Sapphire,_etc.;_with_Observations_on_Some_Other_Mineral_Substances_(IA_jstor-107121).pdf",
+      "title": "File:Description of the Corundum Stone, and Its Varieties, Commonly Known by the Names of Oriental Ruby, Sapphire, etc.; with Observations on Some Other Mineral Substances (IA jstor-107121).pdf",
+      "type": "BRUTE"
+    },
     {
       "artist": "Montanabw",
       "license": "CC BY-SA 3.0",
@@ -291,6 +858,14 @@
   ],
   "saphir-jaune": [
     {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_saphir_jaune_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Corundum-t08-07a.jpg",
+      "title": "File:Corundum-t08-07a.jpg",
+      "type": "BRUTE"
+    },
+    {
       "artist": "Gemsphoto",
       "license": "CC BY-SA 3.0",
       "resource_name": "gem_saphir_jaune",
@@ -301,6 +876,14 @@
   ],
   "saphir-rose": [
     {
+      "artist": "Denzel, Jeffrey R.",
+      "license": "Public domain",
+      "resource_name": "gem_saphir_rose_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Determination_of_shock_properties_of_ceramic_corbit_98_-_98%_alumina_(IA_determinationofs109455312).pdf",
+      "title": "File:Determination of shock properties of ceramic corbit 98 - 98% alumina (IA determinationofs109455312).pdf",
+      "type": "BRUTE"
+    },
+    {
       "artist": "Azuncha",
       "license": "CC BY-SA 3.0",
       "resource_name": "gem_saphir_rose",
@@ -309,7 +892,61 @@
       "type": "FACETTEE"
     }
   ],
+  "scapolite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_scapolite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Scapolite-41495.jpg",
+      "title": "File:Scapolite-41495.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Sailko",
+      "license": "CC BY 3.0",
+      "resource_name": "gem_scapolite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Scapolite,_da_merelani,_tanzania.JPG",
+      "title": "File:Scapolite, da merelani, tanzania.JPG",
+      "type": "FACETTEE"
+    }
+  ],
+  "serpentine": [
+    {
+      "artist": "John Krygier",
+      "license": "Public domain",
+      "resource_name": "gem_serpentine_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Antigorite_(variety_Bowenite)-346848.jpg",
+      "title": "File:Antigorite (variety Bowenite)-346848.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "sphene": [
+    {
+      "artist": "Shannon Heinle",
+      "license": "CC0",
+      "resource_name": "gem_sphene_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Titanite_(sphene)_(GeoDIL_number_-_259).jpg",
+      "title": "File:Titanite (sphene) (GeoDIL number - 259).jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Raimond Spekking",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_sphene_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Titanite,_Albite,_Epidote,_Minas_Gerais,_Brazil-8799.jpg",
+      "title": "File:Titanite, Albite, Epidote, Minas Gerais, Brazil-8799.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "spinelle-bleu": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_spinelle_bleu_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Spinel-42128.jpg",
+      "title": "File:Spinel-42128.jpg",
+      "type": "BRUTE"
+    },
     {
       "artist": "James St. John",
       "license": "CC BY 2.0",
@@ -320,6 +957,14 @@
     }
   ],
   "spinelle-noir": [
+    {
+      "artist": "Nessa Eull",
+      "license": "CC0",
+      "resource_name": "gem_spinelle_noir_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Picotite_(GeoDIL_number_-_1573).jpg",
+      "title": "File:Picotite (GeoDIL number - 1573).jpg",
+      "type": "BRUTE"
+    },
     {
       "artist": "Laurent Massi",
       "license": "CC BY-SA 4.0",
@@ -333,6 +978,14 @@
     {
       "artist": "Robert M. Lavinsky",
       "license": "CC BY-SA 3.0",
+      "resource_name": "gem_spinelle_rouge_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Norbergite-Spinel-rare08-2-66b.jpg",
+      "title": "File:Norbergite-Spinel-rare08-2-66b.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
       "resource_name": "gem_spinelle_rouge",
       "source_url": "https://commons.wikimedia.org/wiki/File:Spinel-49528.jpg",
       "title": "File:Spinel-49528.jpg",
@@ -340,6 +993,14 @@
     }
   ],
   "spinelle-violet": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_spinelle_violet_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Spinel-Chondrodite-278475.jpg",
+      "title": "File:Spinel-Chondrodite-278475.jpg",
+      "type": "BRUTE"
+    },
     {
       "artist": "Laurent Massi",
       "license": "CC BY-SA 4.0",
@@ -349,7 +1010,69 @@
       "type": "FACETTEE"
     }
   ],
+  "staurotide": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_staurotide_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Staurolite-26463.jpg",
+      "title": "File:Staurolite-26463.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Eurico Zimbres        Zimbres",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_staurotide_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Staurolite_cut.jpg",
+      "title": "File:Staurolite cut.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "sugilite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_sugilite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Sugilite-76750.jpg",
+      "title": "File:Sugilite-76750.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Original uploader was Arpingstone",
+      "license": "Public domain",
+      "resource_name": "gem_sugilite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Gem.pebbles.800pix.labelled.jpg",
+      "title": "File:Gem.pebbles.800pix.labelled.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "taaffeite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_taaffeite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Magnesiotaaffeite-2N2S-53105.jpg",
+      "title": "File:Magnesiotaaffeite-2N2S-53105.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "DonGuennie (G-Empire The World Of Gems)",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_taaffeite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fotostrecke_Weltraritaeten-_Taaffeit-G-EmpireTheWorldOfGems.jpg",
+      "title": "File:Fotostrecke Weltraritaeten- Taaffeit-G-EmpireTheWorldOfGems.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "tanzanite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_tanzanite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Zoisite-20887.jpg",
+      "title": "File:Zoisite-20887.jpg",
+      "type": "BRUTE"
+    },
     {
       "artist": "Didier Descouens",
       "license": "CC BY 3.0",
@@ -361,6 +1084,14 @@
   ],
   "topaze-imperiale": [
     {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_topaze_imperiale_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Topaz-pb39b.jpg",
+      "title": "File:Topaz-pb39b.jpg",
+      "type": "BRUTE"
+    },
+    {
       "artist": "Didier Descouens",
       "license": "CC BY-SA 3.0",
       "resource_name": "gem_topaze_imperiale",
@@ -370,6 +1101,14 @@
     }
   ],
   "tourmaline-noire": [
+    {
+      "artist": "James St. John",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_tourmaline_noire_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Schorl_tourmaline_3_(32115883705).jpg",
+      "title": "File:Schorl tourmaline 3 (32115883705).jpg",
+      "type": "BRUTE"
+    },
     {
       "artist": "AdamStejskal",
       "license": "CC BY 4.0",
@@ -381,6 +1120,14 @@
   ],
   "tourmaline-pasteque": [
     {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_tourmaline_pasteque_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tourmaline-Quartz-38326.jpg",
+      "title": "File:Tourmaline-Quartz-38326.jpg",
+      "type": "BRUTE"
+    },
+    {
       "artist": "Graeme Churchard",
       "license": "CC BY 2.0",
       "resource_name": "gem_tourmaline_pasteque",
@@ -390,6 +1137,14 @@
     }
   ],
   "tourmaline-rose": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_tourmaline_rose_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Iron-gem7-15b.jpg",
+      "title": "File:Iron-gem7-15b.jpg",
+      "type": "BRUTE"
+    },
     {
       "artist": "Darla Sondrol",
       "license": "CC0",
@@ -401,6 +1156,14 @@
   ],
   "tourmaline-rubellite": [
     {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_tourmaline_rubellite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tourmaline-Lepidolite-143258.jpg",
+      "title": "File:Tourmaline-Lepidolite-143258.jpg",
+      "type": "BRUTE"
+    },
+    {
       "artist": "James St. John",
       "license": "CC BY 2.0",
       "resource_name": "gem_tourmaline_rubellite",
@@ -410,6 +1173,14 @@
     }
   ],
   "tourmaline-verte": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_tourmaline_verte_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Iron-gem7-15b.jpg",
+      "title": "File:Iron-gem7-15b.jpg",
+      "type": "BRUTE"
+    },
     {
       "artist": "Arpingstone",
       "license": "Public domain",
@@ -421,6 +1192,14 @@
   ],
   "tsavorite": [
     {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_tsavorite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Grossular-d06-191b.jpg",
+      "title": "File:Grossular-d06-191b.jpg",
+      "type": "BRUTE"
+    },
+    {
       "artist": "Parent Géry",
       "license": "Public domain",
       "resource_name": "gem_tsavorite",
@@ -429,7 +1208,79 @@
       "type": "FACETTEE"
     }
   ],
+  "turquoise": [
+    {
+      "artist": "Dexter Perkins",
+      "license": "CC0",
+      "resource_name": "gem_turquoise_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Malachite_(GeoDIL_number_-_865).jpg",
+      "title": "File:Malachite (GeoDIL number - 865).jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "The Portable Antiquities Scheme, Charlotte Burrill, 2013-06-10 13:34:58",
+      "license": "CC BY-SA 2.0",
+      "resource_name": "gem_turquoise_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Medieval_Finger_Ring_(FindID_564076).jpg",
+      "title": "File:Medieval Finger Ring (FindID 564076).jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "uvarovite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_uvarovite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Uvarovite-uvarclose.jpg",
+      "title": "File:Uvarovite-uvarclose.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_uvarovite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Uvarovite-200516.jpg",
+      "title": "File:Uvarovite-200516.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "variscite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_variscite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Variscite-var01b.jpg",
+      "title": "File:Variscite-var01b.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_variscite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Variscite-Crandallite-188268.jpg",
+      "title": "File:Variscite-Crandallite-188268.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "vesuvianite": [
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_vesuvianite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Vesuvianite-199353.jpg",
+      "title": "File:Vesuvianite-199353.jpg",
+      "type": "BRUTE"
+    }
+  ],
   "zircon-blanc": [
+    {
+      "artist": "Shannon Heinle",
+      "license": "CC0",
+      "resource_name": "gem_zircon_blanc_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Zircon_(GeoDIL_number_-_255).jpg",
+      "title": "File:Zircon (GeoDIL number - 255).jpg",
+      "type": "BRUTE"
+    },
     {
       "artist": "Robert M. Lavinsky",
       "license": "CC BY-SA 3.0",

@@ -139,7 +139,11 @@ EXCLUDED_TITLE_TOKENS = [
     "logo", "map", "diagram", "icon", "chart", "graph",
     "locality", "location", "mine entrance", "mining site",
     "crystal structure", "flag", "coat of arms", "stamp",
+    "synthetic", "man-made", "man made", "lab-grown", "lab grown",
+    "laboratory", "imitation", "simulant", "artificial",
 ]
+
+ALLOWED_IMAGE_EXTENSIONS = (".jpg", ".jpeg", ".png")
 
 ALLOWED_LICENSE_RE = re.compile(
     r"^(cc0|public domain|pd|cc[\s-]?by(?:[\s-]?sa)?[\s-]?\d(?:\.\d)?)",
@@ -239,6 +243,8 @@ def pick_image(terms: list, keywords: list, image_type: str, already_used_titles
                 if title in already_used_titles:
                     continue
                 lower_title = title.lower()
+                if not lower_title.endswith(ALLOWED_IMAGE_EXTENSIONS):
+                    continue
                 if any(tok in lower_title for tok in EXCLUDED_TITLE_TOKENS):
                     continue
                 try:
@@ -260,6 +266,8 @@ def pick_image(terms: list, keywords: list, image_type: str, already_used_titles
 
                 description = strip_html(extmeta.get("ImageDescription", {}).get("value", ""))
                 haystack = f"{lower_title} {description.lower()}"
+                if any(tok in haystack for tok in EXCLUDED_TITLE_TOKENS):
+                    continue
                 if not any(kw in haystack for kw in keywords):
                     continue
 
@@ -376,13 +384,16 @@ def main() -> None:
         status = {}
 
         for image_type in types:
-            resource_name = safe_resource_name(gem_id, image_type)
-            dest = DRAWABLE_DIR / f"{resource_name}.jpg"
             existing = gem_credits.get(image_type)
 
-            if existing and dest.exists():
-                status[image_type] = f"♻️ [{existing['title']}]({existing['source_url']})"
-                continue
+            if existing:
+                existing_dest = DRAWABLE_DIR / f"{existing['resource_name']}.jpg"
+                if existing_dest.exists():
+                    status[image_type] = f"♻️ [{existing['title']}]({existing['source_url']})"
+                    continue
+
+            resource_name = safe_resource_name(gem_id, image_type)
+            dest = DRAWABLE_DIR / f"{resource_name}.jpg"
 
             print(f"-> {gem_id} [{image_type}]: recherche « {' / '.join(terms)} »")
             already_used = {c["title"] for c in gem_credits.values()}
