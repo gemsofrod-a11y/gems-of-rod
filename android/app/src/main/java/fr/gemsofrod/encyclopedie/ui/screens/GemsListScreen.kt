@@ -38,6 +38,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.data.Gem
 import fr.gemsofrod.encyclopedie.data.GemColorCategory
+import fr.gemsofrod.encyclopedie.data.GemImageType
 import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.data.GemsRepository
 import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
@@ -97,7 +98,10 @@ private fun GemRow(gem: Gem, onClick: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(14.dp)
         ) {
-            val imageResId = rememberDrawableResId(GemImages.creditFor(gem.id)?.drawableName)
+            val thumbnailCredit = GemImages.creditsFor(gem.id).let { credits ->
+                credits.firstOrNull { it.type == GemImageType.FACETTEE } ?: credits.firstOrNull()
+            }
+            val imageResId = rememberDrawableResId(thumbnailCredit?.drawableName)
             if (imageResId != 0) {
                 Image(
                     painter = painterResource(id = imageResId),

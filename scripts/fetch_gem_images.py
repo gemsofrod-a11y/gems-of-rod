@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
 """
-Récupère une photo librement réutilisable (Wikimedia Commons) pour chaque
-gemme de l'encyclopédie, et génère :
+Récupère, pour chaque gemme de l'encyclopédie, une photo de la pierre BRUTE
+et une photo de la pierre FACETTÉE/taillée sur Wikimedia Commons, et génère :
   - les fichiers image dans android/app/src/main/res/drawable-nodpi/
+  - android/gem_image_credits.json (source de vérité : crédits accumulés)
   - android/app/src/main/java/fr/gemsofrod/encyclopedie/data/GemImages.kt
-    (mapping id de gemme -> ressource + crédit photographique)
+    (régénéré à partir du JSON, mapping id de gemme -> liste de photos+crédits)
   - android/IMAGE_FETCH_REPORT.md (rapport lisible pour revue humaine)
 
 N'accepte que les licences librement réutilisables (domaine public, CC0,
 CC BY, CC BY-SA) — jamais NC (non commercial) ni ND (pas de modification).
+
+Les images déjà présentes (fichier + entrée dans le JSON de crédits) ne sont
+jamais re-téléchargées, pour limiter le nombre d'appels à l'API Commons d'un
+run à l'autre.
 
 Ce script est conçu pour tourner dans GitHub Actions (accès réseau complet),
 pas dans le bac à sable de développement qui bloque les hôtes d'images.
@@ -31,67 +36,103 @@ USER_AGENT = "GemsOfRodEncyclopedieBot/1.0 (contact: gemsofrod@gmail.com)"
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DRAWABLE_DIR = REPO_ROOT / "android/app/src/main/res/drawable-nodpi"
 KOTLIN_OUT = REPO_ROOT / "android/app/src/main/java/fr/gemsofrod/encyclopedie/data/GemImages.kt"
+CREDITS_JSON = REPO_ROOT / "android/gem_image_credits.json"
 REPORT_OUT = REPO_ROOT / "android/IMAGE_FETCH_REPORT.md"
 
-# id (doit correspondre à Gem.id dans GemsRepository.kt), requête(s) de recherche
-# (une ou plusieurs, essayées dans l'ordre), mots-clés de pertinence
+BRUTE = "BRUTE"
+FACETTEE = "FACETTEE"
+
+# gem_id : (termes de recherche essayés dans l'ordre, mots-clés de pertinence, types voulus)
 GEMS = [
-    ("rubis", ["Ruby gemstone"], ["ruby"]),
-    ("grenat-almandin", ["Almandine garnet gemstone"], ["almandine", "garnet"]),
-    ("spinelle-rouge", ["Red spinel gemstone"], ["spinel"]),
-    ("tourmaline-rubellite", ["Rubellite tourmaline gemstone"], ["tourmaline", "rubellite"]),
-    ("grenat-rhodolite", ["Rhodolite garnet gemstone"], ["rhodolite", "garnet"]),
-    ("grenat-spessartite", ["Spessartite garnet gemstone"], ["spessartite", "garnet"]),
-    ("topaze-imperiale", ["Imperial topaz gemstone"], ["topaz"]),
-    ("hessonite", ["Hessonite garnet gemstone", "Hessonite garnet", "Hessonite"], ["hessonite"]),
-    ("opale-de-feu", ["Fire opal gemstone"], ["opal"]),
-    ("saphir-jaune", ["Yellow sapphire gemstone"], ["sapphire"]),
-    ("citrine", ["Citrine gemstone"], ["citrine"]),
-    ("heliodore", ["Heliodor beryl gemstone"], ["heliodor", "beryl"]),
-    ("chrysoberyl", ["Chrysoberyl gemstone"], ["chrysoberyl"]),
-    ("emeraude", ["Emerald gemstone"], ["emerald"]),
-    ("peridot", ["Peridot gemstone"], ["peridot", "olivine"]),
-    ("tsavorite", ["Tsavorite garnet gemstone"], ["tsavorite", "garnet"]),
-    ("jade-jadeite", ["Jadeite jade gemstone"], ["jadeite", "jade"]),
-    ("tourmaline-verte", ["Green tourmaline gemstone"], ["tourmaline"]),
-    ("saphir-bleu", ["Blue sapphire gemstone"], ["sapphire"]),
-    ("aigue-marine", ["Aquamarine gemstone"], ["aquamarine"]),
-    ("tanzanite", ["Tanzanite gemstone"], ["tanzanite"]),
-    ("lapis-lazuli", ["Lapis lazuli mineral"], ["lapis"]),
-    ("spinelle-bleu", ["Blue spinel gemstone"], ["spinel"]),
-    ("amethyste", ["Amethyst gemstone"], ["amethyst"]),
-    ("spinelle-violet", ["Purple spinel gemstone"], ["spinel"]),
-    ("iolite", ["Iolite cordierite gemstone"], ["iolite", "cordierite"]),
+    ("rubis", ["Ruby"], ["ruby"], (BRUTE, FACETTEE)),
+    ("grenat-almandin", ["Almandine garnet"], ["almandine", "garnet"], (BRUTE, FACETTEE)),
+    ("spinelle-rouge", ["Red spinel"], ["spinel"], (BRUTE, FACETTEE)),
+    ("tourmaline-rubellite", ["Rubellite tourmaline"], ["tourmaline", "rubellite"], (BRUTE, FACETTEE)),
+    ("grenat-rhodolite", ["Rhodolite garnet"], ["rhodolite", "garnet"], (BRUTE, FACETTEE)),
+    ("painite", ["Painite"], ["painite"], (BRUTE, FACETTEE)),
+    ("grenat-spessartite", ["Spessartite garnet"], ["spessartite", "garnet"], (BRUTE, FACETTEE)),
+    ("topaze-imperiale", ["Imperial topaz"], ["topaz"], (BRUTE, FACETTEE)),
+    ("hessonite", ["Hessonite garnet", "Hessonite"], ["hessonite"], (BRUTE, FACETTEE)),
+    ("opale-de-feu", ["Fire opal"], ["opal"], (BRUTE, FACETTEE)),
+    ("padparadscha", ["Padparadscha sapphire"], ["padparadscha", "sapphire"], (BRUTE, FACETTEE)),
+    ("cornaline", ["Carnelian"], ["carnelian", "cornelian"], (BRUTE, FACETTEE)),
+    ("saphir-jaune", ["Yellow sapphire"], ["sapphire"], (BRUTE, FACETTEE)),
+    ("citrine", ["Citrine"], ["citrine"], (BRUTE, FACETTEE)),
+    ("heliodore", ["Heliodor beryl"], ["heliodor", "beryl"], (BRUTE, FACETTEE)),
+    ("chrysoberyl", ["Chrysoberyl"], ["chrysoberyl"], (BRUTE, FACETTEE)),
+    ("oeil-de-tigre", ["Tiger's eye"], ["tiger"], (BRUTE, FACETTEE)),
+    ("scapolite", ["Scapolite gemstone", "Scapolite"], ["scapolite"], (BRUTE, FACETTEE)),
+    ("emeraude", ["Emerald"], ["emerald"], (BRUTE, FACETTEE)),
+    ("peridot", ["Peridot"], ["peridot", "olivine"], (BRUTE, FACETTEE)),
+    ("tsavorite", ["Tsavorite garnet"], ["tsavorite", "garnet"], (BRUTE, FACETTEE)),
+    ("jade-jadeite", ["Jadeite jade", "Jadeite"], ["jadeite", "jade"], (BRUTE, FACETTEE)),
+    ("tourmaline-verte", ["Green tourmaline"], ["tourmaline"], (BRUTE, FACETTEE)),
+    ("demantoide", ["Demantoid garnet"], ["demantoid", "garnet"], (BRUTE, FACETTEE)),
+    ("uvarovite", ["Uvarovite garnet", "Uvarovite"], ["uvarovite"], (BRUTE, FACETTEE)),
+    ("vesuvianite", ["Vesuvianite", "Idocrase"], ["vesuvianite", "idocrase"], (BRUTE, FACETTEE)),
+    ("prehnite", ["Prehnite"], ["prehnite"], (BRUTE, FACETTEE)),
+    ("chrysocolle", ["Chrysocolla"], ["chrysocolla"], (BRUTE, FACETTEE)),
+    ("variscite", ["Variscite"], ["variscite"], (BRUTE, FACETTEE)),
+    ("serpentine", ["Bowenite serpentine", "Bowenite"], ["bowenite", "serpentine"], (BRUTE, FACETTEE)),
+    ("grandidierite", ["Grandidierite"], ["grandidierite"], (BRUTE, FACETTEE)),
+    ("saphir-bleu", ["Blue sapphire"], ["sapphire"], (BRUTE, FACETTEE)),
+    ("aigue-marine", ["Aquamarine"], ["aquamarine"], (BRUTE, FACETTEE)),
+    ("tanzanite", ["Tanzanite"], ["tanzanite"], (BRUTE, FACETTEE)),
+    ("lapis-lazuli", ["Lapis lazuli"], ["lapis"], (BRUTE, FACETTEE)),
+    ("turquoise", ["Turquoise gemstone", "Turquoise mineral"], ["turquoise"], (BRUTE, FACETTEE)),
+    ("spinelle-bleu", ["Blue spinel"], ["spinel"], (BRUTE, FACETTEE)),
+    ("paraiba-tourmaline", ["Paraiba tourmaline"], ["paraiba", "tourmaline"], (BRUTE, FACETTEE)),
+    ("apatite-bleue", ["Neon blue apatite", "Blue apatite"], ["apatite"], (BRUTE, FACETTEE)),
+    ("cyanite", ["Kyanite gemstone", "Kyanite"], ["kyanite", "cyanite"], (BRUTE, FACETTEE)),
+    ("benitoite", ["Benitoite"], ["benitoite"], (BRUTE, FACETTEE)),
+    ("jeremejevite", ["Jeremejevite"], ["jeremejevite"], (BRUTE, FACETTEE)),
+    ("amethyste", ["Amethyst"], ["amethyst"], (BRUTE, FACETTEE)),
+    ("spinelle-violet", ["Purple spinel"], ["spinel"], (BRUTE, FACETTEE)),
+    ("iolite", ["Iolite cordierite", "Iolite"], ["iolite", "cordierite"], (BRUTE, FACETTEE)),
     (
         "grenat-rhodolite-violet",
-        ["Purple rhodolite garnet gemstone", "Rhodolite garnet purple", "Rhodolite garnet"],
+        ["Purple rhodolite garnet", "Rhodolite garnet purple", "Rhodolite garnet"],
         ["rhodolite", "garnet"],
+        (BRUTE, FACETTEE),
     ),
-    ("morganite", ["Morganite beryl gemstone"], ["morganite"]),
-    ("kunzite", ["Kunzite gemstone"], ["kunzite"]),
-    ("saphir-rose", ["Pink sapphire gemstone", "Pink sapphire", "Padparadscha sapphire"], ["sapphire"]),
-    ("tourmaline-rose", ["Pink tourmaline gemstone"], ["tourmaline"]),
-    ("rhodochrosite", ["Rhodochrosite mineral"], ["rhodochrosite"]),
-    ("diamant", ["Diamond gemstone"], ["diamond"]),
-    (
-        "zircon-blanc",
-        ["Colorless zircon gemstone", "White zircon gemstone", "Zircon gemstone"],
-        ["zircon"],
-    ),
-    ("goshenite", ["Goshenite beryl gemstone"], ["goshenite", "beryl"]),
-    ("cristal-de-roche", ["Rock crystal quartz"], ["quartz", "rock crystal"]),
-    ("onyx", ["Onyx gemstone"], ["onyx"]),
-    ("spinelle-noir", ["Black spinel gemstone"], ["spinel"]),
-    ("tourmaline-noire", ["Schorl tourmaline"], ["schorl", "tourmaline"]),
-    ("obsidienne", ["Obsidian volcanic glass"], ["obsidian"]),
-    ("alexandrite", ["Alexandrite gemstone"], ["alexandrite"]),
-    ("opale-precieuse", ["Precious opal gemstone"], ["opal"]),
+    ("sugilite", ["Sugilite"], ["sugilite"], (BRUTE, FACETTEE)),
+    ("charoite", ["Charoite"], ["charoite"], (BRUTE, FACETTEE)),
+    ("taaffeite", ["Taaffeite"], ["taaffeite"], (BRUTE, FACETTEE)),
+    ("axinite", ["Axinite gemstone", "Axinite"], ["axinite"], (BRUTE, FACETTEE)),
+    ("morganite", ["Morganite beryl", "Morganite"], ["morganite"], (BRUTE, FACETTEE)),
+    ("kunzite", ["Kunzite"], ["kunzite"], (BRUTE, FACETTEE)),
+    ("saphir-rose", ["Pink sapphire", "Padparadscha sapphire"], ["sapphire"], (BRUTE, FACETTEE)),
+    ("tourmaline-rose", ["Pink tourmaline"], ["tourmaline"], (BRUTE, FACETTEE)),
+    ("rhodochrosite", ["Rhodochrosite"], ["rhodochrosite"], (BRUTE, FACETTEE)),
+    ("diamant", ["Diamond"], ["diamond"], (BRUTE, FACETTEE)),
+    ("zircon-blanc", ["Colorless zircon", "White zircon", "Zircon"], ["zircon"], (BRUTE, FACETTEE)),
+    ("goshenite", ["Goshenite beryl", "Goshenite"], ["goshenite", "beryl"], (BRUTE, FACETTEE)),
+    ("cristal-de-roche", ["Rock crystal quartz", "Rock crystal"], ["quartz", "rock crystal"], (BRUTE, FACETTEE)),
+    ("danburite", ["Danburite gemstone", "Danburite"], ["danburite"], (BRUTE, FACETTEE)),
+    ("quartz-fume", ["Smoky quartz"], ["smoky", "quartz"], (BRUTE, FACETTEE)),
+    ("andalousite", ["Andalusite gemstone", "Andalusite"], ["andalusite"], (BRUTE, FACETTEE)),
+    ("sinhalite", ["Sinhalite gemstone", "Sinhalite"], ["sinhalite"], (BRUTE, FACETTEE)),
+    ("staurotide", ["Staurolite"], ["staurolite"], (BRUTE, FACETTEE)),
+    ("sphene", ["Sphene titanite", "Titanite gemstone"], ["sphene", "titanite"], (BRUTE, FACETTEE)),
+    ("onyx", ["Onyx gemstone", "Onyx chalcedony"], ["onyx"], (BRUTE, FACETTEE)),
+    ("spinelle-noir", ["Black spinel"], ["spinel"], (BRUTE, FACETTEE)),
+    ("tourmaline-noire", ["Schorl tourmaline", "Schorl"], ["schorl", "tourmaline"], (BRUTE, FACETTEE)),
+    ("obsidienne", ["Obsidian"], ["obsidian"], (BRUTE, FACETTEE)),
+    ("alexandrite", ["Alexandrite"], ["alexandrite"], (BRUTE, FACETTEE)),
+    ("opale-precieuse", ["Precious opal"], ["opal"], (BRUTE, FACETTEE)),
     (
         "tourmaline-pasteque",
-        ["Watermelon tourmaline gemstone", "Watermelon tourmaline slice", "Bicolor tourmaline slice"],
+        ["Watermelon tourmaline", "Watermelon tourmaline slice", "Bicolor tourmaline slice"],
         ["tourmaline"],
+        (BRUTE, FACETTEE),
     ),
-    ("labradorite", ["Labradorite gemstone"], ["labradorite"]),
+    ("labradorite", ["Labradorite"], ["labradorite"], (BRUTE, FACETTEE)),
+    ("pierre-de-lune", ["Moonstone gemstone", "Moonstone feldspar"], ["moonstone"], (BRUTE, FACETTEE)),
+    ("pierre-de-soleil", ["Sunstone gemstone", "Sunstone feldspar"], ["sunstone"], (BRUTE, FACETTEE)),
+    ("fluorine", ["Fluorite gemstone", "Fluorite"], ["fluorite", "fluorspar"], (BRUTE, FACETTEE)),
+    ("ammolite", ["Ammolite"], ["ammolite"], (BRUTE, FACETTEE)),
+    ("ambre", ["Amber gemstone", "Baltic amber"], ["amber"], (BRUTE, FACETTEE)),
+    ("perle", ["Pearl gemstone", "Cultured pearl"], ["pearl"], (FACETTEE,)),
 ]
 
 EXCLUDED_TITLE_TOKENS = [
@@ -105,7 +146,6 @@ ALLOWED_LICENSE_RE = re.compile(
     re.IGNORECASE,
 )
 DISALLOWED_LICENSE_TOKENS = ("nc", "nd")
-
 
 REQUEST_DELAY_SECONDS = 0.6
 MAX_RETRIES = 4
@@ -186,52 +226,61 @@ def image_info(title: str) -> Optional[dict]:
     return None
 
 
-def pick_image(gem_id: str, queries: list, keywords: list) -> Optional[dict]:
-    for query in queries:
-        for title in search_candidates(query):
-            lower_title = title.lower()
-            if any(tok in lower_title for tok in EXCLUDED_TITLE_TOKENS):
-                continue
-            try:
-                info = image_info(title)
-            except Exception as exc:  # noqa: BLE001
-                print(f"  [!] erreur imageinfo pour {title}: {exc}", file=sys.stderr)
-                continue
-            if not info:
-                continue
+def build_queries(term: str, image_type: str) -> list:
+    if image_type == BRUTE:
+        return [f"{term} rough crystal", f"{term} raw crystal", f"{term} crystal specimen"]
+    return [f"{term} faceted gemstone", f"{term} gemstone", f"{term} cut gem"]
 
-            extmeta = info.get("extmetadata", {})
-            license_short = extmeta.get("LicenseShortName", {}).get("value", "")
-            if not license_is_free(license_short):
-                continue
 
-            width = info.get("width", 0)
-            if width and width < 500:
-                continue
+def pick_image(terms: list, keywords: list, image_type: str, already_used_titles: set) -> Optional[dict]:
+    for term in terms:
+        for query in build_queries(term, image_type):
+            for title in search_candidates(query):
+                if title in already_used_titles:
+                    continue
+                lower_title = title.lower()
+                if any(tok in lower_title for tok in EXCLUDED_TITLE_TOKENS):
+                    continue
+                try:
+                    info = image_info(title)
+                except Exception as exc:  # noqa: BLE001
+                    print(f"  [!] erreur imageinfo pour {title}: {exc}", file=sys.stderr)
+                    continue
+                if not info:
+                    continue
 
-            description = strip_html(extmeta.get("ImageDescription", {}).get("value", ""))
-            haystack = f"{lower_title} {description.lower()}"
-            if not any(kw in haystack for kw in keywords):
-                continue
+                extmeta = info.get("extmetadata", {})
+                license_short = extmeta.get("LicenseShortName", {}).get("value", "")
+                if not license_is_free(license_short):
+                    continue
 
-            artist = strip_html(extmeta.get("Artist", {}).get("value", "")) or "Auteur non renseigné"
-            source_url = f"https://commons.wikimedia.org/wiki/{title.replace(' ', '_')}"
-            download_url = info.get("thumburl") or info.get("url")
+                width = info.get("width", 0)
+                if width and width < 400:
+                    continue
 
-            return {
-                "gem_id": gem_id,
-                "title": title,
-                "download_url": download_url,
-                "license": license_short,
-                "artist": artist,
-                "source_url": source_url,
-            }
+                description = strip_html(extmeta.get("ImageDescription", {}).get("value", ""))
+                haystack = f"{lower_title} {description.lower()}"
+                if not any(kw in haystack for kw in keywords):
+                    continue
+
+                artist = strip_html(extmeta.get("Artist", {}).get("value", "")) or "Auteur non renseigné"
+                source_url = f"https://commons.wikimedia.org/wiki/{title.replace(' ', '_')}"
+                download_url = info.get("thumburl") or info.get("url")
+
+                return {
+                    "title": title,
+                    "download_url": download_url,
+                    "license": license_short,
+                    "artist": artist,
+                    "source_url": source_url,
+                }
     return None
 
 
-def safe_resource_name(gem_id: str) -> str:
+def safe_resource_name(gem_id: str, image_type: str) -> str:
     name = re.sub(r"[^a-z0-9_]", "_", gem_id.lower())
-    return f"gem_{name}"
+    suffix = "brute" if image_type == BRUTE else "facette"
+    return f"gem_{name}_{suffix}"
 
 
 def kotlin_escape(value: str) -> str:
@@ -245,106 +294,28 @@ def download_image(url: str, dest: Path) -> None:
         dest.write_bytes(resp.read())
 
 
-_KOTLIN_ENTRY_RE = re.compile(
-    r'"(?P<gem_id>(?:[^"\\]|\\.)*)"\s+to\s+GemImageCredit\('
-    r'"(?P<resource_name>(?:[^"\\]|\\.)*)",\s*'
-    r'"(?P<artist>(?:[^"\\]|\\.)*)",\s*'
-    r'"(?P<license>(?:[^"\\]|\\.)*)",\s*'
-    r'"(?P<source_url>(?:[^"\\]|\\.)*)"\)'
-)
-
-
-def kotlin_unescape(value: str) -> str:
-    return value.replace('\\"', '"').replace("\\$", "$").replace("\\\\", "\\")
-
-
-def load_existing_credits() -> dict:
-    if not KOTLIN_OUT.exists():
+def load_credits() -> dict:
+    if not CREDITS_JSON.exists():
         return {}
-    text = KOTLIN_OUT.read_text(encoding="utf-8")
-    existing = {}
-    for match in _KOTLIN_ENTRY_RE.finditer(text):
-        gem_id = kotlin_unescape(match.group("gem_id"))
-        resource_name = match.group("resource_name")
-        if not (DRAWABLE_DIR / f"{resource_name}.jpg").exists():
-            continue
-        existing[gem_id] = {
-            "resource_name": resource_name,
-            "artist": kotlin_unescape(match.group("artist")),
-            "license": kotlin_unescape(match.group("license")),
-            "source_url": kotlin_unescape(match.group("source_url")),
-        }
-    return existing
+    return json.loads(CREDITS_JSON.read_text(encoding="utf-8"))
 
 
-def main() -> None:
-    DRAWABLE_DIR.mkdir(parents=True, exist_ok=True)
-    KOTLIN_OUT.parent.mkdir(parents=True, exist_ok=True)
+def save_credits(credits: dict) -> None:
+    CREDITS_JSON.write_text(json.dumps(credits, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
 
-    existing_credits = load_existing_credits()
-    print(f"{len(existing_credits)} photo(s) déjà présentes, réutilisées sans nouvel appel réseau.")
 
-    entries = []
-    report_lines = [
-        "# Rapport de récupération des photos (Wikimedia Commons)",
-        "",
-        "Licences acceptées : domaine public, CC0, CC BY, CC BY-SA uniquement.",
-        "",
-        "| Gemme | Statut | Fichier Commons | Licence | Auteur |",
-        "|---|---|---|---|---|",
-    ]
-
-    for gem_id, queries, keywords in GEMS:
-        if gem_id in existing_credits:
-            existing = existing_credits[gem_id]
-            print(f"-> {gem_id}: déjà présente, ignorée")
-            entries.append({"gem_id": gem_id, **existing})
-            report_lines.append(
-                f"| {gem_id} | ♻️ déjà présente | [{existing['resource_name']}]({existing['source_url']}) | {existing['license']} | {existing['artist']} |"
-            )
-            continue
-
-        print(f"-> {gem_id}: recherche « {' / '.join(queries)} »")
-        result = None
-        try:
-            result = pick_image(gem_id, queries, keywords)
-        except Exception as exc:  # noqa: BLE001
-            print(f"  [!] erreur recherche pour {gem_id}: {exc}", file=sys.stderr)
-
-        if not result:
-            print(f"  [x] aucune image libre trouvée pour {gem_id}")
-            report_lines.append(f"| {gem_id} | ❌ non trouvée | — | — | — |")
-            continue
-
-        resource_name = safe_resource_name(gem_id)
-        dest = DRAWABLE_DIR / f"{resource_name}.jpg"
-        try:
-            download_image(result["download_url"], dest)
-        except Exception as exc:  # noqa: BLE001
-            print(f"  [!] échec téléchargement pour {gem_id}: {exc}", file=sys.stderr)
-            report_lines.append(f"| {gem_id} | ❌ échec téléchargement | {result['title']} | {result['license']} | {result['artist']} |")
-            continue
-
-        print(f"  [ok] {result['title']} ({result['license']}, {result['artist']})")
-        entries.append({
-            "gem_id": gem_id,
-            "resource_name": resource_name,
-            "artist": result["artist"],
-            "license": result["license"],
-            "source_url": result["source_url"],
-        })
-        report_lines.append(
-            f"| {gem_id} | ✅ | [{result['title']}]({result['source_url']}) | {result['license']} | {result['artist']} |"
-        )
-
+def write_kotlin(credits: dict) -> None:
     kotlin_lines = [
         "package fr.gemsofrod.encyclopedie.data",
         "",
         "// Fichier généré automatiquement par scripts/fetch_gem_images.py",
-        "// à partir de photos librement réutilisables de Wikimedia Commons.",
+        "// à partir de android/gem_image_credits.json (photos Wikimedia Commons).",
         "// Ne pas éditer à la main : relancer le workflow \"Fetch gem images\".",
         "",
+        "enum class GemImageType { BRUTE, FACETTEE }",
+        "",
         "data class GemImageCredit(",
+        "    val type: GemImageType,",
         "    val drawableName: String,",
         "    val author: String,",
         "    val license: String,",
@@ -352,32 +323,112 @@ def main() -> None:
         ")",
         "",
         "object GemImages {",
-        "    private val credits: Map<String, GemImageCredit> = mapOf(",
+        "    private val credits: Map<String, List<GemImageCredit>> = mapOf(",
     ]
-    for entry in entries:
-        kotlin_lines.append(
-            "        \"{gem_id}\" to GemImageCredit(\"{resource_name}\", \"{artist}\", \"{license}\", \"{source_url}\"),".format(
-                gem_id=kotlin_escape(entry["gem_id"]),
-                resource_name=entry["resource_name"],
-                artist=kotlin_escape(entry["artist"]),
-                license=kotlin_escape(entry["license"]),
-                source_url=kotlin_escape(entry["source_url"]),
+    for gem_id in sorted(credits.keys()):
+        images = credits[gem_id]
+        if not images:
+            continue
+        entry_lines = []
+        for image in images:
+            entry_lines.append(
+                "GemImageCredit(GemImageType.{type}, \"{resource_name}\", \"{artist}\", \"{license}\", \"{source_url}\")".format(
+                    type=image["type"],
+                    resource_name=image["resource_name"],
+                    artist=kotlin_escape(image["artist"]),
+                    license=kotlin_escape(image["license"]),
+                    source_url=kotlin_escape(image["source_url"]),
+                )
             )
+        kotlin_lines.append(
+            f"        \"{kotlin_escape(gem_id)}\" to listOf(" + ", ".join(entry_lines) + "),"
         )
     kotlin_lines += [
         "    )",
         "",
-        "    fun creditFor(gemId: String): GemImageCredit? = credits[gemId]",
+        "    fun creditsFor(gemId: String): List<GemImageCredit> = credits[gemId].orEmpty()",
         "}",
         "",
     ]
     KOTLIN_OUT.write_text("\n".join(kotlin_lines), encoding="utf-8")
 
+
+def main() -> None:
+    DRAWABLE_DIR.mkdir(parents=True, exist_ok=True)
+    KOTLIN_OUT.parent.mkdir(parents=True, exist_ok=True)
+
+    credits = load_credits()
+    total_slots = sum(len(types) for _, _, _, types in GEMS)
+    print(f"{total_slots} photo(s) à couvrir au total (brute + facettée pour la plupart des gemmes).")
+
+    report_lines = [
+        "# Rapport de récupération des photos (Wikimedia Commons)",
+        "",
+        "Licences acceptées : domaine public, CC0, CC BY, CC BY-SA uniquement.",
+        "Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée.",
+        "",
+        "| Gemme | Brute | Facettée |",
+        "|---|---|---|",
+    ]
+
+    for gem_id, terms, keywords, types in GEMS:
+        gem_credits = {c["type"]: c for c in credits.get(gem_id, [])}
+        status = {}
+
+        for image_type in types:
+            resource_name = safe_resource_name(gem_id, image_type)
+            dest = DRAWABLE_DIR / f"{resource_name}.jpg"
+            existing = gem_credits.get(image_type)
+
+            if existing and dest.exists():
+                status[image_type] = f"♻️ [{existing['title']}]({existing['source_url']})"
+                continue
+
+            print(f"-> {gem_id} [{image_type}]: recherche « {' / '.join(terms)} »")
+            already_used = {c["title"] for c in gem_credits.values()}
+            try:
+                result = pick_image(terms, keywords, image_type, already_used)
+            except Exception as exc:  # noqa: BLE001
+                print(f"  [!] erreur recherche pour {gem_id} [{image_type}]: {exc}", file=sys.stderr)
+                result = None
+
+            if not result:
+                print(f"  [x] aucune image libre trouvée pour {gem_id} [{image_type}]")
+                status[image_type] = "❌ non trouvée"
+                continue
+
+            try:
+                download_image(result["download_url"], dest)
+            except Exception as exc:  # noqa: BLE001
+                print(f"  [!] échec téléchargement pour {gem_id} [{image_type}]: {exc}", file=sys.stderr)
+                status[image_type] = "❌ échec téléchargement"
+                continue
+
+            print(f"  [ok] {result['title']} ({result['license']}, {result['artist']})")
+            gem_credits[image_type] = {
+                "type": image_type,
+                "resource_name": resource_name,
+                "title": result["title"],
+                "artist": result["artist"],
+                "license": result["license"],
+                "source_url": result["source_url"],
+            }
+            status[image_type] = f"✅ [{result['title']}]({result['source_url']})"
+
+        credits[gem_id] = list(gem_credits.values())
+        report_lines.append(
+            f"| {gem_id} | {status.get(BRUTE, '—')} | {status.get(FACETTEE, '—')} |"
+        )
+
+    save_credits(credits)
+    write_kotlin(credits)
+
+    found = sum(1 for c in credits.values() for _ in c)
     report_lines.append("")
-    report_lines.append(f"**{len(entries)} / {len(GEMS)}** gemmes ont une photo.")
+    report_lines.append(f"**{found} / {total_slots}** photos récupérées au total.")
     REPORT_OUT.write_text("\n".join(report_lines) + "\n", encoding="utf-8")
 
-    print(f"\n{len(entries)}/{len(GEMS)} images récupérées.")
+    print(f"\n{found}/{total_slots} photos récupérées.")
 
 
 if __name__ == "__main__":

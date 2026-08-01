@@ -15,6 +15,7 @@ enum class GemColorCategory(val label: String, val swatch: Color) {
     VIOLET("Violet", Color(0xFF6C4E9C)),
     ROSE("Rose", Color(0xFFD988A6)),
     INCOLORE("Incolore & blanc", Color(0xFFB9C4CC)),
+    BRUN("Brun & marron", Color(0xFF6F4E37)),
     NOIR("Noir", Color(0xFF2B2B2E)),
     MULTICOLORE("Multicolore", Color(0xFF8E6FB0))
 }
