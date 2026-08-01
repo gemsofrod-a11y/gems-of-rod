@@ -1,0 +1,282 @@
+package fr.gemsofrod.encyclopedie.ui.screens
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.AssistChip
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import fr.gemsofrod.encyclopedie.data.GemImageCredit
+import fr.gemsofrod.encyclopedie.data.GemImageType
+import fr.gemsofrod.encyclopedie.data.GemImages
+import fr.gemsofrod.encyclopedie.data.GemRarete
+import fr.gemsofrod.encyclopedie.data.GemsRepository
+import fr.gemsofrod.encyclopedie.data.googleMapsSearchUrl
+import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun GemDetailScreen(gemId: String, onBackClick: () -> Unit) {
+    val gem = GemsRepository.byId(gemId)
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(gem?.nom ?: "") },
+                navigationIcon = {
+                    IconButton(onClick = onBackClick) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Retour")
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background,
+                    titleContentColor = MaterialTheme.colorScheme.onBackground
+                )
+            )
+        },
+        containerColor = MaterialTheme.colorScheme.background
+    ) { padding ->
+        if (gem == null) {
+            Box(modifier = Modifier.fillMaxSize().padding(padding))
+            return@Scaffold
+        }
+
+        val images = GemImages.creditsFor(gem.id)
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .verticalScroll(rememberScrollState())
+                .padding(20.dp),
+            verticalArrangement = Arrangement.spacedBy(18.dp)
+        ) {
+            if (images.isEmpty()) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(96.dp)
+                        .background(gem.couleur.swatch, RoundedCornerShape(16.dp))
+                )
+            } else {
+                GemImageGallery(images)
+            }
+
+            Column {
+                Text(
+                    text = gem.nom,
+                    style = MaterialTheme.typography.headlineMedium,
+                    color = MaterialTheme.colorScheme.onBackground
+                )
+                Text(
+                    text = gem.nomLatin,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                RareteBadge(rarete = gem.rarete)
+                AssistChip(onClick = {}, label = { Text(gem.famille) })
+            }
+
+            Text(
+                text = gem.descriptionLongue,
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onBackground
+            )
+
+            Card(
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    FicheRow("Catégorie", gem.couleur.label)
+                    FicheDivider()
+                    FicheRow("Famille", gem.famille)
+                    FicheDivider()
+                    FicheRow("Formule chimique", gem.formuleChimique)
+                    FicheDivider()
+                    FicheRow("Système cristallin", gem.systemeCristallin)
+                    FicheDivider()
+                    FicheRow("Dureté (Mohs)", gem.durete)
+                    FicheDivider()
+                    FicheRow("Prix indicatif", gem.prixCaratEur)
+                }
+            }
+
+            Column {
+                Text(
+                    text = "Particularités",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onBackground
+                )
+                Text(
+                    text = gem.particularites,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+
+            Column {
+                Text(
+                    text = "Mines et régions d'origine",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onBackground
+                )
+                Text(
+                    text = "Touchez un lieu pour l'ouvrir dans Google Maps.",
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontStyle = FontStyle.Italic,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+                val uriHandler = LocalUriHandler.current
+                gem.origines.forEach { origine ->
+                    OrigineRow(
+                        origine = origine,
+                        onClick = { uriHandler.openUri(googleMapsSearchUrl(origine)) }
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun GemImageGallery(images: List<GemImageCredit>) {
+    val ordered = images.sortedBy { if (it.type == GemImageType.BRUTE) 0 else 1 }
+    LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+        items(ordered) { credit ->
+            GemImageCard(credit)
+        }
+    }
+}
+
+@Composable
+private fun GemImageCard(credit: GemImageCredit) {
+    val imageResId = rememberDrawableResId(credit.drawableName)
+    if (imageResId == 0) return
+
+    Column(modifier = Modifier.width(220.dp)) {
+        Image(
+            painter = painterResource(id = imageResId),
+            contentDescription = if (credit.type == GemImageType.BRUTE) "Pierre brute" else "Pierre taillée",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(1f)
+                .clip(RoundedCornerShape(16.dp))
+        )
+        Text(
+            text = if (credit.type == GemImageType.BRUTE) "Pierre brute" else "Pierre taillée",
+            style = MaterialTheme.typography.labelLarge,
+            fontWeight = FontWeight.SemiBold,
+            color = MaterialTheme.colorScheme.onBackground,
+            modifier = Modifier.padding(top = 6.dp)
+        )
+        Text(
+            text = "Photo : ${credit.author} — ${credit.license} (Wikimedia Commons)",
+            style = MaterialTheme.typography.bodyMedium,
+            fontStyle = FontStyle.Italic,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+    }
+}
+
+@Composable
+private fun RareteBadge(rarete: GemRarete) {
+    val (bg, fg) = when (rarete) {
+        GemRarete.COURANTE -> MaterialTheme.colorScheme.surfaceVariant to MaterialTheme.colorScheme.onSurfaceVariant
+        GemRarete.PEU_COMMUNE -> MaterialTheme.colorScheme.surfaceVariant to MaterialTheme.colorScheme.onSurfaceVariant
+        GemRarete.RARE -> MaterialTheme.colorScheme.primary.copy(alpha = 0.18f) to MaterialTheme.colorScheme.primary
+        GemRarete.EXCEPTIONNELLE -> MaterialTheme.colorScheme.primary to MaterialTheme.colorScheme.onPrimary
+    }
+    Surface(shape = RoundedCornerShape(50), color = bg) {
+        Text(
+            text = rarete.label,
+            style = MaterialTheme.typography.labelLarge,
+            color = fg,
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+        )
+    }
+}
+
+@Composable
+private fun OrigineRow(origine: String, onClick: () -> Unit) {
+    Text(
+        text = "📍 $origine",
+        style = MaterialTheme.typography.bodyLarge,
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(vertical = 8.dp)
+    )
+}
+
+@Composable
+private fun FicheRow(label: String, value: String) {
+    Row(modifier = Modifier.fillMaxWidth()) {
+        Text(
+            text = label,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.weight(0.42f)
+        )
+        Text(
+            text = value,
+            style = MaterialTheme.typography.bodyMedium,
+            fontWeight = FontWeight.Medium,
+            color = MaterialTheme.colorScheme.onSurface,
+            modifier = Modifier.weight(0.58f)
+        )
+    }
+}
+
+@Composable
+private fun FicheDivider() {
+    HorizontalDivider(
+        modifier = Modifier.padding(vertical = 10.dp),
+        color = MaterialTheme.colorScheme.background
+    )
+}
