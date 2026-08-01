@@ -84,5 +84,99 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | ammolite | ❌ non trouvée | ♻️ [File:Ammolite.jpg](https://commons.wikimedia.org/wiki/File:Ammolite.jpg) |
 | ambre | ♻️ [File:Amber Bernstein many stones.jpg](https://commons.wikimedia.org/wiki/File:Amber_Bernstein_many_stones.jpg) | ♻️ [File:Amber hg.jpg](https://commons.wikimedia.org/wiki/File:Amber_hg.jpg) |
 | perle | — | ♻️ [File:Various pearls.jpg](https://commons.wikimedia.org/wiki/File:Various_pearls.jpg) |
+| grenat-pyrope | ❌ non trouvée | ✅ [File:Fire-eyed diucon (Pyrope pyrope) Chiloe.jpg](https://commons.wikimedia.org/wiki/File:Fire-eyed_diucon_(Pyrope_pyrope)_Chiloe.jpg) |
+| eudialyte | ❌ non trouvée | ❌ non trouvée |
+| crocoite | ❌ non trouvée | ❌ non trouvée |
+| grenat-malaya | ❌ non trouvée | ❌ non trouvée |
+| zircon-hyacinthe | ❌ non trouvée | ✅ [File:Iziko Mineral Zircon (cropped).jpg](https://commons.wikimedia.org/wiki/File:Iziko_Mineral_Zircon_(cropped).jpg) |
+| zircon-dore | ✅ [File:Zircon (GeoDIL number - 252).jpg](https://commons.wikimedia.org/wiki/File:Zircon_(GeoDIL_number_-_252).jpg) | ❌ non trouvée |
+| pyrite | ✅ [File:Crisocola azurite 35è édition Fossilium V.Ascq.JPG](https://commons.wikimedia.org/wiki/File:Crisocola_azurite_35è_édition_Fossilium_V.Ascq.JPG) | ✅ [File:Pyrite - Huanzala mine, Huallanca, Bolognesi, Ancash, Peru.jpg](https://commons.wikimedia.org/wiki/File:Pyrite_-_Huanzala_mine,_Huallanca,_Bolognesi,_Ancash,_Peru.jpg) |
+| scheelite | ❌ non trouvée | ✅ [File:Scheelite cut.jpg](https://commons.wikimedia.org/wiki/File:Scheelite_cut.jpg) |
+| tourmaline-jaune | ❌ non trouvée | ❌ non trouvée |
+| bastnasite | ✅ [File:Bastnäsite-(Ce) crystal with inclusions.jpg](https://commons.wikimedia.org/wiki/File:Bastnäsite-(Ce)_crystal_with_inclusions.jpg) | ❌ non trouvée |
+| malachite | ✅ [File:Raw azuerite malachite.jpg](https://commons.wikimedia.org/wiki/File:Raw_azuerite_malachite.jpg) | ✅ [File:Azurite malachite cabochon gemstone.JPG](https://commons.wikimedia.org/wiki/File:Azurite_malachite_cabochon_gemstone.JPG) |
+| dioptase | ✅ [File:Dioptase crystal macro Wantuch.jpg](https://commons.wikimedia.org/wiki/File:Dioptase_crystal_macro_Wantuch.jpg) | ❌ non trouvée |
+| amazonite | ✅ [File:Amazonite (microline) (GeoDIL number - 439).jpg](https://commons.wikimedia.org/wiki/File:Amazonite_(microline)_(GeoDIL_number_-_439).jpg) | ✅ [File:Amazonite-8819.jpg](https://commons.wikimedia.org/wiki/File:Amazonite-8819.jpg) |
+| chrysoprase | ❌ non trouvée | ✅ [File:Chrysoprase brute 2(Australie).jpg](https://commons.wikimedia.org/wiki/File:Chrysoprase_brute_2(Australie).jpg) |
+| beryl-vert | ❌ non trouvée | ✅ [File:Aquamarine (GeoDIL number - 2244).jpg](https://commons.wikimedia.org/wiki/File:Aquamarine_(GeoDIL_number_-_2244).jpg) |
+| sillimanite | ✅ [File:Rubies encased in K-feldspar in fuchsite-rich matrix (Precambrian, eastern Brazil) 3.jpg](https://commons.wikimedia.org/wiki/File:Rubies_encased_in_K-feldspar_in_fuchsite-rich_matrix_(Precambrian,_eastern_Brazil)_3.jpg) | ✅ [File:Sillimanite cut.jpg](https://commons.wikimedia.org/wiki/File:Sillimanite_cut.jpg) |
+| seraphinite | ❌ non trouvée | ❌ non trouvée |
+| grenat-grossulaire | ❌ non trouvée | ✅ [File:GrossularShades.jpg](https://commons.wikimedia.org/wiki/File:GrossularShades.jpg) |
+| diopside | ✅ [File:Diopside (GeoDIL number - 395).jpg](https://commons.wikimedia.org/wiki/File:Diopside_(GeoDIL_number_-_395).jpg) | ✅ [File:Diopside 3.jpg](https://commons.wikimedia.org/wiki/File:Diopside_3.jpg) |
+| jade-nephrite | ❌ non trouvée | ❌ non trouvée |
+| maw-sit-sit | ❌ non trouvée | ❌ non trouvée |
+| tourmaline-chrome | ❌ non trouvée | ❌ non trouvée |
+| azurite | ✅ [File:Raw azuerite malachite.jpg](https://commons.wikimedia.org/wiki/File:Raw_azuerite_malachite.jpg) | ✅ [File:Azurite malachite cabochon gemstone.JPG](https://commons.wikimedia.org/wiki/File:Azurite_malachite_cabochon_gemstone.JPG) |
+| sodalite | ✅ [File:Sodalite-aegirine-albite pegmatite, Ice River Complex BC.jpg](https://commons.wikimedia.org/wiki/File:Sodalite-aegirine-albite_pegmatite,_Ice_River_Complex_BC.jpg) | ✅ [File:Sodalith - Rohstein.jpg](https://commons.wikimedia.org/wiki/File:Sodalith_-_Rohstein.jpg) |
+| larimar | ❌ non trouvée | ✅ [File:Larimar.jpg](https://commons.wikimedia.org/wiki/File:Larimar.jpg) |
+| lazulite | ❌ non trouvée | ❌ non trouvée |
+| hauyne | ❌ non trouvée | ✅ [File:Hauyne.jpg](https://commons.wikimedia.org/wiki/File:Hauyne.jpg) |
+| cavansite | ❌ non trouvée | ❌ non trouvée |
+| celestite | ✅ [File:Celestite (GeoDIL number - 601).jpg](https://commons.wikimedia.org/wiki/File:Celestite_(GeoDIL_number_-_601).jpg) | ❌ non trouvée |
+| euclase | ❌ non trouvée | ❌ non trouvée |
+| topaze-bleue | ❌ non trouvée | ✅ [File:Blue topaz (8358129568).jpg](https://commons.wikimedia.org/wiki/File:Blue_topaz_(8358129568).jpg) |
+| tourmaline-bleue | ✅ [File:Blue Tourmaline (GeoDIL number - 1850).jpg](https://commons.wikimedia.org/wiki/File:Blue_Tourmaline_(GeoDIL_number_-_1850).jpg) | ✅ [File:Tourmaline, feldspar.jpg](https://commons.wikimedia.org/wiki/File:Tourmaline,_feldspar.jpg) |
+| zircon-bleu | ❌ non trouvée | ✅ [File:0.45cts gem grade blue zircon.jpg](https://commons.wikimedia.org/wiki/File:0.45cts_gem_grade_blue_zircon.jpg) |
+| hemimorphite | ❌ non trouvée | ❌ non trouvée |
+| shattuckite | ❌ non trouvée | ❌ non trouvée |
+| sapphirine | ❌ non trouvée | ❌ non trouvée |
+| dumortierite | ❌ non trouvée | ✅ [File:Azul Macauba dumortierite quartzite Caillois Donation MNHN.jpg](https://commons.wikimedia.org/wiki/File:Azul_Macauba_dumortierite_quartzite_Caillois_Donation_MNHN.jpg) |
+| afghanite | ✅ [File:Pitiglianoite.jpg](https://commons.wikimedia.org/wiki/File:Pitiglianoite.jpg) | ❌ non trouvée |
+| violane | ❌ non trouvée | ❌ non trouvée |
+| saphir-violet | ✅ [File:Sapphire (corundum) (26663158752).jpg](https://commons.wikimedia.org/wiki/File:Sapphire_(corundum)_(26663158752).jpg) | ✅ [File:Post Medieval ring bezel (FindID 386791).jpg](https://commons.wikimedia.org/wiki/File:Post_Medieval_ring_bezel_(FindID_386791).jpg) |
+| purpurite | ❌ non trouvée | ❌ non trouvée |
+| hackmanite | ❌ non trouvée | ❌ non trouvée |
+| lepidolite | ❌ non trouvée | ❌ non trouvée |
+| stichtite | ❌ non trouvée | ❌ non trouvée |
+| cobaltocalcite | ❌ non trouvée | ❌ non trouvée |
+| thulite | ❌ non trouvée | ✅ [File:Zoisite variety Thulite Hydrous calcium aluminum silicate Tvedestrand Norway 1915.jpg](https://commons.wikimedia.org/wiki/File:Zoisite_variety_Thulite_Hydrous_calcium_aluminum_silicate_Tvedestrand_Norway_1915.jpg) |
+| rhodonite | ✅ [File:Fowlerite-1146912.jpg](https://commons.wikimedia.org/wiki/File:Fowlerite-1146912.jpg) | ✅ [File:Rhodonite cut.jpg](https://commons.wikimedia.org/wiki/File:Rhodonite_cut.jpg) |
+| topaze-rose | ✅ [File:Zunyite (GeoDIL number - 246).jpg](https://commons.wikimedia.org/wiki/File:Zunyite_(GeoDIL_number_-_246).jpg) | ❌ non trouvée |
+| quartz-rose | ✅ [File:Raw rose quartz.jpg](https://commons.wikimedia.org/wiki/File:Raw_rose_quartz.jpg) | ✅ [File:Rose quartz-1.JPG](https://commons.wikimedia.org/wiki/File:Rose_quartz-1.JPG) |
+| phosphosiderite | ✅ [File:Crystal of wiperamingaite.png](https://commons.wikimedia.org/wiki/File:Crystal_of_wiperamingaite.png) | ❌ non trouvée |
+| saphir-blanc | ❌ non trouvée | ✅ [File:Diamond cross pendant.jpg](https://commons.wikimedia.org/wiki/File:Diamond_cross_pendant.jpg) |
+| topaze-blanche | ✅ [File:Zunyite (GeoDIL number - 246).jpg](https://commons.wikimedia.org/wiki/File:Zunyite_(GeoDIL_number_-_246).jpg) | ✅ [File:Blue topaz (8358129568).jpg](https://commons.wikimedia.org/wiki/File:Blue_topaz_(8358129568).jpg) |
+| hambergite | ❌ non trouvée | ❌ non trouvée |
+| petalite | ❌ non trouvée | ❌ non trouvée |
+| phenakite | ❌ non trouvée | ✅ [File:Phenakite (GeoDIL number - 262).jpg](https://commons.wikimedia.org/wiki/File:Phenakite_(GeoDIL_number_-_262).jpg) |
+| bytownite | ❌ non trouvée | ❌ non trouvée |
+| hyalite | ❌ non trouvée | ❌ non trouvée |
+| anhydrite | ❌ non trouvée | ❌ non trouvée |
+| baryte | ✅ [File:Barite (GeoDIL number - 577).jpg](https://commons.wikimedia.org/wiki/File:Barite_(GeoDIL_number_-_577).jpg) | ❌ non trouvée |
+| aragonite | ✅ [File:Carbonate Minerals and Crystals Display.jpg](https://commons.wikimedia.org/wiki/File:Carbonate_Minerals_and_Crystals_Display.jpg) | ✅ [File:Corallium rubrum (red coral) 2 (15529370228).jpg](https://commons.wikimedia.org/wiki/File:Corallium_rubrum_(red_coral)_2_(15529370228).jpg) |
+| calcite | ✅ [File:Rubis, calcite 14.jpg](https://commons.wikimedia.org/wiki/File:Rubis,_calcite_14.jpg) | ✅ [File:Gemstone Collection - Rainbow Calcite (15808137826).jpg](https://commons.wikimedia.org/wiki/File:Gemstone_Collection_-_Rainbow_Calcite_(15808137826).jpg) |
+| cerusite | ❌ non trouvée | ❌ non trouvée |
+| montebrasite | ❌ non trouvée | ✅ [File:Montebrasite.jpg](https://commons.wikimedia.org/wiki/File:Montebrasite.jpg) |
+| bois-fossilise | ❌ non trouvée | ❌ non trouvée |
+| os-fossilise | ❌ non trouvée | ❌ non trouvée |
+| kornerupine | ❌ non trouvée | ✅ [File:Kornerupine (GeoDIL number - 274).jpg](https://commons.wikimedia.org/wiki/File:Kornerupine_(GeoDIL_number_-_274).jpg) |
+| hyperstene | ✅ [File:Labradorite with hypersthene (GeoDIL number - 392).jpg](https://commons.wikimedia.org/wiki/File:Labradorite_with_hypersthene_(GeoDIL_number_-_392).jpg) | ❌ non trouvée |
+| paesine | ❌ non trouvée | ❌ non trouvée |
+| hematite | ✅ [File:Pyrit-with-hematite-01.jpg](https://commons.wikimedia.org/wiki/File:Pyrit-with-hematite-01.jpg) | ✅ [File:Gemstone hearts.JPG](https://commons.wikimedia.org/wiki/File:Gemstone_hearts.JPG) |
+| magnetite | ✅ [File:Magnetite Russia.jpg](https://commons.wikimedia.org/wiki/File:Magnetite_Russia.jpg) | ❌ non trouvée |
+| quartz-tourmaline | ❌ non trouvée | ❌ non trouvée |
+| rubis-etoile | ❌ non trouvée | ❌ non trouvée |
+| saphir-etoile | ✅ [File:Sapphire (GeoDIL number - 1021).jpg](https://commons.wikimedia.org/wiki/File:Sapphire_(GeoDIL_number_-_1021).jpg) | ✅ [File:Black Star of Queensland Star Sapphire.jpg](https://commons.wikimedia.org/wiki/File:Black_Star_of_Queensland_Star_Sapphire.jpg) |
+| diaspore-zultanite | ✅ [File:Zultanite rough crystal and gemstones.jpg](https://commons.wikimedia.org/wiki/File:Zultanite_rough_crystal_and_gemstones.jpg) | ✅ [File:Diaspore, Musee de Mineralogie, Paris, 2025.jpg](https://commons.wikimedia.org/wiki/File:Diaspore,_Musee_de_Mineralogie,_Paris,_2025.jpg) |
+| grenat-couleur-changeante | ✅ [File:Rough Red Garnet Gemstone.jpg](https://commons.wikimedia.org/wiki/File:Rough_Red_Garnet_Gemstone.jpg) | ❌ non trouvée |
+| pietersite | ❌ non trouvée | ❌ non trouvée |
+| agate | ❌ non trouvée | ✅ [File:Opal and Gemstone Studio, Hahndorf 20251219-122458.jpg](https://commons.wikimedia.org/wiki/File:Opal_and_Gemstone_Studio,_Hahndorf_20251219-122458.jpg) |
+| jaspe | ❌ non trouvée | ✅ [File:Unpolished jasper.jpg](https://commons.wikimedia.org/wiki/File:Unpolished_jasper.jpg) |
+| calcedoine | ✅ [File:Ornamientiertes Altarkreuz von Hermann Jünger 20200203 RAW.png](https://commons.wikimedia.org/wiki/File:Ornamientiertes_Altarkreuz_von_Hermann_Jünger_20200203_RAW.png) | ✅ [File:Chalcedony cut.jpg](https://commons.wikimedia.org/wiki/File:Chalcedony_cut.jpg) |
+| quartz-a-inclusions | ❌ non trouvée | ✅ [File:Pedras e Cristais DSCN3991.jpg](https://commons.wikimedia.org/wiki/File:Pedras_e_Cristais_DSCN3991.jpg) |
+| quartz-rutile | ✅ [File:Rutilated Quartz Specimen from Madagascar, including Copper Rutiles and Schorl, Polished.jpg](https://commons.wikimedia.org/wiki/File:Rutilated_Quartz_Specimen_from_Madagascar,_including_Copper_Rutiles_and_Schorl,_Polished.jpg) | ✅ [File:3 rutilated quartz.jpg](https://commons.wikimedia.org/wiki/File:3_rutilated_quartz.jpg) |
+| quartz-super-sept | ❌ non trouvée | ❌ non trouvée |
+| smithsonite | ❌ non trouvée | ❌ non trouvée |
+| moldavite | ❌ non trouvée | ✅ [File:Faceted natural Moldavite - Moldavite gemstones.jpg](https://commons.wikimedia.org/wiki/File:Faceted_natural_Moldavite_-_Moldavite_gemstones.jpg) |
+| verre-libyque | ❌ non trouvée | ❌ non trouvée |
+| saphir-vert | ✅ [File:Sapphire (corundum) (26663158752).jpg](https://commons.wikimedia.org/wiki/File:Sapphire_(corundum)_(26663158752).jpg) | ❌ non trouvée |
+| andesine | ❌ non trouvée | ✅ [File:01722 Andesine.jpg](https://commons.wikimedia.org/wiki/File:01722_Andesine.jpg) |
+| chondrodite | ❌ non trouvée | ❌ non trouvée |
+| enstatite | ❌ non trouvée | ❌ non trouvée |
+| sphalerite | ❌ non trouvée | ✅ [File:Sphalerite cut.jpg](https://commons.wikimedia.org/wiki/File:Sphalerite_cut.jpg) |
+| rutile | ✅ [File:Rutile (GeoDIL number - 1562).jpg](https://commons.wikimedia.org/wiki/File:Rutile_(GeoDIL_number_-_1562).jpg) | ✅ [File:Quartz a rutile.jpg](https://commons.wikimedia.org/wiki/File:Quartz_a_rutile.jpg) |
+| orthose | ❌ non trouvée | ❌ non trouvée |
+| corail | ❌ non trouvée | ✅ [File:Soft coral peach komodo.jpg](https://commons.wikimedia.org/wiki/File:Soft_coral_peach_komodo.jpg) |
+| perle-conque | — | ❌ non trouvée |
 
-**133 / 157** photos récupérées au total.
+**208 / 344** photos récupérées au total.
