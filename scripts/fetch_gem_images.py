@@ -141,6 +141,8 @@ EXCLUDED_TITLE_TOKENS = [
     "crystal structure", "flag", "coat of arms", "stamp",
     "synthetic", "man-made", "man made", "lab-grown", "lab grown",
     "laboratory", "imitation", "simulant", "artificial",
+    "(ia ", "badge", "coin", "medal", "brooch", "manuscript",
+    "catalogue", "microform", "book", "page",
 ]
 
 ALLOWED_IMAGE_EXTENSIONS = (".jpg", ".jpeg", ".png")

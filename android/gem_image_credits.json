@@ -99,16 +99,7 @@
       "type": "FACETTEE"
     }
   ],
-  "apatite-bleue": [
-    {
-      "artist": "Montreal Apatite Company\nLambe, William B. (William Busby), 1826-1905\nRobb, Charles, 1819-1887",
-      "license": "Public domain",
-      "resource_name": "gem_apatite_bleue_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Montreal_Apatite_Company,_incorporated_under_27_and_28_Vic.,_cap._23_(microform)_-_capital,_$100,000,_subscribed_$100,000,_shares_$5_each_(IA_cihm_91134).pdf",
-      "title": "File:Montreal Apatite Company, incorporated under 27 and 28 Vic., cap. 23 (microform) - capital, $100,000, subscribed $100,000, shares $5 each (IA cihm 91134).pdf",
-      "type": "BRUTE"
-    }
-  ],
+  "apatite-bleue": [],
   "axinite": [
     {
       "artist": "Robert M. Lavinsky",
@@ -501,14 +492,6 @@
   ],
   "jade-jadeite": [
     {
-      "artist": "Laufer, Berthold, 1874-1934\nField Museum of Natural History",
-      "license": "Public domain",
-      "resource_name": "gem_jade_jadeite_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Jade_-_a_study_in_Chinese_archaeology_and_religion_(IA_jadestudyinchine00lauf).pdf",
-      "title": "File:Jade - a study in Chinese archaeology and religion (IA jadestudyinchine00lauf).pdf",
-      "type": "BRUTE"
-    },
-    {
       "artist": "Joe Mabel",
       "license": "CC BY-SA 3.0",
       "resource_name": "gem_jade_jadeite",
@@ -647,14 +630,6 @@
   ],
   "opale-de-feu": [
     {
-      "artist": "Puttick & Simpson",
-      "license": "Public domain",
-      "resource_name": "gem_opale_de_feu_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Catalogue_of_antiquities_and_works_of_art_from_the_collection_of_Ansley_Windus,_Esq.,_comprising_..._(a)_bust_of_Augustus_Ceasar_in_carved_opal,_by_Dioscorides_Esq._(IA_catalogueofantiq00putt).pdf",
-      "title": "File:Catalogue of antiquities and works of art from the collection of Ansley Windus, Esq., comprising ... (a) bust of Augustus Ceasar in carved opal, by Dioscorides Esq. (IA catalogueofantiq00putt).pdf",
-      "type": "BRUTE"
-    },
-    {
       "artist": "James St. John",
       "license": "CC BY 2.0",
       "resource_name": "gem_opale_de_feu",
@@ -745,16 +720,7 @@
       "type": "FACETTEE"
     }
   ],
-  "perle": [
-    {
-      "artist": "North Lincolnshire Museum, Martin Foreman, 2016-11-22 12:20:31",
-      "license": "CC BY 2.0",
-      "resource_name": "gem_perle_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Post-Medieval_Badge_(FindID_815472).jpg",
-      "title": "File:Post-Medieval Badge (FindID 815472).jpg",
-      "type": "FACETTEE"
-    }
-  ],
+  "perle": [],
   "pierre-de-lune": [
     {
       "artist": "Wouter Hagens",
@@ -849,14 +815,6 @@
   ],
   "saphir-bleu": [
     {
-      "artist": "de Bournon, Count",
-      "license": "Public domain",
-      "resource_name": "gem_saphir_bleu_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Description_of_the_Corundum_Stone,_and_Its_Varieties,_Commonly_Known_by_the_Names_of_Oriental_Ruby,_Sapphire,_etc.;_with_Observations_on_Some_Other_Mineral_Substances_(IA_jstor-107121).pdf",
-      "title": "File:Description of the Corundum Stone, and Its Varieties, Commonly Known by the Names of Oriental Ruby, Sapphire, etc.; with Observations on Some Other Mineral Substances (IA jstor-107121).pdf",
-      "type": "BRUTE"
-    },
-    {
       "artist": "Montanabw",
       "license": "CC BY-SA 3.0",
       "resource_name": "gem_saphir_bleu",
@@ -884,14 +842,6 @@
     }
   ],
   "saphir-rose": [
-    {
-      "artist": "Denzel, Jeffrey R.",
-      "license": "Public domain",
-      "resource_name": "gem_saphir_rose_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Determination_of_shock_properties_of_ceramic_corbit_98_-_98%_alumina_(IA_determinationofs109455312).pdf",
-      "title": "File:Determination of shock properties of ceramic corbit 98 - 98% alumina (IA determinationofs109455312).pdf",
-      "type": "BRUTE"
-    },
     {
       "artist": "Azuncha",
       "license": "CC BY-SA 3.0",
