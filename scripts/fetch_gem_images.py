@@ -143,6 +143,9 @@ EXCLUDED_TITLE_TOKENS = [
     "laboratory", "imitation", "simulant", "artificial",
     "(ia ", "badge", "coin", "medal", "brooch", "manuscript",
     "catalogue", "microform", "book", "page",
+    "journal", "quarterly", "proceedings of", "transactions of",
+    "bulletin of", "geological society", "painting", "engraving",
+    "crystal palace", "print,", "illustration",
 ]
 
 ALLOWED_IMAGE_EXTENSIONS = (".jpg", ".jpeg", ".png")
