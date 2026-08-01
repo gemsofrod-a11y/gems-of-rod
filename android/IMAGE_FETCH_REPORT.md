@@ -11,7 +11,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | tourmaline-rubellite | ♻️ [File:Tourmaline-Lepidolite-143258.jpg](https://commons.wikimedia.org/wiki/File:Tourmaline-Lepidolite-143258.jpg) | ♻️ [File:Rubellite tourmaline 6.jpg](https://commons.wikimedia.org/wiki/File:Rubellite_tourmaline_6.jpg) |
 | grenat-rhodolite | ❌ non trouvée | ♻️ [File:Rhodolite in Matrix-Garnet Group Magnesium iron aluminum silicate Macon County North Carolina 2904.jpg](https://commons.wikimedia.org/wiki/File:Rhodolite_in_Matrix-Garnet_Group_Magnesium_iron_aluminum_silicate_Macon_County_North_Carolina_2904.jpg) |
 | painite | ♻️ [File:Painite-70635.jpg](https://commons.wikimedia.org/wiki/File:Painite-70635.jpg) | ♻️ [File:Fotostrecke Weltraritaeten-Painit-G-EmpireTheWorldOfGems.jpg](https://commons.wikimedia.org/wiki/File:Fotostrecke_Weltraritaeten-Painit-G-EmpireTheWorldOfGems.jpg) |
-| grenat-spessartite | ✅ [File:Spessartine (Mn garnet) (GeoDIL number - 341).jpg](https://commons.wikimedia.org/wiki/File:Spessartine_(Mn_garnet)_(GeoDIL_number_-_341).jpg) | ♻️ [File:Orange spessartine garnet 2.jpg](https://commons.wikimedia.org/wiki/File:Orange_spessartine_garnet_2.jpg) |
+| grenat-spessartite | ♻️ [File:Spessartine (Mn garnet) (GeoDIL number - 341).jpg](https://commons.wikimedia.org/wiki/File:Spessartine_(Mn_garnet)_(GeoDIL_number_-_341).jpg) | ♻️ [File:Orange spessartine garnet 2.jpg](https://commons.wikimedia.org/wiki/File:Orange_spessartine_garnet_2.jpg) |
 | topaze-imperiale | ♻️ [File:Topaz-pb39b.jpg](https://commons.wikimedia.org/wiki/File:Topaz-pb39b.jpg) | ♻️ [File:Topaze Brésil.jpg](https://commons.wikimedia.org/wiki/File:Topaze_Brésil.jpg) |
 | hessonite | ♻️ [File:Garnet-Group-Grossular-20680.jpg](https://commons.wikimedia.org/wiki/File:Garnet-Group-Grossular-20680.jpg) | ♻️ [File:Hessonite garnet 0019.jpg](https://commons.wikimedia.org/wiki/File:Hessonite_garnet_0019.jpg) |
 | opale-de-feu | ❌ non trouvée | ♻️ [File:Yellow fire opal (Mexico) 2.jpg](https://commons.wikimedia.org/wiki/File:Yellow_fire_opal_(Mexico)_2.jpg) |
@@ -34,7 +34,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | prehnite | ♻️ [File:Prehnite-105970.jpg](https://commons.wikimedia.org/wiki/File:Prehnite-105970.jpg) | ♻️ [File:Prehnite-Epidote-178957.jpg](https://commons.wikimedia.org/wiki/File:Prehnite-Epidote-178957.jpg) |
 | chrysocolle | ♻️ [File:Crisocola azurite 35è édition Fossilium V.Ascq.JPG](https://commons.wikimedia.org/wiki/File:Crisocola_azurite_35è_édition_Fossilium_V.Ascq.JPG) | ♻️ [File:Chrysocolla.jpg](https://commons.wikimedia.org/wiki/File:Chrysocolla.jpg) |
 | variscite | ♻️ [File:Variscite-var01b.jpg](https://commons.wikimedia.org/wiki/File:Variscite-var01b.jpg) | ♻️ [File:Variscite-Crandallite-188268.jpg](https://commons.wikimedia.org/wiki/File:Variscite-Crandallite-188268.jpg) |
-| serpentine | ✅ [File:Crystal Palace from the Serpentine - Nicholas Matthew Condy - 60 1937 4.png](https://commons.wikimedia.org/wiki/File:Crystal_Palace_from_the_Serpentine_-_Nicholas_Matthew_Condy_-_60_1937_4.png) | ♻️ [File:Antigorite (variety Bowenite)-346848.jpg](https://commons.wikimedia.org/wiki/File:Antigorite_(variety_Bowenite)-346848.jpg) |
+| serpentine | ❌ non trouvée | ♻️ [File:Antigorite (variety Bowenite)-346848.jpg](https://commons.wikimedia.org/wiki/File:Antigorite_(variety_Bowenite)-346848.jpg) |
 | grandidierite | ♻️ [File:Grandidierite-169886.jpg](https://commons.wikimedia.org/wiki/File:Grandidierite-169886.jpg) | ♻️ [File:Fotostrecke Weltraritaeten- Grandidierit-G-EmpireTheWorldOfGems.jpg](https://commons.wikimedia.org/wiki/File:Fotostrecke_Weltraritaeten-_Grandidierit-G-EmpireTheWorldOfGems.jpg) |
 | saphir-bleu | ♻️ [File:Sapphire (corundum) (26663158752).jpg](https://commons.wikimedia.org/wiki/File:Sapphire_(corundum)_(26663158752).jpg) | ♻️ [File:Yogo2783 Close crop.JPG](https://commons.wikimedia.org/wiki/File:Yogo2783_Close_crop.JPG) |
 | aigue-marine | ♻️ [File:Beryl-sd345a.jpg](https://commons.wikimedia.org/wiki/File:Beryl-sd345a.jpg) | ♻️ [File:Aquamarine P1000141.JPG](https://commons.wikimedia.org/wiki/File:Aquamarine_P1000141.JPG) |
@@ -81,8 +81,8 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | pierre-de-lune | ❌ non trouvée | ♻️ [File:Moonstone mine 3.jpg](https://commons.wikimedia.org/wiki/File:Moonstone_mine_3.jpg) |
 | pierre-de-soleil | ❌ non trouvée | ♻️ [File:Sunstone (Tertiary; Spectrum Mine, Oregon, USA) 12.jpg](https://commons.wikimedia.org/wiki/File:Sunstone_(Tertiary;_Spectrum_Mine,_Oregon,_USA)_12.jpg) |
 | fluorine | ♻️ [File:Fluorite-Sphalerite-34768.jpg](https://commons.wikimedia.org/wiki/File:Fluorite-Sphalerite-34768.jpg) | ♻️ [File:Fluorite cut.jpg](https://commons.wikimedia.org/wiki/File:Fluorite_cut.jpg) |
-| ammolite | ✅ [File:The Quarterly journal of the Geological Society of London (12733843075).jpg](https://commons.wikimedia.org/wiki/File:The_Quarterly_journal_of_the_Geological_Society_of_London_(12733843075).jpg) | ♻️ [File:Ammolite.jpg](https://commons.wikimedia.org/wiki/File:Ammolite.jpg) |
+| ammolite | ❌ non trouvée | ♻️ [File:Ammolite.jpg](https://commons.wikimedia.org/wiki/File:Ammolite.jpg) |
 | ambre | ♻️ [File:Danburite-34745.jpg](https://commons.wikimedia.org/wiki/File:Danburite-34745.jpg) | ♻️ [File:Amber Bernstein many stones.jpg](https://commons.wikimedia.org/wiki/File:Amber_Bernstein_many_stones.jpg) |
 | perle | — | ♻️ [File:1665 Girl with a Pearl Earring.jpg](https://commons.wikimedia.org/wiki/File:1665_Girl_with_a_Pearl_Earring.jpg) |
 
-**144 / 157** photos récupérées au total.
+**142 / 157** photos récupérées au total.
