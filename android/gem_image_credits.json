@@ -107,6 +107,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Apatite_crystal_(GeoDIL_number_-_23).jpg",
       "title": "File:Apatite crystal (GeoDIL number - 23).jpg",
       "type": "BRUTE"
+    },
+    {
+      "artist": "Nessa Eull",
+      "license": "CC0",
+      "resource_name": "gem_apatite_bleue_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Apatite_(GeoDIL_number_-_1734).jpg",
+      "title": "File:Apatite (GeoDIL number - 1734).jpg",
+      "type": "FACETTEE"
     }
   ],
   "axinite": [
@@ -561,6 +569,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Gemstone_Collection_-_Labradorite_(17278919981).jpg",
       "title": "File:Gemstone Collection - Labradorite (17278919981).jpg",
       "type": "FACETTEE"
+    },
+    {
+      "artist": "Arenamontanus",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_labradorite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Labradorite_specimen.jpg",
+      "title": "File:Labradorite specimen.jpg",
+      "type": "BRUTE"
     }
   ],
   "lapis-lazuli": [
