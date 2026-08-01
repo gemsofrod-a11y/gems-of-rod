@@ -153,6 +153,10 @@ EXCLUDED_TITLE_TOKENS = [
     "necklace", "multi-gemstone", "assorted gemstones",
     "birthstone ring", "rainbow ring", "inclusions in a gem",
     "microscope", "thin section", "polarized light",
+    "chameleon", "lizard", "reptile", "gecko", "frog", "bird",
+    "semi-precious gemstones", "gem.pebbles", "colored stones.jpg",
+    "diamond age zones", "cathodoluminescence", "zircon bracelet",
+    "cubic zirconia",
 ]
 
 # Mots qui trahissent une photo de pierre BRUTE quand on cherche une FACETTÉE,
