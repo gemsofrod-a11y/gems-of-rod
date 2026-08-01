@@ -19,6 +19,7 @@ import json
 import re
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -32,52 +33,65 @@ DRAWABLE_DIR = REPO_ROOT / "android/app/src/main/res/drawable-nodpi"
 KOTLIN_OUT = REPO_ROOT / "android/app/src/main/java/fr/gemsofrod/encyclopedie/data/GemImages.kt"
 REPORT_OUT = REPO_ROOT / "android/IMAGE_FETCH_REPORT.md"
 
-# id (doit correspondre à Gem.id dans GemsRepository.kt), requête de recherche, mots-clés de pertinence
+# id (doit correspondre à Gem.id dans GemsRepository.kt), requête(s) de recherche
+# (une ou plusieurs, essayées dans l'ordre), mots-clés de pertinence
 GEMS = [
-    ("rubis", "Ruby gemstone", ["ruby"]),
-    ("grenat-almandin", "Almandine garnet gemstone", ["almandine", "garnet"]),
-    ("spinelle-rouge", "Red spinel gemstone", ["spinel"]),
-    ("tourmaline-rubellite", "Rubellite tourmaline gemstone", ["tourmaline", "rubellite"]),
-    ("grenat-rhodolite", "Rhodolite garnet gemstone", ["rhodolite", "garnet"]),
-    ("grenat-spessartite", "Spessartite garnet gemstone", ["spessartite", "garnet"]),
-    ("topaze-imperiale", "Imperial topaz gemstone", ["topaz"]),
-    ("hessonite", "Hessonite garnet gemstone", ["hessonite", "garnet"]),
-    ("opale-de-feu", "Fire opal gemstone", ["opal"]),
-    ("saphir-jaune", "Yellow sapphire gemstone", ["sapphire"]),
-    ("citrine", "Citrine gemstone", ["citrine"]),
-    ("heliodore", "Heliodor beryl gemstone", ["heliodor", "beryl"]),
-    ("chrysoberyl", "Chrysoberyl gemstone", ["chrysoberyl"]),
-    ("emeraude", "Emerald gemstone", ["emerald"]),
-    ("peridot", "Peridot gemstone", ["peridot", "olivine"]),
-    ("tsavorite", "Tsavorite garnet gemstone", ["tsavorite", "garnet"]),
-    ("jade-jadeite", "Jadeite jade gemstone", ["jadeite", "jade"]),
-    ("tourmaline-verte", "Green tourmaline gemstone", ["tourmaline"]),
-    ("saphir-bleu", "Blue sapphire gemstone", ["sapphire"]),
-    ("aigue-marine", "Aquamarine gemstone", ["aquamarine"]),
-    ("tanzanite", "Tanzanite gemstone", ["tanzanite"]),
-    ("lapis-lazuli", "Lapis lazuli mineral", ["lapis"]),
-    ("spinelle-bleu", "Blue spinel gemstone", ["spinel"]),
-    ("amethyste", "Amethyst gemstone", ["amethyst"]),
-    ("spinelle-violet", "Purple spinel gemstone", ["spinel"]),
-    ("iolite", "Iolite cordierite gemstone", ["iolite", "cordierite"]),
-    ("grenat-rhodolite-violet", "Purple rhodolite garnet gemstone", ["rhodolite", "garnet"]),
-    ("morganite", "Morganite beryl gemstone", ["morganite"]),
-    ("kunzite", "Kunzite gemstone", ["kunzite"]),
-    ("saphir-rose", "Pink sapphire gemstone", ["sapphire"]),
-    ("tourmaline-rose", "Pink tourmaline gemstone", ["tourmaline"]),
-    ("rhodochrosite", "Rhodochrosite mineral", ["rhodochrosite"]),
-    ("diamant", "Diamond gemstone", ["diamond"]),
-    ("zircon-blanc", "Colorless zircon gemstone", ["zircon"]),
-    ("goshenite", "Goshenite beryl gemstone", ["goshenite", "beryl"]),
-    ("cristal-de-roche", "Rock crystal quartz", ["quartz", "rock crystal"]),
-    ("onyx", "Onyx gemstone", ["onyx"]),
-    ("spinelle-noir", "Black spinel gemstone", ["spinel"]),
-    ("tourmaline-noire", "Schorl tourmaline", ["schorl", "tourmaline"]),
-    ("obsidienne", "Obsidian volcanic glass", ["obsidian"]),
-    ("alexandrite", "Alexandrite gemstone", ["alexandrite"]),
-    ("opale-precieuse", "Precious opal gemstone", ["opal"]),
-    ("tourmaline-pasteque", "Watermelon tourmaline gemstone", ["tourmaline", "watermelon"]),
-    ("labradorite", "Labradorite gemstone", ["labradorite"]),
+    ("rubis", ["Ruby gemstone"], ["ruby"]),
+    ("grenat-almandin", ["Almandine garnet gemstone"], ["almandine", "garnet"]),
+    ("spinelle-rouge", ["Red spinel gemstone"], ["spinel"]),
+    ("tourmaline-rubellite", ["Rubellite tourmaline gemstone"], ["tourmaline", "rubellite"]),
+    ("grenat-rhodolite", ["Rhodolite garnet gemstone"], ["rhodolite", "garnet"]),
+    ("grenat-spessartite", ["Spessartite garnet gemstone"], ["spessartite", "garnet"]),
+    ("topaze-imperiale", ["Imperial topaz gemstone"], ["topaz"]),
+    ("hessonite", ["Hessonite garnet gemstone", "Hessonite garnet", "Hessonite"], ["hessonite"]),
+    ("opale-de-feu", ["Fire opal gemstone"], ["opal"]),
+    ("saphir-jaune", ["Yellow sapphire gemstone"], ["sapphire"]),
+    ("citrine", ["Citrine gemstone"], ["citrine"]),
+    ("heliodore", ["Heliodor beryl gemstone"], ["heliodor", "beryl"]),
+    ("chrysoberyl", ["Chrysoberyl gemstone"], ["chrysoberyl"]),
+    ("emeraude", ["Emerald gemstone"], ["emerald"]),
+    ("peridot", ["Peridot gemstone"], ["peridot", "olivine"]),
+    ("tsavorite", ["Tsavorite garnet gemstone"], ["tsavorite", "garnet"]),
+    ("jade-jadeite", ["Jadeite jade gemstone"], ["jadeite", "jade"]),
+    ("tourmaline-verte", ["Green tourmaline gemstone"], ["tourmaline"]),
+    ("saphir-bleu", ["Blue sapphire gemstone"], ["sapphire"]),
+    ("aigue-marine", ["Aquamarine gemstone"], ["aquamarine"]),
+    ("tanzanite", ["Tanzanite gemstone"], ["tanzanite"]),
+    ("lapis-lazuli", ["Lapis lazuli mineral"], ["lapis"]),
+    ("spinelle-bleu", ["Blue spinel gemstone"], ["spinel"]),
+    ("amethyste", ["Amethyst gemstone"], ["amethyst"]),
+    ("spinelle-violet", ["Purple spinel gemstone"], ["spinel"]),
+    ("iolite", ["Iolite cordierite gemstone"], ["iolite", "cordierite"]),
+    (
+        "grenat-rhodolite-violet",
+        ["Purple rhodolite garnet gemstone", "Rhodolite garnet purple", "Rhodolite garnet"],
+        ["rhodolite", "garnet"],
+    ),
+    ("morganite", ["Morganite beryl gemstone"], ["morganite"]),
+    ("kunzite", ["Kunzite gemstone"], ["kunzite"]),
+    ("saphir-rose", ["Pink sapphire gemstone", "Pink sapphire", "Padparadscha sapphire"], ["sapphire"]),
+    ("tourmaline-rose", ["Pink tourmaline gemstone"], ["tourmaline"]),
+    ("rhodochrosite", ["Rhodochrosite mineral"], ["rhodochrosite"]),
+    ("diamant", ["Diamond gemstone"], ["diamond"]),
+    (
+        "zircon-blanc",
+        ["Colorless zircon gemstone", "White zircon gemstone", "Zircon gemstone"],
+        ["zircon"],
+    ),
+    ("goshenite", ["Goshenite beryl gemstone"], ["goshenite", "beryl"]),
+    ("cristal-de-roche", ["Rock crystal quartz"], ["quartz", "rock crystal"]),
+    ("onyx", ["Onyx gemstone"], ["onyx"]),
+    ("spinelle-noir", ["Black spinel gemstone"], ["spinel"]),
+    ("tourmaline-noire", ["Schorl tourmaline"], ["schorl", "tourmaline"]),
+    ("obsidienne", ["Obsidian volcanic glass"], ["obsidian"]),
+    ("alexandrite", ["Alexandrite gemstone"], ["alexandrite"]),
+    ("opale-precieuse", ["Precious opal gemstone"], ["opal"]),
+    (
+        "tourmaline-pasteque",
+        ["Watermelon tourmaline gemstone", "Watermelon tourmaline slice", "Bicolor tourmaline slice"],
+        ["tourmaline"],
+    ),
+    ("labradorite", ["Labradorite gemstone"], ["labradorite"]),
 ]
 
 EXCLUDED_TITLE_TOKENS = [
@@ -93,11 +107,38 @@ ALLOWED_LICENSE_RE = re.compile(
 DISALLOWED_LICENSE_TOKENS = ("nc", "nd")
 
 
+REQUEST_DELAY_SECONDS = 0.6
+MAX_RETRIES = 4
+
+
+def _sleep_for_retry(attempt: int, error: urllib.error.HTTPError) -> None:
+    retry_after = error.headers.get("Retry-After") if error.headers else None
+    try:
+        delay = float(retry_after) if retry_after else 2.0 * (attempt + 1)
+    except ValueError:
+        delay = 2.0 * (attempt + 1)
+    print(f"  [i] HTTP 429, nouvelle tentative dans {delay:.0f}s...", file=sys.stderr)
+    time.sleep(delay)
+
+
+def _urlopen_with_retry(req: urllib.request.Request):
+    for attempt in range(MAX_RETRIES):
+        try:
+            return urllib.request.urlopen(req, timeout=30)
+        except urllib.error.HTTPError as exc:
+            if exc.code == 429 and attempt < MAX_RETRIES - 1:
+                _sleep_for_retry(attempt, exc)
+                continue
+            raise
+    raise RuntimeError("unreachable")
+
+
 def api_get(params: dict) -> dict:
     params = {**params, "format": "json"}
     url = f"{API_URL}?{urllib.parse.urlencode(params)}"
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(req, timeout=30) as resp:
+    time.sleep(REQUEST_DELAY_SECONDS)
+    with _urlopen_with_retry(req) as resp:
         return json.loads(resp.read().decode("utf-8"))
 
 
@@ -145,49 +186,46 @@ def image_info(title: str) -> Optional[dict]:
     return None
 
 
-def pick_image(gem_id: str, query: str, keywords: list) -> Optional[dict]:
-    for title in search_candidates(query):
-        lower_title = title.lower()
-        if any(tok in lower_title for tok in EXCLUDED_TITLE_TOKENS):
-            continue
-        if not any(kw in lower_title for kw in keywords):
-            # on tente quand même : le titre seul est parfois peu explicite,
-            # on vérifiera la description ci-dessous.
-            pass
-        try:
-            info = image_info(title)
-        except Exception as exc:  # noqa: BLE001
-            print(f"  [!] erreur imageinfo pour {title}: {exc}", file=sys.stderr)
-            continue
-        if not info:
-            continue
+def pick_image(gem_id: str, queries: list, keywords: list) -> Optional[dict]:
+    for query in queries:
+        for title in search_candidates(query):
+            lower_title = title.lower()
+            if any(tok in lower_title for tok in EXCLUDED_TITLE_TOKENS):
+                continue
+            try:
+                info = image_info(title)
+            except Exception as exc:  # noqa: BLE001
+                print(f"  [!] erreur imageinfo pour {title}: {exc}", file=sys.stderr)
+                continue
+            if not info:
+                continue
 
-        extmeta = info.get("extmetadata", {})
-        license_short = extmeta.get("LicenseShortName", {}).get("value", "")
-        if not license_is_free(license_short):
-            continue
+            extmeta = info.get("extmetadata", {})
+            license_short = extmeta.get("LicenseShortName", {}).get("value", "")
+            if not license_is_free(license_short):
+                continue
 
-        width = info.get("width", 0)
-        if width and width < 500:
-            continue
+            width = info.get("width", 0)
+            if width and width < 500:
+                continue
 
-        description = strip_html(extmeta.get("ImageDescription", {}).get("value", ""))
-        haystack = f"{lower_title} {description.lower()}"
-        if not any(kw in haystack for kw in keywords):
-            continue
+            description = strip_html(extmeta.get("ImageDescription", {}).get("value", ""))
+            haystack = f"{lower_title} {description.lower()}"
+            if not any(kw in haystack for kw in keywords):
+                continue
 
-        artist = strip_html(extmeta.get("Artist", {}).get("value", "")) or "Auteur non renseigné"
-        source_url = f"https://commons.wikimedia.org/wiki/{title.replace(' ', '_')}"
-        download_url = info.get("thumburl") or info.get("url")
+            artist = strip_html(extmeta.get("Artist", {}).get("value", "")) or "Auteur non renseigné"
+            source_url = f"https://commons.wikimedia.org/wiki/{title.replace(' ', '_')}"
+            download_url = info.get("thumburl") or info.get("url")
 
-        return {
-            "gem_id": gem_id,
-            "title": title,
-            "download_url": download_url,
-            "license": license_short,
-            "artist": artist,
-            "source_url": source_url,
-        }
+            return {
+                "gem_id": gem_id,
+                "title": title,
+                "download_url": download_url,
+                "license": license_short,
+                "artist": artist,
+                "source_url": source_url,
+            }
     return None
 
 
@@ -202,13 +240,49 @@ def kotlin_escape(value: str) -> str:
 
 def download_image(url: str, dest: Path) -> None:
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(req, timeout=30) as resp:
+    time.sleep(REQUEST_DELAY_SECONDS)
+    with _urlopen_with_retry(req) as resp:
         dest.write_bytes(resp.read())
+
+
+_KOTLIN_ENTRY_RE = re.compile(
+    r'"(?P<gem_id>(?:[^"\\]|\\.)*)"\s+to\s+GemImageCredit\('
+    r'"(?P<resource_name>(?:[^"\\]|\\.)*)",\s*'
+    r'"(?P<artist>(?:[^"\\]|\\.)*)",\s*'
+    r'"(?P<license>(?:[^"\\]|\\.)*)",\s*'
+    r'"(?P<source_url>(?:[^"\\]|\\.)*)"\)'
+)
+
+
+def kotlin_unescape(value: str) -> str:
+    return value.replace('\\"', '"').replace("\\$", "$").replace("\\\\", "\\")
+
+
+def load_existing_credits() -> dict:
+    if not KOTLIN_OUT.exists():
+        return {}
+    text = KOTLIN_OUT.read_text(encoding="utf-8")
+    existing = {}
+    for match in _KOTLIN_ENTRY_RE.finditer(text):
+        gem_id = kotlin_unescape(match.group("gem_id"))
+        resource_name = match.group("resource_name")
+        if not (DRAWABLE_DIR / f"{resource_name}.jpg").exists():
+            continue
+        existing[gem_id] = {
+            "resource_name": resource_name,
+            "artist": kotlin_unescape(match.group("artist")),
+            "license": kotlin_unescape(match.group("license")),
+            "source_url": kotlin_unescape(match.group("source_url")),
+        }
+    return existing
 
 
 def main() -> None:
     DRAWABLE_DIR.mkdir(parents=True, exist_ok=True)
     KOTLIN_OUT.parent.mkdir(parents=True, exist_ok=True)
+
+    existing_credits = load_existing_credits()
+    print(f"{len(existing_credits)} photo(s) déjà présentes, réutilisées sans nouvel appel réseau.")
 
     entries = []
     report_lines = [
@@ -220,18 +294,26 @@ def main() -> None:
         "|---|---|---|---|---|",
     ]
 
-    for gem_id, query, keywords in GEMS:
-        print(f"-> {gem_id}: recherche « {query} »")
+    for gem_id, queries, keywords in GEMS:
+        if gem_id in existing_credits:
+            existing = existing_credits[gem_id]
+            print(f"-> {gem_id}: déjà présente, ignorée")
+            entries.append({"gem_id": gem_id, **existing})
+            report_lines.append(
+                f"| {gem_id} | ♻️ déjà présente | [{existing['resource_name']}]({existing['source_url']}) | {existing['license']} | {existing['artist']} |"
+            )
+            continue
+
+        print(f"-> {gem_id}: recherche « {' / '.join(queries)} »")
         result = None
         try:
-            result = pick_image(gem_id, query, keywords)
+            result = pick_image(gem_id, queries, keywords)
         except Exception as exc:  # noqa: BLE001
             print(f"  [!] erreur recherche pour {gem_id}: {exc}", file=sys.stderr)
 
         if not result:
             print(f"  [x] aucune image libre trouvée pour {gem_id}")
             report_lines.append(f"| {gem_id} | ❌ non trouvée | — | — | — |")
-            time.sleep(0.3)
             continue
 
         resource_name = safe_resource_name(gem_id)
@@ -241,7 +323,6 @@ def main() -> None:
         except Exception as exc:  # noqa: BLE001
             print(f"  [!] échec téléchargement pour {gem_id}: {exc}", file=sys.stderr)
             report_lines.append(f"| {gem_id} | ❌ échec téléchargement | {result['title']} | {result['license']} | {result['artist']} |")
-            time.sleep(0.3)
             continue
 
         print(f"  [ok] {result['title']} ({result['license']}, {result['artist']})")
@@ -255,7 +336,6 @@ def main() -> None:
         report_lines.append(
             f"| {gem_id} | ✅ | [{result['title']}]({result['source_url']}) | {result['license']} | {result['artist']} |"
         )
-        time.sleep(0.3)
 
     kotlin_lines = [
         "package fr.gemsofrod.encyclopedie.data",
