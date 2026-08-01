@@ -138,7 +138,9 @@ GEMS = [
 EXCLUDED_TITLE_TOKENS = [
     "logo", "map", "diagram", "icon", "chart", "graph",
     "locality", "location", "mine entrance", "mining site",
-    "crystal structure", "flag", "coat of arms", "stamp",
+    "mine 1", "mine 2", "mine 3", "mine 4", "mine 5",
+    "stone mine", "gem mine", "crystal structure", "flag",
+    "coat of arms", "stamp",
     "synthetic", "man-made", "man made", "lab-grown", "lab grown",
     "laboratory", "imitation", "simulant", "artificial",
     "(ia ", "badge", "coin", "medal", "brooch", "manuscript",
@@ -146,6 +148,22 @@ EXCLUDED_TITLE_TOKENS = [
     "journal", "quarterly", "proceedings of", "transactions of",
     "bulletin of", "geological society", "painting", "engraving",
     "crystal palace", "print,", "illustration",
+    "butterfly", "moth", "insect", "leaf", "leaves",
+    "girl with a pearl", "vermeer", "portrait",
+    "necklace", "multi-gemstone", "assorted gemstones",
+    "birthstone ring", "rainbow ring", "inclusions in a gem",
+    "microscope", "thin section", "polarized light",
+]
+
+# Mots qui trahissent une photo de pierre BRUTE quand on cherche une FACETTÉE,
+# et inversement — évite qu'une recherche "faceted gemstone" ne renvoie une
+# photo de cristal brut (et vice versa).
+ROUGH_STATE_TOKENS = [
+    "rough", "raw crystal", "crystal specimen", "on matrix",
+    "crystal cluster", "uncut", "specimen", "in matrix",
+]
+CUT_STATE_TOKENS = [
+    "faceted", "facetted", "cut gem", "cut stone", "cabochon",
 ]
 
 ALLOWED_IMAGE_EXTENSIONS = (".jpg", ".jpeg", ".png")
@@ -274,6 +292,10 @@ def pick_image(terms: list, keywords: list, image_type: str, already_used_titles
                 if any(tok in haystack for tok in EXCLUDED_TITLE_TOKENS):
                     continue
                 if not any(kw in haystack for kw in keywords):
+                    continue
+                if image_type == FACETTEE and any(tok in haystack for tok in ROUGH_STATE_TOKENS):
+                    continue
+                if image_type == BRUTE and any(tok in haystack for tok in CUT_STATE_TOKENS):
                     continue
 
                 artist = strip_html(extmeta.get("Artist", {}).get("value", "")) or "Auteur non renseigné"

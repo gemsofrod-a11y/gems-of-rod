@@ -23,7 +23,7 @@ object GemsRepository {
             formuleChimique = "Al₂O₃ (trace de Cr)",
             systemeCristallin = "Trigonal",
             durete = "9",
-            origines = listOf("Birmanie (Mogok)", "Sri Lanka", "Mozambique", "Madagascar"),
+            origines = listOf("Birmanie (Mogok)", "Sri Lanka (Ratnapura)", "Mozambique (Montepuez)", "Madagascar (Ilakaka)"),
             particularites = "Fluorescence rouge sous UV ; inclusions de rutile en « soie » pouvant produire un astérisme (étoile à 6 branches).",
             prixCaratEur = "500 – 15 000 €/ct",
             rarete = GemRarete.RARE
@@ -39,7 +39,7 @@ object GemsRepository {
             formuleChimique = "(Fe,Mg)₃Al₂(SiO₄)₃",
             systemeCristallin = "Cubique",
             durete = "7 - 7,5",
-            origines = listOf("Inde", "Sri Lanka", "République tchèque", "Tanzanie"),
+            origines = listOf("Inde (Rajmahal Hills, Jharkhand)", "Sri Lanka (Ratnapura)", "République tchèque (Podsedice, Bohême)", "Tanzanie (vallée de l'Umba)"),
             particularites = "Aucun clivage, forte réfraction, jamais traité thermiquement ou chimiquement.",
             prixCaratEur = "10 – 100 €/ct",
             rarete = GemRarete.COURANTE
@@ -55,7 +55,7 @@ object GemsRepository {
             formuleChimique = "MgAl₂O₄ (trace de Cr)",
             systemeCristallin = "Cubique",
             durete = "8",
-            origines = listOf("Birmanie (Mogok)", "Tadjikistan", "Sri Lanka"),
+            origines = listOf("Birmanie (Mogok)", "Tadjikistan (Kuh-i-Lal, Pamir)", "Sri Lanka (Ratnapura)"),
             particularites = "Cristaux souvent octaédriques ; quasiment toujours non traité.",
             prixCaratEur = "300 – 3 000 €/ct",
             rarete = GemRarete.RARE
@@ -71,7 +71,7 @@ object GemsRepository {
             formuleChimique = "Na(Li,Al)₃Al₆(BO₃)₃Si₆O₁₈(OH)₄",
             systemeCristallin = "Trigonal",
             durete = "7 - 7,5",
-            origines = listOf("Brésil", "Nigeria", "Mozambique", "Afghanistan"),
+            origines = listOf("Brésil (mine de Cruzeiro, Minas Gerais)", "Nigeria (Oyo)", "Mozambique (Alto Ligonha)", "Afghanistan (vallée de Paprok, Nouristan)"),
             particularites = "Pléochroïsme marqué ; cristaux prismatiques striés caractéristiques.",
             prixCaratEur = "50 – 400 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -87,7 +87,7 @@ object GemsRepository {
             formuleChimique = "(Mg,Fe)₃Al₂(SiO₄)₃",
             systemeCristallin = "Cubique",
             durete = "7 - 7,5",
-            origines = listOf("Tanzanie", "Sri Lanka", "Inde"),
+            origines = listOf("Tanzanie (vallée de l'Umba)", "Sri Lanka (Ratnapura)", "Inde (Orissa)"),
             particularites = "Excellente transparence, jamais traitée.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -103,7 +103,7 @@ object GemsRepository {
             formuleChimique = "CaZrAl₉O₁₅(BO₃)",
             systemeCristallin = "Hexagonal",
             durete = "8",
-            origines = listOf("Mogok, Myanmar"),
+            origines = listOf("Mogok Stone Tract, Birmanie"),
             particularites = "Un seul gisement connu au monde ; pierres taillées presque toutes inférieures à 2 carats.",
             prixCaratEur = "6 000 – 60 000 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
@@ -121,7 +121,7 @@ object GemsRepository {
             formuleChimique = "Mn₃Al₂(SiO₄)₃",
             systemeCristallin = "Cubique",
             durete = "7 - 7,5",
-            origines = listOf("Namibie", "Nigeria", "Madagascar"),
+            origines = listOf("Namibie (région du Kunene)", "Nigeria (État du Nasarawa)", "Madagascar (Fianarantsoa)"),
             particularites = "Couleur naturelle, jamais traitée thermiquement.",
             prixCaratEur = "50 – 500 €/ct",
             rarete = GemRarete.RARE
@@ -137,7 +137,7 @@ object GemsRepository {
             formuleChimique = "Al₂(SiO₄)(F,OH)₂",
             systemeCristallin = "Orthorhombique",
             durete = "8",
-            origines = listOf("Ouro Preto, Brésil"),
+            origines = listOf("Ouro Preto (mine Rodrigo Silva), Brésil"),
             particularites = "Clivage parfait à surveiller lors de la taille et du sertissage.",
             prixCaratEur = "100 – 1 500 €/ct",
             rarete = GemRarete.RARE
@@ -153,7 +153,7 @@ object GemsRepository {
             formuleChimique = "Ca₃Al₂(SiO₄)₃ (Fe, Mn)",
             systemeCristallin = "Cubique",
             durete = "6,5 - 7",
-            origines = listOf("Sri Lanka", "Inde", "Canada"),
+            origines = listOf("Sri Lanka (Ratnapura)", "Inde (Karnataka)", "Canada (mine Jeffrey, Québec)"),
             particularites = "Aspect huileux à mielleux typique dû aux inclusions internes.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -169,7 +169,7 @@ object GemsRepository {
             formuleChimique = "SiO₂ · nH₂O",
             systemeCristallin = "Amorphe",
             durete = "5,5 - 6,5",
-            origines = listOf("Mexique"),
+            origines = listOf("Mexique (Querétaro)"),
             particularites = "Pierre fragile et poreuse, sensible aux chocs thermiques.",
             prixCaratEur = "20 – 300 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -185,7 +185,7 @@ object GemsRepository {
             formuleChimique = "Al₂O₃ (Cr, Fe)",
             systemeCristallin = "Trigonal",
             durete = "9",
-            origines = listOf("Sri Lanka", "Madagascar", "Tanzanie"),
+            origines = listOf("Sri Lanka (Ratnapura)", "Madagascar (Ilakaka)", "Tanzanie (Tunduru)"),
             particularites = "La définition exacte de la teinte fait encore débat entre laboratoires gemmologiques.",
             prixCaratEur = "3 000 – 20 000 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
@@ -201,7 +201,7 @@ object GemsRepository {
             formuleChimique = "SiO₂ (Fe₂O₃)",
             systemeCristallin = "Trigonal (microcristallin)",
             durete = "6,5 - 7",
-            origines = listOf("Inde", "Brésil", "Uruguay"),
+            origines = listOf("Inde (Rajpipla, Gujarat)", "Brésil (Rio Grande do Sul)", "Uruguay (Artigas)"),
             particularites = "Souvent chauffée pour intensifier la teinte orangée à partir de matière brune.",
             prixCaratEur = "1 – 10 €/ct",
             rarete = GemRarete.COURANTE
@@ -219,7 +219,7 @@ object GemsRepository {
             formuleChimique = "Al₂O₃ (trace de Fe)",
             systemeCristallin = "Trigonal",
             durete = "9",
-            origines = listOf("Sri Lanka", "Madagascar", "Tanzanie"),
+            origines = listOf("Sri Lanka (Ratnapura)", "Madagascar (Ilakaka)", "Tanzanie (Tunduru)"),
             particularites = "Souvent chauffé pour intensifier et uniformiser la couleur.",
             prixCaratEur = "200 – 3 000 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -235,7 +235,7 @@ object GemsRepository {
             formuleChimique = "SiO₂ (trace de Fe)",
             systemeCristallin = "Trigonal",
             durete = "7",
-            origines = listOf("Brésil", "Bolivie", "Zambie"),
+            origines = listOf("Brésil (Rio Grande do Sul)", "Bolivie (mine Anahí)", "Zambie (Kalomo)"),
             particularites = "Très abordable et abondante ; peu ou pas d'inclusions visibles.",
             prixCaratEur = "5 – 30 €/ct",
             rarete = GemRarete.COURANTE
@@ -251,7 +251,7 @@ object GemsRepository {
             formuleChimique = "Be₃Al₂(SiO₃)₆ (trace de Fe)",
             systemeCristallin = "Hexagonal",
             durete = "7,5 - 8",
-            origines = listOf("Namibie", "Brésil", "Madagascar"),
+            origines = listOf("Namibie (Erongo)", "Brésil (Minas Gerais)", "Madagascar (Mahajanga)"),
             particularites = "Généralement très pure, peu d'inclusions.",
             prixCaratEur = "30 – 150 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -267,7 +267,7 @@ object GemsRepository {
             formuleChimique = "BeAl₂O₄",
             systemeCristallin = "Orthorhombique",
             durete = "8,5",
-            origines = listOf("Sri Lanka", "Brésil", "Madagascar"),
+            origines = listOf("Sri Lanka (Ratnapura)", "Brésil (Espírito Santo, Minas Gerais)", "Madagascar (Ilakaka)"),
             particularites = "Excellente résistance à l'usure, idéale pour un port quotidien.",
             prixCaratEur = "200 – 1 000 €/ct",
             rarete = GemRarete.RARE
@@ -283,7 +283,7 @@ object GemsRepository {
             formuleChimique = "SiO₂ (fibres de riebeckite altérées)",
             systemeCristallin = "Trigonal (microcristallin)",
             durete = "7",
-            origines = listOf("Afrique du Sud", "Australie", "Inde"),
+            origines = listOf("Afrique du Sud (Prieska, Cap-Nord)", "Australie (Australie-Occidentale)", "Inde (Karnataka)"),
             particularites = "Toujours taillé en cabochon pour révéler la chatoyance (effet œil-de-chat).",
             prixCaratEur = "1 – 5 €/ct",
             rarete = GemRarete.COURANTE
@@ -299,7 +299,7 @@ object GemsRepository {
             formuleChimique = "(Na,Ca)₄Al₃(Al,Si)₃Si₆O₂₄(Cl,CO₃,SO₄)",
             systemeCristallin = "Quadratique",
             durete = "5,5 - 6",
-            origines = listOf("Birmanie", "Madagascar", "Tanzanie"),
+            origines = listOf("Birmanie (Mogok)", "Madagascar (Tuléar)", "Tanzanie (Morogoro)"),
             particularites = "Certaines pierries birmanes présentent un fort effet œil-de-chat.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.RARE
@@ -317,7 +317,7 @@ object GemsRepository {
             formuleChimique = "Be₃Al₂(SiO₃)₆ (Cr, V)",
             systemeCristallin = "Hexagonal",
             durete = "7,5 - 8",
-            origines = listOf("Colombie (Muzo, Chivor)", "Zambie", "Brésil"),
+            origines = listOf("Colombie (Muzo, Chivor)", "Zambie (mine Kagem, Kafubu)", "Brésil (Nova Era, Minas Gerais)"),
             particularites = "Traitement à l'huile quasi systématique ; pierre fragile nécessitant des précautions.",
             prixCaratEur = "500 – 10 000 €/ct",
             rarete = GemRarete.RARE
@@ -333,7 +333,7 @@ object GemsRepository {
             formuleChimique = "(Mg,Fe)₂SiO₄",
             systemeCristallin = "Orthorhombique",
             durete = "6,5 - 7",
-            origines = listOf("Égypte (île de Zabargad)", "Pakistan", "Birmanie", "États-Unis (Arizona)"),
+            origines = listOf("Égypte (île de Zabargad)", "Pakistan (vallée de Sapat, Kohistan)", "Birmanie (Mogok)", "États-Unis (San Carlos, Arizona)"),
             particularites = "Biréfringence visible à l'œil nu ; certaines pierres proviennent de météorites (pallasites).",
             prixCaratEur = "50 – 400 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -349,7 +349,7 @@ object GemsRepository {
             formuleChimique = "Ca₃Al₂(SiO₄)₃ (V, Cr)",
             systemeCristallin = "Cubique",
             durete = "7 - 7,5",
-            origines = listOf("Kenya", "Tanzanie"),
+            origines = listOf("Kenya (Taita-Taveta)", "Tanzanie (Umba, Merelani)"),
             particularites = "Jamais traitée ; gisements limités rendant les grosses pierres très rares.",
             prixCaratEur = "500 – 3 000 €/ct",
             rarete = GemRarete.RARE
@@ -365,7 +365,7 @@ object GemsRepository {
             formuleChimique = "NaAlSi₂O₆",
             systemeCristallin = "Monoclinique",
             durete = "6,5 - 7",
-            origines = listOf("Birmanie", "Guatemala"),
+            origines = listOf("Birmanie (Hpakant, Kachin)", "Guatemala (vallée du Motagua)"),
             particularites = "Extrêmement tenace malgré une dureté modérée ; qualité « impériale » d'un vert translucide très rare.",
             prixCaratEur = "50 – 10 000+ €/ct (très variable, jade impérial hors norme)",
             rarete = GemRarete.RARE
@@ -381,7 +381,7 @@ object GemsRepository {
             formuleChimique = "Na(Li,Al)₃Al₆(BO₃)₃Si₆O₁₈(OH)₄",
             systemeCristallin = "Trigonal",
             durete = "7 - 7,5",
-            origines = listOf("Brésil", "Mozambique", "Nigeria"),
+            origines = listOf("Brésil (Minas Gerais)", "Mozambique (Alto Ligonha)", "Nigeria (Oyo)"),
             particularites = "Forte biréfringence ; les tailleurs orientent la pierre pour optimiser la couleur.",
             prixCaratEur = "20 – 300 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -397,7 +397,7 @@ object GemsRepository {
             formuleChimique = "Ca₃Fe₂(SiO₄)₃ (Cr)",
             systemeCristallin = "Cubique",
             durete = "6,5 - 7",
-            origines = listOf("Oural, Russie", "Namibie", "Madagascar"),
+            origines = listOf("Oural (mine de Poldnevaya), Russie", "Namibie (Namibie centrale)", "Madagascar (Antetezambato)"),
             particularites = "Dispersion optique exceptionnelle ; inclusions en « queue de cheval » caractéristiques des pierres de l'Oural.",
             prixCaratEur = "1 000 – 8 000 €/ct",
             rarete = GemRarete.RARE
@@ -413,7 +413,7 @@ object GemsRepository {
             formuleChimique = "Ca₃Cr₂(SiO₄)₃",
             systemeCristallin = "Cubique",
             durete = "6,5 - 7",
-            origines = listOf("Oural, Russie", "Finlande", "Canada"),
+            origines = listOf("Oural (mine de Saranovskoye), Russie", "Finlande (Outokumpu)", "Canada (mine Jeffrey, Québec)"),
             particularites = "Cristaux presque toujours trop petits pour la taille facette ; collectionnée brute en druse.",
             prixCaratEur = "50 – 300 €/ct (rarement taillée)",
             rarete = GemRarete.RARE
@@ -429,7 +429,7 @@ object GemsRepository {
             formuleChimique = "Ca₁₉(Al,Mg,Fe)₁₃(SiO₄)₁₀(Si₂O₇)₄(OH,F)₁₀",
             systemeCristallin = "Quadratique",
             durete = "6,5",
-            origines = listOf("Italie (Vésuve)", "Canada", "Kenya"),
+            origines = listOf("Italie (Vésuve)", "Canada (mine Jeffrey, Québec)", "Kenya (Voi)"),
             particularites = "La variété massive californite peut imiter le jade néphrite.",
             prixCaratEur = "10 – 100 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -445,7 +445,7 @@ object GemsRepository {
             formuleChimique = "Ca₂Al(AlSi₃O₁₀)(OH)₂",
             systemeCristallin = "Orthorhombique",
             durete = "6 - 6,5",
-            origines = listOf("Afrique du Sud", "Australie", "Inde"),
+            origines = listOf("Afrique du Sud (province du Cap)", "Australie (Wave Hill, Australie-Occidentale)", "Inde (Pune, Maharashtra)"),
             particularites = "Souvent taillée en cabochon ; parfois confondue avec la chrysoprase.",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -461,7 +461,7 @@ object GemsRepository {
             formuleChimique = "(Cu,Al)₂H₂Si₂O₅(OH)₄·nH₂O",
             systemeCristallin = "Amorphe / monoclinique",
             durete = "2,5 - 3,5 (7 en gangue de quartz)",
-            origines = listOf("Pérou", "États-Unis (Arizona)", "République démocratique du Congo"),
+            origines = listOf("Pérou (Cuzco)", "États-Unis (Bisbee, Arizona)", "République démocratique du Congo (Katanga)"),
             particularites = "Trop tendre pure ; imprégnée de quartz pour la joaillerie.",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -477,7 +477,7 @@ object GemsRepository {
             formuleChimique = "AlPO₄·2H₂O",
             systemeCristallin = "Orthorhombique",
             durete = "4,5 - 5",
-            origines = listOf("États-Unis (Utah, Nevada)", "Australie", "Allemagne"),
+            origines = listOf("États-Unis (Fairfield, Utah)", "Australie (Queensland)", "Allemagne (Messbach, Saxe)"),
             particularites = "Souvent confondue avec la turquoise ; toujours taillée en cabochon.",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.RARE
@@ -493,7 +493,7 @@ object GemsRepository {
             formuleChimique = "Mg₃Si₂O₅(OH)₄",
             systemeCristallin = "Monoclinique",
             durete = "2,5 - 6 (bowenite jusqu'à 5,5)",
-            origines = listOf("Nouvelle-Zélande", "Afghanistan", "Chine"),
+            origines = listOf("Nouvelle-Zélande (Anita Bay, Fiordland)", "Afghanistan (Badakhshan)", "Chine (Xinjiang)"),
             particularites = "La variété bowenite, plus dure et translucide, est la plus recherchée en joaillerie.",
             prixCaratEur = "2 – 20 €/ct",
             rarete = GemRarete.COURANTE
@@ -509,7 +509,7 @@ object GemsRepository {
             formuleChimique = "(Mg,Fe)Al₃(BO₃)(SiO₄)O₂",
             systemeCristallin = "Orthorhombique",
             durete = "7 - 7,5",
-            origines = listOf("Madagascar", "Sri Lanka (traces)"),
+            origines = listOf("Madagascar (Andrahomana, Fort-Dauphin)", "Sri Lanka (traces)"),
             particularites = "Moins d'une vingtaine de pierres taillées transparentes répertoriées dans le monde.",
             prixCaratEur = "10 000 – 20 000 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
@@ -527,7 +527,7 @@ object GemsRepository {
             formuleChimique = "Al₂O₃ (Fe, Ti)",
             systemeCristallin = "Trigonal",
             durete = "9",
-            origines = listOf("Cachemire", "Birmanie", "Sri Lanka", "Madagascar"),
+            origines = listOf("Cachemire (vallée de Padar)", "Birmanie (Mogok)", "Sri Lanka (Ratnapura)", "Madagascar (Ilakaka)"),
             particularites = "Inclusions de rutile en soie pouvant produire un astérisme (saphir étoilé).",
             prixCaratEur = "400 – 8 000 €/ct",
             rarete = GemRarete.RARE
@@ -543,7 +543,7 @@ object GemsRepository {
             formuleChimique = "Be₃Al₂(SiO₃)₆ (trace de Fe)",
             systemeCristallin = "Hexagonal",
             durete = "7,5 - 8",
-            origines = listOf("Brésil", "Madagascar", "Nigeria", "Zambie"),
+            origines = listOf("Brésil (mine de Pedra Azul, Minas Gerais)", "Madagascar (Ambatondrazaka)", "Nigeria (plateau de Jos)", "Zambie (Lundazi)"),
             particularites = "Souvent chauffée pour atténuer la composante verte et intensifier le bleu.",
             prixCaratEur = "50 – 1 000 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -575,7 +575,7 @@ object GemsRepository {
             formuleChimique = "(Na,Ca)₈(AlSiO₄)₆(S,SO₄) + pyrite + calcite",
             systemeCristallin = "Amorphe (agrégat)",
             durete = "5 - 5,5",
-            origines = listOf("Afghanistan (Badakhshan)", "Chili"),
+            origines = listOf("Afghanistan (Badakhshan, mines de Sar-e-Sang)", "Chili (mine Flor de los Andes, Ovalle)"),
             particularites = "Les inclusions dorées de pyrite, réparties uniformément, sont un gage de qualité.",
             prixCaratEur = "1 – 20 €/ct (souvent vendu au gramme ou à la pièce)",
             rarete = GemRarete.COURANTE
@@ -591,7 +591,7 @@ object GemsRepository {
             formuleChimique = "CuAl₆(PO₄)₄(OH)₈·4H₂O",
             systemeCristallin = "Triclinique",
             durete = "5 - 6",
-            origines = listOf("Iran", "États-Unis (Arizona, Nouveau-Mexique)", "Mexique"),
+            origines = listOf("Iran (mine de Neyshabur)", "États-Unis (mine Sleeping Beauty, Arizona)", "Mexique (Sonora)"),
             particularites = "Matrice veinée caractéristique ; poreuse, sensible aux cosmétiques et produits chimiques.",
             prixCaratEur = "5 – 100 €/ct",
             rarete = GemRarete.COURANTE
@@ -607,7 +607,7 @@ object GemsRepository {
             formuleChimique = "MgAl₂O₄ (trace de Co, Fe)",
             systemeCristallin = "Cubique",
             durete = "8",
-            origines = listOf("Sri Lanka", "Birmanie", "Tadjikistan"),
+            origines = listOf("Sri Lanka (Ratnapura)", "Birmanie (Mogok)", "Tadjikistan (Kuh-i-Lal, Pamir)"),
             particularites = "Généralement non traité, contrairement à de nombreux saphirs bleus.",
             prixCaratEur = "300 – 3 000 €/ct",
             rarete = GemRarete.RARE
@@ -623,7 +623,7 @@ object GemsRepository {
             formuleChimique = "Na(Li,Al)₃Al₆(BO₃)₃Si₆O₁₈(OH)₄ (Cu, Mn)",
             systemeCristallin = "Trigonal",
             durete = "7 - 7,5",
-            origines = listOf("Paraíba, Brésil", "Mozambique", "Nigeria"),
+            origines = listOf("São José da Batalha, Paraíba, Brésil", "Mozambique (Mavuco)", "Nigeria (Edeko)"),
             particularites = "Couleur « néon » due au cuivre, jamais observée dans les autres tourmalines.",
             prixCaratEur = "10 000 – 50 000 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
@@ -639,7 +639,7 @@ object GemsRepository {
             formuleChimique = "Ca₅(PO₄)₃(F,Cl,OH) (trace de Mn)",
             systemeCristallin = "Hexagonal",
             durete = "5",
-            origines = listOf("Madagascar", "Brésil"),
+            origines = listOf("Madagascar (Ilakaka)", "Brésil (Minas Gerais)"),
             particularites = "Dureté modérée (5) : à réserver aux boucles d'oreilles et pendentifs plutôt qu'aux bagues.",
             prixCaratEur = "50 – 300 €/ct",
             rarete = GemRarete.RARE
@@ -655,7 +655,7 @@ object GemsRepository {
             formuleChimique = "Al₂SiO₅",
             systemeCristallin = "Triclinique",
             durete = "4,5 - 6,5 (selon l'axe)",
-            origines = listOf("Népal", "Brésil", "Kenya"),
+            origines = listOf("Népal (vallée de Kali Gandaki)", "Brésil (Minas Gerais)", "Kenya (Mgama Hills)"),
             particularites = "Dureté anisotrope rendant la taille délicate ; clivage parfait dans une direction.",
             prixCaratEur = "20 – 200 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -687,7 +687,7 @@ object GemsRepository {
             formuleChimique = "Al₆B₅O₁₅(F,OH)₃",
             systemeCristallin = "Hexagonal",
             durete = "6,5 - 7,5",
-            origines = listOf("Namibie (Erongo)", "Russie (Sibérie)"),
+            origines = listOf("Namibie (Erongo)", "Russie (montagnes d'Adui, Sibérie)"),
             particularites = "L'essentiel de la production gemme mondiale provient d'un seul massif namibien.",
             prixCaratEur = "3 000 – 10 000 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
@@ -705,7 +705,7 @@ object GemsRepository {
             formuleChimique = "SiO₂ (trace de Fe)",
             systemeCristallin = "Trigonal",
             durete = "7",
-            origines = listOf("Brésil", "Uruguay", "Zambie", "Madagascar"),
+            origines = listOf("Brésil (Rio Grande do Sul)", "Uruguay (Artigas)", "Zambie (mine de Kariba, Kalomo)", "Madagascar (Ambatondrazaka)"),
             particularites = "Peut se décolorer sous exposition prolongée à la lumière du soleil.",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.COURANTE
@@ -721,7 +721,7 @@ object GemsRepository {
             formuleChimique = "MgAl₂O₄ (trace de Fe, Zn)",
             systemeCristallin = "Cubique",
             durete = "8",
-            origines = listOf("Sri Lanka", "Birmanie", "Tanzanie"),
+            origines = listOf("Sri Lanka (Ratnapura)", "Birmanie (Mogok)", "Tanzanie (Matombo)"),
             particularites = "Généralement non traité.",
             prixCaratEur = "150 – 1 500 €/ct",
             rarete = GemRarete.RARE
@@ -737,7 +737,7 @@ object GemsRepository {
             formuleChimique = "Mg₂Al₄Si₅O₁₈",
             systemeCristallin = "Orthorhombique",
             durete = "7 - 7,5",
-            origines = listOf("Inde", "Sri Lanka", "Madagascar"),
+            origines = listOf("Inde (Orissa)", "Sri Lanka (Ratnapura)", "Madagascar (Ambatondrazaka)"),
             particularites = "Pléochroïsme trichroïque très marqué, déterminant pour l'orientation de taille.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -753,7 +753,7 @@ object GemsRepository {
             formuleChimique = "(Mg,Fe)₃Al₂(SiO₄)₃",
             systemeCristallin = "Cubique",
             durete = "7 - 7,5",
-            origines = listOf("Tanzanie", "Mozambique"),
+            origines = listOf("Tanzanie (vallée de l'Umba)", "Mozambique (Cuamba)"),
             particularites = "Couleur stable, jamais traitée.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -769,7 +769,7 @@ object GemsRepository {
             formuleChimique = "KNa₂(Fe,Mn,Al)₂Li₃Si₁₂O₃₀",
             systemeCristallin = "Hexagonal",
             durete = "5,5 - 6,5",
-            origines = listOf("Afrique du Sud", "Japon", "Inde"),
+            origines = listOf("Afrique du Sud (mine Wessels, Kalahari)", "Japon (îlot d'Iwagi)", "Inde"),
             particularites = "Toujours taillée en cabochon ; gisement sud-africain principal aujourd'hui épuisé.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.RARE
@@ -801,7 +801,7 @@ object GemsRepository {
             formuleChimique = "BeMgAl₄O₈",
             systemeCristallin = "Hexagonal",
             durete = "8 - 8,5",
-            origines = listOf("Sri Lanka", "Birmanie", "Tanzanie"),
+            origines = listOf("Sri Lanka (Ratnapura)", "Birmanie (Mogok)", "Tanzanie"),
             particularites = "Longtemps confondue avec le spinelle ; se distingue par une double réfraction que le spinelle n'a pas.",
             prixCaratEur = "1 500 – 2 500 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
@@ -817,7 +817,7 @@ object GemsRepository {
             formuleChimique = "Ca₂(Fe,Mn)Al₂BSi₄O₁₅(OH)",
             systemeCristallin = "Triclinique",
             durete = "6,5 - 7",
-            origines = listOf("France (Bourg-d'Oisans)", "Mexique", "Pakistan"),
+            origines = listOf("France (Bourg-d'Oisans)", "Mexique (Baja California)", "Pakistan (Baloutchistan)"),
             particularites = "Pléochroïsme trichroïque marqué ; cristaux historiquement décrits en France (Dauphiné).",
             prixCaratEur = "50 – 300 €/ct",
             rarete = GemRarete.RARE
@@ -835,7 +835,7 @@ object GemsRepository {
             formuleChimique = "Be₃Al₂(SiO₃)₆ (trace de Mn)",
             systemeCristallin = "Hexagonal",
             durete = "7,5 - 8",
-            origines = listOf("Brésil", "Madagascar", "Afghanistan"),
+            origines = listOf("Brésil (mine de Pedra Azul, Minas Gerais)", "Madagascar (Anjahamiary)", "Afghanistan (Nouristan)"),
             particularites = "Souvent chauffée pour atténuer une composante orangée et révéler un rose pur.",
             prixCaratEur = "50 – 300 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -851,7 +851,7 @@ object GemsRepository {
             formuleChimique = "LiAlSi₂O₆ (trace de Mn)",
             systemeCristallin = "Monoclinique",
             durete = "6,5 - 7",
-            origines = listOf("Afghanistan", "Brésil", "Madagascar"),
+            origines = listOf("Afghanistan (Nouristan)", "Brésil (Minas Gerais)", "Madagascar (Anjanabonoina)"),
             particularites = "Clivage net dans deux directions ; à protéger de la lumière directe prolongée.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -867,7 +867,7 @@ object GemsRepository {
             formuleChimique = "Al₂O₃ (trace de Cr)",
             systemeCristallin = "Trigonal",
             durete = "9",
-            origines = listOf("Sri Lanka", "Madagascar", "Tanzanie"),
+            origines = listOf("Sri Lanka (Ratnapura)", "Madagascar (Ilakaka)", "Tanzanie (Tunduru)"),
             particularites = "La limite rubis/saphir rose reste débattue selon les laboratoires gemmologiques.",
             prixCaratEur = "300 – 4 000 €/ct",
             rarete = GemRarete.RARE
@@ -883,7 +883,7 @@ object GemsRepository {
             formuleChimique = "Na(Li,Al)₃Al₆(BO₃)₃Si₆O₁₈(OH)₄",
             systemeCristallin = "Trigonal",
             durete = "7 - 7,5",
-            origines = listOf("Brésil", "Afghanistan", "Mozambique"),
+            origines = listOf("Brésil (mine de Cruzeiro, Minas Gerais)", "Afghanistan (Paprok, Nouristan)", "Mozambique (Alto Ligonha)"),
             particularites = "Cristaux souvent zonés, à l'origine des tourmalines bicolores.",
             prixCaratEur = "20 – 200 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -899,7 +899,7 @@ object GemsRepository {
             formuleChimique = "MnCO₃",
             systemeCristallin = "Trigonal",
             durete = "3,5 - 4",
-            origines = listOf("Argentine", "Pérou", "États-Unis"),
+            origines = listOf("Argentine (mine Capillitas, Catamarca)", "Pérou (mine Uchucchacua)", "États-Unis (mine Sweet Home, Colorado)"),
             particularites = "Très fragile et sensible aux acides ; réservée aux pièces de collection ou pendentifs protégés.",
             prixCaratEur = "20 – 200 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -917,7 +917,7 @@ object GemsRepository {
             formuleChimique = "C",
             systemeCristallin = "Cubique",
             durete = "10",
-            origines = listOf("Afrique du Sud", "Botswana", "Russie", "Canada"),
+            origines = listOf("Afrique du Sud (mine Cullinan)", "Botswana (mine de Jwaneng)", "Russie (mine Mir, Sibérie)", "Canada (mine Diavik, Territoires du Nord-Ouest)"),
             particularites = "Seule gemme à dureté 10 ; certification obligatoire (GIA, HRD...) pour les pierres importantes.",
             prixCaratEur = "3 000 – 20 000 €/ct (hors pierres exceptionnelles)",
             rarete = GemRarete.RARE
@@ -933,7 +933,7 @@ object GemsRepository {
             formuleChimique = "ZrSiO₄",
             systemeCristallin = "Quadratique",
             durete = "6 - 7,5",
-            origines = listOf("Cambodge", "Sri Lanka", "Australie"),
+            origines = listOf("Cambodge (Ratanakiri)", "Sri Lanka (Ratnapura)", "Australie (Australie-Occidentale)"),
             particularites = "Souvent chauffé pour obtenir l'incolore à partir de zircon brun ; arêtes de facettes parfois dédoublées.",
             prixCaratEur = "20 – 200 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -949,7 +949,7 @@ object GemsRepository {
             formuleChimique = "Be₃Al₂(SiO₃)₆",
             systemeCristallin = "Hexagonal",
             durete = "7,5 - 8",
-            origines = listOf("Brésil", "Madagascar"),
+            origines = listOf("Brésil (Minas Gerais)", "Madagascar (Antsirabe)"),
             particularites = "Servait historiquement de verres de lunettes avant l'usage du verre optique.",
             prixCaratEur = "10 – 50 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -965,7 +965,7 @@ object GemsRepository {
             formuleChimique = "SiO₂",
             systemeCristallin = "Trigonal",
             durete = "7",
-            origines = listOf("Brésil", "Madagascar", "Alpes suisses"),
+            origines = listOf("Brésil (Minas Gerais)", "Madagascar (Ambatofinandrahana)", "Val Cristallina, Alpes suisses"),
             particularites = "Grande disponibilité en gros cristaux, permettant des tailles fantaisie spectaculaires.",
             prixCaratEur = "1 – 10 €/ct",
             rarete = GemRarete.COURANTE
@@ -981,7 +981,7 @@ object GemsRepository {
             formuleChimique = "CaB₂Si₂O₈",
             systemeCristallin = "Orthorhombique",
             durete = "7 - 7,5",
-            origines = listOf("Birmanie", "Madagascar", "Mexique"),
+            origines = listOf("Birmanie (Mogok)", "Madagascar (Antsirabe)", "Mexique (Charcas, San Luis Potosí)"),
             particularites = "Aucun clivage contrairement à la topaze, qu'elle imite souvent visuellement.",
             prixCaratEur = "20 – 100 €/ct",
             rarete = GemRarete.RARE
@@ -999,7 +999,7 @@ object GemsRepository {
             formuleChimique = "SiO₂ (centres colorés Al)",
             systemeCristallin = "Trigonal",
             durete = "7",
-            origines = listOf("Écosse (Cairngorm)", "Brésil", "Suisse"),
+            origines = listOf("Écosse (Cairngorm)", "Brésil (Minas Gerais)", "Suisse (massif du Mont-Blanc)"),
             particularites = "Peut être chauffé pour virer au jaune (citrine) ou pâlir sous exposition prolongée à la lumière.",
             prixCaratEur = "2 – 15 €/ct",
             rarete = GemRarete.COURANTE
@@ -1015,7 +1015,7 @@ object GemsRepository {
             formuleChimique = "Al₂SiO₅",
             systemeCristallin = "Orthorhombique",
             durete = "7,5",
-            origines = listOf("Brésil", "Sri Lanka", "Espagne"),
+            origines = listOf("Brésil (Minas Gerais)", "Sri Lanka (Ratnapura)", "Espagne (Lugo, Galice)"),
             particularites = "Pléochroïsme trichroïque très marqué, orientation de taille déterminante.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.RARE
@@ -1031,7 +1031,7 @@ object GemsRepository {
             formuleChimique = "MgAl(BO₄)",
             systemeCristallin = "Orthorhombique",
             durete = "6,5 - 7",
-            origines = listOf("Sri Lanka", "Birmanie"),
+            origines = listOf("Sri Lanka (Ratnapura)", "Birmanie (Mogok)"),
             particularites = "Confondue avec le péridot jusqu'en 1952 ; toujours brune, jamais verte contrairement au péridot.",
             prixCaratEur = "50 – 300 €/ct",
             rarete = GemRarete.RARE
@@ -1047,7 +1047,7 @@ object GemsRepository {
             formuleChimique = "Fe₂Al₉Si₄O₂₃(OH)",
             systemeCristallin = "Monoclinique",
             durete = "7 - 7,5",
-            origines = listOf("France (Bretagne)", "États-Unis (Géorgie)", "Russie"),
+            origines = listOf("France (Baud, Morbihan, Bretagne)", "États-Unis (comté de Fannin, Géorgie)", "Russie (péninsule de Kola)"),
             particularites = "Macles cruciformes caractéristiques ; rarement taillée à facettes, surtout collectionnée brute.",
             prixCaratEur = "5 – 50 €/ct (rarement taillée)",
             rarete = GemRarete.PEU_COMMUNE
@@ -1063,7 +1063,7 @@ object GemsRepository {
             formuleChimique = "CaTiSiO₅",
             systemeCristallin = "Monoclinique",
             durete = "5 - 5,5",
-            origines = listOf("Madagascar", "Pakistan", "Autriche"),
+            origines = listOf("Madagascar (Ambatondrazaka)", "Pakistan (Skardu, Baltistan)", "Autriche (Tyrol)"),
             particularites = "Dispersion exceptionnelle, supérieure à celle du diamant ; assez tendre et clivable.",
             prixCaratEur = "200 – 1 000 €/ct",
             rarete = GemRarete.RARE
@@ -1081,7 +1081,7 @@ object GemsRepository {
             formuleChimique = "SiO₂",
             systemeCristallin = "Trigonal (microcristallin)",
             durete = "6,5 - 7",
-            origines = listOf("Brésil", "Inde", "Madagascar"),
+            origines = listOf("Brésil (Rio Grande do Sul)", "Inde (Rajasthan)", "Madagascar"),
             particularites = "Teinture artificielle quasi systématique pour homogénéiser la couleur.",
             prixCaratEur = "1 – 10 €/ct",
             rarete = GemRarete.COURANTE
@@ -1097,7 +1097,7 @@ object GemsRepository {
             formuleChimique = "MgAl₂O₄ (riche en Fe)",
             systemeCristallin = "Cubique",
             durete = "8",
-            origines = listOf("Sri Lanka", "Thaïlande"),
+            origines = listOf("Sri Lanka (Ratnapura)", "Thaïlande (Chanthaburi)"),
             particularites = "Résistance élevée aux rayures, adaptée aux bijoux portés au quotidien.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.COURANTE
@@ -1113,7 +1113,7 @@ object GemsRepository {
             formuleChimique = "NaFe₃Al₆(BO₃)₃Si₆O₁₈(OH)₄",
             systemeCristallin = "Trigonal",
             durete = "7 - 7,5",
-            origines = listOf("Brésil", "Namibie", "Madagascar"),
+            origines = listOf("Brésil (Minas Gerais)", "Namibie (Erongo)", "Madagascar (Antsirabe)"),
             particularites = "Cristaux prismatiques souvent striés, parfois de grande taille.",
             prixCaratEur = "1 – 10 €/ct",
             rarete = GemRarete.COURANTE
@@ -1129,7 +1129,7 @@ object GemsRepository {
             formuleChimique = "SiO₂ (verre amorphe)",
             systemeCristallin = "Amorphe",
             durete = "5 - 5,5",
-            origines = listOf("Mexique", "Islande", "Arménie"),
+            origines = listOf("Mexique (Sierra de Pachuca)", "Islande (Hrafntinnusker)", "Arménie (mont Artanish)"),
             particularites = "Certaines variétés présentent un chatoiement doré ou irisé (obsidienne arc-en-ciel).",
             prixCaratEur = "1 – 5 €/ct",
             rarete = GemRarete.COURANTE
@@ -1147,7 +1147,7 @@ object GemsRepository {
             formuleChimique = "BeAl₂O₄ (trace de Cr)",
             systemeCristallin = "Orthorhombique",
             durete = "8,5",
-            origines = listOf("Oural (Russie, historique)", "Brésil", "Sri Lanka"),
+            origines = listOf("Oural (mine de Malychevskoe, Russie, historique)", "Brésil (mine de Hematita, Minas Gerais)", "Sri Lanka (Ratnapura)"),
             particularites = "Le pourcentage de changement de couleur est le principal critère de valorisation.",
             prixCaratEur = "5 000 – 50 000 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
@@ -1163,7 +1163,7 @@ object GemsRepository {
             formuleChimique = "SiO₂ · nH₂O",
             systemeCristallin = "Amorphe",
             durete = "5,5 - 6,5",
-            origines = listOf("Australie", "Éthiopie", "Mexique"),
+            origines = listOf("Australie (Coober Pedy)", "Éthiopie (Wollo)", "Mexique (Querétaro)"),
             particularites = "Contient de 3 à 21% d'eau ; sensible à la déshydratation et aux chocs.",
             prixCaratEur = "50 – 2 000 €/ct (opale noire jusqu'à 5 000+)",
             rarete = GemRarete.RARE
@@ -1179,7 +1179,7 @@ object GemsRepository {
             formuleChimique = "Na(Li,Al)₃Al₆(BO₃)₃Si₆O₁₈(OH)₄",
             systemeCristallin = "Trigonal",
             durete = "7 - 7,5",
-            origines = listOf("Brésil", "États-Unis (Maine)"),
+            origines = listOf("Brésil (Minas Gerais)", "États-Unis (mine Dunton, Maine)"),
             particularites = "Taillée le plus souvent en tranches transversales pour révéler l'effet « pastèque ».",
             prixCaratEur = "30 – 200 €/ct",
             rarete = GemRarete.RARE
@@ -1195,7 +1195,7 @@ object GemsRepository {
             formuleChimique = "(Ca,Na)(Al,Si)₄O₈",
             systemeCristallin = "Triclinique",
             durete = "6 - 6,5",
-            origines = listOf("Canada (Labrador)", "Madagascar", "Finlande"),
+            origines = listOf("Canada (Paul Island, Labrador)", "Madagascar (Toliara)", "Finlande (Ylämaa, spectrolite)"),
             particularites = "L'orientation de la taille est déterminante pour révéler la labradorescence.",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.COURANTE
@@ -1211,7 +1211,7 @@ object GemsRepository {
             formuleChimique = "KAlSi₃O₈ (intercroissance avec albite)",
             systemeCristallin = "Monoclinique",
             durete = "6 - 6,5",
-            origines = listOf("Sri Lanka", "Inde", "Madagascar"),
+            origines = listOf("Sri Lanka (Meetiyagoda)", "Inde (Karnataka)", "Madagascar (Toliara)"),
             particularites = "Adularescence optimale lorsque la pierre est taillée en cabochon perpendiculairement aux lamelles internes.",
             prixCaratEur = "10 – 200 €/ct (bleu vif jusqu'à 1 000+)",
             rarete = GemRarete.PEU_COMMUNE
@@ -1227,7 +1227,7 @@ object GemsRepository {
             formuleChimique = "(Na,Ca)(Al,Si)₄O₈ (inclusions de cuivre)",
             systemeCristallin = "Triclinique",
             durete = "6 - 6,5",
-            origines = listOf("États-Unis (Oregon)", "Inde", "Norvège"),
+            origines = listOf("États-Unis (Plush, Oregon)", "Inde (Orissa)", "Norvège (Tvedestrand)"),
             particularites = "Aventurescence due à des paillettes de cuivre natif, contrairement au quartz aventuriné coloré par la fuchsite.",
             prixCaratEur = "10 – 100 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -1243,7 +1243,7 @@ object GemsRepository {
             formuleChimique = "CaF₂",
             systemeCristallin = "Cubique",
             durete = "4",
-            origines = listOf("Chine", "États-Unis (Illinois)", "Royaume-Uni"),
+            origines = listOf("Chine (Yaogangxian, Hunan)", "États-Unis (mine Cave-in-Rock, Illinois)", "Royaume-Uni (Weardale, Angleterre)"),
             particularites = "Clivage parfait en quatre directions ; fluorescence caractéristique sous UV à l'origine du terme « fluorescence ».",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.PEU_COMMUNE
@@ -1277,7 +1277,7 @@ object GemsRepository {
             formuleChimique = "Mélange de résines terpéniques polymérisées",
             systemeCristallin = "Amorphe",
             durete = "2 - 2,5",
-            origines = listOf("Mer Baltique (Kaliningrad)", "République dominicaine", "Birmanie"),
+            origines = listOf("Mer Baltique (Kaliningrad)", "République dominicaine (Santiago)", "Birmanie (Mogok, ambre birman)"),
             particularites = "Flotte dans l'eau salée ; peut contenir des inclusions fossiles (insectes, végétaux) très recherchées.",
             prixCaratEur = "1 – 50 €/g (souvent vendu au gramme, pas au carat)",
             rarete = GemRarete.COURANTE
@@ -1293,7 +1293,7 @@ object GemsRepository {
             formuleChimique = "CaCO₃ (aragonite) + conchyoline",
             systemeCristallin = "Orthorhombique (aragonite en couches concentriques)",
             durete = "2,5 - 4,5",
-            origines = listOf("Polynésie française (Tahiti)", "Japon (Akoya)", "Australie (mers du Sud)"),
+            origines = listOf("Polynésie française (Tahiti)", "Japon (Akoya)", "Australie (Broome, mers du Sud)"),
             particularites = "Prix évalué à la pièce ou au rang selon taille, forme, lustre et origine, non au carat.",
             prixCaratEur = "10 – 10 000 €/perle (très variable selon type)",
             rarete = GemRarete.COURANTE
