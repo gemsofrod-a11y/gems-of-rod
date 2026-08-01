@@ -56,10 +56,24 @@ cd android
 ./gradlew assembleDebug
 ```
 
+## Photos des gemmes
+
+Chaque fiche peut afficher une photo (repli sur la pastille de couleur si
+absente). Les photos sont récupérées automatiquement depuis **Wikimedia
+Commons**, en ne retenant que des licences librement réutilisables (domaine
+public, CC0, CC BY, CC BY-SA — jamais NC/ND), avec crédit photographique
+affiché sous chaque image.
+
+Pour (re)générer les photos : lancer manuellement le workflow GitHub Actions
+**"Fetch gem images"** (`.github/workflows/fetch-gem-images.yml`, déclenché
+via `workflow_dispatch`). Il exécute `scripts/fetch_gem_images.py`, qui :
+- télécharge une photo par gemme dans `app/src/main/res/drawable-nodpi/`,
+- régénère `app/src/main/java/.../data/GemImages.kt` (mapping id → photo + crédit),
+- publie `android/IMAGE_FETCH_REPORT.md` (liste des sources/licences pour revue),
+et commit directement le résultat sur la branche.
+
 ## Prochaines évolutions possibles
 
-- Ajouter des photos réelles par pierre (actuellement, chaque fiche affiche
-  une pastille de couleur représentative).
 - Champ de recherche par nom.
 - Lien vers les fiches produits en stock (`agent/knowledge/products.json`)
   quand une pierre de l'encyclopédie correspond à une pierre disponible à

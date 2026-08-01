@@ -1,5 +1,6 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -27,10 +28,15 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import fr.gemsofrod.encyclopedie.data.Gem
+import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.data.GemsRepository
+import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -59,6 +65,9 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit) {
             return@Scaffold
         }
 
+        val credit = GemImages.creditFor(gem.id)
+        val imageResId = rememberDrawableResId(credit?.drawableName)
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -67,12 +76,35 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit) {
                 .padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(18.dp)
         ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(96.dp)
-                    .background(gem.couleur.swatch, RoundedCornerShape(16.dp))
-            )
+            Column {
+                if (imageResId != 0) {
+                    Image(
+                        painter = painterResource(id = imageResId),
+                        contentDescription = gem.nom,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(220.dp)
+                            .clip(RoundedCornerShape(16.dp))
+                    )
+                    if (credit != null) {
+                        Text(
+                            text = "Photo : ${credit.author} — ${credit.license} (Wikimedia Commons)",
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontStyle = FontStyle.Italic,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(top = 6.dp)
+                        )
+                    }
+                } else {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(96.dp)
+                            .background(gem.couleur.swatch, RoundedCornerShape(16.dp))
+                    )
+                }
+            }
 
             Column {
                 Text(
