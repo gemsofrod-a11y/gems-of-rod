@@ -99,7 +99,16 @@
       "type": "FACETTEE"
     }
   ],
-  "apatite-bleue": [],
+  "apatite-bleue": [
+    {
+      "artist": "Dexter Perkins",
+      "license": "CC0",
+      "resource_name": "gem_apatite_bleue_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Apatite_crystal_(GeoDIL_number_-_23).jpg",
+      "title": "File:Apatite crystal (GeoDIL number - 23).jpg",
+      "type": "BRUTE"
+    }
+  ],
   "axinite": [
     {
       "artist": "Robert M. Lavinsky",
@@ -498,6 +507,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Burmese_jadeite_faceted_stones_-_-_Burke_Museum.jpg",
       "title": "File:Burmese jadeite faceted stones - - Burke Museum.jpg",
       "type": "FACETTEE"
+    },
+    {
+      "artist": "Auteur non renseigné",
+      "license": "CC0",
+      "resource_name": "gem_jade_jadeite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:MET_1981_296_40-41_49_65-71_226269.jpg",
+      "title": "File:MET 1981 296 40-41 49 65-71 226269.jpg",
+      "type": "BRUTE"
     }
   ],
   "jeremejevite": [
@@ -720,7 +737,16 @@
       "type": "FACETTEE"
     }
   ],
-  "perle": [],
+  "perle": [
+    {
+      "artist": "Johannes Vermeer",
+      "license": "Public domain",
+      "resource_name": "gem_perle_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1665_Girl_with_a_Pearl_Earring.jpg",
+      "title": "File:1665 Girl with a Pearl Earring.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "pierre-de-lune": [
     {
       "artist": "Wouter Hagens",
@@ -821,6 +847,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Yogo2783_Close_crop.JPG",
       "title": "File:Yogo2783 Close crop.JPG",
       "type": "FACETTEE"
+    },
+    {
+      "artist": "James St. John",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_saphir_bleu_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Sapphire_(corundum)_(26663158752).jpg",
+      "title": "File:Sapphire (corundum) (26663158752).jpg",
+      "type": "BRUTE"
     }
   ],
   "saphir-jaune": [
