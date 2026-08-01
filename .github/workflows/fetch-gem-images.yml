@@ -36,5 +36,12 @@ jobs:
             echo "Rien à committer."
           else
             git commit -m "chore: photos des gemmes (Wikimedia Commons, licences libres)"
-            git push
+            for attempt in 1 2 3 4 5; do
+              if git push; then
+                break
+              fi
+              echo "Push rejeté (branche mise à jour entre-temps), rebase et nouvel essai..."
+              git fetch origin "$GITHUB_REF_NAME"
+              git rebase "origin/$GITHUB_REF_NAME"
+            done
           fi
