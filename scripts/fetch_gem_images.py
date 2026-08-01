@@ -48,13 +48,13 @@ GEMS = [
     ("grenat-almandin", ["Almandine garnet"], ["almandine", "garnet"], (BRUTE, FACETTEE)),
     ("spinelle-rouge", ["Red spinel"], ["spinel"], (BRUTE, FACETTEE)),
     ("tourmaline-rubellite", ["Rubellite tourmaline"], ["tourmaline", "rubellite"], (BRUTE, FACETTEE)),
-    ("grenat-rhodolite", ["Rhodolite garnet", "Rhodolite crystal", "Rhodolite"], ["rhodolite", "garnet"], (BRUTE, FACETTEE)),
+    ("grenat-rhodolite", ["Rhodolite garnet", "Rhodolite crystal", "Rhodolite", "Pyrope almandine garnet crystal", "Garnet crystal red purple"], ["rhodolite", "garnet", "pyrope", "almandine"], (BRUTE, FACETTEE)),
     ("painite", ["Painite"], ["painite"], (BRUTE, FACETTEE)),
     ("grenat-spessartite", ["Spessartite garnet", "Spessartine garnet", "Spessartine crystal"], ["spessartite", "spessartine", "garnet"], (BRUTE, FACETTEE)),
     ("topaze-imperiale", ["Imperial topaz"], ["topaz"], (BRUTE, FACETTEE)),
     ("hessonite", ["Hessonite garnet", "Hessonite"], ["hessonite"], (BRUTE, FACETTEE)),
-    ("opale-de-feu", ["Fire opal", "Fire opal rough", "Mexican fire opal"], ["opal"], (BRUTE, FACETTEE)),
-    ("padparadscha", ["Padparadscha sapphire", "Padparadscha sapphire crystal", "Padparadscha sapphire rough"], ["padparadscha", "sapphire"], (BRUTE, FACETTEE)),
+    ("opale-de-feu", ["Fire opal", "Fire opal rough", "Mexican fire opal", "Opal rough Queretaro", "Orange opal rough"], ["opal"], (BRUTE, FACETTEE)),
+    ("padparadscha", ["Padparadscha sapphire", "Padparadscha sapphire crystal", "Padparadscha sapphire rough", "Corundum crystal pink orange", "Padparadscha corundum"], ["padparadscha", "sapphire", "corundum"], (BRUTE, FACETTEE)),
     ("cornaline", ["Carnelian"], ["carnelian", "cornelian"], (BRUTE, FACETTEE)),
     ("saphir-jaune", ["Yellow sapphire"], ["sapphire"], (BRUTE, FACETTEE)),
     ("citrine", ["Citrine"], ["citrine"], (BRUTE, FACETTEE)),
@@ -69,7 +69,7 @@ GEMS = [
     ("tourmaline-verte", ["Green tourmaline"], ["tourmaline"], (BRUTE, FACETTEE)),
     ("demantoide", ["Demantoid garnet"], ["demantoid", "garnet"], (BRUTE, FACETTEE)),
     ("uvarovite", ["Uvarovite garnet", "Uvarovite"], ["uvarovite"], (BRUTE, FACETTEE)),
-    ("vesuvianite", ["Vesuvianite", "Idocrase", "Vesuvianite faceted gem", "Idocrase faceted"], ["vesuvianite", "idocrase"], (BRUTE, FACETTEE)),
+    ("vesuvianite", ["Vesuvianite", "Idocrase", "Vesuvianite faceted gem", "Idocrase faceted", "Idocrase cut gem", "Californite cabochon"], ["vesuvianite", "idocrase", "californite"], (BRUTE, FACETTEE)),
     ("prehnite", ["Prehnite"], ["prehnite"], (BRUTE, FACETTEE)),
     ("chrysocolle", ["Chrysocolla"], ["chrysocolla"], (BRUTE, FACETTEE)),
     ("variscite", ["Variscite"], ["variscite"], (BRUTE, FACETTEE)),
@@ -82,17 +82,17 @@ GEMS = [
     ("turquoise", ["Turquoise gemstone", "Turquoise mineral"], ["turquoise"], (BRUTE, FACETTEE)),
     ("spinelle-bleu", ["Blue spinel"], ["spinel"], (BRUTE, FACETTEE)),
     ("paraiba-tourmaline", ["Paraiba tourmaline"], ["paraiba", "tourmaline"], (BRUTE, FACETTEE)),
-    ("apatite-bleue", ["Neon blue apatite", "Blue apatite", "Apatite faceted gemstone", "Paraiba apatite"], ["apatite"], (BRUTE, FACETTEE)),
+    ("apatite-bleue", ["Neon blue apatite", "Blue apatite", "Apatite faceted gemstone", "Paraiba apatite", "Apatite cut gem", "Apatite gemstone Madagascar"], ["apatite"], (BRUTE, FACETTEE)),
     ("cyanite", ["Kyanite gemstone", "Kyanite"], ["kyanite", "cyanite"], (BRUTE, FACETTEE)),
     ("benitoite", ["Benitoite"], ["benitoite"], (BRUTE, FACETTEE)),
-    ("jeremejevite", ["Jeremejevite", "Jeremejevite gem", "Jeremejevite Namibia", "Jeremejewite"], ["jeremejevite", "jeremejewite"], (BRUTE, FACETTEE)),
+    ("jeremejevite", ["Jeremejevite", "Jeremejevite gem", "Jeremejevite Namibia", "Jeremejewite", "Jeremejevite faceted", "Jeremejevite cut gem"], ["jeremejevite", "jeremejewite"], (BRUTE, FACETTEE)),
     ("amethyste", ["Amethyst"], ["amethyst"], (BRUTE, FACETTEE)),
     ("spinelle-violet", ["Purple spinel"], ["spinel"], (BRUTE, FACETTEE)),
     ("iolite", ["Iolite cordierite", "Iolite"], ["iolite", "cordierite"], (BRUTE, FACETTEE)),
     (
         "grenat-rhodolite-violet",
-        ["Purple rhodolite garnet", "Rhodolite garnet purple", "Rhodolite garnet", "Rhodolite crystal", "Pyrope garnet rough"],
-        ["rhodolite", "garnet", "pyrope"],
+        ["Purple rhodolite garnet", "Rhodolite garnet purple", "Rhodolite garnet", "Rhodolite crystal", "Pyrope garnet rough", "Garnet crystal purple rough", "Almandine garnet rough crystal"],
+        ["rhodolite", "garnet", "pyrope", "almandine"],
         (BRUTE, FACETTEE),
     ),
     ("sugilite", ["Sugilite"], ["sugilite"], (BRUTE, FACETTEE)),
@@ -101,7 +101,7 @@ GEMS = [
     ("axinite", ["Axinite gemstone", "Axinite"], ["axinite"], (BRUTE, FACETTEE)),
     ("morganite", ["Morganite beryl", "Morganite"], ["morganite"], (BRUTE, FACETTEE)),
     ("kunzite", ["Kunzite"], ["kunzite"], (BRUTE, FACETTEE)),
-    ("saphir-rose", ["Pink sapphire", "Pink sapphire rough", "Pink corundum crystal"], ["sapphire", "corundum"], (BRUTE, FACETTEE)),
+    ("saphir-rose", ["Pink sapphire", "Pink sapphire rough", "Pink corundum crystal", "Ceylon sapphire crystal pink", "Corundum crystal pink rough"], ["sapphire", "corundum"], (BRUTE, FACETTEE)),
     ("tourmaline-rose", ["Pink tourmaline"], ["tourmaline"], (BRUTE, FACETTEE)),
     ("rhodochrosite", ["Rhodochrosite"], ["rhodochrosite"], (BRUTE, FACETTEE)),
     ("diamant", ["Diamond"], ["diamond"], (BRUTE, FACETTEE)),
@@ -111,10 +111,10 @@ GEMS = [
     ("danburite", ["Danburite gemstone", "Danburite"], ["danburite"], (BRUTE, FACETTEE)),
     ("quartz-fume", ["Smoky quartz"], ["smoky", "quartz"], (BRUTE, FACETTEE)),
     ("andalousite", ["Andalusite gemstone", "Andalusite"], ["andalusite"], (BRUTE, FACETTEE)),
-    ("sinhalite", ["Sinhalite gemstone", "Sinhalite", "Sinhalite crystal", "Sinhalite mineral", "Sinhalite Sri Lanka"], ["sinhalite"], (BRUTE, FACETTEE)),
+    ("sinhalite", ["Sinhalite gemstone", "Sinhalite", "Sinhalite crystal", "Sinhalite mineral", "Sinhalite Sri Lanka", "Sinhalite specimen", "Sinhalite Mogok"], ["sinhalite"], (BRUTE, FACETTEE)),
     ("staurotide", ["Staurolite"], ["staurolite"], (BRUTE, FACETTEE)),
     ("sphene", ["Sphene titanite", "Titanite gemstone"], ["sphene", "titanite"], (BRUTE, FACETTEE)),
-    ("onyx", ["Onyx gemstone", "Onyx chalcedony", "Onyx rough", "Banded chalcedony rough"], ["onyx", "chalcedony"], (BRUTE, FACETTEE)),
+    ("onyx", ["Onyx gemstone", "Onyx chalcedony", "Onyx rough", "Banded chalcedony rough", "Agate onyx nodule rough", "Black banded agate rough"], ["onyx", "chalcedony", "agate"], (BRUTE, FACETTEE)),
     ("spinelle-noir", ["Black spinel"], ["spinel"], (BRUTE, FACETTEE)),
     ("tourmaline-noire", ["Schorl tourmaline", "Schorl"], ["schorl", "tourmaline"], (BRUTE, FACETTEE)),
     ("obsidienne", ["Obsidian"], ["obsidian"], (BRUTE, FACETTEE)),
@@ -127,8 +127,8 @@ GEMS = [
         (BRUTE, FACETTEE),
     ),
     ("labradorite", ["Labradorite"], ["labradorite"], (BRUTE, FACETTEE)),
-    ("pierre-de-lune", ["Moonstone gemstone", "Moonstone feldspar", "Adularia rough", "Moonstone crystal"], ["moonstone", "adularia"], (BRUTE, FACETTEE)),
-    ("pierre-de-soleil", ["Sunstone gemstone", "Sunstone feldspar", "Oligoclase rough", "Sunstone crystal"], ["sunstone", "oligoclase"], (BRUTE, FACETTEE)),
+    ("pierre-de-lune", ["Moonstone gemstone", "Moonstone feldspar", "Adularia rough", "Moonstone crystal", "Orthoclase feldspar rough", "Adularia crystal Sri Lanka"], ["moonstone", "adularia", "orthoclase"], (BRUTE, FACETTEE)),
+    ("pierre-de-soleil", ["Sunstone gemstone", "Sunstone feldspar", "Oligoclase rough", "Sunstone crystal", "Andesine feldspar rough", "Oregon sunstone rough"], ["sunstone", "oligoclase", "andesine"], (BRUTE, FACETTEE)),
     ("fluorine", ["Fluorite gemstone", "Fluorite"], ["fluorite", "fluorspar"], (BRUTE, FACETTEE)),
     ("ammolite", ["Ammolite", "Ammolite rough", "Ammonite shell fragment"], ["ammolite", "ammonite"], (BRUTE, FACETTEE)),
     ("ambre", ["Amber gemstone", "Baltic amber"], ["amber"], (BRUTE, FACETTEE)),
@@ -208,7 +208,7 @@ def license_is_free(license_short: str) -> bool:
     return bool(ALLOWED_LICENSE_RE.match(normalized))
 
 
-def search_candidates(query: str, limit: int = 8) -> list:
+def search_candidates(query: str, limit: int = 15) -> list:
     data = api_get({
         "action": "query",
         "list": "search",
@@ -266,7 +266,7 @@ def pick_image(terms: list, keywords: list, image_type: str, already_used_titles
                     continue
 
                 width = info.get("width", 0)
-                if width and width < 400:
+                if width and width < 300:
                     continue
 
                 description = strip_html(extmeta.get("ImageDescription", {}).get("value", ""))
