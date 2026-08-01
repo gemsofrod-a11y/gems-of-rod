@@ -157,7 +157,22 @@ EXCLUDED_TITLE_TOKENS = [
     "semi-precious gemstones", "gem.pebbles", "colored stones.jpg",
     "diamond age zones", "cathodoluminescence", "zircon bracelet",
     "cubic zirconia",
+    "grenat tsavorite(madagascar)", "lapis lazuli - flickr - the central",
+    "cordiérite var. iolite", "gemstone collection - black toumaline",
+    "pezzottaïte, amazonite, zircon",
 ]
+
+# gem_id -> types pour lesquels on a renoncé à trouver une photo fiable
+# (les recherches automatiques ne renvoient que des cristaux bruts, des
+# collages ambigus ou des espèces voisines) ; on ne retente plus tant que
+# cette liste n'est pas éditée à la main après vérification visuelle.
+GIVE_UP_SLOTS = {
+    ("lapis-lazuli", FACETTEE),
+    ("tsavorite", FACETTEE),
+    ("iolite", FACETTEE),
+    ("tourmaline-noire", FACETTEE),
+    ("zircon-blanc", FACETTEE),
+}
 
 # Mots qui trahissent une photo de pierre BRUTE quand on cherche une FACETTÉE,
 # et inversement — évite qu'une recherche "faceted gemstone" ne renvoie une
@@ -423,6 +438,11 @@ def main() -> None:
                 if existing_dest.exists():
                     status[image_type] = f"♻️ [{existing['title']}]({existing['source_url']})"
                     continue
+
+            if (gem_id, image_type) in GIVE_UP_SLOTS:
+                print(f"-> {gem_id} [{image_type}]: recherche abandonnée (voir GIVE_UP_SLOTS)")
+                status[image_type] = "⏸️ recherche suspendue"
+                continue
 
             resource_name = safe_resource_name(gem_id, image_type)
             dest = DRAWABLE_DIR / f"{resource_name}.jpg"

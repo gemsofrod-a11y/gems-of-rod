@@ -497,14 +497,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Cordierite-pas-16c.jpg",
       "title": "File:Cordierite-pas-16c.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "Parent Géry",
-      "license": "CC BY-SA 3.0",
-      "resource_name": "gem_iolite_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Cordiérite_var._iolite_3.jpg",
-      "title": "File:Cordiérite var. iolite 3.jpg",
-      "type": "FACETTEE"
     }
   ],
   "jade-jadeite": [
@@ -579,14 +571,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Lazurite-159353.jpg",
       "title": "File:Lazurite-159353.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "The Central Intelligence Agency",
-      "license": "Public domain",
-      "resource_name": "gem_lapis_lazuli_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Lapis_Lazuli_-_Flickr_-_The_Central_Intelligence_Agency.jpg",
-      "title": "File:Lapis Lazuli - Flickr - The Central Intelligence Agency.jpg",
-      "type": "FACETTEE"
     }
   ],
   "morganite": [
@@ -1078,14 +1062,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Schorl_tourmaline_3_(32115883705).jpg",
       "title": "File:Schorl tourmaline 3 (32115883705).jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "Marco Hazard from Hong Kong, Hong Kong",
-      "license": "CC BY-SA 2.0",
-      "resource_name": "gem_tourmaline_noire_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Gemstone_Collection_-_Black_Toumaline_(15645962969).jpg",
-      "title": "File:Gemstone Collection - Black Toumaline (15645962969).jpg",
-      "type": "FACETTEE"
     }
   ],
   "tourmaline-pasteque": [
@@ -1168,14 +1144,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Grossular-d06-191b.jpg",
       "title": "File:Grossular-d06-191b.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "Parent Géry",
-      "license": "Public domain",
-      "resource_name": "gem_tsavorite_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Grenat_tsavorite(Madagascar).jpg",
-      "title": "File:Grenat tsavorite(Madagascar).jpg",
-      "type": "FACETTEE"
     }
   ],
   "turquoise": [
@@ -1250,14 +1218,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Zircon_(GeoDIL_number_-_255).jpg",
       "title": "File:Zircon (GeoDIL number - 255).jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "Géry PARENT",
-      "license": "CC BY-SA 3.0",
-      "resource_name": "gem_zircon_blanc_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Pezzottaïte,_amazonite,_zircon_1.jpeg",
-      "title": "File:Pezzottaïte, amazonite, zircon 1.jpeg",
-      "type": "FACETTEE"
     }
   ]
 }
