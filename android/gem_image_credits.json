@@ -745,7 +745,16 @@
       "type": "FACETTEE"
     }
   ],
-  "perle": [],
+  "perle": [
+    {
+      "artist": "North Lincolnshire Museum, Martin Foreman, 2016-11-22 12:20:31",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_perle_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Post-Medieval_Badge_(FindID_815472).jpg",
+      "title": "File:Post-Medieval Badge (FindID 815472).jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "pierre-de-lune": [
     {
       "artist": "Wouter Hagens",
@@ -920,6 +929,7 @@
       "type": "FACETTEE"
     }
   ],
+  "sinhalite": [],
   "sphene": [
     {
       "artist": "Shannon Heinle",
