@@ -79,6 +79,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Ammolite.jpg",
       "title": "File:Ammolite.jpg",
       "type": "FACETTEE"
+    },
+    {
+      "artist": "Geological Society of London",
+      "license": "Public domain",
+      "resource_name": "gem_ammolite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:The_Quarterly_journal_of_the_Geological_Society_of_London_(12733843075).jpg",
+      "title": "File:The Quarterly journal of the Geological Society of London (12733843075).jpg",
+      "type": "BRUTE"
     }
   ],
   "andalousite": [
@@ -443,6 +451,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Orange_spessartine_garnet_2.jpg",
       "title": "File:Orange spessartine garnet 2.jpg",
       "type": "FACETTEE"
+    },
+    {
+      "artist": "Shannon Heinle",
+      "license": "CC0",
+      "resource_name": "gem_grenat_spessartite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Spessartine_(Mn_garnet)_(GeoDIL_number_-_341).jpg",
+      "title": "File:Spessartine (Mn garnet) (GeoDIL number - 341).jpg",
+      "type": "BRUTE"
     }
   ],
   "heliodore": [
@@ -911,6 +927,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Antigorite_(variety_Bowenite)-346848.jpg",
       "title": "File:Antigorite (variety Bowenite)-346848.jpg",
       "type": "FACETTEE"
+    },
+    {
+      "artist": "Nicholas Matthew Condy",
+      "license": "Public domain",
+      "resource_name": "gem_serpentine_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Crystal_Palace_from_the_Serpentine_-_Nicholas_Matthew_Condy_-_60_1937_4.png",
+      "title": "File:Crystal Palace from the Serpentine - Nicholas Matthew Condy - 60 1937 4.png",
+      "type": "BRUTE"
     }
   ],
   "sinhalite": [],
