@@ -266,7 +266,8 @@ EXCLUDED_TITLE_TOKENS = [
     "raw azuerite malachite", "azurite malachite cabochon gemstone",
     "corallium rubrum (red coral) 2", "crisocola azurite",
     "levigating azurite", "carbonate minerals and crystals display",
-    "rubis, calcite 14",
+    "rubis, calcite 14", "citrine x smoky quartz",
+    "sapphire (corundum) (26663158752)",
     "azurite malachite", "malachite azurite", "azurite-malachite",
     "orange onyx", "jupiter's tear",
     "pyrometallury",
@@ -290,6 +291,7 @@ GIVE_UP_SLOTS = {
     ("violane", FACETTEE),
     ("onyx", BRUTE),
     ("andesine", BRUTE),
+    ("saphir-vert", BRUTE),
 }
 
 # Mots qui trahissent une photo de pierre BRUTE quand on cherche une FACETTÉE,

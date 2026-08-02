@@ -1841,14 +1841,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Beryl-Quartz-74810.jpg",
       "title": "File:Beryl-Quartz-74810.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "AdamStejskal",
-      "license": "CC BY 4.0",
-      "resource_name": "gem_quartz_fume_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Citrine_x_Smoky_quartz_gemstone_from_Czech_Republic_South_of_Bohemia.jpg",
-      "title": "File:Citrine x Smoky quartz gemstone from Czech Republic South of Bohemia.jpg",
-      "type": "FACETTEE"
     }
   ],
   "quartz-rose": [
@@ -2069,14 +2061,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:3.54ct-oval-Australian-sapphire-Lizunova-Fine-Jewels-Jeweller-Sydney-NSW-Australia.jpg",
       "title": "File:3.54ct-oval-Australian-sapphire-Lizunova-Fine-Jewels-Jeweller-Sydney-NSW-Australia.jpg",
       "type": "FACETTEE"
-    },
-    {
-      "artist": "James St. John",
-      "license": "CC BY 2.0",
-      "resource_name": "gem_saphir_vert_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Sapphire_(corundum)_(26663158752).jpg",
-      "title": "File:Sapphire (corundum) (26663158752).jpg",
-      "type": "BRUTE"
     }
   ],
   "saphir-violet": [],
