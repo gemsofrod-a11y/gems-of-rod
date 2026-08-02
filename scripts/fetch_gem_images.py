@@ -114,7 +114,7 @@ GEMS = [
     ("sinhalite", ["Sinhalite gemstone", "Sinhalite", "Sinhalite crystal", "Sinhalite mineral", "Sinhalite Sri Lanka", "Sinhalite specimen", "Sinhalite Mogok"], ["sinhalite"], (BRUTE, FACETTEE)),
     ("staurotide", ["Staurolite"], ["staurolite"], (BRUTE, FACETTEE)),
     ("sphene", ["Sphene titanite", "Titanite gemstone"], ["sphene", "titanite"], (BRUTE, FACETTEE)),
-    ("onyx", ["Onyx gemstone", "Onyx chalcedony", "Onyx rough", "Banded chalcedony rough", "Agate onyx nodule rough", "Black banded agate rough"], ["onyx", "chalcedony", "agate"], (BRUTE, FACETTEE)),
+    ("onyx", ["Black onyx rough", "Black onyx chalcedony", "Black banded agate rough", "Onyx nodule black rough"], ["onyx", "chalcedony", "agate"], (BRUTE,)),
     ("spinelle-noir", ["Black spinel"], ["spinel"], (BRUTE, FACETTEE)),
     ("tourmaline-noire", ["Schorl tourmaline", "Schorl"], ["schorl", "tourmaline"], (BRUTE, FACETTEE)),
     ("obsidienne", ["Obsidian"], ["obsidian"], (BRUTE, FACETTEE)),
@@ -263,6 +263,7 @@ EXCLUDED_TITLE_TOKENS = [
     "andesine (organic compound)", "eb1911", "bulletin ", "rubies encased",
     "wedding anniversary set", "tojinbo cliffs", "heliophorus androcles",
     "corundum with andesine and biotite", "01722 andesine",
+    "orange onyx", "jupiter's tear",
     "pyrometallury",
 ]
 
