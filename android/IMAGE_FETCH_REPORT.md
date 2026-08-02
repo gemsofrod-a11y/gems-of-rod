@@ -70,7 +70,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | sinhalite | ♻️ [File:Sinhalite. Wet Lu mine, Mogok, Burma-9122.jpg](https://commons.wikimedia.org/wiki/File:Sinhalite._Wet_Lu_mine,_Mogok,_Burma-9122.jpg) | ♻️ [File:Sinhalite. Wet Lu mine, Mogok, Burma-9121.jpg](https://commons.wikimedia.org/wiki/File:Sinhalite._Wet_Lu_mine,_Mogok,_Burma-9121.jpg) |
 | staurotide | ♻️ [File:Staurolite-26463.jpg](https://commons.wikimedia.org/wiki/File:Staurolite-26463.jpg) | ♻️ [File:Staurolite cut.jpg](https://commons.wikimedia.org/wiki/File:Staurolite_cut.jpg) |
 | sphene | ♻️ [File:Titanite (sphene) (GeoDIL number - 259).jpg](https://commons.wikimedia.org/wiki/File:Titanite_(sphene)_(GeoDIL_number_-_259).jpg) | ♻️ [File:Titanite, Albite, Epidote, Minas Gerais, Brazil-8799.jpg](https://commons.wikimedia.org/wiki/File:Titanite,_Albite,_Epidote,_Minas_Gerais,_Brazil-8799.jpg) |
-| onyx | ✅ [File:Hermitage hall 129 - Pompeian hall 11.jpg](https://commons.wikimedia.org/wiki/File:Hermitage_hall_129_-_Pompeian_hall_11.jpg) | — |
+| onyx | ⏸️ recherche suspendue | ♻️ [File:Onyx.jpg](https://commons.wikimedia.org/wiki/File:Onyx.jpg) |
 | spinelle-noir | ♻️ [File:Picotite (GeoDIL number - 1573).jpg](https://commons.wikimedia.org/wiki/File:Picotite_(GeoDIL_number_-_1573).jpg) | ♻️ [File:Black spinel from Sri Lanka. Erbil Stones and Gems Museum, Erbil Citadel, Hawler, Iraq.jpg](https://commons.wikimedia.org/wiki/File:Black_spinel_from_Sri_Lanka._Erbil_Stones_and_Gems_Museum,_Erbil_Citadel,_Hawler,_Iraq.jpg) |
 | tourmaline-noire | ♻️ [File:Schorl tourmaline 3 (32115883705).jpg](https://commons.wikimedia.org/wiki/File:Schorl_tourmaline_3_(32115883705).jpg) | ⏸️ recherche suspendue |
 | obsidienne | ♻️ [File:Obsidian & devitrified obsidian gravel (Obsidian Cliff, Yellowstone, Wyoming, USA) 4.jpg](https://commons.wikimedia.org/wiki/File:Obsidian_&_devitrified_obsidian_gravel_(Obsidian_Cliff,_Yellowstone,_Wyoming,_USA)_4.jpg) | ♻️ [File:Opal and Gemstone Studio, Hahndorf 20251219-122436.jpg](https://commons.wikimedia.org/wiki/File:Opal_and_Gemstone_Studio,_Hahndorf_20251219-122436.jpg) |
@@ -170,7 +170,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | moldavite | ♻️ [File:Moldavite Besednice.jpg](https://commons.wikimedia.org/wiki/File:Moldavite_Besednice.jpg) | ♻️ [File:Faceted natural Moldavite - Moldavite gemstones.jpg](https://commons.wikimedia.org/wiki/File:Faceted_natural_Moldavite_-_Moldavite_gemstones.jpg) |
 | verre-libyque | ♻️ [File:Libyan Desert Glass.jpg](https://commons.wikimedia.org/wiki/File:Libyan_Desert_Glass.jpg) | ♻️ [File:Libyan desert glass 3.jpg](https://commons.wikimedia.org/wiki/File:Libyan_desert_glass_3.jpg) |
 | saphir-vert | ♻️ [File:Sapphire (corundum) (26663158752).jpg](https://commons.wikimedia.org/wiki/File:Sapphire_(corundum)_(26663158752).jpg) | ♻️ [File:3.54ct-oval-Australian-sapphire-Lizunova-Fine-Jewels-Jeweller-Sydney-NSW-Australia.jpg](https://commons.wikimedia.org/wiki/File:3.54ct-oval-Australian-sapphire-Lizunova-Fine-Jewels-Jeweller-Sydney-NSW-Australia.jpg) |
-| andesine | ❌ non trouvée | ❌ non trouvée |
+| andesine | ⏸️ recherche suspendue | ❌ non trouvée |
 | chondrodite | ♻️ [File:Spinelle et chondrodite (Chine).JPG](https://commons.wikimedia.org/wiki/File:Spinelle_et_chondrodite_(Chine).JPG) | ♻️ [File:Spinelle et chondrodite (Chine) 2.JPG](https://commons.wikimedia.org/wiki/File:Spinelle_et_chondrodite_(Chine)_2.JPG) |
 | enstatite | ♻️ [File:Hypersthene - Enstatite-Ferrosilite-serial.jpg](https://commons.wikimedia.org/wiki/File:Hypersthene_-_Enstatite-Ferrosilite-serial.jpg) | ♻️ [File:Garnet lherzolite - xenolith from a kimberlite pipe (Precambrian, likely Archean; Kimberley, central South Africa) 1 (15001208861).jpg](https://commons.wikimedia.org/wiki/File:Garnet_lherzolite_-_xenolith_from_a_kimberlite_pipe_(Precambrian,_likely_Archean;_Kimberley,_central_South_Africa)_1_(15001208861).jpg) |
 | sphalerite | ♻️ [File:Sphalerite (GeoDIL number - 1083).jpg](https://commons.wikimedia.org/wiki/File:Sphalerite_(GeoDIL_number_-_1083).jpg) | ♻️ [File:Sphalerite cut.jpg](https://commons.wikimedia.org/wiki/File:Sphalerite_cut.jpg) |
@@ -179,4 +179,4 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | corail | ♻️ [File:Corallium rubrum (red coral) 2 (15529370228).jpg](https://commons.wikimedia.org/wiki/File:Corallium_rubrum_(red_coral)_2_(15529370228).jpg) | ♻️ [File:Red coral gemstone.jpg](https://commons.wikimedia.org/wiki/File:Red_coral_gemstone.jpg) |
 | perle-conque | — | ♻️ [File:- conch pearl.png](https://commons.wikimedia.org/wiki/File:-_conch_pearl.png) |
 
-**310 / 343** photos récupérées au total.
+**309 / 344** photos récupérées au total.
