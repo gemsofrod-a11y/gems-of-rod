@@ -19,14 +19,6 @@
   ],
   "agate": [
     {
-      "artist": "RegionVisitor90",
-      "license": "CC0",
-      "resource_name": "gem_agate_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Opal_and_Gemstone_Studio,_Hahndorf_20251219-122458.jpg",
-      "title": "File:Opal and Gemstone Studio, Hahndorf 20251219-122458.jpg",
-      "type": "FACETTEE"
-    },
-    {
       "artist": "Motekov",
       "license": "CC BY 4.0",
       "resource_name": "gem_agate_brute",
@@ -126,14 +118,6 @@
     }
   ],
   "ammolite": [
-    {
-      "artist": "Auteur non renseigné",
-      "license": "CC BY-SA 3.0",
-      "resource_name": "gem_ammolite_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Ammolite.jpg",
-      "title": "File:Ammolite.jpg",
-      "type": "FACETTEE"
-    },
     {
       "artist": "A Cynical Idealist",
       "license": "CC BY 4.0",
@@ -242,14 +226,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Azurite,_Burra_Mine,_South_Australia.jpg",
       "title": "File:Azurite, Burra Mine, South Australia.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "WantuchWaclaw",
-      "license": "CC BY 4.0",
-      "resource_name": "gem_azurite_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:File_Sedimentation_of_azurite_fraction_Waclaw_Wantuch_03.jpg",
-      "title": "File:File Sedimentation of azurite fraction Waclaw Wantuch 03.jpg",
-      "type": "FACETTEE"
     }
   ],
   "baryte": [
@@ -504,25 +480,9 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Crisocola_azurite_35è_édition_Fossilium_V.Ascq.JPG",
       "title": "File:Crisocola azurite 35è édition Fossilium V.Ascq.JPG",
       "type": "BRUTE"
-    },
-    {
-      "artist": "Lloyd.james0615",
-      "license": "CC BY 3.0",
-      "resource_name": "gem_chrysocolle_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Chrysocolla.jpg",
-      "title": "File:Chrysocolla.jpg",
-      "type": "FACETTEE"
     }
   ],
   "chrysoprase": [
-    {
-      "artist": "Parent Géry",
-      "license": "Public domain",
-      "resource_name": "gem_chrysoprase_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Chrysoprase_brute_2(Australie).jpg",
-      "title": "File:Chrysoprase brute 2(Australie).jpg",
-      "type": "FACETTEE"
-    },
     {
       "artist": "Parent Géry",
       "license": "Public domain",
@@ -576,14 +536,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Corallium_rubrum_(red_coral)_2_(15529370228).jpg",
       "title": "File:Corallium rubrum (red coral) 2 (15529370228).jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "rasmita nayak",
-      "license": "CC BY-SA 4.0",
-      "resource_name": "gem_corail_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Red_coral_gemstone.jpg",
-      "title": "File:Red coral gemstone.jpg",
-      "type": "FACETTEE"
     }
   ],
   "cornaline": [
@@ -1110,14 +1062,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Pyrit-with-hematite-01.jpg",
       "title": "File:Pyrit-with-hematite-01.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "Mauro Cateb",
-      "license": "CC BY-SA 3.0",
-      "resource_name": "gem_hematite_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Gemstone_hearts.JPG",
-      "title": "File:Gemstone hearts.JPG",
-      "type": "FACETTEE"
     }
   ],
   "hemimorphite": [

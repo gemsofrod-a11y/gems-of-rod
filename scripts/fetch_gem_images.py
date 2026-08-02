@@ -271,6 +271,9 @@ EXCLUDED_TITLE_TOKENS = [
     "azurite malachite", "malachite azurite", "azurite-malachite",
     "orange onyx", "jupiter's tear",
     "pyrometallury",
+    "opal and gemstone studio, hahndorf", "sedimentation of azurite fraction",
+    "chrysocolla.jpg", "chrysoprase brute", "red coral gemstone.jpg",
+    "gemstone hearts",
 ]
 
 # gem_id -> types pour lesquels on a renoncé à trouver une photo fiable
