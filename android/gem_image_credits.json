@@ -206,14 +206,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Carbonate_Minerals_and_Crystals_Display.jpg",
       "title": "File:Carbonate Minerals and Crystals Display.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "James St. John",
-      "license": "CC BY 2.0",
-      "resource_name": "gem_aragonite_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Corallium_rubrum_(red_coral)_2_(15529370228).jpg",
-      "title": "File:Corallium rubrum (red coral) 2 (15529370228).jpg",
-      "type": "FACETTEE"
     }
   ],
   "axinite": [
@@ -986,14 +978,6 @@
     }
   ],
   "grenat-rhodolite-violet": [
-    {
-      "artist": "Darla Sondrol",
-      "license": "CC0",
-      "resource_name": "gem_grenat_rhodolite_violet_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Rhodolite_(GeoDIL_number_-_2752).jpg",
-      "title": "File:Rhodolite (GeoDIL number - 2752).jpg",
-      "type": "FACETTEE"
-    },
     {
       "artist": "Géry PARENT",
       "license": "Public domain",
@@ -1771,14 +1755,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Pyrite_-_Huanzala_mine,_Huallanca,_Bolognesi,_Ancash,_Peru.jpg",
       "title": "File:Pyrite - Huanzala mine, Huallanca, Bolognesi, Ancash, Peru.jpg",
       "type": "FACETTEE"
-    },
-    {
-      "artist": "Pierre André",
-      "license": "CC BY-SA 4.0",
-      "resource_name": "gem_pyrite_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Crisocola_azurite_35è_édition_Fossilium_V.Ascq.JPG",
-      "title": "File:Crisocola azurite 35è édition Fossilium V.Ascq.JPG",
-      "type": "BRUTE"
     }
   ],
   "quartz-a-inclusions": [
@@ -1807,14 +1783,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Beryl-Quartz-74810.jpg",
       "title": "File:Beryl-Quartz-74810.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "AdamStejskal",
-      "license": "CC BY 4.0",
-      "resource_name": "gem_quartz_fume_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Citrine_x_Smoky_quartz_gemstone_from_Czech_Republic_South_of_Bohemia.jpg",
-      "title": "File:Citrine x Smoky quartz gemstone from Czech Republic South of Bohemia.jpg",
-      "type": "FACETTEE"
     }
   ],
   "quartz-rose": [
@@ -2035,14 +2003,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:3.54ct-oval-Australian-sapphire-Lizunova-Fine-Jewels-Jeweller-Sydney-NSW-Australia.jpg",
       "title": "File:3.54ct-oval-Australian-sapphire-Lizunova-Fine-Jewels-Jeweller-Sydney-NSW-Australia.jpg",
       "type": "FACETTEE"
-    },
-    {
-      "artist": "James St. John",
-      "license": "CC BY 2.0",
-      "resource_name": "gem_saphir_vert_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Sapphire_(corundum)_(26663158752).jpg",
-      "title": "File:Sapphire (corundum) (26663158752).jpg",
-      "type": "BRUTE"
     }
   ],
   "saphir-violet": [],
@@ -2582,14 +2542,6 @@
     }
   ],
   "tourmaline-verte": [
-    {
-      "artist": "Robert M. Lavinsky",
-      "license": "CC BY-SA 3.0",
-      "resource_name": "gem_tourmaline_verte_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Iron-gem7-15b.jpg",
-      "title": "File:Iron-gem7-15b.jpg",
-      "type": "BRUTE"
-    },
     {
       "artist": "Auteur non renseigné",
       "license": "CC BY-SA 3.0",

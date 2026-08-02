@@ -264,6 +264,7 @@ EXCLUDED_TITLE_TOKENS = [
     "wedding anniversary set", "tojinbo cliffs", "heliophorus androcles",
     "corundum with andesine and biotite", "01722 andesine",
     "raw azuerite malachite", "azurite malachite cabochon gemstone",
+    "corallium rubrum (red coral) 2", "crisocola azurite",
     "azurite malachite", "malachite azurite", "azurite-malachite",
     "orange onyx", "jupiter's tear",
     "pyrometallury",
