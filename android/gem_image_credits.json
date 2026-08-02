@@ -1841,6 +1841,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Beryl-Quartz-74810.jpg",
       "title": "File:Beryl-Quartz-74810.jpg",
       "type": "BRUTE"
+    },
+    {
+      "artist": "Mauro Cateb",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_quartz_fume_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2_Smoky_quartz.JPG",
+      "title": "File:2 Smoky quartz.JPG",
+      "type": "FACETTEE"
     }
   ],
   "quartz-rose": [
