@@ -1511,6 +1511,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Onyx.jpg",
       "title": "File:Onyx.jpg",
       "type": "FACETTEE"
+    },
+    {
+      "artist": "Netelo",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_onyx_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Hermitage_hall_129_-_Pompeian_hall_11.jpg",
+      "title": "File:Hermitage hall 129 - Pompeian hall 11.jpg",
+      "type": "BRUTE"
     }
   ],
   "opale-de-feu": [

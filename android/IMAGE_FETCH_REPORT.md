@@ -70,7 +70,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | sinhalite | ♻️ [File:Sinhalite. Wet Lu mine, Mogok, Burma-9122.jpg](https://commons.wikimedia.org/wiki/File:Sinhalite._Wet_Lu_mine,_Mogok,_Burma-9122.jpg) | ♻️ [File:Sinhalite. Wet Lu mine, Mogok, Burma-9121.jpg](https://commons.wikimedia.org/wiki/File:Sinhalite._Wet_Lu_mine,_Mogok,_Burma-9121.jpg) |
 | staurotide | ♻️ [File:Staurolite-26463.jpg](https://commons.wikimedia.org/wiki/File:Staurolite-26463.jpg) | ♻️ [File:Staurolite cut.jpg](https://commons.wikimedia.org/wiki/File:Staurolite_cut.jpg) |
 | sphene | ♻️ [File:Titanite (sphene) (GeoDIL number - 259).jpg](https://commons.wikimedia.org/wiki/File:Titanite_(sphene)_(GeoDIL_number_-_259).jpg) | ♻️ [File:Titanite, Albite, Epidote, Minas Gerais, Brazil-8799.jpg](https://commons.wikimedia.org/wiki/File:Titanite,_Albite,_Epidote,_Minas_Gerais,_Brazil-8799.jpg) |
-| onyx | ✅ [File:Gemstone Collection - Jupiter's Tear (Orange Onyx) (15646349938).jpg](https://commons.wikimedia.org/wiki/File:Gemstone_Collection_-_Jupiter's_Tear_(Orange_Onyx)_(15646349938).jpg) | ♻️ [File:Onyx.jpg](https://commons.wikimedia.org/wiki/File:Onyx.jpg) |
+| onyx | ✅ [File:Hermitage hall 129 - Pompeian hall 11.jpg](https://commons.wikimedia.org/wiki/File:Hermitage_hall_129_-_Pompeian_hall_11.jpg) | — |
 | spinelle-noir | ♻️ [File:Picotite (GeoDIL number - 1573).jpg](https://commons.wikimedia.org/wiki/File:Picotite_(GeoDIL_number_-_1573).jpg) | ♻️ [File:Black spinel from Sri Lanka. Erbil Stones and Gems Museum, Erbil Citadel, Hawler, Iraq.jpg](https://commons.wikimedia.org/wiki/File:Black_spinel_from_Sri_Lanka._Erbil_Stones_and_Gems_Museum,_Erbil_Citadel,_Hawler,_Iraq.jpg) |
 | tourmaline-noire | ♻️ [File:Schorl tourmaline 3 (32115883705).jpg](https://commons.wikimedia.org/wiki/File:Schorl_tourmaline_3_(32115883705).jpg) | ⏸️ recherche suspendue |
 | obsidienne | ♻️ [File:Obsidian & devitrified obsidian gravel (Obsidian Cliff, Yellowstone, Wyoming, USA) 4.jpg](https://commons.wikimedia.org/wiki/File:Obsidian_&_devitrified_obsidian_gravel_(Obsidian_Cliff,_Yellowstone,_Wyoming,_USA)_4.jpg) | ♻️ [File:Opal and Gemstone Studio, Hahndorf 20251219-122436.jpg](https://commons.wikimedia.org/wiki/File:Opal_and_Gemstone_Studio,_Hahndorf_20251219-122436.jpg) |
@@ -179,4 +179,4 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | corail | ♻️ [File:Corallium rubrum (red coral) 2 (15529370228).jpg](https://commons.wikimedia.org/wiki/File:Corallium_rubrum_(red_coral)_2_(15529370228).jpg) | ♻️ [File:Red coral gemstone.jpg](https://commons.wikimedia.org/wiki/File:Red_coral_gemstone.jpg) |
 | perle-conque | — | ♻️ [File:- conch pearl.png](https://commons.wikimedia.org/wiki/File:-_conch_pearl.png) |
 
-**310 / 344** photos récupérées au total.
+**310 / 343** photos récupérées au total.
