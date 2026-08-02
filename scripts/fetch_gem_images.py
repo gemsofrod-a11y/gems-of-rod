@@ -273,6 +273,12 @@ GIVE_UP_SLOTS = {
     ("iolite", FACETTEE),
     ("tourmaline-noire", FACETTEE),
     ("zircon-blanc", FACETTEE),
+    ("saphir-violet", BRUTE),
+    ("saphir-violet", FACETTEE),
+    ("saphir-blanc", BRUTE),
+    ("saphir-blanc", FACETTEE),
+    ("quartz-tourmaline", BRUTE),
+    ("violane", FACETTEE),
 }
 
 # Mots qui trahissent une photo de pierre BRUTE quand on cherche une FACETTÉE,

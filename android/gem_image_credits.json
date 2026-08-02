@@ -1931,16 +1931,7 @@
       "type": "BRUTE"
     }
   ],
-  "quartz-tourmaline": [
-    {
-      "artist": "Meralt Limited",
-      "license": "CC BY-SA 4.0",
-      "resource_name": "gem_quartz_tourmaline_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Rutilated_Quartz_Specimen_from_Madagascar,_including_Copper_Rutiles_and_Schorl,_Polished.jpg",
-      "title": "File:Rutilated Quartz Specimen from Madagascar, including Copper Rutiles and Schorl, Polished.jpg",
-      "type": "BRUTE"
-    }
-  ],
+  "quartz-tourmaline": [],
   "rhodochrosite": [
     {
       "artist": "Robert M. Lavinsky",
@@ -2031,24 +2022,7 @@
       "type": "FACETTEE"
     }
   ],
-  "saphir-blanc": [
-    {
-      "artist": "Lorraine Hughes",
-      "license": "CC BY 2.0",
-      "resource_name": "gem_saphir_blanc_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Engagement_ring_18K_yellow_gold_with_yellow_sapphire_and_diamonds.jpg",
-      "title": "File:Engagement ring 18K yellow gold with yellow sapphire and diamonds.jpg",
-      "type": "BRUTE"
-    },
-    {
-      "artist": "David M Thorp",
-      "license": "CC BY-SA 4.0",
-      "resource_name": "gem_saphir_blanc_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:River_Scene_Ring_2.jpg",
-      "title": "File:River Scene Ring 2.jpg",
-      "type": "FACETTEE"
-    }
-  ],
+  "saphir-blanc": [],
   "saphir-bleu": [
     {
       "artist": "Montanabw",
@@ -2139,24 +2113,7 @@
       "type": "BRUTE"
     }
   ],
-  "saphir-violet": [
-    {
-      "artist": "James St. John",
-      "license": "CC BY 2.0",
-      "resource_name": "gem_saphir_violet_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Sapphire_(corundum)_(26663158752).jpg",
-      "title": "File:Sapphire (corundum) (26663158752).jpg",
-      "type": "BRUTE"
-    },
-    {
-      "artist": "The British Museum, Ian Richardson, 2017-02-10 12:02:58",
-      "license": "CC BY 2.0",
-      "resource_name": "gem_saphir_violet_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Medieval_gold_finger-ring_with_sapphire_(FindID_653035).jpg",
-      "title": "File:Medieval gold finger-ring with sapphire (FindID 653035).jpg",
-      "type": "FACETTEE"
-    }
-  ],
+  "saphir-violet": [],
   "sapphirine": [
     {
       "artist": "Parent Géry",
@@ -2818,14 +2775,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Naturkundemuseum_Berlin_-_Diopsid_(Violan),_St._Marcel,_Valle_d'Aosta,_Italien.jpg",
       "title": "File:Naturkundemuseum Berlin - Diopsid (Violan), St. Marcel, Valle d'Aosta, Italien.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "Shannon Heinle",
-      "license": "CC0",
-      "resource_name": "gem_violane_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Diopside_(GeoDIL_number_-_395).jpg",
-      "title": "File:Diopside (GeoDIL number - 395).jpg",
-      "type": "FACETTEE"
     }
   ],
   "zircon-blanc": [
