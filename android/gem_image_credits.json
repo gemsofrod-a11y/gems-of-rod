@@ -169,14 +169,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:01722_Andesine.jpg",
       "title": "File:01722 Andesine.jpg",
       "type": "FACETTEE"
-    },
-    {
-      "artist": "Mephisto spa",
-      "license": "Public domain",
-      "resource_name": "gem_andesine_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Andesine_(organic_compound).png",
-      "title": "File:Andesine (organic compound).png",
-      "type": "BRUTE"
     }
   ],
   "anhydrite": [
@@ -295,14 +287,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Bastnäsite-(Ce)_crystal_with_inclusions.jpg",
       "title": "File:Bastnäsite-(Ce) crystal with inclusions.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "Andi1008mi",
-      "license": "CC BY-SA 3.0",
-      "resource_name": "gem_bastnasite_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Pyrometallury_for_rare_earth_metal_extraction_from_bastnasite_ore.jpg",
-      "title": "File:Pyrometallury for rare earth metal extraction from bastnasite ore.jpg",
-      "type": "FACETTEE"
     }
   ],
   "benitoite": [
@@ -385,14 +369,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Chalcedony_cut.jpg",
       "title": "File:Chalcedony cut.jpg",
       "type": "FACETTEE"
-    },
-    {
-      "artist": "Urheber des Kreuzes de:Hermann Jünger, Fotografie von User:PantheraLeo1359531",
-      "license": "CC BY-SA 4.0",
-      "resource_name": "gem_calcedoine_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Ornamientiertes_Altarkreuz_von_Hermann_Jünger_20200203_RAW.png",
-      "title": "File:Ornamientiertes Altarkreuz von Hermann Jünger 20200203 RAW.png",
-      "type": "BRUTE"
     }
   ],
   "calcite": [
@@ -457,14 +433,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Cerussite_-_Nakhlak_mine,_Anarak,_Esfahan,_Iran.jpg",
       "title": "File:Cerussite - Nakhlak mine, Anarak, Esfahan, Iran.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "AnonymousUnknown author",
-      "license": "Public domain",
-      "resource_name": "gem_cerusite_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:EB1911_Cerussite_Fig._2.jpg",
-      "title": "File:EB1911 Cerussite Fig. 2.jpg",
-      "type": "FACETTEE"
     }
   ],
   "charoite": [
@@ -601,14 +569,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Corallium_rubrum_(red_coral)_2_(15529370228).jpg",
       "title": "File:Corallium rubrum (red coral) 2 (15529370228).jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "Nhobgood Nick Hobgood",
-      "license": "CC BY-SA 3.0",
-      "resource_name": "gem_corail_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Soft_coral_peach_komodo.jpg",
-      "title": "File:Soft coral peach komodo.jpg",
-      "type": "FACETTEE"
     }
   ],
   "cornaline": [
@@ -835,14 +795,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Hypersthene_-_Enstatite-Ferrosilite-serial.jpg",
       "title": "File:Hypersthene - Enstatite-Ferrosilite-serial.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "雷太",
-      "license": "CC BY 2.0",
-      "resource_name": "gem_enstatite_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Tojinbo_cliffs,_Fukui_Prefecture;_September_2019_(04).jpg",
-      "title": "File:Tojinbo cliffs, Fukui Prefecture; September 2019 (04).jpg",
-      "type": "FACETTEE"
     }
   ],
   "euclase": [
@@ -1249,14 +1201,6 @@
     {
       "artist": "Lê Phạm Gia Hy",
       "license": "CC BY-SA 4.0",
-      "resource_name": "gem_jade_nephrite_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Black-nephrite-jade-bangle.jpg",
-      "title": "File:Black-nephrite-jade-bangle.jpg",
-      "type": "BRUTE"
-    },
-    {
-      "artist": "Lê Phạm Gia Hy",
-      "license": "CC BY-SA 4.0",
       "resource_name": "gem_jade_nephrite_facette",
       "source_url": "https://commons.wikimedia.org/wiki/File:Siberian-nephrite-jade-bangle-vong-kieng-ngoc-bich-kimquigems.jpg",
       "title": "File:Siberian-nephrite-jade-bangle-vong-kieng-ngoc-bich-kimquigems.jpg",
@@ -1391,14 +1335,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Lepidolite_from_Høydalen,_Norway.jpg",
       "title": "File:Lepidolite from Høydalen, Norway.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "Parent Géry",
-      "license": "Public domain",
-      "resource_name": "gem_lepidolite_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Tourmaline_polychrome_sur_mica_2(Brésil).jpg",
-      "title": "File:Tourmaline polychrome sur mica 2(Brésil).jpg",
-      "type": "FACETTEE"
     }
   ],
   "magnetite": [
@@ -1592,16 +1528,7 @@
       "type": "FACETTEE"
     }
   ],
-  "os-fossilise": [
-    {
-      "artist": "Jessa and Mark Anderson from Barron, Wisconsin, USA",
-      "license": "CC BY 2.0",
-      "resource_name": "gem_os_fossilise_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Wedding_Anniversary_Set_2_(4584362724).jpg",
-      "title": "File:Wedding Anniversary Set 2 (4584362724).jpg",
-      "type": "BRUTE"
-    }
-  ],
+  "os-fossilise": [],
   "padparadscha": [
     {
       "artist": "Wiener Edelstein Zentrum",
@@ -1714,20 +1641,12 @@
   ],
   "petalite": [
     {
-      "artist": "Shannon Heinle",
-      "license": "CC0",
-      "resource_name": "gem_petalite_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Pollucite_(GeoDIL_number_-_2948).jpg",
-      "title": "File:Pollucite (GeoDIL number - 2948).jpg",
-      "type": "BRUTE"
-    },
-    {
       "artist": "Eurico Zimbres",
       "license": "CC BY-SA 2.5",
-      "resource_name": "gem_petalite_facette",
+      "resource_name": "gem_petalite_brute",
       "source_url": "https://commons.wikimedia.org/wiki/File:Petalite.jpg",
       "title": "File:Petalite.jpg",
-      "type": "FACETTEE"
+      "type": "BRUTE"
     }
   ],
   "phenakite": [
@@ -1874,14 +1793,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Quartz,_Tibet.jpg",
       "title": "File:Quartz, Tibet.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "Ivar Leidus",
-      "license": "CC BY-SA 4.0",
-      "resource_name": "gem_quartz_a_inclusions_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Tetrahedrite_-_Black_Pine_mine,_Granite_Co.,_Montana,_USA.jpg",
-      "title": "File:Tetrahedrite - Black Pine mine, Granite Co., Montana, USA.jpg",
-      "type": "FACETTEE"
     }
   ],
   "quartz-fume": [
@@ -2039,24 +1950,7 @@
       "type": "FACETTEE"
     }
   ],
-  "saphir-blanc": [
-    {
-      "artist": "Lorraine Hughes",
-      "license": "CC BY 2.0",
-      "resource_name": "gem_saphir_blanc_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Diamond_cross_pendant.jpg",
-      "title": "File:Diamond cross pendant.jpg",
-      "type": "BRUTE"
-    },
-    {
-      "artist": "Laiyinann",
-      "license": "CC0",
-      "resource_name": "gem_saphir_blanc_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Yellow_sapphire_strong_red_fluorescence_Art_Deco_era.jpg",
-      "title": "File:Yellow sapphire strong red fluorescence Art Deco era.jpg",
-      "type": "FACETTEE"
-    }
-  ],
+  "saphir-blanc": [],
   "saphir-bleu": [
     {
       "artist": "Montanabw",
@@ -2133,38 +2027,13 @@
     {
       "artist": "Mliz2000",
       "license": "CC BY 4.0",
-      "resource_name": "gem_saphir_vert_brute",
+      "resource_name": "gem_saphir_vert_facette",
       "source_url": "https://commons.wikimedia.org/wiki/File:3.54ct-oval-Australian-sapphire-Lizunova-Fine-Jewels-Jeweller-Sydney-NSW-Australia.jpg",
       "title": "File:3.54ct-oval-Australian-sapphire-Lizunova-Fine-Jewels-Jeweller-Sydney-NSW-Australia.jpg",
-      "type": "BRUTE"
-    },
-    {
-      "artist": "pamsai, 200K views, thank you",
-      "license": "CC BY-SA 2.0",
-      "resource_name": "gem_saphir_vert_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Green_Sapphire,_Heliophorus_androcles_(8739585260).jpg",
-      "title": "File:Green Sapphire, Heliophorus androcles (8739585260).jpg",
       "type": "FACETTEE"
     }
   ],
-  "saphir-violet": [
-    {
-      "artist": "James St. John",
-      "license": "CC BY 2.0",
-      "resource_name": "gem_saphir_violet_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Sapphire_(corundum)_(26663158752).jpg",
-      "title": "File:Sapphire (corundum) (26663158752).jpg",
-      "type": "BRUTE"
-    },
-    {
-      "artist": "Sussex Archaeological Society, Laura Burnett, 2010-06-12 09:17:17",
-      "license": "CC BY-SA 4.0",
-      "resource_name": "gem_saphir_violet_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Post_Medieval_ring_bezel_(FindID_386791).jpg",
-      "title": "File:Post Medieval ring bezel (FindID 386791).jpg",
-      "type": "FACETTEE"
-    }
-  ],
+  "saphir-violet": [],
   "sapphirine": [
     {
       "artist": "Parent Géry",
@@ -2281,14 +2150,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Sillimanite_cut.jpg",
       "title": "File:Sillimanite cut.jpg",
       "type": "FACETTEE"
-    },
-    {
-      "artist": "James St. John",
-      "license": "CC BY 2.0",
-      "resource_name": "gem_sillimanite_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Rubies_encased_in_K-feldspar_in_fuchsite-rich_matrix_(Precambrian,_eastern_Brazil)_2.jpg",
-      "title": "File:Rubies encased in K-feldspar in fuchsite-rich matrix (Precambrian, eastern Brazil) 2.jpg",
-      "type": "BRUTE"
     }
   ],
   "sinhalite": [
@@ -2561,24 +2422,7 @@
       "type": "FACETTEE"
     }
   ],
-  "topaze-blanche": [
-    {
-      "artist": "MAURO CATEB from Brazil",
-      "license": "CC BY 2.0",
-      "resource_name": "gem_topaze_blanche_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Blue_topaz_(8358129568).jpg",
-      "title": "File:Blue topaz (8358129568).jpg",
-      "type": "BRUTE"
-    },
-    {
-      "artist": "Jlblackmore",
-      "license": "CC BY-SA 4.0",
-      "resource_name": "gem_topaze_blanche_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Acrostic_rings_jlb.png",
-      "title": "File:Acrostic rings jlb.png",
-      "type": "FACETTEE"
-    }
-  ],
+  "topaze-blanche": [],
   "topaze-bleue": [
     {
       "artist": "MAURO CATEB from Brazil",
@@ -2652,16 +2496,7 @@
     }
   ],
   "tourmaline-chrome": [],
-  "tourmaline-jaune": [
-    {
-      "artist": "Ian Rosenberg Jeweller",
-      "license": "CC BY-SA 4.0",
-      "resource_name": "gem_tourmaline_jaune_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Ian_Rosenberg_Jeweller_–_Light_yellow_tourmaline_and_gold_ring.JPG",
-      "title": "File:Ian Rosenberg Jeweller – Light yellow tourmaline and gold ring.JPG",
-      "type": "BRUTE"
-    }
-  ],
+  "tourmaline-jaune": [],
   "tourmaline-noire": [
     {
       "artist": "James St. John",
