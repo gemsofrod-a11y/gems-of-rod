@@ -1047,16 +1047,7 @@
       "type": "BRUTE"
     }
   ],
-  "onyx": [
-    {
-      "artist": "Simon Eugster --Simon 14:41, 11 April 2006 (UTC)",
-      "license": "CC BY-SA 3.0",
-      "resource_name": "gem_onyx_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Onyx.jpg",
-      "title": "File:Onyx.jpg",
-      "type": "FACETTEE"
-    }
-  ],
+  "onyx": [],
   "opale-de-feu": [
     {
       "artist": "James St. John",
