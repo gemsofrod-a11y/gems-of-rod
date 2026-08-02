@@ -16,7 +16,6 @@ data class GemImageCredit(
 
 object GemImages {
     private val credits: Map<String, List<GemImageCredit>> = mapOf(
-        "afghanite" to listOf(GemImageCredit(GemImageType.BRUTE, "gem_afghanite_brute", "David Hospital", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Pitiglianoite.jpg")),
         "agate" to listOf(GemImageCredit(GemImageType.FACETTEE, "gem_agate_facette", "RegionVisitor90", "CC0", "https://commons.wikimedia.org/wiki/File:Opal_and_Gemstone_Studio,_Hahndorf_20251219-122458.jpg")),
         "aigue-marine" to listOf(GemImageCredit(GemImageType.BRUTE, "gem_aigue_marine_brute", "Robert M. Lavinsky", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Beryl-sd345a.jpg"), GemImageCredit(GemImageType.FACETTEE, "gem_aigue_marine", "Gunnar Ries Amphibol", "CC BY-SA 2.5", "https://commons.wikimedia.org/wiki/File:Aquamarine_P1000141.JPG")),
         "alexandrite" to listOf(GemImageCredit(GemImageType.BRUTE, "gem_alexandrite_brute", "Vzb83", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Alexandrite.jpg"), GemImageCredit(GemImageType.FACETTEE, "gem_alexandrite", "Parent Géry", "CC0", "https://commons.wikimedia.org/wiki/File:Chrysobéryl_var._alexandrite_sous_UV_(Brésil)_1.jpg")),
