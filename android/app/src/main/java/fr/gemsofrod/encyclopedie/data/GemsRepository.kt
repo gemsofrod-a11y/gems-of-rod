@@ -2810,4 +2810,26 @@ object GemsRepository {
     fun byId(id: String): Gem? = gems.firstOrNull { it.id == id }
 
     fun countByColor(color: GemColorCategory): Int = gems.count { it.couleur == color }
+
+    /**
+     * Recherche par préfixe (insensible à la casse et aux accents) sur le nom
+     * de la gemme, avec repli sur une correspondance "contient" pour couvrir
+     * les noms composés (ex. "bleue" trouve "Tourmaline bleue"). Résultats
+     * triés par nom, préfixes en premier.
+     */
+    fun search(query: String): List<Gem> {
+        val needle = normalizeForSearch(query)
+        if (needle.isBlank()) return emptyList()
+        return gems
+            .filter { normalizeForSearch(it.nom).contains(needle) }
+            .sortedWith(
+                compareByDescending<Gem> { normalizeForSearch(it.nom).startsWith(needle) }
+                    .thenBy { it.nom }
+            )
+    }
+
+    private fun normalizeForSearch(text: String): String {
+        val decomposed = java.text.Normalizer.normalize(text, java.text.Normalizer.Form.NFD)
+        return decomposed.replace(Regex("\\p{Mn}+"), "").lowercase()
+    }
 }

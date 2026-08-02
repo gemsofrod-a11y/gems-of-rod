@@ -26,7 +26,8 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             CategoriesScreen(
                 onCategoryClick = { category ->
                     navController.navigate(Routes.gemsList(category.name))
-                }
+                },
+                onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) }
             )
         }
         composable(Routes.GEMS_LIST) { backStackEntry ->
