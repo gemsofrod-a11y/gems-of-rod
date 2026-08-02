@@ -20,7 +20,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.AssistChip
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -28,12 +30,17 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -41,14 +48,19 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import fr.gemsofrod.encyclopedie.data.Gem
 import fr.gemsofrod.encyclopedie.data.GemImageCredit
 import fr.gemsofrod.encyclopedie.data.GemImageType
 import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.data.GemRarete
 import fr.gemsofrod.encyclopedie.data.GemsRepository
 import fr.gemsofrod.encyclopedie.data.googleMapsSearchUrl
+import fr.gemsofrod.encyclopedie.data.priceRangePerCarat
 import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
+import java.text.NumberFormat
+import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -142,6 +154,8 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit) {
                 }
             }
 
+            PriceCalculatorCard(gem)
+
             Column {
                 Text(
                     text = "Particularités",
@@ -180,6 +194,90 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit) {
             }
         }
     }
+}
+
+@Composable
+private fun PriceCalculatorCard(gem: Gem) {
+    val range = gem.priceRangePerCarat() ?: return
+
+    var caratsInput by remember(gem.id) { mutableStateOf("") }
+    var prixInput by remember(gem.id) { mutableStateOf("") }
+
+    val carats = caratsInput.replace(",", ".").toDoubleOrNull()
+    val prixParCarat = prixInput.replace(",", ".").toDoubleOrNull()
+    val depasseLeMaximum = prixParCarat != null && prixParCarat > range.maxEur
+    val valeurs = carats != null && carats > 0 && prixParCarat != null && prixParCarat > 0 && !depasseLeMaximum
+    val currency = remember { NumberFormat.getCurrencyInstance(Locale.FRANCE) }
+
+    Card(
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            Text(
+                text = "Estimer la valeur de votre pierre",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Text(
+                text = "Renseignez le poids et le prix au carat de votre pierre pour estimer sa valeur totale. " +
+                    "Le prix au carat ne peut pas dépasser le maximum de la fourchette indicative " +
+                    "(${formatEur(range.maxEur)}/ct).",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(bottom = 8.dp, top = 2.dp)
+            )
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.fillMaxWidth()) {
+                OutlinedTextField(
+                    value = caratsInput,
+                    onValueChange = { caratsInput = it },
+                    label = { Text("Carats") },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                    modifier = Modifier.weight(1f)
+                )
+                OutlinedTextField(
+                    value = prixInput,
+                    onValueChange = { prixInput = it },
+                    label = { Text("Prix/ct (€)") },
+                    singleLine = true,
+                    isError = depasseLeMaximum,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                    modifier = Modifier.weight(1f)
+                )
+            }
+            if (depasseLeMaximum) {
+                Text(
+                    text = "Le prix indiqué dépasse le maximum de la fiche (${formatEur(range.maxEur)}/ct).",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.error,
+                    modifier = Modifier.padding(top = 4.dp)
+                )
+            }
+            Button(
+                onClick = {},
+                enabled = valeurs,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 12.dp)
+            ) {
+                Text(
+                    if (valeurs && carats != null && prixParCarat != null) {
+                        "Valeur estimée : ${currency.format(carats * prixParCarat)}"
+                    } else {
+                        "Calculer"
+                    }
+                )
+            }
+        }
+    }
+}
+
+private fun formatEur(value: Double): String {
+    val rounded = value.toInt()
+    return "${rounded} €".replace(Regex("(\\d)(?=(\\d{3})+(?!\\d))"), "$1 ")
 }
 
 @Composable
