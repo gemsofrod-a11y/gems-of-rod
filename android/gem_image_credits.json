@@ -234,24 +234,7 @@
       "type": "FACETTEE"
     }
   ],
-  "azurite": [
-    {
-      "artist": "Maatpublishing",
-      "license": "CC BY-SA 4.0",
-      "resource_name": "gem_azurite_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Raw_azuerite_malachite.jpg",
-      "title": "File:Raw azuerite malachite.jpg",
-      "type": "BRUTE"
-    },
-    {
-      "artist": "Gemstones",
-      "license": "CC BY-SA 3.0",
-      "resource_name": "gem_azurite_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Azurite_malachite_cabochon_gemstone.JPG",
-      "title": "File:Azurite malachite cabochon gemstone.JPG",
-      "type": "FACETTEE"
-    }
-  ],
+  "azurite": [],
   "baryte": [
     {
       "artist": "Nessa Eull",
@@ -1394,24 +1377,7 @@
       "type": "FACETTEE"
     }
   ],
-  "malachite": [
-    {
-      "artist": "Maatpublishing",
-      "license": "CC BY-SA 4.0",
-      "resource_name": "gem_malachite_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Raw_azuerite_malachite.jpg",
-      "title": "File:Raw azuerite malachite.jpg",
-      "type": "BRUTE"
-    },
-    {
-      "artist": "Gemstones",
-      "license": "CC BY-SA 3.0",
-      "resource_name": "gem_malachite_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Azurite_malachite_cabochon_gemstone.JPG",
-      "title": "File:Azurite malachite cabochon gemstone.JPG",
-      "type": "FACETTEE"
-    }
-  ],
+  "malachite": [],
   "maw-sit-sit": [],
   "moldavite": [
     {
