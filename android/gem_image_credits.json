@@ -206,6 +206,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Carbonate_Minerals_and_Crystals_Display.jpg",
       "title": "File:Carbonate Minerals and Crystals Display.jpg",
       "type": "BRUTE"
+    },
+    {
+      "artist": "James St. John",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_aragonite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Corallium_rubrum_(red_coral)_1_(15691074776).jpg",
+      "title": "File:Corallium rubrum (red coral) 1 (15691074776).jpg",
+      "type": "FACETTEE"
     }
   ],
   "axinite": [
@@ -234,6 +242,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Azurite,_Burra_Mine,_South_Australia.jpg",
       "title": "File:Azurite, Burra Mine, South Australia.jpg",
       "type": "BRUTE"
+    },
+    {
+      "artist": "WantuchWaclaw",
+      "license": "CC BY 4.0",
+      "resource_name": "gem_azurite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:File_Sedimentation_of_azurite_fraction_Waclaw_Wantuch_03.jpg",
+      "title": "File:File Sedimentation of azurite fraction Waclaw Wantuch 03.jpg",
+      "type": "FACETTEE"
     }
   ],
   "baryte": [
@@ -362,6 +378,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Gemstone_Collection_-_Rainbow_Calcite_(15808137826).jpg",
       "title": "File:Gemstone Collection - Rainbow Calcite (15808137826).jpg",
       "type": "FACETTEE"
+    },
+    {
+      "artist": "Marco Hazard from Hong Kong, Hong Kong",
+      "license": "CC BY-SA 2.0",
+      "resource_name": "gem_calcite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Gemstone_Collection_-_Rainbow_Calcite_(16263667930).jpg",
+      "title": "File:Gemstone Collection - Rainbow Calcite (16263667930).jpg",
+      "type": "BRUTE"
     }
   ],
   "cavansite": [
@@ -986,6 +1010,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Corundum,_garnet,_mica,_feldspar.jpg",
       "title": "File:Corundum, garnet, mica, feldspar.jpg",
       "type": "BRUTE"
+    },
+    {
+      "artist": "Géry PARENT",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_grenat_rhodolite_violet_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Corundum,_garnet,_mica,_feldspar_3.jpg",
+      "title": "File:Corundum, garnet, mica, feldspar 3.jpg",
+      "type": "FACETTEE"
     }
   ],
   "grenat-spessartite": [
@@ -1370,6 +1402,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Malachite,_Zaire.jpg",
       "title": "File:Malachite, Zaire.jpg",
       "type": "FACETTEE"
+    },
+    {
+      "artist": "TheFurther21",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_malachite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Botryoidal_malachite_02.jpg",
+      "title": "File:Botryoidal malachite 02.jpg",
+      "type": "BRUTE"
     }
   ],
   "maw-sit-sit": [],
@@ -1765,6 +1805,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Pyrite_-_Huanzala_mine,_Huallanca,_Bolognesi,_Ancash,_Peru.jpg",
       "title": "File:Pyrite - Huanzala mine, Huallanca, Bolognesi, Ancash, Peru.jpg",
       "type": "FACETTEE"
+    },
+    {
+      "artist": "Didier Descouens",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_pyrite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Pyrite_trimouns.jpg",
+      "title": "File:Pyrite trimouns.jpg",
+      "type": "BRUTE"
     }
   ],
   "quartz-a-inclusions": [
@@ -1793,6 +1841,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Beryl-Quartz-74810.jpg",
       "title": "File:Beryl-Quartz-74810.jpg",
       "type": "BRUTE"
+    },
+    {
+      "artist": "AdamStejskal",
+      "license": "CC BY 4.0",
+      "resource_name": "gem_quartz_fume_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Citrine_x_Smoky_quartz_gemstone_from_Czech_Republic_South_of_Bohemia.jpg",
+      "title": "File:Citrine x Smoky quartz gemstone from Czech Republic South of Bohemia.jpg",
+      "type": "FACETTEE"
     }
   ],
   "quartz-rose": [
@@ -2013,6 +2069,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:3.54ct-oval-Australian-sapphire-Lizunova-Fine-Jewels-Jeweller-Sydney-NSW-Australia.jpg",
       "title": "File:3.54ct-oval-Australian-sapphire-Lizunova-Fine-Jewels-Jeweller-Sydney-NSW-Australia.jpg",
       "type": "FACETTEE"
+    },
+    {
+      "artist": "James St. John",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_saphir_vert_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Sapphire_(corundum)_(26663158752).jpg",
+      "title": "File:Sapphire (corundum) (26663158752).jpg",
+      "type": "BRUTE"
     }
   ],
   "saphir-violet": [],
@@ -2559,6 +2623,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Tourmaline_cut.JPG",
       "title": "File:Tourmaline cut.JPG",
       "type": "FACETTEE"
+    },
+    {
+      "artist": "DanBalance",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_tourmaline_verte_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Blue_Green_Tourmaline_on_Quartz.JPG",
+      "title": "File:Blue Green Tourmaline on Quartz.JPG",
+      "type": "BRUTE"
     }
   ],
   "tsavorite": [
