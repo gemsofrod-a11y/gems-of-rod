@@ -24,7 +24,7 @@ android {
         applicationId = "fr.gemsofrod.encyclopedie"
         minSdk = 26
         targetSdk = 34
-        versionCode = 17
+        versionCode = 18
         versionName = "2.5"
     }
 

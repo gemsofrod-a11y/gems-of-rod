@@ -114,7 +114,7 @@ GEMS = [
     ("sinhalite", ["Sinhalite gemstone", "Sinhalite", "Sinhalite crystal", "Sinhalite mineral", "Sinhalite Sri Lanka", "Sinhalite specimen", "Sinhalite Mogok"], ["sinhalite"], (BRUTE, FACETTEE)),
     ("staurotide", ["Staurolite"], ["staurolite"], (BRUTE, FACETTEE)),
     ("sphene", ["Sphene titanite", "Titanite gemstone"], ["sphene", "titanite"], (BRUTE, FACETTEE)),
-    ("onyx", ["Black onyx rough", "Black onyx chalcedony", "Black banded agate rough", "Onyx nodule black rough"], ["onyx", "chalcedony", "agate"], (BRUTE,)),
+    ("onyx", ["Black onyx rough", "Black onyx chalcedony", "Black banded agate rough", "Onyx nodule black rough"], ["onyx", "chalcedony", "agate"], (BRUTE, FACETTEE)),
     ("spinelle-noir", ["Black spinel"], ["spinel"], (BRUTE, FACETTEE)),
     ("tourmaline-noire", ["Schorl tourmaline", "Schorl"], ["schorl", "tourmaline"], (BRUTE, FACETTEE)),
     ("obsidienne", ["Obsidian"], ["obsidian"], (BRUTE, FACETTEE)),
@@ -283,6 +283,8 @@ GIVE_UP_SLOTS = {
     ("saphir-blanc", FACETTEE),
     ("quartz-tourmaline", BRUTE),
     ("violane", FACETTEE),
+    ("onyx", BRUTE),
+    ("andesine", BRUTE),
 }
 
 # Mots qui trahissent une photo de pierre BRUTE quand on cherche une FACETTÉE,
