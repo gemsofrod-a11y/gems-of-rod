@@ -161,16 +161,7 @@
       "type": "FACETTEE"
     }
   ],
-  "andesine": [
-    {
-      "artist": "Pacific Museum of Earth from Canada",
-      "license": "CC BY-SA 2.0",
-      "resource_name": "gem_andesine_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Corundum_with_Andesine_and_Biotite_(47122078264).jpg",
-      "title": "File:Corundum with Andesine and Biotite (47122078264).jpg",
-      "type": "BRUTE"
-    }
-  ],
+  "andesine": [],
   "anhydrite": [
     {
       "artist": "Alcinoe",

@@ -219,7 +219,7 @@ GEMS = [
     ("moldavite", ['Moldavite'], ['moldavite'], (BRUTE, FACETTEE)),
     ("verre-libyque", ['Libyan desert glass', 'Libyan desert glass tektite', 'Great Sand Sea glass'], ['libyan desert glass'], (BRUTE, FACETTEE)),
     ("saphir-vert", ['Green sapphire faceted', 'Green sapphire', 'Green corundum crystal'], ['sapphire', 'corundum'], (BRUTE, FACETTEE)),
-    ("andesine", ['Andesine feldspar', 'Andesine gemstone'], ['andesine'], (BRUTE, FACETTEE)),
+    ("andesine", ['Red andesine faceted', 'Red andesine gemstone', 'Andesine red Congo'], ['andesine'], (BRUTE, FACETTEE)),
     ("chondrodite", ['Chondrodite crystal', 'Chondrodite orange', 'Chondrodite'], ['chondrodite'], (BRUTE, FACETTEE)),
     ("enstatite", ['Enstatite crystal', 'Enstatite faceted', 'Enstatite gemstone'], ['enstatite'], (BRUTE, FACETTEE)),
     ("sphalerite", ['Sphalerite gemstone'], ['sphalerite'], (BRUTE, FACETTEE)),
@@ -262,6 +262,7 @@ EXCLUDED_TITLE_TOKENS = [
     "wiperamingaite", "zunyite", "acrostic rings", "tetrahedrite",
     "andesine (organic compound)", "eb1911", "bulletin ", "rubies encased",
     "wedding anniversary set", "tojinbo cliffs", "heliophorus androcles",
+    "corundum with andesine and biotite", "01722 andesine",
     "pyrometallury",
 ]
 
