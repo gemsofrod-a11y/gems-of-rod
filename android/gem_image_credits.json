@@ -234,14 +234,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Azurite,_Burra_Mine,_South_Australia.jpg",
       "title": "File:Azurite, Burra Mine, South Australia.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "WantuchWaclaw",
-      "license": "CC BY 4.0",
-      "resource_name": "gem_azurite_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Levigating_azurite_Wantuch.jpg",
-      "title": "File:Levigating azurite Wantuch.jpg",
-      "type": "FACETTEE"
     }
   ],
   "baryte": [
@@ -363,14 +355,6 @@
     }
   ],
   "calcite": [
-    {
-      "artist": "Parent Géry",
-      "license": "CC BY-SA 3.0",
-      "resource_name": "gem_calcite_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Rubis,_calcite_14.jpg",
-      "title": "File:Rubis, calcite 14.jpg",
-      "type": "BRUTE"
-    },
     {
       "artist": "Marco Hazard from Hong Kong, Hong Kong",
       "license": "CC BY-SA 2.0",
@@ -1379,14 +1363,6 @@
     }
   ],
   "malachite": [
-    {
-      "artist": "QueenCityCebu",
-      "license": "CC BY-SA 4.0",
-      "resource_name": "gem_malachite_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Carbonate_Minerals_and_Crystals_Display.jpg",
-      "title": "File:Carbonate Minerals and Crystals Display.jpg",
-      "type": "BRUTE"
-    },
     {
       "artist": "JJ Harrison (https://www.jjharrison.com.au/)",
       "license": "CC BY-SA 3.0",

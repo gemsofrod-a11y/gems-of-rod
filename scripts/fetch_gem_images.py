@@ -265,6 +265,8 @@ EXCLUDED_TITLE_TOKENS = [
     "corundum with andesine and biotite", "01722 andesine",
     "raw azuerite malachite", "azurite malachite cabochon gemstone",
     "corallium rubrum (red coral) 2", "crisocola azurite",
+    "levigating azurite", "carbonate minerals and crystals display",
+    "rubis, calcite 14",
     "azurite malachite", "malachite azurite", "azurite-malachite",
     "orange onyx", "jupiter's tear",
     "pyrometallury",
