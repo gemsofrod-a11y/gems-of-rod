@@ -94,7 +94,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | scheelite | ♻️ [File:Scheelite, mica, UVL 1.jpg](https://commons.wikimedia.org/wiki/File:Scheelite,_mica,_UVL_1.jpg) | ♻️ [File:Scheelite cut.jpg](https://commons.wikimedia.org/wiki/File:Scheelite_cut.jpg) |
 | tourmaline-jaune | ❌ non trouvée | ❌ non trouvée |
 | bastnasite | ♻️ [File:Bastnäsite-(Ce) crystal with inclusions.jpg](https://commons.wikimedia.org/wiki/File:Bastnäsite-(Ce)_crystal_with_inclusions.jpg) | ❌ non trouvée |
-| malachite | ♻️ [File:Raw azuerite malachite.jpg](https://commons.wikimedia.org/wiki/File:Raw_azuerite_malachite.jpg) | ♻️ [File:Azurite malachite cabochon gemstone.JPG](https://commons.wikimedia.org/wiki/File:Azurite_malachite_cabochon_gemstone.JPG) |
+| malachite | ✅ [File:Carbonate Minerals and Crystals Display.jpg](https://commons.wikimedia.org/wiki/File:Carbonate_Minerals_and_Crystals_Display.jpg) | ✅ [File:Malachite, Zaire.jpg](https://commons.wikimedia.org/wiki/File:Malachite,_Zaire.jpg) |
 | dioptase | ♻️ [File:Dioptase crystal macro Wantuch.jpg](https://commons.wikimedia.org/wiki/File:Dioptase_crystal_macro_Wantuch.jpg) | ♻️ [File:Dioptasetsumeb5.jpg](https://commons.wikimedia.org/wiki/File:Dioptasetsumeb5.jpg) |
 | amazonite | ♻️ [File:Amazonite (microline) (GeoDIL number - 439).jpg](https://commons.wikimedia.org/wiki/File:Amazonite_(microline)_(GeoDIL_number_-_439).jpg) | ♻️ [File:Amazonite-8819.jpg](https://commons.wikimedia.org/wiki/File:Amazonite-8819.jpg) |
 | chrysoprase | ♻️ [File:Chrysoprase brute (Australie).jpg](https://commons.wikimedia.org/wiki/File:Chrysoprase_brute_(Australie).jpg) | ♻️ [File:Chrysoprase brute 2(Australie).jpg](https://commons.wikimedia.org/wiki/File:Chrysoprase_brute_2(Australie).jpg) |
@@ -106,7 +106,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | jade-nephrite | ♻️ [File:Black-nephrite-jade-bangle.jpg](https://commons.wikimedia.org/wiki/File:Black-nephrite-jade-bangle.jpg) | ♻️ [File:Siberian-nephrite-jade-bangle-vong-kieng-ngoc-bich-kimquigems.jpg](https://commons.wikimedia.org/wiki/File:Siberian-nephrite-jade-bangle-vong-kieng-ngoc-bich-kimquigems.jpg) |
 | maw-sit-sit | ❌ non trouvée | ❌ non trouvée |
 | tourmaline-chrome | ❌ non trouvée | ❌ non trouvée |
-| azurite | ♻️ [File:Raw azuerite malachite.jpg](https://commons.wikimedia.org/wiki/File:Raw_azuerite_malachite.jpg) | ♻️ [File:Azurite malachite cabochon gemstone.JPG](https://commons.wikimedia.org/wiki/File:Azurite_malachite_cabochon_gemstone.JPG) |
+| azurite | ✅ [File:Azurite, Burra Mine, South Australia.jpg](https://commons.wikimedia.org/wiki/File:Azurite,_Burra_Mine,_South_Australia.jpg) | ✅ [File:Levigating azurite Wantuch.jpg](https://commons.wikimedia.org/wiki/File:Levigating_azurite_Wantuch.jpg) |
 | sodalite | ♻️ [File:Sodalite-aegirine-albite pegmatite, Ice River Complex BC.jpg](https://commons.wikimedia.org/wiki/File:Sodalite-aegirine-albite_pegmatite,_Ice_River_Complex_BC.jpg) | ♻️ [File:Sodalith - Rohstein.jpg](https://commons.wikimedia.org/wiki/File:Sodalith_-_Rohstein.jpg) |
 | larimar | ♻️ [File:Larimar hg.jpg](https://commons.wikimedia.org/wiki/File:Larimar_hg.jpg) | ♻️ [File:Larimar.jpg](https://commons.wikimedia.org/wiki/File:Larimar.jpg) |
 | lazulite | ♻️ [File:Lazulite (OM1-197).jpg](https://commons.wikimedia.org/wiki/File:Lazulite_(OM1-197).jpg) | ♻️ [File:Lazulite Rapid Creek MNHN Minéralogie n2.jpg](https://commons.wikimedia.org/wiki/File:Lazulite_Rapid_Creek_MNHN_Minéralogie_n2.jpg) |

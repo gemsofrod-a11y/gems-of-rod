@@ -226,7 +226,24 @@
       "type": "FACETTEE"
     }
   ],
-  "azurite": [],
+  "azurite": [
+    {
+      "artist": "JJ Harrison (https://www.jjharrison.com.au/)",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_azurite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Azurite,_Burra_Mine,_South_Australia.jpg",
+      "title": "File:Azurite, Burra Mine, South Australia.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "WantuchWaclaw",
+      "license": "CC BY 4.0",
+      "resource_name": "gem_azurite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Levigating_azurite_Wantuch.jpg",
+      "title": "File:Levigating azurite Wantuch.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "baryte": [
     {
       "artist": "Nessa Eull",
@@ -1361,7 +1378,24 @@
       "type": "FACETTEE"
     }
   ],
-  "malachite": [],
+  "malachite": [
+    {
+      "artist": "QueenCityCebu",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_malachite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Carbonate_Minerals_and_Crystals_Display.jpg",
+      "title": "File:Carbonate Minerals and Crystals Display.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "JJ Harrison (https://www.jjharrison.com.au/)",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_malachite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Malachite,_Zaire.jpg",
+      "title": "File:Malachite, Zaire.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "maw-sit-sit": [],
   "moldavite": [
     {
