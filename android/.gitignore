@@ -9,3 +9,8 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Signature de l'app — ne JAMAIS commiter (voir keystore.properties.template)
+keystore.properties
+*.jks
+*.keystore
