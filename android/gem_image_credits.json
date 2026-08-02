@@ -169,6 +169,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Corundum_with_Andesine_and_Biotite_(47122078264).jpg",
       "title": "File:Corundum with Andesine and Biotite (47122078264).jpg",
       "type": "BRUTE"
+    },
+    {
+      "artist": "Dave Dyet http://www.shutterstone.com  http://www.dyet.com",
+      "license": "Public domain",
+      "resource_name": "gem_andesine_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:01722_Andesine.jpg",
+      "title": "File:01722 Andesine.jpg",
+      "type": "FACETTEE"
     }
   ],
   "anhydrite": [
@@ -1512,7 +1520,24 @@
       "type": "FACETTEE"
     }
   ],
-  "onyx": [],
+  "onyx": [
+    {
+      "artist": "Simon Eugster --Simon 14:41, 11 April 2006 (UTC)",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_onyx_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Onyx.jpg",
+      "title": "File:Onyx.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Marco Hazard from Hong Kong, Hong Kong",
+      "license": "CC BY-SA 2.0",
+      "resource_name": "gem_onyx_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Gemstone_Collection_-_Jupiter's_Tear_(Orange_Onyx)_(15646349938).jpg",
+      "title": "File:Gemstone Collection - Jupiter's Tear (Orange Onyx) (15646349938).jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "opale-de-feu": [
     {
       "artist": "James St. John",
