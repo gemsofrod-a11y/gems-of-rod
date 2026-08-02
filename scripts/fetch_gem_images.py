@@ -248,6 +248,8 @@ EXCLUDED_TITLE_TOKENS = [
     "birthstone ring", "rainbow ring", "inclusions in a gem",
     "microscope", "thin section", "polarized light",
     "chameleon", "lizard", "reptile", "gecko", "frog", "bird",
+    "hairstreak", "skipper", "diucon", "wing position", "wingspan",
+    "specimen id", "voucher", "lepidoptera",
     "semi-precious gemstones", "gem.pebbles", "colored stones.jpg",
     "diamond age zones", "cathodoluminescence", "zircon bracelet",
     "cubic zirconia",

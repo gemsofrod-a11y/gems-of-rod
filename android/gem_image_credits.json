@@ -163,14 +163,6 @@
   ],
   "andesine": [
     {
-      "artist": "Dave Dyet http://www.shutterstone.com  http://www.dyet.com",
-      "license": "Public domain",
-      "resource_name": "gem_andesine_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:01722_Andesine.jpg",
-      "title": "File:01722 Andesine.jpg",
-      "type": "FACETTEE"
-    },
-    {
       "artist": "Pacific Museum of Earth from Canada",
       "license": "CC BY-SA 2.0",
       "resource_name": "gem_andesine_brute",
@@ -1520,24 +1512,7 @@
       "type": "FACETTEE"
     }
   ],
-  "onyx": [
-    {
-      "artist": "Marco Hazard from Hong Kong, Hong Kong",
-      "license": "CC BY-SA 2.0",
-      "resource_name": "gem_onyx_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Gemstone_Collection_-_Jupiter's_Tear_(Orange_Onyx)_(15646349938).jpg",
-      "title": "File:Gemstone Collection - Jupiter's Tear (Orange Onyx) (15646349938).jpg",
-      "type": "FACETTEE"
-    },
-    {
-      "artist": "Tamaghna Sengupta",
-      "license": "CC BY 3.0",
-      "resource_name": "gem_onyx_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Close_wing_position_of_Horaga_onyx_Moore,_1857_–_Common_Onyx_2.jpg",
-      "title": "File:Close wing position of Horaga onyx Moore, 1857 – Common Onyx 2.jpg",
-      "type": "BRUTE"
-    }
-  ],
+  "onyx": [],
   "opale-de-feu": [
     {
       "artist": "James St. John",
@@ -1731,16 +1706,7 @@
       "type": "FACETTEE"
     }
   ],
-  "phosphosiderite": [
-    {
-      "artist": "Elliott, Peter, and Anthony R. Kampf",
-      "license": "CC BY 4.0",
-      "resource_name": "gem_phosphosiderite_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Crystal_of_wiperamingaite.png",
-      "title": "File:Crystal of wiperamingaite.png",
-      "type": "BRUTE"
-    }
-  ],
+  "phosphosiderite": [],
   "pierre-de-lune": [
     {
       "artist": "Eric Polk",
