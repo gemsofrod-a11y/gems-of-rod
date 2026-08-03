@@ -20,6 +20,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -50,7 +51,8 @@ import fr.gemsofrod.encyclopedie.data.GemsRepository
 @Composable
 fun CategoriesScreen(
     onCategoryClick: (GemColorCategory) -> Unit,
-    onGemClick: (Gem) -> Unit
+    onGemClick: (Gem) -> Unit,
+    onFavoritesClick: () -> Unit
 ) {
     var query by remember { mutableStateOf("") }
     val results = if (query.isBlank()) emptyList() else GemsRepository.search(query)
@@ -59,6 +61,11 @@ fun CategoriesScreen(
         topBar = {
             TopAppBar(
                 title = { Text("Encyclopédie des gemmes") },
+                actions = {
+                    IconButton(onClick = onFavoritesClick) {
+                        Icon(Icons.Filled.Favorite, contentDescription = "Mes favoris")
+                    }
+                },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.background,
                     titleContentColor = MaterialTheme.colorScheme.onBackground

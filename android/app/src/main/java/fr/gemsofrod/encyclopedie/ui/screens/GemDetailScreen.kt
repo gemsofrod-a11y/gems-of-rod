@@ -1,5 +1,6 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -21,6 +22,9 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -44,12 +48,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import fr.gemsofrod.encyclopedie.data.FavoritesRepository
 import fr.gemsofrod.encyclopedie.data.Gem
 import fr.gemsofrod.encyclopedie.data.GemImageCredit
 import fr.gemsofrod.encyclopedie.data.GemImageType
@@ -66,6 +72,7 @@ import java.util.Locale
 @Composable
 fun GemDetailScreen(gemId: String, onBackClick: () -> Unit) {
     val gem = GemsRepository.byId(gemId)
+    val context = LocalContext.current
 
     Scaffold(
         topBar = {
@@ -74,6 +81,28 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit) {
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Retour")
+                    }
+                },
+                actions = {
+                    if (gem != null) {
+                        val isFavorite = FavoritesRepository.isFavorite(gem.id)
+                        IconButton(onClick = { FavoritesRepository.toggle(gem.id) }) {
+                            Icon(
+                                if (isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
+                                contentDescription = if (isFavorite) "Retirer des favoris" else "Ajouter aux favoris",
+                                tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onBackground
+                            )
+                        }
+                        IconButton(onClick = {
+                            val sendIntent = Intent(Intent.ACTION_SEND).apply {
+                                type = "text/plain"
+                                putExtra(Intent.EXTRA_SUBJECT, "Gems of Rod — ${gem.nom}")
+                                putExtra(Intent.EXTRA_TEXT, buildShareText(gem))
+                            }
+                            context.startActivity(Intent.createChooser(sendIntent, "Partager la fiche"))
+                        }) {
+                            Icon(Icons.Filled.Share, contentDescription = "Partager la fiche")
+                        }
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -273,6 +302,19 @@ private fun PriceCalculatorCard(gem: Gem) {
             }
         }
     }
+}
+
+private fun buildShareText(gem: Gem): String = buildString {
+    appendLine(gem.nom)
+    appendLine(gem.nomLatin)
+    appendLine()
+    appendLine(gem.descriptionCourte)
+    appendLine()
+    appendLine("Famille : ${gem.famille}")
+    appendLine("Dureté (Mohs) : ${gem.durete}")
+    appendLine("Prix indicatif : ${gem.prixCaratEur}")
+    appendLine()
+    append("Gems of Rod — gemsofrod@gmail.com")
 }
 
 private fun formatEur(value: Double): String {
