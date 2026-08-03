@@ -26,7 +26,7 @@ data class CertificateInfo(
 )
 
 /**
- * Génère un certificat gemmologique au format PDF (une page A4) pour une
+ * Génère un certificat d'authenticité au format PDF (une page A4) pour une
  * gemme donnée, avec photo optionnelle de l'exemplaire. N'utilise que les
  * API graphiques natives d'Android (android.graphics.pdf), aucune
  * dépendance externe.
@@ -75,7 +75,7 @@ object CertificatePdfGenerator {
 
         canvas.drawText("GEMS OF ROD", MARGIN, y + 18f, titlePaint)
         y += 24f
-        canvas.drawText("Certificat gemmologique — gemsofrod@gmail.com", MARGIN, y + 8f, subtitlePaint)
+        canvas.drawText("Certificat d'authenticité — gemsofrod@gmail.com", MARGIN, y + 8f, subtitlePaint)
         y += 22f
         canvas.drawLine(MARGIN, y, (PAGE_WIDTH - MARGIN), y, linePaint)
         y += 26f
