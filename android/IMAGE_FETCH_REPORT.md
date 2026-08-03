@@ -23,7 +23,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | chrysoberyl | ♻️ [File:Chrysoberyl-282796 (cropped).jpg](https://commons.wikimedia.org/wiki/File:Chrysoberyl-282796_(cropped).jpg) | ⏸️ recherche suspendue |
 | oeil-de-tigre | ♻️ [File:Tiger's eye quartz 11.jpg](https://commons.wikimedia.org/wiki/File:Tiger's_eye_quartz_11.jpg) | ⏸️ recherche suspendue |
 | scapolite | ♻️ [File:Scapolite-41495.jpg](https://commons.wikimedia.org/wiki/File:Scapolite-41495.jpg) | ♻️ [File:Scapolite, da merelani, tanzania.JPG](https://commons.wikimedia.org/wiki/File:Scapolite,_da_merelani,_tanzania.JPG) |
-| emeraude | ♻️ [File:Rough emerald crystals from Panjshir Valley Afghanistan.jpg](https://commons.wikimedia.org/wiki/File:Rough_emerald_crystals_from_Panjshir_Valley_Afghanistan.jpg) | ✅ [File:Cardinal gems.png](https://commons.wikimedia.org/wiki/File:Cardinal_gems.png) |
+| emeraude | ♻️ [File:Rough emerald crystals from Panjshir Valley Afghanistan.jpg](https://commons.wikimedia.org/wiki/File:Rough_emerald_crystals_from_Panjshir_Valley_Afghanistan.jpg) | ⏸️ recherche suspendue |
 | peridot | ♻️ [File:Peridot (GeoDIL number - 1027).jpg](https://commons.wikimedia.org/wiki/File:Peridot_(GeoDIL_number_-_1027).jpg) | ♻️ [File:Peridot with ludwigite inclusion - faceted gemstone peridot from Pakistan.jpg](https://commons.wikimedia.org/wiki/File:Peridot_with_ludwigite_inclusion_-_faceted_gemstone_peridot_from_Pakistan.jpg) |
 | tsavorite | ♻️ [File:Grossular-d06-191b.jpg](https://commons.wikimedia.org/wiki/File:Grossular-d06-191b.jpg) | ⏸️ recherche suspendue |
 | jade-jadeite | ♻️ [File:MET 1981 296 40-41 49 65-71 226269.jpg](https://commons.wikimedia.org/wiki/File:MET_1981_296_40-41_49_65-71_226269.jpg) | ♻️ [File:Burmese jadeite faceted stones - - Burke Museum.jpg](https://commons.wikimedia.org/wiki/File:Burmese_jadeite_faceted_stones_-_-_Burke_Museum.jpg) |
@@ -179,4 +179,4 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | corail | ♻️ [File:Corallium rubrum (red coral) 2 (15529370228).jpg](https://commons.wikimedia.org/wiki/File:Corallium_rubrum_(red_coral)_2_(15529370228).jpg) | ⏸️ recherche suspendue |
 | perle-conque | — | ♻️ [File:- conch pearl.png](https://commons.wikimedia.org/wiki/File:-_conch_pearl.png) |
 
-**231 / 344** photos récupérées au total.
+**230 / 344** photos récupérées au total.
