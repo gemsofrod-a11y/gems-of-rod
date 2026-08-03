@@ -1,8 +1,11 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Matrix
+import android.media.ExifInterface
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -85,9 +88,7 @@ fun CertificateScreen(gemId: String, onBackClick: () -> Unit) {
             null
         } else {
             withContext(Dispatchers.IO) {
-                runCatching {
-                    context.contentResolver.openInputStream(uri)?.use(BitmapFactory::decodeStream)
-                }.getOrNull()
+                runCatching { decodeSampledBitmap(context, uri) }.getOrNull()
             }
         }
     }
@@ -268,6 +269,59 @@ private fun PhotoPickerBox(bitmap: Bitmap?, onPickClick: () -> Unit) {
             }
         }
     }
+}
+
+private const val MAX_PHOTO_DIMENSION = 1600
+
+/**
+ * Décode l'image sélectionnée par l'utilisateur en la sous-échantillonnant
+ * (les photos prises directement avec l'appareil photo peuvent dépasser
+ * 4000px de large et provoquer un OutOfMemoryError si décodées telles
+ * quelles) et corrige l'orientation EXIF pour éviter une photo affichée de
+ * travers.
+ */
+private fun decodeSampledBitmap(context: Context, uri: Uri): Bitmap? {
+    val resolver = context.contentResolver
+
+    val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+    resolver.openInputStream(uri)?.use { stream ->
+        BitmapFactory.decodeStream(stream, null, bounds)
+    }
+    val width = bounds.outWidth
+    val height = bounds.outHeight
+    if (width <= 0 || height <= 0) return null
+
+    var sampleSize = 1
+    while (width / sampleSize > MAX_PHOTO_DIMENSION || height / sampleSize > MAX_PHOTO_DIMENSION) {
+        sampleSize *= 2
+    }
+
+    val decodeOptions = BitmapFactory.Options().apply { inSampleSize = sampleSize }
+    val bitmap = resolver.openInputStream(uri)?.use { stream ->
+        BitmapFactory.decodeStream(stream, null, decodeOptions)
+    } ?: return null
+
+    val orientation = runCatching {
+        resolver.openInputStream(uri)?.use { stream ->
+            ExifInterface(stream).getAttributeInt(
+                ExifInterface.TAG_ORIENTATION,
+                ExifInterface.ORIENTATION_NORMAL
+            )
+        }
+    }.getOrNull() ?: ExifInterface.ORIENTATION_NORMAL
+
+    val rotationDegrees = when (orientation) {
+        ExifInterface.ORIENTATION_ROTATE_90 -> 90
+        ExifInterface.ORIENTATION_ROTATE_180 -> 180
+        ExifInterface.ORIENTATION_ROTATE_270 -> 270
+        else -> 0
+    }
+    if (rotationDegrees == 0) return bitmap
+
+    val matrix = Matrix().apply { postRotate(rotationDegrees.toFloat()) }
+    val rotated = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+    if (rotated !== bitmap) bitmap.recycle()
+    return rotated
 }
 
 @Composable
