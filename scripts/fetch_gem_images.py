@@ -63,7 +63,7 @@ GEMS = [
     ("chrysoberyl", ["Chrysoberyl"], ["chrysoberyl"], (BRUTE, FACETTEE)),
     ("oeil-de-tigre", ["Tiger's eye"], ["tiger"], (BRUTE, FACETTEE)),
     ("scapolite", ["Scapolite gemstone", "Scapolite"], ["scapolite"], (BRUTE, FACETTEE)),
-    ("emeraude", ["Emerald beryl", "Emerald gemstone faceted", "Beryl emerald green"], ["emerald", "beryl"], (BRUTE, FACETTEE)),
+    ("emeraude", ["Emerald beryl", "Emerald gemstone faceted", "Beryl emerald green"], ["emerald"], (BRUTE, FACETTEE)),
     ("peridot", ["Peridot"], ["peridot", "olivine"], (BRUTE, FACETTEE)),
     ("tsavorite", ["Tsavorite garnet"], ["tsavorite", "garnet"], (BRUTE, FACETTEE)),
     ("jade-jadeite", ["Jadeite jade", "Jadeite"], ["jadeite", "jade"], (BRUTE, FACETTEE)),
@@ -488,6 +488,7 @@ EXCLUDED_TITLE_TOKENS = [
     "zircon - zircon",
     "zircon-249203",
     "emerald cut diamond",
+    "goldberyll",
 ]
 
 # gem_id -> types pour lesquels on a renoncé à trouver une photo fiable
