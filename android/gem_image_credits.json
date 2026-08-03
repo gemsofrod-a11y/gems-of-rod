@@ -109,14 +109,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Pierre_shale_ammolite.jpg",
       "title": "File:Pierre shale ammolite.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "Auteur non renseigné",
-      "license": "CC BY-SA 3.0",
-      "resource_name": "gem_ammolite_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Ammolite.jpg",
-      "title": "File:Ammolite.jpg",
-      "type": "FACETTEE"
     }
   ],
   "andalousite": [
@@ -202,14 +194,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Azurite,_Burra_Mine,_South_Australia.jpg",
       "title": "File:Azurite, Burra Mine, South Australia.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "Esh77",
-      "license": "CC BY-SA 4.0",
-      "resource_name": "gem_azurite_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Sparkly_Azurite_Crystal_2.jpg",
-      "title": "File:Sparkly Azurite Crystal 2.jpg",
-      "type": "FACETTEE"
     }
   ],
   "baryte": [
@@ -376,14 +360,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Crisocola_azurite_35è_édition_Fossilium_V.Ascq.JPG",
       "title": "File:Crisocola azurite 35è édition Fossilium V.Ascq.JPG",
       "type": "BRUTE"
-    },
-    {
-      "artist": "掬茶",
-      "license": "CC BY-SA 4.0",
-      "resource_name": "gem_chrysocolle_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Chrysocolla_displayed_at_Mining_Museum_of_Akita_University.jpg",
-      "title": "File:Chrysocolla displayed at Mining Museum of Akita University.jpg",
-      "type": "FACETTEE"
     }
   ],
   "chrysoprase": [
@@ -432,14 +408,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Corallium_rubrum_(red_coral)_2_(15529370228).jpg",
       "title": "File:Corallium rubrum (red coral) 2 (15529370228).jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "Dr. Ondřej Havelka (cestovatel)",
-      "license": "CC BY-SA 4.0",
-      "resource_name": "gem_corail_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Coral_Reef,_Indian_Ocean.jpg",
-      "title": "File:Coral Reef, Indian Ocean.jpg",
-      "type": "FACETTEE"
     }
   ],
   "cornaline": [
@@ -870,14 +838,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Pyrit-with-hematite-01.jpg",
       "title": "File:Pyrit-with-hematite-01.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "Auteur non renseigné",
-      "license": "CC0",
-      "resource_name": "gem_hematite_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Hematite_intaglio-_Mummy_of_Osiris_MET_DP277827.jpg",
-      "title": "File:Hematite intaglio- Mummy of Osiris MET DP277827.jpg",
-      "type": "FACETTEE"
     }
   ],
   "hemimorphite": [

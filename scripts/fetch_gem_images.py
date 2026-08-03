@@ -532,6 +532,11 @@ GIVE_UP_SLOTS = {
     ("vesuvianite", FACETTEE),
     ("zircon-dore", FACETTEE),
     ("zircon-hyacinthe", FACETTEE),
+    ("ammolite", FACETTEE),
+    ("azurite", FACETTEE),
+    ("chrysocolle", FACETTEE),
+    ("corail", FACETTEE),
+    ("hematite", FACETTEE),
 }
 
 # Mots qui trahissent une photo de pierre BRUTE quand on cherche une FACETTÉE,
