@@ -489,6 +489,7 @@ EXCLUDED_TITLE_TOKENS = [
     "zircon-249203",
     "emerald cut diamond",
     "goldberyll",
+    "cardinal gems",
 ]
 
 # gem_id -> types pour lesquels on a renoncé à trouver une photo fiable
@@ -496,6 +497,7 @@ EXCLUDED_TITLE_TOKENS = [
 # collages ambigus ou des espèces voisines) ; on ne retente plus tant que
 # cette liste n'est pas éditée à la main après vérification visuelle.
 GIVE_UP_SLOTS = {
+    ("emeraude", FACETTEE),
     ("lapis-lazuli", FACETTEE),
     ("tsavorite", FACETTEE),
     ("iolite", FACETTEE),
