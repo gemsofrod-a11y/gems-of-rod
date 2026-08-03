@@ -63,7 +63,7 @@ GEMS = [
     ("chrysoberyl", ["Chrysoberyl"], ["chrysoberyl"], (BRUTE, FACETTEE)),
     ("oeil-de-tigre", ["Tiger's eye"], ["tiger"], (BRUTE, FACETTEE)),
     ("scapolite", ["Scapolite gemstone", "Scapolite"], ["scapolite"], (BRUTE, FACETTEE)),
-    ("emeraude", ["Emerald"], ["emerald"], (BRUTE, FACETTEE)),
+    ("emeraude", ["Emerald beryl", "Emerald gemstone faceted", "Beryl emerald green"], ["emerald", "beryl"], (BRUTE, FACETTEE)),
     ("peridot", ["Peridot"], ["peridot", "olivine"], (BRUTE, FACETTEE)),
     ("tsavorite", ["Tsavorite garnet"], ["tsavorite", "garnet"], (BRUTE, FACETTEE)),
     ("jade-jadeite", ["Jadeite jade", "Jadeite"], ["jadeite", "jade"], (BRUTE, FACETTEE)),
@@ -487,6 +487,7 @@ EXCLUDED_TITLE_TOKENS = [
     "vesuvianite asbestos",
     "zircon - zircon",
     "zircon-249203",
+    "emerald cut diamond",
 ]
 
 # gem_id -> types pour lesquels on a renoncé à trouver une photo fiable
@@ -960,18 +961,16 @@ def main() -> None:
             result = None
 
             if (gem_id, image_type) in GIVE_UP_SLOTS:
-                # Wikimedia Commons a déjà été essayé (et exclu) pour ce
-                # créneau ; on tente seulement Openverse (Flickr, musées...)
-                # comme deuxième chance, sans relancer de recherche Wikimedia.
-                print(f"-> {gem_id} [{image_type}]: Wikimedia abandonné, tentative Openverse « {' / '.join(terms)} »")
-                try:
-                    result = pick_image_openverse(terms, keywords, image_type, already_used)
-                except Exception as exc:  # noqa: BLE001
-                    print(f"  [!] erreur Openverse pour {gem_id} [{image_type}]: {exc}", file=sys.stderr)
-                    result = None
-                if not result:
-                    status[image_type] = "⏸️ recherche suspendue"
-                    continue
+                # Wikimedia ET Openverse ont déjà été essayés (et exclus)
+                # pour ce créneau : on ne retente plus automatiquement à
+                # chaque run (sinon chaque modif du script relance une
+                # recherche complète sur tous les créneaux abandonnés).
+                # Une nouvelle tentative doit être déclenchée à la main en
+                # retirant l'entrée de GIVE_UP_SLOTS après vérification
+                # qu'une meilleure source existe.
+                print(f"-> {gem_id} [{image_type}]: recherche abandonnée (voir GIVE_UP_SLOTS)")
+                status[image_type] = "⏸️ recherche suspendue"
+                continue
             else:
                 print(f"-> {gem_id} [{image_type}]: recherche « {' / '.join(terms)} »")
                 try:
