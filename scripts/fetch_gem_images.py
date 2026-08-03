@@ -31,6 +31,7 @@ from pathlib import Path
 from typing import Optional
 
 API_URL = "https://commons.wikimedia.org/w/api.php"
+OPENVERSE_API_URL = "https://api.openverse.org/v1/images/"
 USER_AGENT = "GemsOfRodEncyclopedieBot/1.0 (contact: gemsofrod@gmail.com)"
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -696,6 +697,90 @@ def pick_image(terms: list, keywords: list, image_type: str, already_used_titles
     return None
 
 
+OPENVERSE_ALLOWED_LICENSES = {"cc0", "pdm", "by", "by-sa"}
+
+
+def openverse_license_is_free(license_slug: str) -> bool:
+    return (license_slug or "").strip().lower() in OPENVERSE_ALLOWED_LICENSES
+
+
+def openverse_search(query: str, limit: int = 15) -> list:
+    params = {
+        "q": query,
+        "license": "cc0,pdm,by,by-sa",
+        "page_size": limit,
+        "mature": "false",
+    }
+    url = f"{OPENVERSE_API_URL}?{urllib.parse.urlencode(params)}"
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
+    time.sleep(REQUEST_DELAY_SECONDS)
+    with _urlopen_with_retry(req) as resp:
+        data = json.loads(resp.read().decode("utf-8"))
+    return data.get("results", [])
+
+
+def pick_image_openverse(terms: list, keywords: list, image_type: str, already_used_titles: set) -> Optional[dict]:
+    """Source de repli quand Wikimedia Commons n'a rien donné (ou a été
+    abandonné via GIVE_UP_SLOTS). Openverse agrège Flickr, des musées, etc.
+    en plus de Wikimedia — toute erreur d'API (forme de réponse inattendue,
+    réseau, quota) est avalée et traitée comme "rien trouvé", jamais comme un
+    échec du run entier."""
+    for term in terms:
+        for query in build_queries(term, image_type):
+            try:
+                results = openverse_search(query)
+            except Exception as exc:  # noqa: BLE001
+                print(f"  [!] erreur Openverse pour « {query} »: {exc}", file=sys.stderr)
+                continue
+            for item in results:
+                try:
+                    title = (item.get("title") or "").strip()
+                    if not title or title in already_used_titles:
+                        continue
+                    lower_title = title.lower()
+                    if any(tok in lower_title for tok in EXCLUDED_TITLE_TOKENS):
+                        continue
+                    if not openverse_license_is_free(item.get("license", "")):
+                        continue
+                    width = item.get("width") or 0
+                    if width and width < 300:
+                        continue
+                    tag_names = " ".join(
+                        t.get("name", "") for t in (item.get("tags") or []) if isinstance(t, dict)
+                    )
+                    haystack = f"{lower_title} {tag_names.lower()}"
+                    if any(tok in haystack for tok in EXCLUDED_TITLE_TOKENS):
+                        continue
+                    if not any(kw in haystack for kw in keywords):
+                        continue
+                    if image_type == FACETTEE and any(tok in haystack for tok in ROUGH_STATE_TOKENS):
+                        continue
+                    if image_type == BRUTE and any(tok in haystack for tok in CUT_STATE_TOKENS):
+                        continue
+
+                    download_url = item.get("url")
+                    if not download_url:
+                        continue
+
+                    license_slug = (item.get("license") or "").strip()
+                    license_version = (item.get("license_version") or "").strip()
+                    license_label = f"{license_slug} {license_version}".strip()
+                    artist = (item.get("creator") or "").strip() or "Auteur non renseigné"
+                    source_url = item.get("foreign_landing_url") or download_url
+
+                    return {
+                        "title": title,
+                        "download_url": download_url,
+                        "license": license_label,
+                        "artist": artist,
+                        "source_url": source_url,
+                    }
+                except Exception as exc:  # noqa: BLE001
+                    print(f"  [!] entrée Openverse ignorée (forme inattendue): {exc}", file=sys.stderr)
+                    continue
+    return None
+
+
 def safe_resource_name(gem_id: str, image_type: str) -> str:
     name = re.sub(r"[^a-z0-9_]", "_", gem_id.lower())
     suffix = "brute" if image_type == BRUTE else "facette"
@@ -804,26 +889,44 @@ def main() -> None:
                     status[image_type] = f"♻️ [{existing['title']}]({existing['source_url']})"
                     continue
 
-            if (gem_id, image_type) in GIVE_UP_SLOTS:
-                print(f"-> {gem_id} [{image_type}]: recherche abandonnée (voir GIVE_UP_SLOTS)")
-                status[image_type] = "⏸️ recherche suspendue"
-                continue
-
             resource_name = safe_resource_name(gem_id, image_type)
             dest = DRAWABLE_DIR / f"{resource_name}.jpg"
-
-            print(f"-> {gem_id} [{image_type}]: recherche « {' / '.join(terms)} »")
             already_used = {c["title"] for c in gem_credits.values()}
-            try:
-                result = pick_image(terms, keywords, image_type, already_used)
-            except Exception as exc:  # noqa: BLE001
-                print(f"  [!] erreur recherche pour {gem_id} [{image_type}]: {exc}", file=sys.stderr)
-                result = None
+            result = None
 
-            if not result:
-                print(f"  [x] aucune image libre trouvée pour {gem_id} [{image_type}]")
-                status[image_type] = "❌ non trouvée"
-                continue
+            if (gem_id, image_type) in GIVE_UP_SLOTS:
+                # Wikimedia Commons a déjà été essayé (et exclu) pour ce
+                # créneau ; on tente seulement Openverse (Flickr, musées...)
+                # comme deuxième chance, sans relancer de recherche Wikimedia.
+                print(f"-> {gem_id} [{image_type}]: Wikimedia abandonné, tentative Openverse « {' / '.join(terms)} »")
+                try:
+                    result = pick_image_openverse(terms, keywords, image_type, already_used)
+                except Exception as exc:  # noqa: BLE001
+                    print(f"  [!] erreur Openverse pour {gem_id} [{image_type}]: {exc}", file=sys.stderr)
+                    result = None
+                if not result:
+                    status[image_type] = "⏸️ recherche suspendue"
+                    continue
+            else:
+                print(f"-> {gem_id} [{image_type}]: recherche « {' / '.join(terms)} »")
+                try:
+                    result = pick_image(terms, keywords, image_type, already_used)
+                except Exception as exc:  # noqa: BLE001
+                    print(f"  [!] erreur recherche pour {gem_id} [{image_type}]: {exc}", file=sys.stderr)
+                    result = None
+
+                if not result:
+                    print(f"  [i] rien sur Wikimedia pour {gem_id} [{image_type}], tentative Openverse")
+                    try:
+                        result = pick_image_openverse(terms, keywords, image_type, already_used)
+                    except Exception as exc:  # noqa: BLE001
+                        print(f"  [!] erreur Openverse pour {gem_id} [{image_type}]: {exc}", file=sys.stderr)
+                        result = None
+
+                if not result:
+                    print(f"  [x] aucune image libre trouvée pour {gem_id} [{image_type}]")
+                    status[image_type] = "❌ non trouvée"
+                    continue
 
             try:
                 download_image(result["download_url"], dest)
