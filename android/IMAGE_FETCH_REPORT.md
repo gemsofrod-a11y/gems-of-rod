@@ -32,7 +32,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | uvarovite | ♻️ [File:Uvarovite-uvarclose.jpg](https://commons.wikimedia.org/wiki/File:Uvarovite-uvarclose.jpg) | ⏸️ recherche suspendue |
 | vesuvianite | ♻️ [File:Vesuvianite-199353.jpg](https://commons.wikimedia.org/wiki/File:Vesuvianite-199353.jpg) | ⏸️ recherche suspendue |
 | prehnite | ♻️ [File:Prehnite-105970.jpg](https://commons.wikimedia.org/wiki/File:Prehnite-105970.jpg) | ⏸️ recherche suspendue |
-| chrysocolle | ♻️ [File:Crisocola azurite 35è édition Fossilium V.Ascq.JPG](https://commons.wikimedia.org/wiki/File:Crisocola_azurite_35è_édition_Fossilium_V.Ascq.JPG) | ✅ [File:Chrysocolla displayed at Mining Museum of Akita University.jpg](https://commons.wikimedia.org/wiki/File:Chrysocolla_displayed_at_Mining_Museum_of_Akita_University.jpg) |
+| chrysocolle | ♻️ [File:Crisocola azurite 35è édition Fossilium V.Ascq.JPG](https://commons.wikimedia.org/wiki/File:Crisocola_azurite_35è_édition_Fossilium_V.Ascq.JPG) | ⏸️ recherche suspendue |
 | variscite | ♻️ [File:Variscite-var01b.jpg](https://commons.wikimedia.org/wiki/File:Variscite-var01b.jpg) | ⏸️ recherche suspendue |
 | serpentine | ♻️ [File:Serpentine-bowenite.jpg](https://commons.wikimedia.org/wiki/File:Serpentine-bowenite.jpg) | ⏸️ recherche suspendue |
 | grandidierite | ♻️ [File:Grandidierite-169886.jpg](https://commons.wikimedia.org/wiki/File:Grandidierite-169886.jpg) | ♻️ [File:Fotostrecke Weltraritaeten- Grandidierit-G-EmpireTheWorldOfGems.jpg](https://commons.wikimedia.org/wiki/File:Fotostrecke_Weltraritaeten-_Grandidierit-G-EmpireTheWorldOfGems.jpg) |
@@ -81,7 +81,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | pierre-de-lune | ♻️ [File:Moonstone NHMLA.png](https://commons.wikimedia.org/wiki/File:Moonstone_NHMLA.png) | ♻️ [File:Natural Blue Moonstone loose gemstone.jpg](https://commons.wikimedia.org/wiki/File:Natural_Blue_Moonstone_loose_gemstone.jpg) |
 | pierre-de-soleil | ♻️ [File:Oligoclase-Sunstone from India2.jpg](https://commons.wikimedia.org/wiki/File:Oligoclase-Sunstone_from_India2.jpg) | ♻️ [File:Sunstone (Tertiary; Spectrum Mine, Oregon, USA) 12.jpg](https://commons.wikimedia.org/wiki/File:Sunstone_(Tertiary;_Spectrum_Mine,_Oregon,_USA)_12.jpg) |
 | fluorine | ♻️ [File:Fluorite-Sphalerite-34768.jpg](https://commons.wikimedia.org/wiki/File:Fluorite-Sphalerite-34768.jpg) | ♻️ [File:Fluorite cut.jpg](https://commons.wikimedia.org/wiki/File:Fluorite_cut.jpg) |
-| ammolite | ♻️ [File:Pierre shale ammolite.jpg](https://commons.wikimedia.org/wiki/File:Pierre_shale_ammolite.jpg) | ✅ [File:Ammolite.jpg](https://commons.wikimedia.org/wiki/File:Ammolite.jpg) |
+| ammolite | ♻️ [File:Pierre shale ammolite.jpg](https://commons.wikimedia.org/wiki/File:Pierre_shale_ammolite.jpg) | ⏸️ recherche suspendue |
 | ambre | ♻️ [File:Amber Bernstein many stones.jpg](https://commons.wikimedia.org/wiki/File:Amber_Bernstein_many_stones.jpg) | ⏸️ recherche suspendue |
 | perle | — | ♻️ [File:Various pearls.jpg](https://commons.wikimedia.org/wiki/File:Various_pearls.jpg) |
 | grenat-pyrope | ♻️ [File:Fire-eyed diucon (Pyrope pyrope) Chiloe.jpg](https://commons.wikimedia.org/wiki/File:Fire-eyed_diucon_(Pyrope_pyrope)_Chiloe.jpg) | ♻️ [File:Pyrope.jpg](https://commons.wikimedia.org/wiki/File:Pyrope.jpg) |
@@ -106,7 +106,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | jade-nephrite | ♻️ [File:Black-nephrite-jade-bangle.jpg](https://commons.wikimedia.org/wiki/File:Black-nephrite-jade-bangle.jpg) | ⏸️ recherche suspendue |
 | maw-sit-sit | ❌ non trouvée | ❌ non trouvée |
 | tourmaline-chrome | ❌ non trouvée | ❌ non trouvée |
-| azurite | ♻️ [File:Azurite, Burra Mine, South Australia.jpg](https://commons.wikimedia.org/wiki/File:Azurite,_Burra_Mine,_South_Australia.jpg) | ✅ [File:Sparkly Azurite Crystal 2.jpg](https://commons.wikimedia.org/wiki/File:Sparkly_Azurite_Crystal_2.jpg) |
+| azurite | ♻️ [File:Azurite, Burra Mine, South Australia.jpg](https://commons.wikimedia.org/wiki/File:Azurite,_Burra_Mine,_South_Australia.jpg) | ⏸️ recherche suspendue |
 | sodalite | ♻️ [File:Sodalite-aegirine-albite pegmatite, Ice River Complex BC.jpg](https://commons.wikimedia.org/wiki/File:Sodalite-aegirine-albite_pegmatite,_Ice_River_Complex_BC.jpg) | ⏸️ recherche suspendue |
 | larimar | ♻️ [File:Larimar hg.jpg](https://commons.wikimedia.org/wiki/File:Larimar_hg.jpg) | ⏸️ recherche suspendue |
 | lazulite | ♻️ [File:Lazulite (OM1-197).jpg](https://commons.wikimedia.org/wiki/File:Lazulite_(OM1-197).jpg) | ⏸️ recherche suspendue |
@@ -152,7 +152,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | kornerupine | ♻️ [File:Kornerupine (GeoDIL number - 274).jpg](https://commons.wikimedia.org/wiki/File:Kornerupine_(GeoDIL_number_-_274).jpg) | ❌ non trouvée |
 | hyperstene | ♻️ [File:Labradorite with hypersthene (GeoDIL number - 392).jpg](https://commons.wikimedia.org/wiki/File:Labradorite_with_hypersthene_(GeoDIL_number_-_392).jpg) | ⏸️ recherche suspendue |
 | paesine | ♻️ [File:Pietra paesina Val d'Arno Caillois Donation MNHN n10.jpg](https://commons.wikimedia.org/wiki/File:Pietra_paesina_Val_d'Arno_Caillois_Donation_MNHN_n10.jpg) | ⏸️ recherche suspendue |
-| hematite | ♻️ [File:Pyrit-with-hematite-01.jpg](https://commons.wikimedia.org/wiki/File:Pyrit-with-hematite-01.jpg) | ✅ [File:Hematite intaglio- Mummy of Osiris MET DP277827.jpg](https://commons.wikimedia.org/wiki/File:Hematite_intaglio-_Mummy_of_Osiris_MET_DP277827.jpg) |
+| hematite | ♻️ [File:Pyrit-with-hematite-01.jpg](https://commons.wikimedia.org/wiki/File:Pyrit-with-hematite-01.jpg) | ⏸️ recherche suspendue |
 | magnetite | ♻️ [File:Magnetite Russia.jpg](https://commons.wikimedia.org/wiki/File:Magnetite_Russia.jpg) | ⏸️ recherche suspendue |
 | quartz-tourmaline | ⏸️ recherche suspendue | ❌ non trouvée |
 | rubis-etoile | ♻️ [File:Maharlika Star Ruby 2.1 kilograms is World's Largest.jpg](https://commons.wikimedia.org/wiki/File:Maharlika_Star_Ruby_2.1_kilograms_is_World's_Largest.jpg) | ♻️ [File:Huge 10,800 Carats Maharlika Star Ruby.jpg](https://commons.wikimedia.org/wiki/File:Huge_10,800_Carats_Maharlika_Star_Ruby.jpg) |
@@ -160,7 +160,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | diaspore-zultanite | ♻️ [File:Zultanite rough crystal and gemstones.jpg](https://commons.wikimedia.org/wiki/File:Zultanite_rough_crystal_and_gemstones.jpg) | ⏸️ recherche suspendue |
 | grenat-couleur-changeante | ♻️ [File:Rough Red Garnet Gemstone.jpg](https://commons.wikimedia.org/wiki/File:Rough_Red_Garnet_Gemstone.jpg) | ❌ non trouvée |
 | pietersite | ♻️ [File:ChinesePietersite.jpg](https://commons.wikimedia.org/wiki/File:ChinesePietersite.jpg) | ⏸️ recherche suspendue |
-| agate | ♻️ [File:AGATE-COLLECTION GEORGI ZLATARSKI 1.jpg](https://commons.wikimedia.org/wiki/File:AGATE-COLLECTION_GEORGI_ZLATARSKI_1.jpg) | ✅ [File:AGATE-COLLECTION GEORGI ZLATARSKI.jpg](https://commons.wikimedia.org/wiki/File:AGATE-COLLECTION_GEORGI_ZLATARSKI.jpg) |
+| agate | ♻️ [File:AGATE-COLLECTION GEORGI ZLATARSKI 1.jpg](https://commons.wikimedia.org/wiki/File:AGATE-COLLECTION_GEORGI_ZLATARSKI_1.jpg) | ♻️ [File:AGATE-COLLECTION GEORGI ZLATARSKI.jpg](https://commons.wikimedia.org/wiki/File:AGATE-COLLECTION_GEORGI_ZLATARSKI.jpg) |
 | jaspe | ♻️ [File:Unpolished jasper.jpg](https://commons.wikimedia.org/wiki/File:Unpolished_jasper.jpg) | ⏸️ recherche suspendue |
 | calcedoine | ♻️ [File:Botryoidal Purple Grape Agate Chalcedony from Indonesia.jpg](https://commons.wikimedia.org/wiki/File:Botryoidal_Purple_Grape_Agate_Chalcedony_from_Indonesia.jpg) | ♻️ [File:Chalcedony cut.jpg](https://commons.wikimedia.org/wiki/File:Chalcedony_cut.jpg) |
 | quartz-a-inclusions | ♻️ [File:Quartz, Tibet.jpg](https://commons.wikimedia.org/wiki/File:Quartz,_Tibet.jpg) | ♻️ [File:Lodolite quartz - a.JPG](https://commons.wikimedia.org/wiki/File:Lodolite_quartz_-_a.JPG) |
@@ -176,7 +176,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | sphalerite | ♻️ [File:Sphalerite (GeoDIL number - 1083).jpg](https://commons.wikimedia.org/wiki/File:Sphalerite_(GeoDIL_number_-_1083).jpg) | ♻️ [File:Sphalerite cut.jpg](https://commons.wikimedia.org/wiki/File:Sphalerite_cut.jpg) |
 | rutile | ♻️ [File:Rutile (GeoDIL number - 1562).jpg](https://commons.wikimedia.org/wiki/File:Rutile_(GeoDIL_number_-_1562).jpg) | ⏸️ recherche suspendue |
 | orthose | ♻️ [File:Bulletin 426 Plate XXIII B Bowlder outcrop coarse-grained granite.jpg](https://commons.wikimedia.org/wiki/File:Bulletin_426_Plate_XXIII_B_Bowlder_outcrop_coarse-grained_granite.jpg) | ❌ non trouvée |
-| corail | ♻️ [File:Corallium rubrum (red coral) 2 (15529370228).jpg](https://commons.wikimedia.org/wiki/File:Corallium_rubrum_(red_coral)_2_(15529370228).jpg) | ✅ [File:Coral Reef, Indian Ocean.jpg](https://commons.wikimedia.org/wiki/File:Coral_Reef,_Indian_Ocean.jpg) |
+| corail | ♻️ [File:Corallium rubrum (red coral) 2 (15529370228).jpg](https://commons.wikimedia.org/wiki/File:Corallium_rubrum_(red_coral)_2_(15529370228).jpg) | ⏸️ recherche suspendue |
 | perle-conque | — | ♻️ [File:- conch pearl.png](https://commons.wikimedia.org/wiki/File:-_conch_pearl.png) |
 
-**228 / 344** photos récupérées au total.
+**223 / 344** photos récupérées au total.
