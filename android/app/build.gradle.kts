@@ -18,14 +18,14 @@ fun signingProp(key: String): String? =
 
 android {
     namespace = "fr.gemsofrod.encyclopedie"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "fr.gemsofrod.encyclopedie"
         minSdk = 26
-        targetSdk = 34
-        versionCode = 35
-        versionName = "2.18"
+        targetSdk = 35
+        versionCode = 36
+        versionName = "2.19"
     }
 
     signingConfigs {
