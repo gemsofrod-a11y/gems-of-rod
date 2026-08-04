@@ -1,7 +1,20 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
+
+// Charge les identifiants de signature depuis keystore.properties (jamais commité,
+// voir android/keystore.properties.template) ou depuis des variables d'environnement
+// (utilisé par le workflow CI android-release.yml via les secrets GitHub).
+val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("keystore.properties")
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(keystorePropertiesFile.inputStream())
+}
+fun signingProp(key: String): String? =
+    keystoreProperties.getProperty(key) ?: System.getenv(key)
 
 android {
     namespace = "fr.gemsofrod.encyclopedie"
@@ -11,14 +24,29 @@ android {
         applicationId = "fr.gemsofrod.encyclopedie"
         minSdk = 26
         targetSdk = 34
-        versionCode = 3
-        versionName = "1.2"
+        versionCode = 35
+        versionName = "2.18"
+    }
+
+    signingConfigs {
+        create("release") {
+            val storeFilePath = signingProp("KEYSTORE_FILE")
+            if (storeFilePath != null) {
+                storeFile = rootProject.file(storeFilePath)
+                storePassword = signingProp("STORE_PASSWORD")
+                keyAlias = signingProp("KEY_ALIAS")
+                keyPassword = signingProp("KEY_PASSWORD")
+            }
+        }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            if (signingProp("KEYSTORE_FILE") != null) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
 

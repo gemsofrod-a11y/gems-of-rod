@@ -7,6 +7,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.ui.screens.CategoriesScreen
+import fr.gemsofrod.encyclopedie.ui.screens.CertificateScreen
+import fr.gemsofrod.encyclopedie.ui.screens.FavoritesScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemsListScreen
 
@@ -14,9 +16,12 @@ private object Routes {
     const val CATEGORIES = "categories"
     const val GEMS_LIST = "gems/{colorName}"
     const val GEM_DETAIL = "gem/{gemId}"
+    const val FAVORITES = "favorites"
+    const val CERTIFICATE = "certificate/{gemId}"
 
     fun gemsList(colorName: String) = "gems/$colorName"
     fun gemDetail(gemId: String) = "gem/$gemId"
+    fun certificate(gemId: String) = "certificate/$gemId"
 }
 
 @Composable
@@ -26,7 +31,9 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             CategoriesScreen(
                 onCategoryClick = { category ->
                     navController.navigate(Routes.gemsList(category.name))
-                }
+                },
+                onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
+                onFavoritesClick = { navController.navigate(Routes.FAVORITES) }
             )
         }
         composable(Routes.GEMS_LIST) { backStackEntry ->
@@ -41,6 +48,20 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         composable(Routes.GEM_DETAIL) { backStackEntry ->
             val gemId = backStackEntry.arguments?.getString("gemId").orEmpty()
             GemDetailScreen(
+                gemId = gemId,
+                onBackClick = { navController.popBackStack() },
+                onCertificateClick = { navController.navigate(Routes.certificate(gemId)) }
+            )
+        }
+        composable(Routes.FAVORITES) {
+            FavoritesScreen(
+                onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.CERTIFICATE) { backStackEntry ->
+            val gemId = backStackEntry.arguments?.getString("gemId").orEmpty()
+            CertificateScreen(
                 gemId = gemId,
                 onBackClick = { navController.popBackStack() }
             )
