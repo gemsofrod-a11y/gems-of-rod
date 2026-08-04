@@ -20,8 +20,8 @@ Pour chaque gemme, retrouvez :
 • Une fourchette de prix indicative au carat
 • Les mines et régions d'origine, avec un accès direct à leur localisation
   sur Google Maps
-• Au moins une photographie de la pierre à l'état brut et une à l'état
-  facetté/taillé (licences libres, Wikimedia Commons)
+• Des photographies de référence (état brut et/ou taillé selon les
+  espèces, sous licences libres)
 • Une description détaillée de son histoire et de ses particularités
 
 Classées par couleur pour une navigation intuitive, ces fiches s'adressent
@@ -42,7 +42,6 @@ gemsofrod@gmail.com
 
 ## Politique de confidentialité (URL)
 https://gemsofrod-a11y.github.io/gems-of-rod/privacy-policy.html
-(à activer d'abord — voir README_PLAY_STORE.md)
 
 ## Assets graphiques encore à produire
 - Icône 512x512 px (32 bits PNG, avec canal alpha)
