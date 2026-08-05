@@ -49,7 +49,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | jeremejevite | ♻️ [File:Jeremejevite-jerem-3a.jpg](https://commons.wikimedia.org/wiki/File:Jeremejevite-jerem-3a.jpg) | ⏸️ recherche suspendue |
 | amethyste | ♻️ [File:Amethysts-1ab.JPG](https://commons.wikimedia.org/wiki/File:Amethysts-1ab.JPG) | ♻️ [File:Collection of Amethyst Gemstones.JPG](https://commons.wikimedia.org/wiki/File:Collection_of_Amethyst_Gemstones.JPG) |
 | spinelle-violet | ♻️ [File:Spinel-Chondrodite-278475.jpg](https://commons.wikimedia.org/wiki/File:Spinel-Chondrodite-278475.jpg) | ⏸️ recherche suspendue |
-| iolite | ♻️ [File:Cordierite-pas-16c.jpg](https://commons.wikimedia.org/wiki/File:Cordierite-pas-16c.jpg) | ⏸️ recherche suspendue (photo trouvée rejetée après revue visuelle : fragment de roche brute, non taillé) |
+| iolite | ♻️ [File:Cordierite-pas-16c.jpg](https://commons.wikimedia.org/wiki/File:Cordierite-pas-16c.jpg) | ⏸️ recherche suspendue |
 | grenat-rhodolite-violet | ♻️ [File:Corundum, garnet, mica, feldspar.jpg](https://commons.wikimedia.org/wiki/File:Corundum,_garnet,_mica,_feldspar.jpg) | ⏸️ recherche suspendue |
 | sugilite | ♻️ [File:Sugilite-76750.jpg](https://commons.wikimedia.org/wiki/File:Sugilite-76750.jpg) | ❌ échec téléchargement |
 | charoite | ♻️ [File:Tinaksite, Charoite-543035.png](https://commons.wikimedia.org/wiki/File:Tinaksite,_Charoite-543035.png) | ⏸️ recherche suspendue |
@@ -179,4 +179,4 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | corail | ♻️ [File:Corallium rubrum (red coral) 2 (15529370228).jpg](https://commons.wikimedia.org/wiki/File:Corallium_rubrum_(red_coral)_2_(15529370228).jpg) | ⏸️ recherche suspendue |
 | perle-conque | — | ♻️ [File:- conch pearl.png](https://commons.wikimedia.org/wiki/File:-_conch_pearl.png) |
 
-**231 / 344** photos récupérées au total.
+**230 / 344** photos récupérées au total.
