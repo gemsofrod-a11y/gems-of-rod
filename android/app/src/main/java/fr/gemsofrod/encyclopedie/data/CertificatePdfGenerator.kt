@@ -19,6 +19,7 @@ import java.util.Locale
  * dans [Gem].
  */
 data class CertificateInfo(
+    val emetteur: String,
     val dimensions: String,
     val poids: String,
     val origine: String,
@@ -73,10 +74,14 @@ object CertificatePdfGenerator {
 
         var y = MARGIN
 
-        canvas.drawText("GEMS OF ROD", MARGIN, y + 18f, titlePaint)
+        canvas.drawText("CERTIFICAT D'AUTHENTICITÉ", MARGIN, y + 18f, titlePaint)
         y += 24f
-        canvas.drawText("Certificat d'authenticité — gemsofrod@gmail.com", MARGIN, y + 8f, subtitlePaint)
-        y += 22f
+        if (info.emetteur.isNotBlank()) {
+            canvas.drawText(info.emetteur, MARGIN, y + 8f, subtitlePaint)
+            y += 22f
+        } else {
+            y += 6f
+        }
         canvas.drawLine(MARGIN, y, (PAGE_WIDTH - MARGIN), y, linePaint)
         y += 26f
 
