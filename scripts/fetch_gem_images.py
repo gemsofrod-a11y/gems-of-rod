@@ -500,6 +500,7 @@ GIVE_UP_SLOTS = {
     ("emeraude", FACETTEE),
     ("lapis-lazuli", FACETTEE),
     ("tsavorite", FACETTEE),
+    ("iolite", FACETTEE),
     ("tourmaline-noire", FACETTEE),
     ("zircon-blanc", FACETTEE),
     ("saphir-violet", BRUTE),
