@@ -111,6 +111,7 @@ object CertificatePdfGenerator {
         row("Origine", info.origine)
         row("Traitement", info.traitement)
         row("Dureté (Mohs)", gem.durete)
+        row("Indice de réfraction", gem.indiceRefraction)
         row("Prix indicatif", gem.prixCaratEur)
 
         y += 20f
