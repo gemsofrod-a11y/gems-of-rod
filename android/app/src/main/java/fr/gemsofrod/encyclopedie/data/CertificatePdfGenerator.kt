@@ -117,7 +117,6 @@ object CertificatePdfGenerator {
         row("Traitement", info.traitement)
         row("Dureté (Mohs)", gem.durete)
         row("Indice de réfraction", gem.indiceRefraction)
-        row("Prix indicatif", gem.prixCaratEur)
 
         y += 20f
         val dateFormat = SimpleDateFormat("d MMMM yyyy", Locale.FRANCE)
