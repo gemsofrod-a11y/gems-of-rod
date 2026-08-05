@@ -29,6 +29,7 @@ data class Gem(
     val formuleChimique: String,
     val systemeCristallin: String,
     val durete: String,
+    val indiceRefraction: String,
     val origines: List<String>,
     val particularites: String,
     val prixCaratEur: String,

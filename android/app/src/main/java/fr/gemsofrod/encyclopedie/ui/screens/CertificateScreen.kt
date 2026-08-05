@@ -70,6 +70,8 @@ fun CertificateScreen(gemId: String, onBackClick: () -> Unit) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
 
+    val prefs = remember { context.getSharedPreferences("certificate_prefs", Context.MODE_PRIVATE) }
+    var emetteur by remember { mutableStateOf(prefs.getString(PREF_EMETTEUR, "") ?: "") }
     var photoUri by remember(gemId) { mutableStateOf<Uri?>(null) }
     var photoBitmap by remember(gemId) { mutableStateOf<Bitmap?>(null) }
     var dimensions by remember(gemId) { mutableStateOf("") }
@@ -153,6 +155,12 @@ fun CertificateScreen(gemId: String, onBackClick: () -> Unit) {
             ) {
                 Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     CertificateField(
+                        label = "Émis par",
+                        placeholder = "ex. Bijouterie Martin — contact@exemple.com",
+                        value = emetteur,
+                        onValueChange = { emetteur = it }
+                    )
+                    CertificateField(
                         label = "Dimensions",
                         placeholder = "ex. 8,2 x 6,1 x 4,3 mm",
                         value = dimensions,
@@ -183,6 +191,7 @@ fun CertificateScreen(gemId: String, onBackClick: () -> Unit) {
                 onClick = {
                     if (isGenerating) return@Button
                     isGenerating = true
+                    prefs.edit().putString(PREF_EMETTEUR, emetteur).apply()
                     scope.launch {
                         val file = withContext(Dispatchers.IO) {
                             CertificatePdfGenerator.generate(
@@ -190,6 +199,7 @@ fun CertificateScreen(gemId: String, onBackClick: () -> Unit) {
                                 gem = gem,
                                 photo = photoBitmap,
                                 info = CertificateInfo(
+                                    emetteur = emetteur,
                                     dimensions = dimensions,
                                     poids = poids,
                                     origine = origine,
@@ -271,6 +281,7 @@ private fun PhotoPickerBox(bitmap: Bitmap?, onPickClick: () -> Unit) {
     }
 }
 
+private const val PREF_EMETTEUR = "emetteur"
 private const val MAX_PHOTO_DIMENSION = 1600
 
 /**

@@ -181,6 +181,8 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
                     FicheDivider()
                     FicheRow("Dureté (Mohs)", gem.durete)
                     FicheDivider()
+                    FicheRow("Indice de réfraction", gem.indiceRefraction)
+                    FicheDivider()
                     FicheRow("Prix indicatif", gem.prixCaratEur)
                 }
             }
@@ -326,6 +328,7 @@ private fun buildShareText(gem: Gem): String = buildString {
     appendLine()
     appendLine("Famille : ${gem.famille}")
     appendLine("Dureté (Mohs) : ${gem.durete}")
+    appendLine("Indice de réfraction : ${gem.indiceRefraction}")
     appendLine("Prix indicatif : ${gem.prixCaratEur}")
     appendLine()
     append("Gems of Rod — gemsofrod@gmail.com")
