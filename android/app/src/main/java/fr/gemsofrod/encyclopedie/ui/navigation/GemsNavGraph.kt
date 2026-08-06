@@ -6,14 +6,19 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import fr.gemsofrod.encyclopedie.data.GemColorCategory
+import fr.gemsofrod.encyclopedie.data.GemFamilies
+import fr.gemsofrod.encyclopedie.data.GemsRepository
 import fr.gemsofrod.encyclopedie.ui.screens.CategoriesScreen
 import fr.gemsofrod.encyclopedie.ui.screens.CertificateScreen
+import fr.gemsofrod.encyclopedie.ui.screens.FamillesListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.FavoritesScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemsListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.HomeScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieListScreen
+import java.net.URLDecoder
+import java.net.URLEncoder
 
 private object Routes {
     const val HOME = "home"
@@ -22,13 +27,19 @@ private object Routes {
     const val GEM_DETAIL = "gem/{gemId}"
     const val FAVORITES = "favorites"
     const val CERTIFICATE = "certificate/{gemId}"
+    const val FAMILLES_LIST = "familles"
+    const val FAMILLE_DETAIL = "familles/{familySlug}"
     const val LITHOTHERAPIE_LIST = "lithotherapie_list"
     const val LITHOTHERAPIE_DETAIL = "lithotherapie/{gemId}"
 
     fun gemsList(colorName: String) = "gems/$colorName"
     fun gemDetail(gemId: String) = "gem/$gemId"
     fun certificate(gemId: String) = "certificate/$gemId"
+    fun familleDetail(familyName: String) = "familles/${encode(familyName)}"
     fun lithotherapieDetail(gemId: String) = "lithotherapie/$gemId"
+
+    fun encode(value: String): String = URLEncoder.encode(value, "UTF-8")
+    fun decode(value: String): String = URLDecoder.decode(value, "UTF-8")
 }
 
 @Composable
@@ -37,6 +48,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         composable(Routes.HOME) {
             HomeScreen(
                 onGemmologieClick = { navController.navigate(Routes.CATEGORIES) },
+                onFamillesClick = { navController.navigate(Routes.FAMILLES_LIST) },
                 onLithotherapieClick = { navController.navigate(Routes.LITHOTHERAPIE_LIST) },
                 onFavoritesClick = { navController.navigate(Routes.FAVORITES) }
             )
@@ -60,7 +72,24 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             val colorName = backStackEntry.arguments?.getString("colorName").orEmpty()
             val category = GemColorCategory.valueOf(colorName)
             GemsListScreen(
-                category = category,
+                title = category.label,
+                gems = GemsRepository.byColor(category),
+                onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.FAMILLES_LIST) {
+            FamillesListScreen(
+                onFamilyClick = { familyName -> navController.navigate(Routes.familleDetail(familyName)) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.FAMILLE_DETAIL) { backStackEntry ->
+            val familySlug = backStackEntry.arguments?.getString("familySlug").orEmpty()
+            val familyName = Routes.decode(familySlug)
+            GemsListScreen(
+                title = familyName,
+                gems = GemFamilies.gemsFor(familyName),
                 onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
                 onBackClick = { navController.popBackStack() }
             )
