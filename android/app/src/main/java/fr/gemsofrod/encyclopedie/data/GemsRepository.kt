@@ -26,6 +26,7 @@ object GemsRepository {
             indiceRefraction = "1,730 – 1,766",
             origines = listOf("République tchèque (Bohême, région de Podsedice)", "Afrique du Sud (mine de Kao, kimberlites)", "Tanzanie (Umba)"),
             particularites = "Contrairement à la rhodolite, le pyrope pur ne contient pas de fer en proportion significative.",
+            lithotherapie = "Pierre de vitalité et de courage, le grenat pyrope est réputé stimuler l'énergie physique et raviver la motivation dans les moments de fatigue ou de découragement.",
             prixCaratEur = "50 – 400 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -43,6 +44,7 @@ object GemsRepository {
             indiceRefraction = "1,610 – 1,635",
             origines = listOf("Russie (péninsule de Kola, massif de Lovozero)", "Groenland (Ilímaussaq)", "Canada (Québec, mont Saint-Hilaire)"),
             particularites = "Presque toujours vendue en cabochon ou pierre polie brute, rarement facettée en raison de son opacité partielle.",
+            lithotherapie = "Surnommée pierre de l'amour de soi, l'eudialyte est utilisée pour apaiser les blessures émotionnelles et favoriser l'acceptation de soi.",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -60,6 +62,7 @@ object GemsRepository {
             indiceRefraction = "1,543 – 1,551",
             origines = listOf("République démocratique du Congo (Kivu)", "États-Unis (Lake County, Oregon)"),
             particularites = "Un certificat de laboratoire précisant « non traitée » est indispensable pour les pierres rouges de cette espèce.",
+            lithotherapie = "Associée à la joie de vivre et à la vitalité, l'andésine est réputée redonner de l'énergie dans les périodes de fatigue morale.",
             prixCaratEur = "20 – 200 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -77,6 +80,7 @@ object GemsRepository {
             indiceRefraction = "1,762 – 1,770",
             origines = listOf("Birmanie (Mogok)", "Sri Lanka (Ratnapura)", "Mozambique (Montepuez)", "Madagascar (Ilakaka)"),
             particularites = "Fluorescence rouge sous UV ; inclusions de rutile en « soie » pouvant produire un astérisme (étoile à 6 branches).",
+            lithotherapie = "Pierre de passion et de vitalité par excellence, le rubis est traditionnellement associé au courage, à la confiance en soi et à la protection contre les énergies négatives.",
             prixCaratEur = "500 – 15 000 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -94,6 +98,7 @@ object GemsRepository {
             indiceRefraction = "1,760 – 1,820",
             origines = listOf("Inde (Rajmahal Hills, Jharkhand)", "Sri Lanka (Ratnapura)", "République tchèque (Podsedice, Bohême)", "Tanzanie (vallée de l'Umba)"),
             particularites = "Aucun clivage, forte réfraction, jamais traité thermiquement ou chimiquement.",
+            lithotherapie = "Pierre d'ancrage et de force intérieure, le grenat almandin est réputé aider à traverser les périodes difficiles avec détermination.",
             prixCaratEur = "10 – 100 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -111,6 +116,7 @@ object GemsRepository {
             indiceRefraction = "1,712 – 1,717",
             origines = listOf("Birmanie (Mogok)", "Tadjikistan (Kuh-i-Lal, Pamir)", "Sri Lanka (Ratnapura)"),
             particularites = "Cristaux souvent octaédriques ; quasiment toujours non traité.",
+            lithotherapie = "Associé au renouveau et à la vitalité, le spinelle rouge est utilisé pour stimuler l'énergie et encourager à se relever après une épreuve.",
             prixCaratEur = "300 – 3 000 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -128,6 +134,7 @@ object GemsRepository {
             indiceRefraction = "1,616 – 1,652",
             origines = listOf("Brésil (mine de Cruzeiro, Minas Gerais)", "Nigeria (Oyo)", "Mozambique (Alto Ligonha)", "Afghanistan (vallée de Paprok, Nouristan)"),
             particularites = "Pléochroïsme marqué ; cristaux prismatiques striés caractéristiques.",
+            lithotherapie = "La rubellite est réputée ouvrir le cœur à l'amour et à la joie, en apaisant les blessures affectives anciennes.",
             prixCaratEur = "50 – 400 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -145,6 +152,7 @@ object GemsRepository {
             indiceRefraction = "1,740 – 1,760",
             origines = listOf("Tanzanie (vallée de l'Umba)", "Sri Lanka (Ratnapura)", "Inde (Orissa)"),
             particularites = "Excellente transparence, jamais traitée.",
+            lithotherapie = "Pierre d'équilibre émotionnel, la rhodolite adoucirait les excès de colère tout en préservant la passion et l'enthousiasme.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -162,6 +170,7 @@ object GemsRepository {
             indiceRefraction = "1,787 – 1,816",
             origines = listOf("Mogok Stone Tract, Birmanie"),
             particularites = "Un seul gisement connu au monde ; pierres taillées presque toutes inférieures à 2 carats.",
+            lithotherapie = "Minéral rare, la painite est associée en lithothérapie à la persévérance et à la confiance en son propre chemin, y compris hors des sentiers battus.",
             prixCaratEur = "6 000 – 60 000 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
@@ -181,6 +190,7 @@ object GemsRepository {
             indiceRefraction = "2,290 – 2,660",
             origines = listOf("Australie (mine Adelaide, Dundas, Tasmanie)", "Russie (Oural)"),
             particularites = "Trop tendre et clivable pour un usage joaillier courant ; quasi exclusivement une pierre de collection.",
+            lithotherapie = "Pierre d'énergie et de créativité, la crocoïte est réputée stimuler la passion et l'enthousiasme dans les projets nouveaux.",
             prixCaratEur = "Non coté au carat (spécimens à la pièce, 50 – 5 000 €)",
             rarete = GemRarete.RARE
         ),
@@ -198,6 +208,7 @@ object GemsRepository {
             indiceRefraction = "1,740 – 1,756",
             origines = listOf("Tanzanie (Umba)", "Kenya (Taita-Taveta)", "Madagascar (Anjanabonoina)"),
             particularites = "Aucun traitement n'est nécessaire ni pratiqué ; couleur 100% naturelle.",
+            lithotherapie = "Associé à la joie de vivre, le grenat malaya est utilisé pour stimuler la créativité et dissiper la morosité.",
             prixCaratEur = "150 – 800 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -215,6 +226,7 @@ object GemsRepository {
             indiceRefraction = "1,925 – 1,984",
             origines = listOf("Sri Lanka (Ratnapura)", "Cambodge (Ratanakiri)", "Tanzanie (Tunduru)"),
             particularites = "Biréfringence élevée provoquant un dédoublement visible des arêtes de la table à l'œil nu.",
+            lithotherapie = "Le zircon hyacinthe est traditionnellement associé à la réussite et à la confiance en soi dans les entreprises nouvelles.",
             prixCaratEur = "50 – 300 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -232,6 +244,7 @@ object GemsRepository {
             indiceRefraction = "1,925 – 1,984",
             origines = listOf("Cambodge (Ratanakiri)", "Sri Lanka (Ratnapura)", "Birmanie (Mogok)"),
             particularites = "La chauffe thermique pour stabiliser la couleur dorée est une pratique ancienne et acceptée du marché.",
+            lithotherapie = "Pierre de clarté mentale, le zircon doré serait un soutien pour la prise de décision et la réussite personnelle.",
             prixCaratEur = "40 – 250 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -249,6 +262,7 @@ object GemsRepository {
             indiceRefraction = "1,592 – 1,646",
             origines = listOf("Sri Lanka (Ratnapura)", "Mexique (San Marcos, Chihuahua)", "États-Unis (comté de Orange, New York)"),
             particularites = "Souvent trouvée en association avec le spinelle rouge et la forstérite dans les marbres métamorphiques.",
+            lithotherapie = "La chondrodite est utilisée en lithothérapie pour apporter chaleur intérieure et réconfort dans les périodes de doute.",
             prixCaratEur = "100 – 500 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
@@ -266,6 +280,7 @@ object GemsRepository {
             indiceRefraction = "1,790 – 1,810",
             origines = listOf("Namibie (région du Kunene)", "Nigeria (État du Nasarawa)", "Madagascar (Fianarantsoa)"),
             particularites = "Couleur naturelle, jamais traitée thermiquement.",
+            lithotherapie = "Pierre de dynamisme, le grenat spessartite est associé à la créativité et à l'envie d'entreprendre.",
             prixCaratEur = "50 – 500 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -283,6 +298,7 @@ object GemsRepository {
             indiceRefraction = "1,609 – 1,617",
             origines = listOf("Ouro Preto (mine Rodrigo Silva), Brésil"),
             particularites = "Clivage parfait à surveiller lors de la taille et du sertissage.",
+            lithotherapie = "La topaze impériale est réputée favoriser la réussite personnelle, la générosité et l'ouverture aux autres.",
             prixCaratEur = "100 – 1 500 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -300,6 +316,7 @@ object GemsRepository {
             indiceRefraction = "1,742 – 1,748",
             origines = listOf("Sri Lanka (Ratnapura)", "Inde (Karnataka)", "Canada (mine Jeffrey, Québec)"),
             particularites = "Aspect huileux à mielleux typique dû aux inclusions internes.",
+            lithotherapie = "L'hessonite est traditionnellement porté pour renforcer la confiance en soi et se protéger de l'autocritique excessive.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -317,6 +334,7 @@ object GemsRepository {
             indiceRefraction = "1,42 – 1,46",
             origines = listOf("Mexique (Querétaro)"),
             particularites = "Pierre fragile et poreuse, sensible aux chocs thermiques.",
+            lithotherapie = "Pierre de passion et de motivation, l'opale de feu est réputée redonner l'élan nécessaire pour se lancer dans de nouveaux projets.",
             prixCaratEur = "20 – 300 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -334,6 +352,7 @@ object GemsRepository {
             indiceRefraction = "1,762 – 1,770",
             origines = listOf("Sri Lanka (Ratnapura)", "Madagascar (Ilakaka)", "Tanzanie (Tunduru)"),
             particularites = "La définition exacte de la teinte fait encore débat entre laboratoires gemmologiques.",
+            lithotherapie = "Le saphir padparadscha symbolise l'harmonie entre le cœur et l'esprit, favorisant l'épanouissement personnel et la sérénité amoureuse.",
             prixCaratEur = "3 000 – 20 000 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
@@ -351,6 +370,7 @@ object GemsRepository {
             indiceRefraction = "1,530 – 1,539",
             origines = listOf("Inde (Rajpipla, Gujarat)", "Brésil (Rio Grande do Sul)", "Uruguay (Artigas)"),
             particularites = "Souvent chauffée pour intensifier la teinte orangée à partir de matière brune.",
+            lithotherapie = "Pierre d'action par excellence, la cornaline est réputée stimuler le courage, la motivation et la vitalité physique.",
             prixCaratEur = "1 – 10 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -370,6 +390,7 @@ object GemsRepository {
             indiceRefraction = "opaque (métallique, non applicable)",
             origines = listOf("Espagne (Navajún, La Rioja)", "Pérou (Huanzala)", "États-Unis (Illinois)"),
             particularites = "S'oxyde et peut se déliter (« maladie de la pyrite ») si exposée à l'humidité sur le long terme.",
+            lithotherapie = "Considérée comme une pierre de protection et d'abondance, la pyrite est utilisée pour renforcer la confiance en soi et l'esprit d'initiative.",
             prixCaratEur = "1 – 20 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -387,6 +408,7 @@ object GemsRepository {
             indiceRefraction = "1,918 – 1,937",
             origines = listOf("Chine (Hunan)", "Corée du Sud", "Brésil (Minas Gerais)"),
             particularites = "Fluorescence bleu vif sous UV court, utilisée par les prospecteurs pour repérer le minerai la nuit.",
+            lithotherapie = "La scheelite est associée à la clarté mentale, utile pour organiser ses idées et prendre des décisions réfléchies.",
             prixCaratEur = "30 – 200 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -404,6 +426,7 @@ object GemsRepository {
             indiceRefraction = "1,616 – 1,652",
             origines = listOf("Malawi (Zomba)", "Brésil (Minas Gerais)", "Nigeria (Oyo)"),
             particularites = "Couleur jaune vif naturelle sans traitement, contrairement à de nombreuses teintes de tourmaline commerciales.",
+            lithotherapie = "La tourmaline jaune est réputée stimuler la joie de vivre et la confiance en ses propres capacités.",
             prixCaratEur = "200 – 1 000 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -421,6 +444,7 @@ object GemsRepository {
             indiceRefraction = "1,717 – 1,818",
             origines = listOf("États-Unis (Mountain Pass, Californie)", "Chine (Bayan Obo, Mongolie-Intérieure)"),
             particularites = "Minerai de terres rares stratégique ; les qualités gemmes facettables sont anecdotiques.",
+            lithotherapie = "Minéral rare, la bastnäsite est associée en lithothérapie à l'éveil de la créativité et à la stimulation intellectuelle.",
             prixCaratEur = "Non coté au carat (rareté de collection)",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
@@ -438,6 +462,7 @@ object GemsRepository {
             indiceRefraction = "1,518 – 1,526",
             origines = listOf("Madagascar (Itrongay)"),
             particularites = "Gisement quasi exclusif à Madagascar pour la qualité facettable transparente et jaune.",
+            lithotherapie = "L'orthose serait un soutien pour la clarté d'esprit et la communication, facilitant l'expression claire de ses idées.",
             prixCaratEur = "20 – 100 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -455,6 +480,7 @@ object GemsRepository {
             indiceRefraction = "1,762 – 1,770",
             origines = listOf("Sri Lanka (Ratnapura)", "Madagascar (Ilakaka)", "Tanzanie (Tunduru)"),
             particularites = "Souvent chauffé pour intensifier et uniformiser la couleur.",
+            lithotherapie = "Le saphir jaune est traditionnellement associé à la prospérité, à la sagesse et à la réussite professionnelle.",
             prixCaratEur = "200 – 3 000 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -472,6 +498,7 @@ object GemsRepository {
             indiceRefraction = "1,544 – 1,553",
             origines = listOf("Brésil (Rio Grande do Sul)", "Bolivie (mine Anahí)", "Zambie (Kalomo)"),
             particularites = "Très abordable et abondante ; peu ou pas d'inclusions visibles.",
+            lithotherapie = "Surnommée pierre de l'abondance, la citrine est réputée stimuler la confiance en soi, la joie de vivre et la réussite matérielle.",
             prixCaratEur = "5 – 30 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -489,6 +516,7 @@ object GemsRepository {
             indiceRefraction = "1,577 – 1,583",
             origines = listOf("Namibie (Erongo)", "Brésil (Minas Gerais)", "Madagascar (Mahajanga)"),
             particularites = "Généralement très pure, peu d'inclusions.",
+            lithotherapie = "L'héliodore est associé à la joie et à la générosité, favorisant l'ouverture d'esprit et la clarté intellectuelle.",
             prixCaratEur = "30 – 150 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -506,6 +534,7 @@ object GemsRepository {
             indiceRefraction = "1,746 – 1,755",
             origines = listOf("Sri Lanka (Ratnapura)", "Brésil (Espírito Santo, Minas Gerais)", "Madagascar (Ilakaka)"),
             particularites = "Excellente résistance à l'usure, idéale pour un port quotidien.",
+            lithotherapie = "Le chrysobéryl est réputé favoriser le discernement et attirer la prospérité dans les affaires personnelles et professionnelles.",
             prixCaratEur = "200 – 1 000 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -523,6 +552,7 @@ object GemsRepository {
             indiceRefraction = "1,544 – 1,553",
             origines = listOf("Afrique du Sud (Prieska, Cap-Nord)", "Australie (Australie-Occidentale)", "Inde (Karnataka)"),
             particularites = "Toujours taillé en cabochon pour révéler la chatoyance (effet œil-de-chat).",
+            lithotherapie = "Pierre de protection et de confiance, l'œil de tigre est très utilisé pour renforcer la détermination et se prémunir des influences négatives.",
             prixCaratEur = "1 – 5 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -540,6 +570,7 @@ object GemsRepository {
             indiceRefraction = "1,540 – 1,579",
             origines = listOf("Birmanie (Mogok)", "Madagascar (Tuléar)", "Tanzanie (Morogoro)"),
             particularites = "Certaines pierries birmanes présentent un fort effet œil-de-chat.",
+            lithotherapie = "La scapolite est associée à la discipline personnelle et à la motivation, utile pour mener à bien ses projets.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -559,6 +590,7 @@ object GemsRepository {
             indiceRefraction = "1,655 – 1,909",
             origines = listOf("République démocratique du Congo (Katanga)", "Zambie (Copperbelt)", "Russie (Oural, historique)"),
             particularites = "Toujours taillée en cabochon ou objet poli ; jamais facettée en raison de sa tendreté et de son opacité.",
+            lithotherapie = "Pierre de transformation, la malachite est réputée absorber les énergies négatives et accompagner les changements de vie en douceur.",
             prixCaratEur = "1 – 30 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -576,6 +608,7 @@ object GemsRepository {
             indiceRefraction = "1,644 – 1,709",
             origines = listOf("Namibie (Tsumeb)", "République démocratique du Congo (Katanga)", "Kazakhstan (Altyn-Tube)"),
             particularites = "Clivage parfait et grande fragilité : la taille facettée est un exploit lapidaire rarement tenté.",
+            lithotherapie = "La dioptase est associée à la guérison émotionnelle profonde, favorisant le pardon et l'apaisement des blessures du cœur.",
             prixCaratEur = "100 – 600 €/ct (rarement facettée)",
             rarete = GemRarete.RARE
         ),
@@ -593,6 +626,7 @@ object GemsRepository {
             indiceRefraction = "1,514 – 1,539",
             origines = listOf("États-Unis (Pikes Peak, Colorado)", "Madagascar (Antsirabe)", "Russie (Oural)"),
             particularites = "Toujours taillée en cabochon en raison de son opacité ; sensible aux chocs le long de ses plans de clivage.",
+            lithotherapie = "Pierre d'apaisement, l'amazonite est réputée calmer le stress et faciliter une communication sincère avec les autres.",
             prixCaratEur = "1 – 20 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -610,6 +644,7 @@ object GemsRepository {
             indiceRefraction = "1,530 – 1,540",
             origines = listOf("Australie (Marlborough, Queensland)", "Tanzanie (Haneti)", "Indonésie (Sulawesi)"),
             particularites = "La couleur peut s'atténuer à la déshydratation prolongée ou à forte chaleur ; se conserve mieux légèrement humide.",
+            lithotherapie = "La chrysoprase est traditionnellement associée à l'espoir et à l'optimisme, ouvrant le cœur à de nouvelles perspectives.",
             prixCaratEur = "5 – 40 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -627,6 +662,7 @@ object GemsRepository {
             indiceRefraction = "1,577 – 1,583",
             origines = listOf("Brésil (Minas Gerais)", "Madagascar (Antsirabe)", "Namibie (Erongo)"),
             particularites = "Distingué de l'émeraude par le spectroscope : absence des raies d'absorption du chrome/vanadium.",
+            lithotherapie = "Le béryl vert est réputé apporter équilibre émotionnel et renouveau, aidant à tourner la page après une période difficile.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -644,6 +680,7 @@ object GemsRepository {
             indiceRefraction = "1,654 – 1,683",
             origines = listOf("Sri Lanka (Ratnapura)", "Birmanie (Mogok)", "États-Unis (Idaho)"),
             particularites = "Peut présenter un effet œil de chat très net lorsque taillée en cabochon perpendiculairement aux fibres.",
+            lithotherapie = "La sillimanite est associée à la clarté mentale, un soutien pour mettre de l'ordre dans ses pensées et ses priorités.",
             prixCaratEur = "30 – 200 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -661,6 +698,7 @@ object GemsRepository {
             indiceRefraction = "1,57 – 1,60",
             origines = listOf("Russie (Sibérie, lac Baïkal)"),
             particularites = "Extrêmement tendre : à réserver aux bijoux peu exposés aux chocs (pendentifs, boucles d'oreilles).",
+            lithotherapie = "Pierre de guérison profonde, la séraphinite est réputée aider à se libérer des schémas répétitifs et à amorcer un renouveau intérieur.",
             prixCaratEur = "5 – 40 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -678,6 +716,7 @@ object GemsRepository {
             indiceRefraction = "1,734 – 1,759",
             origines = listOf("Mali (Sandaré)", "Kenya (Voi)", "Canada (Québec, Jeffrey Mine)"),
             particularites = "Famille de grenats la plus diversifiée en couleurs, du incolore au vert profond de la tsavorite.",
+            lithotherapie = "Le grenat grossulaire est associé à l'abondance et à la vitalité, un soutien dans les périodes de reconstruction personnelle.",
             prixCaratEur = "30 – 300 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -695,6 +734,7 @@ object GemsRepository {
             indiceRefraction = "1,664 – 1,730",
             origines = listOf("Russie (Sibérie, Yakoutie)", "Finlande (Kaavi)", "Pakistan (vallée de Nord-Ouest)"),
             particularites = "Faible dureté à ménager en bijouterie ; certaines pierres présentent un astérisme ou un œil de chat.",
+            lithotherapie = "Le diopside chrome est réputé favoriser la connexion à la nature et l'équilibre émotionnel au quotidien.",
             prixCaratEur = "30 – 200 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -712,6 +752,7 @@ object GemsRepository {
             indiceRefraction = "1,600 – 1,641",
             origines = listOf("Nouvelle-Zélande (rivière Arahura, pounamu)", "Canada (Colombie-Britannique)", "Chine (Xinjiang, fleuve Yarkand)"),
             particularites = "Structure en fibres feutrées la rendant plus résistante aux chocs que la jadéite, malgré une dureté légèrement inférieure.",
+            lithotherapie = "Pierre de sagesse et d'harmonie depuis l'Antiquité chinoise, le jade néphrite est réputé apporter sérénité, protection et longévité.",
             prixCaratEur = "1 – 50 €/ct (pièces historiques bien plus)",
             rarete = GemRarete.COURANTE
         ),
@@ -729,6 +770,7 @@ object GemsRepository {
             indiceRefraction = "1,52 – 1,68 (roche composite, variable)",
             origines = listOf("Birmanie (Tawmaw, État Kachin)"),
             particularites = "Gisement unique au monde à ce jour, situé à proximité des mines de jadéite de Hpakant.",
+            lithotherapie = "Le maw-sit-sit est associé au renouveau et à la circulation d'une énergie positive dans les moments de transition.",
             prixCaratEur = "5 – 60 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -746,6 +788,7 @@ object GemsRepository {
             indiceRefraction = "1,616 – 1,652",
             origines = listOf("Kenya (Taita-Taveta)", "Tanzanie (Umba)"),
             particularites = "Dichroïsme marqué : orientation de la table déterminante pour révéler la teinte la plus saturée.",
+            lithotherapie = "La tourmaline chrome est réputée stimuler la vitalité tout en favorisant l'ouverture du cœur et la compassion.",
             prixCaratEur = "200 – 800 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -763,6 +806,7 @@ object GemsRepository {
             indiceRefraction = "1,762 – 1,770",
             origines = listOf("Australie (Nouvelle-Galles du Sud)", "Thaïlande (Kanchanaburi)", "Nigeria (Mambilla)"),
             particularites = "Dichroïsme marqué entre vert et jaune-vert selon l'axe d'observation, utile à l'identification.",
+            lithotherapie = "Le saphir vert est associé à l'équilibre intérieur et à la sagesse, un soutien pour la prise de recul.",
             prixCaratEur = "50 – 300 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -780,6 +824,7 @@ object GemsRepository {
             indiceRefraction = "1,577 – 1,583",
             origines = listOf("Colombie (Muzo, Chivor)", "Zambie (mine Kagem, Kafubu)", "Brésil (Nova Era, Minas Gerais)"),
             particularites = "Traitement à l'huile quasi systématique ; pierre fragile nécessitant des précautions.",
+            lithotherapie = "Pierre d'amour et de sagesse, l'émeraude est traditionnellement réputée apaiser les tensions émotionnelles et favoriser la fidélité et l'harmonie dans les relations.",
             prixCaratEur = "500 – 10 000 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -797,6 +842,7 @@ object GemsRepository {
             indiceRefraction = "1,654 – 1,690",
             origines = listOf("Égypte (île de Zabargad)", "Pakistan (vallée de Sapat, Kohistan)", "Birmanie (Mogok)", "États-Unis (San Carlos, Arizona)"),
             particularites = "Biréfringence visible à l'œil nu ; certaines pierres proviennent de météorites (pallasites).",
+            lithotherapie = "Le péridot est associé au bien-être général et au lâcher-prise, aidant à se libérer des rancunes et du ressentiment.",
             prixCaratEur = "50 – 400 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -814,6 +860,7 @@ object GemsRepository {
             indiceRefraction = "1,739 – 1,744",
             origines = listOf("Kenya (Taita-Taveta)", "Tanzanie (Umba, Merelani)"),
             particularites = "Jamais traitée ; gisements limités rendant les grosses pierres très rares.",
+            lithotherapie = "La tsavorite est réputée stimuler la vitalité et la confiance en soi, un soutien pour aborder les défis avec énergie.",
             prixCaratEur = "500 – 3 000 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -831,6 +878,7 @@ object GemsRepository {
             indiceRefraction = "1,640 – 1,667",
             origines = listOf("Birmanie (Hpakant, Kachin)", "Guatemala (vallée du Motagua)"),
             particularites = "Extrêmement tenace malgré une dureté modérée ; qualité « impériale » d'un vert translucide très rare.",
+            lithotherapie = "Le jade jadéite est réputé porter chance et protection, tout en favorisant l'harmonie dans les relations et la sérénité intérieure.",
             prixCaratEur = "50 – 10 000+ €/ct (très variable, jade impérial hors norme)",
             rarete = GemRarete.RARE
         ),
@@ -848,6 +896,7 @@ object GemsRepository {
             indiceRefraction = "1,616 – 1,652",
             origines = listOf("Brésil (Minas Gerais)", "Mozambique (Alto Ligonha)", "Nigeria (Oyo)"),
             particularites = "Forte biréfringence ; les tailleurs orientent la pierre pour optimiser la couleur.",
+            lithotherapie = "La tourmaline verte est associée à l'équilibre émotionnel et à la régénération, un soutien après une période de fatigue morale.",
             prixCaratEur = "20 – 300 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -865,6 +914,7 @@ object GemsRepository {
             indiceRefraction = "1,880 – 1,888",
             origines = listOf("Oural (mine de Poldnevaya), Russie", "Namibie (Namibie centrale)", "Madagascar (Antetezambato)"),
             particularites = "Dispersion optique exceptionnelle ; inclusions en « queue de cheval » caractéristiques des pierres de l'Oural.",
+            lithotherapie = "Le grenat démantoïde est réputé attirer la prospérité et raviver la joie de vivre au quotidien.",
             prixCaratEur = "1 000 – 8 000 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -882,6 +932,7 @@ object GemsRepository {
             indiceRefraction = "1,740 – 1,870",
             origines = listOf("Oural (mine de Saranovskoye), Russie", "Finlande (Outokumpu)", "Canada (mine Jeffrey, Québec)"),
             particularites = "Cristaux presque toujours trop petits pour la taille facette ; collectionnée brute en druse.",
+            lithotherapie = "L'uvarovite est associée à l'apaisement et à une meilleure connexion avec la nature environnante.",
             prixCaratEur = "50 – 300 €/ct (rarement taillée)",
             rarete = GemRarete.RARE
         ),
@@ -899,6 +950,7 @@ object GemsRepository {
             indiceRefraction = "1,700 – 1,723",
             origines = listOf("Italie (Vésuve)", "Canada (mine Jeffrey, Québec)", "Kenya (Voi)"),
             particularites = "La variété massive californite peut imiter le jade néphrite.",
+            lithotherapie = "La vésuvianite est réputée encourager le dépassement de soi et stimuler la créativité dans les projets personnels.",
             prixCaratEur = "10 – 100 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -916,6 +968,7 @@ object GemsRepository {
             indiceRefraction = "1,611 – 1,669",
             origines = listOf("Afrique du Sud (province du Cap)", "Australie (Wave Hill, Australie-Occidentale)", "Inde (Pune, Maharashtra)"),
             particularites = "Souvent taillée en cabochon ; parfois confondue avec la chrysoprase.",
+            lithotherapie = "La préhnite est associée à la sérénité et à l'écoute de son intuition, un soutien pour la méditation.",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -933,6 +986,7 @@ object GemsRepository {
             indiceRefraction = "1,500 – 1,570",
             origines = listOf("Pérou (Cuzco)", "États-Unis (Bisbee, Arizona)", "République démocratique du Congo (Katanga)"),
             particularites = "Trop tendre pure ; imprégnée de quartz pour la joaillerie.",
+            lithotherapie = "La chrysocolle est réputée faciliter l'expression de soi et apaiser les tensions émotionnelles liées à la communication.",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -950,6 +1004,7 @@ object GemsRepository {
             indiceRefraction = "1,550 – 1,565",
             origines = listOf("États-Unis (Fairfield, Utah)", "Australie (Queensland)", "Allemagne (Messbach, Saxe)"),
             particularites = "Souvent confondue avec la turquoise ; toujours taillée en cabochon.",
+            lithotherapie = "La variscite est associée à l'équilibre émotionnel, apportant un sentiment de réconfort et de sécurité intérieure.",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -967,6 +1022,7 @@ object GemsRepository {
             indiceRefraction = "1,560 – 1,570",
             origines = listOf("Nouvelle-Zélande (Anita Bay, Fiordland)", "Afghanistan (Badakhshan)", "Chine (Xinjiang)"),
             particularites = "La variété bowenite, plus dure et translucide, est la plus recherchée en joaillerie.",
+            lithotherapie = "La serpentine est réputée favoriser la régénération et l'ancrage, un soutien dans les périodes de reconstruction personnelle.",
             prixCaratEur = "2 – 20 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -984,6 +1040,7 @@ object GemsRepository {
             indiceRefraction = "1,590 – 1,638",
             origines = listOf("Madagascar (Andrahomana, Fort-Dauphin)", "Sri Lanka (traces)"),
             particularites = "Moins d'une vingtaine de pierres taillées transparentes répertoriées dans le monde.",
+            lithotherapie = "Minéral rare et précieux, la grandidierite est associée en lithothérapie à une sérénité profonde et à l'ouverture du cœur.",
             prixCaratEur = "10 000 – 20 000 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
@@ -1003,6 +1060,7 @@ object GemsRepository {
             indiceRefraction = "1,730 – 1,838",
             origines = listOf("Maroc (Aouli, Midelt)", "États-Unis (Bisbee, Arizona)", "Namibie (Tsumeb)"),
             particularites = "Peut s'altérer progressivement en malachite (pseudomorphose) ; à protéger de l'humidité et de la lumière directe.",
+            lithotherapie = "L'azurite est réputée stimuler l'intuition et la clarté mentale, un soutien pour la réflexion et la prise de décision.",
             prixCaratEur = "5 – 60 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1020,6 +1078,7 @@ object GemsRepository {
             indiceRefraction = "1,483 – 1,487",
             origines = listOf("Brésil (Bahia)", "Canada (Bancroft, Ontario)", "Namibie (Swartbooisdrift)"),
             particularites = "Se distingue du lapis-lazuli par l'absence de paillettes dorées de pyrite et une densité inférieure.",
+            lithotherapie = "La sodalite est associée à la communication claire et à la logique, tout en apaisant l'anxiété mentale.",
             prixCaratEur = "1 – 20 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -1037,6 +1096,7 @@ object GemsRepository {
             indiceRefraction = "1,593 – 1,633",
             origines = listOf("République dominicaine (Barahona, Los Chupaderos)"),
             particularites = "Gisement quasi exclusif ; le nom combine « Larissa » (fille du découvreur) et « mar » (mer en espagnol).",
+            lithotherapie = "Pierre de sérénité, le larimar est réputé apaiser le stress et faciliter une communication sincère venue du cœur.",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1054,6 +1114,7 @@ object GemsRepository {
             indiceRefraction = "1,604 – 1,664",
             origines = listOf("Madagascar (Ambatofinandrahana)", "Brésil (Minas Gerais)", "États-Unis (Graves Mountain, Géorgie)"),
             particularites = "À ne pas confondre avec la lazurite (composant du lapis-lazuli) malgré la proximité des noms.",
+            lithotherapie = "La lazulite est associée à l'introspection et au calme mental, un soutien pour la méditation et la réflexion intérieure.",
             prixCaratEur = "50 – 300 €/ct (rarement facettée)",
             rarete = GemRarete.RARE
         ),
@@ -1071,6 +1132,7 @@ object GemsRepository {
             indiceRefraction = "1,494 – 1,509",
             origines = listOf("Allemagne (Eifel)", "Italie (mont Vésuve, mont Somma)", "Canada (Ice River, Colombie-Britannique)"),
             particularites = "Cristaux gemmes rarement plus grands que quelques millimètres ; taille facettée exceptionnelle.",
+            lithotherapie = "L'haüyne, minéral rare, est associée en lithothérapie à l'expression authentique de soi et à la confiance dans sa propre voix.",
             prixCaratEur = "500 – 3 000 €/ct (extrêmement rare facettée)",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
@@ -1088,6 +1150,7 @@ object GemsRepository {
             indiceRefraction = "1,542 – 1,551",
             origines = listOf("Inde (plateau du Deccan, Maharashtra)"),
             particularites = "Gisement quasi exclusif dans les basaltes du Deccan indien ; pratiquement jamais facettée.",
+            lithotherapie = "La cavansite est réputée favoriser l'éveil spirituel et la clarté d'esprit dans les moments de questionnement.",
             prixCaratEur = "Non coté au carat (spécimens de collection)",
             rarete = GemRarete.RARE
         ),
@@ -1105,6 +1168,7 @@ object GemsRepository {
             indiceRefraction = "1,619 – 1,635",
             origines = listOf("Madagascar (Sakoany)", "États-Unis (île de Put-in-Bay, Ohio)"),
             particularites = "Trop tendre et clivable pour un usage joaillier ; essentiellement une pierre de collection et de décoration.",
+            lithotherapie = "Pierre d'apaisement profond, la célestite est réputée favoriser un sommeil serein et calmer les pensées agitées.",
             prixCaratEur = "Non coté au carat (spécimens de collection)",
             rarete = GemRarete.COURANTE
         ),
@@ -1122,6 +1186,7 @@ object GemsRepository {
             indiceRefraction = "1,652 – 1,673",
             origines = listOf("Brésil (Minas Gerais, Ouro Preto)", "Zimbabwe (Miami mine)"),
             particularites = "Clivage parfait dans une direction : parmi les gemmes les plus délicates à tailler et à porter.",
+            lithotherapie = "L'euclase est associée à la clarté d'expression et à la sérénité, un soutien pour communiquer avec justesse.",
             prixCaratEur = "300 – 1 500 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
@@ -1139,6 +1204,7 @@ object GemsRepository {
             indiceRefraction = "1,609 – 1,617",
             origines = listOf("Brésil (Minas Gerais, matière première incolore)", "Nigeria (matière première incolore)"),
             particularites = "Couleur quasi systématiquement obtenue par irradiation puis traitement thermique, stable et permanente.",
+            lithotherapie = "La topaze bleue est réputée favoriser une communication apaisée et aider à exprimer calmement ses émotions.",
             prixCaratEur = "10 – 60 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -1156,6 +1222,7 @@ object GemsRepository {
             indiceRefraction = "1,616 – 1,652",
             origines = listOf("Brésil (Minas Gerais)", "Namibie (Erongo)", "Afghanistan (Nouristan)"),
             particularites = "Se distingue de la tourmaline Paraíba par l'absence de cuivre et un ton généralement plus sombre.",
+            lithotherapie = "La tourmaline bleue (indigolite) est associée à l'expression de soi et à l'apaisement des tensions liées à la communication.",
             prixCaratEur = "100 – 500 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -1173,6 +1240,7 @@ object GemsRepository {
             indiceRefraction = "1,925 – 1,984",
             origines = listOf("Cambodge (Ratanakiri)", "Sri Lanka (Ratnapura)", "Australie (Nouvelle-Galles du Sud)"),
             particularites = "Traitement thermique quasi systématique et stable ; forte dispersion proche de celle du diamant.",
+            lithotherapie = "Le zircon bleu est réputé apporter calme mental et clarté, un soutien pour les périodes de réflexion importante.",
             prixCaratEur = "50 – 300 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -1190,6 +1258,7 @@ object GemsRepository {
             indiceRefraction = "1,614 – 1,636",
             origines = listOf("Mexique (Santa Eulalia, Chihuahua)", "Namibie (Tsumeb)", "États-Unis (Nouveau-Mexique)"),
             particularites = "Souvent confondue visuellement avec la chrysocolle ou la turquoise ; identification nécessitant un test de dureté.",
+            lithotherapie = "L'hémimorphite est associée à la communication authentique et à la guérison des blessures émotionnelles liées à l'expression de soi.",
             prixCaratEur = "5 – 50 €/ct (cabochons)",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1207,6 +1276,7 @@ object GemsRepository {
             indiceRefraction = "1,752 – 1,815",
             origines = listOf("Namibie (mine de Kaokoveld)", "États-Unis (Bisbee, Arizona)"),
             particularites = "Trop tendre pour la taille à facettes ; toujours façonnée en cabochon.",
+            lithotherapie = "La shattuckite est réputée renforcer l'intuition et faciliter une communication plus consciente avec soi-même.",
             prixCaratEur = "5 – 40 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1224,6 +1294,7 @@ object GemsRepository {
             indiceRefraction = "1,701 – 1,734",
             origines = listOf("Madagascar (sud)", "Groenland (Fiskenæsset)", "Sri Lanka (Ratnapura, alluvions)"),
             particularites = "Une des gemmes taillées les plus rares au monde : quelques dizaines de pierres facettées connues.",
+            lithotherapie = "Minéral rare, la sapphirine est associée en lithothérapie à un calme profond et à la protection émotionnelle.",
             prixCaratEur = "Non coté (extrêmement rare, collections spécialisées)",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
@@ -1241,6 +1312,7 @@ object GemsRepository {
             indiceRefraction = "1,678 – 1,723",
             origines = listOf("Brésil (Bahia)", "Madagascar (sud)", "États-Unis (Californie)"),
             particularites = "Souvent rencontrée sous forme de quartz massif fortement inclus de dumortiérite plutôt qu'en cristal pur.",
+            lithotherapie = "La dumortiérite est réputée développer la patience et la discipline mentale, un soutien pour les apprentissages exigeants.",
             prixCaratEur = "5 – 40 €/ct (souvent en cabochon)",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1258,6 +1330,7 @@ object GemsRepository {
             indiceRefraction = "1,522 – 1,535",
             origines = listOf("Afghanistan (Sar-e-Sang, Badakhshan)", "Tadjikistan (Pamir)"),
             particularites = "Découverte minéralogique tardive (1968) ; les pierres facettées se comptent parmi les plus rares du marché.",
+            lithotherapie = "L'afghanite est associée à un calme intérieur profond et à une forme de protection émotionnelle douce.",
             prixCaratEur = "Non coté (extrêmement rare facettée)",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
@@ -1275,6 +1348,7 @@ object GemsRepository {
             indiceRefraction = "1,762 – 1,770",
             origines = listOf("Cachemire (vallée de Padar)", "Birmanie (Mogok)", "Sri Lanka (Ratnapura)", "Madagascar (Ilakaka)"),
             particularites = "Inclusions de rutile en soie pouvant produire un astérisme (saphir étoilé).",
+            lithotherapie = "Pierre de sagesse depuis l'Antiquité, le saphir bleu est réputé favoriser la clarté d'esprit, la loyauté et la recherche de vérité.",
             prixCaratEur = "400 – 8 000 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -1292,6 +1366,7 @@ object GemsRepository {
             indiceRefraction = "1,577 – 1,583",
             origines = listOf("Brésil (mine de Pedra Azul, Minas Gerais)", "Madagascar (Ambatondrazaka)", "Nigeria (plateau de Jos)", "Zambie (Lundazi)"),
             particularites = "Souvent chauffée pour atténuer la composante verte et intensifier le bleu.",
+            lithotherapie = "Pierre des marins, l'aigue-marine est traditionnellement associée à la sérénité, au courage et à une communication apaisée, en particulier lors des voyages.",
             prixCaratEur = "50 – 1 000 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1309,6 +1384,7 @@ object GemsRepository {
             indiceRefraction = "1,691 – 1,700",
             origines = listOf("Mérelani, Tanzanie"),
             particularites = "Gisement unique et en voie d'épuisement, considérée comme une pierre d'investissement.",
+            lithotherapie = "La tanzanite est réputée accompagner la transformation intérieure et favoriser un éveil spirituel serein.",
             prixCaratEur = "300 – 1 200 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -1326,6 +1402,7 @@ object GemsRepository {
             indiceRefraction = "1,50 (lazurite, valeur moyenne)",
             origines = listOf("Afghanistan (Badakhshan, mines de Sar-e-Sang)", "Chili (mine Flor de los Andes, Ovalle)"),
             particularites = "Les inclusions dorées de pyrite, réparties uniformément, sont un gage de qualité.",
+            lithotherapie = "Pierre de sagesse et de vérité depuis l'Égypte antique, le lapis-lazuli est réputé renforcer la confiance en soi et la clarté de jugement.",
             prixCaratEur = "1 – 20 €/ct (souvent vendu au gramme ou à la pièce)",
             rarete = GemRarete.COURANTE
         ),
@@ -1343,6 +1420,7 @@ object GemsRepository {
             indiceRefraction = "1,610 – 1,650",
             origines = listOf("Iran (mine de Neyshabur)", "États-Unis (mine Sleeping Beauty, Arizona)", "Mexique (Sonora)"),
             particularites = "Matrice veinée caractéristique ; poreuse, sensible aux cosmétiques et produits chimiques.",
+            lithotherapie = "Pierre de protection depuis des millénaires, la turquoise est réputée favoriser la sérénité, la communication sincère et la protection lors des voyages.",
             prixCaratEur = "5 – 100 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -1360,6 +1438,7 @@ object GemsRepository {
             indiceRefraction = "1,712 – 1,717",
             origines = listOf("Sri Lanka (Ratnapura)", "Birmanie (Mogok)", "Tadjikistan (Kuh-i-Lal, Pamir)"),
             particularites = "Généralement non traité, contrairement à de nombreux saphirs bleus.",
+            lithotherapie = "Le spinelle bleu est associé à l'apaisement émotionnel et au renouveau après une période de tension.",
             prixCaratEur = "300 – 3 000 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -1377,6 +1456,7 @@ object GemsRepository {
             indiceRefraction = "1,616 – 1,652",
             origines = listOf("São José da Batalha, Paraíba, Brésil", "Mozambique (Mavuco)", "Nigeria (Edeko)"),
             particularites = "Couleur « néon » due au cuivre, jamais observée dans les autres tourmalines.",
+            lithotherapie = "La tourmaline Paraïba est réputée stimuler une joie profonde et une vitalité renouvelée, en écho à sa couleur éclatante.",
             prixCaratEur = "10 000 – 50 000 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
@@ -1394,6 +1474,7 @@ object GemsRepository {
             indiceRefraction = "1,628 – 1,649",
             origines = listOf("Madagascar (Ilakaka)", "Brésil (Minas Gerais)"),
             particularites = "Dureté modérée (5) : à réserver aux boucles d'oreilles et pendentifs plutôt qu'aux bagues.",
+            lithotherapie = "L'apatite bleu néon est associée à la motivation et à la clarté des objectifs personnels, un soutien pour se recentrer.",
             prixCaratEur = "50 – 300 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -1411,6 +1492,7 @@ object GemsRepository {
             indiceRefraction = "1,712 – 1,734",
             origines = listOf("Népal (vallée de Kali Gandaki)", "Brésil (Minas Gerais)", "Kenya (Mgama Hills)"),
             particularites = "Dureté anisotrope rendant la taille délicate ; clivage parfait dans une direction.",
+            lithotherapie = "La cyanite (disthène) est réputée favoriser l'alignement intérieur et une communication fluide entre le cœur et la raison.",
             prixCaratEur = "20 – 200 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1428,6 +1510,7 @@ object GemsRepository {
             indiceRefraction = "1,757 – 1,804",
             origines = listOf("San Benito, Californie, États-Unis"),
             particularites = "Fluorescence bleu vif sous UV ; gisement de qualité gemme quasi unique au monde.",
+            lithotherapie = "Minéral rare et précieux, la bénitoïte est associée en lithothérapie à l'élévation spirituelle et à la clarté de conscience.",
             prixCaratEur = "1 500 – 4 000 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
@@ -1445,6 +1528,7 @@ object GemsRepository {
             indiceRefraction = "1,640 – 1,654",
             origines = listOf("Namibie (Erongo)", "Russie (montagnes d'Adui, Sibérie)"),
             particularites = "L'essentiel de la production gemme mondiale provient d'un seul massif namibien.",
+            lithotherapie = "La jérémejévite, extrêmement rare, est associée à l'ouverture d'esprit et à la connexion à une forme de sagesse supérieure.",
             prixCaratEur = "3 000 – 10 000 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
@@ -1464,6 +1548,7 @@ object GemsRepository {
             indiceRefraction = "1,664 – 1,701",
             origines = listOf("Italie (San Marcel, Val d'Aoste)"),
             particularites = "Gisement type et historique dans le Val d'Aoste italien ; toujours façonnée en cabochon.",
+            lithotherapie = "La violane, variété violette de diopside, est associée à l'apaisement mental et à l'introspection, un soutien pour la méditation.",
             prixCaratEur = "5 – 30 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -1481,6 +1566,7 @@ object GemsRepository {
             indiceRefraction = "1,762 – 1,770",
             origines = listOf("Sri Lanka (Ratnapura)", "Madagascar (Ilakaka)", "Tanzanie (Tunduru)"),
             particularites = "Peut présenter un léger changement de couleur entre lumière du jour et lumière incandescente.",
+            lithotherapie = "Le saphir violet est réputé favoriser la spiritualité et l'intuition, un soutien pour les périodes de questionnement intérieur.",
             prixCaratEur = "200 – 1 500 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -1498,6 +1584,7 @@ object GemsRepository {
             indiceRefraction = "1,850 – 1,920",
             origines = listOf("Namibie (Kaokoveld)", "États-Unis (Black Hills, Dakota du Sud)"),
             particularites = "Couleur pouvant s'atténuer en surface avec l'exposition prolongée à la lumière ; à protéger.",
+            lithotherapie = "La purpurite est associée à la transformation personnelle et à la force intérieure dans les périodes de changement.",
             prixCaratEur = "5 – 40 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1515,6 +1602,7 @@ object GemsRepository {
             indiceRefraction = "1,483 – 1,487",
             origines = listOf("Afghanistan (Badakhshan)", "Canada (Mont-Saint-Hilaire, Québec)", "Myanmar (Mogok)"),
             particularites = "Phénomène de tenébrescence réversible : la couleur varie selon l'exposition récente aux UV ou à la lumière.",
+            lithotherapie = "L'hackmanite est réputée stimuler l'intuition et offrir une forme de protection énergétique, en particulier durant la méditation.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -1532,6 +1620,7 @@ object GemsRepository {
             indiceRefraction = "1,525 – 1,548",
             origines = listOf("Madagascar (Antsirabe)", "Brésil (Minas Gerais)", "États-Unis (Californie)"),
             particularites = "Trop tendre et feuilletée pour la joaillerie facettée ; utilisée en cabochon, perles et objets décoratifs.",
+            lithotherapie = "Riche en lithium naturel, la lépidolite est traditionnellement réputée apaiser le stress, l'anxiété et favoriser un sommeil paisible.",
             prixCaratEur = "1 – 15 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -1549,6 +1638,7 @@ object GemsRepository {
             indiceRefraction = "1,520 – 1,545",
             origines = listOf("Australie (Tasmanie, mine Stichtite Hill)", "Afrique du Sud (Bushveld)"),
             particularites = "Extrêmement tendre : réservée aux cabochons et objets décoratifs peu exposés aux chocs.",
+            lithotherapie = "La stichtite est associée à la compassion envers soi-même et les autres, favorisant le pardon et l'apaisement émotionnel.",
             prixCaratEur = "5 – 30 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1566,6 +1656,7 @@ object GemsRepository {
             indiceRefraction = "1,544 – 1,553",
             origines = listOf("Brésil (Rio Grande do Sul)", "Uruguay (Artigas)", "Zambie (mine de Kariba, Kalomo)", "Madagascar (Ambatondrazaka)"),
             particularites = "Peut se décolorer sous exposition prolongée à la lumière du soleil.",
+            lithotherapie = "L'améthyste est l'une des pierres les plus réputées en lithothérapie pour apaiser le stress, favoriser un sommeil serein et soutenir la méditation et la spiritualité.",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -1583,6 +1674,7 @@ object GemsRepository {
             indiceRefraction = "1,712 – 1,717",
             origines = listOf("Sri Lanka (Ratnapura)", "Birmanie (Mogok)", "Tanzanie (Matombo)"),
             particularites = "Généralement non traité.",
+            lithotherapie = "Le spinelle violet est associé au renouveau spirituel et à la sérénité intérieure.",
             prixCaratEur = "150 – 1 500 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -1600,6 +1692,7 @@ object GemsRepository {
             indiceRefraction = "1,542 – 1,551",
             origines = listOf("Inde (Orissa)", "Sri Lanka (Ratnapura)", "Madagascar (Ambatondrazaka)"),
             particularites = "Pléochroïsme trichroïque très marqué, déterminant pour l'orientation de taille.",
+            lithotherapie = "Utilisée par les navigateurs vikings pour s'orienter, l'iolite est réputée renforcer l'intuition et la clarté visionnaire dans les choix de vie.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1617,6 +1710,7 @@ object GemsRepository {
             indiceRefraction = "1,740 – 1,760",
             origines = listOf("Tanzanie (vallée de l'Umba)", "Mozambique (Cuamba)"),
             particularites = "Couleur stable, jamais traitée.",
+            lithotherapie = "Cette variété violacée de rhodolite est associée à l'équilibre entre passion et sérénité émotionnelle.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1634,6 +1728,7 @@ object GemsRepository {
             indiceRefraction = "1,607 – 1,611",
             origines = listOf("Afrique du Sud (mine Wessels, Kalahari)", "Japon (îlot d'Iwagi)", "Inde"),
             particularites = "Toujours taillée en cabochon ; gisement sud-africain principal aujourd'hui épuisé.",
+            lithotherapie = "La sugilite est réputée offrir protection spirituelle et réconfort dans les périodes de deuil ou de grande fatigue émotionnelle.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -1651,6 +1746,7 @@ object GemsRepository {
             indiceRefraction = "1,550 – 1,559",
             origines = listOf("Rivière Chara, Sibérie, Russie"),
             particularites = "Gisement unique au monde ; motif tourbillonnant caractéristique, toujours taillée en cabochon.",
+            lithotherapie = "La charoïte est associée à la transformation intérieure profonde et au courage nécessaire pour affronter le changement.",
             prixCaratEur = "10 – 80 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -1668,6 +1764,7 @@ object GemsRepository {
             indiceRefraction = "1,719 – 1,723",
             origines = listOf("Sri Lanka (Ratnapura)", "Birmanie (Mogok)", "Tanzanie"),
             particularites = "Longtemps confondue avec le spinelle ; se distingue par une double réfraction que le spinelle n'a pas.",
+            lithotherapie = "Minéral extrêmement rare, la taaffeite est associée en lithothérapie à l'éveil de conscience et à la singularité du chemin personnel.",
             prixCaratEur = "1 500 – 2 500 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
@@ -1685,6 +1782,7 @@ object GemsRepository {
             indiceRefraction = "1,672 – 1,693",
             origines = listOf("France (Bourg-d'Oisans)", "Mexique (Baja California)", "Pakistan (Baloutchistan)"),
             particularites = "Pléochroïsme trichroïque marqué ; cristaux historiquement décrits en France (Dauphiné).",
+            lithotherapie = "L'axinite est réputée favoriser l'ancrage et la concentration, un soutien pour rester centré durant les périodes agitées.",
             prixCaratEur = "50 – 300 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -1704,6 +1802,7 @@ object GemsRepository {
             indiceRefraction = "1,486 – 1,658",
             origines = listOf("République démocratique du Congo (Katanga)", "Maroc (Bou Azzer)"),
             particularites = "Extrêmement tendre et sensible aux acides comme toute calcite ; pierre de collection exclusivement.",
+            lithotherapie = "La cobaltocalcite est associée à l'amour de soi et à la tendresse, un doux soutien émotionnel dans les périodes sensibles.",
             prixCaratEur = "Non coté au carat (spécimens de collection)",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1721,6 +1820,7 @@ object GemsRepository {
             indiceRefraction = "1,685 – 1,705",
             origines = listOf("Norvège (Sauland, Telemark)", "États-Unis (Caroline du Nord)"),
             particularites = "Presque toujours opaque et façonnée en cabochon ; les pierres facettées transparentes sont rares.",
+            lithotherapie = "La thulite est réputée raviver la joie et la vitalité affective, un soutien pour renouer avec ses émotions positives.",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1738,6 +1838,7 @@ object GemsRepository {
             indiceRefraction = "1,711 – 1,752",
             origines = listOf("Russie (Oural, mine de Malo-Sedelnikovo)", "Australie (Broken Hill, Nouvelle-Galles du Sud)", "Suède (Långban)"),
             particularites = "Pierre nationale de Russie ; les veines noires de manganèse en font un motif d'identification caractéristique.",
+            lithotherapie = "La rhodonite est traditionnellement associée au pardon et à la guérison des blessures affectives, en particulier après une rupture.",
             prixCaratEur = "5 – 40 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -1755,6 +1856,7 @@ object GemsRepository {
             indiceRefraction = "1,609 – 1,617",
             origines = listOf("Pakistan (Katlang, Mardan)", "Russie (Oural, historique)"),
             particularites = "Le rose naturel non traité est rare ; distinct de la topaze rose obtenue par traitement thermique de pierres brunes.",
+            lithotherapie = "La topaze rose est réputée favoriser la douceur dans les relations et ouvrir le cœur à l'amour sincère.",
             prixCaratEur = "100 – 600 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -1772,6 +1874,7 @@ object GemsRepository {
             indiceRefraction = "1,544 – 1,553",
             origines = listOf("Brésil (Minas Gerais)", "Madagascar (Ambatofinandrahana)", "États-Unis (Black Hills, Dakota du Sud)"),
             particularites = "Certaines pierres présentent un astérisme à six branches (quartz rose étoilé) taillé en cabochon.",
+            lithotherapie = "Pierre de l'amour inconditionnel par excellence, le quartz rose est réputé apaiser les blessures du cœur et favoriser la tendresse envers soi et les autres.",
             prixCaratEur = "1 – 20 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -1789,6 +1892,7 @@ object GemsRepository {
             indiceRefraction = "1,649 – 1,686",
             origines = listOf("États-Unis (Bishop, Californie)", "Mexique (Zacatecas)"),
             particularites = "Tendreté proche de celle de la variscite ; toujours façonnée en cabochon.",
+            lithotherapie = "La phosphosidérite est associée au lâcher-prise et à la douceur intérieure, un soutien durant la méditation.",
             prixCaratEur = "5 – 40 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1806,6 +1910,7 @@ object GemsRepository {
             indiceRefraction = "1,577 – 1,599",
             origines = listOf("Brésil (mine de Pedra Azul, Minas Gerais)", "Madagascar (Anjahamiary)", "Afghanistan (Nouristan)"),
             particularites = "Souvent chauffée pour atténuer une composante orangée et révéler un rose pur.",
+            lithotherapie = "La morganite est réputée ouvrir le cœur à la compassion et à l'amour de soi, apaisant l'anxiété affective.",
             prixCaratEur = "50 – 300 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1823,6 +1928,7 @@ object GemsRepository {
             indiceRefraction = "1,660 – 1,676",
             origines = listOf("Afghanistan (Nouristan)", "Brésil (Minas Gerais)", "Madagascar (Anjanabonoina)"),
             particularites = "Clivage net dans deux directions ; à protéger de la lumière directe prolongée.",
+            lithotherapie = "La kunzite est associée à l'amour inconditionnel et à l'apaisement émotionnel profond, un soutien pour lâcher les tensions accumulées.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1840,6 +1946,7 @@ object GemsRepository {
             indiceRefraction = "1,762 – 1,770",
             origines = listOf("Sri Lanka (Ratnapura)", "Madagascar (Ilakaka)", "Tanzanie (Tunduru)"),
             particularites = "La limite rubis/saphir rose reste débattue selon les laboratoires gemmologiques.",
+            lithotherapie = "Le saphir rose est réputé favoriser l'amour sincère et l'harmonie dans les relations affectives.",
             prixCaratEur = "300 – 4 000 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -1857,6 +1964,7 @@ object GemsRepository {
             indiceRefraction = "1,616 – 1,652",
             origines = listOf("Brésil (mine de Cruzeiro, Minas Gerais)", "Afghanistan (Paprok, Nouristan)", "Mozambique (Alto Ligonha)"),
             particularites = "Cristaux souvent zonés, à l'origine des tourmalines bicolores.",
+            lithotherapie = "La tourmaline rose est associée à la tendresse et à la guérison des blessures émotionnelles liées à l'amour et à l'attachement.",
             prixCaratEur = "20 – 200 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1874,6 +1982,7 @@ object GemsRepository {
             indiceRefraction = "1,578 – 1,816",
             origines = listOf("Argentine (mine Capillitas, Catamarca)", "Pérou (mine Uchucchacua)", "États-Unis (mine Sweet Home, Colorado)"),
             particularites = "Très fragile et sensible aux acides ; réservée aux pièces de collection ou pendentifs protégés.",
+            lithotherapie = "La rhodochrosite est réputée favoriser l'amour de soi et la guérison de l'enfant intérieur, un soutien dans le travail émotionnel profond.",
             prixCaratEur = "20 – 200 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1893,6 +2002,7 @@ object GemsRepository {
             indiceRefraction = "1,762 – 1,770",
             origines = listOf("Sri Lanka (Ratnapura)", "Madagascar (Ilakaka)", "Australie (Nouvelle-Galles du Sud)"),
             particularites = "Dispersion inférieure à celle du diamant, mais dureté quasi égale ; excellente résistance à l'usure quotidienne.",
+            lithotherapie = "Le saphir blanc est réputé favoriser la clarté d'esprit et la pureté d'intention dans les décisions importantes.",
             prixCaratEur = "50 – 300 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -1910,6 +2020,7 @@ object GemsRepository {
             indiceRefraction = "1,609 – 1,617",
             origines = listOf("Brésil (Minas Gerais, Ouro Preto)", "Nigeria (Jos Plateau)", "Pakistan (Katlang)"),
             particularites = "Matière première la plus abondante pour la production de topaze bleue traitée par irradiation.",
+            lithotherapie = "La topaze blanche est associée à la clarté mentale et à la recherche de vérité dans ses choix de vie.",
             prixCaratEur = "5 – 30 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -1927,6 +2038,7 @@ object GemsRepository {
             indiceRefraction = "1,553 – 1,629",
             origines = listOf("Madagascar (Antsirabe)", "Tadjikistan (Pamir)"),
             particularites = "Clivage parfait rendant la taille et le port en bijou particulièrement risqués ; pierre de collection.",
+            lithotherapie = "L'hambergite, minéral rare, est associée en lithothérapie à la clarté mentale et à la concentration.",
             prixCaratEur = "500 – 2 000 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
@@ -1944,6 +2056,7 @@ object GemsRepository {
             indiceRefraction = "1,502 – 1,520",
             origines = listOf("Brésil (Minas Gerais)", "Namibie (Karibib)", "Afghanistan (Nouristan)"),
             particularites = "Extraite avant tout comme minerai de lithium ; les qualités gemmes facettables sont anecdotiques.",
+            lithotherapie = "La pétalite est réputée favoriser une sérénité profonde, particulièrement appréciée pour accompagner la méditation.",
             prixCaratEur = "50 – 300 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -1961,6 +2074,7 @@ object GemsRepository {
             indiceRefraction = "1,654 – 1,670",
             origines = listOf("Russie (Oural)", "Brésil (Minas Gerais)", "Madagascar (Antsirabe)"),
             particularites = "Son nom grec signifie « imposteur », en référence à la confusion historique avec le quartz.",
+            lithotherapie = "La phénakite est associée à l'éveil de conscience et à une grande clarté spirituelle, réservée aux pratiques méditatives avancées.",
             prixCaratEur = "100 – 500 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -1978,6 +2092,7 @@ object GemsRepository {
             indiceRefraction = "1,563 – 1,573",
             origines = listOf("République démocratique du Congo (Kivu)", "Inde (Andhra Pradesh)"),
             particularites = "Membre calcique de la série des plagioclases, entre la labradorite et l'anorthite pure.",
+            lithotherapie = "La bytownite est réputée offrir un ancrage lumineux, entre protection douce et clarté d'esprit.",
             prixCaratEur = "10 – 60 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -1995,6 +2110,7 @@ object GemsRepository {
             indiceRefraction = "1,42 – 1,46",
             origines = listOf("Mexique (Zacatecas)", "Hongrie (Telkibánya)", "États-Unis (Oregon)"),
             particularites = "Fluorescence vert vif sous UV due à des traces d'uranium, sans opalescence contrairement à l'opale précieuse.",
+            lithotherapie = "Cette variété d'opale incolore est associée à la pureté et à la légèreté d'esprit.",
             prixCaratEur = "5 – 30 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -2012,6 +2128,7 @@ object GemsRepository {
             indiceRefraction = "1,569 – 1,614",
             origines = listOf("Italie (Sicile)", "Pérou (Huaraz)", "Chili"),
             particularites = "S'hydrate lentement en gypse au contact prolongé de l'eau, un phénomène naturel de transformation minérale.",
+            lithotherapie = "L'anhydrite est réputée apporter structure et clarté dans l'organisation de ses pensées et de son quotidien.",
             prixCaratEur = "5 – 20 €/ct (rarement facettée)",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -2029,6 +2146,7 @@ object GemsRepository {
             indiceRefraction = "1,636 – 1,648",
             origines = listOf("Angleterre (Cumbria)", "Maroc (Haute Atlas)", "États-Unis (Oklahoma, roses des sables)"),
             particularites = "Densité exceptionnellement élevée pour un minéral non métallique, utilisée comme critère d'identification.",
+            lithotherapie = "La baryte est associée à l'ancrage et à la stabilité émotionnelle, un soutien dans les périodes de changement.",
             prixCaratEur = "5 – 30 €/ct (rarement facettée)",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -2046,6 +2164,7 @@ object GemsRepository {
             indiceRefraction = "1,530 – 1,685",
             origines = listOf("Espagne (Molina de Aragón, gisement type)", "Maroc (Alnif)", "Namibie (Tsumeb)"),
             particularites = "Instable sur le très long terme : se transforme lentement en calcite, son polymorphe le plus stable.",
+            lithotherapie = "L'aragonite est réputée favoriser l'ancrage et la patience, aidant à accepter le rythme naturel des choses.",
             prixCaratEur = "1 – 15 €/ct (rarement facettée)",
             rarete = GemRarete.COURANTE
         ),
@@ -2063,6 +2182,7 @@ object GemsRepository {
             indiceRefraction = "1,486 – 1,658",
             origines = listOf("Mexique (Chihuahua)", "États-Unis (Elmwood, Tennessee)", "Islande (spath d'Islande)"),
             particularites = "Biréfringence extrême : un objet vu à travers un cristal de calcite limpide apparaît dédoublé.",
+            lithotherapie = "La calcite est traditionnellement utilisée pour purifier les énergies environnantes et apporter de la clarté mentale.",
             prixCaratEur = "5 – 40 €/ct (collection uniquement)",
             rarete = GemRarete.COURANTE
         ),
@@ -2080,6 +2200,7 @@ object GemsRepository {
             indiceRefraction = "1,803 – 2,076",
             origines = listOf("Namibie (Tsumeb)", "Maroc (Touissit)", "Congo (Katanga)"),
             particularites = "Dispersion optique supérieure à celle du diamant ; densité très élevée caractéristique du plomb.",
+            lithotherapie = "La cérusite est associée à l'ancrage et à une transformation intérieure en douceur.",
             prixCaratEur = "100 – 500 €/ct (extrêmement fragile)",
             rarete = GemRarete.RARE
         ),
@@ -2097,6 +2218,7 @@ object GemsRepository {
             indiceRefraction = "1,594 – 1,618",
             origines = listOf("France (Montebras, Creuse, gisement type)", "Brésil (Minas Gerais)"),
             particularites = "Gisement type et éponyme dans la Creuse, en France, découvert au XIXe siècle.",
+            lithotherapie = "La montébrasite est réputée favoriser la clarté d'esprit et le discernement face aux choix importants.",
             prixCaratEur = "20 – 100 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -2114,6 +2236,7 @@ object GemsRepository {
             indiceRefraction = "2,417 – 2,419",
             origines = listOf("Afrique du Sud (mine Cullinan)", "Botswana (mine de Jwaneng)", "Russie (mine Mir, Sibérie)", "Canada (mine Diavik, Territoires du Nord-Ouest)"),
             particularites = "Seule gemme à dureté 10 ; certification obligatoire (GIA, HRD...) pour les pierres importantes.",
+            lithotherapie = "Symbole de force et de pureté depuis toujours, le diamant est réputé amplifier les énergies environnantes et renforcer la clarté d'intention et la confiance en soi.",
             prixCaratEur = "3 000 – 20 000 €/ct (hors pierres exceptionnelles)",
             rarete = GemRarete.RARE
         ),
@@ -2131,6 +2254,7 @@ object GemsRepository {
             indiceRefraction = "1,925 – 1,984",
             origines = listOf("Cambodge (Ratanakiri)", "Sri Lanka (Ratnapura)", "Australie (Australie-Occidentale)"),
             particularites = "Souvent chauffé pour obtenir l'incolore à partir de zircon brun ; arêtes de facettes parfois dédoublées.",
+            lithotherapie = "Le zircon blanc est associé à la clarté d'esprit et à la pureté d'intention, une alternative lumineuse au diamant.",
             prixCaratEur = "20 – 200 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -2148,6 +2272,7 @@ object GemsRepository {
             indiceRefraction = "1,577 – 1,583",
             origines = listOf("Brésil (Minas Gerais)", "Madagascar (Antsirabe)"),
             particularites = "Servait historiquement de verres de lunettes avant l'usage du verre optique.",
+            lithotherapie = "Le goshenite (béryl incolore) est réputé favoriser la clarté mentale et aider à voir les situations avec objectivité.",
             prixCaratEur = "10 – 50 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -2165,6 +2290,7 @@ object GemsRepository {
             indiceRefraction = "1,544 – 1,553",
             origines = listOf("Brésil (Minas Gerais)", "Madagascar (Ambatofinandrahana)", "Val Cristallina, Alpes suisses"),
             particularites = "Grande disponibilité en gros cristaux, permettant des tailles fantaisie spectaculaires.",
+            lithotherapie = "Pierre « maîtresse » de la lithothérapie, le cristal de roche est réputé amplifier les énergies, clarifier les pensées et purifier l'espace environnant.",
             prixCaratEur = "1 – 10 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2182,6 +2308,7 @@ object GemsRepository {
             indiceRefraction = "1,630 – 1,636",
             origines = listOf("Birmanie (Mogok)", "Madagascar (Antsirabe)", "Mexique (Charcas, San Luis Potosí)"),
             particularites = "Aucun clivage contrairement à la topaze, qu'elle imite souvent visuellement.",
+            lithotherapie = "La danburite est associée à une grande sérénité et à l'éveil du cœur, un soutien doux pour la méditation.",
             prixCaratEur = "20 – 100 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -2201,6 +2328,7 @@ object GemsRepository {
             indiceRefraction = "1,535 – 1,539",
             origines = listOf("États-Unis (forêt pétrifiée, Arizona)", "Madagascar (bassin de Morondava)", "Indonésie (Java)"),
             particularites = "Conserve fidèlement la structure cellulaire du bois d'origine, parfois visible au microscope.",
+            lithotherapie = "Le bois fossilisé est réputé offrir un ancrage profond et rappeler la patience nécessaire à toute transformation durable.",
             prixCaratEur = "1 – 20 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2218,6 +2346,7 @@ object GemsRepository {
             indiceRefraction = "1,628 – 1,649",
             origines = listOf("États-Unis (formation Morrison, Utah)", "Madagascar"),
             particularites = "La structure poreuse cellulaire d'origine reste visible une fois la pierre polie, signature du tissu osseux fossile.",
+            lithotherapie = "Associé à l'ancrage et à la stabilité, l'os fossilisé rappellerait l'importance des racines et de la mémoire personnelle.",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -2235,6 +2364,7 @@ object GemsRepository {
             indiceRefraction = "1,660 – 1,680",
             origines = listOf("Sri Lanka (Ratnapura)", "Madagascar (Fort-Dauphin)", "Tanzanie (Umba)"),
             particularites = "Pléochroïsme trichroïque marqué, parfois accompagné d'un changement de couleur selon la source lumineuse.",
+            lithotherapie = "La kornérupine, minéral discret et rare, est associée à un ancrage doux et à la stabilité intérieure.",
             prixCaratEur = "300 – 1 500 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
@@ -2252,6 +2382,7 @@ object GemsRepository {
             indiceRefraction = "1,665 – 1,679",
             origines = listOf("Canada (Labrador)", "Norvège", "États-Unis (Adirondacks, New York)"),
             particularites = "L'effet de chatoiement bronze-doré (schiller) est dû à des lamelles d'exsolution internes.",
+            lithotherapie = "L'hypersthène est réputé favoriser l'introspection et offrir une forme de protection énergétique discrète.",
             prixCaratEur = "5 – 30 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -2269,6 +2400,7 @@ object GemsRepository {
             indiceRefraction = "1,486 – 1,658",
             origines = listOf("Italie (Toscane, environs de Florence)"),
             particularites = "Chaque plaque polie est unique, comme une peinture naturelle formée par capillarité d'oxydes métalliques.",
+            lithotherapie = "Surnommée « pierre paysage », la paesine invite à la contemplation et à un calme intérieur profond.",
             prixCaratEur = "5 – 50 €/pièce (vendue à la plaque, non au carat)",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -2286,6 +2418,7 @@ object GemsRepository {
             indiceRefraction = "1,663 – 1,673",
             origines = listOf("Birmanie (Mogok)", "Sri Lanka (Ratnapura)", "Afrique du Sud (Kimberley, kimberlites)"),
             particularites = "Peut présenter un astérisme à quatre branches, plus rare que l'astérisme classique à six branches du corindon.",
+            lithotherapie = "L'enstatite est associée à l'ancrage et à une capacité d'action posée et réfléchie.",
             prixCaratEur = "30 – 200 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -2303,6 +2436,7 @@ object GemsRepository {
             indiceRefraction = "2,369 – 2,409",
             origines = listOf("Espagne (mine de Áliva, Cantabrie)", "États-Unis (Picher, Oklahoma)", "Mexique (Chihuahua)"),
             particularites = "La dispersion la plus élevée parmi toutes les gemmes couramment collectionnées, surpassant celle du diamant.",
+            lithotherapie = "La sphalérite est réputée favoriser l'ancrage énergétique tout en stimulant la vitalité physique.",
             prixCaratEur = "50 – 400 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -2320,6 +2454,7 @@ object GemsRepository {
             indiceRefraction = "2,605 – 2,901",
             origines = listOf("Brésil (Minas Gerais)", "Madagascar (Ilakaka)", "Suisse (massif du Gothard)"),
             particularites = "Dispersion optique très élevée, proche de celle du diamant, rarement exploitée en raison de sa couleur sombre.",
+            lithotherapie = "Le rutile est traditionnellement associé à l'amplification des énergies et à la clarté dans la poursuite de ses objectifs.",
             prixCaratEur = "50 – 300 €/ct (rarement facettée)",
             rarete = GemRarete.RARE
         ),
@@ -2337,6 +2472,7 @@ object GemsRepository {
             indiceRefraction = "1,544 – 1,553",
             origines = listOf("Écosse (Cairngorm)", "Brésil (Minas Gerais)", "Suisse (massif du Mont-Blanc)"),
             particularites = "Peut être chauffé pour virer au jaune (citrine) ou pâlir sous exposition prolongée à la lumière.",
+            lithotherapie = "Le quartz fumé est réputé pour ses vertus d'ancrage puissantes, aidant à absorber le stress et les tensions du quotidien.",
             prixCaratEur = "2 – 15 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2354,6 +2490,7 @@ object GemsRepository {
             indiceRefraction = "1,634 – 1,643",
             origines = listOf("Brésil (Minas Gerais)", "Sri Lanka (Ratnapura)", "Espagne (Lugo, Galice)"),
             particularites = "Pléochroïsme trichroïque très marqué, orientation de taille déterminante.",
+            lithotherapie = "L'andalousite est associée à l'ancrage et à la capacité de changer de perspective face aux difficultés.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -2371,6 +2508,7 @@ object GemsRepository {
             indiceRefraction = "1,668 – 1,707",
             origines = listOf("Sri Lanka (Ratnapura)", "Birmanie (Mogok)"),
             particularites = "Confondue avec le péridot jusqu'en 1952 ; toujours brune, jamais verte contrairement au péridot.",
+            lithotherapie = "La sinhalite, minéral rare et discret, est associée à la stabilité intérieure et à la persévérance.",
             prixCaratEur = "50 – 300 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -2388,6 +2526,7 @@ object GemsRepository {
             indiceRefraction = "1,736 – 1,762",
             origines = listOf("France (Baud, Morbihan, Bretagne)", "États-Unis (comté de Fannin, Géorgie)", "Russie (péninsule de Kola)"),
             particularites = "Macles cruciformes caractéristiques ; rarement taillée à facettes, surtout collectionnée brute.",
+            lithotherapie = "Surnommée pierre de croix, la staurotide est traditionnellement portée comme talisman de protection et de chance.",
             prixCaratEur = "5 – 50 €/ct (rarement taillée)",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -2405,6 +2544,7 @@ object GemsRepository {
             indiceRefraction = "1,885 – 2,050",
             origines = listOf("Madagascar (Ambatondrazaka)", "Pakistan (Skardu, Baltistan)", "Autriche (Tyrol)"),
             particularites = "Dispersion exceptionnelle, supérieure à celle du diamant ; assez tendre et clivable.",
+            lithotherapie = "Le sphène (titanite) est réputé stimuler la clarté mentale et la créativité, un soutien pour les projets exigeant précision et inspiration.",
             prixCaratEur = "200 – 1 000 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -2424,6 +2564,7 @@ object GemsRepository {
             indiceRefraction = "opaque (métallique, non applicable)",
             origines = listOf("Angleterre (Cumbria)", "Brésil (Minas Gerais)", "États-Unis (Michigan)"),
             particularites = "Sa poudre (trace) est rouge sang malgré son apparence métallique noire, à l'origine de son nom grec.",
+            lithotherapie = "Pierre d'ancrage par excellence, l'hématite est réputée renforcer la force intérieure et protéger des énergies négatives environnantes.",
             prixCaratEur = "1 – 10 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2441,6 +2582,7 @@ object GemsRepository {
             indiceRefraction = "opaque (métallique, non applicable)",
             origines = listOf("Suède (Kiruna)", "États-Unis (New Jersey)", "Namibie"),
             particularites = "Seul minéral naturellement et fortement magnétique, propriété utilisée dès l'Antiquité pour la navigation.",
+            lithotherapie = "La magnétite est associée à l'ancrage et à l'équilibre énergétique, souvent utilisée pour recentrer le corps et l'esprit.",
             prixCaratEur = "1 – 10 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2458,6 +2600,7 @@ object GemsRepository {
             indiceRefraction = "1,544 – 1,553",
             origines = listOf("Brésil (Minas Gerais)", "Madagascar (Antsirabe)"),
             particularites = "Les aiguilles de tourmaline restent visibles à l'œil nu, créant un motif graphique unique à chaque pierre.",
+            lithotherapie = "Le quartz tourmaliné associe les vertus protectrices de la tourmaline noire à la clarté amplificatrice du cristal de roche.",
             prixCaratEur = "5 – 40 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2475,6 +2618,7 @@ object GemsRepository {
             indiceRefraction = "1,530 – 1,539",
             origines = listOf("Brésil (Rio Grande do Sul)", "Inde (Rajasthan)", "Madagascar"),
             particularites = "Teinture artificielle quasi systématique pour homogénéiser la couleur.",
+            lithotherapie = "L'onyx est traditionnellement associé à la force intérieure, à la stabilité émotionnelle et à la protection contre les énergies négatives.",
             prixCaratEur = "1 – 10 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2492,6 +2636,7 @@ object GemsRepository {
             indiceRefraction = "1,712 – 1,717",
             origines = listOf("Sri Lanka (Ratnapura)", "Thaïlande (Chanthaburi)"),
             particularites = "Résistance élevée aux rayures, adaptée aux bijoux portés au quotidien.",
+            lithotherapie = "Le spinelle noir est réputé offrir une protection énergétique solide tout en favorisant l'ancrage.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2509,6 +2654,7 @@ object GemsRepository {
             indiceRefraction = "1,635 – 1,675",
             origines = listOf("Brésil (Minas Gerais)", "Namibie (Erongo)", "Madagascar (Antsirabe)"),
             particularites = "Cristaux prismatiques souvent striés, parfois de grande taille.",
+            lithotherapie = "La tourmaline noire (schorl) est l'une des pierres de protection les plus réputées en lithothérapie, censée absorber les énergies négatives et renforcer l'ancrage.",
             prixCaratEur = "1 – 10 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2526,6 +2672,7 @@ object GemsRepository {
             indiceRefraction = "1,480 – 1,510",
             origines = listOf("Mexique (Sierra de Pachuca)", "Islande (Hrafntinnusker)", "Arménie (mont Artanish)"),
             particularites = "Certaines variétés présentent un chatoiement doré ou irisé (obsidienne arc-en-ciel).",
+            lithotherapie = "L'obsidienne est réputée offrir une protection puissante tout en révélant les vérités cachées, favorisant une transformation intérieure profonde.",
             prixCaratEur = "1 – 5 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2545,6 +2692,7 @@ object GemsRepository {
             indiceRefraction = "1,762 – 1,770",
             origines = listOf("Birmanie (Mogok)", "Sri Lanka (Ratnapura)", "Inde (Karnataka)"),
             particularites = "Astérisme visible uniquement en cabochon, jamais en taille facettée ; nécessite une source lumineuse ponctuelle.",
+            lithotherapie = "Le rubis étoilé conjugue les vertus protectrices du rubis à un pouvoir de guidance intérieure symbolisé par son étoile.",
             prixCaratEur = "300 – 5 000 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -2562,6 +2710,7 @@ object GemsRepository {
             indiceRefraction = "1,762 – 1,770",
             origines = listOf("Sri Lanka (Ratnapura)", "Birmanie (Mogok)", "Thaïlande (Kanchanaburi, variété noire)"),
             particularites = "L'astérisme le plus recherché présente six branches parfaitement droites et centrées sur le dôme du cabochon.",
+            lithotherapie = "Le saphir étoilé est réputé apporter guidance et protection spirituelle, son étoile symbolisant un chemin à suivre.",
             prixCaratEur = "100 – 3 000 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -2579,6 +2728,7 @@ object GemsRepository {
             indiceRefraction = "1,702 – 1,750",
             origines = listOf("Turquie (montagnes d'Ilbir, province de Muğla)"),
             particularites = "Gisement quasi unique au monde ; le changement de couleur est plus subtil que celui de l'alexandrite.",
+            lithotherapie = "La zultanite, qui change de couleur selon la lumière, est associée à l'adaptabilité et à la capacité de transformation personnelle.",
             prixCaratEur = "300 – 2 000 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
@@ -2596,6 +2746,7 @@ object GemsRepository {
             indiceRefraction = "1,740 – 1,760",
             origines = listOf("Tanzanie (Umba, Tunduru)", "Madagascar (Bekily)"),
             particularites = "Le vanadium, plutôt que le chrome, est responsable du changement de couleur dans ce grenat.",
+            lithotherapie = "Ce grenat à changement de couleur symbolise l'adaptabilité et la capacité à se renouveler face aux circonstances changeantes.",
             prixCaratEur = "300 – 1 500 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
@@ -2613,6 +2764,7 @@ object GemsRepository {
             indiceRefraction = "1,544 – 1,553",
             origines = listOf("Namibie (Kaokoveld)", "Chine (province du Hénan)"),
             particularites = "Le motif chatoyant chaotique, contrairement à l'œil de tigre régulier, résulte d'une fracturation naturelle des fibres internes.",
+            lithotherapie = "Surnommée « pierre de la tempête », la pietersite est réputée soutenir le courage face aux changements rapides et imprévus.",
             prixCaratEur = "5 – 40 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -2630,6 +2782,7 @@ object GemsRepository {
             indiceRefraction = "1,530 – 1,539",
             origines = listOf("Brésil (Rio Grande do Sul)", "Uruguay (Artigas)", "Madagascar"),
             particularites = "Le rubanement est souvent rehaussé par teinture, une pratique ancienne et largement acceptée du marché.",
+            lithotherapie = "L'agate est traditionnellement associée à l'équilibre émotionnel, à la stabilité et à une protection douce au quotidien.",
             prixCaratEur = "1 – 15 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2647,6 +2800,7 @@ object GemsRepository {
             indiceRefraction = "1,540 – 1,554",
             origines = listOf("États-Unis (Biggs, Oregon)", "Madagascar", "Inde (Deccan)"),
             particularites = "Opacité totale contrairement à l'agate, due à la densité des impuretés minérales incluses.",
+            lithotherapie = "Le jaspe est réputé favoriser l'ancrage et l'endurance, un soutien pour tenir bon dans les périodes exigeantes.",
             prixCaratEur = "1 – 15 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2664,6 +2818,7 @@ object GemsRepository {
             indiceRefraction = "1,530 – 1,539",
             origines = listOf("Namibie (Erongo)", "Turquie (Anatolie)", "Brésil (Rio Grande do Sul)"),
             particularites = "Terme générique désignant le quartz microcristallin ; l'agate, la cornaline et l'onyx en sont des variétés nommées.",
+            lithotherapie = "La calcédoine est associée à l'harmonie intérieure et à une communication apaisée avec son entourage.",
             prixCaratEur = "1 – 20 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2681,6 +2836,7 @@ object GemsRepository {
             indiceRefraction = "1,544 – 1,553",
             origines = listOf("Brésil (Minas Gerais)", "Madagascar", "États-Unis (Arkansas)"),
             particularites = "Chaque pierre est unique selon la nature du minéral inclus ; jamais deux quartz à inclusions identiques.",
+            lithotherapie = "Le quartz à inclusions (dit « jardin ») invite à l'introspection, chaque inclusion symbolisant une facette du monde intérieur.",
             prixCaratEur = "5 – 60 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2698,6 +2854,7 @@ object GemsRepository {
             indiceRefraction = "1,544 – 1,553",
             origines = listOf("Brésil (Minas Gerais)", "Madagascar (Antsirabe)"),
             particularites = "Les inclusions de rutile peuvent aussi produire un effet œil de chat lorsque le cristal est taillé en cabochon.",
+            lithotherapie = "Le quartz rutilé associe les vertus amplificatrices du cristal de roche à un pouvoir protecteur renforcé.",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2715,6 +2872,7 @@ object GemsRepository {
             indiceRefraction = "1,544 – 1,553",
             origines = listOf("Brésil (Espírito Santo, mine de Novo Horizonte)"),
             particularites = "Gisement unique au monde ; le nom commercial fait référence aux sept minéraux pouvant être présents.",
+            lithotherapie = "Rare association de sept minéraux, le quartz super sept est réputé favoriser une méditation profonde et une forme de synthèse spirituelle.",
             prixCaratEur = "10 – 80 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -2732,6 +2890,7 @@ object GemsRepository {
             indiceRefraction = "1,621 – 1,849",
             origines = listOf("Namibie (Tsumeb)", "États-Unis (Kelly Mine, Nouveau-Mexique)", "Mexique"),
             particularites = "La couleur varie selon le métal en trace : cuivre (bleu-vert), cobalt (rose), cadmium (jaune).",
+            lithotherapie = "La smithsonite est associée à la douceur et à l'apaisement émotionnel, un soutien pour calmer l'irritabilité.",
             prixCaratEur = "5 – 60 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -2749,6 +2908,7 @@ object GemsRepository {
             indiceRefraction = "1,480 – 1,500",
             origines = listOf("République tchèque (Bohême du Sud, bassin de Moldavie)"),
             particularites = "Gisement géographiquement unique au monde, lié au cratère d'impact du Ries en Bavière (Allemagne).",
+            lithotherapie = "D'origine météoritique, la moldavite est réputée provoquer une transformation intérieure intense et un éveil spirituel accéléré.",
             prixCaratEur = "10 – 80 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -2766,6 +2926,7 @@ object GemsRepository {
             indiceRefraction = "1,46 – 1,47",
             origines = listOf("Égypte / Libye (Grand Sable Sea, désert Libyque)"),
             particularites = "Utilisé par les artisans égyptiens antiques il y a plus de 3 000 ans, bien avant sa description scientifique moderne.",
+            lithotherapie = "Formé par un impact météoritique il y a des millions d'années, le verre libyque est associé à la clarté d'esprit et à une protection solaire symbolique.",
             prixCaratEur = "10 – 100 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -2783,6 +2944,7 @@ object GemsRepository {
             indiceRefraction = "1,746 – 1,755",
             origines = listOf("Oural (mine de Malychevskoe, Russie, historique)", "Brésil (mine de Hematita, Minas Gerais)", "Sri Lanka (Ratnapura)"),
             particularites = "Le pourcentage de changement de couleur est le principal critère de valorisation.",
+            lithotherapie = "L'alexandrite, qui change de couleur selon la lumière, est réputée favoriser l'adaptabilité et l'équilibre entre raison et intuition.",
             prixCaratEur = "5 000 – 50 000 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
@@ -2800,6 +2962,7 @@ object GemsRepository {
             indiceRefraction = "1,42 – 1,46",
             origines = listOf("Australie (Coober Pedy)", "Éthiopie (Wollo)", "Mexique (Querétaro)"),
             particularites = "Contient de 3 à 21% d'eau ; sensible à la déshydratation et aux chocs.",
+            lithotherapie = "L'opale précieuse est associée à l'amplification des émotions et de la créativité, un soutien pour les projets artistiques.",
             prixCaratEur = "50 – 2 000 €/ct (opale noire jusqu'à 5 000+)",
             rarete = GemRarete.RARE
         ),
@@ -2817,6 +2980,7 @@ object GemsRepository {
             indiceRefraction = "1,616 – 1,652",
             origines = listOf("Brésil (Minas Gerais)", "États-Unis (mine Dunton, Maine)"),
             particularites = "Taillée le plus souvent en tranches transversales pour révéler l'effet « pastèque ».",
+            lithotherapie = "La tourmaline pastèque associe les vertus apaisantes du rose à l'énergie protectrice du vert, symbolisant l'équilibre entre cœur et action.",
             prixCaratEur = "30 – 200 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -2834,6 +2998,7 @@ object GemsRepository {
             indiceRefraction = "1,560 – 1,568",
             origines = listOf("Canada (Paul Island, Labrador)", "Madagascar (Toliara)", "Finlande (Ylämaa, spectrolite)"),
             particularites = "L'orientation de la taille est déterminante pour révéler la labradorescence.",
+            lithotherapie = "La labradorite est réputée offrir une forte protection énergétique tout en stimulant l'intuition et la magie du quotidien.",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2851,6 +3016,7 @@ object GemsRepository {
             indiceRefraction = "1,518 – 1,526",
             origines = listOf("Sri Lanka (Meetiyagoda)", "Inde (Karnataka)", "Madagascar (Toliara)"),
             particularites = "Adularescence optimale lorsque la pierre est taillée en cabochon perpendiculairement aux lamelles internes.",
+            lithotherapie = "La pierre de lune est traditionnellement associée à l'intuition, à la sensibilité et aux nouveaux départs, en lien avec les cycles lunaires.",
             prixCaratEur = "10 – 200 €/ct (bleu vif jusqu'à 1 000+)",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -2868,6 +3034,7 @@ object GemsRepository {
             indiceRefraction = "1,537 – 1,547",
             origines = listOf("États-Unis (Plush, Oregon)", "Inde (Orissa)", "Norvège (Tvedestrand)"),
             particularites = "Aventurescence due à des paillettes de cuivre natif, contrairement au quartz aventuriné coloré par la fuchsite.",
+            lithotherapie = "La pierre de soleil est réputée apporter joie de vivre, vitalité et confiance en soi, à l'image de son éclat chaleureux.",
             prixCaratEur = "10 – 100 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -2885,6 +3052,7 @@ object GemsRepository {
             indiceRefraction = "1,434",
             origines = listOf("Chine (Yaogangxian, Hunan)", "États-Unis (mine Cave-in-Rock, Illinois)", "Royaume-Uni (Weardale, Angleterre)"),
             particularites = "Clivage parfait en quatre directions ; fluorescence caractéristique sous UV à l'origine du terme « fluorescence ».",
+            lithotherapie = "La fluorine est très utilisée pour favoriser la concentration et la clarté mentale, notamment pendant les périodes d'étude ou de travail intense.",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -2902,6 +3070,7 @@ object GemsRepository {
             indiceRefraction = "1,520 – 1,680",
             origines = listOf("Alberta, Canada (Rocheuses)"),
             particularites = "Gemme organique fossile ; quasi-monopole géographique dans le sud de l'Alberta.",
+            lithotherapie = "L'ammolite, gemme organique fossile, est associée à la chance, à la vitalité et à la transformation positive.",
             prixCaratEur = "10 – 200 €/ct",
             rarete = GemRarete.RARE
         ),
@@ -2921,6 +3090,7 @@ object GemsRepository {
             indiceRefraction = "1,486 – 1,658",
             origines = listOf("Italie (Torre del Greco, historique)", "Sardaigne (Alghero)", "Japon (Kōchi, corail des grandes profondeurs)"),
             particularites = "Récolte strictement réglementée (CITES pour certaines espèces) en raison de la surexploitation historique des récifs.",
+            lithotherapie = "Le corail rouge est traditionnellement porté comme protection, en particulier pour les enfants, et associé à la vitalité et à l'énergie familiale.",
             prixCaratEur = "5 – 200 €/g (vendu au gramme ou à la pièce)",
             rarete = GemRarete.RARE
         ),
@@ -2938,6 +3108,7 @@ object GemsRepository {
             indiceRefraction = "1,530 – 1,685",
             origines = listOf("Caraïbes (Bahamas, îles Turques-et-Caïques)"),
             particularites = "Structure « flamme » visible en surface, unique aux perles non nacrées comme la perle conque ou la perle de mélo.",
+            lithotherapie = "La perle conque est associée à la féminité, à l'intuition et à la douceur émotionnelle.",
             prixCaratEur = "50 – 5 000 €/perle (extrêmement variable)",
             rarete = GemRarete.RARE
         ),
@@ -2955,6 +3126,7 @@ object GemsRepository {
             indiceRefraction = "1,539 – 1,545",
             origines = listOf("Mer Baltique (Kaliningrad)", "République dominicaine (Santiago)", "Birmanie (Mogok, ambre birman)"),
             particularites = "Flotte dans l'eau salée ; peut contenir des inclusions fossiles (insectes, végétaux) très recherchées.",
+            lithotherapie = "L'ambre est réputé depuis l'Antiquité pour ses vertus apaisantes et protectrices, apportant chaleur et réconfort émotionnel.",
             prixCaratEur = "1 – 50 €/g (souvent vendu au gramme, pas au carat)",
             rarete = GemRarete.COURANTE
         ),
@@ -2972,6 +3144,7 @@ object GemsRepository {
             indiceRefraction = "1,530 – 1,685",
             origines = listOf("Polynésie française (Tahiti)", "Japon (Akoya)", "Australie (Broome, mers du Sud)"),
             particularites = "Prix évalué à la pièce ou au rang selon taille, forme, lustre et origine, non au carat.",
+            lithotherapie = "La perle de culture est associée à la pureté, à la sagesse et à l'harmonie dans les relations affectives.",
             prixCaratEur = "10 – 10 000 €/perle (très variable selon type)",
             rarete = GemRarete.COURANTE
         )

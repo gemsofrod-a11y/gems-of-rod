@@ -17,6 +17,11 @@ enum class GemRarete(val label: String) {
  * pierre naturelle de qualité commerciale à belle qualité : la valeur réelle
  * d'une pierre précise dépend énormément de son origine, sa pureté, sa taille
  * et l'existence ou non de traitements — ce n'est pas une cotation.
+ *
+ * `lithotherapie` décrit des croyances et usages traditionnels (bien-être,
+ * symbolique) associés à la gemme. Ce contenu relève de la tradition
+ * populaire, pas de faits scientifiquement établis : il ne constitue ni un
+ * avis médical, ni une allégation de soin.
  */
 data class Gem(
     val id: String,
@@ -32,6 +37,7 @@ data class Gem(
     val indiceRefraction: String,
     val origines: List<String>,
     val particularites: String,
+    val lithotherapie: String,
     val prixCaratEur: String,
     val rarete: GemRarete
 )
