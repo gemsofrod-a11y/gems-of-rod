@@ -11,14 +11,18 @@ import fr.gemsofrod.encyclopedie.ui.screens.CertificateScreen
 import fr.gemsofrod.encyclopedie.ui.screens.FavoritesScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemsListScreen
+import fr.gemsofrod.encyclopedie.ui.screens.HomeScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieDetailScreen
+import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieListScreen
 
 private object Routes {
+    const val HOME = "home"
     const val CATEGORIES = "categories"
     const val GEMS_LIST = "gems/{colorName}"
     const val GEM_DETAIL = "gem/{gemId}"
     const val FAVORITES = "favorites"
     const val CERTIFICATE = "certificate/{gemId}"
+    const val LITHOTHERAPIE_LIST = "lithotherapie_list"
     const val LITHOTHERAPIE_DETAIL = "lithotherapie/{gemId}"
 
     fun gemsList(colorName: String) = "gems/$colorName"
@@ -29,15 +33,27 @@ private object Routes {
 
 @Composable
 fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
-    NavHost(navController = navController, startDestination = Routes.CATEGORIES) {
+    NavHost(navController = navController, startDestination = Routes.HOME) {
+        composable(Routes.HOME) {
+            HomeScreen(
+                onGemmologieClick = { navController.navigate(Routes.CATEGORIES) },
+                onLithotherapieClick = { navController.navigate(Routes.LITHOTHERAPIE_LIST) },
+                onFavoritesClick = { navController.navigate(Routes.FAVORITES) }
+            )
+        }
         composable(Routes.CATEGORIES) {
             CategoriesScreen(
                 onCategoryClick = { category ->
                     navController.navigate(Routes.gemsList(category.name))
                 },
                 onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
-                onLithotherapieGemClick = { gem -> navController.navigate(Routes.lithotherapieDetail(gem.id)) },
-                onFavoritesClick = { navController.navigate(Routes.FAVORITES) }
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.LITHOTHERAPIE_LIST) {
+            LithotherapieListScreen(
+                onGemClick = { gem -> navController.navigate(Routes.lithotherapieDetail(gem.id)) },
+                onBackClick = { navController.popBackStack() }
             )
         }
         composable(Routes.GEMS_LIST) { backStackEntry ->
