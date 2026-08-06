@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,9 +20,13 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.Diamond
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Spa
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -31,8 +36,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Tab
-import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -49,131 +52,194 @@ import fr.gemsofrod.encyclopedie.data.Gem
 import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.data.GemsRepository
 
-private val HOME_TABS = listOf("Gemmologie", "Lithothérapie")
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun HomeScreen(
+    onGemmologieClick: () -> Unit,
+    onLithotherapieClick: () -> Unit,
+    onFavoritesClick: () -> Unit
+) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Gems of Rod") },
+                actions = {
+                    IconButton(onClick = onFavoritesClick) {
+                        Icon(Icons.Filled.Favorite, contentDescription = "Mes favoris")
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background,
+                    titleContentColor = MaterialTheme.colorScheme.onBackground
+                )
+            )
+        },
+        containerColor = MaterialTheme.colorScheme.background
+    ) { padding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .padding(20.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            HomeSectionCard(
+                title = "Gemmologie",
+                subtitle = "Le catalogue complet par couleur : fiches techniques, prix, origines.",
+                onClick = onGemmologieClick,
+                icon = Icons.Filled.Diamond
+            )
+            HomeSectionCard(
+                title = "Lithothérapie",
+                subtitle = "Les vertus et usages traditionnels associés à chaque pierre.",
+                onClick = onLithotherapieClick,
+                icon = Icons.Filled.Spa
+            )
+        }
+    }
+}
+
+@Composable
+private fun HomeSectionCard(
+    title: String,
+    subtitle: String,
+    onClick: () -> Unit,
+    icon: androidx.compose.ui.graphics.vector.ImageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight
+) {
+    Card(
+        onClick = onClick,
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(120.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(20.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            Icon(
+                icon,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(32.dp)
+            )
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = subtitle,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            Icon(
+                Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+    }
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CategoriesScreen(
     onCategoryClick: (GemColorCategory) -> Unit,
     onGemClick: (Gem) -> Unit,
-    onLithotherapieGemClick: (Gem) -> Unit,
-    onFavoritesClick: () -> Unit
-) {
-    var selectedTab by remember { mutableStateOf(0) }
-
-    Scaffold(
-        topBar = {
-            Column {
-                TopAppBar(
-                    title = { Text("Gems of Rod") },
-                    actions = {
-                        IconButton(onClick = onFavoritesClick) {
-                            Icon(Icons.Filled.Favorite, contentDescription = "Mes favoris")
-                        }
-                    },
-                    colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = MaterialTheme.colorScheme.background,
-                        titleContentColor = MaterialTheme.colorScheme.onBackground
-                    )
-                )
-                TabRow(
-                    selectedTabIndex = selectedTab,
-                    containerColor = MaterialTheme.colorScheme.background,
-                    contentColor = MaterialTheme.colorScheme.primary
-                ) {
-                    HOME_TABS.forEachIndexed { index, label ->
-                        Tab(
-                            selected = selectedTab == index,
-                            onClick = { selectedTab = index },
-                            text = { Text(label) }
-                        )
-                    }
-                }
-            }
-        },
-        containerColor = MaterialTheme.colorScheme.background
-    ) { padding ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-        ) {
-            if (selectedTab == 0) {
-                GemmologieTab(onCategoryClick = onCategoryClick, onGemClick = onGemClick)
-            } else {
-                LithotherapieList(onGemClick = onLithotherapieGemClick)
-            }
-        }
-    }
-}
-
-@Composable
-private fun GemmologieTab(
-    onCategoryClick: (GemColorCategory) -> Unit,
-    onGemClick: (Gem) -> Unit
+    onBackClick: () -> Unit
 ) {
     var query by remember { mutableStateOf("") }
     val results = if (query.isBlank()) emptyList() else GemsRepository.search(query)
 
-    Column(modifier = Modifier.fillMaxSize()) {
-        OutlinedTextField(
-            value = query,
-            onValueChange = { query = it },
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Gemmologie") },
+                navigationIcon = {
+                    IconButton(onClick = onBackClick) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Retour")
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background,
+                    titleContentColor = MaterialTheme.colorScheme.onBackground
+                )
+            )
+        },
+        containerColor = MaterialTheme.colorScheme.background
+    ) { padding ->
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp),
-            placeholder = { Text("Rechercher une gemme…") },
-            singleLine = true,
-            leadingIcon = { Icon(Icons.Filled.Search, contentDescription = null) },
-            trailingIcon = {
-                if (query.isNotEmpty()) {
-                    IconButton(onClick = { query = "" }) {
-                        Icon(Icons.Filled.Clear, contentDescription = "Effacer")
+                .fillMaxSize()
+                .padding(padding)
+        ) {
+            OutlinedTextField(
+                value = query,
+                onValueChange = { query = it },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                placeholder = { Text("Rechercher une gemme…") },
+                singleLine = true,
+                leadingIcon = { Icon(Icons.Filled.Search, contentDescription = null) },
+                trailingIcon = {
+                    if (query.isNotEmpty()) {
+                        IconButton(onClick = { query = "" }) {
+                            Icon(Icons.Filled.Clear, contentDescription = "Effacer")
+                        }
+                    }
+                },
+                shape = RoundedCornerShape(16.dp),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface
+                )
+            )
+
+            if (query.isBlank()) {
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(2),
+                    contentPadding = PaddingValues(16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    items(GemColorCategory.entries) { category ->
+                        CategoryCard(
+                            category = category,
+                            count = GemsRepository.countByColor(category),
+                            onClick = { onCategoryClick(category) }
+                        )
                     }
                 }
-            },
-            shape = RoundedCornerShape(16.dp),
-            colors = OutlinedTextFieldDefaults.colors(
-                focusedContainerColor = MaterialTheme.colorScheme.surface,
-                unfocusedContainerColor = MaterialTheme.colorScheme.surface
-            )
-        )
-
-        if (query.isBlank()) {
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
-                contentPadding = PaddingValues(16.dp),
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
-                modifier = Modifier.fillMaxSize()
-            ) {
-                items(GemColorCategory.entries) { category ->
-                    CategoryCard(
-                        category = category,
-                        count = GemsRepository.countByColor(category),
-                        onClick = { onCategoryClick(category) }
+            } else if (results.isEmpty()) {
+                Box(modifier = Modifier.fillMaxSize()) {
+                    Text(
+                        text = "Aucune gemme ne correspond à « $query ».",
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier
+                            .align(Alignment.TopCenter)
+                            .padding(24.dp)
                     )
                 }
-            }
-        } else if (results.isEmpty()) {
-            Box(modifier = Modifier.fillMaxSize()) {
-                Text(
-                    text = "Aucune gemme ne correspond à « $query ».",
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier
-                        .align(Alignment.TopCenter)
-                        .padding(24.dp)
-                )
-            }
-        } else {
-            LazyColumn(
-                contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-                modifier = Modifier.fillMaxSize()
-            ) {
-                items(results) { gem ->
-                    SearchResultRow(gem = gem, onClick = { onGemClick(gem) })
+            } else {
+                LazyColumn(
+                    contentPadding = PaddingValues(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    items(results) { gem ->
+                        SearchResultRow(gem = gem, onClick = { onGemClick(gem) })
+                    }
                 }
             }
         }

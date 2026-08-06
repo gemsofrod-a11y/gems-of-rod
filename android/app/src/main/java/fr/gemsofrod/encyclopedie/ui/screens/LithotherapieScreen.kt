@@ -23,18 +23,27 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -43,6 +52,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import fr.gemsofrod.encyclopedie.data.FavoritesRepository
 import fr.gemsofrod.encyclopedie.data.Gem
 import fr.gemsofrod.encyclopedie.data.GemImageCredit
 import fr.gemsofrod.encyclopedie.data.GemImageType
@@ -53,19 +63,87 @@ import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
 /**
  * Liste de toutes les gemmes présentée sous l'angle lithothérapie (croyances
  * et usages traditionnels), sans son contenu gemmologique technique — voir
- * [LithotherapieDetailScreen] pour la fiche associée à chaque pierre.
+ * [LithotherapieDetailScreen] pour la fiche associée à chaque pierre. Triée
+ * par ordre alphabétique, avec recherche et bascule favoris directement
+ * depuis la liste.
  */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LithotherapieList(onGemClick: (Gem) -> Unit) {
-    val gems = GemsRepository.gems
+fun LithotherapieListScreen(onGemClick: (Gem) -> Unit, onBackClick: () -> Unit) {
+    var query by remember { mutableStateOf("") }
+    val gems = if (query.isBlank()) {
+        GemsRepository.gems.sortedBy { it.nom }
+    } else {
+        GemsRepository.search(query)
+    }
 
-    LazyColumn(
-        contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(10.dp),
-        modifier = Modifier.fillMaxSize()
-    ) {
-        items(gems) { gem ->
-            LithotherapieRow(gem = gem, onClick = { onGemClick(gem) })
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Lithothérapie") },
+                navigationIcon = {
+                    IconButton(onClick = onBackClick) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Retour")
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background,
+                    titleContentColor = MaterialTheme.colorScheme.onBackground
+                )
+            )
+        },
+        containerColor = MaterialTheme.colorScheme.background
+    ) { padding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+        ) {
+            OutlinedTextField(
+                value = query,
+                onValueChange = { query = it },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                placeholder = { Text("Rechercher une gemme…") },
+                singleLine = true,
+                leadingIcon = { Icon(Icons.Filled.Search, contentDescription = null) },
+                trailingIcon = {
+                    if (query.isNotEmpty()) {
+                        IconButton(onClick = { query = "" }) {
+                            Icon(Icons.Filled.Clear, contentDescription = "Effacer")
+                        }
+                    }
+                },
+                shape = RoundedCornerShape(16.dp),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface
+                )
+            )
+
+            if (gems.isEmpty()) {
+                Box(modifier = Modifier.fillMaxSize()) {
+                    Text(
+                        text = "Aucune gemme ne correspond à « $query ».",
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier
+                            .align(Alignment.TopCenter)
+                            .padding(24.dp)
+                    )
+                }
+            } else {
+                LazyColumn(
+                    contentPadding = PaddingValues(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    items(gems) { gem ->
+                        LithotherapieRow(gem = gem, onClick = { onGemClick(gem) })
+                    }
+                }
+            }
         }
     }
 }
@@ -119,11 +197,14 @@ private fun LithotherapieRow(gem: Gem, onClick: () -> Unit) {
                     maxLines = 2
                 )
             }
-            Icon(
-                Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.onSurfaceVariant
-            )
+            val isFavorite = FavoritesRepository.isFavorite(gem.id)
+            IconButton(onClick = { FavoritesRepository.toggle(gem.id) }) {
+                Icon(
+                    if (isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
+                    contentDescription = if (isFavorite) "Retirer des favoris" else "Ajouter aux favoris",
+                    tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         }
     }
 }
@@ -140,6 +221,18 @@ fun LithotherapieDetailScreen(gemId: String, onBackClick: () -> Unit) {
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Retour")
+                    }
+                },
+                actions = {
+                    if (gem != null) {
+                        val isFavorite = FavoritesRepository.isFavorite(gem.id)
+                        IconButton(onClick = { FavoritesRepository.toggle(gem.id) }) {
+                            Icon(
+                                if (isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
+                                contentDescription = if (isFavorite) "Retirer des favoris" else "Ajouter aux favoris",
+                                tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onBackground
+                            )
+                        }
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
