@@ -64,7 +64,10 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             )
         }
         composable(Routes.LANGUAGE) {
-            LanguageScreen(onBackClick = { navController.popBackStack() })
+            LanguageScreen(
+                onBackClick = { navController.popBackStack() },
+                onLanguageSelected = { navController.popBackStack(Routes.HOME, false) }
+            )
         }
         composable(Routes.CATEGORIES) {
             CategoriesScreen(
