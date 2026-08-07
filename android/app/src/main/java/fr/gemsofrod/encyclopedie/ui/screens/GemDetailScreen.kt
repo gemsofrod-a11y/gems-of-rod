@@ -68,6 +68,7 @@ import fr.gemsofrod.encyclopedie.data.GemRarete
 import fr.gemsofrod.encyclopedie.data.GemsRepository
 import fr.gemsofrod.encyclopedie.data.googleMapsSearchUrl
 import fr.gemsofrod.encyclopedie.data.priceRangePerCarat
+import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
 import java.text.NumberFormat
 import java.util.Locale
@@ -75,12 +76,16 @@ import java.util.Locale
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: () -> Unit) {
-    val gem = GemsRepository.byId(gemId)
+    // La fiche affichée à l'écran est traduite dans la langue d'interface
+    // courante ; le partage (texte + sujet) reste basé sur le contenu
+    // français d'origine tant que ce contenu n'est pas lui-même traduit.
+    val rawGem = GemsRepository.byId(gemId)
+    val gem = rawGem?.localized()
     val context = LocalContext.current
     val removeFavoriteLabel = stringResource(R.string.cd_remove_favorite)
     val addFavoriteLabel = stringResource(R.string.cd_add_favorite)
     val shareChooserTitle = stringResource(R.string.share_chooser_title)
-    val shareSubject = gem?.let { stringResource(R.string.share_subject, it.nom) }
+    val shareSubject = rawGem?.let { stringResource(R.string.share_subject, it.nom) }
 
     Scaffold(
         topBar = {
@@ -92,9 +97,9 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
                     }
                 },
                 actions = {
-                    if (gem != null) {
-                        val isFavorite = FavoritesRepository.isFavorite(gem.id)
-                        IconButton(onClick = { FavoritesRepository.toggle(gem.id) }) {
+                    if (rawGem != null) {
+                        val isFavorite = FavoritesRepository.isFavorite(rawGem.id)
+                        IconButton(onClick = { FavoritesRepository.toggle(rawGem.id) }) {
                             Icon(
                                 if (isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
                                 contentDescription = if (isFavorite) removeFavoriteLabel else addFavoriteLabel,
@@ -105,7 +110,7 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
                             val sendIntent = Intent(Intent.ACTION_SEND).apply {
                                 type = "text/plain"
                                 putExtra(Intent.EXTRA_SUBJECT, shareSubject)
-                                putExtra(Intent.EXTRA_TEXT, buildShareText(gem))
+                                putExtra(Intent.EXTRA_TEXT, buildShareText(rawGem))
                             }
                             context.startActivity(Intent.createChooser(sendIntent, shareChooserTitle))
                         }) {

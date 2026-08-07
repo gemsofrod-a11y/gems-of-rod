@@ -61,6 +61,7 @@ import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.CertificateInfo
 import fr.gemsofrod.encyclopedie.data.CertificatePdfGenerator
 import fr.gemsofrod.encyclopedie.data.GemsRepository
+import fr.gemsofrod.encyclopedie.ui.localized
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -68,7 +69,7 @@ import kotlinx.coroutines.withContext
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CertificateScreen(gemId: String, onBackClick: () -> Unit) {
-    val gem = GemsRepository.byId(gemId)
+    val gem = GemsRepository.byId(gemId)?.localized()
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
 

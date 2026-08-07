@@ -57,6 +57,7 @@ import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.Gem
 import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.data.GemsRepository
+import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -292,6 +293,7 @@ fun CategoriesScreen(
 
 @Composable
 private fun SearchResultRow(gem: Gem, onClick: () -> Unit) {
+    val localizedGem = gem.localized()
     Card(
         onClick = onClick,
         shape = RoundedCornerShape(14.dp),
@@ -312,7 +314,7 @@ private fun SearchResultRow(gem: Gem, onClick: () -> Unit) {
             )
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = gem.nom,
+                    text = localizedGem.nom,
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onSurface

@@ -58,6 +58,7 @@ import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.data.GemsRepository
 import fr.gemsofrod.encyclopedie.data.ZodiacSigns
 import fr.gemsofrod.encyclopedie.data.BirthMonths
+import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
 
 /** Identifiants des sous-catégories de la section Lithothérapie. */
@@ -313,6 +314,7 @@ fun LithotherapieGemsScreen(
 
 @Composable
 private fun LithotherapieRow(gem: Gem, onClick: () -> Unit) {
+    val localizedGem = gem.localized()
     Card(
         onClick = onClick,
         shape = RoundedCornerShape(14.dp),
@@ -333,7 +335,7 @@ private fun LithotherapieRow(gem: Gem, onClick: () -> Unit) {
             if (imageResId != 0) {
                 Image(
                     painter = painterResource(id = imageResId),
-                    contentDescription = gem.nom,
+                    contentDescription = localizedGem.nom,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .size(48.dp)
@@ -348,13 +350,13 @@ private fun LithotherapieRow(gem: Gem, onClick: () -> Unit) {
             }
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = gem.nom,
+                    text = localizedGem.nom,
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = gem.lithotherapie,
+                    text = localizedGem.lithotherapie,
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = 2
@@ -375,7 +377,7 @@ private fun LithotherapieRow(gem: Gem, onClick: () -> Unit) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LithotherapieDetailScreen(gemId: String, onBackClick: () -> Unit) {
-    val gem = GemsRepository.byId(gemId)
+    val gem = GemsRepository.byId(gemId)?.localized()
 
     Scaffold(
         topBar = {
