@@ -24,8 +24,8 @@ android {
         applicationId = "fr.gemsofrod.encyclopedie"
         minSdk = 26
         targetSdk = 35
-        versionCode = 55
-        versionName = "4.3"
+        versionCode = 56
+        versionName = "4.4"
     }
 
     signingConfigs {
@@ -70,6 +70,16 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+
+    // Le choix de langue est fait dans l'app (LanguageScreen), indépendamment
+    // de la langue système de l'appareil. Sans ceci, Play Feature Delivery ne
+    // livre à chaque appareil que les ressources de sa langue système,
+    // laissant les autres langues absentes de l'installation.
+    bundle {
+        language {
+            enableSplit = false
         }
     }
 }
