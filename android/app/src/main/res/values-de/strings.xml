@@ -110,6 +110,9 @@
     <string name="certificate_photo_picker_hint">Foto vom Telefon hinzufügen</string>
     <string name="cd_certificate_photo">Foto des Steins</string>
     <string name="certificate_generate_button">PDF erstellen und exportieren</string>
+    <string name="certificate_pdf_title">ECHTHEITSZERTIFIKAT</string>
+    <string name="certificate_pdf_issued_on">Ausgestellt am %1$s</string>
+    <string name="certificate_pdf_disclaimer">Dieses Dokument beschreibt ein vom Nutzer eingegebenes Exemplar; es stellt kein Gutachten dar.</string>
 
     <!-- Sprache -->
     <string name="language_title">Sprache</string>

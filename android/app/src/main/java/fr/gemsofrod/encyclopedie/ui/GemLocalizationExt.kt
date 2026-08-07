@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalConfiguration
 import fr.gemsofrod.encyclopedie.data.Gem
 import fr.gemsofrod.encyclopedie.data.GemLocalization
+import fr.gemsofrod.encyclopedie.data.LabelLocalization
 
 /**
  * Renvoie cette gemme avec son nom et ses textes descriptifs traduits dans la
@@ -15,4 +16,16 @@ import fr.gemsofrod.encyclopedie.data.GemLocalization
 fun Gem.localized(): Gem {
     val languageCode = LocalConfiguration.current.locales[0].language
     return GemLocalization.localize(this, languageCode)
+}
+
+/**
+ * Traduit un libellé utilisé aussi comme clé interne (famille minérale,
+ * chakra, bienfait, signe astrologique, mois de naissance) pour l'affichage
+ * dans la langue d'interface actuelle. Le libellé français d'origine doit
+ * continuer à être utilisé pour le routage et les recherches par clé.
+ */
+@Composable
+fun localizedLabel(label: String): String {
+    val languageCode = LocalConfiguration.current.locales[0].language
+    return LabelLocalization.localize(label, languageCode)
 }

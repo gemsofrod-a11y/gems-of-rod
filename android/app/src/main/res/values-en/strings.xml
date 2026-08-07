@@ -110,6 +110,9 @@
     <string name="certificate_photo_picker_hint">Add a photo from your phone</string>
     <string name="cd_certificate_photo">Photo of the stone</string>
     <string name="certificate_generate_button">Generate and export the PDF</string>
+    <string name="certificate_pdf_title">CERTIFICATE OF AUTHENTICITY</string>
+    <string name="certificate_pdf_issued_on">Issued on %1$s</string>
+    <string name="certificate_pdf_disclaimer">This document describes a specimen as entered by the user; it does not constitute an appraisal.</string>
 
     <!-- Language -->
     <string name="language_title">Language</string>

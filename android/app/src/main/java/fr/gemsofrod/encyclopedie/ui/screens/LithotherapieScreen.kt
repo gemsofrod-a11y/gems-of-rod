@@ -59,6 +59,7 @@ import fr.gemsofrod.encyclopedie.data.GemsRepository
 import fr.gemsofrod.encyclopedie.data.ZodiacSigns
 import fr.gemsofrod.encyclopedie.data.BirthMonths
 import fr.gemsofrod.encyclopedie.ui.localized
+import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
 
 /** Identifiants des sous-catégories de la section Lithothérapie. */
@@ -215,7 +216,7 @@ fun LithotherapieLabelListScreen(
                 .padding(padding)
         ) {
             items(groups) { (label, gems) ->
-                FamilyStyleRow(name = label, count = gems.size, onClick = { onLabelClick(label) })
+                FamilyStyleRow(name = localizedLabel(label), count = gems.size, onClick = { onLabelClick(label) })
             }
         }
     }
@@ -271,7 +272,7 @@ fun LithotherapieGemsScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(label) },
+                title = { Text(localizedLabel(label)) },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
