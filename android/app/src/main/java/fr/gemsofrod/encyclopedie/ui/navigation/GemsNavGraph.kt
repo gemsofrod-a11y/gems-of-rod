@@ -16,7 +16,9 @@ import fr.gemsofrod.encyclopedie.ui.screens.GemDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemsListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.HomeScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieDetailScreen
-import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieListScreen
+import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieGemsScreen
+import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieLabelListScreen
+import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieMenuScreen
 import java.net.URLDecoder
 import java.net.URLEncoder
 
@@ -29,14 +31,18 @@ private object Routes {
     const val CERTIFICATE = "certificate/{gemId}"
     const val FAMILLES_LIST = "familles"
     const val FAMILLE_DETAIL = "familles/{familySlug}"
-    const val LITHOTHERAPIE_LIST = "lithotherapie_list"
-    const val LITHOTHERAPIE_DETAIL = "lithotherapie/{gemId}"
+    const val LITHOTHERAPIE_MENU = "lithotherapie_menu"
+    const val LITHOTHERAPIE_LABELS = "lithotherapie_labels/{scheme}"
+    const val LITHOTHERAPIE_GEMS = "lithotherapie_gems/{scheme}/{label}"
+    const val LITHOTHERAPIE_DETAIL = "lithotherapie_detail/{gemId}"
 
     fun gemsList(colorName: String) = "gems/$colorName"
     fun gemDetail(gemId: String) = "gem/$gemId"
     fun certificate(gemId: String) = "certificate/$gemId"
     fun familleDetail(familyName: String) = "familles/${encode(familyName)}"
-    fun lithotherapieDetail(gemId: String) = "lithotherapie/$gemId"
+    fun lithotherapieLabels(scheme: String) = "lithotherapie_labels/$scheme"
+    fun lithotherapieGems(scheme: String, label: String) = "lithotherapie_gems/$scheme/${encode(label)}"
+    fun lithotherapieDetail(gemId: String) = "lithotherapie_detail/$gemId"
 
     fun encode(value: String): String = URLEncoder.encode(value, "UTF-8")
     fun decode(value: String): String = URLDecoder.decode(value, "UTF-8")
@@ -49,7 +55,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             HomeScreen(
                 onGemmologieClick = { navController.navigate(Routes.CATEGORIES) },
                 onFamillesClick = { navController.navigate(Routes.FAMILLES_LIST) },
-                onLithotherapieClick = { navController.navigate(Routes.LITHOTHERAPIE_LIST) },
+                onLithotherapieClick = { navController.navigate(Routes.LITHOTHERAPIE_MENU) },
                 onFavoritesClick = { navController.navigate(Routes.FAVORITES) }
             )
         }
@@ -62,8 +68,26 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onBackClick = { navController.popBackStack() }
             )
         }
-        composable(Routes.LITHOTHERAPIE_LIST) {
-            LithotherapieListScreen(
+        composable(Routes.LITHOTHERAPIE_MENU) {
+            LithotherapieMenuScreen(
+                onSchemeClick = { scheme -> navController.navigate(Routes.lithotherapieLabels(scheme)) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.LITHOTHERAPIE_LABELS) { backStackEntry ->
+            val scheme = backStackEntry.arguments?.getString("scheme").orEmpty()
+            LithotherapieLabelListScreen(
+                scheme = scheme,
+                onLabelClick = { label -> navController.navigate(Routes.lithotherapieGems(scheme, label)) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.LITHOTHERAPIE_GEMS) { backStackEntry ->
+            val scheme = backStackEntry.arguments?.getString("scheme").orEmpty()
+            val label = Routes.decode(backStackEntry.arguments?.getString("label").orEmpty())
+            LithotherapieGemsScreen(
+                scheme = scheme,
+                label = label,
                 onGemClick = { gem -> navController.navigate(Routes.lithotherapieDetail(gem.id)) },
                 onBackClick = { navController.popBackStack() }
             )

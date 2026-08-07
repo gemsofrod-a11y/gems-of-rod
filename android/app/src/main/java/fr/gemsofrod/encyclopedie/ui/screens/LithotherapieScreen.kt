@@ -23,27 +23,20 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -52,31 +45,57 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import fr.gemsofrod.encyclopedie.data.Bienfaits
+import fr.gemsofrod.encyclopedie.data.Chakras
 import fr.gemsofrod.encyclopedie.data.FavoritesRepository
 import fr.gemsofrod.encyclopedie.data.Gem
 import fr.gemsofrod.encyclopedie.data.GemImageCredit
 import fr.gemsofrod.encyclopedie.data.GemImageType
 import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.data.GemsRepository
+import fr.gemsofrod.encyclopedie.data.ZodiacSigns
+import fr.gemsofrod.encyclopedie.data.BirthMonths
 import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
 
+/** Identifiants des sous-catégories de la section Lithothérapie. */
+object LithotherapieSchemes {
+    const val ZODIAC = "zodiac"
+    const val CHAKRA = "chakra"
+    const val BIENFAIT = "bienfait"
+    const val MOIS = "mois"
+
+    fun title(scheme: String): String = when (scheme) {
+        ZODIAC -> "Signe astrologique"
+        CHAKRA -> "Chakra"
+        BIENFAIT -> "Bienfait recherché"
+        MOIS -> "Mois de naissance"
+        else -> "Lithothérapie"
+    }
+
+    fun groups(scheme: String): List<Pair<String, List<Gem>>> = when (scheme) {
+        ZODIAC -> ZodiacSigns.groups()
+        CHAKRA -> Chakras.groups()
+        BIENFAIT -> Bienfaits.groups()
+        MOIS -> BirthMonths.groups()
+        else -> emptyList()
+    }
+
+    fun gemsFor(scheme: String, label: String): List<Gem> = when (scheme) {
+        ZODIAC -> ZodiacSigns.gemsFor(label)
+        CHAKRA -> Chakras.gemsFor(label)
+        BIENFAIT -> Bienfaits.gemsFor(label)
+        MOIS -> BirthMonths.gemsFor(label)
+        else -> emptyList()
+    }
+}
+
 /**
- * Liste de toutes les gemmes présentée sous l'angle lithothérapie (croyances
- * et usages traditionnels), sans son contenu gemmologique technique — voir
- * [LithotherapieDetailScreen] pour la fiche associée à chaque pierre. Triée
- * par ordre alphabétique, avec recherche et bascule favoris directement
- * depuis la liste.
+ * Menu d'entrée de la section Lithothérapie : choix de la sous-catégorie
+ * (signe astrologique, chakra, bienfait recherché, mois de naissance).
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LithotherapieListScreen(onGemClick: (Gem) -> Unit, onBackClick: () -> Unit) {
-    var query by remember { mutableStateOf("") }
-    val gems = if (query.isBlank()) {
-        GemsRepository.gems.sortedBy { it.nom }
-    } else {
-        GemsRepository.search(query)
-    }
-
+fun LithotherapieMenuScreen(onSchemeClick: (String) -> Unit, onBackClick: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -94,54 +113,194 @@ fun LithotherapieListScreen(onGemClick: (Gem) -> Unit, onBackClick: () -> Unit) 
         },
         containerColor = MaterialTheme.colorScheme.background
     ) { padding ->
-        Column(
+        LazyColumn(
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
         ) {
-            OutlinedTextField(
-                value = query,
-                onValueChange = { query = it },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 8.dp),
-                placeholder = { Text("Rechercher une gemme…") },
-                singleLine = true,
-                leadingIcon = { Icon(Icons.Filled.Search, contentDescription = null) },
-                trailingIcon = {
-                    if (query.isNotEmpty()) {
-                        IconButton(onClick = { query = "" }) {
-                            Icon(Icons.Filled.Clear, contentDescription = "Effacer")
-                        }
+            items(
+                listOf(
+                    LithotherapieSchemes.ZODIAC to "Découvrez les pierres traditionnellement associées à votre signe.",
+                    LithotherapieSchemes.CHAKRA to "Les pierres classées selon les 7 chakras traditionnels.",
+                    LithotherapieSchemes.BIENFAIT to "Stress, confiance, amour, protection, sommeil…",
+                    LithotherapieSchemes.MOIS to "Les pierres de naissance, une par mois."
+                )
+            ) { (scheme, subtitle) ->
+                SchemeCard(
+                    title = LithotherapieSchemes.title(scheme),
+                    subtitle = subtitle,
+                    onClick = { onSchemeClick(scheme) }
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun SchemeCard(title: String, subtitle: String, onClick: () -> Unit) {
+    Card(
+        onClick = onClick,
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(14.dp)
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = subtitle,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            Icon(
+                Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+    }
+}
+
+/** Liste des libellés (signes, chakras, bienfaits ou mois) d'une sous-catégorie. */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun LithotherapieLabelListScreen(
+    scheme: String,
+    onLabelClick: (String) -> Unit,
+    onBackClick: () -> Unit
+) {
+    val groups = LithotherapieSchemes.groups(scheme)
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(LithotherapieSchemes.title(scheme)) },
+                navigationIcon = {
+                    IconButton(onClick = onBackClick) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Retour")
                     }
                 },
-                shape = RoundedCornerShape(16.dp),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedContainerColor = MaterialTheme.colorScheme.surface,
-                    unfocusedContainerColor = MaterialTheme.colorScheme.surface
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background,
+                    titleContentColor = MaterialTheme.colorScheme.onBackground
                 )
             )
+        },
+        containerColor = MaterialTheme.colorScheme.background
+    ) { padding ->
+        LazyColumn(
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+        ) {
+            items(groups) { (label, gems) ->
+                FamilyStyleRow(name = label, count = gems.size, onClick = { onLabelClick(label) })
+            }
+        }
+    }
+}
 
-            if (gems.isEmpty()) {
-                Box(modifier = Modifier.fillMaxSize()) {
-                    Text(
-                        text = "Aucune gemme ne correspond à « $query ».",
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier
-                            .align(Alignment.TopCenter)
-                            .padding(24.dp)
-                    )
-                }
-            } else {
-                LazyColumn(
-                    contentPadding = PaddingValues(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(10.dp),
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    items(gems) { gem ->
-                        LithotherapieRow(gem = gem, onClick = { onGemClick(gem) })
+@Composable
+private fun FamilyStyleRow(name: String, count: Int, onClick: () -> Unit) {
+    Card(
+        onClick = onClick,
+        shape = RoundedCornerShape(14.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 14.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            Text(
+                text = name,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface,
+                modifier = Modifier.weight(1f)
+            )
+            Text(
+                text = if (count > 1) "$count gemmes" else "$count gemme",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Icon(
+                Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+    }
+}
+
+/** Gemmes appartenant à un libellé donné (ex. "Bélier", "Chakra racine"). */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun LithotherapieGemsScreen(
+    scheme: String,
+    label: String,
+    onGemClick: (Gem) -> Unit,
+    onBackClick: () -> Unit
+) {
+    val gems = LithotherapieSchemes.gemsFor(scheme, label)
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(label) },
+                navigationIcon = {
+                    IconButton(onClick = onBackClick) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Retour")
                     }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background,
+                    titleContentColor = MaterialTheme.colorScheme.onBackground
+                )
+            )
+        },
+        containerColor = MaterialTheme.colorScheme.background
+    ) { padding ->
+        if (gems.isEmpty()) {
+            Box(modifier = Modifier.fillMaxSize().padding(padding)) {
+                Text(
+                    text = "Aucune gemme pour le moment dans cette catégorie.",
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier
+                        .align(Alignment.TopCenter)
+                        .padding(24.dp)
+                )
+            }
+        } else {
+            LazyColumn(
+                contentPadding = PaddingValues(16.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(padding)
+            ) {
+                items(gems) { gem ->
+                    LithotherapieRow(gem = gem, onClick = { onGemClick(gem) })
                 }
             }
         }

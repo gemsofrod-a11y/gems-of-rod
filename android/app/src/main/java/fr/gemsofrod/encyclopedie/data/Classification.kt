@@ -20,3 +20,118 @@ object GemFamilies {
     fun gemsFor(familyName: String): List<Gem> =
         GemsRepository.gems.filter { baseName(it.famille) == familyName }.sortedBy { it.nom }
 }
+
+/**
+ * Regroupements complémentaires des gemmes, utilisés par les sous-catégories
+ * de la section Lithothérapie. Tout est dérivé des champs existants de [Gem]
+ * (couleur, texte lithothérapie) ou de tables de correspondance statiques
+ * courtes (signe astrologique, mois de naissance) — aucune donnée
+ * supplémentaire n'est stockée sur [Gem].
+ */
+object Chakras {
+    private fun chakraFor(couleur: GemColorCategory): String = when (couleur) {
+        GemColorCategory.ROUGE, GemColorCategory.BRUN, GemColorCategory.NOIR -> "Racine"
+        GemColorCategory.ORANGE -> "Sacré"
+        GemColorCategory.JAUNE -> "Plexus solaire"
+        GemColorCategory.VERT, GemColorCategory.ROSE -> "Cœur"
+        GemColorCategory.BLEU -> "Gorge"
+        GemColorCategory.VIOLET -> "Troisième œil"
+        GemColorCategory.INCOLORE, GemColorCategory.MULTICOLORE -> "Couronne"
+    }
+
+    /** Ordre traditionnel du bas vers le haut du corps. */
+    private val ORDER = listOf("Racine", "Sacré", "Plexus solaire", "Cœur", "Gorge", "Troisième œil", "Couronne")
+
+    fun groups(): List<Pair<String, List<Gem>>> {
+        val byChakra = GemsRepository.gems.groupBy { chakraFor(it.couleur) }
+        return ORDER.map { it to (byChakra[it].orEmpty().sortedBy { g -> g.nom }) }
+    }
+
+    fun gemsFor(chakra: String): List<Gem> =
+        GemsRepository.gems.filter { chakraFor(it.couleur) == chakra }.sortedBy { it.nom }
+}
+
+object Bienfaits {
+    // Chaque catégorie est déduite par mots-clés du texte lithotherapie déjà
+    // rédigé pour chaque gemme (une gemme peut apparaître dans plusieurs
+    // catégories si son texte évoque plusieurs vertus).
+    private val CATEGORIES: List<Pair<String, List<String>>> = listOf(
+        "Stress & Apaisement" to listOf("stress", "apais", "calme", "sérénité", "tension"),
+        "Confiance & Réussite" to listOf("confiance", "réussite", "détermination", "motivation", "discipline", "discernement"),
+        "Amour & Relations" to listOf("amour", "cœur", "tendress", "compassion", "affectiv"),
+        "Protection" to listOf("protection", "protectrice", "protecteur"),
+        "Sommeil" to listOf("sommeil"),
+        "Énergie & Vitalité" to listOf("énergie", "vitalité", "dynamis", "joie"),
+        "Créativité & Communication" to listOf("créativité", "communication", "expression"),
+        "Spiritualité & Intuition" to listOf("spiritualité", "intuition", "méditation", "éveil", "conscience", "sagesse"),
+        "Équilibre & Harmonie" to listOf("équilibre", "harmonie"),
+        "Ancrage" to listOf("ancrage", "stabilité")
+    )
+
+    val labels: List<String> = CATEGORIES.map { it.first }
+
+    private fun matches(gem: Gem, keywords: List<String>): Boolean {
+        val text = gem.lithotherapie.lowercase()
+        return keywords.any { text.contains(it) }
+    }
+
+    fun groups(): List<Pair<String, List<Gem>>> =
+        CATEGORIES.map { (label, keywords) ->
+            label to GemsRepository.gems.filter { matches(it, keywords) }.sortedBy { it.nom }
+        }
+
+    fun gemsFor(bienfait: String): List<Gem> {
+        val keywords = CATEGORIES.firstOrNull { it.first == bienfait }?.second.orEmpty()
+        return GemsRepository.gems.filter { matches(it, keywords) }.sortedBy { it.nom }
+    }
+}
+
+object ZodiacSigns {
+    private val SIGNS: List<Pair<String, List<String>>> = listOf(
+        "Bélier" to listOf("diamant", "rubis", "grenat-pyrope", "cornaline", "hematite"),
+        "Taureau" to listOf("emeraude", "quartz-rose", "topaze-imperiale", "lapis-lazuli"),
+        "Gémeaux" to listOf("agate", "citrine", "perle", "tourmaline-verte"),
+        "Cancer" to listOf("pierre-de-lune", "perle", "emeraude", "rubis"),
+        "Lion" to listOf("oeil-de-tigre", "peridot", "citrine", "ambre"),
+        "Vierge" to listOf("saphir-bleu", "jade-nephrite", "amethyste", "cornaline"),
+        "Balance" to listOf("opale-precieuse", "lapis-lazuli", "tourmaline-rose", "saphir-rose"),
+        "Scorpion" to listOf("topaze-imperiale", "obsidienne", "malachite", "grenat-almandin"),
+        "Sagittaire" to listOf("turquoise", "topaze-bleue", "amethyste", "lapis-lazuli"),
+        "Capricorne" to listOf("grenat-almandin", "onyx", "hematite", "rubis"),
+        "Verseau" to listOf("amethyste", "aigue-marine", "labradorite", "saphir-bleu"),
+        "Poissons" to listOf("aigue-marine", "amethyste", "perle", "labradorite")
+    )
+
+    val labels: List<String> = SIGNS.map { it.first }
+
+    fun groups(): List<Pair<String, List<Gem>>> =
+        SIGNS.map { (sign, ids) -> sign to ids.mapNotNull { GemsRepository.byId(it) } }
+
+    fun gemsFor(sign: String): List<Gem> =
+        SIGNS.firstOrNull { it.first == sign }?.second.orEmpty().mapNotNull { GemsRepository.byId(it) }
+}
+
+object BirthMonths {
+    private val MONTHS: List<Pair<String, List<String>>> = listOf(
+        "Janvier" to listOf("grenat-almandin"),
+        "Février" to listOf("amethyste"),
+        "Mars" to listOf("aigue-marine"),
+        "Avril" to listOf("diamant"),
+        "Mai" to listOf("emeraude"),
+        "Juin" to listOf("perle", "pierre-de-lune"),
+        "Juillet" to listOf("rubis"),
+        "Août" to listOf("peridot"),
+        "Septembre" to listOf("saphir-bleu"),
+        "Octobre" to listOf("opale-precieuse", "tourmaline-rose"),
+        "Novembre" to listOf("topaze-imperiale", "citrine"),
+        "Décembre" to listOf("turquoise", "zircon-bleu")
+    )
+
+    val labels: List<String> = MONTHS.map { it.first }
+
+    fun groups(): List<Pair<String, List<Gem>>> =
+        MONTHS.map { (mois, ids) -> mois to ids.mapNotNull { GemsRepository.byId(it) } }
+
+    fun gemsFor(mois: String): List<Gem> =
+        MONTHS.firstOrNull { it.first == mois }?.second.orEmpty().mapNotNull { GemsRepository.byId(it) }
+}
