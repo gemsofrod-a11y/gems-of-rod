@@ -60,6 +60,7 @@ import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
 @Composable
 fun HomeScreen(
     onGemmologieClick: () -> Unit,
+    onFamillesClick: () -> Unit,
     onLithotherapieClick: () -> Unit,
     onFavoritesClick: () -> Unit
 ) {
@@ -92,6 +93,12 @@ fun HomeScreen(
                 subtitle = "Le catalogue complet par couleur : fiches techniques, prix, origines.",
                 onClick = onGemmologieClick,
                 backgroundDrawable = "gem_saphir_bleu"
+            )
+            HomeSectionCard(
+                title = "Familles minérales",
+                subtitle = "Le catalogue classé par famille : béryl, quartz, corindon, grenat…",
+                onClick = onFamillesClick,
+                backgroundDrawable = "gem_citrine"
             )
             HomeSectionCard(
                 title = "Lithothérapie",
