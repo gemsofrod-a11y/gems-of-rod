@@ -21,6 +21,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieGemsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieLabelListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieMenuScreen
+import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import java.net.URLDecoder
 import java.net.URLEncoder
 
@@ -122,7 +123,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             val familySlug = backStackEntry.arguments?.getString("familySlug").orEmpty()
             val familyName = Routes.decode(familySlug)
             GemsListScreen(
-                title = familyName,
+                title = localizedLabel(familyName),
                 gems = GemFamilies.gemsFor(familyName),
                 onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
                 onBackClick = { navController.popBackStack() }

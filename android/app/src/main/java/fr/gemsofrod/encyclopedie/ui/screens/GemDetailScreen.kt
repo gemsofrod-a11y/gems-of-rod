@@ -76,16 +76,16 @@ import java.util.Locale
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: () -> Unit) {
-    // La fiche affichée à l'écran est traduite dans la langue d'interface
-    // courante ; le partage (texte + sujet) reste basé sur le contenu
-    // français d'origine tant que ce contenu n'est pas lui-même traduit.
-    val rawGem = GemsRepository.byId(gemId)
-    val gem = rawGem?.localized()
+    val gem = GemsRepository.byId(gemId)?.localized()
     val context = LocalContext.current
     val removeFavoriteLabel = stringResource(R.string.cd_remove_favorite)
     val addFavoriteLabel = stringResource(R.string.cd_add_favorite)
     val shareChooserTitle = stringResource(R.string.share_chooser_title)
-    val shareSubject = rawGem?.let { stringResource(R.string.share_subject, it.nom) }
+    val shareSubject = gem?.let { stringResource(R.string.share_subject, it.nom) }
+    val familyLabel = stringResource(R.string.fiche_famille)
+    val hardnessLabel = stringResource(R.string.fiche_durete)
+    val refractiveIndexLabel = stringResource(R.string.fiche_indice_refraction)
+    val priceLabel = stringResource(R.string.fiche_prix_indicatif)
 
     Scaffold(
         topBar = {
@@ -97,9 +97,9 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
                     }
                 },
                 actions = {
-                    if (rawGem != null) {
-                        val isFavorite = FavoritesRepository.isFavorite(rawGem.id)
-                        IconButton(onClick = { FavoritesRepository.toggle(rawGem.id) }) {
+                    if (gem != null) {
+                        val isFavorite = FavoritesRepository.isFavorite(gem.id)
+                        IconButton(onClick = { FavoritesRepository.toggle(gem.id) }) {
                             Icon(
                                 if (isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
                                 contentDescription = if (isFavorite) removeFavoriteLabel else addFavoriteLabel,
@@ -110,7 +110,10 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
                             val sendIntent = Intent(Intent.ACTION_SEND).apply {
                                 type = "text/plain"
                                 putExtra(Intent.EXTRA_SUBJECT, shareSubject)
-                                putExtra(Intent.EXTRA_TEXT, buildShareText(rawGem))
+                                putExtra(
+                                    Intent.EXTRA_TEXT,
+                                    buildShareText(gem, familyLabel, hardnessLabel, refractiveIndexLabel, priceLabel)
+                                )
                             }
                             context.startActivity(Intent.createChooser(sendIntent, shareChooserTitle))
                         }) {
@@ -329,16 +332,22 @@ private fun PriceCalculatorCard(gem: Gem) {
     }
 }
 
-private fun buildShareText(gem: Gem): String = buildString {
+private fun buildShareText(
+    gem: Gem,
+    familyLabel: String,
+    hardnessLabel: String,
+    refractiveIndexLabel: String,
+    priceLabel: String
+): String = buildString {
     appendLine(gem.nom)
     appendLine(gem.nomLatin)
     appendLine()
     appendLine(gem.descriptionCourte)
     appendLine()
-    appendLine("Famille : ${gem.famille}")
-    appendLine("Dureté (Mohs) : ${gem.durete}")
-    appendLine("Indice de réfraction : ${gem.indiceRefraction}")
-    appendLine("Prix indicatif : ${gem.prixCaratEur}")
+    appendLine("$familyLabel : ${gem.famille}")
+    appendLine("$hardnessLabel : ${gem.durete}")
+    appendLine("$refractiveIndexLabel : ${gem.indiceRefraction}")
+    appendLine("$priceLabel : ${gem.prixCaratEur}")
     appendLine()
     append("Gems of Rod — gemsofrod@gmail.com")
 }

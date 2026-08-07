@@ -31,6 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.GemFamilies
+import fr.gemsofrod.encyclopedie.ui.localizedLabel
 
 /**
  * Liste des familles minérales du catalogue (Béryl, Quartz, Corindon,
@@ -66,7 +67,7 @@ fun FamillesListScreen(onFamilyClick: (String) -> Unit, onBackClick: () -> Unit)
                 .padding(padding)
         ) {
             items(groups) { (name, gems) ->
-                FamilyRow(name = name, count = gems.size, onClick = { onFamilyClick(name) })
+                FamilyRow(name = localizedLabel(name), count = gems.size, onClick = { onFamilyClick(name) })
             }
         }
     }

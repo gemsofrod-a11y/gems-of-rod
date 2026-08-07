@@ -6,11 +6,11 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
 import android.graphics.pdf.PdfDocument
+import fr.gemsofrod.encyclopedie.R
 import java.io.File
 import java.io.FileOutputStream
-import java.text.SimpleDateFormat
+import java.text.DateFormat
 import java.util.Date
-import java.util.Locale
 
 /**
  * Informations propres à un exemplaire physique de pierre, renseignées par
@@ -74,7 +74,7 @@ object CertificatePdfGenerator {
 
         var y = MARGIN
 
-        canvas.drawText("CERTIFICAT D'AUTHENTICITÉ", MARGIN, y + 18f, titlePaint)
+        canvas.drawText(context.getString(R.string.certificate_pdf_title), MARGIN, y + 18f, titlePaint)
         y += 24f
         if (info.emetteur.isNotBlank()) {
             canvas.drawText(info.emetteur, MARGIN, y + 8f, subtitlePaint)
@@ -110,20 +110,26 @@ object CertificatePdfGenerator {
             y += 14f
         }
 
-        row("Famille", gem.famille)
-        row("Dimensions", info.dimensions)
-        row("Poids", info.poids)
-        row("Origine", info.origine)
-        row("Traitement", info.traitement)
-        row("Dureté (Mohs)", gem.durete)
-        row("Indice de réfraction", gem.indiceRefraction)
+        row(context.getString(R.string.fiche_famille), gem.famille)
+        row(context.getString(R.string.certificate_field_dimensions_label), info.dimensions)
+        row(context.getString(R.string.certificate_field_weight_label), info.poids)
+        row(context.getString(R.string.certificate_field_origin_label), info.origine)
+        row(context.getString(R.string.certificate_field_treatment_label), info.traitement)
+        row(context.getString(R.string.fiche_durete), gem.durete)
+        row(context.getString(R.string.fiche_indice_refraction), gem.indiceRefraction)
 
         y += 20f
-        val dateFormat = SimpleDateFormat("d MMMM yyyy", Locale.FRANCE)
-        canvas.drawText("Émis le ${dateFormat.format(Date())}", MARGIN, y, subtitlePaint)
+        val locale = context.resources.configuration.locales[0]
+        val dateFormat = DateFormat.getDateInstance(DateFormat.LONG, locale)
+        canvas.drawText(
+            context.getString(R.string.certificate_pdf_issued_on, dateFormat.format(Date())),
+            MARGIN,
+            y,
+            subtitlePaint
+        )
         y += 16f
         canvas.drawText(
-            "Ce document décrit un exemplaire renseigné par l'utilisateur ; il ne constitue pas une expertise.",
+            context.getString(R.string.certificate_pdf_disclaimer),
             MARGIN,
             y,
             subtitlePaint

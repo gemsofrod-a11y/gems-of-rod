@@ -110,6 +110,9 @@
     <string name="certificate_photo_picker_hint">Ajouter une photo depuis le téléphone</string>
     <string name="cd_certificate_photo">Photo de la pierre</string>
     <string name="certificate_generate_button">Générer et exporter le PDF</string>
+    <string name="certificate_pdf_title">CERTIFICAT D\'AUTHENTICITÉ</string>
+    <string name="certificate_pdf_issued_on">Émis le %1$s</string>
+    <string name="certificate_pdf_disclaimer">Ce document décrit un exemplaire renseigné par l\'utilisateur ; il ne constitue pas une expertise.</string>
 
     <!-- Langue -->
     <string name="language_title">Langue</string>
