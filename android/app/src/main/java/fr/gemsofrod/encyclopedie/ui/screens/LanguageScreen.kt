@@ -1,6 +1,5 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
-import android.app.Activity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -34,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.AppLanguage
 import fr.gemsofrod.encyclopedie.data.LanguageRepository
+import fr.gemsofrod.encyclopedie.ui.findActivity
 
 /**
  * Choix de la langue de l'interface. La sélection est persistée puis
@@ -82,7 +82,7 @@ fun LanguageScreen(onBackClick: () -> Unit, onLanguageSelected: () -> Unit) {
                         if (language != current) {
                             LanguageRepository.setLanguage(context, language)
                             onLanguageSelected()
-                            (context as? Activity)?.recreate()
+                            context.findActivity()?.recreate()
                         }
                     }
                 )
