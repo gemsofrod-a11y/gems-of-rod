@@ -1,0 +1,116 @@
+<resources>
+    <string name="app_name">Gems of Rod – Encyclopedia</string>
+
+    <!-- Common -->
+    <string name="cd_back">Back</string>
+    <string name="cd_clear">Clear</string>
+
+    <!-- Home -->
+    <string name="home_gemmologie_title">Gemology</string>
+    <string name="home_gemmologie_subtitle">The full catalog by color: technical sheets, prices, origins.</string>
+    <string name="home_familles_title">Mineral Families</string>
+    <string name="home_familles_subtitle">The catalog sorted by family: beryl, quartz, corundum, garnet…</string>
+    <string name="home_lithotherapie_title">Lithotherapy</string>
+    <string name="home_lithotherapie_subtitle">Traditional virtues and uses associated with each stone.</string>
+    <string name="home_language_title">Language</string>
+    <string name="home_language_subtitle">Choose the app language.</string>
+
+    <!-- Gemology (search + categories) -->
+    <string name="search_gems_placeholder">Search for a gem…</string>
+    <string name="search_no_results">No gem matches “%1$s”.</string>
+    <plurals name="gem_count">
+        <item quantity="one">%1$d gem</item>
+        <item quantity="other">%1$d gems</item>
+    </plurals>
+
+    <!-- Colors -->
+    <string name="color_rouge">Red</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_jaune">Yellow</string>
+    <string name="color_vert">Green</string>
+    <string name="color_bleu">Blue</string>
+    <string name="color_violet">Purple</string>
+    <string name="color_rose">Pink</string>
+    <string name="color_incolore">Colorless &amp; white</string>
+    <string name="color_brun">Brown</string>
+    <string name="color_noir">Black</string>
+    <string name="color_multicolore">Multicolor</string>
+
+    <!-- Rarity -->
+    <string name="rarete_courante">Common</string>
+    <string name="rarete_peu_commune">Uncommon</string>
+    <string name="rarete_rare">Rare</string>
+    <string name="rarete_exceptionnelle">Exceptional</string>
+
+    <!-- Favorites -->
+    <string name="favorites_title">My Favorites</string>
+    <string name="favorites_empty_title">No favorites yet</string>
+    <string name="favorites_empty_subtitle">Tap the heart on a gem\'s sheet to find it here.</string>
+    <string name="cd_remove_favorite">Remove from favorites</string>
+    <string name="cd_add_favorite">Add to favorites</string>
+
+    <!-- Gem sheet -->
+    <string name="fiche_categorie">Category</string>
+    <string name="fiche_famille">Family</string>
+    <string name="fiche_formule_chimique">Chemical formula</string>
+    <string name="fiche_systeme_cristallin">Crystal system</string>
+    <string name="fiche_durete">Hardness (Mohs)</string>
+    <string name="fiche_indice_refraction">Refractive index</string>
+    <string name="fiche_prix_indicatif">Indicative price</string>
+    <string name="create_certificate_button">Create a certificate</string>
+    <string name="particularites_title">Distinctive features</string>
+    <string name="origins_title">Mines and regions of origin</string>
+    <string name="origins_hint">Tap a location to open it in Google Maps.</string>
+    <string name="share_chooser_title">Share the sheet</string>
+    <string name="share_subject">Gems of Rod — %1$s</string>
+    <string name="gem_photo_raw">Rough stone</string>
+    <string name="gem_photo_cut">Cut stone</string>
+    <string name="gem_photo_cut_or_cabochon">Cut stone / cabochon</string>
+    <string name="photo_credit">Photo: %1$s — %2$s (Wikimedia Commons)</string>
+
+    <!-- Value calculator -->
+    <string name="price_calc_title">Estimate your stone\'s value</string>
+    <string name="price_calc_intro">Enter your stone\'s weight and price per carat to estimate its total value. The price per carat cannot exceed the maximum of the indicative range (%1$s/ct).</string>
+    <string name="price_calc_carats_label">Carats</string>
+    <string name="price_calc_price_label">Price/ct (€)</string>
+    <string name="price_calc_exceeds_max">The price entered exceeds the sheet\'s maximum (%1$s/ct).</string>
+    <string name="price_calc_result">Estimated value: %1$s</string>
+    <string name="price_calc_button">Calculate</string>
+
+    <!-- Mineral families -->
+    <string name="familles_title">Mineral Families</string>
+
+    <!-- Lithotherapy -->
+    <string name="scheme_zodiac_title">Zodiac sign</string>
+    <string name="scheme_chakra_title">Chakra</string>
+    <string name="scheme_bienfait_title">Desired benefit</string>
+    <string name="scheme_mois_title">Birth month</string>
+    <string name="litho_zodiac_subtitle">Discover the stones traditionally associated with your sign.</string>
+    <string name="litho_chakra_subtitle">Stones sorted according to the 7 traditional chakras.</string>
+    <string name="litho_bienfait_subtitle">Stress, confidence, love, protection, sleep…</string>
+    <string name="litho_mois_subtitle">Birthstones, one per month.</string>
+    <string name="litho_no_gems">No gem in this category yet.</string>
+    <string name="litho_virtues_title">Lithotherapy virtues</string>
+    <string name="litho_disclaimer">This information reflects traditional beliefs and uses. It is neither medical advice nor a therapeutic claim, and does not replace consulting a health professional.</string>
+
+    <!-- Certificate -->
+    <string name="certificate_title">Certificate</string>
+    <string name="certificate_intro">Enter your stone\'s details to generate a PDF certificate.</string>
+    <string name="certificate_field_emitter_label">Issued by</string>
+    <string name="certificate_field_emitter_placeholder">e.g. Martin Jewelers — contact@example.com</string>
+    <string name="certificate_field_dimensions_label">Dimensions</string>
+    <string name="certificate_field_dimensions_placeholder">e.g. 8.2 x 6.1 x 4.3 mm</string>
+    <string name="certificate_field_weight_label">Weight</string>
+    <string name="certificate_field_weight_placeholder">e.g. 1.25 ct</string>
+    <string name="certificate_field_origin_label">Origin</string>
+    <string name="certificate_field_origin_placeholder">e.g. Sri Lanka</string>
+    <string name="certificate_field_treatment_label">Treatment</string>
+    <string name="certificate_field_treatment_placeholder">e.g. Untreated</string>
+    <string name="certificate_export_chooser">Export the certificate</string>
+    <string name="certificate_photo_picker_hint">Add a photo from your phone</string>
+    <string name="cd_certificate_photo">Photo of the stone</string>
+    <string name="certificate_generate_button">Generate and export the PDF</string>
+
+    <!-- Language -->
+    <string name="language_title">Language</string>
+</resources>

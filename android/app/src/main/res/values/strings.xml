@@ -1,3 +1,116 @@
 <resources>
     <string name="app_name">Gems of Rod – Encyclopédie</string>
+
+    <!-- Commun -->
+    <string name="cd_back">Retour</string>
+    <string name="cd_clear">Effacer</string>
+
+    <!-- Accueil -->
+    <string name="home_gemmologie_title">Gemmologie</string>
+    <string name="home_gemmologie_subtitle">Le catalogue complet par couleur : fiches techniques, prix, origines.</string>
+    <string name="home_familles_title">Familles minérales</string>
+    <string name="home_familles_subtitle">Le catalogue classé par famille : béryl, quartz, corindon, grenat…</string>
+    <string name="home_lithotherapie_title">Lithothérapie</string>
+    <string name="home_lithotherapie_subtitle">Les vertus et usages traditionnels associés à chaque pierre.</string>
+    <string name="home_language_title">Langue</string>
+    <string name="home_language_subtitle">Choisissez la langue de l\'application.</string>
+
+    <!-- Gemmologie (recherche + catégories) -->
+    <string name="search_gems_placeholder">Rechercher une gemme…</string>
+    <string name="search_no_results">Aucune gemme ne correspond à « %1$s ».</string>
+    <plurals name="gem_count">
+        <item quantity="one">%1$d gemme</item>
+        <item quantity="other">%1$d gemmes</item>
+    </plurals>
+
+    <!-- Couleurs -->
+    <string name="color_rouge">Rouge</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_jaune">Jaune</string>
+    <string name="color_vert">Vert</string>
+    <string name="color_bleu">Bleu</string>
+    <string name="color_violet">Violet</string>
+    <string name="color_rose">Rose</string>
+    <string name="color_incolore">Incolore &amp; blanc</string>
+    <string name="color_brun">Brun &amp; marron</string>
+    <string name="color_noir">Noir</string>
+    <string name="color_multicolore">Multicolore</string>
+
+    <!-- Rareté -->
+    <string name="rarete_courante">Courante</string>
+    <string name="rarete_peu_commune">Peu commune</string>
+    <string name="rarete_rare">Rare</string>
+    <string name="rarete_exceptionnelle">Exceptionnelle</string>
+
+    <!-- Favoris -->
+    <string name="favorites_title">Mes favoris</string>
+    <string name="favorites_empty_title">Aucun favori pour l\'instant</string>
+    <string name="favorites_empty_subtitle">Touchez le cœur sur la fiche d\'une gemme pour la retrouver ici.</string>
+    <string name="cd_remove_favorite">Retirer des favoris</string>
+    <string name="cd_add_favorite">Ajouter aux favoris</string>
+
+    <!-- Fiche gemme -->
+    <string name="fiche_categorie">Catégorie</string>
+    <string name="fiche_famille">Famille</string>
+    <string name="fiche_formule_chimique">Formule chimique</string>
+    <string name="fiche_systeme_cristallin">Système cristallin</string>
+    <string name="fiche_durete">Dureté (Mohs)</string>
+    <string name="fiche_indice_refraction">Indice de réfraction</string>
+    <string name="fiche_prix_indicatif">Prix indicatif</string>
+    <string name="create_certificate_button">Créer un certificat</string>
+    <string name="particularites_title">Particularités</string>
+    <string name="origins_title">Mines et régions d\'origine</string>
+    <string name="origins_hint">Touchez un lieu pour l\'ouvrir dans Google Maps.</string>
+    <string name="share_chooser_title">Partager la fiche</string>
+    <string name="share_subject">Gems of Rod — %1$s</string>
+    <string name="gem_photo_raw">Pierre brute</string>
+    <string name="gem_photo_cut">Pierre taillée</string>
+    <string name="gem_photo_cut_or_cabochon">Pierre taillée / cabochon</string>
+    <string name="photo_credit">Photo : %1$s — %2$s (Wikimedia Commons)</string>
+
+    <!-- Calculateur de valeur -->
+    <string name="price_calc_title">Estimer la valeur de votre pierre</string>
+    <string name="price_calc_intro">Renseignez le poids et le prix au carat de votre pierre pour estimer sa valeur totale. Le prix au carat ne peut pas dépasser le maximum de la fourchette indicative (%1$s/ct).</string>
+    <string name="price_calc_carats_label">Carats</string>
+    <string name="price_calc_price_label">Prix/ct (€)</string>
+    <string name="price_calc_exceeds_max">Le prix indiqué dépasse le maximum de la fiche (%1$s/ct).</string>
+    <string name="price_calc_result">Valeur estimée : %1$s</string>
+    <string name="price_calc_button">Calculer</string>
+
+    <!-- Familles minérales -->
+    <string name="familles_title">Familles minérales</string>
+
+    <!-- Lithothérapie -->
+    <string name="scheme_zodiac_title">Signe astrologique</string>
+    <string name="scheme_chakra_title">Chakra</string>
+    <string name="scheme_bienfait_title">Bienfait recherché</string>
+    <string name="scheme_mois_title">Mois de naissance</string>
+    <string name="litho_zodiac_subtitle">Découvrez les pierres traditionnellement associées à votre signe.</string>
+    <string name="litho_chakra_subtitle">Les pierres classées selon les 7 chakras traditionnels.</string>
+    <string name="litho_bienfait_subtitle">Stress, confiance, amour, protection, sommeil…</string>
+    <string name="litho_mois_subtitle">Les pierres de naissance, une par mois.</string>
+    <string name="litho_no_gems">Aucune gemme pour le moment dans cette catégorie.</string>
+    <string name="litho_virtues_title">Vertus en lithothérapie</string>
+    <string name="litho_disclaimer">Ces informations relèvent de croyances et d\'usages traditionnels. Elles ne constituent ni un avis médical, ni une allégation thérapeutique, et ne remplacent pas une consultation auprès d\'un professionnel de santé.</string>
+
+    <!-- Certificat -->
+    <string name="certificate_title">Certificat</string>
+    <string name="certificate_intro">Renseignez les informations de votre pierre pour générer un certificat PDF.</string>
+    <string name="certificate_field_emitter_label">Émis par</string>
+    <string name="certificate_field_emitter_placeholder">ex. Bijouterie Martin — contact@exemple.com</string>
+    <string name="certificate_field_dimensions_label">Dimensions</string>
+    <string name="certificate_field_dimensions_placeholder">ex. 8,2 x 6,1 x 4,3 mm</string>
+    <string name="certificate_field_weight_label">Poids</string>
+    <string name="certificate_field_weight_placeholder">ex. 1,25 ct</string>
+    <string name="certificate_field_origin_label">Origine</string>
+    <string name="certificate_field_origin_placeholder">ex. Sri Lanka</string>
+    <string name="certificate_field_treatment_label">Traitement</string>
+    <string name="certificate_field_treatment_placeholder">ex. Non traité</string>
+    <string name="certificate_export_chooser">Exporter le certificat</string>
+    <string name="certificate_photo_picker_hint">Ajouter une photo depuis le téléphone</string>
+    <string name="cd_certificate_photo">Photo de la pierre</string>
+    <string name="certificate_generate_button">Générer et exporter le PDF</string>
+
+    <!-- Langue -->
+    <string name="language_title">Langue</string>
 </resources>

@@ -1,6 +1,7 @@
 package fr.gemsofrod.encyclopedie.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -15,6 +16,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.FavoritesScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemsListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.HomeScreen
+import fr.gemsofrod.encyclopedie.ui.screens.LanguageScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieGemsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieLabelListScreen
@@ -35,6 +37,7 @@ private object Routes {
     const val LITHOTHERAPIE_LABELS = "lithotherapie_labels/{scheme}"
     const val LITHOTHERAPIE_GEMS = "lithotherapie_gems/{scheme}/{label}"
     const val LITHOTHERAPIE_DETAIL = "lithotherapie_detail/{gemId}"
+    const val LANGUAGE = "language"
 
     fun gemsList(colorName: String) = "gems/$colorName"
     fun gemDetail(gemId: String) = "gem/$gemId"
@@ -56,8 +59,12 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onGemmologieClick = { navController.navigate(Routes.CATEGORIES) },
                 onFamillesClick = { navController.navigate(Routes.FAMILLES_LIST) },
                 onLithotherapieClick = { navController.navigate(Routes.LITHOTHERAPIE_MENU) },
+                onLanguageClick = { navController.navigate(Routes.LANGUAGE) },
                 onFavoritesClick = { navController.navigate(Routes.FAVORITES) }
             )
+        }
+        composable(Routes.LANGUAGE) {
+            LanguageScreen(onBackClick = { navController.popBackStack() })
         }
         composable(Routes.CATEGORIES) {
             CategoriesScreen(
@@ -96,7 +103,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             val colorName = backStackEntry.arguments?.getString("colorName").orEmpty()
             val category = GemColorCategory.valueOf(colorName)
             GemsListScreen(
-                title = category.label,
+                title = stringResource(category.labelRes),
                 gems = GemsRepository.byColor(category),
                 onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
                 onBackClick = { navController.popBackStack() }

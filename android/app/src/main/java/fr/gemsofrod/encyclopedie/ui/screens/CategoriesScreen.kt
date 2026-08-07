@@ -49,8 +49,11 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.Gem
 import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.data.GemsRepository
@@ -62,6 +65,7 @@ fun HomeScreen(
     onGemmologieClick: () -> Unit,
     onFamillesClick: () -> Unit,
     onLithotherapieClick: () -> Unit,
+    onLanguageClick: () -> Unit,
     onFavoritesClick: () -> Unit
 ) {
     Scaffold(
@@ -70,7 +74,7 @@ fun HomeScreen(
                 title = { Text("Gems of Rod") },
                 actions = {
                     IconButton(onClick = onFavoritesClick) {
-                        Icon(Icons.Filled.Favorite, contentDescription = "Mes favoris")
+                        Icon(Icons.Filled.Favorite, contentDescription = stringResource(R.string.favorites_title))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -89,22 +93,28 @@ fun HomeScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             HomeSectionCard(
-                title = "Gemmologie",
-                subtitle = "Le catalogue complet par couleur : fiches techniques, prix, origines.",
+                title = stringResource(R.string.home_gemmologie_title),
+                subtitle = stringResource(R.string.home_gemmologie_subtitle),
                 onClick = onGemmologieClick,
                 backgroundDrawable = "gem_saphir_bleu"
             )
             HomeSectionCard(
-                title = "Familles minérales",
-                subtitle = "Le catalogue classé par famille : béryl, quartz, corindon, grenat…",
+                title = stringResource(R.string.home_familles_title),
+                subtitle = stringResource(R.string.home_familles_subtitle),
                 onClick = onFamillesClick,
                 backgroundDrawable = "gem_citrine"
             )
             HomeSectionCard(
-                title = "Lithothérapie",
-                subtitle = "Les vertus et usages traditionnels associés à chaque pierre.",
+                title = stringResource(R.string.home_lithotherapie_title),
+                subtitle = stringResource(R.string.home_lithotherapie_subtitle),
                 onClick = onLithotherapieClick,
                 backgroundDrawable = "gem_amethyste_brute"
+            )
+            HomeSectionCard(
+                title = stringResource(R.string.home_language_title),
+                subtitle = stringResource(R.string.home_language_subtitle),
+                onClick = onLanguageClick,
+                backgroundDrawable = null
             )
         }
     }
@@ -115,7 +125,7 @@ private fun HomeSectionCard(
     title: String,
     subtitle: String,
     onClick: () -> Unit,
-    backgroundDrawable: String
+    backgroundDrawable: String?
 ) {
     Card(
         onClick = onClick,
@@ -126,7 +136,7 @@ private fun HomeSectionCard(
             .height(140.dp)
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
-            val imageResId = rememberDrawableResId(backgroundDrawable)
+            val imageResId = backgroundDrawable?.let { rememberDrawableResId(it) } ?: 0
             if (imageResId != 0) {
                 Image(
                     painter = painterResource(id = imageResId),
@@ -145,6 +155,12 @@ private fun HomeSectionCard(
                                 )
                             )
                         )
+                )
+            } else {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.primary)
                 )
             }
             Row(
@@ -190,10 +206,10 @@ fun CategoriesScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Gemmologie") },
+                title = { Text(stringResource(R.string.home_gemmologie_title)) },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Retour")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -215,13 +231,13 @@ fun CategoriesScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp, vertical = 8.dp),
-                placeholder = { Text("Rechercher une gemme…") },
+                placeholder = { Text(stringResource(R.string.search_gems_placeholder)) },
                 singleLine = true,
                 leadingIcon = { Icon(Icons.Filled.Search, contentDescription = null) },
                 trailingIcon = {
                     if (query.isNotEmpty()) {
                         IconButton(onClick = { query = "" }) {
-                            Icon(Icons.Filled.Clear, contentDescription = "Effacer")
+                            Icon(Icons.Filled.Clear, contentDescription = stringResource(R.string.cd_clear))
                         }
                     }
                 },
@@ -251,7 +267,7 @@ fun CategoriesScreen(
             } else if (results.isEmpty()) {
                 Box(modifier = Modifier.fillMaxSize()) {
                     Text(
-                        text = "Aucune gemme ne correspond à « $query ».",
+                        text = stringResource(R.string.search_no_results, query),
                         style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier
@@ -302,7 +318,7 @@ private fun SearchResultRow(gem: Gem, onClick: () -> Unit) {
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = gem.couleur.label,
+                    text = stringResource(gem.couleur.labelRes),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -330,13 +346,13 @@ private fun CategoryCard(category: GemColorCategory, count: Int, onClick: () -> 
             )
             Column(modifier = Modifier.padding(12.dp)) {
                 Text(
-                    text = category.label,
+                    text = stringResource(category.labelRes),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = if (count > 1) "$count gemmes" else "$count gemme",
+                    text = pluralStringResource(R.plurals.gem_count, count, count),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

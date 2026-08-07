@@ -1,13 +1,18 @@
 package fr.gemsofrod.encyclopedie.data
 
+import fr.gemsofrod.encyclopedie.R
+
 /**
  * Niveau de rareté indicatif d'une gemme sur le marché de la joaillerie.
+ *
+ * `label` est le nom en français (fallback interne) ; `labelRes` est la
+ * ressource de chaîne localisée à afficher dans l'UI.
  */
-enum class GemRarete(val label: String) {
-    COURANTE("Courante"),
-    PEU_COMMUNE("Peu commune"),
-    RARE("Rare"),
-    EXCEPTIONNELLE("Exceptionnelle")
+enum class GemRarete(val label: String, val labelRes: Int) {
+    COURANTE("Courante", R.string.rarete_courante),
+    PEU_COMMUNE("Peu commune", R.string.rarete_peu_commune),
+    RARE("Rare", R.string.rarete_rare),
+    EXCEPTIONNELLE("Exceptionnelle", R.string.rarete_exceptionnelle)
 }
 
 /**

@@ -53,9 +53,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
+import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.CertificateInfo
 import fr.gemsofrod.encyclopedie.data.CertificatePdfGenerator
 import fr.gemsofrod.encyclopedie.data.GemsRepository
@@ -72,6 +74,7 @@ fun CertificateScreen(gemId: String, onBackClick: () -> Unit) {
 
     val prefs = remember { context.getSharedPreferences("certificate_prefs", Context.MODE_PRIVATE) }
     var emetteur by remember { mutableStateOf(prefs.getString(PREF_EMETTEUR, "") ?: "") }
+    val exportChooserTitle = stringResource(R.string.certificate_export_chooser)
     var photoUri by remember(gemId) { mutableStateOf<Uri?>(null) }
     var photoBitmap by remember(gemId) { mutableStateOf<Bitmap?>(null) }
     var dimensions by remember(gemId) { mutableStateOf("") }
@@ -98,10 +101,10 @@ fun CertificateScreen(gemId: String, onBackClick: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Certificat") },
+                title = { Text(stringResource(R.string.certificate_title)) },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Retour")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -137,7 +140,7 @@ fun CertificateScreen(gemId: String, onBackClick: () -> Unit) {
                     color = MaterialTheme.colorScheme.onBackground
                 )
                 Text(
-                    text = "Renseignez les informations de votre pierre pour générer un certificat PDF.",
+                    text = stringResource(R.string.certificate_intro),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -155,32 +158,32 @@ fun CertificateScreen(gemId: String, onBackClick: () -> Unit) {
             ) {
                 Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     CertificateField(
-                        label = "Émis par",
-                        placeholder = "ex. Bijouterie Martin — contact@exemple.com",
+                        label = stringResource(R.string.certificate_field_emitter_label),
+                        placeholder = stringResource(R.string.certificate_field_emitter_placeholder),
                         value = emetteur,
                         onValueChange = { emetteur = it }
                     )
                     CertificateField(
-                        label = "Dimensions",
-                        placeholder = "ex. 8,2 x 6,1 x 4,3 mm",
+                        label = stringResource(R.string.certificate_field_dimensions_label),
+                        placeholder = stringResource(R.string.certificate_field_dimensions_placeholder),
                         value = dimensions,
                         onValueChange = { dimensions = it }
                     )
                     CertificateField(
-                        label = "Poids",
-                        placeholder = "ex. 1,25 ct",
+                        label = stringResource(R.string.certificate_field_weight_label),
+                        placeholder = stringResource(R.string.certificate_field_weight_placeholder),
                         value = poids,
                         onValueChange = { poids = it }
                     )
                     CertificateField(
-                        label = "Origine",
-                        placeholder = "ex. Sri Lanka",
+                        label = stringResource(R.string.certificate_field_origin_label),
+                        placeholder = stringResource(R.string.certificate_field_origin_placeholder),
                         value = origine,
                         onValueChange = { origine = it }
                     )
                     CertificateField(
-                        label = "Traitement",
-                        placeholder = "ex. Non traité",
+                        label = stringResource(R.string.certificate_field_treatment_label),
+                        placeholder = stringResource(R.string.certificate_field_treatment_placeholder),
                         value = traitement,
                         onValueChange = { traitement = it }
                     )
@@ -218,7 +221,7 @@ fun CertificateScreen(gemId: String, onBackClick: () -> Unit) {
                             putExtra(Intent.EXTRA_STREAM, uri)
                             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                         }
-                        context.startActivity(Intent.createChooser(sendIntent, "Exporter le certificat"))
+                        context.startActivity(Intent.createChooser(sendIntent, exportChooserTitle))
                     }
                 },
                 enabled = !isGenerating,
@@ -236,7 +239,7 @@ fun CertificateScreen(gemId: String, onBackClick: () -> Unit) {
                         contentDescription = null,
                         modifier = Modifier.padding(end = 8.dp)
                     )
-                    Text("Générer et exporter le PDF")
+                    Text(stringResource(R.string.certificate_generate_button))
                 }
             }
         }
@@ -257,7 +260,7 @@ private fun PhotoPickerBox(bitmap: Bitmap?, onPickClick: () -> Unit) {
         if (bitmap != null) {
             Image(
                 bitmap = bitmap.asImageBitmap(),
-                contentDescription = "Photo de la pierre",
+                contentDescription = stringResource(R.string.cd_certificate_photo),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
             )
@@ -272,7 +275,7 @@ private fun PhotoPickerBox(bitmap: Bitmap?, onPickClick: () -> Unit) {
                     tint = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 Text(
-                    text = "Ajouter une photo depuis le téléphone",
+                    text = stringResource(R.string.certificate_photo_picker_hint),
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     style = MaterialTheme.typography.bodyMedium
                 )
