@@ -42,9 +42,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.Bienfaits
 import fr.gemsofrod.encyclopedie.data.Chakras
 import fr.gemsofrod.encyclopedie.data.FavoritesRepository
@@ -64,12 +67,13 @@ object LithotherapieSchemes {
     const val BIENFAIT = "bienfait"
     const val MOIS = "mois"
 
+    @Composable
     fun title(scheme: String): String = when (scheme) {
-        ZODIAC -> "Signe astrologique"
-        CHAKRA -> "Chakra"
-        BIENFAIT -> "Bienfait recherché"
-        MOIS -> "Mois de naissance"
-        else -> "Lithothérapie"
+        ZODIAC -> stringResource(R.string.scheme_zodiac_title)
+        CHAKRA -> stringResource(R.string.scheme_chakra_title)
+        BIENFAIT -> stringResource(R.string.scheme_bienfait_title)
+        MOIS -> stringResource(R.string.scheme_mois_title)
+        else -> stringResource(R.string.home_lithotherapie_title)
     }
 
     fun groups(scheme: String): List<Pair<String, List<Gem>>> = when (scheme) {
@@ -99,10 +103,10 @@ fun LithotherapieMenuScreen(onSchemeClick: (String) -> Unit, onBackClick: () -> 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Lithothérapie") },
+                title = { Text(stringResource(R.string.home_lithotherapie_title)) },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Retour")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -122,15 +126,15 @@ fun LithotherapieMenuScreen(onSchemeClick: (String) -> Unit, onBackClick: () -> 
         ) {
             items(
                 listOf(
-                    LithotherapieSchemes.ZODIAC to "Découvrez les pierres traditionnellement associées à votre signe.",
-                    LithotherapieSchemes.CHAKRA to "Les pierres classées selon les 7 chakras traditionnels.",
-                    LithotherapieSchemes.BIENFAIT to "Stress, confiance, amour, protection, sommeil…",
-                    LithotherapieSchemes.MOIS to "Les pierres de naissance, une par mois."
+                    LithotherapieSchemes.ZODIAC to R.string.litho_zodiac_subtitle,
+                    LithotherapieSchemes.CHAKRA to R.string.litho_chakra_subtitle,
+                    LithotherapieSchemes.BIENFAIT to R.string.litho_bienfait_subtitle,
+                    LithotherapieSchemes.MOIS to R.string.litho_mois_subtitle
                 )
-            ) { (scheme, subtitle) ->
+            ) { (scheme, subtitleRes) ->
                 SchemeCard(
                     title = LithotherapieSchemes.title(scheme),
-                    subtitle = subtitle,
+                    subtitle = stringResource(subtitleRes),
                     onClick = { onSchemeClick(scheme) }
                 )
             }
@@ -191,7 +195,7 @@ fun LithotherapieLabelListScreen(
                 title = { Text(LithotherapieSchemes.title(scheme)) },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Retour")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -239,7 +243,7 @@ private fun FamilyStyleRow(name: String, count: Int, onClick: () -> Unit) {
                 modifier = Modifier.weight(1f)
             )
             Text(
-                text = if (count > 1) "$count gemmes" else "$count gemme",
+                text = pluralStringResource(R.plurals.gem_count, count, count),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -269,7 +273,7 @@ fun LithotherapieGemsScreen(
                 title = { Text(label) },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Retour")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -283,7 +287,7 @@ fun LithotherapieGemsScreen(
         if (gems.isEmpty()) {
             Box(modifier = Modifier.fillMaxSize().padding(padding)) {
                 Text(
-                    text = "Aucune gemme pour le moment dans cette catégorie.",
+                    text = stringResource(R.string.litho_no_gems),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier
@@ -360,7 +364,7 @@ private fun LithotherapieRow(gem: Gem, onClick: () -> Unit) {
             IconButton(onClick = { FavoritesRepository.toggle(gem.id) }) {
                 Icon(
                     if (isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
-                    contentDescription = if (isFavorite) "Retirer des favoris" else "Ajouter aux favoris",
+                    contentDescription = stringResource(if (isFavorite) R.string.cd_remove_favorite else R.string.cd_add_favorite),
                     tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
@@ -379,7 +383,7 @@ fun LithotherapieDetailScreen(gemId: String, onBackClick: () -> Unit) {
                 title = { Text(gem?.nom ?: "") },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Retour")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
                     }
                 },
                 actions = {
@@ -388,7 +392,7 @@ fun LithotherapieDetailScreen(gemId: String, onBackClick: () -> Unit) {
                         IconButton(onClick = { FavoritesRepository.toggle(gem.id) }) {
                             Icon(
                                 if (isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
-                                contentDescription = if (isFavorite) "Retirer des favoris" else "Ajouter aux favoris",
+                                contentDescription = stringResource(if (isFavorite) R.string.cd_remove_favorite else R.string.cd_add_favorite),
                                 tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onBackground
                             )
                         }
@@ -448,7 +452,7 @@ fun LithotherapieDetailScreen(gemId: String, onBackClick: () -> Unit) {
             ) {
                 Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     Text(
-                        text = "Vertus en lithothérapie",
+                        text = stringResource(R.string.litho_virtues_title),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.SemiBold,
                         color = MaterialTheme.colorScheme.onSurface
@@ -462,9 +466,7 @@ fun LithotherapieDetailScreen(gemId: String, onBackClick: () -> Unit) {
             }
 
             Text(
-                text = "Ces informations relèvent de croyances et d'usages traditionnels. Elles ne constituent " +
-                    "ni un avis médical, ni une allégation thérapeutique, et ne remplacent pas une consultation " +
-                    "auprès d'un professionnel de santé.",
+                text = stringResource(R.string.litho_disclaimer),
                 style = MaterialTheme.typography.bodySmall,
                 fontStyle = FontStyle.Italic,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -488,10 +490,11 @@ private fun LithotherapieImageCard(credit: GemImageCredit) {
     val imageResId = rememberDrawableResId(credit.drawableName)
     if (imageResId == 0) return
 
+    val caption = stringResource(if (credit.type == GemImageType.BRUTE) R.string.gem_photo_raw else R.string.gem_photo_cut_or_cabochon)
     Column(modifier = Modifier.width(220.dp)) {
         Image(
             painter = painterResource(id = imageResId),
-            contentDescription = if (credit.type == GemImageType.BRUTE) "Pierre brute" else "Pierre taillée / cabochon",
+            contentDescription = caption,
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .fillMaxWidth()
@@ -499,7 +502,7 @@ private fun LithotherapieImageCard(credit: GemImageCredit) {
                 .clip(RoundedCornerShape(16.dp))
         )
         Text(
-            text = if (credit.type == GemImageType.BRUTE) "Pierre brute" else "Pierre taillée / cabochon",
+            text = caption,
             style = MaterialTheme.typography.labelLarge,
             fontWeight = FontWeight.SemiBold,
             color = MaterialTheme.colorScheme.onBackground,

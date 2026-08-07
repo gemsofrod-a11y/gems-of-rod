@@ -1,0 +1,116 @@
+<resources>
+    <string name="app_name">Gems of Rod – Enzyklopädie</string>
+
+    <!-- Allgemein -->
+    <string name="cd_back">Zurück</string>
+    <string name="cd_clear">Löschen</string>
+
+    <!-- Startseite -->
+    <string name="home_gemmologie_title">Gemmologie</string>
+    <string name="home_gemmologie_subtitle">Der vollständige Katalog nach Farbe: technische Datenblätter, Preise, Herkunft.</string>
+    <string name="home_familles_title">Mineralfamilien</string>
+    <string name="home_familles_subtitle">Der Katalog nach Familie sortiert: Beryll, Quarz, Korund, Granat…</string>
+    <string name="home_lithotherapie_title">Lithotherapie</string>
+    <string name="home_lithotherapie_subtitle">Die traditionellen Wirkungen und Verwendungen jedes Steins.</string>
+    <string name="home_language_title">Sprache</string>
+    <string name="home_language_subtitle">Wählen Sie die Sprache der App.</string>
+
+    <!-- Gemmologie (Suche + Kategorien) -->
+    <string name="search_gems_placeholder">Nach einem Edelstein suchen…</string>
+    <string name="search_no_results">Kein Edelstein entspricht „%1$s“.</string>
+    <plurals name="gem_count">
+        <item quantity="one">%1$d Edelstein</item>
+        <item quantity="other">%1$d Edelsteine</item>
+    </plurals>
+
+    <!-- Farben -->
+    <string name="color_rouge">Rot</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_jaune">Gelb</string>
+    <string name="color_vert">Grün</string>
+    <string name="color_bleu">Blau</string>
+    <string name="color_violet">Violett</string>
+    <string name="color_rose">Rosa</string>
+    <string name="color_incolore">Farblos &amp; weiß</string>
+    <string name="color_brun">Braun</string>
+    <string name="color_noir">Schwarz</string>
+    <string name="color_multicolore">Mehrfarbig</string>
+
+    <!-- Seltenheit -->
+    <string name="rarete_courante">Häufig</string>
+    <string name="rarete_peu_commune">Wenig verbreitet</string>
+    <string name="rarete_rare">Selten</string>
+    <string name="rarete_exceptionnelle">Außergewöhnlich</string>
+
+    <!-- Favoriten -->
+    <string name="favorites_title">Meine Favoriten</string>
+    <string name="favorites_empty_title">Noch keine Favoriten</string>
+    <string name="favorites_empty_subtitle">Tippen Sie auf das Herz auf einem Edelstein-Datenblatt, um ihn hier wiederzufinden.</string>
+    <string name="cd_remove_favorite">Aus Favoriten entfernen</string>
+    <string name="cd_add_favorite">Zu Favoriten hinzufügen</string>
+
+    <!-- Edelstein-Datenblatt -->
+    <string name="fiche_categorie">Kategorie</string>
+    <string name="fiche_famille">Familie</string>
+    <string name="fiche_formule_chimique">Chemische Formel</string>
+    <string name="fiche_systeme_cristallin">Kristallsystem</string>
+    <string name="fiche_durete">Härte (Mohs)</string>
+    <string name="fiche_indice_refraction">Brechungsindex</string>
+    <string name="fiche_prix_indicatif">Richtpreis</string>
+    <string name="create_certificate_button">Zertifikat erstellen</string>
+    <string name="particularites_title">Besonderheiten</string>
+    <string name="origins_title">Minen und Herkunftsregionen</string>
+    <string name="origins_hint">Tippen Sie auf einen Ort, um ihn in Google Maps zu öffnen.</string>
+    <string name="share_chooser_title">Datenblatt teilen</string>
+    <string name="share_subject">Gems of Rod — %1$s</string>
+    <string name="gem_photo_raw">Rohstein</string>
+    <string name="gem_photo_cut">Geschliffener Stein</string>
+    <string name="gem_photo_cut_or_cabochon">Geschliffener Stein / Cabochon</string>
+    <string name="photo_credit">Foto: %1$s — %2$s (Wikimedia Commons)</string>
+
+    <!-- Wertrechner -->
+    <string name="price_calc_title">Schätzen Sie den Wert Ihres Steins</string>
+    <string name="price_calc_intro">Geben Sie Gewicht und Preis pro Karat Ihres Steins ein, um den Gesamtwert zu schätzen. Der Preis pro Karat darf das Maximum der Richtspanne (%1$s/ct) nicht überschreiten.</string>
+    <string name="price_calc_carats_label">Karat</string>
+    <string name="price_calc_price_label">Preis/ct (€)</string>
+    <string name="price_calc_exceeds_max">Der angegebene Preis überschreitet das Maximum des Datenblatts (%1$s/ct).</string>
+    <string name="price_calc_result">Geschätzter Wert: %1$s</string>
+    <string name="price_calc_button">Berechnen</string>
+
+    <!-- Mineralfamilien -->
+    <string name="familles_title">Mineralfamilien</string>
+
+    <!-- Lithotherapie -->
+    <string name="scheme_zodiac_title">Sternzeichen</string>
+    <string name="scheme_chakra_title">Chakra</string>
+    <string name="scheme_bienfait_title">Gewünschte Wirkung</string>
+    <string name="scheme_mois_title">Geburtsmonat</string>
+    <string name="litho_zodiac_subtitle">Entdecken Sie die Steine, die traditionell Ihrem Sternzeichen zugeordnet werden.</string>
+    <string name="litho_chakra_subtitle">Die Steine, sortiert nach den 7 traditionellen Chakren.</string>
+    <string name="litho_bienfait_subtitle">Stress, Selbstvertrauen, Liebe, Schutz, Schlaf…</string>
+    <string name="litho_mois_subtitle">Die Geburtssteine, einer pro Monat.</string>
+    <string name="litho_no_gems">Noch kein Edelstein in dieser Kategorie.</string>
+    <string name="litho_virtues_title">Wirkungen in der Lithotherapie</string>
+    <string name="litho_disclaimer">Diese Angaben beruhen auf traditionellen Überzeugungen und Bräuchen. Sie stellen weder eine medizinische Empfehlung noch eine therapeutische Aussage dar und ersetzen nicht die Beratung durch eine medizinische Fachperson.</string>
+
+    <!-- Zertifikat -->
+    <string name="certificate_title">Zertifikat</string>
+    <string name="certificate_intro">Geben Sie die Angaben zu Ihrem Stein ein, um ein PDF-Zertifikat zu erstellen.</string>
+    <string name="certificate_field_emitter_label">Ausgestellt von</string>
+    <string name="certificate_field_emitter_placeholder">z. B. Juwelier Martin — kontakt@beispiel.com</string>
+    <string name="certificate_field_dimensions_label">Abmessungen</string>
+    <string name="certificate_field_dimensions_placeholder">z. B. 8,2 x 6,1 x 4,3 mm</string>
+    <string name="certificate_field_weight_label">Gewicht</string>
+    <string name="certificate_field_weight_placeholder">z. B. 1,25 ct</string>
+    <string name="certificate_field_origin_label">Herkunft</string>
+    <string name="certificate_field_origin_placeholder">z. B. Sri Lanka</string>
+    <string name="certificate_field_treatment_label">Behandlung</string>
+    <string name="certificate_field_treatment_placeholder">z. B. Unbehandelt</string>
+    <string name="certificate_export_chooser">Zertifikat exportieren</string>
+    <string name="certificate_photo_picker_hint">Foto vom Telefon hinzufügen</string>
+    <string name="cd_certificate_photo">Foto des Steins</string>
+    <string name="certificate_generate_button">PDF erstellen und exportieren</string>
+
+    <!-- Sprache -->
+    <string name="language_title">Sprache</string>
+</resources>

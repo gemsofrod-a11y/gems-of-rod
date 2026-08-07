@@ -1,5 +1,6 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
+import android.app.Activity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -11,7 +12,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -23,28 +24,32 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
-import fr.gemsofrod.encyclopedie.data.GemFamilies
+import fr.gemsofrod.encyclopedie.data.AppLanguage
+import fr.gemsofrod.encyclopedie.data.LanguageRepository
 
 /**
- * Liste des familles minérales du catalogue (Béryl, Quartz, Corindon,
- * Grenat...), dérivées automatiquement du champ `famille` de chaque [Gem].
+ * Choix de la langue de l'interface. La sélection est persistée puis
+ * appliquée en redémarrant l'activité (`recreate`), afin que les ressources
+ * de chaînes se rechargent dans la nouvelle langue.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FamillesListScreen(onFamilyClick: (String) -> Unit, onBackClick: () -> Unit) {
-    val groups = GemFamilies.groups()
+fun LanguageScreen(onBackClick: () -> Unit) {
+    val context = LocalContext.current
+    val current = remember { LanguageRepository.getLanguage(context) }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.familles_title)) },
+                title = { Text(stringResource(R.string.language_title)) },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
@@ -65,15 +70,24 @@ fun FamillesListScreen(onFamilyClick: (String) -> Unit, onBackClick: () -> Unit)
                 .fillMaxSize()
                 .padding(padding)
         ) {
-            items(groups) { (name, gems) ->
-                FamilyRow(name = name, count = gems.size, onClick = { onFamilyClick(name) })
+            items(AppLanguage.entries) { language ->
+                LanguageRow(
+                    language = language,
+                    selected = language == current,
+                    onClick = {
+                        if (language != current) {
+                            LanguageRepository.setLanguage(context, language)
+                            (context as? Activity)?.recreate()
+                        }
+                    }
+                )
             }
         }
     }
 }
 
 @Composable
-private fun FamilyRow(name: String, count: Int, onClick: () -> Unit) {
+private fun LanguageRow(language: AppLanguage, selected: Boolean, onClick: () -> Unit) {
     Card(
         onClick = onClick,
         shape = RoundedCornerShape(14.dp),
@@ -87,23 +101,21 @@ private fun FamilyRow(name: String, count: Int, onClick: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
+            Text(language.flagEmoji, style = MaterialTheme.typography.titleLarge)
             Text(
-                text = name,
+                text = language.label,
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold,
                 color = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier.weight(1f)
             )
-            Text(
-                text = pluralStringResource(R.plurals.gem_count, count, count),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            Icon(
-                Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.onSurfaceVariant
-            )
+            if (selected) {
+                Icon(
+                    Icons.Filled.Check,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary
+                )
+            }
         }
     }
 }

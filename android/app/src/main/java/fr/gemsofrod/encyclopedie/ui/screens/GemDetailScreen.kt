@@ -53,10 +53,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.FavoritesRepository
 import fr.gemsofrod.encyclopedie.data.Gem
 import fr.gemsofrod.encyclopedie.data.GemImageCredit
@@ -75,6 +77,10 @@ import java.util.Locale
 fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: () -> Unit) {
     val gem = GemsRepository.byId(gemId)
     val context = LocalContext.current
+    val removeFavoriteLabel = stringResource(R.string.cd_remove_favorite)
+    val addFavoriteLabel = stringResource(R.string.cd_add_favorite)
+    val shareChooserTitle = stringResource(R.string.share_chooser_title)
+    val shareSubject = gem?.let { stringResource(R.string.share_subject, it.nom) }
 
     Scaffold(
         topBar = {
@@ -82,7 +88,7 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
                 title = { Text(gem?.nom ?: "") },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Retour")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
                     }
                 },
                 actions = {
@@ -91,19 +97,19 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
                         IconButton(onClick = { FavoritesRepository.toggle(gem.id) }) {
                             Icon(
                                 if (isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
-                                contentDescription = if (isFavorite) "Retirer des favoris" else "Ajouter aux favoris",
+                                contentDescription = if (isFavorite) removeFavoriteLabel else addFavoriteLabel,
                                 tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onBackground
                             )
                         }
                         IconButton(onClick = {
                             val sendIntent = Intent(Intent.ACTION_SEND).apply {
                                 type = "text/plain"
-                                putExtra(Intent.EXTRA_SUBJECT, "Gems of Rod — ${gem.nom}")
+                                putExtra(Intent.EXTRA_SUBJECT, shareSubject)
                                 putExtra(Intent.EXTRA_TEXT, buildShareText(gem))
                             }
-                            context.startActivity(Intent.createChooser(sendIntent, "Partager la fiche"))
+                            context.startActivity(Intent.createChooser(sendIntent, shareChooserTitle))
                         }) {
-                            Icon(Icons.Filled.Share, contentDescription = "Partager la fiche")
+                            Icon(Icons.Filled.Share, contentDescription = shareChooserTitle)
                         }
                     }
                 },
@@ -171,19 +177,19 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    FicheRow("Catégorie", gem.couleur.label)
+                    FicheRow(stringResource(R.string.fiche_categorie), stringResource(gem.couleur.labelRes))
                     FicheDivider()
-                    FicheRow("Famille", gem.famille)
+                    FicheRow(stringResource(R.string.fiche_famille), gem.famille)
                     FicheDivider()
-                    FicheRow("Formule chimique", gem.formuleChimique)
+                    FicheRow(stringResource(R.string.fiche_formule_chimique), gem.formuleChimique)
                     FicheDivider()
-                    FicheRow("Système cristallin", gem.systemeCristallin)
+                    FicheRow(stringResource(R.string.fiche_systeme_cristallin), gem.systemeCristallin)
                     FicheDivider()
-                    FicheRow("Dureté (Mohs)", gem.durete)
+                    FicheRow(stringResource(R.string.fiche_durete), gem.durete)
                     FicheDivider()
-                    FicheRow("Indice de réfraction", gem.indiceRefraction)
+                    FicheRow(stringResource(R.string.fiche_indice_refraction), gem.indiceRefraction)
                     FicheDivider()
-                    FicheRow("Prix indicatif", gem.prixCaratEur)
+                    FicheRow(stringResource(R.string.fiche_prix_indicatif), gem.prixCaratEur)
                 }
             }
 
@@ -198,12 +204,12 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
                     contentDescription = null,
                     modifier = Modifier.padding(end = 8.dp)
                 )
-                Text("Créer un certificat")
+                Text(stringResource(R.string.create_certificate_button))
             }
 
             Column {
                 Text(
-                    text = "Particularités",
+                    text = stringResource(R.string.particularites_title),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onBackground
@@ -217,13 +223,13 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
 
             Column {
                 Text(
-                    text = "Mines et régions d'origine",
+                    text = stringResource(R.string.origins_title),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onBackground
                 )
                 Text(
-                    text = "Touchez un lieu pour l'ouvrir dans Google Maps.",
+                    text = stringResource(R.string.origins_hint),
                     style = MaterialTheme.typography.bodyMedium,
                     fontStyle = FontStyle.Italic,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -261,15 +267,13 @@ private fun PriceCalculatorCard(gem: Gem) {
     ) {
         Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
             Text(
-                text = "Estimer la valeur de votre pierre",
+                text = stringResource(R.string.price_calc_title),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold,
                 color = MaterialTheme.colorScheme.onSurface
             )
             Text(
-                text = "Renseignez le poids et le prix au carat de votre pierre pour estimer sa valeur totale. " +
-                    "Le prix au carat ne peut pas dépasser le maximum de la fourchette indicative " +
-                    "(${formatEur(range.maxEur)}/ct).",
+                text = stringResource(R.string.price_calc_intro, formatEur(range.maxEur)),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(bottom = 8.dp, top = 2.dp)
@@ -278,7 +282,7 @@ private fun PriceCalculatorCard(gem: Gem) {
                 OutlinedTextField(
                     value = caratsInput,
                     onValueChange = { caratsInput = it },
-                    label = { Text("Carats") },
+                    label = { Text(stringResource(R.string.price_calc_carats_label)) },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                     modifier = Modifier.weight(1f)
@@ -286,7 +290,7 @@ private fun PriceCalculatorCard(gem: Gem) {
                 OutlinedTextField(
                     value = prixInput,
                     onValueChange = { prixInput = it },
-                    label = { Text("Prix/ct (€)") },
+                    label = { Text(stringResource(R.string.price_calc_price_label)) },
                     singleLine = true,
                     isError = depasseLeMaximum,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
@@ -295,7 +299,7 @@ private fun PriceCalculatorCard(gem: Gem) {
             }
             if (depasseLeMaximum) {
                 Text(
-                    text = "Le prix indiqué dépasse le maximum de la fiche (${formatEur(range.maxEur)}/ct).",
+                    text = stringResource(R.string.price_calc_exceeds_max, formatEur(range.maxEur)),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.error,
                     modifier = Modifier.padding(top = 4.dp)
@@ -310,9 +314,9 @@ private fun PriceCalculatorCard(gem: Gem) {
             ) {
                 Text(
                     if (valeurs && carats != null && prixParCarat != null) {
-                        "Valeur estimée : ${currency.format(carats * prixParCarat)}"
+                        stringResource(R.string.price_calc_result, currency.format(carats * prixParCarat))
                     } else {
-                        "Calculer"
+                        stringResource(R.string.price_calc_button)
                     }
                 )
             }
@@ -354,10 +358,11 @@ private fun GemImageCard(credit: GemImageCredit) {
     val imageResId = rememberDrawableResId(credit.drawableName)
     if (imageResId == 0) return
 
+    val caption = stringResource(if (credit.type == GemImageType.BRUTE) R.string.gem_photo_raw else R.string.gem_photo_cut)
     Column(modifier = Modifier.width(220.dp)) {
         Image(
             painter = painterResource(id = imageResId),
-            contentDescription = if (credit.type == GemImageType.BRUTE) "Pierre brute" else "Pierre taillée",
+            contentDescription = caption,
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .fillMaxWidth()
@@ -365,14 +370,14 @@ private fun GemImageCard(credit: GemImageCredit) {
                 .clip(RoundedCornerShape(16.dp))
         )
         Text(
-            text = if (credit.type == GemImageType.BRUTE) "Pierre brute" else "Pierre taillée",
+            text = caption,
             style = MaterialTheme.typography.labelLarge,
             fontWeight = FontWeight.SemiBold,
             color = MaterialTheme.colorScheme.onBackground,
             modifier = Modifier.padding(top = 6.dp)
         )
         Text(
-            text = "Photo : ${credit.author} — ${credit.license} (Wikimedia Commons)",
+            text = stringResource(R.string.photo_credit, credit.author, credit.license),
             style = MaterialTheme.typography.bodyMedium,
             fontStyle = FontStyle.Italic,
             color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -390,7 +395,7 @@ private fun RareteBadge(rarete: GemRarete) {
     }
     Surface(shape = RoundedCornerShape(50), color = bg) {
         Text(
-            text = rarete.label,
+            text = stringResource(rarete.labelRes),
             style = MaterialTheme.typography.labelLarge,
             color = fg,
             modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
