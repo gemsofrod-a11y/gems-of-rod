@@ -38,11 +38,15 @@ import fr.gemsofrod.encyclopedie.data.LanguageRepository
 /**
  * Choix de la langue de l'interface. La sélection est persistée puis
  * appliquée en redémarrant l'activité (`recreate`), afin que les ressources
- * de chaînes se rechargent dans la nouvelle langue.
+ * de chaînes se rechargent dans la nouvelle langue. `onLanguageSelected` doit
+ * ramener la pile de navigation à l'accueil *avant* le redémarrage : la pile
+ * de `NavHostController` est restaurée telle quelle après `recreate()`, donc
+ * sans cet appel l'utilisateur retomberait sur cet écran de langue au lieu du
+ * menu d'accueil.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LanguageScreen(onBackClick: () -> Unit) {
+fun LanguageScreen(onBackClick: () -> Unit, onLanguageSelected: () -> Unit) {
     val context = LocalContext.current
     val current = remember { LanguageRepository.getLanguage(context) }
 
@@ -77,6 +81,7 @@ fun LanguageScreen(onBackClick: () -> Unit) {
                     onClick = {
                         if (language != current) {
                             LanguageRepository.setLanguage(context, language)
+                            onLanguageSelected()
                             (context as? Activity)?.recreate()
                         }
                     }

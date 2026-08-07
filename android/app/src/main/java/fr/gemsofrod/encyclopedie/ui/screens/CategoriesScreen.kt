@@ -49,14 +49,17 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.Gem
 import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.data.GemsRepository
+import fr.gemsofrod.encyclopedie.data.LanguageRepository
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
 
@@ -69,6 +72,9 @@ fun HomeScreen(
     onLanguageClick: () -> Unit,
     onFavoritesClick: () -> Unit
 ) {
+    val context = LocalContext.current
+    val currentLanguage = remember { LanguageRepository.getLanguage(context) }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -115,7 +121,8 @@ fun HomeScreen(
                 title = stringResource(R.string.home_language_title),
                 subtitle = stringResource(R.string.home_language_subtitle),
                 onClick = onLanguageClick,
-                backgroundDrawable = null
+                backgroundDrawable = null,
+                leadingEmoji = currentLanguage.flagEmoji
             )
         }
     }
@@ -126,7 +133,8 @@ private fun HomeSectionCard(
     title: String,
     subtitle: String,
     onClick: () -> Unit,
-    backgroundDrawable: String?
+    backgroundDrawable: String?,
+    leadingEmoji: String? = null
 ) {
     Card(
         onClick = onClick,
@@ -171,6 +179,9 @@ private fun HomeSectionCard(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
+                if (leadingEmoji != null) {
+                    Text(text = leadingEmoji, fontSize = 40.sp)
+                }
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
                         text = title,
