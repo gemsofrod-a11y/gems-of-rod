@@ -27,7 +27,8 @@ object GemLocalization {
     private val byLanguage: Map<String, Map<String, GemTranslation>> = mapOf(
         AppLanguage.EN.code to GemTranslationsEn.data,
         AppLanguage.ES.code to GemTranslationsEs.data,
-        AppLanguage.IT.code to GemTranslationsIt.data
+        AppLanguage.IT.code to GemTranslationsIt.data,
+        AppLanguage.DE.code to GemTranslationsDe.data
     )
 
     fun localize(gem: Gem, languageCode: String): Gem {
