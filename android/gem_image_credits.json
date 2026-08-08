@@ -75,6 +75,24 @@
       "type": "FACETTEE"
     }
   ],
+  "ametrine": [
+    {
+      "artist": "Steven HAuse",
+      "license": "CC0",
+      "resource_name": "gem_ametrine_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ametrine_In_Palm.png",
+      "title": "File:Ametrine In Palm.png",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Gemsphoto",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_ametrine_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Natural_ametrine_round_gemstone.jpg",
+      "title": "File:Natural ametrine round gemstone.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "ammolite": [
     {
       "artist": "A Cynical Idealist",
