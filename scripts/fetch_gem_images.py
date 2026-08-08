@@ -228,6 +228,9 @@ GEMS = [
     ("orthose", ['Orthoclase feldspar yellow', 'Yellow orthoclase Madagascar', 'Orthoclase crystal'], ['orthoclase'], (BRUTE, FACETTEE)),
     ("corail", ['Red coral gemstone', 'Precious coral'], ['coral'], (BRUTE, FACETTEE)),
     ("perle-conque", ['Conch pearl', 'Queen conch pearl pink'], ['conch pearl'], (FACETTEE,)),
+    ("saphir-auvergne", ['Auvergne sapphire', 'French sapphire Espaly', 'Basaltic sapphire France', 'Blue violet sapphire crystal basalt'], ['sapphire', 'corundum', 'auvergne', 'espaly'], (BRUTE, FACETTEE)),
+    ("bixbite", ['Red beryl gemstone', 'Red beryl crystal', 'Bixbite', 'Red beryl Utah', 'Red beryl Wah Wah'], ['red beryl', 'bixbite'], (BRUTE, FACETTEE)),
+    ("saphir-teal", ['Teal sapphire', 'Teal sapphire Montana', 'Parti sapphire', 'Bi-color sapphire blue yellow', 'Montana sapphire teal'], ['teal sapphire', 'parti sapphire', 'sapphire', 'corundum'], (BRUTE, FACETTEE)),
 ]
 
 EXCLUDED_TITLE_TOKENS = [
