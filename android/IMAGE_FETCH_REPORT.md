@@ -181,6 +181,6 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | saphir-auvergne | ❌ non trouvée | ❌ non trouvée |
 | bixbite | ♻️ [File:Fotostrecke Weltraritaeten-Bixbit-G-EmpireTheWorldOfGems.jpg](https://commons.wikimedia.org/wiki/File:Fotostrecke_Weltraritaeten-Bixbit-G-EmpireTheWorldOfGems.jpg) | ♻️ [File:Béryl Rouge.jpg](https://commons.wikimedia.org/wiki/File:Béryl_Rouge.jpg) |
 | saphir-teal | ♻️ [File:Lizunova-hexagon-teal-parti-sapphire-103ct-Lizunova Fine Jewels- Sydney.jpg](https://commons.wikimedia.org/wiki/File:Lizunova-hexagon-teal-parti-sapphire-103ct-Lizunova_Fine_Jewels-_Sydney.jpg) | ♻️ [File:Grace-teal-sapphire-diamond-engagement-ring-Milla-diamond-wedding-ring-stack-Sydney-jeweller-Lizunova-Fine-Jewels-NSW-Australia.jpg](https://commons.wikimedia.org/wiki/File:Grace-teal-sapphire-diamond-engagement-ring-Milla-diamond-wedding-ring-stack-Sydney-jeweller-Lizunova-Fine-Jewels-NSW-Australia.jpg) |
-| ametrine | ✅ [File:Ametrine In Palm.png](https://commons.wikimedia.org/wiki/File:Ametrine_In_Palm.png) | ✅ [File:Natural ametrine round gemstone.jpg](https://commons.wikimedia.org/wiki/File:Natural_ametrine_round_gemstone.jpg) |
+| ametrine | ♻️ [File:Ametrine In Palm.png](https://commons.wikimedia.org/wiki/File:Ametrine_In_Palm.png) | ♻️ [File:Natural ametrine round gemstone.jpg](https://commons.wikimedia.org/wiki/File:Natural_ametrine_round_gemstone.jpg) |
 
 **179 / 352** photos récupérées au total.
