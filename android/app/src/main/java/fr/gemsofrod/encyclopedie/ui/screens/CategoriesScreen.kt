@@ -205,10 +205,15 @@ private fun HomeSectionCard(
     }
 }
 
+/**
+ * Écran d'entrée de la Gemmologie : recherche globale, et choix du mode de
+ * classement du catalogue (couleur ou pays d'origine).
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CategoriesScreen(
-    onCategoryClick: (GemColorCategory) -> Unit,
+fun GemmologieMenuScreen(
+    onCouleurClick: () -> Unit,
+    onPaysClick: () -> Unit,
     onGemClick: (Gem) -> Unit,
     onBackClick: () -> Unit
 ) {
@@ -261,20 +266,22 @@ fun CategoriesScreen(
             )
 
             if (query.isBlank()) {
-                LazyVerticalGrid(
-                    columns = GridCells.Fixed(2),
-                    contentPadding = PaddingValues(16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp),
-                    modifier = Modifier.fillMaxSize()
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = 16.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
-                    items(GemColorCategory.entries) { category ->
-                        CategoryCard(
-                            category = category,
-                            count = GemsRepository.countByColor(category),
-                            onClick = { onCategoryClick(category) }
-                        )
-                    }
+                    GemmologieMenuCard(
+                        title = stringResource(R.string.gemmologie_couleur_title),
+                        subtitle = stringResource(R.string.gemmologie_couleur_subtitle),
+                        onClick = onCouleurClick
+                    )
+                    GemmologieMenuCard(
+                        title = stringResource(R.string.gemmologie_pays_title),
+                        subtitle = stringResource(R.string.gemmologie_pays_subtitle),
+                        onClick = onPaysClick
+                    )
                 }
             } else if (results.isEmpty()) {
                 Box(modifier = Modifier.fillMaxSize()) {
@@ -297,6 +304,84 @@ fun CategoriesScreen(
                         SearchResultRow(gem = gem, onClick = { onGemClick(gem) })
                     }
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun GemmologieMenuCard(title: String, subtitle: String, onClick: () -> Unit) {
+    Card(
+        onClick = onClick,
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(14.dp)
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = subtitle,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            Icon(
+                Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+    }
+}
+
+/** Grille des catégories de couleur, atteinte depuis le bouton "Couleur" de la Gemmologie. */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ColorListScreen(onCategoryClick: (GemColorCategory) -> Unit, onBackClick: () -> Unit) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.gemmologie_couleur_title)) },
+                navigationIcon = {
+                    IconButton(onClick = onBackClick) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background,
+                    titleContentColor = MaterialTheme.colorScheme.onBackground
+                )
+            )
+        },
+        containerColor = MaterialTheme.colorScheme.background
+    ) { padding ->
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            contentPadding = PaddingValues(16.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+        ) {
+            items(GemColorCategory.entries) { category ->
+                CategoryCard(
+                    category = category,
+                    count = GemsRepository.countByColor(category),
+                    onClick = { onCategoryClick(category) }
+                )
             }
         }
     }

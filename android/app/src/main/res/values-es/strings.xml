@@ -18,6 +18,10 @@
     <!-- Gemología (búsqueda + categorías) -->
     <string name="search_gems_placeholder">Buscar una gema…</string>
     <string name="search_no_results">Ninguna gema coincide con «%1$s».</string>
+    <string name="gemmologie_couleur_title">Color</string>
+    <string name="gemmologie_couleur_subtitle">El catálogo clasificado por tono: rojo, azul, verde…</string>
+    <string name="gemmologie_pays_title">País de origen</string>
+    <string name="gemmologie_pays_subtitle">El catálogo clasificado por procedencia geográfica.</string>
     <plurals name="gem_count">
         <item quantity="one">%1$d gema</item>
         <item quantity="other">%1$d gemas</item>

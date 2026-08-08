@@ -8,12 +8,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.data.GemFamilies
+import fr.gemsofrod.encyclopedie.data.GemOrigins
 import fr.gemsofrod.encyclopedie.data.GemsRepository
-import fr.gemsofrod.encyclopedie.ui.screens.CategoriesScreen
 import fr.gemsofrod.encyclopedie.ui.screens.CertificateScreen
+import fr.gemsofrod.encyclopedie.ui.screens.ColorListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.FamillesListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.FavoritesScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemDetailScreen
+import fr.gemsofrod.encyclopedie.ui.screens.GemmologieMenuScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemsListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.HomeScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LanguageScreen
@@ -22,6 +24,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieGemsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieInfoScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieLabelListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieMenuScreen
+import fr.gemsofrod.encyclopedie.ui.screens.PaysListScreen
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import java.net.URLDecoder
 import java.net.URLEncoder
@@ -29,7 +32,10 @@ import java.net.URLEncoder
 private object Routes {
     const val HOME = "home"
     const val CATEGORIES = "categories"
+    const val COULEUR_LIST = "couleur_list"
     const val GEMS_LIST = "gems/{colorName}"
+    const val PAYS_LIST = "pays_list"
+    const val PAYS_DETAIL = "pays/{country}"
     const val GEM_DETAIL = "gem/{gemId}"
     const val FAVORITES = "favorites"
     const val CERTIFICATE = "certificate/{gemId}"
@@ -43,6 +49,7 @@ private object Routes {
     const val LANGUAGE = "language"
 
     fun gemsList(colorName: String) = "gems/$colorName"
+    fun paysDetail(country: String) = "pays/${encode(country)}"
     fun gemDetail(gemId: String) = "gem/$gemId"
     fun certificate(gemId: String) = "certificate/$gemId"
     fun familleDetail(familyName: String) = "familles/${encode(familyName)}"
@@ -74,10 +81,32 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             )
         }
         composable(Routes.CATEGORIES) {
-            CategoriesScreen(
+            GemmologieMenuScreen(
+                onCouleurClick = { navController.navigate(Routes.COULEUR_LIST) },
+                onPaysClick = { navController.navigate(Routes.PAYS_LIST) },
+                onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.COULEUR_LIST) {
+            ColorListScreen(
                 onCategoryClick = { category ->
                     navController.navigate(Routes.gemsList(category.name))
                 },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.PAYS_LIST) {
+            PaysListScreen(
+                onPaysClick = { country -> navController.navigate(Routes.paysDetail(country)) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.PAYS_DETAIL) { backStackEntry ->
+            val country = Routes.decode(backStackEntry.arguments?.getString("country").orEmpty())
+            GemsListScreen(
+                title = localizedLabel(country),
+                gems = GemOrigins.gemsFor(country),
                 onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
                 onBackClick = { navController.popBackStack() }
             )

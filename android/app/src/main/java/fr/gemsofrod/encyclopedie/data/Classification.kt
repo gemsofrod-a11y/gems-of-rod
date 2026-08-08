@@ -22,6 +22,58 @@ object GemFamilies {
 }
 
 /**
+ * Regroupement des gemmes du catalogue par pays d'origine, utilisé par
+ * l'écran "Pays" de la Gemmologie. Dérivé du champ `origines` existant de
+ * [Gem] (chaque entrée est écrite "Pays (région)") — aucune donnée
+ * supplémentaire n'est stockée. Une gemme ayant plusieurs origines apparaît
+ * sous chacun des pays correspondants.
+ *
+ * Quelques entrées d'origine désignent la même réalité géographique sous des
+ * libellés différents (ex. "Myanmar" / "Birmanie", "Congo" / "République
+ * démocratique du Congo") ou omettent le pays alors qu'il est sans ambiguïté
+ * (ex. "Ouro Preto" au Brésil) : [countryAliases] les normalise vers le
+ * libellé déjà utilisé ailleurs dans le catalogue, pour éviter des boutons
+ * "pays" en double. Les régions/territoires réellement distincts (Cachemire,
+ * Caraïbes...) restent inchangés.
+ */
+object GemOrigins {
+    private val countryAliases: Map<String, String> = mapOf(
+        "Myanmar" to "Birmanie",
+        "Congo" to "République démocratique du Congo",
+        "Angleterre" to "Royaume-Uni",
+        "Écosse" to "Royaume-Uni",
+        "Oural" to "Russie",
+        "Mogok Stone Tract, Birmanie" to "Birmanie",
+        "Mérelani, Tanzanie" to "Tanzanie",
+        "São José da Batalha, Paraíba, Brésil" to "Brésil",
+        "San Benito, Californie, États-Unis" to "États-Unis",
+        "Rivière Chara, Sibérie, Russie" to "Russie",
+        "Alberta, Canada" to "Canada",
+        "Ouro Preto" to "Brésil",
+        "Val Cristallina, Alpes suisses" to "Suisse"
+    )
+
+    /** Pays d'une entrée d'origine (ex. "Sri Lanka (Ratnapura)" -> "Sri Lanka"),
+     * plusieurs pays si l'entrée en combine deux (ex. "Égypte / Libye"). */
+    private fun countriesOf(origin: String): List<String> =
+        origin.substringBefore(" (").trim()
+            .split(" / ")
+            .map { countryAliases[it.trim()] ?: it.trim() }
+
+    fun groups(): List<Pair<String, List<Gem>>> =
+        GemsRepository.gems
+            .flatMap { gem -> gem.origines.flatMap { countriesOf(it) }.distinct().map { country -> country to gem } }
+            .groupBy({ it.first }, { it.second })
+            .toSortedMap()
+            .map { (country, gems) -> country to gems.sortedBy { it.nom } }
+
+    fun gemsFor(country: String): List<Gem> =
+        GemsRepository.gems
+            .filter { gem -> gem.origines.any { origin -> countriesOf(origin).contains(country) } }
+            .sortedBy { it.nom }
+}
+
+/**
  * Regroupements complémentaires des gemmes, utilisés par les sous-catégories
  * de la section Lithothérapie. Tout est dérivé des champs existants de [Gem]
  * (couleur, texte lithothérapie) ou de tables de correspondance statiques

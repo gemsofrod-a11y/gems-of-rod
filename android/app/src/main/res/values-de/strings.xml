@@ -18,6 +18,10 @@
     <!-- Gemmologie (Suche + Kategorien) -->
     <string name="search_gems_placeholder">Nach einem Edelstein suchen…</string>
     <string name="search_no_results">Kein Edelstein entspricht „%1$s“.</string>
+    <string name="gemmologie_couleur_title">Farbe</string>
+    <string name="gemmologie_couleur_subtitle">Der Katalog nach Farbton geordnet: Rot, Blau, Grün…</string>
+    <string name="gemmologie_pays_title">Herkunftsland</string>
+    <string name="gemmologie_pays_subtitle">Der Katalog nach geografischer Herkunft geordnet.</string>
     <plurals name="gem_count">
         <item quantity="one">%1$d Edelstein</item>
         <item quantity="other">%1$d Edelsteine</item>
