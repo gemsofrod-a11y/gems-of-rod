@@ -1074,6 +1074,13 @@ object GemTranslationsIt {
             particularites = "Giacimento quasi unico al mondo; il cambiamento di colore è più sottile rispetto a quello dell'alessandrite.",
             lithotherapie = "La zultanite, che cambia colore a seconda della luce, è associata all'adattabilità e alla capacità di trasformazione personale."
         ),
+        "ametrine" to GemTranslation(
+            nom = "Ametrino",
+            descriptionCourte = "Un quarzo bicolore in cui il viola dell'ametista e il giallo del citrino condividono uno stesso cristallo.",
+            descriptionLongue = "L'ametrino deve la sua bicolorazione a un gradiente naturale di temperatura all'interno del cristallo di quarzo durante la sua crescita: le zone più calde hanno assunto la tonalità gialla del citrino, mentre quelle più fredde hanno conservato il viola dell'ametista. La miniera boliviana di Anahí, a lungo unica fonte commerciale al mondo, è legata a una leggenda del XVII secolo che ne attribuisce la scoperta a un conquistador spagnolo sposato con una principessa locale proprietaria del giacimento.",
+            particularites = "Il taglio è pensato per mettere in risalto il netto contrasto tra le due zone di colore, spesso disposte in diagonale.",
+            lithotherapie = "L'ametrino è ritenuto unire le virtù calmanti dell'ametista alle virtù stimolanti del citrino, un equilibrio tra calma interiore ed energia creativa."
+        ),
         "grenat-couleur-changeante" to GemTranslation(
             nom = "Granato a cambiamento di colore",
             descriptionCourte = "Verde bluastro di giorno, rosso-violaceo di sera, un rivale poco conosciuto dell'alessandrite.",

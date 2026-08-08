@@ -2787,6 +2787,24 @@ object GemsRepository {
             rarete = GemRarete.EXCEPTIONNELLE
         ),
         Gem(
+            id = "ametrine",
+            nom = "Amétrine",
+            nomLatin = "Quartz (variété bicolore améthyste-citrine)",
+            famille = "Quartz",
+            couleur = GemColorCategory.MULTICOLORE,
+            descriptionCourte = "Un quartz bicolore où le violet de l'améthyste et le jaune de la citrine se partagent un même cristal.",
+            descriptionLongue = "L'amétrine doit sa bicoloration à un gradient naturel de température au sein du cristal de quartz lors de sa croissance : les zones les plus chauffées prennent la teinte jaune de la citrine, tandis que les zones plus fraîches conservent le violet de l'améthyste. La mine bolivienne d'Anahí, longtemps seule source commerciale au monde, est associée à une légende du XVIIe siècle attribuant sa découverte à un conquistador espagnol ayant épousé une princesse locale propriétaire du gisement.",
+            formuleChimique = "SiO₂ (Fe)",
+            systemeCristallin = "Trigonal",
+            durete = "7",
+            indiceRefraction = "1,544 – 1,553",
+            origines = listOf("Bolivie (mine Anahí)"),
+            particularites = "La taille est pensée pour souligner le contraste net entre les deux zones de couleur, souvent réparties selon une diagonale.",
+            lithotherapie = "L'amétrine est réputée conjuguer les vertus apaisantes de l'améthyste et les vertus stimulantes de la citrine, un équilibre entre calme intérieur et énergie créative.",
+            prixCaratEur = "20 – 150 €/ct",
+            rarete = GemRarete.PEU_COMMUNE
+        ),
+        Gem(
             id = "grenat-couleur-changeante",
             nom = "Grenat à changement de couleur",
             nomLatin = "Grenat (pyrope-spessartite)",
