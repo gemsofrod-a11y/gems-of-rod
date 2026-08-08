@@ -66,6 +66,13 @@ object GemTranslationsEn {
             particularites = "Only one known deposit in the world; cut stones are almost all under 2 carats.",
             lithotherapie = "A rare mineral, painite is associated in lithotherapy with perseverance and confidence in one's own path, including off the beaten track."
         ),
+        "bixbite" to GemTranslation(
+            nom = "Bixbite",
+            descriptionCourte = "Red beryl, one of the rarest gemstones in the world.",
+            descriptionLongue = "Long known as \"bixbite\" — a name now discouraged by gemological laboratories as it can be confused with bixbyite, an unrelated mineral — red beryl owes its intense colour to manganese. It comes from virtually a single deposit in the world, in Utah's Wah Wah Mountains, where crystals yielding more than one carat once cut remain exceptional.",
+            particularites = "Cut crystals are almost always under one carat; an almost single worldwide source, making it one of the rarest and most expensive gems per carat.",
+            lithotherapie = "Bixbite is associated with vitality and passion, a stone said to stimulate creative energy and self-confidence."
+        ),
         "crocoite" to GemTranslation(
             nom = "Crocoite",
             descriptionCourte = "Vivid orange-red prismatic crystals, a collector's treasure.",
@@ -1052,6 +1059,13 @@ object GemTranslationsEn {
             descriptionLongue = "Like its cousin the star ruby, star sapphire owes its asterism to silk-like rutile inclusions. It is most often found in blue or black, the latter traditionally associated with protection in several Asian cultures.",
             particularites = "The most sought-after asterism shows six perfectly straight rays centered on the dome of the cabochon.",
             lithotherapie = "Star sapphire is said to bring guidance and spiritual protection, its star symbolizing a path to follow."
+        ),
+        "saphir-teal" to GemTranslation(
+            nom = "Teal sapphire",
+            descriptionCourte = "A bicolour corundum where blue and yellow blend into a distinctive blue-green hue.",
+            descriptionLongue = "Teal sapphire owes its characteristic blue-green colour to the coexistence, within a single crystal, of blue growth zones (iron and titanium) and yellow ones (iron), which blend visually once the stone is cut. This natural bicolouring, rather than a uniform hue, makes it a highly sought-after stone among collectors of unusual colours, particularly from Montana deposits.",
+            particularites = "The blue-yellow bicolouring, visible in distinct zones in the rough, blends into a uniform blue-green hue once the stone is cut and oriented.",
+            lithotherapie = "Teal sapphire is said to foster balance between reason and intuition, its dual colouring symbolizing the harmony between two complementary energies."
         ),
         "diaspore-zultanite" to GemTranslation(
             nom = "Zultanite",

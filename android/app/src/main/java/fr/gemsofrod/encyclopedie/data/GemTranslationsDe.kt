@@ -66,6 +66,13 @@ object GemTranslationsDe {
             particularites = "Nur eine bekannte Fundstätte weltweit; geschliffene Steine fast ausnahmslos unter 2 Karat.",
             lithotherapie = "Als seltenes Mineral wird Painit in der Lithotherapie mit Ausdauer und dem Vertrauen in den eigenen, auch unkonventionellen Weg assoziiert."
         ),
+        "bixbite" to GemTranslation(
+            nom = "Bixbit",
+            descriptionCourte = "Roter Beryll, einer der seltensten Edelsteine der Welt.",
+            descriptionLongue = "Lange Zeit als „Bixbit“ bezeichnet – ein Name, von dem gemmologische Labore heute abraten, da er mit dem eigenständigen Mineral Bixbyit verwechselt werden kann – verdankt der rote Beryll seine intensive Farbe Mangan. Er stammt praktisch aus einer einzigen Fundstätte weltweit, den Wah-Wah-Bergen in Utah, wo Kristalle mit über einem Karat nach dem Schliff nach wie vor außergewöhnlich sind.",
+            particularites = "Geschliffene Kristalle fast immer unter einem Karat; nahezu einzige Quelle weltweit, was ihn zu einem der seltensten und pro Karat teuersten Edelsteine macht.",
+            lithotherapie = "Bixbit wird mit Vitalität und Leidenschaft assoziiert, ein Stein, dem nachgesagt wird, die schöpferische Energie und das Selbstvertrauen zu stärken."
+        ),
         "crocoite" to GemTranslation(
             nom = "Krokoit",
             descriptionCourte = "Leuchtend rotorange prismatische Kristalle, ein Schatz für Sammler.",
@@ -1052,6 +1059,13 @@ object GemTranslationsDe {
             descriptionLongue = "Wie sein Verwandter, der Sternrubin, verdankt der Sternsaphir seinen Asterismus seidigen Rutileinschlüssen. Er kommt am häufigsten in Blau oder Schwarz vor, wobei Letzteres in mehreren asiatischen Kulturen traditionell mit Schutz assoziiert wird.",
             particularites = "Der begehrteste Asterismus zeigt sechs vollkommen gerade Strahlen, zentriert auf der Wölbung des Cabochons.",
             lithotherapie = "Sternsaphir soll spirituelle Führung und Schutz bringen, wobei sein Stern einen einzuschlagenden Weg symbolisiert."
+        ),
+        "saphir-teal" to GemTranslation(
+            nom = "Teal-Saphir",
+            descriptionCourte = "Ein zweifarbiger Korund, bei dem Blau und Gelb sich zu einem eigentümlichen Blaugrün verbinden.",
+            descriptionLongue = "Der Teal-Saphir verdankt seine charakteristische blaugrüne Farbe dem Nebeneinander blauer (Eisen und Titan) und gelber (Eisen) Wachstumszonen innerhalb ein und desselben Kristalls, die sich nach dem Schliff optisch vermischen. Diese natürliche Zweifarbigkeit statt eines einheitlichen Farbtons macht ihn zu einem bei Liebhabern ungewöhnlicher Farben sehr gefragten Stein, insbesondere aus den Vorkommen Montanas.",
+            particularites = "Die blau-gelbe Zweifarbigkeit, im Rohzustand in getrennten Zonen sichtbar, verschmilzt nach dem Schliff und der richtigen Ausrichtung zu einem einheitlichen Blaugrün.",
+            lithotherapie = "Dem Teal-Saphir wird nachgesagt, das Gleichgewicht zwischen Vernunft und Intuition zu fördern, wobei seine doppelte Färbung die Harmonie zweier sich ergänzender Energien symbolisiert."
         ),
         "diaspore-zultanite" to GemTranslation(
             nom = "Zultanit",

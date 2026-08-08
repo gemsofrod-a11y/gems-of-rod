@@ -66,6 +66,13 @@ object GemTranslationsIt {
             particularites = "Un solo giacimento conosciuto al mondo; le pietre tagliate sono quasi tutte inferiori ai 2 carati.",
             lithotherapie = "Minerale raro, in litoterapia la painite è associata alla perseveranza e alla fiducia nel proprio percorso, anche fuori dai sentieri battuti."
         ),
+        "bixbite" to GemTranslation(
+            nom = "Bixbite",
+            descriptionCourte = "Il berillo rosso, una delle gemme più rare al mondo.",
+            descriptionLongue = "A lungo chiamato «bixbite» — nome oggi sconsigliato dai laboratori gemmologici perché genera confusione con la bixbyite, un minerale distinto — il berillo rosso deve il suo colore intenso al manganese. Proviene praticamente da un unico giacimento al mondo, sui monti Wah Wah nello Utah, dove i cristalli che superano un carato una volta tagliati restano eccezionali.",
+            particularites = "Cristalli tagliati quasi sempre inferiori a un carato; fonte quasi unica al mondo, il che ne fa una delle gemme più rare e costose al carato.",
+            lithotherapie = "Il bixbite è associato alla vitalità e alla passione, una pietra ritenuta capace di stimolare l'energia creativa e la fiducia in sé stessi."
+        ),
         "crocoite" to GemTranslation(
             nom = "Crocoite",
             descriptionCourte = "Cristalli prismatici rosso-arancio vivo, tesoro dei collezionisti.",
@@ -1052,6 +1059,13 @@ object GemTranslationsIt {
             descriptionLongue = "Come il suo cugino il rubino stellato, lo zaffiro stellato deve il suo asterismo a inclusioni di rutilo in seta. Si trova più spesso in blu o in nero, quest'ultimo tradizionalmente associato alla protezione in diverse culture asiatiche.",
             particularites = "L'asterismo più ricercato presenta sei raggi perfettamente diritti e centrati sulla cupola del cabochon.",
             lithotherapie = "Lo zaffiro stellato è ritenuto portare guida e protezione spirituale, la sua stella simboleggia un cammino da seguire."
+        ),
+        "saphir-teal" to GemTranslation(
+            nom = "Zaffiro teal",
+            descriptionCourte = "Un corindone bicolore in cui blu e giallo si combinano in una tonalità blu-verde particolare.",
+            descriptionLongue = "Lo zaffiro teal deve il suo caratteristico colore blu-verde alla coesistenza, all'interno di uno stesso cristallo, di zone di crescita blu (ferro e titanio) e gialle (ferro), che si fondono visivamente una volta tagliata la pietra. Questa bicolorazione naturale, più che una tonalità uniforme, ne fa una pietra molto ricercata dagli appassionati di colori insoliti, in particolare nei giacimenti del Montana.",
+            particularites = "La bicolorazione blu-gialla, visibile in zone distinte allo stato grezzo, si fonde in una tonalità blu-verde omogenea una volta tagliata e orientata la pietra.",
+            lithotherapie = "Lo zaffiro teal è ritenuto favorire l'equilibrio tra ragione e intuizione, la sua doppia colorazione simboleggia l'armonia tra due energie complementari."
         ),
         "diaspore-zultanite" to GemTranslation(
             nom = "Zultanite",
