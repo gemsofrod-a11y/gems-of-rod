@@ -521,6 +521,13 @@ object GemTranslationsEs {
             particularites = "Inclusiones de rutilo en seda que pueden producir asterismo (zafiro estrella).",
             lithotherapie = "Piedra de sabiduría desde la Antigüedad, se dice que el zafiro azul favorece la claridad mental, la lealtad y la búsqueda de la verdad."
         ),
+        "saphir-auvergne" to GemTranslation(
+            nom = "Zafiro de Auvernia",
+            descriptionCourte = "Un corindón francés de tono azul-violeta profundo, extraído de los terrenos volcánicos de Auvernia.",
+            descriptionLongue = "Extraídos de los terrenos volcánicos del Macizo Central, en particular alrededor de Espaly-Saint-Marcel, cerca de Le Puy-en-Velay, los zafiros de Auvernia son una variedad francesa de corindón de tono azul-violeta profundo. Como otros zafiros de origen basáltico, se distinguen por un color muy intenso, pero con cristales generalmente pequeños, raramente tallables más allá de un quilate. Explotados históricamente en el siglo XIX, siguen siendo hoy una curiosidad muy buscada por coleccionistas y aficionados a la gemología francesa, más que una fuente comercial de volumen.",
+            particularites = "Cristales generalmente pequeños (raramente más de un quilate una vez tallados), con el tono azul-violeta muy intenso típico de los zafiros de origen basáltico.",
+            lithotherapie = "Como los demás zafiros, el zafiro de Auvernia se asocia tradicionalmente con la sabiduría y la claridad mental; su origen francés lo convierte en una piedra especialmente apreciada por los coleccionistas apegados al patrimonio mineralógico nacional."
+        ),
         "aigue-marine" to GemTranslation(
             nom = "Aguamarina",
             descriptionCourte = "«Agua de mar» cristalina.",
