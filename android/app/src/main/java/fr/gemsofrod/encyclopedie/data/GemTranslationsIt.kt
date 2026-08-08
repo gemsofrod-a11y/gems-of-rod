@@ -521,6 +521,13 @@ object GemTranslationsIt {
             particularites = "Inclusioni di rutilo a forma di seta che possono produrre un asterismo (zaffiro stellato).",
             lithotherapie = "Pietra di saggezza fin dall'antichità, lo zaffiro blu è ritenuto favorire la chiarezza mentale, la lealtà e la ricerca della verità."
         ),
+        "saphir-auvergne" to GemTranslation(
+            nom = "Zaffiro d'Alvernia",
+            descriptionCourte = "Un corindone francese dalla tonalità blu-violetto intensa, estratto dai terreni vulcanici dell'Alvernia.",
+            descriptionLongue = "Estratti dai terreni vulcanici del Massiccio Centrale, in particolare intorno a Espaly-Saint-Marcel presso Le Puy-en-Velay, gli zaffiri d'Alvernia sono una varietà francese di corindone dalla tonalità blu-violetto intensa. Come altri zaffiri di origine basaltica, si distinguono per un colore molto intenso ma con cristalli generalmente piccoli, raramente sfaccettabili oltre un carato. Estratti storicamente nel XIX secolo, restano oggi una curiosità ricercata da collezionisti e appassionati di gemmologia francese, più che una fonte commerciale di volume.",
+            particularites = "Cristalli generalmente piccoli (raramente oltre un carato una volta tagliati), dal colore blu-violetto molto intenso tipico degli zaffiri di origine basaltica.",
+            lithotherapie = "Come gli altri zaffiri, lo zaffiro d'Alvernia è tradizionalmente associato alla saggezza e alla lucidità mentale; la sua origine francese ne fa una pietra particolarmente apprezzata dai collezionisti legati al patrimonio mineralogico nazionale."
+        ),
         "aigue-marine" to GemTranslation(
             nom = "Acquamarina",
             descriptionCourte = "«Acqua di mare» cristallina.",

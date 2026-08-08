@@ -521,6 +521,13 @@ object GemTranslationsDe {
             particularites = "Rutil-Einschlüsse in Form von „Seide“, die einen Asterismus (Sternsaphir) hervorrufen können.",
             lithotherapie = "Als Stein der Weisheit seit der Antike soll der blaue Saphir geistige Klarheit, Loyalität und das Streben nach Wahrheit fördern."
         ),
+        "saphir-auvergne" to GemTranslation(
+            nom = "Auvergne-Saphir",
+            descriptionCourte = "Ein französischer Korund mit tiefem blau-violettem Farbton, gewonnen aus dem vulkanischen Gestein der Auvergne.",
+            descriptionLongue = "Auvergne-Saphire werden aus dem vulkanischen Gestein des Zentralmassivs gewonnen, insbesondere rund um Espaly-Saint-Marcel bei Le Puy-en-Velay, und sind eine französische Korundvarietät mit tiefem blau-violettem Farbton. Wie andere Saphire vulkanischen (basaltischen) Ursprungs zeichnen sie sich durch eine sehr intensive Farbe aus, sind jedoch meist klein und lassen sich nur selten zu mehr als einem Karat schleifen. Historisch im 19. Jahrhundert abgebaut, sind sie heute eine gefragte Kuriosität für Sammler und Liebhaber der französischen Gemmologie, weniger eine kommerzielle Quelle in größerem Umfang.",
+            particularites = "Meist kleine Kristalle (nach dem Schliff selten über einem Karat), mit dem für Saphire basaltischen Ursprungs typischen, sehr intensiven blau-violetten Farbton.",
+            lithotherapie = "Wie andere Saphire wird auch der Auvergne-Saphir traditionell mit Weisheit und geistiger Klarheit assoziiert; sein französischer Ursprung macht ihn zu einem Stein, der besonders von Sammlern geschätzt wird, die dem nationalen mineralogischen Erbe verbunden sind."
+        ),
         "aigue-marine" to GemTranslation(
             nom = "Aquamarin",
             descriptionCourte = "Kristallines „Meerwasser“.",

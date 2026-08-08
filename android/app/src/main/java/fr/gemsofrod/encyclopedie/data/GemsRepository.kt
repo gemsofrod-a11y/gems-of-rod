@@ -1353,6 +1353,24 @@ object GemsRepository {
             rarete = GemRarete.RARE
         ),
         Gem(
+            id = "saphir-auvergne",
+            nom = "Saphir d'Auvergne",
+            nomLatin = "Corindon (variété française, origine volcanique)",
+            famille = "Corindon",
+            couleur = GemColorCategory.BLEU,
+            descriptionCourte = "Un corindon français à la teinte bleu-violet profond, extrait des terrains volcaniques d'Auvergne.",
+            descriptionLongue = "Extraits des terrains volcaniques du Massif central, notamment autour d'Espaly-Saint-Marcel près du Puy-en-Velay, les saphirs d'Auvergne sont une variété française de corindon à la teinte bleu-violet profond. Comme les autres saphirs d'origine basaltique, ils se distinguent par une couleur très soutenue mais des cristaux le plus souvent de petite taille, rarement taillables au-delà d'un carat. Historiquement exploités au XIXe siècle, ils restent aujourd'hui une curiosité recherchée par les collectionneurs et les amateurs de gemmologie française plutôt qu'une source commerciale de volume.",
+            formuleChimique = "Al₂O₃ (Fe, Ti)",
+            systemeCristallin = "Trigonal",
+            durete = "9",
+            indiceRefraction = "1,762 – 1,770",
+            origines = listOf("France (Espaly-Saint-Marcel, Haute-Loire)"),
+            particularites = "Cristaux généralement petits (rarement plus d'un carat taillé), à la couleur bleu-violet très soutenue typique des saphirs d'origine basaltique.",
+            lithotherapie = "Comme les autres saphirs, le saphir d'Auvergne est traditionnellement associé à la sagesse et à la clarté d'esprit ; son origine française en fait une pierre particulièrement appréciée des collectionneurs attachés au patrimoine minéralogique national.",
+            prixCaratEur = "1 000 – 6 000 €/ct",
+            rarete = GemRarete.EXCEPTIONNELLE
+        ),
+        Gem(
             id = "aigue-marine",
             nom = "Aigue-marine",
             nomLatin = "Béryl (variété bleue)",

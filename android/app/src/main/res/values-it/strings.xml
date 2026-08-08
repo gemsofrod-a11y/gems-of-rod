@@ -18,6 +18,10 @@
     <!-- Gemmologia (ricerca + categorie) -->
     <string name="search_gems_placeholder">Cerca una gemma…</string>
     <string name="search_no_results">Nessuna gemma corrisponde a «%1$s».</string>
+    <string name="gemmologie_couleur_title">Colore</string>
+    <string name="gemmologie_couleur_subtitle">Il catalogo classificato per tonalità: rosso, blu, verde…</string>
+    <string name="gemmologie_pays_title">Paese di origine</string>
+    <string name="gemmologie_pays_subtitle">Il catalogo classificato per provenienza geografica.</string>
     <plurals name="gem_count">
         <item quantity="one">%1$d gemma</item>
         <item quantity="other">%1$d gemme</item>
@@ -92,6 +96,10 @@
     <string name="litho_no_gems">Nessuna gemma per ora in questa categoria.</string>
     <string name="litho_virtues_title">Virtù in litoterapia</string>
     <string name="litho_disclaimer">Queste informazioni riguardano credenze e usi tradizionali. Non costituiscono un parere medico né un\'indicazione terapeutica e non sostituiscono la consultazione di un professionista sanitario.</string>
+    <string name="litho_nettoyage_title">Pulizia e ricarica</string>
+    <string name="litho_nettoyage_subtitle">Le pratiche tradizionali per purificare e rivitalizzare le tue pietre.</string>
+    <string name="litho_associations_title">Abbinamento di pietre</string>
+    <string name="litho_associations_subtitle">Combinare più pietre secondo le virtù ricercate.</string>
 
     <!-- Certificato -->
     <string name="certificate_title">Certificato</string>

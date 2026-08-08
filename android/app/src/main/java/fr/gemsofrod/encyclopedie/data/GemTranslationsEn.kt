@@ -521,6 +521,13 @@ object GemTranslationsEn {
             particularites = "Silk-like rutile inclusions that can produce asterism (star sapphire).",
             lithotherapie = "A stone of wisdom since antiquity, blue sapphire is believed to foster clarity of mind, loyalty, and the pursuit of truth."
         ),
+        "saphir-auvergne" to GemTranslation(
+            nom = "Auvergne sapphire",
+            descriptionCourte = "A French corundum with a deep blue-violet hue, mined from the volcanic terrain of Auvergne.",
+            descriptionLongue = "Mined from the volcanic terrain of the Massif Central, notably around Espaly-Saint-Marcel near Le Puy-en-Velay, Auvergne sapphires are a French corundum variety with a deep blue-violet hue. Like other sapphires of basaltic origin, they stand out for their very intense colour but are usually small crystals, rarely cuttable beyond one carat. Historically mined in the 19th century, they remain today a sought-after curiosity for collectors and enthusiasts of French gemology rather than a commercial source of volume.",
+            particularites = "Generally small crystals (rarely more than one carat once cut), with the very intense blue-violet hue typical of sapphires of basaltic origin.",
+            lithotherapie = "Like other sapphires, Auvergne sapphire is traditionally associated with wisdom and clarity of mind; its French origin makes it a stone particularly prized by collectors attached to the national mineralogical heritage."
+        ),
         "aigue-marine" to GemTranslation(
             nom = "Aquamarine",
             descriptionCourte = "Crystalline \"seawater.\"",

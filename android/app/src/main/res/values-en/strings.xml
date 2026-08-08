@@ -18,6 +18,10 @@
     <!-- Gemology (search + categories) -->
     <string name="search_gems_placeholder">Search for a gem…</string>
     <string name="search_no_results">No gem matches “%1$s”.</string>
+    <string name="gemmologie_couleur_title">Color</string>
+    <string name="gemmologie_couleur_subtitle">The catalog sorted by hue: red, blue, green…</string>
+    <string name="gemmologie_pays_title">Country of Origin</string>
+    <string name="gemmologie_pays_subtitle">The catalog sorted by geographic origin.</string>
     <plurals name="gem_count">
         <item quantity="one">%1$d gem</item>
         <item quantity="other">%1$d gems</item>
@@ -92,6 +96,10 @@
     <string name="litho_no_gems">No gem in this category yet.</string>
     <string name="litho_virtues_title">Lithotherapy virtues</string>
     <string name="litho_disclaimer">This information reflects traditional beliefs and uses. It is neither medical advice nor a therapeutic claim, and does not replace consulting a health professional.</string>
+    <string name="litho_nettoyage_title">Cleansing &amp; Recharging</string>
+    <string name="litho_nettoyage_subtitle">Traditional practices for purifying and revitalising your stones.</string>
+    <string name="litho_associations_title">Stone Pairings</string>
+    <string name="litho_associations_subtitle">Combining several stones according to the virtues sought.</string>
 
     <!-- Certificate -->
     <string name="certificate_title">Certificate</string>
