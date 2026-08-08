@@ -1074,6 +1074,13 @@ object GemTranslationsEn {
             particularites = "A near-unique deposit in the world; the color change is more subtle than that of alexandrite.",
             lithotherapie = "Zultanite, which changes color with the light, is associated with adaptability and the capacity for personal transformation."
         ),
+        "ametrine" to GemTranslation(
+            nom = "Ametrine",
+            descriptionCourte = "A bicolour quartz where amethyst's purple and citrine's yellow share a single crystal.",
+            descriptionLongue = "Ametrine owes its bicolouring to a natural temperature gradient within the quartz crystal as it grew: the warmer zones took on citrine's yellow hue, while the cooler zones kept amethyst's purple. Bolivia's Anahí mine, long the world's only commercial source, is tied to a 17th-century legend crediting its discovery to a Spanish conquistador who married a local princess who owned the deposit.",
+            particularites = "The cut is designed to highlight the sharp contrast between the two colour zones, often arranged along a diagonal.",
+            lithotherapie = "Ametrine is said to combine the soothing virtues of amethyst with the stimulating virtues of citrine, a balance between inner calm and creative energy."
+        ),
         "grenat-couleur-changeante" to GemTranslation(
             nom = "Color-change garnet",
             descriptionCourte = "Bluish green by day, purplish red by evening — an underrated rival to alexandrite.",

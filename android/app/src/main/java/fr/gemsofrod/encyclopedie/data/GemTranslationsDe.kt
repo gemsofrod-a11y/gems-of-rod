@@ -1074,6 +1074,13 @@ object GemTranslationsDe {
             particularites = "Weltweit nahezu einzigartiges Vorkommen; der Farbwechsel ist subtiler als der des Alexandrits.",
             lithotherapie = "Zultanit, das je nach Licht die Farbe wechselt, wird mit Anpassungsfähigkeit und der Fähigkeit zur persönlichen Wandlung in Verbindung gebracht."
         ),
+        "ametrine" to GemTranslation(
+            nom = "Ametrin",
+            descriptionCourte = "Ein zweifarbiger Quarz, bei dem sich das Violett des Amethysts und das Gelb des Citrins denselben Kristall teilen.",
+            descriptionLongue = "Ametrin verdankt seine Zweifarbigkeit einem natürlichen Temperaturgefälle innerhalb des Quarzkristalls während seines Wachstums: Die wärmeren Zonen nahmen den gelben Farbton des Citrins an, während die kühleren Zonen das Violett des Amethysts bewahrten. Die bolivianische Anahí-Mine, lange Zeit die einzige kommerzielle Quelle weltweit, ist mit einer Legende aus dem 17. Jahrhundert verbunden, wonach ein spanischer Konquistador, der eine einheimische Prinzessin und Eigentümerin der Lagerstätte heiratete, sie entdeckt haben soll.",
+            particularites = "Der Schliff wird so gewählt, dass der klare Kontrast zwischen den beiden Farbzonen betont wird, die oft diagonal verlaufen.",
+            lithotherapie = "Ametrin soll die beruhigenden Eigenschaften des Amethysts mit den anregenden Eigenschaften des Citrins vereinen — ein Gleichgewicht zwischen innerer Ruhe und schöpferischer Energie."
+        ),
         "grenat-couleur-changeante" to GemTranslation(
             nom = "Farbwechsel-Granat",
             descriptionCourte = "Tagsüber blaugrün, abends rotviolett — ein wenig bekannter Rivale des Alexandrits.",
