@@ -92,6 +92,10 @@
     <string name="litho_no_gems">Noch kein Edelstein in dieser Kategorie.</string>
     <string name="litho_virtues_title">Wirkungen in der Lithotherapie</string>
     <string name="litho_disclaimer">Diese Angaben beruhen auf traditionellen Überzeugungen und Bräuchen. Sie stellen weder eine medizinische Empfehlung noch eine therapeutische Aussage dar und ersetzen nicht die Beratung durch eine medizinische Fachperson.</string>
+    <string name="litho_nettoyage_title">Reinigung &amp; Aufladung</string>
+    <string name="litho_nettoyage_subtitle">Traditionelle Praktiken zur Reinigung und Revitalisierung deiner Steine.</string>
+    <string name="litho_associations_title">Steinkombinationen</string>
+    <string name="litho_associations_subtitle">Mehrere Steine je nach gewünschter Wirkung kombinieren.</string>
 
     <!-- Zertifikat -->
     <string name="certificate_title">Zertifikat</string>

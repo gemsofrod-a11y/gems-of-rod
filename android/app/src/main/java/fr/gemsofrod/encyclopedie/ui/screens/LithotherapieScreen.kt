@@ -56,6 +56,7 @@ import fr.gemsofrod.encyclopedie.data.GemImageCredit
 import fr.gemsofrod.encyclopedie.data.GemImageType
 import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.data.GemsRepository
+import fr.gemsofrod.encyclopedie.data.LithotherapieInfo
 import fr.gemsofrod.encyclopedie.data.ZodiacSigns
 import fr.gemsofrod.encyclopedie.data.BirthMonths
 import fr.gemsofrod.encyclopedie.ui.localized
@@ -101,7 +102,11 @@ object LithotherapieSchemes {
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LithotherapieMenuScreen(onSchemeClick: (String) -> Unit, onBackClick: () -> Unit) {
+fun LithotherapieMenuScreen(
+    onSchemeClick: (String) -> Unit,
+    onInfoClick: (String) -> Unit,
+    onBackClick: () -> Unit
+) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -138,6 +143,19 @@ fun LithotherapieMenuScreen(onSchemeClick: (String) -> Unit, onBackClick: () -> 
                     title = LithotherapieSchemes.title(scheme),
                     subtitle = stringResource(subtitleRes),
                     onClick = { onSchemeClick(scheme) }
+                )
+            }
+            items(
+                listOf(
+                    LithotherapieInfo.NETTOYAGE_RECHARGEMENT to Pair(R.string.litho_nettoyage_title, R.string.litho_nettoyage_subtitle),
+                    LithotherapieInfo.ASSOCIATIONS to Pair(R.string.litho_associations_title, R.string.litho_associations_subtitle)
+                )
+            ) { (topic, res) ->
+                val (titleRes, subtitleRes) = res
+                SchemeCard(
+                    title = stringResource(titleRes),
+                    subtitle = stringResource(subtitleRes),
+                    onClick = { onInfoClick(topic) }
                 )
             }
         }

@@ -92,6 +92,10 @@
     <string name="litho_no_gems">No gem in this category yet.</string>
     <string name="litho_virtues_title">Lithotherapy virtues</string>
     <string name="litho_disclaimer">This information reflects traditional beliefs and uses. It is neither medical advice nor a therapeutic claim, and does not replace consulting a health professional.</string>
+    <string name="litho_nettoyage_title">Cleansing &amp; Recharging</string>
+    <string name="litho_nettoyage_subtitle">Traditional practices for purifying and revitalising your stones.</string>
+    <string name="litho_associations_title">Stone Pairings</string>
+    <string name="litho_associations_subtitle">Combining several stones according to the virtues sought.</string>
 
     <!-- Certificate -->
     <string name="certificate_title">Certificate</string>

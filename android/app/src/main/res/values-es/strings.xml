@@ -92,6 +92,10 @@
     <string name="litho_no_gems">Todavía no hay ninguna gema en esta categoría.</string>
     <string name="litho_virtues_title">Virtudes en litoterapia</string>
     <string name="litho_disclaimer">Esta información corresponde a creencias y usos tradicionales. No constituye un consejo médico ni una alegación terapéutica, y no sustituye la consulta con un profesional de la salud.</string>
+    <string name="litho_nettoyage_title">Limpieza y recarga</string>
+    <string name="litho_nettoyage_subtitle">Las prácticas tradicionales para purificar y revitalizar tus piedras.</string>
+    <string name="litho_associations_title">Asociación de piedras</string>
+    <string name="litho_associations_subtitle">Combinar varias piedras según las virtudes buscadas.</string>
 
     <!-- Certificado -->
     <string name="certificate_title">Certificado</string>

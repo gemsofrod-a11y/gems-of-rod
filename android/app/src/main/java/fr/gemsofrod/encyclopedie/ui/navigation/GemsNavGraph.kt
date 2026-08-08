@@ -19,6 +19,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.HomeScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LanguageScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieGemsScreen
+import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieInfoScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieLabelListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieMenuScreen
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
@@ -38,6 +39,7 @@ private object Routes {
     const val LITHOTHERAPIE_LABELS = "lithotherapie_labels/{scheme}"
     const val LITHOTHERAPIE_GEMS = "lithotherapie_gems/{scheme}/{label}"
     const val LITHOTHERAPIE_DETAIL = "lithotherapie_detail/{gemId}"
+    const val LITHOTHERAPIE_INFO = "lithotherapie_info/{topic}"
     const val LANGUAGE = "language"
 
     fun gemsList(colorName: String) = "gems/$colorName"
@@ -47,6 +49,7 @@ private object Routes {
     fun lithotherapieLabels(scheme: String) = "lithotherapie_labels/$scheme"
     fun lithotherapieGems(scheme: String, label: String) = "lithotherapie_gems/$scheme/${encode(label)}"
     fun lithotherapieDetail(gemId: String) = "lithotherapie_detail/$gemId"
+    fun lithotherapieInfo(topic: String) = "lithotherapie_info/$topic"
 
     fun encode(value: String): String = URLEncoder.encode(value, "UTF-8")
     fun decode(value: String): String = URLDecoder.decode(value, "UTF-8")
@@ -82,6 +85,14 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         composable(Routes.LITHOTHERAPIE_MENU) {
             LithotherapieMenuScreen(
                 onSchemeClick = { scheme -> navController.navigate(Routes.lithotherapieLabels(scheme)) },
+                onInfoClick = { topic -> navController.navigate(Routes.lithotherapieInfo(topic)) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.LITHOTHERAPIE_INFO) { backStackEntry ->
+            val topic = backStackEntry.arguments?.getString("topic").orEmpty()
+            LithotherapieInfoScreen(
+                topic = topic,
                 onBackClick = { navController.popBackStack() }
             )
         }
