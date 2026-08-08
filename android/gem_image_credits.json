@@ -1,4 +1,5 @@
 {
+  "afghanite": [],
   "agate": [
     {
       "artist": "Motekov",
@@ -35,6 +36,7 @@
       "type": "FACETTEE"
     }
   ],
+  "alexandrite": [],
   "amazonite": [
     {
       "artist": "Neil Kadrmas",
@@ -200,6 +202,24 @@
       "type": "BRUTE"
     }
   ],
+  "bixbite": [
+    {
+      "artist": "DonGuennie (G-Empire The World Of Gems)",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_bixbite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fotostrecke_Weltraritaeten-Bixbit-G-EmpireTheWorldOfGems.jpg",
+      "title": "File:Fotostrecke Weltraritaeten-Bixbit-G-EmpireTheWorldOfGems.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Didier Descouens",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_bixbite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Béryl_Rouge.jpg",
+      "title": "File:Béryl Rouge.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "bois-fossilise": [
     {
       "artist": "“Jon Zander (Digon3)”",
@@ -248,6 +268,7 @@
       "type": "BRUTE"
     }
   ],
+  "cavansite": [],
   "celestite": [
     {
       "artist": "Dexter Perkins",
@@ -298,6 +319,7 @@
       "type": "BRUTE"
     }
   ],
+  "chrysocolle": [],
   "chrysoprase": [
     {
       "artist": "Parent Géry",
@@ -422,6 +444,7 @@
       "type": "FACETTEE"
     }
   ],
+  "diamant": [],
   "diaspore-zultanite": [
     {
       "artist": "Zultgems, LLC",
@@ -440,6 +463,9 @@
       "type": "FACETTEE"
     }
   ],
+  "diopside": [],
+  "dioptase": [],
+  "dumortierite": [],
   "emeraude": [
     {
       "artist": "Paweł Maliszczak [hardleo.com]",
@@ -470,6 +496,7 @@
       "type": "BRUTE"
     }
   ],
+  "eudialyte": [],
   "fluorine": [
     {
       "artist": "Robert M. Lavinsky",
@@ -488,6 +515,7 @@
       "type": "FACETTEE"
     }
   ],
+  "goshenite": [],
   "grandidierite": [
     {
       "artist": "Robert M. Lavinsky",
@@ -626,6 +654,8 @@
       "type": "FACETTEE"
     }
   ],
+  "hematite": [],
+  "hemimorphite": [],
   "hessonite": [
     {
       "artist": "Robert M. Lavinsky",
@@ -646,6 +676,8 @@
       "type": "BRUTE"
     }
   ],
+  "hyperstene": [],
+  "iolite": [],
   "jade-jadeite": [
     {
       "artist": "Joe Mabel",
@@ -656,6 +688,7 @@
       "type": "FACETTEE"
     }
   ],
+  "jade-nephrite": [],
   "jaspe": [
     {
       "artist": "No machine-readable author provided. HInBC assumed (based on copyright claims).",
@@ -676,6 +709,7 @@
       "type": "BRUTE"
     }
   ],
+  "kornerupine": [],
   "kunzite": [
     {
       "artist": "Robert M. Lavinsky",
@@ -744,6 +778,7 @@
       "type": "BRUTE"
     }
   ],
+  "magnetite": [],
   "malachite": [
     {
       "artist": "TheFurther21",
@@ -867,6 +902,7 @@
       "type": "BRUTE"
     }
   ],
+  "orthose": [],
   "os-fossilise": [],
   "padparadscha": [
     {
@@ -1162,6 +1198,7 @@
       "type": "FACETTEE"
     }
   ],
+  "rhodonite": [],
   "rubis": [
     {
       "artist": "Parent Géry",
@@ -1200,6 +1237,7 @@
       "type": "BRUTE"
     }
   ],
+  "saphir-auvergne": [],
   "saphir-blanc": [],
   "saphir-bleu": [
     {
@@ -1257,6 +1295,24 @@
       "type": "FACETTEE"
     }
   ],
+  "saphir-teal": [
+    {
+      "artist": "YippeeD",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_saphir_teal_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lizunova-hexagon-teal-parti-sapphire-103ct-Lizunova_Fine_Jewels-_Sydney.jpg",
+      "title": "File:Lizunova-hexagon-teal-parti-sapphire-103ct-Lizunova Fine Jewels- Sydney.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Mliz2000",
+      "license": "CC BY 4.0",
+      "resource_name": "gem_saphir_teal_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Grace-teal-sapphire-diamond-engagement-ring-Milla-diamond-wedding-ring-stack-Sydney-jeweller-Lizunova-Fine-Jewels-NSW-Australia.jpg",
+      "title": "File:Grace-teal-sapphire-diamond-engagement-ring-Milla-diamond-wedding-ring-stack-Sydney-jeweller-Lizunova-Fine-Jewels-NSW-Australia.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "saphir-vert": [
     {
       "artist": "Mliz2000",
@@ -1267,6 +1323,8 @@
       "type": "FACETTEE"
     }
   ],
+  "saphir-violet": [],
+  "sapphirine": [],
   "scapolite": [
     {
       "artist": "Robert M. Lavinsky",
@@ -1313,6 +1371,7 @@
       "type": "BRUTE"
     }
   ],
+  "serpentine": [],
   "shattuckite": [
     {
       "artist": "Géry PARENT",
@@ -1353,6 +1412,7 @@
       "type": "BRUTE"
     }
   ],
+  "sodalite": [],
   "sphalerite": [
     {
       "artist": "Eurico Zimbres.    Zimbres",
@@ -1518,6 +1578,8 @@
       "type": "BRUTE"
     }
   ],
+  "topaze-rose": [],
+  "tourmaline-bleue": [],
   "tourmaline-chrome": [
     {
       "artist": "Robert M. Lavinsky",
@@ -1528,6 +1590,7 @@
       "type": "BRUTE"
     }
   ],
+  "tourmaline-jaune": [],
   "tourmaline-noire": [
     {
       "artist": "James St. John",
@@ -1538,6 +1601,7 @@
       "type": "BRUTE"
     }
   ],
+  "tourmaline-pasteque": [],
   "tourmaline-rose": [
     {
       "artist": "Robert M. Lavinsky",
@@ -1602,6 +1666,7 @@
       "type": "BRUTE"
     }
   ],
+  "turquoise": [],
   "uvarovite": [
     {
       "artist": "Robert M. Lavinsky",
@@ -1612,6 +1677,7 @@
       "type": "BRUTE"
     }
   ],
+  "variscite": [],
   "verre-libyque": [
     {
       "artist": "H. Raab (User:Vesta)",
@@ -1661,5 +1727,7 @@
       "title": "File:0.45cts gem grade blue zircon.jpg",
       "type": "FACETTEE"
     }
-  ]
+  ],
+  "zircon-dore": [],
+  "zircon-hyacinthe": []
 }
