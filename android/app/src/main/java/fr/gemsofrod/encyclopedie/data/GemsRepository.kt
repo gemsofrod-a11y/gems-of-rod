@@ -174,6 +174,24 @@ object GemsRepository {
             prixCaratEur = "6 000 – 60 000 €/ct",
             rarete = GemRarete.EXCEPTIONNELLE
         ),
+        Gem(
+            id = "bixbite",
+            nom = "Bixbite",
+            nomLatin = "Béryl (variété rouge)",
+            famille = "Béryl",
+            couleur = GemColorCategory.ROUGE,
+            descriptionCourte = "Le béryl rouge, l'une des gemmes les plus rares au monde.",
+            descriptionLongue = "Longtemps appelé « bixbite » — un nom aujourd'hui déconseillé par les laboratoires gemmologiques car prêtant à confusion avec la bixbyite, un minéral distinct — le béryl rouge doit sa couleur intense au manganèse. Il ne provient quasiment que d'un seul gisement au monde, dans les monts Wah Wah de l'Utah, où les cristaux dépassant un carat taillé restent exceptionnels.",
+            formuleChimique = "Be₃Al₂(SiO₃)₆ (Mn)",
+            systemeCristallin = "Hexagonal",
+            durete = "7,5 - 8",
+            indiceRefraction = "1,568 – 1,574",
+            origines = listOf("États-Unis (Utah, monts Wah Wah)"),
+            particularites = "Cristaux presque toujours inférieurs à un carat taillé ; source quasi unique au monde, ce qui en fait l'une des gemmes les plus rares et les plus chères au carat.",
+            lithotherapie = "Le bixbite est associé à la vitalité et à la passion, une pierre réputée stimuler l'énergie créatrice et la confiance en soi.",
+            prixCaratEur = "8 000 – 25 000 €/ct",
+            rarete = GemRarete.EXCEPTIONNELLE
+        ),
 
         // ---------- ORANGE ----------
         Gem(
@@ -2730,6 +2748,24 @@ object GemsRepository {
             particularites = "L'astérisme le plus recherché présente six branches parfaitement droites et centrées sur le dôme du cabochon.",
             lithotherapie = "Le saphir étoilé est réputé apporter guidance et protection spirituelle, son étoile symbolisant un chemin à suivre.",
             prixCaratEur = "100 – 3 000 €/ct",
+            rarete = GemRarete.RARE
+        ),
+        Gem(
+            id = "saphir-teal",
+            nom = "Saphir teal",
+            nomLatin = "Corindon (variété bicolore bleu-jaune)",
+            famille = "Corindon",
+            couleur = GemColorCategory.MULTICOLORE,
+            descriptionCourte = "Un corindon bicolore où bleu et jaune se combinent en une teinte bleu-vert singulière.",
+            descriptionLongue = "Le saphir teal doit sa couleur bleu-vert caractéristique à la coexistence, au sein d'un même cristal, de zones de croissance bleues (fer et titane) et jaunes (fer), qui se fondent visuellement une fois la pierre taillée. Cette bicoloration naturelle, plus qu'une teinte uniforme, en fait une pierre très recherchée par les amateurs de couleurs atypiques, en particulier dans les gisements du Montana.",
+            formuleChimique = "Al₂O₃ (Fe, Ti)",
+            systemeCristallin = "Trigonal",
+            durete = "9",
+            indiceRefraction = "1,762 – 1,770",
+            origines = listOf("États-Unis (Montana, Rock Creek)", "Australie (Nouvelle-Galles du Sud)", "Madagascar (Ilakaka)"),
+            particularites = "La bicoloration bleu-jaune, visible en zones distinctes à l'état brut, se fond en une teinte bleu-vert homogène une fois la pierre taillée et orientée.",
+            lithotherapie = "Le saphir teal est réputé favoriser l'équilibre entre raison et intuition, sa double coloration symbolisant l'harmonie entre deux énergies complémentaires.",
+            prixCaratEur = "300 – 2 500 €/ct",
             rarete = GemRarete.RARE
         ),
         Gem(

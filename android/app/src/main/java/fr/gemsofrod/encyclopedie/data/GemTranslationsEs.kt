@@ -66,6 +66,13 @@ object GemTranslationsEs {
             particularites = "Un único yacimiento conocido en el mundo; casi todas las piedras talladas son inferiores a 2 quilates.",
             lithotherapie = "Mineral raro, la painita se asocia en litoterapia con la perseverancia y la confianza en el propio camino, incluso fuera de los senderos trillados."
         ),
+        "bixbite" to GemTranslation(
+            nom = "Bixbita",
+            descriptionCourte = "El berilo rojo, una de las gemas más raras del mundo.",
+            descriptionLongue = "Conocido durante mucho tiempo como «bixbita» —nombre hoy desaconsejado por los laboratorios gemológicos por su confusión con la bixbyita, un mineral distinto—, el berilo rojo debe su intenso color al manganeso. Procede prácticamente de un único yacimiento en el mundo, en los montes Wah Wah de Utah, donde los cristales que superan un quilate una vez tallados siguen siendo excepcionales.",
+            particularites = "Cristales tallados casi siempre inferiores a un quilate; fuente casi única en el mundo, lo que la convierte en una de las gemas más raras y caras por quilate.",
+            lithotherapie = "La bixbita se asocia con la vitalidad y la pasión, una piedra reputada por estimular la energía creativa y la confianza en uno mismo."
+        ),
         "crocoite" to GemTranslation(
             nom = "Crocoíta",
             descriptionCourte = "Cristales prismáticos de color rojo-anaranjado vivo, tesoro de los coleccionistas.",
@@ -1052,6 +1059,13 @@ object GemTranslationsEs {
             descriptionLongue = "Al igual que su primo el rubí estrella, el zafiro estrella debe su asterismo a inclusiones de rutilo en forma de seda. Se encuentra sobre todo en azul o negro, este último tradicionalmente asociado a la protección en varias culturas asiáticas.",
             particularites = "El asterismo más buscado presenta seis brazos perfectamente rectos y centrados en la cúpula del cabujón.",
             lithotherapie = "Se dice que el zafiro estrella aporta guía y protección espiritual, simbolizando su estrella un camino a seguir."
+        ),
+        "saphir-teal" to GemTranslation(
+            nom = "Zafiro teal",
+            descriptionCourte = "Un corindón bicolor donde el azul y el amarillo se combinan en un tono azul verdoso singular.",
+            descriptionLongue = "El zafiro teal debe su característico color azul verdoso a la coexistencia, dentro de un mismo cristal, de zonas de crecimiento azules (hierro y titanio) y amarillas (hierro), que se funden visualmente una vez tallada la piedra. Esta bicoloración natural, más que un tono uniforme, la convierte en una piedra muy buscada por los aficionados a los colores atípicos, en particular en los yacimientos de Montana.",
+            particularites = "La bicoloración azul-amarilla, visible en zonas distintas en bruto, se funde en un tono azul verdoso homogéneo una vez tallada y orientada la piedra.",
+            lithotherapie = "Se dice que el zafiro teal favorece el equilibrio entre la razón y la intuición, simbolizando su doble coloración la armonía entre dos energías complementarias."
         ),
         "diaspore-zultanite" to GemTranslation(
             nom = "Zultanita",
