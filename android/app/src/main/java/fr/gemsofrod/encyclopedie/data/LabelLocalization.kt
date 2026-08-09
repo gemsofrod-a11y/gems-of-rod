@@ -57,6 +57,7 @@ object LabelLocalization {
         "Gemme organique" to mapOf("en" to "Organic gem", "es" to "Gema orgánica", "it" to "Gemma organica", "de" to "Organischer Schmuckstein"),
         "Grandidierite" to mapOf("en" to "Grandidierite", "es" to "Grandidierita", "it" to "Grandidierite", "de" to "Grandidierit"),
         "Grenat" to mapOf("en" to "Garnet", "es" to "Granate", "it" to "Granato", "de" to "Granat"),
+        "Météorite" to mapOf("en" to "Meteorite", "es" to "Meteorito", "it" to "Meteorite", "de" to "Meteorit"),
         "Groupe de l'humite" to mapOf("en" to "Humite group", "es" to "Grupo de la humita", "it" to "Gruppo dell'humite", "de" to "Humitgruppe"),
         "Hambergite" to mapOf("en" to "Hambergite", "es" to "Hambergita", "it" to "Hambergite", "de" to "Hambergit"),
         "Haüyne" to mapOf("en" to "Hauyne", "es" to "Hauyna", "it" to "Hauyna", "de" to "Hauyn"),
