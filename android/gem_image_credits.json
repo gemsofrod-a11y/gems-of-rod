@@ -926,6 +926,330 @@
     }
   ],
   "maw-sit-sit": [],
+  "meteorite-admire": [
+    {
+      "artist": "Steve Jurvetson from Los Altos, USA",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_meteorite_admire_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Space_Face_—_the_Admire_Pallasite_(50275698047).jpg",
+      "title": "File:Space Face — the Admire Pallasite (50275698047).jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "jurvetson",
+      "license": "by 2.0",
+      "resource_name": "gem_meteorite_admire_facette",
+      "source_url": "https://www.flickr.com/photos/44124348109@N01/50275698047",
+      "title": "Space Face — the Admire Pallasite",
+      "type": "FACETTEE"
+    }
+  ],
+  "meteorite-alh-84001": [
+    {
+      "artist": "Kunalm",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_meteorite_alh_84001_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:ALH_84001.jpg",
+      "title": "File:ALH 84001.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "meteorite-allende": [
+    {
+      "artist": "Shiny Things",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_meteorite_allende_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Allende_meteorite.jpg",
+      "title": "File:Allende meteorite.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "meteorite-campo-del-cielo": [
+    {
+      "artist": "Geo Lightspeed7",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_meteorite_campo_del_cielo_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Campo_del_Cielo_Meteorite_17g.jpg",
+      "title": "File:Campo del Cielo Meteorite 17g.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Uploaded by Hedning to Swedish Wikipedia",
+      "license": "Public domain",
+      "resource_name": "gem_meteorite_campo_del_cielo_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Campo_del_Cielo_meteorite,_NHM,_drawing.jpg",
+      "title": "File:Campo del Cielo meteorite, NHM, drawing.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "meteorite-canyon-diablo": [
+    {
+      "artist": "Geoffrey Notkin, Aerolite Meteorites of Tucson\n\nOriginal uploader was Geoking42 at en.wikipedia",
+      "license": "CC BY-SA 2.5",
+      "resource_name": "gem_meteorite_canyon_diablo_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Canyon-diablo-meteorite.jpg",
+      "title": "File:Canyon-diablo-meteorite.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Vahe Martirosyan",
+      "license": "CC BY-SA 2.0",
+      "resource_name": "gem_meteorite_canyon_diablo_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Canyon_Diablo,_UCLA_Meteorite_Gallery.jpg",
+      "title": "File:Canyon Diablo, UCLA Meteorite Gallery.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "meteorite-chelyabinsk": [
+    {
+      "artist": "Didier Descouens",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_meteorite_chelyabinsk_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2_Cheljabinsk_meteorite_fragment.jpg",
+      "title": "File:2 Cheljabinsk meteorite fragment.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Lumaca",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_meteorite_chelyabinsk_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Chelyabinsk_meteorite_Historical_Museum_1.jpg",
+      "title": "File:Chelyabinsk meteorite Historical Museum 1.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "meteorite-ensisheim": [
+    {
+      "artist": "Konrad Andrä",
+      "license": "CC BY-SA 2.0 de",
+      "resource_name": "gem_meteorite_ensisheim_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ensisheim_meteorit_donnerstein_1_vss2007.jpg",
+      "title": "File:Ensisheim meteorit donnerstein 1 vss2007.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "meteorite-esquel": [
+    {
+      "artist": "Marie-Lan Taÿ Pamart",
+      "license": "CC BY 4.0",
+      "resource_name": "gem_meteorite_esquel_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Esquel_pallasite_MNHN_Minéralogie.jpg",
+      "title": "File:Esquel pallasite MNHN Minéralogie.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Vahe Martirosyan",
+      "license": "CC BY-SA 2.0",
+      "resource_name": "gem_meteorite_esquel_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Esquel_pallasite,_UCLA,_Meteorite_Gallery.jpg",
+      "title": "File:Esquel pallasite, UCLA, Meteorite Gallery.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "meteorite-fukang": [
+    {
+      "artist": "James St. John",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_meteorite_fukang_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fukang_meteorite,_pallasite_(14609062158).jpg",
+      "title": "File:Fukang meteorite, pallasite (14609062158).jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "James St. John",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_meteorite_fukang_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fukang_meteorite,_pallasite_(14772700996).jpg",
+      "title": "File:Fukang meteorite, pallasite (14772700996).jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "meteorite-gibeon": [
+    {
+      "artist": "Kevin Walsh",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_meteorite_gibeon_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Gibeon_meteorite_slice.jpg",
+      "title": "File:Gibeon meteorite slice.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "James Brooks",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_meteorite_gibeon_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Gibeon_meteorite,_slice_TNS.jpg",
+      "title": "File:Gibeon meteorite, slice TNS.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "meteorite-hoba": [
+    {
+      "artist": "Olga Ernst",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_meteorite_hoba_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Hoba_meteorite,_Namibia_(2014).jpg",
+      "title": "File:Hoba meteorite, Namibia (2014).jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "meteorite-imilac": [
+    {
+      "artist": "Vahe Martirosyan",
+      "license": "CC BY-SA 2.0",
+      "resource_name": "gem_meteorite_imilac_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Imilac_and_Seymchan_pallasites_at_UCLA_Meteorite_Gallery.jpg",
+      "title": "File:Imilac and Seymchan pallasites at UCLA Meteorite Gallery.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Steve Jurvetson",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_meteorite_imilac_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Imilac_meteorite_slice_(53893615988).jpg",
+      "title": "File:Imilac meteorite slice (53893615988).jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "meteorite-lunaire-nwa": [
+    {
+      "artist": "Raimond Spekking",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_meteorite_lunaire_nwa_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lunar_meteorite_NWA_10665,_Feldspathic_breccia-8937.jpg",
+      "title": "File:Lunar meteorite NWA 10665, Feldspathic breccia-8937.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "meteorite-muonionalusta": [
+    {
+      "artist": "R. Tanaka",
+      "license": "CC BY-SA 2.0",
+      "resource_name": "gem_meteorite_muonionalusta_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Muonionalusta_meteorite,_full_slice.jpg",
+      "title": "File:Muonionalusta meteorite, full slice.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Daderot",
+      "license": "CC0",
+      "resource_name": "gem_meteorite_muonionalusta_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Muonionalusta,_Sweden,_Iron,_IVA_-_Center_for_Meteorite_Studies_-_Arizona_State_University_-_Tempe,_AZ_-_DSC05788.JPG",
+      "title": "File:Muonionalusta, Sweden, Iron, IVA - Center for Meteorite Studies - Arizona State University - Tempe, AZ - DSC05788.JPG",
+      "type": "FACETTEE"
+    }
+  ],
+  "meteorite-murchison": [
+    {
+      "artist": "United States Department of Energy; uploaded en wikipedia by en:User:Carl Henderson.",
+      "license": "Public domain",
+      "resource_name": "gem_meteorite_murchison_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Murchison-meteorite-ANL.jpg",
+      "title": "File:Murchison-meteorite-ANL.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "meteorite-nantan": [
+    {
+      "artist": "Dennis Cheng",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_meteorite_nantan_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Nantan_meteorite_Oxford.jpg",
+      "title": "File:Nantan meteorite Oxford.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Astrowoosie",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_meteorite_nantan_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Nantan_meteorite_shale_oxide.jpg",
+      "title": "File:Nantan meteorite shale oxide.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "meteorite-nwa-7034": [
+    {
+      "artist": "Apelsinskal",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_meteorite_nwa_7034_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Black_Beauty_tomat.jpg",
+      "title": "File:Black Beauty tomat.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "meteorite-nwa-chondrite": [
+    {
+      "artist": "James St. John",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_meteorite_nwa_chondrite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ordinary_chondrite_NWA_3189_Meteorite.jpg",
+      "title": "File:Ordinary chondrite NWA 3189 Meteorite.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Meteorite Recon.",
+      "license": "CC BY 3.0",
+      "resource_name": "gem_meteorite_nwa_chondrite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:NWA_778_El_Mahbes_meteorite_-_200705.jpg",
+      "title": "File:NWA 778 El Mahbes meteorite - 200705.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "meteorite-peekskill": [
+    {
+      "artist": "Wknight94 talk",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_meteorite_peekskill_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Peekskill_meteorite_in_Museum_of_Natural_History.jpg",
+      "title": "File:Peekskill meteorite in Museum of Natural History.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "meteorite-seymchan": [
+    {
+      "artist": "Steve Jurvetson from Los Altos, USA",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_meteorite_seymchan_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Huge_Seymchan_Pallasite_(50060355141).jpg",
+      "title": "File:Huge Seymchan Pallasite (50060355141).jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Matteo De Stefano/MUSE",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_meteorite_seymchan_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Seymchan_pallasite,_MUSE.jpg",
+      "title": "File:Seymchan pallasite, MUSE.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "meteorite-sikhote-alin": [
+    {
+      "artist": "NathanScientific",
+      "license": "CC0",
+      "resource_name": "gem_meteorite_sikhote_alin_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Oriented_Sikhote-Alin_Meteorite_2.jpg",
+      "title": "File:Oriented Sikhote-Alin Meteorite 2.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Christine und Hagen Graf",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_meteorite_sikhote_alin_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:The_third_biggest_piece_of_the_Sikhote-Alin_meteorite.jpg",
+      "title": "File:The third biggest piece of the Sikhote-Alin meteorite.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "meteorite-willamette": [
+    {
+      "artist": "Vicpeters",
+      "license": "CC BY 4.0",
+      "resource_name": "gem_meteorite_willamette_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Willamette_meteorite_at_Dorothy_and_Lewis_B._Cullman_Hall_of_the_Universe.jpg",
+      "title": "File:Willamette meteorite at Dorothy and Lewis B. Cullman Hall of the Universe.jpg",
+      "type": "BRUTE"
+    }
+  ],
   "moldavite": [
     {
       "artist": "AdamStejskal",
