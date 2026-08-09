@@ -14,6 +14,8 @@
     <string name="home_lithotherapie_subtitle">Die traditionellen Wirkungen und Verwendungen jedes Steins.</string>
     <string name="home_language_title">Sprache</string>
     <string name="home_language_subtitle">Wählen Sie die Sprache der App.</string>
+    <string name="home_meteorites_title">Meteorite</string>
+    <string name="home_meteorites_subtitle">Himmlisches Eisen, Pallasite und vom Himmel gefallene Steine: Materie jenseits der Erde.</string>
 
     <!-- Gemmologie (Suche + Kategorien) -->
     <string name="search_gems_placeholder">Nach einem Edelstein suchen…</string>
@@ -160,4 +162,24 @@
 
     <!-- Outils d'analyse -->
     <string name="instruments_title">Analysewerkzeuge</string>
+
+    <!-- Meteorite -->
+    <string name="meteorites_intro">Ein Fragment eines Asteroiden, des Mars oder des Mondes, das nach einer Reise von Millionen Jahren auf die Erde zurückgefallen ist. Manche Meteorite lassen sich wie ein Schmuckstein schneiden und polieren; andere bleiben wissenschaftliche Sammlerstücke. Dieser Bereich unterscheidet sie.</string>
+    <string name="meteorites_classification_title">Klassifikation</string>
+    <string name="meteorites_classification_subtitle">Siderite, Siderolithe, Aerolithe: die großen Meteoritenfamilien verstehen.</string>
+    <string name="meteorite_famille_ferreuse">Siderite (Eisen)</string>
+    <string name="meteorite_famille_pallasite">Pallasite (Siderolithe)</string>
+    <string name="meteorite_famille_chondrite">Chondrite (Aerolithe)</string>
+    <string name="meteorite_famille_prestige">Wissenschaftliche Prestigestücke</string>
+    <string name="meteorite_famille_martienne_lunaire">Mars &amp; Mond</string>
+    <string name="meteorite_fiche_origine">Herkunft</string>
+    <string name="meteorite_fiche_classification">Klassifikation</string>
+    <string name="meteorite_fiche_composition">Mineralische Zusammensetzung</string>
+    <string name="meteorite_fiche_durete">Härte (Mohs)</string>
+    <string name="meteorite_fiche_densite">Dichte</string>
+    <string name="meteorite_fiche_couleur">Farbe</string>
+    <string name="meteorite_fiche_taille">Schnittmöglichkeit</string>
+    <string name="meteorite_fiche_qualite_gemme">Schmuckqualität</string>
+    <string name="meteorite_fiche_interet_joaillerie">Interesse für die Schmuckherstellung</string>
+    <string name="meteorite_fiche_prix">Ungefährer Preis pro Gramm</string>
 </resources>

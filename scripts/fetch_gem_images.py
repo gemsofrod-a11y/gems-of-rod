@@ -251,6 +251,30 @@ GEMS = [
     ("opale-noire", ['Black opal Lightning Ridge', 'Black opal gemstone'], ['black opal'], (BRUTE, FACETTEE)),
     ("opale-boulder", ['Boulder opal', 'Boulder opal Queensland'], ['boulder opal'], (BRUTE, FACETTEE)),
     ("opale-ethiopie", ['Ethiopian opal', 'Welo opal', 'Ethiopian opal gemstone'], ['ethiopian opal', 'welo opal'], (BRUTE, FACETTEE)),
+
+    # Météorites (section dédiée, distincte du catalogue Gemmologie)
+    ("meteorite-gibeon", ['Gibeon meteorite slice', 'Gibeon meteorite Widmanstatten', 'Gibeon meteorite specimen'], ['gibeon'], (BRUTE, FACETTEE)),
+    ("meteorite-sikhote-alin", ['Sikhote-Alin meteorite', 'Sikhote Alin meteorite individual'], ['sikhote'], (BRUTE, FACETTEE)),
+    ("meteorite-campo-del-cielo", ['Campo del Cielo meteorite', 'Campo del Cielo meteorite slice'], ['campo del cielo'], (BRUTE, FACETTEE)),
+    ("meteorite-muonionalusta", ['Muonionalusta meteorite slice', 'Muonionalusta meteorite Widmanstatten'], ['muonionalusta'], (BRUTE, FACETTEE)),
+    ("meteorite-nantan", ['Nantan meteorite', 'Nantan iron meteorite specimen'], ['nantan'], (BRUTE, FACETTEE)),
+    ("meteorite-canyon-diablo", ['Canyon Diablo meteorite', 'Canyon Diablo meteorite slice'], ['canyon diablo'], (BRUTE, FACETTEE)),
+    ("meteorite-seymchan", ['Seymchan pallasite', 'Seymchan meteorite slice'], ['seymchan'], (BRUTE, FACETTEE)),
+    ("meteorite-esquel", ['Esquel pallasite', 'Esquel meteorite slice'], ['esquel'], (BRUTE, FACETTEE)),
+    ("meteorite-imilac", ['Imilac pallasite', 'Imilac meteorite slice'], ['imilac'], (BRUTE, FACETTEE)),
+    ("meteorite-admire", ['Admire pallasite', 'Admire pallasite meteorite'], ['admire'], (BRUTE, FACETTEE)),
+    ("meteorite-fukang", ['Fukang pallasite', 'Fukang meteorite slice'], ['fukang'], (BRUTE, FACETTEE)),
+    ("meteorite-chelyabinsk", ['Chelyabinsk meteorite', 'Chelyabinsk meteorite fragment'], ['chelyabinsk'], (BRUTE, FACETTEE)),
+    ("meteorite-peekskill", ['Peekskill meteorite'], ['peekskill'], (BRUTE,)),
+    ("meteorite-nwa-chondrite", ['Northwest Africa chondrite meteorite', 'NWA chondrite meteorite slice', 'Saharan chondrite meteorite'], ['chondrite', 'northwest africa', 'nwa'], (BRUTE, FACETTEE)),
+    ("meteorite-murchison", ['Murchison meteorite', 'Murchison meteorite fragment'], ['murchison'], (BRUTE,)),
+    ("meteorite-allende", ['Allende meteorite', 'Allende meteorite fragment'], ['allende'], (BRUTE,)),
+    ("meteorite-hoba", ['Hoba meteorite', 'Hoba meteorite Namibia'], ['hoba'], (BRUTE,)),
+    ("meteorite-willamette", ['Willamette meteorite', 'Willamette meteorite museum'], ['willamette'], (BRUTE,)),
+    ("meteorite-ensisheim", ['Ensisheim meteorite', 'Ensisheim meteorite stone'], ['ensisheim'], (BRUTE,)),
+    ("meteorite-nwa-7034", ['NWA 7034 meteorite', 'Black Beauty meteorite Mars'], ['nwa 7034', 'black beauty'], (BRUTE,)),
+    ("meteorite-alh-84001", ['ALH 84001 meteorite', 'Allan Hills 84001 meteorite'], ['alh 84001', 'allan hills'], (BRUTE,)),
+    ("meteorite-lunaire-nwa", ['Lunar meteorite NWA', 'Lunar meteorite fragment'], ['lunar meteorite'], (BRUTE,)),
 ]
 
 EXCLUDED_TITLE_TOKENS = [

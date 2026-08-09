@@ -14,6 +14,8 @@
     <string name="home_lithotherapie_subtitle">Les vertus et usages traditionnels associés à chaque pierre.</string>
     <string name="home_language_title">Langue</string>
     <string name="home_language_subtitle">Choisissez la langue de l\'application.</string>
+    <string name="home_meteorites_title">Météorites</string>
+    <string name="home_meteorites_subtitle">Fer céleste, pallasites et pierres tombées du ciel : une matière au-delà de la Terre.</string>
 
     <!-- Gemmologie (recherche + catégories) -->
     <string name="search_gems_placeholder">Rechercher une gemme…</string>
@@ -160,4 +162,24 @@
 
     <!-- Outils d'analyse -->
     <string name="instruments_title">Outils d\'analyse</string>
+
+    <!-- Météorites -->
+    <string name="meteorites_intro">Un fragment d\'astéroïde, de Mars ou de la Lune, retombé sur Terre après un voyage de plusieurs millions d\'années. Certaines météorites se taillent et se polissent comme une pierre fine ; d\'autres restent des pièces de collection scientifique. Cette section les distingue.</string>
+    <string name="meteorites_classification_title">Classification</string>
+    <string name="meteorites_classification_subtitle">Sidérites, sidérolithes, aérolithes : comprendre les grandes familles de météorites.</string>
+    <string name="meteorite_famille_ferreuse">Ferreuses (sidérites)</string>
+    <string name="meteorite_famille_pallasite">Pallasites (sidérolithes)</string>
+    <string name="meteorite_famille_chondrite">Chondrites (aérolithes)</string>
+    <string name="meteorite_famille_prestige">Pièces de prestige scientifique</string>
+    <string name="meteorite_famille_martienne_lunaire">Martiennes &amp; lunaires</string>
+    <string name="meteorite_fiche_origine">Origine</string>
+    <string name="meteorite_fiche_classification">Classification</string>
+    <string name="meteorite_fiche_composition">Composition minérale</string>
+    <string name="meteorite_fiche_durete">Dureté (Mohs)</string>
+    <string name="meteorite_fiche_densite">Densité</string>
+    <string name="meteorite_fiche_couleur">Couleur</string>
+    <string name="meteorite_fiche_taille">Possibilité de taille</string>
+    <string name="meteorite_fiche_qualite_gemme">Qualité gemme</string>
+    <string name="meteorite_fiche_interet_joaillerie">Intérêt en joaillerie</string>
+    <string name="meteorite_fiche_prix">Prix approximatif au gramme</string>
 </resources>
