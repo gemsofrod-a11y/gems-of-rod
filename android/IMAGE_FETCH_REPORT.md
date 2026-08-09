@@ -182,19 +182,19 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | bixbite | ♻️ [File:Fotostrecke Weltraritaeten-Bixbit-G-EmpireTheWorldOfGems.jpg](https://commons.wikimedia.org/wiki/File:Fotostrecke_Weltraritaeten-Bixbit-G-EmpireTheWorldOfGems.jpg) | ♻️ [File:Béryl Rouge.jpg](https://commons.wikimedia.org/wiki/File:Béryl_Rouge.jpg) |
 | saphir-teal | ♻️ [File:Lizunova-hexagon-teal-parti-sapphire-103ct-Lizunova Fine Jewels- Sydney.jpg](https://commons.wikimedia.org/wiki/File:Lizunova-hexagon-teal-parti-sapphire-103ct-Lizunova_Fine_Jewels-_Sydney.jpg) | ♻️ [File:Grace-teal-sapphire-diamond-engagement-ring-Milla-diamond-wedding-ring-stack-Sydney-jeweller-Lizunova-Fine-Jewels-NSW-Australia.jpg](https://commons.wikimedia.org/wiki/File:Grace-teal-sapphire-diamond-engagement-ring-Milla-diamond-wedding-ring-stack-Sydney-jeweller-Lizunova-Fine-Jewels-NSW-Australia.jpg) |
 | ametrine | ♻️ [File:Ametrine In Palm.png](https://commons.wikimedia.org/wiki/File:Ametrine_In_Palm.png) | ♻️ [File:Natural ametrine round gemstone.jpg](https://commons.wikimedia.org/wiki/File:Natural_ametrine_round_gemstone.jpg) |
-| aventurine | ✅ [File:Green Aventurine Bracelet.jpg](https://commons.wikimedia.org/wiki/File:Green_Aventurine_Bracelet.jpg) | ✅ [File:Quarz - Aventurin.jpg](https://commons.wikimedia.org/wiki/File:Quarz_-_Aventurin.jpg) |
-| epidote | ✅ [File:Epidote crystals.jpg](https://commons.wikimedia.org/wiki/File:Epidote_crystals.jpg) | ✅ [File:Epidote crystal.jpg](https://commons.wikimedia.org/wiki/File:Epidote_crystal.jpg) |
+| aventurine | ♻️ [File:Green Aventurine Bracelet.jpg](https://commons.wikimedia.org/wiki/File:Green_Aventurine_Bracelet.jpg) | ♻️ [File:Quarz - Aventurin.jpg](https://commons.wikimedia.org/wiki/File:Quarz_-_Aventurin.jpg) |
+| epidote | ♻️ [File:Epidote crystals.jpg](https://commons.wikimedia.org/wiki/File:Epidote_crystals.jpg) | ♻️ [File:Epidote crystal.jpg](https://commons.wikimedia.org/wiki/File:Epidote_crystal.jpg) |
 | gaspeite | ❌ non trouvée | ❌ non trouvée |
-| hiddenite | ✅ [File:Hiddenite 7.jpg](https://commons.wikimedia.org/wiki/File:Hiddenite_7.jpg) | ✅ [File:Spodumene.jpg](https://commons.wikimedia.org/wiki/File:Spodumene.jpg) |
+| hiddenite | ♻️ [File:Hiddenite 7.jpg](https://commons.wikimedia.org/wiki/File:Hiddenite_7.jpg) | ♻️ [File:Spodumene.jpg](https://commons.wikimedia.org/wiki/File:Spodumene.jpg) |
 | angelite | ❌ non trouvée | ❌ non trouvée |
-| oeil-de-faucon | ✅ [File:Hawks eye.jpg](https://commons.wikimedia.org/wiki/File:Hawks_eye.jpg) | ✅ [File:Blue tiger eye - falcon eye.jpg](https://commons.wikimedia.org/wiki/File:Blue_tiger_eye_-_falcon_eye.jpg) |
-| howlite | ✅ [File:Howlite-Crystal-Ball-02.png](https://commons.wikimedia.org/wiki/File:Howlite-Crystal-Ball-02.png) | ✅ [File:Howlite - tumble polished stone.jpg](https://commons.wikimedia.org/wiki/File:Howlite_-_tumble_polished_stone.jpg) |
-| rhodizite | ✅ [File:Rhodizite 4.JPG](https://commons.wikimedia.org/wiki/File:Rhodizite_4.JPG) | ✅ [File:Rhodizite 1.JPG](https://commons.wikimedia.org/wiki/File:Rhodizite_1.JPG) |
-| sanidine | ✅ [File:Rotherkopfite crystals.png](https://commons.wikimedia.org/wiki/File:Rotherkopfite_crystals.png) | ✅ [File:Forsterite on Sanidine - Ochtendung, Eifel, Germany.jpg](https://commons.wikimedia.org/w/index.php?curid=9819497) |
-| tremolite | ✅ [File:Tremolite (GeoDIL number - 1701).jpg](https://commons.wikimedia.org/wiki/File:Tremolite_(GeoDIL_number_-_1701).jpg) | ❌ échec téléchargement |
+| oeil-de-faucon | ♻️ [File:Hawks eye.jpg](https://commons.wikimedia.org/wiki/File:Hawks_eye.jpg) | ♻️ [File:Blue tiger eye - falcon eye.jpg](https://commons.wikimedia.org/wiki/File:Blue_tiger_eye_-_falcon_eye.jpg) |
+| howlite | ♻️ [File:Howlite-Crystal-Ball-02.png](https://commons.wikimedia.org/wiki/File:Howlite-Crystal-Ball-02.png) | ♻️ [File:Howlite - tumble polished stone.jpg](https://commons.wikimedia.org/wiki/File:Howlite_-_tumble_polished_stone.jpg) |
+| rhodizite | ♻️ [File:Rhodizite 4.JPG](https://commons.wikimedia.org/wiki/File:Rhodizite_4.JPG) | ♻️ [File:Rhodizite 1.JPG](https://commons.wikimedia.org/wiki/File:Rhodizite_1.JPG) |
+| sanidine | ♻️ [File:Rotherkopfite crystals.png](https://commons.wikimedia.org/wiki/File:Rotherkopfite_crystals.png) | ♻️ [File:Forsterite on Sanidine - Ochtendung, Eifel, Germany.jpg](https://commons.wikimedia.org/w/index.php?curid=9819497) |
+| tremolite | ♻️ [File:Tremolite (GeoDIL number - 1701).jpg](https://commons.wikimedia.org/wiki/File:Tremolite_(GeoDIL_number_-_1701).jpg) | ❌ échec téléchargement |
 | oeil-de-taureau | ❌ non trouvée | ❌ non trouvée |
 | unakite | ❌ échec téléchargement | ❌ échec téléchargement |
-| oeil-de-sainte-lucie | — | ✅ [File:Turbo petholatus Linnaeus, 1758 operculum - Wikimedia Commons (1).jpg](https://commons.wikimedia.org/wiki/File:Turbo_petholatus_Linnaeus,_1758_operculum_-_Wikimedia_Commons_(1).jpg) |
-| jais | ✅ [File:Gagat-Holzmaden.JPG](https://commons.wikimedia.org/wiki/File:Gagat-Holzmaden.JPG) | ✅ [File:Jet Jewellery.jpg](https://commons.wikimedia.org/wiki/File:Jet_Jewellery.jpg) |
+| oeil-de-sainte-lucie | — | ♻️ [File:Turbo petholatus Linnaeus, 1758 operculum - Wikimedia Commons (1).jpg](https://commons.wikimedia.org/wiki/File:Turbo_petholatus_Linnaeus,_1758_operculum_-_Wikimedia_Commons_(1).jpg) |
+| jais | ♻️ [File:Gagat-Holzmaden.JPG](https://commons.wikimedia.org/wiki/File:Gagat-Holzmaden.JPG) | ♻️ [File:Jet Jewellery.jpg](https://commons.wikimedia.org/wiki/File:Jet_Jewellery.jpg) |
 
 **198 / 379** photos récupérées au total.
