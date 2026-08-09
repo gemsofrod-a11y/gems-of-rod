@@ -2,6 +2,7 @@ package fr.gemsofrod.encyclopedie.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,8 +19,10 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
@@ -45,6 +48,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -81,6 +85,7 @@ fun HomeScreen(
             TopAppBar(
                 title = { Text("Gems of Rod") },
                 actions = {
+                    LanguageButton(flagEmoji = currentLanguage.flagEmoji, onClick = onLanguageClick)
                     IconButton(onClick = onFavoritesClick) {
                         Icon(Icons.Filled.Favorite, contentDescription = stringResource(R.string.favorites_title))
                     }
@@ -97,6 +102,7 @@ fun HomeScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
+                .verticalScroll(rememberScrollState())
                 .padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
@@ -125,14 +131,25 @@ fun HomeScreen(
                 backgroundDrawable = null,
                 leadingEmoji = "☄️"
             )
-            HomeSectionCard(
-                title = stringResource(R.string.home_language_title),
-                subtitle = stringResource(R.string.home_language_subtitle),
-                onClick = onLanguageClick,
-                backgroundDrawable = null,
-                leadingEmoji = currentLanguage.flagEmoji
-            )
         }
+    }
+}
+
+@Composable
+private fun LanguageButton(flagEmoji: String, onClick: () -> Unit) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .clip(RoundedCornerShape(12.dp))
+            .clickable(onClick = onClick)
+            .padding(horizontal = 10.dp, vertical = 6.dp)
+    ) {
+        Text(text = flagEmoji, fontSize = 20.sp)
+        Text(
+            text = stringResource(R.string.home_language_title),
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
     }
 }
 
