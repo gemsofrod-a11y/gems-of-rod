@@ -18,6 +18,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -57,13 +58,15 @@ import fr.gemsofrod.encyclopedie.ui.localizedLabel
 /**
  * Outil d'identification de pierre : l'utilisateur renseigne les
  * caractéristiques qu'il connaît ou observe (couleur, transparence, éclat,
- * clivage, système cristallin, dureté, densité, indice de réfraction), tous
- * facultatifs, et l'app renvoie les gemmes du catalogue les plus proches,
- * classées par nombre de critères correspondants.
+ * clivage, pléochroïsme, fluorescence UV, système cristallin, dureté,
+ * densité, indice de réfraction), tous facultatifs, et l'app renvoie les
+ * gemmes du catalogue les plus proches, classées par nombre de critères
+ * correspondants. Une carte donne accès à une page présentant les
+ * instruments gemmologiques utilisés pour mesurer ces caractéristiques.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AnalyseScreen(onGemClick: (String) -> Unit, onBackClick: () -> Unit) {
+fun AnalyseScreen(onGemClick: (String) -> Unit, onInstrumentsClick: () -> Unit, onBackClick: () -> Unit) {
     var couleur by remember { mutableStateOf<GemColorCategory?>(null) }
     var transparence by remember { mutableStateOf<String?>(null) }
     var eclat by remember { mutableStateOf<String?>(null) }
@@ -72,6 +75,8 @@ fun AnalyseScreen(onGemClick: (String) -> Unit, onBackClick: () -> Unit) {
     var dureteInput by remember { mutableStateOf("") }
     var densiteInput by remember { mutableStateOf("") }
     var indiceRefractionInput by remember { mutableStateOf("") }
+    var pleochroisme by remember { mutableStateOf<String?>(null) }
+    var fluorescence by remember { mutableStateOf<String?>(null) }
     var results by remember { mutableStateOf<List<AnalysisMatch>?>(null) }
 
     val systemesCristallins = remember { GemAnalyzer.systemesCristallins() }
@@ -88,7 +93,9 @@ fun AnalyseScreen(onGemClick: (String) -> Unit, onBackClick: () -> Unit) {
                 systemeCristallin = systemeCristallin,
                 durete = parseDecimal(dureteInput),
                 densite = parseDecimal(densiteInput),
-                indiceRefraction = parseDecimal(indiceRefractionInput)
+                indiceRefraction = parseDecimal(indiceRefractionInput),
+                pleochroisme = pleochroisme,
+                fluorescence = fluorescence
             )
         )
     }
@@ -102,6 +109,8 @@ fun AnalyseScreen(onGemClick: (String) -> Unit, onBackClick: () -> Unit) {
         dureteInput = ""
         densiteInput = ""
         indiceRefractionInput = ""
+        pleochroisme = null
+        fluorescence = null
         results = null
     }
 
@@ -137,6 +146,45 @@ fun AnalyseScreen(onGemClick: (String) -> Unit, onBackClick: () -> Unit) {
             )
 
             Card(
+                onClick = onInstrumentsClick,
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 14.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    Icon(
+                        Icons.Filled.Info,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onTertiaryContainer
+                    )
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = stringResource(R.string.analyse_instruments_card_title),
+                            style = MaterialTheme.typography.titleSmall,
+                            fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.onTertiaryContainer
+                        )
+                        Text(
+                            text = stringResource(R.string.analyse_instruments_card_subtitle),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onTertiaryContainer
+                        )
+                    }
+                    Icon(
+                        Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onTertiaryContainer
+                    )
+                }
+            }
+
+            Card(
                 shape = RoundedCornerShape(16.dp),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
                 modifier = Modifier.fillMaxWidth()
@@ -165,6 +213,18 @@ fun AnalyseScreen(onGemClick: (String) -> Unit, onBackClick: () -> Unit) {
                         selectedLabel = clivage?.let { localizedLabel(it) },
                         options = AnalysisVocabulary.CLIVAGE.map { it to localizedLabel(it) },
                         onSelect = { clivage = it }
+                    )
+                    DropdownField(
+                        label = stringResource(R.string.analyse_pleochroisme_label),
+                        selectedLabel = pleochroisme?.let { localizedLabel(it) },
+                        options = AnalysisVocabulary.PLEOCHROISME.map { it to localizedLabel(it) },
+                        onSelect = { pleochroisme = it }
+                    )
+                    DropdownField(
+                        label = stringResource(R.string.analyse_fluorescence_label),
+                        selectedLabel = fluorescence?.let { localizedLabel(it) },
+                        options = AnalysisVocabulary.FLUORESCENCE.map { it to localizedLabel(it) },
+                        onSelect = { fluorescence = it }
                     )
                     DropdownField(
                         label = stringResource(R.string.analyse_systeme_cristallin_label),

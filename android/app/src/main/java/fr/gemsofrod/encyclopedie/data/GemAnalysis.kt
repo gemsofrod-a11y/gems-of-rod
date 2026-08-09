@@ -36,6 +36,26 @@ object AnalysisVocabulary {
         "Parfait dans deux directions",
         "Parfait dans trois directions"
     )
+
+    val PLEOCHROISME = listOf(
+        "Aucun",
+        "Faible",
+        "Faible à modéré",
+        "Modéré",
+        "Modéré à fort",
+        "Fort"
+    )
+
+    val FLUORESCENCE = listOf(
+        "Aucune",
+        "Aucune à faible",
+        "Faible",
+        "Faible à modérée",
+        "Modérée",
+        "Modérée à forte",
+        "Forte",
+        "Variable"
+    )
 }
 
 /** Critères optionnels saisis par l'utilisateur dans l'outil d'analyse de
@@ -48,11 +68,14 @@ data class AnalysisCriteria(
     val systemeCristallin: String? = null,
     val durete: Double? = null,
     val densite: Double? = null,
-    val indiceRefraction: Double? = null
+    val indiceRefraction: Double? = null,
+    val pleochroisme: String? = null,
+    val fluorescence: String? = null
 ) {
     val totalCriteria: Int
         get() = listOfNotNull(
-            couleur, transparence, eclat, clivage, systemeCristallin, durete, densite, indiceRefraction
+            couleur, transparence, eclat, clivage, systemeCristallin, durete, densite, indiceRefraction,
+            pleochroisme, fluorescence
         ).size
 
     val isEmpty: Boolean get() = totalCriteria == 0
@@ -114,6 +137,8 @@ object GemAnalyzer {
             if (matchesNumeric(criteria.durete, gem.durete, tolerance = 0.5)) matched++
             if (diag != null && matchesNumeric(criteria.densite, diag.densite, tolerance = 0.15)) matched++
             if (matchesNumeric(criteria.indiceRefraction, gem.indiceRefraction, tolerance = 0.02)) matched++
+            if (criteria.pleochroisme != null && diag?.pleochroisme == criteria.pleochroisme) matched++
+            if (criteria.fluorescence != null && diag?.fluorescence == criteria.fluorescence) matched++
 
             if (matched == 0) null else AnalysisMatch(gem, matched, total)
         }.sortedWith(compareByDescending<AnalysisMatch> { it.matched }.thenBy { it.gem.nom })

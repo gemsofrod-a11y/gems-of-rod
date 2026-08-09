@@ -64,6 +64,8 @@
     <string name="fiche_eclat">Éclat</string>
     <string name="fiche_clivage">Clivage</string>
     <string name="fiche_densite">Densité</string>
+    <string name="fiche_pleochroisme">Pléochroïsme</string>
+    <string name="fiche_fluorescence">Fluorescence UV</string>
     <string name="fiche_prix_indicatif">Prix indicatif</string>
     <string name="create_certificate_button">Créer un certificat</string>
     <string name="particularites_title">Particularités</string>
@@ -133,10 +135,14 @@
     <string name="gemmologie_analyse_title">Analyse de pierre</string>
     <string name="gemmologie_analyse_subtitle">Identifiez une pierre à partir de ses caractéristiques observées.</string>
     <string name="analyse_intro">Renseignez les caractéristiques que vous connaissez ou observez. Un seul critère suffit pour démarrer ; plus vous en indiquez, plus le résultat sera précis.</string>
+    <string name="analyse_instruments_card_title">Les outils du gemmologue</string>
+    <string name="analyse_instruments_card_subtitle">Découvrez les instruments utilisés pour analyser une pierre.</string>
     <string name="analyse_couleur_label">Couleur</string>
     <string name="analyse_transparence_label">Transparence</string>
     <string name="analyse_eclat_label">Éclat</string>
     <string name="analyse_clivage_label">Clivage</string>
+    <string name="analyse_pleochroisme_label">Pléochroïsme</string>
+    <string name="analyse_fluorescence_label">Fluorescence UV</string>
     <string name="analyse_systeme_cristallin_label">Système cristallin</string>
     <string name="analyse_durete_label">Dureté (Mohs)</string>
     <string name="analyse_durete_placeholder">ex. 7</string>
@@ -151,4 +157,7 @@
     <string name="analyse_empty_state">Remplissez au moins un critère ci-dessus, puis touchez « Analyser ».</string>
     <string name="analyse_no_results">Aucune gemme ne correspond aux critères indiqués.</string>
     <string name="analyse_match_score">%1$d/%2$d critères</string>
+
+    <!-- Outils d'analyse -->
+    <string name="instruments_title">Outils d'analyse</string>
 </resources>

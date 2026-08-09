@@ -19,6 +19,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.GemDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemmologieMenuScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemsListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.HomeScreen
+import fr.gemsofrod.encyclopedie.ui.screens.InstrumentsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LanguageScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieGemsScreen
@@ -38,6 +39,7 @@ private object Routes {
     const val PAYS_LIST = "pays_list"
     const val PAYS_DETAIL = "pays/{country}"
     const val ANALYSE = "analyse"
+    const val INSTRUMENTS = "instruments"
     const val GEM_DETAIL = "gem/{gemId}"
     const val FAVORITES = "favorites"
     const val CERTIFICATE = "certificate/{gemId}"
@@ -94,8 +96,12 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         composable(Routes.ANALYSE) {
             AnalyseScreen(
                 onGemClick = { gemId -> navController.navigate(Routes.gemDetail(gemId)) },
+                onInstrumentsClick = { navController.navigate(Routes.INSTRUMENTS) },
                 onBackClick = { navController.popBackStack() }
             )
+        }
+        composable(Routes.INSTRUMENTS) {
+            InstrumentsScreen(onBackClick = { navController.popBackStack() })
         }
         composable(Routes.COULEUR_LIST) {
             ColorListScreen(
