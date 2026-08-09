@@ -158,7 +158,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | rubis-etoile | ⏸️ recherche suspendue | ♻️ [File:Huge 10,800 Carats Maharlika Star Ruby.jpg](https://commons.wikimedia.org/wiki/File:Huge_10,800_Carats_Maharlika_Star_Ruby.jpg) |
 | saphir-etoile | ⏸️ recherche suspendue | ♻️ [File:Black Star of Queensland Star Sapphire.jpg](https://commons.wikimedia.org/wiki/File:Black_Star_of_Queensland_Star_Sapphire.jpg) |
 | diaspore-zultanite | ♻️ [File:Zultanite rough crystal and gemstones.jpg](https://commons.wikimedia.org/wiki/File:Zultanite_rough_crystal_and_gemstones.jpg) | ♻️ [Zultanite](https://commons.wikimedia.org/w/index.php?curid=22102715) |
-| grenat-couleur-changeante | ♻️ [File:Rough Red Garnet Gemstone.jpg](https://commons.wikimedia.org/wiki/File:Rough_Red_Garnet_Gemstone.jpg) | ❌ échec téléchargement |
+| grenat-couleur-changeante | ♻️ [File:Rough Red Garnet Gemstone.jpg](https://commons.wikimedia.org/wiki/File:Rough_Red_Garnet_Gemstone.jpg) | ✅ [Garnet schist (Late Cretaceous, 89-90 Ma; Garnet Ledge, about 12 km north of Wrangell, southeastern Alaska, USA) 1](https://www.flickr.com/photos/47445767@N05/16921541592) |
 | pietersite | ♻️ [File:ChinesePietersite.jpg](https://commons.wikimedia.org/wiki/File:ChinesePietersite.jpg) | ⏸️ recherche suspendue |
 | agate | ♻️ [File:AGATE-COLLECTION GEORGI ZLATARSKI 1.jpg](https://commons.wikimedia.org/wiki/File:AGATE-COLLECTION_GEORGI_ZLATARSKI_1.jpg) | ♻️ [File:AGATE-COLLECTION GEORGI ZLATARSKI.jpg](https://commons.wikimedia.org/wiki/File:AGATE-COLLECTION_GEORGI_ZLATARSKI.jpg) |
 | jaspe | ♻️ [File:Unpolished jasper.jpg](https://commons.wikimedia.org/wiki/File:Unpolished_jasper.jpg) | ⏸️ recherche suspendue |
@@ -183,4 +183,4 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | saphir-teal | ♻️ [File:Lizunova-hexagon-teal-parti-sapphire-103ct-Lizunova Fine Jewels- Sydney.jpg](https://commons.wikimedia.org/wiki/File:Lizunova-hexagon-teal-parti-sapphire-103ct-Lizunova_Fine_Jewels-_Sydney.jpg) | ♻️ [File:Grace-teal-sapphire-diamond-engagement-ring-Milla-diamond-wedding-ring-stack-Sydney-jeweller-Lizunova-Fine-Jewels-NSW-Australia.jpg](https://commons.wikimedia.org/wiki/File:Grace-teal-sapphire-diamond-engagement-ring-Milla-diamond-wedding-ring-stack-Sydney-jeweller-Lizunova-Fine-Jewels-NSW-Australia.jpg) |
 | ametrine | ♻️ [File:Ametrine In Palm.png](https://commons.wikimedia.org/wiki/File:Ametrine_In_Palm.png) | ♻️ [File:Natural ametrine round gemstone.jpg](https://commons.wikimedia.org/wiki/File:Natural_ametrine_round_gemstone.jpg) |
 
-**179 / 352** photos récupérées au total.
+**180 / 352** photos récupérées au total.
