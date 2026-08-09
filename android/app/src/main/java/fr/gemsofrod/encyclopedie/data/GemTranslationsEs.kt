@@ -1242,5 +1242,103 @@ object GemTranslationsEs {
             particularites = "El precio se evalúa por pieza o por hilo según el tamaño, la forma, el lustre y el origen, no por quilate.",
             lithotherapie = "La perla cultivada se asocia a la pureza, a la sabiduría y a la armonía en las relaciones afectivas."
         ),
+        "aventurine" to GemTranslation(
+            nom = "Aventurina verde",
+            descriptionCourte = "Un cuarzo verde centelleante, moteado de laminillas de fucsita.",
+            descriptionLongue = "La aventurina debe su nombre y su centelleo característico (aventurinado) a finas inclusiones de mica cromífera (fucsita) o de hematites diseminadas en una masa de cuarzo microcristalino. La variedad verde, la más extendida, se extrae en gran cantidad en la India desde hace siglos.",
+            particularites = "El aventurinado, ese centelleo metálico, proviene del reflejo de la luz sobre las laminillas de mica incluidas; el término se retomó después para designar el vidrio artificial que imita este efecto.",
+            lithotherapie = "La aventurina verde tiene fama de ser una piedra de la buena suerte, asociada a la fortuna, la abundancia y el sosiego emocional."
+        ),
+        "epidote" to GemTranslation(
+            nom = "Epidota",
+            descriptionCourte = "Un verde pistacho característico, raramente facetado debido a su marcado pleocroísmo.",
+            descriptionLongue = "La epidota da nombre a todo un grupo mineral y se presenta en cristales alargados de color verde pistacho a verde oliva, cuyo color proviene del hierro. Su fuerte pleocroísmo, que hace aparecer tonalidades diferentes según el ángulo de observación, complica la talla de piedras de color homogéneo.",
+            particularites = "El fuerte pleocroísmo (verde, amarillo pardo, incoloro rosado según el ángulo) debe tenerse en cuenta durante la talla para revelar la cara de color más hermosa.",
+            lithotherapie = "Se dice que la epidota favorece la transformación personal y ayuda a liberarse de patrones emocionales repetitivos."
+        ),
+        "gaspeite" to GemTranslation(
+            nom = "Gaspeíta",
+            descriptionCourte = "Un carbonato de níquel verde manzana opaco, raro y muy buscado en cabujón.",
+            descriptionLongue = "La gaspeíta es un carbonato de níquel de color verde manzana a verde vivo opaco, descubierto en la península de Gaspesia, en Quebec, que le da su nombre. Los yacimientos australianos explotables en calidad gema son hoy la principal fuente comercial.",
+            particularites = "A menudo se confunde de lejos con la turquesa o la variscita debido a su tono verde opaco, pero se distingue de ellas por su color más claramente verde manzana.",
+            lithotherapie = "La gaspeíta se asocia con la abundancia y un arraigo suave, favoreciendo la estabilidad en los periodos de cambio."
+        ),
+        "hiddenite" to GemTranslation(
+            nom = "Hiddenita",
+            descriptionCourte = "La variedad verde del espodumeno, coloreada por el cromo, prima de la kunzita.",
+            descriptionLongue = "La hiddenita es la variedad verde del espodumeno, cuyo color proviene de trazas de cromo o de vanadio, a diferencia de la kunzita rosa, que debe el suyo al manganeso. Descubierta en Carolina del Norte a finales del siglo XIX, el mejor material sigue siendo estadounidense, aunque Brasil y Afganistán también la producen.",
+            particularites = "Como todas las variedades de espodumeno, posee una exfoliación perfecta en dos direcciones y debe tallarse con precaución.",
+            lithotherapie = "Se dice que la hiddenita abre el corazón a la compasión al tiempo que aporta claridad y discernimiento en las decisiones importantes."
+        ),
+        "angelite" to GemTranslation(
+            nom = "Angelita",
+            descriptionCourte = "La variedad azul cielo de la anhidrita, muy apreciada en litoterapia.",
+            descriptionLongue = "La angelita es el nombre comercial que se da a la anhidrita de color azul pálido y lechoso, pulida en cabujones, cuentas o piezas decorativas. Su color proviene de trazas de impurezas en el sulfato de calcio anhidro, que se forma cuando el yeso se comprime y pierde su agua a lo largo de largos periodos geológicos.",
+            particularites = "Se raya con facilidad y teme la humedad prolongada, que puede hidratarla lentamente y convertirla en yeso; hay que protegerla del agua y de los golpes.",
+            lithotherapie = "La angelita se asocia con la comunicación, la serenidad y una forma de conexión espiritual apacible, de ahí su nombre evocador."
+        ),
+        "oeil-de-faucon" to GemTranslation(
+            nom = "Ojo de halcón",
+            descriptionCourte = "La variante azul grisáceo tornasolada del ojo de tigre, sin oxidar.",
+            descriptionLongue = "El ojo de halcón comparte el origen del ojo de tigre: una pseudomorfosis de cuarzo tras la crocidolita (amianto azul), cuyas fibras paralelas producen un tornasolado sedoso. A diferencia del ojo de tigre dorado, conserva el tono azul grisáceo a azul verdoso original, al no haberse oxidado el hierro.",
+            particularites = "Un mismo bloque de material en bruto puede presentar localmente zonas azul grisáceas (ojo de halcón) y doradas (ojo de tigre) según el grado de oxidación del hierro.",
+            lithotherapie = "El ojo de halcón se asocia tradicionalmente con la clarividencia, la visión interior y la capacidad de tomar distancia ante situaciones complejas."
+        ),
+        "howlite" to GemTranslation(
+            nom = "Howlita",
+            descriptionCourte = "Una piedra blanca veteada de gris, a menudo teñida para imitar la turquesa.",
+            descriptionLongue = "La howlita se presenta naturalmente en nódulos blancos de estructura porosa, recorridos por vetas grises a negras que evocan un veteado marmóreo. Su porosidad la hace fácil de teñir, lo que la convierte en el material más utilizado habitualmente para imitar la turquesa a bajo coste, una práctica que conviene siempre verificar antes de comprar.",
+            particularites = "Su fuerte porosidad la hace especialmente receptiva a los tintes, origen de numerosas imitaciones de turquesa o de lapislázuli en el mercado.",
+            lithotherapie = "Se dice que la howlita calma la mente agitada y favorece un sueño más sereno."
+        ),
+        "rhodizite" to GemTranslation(
+            nom = "Rodizita",
+            descriptionCourte = "Un borato ultrarraro, uno de los minerales más duros después del corindón.",
+            descriptionLongue = "La rodizita es un borato complejo de cesio, berilio y aluminio, que cristaliza en diminutos cristales incoloros a amarillo pálido casi exclusivamente en Madagascar. Su excepcional dureza, cercana a la del corindón, y su extrema rareza la convierten en una piedra destinada casi únicamente a coleccionistas expertos.",
+            particularites = "Los cristales facetables que superan el quilate son excepcionalmente raros; la mayoría de las piedras talladas pesan menos de 0,5 quilates.",
+            lithotherapie = "La rodizita se asocia con la armonización energética y la amplificación de las intenciones positivas."
+        ),
+        "sanidine" to GemTranslation(
+            nom = "Sanidina",
+            descriptionCourte = "Un feldespato volcánico incoloro a amarillo pálido, cristalizado rápidamente en superficie.",
+            descriptionLongue = "La sanidina es la forma de alta temperatura del feldespato potásico, que cristaliza rápidamente en rocas volcánicas y lavas, lo que la distingue de la ortosa, formada más lentamente en profundidad. Los cristales límpidos y facetables más buscados proceden de las proyecciones volcánicas del Eifel, en Alemania.",
+            particularites = "Se distingue de la ortosa por su formación volcánica rápida y su estructura atómica más desordenada; ambas comparten la misma fórmula química.",
+            lithotherapie = "La sanidina se asocia con la claridad mental y la espontaneidad, en eco a su rápida formación en las rocas volcánicas."
+        ),
+        "tremolite" to GemTranslation(
+            nom = "Tremolita",
+            descriptionCourte = "Un anfíbol blanco a gris, cuya variedad rosa es mucho más buscada.",
+            descriptionLongue = "La tremolita es un anfíbol calcomagnésico que forma el polo rico en magnesio de la serie tremolita-actinolita; en forma fibrosa compacta, constituye uno de los componentes de la nefrita. Su variedad gema, generalmente blanca, gris o incolora, rara vez se faceta, con excepción de la rara variedad violeta llamada hexagonita.",
+            particularites = "La rarísima variedad rosa-violeta, la hexagonita, debe su color al manganeso y a veces se confunde con la tanzanita antes del análisis.",
+            lithotherapie = "Se dice que la tremolita aporta suavidad y flexibilidad frente a los cambios, en resonancia con su estructura fibrosa."
+        ),
+        "oeil-de-taureau" to GemTranslation(
+            nom = "Ojo de toro",
+            descriptionCourte = "El ojo de tigre calentado, cuya oxidación del hierro vira a un rojo pardo profundo.",
+            descriptionLongue = "El ojo de toro se obtiene mediante el calentamiento controlado del ojo de tigre dorado, un tratamiento que acentúa la oxidación del hierro y hace virar el tono del amarillo pardo hacia un rojo pardo profundo e intenso, conservando al mismo tiempo el tornasolado sedoso característico de la estructura fibrosa.",
+            particularites = "El tratamiento térmico que produce este tono rojo pardo es habitual y está ampliamente aceptado en el comercio, siempre que se divulgue.",
+            lithotherapie = "El ojo de toro se asocia con la fuerza, el arraigo y la determinación, en la continuidad simbólica del ojo de tigre."
+        ),
+        "unakite" to GemTranslation(
+            nom = "Unakita",
+            descriptionCourte = "Una roca moteada de verde y rosa, mezcla de granito alterado.",
+            descriptionLongue = "La unakita es una roca granítica alterada, compuesta por una mezcla característica de feldespato rosa, epidota verde y cuarzo, que le confiere un patrón moteado inmediatamente reconocible. Nombrada en honor a los montes Unaka, en Carolina del Norte, donde fue descrita, se talla sobre todo en cabujones y cuentas.",
+            particularites = "Al ser una roca compuesta y no un mineral único, su dureza y su índice de refracción varían ligeramente según la proporción de cada componente.",
+            lithotherapie = "La unakita se asocia tradicionalmente con el equilibrio afectivo y la curación progresiva tras una experiencia emocional difícil."
+        ),
+        "oeil-de-sainte-lucie" to GemTranslation(
+            nom = "Ojo de Santa Lucía",
+            descriptionCourte = "El opérculo espiralado de un caracol marino, llevado como amuleto desde la Antigüedad.",
+            descriptionLongue = "El ojo de Santa Lucía es el opérculo calcáreo, la pequeña «puerta» que cierra la abertura de la concha de ciertos gasterópodos marinos del género Turbo. Su motivo en espiral marrón y crema, que evoca un ojo, lo ha convertido en un amuleto protector tradicional en numerosas culturas mediterráneas.",
+            particularites = "No es una concha sino el opérculo, la pieza calcárea que cierra la abertura del caracol vivo; se desprende de forma natural tras la muerte del animal.",
+            lithotherapie = "Llevado como colgante desde la Antigüedad, este amuleto tiene fama de proteger del mal de ojo y traer suerte a quien lo porta."
+        ),
+        "jais" to GemTranslation(
+            nom = "Azabache",
+            descriptionCourte = "Un carbón fósil negro mate, emblema del luto victoriano.",
+            descriptionLongue = "El azabache es una variedad compacta de lignito, madera fosilizada bajo alta presión durante millones de años, pulida hasta lograr un negro profundo y aterciopelado. Su ligereza y su facilidad de talla la convirtieron en el material emblemático de las joyas de luto de la época victoriana, especialmente en torno a Whitby, en Inglaterra.",
+            particularites = "Se calienta rápidamente al contacto con la piel y puede desarrollar una carga electrostática por fricción, al igual que el ámbar.",
+            lithotherapie = "El azabache se asocia tradicionalmente con la protección contra las energías negativas y el acompañamiento en el duelo."
+        ),
     )
 }

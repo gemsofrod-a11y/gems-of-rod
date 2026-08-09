@@ -1242,5 +1242,103 @@ object GemTranslationsIt {
             particularites = "Prezzo valutato al pezzo o al filo secondo dimensione, forma, lustro e provenienza, non al carato.",
             lithotherapie = "La perla coltivata è associata alla purezza, alla saggezza e all'armonia nelle relazioni affettive."
         ),
+        "aventurine" to GemTranslation(
+            nom = "Avventurina verde",
+            descriptionCourte = "Un quarzo verde scintillante, punteggiato da pagliuzze di fuchsite.",
+            descriptionLongue = "L'avventurina deve il proprio nome e il caratteristico scintillio (avventurescenza) a fini inclusioni di mica cromifera (fuchsite) o di ematite disseminate in una massa di quarzo microcristallino. La varietà verde, la più diffusa, viene estratta in grandi quantità in India da secoli.",
+            particularites = "L'avventurescenza, questo scintillio metallico, deriva dalla riflessione della luce sulle pagliuzze di mica incluse; il termine è stato in seguito ripreso per designare il vetro artificiale che imita questo effetto.",
+            lithotherapie = "L'avventurina verde è ritenuta un portafortuna, associata alla fortuna, all'abbondanza e alla distensione emotiva."
+        ),
+        "epidote" to GemTranslation(
+            nom = "Epidoto",
+            descriptionCourte = "Un verde pistacchio caratteristico, raramente sfaccettato a causa del suo marcato pleocroismo.",
+            descriptionLongue = "L'epidoto dà il nome a un intero gruppo minerale e si presenta in cristalli allungati dal verde pistacchio al verde oliva, colore dovuto al ferro. Il suo forte pleocroismo, che fa apparire tonalità diverse a seconda dell'angolo di osservazione, complica la lavorazione di pietre dal colore omogeneo.",
+            particularites = "Il forte pleocroismo (verde, giallo-bruno, incolore rosato a seconda dell'angolo) va tenuto in considerazione durante la lavorazione per rivelare la faccia colorata più bella.",
+            lithotherapie = "L'epidoto è ritenuto favorire la trasformazione personale e aiutare a liberarsi da schemi emotivi ripetitivi."
+        ),
+        "gaspeite" to GemTranslation(
+            nom = "Gaspeite",
+            descriptionCourte = "Un carbonato di nichel verde mela opaco, raro e ricercato per i cabochon.",
+            descriptionLongue = "La gaspeite è un carbonato di nichel di un verde mela a verde vivo opaco, scoperto nella penisola della Gaspesia, in Québec, da cui prende il nome. I giacimenti australiani sfruttabili in qualità gemma ne costituiscono oggi la principale fonte commerciale.",
+            particularites = "Spesso confusa a distanza con la turchese o la variscite per via della sua tonalità verde opaca, ma se ne distingue per il colore più decisamente verde mela.",
+            lithotherapie = "La gaspeite è associata all'abbondanza e a un radicamento dolce, favorendo la stabilità nei periodi di cambiamento."
+        ),
+        "hiddenite" to GemTranslation(
+            nom = "Hiddenite",
+            descriptionCourte = "La varietà verde dello spodumene, colorata dal cromo, cugina della kunzite.",
+            descriptionLongue = "L'hiddenite è la varietà verde dello spodumene, il cui colore deriva da tracce di cromo o di vanadio — a differenza della kunzite rosa, che deve il suo al manganese. Scoperta in Carolina del Nord alla fine del XIX secolo, il materiale migliore resta quello americano, sebbene anche il Brasile e l'Afghanistan ne producano.",
+            particularites = "Come tutte le varietà di spodumene, possiede una sfaldatura perfetta in due direzioni e deve essere lavorata con cautela.",
+            lithotherapie = "L'hiddenite è ritenuta aprire il cuore alla compassione, apportando al contempo chiarezza e discernimento nelle decisioni importanti."
+        ),
+        "angelite" to GemTranslation(
+            nom = "Angelite",
+            descriptionCourte = "La varietà azzurro cielo dell'anidrite, molto apprezzata in litoterapia.",
+            descriptionLongue = "L'angelite è il nome commerciale dato all'anidrite di un azzurro pallido e latteo, levigata in cabochon, perle o oggetti decorativi. Il suo colore deriva da tracce di impurità nel solfato di calcio anidro, che si forma quando il gesso viene compresso e perde la propria acqua nel corso di lunghi periodi geologici.",
+            particularites = "Si graffia facilmente e teme l'umidità prolungata, che può lentamente idratarla trasformandola in gesso; va protetta dall'acqua e dagli urti.",
+            lithotherapie = "L'angelite è associata alla comunicazione, alla serenità e a una forma di connessione spirituale distesa, da cui il suo nome evocativo."
+        ),
+        "oeil-de-faucon" to GemTranslation(
+            nom = "Occhio di falco",
+            descriptionCourte = "La variante blu-grigia cangiante dell'occhio di tigre, non ossidata.",
+            descriptionLongue = "L'occhio di falco condivide l'origine dell'occhio di tigre: una pseudomorfosi di quarzo dopo la crocidolite (amianto blu), le cui fibre parallele producono un riflesso setoso. A differenza dell'occhio di tigre dorato, conserva la tonalità originaria dal blu-grigio al blu-verde, per mancata ossidazione del ferro.",
+            particularites = "Lo stesso blocco di materiale grezzo può presentare localmente zone blu-grigie (occhio di falco) e dorate (occhio di tigre) a seconda del grado di ossidazione del ferro.",
+            lithotherapie = "L'occhio di falco è tradizionalmente associato alla chiaroveggenza, alla visione interiore e alla capacità di prendere le distanze di fronte a situazioni complesse."
+        ),
+        "howlite" to GemTranslation(
+            nom = "Howlite",
+            descriptionCourte = "Una pietra bianca venata di grigio, spesso tinta per imitare la turchese.",
+            descriptionLongue = "La howlite si presenta naturalmente in noduli bianchi dalla struttura porosa, attraversati da venature grigie a nere che evocano una marmorizzazione. La sua porosità la rende facile da tingere, il che ne fa il materiale più comunemente utilizzato per imitare la turchese a basso costo — una pratica da verificare sempre prima dell'acquisto.",
+            particularites = "La sua forte porosità la rende particolarmente ricettiva alle tinture, all'origine di numerose imitazioni di turchese o lapislazzuli sul mercato.",
+            lithotherapie = "La howlite è ritenuta calmare la mente agitata e favorire un sonno più sereno."
+        ),
+        "rhodizite" to GemTranslation(
+            nom = "Rodizite",
+            descriptionCourte = "Un borato ultra-raro, uno dei minerali più duri dopo il corindone.",
+            descriptionLongue = "La rodizite è un borato complesso di cesio, berillio e alluminio, che cristallizza in minuscoli cristalli incolori a giallo pallido quasi esclusivamente in Madagascar. La sua eccezionale durezza, vicina a quella del corindone, e la sua estrema rarità ne fanno una pietra quasi esclusivamente destinata ai collezionisti esperti.",
+            particularites = "I cristalli sfaccettabili che superano un carato sono eccezionalmente rari; la maggior parte delle pietre tagliate pesa meno di 0,5 carati.",
+            lithotherapie = "La rodizite è associata all'armonizzazione energetica e all'amplificazione delle intenzioni positive."
+        ),
+        "sanidine" to GemTranslation(
+            nom = "Sanidino",
+            descriptionCourte = "Un feldspato vulcanico incolore a giallo pallido, cristallizzato rapidamente in superficie.",
+            descriptionLongue = "Il sanidino è la forma ad alta temperatura del feldspato potassico, che cristallizza rapidamente nelle rocce vulcaniche e nelle lave, il che lo distingue dall'ortoclasio formatosi più lentamente in profondità. I cristalli limpidi e sfaccettabili più ricercati provengono dalle proiezioni vulcaniche dell'Eifel, in Germania.",
+            particularites = "Si distingue dall'ortoclasio per la sua formazione vulcanica rapida e la struttura atomica più disordinata; entrambi condividono la stessa formula chimica.",
+            lithotherapie = "Il sanidino è associato alla chiarezza mentale e alla spontaneità, in eco alla sua rapida formazione nelle rocce vulcaniche."
+        ),
+        "tremolite" to GemTranslation(
+            nom = "Tremolite",
+            descriptionCourte = "Un anfibolo bianco a grigio, la cui varietà rosa è molto più ricercata.",
+            descriptionLongue = "La tremolite è un anfibolo calcio-magnesiaco che costituisce il polo ricco di magnesio della serie tremolite-attinolite; in forma fibrosa compatta, costituisce uno dei componenti della nefrite. La sua varietà gemma, generalmente bianca, grigia o incolore, viene raramente sfaccettata, ad eccezione della rara varietà violacea detta esagonite.",
+            particularites = "La rarissima varietà rosa-violacea, l'esagonite, deve il suo colore al manganese e viene talvolta confusa con la tanzanite prima dell'analisi.",
+            lithotherapie = "La tremolite è ritenuta apportare dolcezza e flessibilità di fronte ai cambiamenti, in risonanza con la sua struttura fibrosa."
+        ),
+        "oeil-de-taureau" to GemTranslation(
+            nom = "Occhio di toro",
+            descriptionCourte = "L'occhio di tigre riscaldato, la cui ossidazione del ferro vira verso un rosso-bruno profondo.",
+            descriptionLongue = "L'occhio di toro si ottiene mediante riscaldamento controllato dell'occhio di tigre dorato, un trattamento che accentua l'ossidazione del ferro e fa virare la tonalità dal giallo-bruno a un rosso-bruno profondo e intenso, conservando al contempo il caratteristico riflesso setoso della struttura fibrosa.",
+            particularites = "Il trattamento termico che produce questa tonalità rosso-bruna è comune e ampiamente accettato nel commercio, a condizione che venga dichiarato.",
+            lithotherapie = "L'occhio di toro è associato alla forza, al radicamento e alla determinazione, in continuità simbolica con l'occhio di tigre."
+        ),
+        "unakite" to GemTranslation(
+            nom = "Unakite",
+            descriptionCourte = "Una roccia screziata di verde e rosa, mescolanza di granito alterato.",
+            descriptionLongue = "L'unakite è una roccia granitica alterata, composta da una caratteristica mescolanza di feldspato rosa, epidoto verde e quarzo, che le conferisce un motivo maculato immediatamente riconoscibile. Prende il nome dai monti Unaka in Carolina del Nord, dove fu descritta, ed è lavorata soprattutto in cabochon e perle.",
+            particularites = "Trattandosi di una roccia composita e non di un minerale unico, la sua durezza e il suo indice di rifrazione variano leggermente a seconda della proporzione di ciascun componente.",
+            lithotherapie = "L'unakite è tradizionalmente associata all'equilibrio affettivo e alla guarigione progressiva dopo una prova emotiva."
+        ),
+        "oeil-de-sainte-lucie" to GemTranslation(
+            nom = "Occhio di Santa Lucia",
+            descriptionCourte = "L'opercolo spiraliforme di una lumaca marina, indossato come amuleto sin dall'Antichità.",
+            descriptionLongue = "L'occhio di Santa Lucia è l'opercolo calcareo, la piccola «porta» che chiude l'apertura del guscio di alcuni gasteropodi marini del genere Turbo. Il suo motivo a spirale marrone e crema, che evoca un occhio, ne ha fatto un amuleto protettivo tradizionale in numerose culture mediterranee.",
+            particularites = "Non si tratta di un guscio ma dell'opercolo, il pezzo calcareo che richiude l'apertura del mollusco vivente; si stacca naturalmente dopo la morte dell'animale.",
+            lithotherapie = "Indossato come pendente sin dall'Antichità, questo amuleto è ritenuto proteggere dal malocchio e portare fortuna a chi lo indossa."
+        ),
+        "jais" to GemTranslation(
+            nom = "Giaietto",
+            descriptionCourte = "Un carbone fossile nero opaco, emblema del lutto vittoriano.",
+            descriptionLongue = "Il giaietto è una varietà compatta di lignite, legno fossilizzato sotto alta pressione nel corso di milioni di anni, levigato fino a ottenere un nero profondo e vellutato. La sua leggerezza e la facilità di lavorazione ne hanno fatto il materiale emblematico dei gioielli da lutto dell'epoca vittoriana, in particolare nella zona di Whitby, in Inghilterra.",
+            particularites = "Si riscalda rapidamente a contatto con la pelle e può sviluppare una carica elettrostatica per sfregamento, come l'ambra.",
+            lithotherapie = "Il giaietto è tradizionalmente associato alla protezione dalle energie negative e all'accompagnamento nel lutto."
+        ),
     )
 }

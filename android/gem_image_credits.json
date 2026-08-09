@@ -114,6 +114,7 @@
     }
   ],
   "andesine": [],
+  "angelite": [],
   "anhydrite": [
     {
       "artist": "Alcinoe",
@@ -149,6 +150,24 @@
       "resource_name": "gem_aragonite_facette",
       "source_url": "https://commons.wikimedia.org/wiki/File:Aragonite-cut.jpg",
       "title": "File:Aragonite-cut.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "aventurine": [
+    {
+      "artist": "Deomar Pandan",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_aventurine_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Green_Aventurine_Bracelet.jpg",
+      "title": "File:Green Aventurine Bracelet.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Ra'ike (see also: de:Benutzer:Ra'ike)",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_aventurine_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Quarz_-_Aventurin.jpg",
+      "title": "File:Quarz - Aventurin.jpg",
       "type": "FACETTEE"
     }
   ],
@@ -504,6 +523,24 @@
       "type": "BRUTE"
     }
   ],
+  "epidote": [
+    {
+      "artist": "Masha Milshina",
+      "license": "CC BY 4.0",
+      "resource_name": "gem_epidote_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Epidote_crystals.jpg",
+      "title": "File:Epidote crystals.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Slashme",
+      "license": "CC BY 4.0",
+      "resource_name": "gem_epidote_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Epidote_crystal.jpg",
+      "title": "File:Epidote crystal.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "euclase": [
     {
       "artist": "Raimond Spekking",
@@ -533,6 +570,7 @@
       "type": "FACETTEE"
     }
   ],
+  "gaspeite": [],
   "goshenite": [],
   "grandidierite": [
     {
@@ -692,6 +730,42 @@
       "type": "BRUTE"
     }
   ],
+  "hiddenite": [
+    {
+      "artist": "Géry PARENT",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_hiddenite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Hiddenite_7.jpg",
+      "title": "File:Hiddenite 7.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "No machine-readable author provided. Vzb83~commonswiki assumed (based on copyright claims).",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_hiddenite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Spodumene.jpg",
+      "title": "File:Spodumene.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "howlite": [
+    {
+      "artist": "Reitawood",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_howlite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Howlite-Crystal-Ball-02.png",
+      "title": "File:Howlite-Crystal-Ball-02.png",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Ra'ike (see also: de:Benutzer:Ra'ike)",
+      "license": "CC BY 3.0",
+      "resource_name": "gem_howlite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Howlite_-_tumble_polished_stone.jpg",
+      "title": "File:Howlite - tumble polished stone.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "hyalite": [
     {
       "artist": "Masha Milshina",
@@ -715,6 +789,24 @@
     }
   ],
   "jade-nephrite": [],
+  "jais": [
+    {
+      "artist": "Thmsfrst",
+      "license": "Public domain",
+      "resource_name": "gem_jais_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Gagat-Holzmaden.JPG",
+      "title": "File:Gagat-Holzmaden.JPG",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Sudzie",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_jais_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Jet_Jewellery.jpg",
+      "title": "File:Jet Jewellery.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "jaspe": [
     {
       "artist": "No machine-readable author provided. HInBC assumed (based on copyright claims).",
@@ -880,6 +972,35 @@
       "type": "BRUTE"
     }
   ],
+  "oeil-de-faucon": [
+    {
+      "artist": "Eurico Zimbres   Zimbres",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_oeil_de_faucon_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Hawks_eye.jpg",
+      "title": "File:Hawks eye.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Linas Juozėnas",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_oeil_de_faucon_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Blue_tiger_eye_-_falcon_eye.jpg",
+      "title": "File:Blue tiger eye - falcon eye.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "oeil-de-sainte-lucie": [
+    {
+      "artist": "User:Tojob41",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_oeil_de_sainte_lucie_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Turbo_petholatus_Linnaeus,_1758_operculum_-_Wikimedia_Commons_(1).jpg",
+      "title": "File:Turbo petholatus Linnaeus, 1758 operculum - Wikimedia Commons (1).jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "oeil-de-taureau": [],
   "oeil-de-tigre": [
     {
       "artist": "James St. John",
@@ -1206,6 +1327,24 @@
       "type": "BRUTE"
     }
   ],
+  "rhodizite": [
+    {
+      "artist": "Parent Géry",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_rhodizite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Rhodizite_4.JPG",
+      "title": "File:Rhodizite 4.JPG",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Parent Géry",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_rhodizite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Rhodizite_1.JPG",
+      "title": "File:Rhodizite 1.JPG",
+      "type": "FACETTEE"
+    }
+  ],
   "rhodochrosite": [
     {
       "artist": "Robert M. Lavinsky",
@@ -1261,6 +1400,24 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Rutile_(GeoDIL_number_-_1562).jpg",
       "title": "File:Rutile (GeoDIL number - 1562).jpg",
       "type": "BRUTE"
+    }
+  ],
+  "sanidine": [
+    {
+      "artist": "Kampf, A. R., Möhn, G., Ma, C., Rossman, G. R., Désor, J., and Guan, Y.",
+      "license": "CC BY 4.0",
+      "resource_name": "gem_sanidine_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Rotherkopfite_crystals.png",
+      "title": "File:Rotherkopfite crystals.png",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Fred Kruijen",
+      "license": "by-sa 3.0",
+      "resource_name": "gem_sanidine_facette",
+      "source_url": "https://commons.wikimedia.org/w/index.php?curid=9819497",
+      "title": "File:Forsterite on Sanidine - Ochtendung, Eifel, Germany.jpg",
+      "type": "FACETTEE"
     }
   ],
   "saphir-auvergne": [],
@@ -1682,6 +1839,16 @@
       "type": "BRUTE"
     }
   ],
+  "tremolite": [
+    {
+      "artist": "Shannon Heinle",
+      "license": "CC0",
+      "resource_name": "gem_tremolite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tremolite_(GeoDIL_number_-_1701).jpg",
+      "title": "File:Tremolite (GeoDIL number - 1701).jpg",
+      "type": "BRUTE"
+    }
+  ],
   "tsavorite": [
     {
       "artist": "Robert M. Lavinsky",
@@ -1693,6 +1860,7 @@
     }
   ],
   "turquoise": [],
+  "unakite": [],
   "uvarovite": [
     {
       "artist": "Robert M. Lavinsky",
