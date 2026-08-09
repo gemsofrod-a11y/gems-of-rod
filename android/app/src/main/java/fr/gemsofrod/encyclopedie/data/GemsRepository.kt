@@ -2965,24 +2965,6 @@ object GemsRepository {
             rarete = GemRarete.COURANTE
         ),
 
-        Gem(
-            id = "meteorite-de-fer",
-            nom = "Météorite de fer",
-            nomLatin = "Octaédrite (alliage fer-nickel)",
-            famille = "Météorite (sidérite)",
-            couleur = GemColorCategory.NOIR,
-            descriptionCourte = "Un alliage fer-nickel extraterrestre, dont la surface polie et attaquée à l'acide révèle le motif de Widmanstätten.",
-            descriptionLongue = "Les météorites de fer sont des fragments du noyau métallique d'astéroïdes détruits, composés presque entièrement d'un alliage de fer et de nickel. Polies puis légèrement attaquées à l'acide nitrique, elles révèlent le motif de Widmanstätten, un entrelacs géométrique de cristaux qui n'a mis que des millions d'années à se former par refroidissement extrêmement lent dans l'espace.",
-            formuleChimique = "Fe-Ni (alliage kamacite/taenite)",
-            systemeCristallin = "Cubique",
-            durete = "4 - 5",
-            indiceRefraction = "opaque (métallique, non applicable)",
-            origines = listOf("Namibie (Gibeon)", "Suède (Muonionalusta)", "Argentine (Campo del Cielo)"),
-            particularites = "Le motif de Widmanstätten, unique aux météorites de fer refroidies lentement, ne peut être reproduit artificiellement et constitue une preuve d'authenticité.",
-            lithotherapie = "La météorite de fer est associée à la force et à l'ancrage, malgré son origine céleste.",
-            prixCaratEur = "2 – 20 €/g (vendue au gramme ou à la pièce)",
-            rarete = GemRarete.PEU_COMMUNE
-        ),
         // ---------- MULTICOLORE / CHANGEMENT DE COULEUR ----------
         Gem(
             id = "rubis-etoile",
@@ -3291,24 +3273,6 @@ object GemsRepository {
             rarete = GemRarete.EXCEPTIONNELLE
         ),
         Gem(
-            id = "opale-precieuse",
-            nom = "Opale précieuse",
-            nomLatin = "Opale",
-            famille = "Opale",
-            couleur = GemColorCategory.MULTICOLORE,
-            descriptionCourte = "Un jeu de couleurs unique en son genre.",
-            descriptionLongue = "L'opale précieuse est composée de micro-sphères de silice ordonnées qui diffractent la lumière et produisent un jeu de couleurs mouvant (opalescence), unique à chaque pierre. Aucune autre gemme ne présente ce phénomène optique de la même façon.",
-            formuleChimique = "SiO₂ · nH₂O",
-            systemeCristallin = "Amorphe",
-            durete = "5,5 - 6,5",
-            indiceRefraction = "1,42 – 1,46",
-            origines = listOf("Australie (Coober Pedy)", "Éthiopie (Wollo)", "Mexique (Querétaro)"),
-            particularites = "Contient de 3 à 21% d'eau ; sensible à la déshydratation et aux chocs.",
-            lithotherapie = "L'opale précieuse est associée à l'amplification des émotions et de la créativité, un soutien pour les projets artistiques.",
-            prixCaratEur = "50 – 2 000 €/ct (opale noire jusqu'à 5 000+)",
-            rarete = GemRarete.RARE
-        ),
-        Gem(
             id = "tourmaline-pasteque",
             nom = "Tourmaline pastèque",
             nomLatin = "Elbaïte (cristal zoné bicolore)",
@@ -3488,24 +3452,6 @@ object GemsRepository {
             lithotherapie = "L'opale d'Éthiopie est réputée amplifier les émotions et la créativité, comme les autres opales précieuses.",
             prixCaratEur = "10 – 300 €/ct",
             rarete = GemRarete.PEU_COMMUNE
-        ),
-        Gem(
-            id = "pallasite",
-            nom = "Pallasite",
-            nomLatin = "Météorite pierreuse-ferreuse à olivine",
-            famille = "Météorite (pallasite)",
-            couleur = GemColorCategory.MULTICOLORE,
-            descriptionCourte = "Une météorite tranchée révélant des cristaux d'olivine dorés pris dans un maillage de fer-nickel.",
-            descriptionLongue = "La pallasite est l'une des météorites les plus rares et les plus recherchées : formée à la frontière entre le noyau métallique et le manteau silicaté d'un astéroïde différencié, elle emprisonne des cristaux d'olivine translucides dans une matrice de fer-nickel. Tranchée en fines plaques et polie, elle révèle un motif saisissant, unique à chaque météorite.",
-            formuleChimique = "(Fe,Ni) + (Mg,Fe)₂SiO₄ (olivine)",
-            systemeCristallin = "Cubique (métal) et orthorhombique (olivine)",
-            durete = "4 - 6,5 (variable selon la proportion métal/olivine)",
-            indiceRefraction = "1,63 – 1,69 (composante olivine)",
-            origines = listOf("Russie (Seymchan)", "Argentine (Esquel)", "Biélorussie (Brahin)"),
-            particularites = "Chaque tranche de pallasite est unique ; les plus recherchées, comme la Seymchan russe, présentent des cristaux d'olivine limpides et un maillage métallique régulier.",
-            lithotherapie = "La pallasite est réputée relier à une dimension cosmique et favoriser une perspective élargie sur les événements de la vie.",
-            prixCaratEur = "5 – 50 €/g (vendue au gramme, très variable selon qualité et provenance)",
-            rarete = GemRarete.RARE
         ),
         // ---------- GEMMES ORGANIQUES ----------
         Gem(

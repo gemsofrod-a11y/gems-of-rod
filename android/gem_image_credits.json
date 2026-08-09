@@ -926,24 +926,6 @@
     }
   ],
   "maw-sit-sit": [],
-  "meteorite-de-fer": [
-    {
-      "artist": "Sailko",
-      "license": "CC BY 3.0",
-      "resource_name": "gem_meteorite_de_fer_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Meteorite_di_ottaedrite_IVA,_da_namibia.JPG",
-      "title": "File:Meteorite di ottaedrite IVA, da namibia.JPG",
-      "type": "BRUTE"
-    },
-    {
-      "artist": "Kevin Walsh",
-      "license": "CC BY 2.0",
-      "resource_name": "gem_meteorite_de_fer_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Gibeon_meteorite_slice.jpg",
-      "title": "File:Gibeon meteorite slice.jpg",
-      "type": "FACETTEE"
-    }
-  ],
   "moldavite": [
     {
       "artist": "AdamStejskal",
@@ -1140,16 +1122,6 @@
     }
   ],
   "opale-peruvienne": [],
-  "opale-precieuse": [
-    {
-      "artist": "Dpulitzer",
-      "license": "CC BY-SA 3.0",
-      "resource_name": "gem_opale_precieuse_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Coober_Pedy_Opal.jpg",
-      "title": "File:Coober Pedy Opal.jpg",
-      "type": "BRUTE"
-    }
-  ],
   "orthose": [],
   "os-fossilise": [],
   "padparadscha": [
@@ -1180,24 +1152,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Painite-70635.jpg",
       "title": "File:Painite-70635.jpg",
       "type": "BRUTE"
-    }
-  ],
-  "pallasite": [
-    {
-      "artist": "Steve Jurvetson from Los Altos, USA",
-      "license": "CC BY 2.0",
-      "resource_name": "gem_pallasite_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Admire_Pallasite_Meteorite_—_5x_Macro_-6_(50867091233).jpg",
-      "title": "File:Admire Pallasite Meteorite — 5x Macro -6 (50867091233).jpg",
-      "type": "BRUTE"
-    },
-    {
-      "artist": "Steve Jurvetson",
-      "license": "CC BY 2.0",
-      "resource_name": "gem_pallasite_facette",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Imilac_meteorite_slice_(53893615988).jpg",
-      "title": "File:Imilac meteorite slice (53893615988).jpg",
-      "type": "FACETTEE"
     }
   ],
   "paraiba-tourmaline": [
