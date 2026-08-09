@@ -196,5 +196,13 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | unakite | ❌ échec téléchargement | ❌ échec téléchargement |
 | oeil-de-sainte-lucie | — | ♻️ [File:Turbo petholatus Linnaeus, 1758 operculum - Wikimedia Commons (1).jpg](https://commons.wikimedia.org/wiki/File:Turbo_petholatus_Linnaeus,_1758_operculum_-_Wikimedia_Commons_(1).jpg) |
 | jais | ♻️ [File:Gagat-Holzmaden.JPG](https://commons.wikimedia.org/wiki/File:Gagat-Holzmaden.JPG) | ♻️ [File:Jet Jewellery.jpg](https://commons.wikimedia.org/wiki/File:Jet_Jewellery.jpg) |
+| grenat-etoile | ✅ [File:Star of idaho.JPG](https://commons.wikimedia.org/wiki/File:Star_of_idaho.JPG) | ✅ [File:Idahostargarnet.jpg](https://commons.wikimedia.org/wiki/File:Idahostargarnet.jpg) |
+| opale-peruvienne | ❌ échec téléchargement | ❌ échec téléchargement |
+| opale-commune | ✅ [File:Flint Ridge Knap-In speed competition (Flint Ridge, Ohio, USA).jpg](https://commons.wikimedia.org/wiki/File:Flint_Ridge_Knap-In_speed_competition_(Flint_Ridge,_Ohio,_USA).jpg) | ❌ échec téléchargement |
+| meteorite-de-fer | ✅ [File:Meteorite di ottaedrite IVA, da namibia.JPG](https://commons.wikimedia.org/wiki/File:Meteorite_di_ottaedrite_IVA,_da_namibia.JPG) | ✅ [File:Gibeon meteorite slice.jpg](https://commons.wikimedia.org/wiki/File:Gibeon_meteorite_slice.jpg) |
+| opale-noire | ✅ [File:8ct Lightning Ridge Black Opal.JPG](https://commons.wikimedia.org/wiki/File:8ct_Lightning_Ridge_Black_Opal.JPG) | ✅ [File:16.42cts Lightning Ridge black Opal.JPG](https://commons.wikimedia.org/wiki/File:16.42cts_Lightning_Ridge_black_Opal.JPG) |
+| opale-boulder | ✅ [File:Veined boulder opal from Queensland.jpg](https://commons.wikimedia.org/wiki/File:Veined_boulder_opal_from_Queensland.jpg) | ✅ [File:Boulder Opal.jpg](https://commons.wikimedia.org/wiki/File:Boulder_Opal.jpg) |
+| opale-ethiopie | ✅ [File:Wire wrapped Ethiopian Opal & Sapphire.jpg](https://commons.wikimedia.org/wiki/File:Wire_wrapped_Ethiopian_Opal_&_Sapphire.jpg) | ✅ [File:Ethiopian Welo Wello Opal Pendant.jpg](https://commons.wikimedia.org/wiki/File:Ethiopian_Welo_Wello_Opal_Pendant.jpg) |
+| pallasite | ✅ [File:Admire Pallasite Meteorite — 5x Macro -6 (50867091233).jpg](https://commons.wikimedia.org/wiki/File:Admire_Pallasite_Meteorite_—_5x_Macro_-6_(50867091233).jpg) | ✅ [File:Imilac meteorite slice (53893615988).jpg](https://commons.wikimedia.org/wiki/File:Imilac_meteorite_slice_(53893615988).jpg) |
 
-**198 / 379** photos récupérées au total.
+**211 / 395** photos récupérées au total.

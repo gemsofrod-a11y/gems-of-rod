@@ -610,6 +610,24 @@
       "type": "FACETTEE"
     }
   ],
+  "grenat-etoile": [
+    {
+      "artist": "Patellison42",
+      "license": "Public domain",
+      "resource_name": "gem_grenat_etoile_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Star_of_idaho.JPG",
+      "title": "File:Star of idaho.JPG",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Astynax",
+      "license": "Public domain",
+      "resource_name": "gem_grenat_etoile_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Idahostargarnet.jpg",
+      "title": "File:Idahostargarnet.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "grenat-grossulaire": [
     {
       "artist": "Stephencdickson",
@@ -908,6 +926,24 @@
     }
   ],
   "maw-sit-sit": [],
+  "meteorite-de-fer": [
+    {
+      "artist": "Sailko",
+      "license": "CC BY 3.0",
+      "resource_name": "gem_meteorite_de_fer_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Meteorite_di_ottaedrite_IVA,_da_namibia.JPG",
+      "title": "File:Meteorite di ottaedrite IVA, da namibia.JPG",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Kevin Walsh",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_meteorite_de_fer_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Gibeon_meteorite_slice.jpg",
+      "title": "File:Gibeon meteorite slice.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "moldavite": [
     {
       "artist": "AdamStejskal",
@@ -1021,6 +1057,34 @@
       "type": "FACETTEE"
     }
   ],
+  "opale-boulder": [
+    {
+      "artist": "LZ6387",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_opale_boulder_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Veined_boulder_opal_from_Queensland.jpg",
+      "title": "File:Veined boulder opal from Queensland.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "JJ Harrison (https://www.jjharrison.com.au/)",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_opale_boulder_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Boulder_Opal.jpg",
+      "title": "File:Boulder Opal.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "opale-commune": [
+    {
+      "artist": "James St. John",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_opale_commune_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Flint_Ridge_Knap-In_speed_competition_(Flint_Ridge,_Ohio,_USA).jpg",
+      "title": "File:Flint Ridge Knap-In speed competition (Flint Ridge, Ohio, USA).jpg",
+      "type": "BRUTE"
+    }
+  ],
   "opale-de-feu": [
     {
       "artist": "James St. John",
@@ -1039,6 +1103,43 @@
       "type": "BRUTE"
     }
   ],
+  "opale-ethiopie": [
+    {
+      "artist": "Naomi.Hinds.Designs",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_opale_ethiopie_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Wire_wrapped_Ethiopian_Opal_&_Sapphire.jpg",
+      "title": "File:Wire wrapped Ethiopian Opal & Sapphire.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Dpulitzer",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_opale_ethiopie_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ethiopian_Welo_Wello_Opal_Pendant.jpg",
+      "title": "File:Ethiopian Welo Wello Opal Pendant.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "opale-noire": [
+    {
+      "artist": "Daniel Mekis",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_opale_noire_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:8ct_Lightning_Ridge_Black_Opal.JPG",
+      "title": "File:8ct Lightning Ridge Black Opal.JPG",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Daniel Mekis",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_opale_noire_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:16.42cts_Lightning_Ridge_black_Opal.JPG",
+      "title": "File:16.42cts Lightning Ridge black Opal.JPG",
+      "type": "FACETTEE"
+    }
+  ],
+  "opale-peruvienne": [],
   "opale-precieuse": [
     {
       "artist": "Dpulitzer",
@@ -1079,6 +1180,24 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Painite-70635.jpg",
       "title": "File:Painite-70635.jpg",
       "type": "BRUTE"
+    }
+  ],
+  "pallasite": [
+    {
+      "artist": "Steve Jurvetson from Los Altos, USA",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_pallasite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Admire_Pallasite_Meteorite_—_5x_Macro_-6_(50867091233).jpg",
+      "title": "File:Admire Pallasite Meteorite — 5x Macro -6 (50867091233).jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Steve Jurvetson",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_pallasite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Imilac_meteorite_slice_(53893615988).jpg",
+      "title": "File:Imilac meteorite slice (53893615988).jpg",
+      "type": "FACETTEE"
     }
   ],
   "paraiba-tourmaline": [
