@@ -10,6 +10,7 @@ import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.data.GemFamilies
 import fr.gemsofrod.encyclopedie.data.GemOrigins
 import fr.gemsofrod.encyclopedie.data.GemsRepository
+import fr.gemsofrod.encyclopedie.ui.screens.AnalyseScreen
 import fr.gemsofrod.encyclopedie.ui.screens.CertificateScreen
 import fr.gemsofrod.encyclopedie.ui.screens.ColorListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.FamillesListScreen
@@ -36,6 +37,7 @@ private object Routes {
     const val GEMS_LIST = "gems/{colorName}"
     const val PAYS_LIST = "pays_list"
     const val PAYS_DETAIL = "pays/{country}"
+    const val ANALYSE = "analyse"
     const val GEM_DETAIL = "gem/{gemId}"
     const val FAVORITES = "favorites"
     const val CERTIFICATE = "certificate/{gemId}"
@@ -84,7 +86,14 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             GemmologieMenuScreen(
                 onCouleurClick = { navController.navigate(Routes.COULEUR_LIST) },
                 onPaysClick = { navController.navigate(Routes.PAYS_LIST) },
+                onAnalyseClick = { navController.navigate(Routes.ANALYSE) },
                 onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.ANALYSE) {
+            AnalyseScreen(
+                onGemClick = { gemId -> navController.navigate(Routes.gemDetail(gemId)) },
                 onBackClick = { navController.popBackStack() }
             )
         }

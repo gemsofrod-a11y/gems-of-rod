@@ -63,12 +63,14 @@ import fr.gemsofrod.encyclopedie.data.FavoritesRepository
 import fr.gemsofrod.encyclopedie.data.Gem
 import fr.gemsofrod.encyclopedie.data.GemImageCredit
 import fr.gemsofrod.encyclopedie.data.GemImageType
+import fr.gemsofrod.encyclopedie.data.GemDiagnostics
 import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.data.GemRarete
 import fr.gemsofrod.encyclopedie.data.GemsRepository
 import fr.gemsofrod.encyclopedie.data.googleMapsSearchUrl
 import fr.gemsofrod.encyclopedie.data.priceRangePerCarat
 import fr.gemsofrod.encyclopedie.ui.localized
+import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
 import java.text.NumberFormat
 import java.util.Locale
@@ -196,6 +198,17 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
                     FicheRow(stringResource(R.string.fiche_durete), gem.durete)
                     FicheDivider()
                     FicheRow(stringResource(R.string.fiche_indice_refraction), gem.indiceRefraction)
+                    val diagnostic = GemDiagnostics.data[gem.id]
+                    if (diagnostic != null) {
+                        FicheDivider()
+                        FicheRow(stringResource(R.string.fiche_transparence), localizedLabel(diagnostic.transparence))
+                        FicheDivider()
+                        FicheRow(stringResource(R.string.fiche_eclat), localizedLabel(diagnostic.eclat))
+                        FicheDivider()
+                        FicheRow(stringResource(R.string.fiche_clivage), localizedLabel(diagnostic.clivage))
+                        FicheDivider()
+                        FicheRow(stringResource(R.string.fiche_densite), diagnostic.densite)
+                    }
                     FicheDivider()
                     FicheRow(stringResource(R.string.fiche_prix_indicatif), gem.prixCaratEur)
                 }

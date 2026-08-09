@@ -60,6 +60,10 @@
     <string name="fiche_systeme_cristallin">Kristallsystem</string>
     <string name="fiche_durete">Härte (Mohs)</string>
     <string name="fiche_indice_refraction">Brechungsindex</string>
+    <string name="fiche_transparence">Transparenz</string>
+    <string name="fiche_eclat">Glanz</string>
+    <string name="fiche_clivage">Spaltbarkeit</string>
+    <string name="fiche_densite">Dichte</string>
     <string name="fiche_prix_indicatif">Richtpreis</string>
     <string name="create_certificate_button">Zertifikat erstellen</string>
     <string name="particularites_title">Besonderheiten</string>
@@ -124,4 +128,27 @@
 
     <!-- Sprache -->
     <string name="language_title">Sprache</string>
+
+    <!-- Steinanalyse -->
+    <string name="gemmologie_analyse_title">Steinanalyse</string>
+    <string name="gemmologie_analyse_subtitle">Einen Stein anhand seiner beobachteten Eigenschaften bestimmen.</string>
+    <string name="analyse_intro">Gib die Eigenschaften ein, die du kennst oder beobachtest. Ein einziges Kriterium genügt für den Start; je mehr du angibst, desto genauer wird das Ergebnis.</string>
+    <string name="analyse_couleur_label">Farbe</string>
+    <string name="analyse_transparence_label">Transparenz</string>
+    <string name="analyse_eclat_label">Glanz</string>
+    <string name="analyse_clivage_label">Spaltbarkeit</string>
+    <string name="analyse_systeme_cristallin_label">Kristallsystem</string>
+    <string name="analyse_durete_label">Härte (Mohs)</string>
+    <string name="analyse_durete_placeholder">z. B. 7</string>
+    <string name="analyse_densite_label">Dichte</string>
+    <string name="analyse_densite_placeholder">z. B. 3,5</string>
+    <string name="analyse_indice_refraction_label">Brechungsindex</string>
+    <string name="analyse_indice_refraction_placeholder">z. B. 1,55</string>
+    <string name="analyse_option_any">Egal</string>
+    <string name="analyse_button">Analysieren</string>
+    <string name="analyse_reset_button">Zurücksetzen</string>
+    <string name="analyse_results_title">Ergebnisse</string>
+    <string name="analyse_empty_state">Fülle oben mindestens ein Kriterium aus und tippe dann auf „Analysieren“.</string>
+    <string name="analyse_no_results">Kein Edelstein entspricht den angegebenen Kriterien.</string>
+    <string name="analyse_match_score">%1$d/%2$d Kriterien</string>
 </resources>
