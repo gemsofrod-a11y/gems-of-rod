@@ -84,20 +84,19 @@ fun AnalyseScreen(onGemClick: (String) -> Unit, onInstrumentsClick: () -> Unit, 
     fun parseDecimal(input: String): Double? = input.trim().replace(',', '.').toDoubleOrNull()
 
     fun runAnalysis() {
-        results = GemAnalyzer.analyze(
-            AnalysisCriteria(
-                couleur = couleur,
-                transparence = transparence,
-                eclat = eclat,
-                clivage = clivage,
-                systemeCristallin = systemeCristallin,
-                durete = parseDecimal(dureteInput),
-                densite = parseDecimal(densiteInput),
-                indiceRefraction = parseDecimal(indiceRefractionInput),
-                pleochroisme = pleochroisme,
-                fluorescence = fluorescence
-            )
+        val criteria = AnalysisCriteria(
+            couleur = couleur,
+            transparence = transparence,
+            eclat = eclat,
+            clivage = clivage,
+            systemeCristallin = systemeCristallin,
+            durete = parseDecimal(dureteInput),
+            densite = parseDecimal(densiteInput),
+            indiceRefraction = parseDecimal(indiceRefractionInput),
+            pleochroisme = pleochroisme,
+            fluorescence = fluorescence
         )
+        results = runCatching { GemAnalyzer.analyze(criteria) }.getOrDefault(emptyList())
     }
 
     fun reset() {
