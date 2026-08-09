@@ -26,6 +26,9 @@ import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieGemsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieInfoScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieLabelListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieMenuScreen
+import fr.gemsofrod.encyclopedie.ui.screens.MeteoriteClassificationScreen
+import fr.gemsofrod.encyclopedie.ui.screens.MeteoriteDetailScreen
+import fr.gemsofrod.encyclopedie.ui.screens.MeteoritesMenuScreen
 import fr.gemsofrod.encyclopedie.ui.screens.PaysListScreen
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import java.net.URLDecoder
@@ -51,8 +54,12 @@ private object Routes {
     const val LITHOTHERAPIE_DETAIL = "lithotherapie_detail/{gemId}"
     const val LITHOTHERAPIE_INFO = "lithotherapie_info/{topic}"
     const val LANGUAGE = "language"
+    const val METEORITES = "meteorites"
+    const val METEORITE_CLASSIFICATION = "meteorite_classification"
+    const val METEORITE_DETAIL = "meteorite/{meteoriteId}"
 
     fun gemsList(colorName: String) = "gems/$colorName"
+    fun meteoriteDetail(meteoriteId: String) = "meteorite/$meteoriteId"
     fun paysDetail(country: String) = "pays/${encode(country)}"
     fun gemDetail(gemId: String) = "gem/$gemId"
     fun certificate(gemId: String) = "certificate/$gemId"
@@ -75,7 +82,25 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onFamillesClick = { navController.navigate(Routes.FAMILLES_LIST) },
                 onLithotherapieClick = { navController.navigate(Routes.LITHOTHERAPIE_MENU) },
                 onLanguageClick = { navController.navigate(Routes.LANGUAGE) },
-                onFavoritesClick = { navController.navigate(Routes.FAVORITES) }
+                onFavoritesClick = { navController.navigate(Routes.FAVORITES) },
+                onMeteoritesClick = { navController.navigate(Routes.METEORITES) }
+            )
+        }
+        composable(Routes.METEORITES) {
+            MeteoritesMenuScreen(
+                onClassificationClick = { navController.navigate(Routes.METEORITE_CLASSIFICATION) },
+                onMeteoriteClick = { meteorite -> navController.navigate(Routes.meteoriteDetail(meteorite.id)) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.METEORITE_CLASSIFICATION) {
+            MeteoriteClassificationScreen(onBackClick = { navController.popBackStack() })
+        }
+        composable(Routes.METEORITE_DETAIL) { backStackEntry ->
+            val meteoriteId = backStackEntry.arguments?.getString("meteoriteId").orEmpty()
+            MeteoriteDetailScreen(
+                meteoriteId = meteoriteId,
+                onBackClick = { navController.popBackStack() }
             )
         }
         composable(Routes.LANGUAGE) {
