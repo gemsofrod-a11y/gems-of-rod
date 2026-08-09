@@ -215,6 +215,14 @@ object GemDiagnostics {
         "oeil-de-taureau" to GemDiagnostic(transparence = "Translucide à opaque", eclat = "Soyeux", clivage = "Aucun", densite = "2,64 – 2,71", pleochroisme = "Aucun", fluorescence = "Aucune"),
         "unakite" to GemDiagnostic(transparence = "Opaque", eclat = "Vitreux", clivage = "Aucun", densite = "2,80 – 3,00", pleochroisme = "Aucun", fluorescence = "Aucune"),
         "oeil-de-sainte-lucie" to GemDiagnostic(transparence = "Opaque", eclat = "Vitreux", clivage = "Aucun", densite = "2,60 – 2,85", pleochroisme = "Aucun", fluorescence = "Aucune"),
-        "jais" to GemDiagnostic(transparence = "Opaque", eclat = "Résineux", clivage = "Aucun", densite = "1,30 – 1,40", pleochroisme = "Aucun", fluorescence = "Aucune")
+        "jais" to GemDiagnostic(transparence = "Opaque", eclat = "Résineux", clivage = "Aucun", densite = "1,30 – 1,40", pleochroisme = "Aucun", fluorescence = "Aucune"),
+        "grenat-etoile" to GemDiagnostic(transparence = "Translucide à opaque", eclat = "Vitreux", clivage = "Aucun", densite = "3,80 – 4,20", pleochroisme = "Aucun", fluorescence = "Aucune"),
+        "opale-peruvienne" to GemDiagnostic(transparence = "Translucide à opaque", eclat = "Cireux", clivage = "Aucun", densite = "1,98 – 2,20", pleochroisme = "Aucun", fluorescence = "Aucune à faible"),
+        "opale-commune" to GemDiagnostic(transparence = "Translucide à opaque", eclat = "Cireux", clivage = "Aucun", densite = "1,98 – 2,20", pleochroisme = "Aucun", fluorescence = "Aucune à faible"),
+        "meteorite-de-fer" to GemDiagnostic(transparence = "Opaque", eclat = "Métallique", clivage = "Aucun", densite = "7,80 – 7,90", pleochroisme = "Aucun", fluorescence = "Aucune"),
+        "opale-noire" to GemDiagnostic(transparence = "Translucide à opaque", eclat = "Vitreux à résineux", clivage = "Aucun", densite = "1,98 – 2,20", pleochroisme = "Aucun", fluorescence = "Faible à modérée"),
+        "opale-boulder" to GemDiagnostic(transparence = "Translucide à opaque", eclat = "Vitreux à résineux", clivage = "Aucun", densite = "1,98 – 2,20", pleochroisme = "Aucun", fluorescence = "Faible à modérée"),
+        "opale-ethiopie" to GemDiagnostic(transparence = "Transparente à translucide", eclat = "Vitreux à résineux", clivage = "Aucun", densite = "1,80 – 2,00", pleochroisme = "Aucun", fluorescence = "Faible à modérée"),
+        "pallasite" to GemDiagnostic(transparence = "Opaque", eclat = "Métallique", clivage = "Aucun", densite = "4,50 – 4,80", pleochroisme = "Aucun", fluorescence = "Aucune")
     )
 }

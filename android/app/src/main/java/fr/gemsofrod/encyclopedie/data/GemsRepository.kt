@@ -193,6 +193,24 @@ object GemsRepository {
             rarete = GemRarete.EXCEPTIONNELLE
         ),
 
+        Gem(
+            id = "grenat-etoile",
+            nom = "Grenat étoilé",
+            nomLatin = "Almandin (à inclusions orientées, effet d'astérisme)",
+            famille = "Grenat",
+            couleur = GemColorCategory.ROUGE,
+            descriptionCourte = "Un almandin à quatre ou six branches lumineuses, une rareté trouvée quasi uniquement dans l'Idaho.",
+            descriptionLongue = "Le grenat étoilé est un almandin dont de fines inclusions orientées (généralement de rutile) produisent un astérisme à quatre ou, plus rarement, six branches sous un éclairage ponctuel. Il n'est connu en qualité gemme qu'à deux endroits au monde : l'Idaho, aux États-Unis, et certains gisements d'Inde.",
+            formuleChimique = "Fe₃Al₂(SiO₄)₃",
+            systemeCristallin = "Cubique",
+            durete = "7 - 7,5",
+            indiceRefraction = "1,78 – 1,81",
+            origines = listOf("États-Unis (Idaho, seul gisement mondial d'astérisme à quatre branches)", "Inde (Odisha)"),
+            particularites = "L'Idaho est le seul endroit au monde où l'on trouve des grenats à astérisme à quatre branches ; les étoiles à six branches, plus rares, proviennent des mêmes gisements.",
+            lithotherapie = "Le grenat étoilé est associé à la force intérieure et à la guidance dans les moments d'incertitude.",
+            prixCaratEur = "50 – 500 €/ct",
+            rarete = GemRarete.RARE
+        ),
         // ---------- ORANGE ----------
         Gem(
             id = "crocoite",
@@ -1677,6 +1695,24 @@ object GemsRepository {
             prixCaratEur = "0,20 – 2 €/ct",
             rarete = GemRarete.COURANTE
         ),
+        Gem(
+            id = "opale-peruvienne",
+            nom = "Opale péruvienne",
+            nomLatin = "Opale (variété opaque bleue ou rose, au cuivre)",
+            famille = "Opale",
+            couleur = GemColorCategory.BLEU,
+            descriptionCourte = "Une opale opaque bleu-vert ou rose, sans jeu de couleurs, unique au Pérou.",
+            descriptionLongue = "L'opale péruvienne est une opale commune opaque, d'un bleu-vert évoquant l'eau de mer ou, plus rarement, d'un rose tendre — deux teintes dues à des traces de cuivre. Extraite uniquement dans les Andes péruviennes, elle est taillée en cabochons pour la bijouterie.",
+            formuleChimique = "SiO₂ · nH₂O (traces de cuivre)",
+            systemeCristallin = "Amorphe",
+            durete = "5,5 - 6,5",
+            indiceRefraction = "1,42 – 1,46",
+            origines = listOf("Pérou (Andes, département d'Ayacucho)"),
+            particularites = "Sa couleur provient de traces de cuivre, un phénomène de coloration rare chez les opales, habituellement incolores en profondeur.",
+            lithotherapie = "L'opale péruvienne est associée à l'apaisement émotionnel et à la communication, en résonance avec sa teinte bleu-vert.",
+            prixCaratEur = "5 – 40 €/ct",
+            rarete = GemRarete.PEU_COMMUNE
+        ),
         // ---------- VIOLET ----------
         Gem(
             id = "violane",
@@ -2529,6 +2565,24 @@ object GemsRepository {
             prixCaratEur = "10 – 80 €/ct",
             rarete = GemRarete.RARE
         ),
+        Gem(
+            id = "opale-commune",
+            nom = "Opale commune",
+            nomLatin = "Opale (variété commune, sans jeu de couleurs)",
+            famille = "Opale",
+            couleur = GemColorCategory.INCOLORE,
+            descriptionCourte = "La variété la plus répandue d'opale, laiteuse et sans jeu de couleurs.",
+            descriptionLongue = "L'opale commune, ou opale laiteuse, constitue l'essentiel de la production mondiale d'opale mais ne présente pas le jeu de couleurs qui fait la valeur de l'opale précieuse. Blanche, translucide ou parfois teintée, elle est taillée en cabochons à prix accessible.",
+            formuleChimique = "SiO₂ · nH₂O",
+            systemeCristallin = "Amorphe",
+            durete = "5,5 - 6,5",
+            indiceRefraction = "1,42 – 1,46",
+            origines = listOf("Mexique", "Pérou", "Madagascar"),
+            particularites = "L'absence de jeu de couleurs distingue l'opale commune de l'opale précieuse ; les deux partagent pourtant la même composition.",
+            lithotherapie = "L'opale commune est réputée apporter douceur et apaisement au quotidien.",
+            prixCaratEur = "0,50 – 5 €/ct",
+            rarete = GemRarete.COURANTE
+        ),
         // ---------- BRUN & MARRON ----------
         Gem(
             id = "bois-fossilise",
@@ -2911,6 +2965,24 @@ object GemsRepository {
             rarete = GemRarete.COURANTE
         ),
 
+        Gem(
+            id = "meteorite-de-fer",
+            nom = "Météorite de fer",
+            nomLatin = "Octaédrite (alliage fer-nickel)",
+            famille = "Météorite (sidérite)",
+            couleur = GemColorCategory.NOIR,
+            descriptionCourte = "Un alliage fer-nickel extraterrestre, dont la surface polie et attaquée à l'acide révèle le motif de Widmanstätten.",
+            descriptionLongue = "Les météorites de fer sont des fragments du noyau métallique d'astéroïdes détruits, composés presque entièrement d'un alliage de fer et de nickel. Polies puis légèrement attaquées à l'acide nitrique, elles révèlent le motif de Widmanstätten, un entrelacs géométrique de cristaux qui n'a mis que des millions d'années à se former par refroidissement extrêmement lent dans l'espace.",
+            formuleChimique = "Fe-Ni (alliage kamacite/taenite)",
+            systemeCristallin = "Cubique",
+            durete = "4 - 5",
+            indiceRefraction = "opaque (métallique, non applicable)",
+            origines = listOf("Namibie (Gibeon)", "Suède (Muonionalusta)", "Argentine (Campo del Cielo)"),
+            particularites = "Le motif de Widmanstätten, unique aux météorites de fer refroidies lentement, ne peut être reproduit artificiellement et constitue une preuve d'authenticité.",
+            lithotherapie = "La météorite de fer est associée à la force et à l'ancrage, malgré son origine céleste.",
+            prixCaratEur = "2 – 20 €/g (vendue au gramme ou à la pièce)",
+            rarete = GemRarete.PEU_COMMUNE
+        ),
         // ---------- MULTICOLORE / CHANGEMENT DE COULEUR ----------
         Gem(
             id = "rubis-etoile",
@@ -3362,6 +3434,78 @@ object GemsRepository {
             lithotherapie = "L'unakite est traditionnellement associée à l'équilibre affectif et à la guérison progressive après une épreuve émotionnelle.",
             prixCaratEur = "0,20 – 2 €/ct",
             rarete = GemRarete.COURANTE
+        ),
+        Gem(
+            id = "opale-noire",
+            nom = "Opale noire",
+            nomLatin = "Opale (variété noire)",
+            famille = "Opale",
+            couleur = GemColorCategory.MULTICOLORE,
+            descriptionCourte = "Le jeu de couleurs le plus spectaculaire, sur un fond sombre qui l'exalte.",
+            descriptionLongue = "L'opale noire tire son nom de son fond sombre, gris à noir, sur lequel le jeu de couleurs ressort avec une intensité inégalée. Quasi exclusivement extraite à Lightning Ridge, en Nouvelle-Galles du Sud, elle est considérée comme la plus précieuse des opales.",
+            formuleChimique = "SiO₂ · nH₂O",
+            systemeCristallin = "Amorphe",
+            durete = "5,5 - 6,5",
+            indiceRefraction = "1,42 – 1,46",
+            origines = listOf("Australie (Lightning Ridge, Nouvelle-Galles du Sud)"),
+            particularites = "Le fond sombre provient de traces de carbone et d'oxydes de fer entre les sphères de silice, un phénomène propre au gisement de Lightning Ridge.",
+            lithotherapie = "L'opale noire est associée à la transformation intérieure et à la protection dans les périodes de changement profond.",
+            prixCaratEur = "200 – 5 000 €/ct (les plus belles pièces atteignent des sommets)",
+            rarete = GemRarete.RARE
+        ),
+        Gem(
+            id = "opale-boulder",
+            nom = "Opale de Boulder",
+            nomLatin = "Opale (sur gangue ferrugineuse)",
+            famille = "Opale",
+            couleur = GemColorCategory.MULTICOLORE,
+            descriptionCourte = "Un fin voile d'opale sur sa gangue de grès ferrugineux brun, laissée intacte à la taille.",
+            descriptionLongue = "L'opale de Boulder se forme en fines veines au sein d'une roche ferrugineuse brune (ironstone) du Queensland. Plutôt que de séparer l'opale de sa gangue, trop fine et fragile, les lapidaires taillent la pierre en conservant le fond brun naturel, qui met en valeur le jeu de couleurs.",
+            formuleChimique = "SiO₂ · nH₂O + gangue de grès ferrugineux",
+            systemeCristallin = "Amorphe",
+            durete = "5,5 - 6,5",
+            indiceRefraction = "1,42 – 1,46",
+            origines = listOf("Australie (Queensland)"),
+            particularites = "Contrairement aux autres opales, elle inclut délibérément sa roche hôte, ce qui la rend plus résistante aux chocs qu'une opale pure.",
+            lithotherapie = "L'opale de Boulder est associée à l'ancrage et à la solidité, en résonance avec la roche qui la porte.",
+            prixCaratEur = "20 – 500 €/ct",
+            rarete = GemRarete.PEU_COMMUNE
+        ),
+        Gem(
+            id = "opale-ethiopie",
+            nom = "Opale d'Éthiopie",
+            nomLatin = "Opale (variété hydrophane)",
+            famille = "Opale",
+            couleur = GemColorCategory.MULTICOLORE,
+            descriptionCourte = "Une opale au jeu de couleurs vif sur fond miel, mais hydrophane et donc fragile à l'eau.",
+            descriptionLongue = "Découverte dans les années 2010 dans la région de Wollo, l'opale d'Éthiopie a bouleversé le marché par son jeu de couleurs particulièrement vif sur un fond translucide miel à incolore. Sa nature hydrophane — elle absorbe l'eau comme une éponge — la rend cependant instable si elle est immergée ou trop exposée à l'humidité.",
+            formuleChimique = "SiO₂ · nH₂O",
+            systemeCristallin = "Amorphe",
+            durete = "5,5 - 6,5",
+            indiceRefraction = "1,37 – 1,45 (plus faible à sec, variable selon l'hydratation)",
+            origines = listOf("Éthiopie (Wollo)"),
+            particularites = "Nature hydrophane : peut absorber jusqu'à 20% de son volume en eau, se craqueler en séchant, et voir sa transparence changer temporairement au contact de l'humidité.",
+            lithotherapie = "L'opale d'Éthiopie est réputée amplifier les émotions et la créativité, comme les autres opales précieuses.",
+            prixCaratEur = "10 – 300 €/ct",
+            rarete = GemRarete.PEU_COMMUNE
+        ),
+        Gem(
+            id = "pallasite",
+            nom = "Pallasite",
+            nomLatin = "Météorite pierreuse-ferreuse à olivine",
+            famille = "Météorite (pallasite)",
+            couleur = GemColorCategory.MULTICOLORE,
+            descriptionCourte = "Une météorite tranchée révélant des cristaux d'olivine dorés pris dans un maillage de fer-nickel.",
+            descriptionLongue = "La pallasite est l'une des météorites les plus rares et les plus recherchées : formée à la frontière entre le noyau métallique et le manteau silicaté d'un astéroïde différencié, elle emprisonne des cristaux d'olivine translucides dans une matrice de fer-nickel. Tranchée en fines plaques et polie, elle révèle un motif saisissant, unique à chaque météorite.",
+            formuleChimique = "(Fe,Ni) + (Mg,Fe)₂SiO₄ (olivine)",
+            systemeCristallin = "Cubique (métal) et orthorhombique (olivine)",
+            durete = "4 - 6,5 (variable selon la proportion métal/olivine)",
+            indiceRefraction = "1,63 – 1,69 (composante olivine)",
+            origines = listOf("Russie (Seymchan)", "Argentine (Esquel)", "Biélorussie (Brahin)"),
+            particularites = "Chaque tranche de pallasite est unique ; les plus recherchées, comme la Seymchan russe, présentent des cristaux d'olivine limpides et un maillage métallique régulier.",
+            lithotherapie = "La pallasite est réputée relier à une dimension cosmique et favoriser une perspective élargie sur les événements de la vie.",
+            prixCaratEur = "5 – 50 €/g (vendue au gramme, très variable selon qualité et provenance)",
+            rarete = GemRarete.RARE
         ),
         // ---------- GEMMES ORGANIQUES ----------
         Gem(

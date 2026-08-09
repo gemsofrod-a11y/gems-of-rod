@@ -1340,5 +1340,61 @@ object GemTranslationsIt {
             particularites = "Si riscalda rapidamente a contatto con la pelle e può sviluppare una carica elettrostatica per sfregamento, come l'ambra.",
             lithotherapie = "Il giaietto è tradizionalmente associato alla protezione dalle energie negative e all'accompagnamento nel lutto."
         ),
+        "grenat-etoile" to GemTranslation(
+            nom = "Granato stellato",
+            descriptionCourte = "Un almandino a quattro o sei bracci luminosi, una rarità che si trova quasi esclusivamente nell'Idaho.",
+            descriptionLongue = "Il granato stellato è un almandino le cui sottili inclusioni orientate (generalmente di rutilo) producono un asterismo a quattro o, più raramente, sei bracci sotto una luce puntiforme. È noto in qualità da gemma solo in due luoghi al mondo: l'Idaho, negli Stati Uniti, e alcuni giacimenti dell'India.",
+            particularites = "L'Idaho è l'unico luogo al mondo in cui si trovano granati con asterismo a quattro bracci; le stelle a sei bracci, più rare, provengono dagli stessi giacimenti.",
+            lithotherapie = "Il granato stellato è associato alla forza interiore e alla guida nei momenti di incertezza."
+        ),
+        "opale-peruvienne" to GemTranslation(
+            nom = "Opale peruviana",
+            descriptionCourte = "Un'opale opaca blu-verde o rosa, priva di gioco di colori, unica al Perù.",
+            descriptionLongue = "L'opale peruviana è un'opale comune opaca, di un blu-verde che evoca l'acqua di mare o, più raramente, di un rosa tenue — due tonalità dovute a tracce di rame. Estratta unicamente sulle Ande peruviane, viene tagliata a cabochon per la gioielleria.",
+            particularites = "Il suo colore deriva da tracce di rame, un fenomeno di colorazione raro nelle opali, di norma incolori in profondità.",
+            lithotherapie = "L'opale peruviana è associata alla distensione emotiva e alla comunicazione, in risonanza con la sua tonalità blu-verde."
+        ),
+        "opale-commune" to GemTranslation(
+            nom = "Opale comune",
+            descriptionCourte = "La varietà più diffusa di opale, lattiginosa e priva di gioco di colori.",
+            descriptionLongue = "L'opale comune, o opale lattea, costituisce la maggior parte della produzione mondiale di opale ma non presenta il gioco di colori che fa il pregio dell'opale preziosa. Bianca, translucida o talvolta colorata, viene tagliata a cabochon a prezzo accessibile.",
+            particularites = "L'assenza di gioco di colori distingue l'opale comune dall'opale preziosa; le due condividono tuttavia la stessa composizione.",
+            lithotherapie = "L'opale comune è ritenuta capace di apportare dolcezza e serenità nella vita quotidiana."
+        ),
+        "meteorite-de-fer" to GemTranslation(
+            nom = "Meteorite di ferro",
+            descriptionCourte = "Una lega ferro-nichel extraterrestre, la cui superficie levigata e attaccata con acido rivela il motivo di Widmanstätten.",
+            descriptionLongue = "Le meteoriti di ferro sono frammenti del nucleo metallico di asteroidi distrutti, composti quasi interamente da una lega di ferro e nichel. Levigate e poi leggermente attaccate con acido nitrico, rivelano il motivo di Widmanstätten, un intreccio geometrico di cristalli che ha richiesto milioni di anni per formarsi attraverso un raffreddamento estremamente lento nello spazio.",
+            particularites = "Il motivo di Widmanstätten, esclusivo delle meteoriti di ferro raffreddate lentamente, non può essere riprodotto artificialmente e costituisce una prova di autenticità.",
+            lithotherapie = "La meteorite di ferro è associata alla forza e al radicamento, nonostante la sua origine celeste."
+        ),
+        "opale-noire" to GemTranslation(
+            nom = "Opale nera",
+            descriptionCourte = "Il gioco di colori più spettacolare, su un fondo scuro che lo esalta.",
+            descriptionLongue = "L'opale nera deve il suo nome al fondo scuro, dal grigio al nero, sul quale il gioco di colori risalta con un'intensità impareggiabile. Estratta quasi esclusivamente a Lightning Ridge, nel Nuovo Galles del Sud, è considerata la più preziosa tra le opali.",
+            particularites = "Il fondo scuro deriva da tracce di carbonio e ossidi di ferro tra le sferule di silice, un fenomeno proprio del giacimento di Lightning Ridge.",
+            lithotherapie = "L'opale nera è associata alla trasformazione interiore e alla protezione nei periodi di cambiamento profondo."
+        ),
+        "opale-boulder" to GemTranslation(
+            nom = "Opale Boulder",
+            descriptionCourte = "Un sottile velo di opale sulla sua ganga di arenaria ferruginosa bruna, lasciata intatta durante la lavorazione.",
+            descriptionLongue = "L'opale Boulder si forma in sottili vene all'interno di una roccia ferruginosa bruna (ironstone) del Queensland. Anziché separare l'opale dalla sua ganga, troppo sottile e fragile, i lapidari tagliano la pietra conservando il fondo bruno naturale, che valorizza il gioco di colori.",
+            particularites = "A differenza delle altre opali, include deliberatamente la roccia ospite, il che la rende più resistente agli urti rispetto a un'opale pura.",
+            lithotherapie = "L'opale Boulder è associata al radicamento e alla solidità, in risonanza con la roccia che la sostiene."
+        ),
+        "opale-ethiopie" to GemTranslation(
+            nom = "Opale d'Etiopia",
+            descriptionCourte = "Un'opale dal gioco di colori vivace su fondo miele, ma idrofana e quindi fragile a contatto con l'acqua.",
+            descriptionLongue = "Scoperta negli anni 2010 nella regione di Wollo, l'opale d'Etiopia ha rivoluzionato il mercato grazie al suo gioco di colori particolarmente vivace su un fondo translucido dal miele all'incolore. La sua natura idrofana — assorbe l'acqua come una spugna — la rende tuttavia instabile se immersa o troppo esposta all'umidità.",
+            particularites = "Natura idrofana: può assorbire fino al 20% del proprio volume in acqua, screpolarsi durante l'asciugatura e vedere la propria trasparenza cambiare temporaneamente a contatto con l'umidità.",
+            lithotherapie = "L'opale d'Etiopia è ritenuta capace di amplificare le emozioni e la creatività, come le altre opali preziose."
+        ),
+        "pallasite" to GemTranslation(
+            nom = "Pallasite",
+            descriptionCourte = "Una meteorite sezionata che rivela cristalli di olivina dorata incastonati in un reticolo di ferro-nichel.",
+            descriptionLongue = "La pallasite è una delle meteoriti più rare e ricercate: formatasi al confine tra il nucleo metallico e il mantello silicatico di un asteroide differenziato, racchiude cristalli di olivina translucida in una matrice di ferro-nichel. Sezionata in sottili lastre e levigata, rivela un motivo sorprendente, unico per ogni meteorite.",
+            particularites = "Ogni sezione di pallasite è unica; le più ricercate, come la Seymchan russa, presentano cristalli di olivina limpidi e un reticolo metallico regolare.",
+            lithotherapie = "La pallasite è ritenuta capace di collegare a una dimensione cosmica e favorire una prospettiva più ampia sugli eventi della vita."
+        ),
     )
 }

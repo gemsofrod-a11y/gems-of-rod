@@ -1340,5 +1340,61 @@ object GemTranslationsEn {
             particularites = "Warms quickly against the skin and can develop an electrostatic charge through friction, like amber.",
             lithotherapie = "Jet is traditionally associated with protection against negative energy and support through the grieving process."
         ),
+        "grenat-etoile" to GemTranslation(
+            nom = "Star garnet",
+            descriptionCourte = "A four- or six-rayed almandine garnet, a rarity found almost exclusively in Idaho.",
+            descriptionLongue = "Star garnet is an almandine garnet whose fine oriented inclusions (typically rutile) produce a four-rayed, or more rarely six-rayed, asterism under a point light source. It is known in gem quality from only two places in the world: Idaho, in the United States, and a handful of deposits in India.",
+            particularites = "Idaho is the only place in the world where four-rayed star garnets are found; the rarer six-rayed stars come from the same deposits.",
+            lithotherapie = "Star garnet is associated with inner strength and guidance through moments of uncertainty."
+        ),
+        "opale-peruvienne" to GemTranslation(
+            nom = "Peruvian opal",
+            descriptionCourte = "An opaque blue-green or pink opal with no play-of-color, unique to Peru.",
+            descriptionLongue = "Peruvian opal is an opaque common opal, seawater blue-green or, more rarely, soft pink — two hues caused by traces of copper. Mined only in the Peruvian Andes, it is cut into cabochons for jewelry.",
+            particularites = "Its color comes from traces of copper, a rare coloring phenomenon among opals, which are usually colorless at depth.",
+            lithotherapie = "Peruvian opal is associated with emotional calm and communication, in keeping with its blue-green hue."
+        ),
+        "opale-commune" to GemTranslation(
+            nom = "Common opal",
+            descriptionCourte = "The most widespread variety of opal, milky and without play-of-color.",
+            descriptionLongue = "Common opal, or milky opal, makes up the bulk of the world's opal production but lacks the play-of-color that gives precious opal its value. White, translucent, or sometimes tinted, it is cut into affordable cabochons.",
+            particularites = "The absence of play-of-color distinguishes common opal from precious opal; the two nonetheless share the same composition.",
+            lithotherapie = "Common opal is said to bring gentleness and calm to everyday life."
+        ),
+        "meteorite-de-fer" to GemTranslation(
+            nom = "Iron meteorite",
+            descriptionCourte = "An extraterrestrial iron-nickel alloy whose polished, acid-etched surface reveals the Widmanstätten pattern.",
+            descriptionLongue = "Iron meteorites are fragments of the metallic core of shattered asteroids, made up almost entirely of an iron-nickel alloy. Polished and then lightly etched with nitric acid, they reveal the Widmanstätten pattern, a geometric interlace of crystals that took millions of years to form through extremely slow cooling in space.",
+            particularites = "The Widmanstätten pattern, unique to slowly cooled iron meteorites, cannot be reproduced artificially and stands as proof of authenticity.",
+            lithotherapie = "Iron meteorite is associated with strength and grounding, despite its celestial origin."
+        ),
+        "opale-noire" to GemTranslation(
+            nom = "Black opal",
+            descriptionCourte = "The most spectacular play-of-color, set against a dark body tone that heightens it.",
+            descriptionLongue = "Black opal takes its name from its dark, gray-to-black body tone, against which the play-of-color stands out with unrivaled intensity. Mined almost exclusively at Lightning Ridge, in New South Wales, it is considered the most precious of all opals.",
+            particularites = "The dark body tone comes from traces of carbon and iron oxides between the silica spheres, a phenomenon specific to the Lightning Ridge deposit.",
+            lithotherapie = "Black opal is associated with inner transformation and protection during periods of profound change."
+        ),
+        "opale-boulder" to GemTranslation(
+            nom = "Boulder opal",
+            descriptionCourte = "A thin veil of opal on its brown ironstone matrix, left intact when cut.",
+            descriptionLongue = "Boulder opal forms in fine veins within brown ironstone from Queensland. Rather than separating the opal from its host rock, which is too thin and fragile, lapidaries cut the stone with the natural brown backing left in place, which sets off the play-of-color.",
+            particularites = "Unlike other opals, it deliberately includes its host rock, which makes it more resistant to knocks than solid opal.",
+            lithotherapie = "Boulder opal is associated with grounding and solidity, in keeping with the rock that carries it."
+        ),
+        "opale-ethiopie" to GemTranslation(
+            nom = "Ethiopian opal",
+            descriptionCourte = "An opal with vivid play-of-color on a honey-toned body, but hydrophane and therefore sensitive to water.",
+            descriptionLongue = "Discovered in the 2010s in the Wollo region, Ethiopian opal shook up the market with its particularly vivid play-of-color set against a honey-to-colorless translucent body. Its hydrophane nature — it absorbs water like a sponge — makes it unstable if immersed or exposed to too much humidity, however.",
+            particularites = "Hydrophane nature: can absorb up to 20% of its volume in water, crack while drying, and undergo a temporary change in transparency on contact with moisture.",
+            lithotherapie = "Ethiopian opal is said to amplify emotions and creativity, like other precious opals."
+        ),
+        "pallasite" to GemTranslation(
+            nom = "Pallasite",
+            descriptionCourte = "A sliced meteorite revealing golden olivine crystals set within an iron-nickel lattice.",
+            descriptionLongue = "Pallasite is one of the rarest and most sought-after meteorites: formed at the boundary between the metallic core and the silicate mantle of a differentiated asteroid, it traps translucent olivine crystals within an iron-nickel matrix. Sliced into thin plates and polished, it reveals a striking pattern, unique to each meteorite.",
+            particularites = "Every pallasite slice is unique; the most sought-after, such as Russia's Seymchan, display clear olivine crystals and a regular metallic lattice.",
+            lithotherapie = "Pallasite is said to connect one to a cosmic dimension and foster a broader perspective on life's events."
+        ),
     )
 }
