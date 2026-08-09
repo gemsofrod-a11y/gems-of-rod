@@ -1340,5 +1340,61 @@ object GemTranslationsEs {
             particularites = "Se calienta rápidamente al contacto con la piel y puede desarrollar una carga electrostática por fricción, al igual que el ámbar.",
             lithotherapie = "El azabache se asocia tradicionalmente con la protección contra las energías negativas y el acompañamiento en el duelo."
         ),
+        "grenat-etoile" to GemTranslation(
+            nom = "Granate estrellado",
+            descriptionCourte = "Un almandino con cuatro o seis brazos luminosos, una rareza que se encuentra casi exclusivamente en Idaho.",
+            descriptionLongue = "El granate estrellado es un almandino cuyas finas inclusiones orientadas (generalmente de rutilo) producen un asterismo de cuatro o, más raramente, seis brazos bajo una fuente de luz puntual. Solo se conoce en calidad gema en dos lugares del mundo: Idaho, en Estados Unidos, y algunos yacimientos de la India.",
+            particularites = "Idaho es el único lugar del mundo donde se encuentran granates con asterismo de cuatro brazos; las estrellas de seis brazos, más raras, proceden de los mismos yacimientos.",
+            lithotherapie = "El granate estrellado se asocia con la fuerza interior y la guía en los momentos de incertidumbre."
+        ),
+        "opale-peruvienne" to GemTranslation(
+            nom = "Ópalo peruano",
+            descriptionCourte = "Un ópalo opaco azul verdoso o rosa, sin juego de colores, exclusivo de Perú.",
+            descriptionLongue = "El ópalo peruano es un ópalo común opaco, de un azul verdoso que evoca el agua de mar o, más raramente, de un rosa suave, dos tonalidades debidas a trazas de cobre. Extraído únicamente en los Andes peruanos, se talla en cabujones para joyería.",
+            particularites = "Su color procede de trazas de cobre, un fenómeno de coloración poco común entre los ópalos, habitualmente incoloros en profundidad.",
+            lithotherapie = "El ópalo peruano se asocia con la calma emocional y la comunicación, en resonancia con su tono azul verdoso."
+        ),
+        "opale-commune" to GemTranslation(
+            nom = "Ópalo común",
+            descriptionCourte = "La variedad más extendida de ópalo, lechosa y sin juego de colores.",
+            descriptionLongue = "El ópalo común, u ópalo lechoso, constituye la mayor parte de la producción mundial de ópalo, pero no presenta el juego de colores que da valor al ópalo precioso. Blanco, translúcido o a veces teñido, se talla en cabujones a precio accesible.",
+            particularites = "La ausencia de juego de colores distingue al ópalo común del ópalo precioso; ambos comparten, sin embargo, la misma composición.",
+            lithotherapie = "Se dice que el ópalo común aporta suavidad y sosiego en el día a día."
+        ),
+        "meteorite-de-fer" to GemTranslation(
+            nom = "Meteorito de hierro",
+            descriptionCourte = "Una aleación de hierro y níquel extraterrestre, cuya superficie pulida y atacada con ácido revela el patrón de Widmanstätten.",
+            descriptionLongue = "Los meteoritos de hierro son fragmentos del núcleo metálico de asteroides destruidos, compuestos casi enteramente por una aleación de hierro y níquel. Pulidos y ligeramente atacados con ácido nítrico, revelan el patrón de Widmanstätten, un entramado geométrico de cristales que tardó millones de años en formarse por un enfriamiento extremadamente lento en el espacio.",
+            particularites = "El patrón de Widmanstätten, exclusivo de los meteoritos de hierro enfriados lentamente, no puede reproducirse artificialmente y constituye una prueba de autenticidad.",
+            lithotherapie = "El meteorito de hierro se asocia con la fuerza y el arraigo, pese a su origen celeste."
+        ),
+        "opale-noire" to GemTranslation(
+            nom = "Ópalo negro",
+            descriptionCourte = "El juego de colores más espectacular, sobre un fondo oscuro que lo realza.",
+            descriptionLongue = "El ópalo negro debe su nombre a su fondo oscuro, de gris a negro, sobre el cual el juego de colores resalta con una intensidad inigualable. Extraído casi exclusivamente en Lightning Ridge, en Nueva Gales del Sur, se considera el más precioso de los ópalos.",
+            particularites = "El fondo oscuro procede de trazas de carbono y óxidos de hierro entre las esferas de sílice, un fenómeno propio del yacimiento de Lightning Ridge.",
+            lithotherapie = "El ópalo negro se asocia con la transformación interior y la protección en los periodos de cambio profundo."
+        ),
+        "opale-boulder" to GemTranslation(
+            nom = "Ópalo Boulder",
+            descriptionCourte = "Un fino velo de ópalo sobre su ganga de arenisca ferruginosa parda, dejada intacta en la talla.",
+            descriptionLongue = "El ópalo Boulder se forma en finas vetas dentro de una roca ferruginosa parda (ironstone) de Queensland. En lugar de separar el ópalo de su ganga, demasiado fina y frágil, los lapidarios tallan la piedra conservando el fondo pardo natural, que realza el juego de colores.",
+            particularites = "A diferencia de otros ópalos, incluye deliberadamente su roca huésped, lo que lo hace más resistente a los golpes que un ópalo puro.",
+            lithotherapie = "El ópalo Boulder se asocia con el arraigo y la solidez, en resonancia con la roca que lo sostiene."
+        ),
+        "opale-ethiopie" to GemTranslation(
+            nom = "Ópalo de Etiopía",
+            descriptionCourte = "Un ópalo de juego de colores vivo sobre fondo miel, pero hidrófano y por ello frágil frente al agua.",
+            descriptionLongue = "Descubierto en la década de 2010 en la región de Wollo, el ópalo de Etiopía revolucionó el mercado por su juego de colores particularmente vivo sobre un fondo translúcido de tono miel a incoloro. Sin embargo, su naturaleza hidrófana, absorbe el agua como una esponja, lo vuelve inestable si se sumerge o se expone en exceso a la humedad.",
+            particularites = "Naturaleza hidrófana: puede absorber hasta un 20% de su volumen en agua, agrietarse al secarse y ver su transparencia cambiar temporalmente en contacto con la humedad.",
+            lithotherapie = "Se dice que el ópalo de Etiopía amplifica las emociones y la creatividad, como los demás ópalos preciosos."
+        ),
+        "pallasite" to GemTranslation(
+            nom = "Pallasita",
+            descriptionCourte = "Un meteorito cortado que revela cristales de olivino dorados atrapados en una malla de hierro-níquel.",
+            descriptionLongue = "La pallasita es uno de los meteoritos más raros y codiciados: formada en la frontera entre el núcleo metálico y el manto silicatado de un asteroide diferenciado, encierra cristales de olivino translúcido en una matriz de hierro y níquel. Cortada en finas láminas y pulida, revela un patrón sorprendente, único en cada meteorito.",
+            particularites = "Cada lámina de pallasita es única; las más buscadas, como la Seymchan rusa, presentan cristales de olivino límpidos y una malla metálica regular.",
+            lithotherapie = "Se dice que la pallasita conecta con una dimensión cósmica y favorece una perspectiva más amplia sobre los acontecimientos de la vida."
+        ),
     )
 }

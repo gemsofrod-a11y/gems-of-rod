@@ -1340,5 +1340,61 @@ object GemTranslationsDe {
             particularites = "Erwärmt sich schnell im Kontakt mit der Haut und kann sich, ähnlich wie Bernstein, durch Reibung elektrostatisch aufladen.",
             lithotherapie = "Gagat wird traditionell mit dem Schutz vor negativen Energien und dem Begleiten von Trauerprozessen assoziiert."
         ),
+        "grenat-etoile" to GemTranslation(
+            nom = "Sterngranat",
+            descriptionCourte = "Ein Almandin mit vier oder sechs leuchtenden Strahlen, eine Rarität, die fast ausschließlich in Idaho gefunden wird.",
+            descriptionLongue = "Der Sterngranat ist ein Almandin, dessen feine orientierte Einschlüsse (meist Rutil) unter punktförmiger Beleuchtung einen vier- oder, seltener, sechsstrahligen Asterismus erzeugen. In Edelsteinqualität ist er nur an zwei Orten der Welt bekannt: in Idaho, USA, und in einigen Lagerstätten Indiens.",
+            particularites = "Idaho ist der einzige Ort der Welt, an dem vierstrahlige Sterngranate gefunden werden; die selteneren sechsstrahligen Sterne stammen aus denselben Lagerstätten.",
+            lithotherapie = "Der Sterngranat wird mit innerer Kraft und Orientierung in Momenten der Unsicherheit assoziiert."
+        ),
+        "opale-peruvienne" to GemTranslation(
+            nom = "Peruanischer Opal",
+            descriptionCourte = "Ein undurchsichtiger blaugrüner oder rosafarbener Opal ohne Farbenspiel, einzigartig für Peru.",
+            descriptionLongue = "Der Peruanische Opal ist ein undurchsichtiger gemeiner Opal in einem an Meerwasser erinnernden Blaugrün oder, seltener, in zartem Rosa – zwei Farbtöne, die auf Kupferspuren zurückzuführen sind. Er wird ausschließlich in den peruanischen Anden abgebaut und für den Schmuckgebrauch zu Cabochons geschliffen.",
+            particularites = "Seine Farbe verdankt er Kupferspuren, ein bei Opalen seltenes Färbungsphänomen, da diese in der Tiefe normalerweise farblos sind.",
+            lithotherapie = "Der Peruanische Opal wird mit emotionaler Beruhigung und Kommunikation assoziiert, im Einklang mit seinem blaugrünen Farbton."
+        ),
+        "opale-commune" to GemTranslation(
+            nom = "Gemeiner Opal",
+            descriptionCourte = "Die am weitesten verbreitete Opalvarietät, milchig und ohne Farbenspiel.",
+            descriptionLongue = "Der gemeine Opal, auch Milchopal genannt, macht den Großteil der weltweiten Opalproduktion aus, zeigt jedoch nicht das Farbenspiel, das den Edelopal so wertvoll macht. Weiß, durchscheinend oder gelegentlich gefärbt, wird er zu erschwinglichen Preisen als Cabochon geschliffen.",
+            particularites = "Das Fehlen des Farbenspiels unterscheidet den gemeinen Opal vom Edelopal; beide teilen jedoch dieselbe Zusammensetzung.",
+            lithotherapie = "Dem gemeinen Opal wird nachgesagt, im Alltag Sanftheit und Beruhigung zu spenden."
+        ),
+        "meteorite-de-fer" to GemTranslation(
+            nom = "Eisenmeteorit",
+            descriptionCourte = "Eine außerirdische Eisen-Nickel-Legierung, deren polierte und säurebehandelte Oberfläche das Widmanstätten-Muster offenbart.",
+            descriptionLongue = "Eisenmeteoriten sind Fragmente des metallischen Kerns zerstörter Asteroiden, die fast vollständig aus einer Eisen-Nickel-Legierung bestehen. Poliert und anschließend leicht mit Salpetersäure geätzt, offenbaren sie das Widmanstätten-Muster – ein geometrisches Kristallgeflecht, das nur durch extrem langsame Abkühlung im Weltraum über Millionen von Jahren entstehen konnte.",
+            particularites = "Das Widmanstätten-Muster, das ausschließlich bei langsam abgekühlten Eisenmeteoriten auftritt, kann nicht künstlich nachgebildet werden und gilt als Echtheitsnachweis.",
+            lithotherapie = "Der Eisenmeteorit wird trotz seines himmlischen Ursprungs mit Kraft und Erdung assoziiert."
+        ),
+        "opale-noire" to GemTranslation(
+            nom = "Schwarzer Opal",
+            descriptionCourte = "Das spektakulärste Farbenspiel, auf einem dunklen Untergrund, der es besonders zur Geltung bringt.",
+            descriptionLongue = "Der schwarze Opal verdankt seinen Namen seinem dunklen, grauen bis schwarzen Untergrund, auf dem das Farbenspiel mit unvergleichlicher Intensität hervortritt. Er wird fast ausschließlich in Lightning Ridge in New South Wales abgebaut und gilt als der wertvollste aller Opale.",
+            particularites = "Der dunkle Untergrund entsteht durch Kohlenstoff- und Eisenoxidspuren zwischen den Silica-Kügelchen, ein Phänomen, das für die Lagerstätte Lightning Ridge charakteristisch ist.",
+            lithotherapie = "Der schwarze Opal wird mit innerer Wandlung und Schutz in Zeiten tiefgreifenden Wandels assoziiert."
+        ),
+        "opale-boulder" to GemTranslation(
+            nom = "Boulderopal",
+            descriptionCourte = "Ein feiner Opalschleier auf seinem eisenhaltigen braunen Sandsteingestein, das beim Schliff bewusst erhalten bleibt.",
+            descriptionLongue = "Der Boulderopal bildet sich in feinen Adern innerhalb eines eisenhaltigen braunen Gesteins (Ironstone) in Queensland. Statt den Opal von seinem – zu dünnen und brüchigen – Muttergestein zu trennen, schleifen die Lapidare den Stein mit dem natürlichen braunen Untergrund, der das Farbenspiel zur Geltung bringt.",
+            particularites = "Im Gegensatz zu anderen Opalen enthält er bewusst sein Wirtsgestein, was ihn schlagfester macht als einen reinen Opal.",
+            lithotherapie = "Der Boulderopal wird mit Erdung und Stabilität assoziiert, im Einklang mit dem Gestein, das ihn trägt."
+        ),
+        "opale-ethiopie" to GemTranslation(
+            nom = "Äthiopischer Opal",
+            descriptionCourte = "Ein Opal mit lebhaftem Farbenspiel auf honigfarbenem Untergrund, jedoch hydrophan und daher wasserempfindlich.",
+            descriptionLongue = "In den 2010er-Jahren in der Region Wollo entdeckt, hat der Äthiopische Opal den Markt mit seinem besonders lebhaften Farbenspiel auf honigfarbenem bis farblosem, durchscheinendem Untergrund revolutioniert. Seine hydrophane Natur – er saugt Wasser wie ein Schwamm auf – macht ihn jedoch instabil, wenn er ins Wasser getaucht oder zu starker Feuchtigkeit ausgesetzt wird.",
+            particularites = "Hydrophane Natur: kann bis zu 20% seines Volumens an Wasser aufnehmen, beim Trocknen rissig werden und bei Feuchtigkeitskontakt vorübergehend seine Transparenz verändern.",
+            lithotherapie = "Dem Äthiopischen Opal wird, wie den anderen Edelopalen, nachgesagt, Emotionen und Kreativität zu verstärken."
+        ),
+        "pallasite" to GemTranslation(
+            nom = "Pallasit",
+            descriptionCourte = "Ein aufgeschnittener Meteorit, der goldene Olivinkristalle in einem Eisen-Nickel-Geflecht offenbart.",
+            descriptionLongue = "Der Pallasit gehört zu den seltensten und begehrtesten Meteoriten: Er entstand an der Grenze zwischen dem metallischen Kern und dem silikatischen Mantel eines differenzierten Asteroiden und schließt durchscheinende Olivinkristalle in einer Eisen-Nickel-Matrix ein. In dünne Scheiben geschnitten und poliert, offenbart er ein eindrucksvolles Muster, das bei jedem Meteoriten einzigartig ist.",
+            particularites = "Jede Pallasit-Scheibe ist einzigartig; die begehrtesten, wie der russische Seymchan, zeigen klare Olivinkristalle und ein regelmäßiges Metallgeflecht.",
+            lithotherapie = "Dem Pallasit wird nachgesagt, eine Verbindung zu einer kosmischen Dimension herzustellen und eine erweiterte Perspektive auf die Ereignisse des Lebens zu fördern."
+        ),
     )
 }
