@@ -232,6 +232,20 @@ GEMS = [
     ("bixbite", ['Red beryl gemstone', 'Red beryl crystal', 'Bixbite', 'Red beryl Utah', 'Red beryl Wah Wah'], ['red beryl', 'bixbite'], (BRUTE, FACETTEE)),
     ("saphir-teal", ['Teal sapphire', 'Teal sapphire Montana', 'Parti sapphire', 'Bi-color sapphire blue yellow', 'Montana sapphire teal'], ['teal sapphire', 'parti sapphire', 'sapphire', 'corundum'], (BRUTE, FACETTEE)),
     ("ametrine", ['Ametrine', 'Ametrine crystal', 'Ametrine Bolivia', 'Ametrine gemstone faceted'], ['ametrine'], (BRUTE, FACETTEE)),
+    ("aventurine", ['Green aventurine quartz', 'Aventurine gemstone', 'Aventurine cabochon'], ['aventurine'], (BRUTE, FACETTEE)),
+    ("epidote", ['Epidote crystal', 'Epidote gemstone faceted'], ['epidote'], (BRUTE, FACETTEE)),
+    ("gaspeite", ['Gaspeite cabochon', 'Gaspeite gemstone', 'Gaspeite rough'], ['gaspeite'], (BRUTE, FACETTEE)),
+    ("hiddenite", ['Hiddenite crystal', 'Hiddenite gemstone faceted', 'Green spodumene hiddenite'], ['hiddenite'], (BRUTE, FACETTEE)),
+    ("angelite", ['Angelite gemstone', 'Blue anhydrite cabochon', 'Angelite crystal'], ['angelite', 'anhydrite'], (BRUTE, FACETTEE)),
+    ("oeil-de-faucon", ['Hawk eye gemstone', 'Hawks eye cabochon', 'Falcon eye stone'], ['hawk', 'falcon'], (BRUTE, FACETTEE)),
+    ("howlite", ['Howlite gemstone', 'White howlite cabochon', 'Howlite mineral'], ['howlite'], (BRUTE, FACETTEE)),
+    ("rhodizite", ['Rhodizite crystal', 'Rhodizite gemstone Madagascar'], ['rhodizite'], (BRUTE, FACETTEE)),
+    ("sanidine", ['Sanidine crystal', 'Sanidine gemstone faceted', 'Sanidine feldspar Eifel'], ['sanidine'], (BRUTE, FACETTEE)),
+    ("tremolite", ['Tremolite crystal', 'Tremolite gemstone', 'Hexagonite tremolite'], ['tremolite'], (BRUTE, FACETTEE)),
+    ("oeil-de-taureau", ["Bull's eye gemstone", 'Red tiger eye cabochon', 'Bulls eye quartz'], ['bull', 'tiger eye'], (BRUTE, FACETTEE)),
+    ("unakite", ['Unakite gemstone', 'Unakite cabochon', 'Unakite rough'], ['unakite'], (BRUTE, FACETTEE)),
+    ("oeil-de-sainte-lucie", ['Turbo operculum shell', "Cat's eye operculum shell", 'Saint Lucia eye shell'], ['operculum'], (FACETTEE,)),
+    ("jais", ['Jet gemstone', 'Whitby jet', 'Jet mineraloid polished'], ['jet'], (BRUTE, FACETTEE)),
 ]
 
 EXCLUDED_TITLE_TOKENS = [

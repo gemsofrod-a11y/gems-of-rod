@@ -201,6 +201,20 @@ object GemDiagnostics {
         "corail" to GemDiagnostic(transparence = "Opaque", eclat = "Vitreux", clivage = "Aucun", densite = "2,60 – 2,70", pleochroisme = "Aucun", fluorescence = "Aucune"),
         "perle-conque" to GemDiagnostic(transparence = "Translucide à opaque", eclat = "Soyeux", clivage = "Aucun", densite = "2,75 – 2,86", pleochroisme = "Aucun", fluorescence = "Aucune à faible"),
         "ambre" to GemDiagnostic(transparence = "Transparente à translucide", eclat = "Résineux", clivage = "Aucun", densite = "1,05 – 1,10", pleochroisme = "Aucun", fluorescence = "Modérée à forte"),
-        "perle" to GemDiagnostic(transparence = "Translucide", eclat = "Nacré", clivage = "Aucun", densite = "2,60 – 2,85", pleochroisme = "Aucun", fluorescence = "Faible à modérée")
+        "perle" to GemDiagnostic(transparence = "Translucide", eclat = "Nacré", clivage = "Aucun", densite = "2,60 – 2,85", pleochroisme = "Aucun", fluorescence = "Faible à modérée"),
+        "aventurine" to GemDiagnostic(transparence = "Translucide", eclat = "Vitreux", clivage = "Aucun", densite = "2,64 – 2,69", pleochroisme = "Faible", fluorescence = "Aucune"),
+        "epidote" to GemDiagnostic(transparence = "Transparente à translucide", eclat = "Vitreux à résineux", clivage = "Parfait dans une direction", densite = "3,35 – 3,49", pleochroisme = "Fort", fluorescence = "Aucune"),
+        "gaspeite" to GemDiagnostic(transparence = "Opaque", eclat = "Cireux", clivage = "Aucun", densite = "3,40 – 3,80", pleochroisme = "Aucun", fluorescence = "Aucune"),
+        "hiddenite" to GemDiagnostic(transparence = "Transparente", eclat = "Vitreux", clivage = "Parfait dans deux directions", densite = "3,17 – 3,19", pleochroisme = "Modéré à fort", fluorescence = "Aucune à faible"),
+        "angelite" to GemDiagnostic(transparence = "Translucide à opaque", eclat = "Vitreux", clivage = "Parfait dans trois directions", densite = "2,90 – 2,99", pleochroisme = "Faible", fluorescence = "Aucune"),
+        "oeil-de-faucon" to GemDiagnostic(transparence = "Translucide à opaque", eclat = "Soyeux", clivage = "Aucun", densite = "2,64 – 2,71", pleochroisme = "Aucun", fluorescence = "Aucune"),
+        "howlite" to GemDiagnostic(transparence = "Opaque", eclat = "Terne", clivage = "Aucun", densite = "2,45 – 2,60", pleochroisme = "Aucun", fluorescence = "Aucune"),
+        "rhodizite" to GemDiagnostic(transparence = "Transparente", eclat = "Vitreux à adamantin", clivage = "Aucun", densite = "3,40 – 3,45", pleochroisme = "Aucun", fluorescence = "Aucune"),
+        "sanidine" to GemDiagnostic(transparence = "Transparente", eclat = "Vitreux", clivage = "Parfait dans deux directions", densite = "2,56 – 2,58", pleochroisme = "Faible", fluorescence = "Aucune"),
+        "tremolite" to GemDiagnostic(transparence = "Transparente à translucide", eclat = "Soyeux", clivage = "Parfait dans deux directions", densite = "2,90 – 3,03", pleochroisme = "Faible à modéré", fluorescence = "Aucune"),
+        "oeil-de-taureau" to GemDiagnostic(transparence = "Translucide à opaque", eclat = "Soyeux", clivage = "Aucun", densite = "2,64 – 2,71", pleochroisme = "Aucun", fluorescence = "Aucune"),
+        "unakite" to GemDiagnostic(transparence = "Opaque", eclat = "Vitreux", clivage = "Aucun", densite = "2,80 – 3,00", pleochroisme = "Aucun", fluorescence = "Aucune"),
+        "oeil-de-sainte-lucie" to GemDiagnostic(transparence = "Opaque", eclat = "Vitreux", clivage = "Aucun", densite = "2,60 – 2,85", pleochroisme = "Aucun", fluorescence = "Aucune"),
+        "jais" to GemDiagnostic(transparence = "Opaque", eclat = "Résineux", clivage = "Aucun", densite = "1,30 – 1,40", pleochroisme = "Aucun", fluorescence = "Aucune")
     )
 }

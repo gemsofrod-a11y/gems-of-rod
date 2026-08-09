@@ -1063,6 +1063,78 @@ object GemsRepository {
             rarete = GemRarete.EXCEPTIONNELLE
         ),
 
+        Gem(
+            id = "aventurine",
+            nom = "Aventurine verte",
+            nomLatin = "Quartz aventuriné",
+            famille = "Quartz (aventuriné)",
+            couleur = GemColorCategory.VERT,
+            descriptionCourte = "Un quartz vert scintillant, moucheté de paillettes de fuchsite.",
+            descriptionLongue = "L'aventurine doit son nom et son scintillement caractéristique (aventurescence) à de fines inclusions de mica chromifère (fuchsite) ou d'hématite disséminées dans une masse de quartz microcristallin. La variété verte, la plus répandue, est extraite en grande quantité en Inde depuis des siècles.",
+            formuleChimique = "SiO₂ + inclusions de fuchsite (mica chromifère)",
+            systemeCristallin = "Trigonal",
+            durete = "6,5 - 7",
+            indiceRefraction = "1,544 – 1,553",
+            origines = listOf("Inde (Andhra Pradesh, Odisha)", "Brésil (Minas Gerais)", "Russie (Oural)"),
+            particularites = "L'aventurescence, ce scintillement métallique, provient de la réflexion de la lumière sur les paillettes de mica incluses ; le terme a ensuite été repris pour désigner le verre artificiel imitant cet effet.",
+            lithotherapie = "L'aventurine verte est réputée porte-bonheur, associée à la chance, à l'abondance et à l'apaisement émotionnel.",
+            prixCaratEur = "0,50 – 5 €/ct",
+            rarete = GemRarete.COURANTE
+        ),
+        Gem(
+            id = "epidote",
+            nom = "Épidote",
+            nomLatin = "Épidote",
+            famille = "Épidote",
+            couleur = GemColorCategory.VERT,
+            descriptionCourte = "Un vert pistache caractéristique, rarement facetté en raison de son pléochroïsme marqué.",
+            descriptionLongue = "L'épidote donne son nom à tout un groupe minéral et se rencontre en cristaux allongés vert pistache à vert olive, sa couleur provenant du fer. Son fort pléochroïsme, qui fait apparaître des teintes différentes selon l'angle d'observation, complique la taille de pierres à la couleur homogène.",
+            formuleChimique = "Ca₂(Al,Fe)₃(SiO₄)₃(OH)",
+            systemeCristallin = "Monoclinique",
+            durete = "6 - 7",
+            indiceRefraction = "1,715 – 1,797",
+            origines = listOf("Autriche (vallée de Knappenwand)", "Pakistan (Alchuri)", "Mexique (Basse-Californie)"),
+            particularites = "Le fort pléochroïsme (vert, jaune-brun, incolore rosé selon l'angle) doit être pris en compte lors de la taille pour révéler la plus belle face colorée.",
+            lithotherapie = "L'épidote est réputée favoriser la transformation personnelle et aider à se libérer des schémas émotionnels répétitifs.",
+            prixCaratEur = "10 – 100 €/ct",
+            rarete = GemRarete.PEU_COMMUNE
+        ),
+        Gem(
+            id = "gaspeite",
+            nom = "Gaspéite",
+            nomLatin = "Gaspéite",
+            famille = "Carbonate de nickel",
+            couleur = GemColorCategory.VERT,
+            descriptionCourte = "Un carbonate de nickel vert pomme opaque, rare et recherché en cabochon.",
+            descriptionLongue = "La gaspéite est un carbonate de nickel d'un vert pomme à vert vif opaque, découvert dans la péninsule de Gaspésie au Québec qui lui donne son nom. Les gisements australiens exploitables en qualité gemme en sont aujourd'hui la principale source commerciale.",
+            formuleChimique = "(Ni,Mg,Fe)CO₃",
+            systemeCristallin = "Trigonal",
+            durete = "4,5 - 5",
+            indiceRefraction = "1,63 – 1,83 (variable, souvent estimé par densité)",
+            origines = listOf("Australie occidentale (Widgiemooltha)", "Canada (Québec, Gaspésie, gisement type)"),
+            particularites = "Souvent confondue de loin avec la turquoise ou la variscite en raison de sa teinte verte opaque, mais s'en distingue par sa couleur plus franchement vert pomme.",
+            lithotherapie = "La gaspéite est associée à l'abondance et à un ancrage doux, favorisant la stabilité dans les périodes de changement.",
+            prixCaratEur = "5 – 30 €/ct",
+            rarete = GemRarete.RARE
+        ),
+        Gem(
+            id = "hiddenite",
+            nom = "Hiddenite",
+            nomLatin = "Spodumène (variété verte au chrome)",
+            famille = "Spodumène",
+            couleur = GemColorCategory.VERT,
+            descriptionCourte = "La variété verte du spodumène, colorée au chrome, cousine de la kunzite.",
+            descriptionLongue = "L'hiddenite est la variété verte du spodumène, sa couleur provenant de traces de chrome ou de vanadium — contrairement à la kunzite rose qui doit la sienne au manganèse. Découverte en Caroline du Nord à la fin du XIXᵉ siècle, la meilleure matière reste américaine, bien que le Brésil et l'Afghanistan en produisent aussi.",
+            formuleChimique = "LiAlSi₂O₆ (traces de chrome)",
+            systemeCristallin = "Monoclinique",
+            durete = "6,5 - 7",
+            indiceRefraction = "1,660 – 1,676",
+            origines = listOf("États-Unis (Caroline du Nord, Hiddenite, gisement type)", "Brésil (Minas Gerais)", "Afghanistan (Nouristan)"),
+            particularites = "Comme toutes les variétés de spodumène, elle possède un clivage parfait dans deux directions et doit être taillée avec précaution.",
+            lithotherapie = "L'hiddenite est réputée ouvrir le cœur à la compassion tout en apportant clarté et discernement dans les décisions importantes.",
+            prixCaratEur = "100 – 1 000 €/ct",
+            rarete = GemRarete.RARE
+        ),
         // ---------- BLEU ----------
         Gem(
             id = "azurite",
@@ -1569,6 +1641,42 @@ object GemsRepository {
             rarete = GemRarete.EXCEPTIONNELLE
         ),
 
+        Gem(
+            id = "angelite",
+            nom = "Angélite",
+            nomLatin = "Anhydrite (variété bleue)",
+            famille = "Anhydrite",
+            couleur = GemColorCategory.BLEU,
+            descriptionCourte = "La variété bleu ciel de l'anhydrite, très prisée en lithothérapie.",
+            descriptionLongue = "L'angélite est le nom commercial donné à l'anhydrite d'un bleu pâle et laiteux, polie en cabochons, perles ou pièces décoratives. Sa couleur provient de traces d'impuretés dans le sulfate de calcium anhydre, qui se forme lorsque le gypse est comprimé et perd son eau sur de longues périodes géologiques.",
+            formuleChimique = "CaSO₄",
+            systemeCristallin = "Orthorhombique",
+            durete = "3 - 3,5",
+            indiceRefraction = "1,569 – 1,614",
+            origines = listOf("Pérou (Huaraz)", "Mexique", "Allemagne (bassin de la Werra)"),
+            particularites = "Se raye facilement et craint l'humidité prolongée, qui peut l'hydrater lentement en gypse ; à protéger de l'eau et des chocs.",
+            lithotherapie = "L'angélite est associée à la communication, à la sérénité et à une forme de connexion spirituelle apaisée, d'où son nom évocateur.",
+            prixCaratEur = "0,50 – 3 €/ct",
+            rarete = GemRarete.COURANTE
+        ),
+        Gem(
+            id = "oeil-de-faucon",
+            nom = "Œil de faucon",
+            nomLatin = "Quartz (pseudomorphose de crocidolite)",
+            famille = "Quartz (pseudomorphose de crocidolite)",
+            couleur = GemColorCategory.BLEU,
+            descriptionCourte = "La variante bleu-gris chatoyante de l'œil de tigre, non oxydée.",
+            descriptionLongue = "L'œil de faucon partage l'origine de l'œil de tigre : une pseudomorphose de quartz après crocidolite (amiante bleue), dont les fibres parallèles produisent un chatoiement soyeux. Contrairement à l'œil de tigre doré, il conserve la teinte bleu-gris à bleu-vert d'origine, faute d'oxydation du fer.",
+            formuleChimique = "SiO₂ (quartz) sur fibres de crocidolite",
+            systemeCristallin = "Trigonal",
+            durete = "6,5 - 7",
+            indiceRefraction = "1,544 – 1,553",
+            origines = listOf("Afrique du Sud (Cap-Nord)", "Namibie", "Australie occidentale"),
+            particularites = "Le même bloc de matière brute peut présenter localement des zones bleu-gris (œil de faucon) et dorées (œil de tigre) selon le degré d'oxydation du fer.",
+            lithotherapie = "L'œil de faucon est traditionnellement associé à la clairvoyance, à la vision intérieure et à la prise de recul face aux situations complexes.",
+            prixCaratEur = "0,20 – 2 €/ct",
+            rarete = GemRarete.COURANTE
+        ),
         // ---------- VIOLET ----------
         Gem(
             id = "violane",
@@ -2349,6 +2457,78 @@ object GemsRepository {
             rarete = GemRarete.RARE
         ),
 
+        Gem(
+            id = "howlite",
+            nom = "Howlite",
+            nomLatin = "Howlite",
+            famille = "Borate de calcium",
+            couleur = GemColorCategory.INCOLORE,
+            descriptionCourte = "Une pierre blanche veinée de gris, souvent teinte pour imiter la turquoise.",
+            descriptionLongue = "La howlite se présente naturellement en nodules blancs à structure poreuse, parcourus de veines grises à noires évoquant un marbrage. Sa porosité la rend facile à teindre, ce qui en fait la matière la plus couramment utilisée pour imiter la turquoise à bas coût — une pratique à toujours vérifier avant achat.",
+            formuleChimique = "Ca₂B₅SiO₉(OH)₅",
+            systemeCristallin = "Monoclinique",
+            durete = "3 - 3,5",
+            indiceRefraction = "1,586 – 1,608",
+            origines = listOf("États-Unis (Californie)", "Canada (Nouvelle-Écosse, gisement type)", "Turquie"),
+            particularites = "Sa forte porosité la rend particulièrement réceptive aux teintures, à l'origine de nombreuses imitations de turquoise ou de lapis-lazuli sur le marché.",
+            lithotherapie = "La howlite est réputée apaiser le mental agité et favoriser un sommeil plus serein.",
+            prixCaratEur = "0,10 – 1 €/ct",
+            rarete = GemRarete.COURANTE
+        ),
+        Gem(
+            id = "rhodizite",
+            nom = "Rhodizite",
+            nomLatin = "Borate de césium et de béryllium",
+            famille = "Rhodizite-londonite",
+            couleur = GemColorCategory.INCOLORE,
+            descriptionCourte = "Un borate ultra-rare, l'un des minéraux les plus durs après le corindon.",
+            descriptionLongue = "La rhodizite est un borate complexe de césium, de béryllium et d'aluminium, cristallisant en minuscules cristaux incolores à jaune pâle presque exclusivement à Madagascar. Sa dureté exceptionnelle, proche de celle du corindon, et sa rareté extrême en font une pierre presque uniquement destinée aux collectionneurs avertis.",
+            formuleChimique = "(K,Cs)Al₄Be₄(B,Be)₁₂O₂₈",
+            systemeCristallin = "Cubique",
+            durete = "8 - 8,5",
+            indiceRefraction = "1,694",
+            origines = listOf("Madagascar (Antsongombato, Mont Bity)", "Russie (Oural, rare)"),
+            particularites = "Les cristaux facettables dépassant un carat sont exceptionnellement rares ; la plupart des pierres taillées pèsent moins de 0,5 carat.",
+            lithotherapie = "La rhodizite est associée à l'harmonisation énergétique et à l'amplification des intentions positives.",
+            prixCaratEur = "500 – 3 000 €/ct",
+            rarete = GemRarete.EXCEPTIONNELLE
+        ),
+        Gem(
+            id = "sanidine",
+            nom = "Sanidine",
+            nomLatin = "Feldspath potassique (variété volcanique)",
+            famille = "Feldspath (sanidine)",
+            couleur = GemColorCategory.INCOLORE,
+            descriptionCourte = "Un feldspath volcanique incolore à jaune pâle, cristallisé rapidement en surface.",
+            descriptionLongue = "La sanidine est la forme haute température du feldspath potassique, cristallisant rapidement dans les roches volcaniques et les laves, ce qui la distingue de l'orthose formée plus lentement en profondeur. Les cristaux limpides et facettables les plus recherchés proviennent des projections volcaniques de l'Eifel, en Allemagne.",
+            formuleChimique = "KAlSi₃O₈",
+            systemeCristallin = "Monoclinique",
+            durete = "6 - 6,5",
+            indiceRefraction = "1,518 – 1,525",
+            origines = listOf("Allemagne (Eifel)", "Italie (Latium)", "États-Unis (Utah)"),
+            particularites = "Se distingue de l'orthose par sa formation volcanique rapide et sa structure atomique plus désordonnée ; les deux partagent la même formule chimique.",
+            lithotherapie = "La sanidine est associée à la clarté mentale et à la spontanéité, en écho à sa formation rapide dans les roches volcaniques.",
+            prixCaratEur = "20 – 100 €/ct",
+            rarete = GemRarete.RARE
+        ),
+        Gem(
+            id = "tremolite",
+            nom = "Trémolite",
+            nomLatin = "Trémolite",
+            famille = "Amphibole (série trémolite-actinote)",
+            couleur = GemColorCategory.INCOLORE,
+            descriptionCourte = "Une amphibole blanche à grise, dont la variété rose est bien plus recherchée.",
+            descriptionLongue = "La trémolite est un amphibole calco-magnésien formant le pôle riche en magnésium de la série trémolite-actinote ; sous forme fibreuse compacte, elle constitue l'un des composants du néphrite. Sa variété gemme, généralement blanche, grise ou incolore, est rarement facettée, à l'exception de la rare variété violette dite hexagonite.",
+            formuleChimique = "Ca₂Mg₅Si₈O₂₂(OH)₂",
+            systemeCristallin = "Monoclinique",
+            durete = "5 - 6",
+            indiceRefraction = "1,600 – 1,628",
+            origines = listOf("Italie (Val d'Aoste)", "États-Unis (New York, gisement type de l'hexagonite)", "Tanzanie"),
+            particularites = "La variété rose-violette rarissime, l'hexagonite, doit sa couleur au manganèse et est parfois confondue avec la tanzanite avant analyse.",
+            lithotherapie = "La trémolite est réputée apporter douceur et flexibilité face aux changements, en résonance avec sa structure fibreuse.",
+            prixCaratEur = "10 – 80 €/ct",
+            rarete = GemRarete.RARE
+        ),
         // ---------- BRUN & MARRON ----------
         Gem(
             id = "bois-fossilise",
@@ -2585,6 +2765,24 @@ object GemsRepository {
             rarete = GemRarete.RARE
         ),
 
+        Gem(
+            id = "oeil-de-taureau",
+            nom = "Œil de taureau",
+            nomLatin = "Quartz (œil de tigre chauffé)",
+            famille = "Quartz (pseudomorphose de crocidolite, chauffée)",
+            couleur = GemColorCategory.BRUN,
+            descriptionCourte = "L'œil de tigre chauffé, dont l'oxydation du fer vire au rouge-brun profond.",
+            descriptionLongue = "L'œil de taureau est obtenu par chauffage contrôlé de l'œil de tigre doré, un traitement qui accentue l'oxydation du fer et fait virer la teinte du jaune-brun vers un rouge-brun profond et soutenu, tout en conservant le chatoiement soyeux caractéristique de la structure fibreuse.",
+            formuleChimique = "SiO₂ (quartz) sur fibres de crocidolite, oxydation renforcée par chauffage",
+            systemeCristallin = "Trigonal",
+            durete = "6,5 - 7",
+            indiceRefraction = "1,544 – 1,553",
+            origines = listOf("Afrique du Sud (Cap-Nord, matière brute chauffée)"),
+            particularites = "Le traitement thermique qui produit cette teinte rouge-brun est courant et largement accepté dans le commerce, à condition d'être divulgué.",
+            lithotherapie = "L'œil de taureau est associé à la force, à l'ancrage et à la détermination, dans la continuité symbolique de l'œil de tigre.",
+            prixCaratEur = "0,20 – 2 €/ct",
+            rarete = GemRarete.COURANTE
+        ),
         // ---------- NOIR ----------
         Gem(
             id = "hematite",
@@ -3147,6 +3345,24 @@ object GemsRepository {
             rarete = GemRarete.RARE
         ),
 
+        Gem(
+            id = "unakite",
+            nom = "Unakite",
+            nomLatin = "Roche à épidote, feldspath rose et quartz",
+            famille = "Unakite (roche gemme)",
+            couleur = GemColorCategory.MULTICOLORE,
+            descriptionCourte = "Une roche mouchetée de vert et de rose, mélange de granite altéré.",
+            descriptionLongue = "L'unakite est une roche granitique altérée, composée d'un mélange caractéristique de feldspath rose, d'épidote vert et de quartz, lui donnant un motif tacheté immédiatement reconnaissable. Nommée d'après les monts Unaka en Caroline du Nord où elle fut décrite, elle est surtout taillée en cabochons et perles.",
+            formuleChimique = "Mélange de feldspath, épidote et quartz",
+            systemeCristallin = "Polycristallin (roche, sans système unique)",
+            durete = "6 - 7",
+            indiceRefraction = "1,54 – 1,76 (variable selon les composants)",
+            origines = listOf("États-Unis (Caroline du Nord, monts Unaka)", "Afrique du Sud", "Brésil"),
+            particularites = "En tant que roche composite et non minéral unique, sa dureté et son indice de réfraction varient légèrement selon la proportion de chaque composant.",
+            lithotherapie = "L'unakite est traditionnellement associée à l'équilibre affectif et à la guérison progressive après une épreuve émotionnelle.",
+            prixCaratEur = "0,20 – 2 €/ct",
+            rarete = GemRarete.COURANTE
+        ),
         // ---------- GEMMES ORGANIQUES ----------
         Gem(
             id = "corail",
@@ -3220,6 +3436,42 @@ object GemsRepository {
             prixCaratEur = "10 – 10 000 €/perle (très variable selon type)",
             rarete = GemRarete.COURANTE
         )
+        Gem(
+            id = "oeil-de-sainte-lucie",
+            nom = "Œil de Sainte-Lucie",
+            nomLatin = "Opercule de turbo (gemme organique)",
+            famille = "Opercule (gemme organique)",
+            couleur = GemColorCategory.BRUN,
+            descriptionCourte = "L'opercule spiralé d'un escargot marin, porté en amulette depuis l'Antiquité.",
+            descriptionLongue = "L'œil de Sainte-Lucie est l'opercule calcaire, la petite « porte » qui obture l'ouverture de la coquille de certains gastéropodes marins du genre Turbo. Son motif en spirale brun et crème, évoquant un œil, en a fait une amulette protectrice traditionnelle dans de nombreuses cultures méditerranéennes.",
+            formuleChimique = "CaCO₃ (calcite) + conchyoline",
+            systemeCristallin = "Trigonal (calcite)",
+            durete = "3 - 4",
+            indiceRefraction = "1,530 – 1,685",
+            origines = listOf("Méditerranée (côtes françaises, italiennes)", "Océan Indien", "Caraïbes"),
+            particularites = "Ce n'est pas une coquille mais l'opercule, la pièce calcaire qui referme l'ouverture du coquillage vivant ; il se détache naturellement après la mort de l'animal.",
+            lithotherapie = "Portée en pendentif depuis l'Antiquité, cette amulette est réputée protéger du mauvais œil et porter chance à son porteur.",
+            prixCaratEur = "1 – 10 €/pièce",
+            rarete = GemRarete.COURANTE
+        ),
+        Gem(
+            id = "jais",
+            nom = "Jais",
+            nomLatin = "Lignite fossilisé (gemme organique)",
+            famille = "Jais (gemme organique)",
+            couleur = GemColorCategory.NOIR,
+            descriptionCourte = "Un charbon fossile noir mat, emblème du deuil victorien.",
+            descriptionLongue = "Le jais est une variété compacte de lignite, du bois fossilisé sous haute pression sur des millions d'années, poli en un noir profond et velouté. Sa légèreté et sa facilité de taille en ont fait la matière emblématique des bijoux de deuil de l'époque victorienne, notamment autour de Whitby en Angleterre.",
+            formuleChimique = "Carbone + composés organiques (lignite fossile)",
+            systemeCristallin = "Amorphe",
+            durete = "2,5 - 4",
+            indiceRefraction = "1,640 – 1,680",
+            origines = listOf("Royaume-Uni (Whitby, Yorkshire, gisement historique)", "Espagne (Asturies)", "France (Aude)"),
+            particularites = "Se réchauffe rapidement au contact de la peau et peut développer une charge électrostatique par frottement, comme l'ambre.",
+            lithotherapie = "Le jais est traditionnellement associé à la protection contre les énergies négatives et à l'accompagnement du deuil.",
+            prixCaratEur = "1 – 15 €/g (souvent vendu au gramme ou à la pièce)",
+            rarete = GemRarete.PEU_COMMUNE
+        ),
     )
 
     fun byColor(color: GemColorCategory): List<Gem> =
