@@ -208,6 +208,10 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
                         FicheRow(stringResource(R.string.fiche_clivage), localizedLabel(diagnostic.clivage))
                         FicheDivider()
                         FicheRow(stringResource(R.string.fiche_densite), diagnostic.densite)
+                        FicheDivider()
+                        FicheRow(stringResource(R.string.fiche_pleochroisme), localizedLabel(diagnostic.pleochroisme))
+                        FicheDivider()
+                        FicheRow(stringResource(R.string.fiche_fluorescence), localizedLabel(diagnostic.fluorescence))
                     }
                     FicheDivider()
                     FicheRow(stringResource(R.string.fiche_prix_indicatif), gem.prixCaratEur)

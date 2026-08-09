@@ -270,7 +270,23 @@ object LabelLocalization {
         "Orthorhombique" to mapOf("en" to "Orthorhombic", "es" to "Ortorrómbico", "it" to "Ortorombico", "de" to "Orthorhombisch"),
         "Quadratique" to mapOf("en" to "Tetragonal", "es" to "Tetragonal", "it" to "Tetragonale", "de" to "Tetragonal"),
         "Triclinique" to mapOf("en" to "Triclinic", "es" to "Triclínico", "it" to "Triclino", "de" to "Triklin"),
-        "Trigonal" to mapOf("en" to "Trigonal", "es" to "Trigonal", "it" to "Trigonale", "de" to "Trigonal")
+        "Trigonal" to mapOf("en" to "Trigonal", "es" to "Trigonal", "it" to "Trigonale", "de" to "Trigonal"),
+
+        // ---------- Analyse de pierre : pléochroïsme ----------
+        "Faible" to mapOf("en" to "Weak", "es" to "Débil", "it" to "Debole", "de" to "Schwach"),
+        "Faible à modéré" to mapOf("en" to "Weak to moderate", "es" to "Débil a moderado", "it" to "Da debole a moderato", "de" to "Schwach bis mäßig"),
+        "Modéré" to mapOf("en" to "Moderate", "es" to "Moderado", "it" to "Moderato", "de" to "Mäßig"),
+        "Modéré à fort" to mapOf("en" to "Moderate to strong", "es" to "Moderado a fuerte", "it" to "Da moderato a forte", "de" to "Mäßig bis stark"),
+        "Fort" to mapOf("en" to "Strong", "es" to "Fuerte", "it" to "Forte", "de" to "Stark"),
+
+        // ---------- Analyse de pierre : fluorescence UV ----------
+        "Aucune" to mapOf("en" to "None", "es" to "Ninguna", "it" to "Assente", "de" to "Keine"),
+        "Aucune à faible" to mapOf("en" to "None to weak", "es" to "Ninguna a débil", "it" to "Da assente a debole", "de" to "Keine bis schwach"),
+        "Faible à modérée" to mapOf("en" to "Weak to moderate", "es" to "Débil a moderada", "it" to "Da debole a moderata", "de" to "Schwach bis mäßig"),
+        "Modérée" to mapOf("en" to "Moderate", "es" to "Moderada", "it" to "Moderata", "de" to "Mäßig"),
+        "Modérée à forte" to mapOf("en" to "Moderate to strong", "es" to "Moderada a fuerte", "it" to "Da moderata a forte", "de" to "Mäßig bis stark"),
+        "Forte" to mapOf("en" to "Strong", "es" to "Fuerte", "it" to "Forte", "de" to "Stark"),
+        "Variable" to mapOf("en" to "Variable", "es" to "Variable", "it" to "Variabile", "de" to "Variabel")
     )
 
     fun localize(label: String, languageCode: String): String =

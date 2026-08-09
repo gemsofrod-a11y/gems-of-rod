@@ -64,6 +64,8 @@
     <string name="fiche_eclat">Luster</string>
     <string name="fiche_clivage">Cleavage</string>
     <string name="fiche_densite">Specific gravity</string>
+    <string name="fiche_pleochroisme">Pleochroism</string>
+    <string name="fiche_fluorescence">UV fluorescence</string>
     <string name="fiche_prix_indicatif">Indicative price</string>
     <string name="create_certificate_button">Create a certificate</string>
     <string name="particularites_title">Distinctive features</string>
@@ -133,10 +135,14 @@
     <string name="gemmologie_analyse_title">Stone analysis</string>
     <string name="gemmologie_analyse_subtitle">Identify a stone from its observed characteristics.</string>
     <string name="analyse_intro">Enter the characteristics you know or observe. A single criterion is enough to get started; the more you provide, the more precise the results.</string>
+    <string name="analyse_instruments_card_title">The gemologist\'s tools</string>
+    <string name="analyse_instruments_card_subtitle">Discover the instruments used to analyse a stone.</string>
     <string name="analyse_couleur_label">Color</string>
     <string name="analyse_transparence_label">Transparency</string>
     <string name="analyse_eclat_label">Luster</string>
     <string name="analyse_clivage_label">Cleavage</string>
+    <string name="analyse_pleochroisme_label">Pleochroism</string>
+    <string name="analyse_fluorescence_label">UV fluorescence</string>
     <string name="analyse_systeme_cristallin_label">Crystal system</string>
     <string name="analyse_durete_label">Hardness (Mohs)</string>
     <string name="analyse_durete_placeholder">e.g. 7</string>
@@ -151,4 +157,7 @@
     <string name="analyse_empty_state">Fill in at least one criterion above, then tap “Analyze.”</string>
     <string name="analyse_no_results">No gem matches the criteria provided.</string>
     <string name="analyse_match_score">%1$d/%2$d criteria</string>
+
+    <!-- Outils d'analyse -->
+    <string name="instruments_title">Analysis tools</string>
 </resources>
