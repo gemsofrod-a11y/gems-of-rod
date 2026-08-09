@@ -60,6 +60,10 @@
     <string name="fiche_systeme_cristallin">Crystal system</string>
     <string name="fiche_durete">Hardness (Mohs)</string>
     <string name="fiche_indice_refraction">Refractive index</string>
+    <string name="fiche_transparence">Transparency</string>
+    <string name="fiche_eclat">Luster</string>
+    <string name="fiche_clivage">Cleavage</string>
+    <string name="fiche_densite">Specific gravity</string>
     <string name="fiche_prix_indicatif">Indicative price</string>
     <string name="create_certificate_button">Create a certificate</string>
     <string name="particularites_title">Distinctive features</string>
@@ -124,4 +128,27 @@
 
     <!-- Language -->
     <string name="language_title">Language</string>
+
+    <!-- Stone analysis -->
+    <string name="gemmologie_analyse_title">Stone analysis</string>
+    <string name="gemmologie_analyse_subtitle">Identify a stone from its observed characteristics.</string>
+    <string name="analyse_intro">Enter the characteristics you know or observe. A single criterion is enough to get started; the more you provide, the more precise the results.</string>
+    <string name="analyse_couleur_label">Color</string>
+    <string name="analyse_transparence_label">Transparency</string>
+    <string name="analyse_eclat_label">Luster</string>
+    <string name="analyse_clivage_label">Cleavage</string>
+    <string name="analyse_systeme_cristallin_label">Crystal system</string>
+    <string name="analyse_durete_label">Hardness (Mohs)</string>
+    <string name="analyse_durete_placeholder">e.g. 7</string>
+    <string name="analyse_densite_label">Specific gravity</string>
+    <string name="analyse_densite_placeholder">e.g. 3.5</string>
+    <string name="analyse_indice_refraction_label">Refractive index</string>
+    <string name="analyse_indice_refraction_placeholder">e.g. 1.55</string>
+    <string name="analyse_option_any">Any</string>
+    <string name="analyse_button">Analyze</string>
+    <string name="analyse_reset_button">Reset</string>
+    <string name="analyse_results_title">Results</string>
+    <string name="analyse_empty_state">Fill in at least one criterion above, then tap “Analyze.”</string>
+    <string name="analyse_no_results">No gem matches the criteria provided.</string>
+    <string name="analyse_match_score">%1$d/%2$d criteria</string>
 </resources>

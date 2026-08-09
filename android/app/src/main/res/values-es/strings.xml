@@ -60,6 +60,10 @@
     <string name="fiche_systeme_cristallin">Sistema cristalino</string>
     <string name="fiche_durete">Dureza (Mohs)</string>
     <string name="fiche_indice_refraction">Índice de refracción</string>
+    <string name="fiche_transparence">Transparencia</string>
+    <string name="fiche_eclat">Brillo</string>
+    <string name="fiche_clivage">Exfoliación</string>
+    <string name="fiche_densite">Densidad</string>
     <string name="fiche_prix_indicatif">Precio orientativo</string>
     <string name="create_certificate_button">Crear un certificado</string>
     <string name="particularites_title">Particularidades</string>
@@ -124,4 +128,27 @@
 
     <!-- Idioma -->
     <string name="language_title">Idioma</string>
+
+    <!-- Análisis de piedra -->
+    <string name="gemmologie_analyse_title">Análisis de piedra</string>
+    <string name="gemmologie_analyse_subtitle">Identifica una piedra a partir de sus características observadas.</string>
+    <string name="analyse_intro">Indica las características que conozcas u observes. Basta un solo criterio para empezar; cuantos más indiques, más preciso será el resultado.</string>
+    <string name="analyse_couleur_label">Color</string>
+    <string name="analyse_transparence_label">Transparencia</string>
+    <string name="analyse_eclat_label">Brillo</string>
+    <string name="analyse_clivage_label">Exfoliación</string>
+    <string name="analyse_systeme_cristallin_label">Sistema cristalino</string>
+    <string name="analyse_durete_label">Dureza (Mohs)</string>
+    <string name="analyse_durete_placeholder">ej. 7</string>
+    <string name="analyse_densite_label">Densidad</string>
+    <string name="analyse_densite_placeholder">ej. 3,5</string>
+    <string name="analyse_indice_refraction_label">Índice de refracción</string>
+    <string name="analyse_indice_refraction_placeholder">ej. 1,55</string>
+    <string name="analyse_option_any">Cualquiera</string>
+    <string name="analyse_button">Analizar</string>
+    <string name="analyse_reset_button">Restablecer</string>
+    <string name="analyse_results_title">Resultados</string>
+    <string name="analyse_empty_state">Rellena al menos un criterio arriba y luego toca «Analizar».</string>
+    <string name="analyse_no_results">Ninguna gema coincide con los criterios indicados.</string>
+    <string name="analyse_match_score">%1$d/%2$d criterios</string>
 </resources>

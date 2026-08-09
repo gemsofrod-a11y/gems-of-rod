@@ -214,6 +214,7 @@ private fun HomeSectionCard(
 fun GemmologieMenuScreen(
     onCouleurClick: () -> Unit,
     onPaysClick: () -> Unit,
+    onAnalyseClick: () -> Unit,
     onGemClick: (Gem) -> Unit,
     onBackClick: () -> Unit
 ) {
@@ -281,6 +282,11 @@ fun GemmologieMenuScreen(
                         title = stringResource(R.string.gemmologie_pays_title),
                         subtitle = stringResource(R.string.gemmologie_pays_subtitle),
                         onClick = onPaysClick
+                    )
+                    GemmologieMenuCard(
+                        title = stringResource(R.string.gemmologie_analyse_title),
+                        subtitle = stringResource(R.string.gemmologie_analyse_subtitle),
+                        onClick = onAnalyseClick
                     )
                 }
             } else if (results.isEmpty()) {

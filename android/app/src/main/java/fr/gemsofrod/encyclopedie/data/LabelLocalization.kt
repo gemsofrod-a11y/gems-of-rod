@@ -229,7 +229,48 @@ object LabelLocalization {
         "Zimbabwe" to mapOf("en" to "Zimbabwe", "es" to "Zimbabue", "it" to "Zimbabwe", "de" to "Simbabwe"),
         "Égypte" to mapOf("en" to "Egypt", "es" to "Egipto", "it" to "Egitto", "de" to "Ägypten"),
         "États-Unis" to mapOf("en" to "United States", "es" to "Estados Unidos", "it" to "Stati Uniti", "de" to "Vereinigte Staaten"),
-        "Éthiopie" to mapOf("en" to "Ethiopia", "es" to "Etiopía", "it" to "Etiopia", "de" to "Äthiopien")
+        "Éthiopie" to mapOf("en" to "Ethiopia", "es" to "Etiopía", "it" to "Etiopia", "de" to "Äthiopien"),
+
+        // ---------- Analyse de pierre : transparence ----------
+        "Transparente" to mapOf("en" to "Transparent", "es" to "Transparente", "it" to "Trasparente", "de" to "Transparent"),
+        "Transparente à translucide" to mapOf("en" to "Transparent to translucent", "es" to "Transparente a translúcida", "it" to "Da trasparente a traslucido", "de" to "Transparent bis durchscheinend"),
+        "Translucide" to mapOf("en" to "Translucent", "es" to "Translúcida", "it" to "Traslucido", "de" to "Durchscheinend"),
+        "Translucide à opaque" to mapOf("en" to "Translucent to opaque", "es" to "Translúcida a opaca", "it" to "Da traslucido a opaco", "de" to "Durchscheinend bis undurchsichtig"),
+        "Opaque" to mapOf("en" to "Opaque", "es" to "Opaca", "it" to "Opaco", "de" to "Undurchsichtig"),
+
+        // ---------- Analyse de pierre : éclat ----------
+        "Vitreux" to mapOf("en" to "Vitreous", "es" to "Vítreo", "it" to "Vitreo", "de" to "Glasglanz"),
+        "Vitreux à résineux" to mapOf("en" to "Vitreous to resinous", "es" to "Vítreo a resinoso", "it" to "Da vitreo a resinoso", "de" to "Glas- bis Harzglanz"),
+        "Vitreux à adamantin" to mapOf("en" to "Vitreous to adamantine", "es" to "Vítreo a adamantino", "it" to "Da vitreo a adamantino", "de" to "Glas- bis Diamantglanz"),
+        "Résineux" to mapOf("en" to "Resinous", "es" to "Resinoso", "it" to "Resinoso", "de" to "Harzglanz"),
+        "Gras" to mapOf("en" to "Greasy", "es" to "Graso", "it" to "Untuoso", "de" to "Fettglanz"),
+        "Adamantin" to mapOf("en" to "Adamantine", "es" to "Adamantino", "it" to "Adamantino", "de" to "Diamantglanz"),
+        "Soyeux" to mapOf("en" to "Silky", "es" to "Sedoso", "it" to "Setoso", "de" to "Seidenglanz"),
+        "Nacré" to mapOf("en" to "Pearly", "es" to "Nacarado", "it" to "Perlaceo", "de" to "Perlglanz"),
+        "Métallique" to mapOf("en" to "Metallic", "es" to "Metálico", "it" to "Metallico", "de" to "Metallglanz"),
+        "Submétallique" to mapOf("en" to "Submetallic", "es" to "Submetálico", "it" to "Submetallico", "de" to "Halbmetallglanz"),
+        "Terne" to mapOf("en" to "Dull", "es" to "Mate", "it" to "Opaco", "de" to "Matt"),
+        "Cireux" to mapOf("en" to "Waxy", "es" to "Céreo", "it" to "Ceroso", "de" to "Wachsglanz"),
+
+        // ---------- Analyse de pierre : clivage ----------
+        "Aucun" to mapOf("en" to "None", "es" to "Ninguna", "it" to "Assente", "de" to "Keine"),
+        "Indistinct" to mapOf("en" to "Indistinct", "es" to "Indistinta", "it" to "Indistinto", "de" to "Undeutlich"),
+        "Imparfait" to mapOf("en" to "Imperfect", "es" to "Imperfecta", "it" to "Imperfetto", "de" to "Unvollkommen"),
+        "Bon" to mapOf("en" to "Good", "es" to "Buena", "it" to "Buono", "de" to "Gut"),
+        "Parfait" to mapOf("en" to "Perfect", "es" to "Perfecta", "it" to "Perfetto", "de" to "Vollkommen"),
+        "Parfait dans une direction" to mapOf("en" to "Perfect in one direction", "es" to "Perfecta en una dirección", "it" to "Perfetto in una direzione", "de" to "Vollkommen in einer Richtung"),
+        "Parfait dans deux directions" to mapOf("en" to "Perfect in two directions", "es" to "Perfecta en dos direcciones", "it" to "Perfetto in due direzioni", "de" to "Vollkommen in zwei Richtungen"),
+        "Parfait dans trois directions" to mapOf("en" to "Perfect in three directions", "es" to "Perfecta en tres direcciones", "it" to "Perfetto in tre direzioni", "de" to "Vollkommen in drei Richtungen"),
+
+        // ---------- Analyse de pierre : systèmes cristallins ----------
+        "Amorphe" to mapOf("en" to "Amorphous", "es" to "Amorfo", "it" to "Amorfo", "de" to "Amorph"),
+        "Cubique" to mapOf("en" to "Cubic", "es" to "Cúbico", "it" to "Cubico", "de" to "Kubisch"),
+        "Hexagonal" to mapOf("en" to "Hexagonal", "es" to "Hexagonal", "it" to "Esagonale", "de" to "Hexagonal"),
+        "Monoclinique" to mapOf("en" to "Monoclinic", "es" to "Monoclínico", "it" to "Monoclino", "de" to "Monoklin"),
+        "Orthorhombique" to mapOf("en" to "Orthorhombic", "es" to "Ortorrómbico", "it" to "Ortorombico", "de" to "Orthorhombisch"),
+        "Quadratique" to mapOf("en" to "Tetragonal", "es" to "Tetragonal", "it" to "Tetragonale", "de" to "Tetragonal"),
+        "Triclinique" to mapOf("en" to "Triclinic", "es" to "Triclínico", "it" to "Triclino", "de" to "Triklin"),
+        "Trigonal" to mapOf("en" to "Trigonal", "es" to "Trigonal", "it" to "Trigonale", "de" to "Trigonal")
     )
 
     fun localize(label: String, languageCode: String): String =
