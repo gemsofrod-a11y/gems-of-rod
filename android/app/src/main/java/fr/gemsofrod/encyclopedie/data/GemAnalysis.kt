@@ -92,21 +92,34 @@ data class AnalysisMatch(val gem: Gem, val matched: Int, val total: Int)
  * de plage avec tolérance pour les mesures physiques). Les gemmes sans
  * aucune correspondance sont écartées ; le reste est trié par nombre de
  * critères correspondants, décroissant.
+ *
+ * Le texte du catalogue (dureté, indice de réfraction, densité) est de la
+ * prose éditoriale, pas un format numérique garanti ; [parseRange] et
+ * [matchesNumeric] sont donc écrits pour ne jamais lever d'exception, quelle
+ * que soit la chaîne reçue, et [analyze] isole chaque gemme dans son propre
+ * bloc protégé pour qu'une seule entrée imprévue ne puisse pas faire
+ * échouer l'analyse entière.
  */
 object GemAnalyzer {
+    /** Extrait un intervalle numérique d'une chaîne éditoriale du type
+     * "6,5 - 7" ou "3,95 – 4,05 (rarement plus)". Ignore tout texte qui ne
+     * ressemble pas à un nombre plutôt que d'échouer ; renvoie null si
+     * aucun nombre exploitable n'est trouvé. */
     private fun parseRange(raw: String): ClosedFloatingPointRange<Double>? {
-        val normalized = raw.replace(',', '.').replace('–', '-')
-        val parts = normalized.split('-').map { it.trim() }.filter { it.isNotEmpty() }
-        val values = parts.mapNotNull { it.toDoubleOrNull() }
-        return when (values.size) {
-            1 -> values[0]..values[0]
-            2 -> minOf(values[0], values[1])..maxOf(values[0], values[1])
-            else -> null
+        val numberPattern = Regex("""-?\d+(?:[.,]\d+)?""")
+        val values = numberPattern.findAll(raw)
+            .mapNotNull { it.value.replace(',', '.').toDoubleOrNull() }
+            .toList()
+
+        return when {
+            values.isEmpty() -> null
+            values.size == 1 -> values[0]..values[0]
+            else -> values.min()..values.max()
         }
     }
 
-    private fun matchesNumeric(userValue: Double?, catalogRaw: String, tolerance: Double): Boolean {
-        if (userValue == null) return false
+    private fun matchesNumeric(userValue: Double?, catalogRaw: String?, tolerance: Double): Boolean {
+        if (userValue == null || catalogRaw == null) return false
         val range = parseRange(catalogRaw) ?: return false
         return userValue in (range.start - tolerance)..(range.endInclusive + tolerance)
     }
@@ -117,30 +130,47 @@ object GemAnalyzer {
         value.substringBefore(" (").substringBefore("/").trim()
 
     fun systemesCristallins(): List<String> =
-        GemsRepository.gems.map { baseSystemeCristallin(it.systemeCristallin) }.distinct().sorted()
+        GemsRepository.gems
+            .mapNotNull { it.systemeCristallin.takeIf { s -> s.isNotBlank() } }
+            .map { baseSystemeCristallin(it) }
+            .filter { it.isNotBlank() }
+            .distinct()
+            .sorted()
+
+    /** Compare une gemme du catalogue aux critères saisis ; renvoie le
+     * nombre de critères correspondants. Protégée individuellement pour
+     * qu'une donnée inattendue sur une gemme n'empêche pas l'analyse des
+     * autres. */
+    private fun matchCount(gem: Gem, diag: GemDiagnostic?, criteria: AnalysisCriteria): Int {
+        var matched = 0
+
+        if (criteria.couleur != null && gem.couleur == criteria.couleur) matched++
+        if (criteria.transparence != null && diag?.transparence == criteria.transparence) matched++
+        if (criteria.eclat != null && diag?.eclat == criteria.eclat) matched++
+        if (criteria.clivage != null && diag?.clivage == criteria.clivage) matched++
+        if (criteria.systemeCristallin != null &&
+            baseSystemeCristallin(gem.systemeCristallin) == criteria.systemeCristallin
+        ) matched++
+        if (matchesNumeric(criteria.durete, gem.durete, tolerance = 0.5)) matched++
+        if (matchesNumeric(criteria.densite, diag?.densite, tolerance = 0.15)) matched++
+        if (matchesNumeric(criteria.indiceRefraction, gem.indiceRefraction, tolerance = 0.02)) matched++
+        if (criteria.pleochroisme != null && diag?.pleochroisme == criteria.pleochroisme) matched++
+        if (criteria.fluorescence != null && diag?.fluorescence == criteria.fluorescence) matched++
+
+        return matched
+    }
 
     fun analyze(criteria: AnalysisCriteria): List<AnalysisMatch> {
         if (criteria.isEmpty) return emptyList()
         val total = criteria.totalCriteria
 
-        return GemsRepository.gems.mapNotNull { gem ->
-            val diag = GemDiagnostics.data[gem.id]
-            var matched = 0
-
-            if (criteria.couleur != null && gem.couleur == criteria.couleur) matched++
-            if (criteria.transparence != null && diag?.transparence == criteria.transparence) matched++
-            if (criteria.eclat != null && diag?.eclat == criteria.eclat) matched++
-            if (criteria.clivage != null && diag?.clivage == criteria.clivage) matched++
-            if (criteria.systemeCristallin != null &&
-                baseSystemeCristallin(gem.systemeCristallin) == criteria.systemeCristallin
-            ) matched++
-            if (matchesNumeric(criteria.durete, gem.durete, tolerance = 0.5)) matched++
-            if (diag != null && matchesNumeric(criteria.densite, diag.densite, tolerance = 0.15)) matched++
-            if (matchesNumeric(criteria.indiceRefraction, gem.indiceRefraction, tolerance = 0.02)) matched++
-            if (criteria.pleochroisme != null && diag?.pleochroisme == criteria.pleochroisme) matched++
-            if (criteria.fluorescence != null && diag?.fluorescence == criteria.fluorescence) matched++
-
-            if (matched == 0) null else AnalysisMatch(gem, matched, total)
-        }.sortedWith(compareByDescending<AnalysisMatch> { it.matched }.thenBy { it.gem.nom })
+        return GemsRepository.gems
+            .mapNotNull { gem ->
+                val matched = runCatching {
+                    matchCount(gem, GemDiagnostics.data[gem.id], criteria)
+                }.getOrDefault(0)
+                if (matched == 0) null else AnalysisMatch(gem, matched, total)
+            }
+            .sortedWith(compareByDescending<AnalysisMatch> { it.matched }.thenBy { it.gem.nom })
     }
 }
