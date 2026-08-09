@@ -3435,7 +3435,7 @@ object GemsRepository {
             lithotherapie = "La perle de culture est associée à la pureté, à la sagesse et à l'harmonie dans les relations affectives.",
             prixCaratEur = "10 – 10 000 €/perle (très variable selon type)",
             rarete = GemRarete.COURANTE
-        )
+        ),
         Gem(
             id = "oeil-de-sainte-lucie",
             nom = "Œil de Sainte-Lucie",
