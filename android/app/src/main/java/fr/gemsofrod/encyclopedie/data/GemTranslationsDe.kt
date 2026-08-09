@@ -1242,5 +1242,103 @@ object GemTranslationsDe {
             particularites = "Der Preis wird pro Stück oder pro Strang je nach Größe, Form, Lüster und Herkunft bewertet, nicht pro Karat.",
             lithotherapie = "Die Zuchtperle wird mit Reinheit, Weisheit und Harmonie in zwischenmenschlichen Beziehungen in Verbindung gebracht."
         ),
+        "aventurine" to GemTranslation(
+            nom = "Grüner Aventurin",
+            descriptionCourte = "Ein glitzernder grüner Quarz, durchsetzt mit Fuchsit-Flittern.",
+            descriptionLongue = "Der Aventurin verdankt seinen Namen und sein charakteristisches Glitzern (Aventureszenz) feinen Einschlüssen von chromhaltigem Glimmer (Fuchsit) oder Hämatit, die in einer mikrokristallinen Quarzmasse verteilt sind. Die grüne Varietät, die am weitesten verbreitete, wird seit Jahrhunderten in großen Mengen in Indien abgebaut.",
+            particularites = "Die Aventureszenz, dieses metallische Glitzern, entsteht durch die Reflexion des Lichts an den eingeschlossenen Glimmerplättchen; der Begriff wurde später auch für künstliches Glas übernommen, das diesen Effekt nachahmt.",
+            lithotherapie = "Der grüne Aventurin gilt als Glücksbringer und wird mit Glück, Fülle und emotionaler Beruhigung in Verbindung gebracht."
+        ),
+        "epidote" to GemTranslation(
+            nom = "Epidot",
+            descriptionCourte = "Ein charakteristisches Pistaziengrün, wegen seines ausgeprägten Pleochroismus nur selten facettiert.",
+            descriptionLongue = "Epidot gibt einer ganzen Mineralgruppe seinen Namen und tritt in länglichen Kristallen von pistazien- bis olivgrüner Farbe auf, die von Eisen herrührt. Sein starker Pleochroismus, der je nach Betrachtungswinkel unterschiedliche Farbtöne zeigt, erschwert den Schliff von Steinen mit gleichmäßiger Farbe.",
+            particularites = "Der starke Pleochroismus (grün, gelbbraun, rosafarben-farblos je nach Winkel) muss beim Schliff berücksichtigt werden, um die schönste Farbfläche zur Geltung zu bringen.",
+            lithotherapie = "Epidot soll die persönliche Transformation fördern und dabei helfen, sich von wiederkehrenden emotionalen Mustern zu befreien."
+        ),
+        "gaspeite" to GemTranslation(
+            nom = "Gaspeit",
+            descriptionCourte = "Ein opakes apfelgrünes Nickelcarbonat, selten und als Cabochon begehrt.",
+            descriptionLongue = "Gaspeit ist ein opakes Nickelcarbonat von apfel- bis leuchtend grüner Farbe, entdeckt auf der Gaspésie-Halbinsel in Québec, die ihm ihren Namen gab. Die abbauwürdigen australischen Vorkommen in Schmuckqualität sind heute die wichtigste kommerzielle Quelle.",
+            particularites = "Wird aus der Ferne wegen ihrer opaken grünen Farbe oft mit Türkis oder Variszit verwechselt, unterscheidet sich aber durch ihren deutlicheren apfelgrünen Farbton.",
+            lithotherapie = "Gaspeit wird mit Fülle und sanfter Erdung assoziiert und soll Stabilität in Zeiten des Wandels fördern."
+        ),
+        "hiddenite" to GemTranslation(
+            nom = "Hiddenit",
+            descriptionCourte = "Die grüne, chromgefärbte Varietät des Spodumens, eng verwandt mit dem Kunzit.",
+            descriptionLongue = "Hiddenit ist die grüne Varietät des Spodumens, deren Farbe von Chrom- oder Vanadiumspuren herrührt – im Gegensatz zum rosafarbenen Kunzit, der seine Farbe Mangan verdankt. Ende des 19. Jahrhunderts in North Carolina entdeckt, bleibt das beste Material nach wie vor amerikanisch, obwohl auch Brasilien und Afghanistan es fördern.",
+            particularites = "Wie alle Spodumen-Varietäten besitzt er eine vollkommene Spaltbarkeit in zwei Richtungen und muss mit größter Sorgfalt geschliffen werden.",
+            lithotherapie = "Hiddenit soll das Herz für Mitgefühl öffnen und zugleich Klarheit und Urteilsvermögen bei wichtigen Entscheidungen schenken."
+        ),
+        "angelite" to GemTranslation(
+            nom = "Angelit",
+            descriptionCourte = "Die himmelblaue Varietät des Anhydrits, in der Lithotherapie sehr geschätzt.",
+            descriptionLongue = "Angelit ist die Handelsbezeichnung für blassblauen, milchigen Anhydrit, der zu Cabochons, Perlen oder Dekorstücken poliert wird. Seine Farbe stammt von Spurenverunreinigungen im wasserfreien Calciumsulfat, das entsteht, wenn Gips über lange geologische Zeiträume komprimiert wird und sein Wasser verliert.",
+            particularites = "Verkratzt leicht und ist empfindlich gegenüber anhaltender Feuchtigkeit, die ihn langsam zu Gips hydratisieren kann; vor Wasser und Stößen zu schützen.",
+            lithotherapie = "Angelit wird mit Kommunikation, Gelassenheit und einer Form ruhiger spiritueller Verbindung assoziiert, worauf sein sprechender Name anspielt."
+        ),
+        "oeil-de-faucon" to GemTranslation(
+            nom = "Falkenauge",
+            descriptionCourte = "Die schillernde blaugraue, nicht oxidierte Variante des Tigerauges.",
+            descriptionLongue = "Das Falkenauge hat denselben Ursprung wie das Tigerauge: eine Pseudomorphose von Quarz nach Krokydolith (Blauasbest), dessen parallele Fasern einen seidigen Schimmer erzeugen. Im Gegensatz zum goldenen Tigerauge behält es den ursprünglichen blaugrauen bis blaugrünen Farbton bei, da hier keine Eisenoxidation stattgefunden hat.",
+            particularites = "Ein und derselbe Rohblock kann örtlich sowohl blaugraue Zonen (Falkenauge) als auch goldene Zonen (Tigerauge) aufweisen, je nach Grad der Eisenoxidation.",
+            lithotherapie = "Das Falkenauge wird traditionell mit Hellsicht, innerer Klarheit und der Fähigkeit assoziiert, in komplexen Situationen Abstand zu gewinnen."
+        ),
+        "howlite" to GemTranslation(
+            nom = "Howlith",
+            descriptionCourte = "Ein weißer, grau geäderter Stein, der oft gefärbt wird, um Türkis nachzuahmen.",
+            descriptionLongue = "Howlith kommt natürlich in weißen, porösen Knollen vor, durchzogen von grauen bis schwarzen Adern, die an eine Marmorierung erinnern. Seine Porosität macht ihn leicht färbbar, weshalb er das am häufigsten verwendete Material ist, um Türkis kostengünstig zu imitieren – eine Praxis, die vor dem Kauf stets zu prüfen ist.",
+            particularites = "Seine hohe Porosität macht ihn besonders aufnahmefähig für Farbstoffe, was auf dem Markt zu zahlreichen Türkis- oder Lapislazuli-Imitationen geführt hat.",
+            lithotherapie = "Howlith soll einen unruhigen Geist beruhigen und einen erholsameren Schlaf fördern."
+        ),
+        "rhodizite" to GemTranslation(
+            nom = "Rhodizit",
+            descriptionCourte = "Ein extrem seltenes Borat, eines der härtesten Minerale nach dem Korund.",
+            descriptionLongue = "Rhodizit ist ein komplexes Borat aus Caesium, Beryllium und Aluminium, das in winzigen, farblosen bis blassgelben Kristallen fast ausschließlich auf Madagaskar kristallisiert. Seine außergewöhnliche Härte, die der des Korunds nahekommt, und seine extreme Seltenheit machen ihn zu einem Stein, der fast ausschließlich für erfahrene Sammler bestimmt ist.",
+            particularites = "Facettierbare Kristalle über einem Karat sind außergewöhnlich selten; die meisten geschliffenen Steine wiegen weniger als 0,5 Karat.",
+            lithotherapie = "Rhodizit wird mit energetischer Harmonisierung und der Verstärkung positiver Absichten assoziiert."
+        ),
+        "sanidine" to GemTranslation(
+            nom = "Sanidin",
+            descriptionCourte = "Ein farbloser bis blassgelber vulkanischer Feldspat, der rasch nahe der Oberfläche auskristallisiert.",
+            descriptionLongue = "Sanidin ist die Hochtemperaturform des Kalifeldspats, der rasch in vulkanischem Gestein und Lava kristallisiert, im Unterschied zum langsamer in der Tiefe gebildeten Orthoklas. Die begehrtesten klaren, facettierbaren Kristalle stammen aus vulkanischen Auswürflingen der Eifel in Deutschland.",
+            particularites = "Unterscheidet sich vom Orthoklas durch seine rasche vulkanische Entstehung und seine ungeordnetere Atomstruktur; beide teilen dieselbe chemische Formel.",
+            lithotherapie = "Sanidin wird mit geistiger Klarheit und Spontaneität assoziiert, im Einklang mit seiner raschen Entstehung im vulkanischen Gestein."
+        ),
+        "tremolite" to GemTranslation(
+            nom = "Tremolit",
+            descriptionCourte = "Ein weißes bis graues Amphibol, dessen rosafarbene Varietät weitaus begehrter ist.",
+            descriptionLongue = "Tremolit ist ein calcium-magnesiumhaltiges Amphibol, das den magnesiumreichen Endpunkt der Tremolit-Aktinolith-Reihe bildet; in kompakter, faseriger Form ist es einer der Bestandteile des Nephrits. Seine Edelsteinvarietät, meist weiß, grau oder farblos, wird selten facettiert – eine Ausnahme bildet die seltene violette Varietät namens Hexagonit.",
+            particularites = "Die äußerst seltene rosaviolette Varietät Hexagonit verdankt ihre Farbe Mangan und wird vor einer Analyse mitunter mit Tansanit verwechselt.",
+            lithotherapie = "Tremolit soll Sanftheit und Flexibilität gegenüber Veränderungen schenken, im Einklang mit seiner faserigen Struktur."
+        ),
+        "oeil-de-taureau" to GemTranslation(
+            nom = "Stierauge",
+            descriptionCourte = "Erhitztes Tigerauge, dessen Eisenoxidation in ein tiefes Rotbraun übergeht.",
+            descriptionLongue = "Das Stierauge entsteht durch kontrolliertes Erhitzen von goldenem Tigerauge, eine Behandlung, die die Eisenoxidation verstärkt und den Farbton von Gelbbraun zu einem tiefen, kräftigen Rotbraun verändert, während der charakteristische seidige Schimmer der Faserstruktur erhalten bleibt.",
+            particularites = "Die thermische Behandlung, die diesen rotbraunen Farbton erzeugt, ist im Handel üblich und weithin akzeptiert, sofern sie offengelegt wird.",
+            lithotherapie = "Das Stierauge wird mit Kraft, Erdung und Entschlossenheit assoziiert, in symbolischer Fortführung des Tigerauges."
+        ),
+        "unakite" to GemTranslation(
+            nom = "Unakit",
+            descriptionCourte = "Ein grün-rosa gesprenkeltes Gestein, eine Mischung aus verwittertem Granit.",
+            descriptionLongue = "Unakit ist ein verwittertes granitisches Gestein, das aus einer charakteristischen Mischung von rosafarbenem Feldspat, grünem Epidot und Quarz besteht, was ihm ein sofort erkennbares gesprenkeltes Muster verleiht. Benannt nach den Unaka Mountains in North Carolina, wo es erstmals beschrieben wurde, wird es vor allem zu Cabochons und Perlen verarbeitet.",
+            particularites = "Da es sich um ein Mischgestein und nicht um ein einzelnes Mineral handelt, variieren seine Härte und sein Brechungsindex je nach Anteil der einzelnen Bestandteile leicht.",
+            lithotherapie = "Unakit wird traditionell mit emotionalem Gleichgewicht und schrittweiser Heilung nach einer seelischen Erschütterung assoziiert."
+        ),
+        "oeil-de-sainte-lucie" to GemTranslation(
+            nom = "Auge der Heiligen Lucia",
+            descriptionCourte = "Der spiralförmige Kalkdeckel einer Meeresschnecke, seit der Antike als Amulett getragen.",
+            descriptionLongue = "Das Auge der Heiligen Lucia ist das Operculum, der kleine kalkige „Türverschluss“, der die Gehäuseöffnung bestimmter Meeresschnecken der Gattung Turbo verschließt. Sein spiralförmiges braun-cremefarbenes Muster, das an ein Auge erinnert, machte es in zahlreichen mediterranen Kulturen zu einem traditionellen Schutzamulett.",
+            particularites = "Es handelt sich nicht um eine Schneckenschale selbst, sondern um das Operculum, die kalkige Platte, die die Öffnung des lebenden Schneckentiers verschließt; sie löst sich nach dem Tod des Tieres von selbst ab.",
+            lithotherapie = "Seit der Antike als Anhänger getragen, soll dieses Amulett vor dem bösen Blick schützen und seinem Träger Glück bringen."
+        ),
+        "jais" to GemTranslation(
+            nom = "Gagat",
+            descriptionCourte = "Eine matte, tiefschwarze fossile Kohle, Sinnbild der viktorianischen Trauermode.",
+            descriptionLongue = "Gagat ist eine kompakte Braunkohle-Varietät, fossiles Holz, das über Jahrmillionen unter hohem Druck versteinerte und zu einem tiefen, samtigen Schwarz poliert wird. Sein geringes Gewicht und seine leichte Bearbeitbarkeit machten ihn zum Sinnbild-Material der viktorianischen Trauerschmuckherstellung, insbesondere rund um Whitby in England.",
+            particularites = "Erwärmt sich schnell im Kontakt mit der Haut und kann sich, ähnlich wie Bernstein, durch Reibung elektrostatisch aufladen.",
+            lithotherapie = "Gagat wird traditionell mit dem Schutz vor negativen Energien und dem Begleiten von Trauerprozessen assoziiert."
+        ),
     )
 }

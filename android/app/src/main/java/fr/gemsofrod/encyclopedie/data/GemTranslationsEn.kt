@@ -1242,5 +1242,103 @@ object GemTranslationsEn {
             particularites = "Priced by the piece or by the strand according to size, shape, luster, and origin, not by carat.",
             lithotherapie = "The cultured pearl is associated with purity, wisdom, and harmony in emotional relationships."
         ),
+        "aventurine" to GemTranslation(
+            nom = "Green aventurine",
+            descriptionCourte = "A sparkling green quartz, speckled with flecks of fuchsite.",
+            descriptionLongue = "Aventurine owes its name and characteristic sparkle (aventurescence) to fine inclusions of chromium-bearing mica (fuchsite) or hematite scattered through a mass of microcrystalline quartz. The green variety, the most widespread, has been mined in large quantities in India for centuries.",
+            particularites = "Aventurescence, this metallic sparkle, comes from light reflecting off the included mica flecks; the term was later borrowed to describe artificial glass imitating this effect.",
+            lithotherapie = "Green aventurine is reputed to be a lucky stone, associated with fortune, abundance, and emotional calm."
+        ),
+        "epidote" to GemTranslation(
+            nom = "Epidote",
+            descriptionCourte = "A characteristic pistachio green, rarely faceted due to its pronounced pleochroism.",
+            descriptionLongue = "Epidote lends its name to an entire mineral group and occurs as elongated crystals ranging from pistachio to olive green, its color coming from iron. Its strong pleochroism, which reveals different hues depending on the viewing angle, complicates the cutting of stones with an even color.",
+            particularites = "Strong pleochroism (green, yellow-brown, pinkish colorless depending on angle) must be taken into account when cutting, to reveal the most attractive colored face.",
+            lithotherapie = "Epidote is reputed to foster personal transformation and help release repetitive emotional patterns."
+        ),
+        "gaspeite" to GemTranslation(
+            nom = "Gaspeite",
+            descriptionCourte = "An opaque apple-green nickel carbonate, rare and prized as cabochons.",
+            descriptionLongue = "Gaspeite is an opaque apple-green to vivid green nickel carbonate, discovered in the Gaspé Peninsula in Quebec, which gives it its name. Australian deposits yielding gem-quality material are today its main commercial source.",
+            particularites = "Often mistaken at a glance for turquoise or variscite because of its opaque green color, but distinguished by its more distinctly apple-green hue.",
+            lithotherapie = "Gaspeite is associated with abundance and gentle grounding, promoting stability during times of change."
+        ),
+        "hiddenite" to GemTranslation(
+            nom = "Hiddenite",
+            descriptionCourte = "The green variety of spodumene, colored by chromium, a cousin of kunzite.",
+            descriptionLongue = "Hiddenite is the green variety of spodumene, its color coming from traces of chromium or vanadium — unlike pink kunzite, which owes its color to manganese. Discovered in North Carolina in the late 19th century, the finest material remains American, though Brazil and Afghanistan also produce it.",
+            particularites = "Like all spodumene varieties, it has perfect cleavage in two directions and must be cut with great care.",
+            lithotherapie = "Hiddenite is reputed to open the heart to compassion while bringing clarity and discernment to important decisions."
+        ),
+        "angelite" to GemTranslation(
+            nom = "Angelite",
+            descriptionCourte = "The sky-blue variety of anhydrite, highly prized in crystal healing.",
+            descriptionLongue = "Angelite is the trade name given to pale, milky blue anhydrite, polished into cabochons, beads, or decorative pieces. Its color comes from trace impurities in this anhydrous calcium sulfate, which forms when gypsum is compressed and loses its water over long geological timescales.",
+            particularites = "Scratches easily and is sensitive to prolonged moisture, which can slowly hydrate it back into gypsum; should be protected from water and impact.",
+            lithotherapie = "Angelite is associated with communication, serenity, and a sense of peaceful spiritual connection, hence its evocative name."
+        ),
+        "oeil-de-faucon" to GemTranslation(
+            nom = "Hawk's eye",
+            descriptionCourte = "The chatoyant blue-gray variant of tiger's eye, unoxidized.",
+            descriptionLongue = "Hawk's eye shares its origin with tiger's eye: a pseudomorph of quartz after crocidolite (blue asbestos), whose parallel fibers produce a silky chatoyancy. Unlike golden tiger's eye, it retains its original blue-gray to blue-green hue, since its iron has not oxidized.",
+            particularites = "The same block of rough material can show, locally, both blue-gray zones (hawk's eye) and golden zones (tiger's eye), depending on the degree of iron oxidation.",
+            lithotherapie = "Hawk's eye is traditionally associated with clairvoyance, inner vision, and gaining perspective on complex situations."
+        ),
+        "howlite" to GemTranslation(
+            nom = "Howlite",
+            descriptionCourte = "A white stone veined with gray, often dyed to imitate turquoise.",
+            descriptionLongue = "Howlite naturally occurs as white, porous nodules crossed by gray to black veins reminiscent of marbling. Its porosity makes it easy to dye, making it the material most commonly used to imitate turquoise at low cost — a practice always worth checking for before purchase.",
+            particularites = "Its high porosity makes it particularly receptive to dyes, behind many of the turquoise or lapis lazuli imitations found on the market.",
+            lithotherapie = "Howlite is reputed to calm a restless mind and promote more peaceful sleep."
+        ),
+        "rhodizite" to GemTranslation(
+            nom = "Rhodizite",
+            descriptionCourte = "An ultra-rare borate, one of the hardest minerals after corundum.",
+            descriptionLongue = "Rhodizite is a complex borate of caesium, beryllium, and aluminium, crystallizing as tiny colorless to pale yellow crystals found almost exclusively in Madagascar. Its exceptional hardness, close to that of corundum, and its extreme rarity make it a stone destined almost exclusively for knowledgeable collectors.",
+            particularites = "Facetable crystals exceeding one carat are exceptionally rare; most cut stones weigh less than 0.5 carats.",
+            lithotherapie = "Rhodizite is associated with energetic harmonization and the amplification of positive intentions."
+        ),
+        "sanidine" to GemTranslation(
+            nom = "Sanidine",
+            descriptionCourte = "A colorless to pale yellow volcanic feldspar, rapidly crystallized at the surface.",
+            descriptionLongue = "Sanidine is the high-temperature form of potassium feldspar, crystallizing rapidly within volcanic rocks and lavas, which distinguishes it from orthoclase, formed more slowly at depth. The most sought-after clear, facetable crystals come from the volcanic ejecta of the Eifel region in Germany.",
+            particularites = "Distinguished from orthoclase by its rapid volcanic formation and more disordered atomic structure; the two share the same chemical formula.",
+            lithotherapie = "Sanidine is associated with mental clarity and spontaneity, echoing its rapid formation within volcanic rock."
+        ),
+        "tremolite" to GemTranslation(
+            nom = "Tremolite",
+            descriptionCourte = "A white to gray amphibole, whose pink variety is far more sought after.",
+            descriptionLongue = "Tremolite is a calcium-magnesium amphibole forming the magnesium-rich end member of the tremolite-actinolite series; in compact fibrous form, it is one of the components of nephrite. Its gem variety, generally white, gray, or colorless, is rarely faceted, with the exception of the rare violet variety known as hexagonite.",
+            particularites = "The extremely rare pinkish-violet variety, hexagonite, owes its color to manganese and is sometimes mistaken for tanzanite before analysis.",
+            lithotherapie = "Tremolite is reputed to bring gentleness and flexibility in the face of change, echoing its fibrous structure."
+        ),
+        "oeil-de-taureau" to GemTranslation(
+            nom = "Bull's eye",
+            descriptionCourte = "Heated tiger's eye, whose iron oxidation turns it a deep reddish brown.",
+            descriptionLongue = "Bull's eye is obtained by controlled heating of golden tiger's eye, a treatment that intensifies iron oxidation and shifts the color from yellow-brown to a deep, rich reddish brown, while preserving the characteristic silky chatoyancy of the fibrous structure.",
+            particularites = "The heat treatment that produces this reddish-brown hue is common and widely accepted in the trade, provided it is disclosed.",
+            lithotherapie = "Bull's eye is associated with strength, grounding, and determination, carrying forward the symbolic meaning of tiger's eye."
+        ),
+        "unakite" to GemTranslation(
+            nom = "Unakite",
+            descriptionCourte = "A rock mottled with green and pink, a blend of altered granite.",
+            descriptionLongue = "Unakite is an altered granitic rock, composed of a characteristic mixture of pink feldspar, green epidote, and quartz, giving it an immediately recognizable mottled pattern. Named after the Unaka Mountains in North Carolina, where it was first described, it is mostly cut into cabochons and beads.",
+            particularites = "As a composite rock rather than a single mineral, its hardness and refractive index vary slightly depending on the proportion of each component.",
+            lithotherapie = "Unakite is traditionally associated with emotional balance and gradual healing after emotional hardship."
+        ),
+        "oeil-de-sainte-lucie" to GemTranslation(
+            nom = "Saint Lucy's eye",
+            descriptionCourte = "The spiral operculum of a sea snail, worn as an amulet since antiquity.",
+            descriptionLongue = "Saint Lucy's eye is the calcareous operculum, the small \"trapdoor\" that seals the shell opening of certain marine gastropods of the genus Turbo. Its brown-and-cream spiral pattern, evocative of an eye, has made it a traditional protective amulet in many Mediterranean cultures.",
+            particularites = "It is not a shell but the operculum, the calcareous piece that closes the opening of the living mollusk's shell; it detaches naturally after the animal's death.",
+            lithotherapie = "Worn as a pendant since antiquity, this amulet is reputed to protect against the evil eye and bring luck to its wearer."
+        ),
+        "jais" to GemTranslation(
+            nom = "Jet",
+            descriptionCourte = "A matte black fossilized coal, an emblem of Victorian mourning.",
+            descriptionLongue = "Jet is a compact variety of lignite, wood fossilized under high pressure over millions of years, polished to a deep, velvety black. Its lightness and ease of carving made it the emblematic material for Victorian-era mourning jewelry, notably around Whitby in England.",
+            particularites = "Warms quickly against the skin and can develop an electrostatic charge through friction, like amber.",
+            lithotherapie = "Jet is traditionally associated with protection against negative energy and support through the grieving process."
+        ),
     )
 }
