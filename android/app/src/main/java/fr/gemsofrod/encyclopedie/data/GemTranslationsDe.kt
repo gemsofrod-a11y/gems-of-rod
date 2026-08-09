@@ -1165,13 +1165,6 @@ object GemTranslationsDe {
             particularites = "Der Grad des Farbwechsels ist das wichtigste Wertkriterium.",
             lithotherapie = "Alexandrit, der je nach Licht die Farbe wechselt, soll Anpassungsfähigkeit und das Gleichgewicht zwischen Verstand und Intuition fördern."
         ),
-        "opale-precieuse" to GemTranslation(
-            nom = "Edelopal",
-            descriptionCourte = "Ein Farbenspiel, das seinesgleichen sucht.",
-            descriptionLongue = "Edelopal besteht aus geordneten Kieselsäure-Mikrokugeln, die das Licht beugen und ein bewegliches Farbenspiel (Opaleszenz) erzeugen, das bei jedem Stein einzigartig ist. Kein anderer Edelstein zeigt dieses optische Phänomen auf dieselbe Weise.",
-            particularites = "Enthält 3 bis 21% Wasser; empfindlich gegenüber Austrocknung und Stößen.",
-            lithotherapie = "Edelopal wird mit der Verstärkung von Emotionen und Kreativität in Verbindung gebracht, als Unterstützung für künstlerische Projekte."
-        ),
         "tourmaline-pasteque" to GemTranslation(
             nom = "Wassermelonenturmalin",
             descriptionCourte = "Rosafarbener Kern, umgeben von Grün, wie eine Fruchtscheibe.",
@@ -1361,13 +1354,6 @@ object GemTranslationsDe {
             particularites = "Das Fehlen des Farbenspiels unterscheidet den gemeinen Opal vom Edelopal; beide teilen jedoch dieselbe Zusammensetzung.",
             lithotherapie = "Dem gemeinen Opal wird nachgesagt, im Alltag Sanftheit und Beruhigung zu spenden."
         ),
-        "meteorite-de-fer" to GemTranslation(
-            nom = "Eisenmeteorit",
-            descriptionCourte = "Eine außerirdische Eisen-Nickel-Legierung, deren polierte und säurebehandelte Oberfläche das Widmanstätten-Muster offenbart.",
-            descriptionLongue = "Eisenmeteoriten sind Fragmente des metallischen Kerns zerstörter Asteroiden, die fast vollständig aus einer Eisen-Nickel-Legierung bestehen. Poliert und anschließend leicht mit Salpetersäure geätzt, offenbaren sie das Widmanstätten-Muster – ein geometrisches Kristallgeflecht, das nur durch extrem langsame Abkühlung im Weltraum über Millionen von Jahren entstehen konnte.",
-            particularites = "Das Widmanstätten-Muster, das ausschließlich bei langsam abgekühlten Eisenmeteoriten auftritt, kann nicht künstlich nachgebildet werden und gilt als Echtheitsnachweis.",
-            lithotherapie = "Der Eisenmeteorit wird trotz seines himmlischen Ursprungs mit Kraft und Erdung assoziiert."
-        ),
         "opale-noire" to GemTranslation(
             nom = "Schwarzer Opal",
             descriptionCourte = "Das spektakulärste Farbenspiel, auf einem dunklen Untergrund, der es besonders zur Geltung bringt.",
@@ -1388,13 +1374,6 @@ object GemTranslationsDe {
             descriptionLongue = "In den 2010er-Jahren in der Region Wollo entdeckt, hat der Äthiopische Opal den Markt mit seinem besonders lebhaften Farbenspiel auf honigfarbenem bis farblosem, durchscheinendem Untergrund revolutioniert. Seine hydrophane Natur – er saugt Wasser wie ein Schwamm auf – macht ihn jedoch instabil, wenn er ins Wasser getaucht oder zu starker Feuchtigkeit ausgesetzt wird.",
             particularites = "Hydrophane Natur: kann bis zu 20% seines Volumens an Wasser aufnehmen, beim Trocknen rissig werden und bei Feuchtigkeitskontakt vorübergehend seine Transparenz verändern.",
             lithotherapie = "Dem Äthiopischen Opal wird, wie den anderen Edelopalen, nachgesagt, Emotionen und Kreativität zu verstärken."
-        ),
-        "pallasite" to GemTranslation(
-            nom = "Pallasit",
-            descriptionCourte = "Ein aufgeschnittener Meteorit, der goldene Olivinkristalle in einem Eisen-Nickel-Geflecht offenbart.",
-            descriptionLongue = "Der Pallasit gehört zu den seltensten und begehrtesten Meteoriten: Er entstand an der Grenze zwischen dem metallischen Kern und dem silikatischen Mantel eines differenzierten Asteroiden und schließt durchscheinende Olivinkristalle in einer Eisen-Nickel-Matrix ein. In dünne Scheiben geschnitten und poliert, offenbart er ein eindrucksvolles Muster, das bei jedem Meteoriten einzigartig ist.",
-            particularites = "Jede Pallasit-Scheibe ist einzigartig; die begehrtesten, wie der russische Seymchan, zeigen klare Olivinkristalle und ein regelmäßiges Metallgeflecht.",
-            lithotherapie = "Dem Pallasit wird nachgesagt, eine Verbindung zu einer kosmischen Dimension herzustellen und eine erweiterte Perspektive auf die Ereignisse des Lebens zu fördern."
         ),
     )
 }

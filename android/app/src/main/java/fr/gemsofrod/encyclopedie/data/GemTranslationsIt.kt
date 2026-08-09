@@ -1165,13 +1165,6 @@ object GemTranslationsIt {
             particularites = "La percentuale di cambiamento di colore è il principale criterio di valutazione.",
             lithotherapie = "L'alessandrite, che cambia colore a seconda della luce, è ritenuta favorire l'adattabilità e l'equilibrio tra ragione e intuizione."
         ),
-        "opale-precieuse" to GemTranslation(
-            nom = "Opale prezioso",
-            descriptionCourte = "Un gioco di colori unico nel suo genere.",
-            descriptionLongue = "L'opale prezioso è composto da microsfere di silice ordinate che diffrangono la luce e producono un gioco di colori mutevole (opalescenza), unico per ogni pietra. Nessun'altra gemma presenta questo fenomeno ottico allo stesso modo.",
-            particularites = "Contiene dal 3 al 21% di acqua; sensibile alla disidratazione e agli urti.",
-            lithotherapie = "L'opale prezioso è associato all'amplificazione delle emozioni e della creatività, un sostegno per i progetti artistici."
-        ),
         "tourmaline-pasteque" to GemTranslation(
             nom = "Tormalina anguria",
             descriptionCourte = "Cuore rosa cinto di verde, come una fetta di frutto.",
@@ -1361,13 +1354,6 @@ object GemTranslationsIt {
             particularites = "L'assenza di gioco di colori distingue l'opale comune dall'opale preziosa; le due condividono tuttavia la stessa composizione.",
             lithotherapie = "L'opale comune è ritenuta capace di apportare dolcezza e serenità nella vita quotidiana."
         ),
-        "meteorite-de-fer" to GemTranslation(
-            nom = "Meteorite di ferro",
-            descriptionCourte = "Una lega ferro-nichel extraterrestre, la cui superficie levigata e attaccata con acido rivela il motivo di Widmanstätten.",
-            descriptionLongue = "Le meteoriti di ferro sono frammenti del nucleo metallico di asteroidi distrutti, composti quasi interamente da una lega di ferro e nichel. Levigate e poi leggermente attaccate con acido nitrico, rivelano il motivo di Widmanstätten, un intreccio geometrico di cristalli che ha richiesto milioni di anni per formarsi attraverso un raffreddamento estremamente lento nello spazio.",
-            particularites = "Il motivo di Widmanstätten, esclusivo delle meteoriti di ferro raffreddate lentamente, non può essere riprodotto artificialmente e costituisce una prova di autenticità.",
-            lithotherapie = "La meteorite di ferro è associata alla forza e al radicamento, nonostante la sua origine celeste."
-        ),
         "opale-noire" to GemTranslation(
             nom = "Opale nera",
             descriptionCourte = "Il gioco di colori più spettacolare, su un fondo scuro che lo esalta.",
@@ -1388,13 +1374,6 @@ object GemTranslationsIt {
             descriptionLongue = "Scoperta negli anni 2010 nella regione di Wollo, l'opale d'Etiopia ha rivoluzionato il mercato grazie al suo gioco di colori particolarmente vivace su un fondo translucido dal miele all'incolore. La sua natura idrofana — assorbe l'acqua come una spugna — la rende tuttavia instabile se immersa o troppo esposta all'umidità.",
             particularites = "Natura idrofana: può assorbire fino al 20% del proprio volume in acqua, screpolarsi durante l'asciugatura e vedere la propria trasparenza cambiare temporaneamente a contatto con l'umidità.",
             lithotherapie = "L'opale d'Etiopia è ritenuta capace di amplificare le emozioni e la creatività, come le altre opali preziose."
-        ),
-        "pallasite" to GemTranslation(
-            nom = "Pallasite",
-            descriptionCourte = "Una meteorite sezionata che rivela cristalli di olivina dorata incastonati in un reticolo di ferro-nichel.",
-            descriptionLongue = "La pallasite è una delle meteoriti più rare e ricercate: formatasi al confine tra il nucleo metallico e il mantello silicatico di un asteroide differenziato, racchiude cristalli di olivina translucida in una matrice di ferro-nichel. Sezionata in sottili lastre e levigata, rivela un motivo sorprendente, unico per ogni meteorite.",
-            particularites = "Ogni sezione di pallasite è unica; le più ricercate, come la Seymchan russa, presentano cristalli di olivina limpidi e un reticolo metallico regolare.",
-            lithotherapie = "La pallasite è ritenuta capace di collegare a una dimensione cosmica e favorire una prospettiva più ampia sugli eventi della vita."
         ),
     )
 }

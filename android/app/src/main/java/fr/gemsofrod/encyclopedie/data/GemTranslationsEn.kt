@@ -1165,13 +1165,6 @@ object GemTranslationsEn {
             particularites = "The percentage of color change is the main value criterion.",
             lithotherapie = "Alexandrite, which changes color with the light, is said to promote adaptability and balance between reason and intuition."
         ),
-        "opale-precieuse" to GemTranslation(
-            nom = "Precious opal",
-            descriptionCourte = "A play of color unlike any other gem.",
-            descriptionLongue = "Precious opal is composed of ordered silica microspheres that diffract light and produce a shifting play of color (opalescence), unique to each stone. No other gem displays this optical phenomenon in the same way.",
-            particularites = "Contains 3 to 21% water; sensitive to dehydration and impact.",
-            lithotherapie = "Precious opal is associated with amplifying emotions and creativity, a support for artistic projects."
-        ),
         "tourmaline-pasteque" to GemTranslation(
             nom = "Watermelon tourmaline",
             descriptionCourte = "A pink heart ringed with green, like a slice of fruit.",
@@ -1361,13 +1354,6 @@ object GemTranslationsEn {
             particularites = "The absence of play-of-color distinguishes common opal from precious opal; the two nonetheless share the same composition.",
             lithotherapie = "Common opal is said to bring gentleness and calm to everyday life."
         ),
-        "meteorite-de-fer" to GemTranslation(
-            nom = "Iron meteorite",
-            descriptionCourte = "An extraterrestrial iron-nickel alloy whose polished, acid-etched surface reveals the Widmanstätten pattern.",
-            descriptionLongue = "Iron meteorites are fragments of the metallic core of shattered asteroids, made up almost entirely of an iron-nickel alloy. Polished and then lightly etched with nitric acid, they reveal the Widmanstätten pattern, a geometric interlace of crystals that took millions of years to form through extremely slow cooling in space.",
-            particularites = "The Widmanstätten pattern, unique to slowly cooled iron meteorites, cannot be reproduced artificially and stands as proof of authenticity.",
-            lithotherapie = "Iron meteorite is associated with strength and grounding, despite its celestial origin."
-        ),
         "opale-noire" to GemTranslation(
             nom = "Black opal",
             descriptionCourte = "The most spectacular play-of-color, set against a dark body tone that heightens it.",
@@ -1388,13 +1374,6 @@ object GemTranslationsEn {
             descriptionLongue = "Discovered in the 2010s in the Wollo region, Ethiopian opal shook up the market with its particularly vivid play-of-color set against a honey-to-colorless translucent body. Its hydrophane nature — it absorbs water like a sponge — makes it unstable if immersed or exposed to too much humidity, however.",
             particularites = "Hydrophane nature: can absorb up to 20% of its volume in water, crack while drying, and undergo a temporary change in transparency on contact with moisture.",
             lithotherapie = "Ethiopian opal is said to amplify emotions and creativity, like other precious opals."
-        ),
-        "pallasite" to GemTranslation(
-            nom = "Pallasite",
-            descriptionCourte = "A sliced meteorite revealing golden olivine crystals set within an iron-nickel lattice.",
-            descriptionLongue = "Pallasite is one of the rarest and most sought-after meteorites: formed at the boundary between the metallic core and the silicate mantle of a differentiated asteroid, it traps translucent olivine crystals within an iron-nickel matrix. Sliced into thin plates and polished, it reveals a striking pattern, unique to each meteorite.",
-            particularites = "Every pallasite slice is unique; the most sought-after, such as Russia's Seymchan, display clear olivine crystals and a regular metallic lattice.",
-            lithotherapie = "Pallasite is said to connect one to a cosmic dimension and foster a broader perspective on life's events."
         ),
     )
 }

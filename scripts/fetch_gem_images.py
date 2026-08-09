@@ -120,7 +120,6 @@ GEMS = [
     ("tourmaline-noire", ["Schorl tourmaline", "Schorl"], ["schorl", "tourmaline"], (BRUTE, FACETTEE)),
     ("obsidienne", ["Obsidian"], ["obsidian"], (BRUTE, FACETTEE)),
     ("alexandrite", ["Alexandrite"], ["alexandrite"], (BRUTE, FACETTEE)),
-    ("opale-precieuse", ["Precious opal"], ["opal"], (BRUTE, FACETTEE)),
     (
         "tourmaline-pasteque",
         ["Watermelon tourmaline", "Watermelon tourmaline slice", "Bicolor tourmaline slice"],
@@ -249,11 +248,9 @@ GEMS = [
     ("grenat-etoile", ['Star garnet Idaho', 'Star almandine garnet', 'Star garnet cabochon'], ['star garnet'], (BRUTE, FACETTEE)),
     ("opale-peruvienne", ['Peruvian opal', 'Blue opal Peru', 'Peruvian pink opal'], ['peruvian opal'], (BRUTE, FACETTEE)),
     ("opale-commune", ['Common opal', 'White opal rough', 'Milky opal gemstone'], ['common opal', 'opal'], (BRUTE, FACETTEE)),
-    ("meteorite-de-fer", ['Gibeon meteorite', 'Iron meteorite Widmanstatten', 'Muonionalusta meteorite slice'], ['meteorite', 'gibeon', 'widmanstatten'], (BRUTE, FACETTEE)),
     ("opale-noire", ['Black opal Lightning Ridge', 'Black opal gemstone'], ['black opal'], (BRUTE, FACETTEE)),
     ("opale-boulder", ['Boulder opal', 'Boulder opal Queensland'], ['boulder opal'], (BRUTE, FACETTEE)),
     ("opale-ethiopie", ['Ethiopian opal', 'Welo opal', 'Ethiopian opal gemstone'], ['ethiopian opal', 'welo opal'], (BRUTE, FACETTEE)),
-    ("pallasite", ['Pallasite meteorite slice', 'Seymchan pallasite', 'Pallasite meteorite olivine'], ['pallasite'], (BRUTE, FACETTEE)),
 ]
 
 EXCLUDED_TITLE_TOKENS = [

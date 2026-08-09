@@ -146,7 +146,7 @@ object ZodiacSigns {
         "Cancer" to listOf("pierre-de-lune", "perle", "emeraude", "rubis"),
         "Lion" to listOf("oeil-de-tigre", "peridot", "citrine", "ambre"),
         "Vierge" to listOf("saphir-bleu", "jade-nephrite", "amethyste", "cornaline"),
-        "Balance" to listOf("opale-precieuse", "lapis-lazuli", "tourmaline-rose", "saphir-rose"),
+        "Balance" to listOf("opale-noire", "lapis-lazuli", "tourmaline-rose", "saphir-rose"),
         "Scorpion" to listOf("topaze-imperiale", "obsidienne", "malachite", "grenat-almandin"),
         "Sagittaire" to listOf("turquoise", "topaze-bleue", "amethyste", "lapis-lazuli"),
         "Capricorne" to listOf("grenat-almandin", "onyx", "hematite", "rubis"),
@@ -174,7 +174,7 @@ object BirthMonths {
         "Juillet" to listOf("rubis"),
         "Août" to listOf("peridot"),
         "Septembre" to listOf("saphir-bleu"),
-        "Octobre" to listOf("opale-precieuse", "tourmaline-rose"),
+        "Octobre" to listOf("opale-noire", "tourmaline-rose"),
         "Novembre" to listOf("topaze-imperiale", "citrine"),
         "Décembre" to listOf("turquoise", "zircon-bleu")
     )

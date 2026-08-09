@@ -1165,13 +1165,6 @@ object GemTranslationsEs {
             particularites = "El porcentaje de cambio de color es el principal criterio de valoración.",
             lithotherapie = "La alejandrita, que cambia de color según la luz, se dice que favorece la adaptabilidad y el equilibrio entre razón e intuición."
         ),
-        "opale-precieuse" to GemTranslation(
-            nom = "Ópalo precioso",
-            descriptionCourte = "Un juego de colores único en su género.",
-            descriptionLongue = "El ópalo precioso está compuesto por microesferas de sílice ordenadas que difractan la luz y producen un juego de colores cambiante (opalescencia), único en cada piedra. Ninguna otra gema presenta este fenómeno óptico de la misma manera.",
-            particularites = "Contiene entre un 3% y un 21% de agua; sensible a la deshidratación y a los golpes.",
-            lithotherapie = "El ópalo precioso se asocia a la amplificación de las emociones y de la creatividad, un apoyo para los proyectos artísticos."
-        ),
         "tourmaline-pasteque" to GemTranslation(
             nom = "Turmalina sandía",
             descriptionCourte = "Corazón rosa rodeado de verde, como una rodaja de fruta.",
@@ -1361,13 +1354,6 @@ object GemTranslationsEs {
             particularites = "La ausencia de juego de colores distingue al ópalo común del ópalo precioso; ambos comparten, sin embargo, la misma composición.",
             lithotherapie = "Se dice que el ópalo común aporta suavidad y sosiego en el día a día."
         ),
-        "meteorite-de-fer" to GemTranslation(
-            nom = "Meteorito de hierro",
-            descriptionCourte = "Una aleación de hierro y níquel extraterrestre, cuya superficie pulida y atacada con ácido revela el patrón de Widmanstätten.",
-            descriptionLongue = "Los meteoritos de hierro son fragmentos del núcleo metálico de asteroides destruidos, compuestos casi enteramente por una aleación de hierro y níquel. Pulidos y ligeramente atacados con ácido nítrico, revelan el patrón de Widmanstätten, un entramado geométrico de cristales que tardó millones de años en formarse por un enfriamiento extremadamente lento en el espacio.",
-            particularites = "El patrón de Widmanstätten, exclusivo de los meteoritos de hierro enfriados lentamente, no puede reproducirse artificialmente y constituye una prueba de autenticidad.",
-            lithotherapie = "El meteorito de hierro se asocia con la fuerza y el arraigo, pese a su origen celeste."
-        ),
         "opale-noire" to GemTranslation(
             nom = "Ópalo negro",
             descriptionCourte = "El juego de colores más espectacular, sobre un fondo oscuro que lo realza.",
@@ -1388,13 +1374,6 @@ object GemTranslationsEs {
             descriptionLongue = "Descubierto en la década de 2010 en la región de Wollo, el ópalo de Etiopía revolucionó el mercado por su juego de colores particularmente vivo sobre un fondo translúcido de tono miel a incoloro. Sin embargo, su naturaleza hidrófana, absorbe el agua como una esponja, lo vuelve inestable si se sumerge o se expone en exceso a la humedad.",
             particularites = "Naturaleza hidrófana: puede absorber hasta un 20% de su volumen en agua, agrietarse al secarse y ver su transparencia cambiar temporalmente en contacto con la humedad.",
             lithotherapie = "Se dice que el ópalo de Etiopía amplifica las emociones y la creatividad, como los demás ópalos preciosos."
-        ),
-        "pallasite" to GemTranslation(
-            nom = "Pallasita",
-            descriptionCourte = "Un meteorito cortado que revela cristales de olivino dorados atrapados en una malla de hierro-níquel.",
-            descriptionLongue = "La pallasita es uno de los meteoritos más raros y codiciados: formada en la frontera entre el núcleo metálico y el manto silicatado de un asteroide diferenciado, encierra cristales de olivino translúcido en una matriz de hierro y níquel. Cortada en finas láminas y pulida, revela un patrón sorprendente, único en cada meteorito.",
-            particularites = "Cada lámina de pallasita es única; las más buscadas, como la Seymchan rusa, presentan cristales de olivino límpidos y una malla metálica regular.",
-            lithotherapie = "Se dice que la pallasita conecta con una dimensión cósmica y favorece una perspectiva más amplia sobre los acontecimientos de la vida."
         ),
     )
 }
