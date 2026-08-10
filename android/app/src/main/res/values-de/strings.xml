@@ -163,6 +163,9 @@
 
     <!-- Outils d'analyse -->
     <string name="instruments_title">Analysewerkzeuge</string>
+    <string name="analyse_glossaire_card_title">Gemmologisches Glossar</string>
+    <string name="analyse_glossaire_card_subtitle">Verstehen Sie das Fachvokabular (Seide, Spannungshof, Doppelbrechung...).</string>
+    <string name="glossaire_title">Gemmologisches Glossar</string>
 
     <!-- Meteorite -->
     <string name="meteorites_intro">Ein Fragment eines Asteroiden, des Mars oder des Mondes, das nach einer Reise von Millionen Jahren auf die Erde zurückgefallen ist. Manche Meteorite lassen sich wie ein Schmuckstein schneiden und polieren; andere bleiben wissenschaftliche Sammlerstücke. Dieser Bereich unterscheidet sie.</string>

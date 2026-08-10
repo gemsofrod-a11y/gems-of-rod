@@ -18,6 +18,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -66,7 +67,12 @@ import fr.gemsofrod.encyclopedie.ui.localizedLabel
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AnalyseScreen(onGemClick: (String) -> Unit, onInstrumentsClick: () -> Unit, onBackClick: () -> Unit) {
+fun AnalyseScreen(
+    onGemClick: (String) -> Unit,
+    onInstrumentsClick: () -> Unit,
+    onGlossaireClick: () -> Unit,
+    onBackClick: () -> Unit
+) {
     var couleur by remember { mutableStateOf<GemColorCategory?>(null) }
     var transparence by remember { mutableStateOf<String?>(null) }
     var eclat by remember { mutableStateOf<String?>(null) }
@@ -171,6 +177,45 @@ fun AnalyseScreen(onGemClick: (String) -> Unit, onInstrumentsClick: () -> Unit, 
                         )
                         Text(
                             text = stringResource(R.string.analyse_instruments_card_subtitle),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onTertiaryContainer
+                        )
+                    }
+                    Icon(
+                        Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onTertiaryContainer
+                    )
+                }
+            }
+
+            Card(
+                onClick = onGlossaireClick,
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 14.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    Icon(
+                        Icons.Filled.MenuBook,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onTertiaryContainer
+                    )
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = stringResource(R.string.analyse_glossaire_card_title),
+                            style = MaterialTheme.typography.titleSmall,
+                            fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.onTertiaryContainer
+                        )
+                        Text(
+                            text = stringResource(R.string.analyse_glossaire_card_subtitle),
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onTertiaryContainer
                         )

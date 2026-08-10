@@ -163,6 +163,9 @@
 
     <!-- Outils d'analyse -->
     <string name="instruments_title">Analysis tools</string>
+    <string name="analyse_glossaire_card_title">Gemological glossary</string>
+    <string name="analyse_glossaire_card_subtitle">Understand the technical vocabulary (silk, tension halo, birefringence...).</string>
+    <string name="glossaire_title">Gemological glossary</string>
 
     <!-- Meteorites -->
     <string name="meteorites_intro">A fragment of an asteroid, of Mars, or of the Moon, fallen back to Earth after a journey of millions of years. Some meteorites can be cut and polished like a fine stone; others remain scientific collector\'s pieces. This section tells them apart.</string>
