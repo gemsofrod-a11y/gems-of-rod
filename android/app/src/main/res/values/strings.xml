@@ -163,6 +163,9 @@
 
     <!-- Outils d'analyse -->
     <string name="instruments_title">Outils d\'analyse</string>
+    <string name="analyse_glossaire_card_title">Lexique gemmologique</string>
+    <string name="analyse_glossaire_card_subtitle">Comprenez le vocabulaire technique (soie, halo de tension, biréfringence...).</string>
+    <string name="glossaire_title">Lexique gemmologique</string>
 
     <!-- Météorites -->
     <string name="meteorites_intro">Un fragment d\'astéroïde, de Mars ou de la Lune, retombé sur Terre après un voyage de plusieurs millions d\'années. Certaines météorites se taillent et se polissent comme une pierre fine ; d\'autres restent des pièces de collection scientifique. Cette section les distingue.</string>

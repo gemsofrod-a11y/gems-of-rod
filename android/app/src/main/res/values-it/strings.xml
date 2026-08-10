@@ -163,6 +163,9 @@
 
     <!-- Outils d'analyse -->
     <string name="instruments_title">Strumenti di analisi</string>
+    <string name="analyse_glossaire_card_title">Glossario gemmologico</string>
+    <string name="analyse_glossaire_card_subtitle">Comprendi il vocabolario tecnico (seta, alone di tensione, birifrangenza...).</string>
+    <string name="glossaire_title">Glossario gemmologico</string>
 
     <!-- Meteoriti -->
     <string name="meteorites_intro">Un frammento di asteroide, di Marte o della Luna, caduto sulla Terra dopo un viaggio di milioni di anni. Alcuni meteoriti si possono tagliare e lucidare come una pietra fine; altri restano pezzi da collezione scientifica. Questa sezione li distingue.</string>
