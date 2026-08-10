@@ -42,6 +42,7 @@ REPORT_OUT = REPO_ROOT / "android/IMAGE_FETCH_REPORT.md"
 
 BRUTE = "BRUTE"
 FACETTEE = "FACETTEE"
+INCLUSION = "INCLUSION"
 
 # gem_id : (termes de recherche essayés dans l'ordre, mots-clés de pertinence, types voulus)
 GEMS = [
@@ -276,6 +277,46 @@ GEMS = [
     ("meteorite-alh-84001", ['ALH 84001 meteorite', 'Allan Hills 84001 meteorite'], ['alh 84001', 'allan hills'], (BRUTE,)),
     ("meteorite-lunaire-nwa", ['Lunar meteorite NWA', 'Lunar meteorite fragment'], ['lunar meteorite'], (BRUTE,)),
 ]
+
+# Photos dédiées aux inclusions typiques (macro/loupe), distinctes des photos
+# de la pierre entière (brute/facettée) ci-dessus. Liste volontairement
+# restreinte aux espèces où une inclusion précise est l'attrait visuel
+# reconnaissable de la pierre (jardin, soie, chiastolite, insecte dans
+# l'ambre...) : c'est là que des photos librement réutilisables existent
+# réellement, contrairement à la photomicrographie de laboratoire qui est
+# presque toujours sous droits.
+INCLUSION_GEMS = [
+    ("rubis", ["Ruby silk inclusions", "Ruby rutile silk"], ["ruby", "silk", "rutile"]),
+    ("rubis-etoile", ["Star ruby asterism", "Star ruby cabochon macro"], ["star ruby", "asterism"]),
+    ("saphir-etoile", ["Star sapphire asterism", "Star sapphire cabochon macro"], ["star sapphire", "asterism"]),
+    ("saphir-bleu", ["Sapphire silk inclusions", "Sapphire rutile silk"], ["sapphire", "silk", "rutile"]),
+    ("emeraude", ["Emerald jardin inclusions", "Emerald inclusions macro"], ["emerald", "jardin", "inclusion"]),
+    ("quartz-rutile", ["Rutilated quartz inclusions macro", "Rutile needles in quartz"], ["rutilated quartz", "rutile"]),
+    ("quartz-a-inclusions", ["Lodolite quartz inclusions", "Garden quartz inclusions macro"], ["lodolite", "garden quartz", "quartz"]),
+    ("quartz-super-sept", ["Super seven quartz inclusions macro"], ["super seven", "quartz"]),
+    ("ambre", ["Amber insect inclusion", "Baltic amber insect inclusion"], ["amber", "insect", "inclusion"]),
+    ("demantoide", ["Demantoid horsetail inclusion", "Demantoid garnet inclusions"], ["demantoid", "horsetail", "byssolite"]),
+    ("peridot", ["Peridot lily pad inclusion", "Peridot chromite inclusion"], ["peridot", "lily pad", "chromite"]),
+    ("tourmaline-pasteque", ["Watermelon tourmaline slice", "Watermelon tourmaline cross section"], ["watermelon tourmaline"]),
+    ("oeil-de-tigre", ["Tiger's eye chatoyance macro", "Tiger eye fibers macro"], ["tiger", "chatoyance", "chatoyant"]),
+    ("pierre-de-lune", ["Moonstone adularescence macro", "Moonstone schiller"], ["moonstone", "adularescence"]),
+    ("labradorite", ["Labradorite labradorescence macro", "Labradorite schiller"], ["labradorite", "labradorescence"]),
+    ("andalousite", ["Chiastolite cross section", "Andalusite chiastolite cross"], ["chiastolite", "andalusite", "andalousite"]),
+]
+
+# Sous-ensemble d'EXCLUDED_TITLE_TOKENS non pertinent pour une recherche
+# d'inclusion : ces mots désignaient justement le type de photo qu'on
+# cherche ici (on les excluait pour les photos de pierre entière BRUTE/
+# FACETTEE, où une vue au microscope ou en lame mince serait hors sujet).
+INCLUSION_ALLOWED_TOKENS = {
+    "microscope", "thin section", "polarized light", "inclusions in a gem",
+    "cathodoluminescence",
+}
+
+# gem_id -> recherche d'inclusion suspendue après vérification manuelle
+# qu'aucune photo librement réutilisable n'existe (même principe que
+# GIVE_UP_SLOTS ci-dessous pour BRUTE/FACETTEE).
+GIVE_UP_INCLUSION_SLOTS: set = set()
 
 EXCLUDED_TITLE_TOKENS = [
     "logo", "map", "diagram", "icon", "chart", "graph",
@@ -811,12 +852,24 @@ def image_info(title: str) -> Optional[dict]:
 
 
 def build_queries(term: str, image_type: str) -> list:
+    if image_type == INCLUSION:
+        # Les termes d'INCLUSION_GEMS sont déjà des expressions de recherche
+        # complètes et ciblées : pas besoin (et pas souhaitable) d'y greffer
+        # les suffixes "rough crystal" / "faceted gemstone".
+        return [term]
     if image_type == BRUTE:
         return [f"{term} rough crystal", f"{term} raw crystal", f"{term} crystal specimen", term]
     return [f"{term} faceted gemstone", f"{term} gemstone", f"{term} cut gem", term]
 
 
+def excluded_tokens_for(image_type: str) -> list:
+    if image_type == INCLUSION:
+        return [tok for tok in EXCLUDED_TITLE_TOKENS if tok not in INCLUSION_ALLOWED_TOKENS]
+    return EXCLUDED_TITLE_TOKENS
+
+
 def pick_image(terms: list, keywords: list, image_type: str, already_used_titles: set) -> Optional[dict]:
+    excluded_tokens = excluded_tokens_for(image_type)
     for term in terms:
         for query in build_queries(term, image_type):
             for title in search_candidates(query):
@@ -825,7 +878,7 @@ def pick_image(terms: list, keywords: list, image_type: str, already_used_titles
                 lower_title = title.lower()
                 if not lower_title.endswith(ALLOWED_IMAGE_EXTENSIONS):
                     continue
-                if any(tok in lower_title for tok in EXCLUDED_TITLE_TOKENS):
+                if any(tok in lower_title for tok in excluded_tokens):
                     continue
                 try:
                     info = image_info(title)
@@ -846,7 +899,7 @@ def pick_image(terms: list, keywords: list, image_type: str, already_used_titles
 
                 description = strip_html(extmeta.get("ImageDescription", {}).get("value", ""))
                 haystack = f"{lower_title} {description.lower()}"
-                if any(tok in haystack for tok in EXCLUDED_TITLE_TOKENS):
+                if any(tok in haystack for tok in excluded_tokens):
                     continue
                 if not any(kw in haystack for kw in keywords):
                     continue
@@ -897,6 +950,7 @@ def pick_image_openverse(terms: list, keywords: list, image_type: str, already_u
     en plus de Wikimedia — toute erreur d'API (forme de réponse inattendue,
     réseau, quota) est avalée et traitée comme "rien trouvé", jamais comme un
     échec du run entier."""
+    excluded_tokens = excluded_tokens_for(image_type)
     for term in terms:
         for query in build_queries(term, image_type):
             try:
@@ -910,7 +964,7 @@ def pick_image_openverse(terms: list, keywords: list, image_type: str, already_u
                     if not title or title in already_used_titles:
                         continue
                     lower_title = title.lower()
-                    if any(tok in lower_title for tok in EXCLUDED_TITLE_TOKENS):
+                    if any(tok in lower_title for tok in excluded_tokens):
                         continue
                     if not openverse_license_is_free(item.get("license", "")):
                         continue
@@ -921,7 +975,7 @@ def pick_image_openverse(terms: list, keywords: list, image_type: str, already_u
                         t.get("name", "") for t in (item.get("tags") or []) if isinstance(t, dict)
                     )
                     haystack = f"{lower_title} {tag_names.lower()}"
-                    if any(tok in haystack for tok in EXCLUDED_TITLE_TOKENS):
+                    if any(tok in haystack for tok in excluded_tokens):
                         continue
                     if not any(kw in haystack for kw in keywords):
                         continue
@@ -955,7 +1009,12 @@ def pick_image_openverse(terms: list, keywords: list, image_type: str, already_u
 
 def safe_resource_name(gem_id: str, image_type: str) -> str:
     name = re.sub(r"[^a-z0-9_]", "_", gem_id.lower())
-    suffix = "brute" if image_type == BRUTE else "facette"
+    if image_type == INCLUSION:
+        suffix = "inclusion"
+    elif image_type == BRUTE:
+        suffix = "brute"
+    else:
+        suffix = "facette"
     return f"gem_{name}_{suffix}"
 
 
@@ -989,7 +1048,7 @@ def write_kotlin(credits: dict) -> None:
         "// à partir de android/gem_image_credits.json (photos Wikimedia Commons).",
         "// Ne pas éditer à la main : relancer le workflow \"Fetch gem images\".",
         "",
-        "enum class GemImageType { BRUTE, FACETTEE }",
+        "enum class GemImageType { BRUTE, FACETTEE, INCLUSION }",
         "",
         "data class GemImageCredit(",
         "    val type: GemImageType,",
@@ -1121,12 +1180,89 @@ def main() -> None:
             f"| {gem_id} | {status.get(BRUTE, '—')} | {status.get(FACETTEE, '—')} |"
         )
 
+    inclusion_report_lines = [
+        "",
+        "## Photos d'inclusions",
+        "",
+        "Photos ciblées sur l'inclusion caractéristique de la pierre (jardin, soie, "
+        "chiastolite, insecte dans l'ambre...), distinctes des photos de la pierre "
+        "entière ci-dessus.",
+        "",
+        "| Gemme | Inclusion |",
+        "|---|---|",
+    ]
+    inclusion_found = 0
+
+    for gem_id, terms, keywords in INCLUSION_GEMS:
+        gem_credits = {c["type"]: c for c in credits.get(gem_id, [])}
+        existing = gem_credits.get(INCLUSION)
+        status_line = None
+
+        if existing:
+            existing_dest = DRAWABLE_DIR / f"{existing['resource_name']}.jpg"
+            if existing_dest.exists():
+                status_line = f"♻️ [{existing['title']}]({existing['source_url']})"
+                inclusion_found += 1
+
+        if status_line is None:
+            resource_name = safe_resource_name(gem_id, INCLUSION)
+            dest = DRAWABLE_DIR / f"{resource_name}.jpg"
+            already_used = {c["title"] for c in gem_credits.values()}
+            result = None
+
+            if (gem_id, INCLUSION) in GIVE_UP_INCLUSION_SLOTS:
+                print(f"-> {gem_id} [INCLUSION]: recherche abandonnée (voir GIVE_UP_INCLUSION_SLOTS)")
+                status_line = "⏸️ recherche suspendue"
+            else:
+                print(f"-> {gem_id} [INCLUSION]: recherche « {' / '.join(terms)} »")
+                try:
+                    result = pick_image(terms, keywords, INCLUSION, already_used)
+                except Exception as exc:  # noqa: BLE001
+                    print(f"  [!] erreur recherche pour {gem_id} [INCLUSION]: {exc}", file=sys.stderr)
+                    result = None
+
+                if not result:
+                    print(f"  [i] rien sur Wikimedia pour {gem_id} [INCLUSION], tentative Openverse")
+                    try:
+                        result = pick_image_openverse(terms, keywords, INCLUSION, already_used)
+                    except Exception as exc:  # noqa: BLE001
+                        print(f"  [!] erreur Openverse pour {gem_id} [INCLUSION]: {exc}", file=sys.stderr)
+                        result = None
+
+                if not result:
+                    print(f"  [x] aucune image libre trouvée pour {gem_id} [INCLUSION]")
+                    status_line = "❌ non trouvée"
+                else:
+                    try:
+                        download_image(result["download_url"], dest)
+                    except Exception as exc:  # noqa: BLE001
+                        print(f"  [!] échec téléchargement pour {gem_id} [INCLUSION]: {exc}", file=sys.stderr)
+                        status_line = "❌ échec téléchargement"
+                    else:
+                        print(f"  [ok] {result['title']} ({result['license']}, {result['artist']})")
+                        gem_credits[INCLUSION] = {
+                            "type": INCLUSION,
+                            "resource_name": resource_name,
+                            "title": result["title"],
+                            "artist": result["artist"],
+                            "license": result["license"],
+                            "source_url": result["source_url"],
+                        }
+                        status_line = f"✅ [{result['title']}]({result['source_url']})"
+                        inclusion_found += 1
+
+        credits[gem_id] = list(gem_credits.values())
+        inclusion_report_lines.append(f"| {gem_id} | {status_line} |")
+
     save_credits(credits)
     write_kotlin(credits)
 
-    found = sum(1 for c in credits.values() for _ in c)
+    found = sum(1 for clist in credits.values() for c in clist if c["type"] != INCLUSION)
     report_lines.append("")
     report_lines.append(f"**{found} / {total_slots}** photos récupérées au total.")
+    report_lines.extend(inclusion_report_lines)
+    report_lines.append("")
+    report_lines.append(f"**{inclusion_found} / {len(INCLUSION_GEMS)}** photos d'inclusions récupérées.")
     REPORT_OUT.write_text("\n".join(report_lines) + "\n", encoding="utf-8")
 
     print(f"\n{found}/{total_slots} photos récupérées.")
