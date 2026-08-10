@@ -316,9 +316,17 @@ INCLUSION_ALLOWED_TOKENS = {
 # gem_id -> recherche d'inclusion suspendue après vérification manuelle
 # qu'aucune photo librement réutilisable n'existe (même principe que
 # GIVE_UP_SLOTS ci-dessous pour BRUTE/FACETTEE).
-GIVE_UP_INCLUSION_SLOTS: set = set()
+GIVE_UP_INCLUSION_SLOTS: set = {
+    ("emeraude", INCLUSION),
+}
 
 EXCLUDED_TITLE_TOKENS = [
+    # Toute une série de photos de xénolithes de lherzolite (roche du manteau
+    # remontée par des pipes de kimberlite) sur Commons mentionne "emerald"
+    # dans sa légende en passant (le kimberlite est aussi la roche hôte du
+    # diamant) : un faux positif récurrent sur les recherches d'inclusions
+    # d'émeraude tant que ces termes géologiques ne sont pas exclus.
+    "xenolith", "lherzolite", "kimberlite",
     "logo", "map", "diagram", "icon", "chart", "graph",
     "locality", "location", "mine entrance", "mining site",
     "mine 1", "mine 2", "mine 3", "mine 4", "mine 5",
