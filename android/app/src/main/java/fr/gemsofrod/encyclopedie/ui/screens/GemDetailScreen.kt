@@ -138,6 +138,8 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
         }
 
         val images = GemImages.creditsFor(gem.id)
+        val wholeStoneImages = images.filter { it.type != GemImageType.INCLUSION }
+        val inclusionImages = images.filter { it.type == GemImageType.INCLUSION }
 
         Column(
             modifier = Modifier
@@ -147,7 +149,7 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
                 .padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(18.dp)
         ) {
-            if (images.isEmpty()) {
+            if (wholeStoneImages.isEmpty()) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -155,7 +157,7 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
                         .background(gem.couleur.swatch, RoundedCornerShape(16.dp))
                 )
             } else {
-                GemImageGallery(images)
+                GemImageGallery(wholeStoneImages)
             }
 
             Column {
@@ -261,6 +263,11 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
+                    if (inclusionImages.isNotEmpty()) {
+                        Box(modifier = Modifier.padding(top = 10.dp)) {
+                            GemImageGallery(inclusionImages)
+                        }
+                    }
                 }
             }
 
@@ -407,7 +414,13 @@ private fun GemImageCard(credit: GemImageCredit) {
     val imageResId = rememberDrawableResId(credit.drawableName)
     if (imageResId == 0) return
 
-    val caption = stringResource(if (credit.type == GemImageType.BRUTE) R.string.gem_photo_raw else R.string.gem_photo_cut)
+    val caption = stringResource(
+        when (credit.type) {
+            GemImageType.BRUTE -> R.string.gem_photo_raw
+            GemImageType.FACETTEE -> R.string.gem_photo_cut
+            GemImageType.INCLUSION -> R.string.gem_photo_inclusion
+        }
+    )
     Column(modifier = Modifier.width(220.dp)) {
         Image(
             painter = painterResource(id = imageResId),

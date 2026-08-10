@@ -79,6 +79,7 @@
     <string name="gem_photo_raw">Rohstein</string>
     <string name="gem_photo_cut">Geschliffener Stein</string>
     <string name="gem_photo_cut_or_cabochon">Geschliffener Stein / Cabochon</string>
+    <string name="gem_photo_inclusion">Typischer Einschluss</string>
     <string name="photo_credit">Foto: %1$s — %2$s (Wikimedia Commons)</string>
 
     <!-- Wertrechner -->

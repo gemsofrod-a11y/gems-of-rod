@@ -79,6 +79,7 @@
     <string name="gem_photo_raw">Pietra grezza</string>
     <string name="gem_photo_cut">Pietra tagliata</string>
     <string name="gem_photo_cut_or_cabochon">Pietra tagliata / cabochon</string>
+    <string name="gem_photo_inclusion">Inclusione tipica</string>
     <string name="photo_credit">Foto: %1$s — %2$s (Wikimedia Commons)</string>
 
     <!-- Calcolatore del valore -->
