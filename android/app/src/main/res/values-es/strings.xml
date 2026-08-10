@@ -71,6 +71,7 @@
     <string name="fiche_prix_indicatif">Precio orientativo</string>
     <string name="create_certificate_button">Crear un certificado</string>
     <string name="particularites_title">Particularidades</string>
+    <string name="inclusions_title">Inclusiones típicas</string>
     <string name="origins_title">Minas y regiones de origen</string>
     <string name="origins_hint">Toca un lugar para abrirlo en Google Maps.</string>
     <string name="share_chooser_title">Compartir la ficha</string>

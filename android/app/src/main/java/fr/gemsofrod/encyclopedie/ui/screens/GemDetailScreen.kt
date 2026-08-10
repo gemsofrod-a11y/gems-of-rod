@@ -246,6 +246,23 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
                 )
             }
 
+            val inclusions = GemDiagnostics.data[gem.id]?.inclusions
+            if (!inclusions.isNullOrBlank()) {
+                Column {
+                    Text(
+                        text = stringResource(R.string.inclusions_title),
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
+                    Text(
+                        text = inclusions,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+
             Column {
                 Text(
                     text = stringResource(R.string.origins_title),
