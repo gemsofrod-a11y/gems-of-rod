@@ -32,6 +32,18 @@ fun Meteorite.localized(): Meteorite {
 }
 
 /**
+ * Renvoie le texte des inclusions typiques de la gemme d'identifiant [gemId]
+ * traduit dans la langue d'interface actuelle (ou en français si aucune
+ * traduction n'est disponible), ou `null` si la gemme n'a pas de texte
+ * d'inclusions (gemmes translucides à opaques ou opaques).
+ */
+@Composable
+fun localizedInclusions(gemId: String): String? {
+    val languageCode = LocalConfiguration.current.locales[0].language
+    return GemLocalization.localizeInclusions(gemId, languageCode)
+}
+
+/**
  * Traduit un libellé utilisé aussi comme clé interne (famille minérale,
  * chakra, bienfait, signe astrologique, mois de naissance) pour l'affichage
  * dans la langue d'interface actuelle. Le libellé français d'origine doit

@@ -8,6 +8,7 @@ object GemTranslationsEs {
             descriptionCourte = "El granate rojo sangre clásico, sin la dilución de la rodolita.",
             descriptionLongue = "El piropo es el granate rojo más intenso del grupo piralspita, cuyo color proviene del magnesio y, a menudo, de trazas de cromo. Es históricamente el granate de Bohemia, tallado en masa entre los siglos XVII y XIX en pequeñas piedras engastadas en pavé.",
             particularites = "A diferencia de la rodolita, el piropo puro no contiene hierro en proporción significativa.",
+            inclusions = "Cristales minerales accesorios (a menudo apatito), fracturas internas y halos de tensión ocasionales; piedra generalmente bastante limpia.",
             lithotherapie = "Piedra de vitalidad y valentía, se dice que el granate piropo estimula la energía física y reaviva la motivación en los momentos de cansancio o desánimo."
         ),
         "eudialyte" to GemTranslation(
@@ -22,6 +23,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un feldespato de rojo a verde según el yacimiento, en el centro de una controversia sobre su tratamiento.",
             descriptionLongue = "La andesina roja natural del Congo y de Oregón existe efectivamente en estado natural, pero gran parte del mercado de la década de 2000 procedía en realidad de labradorita china difundida con cobre para imitar ese tono, un episodio que ha quedado célebre en la gemología. También existe una variedad verde, más rara.",
             particularites = "Un certificado de laboratorio que especifique «no tratada» es indispensable para las piedras rojas de esta especie.",
+            inclusions = "Inclusiones de cobre nativo en finas laminillas, responsables de reflejos rojizos en algunos yacimientos (andesina llamada \"roja\").",
             lithotherapie = "Asociada a la alegría de vivir y a la vitalidad, se dice que la andesina devuelve la energía en los periodos de cansancio moral."
         ),
         "rubis" to GemTranslation(
@@ -29,6 +31,7 @@ object GemTranslationsEs {
             descriptionCourte = "El corindón rojo, gema real por excelencia.",
             descriptionLongue = "El rubí es la variedad roja del corindón, cuyo color proviene de trazas de cromo. Símbolo de pasión y de poder desde la Antigüedad, es una de las cuatro piedras preciosas históricas junto con el diamante, la esmeralda y el zafiro. Las piedras más hermosas presentan un rojo «sangre de paloma» de gran intensidad.",
             particularites = "Fluorescencia roja bajo luz UV; inclusiones de rutilo en forma de «seda» que pueden producir asterismo (estrella de 6 puntas).",
+            inclusions = "Inclusiones de rutilo en finas agujas sedosas (\"seda\"), a veces dispuestas según los tres ejes del cristal hasta producir asterismo; cristales de circón rodeados de un halo de tensión, inclusiones en \"huella dactilar\" de cicatrización y maclas polisintéticas frecuentes, sobre todo en piedras birmanas no tratadas.",
             lithotherapie = "Piedra de pasión y vitalidad por excelencia, el rubí se asocia tradicionalmente con el valor, la confianza en uno mismo y la protección contra las energías negativas."
         ),
         "grenat-almandin" to GemTranslation(
@@ -36,6 +39,7 @@ object GemTranslationsEs {
             descriptionCourte = "Granate de rojo profundo, nunca tratado.",
             descriptionLongue = "Estas dos especies del grupo de los granates forman una serie continua y a menudo se comercializan juntas. Su rojo intenso, a veces amarronado en el caso del almandino, las convierte en piedras accesibles muy apreciadas en joyería desde la época romana.",
             particularites = "Sin exfoliación, fuerte refracción, nunca tratado térmica ni químicamente.",
+            inclusions = "Cristales de apatito, rutilo o circón, a veces orientados dando un ligero efecto sedoso; las inclusiones fibrosas pueden producir asterismo de cuatro o seis brazos.",
             lithotherapie = "Piedra de arraigo y fuerza interior, se dice que el granate almandino ayuda a atravesar los periodos difíciles con determinación."
         ),
         "spinelle-rouge" to GemTranslation(
@@ -43,6 +47,7 @@ object GemTranslationsEs {
             descriptionCourte = "Durante mucho tiempo confundida con el rubí.",
             descriptionLongue = "Durante siglos, la espinela roja fue confundida con el rubí: el célebre «Rubí del Príncipe Negro» engastado en la corona imperial británica es en realidad una espinela. Naturalmente no tratada en la gran mayoría de los casos, hoy recupera el reconocimiento que merece entre los coleccionistas.",
             particularites = "Cristales a menudo octaédricos; casi siempre sin tratar.",
+            inclusions = "Pequeños cristales octaédricos (espinela dentro de espinela), nubes de finas partículas y zonación de crecimiento ocasional; piedra naturalmente no tratada.",
             lithotherapie = "Asociada a la renovación y a la vitalidad, la espinela roja se utiliza para estimular la energía y animar a levantarse tras una prueba difícil."
         ),
         "tourmaline-rubellite" to GemTranslation(
@@ -50,6 +55,7 @@ object GemTranslationsEs {
             descriptionCourte = "Rojo intenso debido al manganeso.",
             descriptionLongue = "La rubelita es la variedad de color rojo a rosa frambuesa del grupo de las turmalinas, un silicato boroaluminífero cuya paleta de colores es la más extensa del reino mineral. Su fuerte pleocroísmo hace que su intensidad varíe según el ángulo de observación.",
             particularites = "Pleocroísmo marcado; cristales prismáticos estriados característicos.",
+            inclusions = "Inclusiones líquidas fragmentadas en finos \"hilos de algodón\" (tricitas) y tubos huecos paralelos al eje del cristal, frecuentes en piedras brasileñas o africanas.",
             lithotherapie = "Se dice que la rubelita abre el corazón al amor y a la alegría, calmando las heridas afectivas antiguas."
         ),
         "grenat-rhodolite" to GemTranslation(
@@ -57,6 +63,7 @@ object GemTranslationsEs {
             descriptionCourte = "Rojo violáceo «frambuesa».",
             descriptionLongue = "Mezcla intermedia entre piropo y almandino, la rodolita ofrece un tono rojo-violáceo luminoso, más claro que el almandino clásico. Su nombre proviene del griego «rhodon» (rosa), en referencia a su color.",
             particularites = "Excelente transparencia, nunca tratada.",
+            inclusions = "Cristales accesorios (apatito, circón) y finas fibrillas internas; generalmente limpia a simple vista.",
             lithotherapie = "Piedra de equilibrio emocional, se dice que la rodolita suaviza los excesos de ira sin dejar de preservar la pasión y el entusiasmo."
         ),
         "painite" to GemTranslation(
@@ -64,6 +71,7 @@ object GemTranslationsEs {
             descriptionCourte = "Considerada durante mucho tiempo el mineral gema más raro del mundo.",
             descriptionLongue = "Descubierta en 1951 por el gemólogo británico Arthur Pain, la painita solo se conoció a través de dos o tres cristales durante casi cincuenta años, hasta que se descubrieron nuevos yacimientos birmanos en la década de 2000. Su tono de rojo-marrón a anaranjado y su elevada dureza la convierten en una piedra de colección extremadamente codiciada.",
             particularites = "Un único yacimiento conocido en el mundo; casi todas las piedras talladas son inferiores a 2 quilates.",
+            inclusions = "Especie extremadamente rara; las inclusiones internas siguen poco documentadas, ya que la mayoría de las piedras conocidas son de tamaño muy pequeño.",
             lithotherapie = "Mineral raro, la painita se asocia en litoterapia con la perseverancia y la confianza en el propio camino, incluso fuera de los senderos trillados."
         ),
         "bixbite" to GemTranslation(
@@ -71,6 +79,7 @@ object GemTranslationsEs {
             descriptionCourte = "El berilo rojo, una de las gemas más raras del mundo.",
             descriptionLongue = "Conocido durante mucho tiempo como «bixbita» —nombre hoy desaconsejado por los laboratorios gemológicos por su confusión con la bixbyita, un mineral distinto—, el berilo rojo debe su intenso color al manganeso. Procede prácticamente de un único yacimiento en el mundo, en los montes Wah Wah de Utah, donde los cristales que superan un quilate una vez tallados siguen siendo excepcionales.",
             particularites = "Cristales tallados casi siempre inferiores a un quilate; fuente casi única en el mundo, lo que la convierte en una de las gemas más raras y caras por quilate.",
+            inclusions = "Extremadamente rara y generalmente de tamaño pequeño; puede mostrar tubos de elongación y raros cristales accesorios, como los demás berilos.",
             lithotherapie = "La bixbita se asocia con la vitalidad y la pasión, una piedra reputada por estimular la energía creativa y la confianza en uno mismo."
         ),
         "crocoite" to GemTranslation(
@@ -78,6 +87,7 @@ object GemTranslationsEs {
             descriptionCourte = "Cristales prismáticos de color rojo-anaranjado vivo, tesoro de los coleccionistas.",
             descriptionLongue = "La crocoíta forma cristales prismáticos alargados de un rojo-anaranjado eléctrico, entre los más espectaculares del reino mineral. Extremadamente frágil y blanda, se colecciona casi exclusivamente como espécimen mineralógico y no tallada en facetas.",
             particularites = "Demasiado blanda y exfoliable para un uso joyero habitual; es casi exclusivamente una piedra de colección.",
+            inclusions = "Cristales prismáticos a menudo frágiles, raramente facetados; las inclusiones internas siguen poco documentadas dada la escasez de piedras talladas.",
             lithotherapie = "Piedra de energía y creatividad, se dice que la crocoíta estimula la pasión y el entusiasmo en los proyectos nuevos."
         ),
         "grenat-malaya" to GemTranslation(
@@ -85,6 +95,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un rosa-anaranjado cálido nacido de la mezcla de dos granates.",
             descriptionLongue = "El granate malaya («fuera de casta» en suajili, pues durante mucho tiempo los mineros lo consideraron de composición impura) es una mezcla natural de piropo y espesartita que ofrece tonos únicos de anaranjado a rosa salmón, sin tratamiento.",
             particularites = "No requiere ni recibe ningún tratamiento; color 100% natural.",
+            inclusions = "Cristales accesorios ocasionales y finas fibrillas internas, comparable a otros granates de la serie piropo-espesartina.",
             lithotherapie = "Asociado a la alegría de vivir, el granate malaya se utiliza para estimular la creatividad y disipar la melancolía."
         ),
         "zircon-hyacinthe" to GemTranslation(
@@ -92,6 +103,7 @@ object GemTranslationsEs {
             descriptionCourte = "La variedad histórica de rojo-marrón que dio al circón su antiguo nombre.",
             descriptionLongue = "Llamado así por la flor, el jacinto es la variedad de color anaranjado a rojo-marrón del circón, conocida y tallada desde la Antigüedad. Su elevado índice de refracción le confiere un brillo comparable al del diamante en igualdad de talla.",
             particularites = "Birrefringencia elevada que provoca un desdoblamiento visible de las aristas de la tabla a simple vista.",
+            inclusions = "Birrefringencia marcada que provoca un claro doblaje de las aristas internas; zonas metamícticas y fisuras de tensión frecuentes.",
             lithotherapie = "El circón jacinto se asocia tradicionalmente con el éxito y la confianza en uno mismo en las empresas nuevas."
         ),
         "zircon-dore" to GemTranslation(
@@ -99,6 +111,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un amarillo-anaranjado amielado, obtenido a menudo mediante el calentamiento del circón marrón.",
             descriptionLongue = "El circón dorado cubre la gama de amarillo a anaranjado del circón; muchas de las piedras del comercio se calientan a partir de circón marrón camboyano para desarrollar este tono estable y atractivo.",
             particularites = "El calentamiento térmico para estabilizar el color dorado es una práctica antigua y aceptada por el mercado.",
+            inclusions = "Doblaje de las aristas internas debido a la fuerte birrefringencia; puede presentar zonas metamícticas según el contenido en elementos radiactivos.",
             lithotherapie = "Piedra de claridad mental, se dice que el circón dorado apoya la toma de decisiones y el éxito personal."
         ),
         "chondrodite" to GemTranslation(
@@ -106,6 +119,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un naranja cálido raro, prima poco conocida de la forsterita.",
             descriptionLongue = "La condrodita, miembro del grupo de la humita, ofrece tonos de naranja a rojo-marrón raramente hallados en piedra tallada en facetas, procedente principalmente de mármoles metamórficos donde se asocia con la espinela y la forsterita.",
             particularites = "Se encuentra a menudo asociada con la espinela roja y la forsterita en los mármoles metamórficos.",
+            inclusions = "Inclusiones minerales variables según el yacimiento, a menudo asociadas a la caliza metamórfica de la que procede.",
             lithotherapie = "La condrodita se utiliza en litoterapia para aportar calidez interior y consuelo en los periodos de duda."
         ),
         "grenat-spessartite" to GemTranslation(
@@ -113,6 +127,7 @@ object GemTranslationsEs {
             descriptionCourte = "Naranja «mandarina» resplandeciente.",
             descriptionLongue = "Descubierta en cantidad comercial en Namibia en la década de 1990, la espesartita ofrece un naranja vivo y saturado apodado «mandarine garnet» (granate mandarina). Hoy es una de las variedades de granate más codiciadas.",
             particularites = "Color natural, nunca tratado térmicamente.",
+            inclusions = "Inclusiones fluidas y finas fibras características, a veces cristales accesorios visibles con lupa; las piedras de Nigeria o Namibia suelen ser muy limpias.",
             lithotherapie = "Piedra de dinamismo, el granate espesartita se asocia con la creatividad y las ganas de emprender."
         ),
         "topaze-imperiale" to GemTranslation(
@@ -120,6 +135,7 @@ object GemTranslationsEs {
             descriptionCourte = "La variedad más rara del topacio.",
             descriptionLongue = "Reservado históricamente a la familia imperial rusa, el topacio imperial presenta un tono único de naranja a naranja-rosado, procedente casi exclusivamente de las minas de Ouro Preto, en Brasil. Se distingue del topacio azul, mucho más común y generalmente tratado.",
             particularites = "Exfoliación perfecta que hay que vigilar durante la talla y el engaste.",
+            inclusions = "Inclusiones líquidas bi o trifásicas y finas fisuras internas; buena pureza generalmente en las piedras brasileñas de calidad gema.",
             lithotherapie = "Se dice que el topacio imperial favorece el éxito personal, la generosidad y la apertura hacia los demás."
         ),
         "hessonite" to GemTranslation(
@@ -127,6 +143,7 @@ object GemTranslationsEs {
             descriptionCourte = "Apodada la «piedra de canela».",
             descriptionLongue = "Variedad de granate grosularia rica en hierro y manganeso, la hesonita presenta un color anaranjado cálido que evoca el jarabe de canela, con un efecto de tornasolado interno («treacle effect») debido a sus inclusiones características.",
             particularites = "Aspecto aceitoso a amielado típico debido a las inclusiones internas.",
+            inclusions = "Aspecto interno a menudo turbio, en \"agua hervida\", debido a finas fibrillas difusas y cristales accesorios, típico del granate de Sri Lanka.",
             lithotherapie = "La hesonita se lleva tradicionalmente para reforzar la confianza en uno mismo y protegerse del exceso de autocrítica."
         ),
         "opale-de-feu" to GemTranslation(
@@ -134,6 +151,7 @@ object GemTranslationsEs {
             descriptionCourte = "Transparente a translúcido, de tono llameante.",
             descriptionLongue = "A diferencia del ópalo precioso, el ópalo de fuego obtiene su valor de su color, de anaranjado a rojo intenso, más que de un juego de colores, aunque algunas piedras presentan ambos fenómenos.",
             particularites = "Piedra frágil y porosa, sensible a los choques térmicos.",
+            inclusions = "El juego de color suele estar ausente; puede presentar finas fisuras internas y una ligera turbidez lechosa propia del material silicificado.",
             lithotherapie = "Piedra de pasión y motivación, se dice que el ópalo de fuego devuelve el impulso necesario para lanzarse a nuevos proyectos."
         ),
         "padparadscha" to GemTranslation(
@@ -141,6 +159,7 @@ object GemTranslationsEs {
             descriptionCourte = "La unión del rosa y el naranja, el tono «flor de loto».",
             descriptionLongue = "Su nombre proviene del cingalés que designa la flor de loto. Este corindón combina en una misma piedra tonos de rosa y naranja en proporciones equilibradas, un equilibrio extremadamente difícil de encontrar en la naturaleza, lo que lo convierte en uno de los zafiros más codiciados y más caros del mundo.",
             particularites = "La definición exacta del tono sigue siendo objeto de debate entre los laboratorios gemológicos.",
+            inclusions = "Zonación de color sutil entre rosa y anaranjado, fina seda de rutilo y cristales accesorios típicos del corindón de Sri Lanka.",
             lithotherapie = "El zafiro padparadscha simboliza la armonía entre el corazón y la mente, favoreciendo la plenitud personal y la serenidad amorosa."
         ),
         "cornaline" to GemTranslation(
@@ -148,6 +167,7 @@ object GemTranslationsEs {
             descriptionCourte = "Naranja-rojo translúcido, utilizada desde el Antiguo Egipto.",
             descriptionLongue = "La cornalina debe su tono, de anaranjado a rojo, a los óxidos de hierro. Engastada en escarabajos y amuletos en el Antiguo Egipto, sigue siendo hoy una piedra accesible muy empleada en joyería y para la talla en hueco (intaglios).",
             particularites = "A menudo se calienta a partir de material marrón para intensificar el tono anaranjado.",
+            inclusions = "Coloración debida a óxidos de hierro finamente dispersos en la estructura microcristalina; pocas inclusiones individualizadas visibles.",
             lithotherapie = "Piedra de acción por excelencia, se dice que la cornalina estimula el valor, la motivación y la vitalidad física."
         ),
         "pyrite" to GemTranslation(
@@ -162,6 +182,7 @@ object GemTranslationsEs {
             descriptionCourte = "Una fluorescencia azul vivo bajo luz UV y una dispersión superior a la del diamante.",
             descriptionLongue = "La scheelita, mena principal del wolframio, ofrece tallada en facetas una dispersión óptica superior a la del diamante, pero su blandura la reserva a los coleccionistas. Fluoresce con un azul eléctrico característico bajo lámpara UV de onda corta.",
             particularites = "Fluorescencia azul vivo bajo UV de onda corta, utilizada por los prospectores para localizar el mineral de noche.",
+            inclusions = "Fluorescencia azul intensa característica bajo UV; inclusiones internas raramente documentadas, ya que las piedras facetadas de calidad gema son escasas.",
             lithotherapie = "La scheelita se asocia con la claridad mental, útil para organizar las ideas y tomar decisiones meditadas."
         ),
         "tourmaline-jaune" to GemTranslation(
@@ -169,6 +190,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un amarillo canario luminoso, el más raro de los colores de la turmalina.",
             descriptionLongue = "La turmalina de amarillo vivo, llamada «canary», debe su color al manganeso y se cuenta entre los tonos más raros y codiciados de la familia de las turmalinas, mucho más rara que el rosa o el verde.",
             particularites = "Color amarillo vivo natural sin tratamiento, a diferencia de muchos tonos de turmalina comerciales.",
+            inclusions = "Tricitas en hilos de algodón y tubos huecos característicos de la especie; piedra generalmente limpia en las calidades de joyería.",
             lithotherapie = "Se dice que la turmalina amarilla estimula la alegría de vivir y la confianza en las propias capacidades."
         ),
         "bastnasite" to GemTranslation(
@@ -176,6 +198,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un mineral de tierras raras de amarillo-marrón luminoso y fuerte dispersión.",
             descriptionLongue = "La bastnasita es una fuente importante de tierras raras (cerio, lantano), rara vez tallada debido a su escasez en cristales gema, pero apreciada por los coleccionistas por su elevada dispersión y su color de miel a amarillo-marrón.",
             particularites = "Mena estratégica de tierras raras; las calidades gema aptas para facetar son anecdóticas.",
+            inclusions = "Especie rara que contiene tierras raras; inclusiones internas poco documentadas, ya que las piedras facetadas siguen siendo anecdóticas.",
             lithotherapie = "Mineral raro, la bastnasita se asocia en litoterapia con el despertar de la creatividad y la estimulación intelectual."
         ),
         "orthose" to GemTranslation(
@@ -183,6 +206,7 @@ object GemTranslationsEs {
             descriptionCourte = "El feldespato potásico amarillo, pariente de la piedra de luna y de la amazonita.",
             descriptionLongue = "La ortosa apta para facetar, generalmente de un amarillo pajizo delicado, procede casi exclusivamente de Madagascar. Es el mismo mineral que, en su variedad lechosa translúcida, produce la piedra de luna por intercrecimiento con la albita.",
             particularites = "Yacimiento casi exclusivo de Madagascar para la calidad transparente y amarilla apta para facetar.",
+            inclusions = "Puede presentar finas laminillas de exsolución e inclusiones responsables de un ligero efecto chatoyant en algunas piedras.",
             lithotherapie = "Se dice que la ortosa apoya la claridad mental y la comunicación, facilitando la expresión clara de las propias ideas."
         ),
         "saphir-jaune" to GemTranslation(
@@ -190,6 +214,7 @@ object GemTranslationsEs {
             descriptionCourte = "El corindón en todos sus tonos, salvo el rojo.",
             descriptionLongue = "El término «zafiro» designa todas las variedades de corindón distintas del rojo (rubí). El zafiro amarillo, coloreado por trazas de hierro, es muy apreciado en el sur de Asia por sus virtudes simbólicas ligadas a la sabiduría y a la prosperidad.",
             particularites = "A menudo se calienta para intensificar y uniformizar el color.",
+            inclusions = "Zonación de color en bandas hexagonales, cristales minerales incluidos (rutilo, apatito), velos de finas partículas; la seda suele ser más discreta que en el zafiro azul.",
             lithotherapie = "El zafiro amarillo se asocia tradicionalmente con la prosperidad, la sabiduría y el éxito profesional."
         ),
         "citrine" to GemTranslation(
@@ -197,6 +222,7 @@ object GemTranslationsEs {
             descriptionCourte = "Cuarzo de amarillo miel a amarillo dorado.",
             descriptionLongue = "El citrino natural es raro; la gran mayoría de las piedras del mercado proceden del calentamiento de amatista o de cuarzo ahumado, que transforma el color en un amarillo dorado estable. Piedra de nacimiento del mes de noviembre, asociada a la abundancia.",
             particularites = "Muy asequible y abundante; pocas o ninguna inclusión visible.",
+            inclusions = "Generalmente muy limpia; puede presentar raros cristales negativos o fantasmas de crecimiento en chevrón heredados de la amatista calentada.",
             lithotherapie = "Apodado la piedra de la abundancia, se dice que el citrino estimula la confianza en uno mismo, la alegría de vivir y el éxito material."
         ),
         "heliodore" to GemTranslation(
@@ -204,6 +230,7 @@ object GemTranslationsEs {
             descriptionCourte = "Primo dorado de la esmeralda y de la aguamarina.",
             descriptionLongue = "El heliodoro, cuyo nombre significa «regalo del sol» en griego, es la variedad de amarillo a amarillo-verde del berilo. Menos conocido que sus primas la esmeralda y la aguamarina, seduce por su claridad luminosa.",
             particularites = "Generalmente muy puro, con pocas inclusiones.",
+            inclusions = "Tubos huecos paralelos al eje del cristal y raras inclusiones líquidas, como los demás berilos.",
             lithotherapie = "El heliodoro se asocia con la alegría y la generosidad, favoreciendo la apertura mental y la claridad intelectual."
         ),
         "chrysoberyl" to GemTranslation(
@@ -211,6 +238,7 @@ object GemTranslationsEs {
             descriptionCourte = "Gran dureza, pariente de la alejandrita.",
             descriptionLongue = "Con una dureza de 8,5, el crisoberilo amarillo-verde es una de las gemas más resistentes después del corindón y el diamante. Su variedad de cambio de color da lugar a la alejandrita, y su variedad tornasolada al ojo de gato.",
             particularites = "Excelente resistencia al desgaste, ideal para el uso diario.",
+            inclusions = "Puede presentar maclas cíclicas características en forma de estrella de tres brazos y finas inclusiones líquidas.",
             lithotherapie = "Se dice que el crisoberilo favorece el discernimiento y atrae la prosperidad en los asuntos personales y profesionales."
         ),
         "oeil-de-tigre" to GemTranslation(
@@ -225,6 +253,7 @@ object GemTranslationsEs {
             descriptionCourte = "Poco conocida, de amarillo miel a violeta.",
             descriptionLongue = "La escapolita forma una serie de minerales poco conocidos por el gran público, tallados en gemas translúcidas de amarillo miel a rosadas. Algunos cristales birmanos presentan tornasolado o una fluorescencia anaranjada bajo luz UV.",
             particularites = "Algunas piedras birmanas presentan un fuerte efecto ojo de gato.",
+            inclusions = "Inclusiones fibrosas paralelas que pueden producir un efecto chatoyant (ojo de gato) en algunas piedras birmanas.",
             lithotherapie = "La escapolita se asocia con la disciplina personal y la motivación, útil para llevar a buen término los proyectos propios."
         ),
         "malachite" to GemTranslation(
@@ -239,6 +268,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un verde esmeralda intenso que rivaliza con la propia esmeralda.",
             descriptionLongue = "La dioptasa forma pequeños cristales de un verde esmeralda tan intenso que rivalizan visualmente con la esmeralda verdadera, pero su gran fragilidad y su exfoliación perfecta la reservan casi exclusivamente a los coleccionistas.",
             particularites = "Exfoliación perfecta y gran fragilidad: la talla en facetas es una hazaña lapidaria raramente intentada.",
+            inclusions = "Cristales a menudo asociados a dolomita o calcita procedentes de la roca huésped; raramente facetada por su clivaje perfecto.",
             lithotherapie = "La dioptasa se asocia con la sanación emocional profunda, favoreciendo el perdón y el sosiego de las heridas del corazón."
         ),
         "amazonite" to GemTranslation(
@@ -246,6 +276,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un verde azulado opaco veteado de blanco, pese a su nombre sin relación con el Amazonas.",
             descriptionLongue = "La amazonita es una variedad de microclina verde azulado opaca, veteada de vetas blancas. Su nombre evoca el río Amazonas, aunque nunca se ha confirmado ningún yacimiento histórico allí, uno de los misterios persistentes de la mineralogía.",
             particularites = "Siempre se talla en cabujón debido a su opacidad; sensible a los golpes a lo largo de sus planos de exfoliación.",
+            inclusions = "Estructura en maclas polisintéticas responsable de su aspecto estriado azul-verdoso característico, a veces atravesada por finas vetas blancas de cuarzo o albita.",
             lithotherapie = "Piedra de sosiego, se dice que la amazonita calma el estrés y facilita una comunicación sincera con los demás."
         ),
         "chrysoprase" to GemTranslation(
@@ -253,6 +284,7 @@ object GemTranslationsEs {
             descriptionCourte = "El verde manzana más vivo de la familia de las calcedonias.",
             descriptionLongue = "La crisoprasa es la variedad de calcedonia de verde manzana más intenso, coloreada por trazas de níquel. Apreciada desde la Antigüedad, vivió un renovado auge de popularidad en el siglo XVIII, especialmente en el mobiliario de Federico el Grande de Prusia.",
             particularites = "El color puede atenuarse con la deshidratación prolongada o el calor intenso; se conserva mejor ligeramente húmeda.",
+            inclusions = "Coloración verde debida al níquel disperso en la sílice microcristalina; puede presentar finas vetas blanquecinas.",
             lithotherapie = "La crisoprasa se asocia tradicionalmente con la esperanza y el optimismo, abriendo el corazón a nuevas perspectivas."
         ),
         "beryl-vert" to GemTranslation(
@@ -260,6 +292,7 @@ object GemTranslationsEs {
             descriptionCourte = "El verde «ordinario» del berilo, sin el cromo que lo convertiría en esmeralda.",
             descriptionLongue = "Coloreado por el hierro en lugar de por el cromo o el vanadio, el berilo verde no tiene derecho a la denominación «esmeralda» en gemología estricta, pero ofrece piedras limpias y luminosas a un precio mucho más asequible.",
             particularites = "Se distingue de la esmeralda mediante el espectroscopio: ausencia de las líneas de absorción del cromo/vanadio.",
+            inclusions = "Inclusiones en tubos huecos paralelos y cristales minerales accesorios ocasionales; generalmente muy limpia a simple vista.",
             lithotherapie = "Se dice que el berilo verde aporta equilibrio emocional y renovación, ayudando a pasar página tras un periodo difícil."
         ),
         "sillimanite" to GemTranslation(
@@ -267,6 +300,7 @@ object GemTranslationsEs {
             descriptionCourte = "Una prima poco conocida de la andalucita y la cianita, a veces con ojo de gato.",
             descriptionLongue = "Polimorfo de la andalucita y la cianita (misma fórmula, estructura cristalina diferente), la sillimanita se presenta en tonos de verde azulado a marrón, a veces con un efecto tornasolado muy buscado en cabujón.",
             particularites = "Puede presentar un efecto ojo de gato muy nítido cuando se talla en cabujón perpendicularmente a las fibras.",
+            inclusions = "Inclusiones fibrosas que pueden producir un efecto chatoyant (ojo de gato) en piedras talladas en cabujón.",
             lithotherapie = "La sillimanita se asocia con la claridad mental, un apoyo para poner orden en los pensamientos y las prioridades."
         ),
         "seraphinite" to GemTranslation(
@@ -281,6 +315,7 @@ object GemTranslationsEs {
             descriptionCourte = "El granate de verde a amarillo-verde, primo poco coloreado de la tsavorita y la hesonita.",
             descriptionLongue = "La grosularia cubre una amplia gama, desde el incoloro hasta el verde intenso pasando por el amarillo-verde («granate de Malí»), según las trazas de hierro, manganeso o vanadio presentes; la tsavorita y la hesonita son sus variedades más célebres.",
             particularites = "La familia de granates más diversa en colores, del incoloro al verde profundo de la tsavorita.",
+            inclusions = "Cristales accesorios variables según el yacimiento, con halos de tensión alrededor de pequeñas inclusiones cristalinas.",
             lithotherapie = "El granate grosularia se asocia con la abundancia y la vitalidad, un apoyo en los periodos de reconstrucción personal."
         ),
         "diopside" to GemTranslation(
@@ -288,6 +323,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un verde abeto profundo debido al cromo, primo del granate demantoide.",
             descriptionLongue = "El diópsido de cromo debe su verde intenso, cercano al de la esmeralda, a trazas de cromo. Presente en los mismos yacimientos que los diamantes (kimberlitas), a veces sirve de mineral indicador para los prospectores.",
             particularites = "Dureza baja que hay que cuidar en joyería; algunas piedras presentan asterismo u ojo de gato.",
+            inclusions = "Finas inclusiones en forma de agujas negras (magnetita o cromita) y cristales accesorios a veces visibles con lupa.",
             lithotherapie = "Se dice que el diópsido de cromo favorece la conexión con la naturaleza y el equilibrio emocional cotidiano."
         ),
         "jade-nephrite" to GemTranslation(
@@ -309,6 +345,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un verde profundo y saturado debido al cromo y al vanadio, distinto del verde «clásico».",
             descriptionLongue = "Coloreada por el cromo y el vanadio en lugar del hierro, la turmalina de cromo presenta un verde más saturado y profundo que la turmalina verde ordinaria, con un dicroísmo marcado entre verde y marrón-verdoso según el ángulo de observación.",
             particularites = "Dicroísmo marcado: la orientación de la tabla es determinante para revelar el tono más saturado.",
+            inclusions = "Finas tricitas e inclusiones cristalinas ocasionales, comparables a otras turmalinas verdes.",
             lithotherapie = "Se dice que la turmalina de cromo estimula la vitalidad al tiempo que favorece la apertura del corazón y la compasión."
         ),
         "saphir-vert" to GemTranslation(
@@ -316,6 +353,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un verde discreto a menudo dicroico, el color más asequible del corindón.",
             descriptionLongue = "Coloreado por el hierro, el zafiro verde presenta a menudo un claro dicroísmo (verde y amarillo-verde según el ángulo), una firma que permite distinguirlo de otras gemas verdes. Suele ser el color más asequible entre los zafiros.",
             particularites = "Dicroísmo marcado entre verde y amarillo-verde según el eje de observación, útil para la identificación.",
+            inclusions = "Zonación de color característica en bandas paralelas, fina seda de rutilo y cristales minerales accesorios típicos del corindón.",
             lithotherapie = "El zafiro verde se asocia con el equilibrio interior y la sabiduría, un apoyo para tomar distancia y perspectiva."
         ),
         "emeraude" to GemTranslation(
@@ -323,6 +361,7 @@ object GemTranslationsEs {
             descriptionCourte = "El verde más codiciado de la joyería.",
             descriptionLongue = "La esmeralda debe su verde profundo al cromo y/o al vanadio. Sus inclusiones naturales, apodadas «jardín», dan testimonio de su autenticidad y suelen estabilizarse mediante un tratamiento con aceite de cedro, una práctica aceptada y esperada en el mercado.",
             particularites = "Tratamiento con aceite casi sistemático; piedra frágil que requiere precauciones.",
+            inclusions = "\"Jardín\": inclusiones multifásicas características (líquido, gas, cristal), cristales de pirita (Colombia), actinolita o mica; las fisuras naturales suelen rellenarse con aceite de cedro.",
             lithotherapie = "Piedra de amor y sabiduría, la esmeralda tiene fama tradicional de calmar las tensiones emocionales y favorecer la fidelidad y la armonía en las relaciones."
         ),
         "peridot" to GemTranslation(
@@ -330,6 +369,7 @@ object GemTranslationsEs {
             descriptionCourte = "Verde oliva luminoso, nunca tratado.",
             descriptionLongue = "El peridoto es una de las pocas gemas compuestas por una sola especie mineral (la olivina) y nunca se trata. Su fuerte birrefringencia hace que a veces el desdoblamiento de las aristas sea visible a simple vista a través de la tabla de la piedra.",
             particularites = "Birrefringencia visible a simple vista; algunas piedras proceden de meteoritos (palasitas).",
+            inclusions = "Frecuentes inclusiones de cromita negra rodeadas de un disco de tensión apodado \"nenúfar\", junto con finos cristales de mica biotita.",
             lithotherapie = "El peridoto está asociado al bienestar general y al desapego, ayudando a liberarse de los rencores y el resentimiento."
         ),
         "tsavorite" to GemTranslation(
@@ -337,6 +377,7 @@ object GemTranslationsEs {
             descriptionCourte = "Alternativa sostenible y no tratada a la esmeralda.",
             descriptionLongue = "Descubierta en 1967 cerca del parque nacional de Tsavo, en Kenia, la tsavorita debe su color verde al vanadio y al cromo. Siempre sin tratar, ofrece un brillo y una pureza a menudo superiores a los de la esmeralda.",
             particularites = "Nunca tratada; yacimientos limitados que hacen que las piedras grandes sean muy raras.",
+            inclusions = "Finas fibras y cristales accesorios (a menudo magnetita o grafito); las piedras de África oriental suelen tener buena pureza.",
             lithotherapie = "Se dice que la tsavorita estimula la vitalidad y la confianza en uno mismo, un apoyo para afrontar los desafíos con energía."
         ),
         "jade-jadeite" to GemTranslation(
@@ -351,6 +392,7 @@ object GemTranslationsEs {
             descriptionCourte = "Verde coloreado por el hierro o el cromo.",
             descriptionLongue = "La verdelita abarca una amplia paleta de verdes, del verde menta claro al verde bosque profundo, según las trazas de hierro, cromo o vanadio. Su fuerte pleocroísmo puede hacer variar sensiblemente su tono según el ángulo de talla.",
             particularites = "Fuerte birrefringencia; los talladores orientan la piedra para optimizar el color.",
+            inclusions = "Tricitas en hilos de algodón, tubos huecos paralelos al eje c y a veces zonación de color visible.",
             lithotherapie = "La turmalina verde está asociada al equilibrio emocional y a la regeneración, un apoyo tras un período de fatiga moral."
         ),
         "demantoide" to GemTranslation(
@@ -358,6 +400,7 @@ object GemTranslationsEs {
             descriptionCourte = "Dispersión superior a la del diamante.",
             descriptionLongue = "El demantoide es la variedad verde más apreciada del granate andradita, coloreada por el cromo. Su dispersión (el «fuego») supera a la del diamante, y sus inclusiones fibrosas en «cola de caballo» (bisolita) son una garantía de autenticidad muy buscada por los coleccionistas.",
             particularites = "Dispersión óptica excepcional; inclusiones en «cola de caballo» características de las piedras de los Urales.",
+            inclusions = "Inclusiones fibrosas radiales en \"cola de caballo\" (bisolita), firma de las piedras de los Urales y muy apreciada marca de autenticidad.",
             lithotherapie = "Se dice que el granate demantoide atrae la prosperidad y reaviva la alegría de vivir en el día a día."
         ),
         "uvarovite" to GemTranslation(
@@ -365,6 +408,7 @@ object GemTranslationsEs {
             descriptionCourte = "Verde esmeralda en drusas de microcristales.",
             descriptionLongue = "La uvarovita casi siempre forma diminutos cristales en drusas, rara vez lo bastante grandes para tallarse a facetas. Su verde esmeralda intenso, debido al cromo, hace de ella no obstante una pieza de colección muy buscada en estado bruto.",
             particularites = "Cristales casi siempre demasiado pequeños para la talla a facetas; se colecciona en bruto, en drusa.",
+            inclusions = "Se presenta casi siempre en diminutos cristales drusiformes; las inclusiones internas están poco documentadas dado su reducido tamaño.",
             lithotherapie = "La uvarovita está asociada a la calma y a una mejor conexión con la naturaleza circundante."
         ),
         "vesuvianite" to GemTranslation(
@@ -372,6 +416,7 @@ object GemTranslationsEs {
             descriptionCourte = "Descubierta en las laderas del Vesubio.",
             descriptionLongue = "Descrita por primera vez en las coladas del Vesubio, la vesuvianita (o idocrasa) presenta tonos de verde oliva a verde botella. Su variedad masiva y compacta, la californita, se usa a veces como sustituto del jade.",
             particularites = "La variedad masiva californita puede imitar al jade nefrita.",
+            inclusions = "Finas inclusiones granulares y cristales accesorios según el yacimiento, dando a menudo una estructura interna ligeramente turbia.",
             lithotherapie = "Se dice que la vesuvianita fomenta la superación personal y estimula la creatividad en los proyectos personales."
         ),
         "prehnite" to GemTranslation(
@@ -379,6 +424,7 @@ object GemTranslationsEs {
             descriptionCourte = "Verde pistacho translúcido.",
             descriptionLongue = "Primer mineral en recibir el nombre de una persona (el coronel Von Prehn), la prehnita forma agregados mamelonares de color verde pistacho a verde amarillento, tallados en cabujón o, a veces, a facetas cuando el cristal lo permite.",
             particularites = "A menudo tallada en cabujón; a veces confundida con la crisoprasa.",
+            inclusions = "Estructura fibrorradiada característica que da un aspecto ligeramente chatoyant, a veces con inclusiones de epidota verde en agujas.",
             lithotherapie = "La prehnita está asociada a la serenidad y a escuchar la propia intuición, un apoyo para la meditación."
         ),
         "chrysocolle" to GemTranslation(
@@ -386,6 +432,7 @@ object GemTranslationsEs {
             descriptionCourte = "Azul verdoso cuprífero, a menudo en ganga de cuarzo.",
             descriptionLongue = "Coloreada por el cobre, la crisocola rara vez es lo bastante dura para tallarse sola: suele estabilizarse en ganga de cuarzo («crisocola en cuarzo»), lo que le aporta la dureza necesaria para la joyería conservando sus tonos turquesa a verde profundo.",
             particularites = "Demasiado blanda en estado puro; impregnada de cuarzo para uso joyero.",
+            inclusions = "A menudo asociada a una silicificación parcial (crisocola en cuarzo), con inclusiones de cobre nativo o malaquita según el yacimiento.",
             lithotherapie = "Se dice que la crisocola facilita la expresión personal y calma las tensiones emocionales ligadas a la comunicación."
         ),
         "variscite" to GemTranslation(
@@ -407,6 +454,7 @@ object GemTranslationsEs {
             descriptionCourte = "Una de las gemas más raras del mundo, azul verdosa y pleocroica.",
             descriptionLongue = "Descubierta en Madagascar en 1902 y nombrada en honor del explorador Alfred Grandidier, la grandidierita solo cuenta con un puñado de cristales transparentes tallables conocidos en el mundo. Su fuerte pleocroísmo hace que su color pase del azul verdoso al blanco según el ángulo de observación.",
             particularites = "Menos de una veintena de piedras talladas transparentes catalogadas en el mundo.",
+            inclusions = "Especie muy rara; inclusiones internas poco documentadas, ya que las piedras facetadas conocidas son pequeñas y muy apreciadas por los coleccionistas.",
             lithotherapie = "Mineral raro y precioso, la grandidierita está asociada en litoterapia a una serenidad profunda y a la apertura del corazón."
         ),
         "azurite" to GemTranslation(
@@ -435,6 +483,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un azul profundo que no debe confundirse con el lapislázuli, pese al parecido del nombre.",
             descriptionLongue = "La lazulita forma cristales de un azul añil a índigo intenso, fonéticamente cercano al lapislázuli pero sin relación química ni mineralógica. Rara en calidad facetable, se colecciona sobre todo como espécimen.",
             particularites = "No debe confundirse con la lazurita (componente del lapislázuli) pese a la similitud de los nombres.",
+            inclusions = "Inclusiones fibrosas y cristales accesorios según el yacimiento; piedra raramente tallada por su escasez en calidad gema.",
             lithotherapie = "La lazulita está asociada a la introspección y a la calma mental, un apoyo para la meditación y la reflexión interior."
         ),
         "hauyne" to GemTranslation(
@@ -442,6 +491,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un azul ultramar intenso en rocas volcánicas, pariente raro del lapislázuli.",
             descriptionLongue = "La haüyna, nombrada en honor del cristalógrafo René Just Haüy, presenta un azul ultramar profundo similar a la lazurita del lapislázuli, pero se encuentra en cristales aislados en lavas volcánicas, siendo excepcionalmente facetable.",
             particularites = "Cristales gema rara vez de más de unos milímetros; la talla a facetas es excepcional.",
+            inclusions = "Raras inclusiones cristalinas según el yacimiento volcánico de origen; piedra extremadamente rara en calidad facetable.",
             lithotherapie = "La haüyna, mineral raro, está asociada en litoterapia a la expresión auténtica de uno mismo y a la confianza en la propia voz."
         ),
         "cavansite" to GemTranslation(
@@ -449,6 +499,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un azul turquesa eléctrico en rosetas cristalinas, estrella de las ferias de minerales.",
             descriptionLongue = "La cavansita forma rosetas de cristales de un azul turquesa vivo que tapizan geodas de basalto, apreciada sobre todo por los coleccionistas de minerales por su brillo vítreo y su color saturado, rara vez tallada debido a su pequeño tamaño cristalino.",
             particularites = "Yacimiento casi exclusivo en los basaltos del Decán indio; prácticamente nunca facetada.",
+            inclusions = "Se presenta casi siempre en agregados esferulíticos radiados; raramente facetada como piedra individual limpia.",
             lithotherapie = "Se dice que la cavansita favorece el despertar espiritual y la claridad mental en los momentos de cuestionamiento."
         ),
         "celestite" to GemTranslation(
@@ -456,6 +507,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un azul pálido celeste, mineral blando que se colecciona sobre todo en geoda.",
             descriptionLongue = "La celestita forma cristales tabulares de un azul pálido delicado que evoca el cielo, de ahí su nombre. Su extrema blandura la reserva casi exclusivamente a la colección mineralógica y a la geoda decorativa, más que a la joyería.",
             particularites = "Demasiado blanda y exfoliable para uso joyero; esencialmente una piedra de colección y decoración.",
+            inclusions = "Cristales prismáticos a menudo tabulares y finas inclusiones líquidas; raramente facetada por su fragilidad (clivaje perfecto, baja dureza).",
             lithotherapie = "Piedra de calma profunda, se dice que la celestita favorece un sueño sereno y calma los pensamientos agitados."
         ),
         "euclase" to GemTranslation(
@@ -463,6 +515,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un azul verdoso cristalino de notable transparencia, extremadamente frágil.",
             descriptionLongue = "La euclasa («bien exfoliada» en griego) debe su nombre a su exfoliación perfecta, que la hace extremadamente delicada de tallar. Sus cristales azul verdosos de gran pureza son buscados por los coleccionistas de piedras facetadas raras.",
             particularites = "Exfoliación perfecta en una dirección: una de las gemas más delicadas de tallar y de llevar puestas.",
+            inclusions = "Frecuentes inclusiones líquidas y finas fisuras internas, coherentes con su clivaje perfecto que hace delicado su tallado.",
             lithotherapie = "La euclasa está asociada a la claridad de expresión y a la serenidad, un apoyo para comunicarse con precisión."
         ),
         "topaze-bleue" to GemTranslation(
@@ -470,6 +523,7 @@ object GemTranslationsEs {
             descriptionCourte = "El azul profundo obtenido por irradiación y calentamiento de un topacio incoloro.",
             descriptionLongue = "El topacio azul natural es extremadamente raro; casi la totalidad de las piedras del comercio («Sky», «Swiss», «London Blue») proceden de topacio incoloro irradiado y luego calentado para desarrollar matices de azul estables y duraderos.",
             particularites = "Color obtenido casi sistemáticamente por irradiación seguida de tratamiento térmico, estable y permanente.",
+            inclusions = "Generalmente muy limpia (a menudo resultado de un tratamiento de irradiación); raras inclusiones líquidas o cristales accesorios.",
             lithotherapie = "Se dice que el topacio azul favorece una comunicación serena y ayuda a expresar las emociones con calma."
         ),
         "tourmaline-bleue" to GemTranslation(
@@ -477,6 +531,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un azul profundo distinto del azul verdoso cuprífero de la Paraíba.",
             descriptionLongue = "La indicolita es la variedad azul a azul verdosa de la turmalina elbaíta, coloreada por el hierro, sin el cobre característico de la Paraíba. Sus tonos más oscuros y apagados la convierten en una gema distinta, a veces confundida con el aguamarina.",
             particularites = "Se distingue de la turmalina Paraíba por la ausencia de cobre y un tono generalmente más oscuro.",
+            inclusions = "Finas tricitas y tubos huecos característicos, con inclusiones cristalinas ocasionales según el yacimiento.",
             lithotherapie = "La turmalina azul (indicolita) está asociada a la expresión personal y a calmar las tensiones ligadas a la comunicación."
         ),
         "zircon-bleu" to GemTranslation(
@@ -484,6 +539,7 @@ object GemTranslationsEs {
             descriptionCourte = "El circón más demandado del mercado, azul vivo obtenido por calentamiento.",
             descriptionLongue = "El circón azul, el color más comercializado de la especie, se obtiene casi sistemáticamente mediante tratamiento térmico de circón marrón camboyano. Su brillo adamantino y su fuerte dispersión lo convierten en una alternativa apreciada y asequible al zafiro azul.",
             particularites = "Tratamiento térmico casi sistemático y estable; fuerte dispersión cercana a la del diamante.",
+            inclusions = "Generalmente resultado de un tratamiento térmico; doblaje característico de las aristas internas y a veces finas fisuras de tensión.",
             lithotherapie = "Se dice que el circón azul aporta calma mental y claridad, un apoyo para los períodos de reflexión importante."
         ),
         "hemimorphite" to GemTranslation(
@@ -491,6 +547,7 @@ object GemTranslationsEs {
             descriptionCourte = "Mamelones azul verdosos que evocan la turquesa o la crisocola.",
             descriptionLongue = "La hemimorfita forma agregados botrioidales azul verdosos a menudo confundidos con la turquesa o la crisocola. Su nombre («media forma») viene de sus cristales con simetría diferente en cada extremo, una curiosidad cristalográfica.",
             particularites = "A menudo confundida visualmente con la crisocola o la turquesa; su identificación requiere una prueba de dureza.",
+            inclusions = "Se presenta casi siempre en agregados botrioidales translúcidos; estructura fibrosa característica.",
             lithotherapie = "La hemimorfita está asociada a la comunicación auténtica y a la sanación de las heridas emocionales ligadas a la expresión personal."
         ),
         "shattuckite" to GemTranslation(
@@ -505,6 +562,7 @@ object GemTranslationsEs {
             descriptionCourte = "Una gema azul grisácea ultrarrara, sin ningún parentesco con el corindón.",
             descriptionLongue = "Pese a su nombre evocador, la zafirina no está emparentada con el corindón: es un silicato distinto, de color azul grisáceo a violáceo, formado en rocas metamórficas de muy alta temperatura, entre las gemas facetadas más raras del mundo.",
             particularites = "Una de las gemas talladas más raras del mundo: apenas unas decenas de piedras facetadas conocidas.",
+            inclusions = "Especie muy rara; inclusiones internas poco documentadas, ya que las piedras facetadas conocidas son muy escasas.",
             lithotherapie = "Mineral raro, la zafirina está asociada en litoterapia a una calma profunda y a la protección emocional."
         ),
         "dumortierite" to GemTranslation(
@@ -512,6 +570,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un azul violáceo intenso en finas fibras, a menudo incluido en el cuarzo.",
             descriptionLongue = "La dumortierita forma agregados fibrosos de un azul violáceo profundo, rara vez en cristales lo bastante grandes para tallarse solos; se encuentra más a menudo en inclusiones densas que colorean un cuarzo masivo utilizado en cabujón o cuentas.",
             particularites = "A menudo se presenta como cuarzo masivo fuertemente incluido de dumortierita más que como cristal puro.",
+            inclusions = "Se presenta en agregados fibrosos densos, a menudo incluida en cuarzo (cuarzo dumortierita), dando un efecto chatoyant azul.",
             lithotherapie = "Se dice que la dumortierita desarrolla la paciencia y la disciplina mental, un apoyo para los aprendizajes exigentes."
         ),
         "afghanite" to GemTranslation(
@@ -519,6 +578,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un azul similar al lapislázuli, descrito recientemente, originario de los mismos yacimientos que este.",
             descriptionLongue = "Descrita científicamente en 1968, la afganita se encuentra en los mismos yacimientos de mármol que el lapislázuli afgano, compartiendo un tono azul similar. Extremadamente rara en piedra facetada, sigue siendo ante todo una curiosidad de colección.",
             particularites = "Descubrimiento mineralógico tardío (1968); las piedras facetadas se cuentan entre las más raras del mercado.",
+            inclusions = "Especie rara asociada al lapislázuli afgano; puede contener finas inclusiones de calcita o pirita procedentes de la roca huésped.",
             lithotherapie = "La afganita está asociada a una calma interior profunda y a una forma de protección emocional suave."
         ),
         "saphir-bleu" to GemTranslation(
@@ -526,6 +586,7 @@ object GemTranslationsEs {
             descriptionCourte = "El azul de referencia en la alta joyería.",
             descriptionLongue = "El zafiro azul debe su color al hierro y al titanio. El «azul aterciopelado» de las piedras sin tratar de Cachemira sigue siendo la referencia absoluta de los entendidos, seguido por las procedencias de Birmania y Sri Lanka.",
             particularites = "Inclusiones de rutilo en seda que pueden producir asterismo (zafiro estrella).",
+            inclusions = "Fina seda de rutilo, cristales de circón con halo de tensión, cristales de mica o feldespato, y zonación de color característica en bandas hexagonales propia de las piedras no calentadas.",
             lithotherapie = "Piedra de sabiduría desde la Antigüedad, se dice que el zafiro azul favorece la claridad mental, la lealtad y la búsqueda de la verdad."
         ),
         "saphir-auvergne" to GemTranslation(
@@ -533,6 +594,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un corindón francés de tono azul-violeta profundo, extraído de los terrenos volcánicos de Auvernia.",
             descriptionLongue = "Extraídos de los terrenos volcánicos del Macizo Central, en particular alrededor de Espaly-Saint-Marcel, cerca de Le Puy-en-Velay, los zafiros de Auvernia son una variedad francesa de corindón de tono azul-violeta profundo. Como otros zafiros de origen basáltico, se distinguen por un color muy intenso, pero con cristales generalmente pequeños, raramente tallables más allá de un quilate. Explotados históricamente en el siglo XIX, siguen siendo hoy una curiosidad muy buscada por coleccionistas y aficionados a la gemología francesa, más que una fuente comercial de volumen.",
             particularites = "Cristales generalmente pequeños (raramente más de un quilate una vez tallados), con el tono azul-violeta muy intenso típico de los zafiros de origen basáltico.",
+            inclusions = "A menudo rico en inclusiones características de los zafiros basálticos: cristales de plagioclasa y piroxeno y marcada zonación de color, sello de su origen volcánico francés.",
             lithotherapie = "Como los demás zafiros, el zafiro de Auvernia se asocia tradicionalmente con la sabiduría y la claridad mental; su origen francés lo convierte en una piedra especialmente apreciada por los coleccionistas apegados al patrimonio mineralógico nacional."
         ),
         "aigue-marine" to GemTranslation(
@@ -540,6 +602,7 @@ object GemTranslationsEs {
             descriptionCourte = "«Agua de mar» cristalina.",
             descriptionLongue = "Su nombre, procedente del latín «aqua marina», evoca su color azul pálido a azul verdoso que recuerda al agua del mar. El berilo azul se distingue por su gran pureza, con muy pocas inclusiones visibles a simple vista.",
             particularites = "A menudo calentada para atenuar el componente verde e intensificar el azul.",
+            inclusions = "Generalmente limpia; tubos huecos paralelos al eje c, raras inclusiones líquidas y cristales accesorios.",
             lithotherapie = "Piedra de los marinos, el aguamarina está tradicionalmente asociada a la serenidad, el valor y una comunicación apacible, en particular durante los viajes."
         ),
         "tanzanite" to GemTranslation(
@@ -547,6 +610,7 @@ object GemTranslationsEs {
             descriptionCourte = "Una única fuente en el mundo, al pie del Kilimanjaro.",
             descriptionLongue = "Descubierta en 1967, la tanzanita solo existe en la zona de Merelani, en Tanzania. Su fuerte tricroísmo hace aparecer azul, violeta y burdeos según el ángulo de observación, antes de que el calentamiento estándar estabilice el tono azul violáceo buscado.",
             particularites = "Yacimiento único y en vías de agotamiento, considerada una piedra de inversión.",
+            inclusions = "Fuerte pleocroísmo tricroico (azul, violeta, marrón rojizo); inclusiones líquidas y cristales accesorios ocasionales, generalmente escasos tras el calentamiento.",
             lithotherapie = "Se dice que la tanzanita acompaña la transformación interior y favorece un despertar espiritual sereno."
         ),
         "lapis-lazuli" to GemTranslation(
@@ -568,6 +632,7 @@ object GemTranslationsEs {
             descriptionCourte = "Azul intenso, a veces coloreado por el cobalto.",
             descriptionLongue = "Más rara que la espinela roja, la espinela azul debe su tono más apreciado a trazas de cobalto, que producen un color azul profundo y aterciopelado bajo luz incandescente.",
             particularites = "Generalmente no tratada, a diferencia de muchos zafiros azules.",
+            inclusions = "Cristales octaédricos accesorios y nubes de finas inclusiones, comparable a otras espinelas naturales no tratadas.",
             lithotherapie = "La espinela azul está asociada a la calma emocional y a la renovación tras un período de tensión."
         ),
         "paraiba-tourmaline" to GemTranslation(
@@ -575,6 +640,7 @@ object GemTranslationsEs {
             descriptionCourte = "Azul verdoso «neón» eléctrico, único en el reino mineral.",
             descriptionLongue = "Descubierta en 1989 en el estado brasileño de Paraíba, esta turmalina debe su inédito azul verdoso eléctrico a trazas de cobre y manganeso. Posteriormente se han encontrado yacimientos similares en Mozambique y Nigeria. Es una de las gemas de color más caras del mundo.",
             particularites = "Color «neón» debido al cobre, nunca observado en las demás turmalinas.",
+            inclusions = "Generalmente de gran pureza; finas tricitas y tubos huecos ocasionales, la alta pureza contribuye al valor de la piedra.",
             lithotherapie = "Se dice que la turmalina Paraíba estimula una alegría profunda y una vitalidad renovada, en eco a su color deslumbrante."
         ),
         "apatite-bleue" to GemTranslation(
@@ -582,6 +648,7 @@ object GemTranslationsEs {
             descriptionCourte = "Azul turquesa eléctrico poco conocido por el gran público.",
             descriptionLongue = "El apatito azul neón, descubierto en Madagascar en la década de 1990, ofrece un tono turquesa muy saturado cercano al de la turmalina Paraíba, por un presupuesto mucho más accesible. Su relativa blandura limita su uso a joyas protegidas.",
             particularites = "Dureza moderada (5): reservado a pendientes y colgantes más que a anillos.",
+            inclusions = "Frecuentes inclusiones líquidas y nubes de finas partículas; piedra relativamente frágil que requiere un tallado cuidadoso.",
             lithotherapie = "El apatito azul neón está asociado a la motivación y a la claridad de los objetivos personales, un apoyo para volver a centrarse."
         ),
         "cyanite" to GemTranslation(
@@ -589,6 +656,7 @@ object GemTranslationsEs {
             descriptionCourte = "Dureza variable según el eje del cristal.",
             descriptionLongue = "La cianita (o distena, «dos resistencias» en griego) es célebre por su anisotropía de dureza: 4,5 en el sentido de la longitud del cristal, 6,5 perpendicularmente. Su azul profundo evoca a veces el zafiro, por un precio mucho más asequible.",
             particularites = "Dureza anisótropa que hace delicada la talla; exfoliación perfecta en una dirección.",
+            inclusions = "Clivaje perfecto en dos direcciones que suele producir fisuras internas; finas inclusiones fibrosas según el yacimiento.",
             lithotherapie = "Se dice que la cianita (distena) favorece la alineación interior y una comunicación fluida entre el corazón y la razón."
         ),
         "benitoite" to GemTranslation(
@@ -596,6 +664,7 @@ object GemTranslationsEs {
             descriptionCourte = "Piedra oficial de California, dispersión notable.",
             descriptionLongue = "Descubierta en 1907 en el condado de San Benito, California, la benitoíta fluoresce en azul vivo bajo luz ultravioleta y presenta una dispersión superior a la del diamante. El yacimiento original sigue siendo, más de un siglo después, la fuente casi única de calidad gema en el mundo.",
             particularites = "Fluorescencia azul vivo bajo luz ultravioleta; yacimiento de calidad gema casi único en el mundo.",
+            inclusions = "Extremadamente rara; puede presentar finas inclusiones líquidas, y la mayoría de las piedras facetadas son de tamaño muy pequeño.",
             lithotherapie = "Mineral raro y precioso, la benitoíta está asociada en litoterapia a la elevación espiritual y a la claridad de conciencia."
         ),
         "jeremejevite" to GemTranslation(
@@ -603,6 +672,7 @@ object GemTranslationsEs {
             descriptionCourte = "Borato de aluminio de una rareza extrema, azul pálido a incoloro.",
             descriptionLongue = "Descrita en 1883 en Siberia y durante mucho tiempo inhallable en calidad gema, la jeremejevita solo fue redescubierta en cantidad explotable en Namibia en la década de 1970. Su azul pálido límpido y su rareza la convierten en una piedra de colección apreciada por los entendidos.",
             particularites = "La mayor parte de la producción gema mundial procede de un único macizo namibio.",
+            inclusions = "Especie muy rara; inclusiones internas poco documentadas, ya que las piedras facetables en calidad gema son escasas (principalmente Namibia).",
             lithotherapie = "La jeremejevita, extremadamente rara, está asociada a la apertura mental y a la conexión con una forma de sabiduría superior."
         ),
         "violane" to GemTranslation(
@@ -617,6 +687,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un violeta profundo en la frontera entre el zafiro azul y el rubí.",
             descriptionLongue = "El zafiro violeta debe su tono a una mezcla de trazas de hierro, titanio y cromo, situándose en la frontera cromática entre el zafiro azul y el rubí. Algunas piedras presentan un cambio de color parcial según la iluminación.",
             particularites = "Puede presentar un ligero cambio de color entre la luz del día y la luz incandescente.",
+            inclusions = "Zonación de color en sectores, seda de rutilo e inclusiones cristalinas similares a las de otras variedades de corindón.",
             lithotherapie = "Se dice que el zafiro violeta favorece la espiritualidad y la intuición, un apoyo para los períodos de cuestionamiento interior."
         ),
         "purpurite" to GemTranslation(
@@ -631,6 +702,7 @@ object GemTranslationsEs {
             descriptionCourte = "Una piedra camaleón que se torna rosa bajo luz ultravioleta y luego palidece con la luz.",
             descriptionLongue = "La hackmanita es una variedad de sodalita tenebrescente: expuesta a la luz ultravioleta, desarrolla un tono rosa violáceo que luego se atenúa progresivamente con la luz del día, un fenómeno reversible fascinante y único entre las gemas.",
             particularites = "Fenómeno de tenebrescencia reversible: el color varía según la exposición reciente a la luz ultravioleta o a la luz.",
+            inclusions = "Se distingue por su tenebrescencia (cambio de color reversible con la luz); inclusiones cristalinas variables según el yacimiento afgano o groenlandés.",
             lithotherapie = "Se dice que la hackmanita estimula la intuición y ofrece una forma de protección energética, en particular durante la meditación."
         ),
         "lepidolite" to GemTranslation(
@@ -645,6 +717,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un violeta rosado lila, a menudo entrelazado con serpentina verde (atlantasita).",
             descriptionLongue = "La stichtita forma masas de color violeta rosado lila, frecuentemente entrecrecidas con serpentina verde para formar la \"atlantasita\", una combinación muy buscada en cabujones y objetos ornamentales.",
             particularites = "Extremadamente blanda: reservada a cabujones y objetos decorativos poco expuestos a golpes.",
+            inclusions = "Se presenta generalmente en agregados translúcidos de estructura fibrosa, a menudo asociada a la serpentina.",
             lithotherapie = "La stichtita se asocia a la compasión hacia uno mismo y hacia los demás, favoreciendo el perdón y la calma emocional."
         ),
         "amethyste" to GemTranslation(
@@ -652,6 +725,7 @@ object GemTranslationsEs {
             descriptionCourte = "La piedra de la templanza.",
             descriptionLongue = "La amatista debe su color violeta a trazas de hierro combinadas con irradiación natural. Abundante y accesible, ha sido no obstante lucida por la nobleza y el clero durante siglos, símbolo de sobriedad y espiritualidad.",
             particularites = "Puede decolorarse bajo exposición prolongada a la luz solar.",
+            inclusions = "Zonación de color en chevrones (macla de Brasil), velos de finas inclusiones líquidas, a veces cristales fantasma de crecimiento.",
             lithotherapie = "La amatista es una de las piedras más reputadas en litoterapia para calmar el estrés, favorecer un sueño sereno y apoyar la meditación y la espiritualidad."
         ),
         "spinelle-violet" to GemTranslation(
@@ -659,6 +733,7 @@ object GemTranslationsEs {
             descriptionCourte = "Resistencia y brillo para una alternativa duradera.",
             descriptionLongue = "La espinela violeta combina una buena dureza con la ausencia de exfoliación, lo que la convierte en una alternativa muy resistente a la amatista o al zafiro violeta, con un brillo vítreo particularmente vivo.",
             particularites = "Generalmente sin tratar.",
+            inclusions = "Pequeños cristales octaédricos y finas inclusiones nubosas típicas de la especie, no tratada por naturaleza.",
             lithotherapie = "La espinela violeta se asocia a la renovación espiritual y a la serenidad interior."
         ),
         "iolite" to GemTranslation(
@@ -666,6 +741,7 @@ object GemTranslationsEs {
             descriptionCourte = "El \"zafiro de los vikingos\".",
             descriptionLongue = "La iolita debe su nombre al griego \"ios\" (violeta). Su espectacular pleocroísmo hace pasar su color del azul violáceo al amarillo pálido casi incoloro según el ángulo de observación, una particularidad que, según se dice, los navegantes vikingos utilizaban para orientarse.",
             particularites = "Pleocroísmo tricroico muy marcado, determinante para la orientación del tallado.",
+            inclusions = "Inclusiones de hematita en finas laminillas orientadas, responsables de un efecto chatoyant apodado \"bloodshot iolite\" en ciertos yacimientos.",
             lithotherapie = "Utilizada por los navegantes vikingos para orientarse, la iolita tiene fama de reforzar la intuición y la claridad visionaria en las decisiones vitales."
         ),
         "grenat-rhodolite-violet" to GemTranslation(
@@ -673,6 +749,7 @@ object GemTranslationsEs {
             descriptionCourte = "Tono púrpura que cambia según la iluminación.",
             descriptionLongue = "Algunas rodolitas presentan una dominante púrpura-violeta particularmente marcada bajo luz natural, ofreciendo una alternativa económica a las piedras violetas más raras.",
             particularites = "Color estable, nunca tratado.",
+            inclusions = "Cristales accesorios ocasionales y finas fibrillas internas, comparables a los de la rodolita clásica.",
             lithotherapie = "Esta variedad violácea de rodolita se asocia al equilibrio entre la pasión y la serenidad emocional."
         ),
         "sugilite" to GemTranslation(
@@ -687,6 +764,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un único yacimiento en Siberia.",
             descriptionLongue = "Descrita solo en 1978, la charoita se conoce de un único yacimiento a orillas del río Chara, en Siberia. Su motivo arremolinado violeta y blanco, debido al entrelazado de fibras cristalinas, la convierte en una piedra ornamental inmediatamente reconocible.",
             particularites = "Yacimiento único en el mundo; motivo arremolinado característico, siempre tallada en cabujón.",
+            inclusions = "Estructura fibrorradiada densa y característica, atravesada por vetas de manganeso negro (egirina) y a veces calcita blanca.",
             lithotherapie = "La charoita se asocia a la transformación interior profunda y al valor necesario para afrontar el cambio."
         ),
         "taaffeite" to GemTranslation(
@@ -694,6 +772,7 @@ object GemTranslationsEs {
             descriptionCourte = "El primer mineral descubierto en una piedra ya tallada.",
             descriptionLongue = "Identificada en 1945 por el gemólogo Richard Taaffe en una piedra ya facetada y clasificada erróneamente como espinela, la taaffeita sigue siendo una de las gemas más raras del mundo, en delicados tonos malva a lila.",
             particularites = "Confundida durante mucho tiempo con la espinela; se distingue por una doble refracción que la espinela no posee.",
+            inclusions = "Especie extremadamente rara, confundida durante mucho tiempo con la espinela; inclusiones internas poco documentadas.",
             lithotherapie = "Mineral extremadamente raro, la taaffeita se asocia en litoterapia al despertar de la conciencia y a la singularidad del camino personal."
         ),
         "axinite" to GemTranslation(
@@ -701,6 +780,7 @@ object GemTranslationsEs {
             descriptionCourte = "Cristales en forma de hacha, fuerte pleocroísmo.",
             descriptionLongue = "Su nombre proviene del griego \"axine\" (hacha), en referencia a la forma aguda y aplanada de sus cristales. La axinita presenta un fuerte pleocroísmo de marrón violáceo a amarillo verdoso según el ángulo de observación, apreciada por los coleccionistas de piedras raras.",
             particularites = "Pleocroísmo tricroico marcado; cristales descritos históricamente en Francia (Delfinado).",
+            inclusions = "Finas inclusiones líquidas y cristales accesorios según el yacimiento; piedra de fuerte pleocroísmo tallada con precisión para revelar su color.",
             lithotherapie = "La axinita tiene fama de favorecer el arraigo y la concentración, un apoyo para mantenerse centrado en periodos agitados."
         ),
         "cobaltocalcite" to GemTranslation(
@@ -729,6 +809,7 @@ object GemTranslationsEs {
             descriptionCourte = "El rosa natural más raro del topacio, extraído históricamente en Pakistán.",
             descriptionLongue = "El topacio rosa natural, sin tratar, es mucho más raro que el topacio azul o incoloro. El yacimiento histórico de Katlang, en Pakistán, ha proporcionado algunas de las piedras más hermosas, de delicado tono rosa melocotón.",
             particularites = "El rosa natural sin tratar es raro; se distingue del topacio rosa obtenido mediante tratamiento térmico de piedras marrones.",
+            inclusions = "Inclusiones líquidas ocasionales y finas fisuras internas; generalmente buena pureza.",
             lithotherapie = "El topacio rosa tiene fama de favorecer la dulzura en las relaciones y abrir el corazón al amor sincero."
         ),
         "quartz-rose" to GemTranslation(
@@ -736,6 +817,7 @@ object GemTranslationsEs {
             descriptionCourte = "El cuarzo rosa pastel, piedra del amor en todas las tradiciones.",
             descriptionLongue = "El cuarzo rosa, coloreado por trazas de titanio, manganeso o por microscópicas inclusiones fibrosas de dumortierita, se asocia al amor y a la dulzura en la mayoría de las culturas. Los cristales facetables transparentes son raros; la materia masiva translúcida es la más habitual.",
             particularites = "Algunas piedras presentan un asterismo de seis brazos (cuarzo rosa estrellado) tallado en cabujón.",
+            inclusions = "A menudo ligeramente turbio por finas inclusiones fibrosas de dumortierita; puede presentar un efecto asteriado en cabujón.",
             lithotherapie = "Piedra del amor incondicional por excelencia, el cuarzo rosa tiene fama de calmar las heridas del corazón y favorecer la ternura hacia uno mismo y hacia los demás."
         ),
         "phosphosiderite" to GemTranslation(
@@ -743,6 +825,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un rosa violáceo suave en costras mamelonadas, prima de la variscita.",
             descriptionLongue = "La fosfosiderita forma costras mamelonadas de color rosa lila a violáceo, químicamente cercana a la variscita verde pero coloreada por el hierro. Siempre trabajada en cabujón para revelar su tornasolado sedoso.",
             particularites = "Dureza cercana a la de la variscita; siempre trabajada en cabujón.",
+            inclusions = "Estructura fibrorradiada densa de reflejos sedosos, raramente facetada por su translucidez limitada.",
             lithotherapie = "La fosfosiderita se asocia a soltar tensiones y a la dulzura interior, un apoyo durante la meditación."
         ),
         "morganite" to GemTranslation(
@@ -750,6 +833,7 @@ object GemTranslationsEs {
             descriptionCourte = "Rosa suave a melocotón, nombrada en 1911.",
             descriptionLongue = "Bautizada en honor del financiero y coleccionista J.P. Morgan por el gemólogo George Kunz, la morganita ofrece un delicado tono rosa a melocotón debido al manganeso. Muy pura, se talla a menudo en piedras grandes y espectaculares.",
             particularites = "A menudo calentada para atenuar un componente anaranjado y revelar un rosa puro.",
+            inclusions = "Tubos de elongación paralelos al eje c e inclusiones líquidas ocasionales; generalmente muy limpia.",
             lithotherapie = "La morganita tiene fama de abrir el corazón a la compasión y al amor propio, calmando la ansiedad afectiva."
         ),
         "kunzite" to GemTranslation(
@@ -757,6 +841,7 @@ object GemTranslationsEs {
             descriptionCourte = "Pleocroísmo marcado, piedra delicada.",
             descriptionLongue = "Descubierta en 1902 y nombrada en honor al gemólogo George Frederick Kunz, la kunzita presenta un seductor rosa lila. Sin embargo, es sensible a la luz prolongada y a los choques térmicos, por lo que se reserva para un uso ocasional.",
             particularites = "Exfoliación neta en dos direcciones; debe protegerse de la luz directa prolongada.",
+            inclusions = "Finas inclusiones líquidas y clivaje perfecto en dos direcciones que hacen delicado el tallado; piedra sensible a los golpes.",
             lithotherapie = "La kunzita se asocia al amor incondicional y a la calma emocional profunda, un apoyo para soltar las tensiones acumuladas."
         ),
         "saphir-rose" to GemTranslation(
@@ -764,6 +849,7 @@ object GemTranslationsEs {
             descriptionCourte = "En la frontera entre el rubí y el zafiro.",
             descriptionLongue = "Coloreado por el cromo como el rubí, pero en menor concentración, el zafiro rosa se sitúa en el límite convencional del rubí: más allá de cierta saturación, la piedra se reclasifica como rubí.",
             particularites = "El límite entre rubí y zafiro rosa sigue siendo objeto de debate según los laboratorios gemológicos.",
+            inclusions = "Fina seda de rutilo, cristales de circón con halo de tensión y zonación de color en bandas, comparables a los del rubí, con el que comparte especie.",
             lithotherapie = "El zafiro rosa tiene fama de favorecer el amor sincero y la armonía en las relaciones afectivas."
         ),
         "tourmaline-rose" to GemTranslation(
@@ -771,6 +857,7 @@ object GemTranslationsEs {
             descriptionCourte = "Manganeso para un tono suave.",
             descriptionLongue = "Menos saturada que la rubelita, la turmalina rosa ofrece tonos suaves que van del rosa pálido al rosa chicle, a menudo asociados a cristales bicolores o tricolores característicos del grupo.",
             particularites = "Cristales a menudo zonados, origen de las turmalinas bicolores.",
+            inclusions = "Tricitas en hilos de algodón y tubos huecos típicos de la especie, a veces con inclusiones cristalinas de mica.",
             lithotherapie = "La turmalina rosa se asocia a la ternura y a la curación de las heridas emocionales ligadas al amor y al apego."
         ),
         "rhodochrosite" to GemTranslation(
@@ -785,6 +872,7 @@ object GemTranslationsEs {
             descriptionCourte = "El corindón sin trazas colorantes, una alternativa discreta al diamante.",
             descriptionLongue = "Desprovisto de las trazas metálicas que colorean el rubí o el zafiro azul, el zafiro blanco (o \"leucozafiro\") ofrece un brillo cercano al del diamante a un precio muy inferior, utilizado durante mucho tiempo como piedra sustitutiva en relojería y joyería.",
             particularites = "Dispersión inferior a la del diamante, pero dureza casi igual; excelente resistencia al desgaste diario.",
+            inclusions = "Generalmente muy limpio a simple vista; puede presentar una ligera zonación de crecimiento y raros cristales minerales accesorios.",
             lithotherapie = "El zafiro blanco tiene fama de favorecer la claridad mental y la pureza de intención en las decisiones importantes."
         ),
         "topaze-blanche" to GemTranslation(
@@ -792,6 +880,7 @@ object GemTranslationsEs {
             descriptionCourte = "El topacio en su forma más pura y común, incoloro y límpido.",
             descriptionLongue = "El topacio incoloro es en realidad el color más extendido de la especie en la naturaleza; los topacios azules del comercio proceden casi siempre de él mediante tratamiento. Límpido y brillante, también sirve como piedra sustitutiva económica del diamante.",
             particularites = "Materia prima más abundante para la producción de topacio azul tratado por irradiación.",
+            inclusions = "Piedra por lo general muy limpia; pocas inclusiones visibles a simple vista.",
             lithotherapie = "El topacio blanco se asocia a la claridad mental y a la búsqueda de la verdad en las decisiones vitales."
         ),
         "hambergite" to GemTranslation(
@@ -799,6 +888,7 @@ object GemTranslationsEs {
             descriptionCourte = "Una gema incolora de extrema rareza, tan frágil como brillante.",
             descriptionLongue = "La hambergita es una gema incolora apenas teñida, rara y brillante, pero de una fragilidad extrema debido a una exfoliación perfecta que la convierte en un temible desafío para los lapidarios: una de las piedras que menos se ven en el mercado.",
             particularites = "Exfoliación perfecta que hace que el tallado y el uso en joyería sean particularmente arriesgados; piedra de colección.",
+            inclusions = "Especie rara de clivaje perfecto; inclusiones internas poco documentadas, ya que las piedras de calidad gema siguen siendo escasas.",
             lithotherapie = "La hambergita, mineral raro, se asocia en litoterapia a la claridad mental y a la concentración."
         ),
         "petalite" to GemTranslation(
@@ -806,6 +896,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un mineral de litio raramente facetado, discreto y límpido.",
             descriptionLongue = "La petalita, importante fuente de litio industrial, produce ocasionalmente cristales gema incoloros a ligeramente teñidos, tallados para coleccionistas más que para la joyería de consumo masivo.",
             particularites = "Se extrae ante todo como mineral de litio; las calidades gema facetables son anecdóticas.",
+            inclusions = "Generalmente muy limpia; puede presentar finas inclusiones líquidas y un clivaje perfecto que hace delicado el tallado.",
             lithotherapie = "La petalita tiene fama de favorecer una serenidad profunda, especialmente apreciada como apoyo para la meditación."
         ),
         "phenakite" to GemTranslation(
@@ -813,6 +904,7 @@ object GemTranslationsEs {
             descriptionCourte = "Una gema incolora tan límpida que durante mucho tiempo se confundió con el cuarzo o el diamante.",
             descriptionLongue = "El nombre de la fenaquita (del griego \"impostor\") proviene de su parecido engañoso con el cuarzo o incluso el diamante en bruto. Rara y de bello brillo una vez facetada, sigue siendo apreciada sobre todo por coleccionistas expertos.",
             particularites = "Su nombre griego significa \"impostor\", en referencia a la confusión histórica con el cuarzo.",
+            inclusions = "A menudo de gran pureza; raras inclusiones líquidas o cristales accesorios según el yacimiento.",
             lithotherapie = "La fenaquita se asocia al despertar de la conciencia y a una gran claridad espiritual, reservada a prácticas meditativas avanzadas."
         ),
         "bytownite" to GemTranslation(
@@ -820,6 +912,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un feldespato raramente facetable, polo cálcico de la serie de las plagioclasas.",
             descriptionLongue = "La bytownita, rica en calcio dentro de la serie de las plagioclasas (entre la labradorita y la anortita), forma excepcionalmente cristales límpidos lo bastante puros como para ser facetados, principalmente en el Congo y en la India.",
             particularites = "Miembro cálcico de la serie de las plagioclasas, entre la labradorita y la anortita pura.",
+            inclusions = "Puede presentar finas laminillas de exsolución e inclusiones de cobre responsables de un efecto chatoyant en piedras próximas a la labradorita.",
             lithotherapie = "La bytownita tiene fama de ofrecer un arraigo luminoso, entre protección suave y claridad mental."
         ),
         "hyalite" to GemTranslation(
@@ -827,6 +920,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un ópalo incoloro y transparente que se ilumina en verde fluorescente bajo luz UV.",
             descriptionLongue = "La hialita es un ópalo no precioso, incoloro y perfectamente transparente en capas finas, célebre por su fluorescencia verde intensa bajo luz ultravioleta debida a trazas de uranio, un espectáculo muy apreciado por los aficionados a los minerales fluorescentes.",
             particularites = "Fluorescencia verde intensa bajo luz UV debida a trazas de uranio, sin opalescencia a diferencia del ópalo precioso.",
+            inclusions = "Variedad de ópalo generalmente incolora y muy limpia, a veces fluorescente bajo UV por trazas de uranio.",
             lithotherapie = "Esta variedad de ópalo incoloro se asocia a la pureza y a la ligereza de espíritu."
         ),
         "anhydrite" to GemTranslation(
@@ -834,6 +928,7 @@ object GemTranslationsEs {
             descriptionCourte = "El sulfato de calcio sin agua, prima seca del yeso, raramente tallada.",
             descriptionLongue = "La anhidrita, químicamente cercana al yeso pero desprovista de agua de cristalización, se presenta en tonos incoloros a azul pálido o violáceos. Su blandura y su exfoliación la reservan a un uso confidencial de colección.",
             particularites = "Se hidrata lentamente convirtiéndose en yeso al contacto prolongado con el agua, un fenómeno natural de transformación mineral.",
+            inclusions = "Cristales a menudo exfoliados en láminas y finas inclusiones líquidas; raramente facetada por su fragilidad.",
             lithotherapie = "La anhidrita tiene fama de aportar estructura y claridad en la organización de los pensamientos y del día a día."
         ),
         "baryte" to GemTranslation(
@@ -841,6 +936,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un mineral denso y blando, raramente facetado pero espectacular en cristales.",
             descriptionLongue = "La baritina (sulfato de bario) debe su nombre a su notable densidad para un mineral no metálico. Sus cristales tabulares, a menudo incoloros a amarillo miel, se facetan ocasionalmente para coleccionistas pese a su gran fragilidad.",
             particularites = "Densidad excepcionalmente elevada para un mineral no metálico, utilizada como criterio de identificación.",
+            inclusions = "Cristales tabulares que a menudo incluyen finas partículas coloreadas según el yacimiento; raramente facetada por su fragilidad.",
             lithotherapie = "La baritina se asocia al arraigo y a la estabilidad emocional, un apoyo en periodos de cambio."
         ),
         "aragonite" to GemTranslation(
@@ -848,6 +944,7 @@ object GemTranslationsEs {
             descriptionCourte = "El polimorfo de la caliza que también forma las perlas y los corales.",
             descriptionLongue = "El aragonito es el polimorfo ortorrómbico del carbonato de calcio, la misma sustancia que compone las perlas, las conchas y el coral. Sus cristales terrestres, a menudo incoloros a amarillo pálido, se coleccionan sobre todo en bruto.",
             particularites = "Inestable a muy largo plazo: se transforma lentamente en calcita, su polimorfo más estable.",
+            inclusions = "Estructura a menudo maclada en pseudohexágonos característicos, con finas inclusiones líquidas.",
             lithotherapie = "El aragonito tiene fama de favorecer el arraigo y la paciencia, ayudando a aceptar el ritmo natural de las cosas."
         ),
         "calcite" to GemTranslation(
@@ -855,6 +952,7 @@ object GemTranslationsEs {
             descriptionCourte = "El mineral más común de la corteza terrestre, ocasionalmente facetado.",
             descriptionLongue = "La calcita es uno de los minerales más extendidos del mundo, con una extraordinaria diversidad de formas cristalinas. Demasiado blanda para el uso diario, es sin embargo facetada por los coleccionistas por su espectacular birrefringencia (desdoblamiento de la imagen a través de la piedra).",
             particularites = "Birrefringencia extrema: un objeto visto a través de un cristal de calcita límpido aparece desdoblado.",
+            inclusions = "Fuerte birrefringencia que provoca un claro doblaje de las aristas internas visible a simple vista; clivaje perfecto en tres direcciones.",
             lithotherapie = "La calcita se utiliza tradicionalmente para purificar las energías del entorno y aportar claridad mental."
         ),
         "cerusite" to GemTranslation(
@@ -862,6 +960,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un mineral de plomo de dispersión espectacular, raro en piedra facetada.",
             descriptionLongue = "La cerusita, mineral de plomo, posee una dispersión óptica superior a la del diamante, que produce destellos de fuego notables una vez facetada. Su densidad muy elevada y su gran fragilidad la convierten en una gema exclusivamente de colección.",
             particularites = "Dispersión óptica superior a la del diamante; densidad muy elevada característica del plomo.",
+            inclusions = "Fuerte brillo adamantino y alta dispersión; maclas frecuentes en estrella de seis brazos, piedra delicada de tallar.",
             lithotherapie = "La cerusita se asocia al arraigo y a una transformación interior suave."
         ),
         "montebrasite" to GemTranslation(
@@ -869,6 +968,7 @@ object GemTranslationsEs {
             descriptionCourte = "Una gema discreta de litio, prima de la ambligonita.",
             descriptionLongue = "La montebrasita, pariente cercana de la ambligonita, de la que solo se distingue por su contenido en hidroxilo, ofrece piedras incoloras a amarillo pálido facetadas sobre todo para los aficionados a las rarezas de litio.",
             particularites = "Yacimiento tipo y epónimo en la Creuse, Francia, descubierto en el siglo XIX.",
+            inclusions = "Inclusiones líquidas ocasionales, cercana a la ambligonita de la que es la variedad rica en hidroxilo.",
             lithotherapie = "La montebrasita tiene fama de favorecer la claridad mental y el discernimiento ante las decisiones importantes."
         ),
         "diamant" to GemTranslation(
@@ -876,6 +976,7 @@ object GemTranslationsEs {
             descriptionCourte = "La gema más dura conocida.",
             descriptionLongue = "Formado bajo muy alta presión y temperatura en el manto terrestre, el diamante está compuesto de carbono puro cristalizado. Su dureza máxima, su fuerte dispersión (el \"fuego\") y su brillo adamantino lo convierten en la piedra de referencia de la alta joyería, evaluada según las \"4C\": quilate (carat), color, pureza (clarity) y talla (cut).",
             particularites = "Única gema con dureza 10; certificación obligatoria (GIA, HRD...) para las piedras importantes.",
+            inclusions = "Cristales de minerales profundos (granate, olivino), nubes de finas partículas, plumas (fisuras), puntos negros de carbono y líneas de crecimiento; las inclusiones determinan la pureza según la escala GIA.",
             lithotherapie = "Símbolo de fuerza y pureza desde siempre, el diamante tiene fama de amplificar las energías del entorno y reforzar la claridad de intención y la confianza en uno mismo."
         ),
         "zircon-blanc" to GemTranslation(
@@ -883,6 +984,7 @@ object GemTranslationsEs {
             descriptionCourte = "Fuerte dispersión, utilizado durante mucho tiempo como sustituto del diamante.",
             descriptionLongue = "No debe confundirse con la circonia cúbica (material sintético); el circón es una gema natural cuya fuerte dispersión luminosa rivaliza con la del diamante, lo que lo convirtió en un sustituto histórico muy apreciado.",
             particularites = "A menudo calentado para obtener el incoloro a partir de circón marrón; las aristas de las facetas a veces aparecen desdobladas.",
+            inclusions = "Fuerte birrefringencia que provoca un doblaje visible de las aristas de las facetas traseras; piedra generalmente limpia tras el calentamiento.",
             lithotherapie = "El circón blanco se asocia a la claridad mental y a la pureza de intención, una alternativa luminosa al diamante."
         ),
         "goshenite" to GemTranslation(
@@ -890,6 +992,7 @@ object GemTranslationsEs {
             descriptionCourte = "La variedad incolora, rara, del berilo.",
             descriptionLongue = "Menos buscada comercialmente que sus primas coloreadas (esmeralda, aguamarina, morganita), la goshenita es sin embargo la forma más pura del berilo, totalmente desprovista de elementos cromógenos.",
             particularites = "Se utilizaba históricamente como cristal de gafas antes del uso del vidrio óptico.",
+            inclusions = "El berilo más limpio de la familia; tubos huecos ocasionales, muy pocas inclusiones visibles.",
             lithotherapie = "La goshenita (berilo incoloro) tiene fama de favorecer la claridad mental y ayudar a ver las situaciones con objetividad."
         ),
         "cristal-de-roche" to GemTranslation(
@@ -897,6 +1000,7 @@ object GemTranslationsEs {
             descriptionCourte = "El cuarzo puro, transparente y abundante.",
             descriptionLongue = "Totalmente incoloro en estado puro, el cristal de roca es una de las gemas más abundantes de la Tierra. Se utilizó durante mucho tiempo para tallar esferas de adivinación y elementos ópticos antes de la era del vidrio industrial.",
             particularites = "Gran disponibilidad en cristales grandes, lo que permite tallas de fantasía espectaculares.",
+            inclusions = "Generalmente totalmente limpio; puede contener inclusiones minerales decorativas (rutilo, turmalina, clorita) o cristales negativos.",
             lithotherapie = "Piedra \"maestra\" de la litoterapia, el cristal de roca tiene fama de amplificar las energías, clarificar los pensamientos y purificar el espacio circundante."
         ),
         "danburite" to GemTranslation(
@@ -904,6 +1008,7 @@ object GemTranslationsEs {
             descriptionCourte = "Brillo cercano al del topacio, poco conocida.",
             descriptionLongue = "Descubierta en Danbury (Connecticut) en el siglo XIX, la danburita se parece mucho al topacio incoloro o amarillo pálido, pero sin su exfoliación perfecta, lo que la hace más fácil de tallar y de llevar a diario.",
             particularites = "Sin exfoliación, a diferencia del topacio, al que a menudo imita visualmente.",
+            inclusions = "Generalmente muy limpia; raras inclusiones líquidas o cristales accesorios según el yacimiento birmano o mexicano.",
             lithotherapie = "La danburita se asocia a una gran serenidad y al despertar del corazón, un suave apoyo para la meditación."
         ),
         "bois-fossilise" to GemTranslation(
@@ -925,6 +1030,7 @@ object GemTranslationsEs {
             descriptionCourte = "Una gema rara verde-marrón de fuerte pleocroísmo, a veces con cambio de color.",
             descriptionLongue = "La kornerupina presenta un pleocroísmo marcado (varios tonos visibles según el ángulo de observación, del verde al marrón rojizo), y algunas piedras de Sri Lanka muestran incluso un cambio de color comparable al de la alejandrita.",
             particularites = "Pleocroísmo tricroico marcado, a veces acompañado de un cambio de color según la fuente de luz.",
+            inclusions = "Fuerte pleocroísmo acompañado de finas inclusiones fibrosas que pueden producir un efecto chatoyant en algunas piedras.",
             lithotherapie = "La kornerupina, mineral discreto y raro, se asocia a un arraigo suave y a la estabilidad interior."
         ),
         "hyperstene" to GemTranslation(
@@ -946,6 +1052,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un piroxeno pardo-verdoso, a veces con asterismo u ojo de gato.",
             descriptionLongue = "La enstatita, polo magnésico puro de los ortopiroxenos, se encuentra en tonos pardo-verdosos a oliva, ocasionalmente con un asterismo de cuatro brazos o un efecto ojo de gato cuando se talla en cabujón.",
             particularites = "Puede presentar un asterismo de cuatro brazos, más raro que el asterismo clásico de seis brazos del corindón.",
+            inclusions = "Puede presentar finas inclusiones fibrosas orientadas que producen un efecto chatoyant en cabujón.",
             lithotherapie = "La enstatita está asociada al arraigo y a una capacidad de actuar con calma y reflexión."
         ),
         "sphalerite" to GemTranslation(
@@ -953,6 +1060,7 @@ object GemTranslationsEs {
             descriptionCourte = "El mineral de zinc con la mayor dispersión de todas las gemas talladas.",
             descriptionLongue = "La esfalerita, principal mineral de zinc, posee una dispersión óptica récord entre las gemas facetadas —superior a la del diamante— que produce destellos de fuego espectaculares. Su extrema blandura la convierte en una piedra de colección más que de uso cotidiano.",
             particularites = "La dispersión más alta entre todas las gemas comúnmente coleccionadas, superando incluso al diamante.",
+            inclusions = "Muy alta dispersión y brillo adamantino; clivaje perfecto en seis direcciones que la hace delicada de tallar, con raras inclusiones líquidas.",
             lithotherapie = "Se dice que la esfalerita favorece el arraigo energético a la vez que estimula la vitalidad física."
         ),
         "rutile" to GemTranslation(
@@ -967,6 +1075,7 @@ object GemTranslationsEs {
             descriptionCourte = "Pardo translúcido, coloreado por irradiación natural.",
             descriptionLongue = "El cuarzo ahumado debe su tono pardo a centros de color inducidos por la radiactividad natural de las rocas encajantes que actúa sobre trazas de aluminio. Abundante y asequible, a menudo se calienta para transformarlo en citrino.",
             particularites = "Puede calentarse para virar al amarillo (citrino) o palidecer con la exposición prolongada a la luz.",
+            inclusions = "Velos de finas inclusiones líquidas y cristales negativos ocasionales, comparable al cristal de roca.",
             lithotherapie = "El cuarzo ahumado es apreciado por sus poderosas virtudes de arraigo, que ayudan a absorber el estrés y las tensiones cotidianas."
         ),
         "andalousite" to GemTranslation(
@@ -974,6 +1083,7 @@ object GemTranslationsEs {
             descriptionCourte = "Pleocroísmo espectacular verde-pardo-rojo.",
             descriptionLongue = "La andalucita debe su nombre a la región española donde fue descrita por primera vez. Su fuerte pleocroísmo tricroico hace aparecer, según el ángulo, tonos verde oliva, pardo-rojizo y amarillo en una misma piedra, un efecto a veces apodado «alejandrita de los pobres».",
             particularites = "Pleocroísmo tricroico muy marcado; la orientación de talla es determinante.",
+            inclusions = "Fuerte pleocroísmo visible a simple vista (verde, marrón, rojo según el ángulo); inclusiones de grafito a veces dispuestas en cruz (variedad quiastolita).",
             lithotherapie = "La andalucita se asocia al arraigo y a la capacidad de cambiar de perspectiva ante las dificultades."
         ),
         "sinhalite" to GemTranslation(
@@ -981,6 +1091,7 @@ object GemTranslationsEs {
             descriptionCourte = "Confundida durante mucho tiempo con el peridoto pardo.",
             descriptionLongue = "Identificada como especie distinta solo en 1952, la sinhalita había sido clasificada anteriormente por error entre los peridotos pardos en las colecciones de los museos. Su nombre proviene de «Sinhala», el antiguo nombre de Sri Lanka, su principal fuente.",
             particularites = "Confundida con el peridoto hasta 1952; siempre parda, nunca verde a diferencia del peridoto.",
+            inclusions = "Finas inclusiones líquidas y cristales accesorios según el yacimiento de Sri Lanka, confundida históricamente con el peridoto.",
             lithotherapie = "La sinhalita, mineral raro y discreto, se asocia a la estabilidad interior y a la perseverancia."
         ),
         "staurotide" to GemTranslation(
@@ -995,6 +1106,7 @@ object GemTranslationsEs {
             descriptionCourte = "La dispersión más elevada tras algunas gemas rarísimas.",
             descriptionLongue = "La esfena presenta una dispersión óptica (el «fuego») superior a la del diamante, asociada a un fuerte pleocroísmo pardo-verde-amarillo. Su relativa blandura la convierte en una piedra reservada más bien a la colección y a joyas poco expuestas a los golpes.",
             particularites = "Dispersión excepcional, superior a la del diamante; bastante blanda y exfoliable.",
+            inclusions = "Dispersión muy alta (\"fuego\") a menudo superior a la del diamante; nubes de finas inclusiones y cristales accesorios frecuentes.",
             lithotherapie = "Se dice que la esfena (titanita) estimula la claridad mental y la creatividad, un apoyo para proyectos que exigen precisión e inspiración."
         ),
         "hematite" to GemTranslation(
@@ -1016,6 +1128,7 @@ object GemTranslationsEs {
             descriptionCourte = "Agujas de turmalina negra atrapadas en un cuarzo límpido.",
             descriptionLongue = "El cuarzo turmalinado atrapa agujas de turmalina negra (chorlo) en un cristal de cuarzo por lo demás límpido, creando un motivo gráfico llamativo muy apreciado tanto en litoterapia como en la joyería contemporánea.",
             particularites = "Las agujas de turmalina siguen siendo visibles a simple vista, creando un motivo gráfico único en cada piedra.",
+            inclusions = "Agujas negras de turmalina (chorlo) entrelazadas en un cuarzo limpio.",
             lithotherapie = "El cuarzo turmalinado combina las virtudes protectoras de la turmalina negra con la claridad amplificadora del cristal de roca."
         ),
         "onyx" to GemTranslation(
@@ -1051,6 +1164,7 @@ object GemTranslationsEs {
             descriptionCourte = "Una estrella de seis brazos que se desliza por la superficie del cabujón.",
             descriptionLongue = "El rubí estrella debe su asterismo a finas inclusiones de rutilo en forma de aguja («seda»), orientadas según la simetría hexagonal del corindón, que reflejan la luz en una estrella de seis brazos móvil cuando la piedra se talla en cabujón.",
             particularites = "El asterismo solo es visible en cabujón, nunca en talla facetada; requiere una fuente de luz puntual.",
+            inclusions = "Debe su asterismo a una densa red de seda de rutilo orientada según los tres ejes del cristal; la densidad y orientación de esta seda determinan la nitidez de la estrella de seis brazos.",
             lithotherapie = "El rubí estrella combina las virtudes protectoras del rubí con un poder de guía interior simbolizado por su estrella."
         ),
         "saphir-etoile" to GemTranslation(
@@ -1058,6 +1172,7 @@ object GemTranslationsEs {
             descriptionCourte = "Una estrella luminosa de seis brazos, a menudo en un zafiro azul o negro.",
             descriptionLongue = "Al igual que su primo el rubí estrella, el zafiro estrella debe su asterismo a inclusiones de rutilo en forma de seda. Se encuentra sobre todo en azul o negro, este último tradicionalmente asociado a la protección en varias culturas asiáticas.",
             particularites = "El asterismo más buscado presenta seis brazos perfectamente rectos y centrados en la cúpula del cabujón.",
+            inclusions = "Densa red de seda de rutilo orientada según los tres ejes del corindón, origen del asterismo de seis brazos visible en cabujón.",
             lithotherapie = "Se dice que el zafiro estrella aporta guía y protección espiritual, simbolizando su estrella un camino a seguir."
         ),
         "saphir-teal" to GemTranslation(
@@ -1065,6 +1180,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un corindón bicolor donde el azul y el amarillo se combinan en un tono azul verdoso singular.",
             descriptionLongue = "El zafiro teal debe su característico color azul verdoso a la coexistencia, dentro de un mismo cristal, de zonas de crecimiento azules (hierro y titanio) y amarillas (hierro), que se funden visualmente una vez tallada la piedra. Esta bicoloración natural, más que un tono uniforme, la convierte en una piedra muy buscada por los aficionados a los colores atípicos, en particular en los yacimientos de Montana.",
             particularites = "La bicoloración azul-amarilla, visible en zonas distintas en bruto, se funde en un tono azul verdoso homogéneo una vez tallada y orientada la piedra.",
+            inclusions = "Zonación de color azul-verdosa característica en bandas, seda de rutilo discreta, cristales accesorios típicos del corindón australiano.",
             lithotherapie = "Se dice que el zafiro teal favorece el equilibrio entre la razón y la intuición, simbolizando su doble coloración la armonía entre dos energías complementarias."
         ),
         "diaspore-zultanite" to GemTranslation(
@@ -1072,6 +1188,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un cambio de color del verde caqui al rosa champán, un yacimiento único en Turquía.",
             descriptionLongue = "Comercializada bajo el nombre de «zultanita», esta variedad de diásporo cambia de color del verde caqui oliva bajo luz diurna al rosa champán o violáceo bajo luz incandescente, procedente de un único yacimiento en las montañas turcas.",
             particularites = "Yacimiento prácticamente único en el mundo; el cambio de color es más sutil que el de la alejandrita.",
+            inclusions = "Fuerte pleocroísmo (verde, amarillo, rosa champán según la iluminación); finas inclusiones líquidas y clivaje perfecto que hace delicado el tallado.",
             lithotherapie = "La zultanita, que cambia de color según la luz, se asocia a la adaptabilidad y a la capacidad de transformación personal."
         ),
         "ametrine" to GemTranslation(
@@ -1079,6 +1196,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un cuarzo bicolor donde el violeta de la amatista y el amarillo de la citrina comparten un mismo cristal.",
             descriptionLongue = "La ametrina debe su bicoloración a un gradiente natural de temperatura dentro del cristal de cuarzo durante su crecimiento: las zonas más cálidas adquirieron el tono amarillo de la citrina, mientras que las zonas más frías conservaron el violeta de la amatista. La mina boliviana de Anahí, durante mucho tiempo única fuente comercial en el mundo, está ligada a una leyenda del siglo XVII que atribuye su descubrimiento a un conquistador español casado con una princesa local propietaria del yacimiento.",
             particularites = "El tallado busca resaltar el marcado contraste entre las dos zonas de color, a menudo repartidas en diagonal.",
+            inclusions = "Zonación neta entre los sectores violeta y amarillo heredada de la estructura cristalina del cuarzo, con las inclusiones líquidas típicas de la especie.",
             lithotherapie = "Se dice que la ametrina combina las virtudes calmantes de la amatista con las virtudes estimulantes de la citrina, un equilibrio entre calma interior y energía creativa."
         ),
         "grenat-couleur-changeante" to GemTranslation(
@@ -1086,6 +1204,7 @@ object GemTranslationsEs {
             descriptionCourte = "Verde azulado de día, rojo violáceo de noche, un rival poco conocido de la alejandrita.",
             descriptionLongue = "Algunos granates piropo-espesartina de África Oriental presentan un cambio de color espectacular, del verde azulado o gris verdoso bajo luz diurna al rojo violáceo bajo luz incandescente, un fenómeno raro entre los granates.",
             particularites = "El vanadio, más que el cromo, es el responsable del cambio de color en este granate.",
+            inclusions = "Cristales accesorios y finas fibras típicas del granate piropo-espesartina, cuya composición intermedia comparte.",
             lithotherapie = "Este granate de cambio de color simboliza la adaptabilidad y la capacidad de renovarse ante circunstancias cambiantes."
         ),
         "pietersite" to GemTranslation(
@@ -1114,6 +1233,7 @@ object GemTranslationsEs {
             descriptionCourte = "La forma microcristalina del cuarzo, base del ágata, la cornalina y el ónice.",
             descriptionLongue = "La calcedonia es la forma criptocristalina (microcristales invisibles a simple vista) del cuarzo, de la que derivan el ágata, la cornalina, la crisoprasa y el ónice. La variedad azul grisáceo translúcida, llamada «calcedonia azul», es la más buscada en joyería.",
             particularites = "Término genérico que designa el cuarzo microcristalino; el ágata, la cornalina y el ónice son variedades con nombre propio.",
+            inclusions = "Estructura microcristalina fibrosa responsable de su translucidez lechosa; pocas inclusiones visibles a simple vista.",
             lithotherapie = "La calcedonia se asocia a la armonía interior y a una comunicación serena con quienes nos rodean."
         ),
         "quartz-a-inclusions" to GemTranslation(
@@ -1121,6 +1241,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un paisaje mineral en miniatura congelado en un cristal límpido.",
             descriptionLongue = "Numerosas variedades de cuarzo límpido contienen inclusiones de otros minerales —clorita, actinolita, hematita, rutilo, litiofilita, fuchsita o pirita según los yacimientos— que crean paisajes internos únicos apodados «cuarzo jardín» (lodolita) o cuarzo fantasma.",
             particularites = "Cada piedra es única según la naturaleza del mineral incluido; nunca hay dos cuarzos con inclusiones idénticos.",
+            inclusions = "Por definición contiene inclusiones minerales variadas y abundantes -clorita, actinolita, hematita, rutilo, litiofilita o fuchsita según el yacimiento- creando paisajes internos únicos (un \"jardín\").",
             lithotherapie = "El cuarzo con inclusiones (llamado «jardín») invita a la introspección, simbolizando cada inclusión una faceta del mundo interior."
         ),
         "quartz-rutile" to GemTranslation(
@@ -1128,6 +1249,7 @@ object GemTranslationsEs {
             descriptionCourte = "«Cabellos de Venus» dorados congelados en un cristal de roca límpido.",
             descriptionLongue = "El cuarzo rutilado atrapa finas agujas doradas de rutilo, apodadas poéticamente «cabellos de Venus» o «flechas de amor», creando un efecto decorativo llamativo muy buscado en la joyería contemporánea.",
             particularites = "Las inclusiones de rutilo también pueden producir un efecto ojo de gato cuando el cristal se talla en cabujón.",
+            inclusions = "Agujas doradas o cobrizas de rutilo atravesando el cristal, a veces dispuestas en penachos o estrellas.",
             lithotherapie = "El cuarzo rutilado combina las virtudes amplificadoras del cristal de roca con un poder protector reforzado."
         ),
         "quartz-super-sept" to GemTranslation(
@@ -1135,6 +1257,7 @@ object GemTranslationsEs {
             descriptionCourte = "Hasta siete minerales reunidos en un solo cristal de amatista brasileña.",
             descriptionLongue = "El «Super Siete» (o melody stone) es un cuarzo amatista de Brasil que contiene hasta siete minerales distintos en forma de inclusiones —cacoxenita, goethita, lepidocrocita, rutilo, hematita, entre otros— creando motivos dorados y violáceos únicos en cada piedra.",
             particularites = "Yacimiento único en el mundo; el nombre comercial hace referencia a los siete minerales que pueden estar presentes.",
+            inclusions = "Asociación característica de siete minerales incluidos (amatista, cacoxenita, rutilo, goethita, lepidocrocita, limonita, hematita), única del yacimiento brasileño de Bahía.",
             lithotherapie = "Rara asociación de siete minerales, se dice que el cuarzo super siete favorece una meditación profunda y una forma de síntesis espiritual."
         ),
         "smithsonite" to GemTranslation(
@@ -1142,6 +1265,7 @@ object GemTranslationsEs {
             descriptionCourte = "Mamelones botrioidales «de caramelo» en una amplia paleta pastel.",
             descriptionLongue = "La smithsonita forma masas botrioidales de tonos pastel muy variados —rosa, azul, verde, amarillo o malva según las trazas metálicas presentes— cuya superficie sedosa y redondeada evoca caramelos, muy apreciada en cabujón.",
             particularites = "El color varía según el metal en traza: cobre (azul verdoso), cobalto (rosa), cadmio (amarillo).",
+            inclusions = "Se presenta casi siempre en agregados botrioidales translúcidos de tonos pastel; estructura interna de grano fino.",
             lithotherapie = "La smithsonita se asocia a la suavidad y al sosiego emocional, un apoyo para calmar la irritabilidad."
         ),
         "moldavite" to GemTranslation(
@@ -1149,6 +1273,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un vidrio verde oliva nacido del impacto de un meteorito hace 15 millones de años.",
             descriptionLongue = "La moldavita es un vidrio natural formado por la fusión instantánea de rocas terrestres durante el impacto de un meteorito en Baviera hace unos 15 millones de años, que proyectó gotas de vidrio fundido hasta Bohemia, donde se encuentra hoy en día.",
             particularites = "Yacimiento geográficamente único en el mundo, vinculado al cráter de impacto de Ries en Baviera (Alemania).",
+            inclusions = "Vidrio natural de origen meteorítico que suele contener burbujas de gas alargadas y filamentos de sílice fundida (lechatelierita).",
             lithotherapie = "De origen meteorítico, se dice que la moldavita provoca una intensa transformación interior y un despertar espiritual acelerado."
         ),
         "verre-libyque" to GemTranslation(
@@ -1156,6 +1281,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un vidrio amarillo translúcido del desierto, presente en el pectoral de Tutankamón.",
             descriptionLongue = "El vidrio libio es un vidrio natural de color amarillo pálido a amarillo verdoso, formado hace 29 millones de años en el desierto de Libia por un impacto meteorítico o una explosión aérea. Un escarabeo tallado en este vidrio adorna el pectoral funerario de Tutankamón.",
             particularites = "Utilizado por los artesanos del antiguo Egipto hace más de 3000 años, mucho antes de su descripción científica moderna.",
+            inclusions = "Vidrio natural de origen meteorítico/tectita que contiene burbujas de gas y a veces finas inclusiones de circón o badeleyita.",
             lithotherapie = "Formado por un impacto meteorítico hace millones de años, el vidrio libio se asocia a la claridad mental y a una protección solar simbólica."
         ),
         "alexandrite" to GemTranslation(
@@ -1163,6 +1289,7 @@ object GemTranslationsEs {
             descriptionCourte = "Verde de día, roja bajo luz incandescente.",
             descriptionLongue = "Descubierta en los Urales en el siglo XIX y bautizada en honor al futuro zar Alejandro II, la alejandrita cambia espectacularmente de color: verde esmeralda a la luz del día, rojo púrpura bajo iluminación incandescente. Las piedras con un cambio marcado son extremadamente raras y buscadas.",
             particularites = "El porcentaje de cambio de color es el principal criterio de valoración.",
+            inclusions = "Finas inclusiones líquidas y cristales accesorios; pueden aparecer las maclas cíclicas en estrella de tres brazos, como en el crisoberilo clásico.",
             lithotherapie = "La alejandrita, que cambia de color según la luz, se dice que favorece la adaptabilidad y el equilibrio entre razón e intuición."
         ),
         "tourmaline-pasteque" to GemTranslation(
@@ -1170,6 +1297,7 @@ object GemTranslationsEs {
             descriptionCourte = "Corazón rosa rodeado de verde, como una rodaja de fruta.",
             descriptionLongue = "Resultado de un crecimiento cristalino en varias etapas químicas, la turmalina sandía presenta un corazón rosa rodeado de una capa verde, tallada en láminas finas para revelar este llamativo motivo natural.",
             particularites = "Tallada casi siempre en láminas transversales para revelar el efecto «sandía».",
+            inclusions = "Zonación de color nítida entre el núcleo rosa y el borde verde, con las tricitas y tubos huecos típicos de la turmalina.",
             lithotherapie = "La turmalina sandía combina las virtudes calmantes del rosa con la energía protectora del verde, simbolizando el equilibrio entre corazón y acción."
         ),
         "labradorite" to GemTranslation(
@@ -1177,6 +1305,7 @@ object GemTranslationsEs {
             descriptionCourte = "Reflejos metálicos móviles (labradorescencia).",
             descriptionLongue = "La labradorita presenta un fenómeno óptico llamado labradorescencia: destellos azul verdosos, a veces dorados o violáceos, aparecen y desaparecen según el ángulo de observación, debido a laminillas internas que difractan la luz.",
             particularites = "La orientación de la talla es determinante para revelar la labradorescencia.",
+            inclusions = "Laminillas de exsolución responsables de su brillo iridiscente (labradorescencia), a veces acompañadas de finas inclusiones de ilmenita o magnetita.",
             lithotherapie = "Se dice que la labradorita ofrece una fuerte protección energética a la vez que estimula la intuición y la magia cotidiana."
         ),
         "pierre-de-lune" to GemTranslation(
@@ -1184,6 +1313,7 @@ object GemTranslationsEs {
             descriptionCourte = "Resplandor azulado flotante (adularescencia).",
             descriptionLongue = "La piedra lunar debe su nombre a su resplandor azulado flotante, la adularescencia, causada por el entrecrecimiento de dos feldespatos a escala microscópica que difractan la luz. Las mejores calidades de azul intenso proceden de Sri Lanka.",
             particularites = "Adularescencia óptima cuando la piedra se talla en cabujón perpendicularmente a las laminillas internas.",
+            inclusions = "Laminillas de exsolución albita-ortosa responsables de la adularescencia, ese halo azulado que parece flotar bajo la superficie.",
             lithotherapie = "La piedra lunar se asocia tradicionalmente a la intuición, a la sensibilidad y a los nuevos comienzos, en relación con los ciclos lunares."
         ),
         "pierre-de-soleil" to GemTranslation(
@@ -1191,6 +1321,7 @@ object GemTranslationsEs {
             descriptionCourte = "Destello cobrizo debido a inclusiones de cobre.",
             descriptionLongue = "A diferencia de la piedra lunar, la piedra de sol debe su cálido destello (aventurescencia) a finas partículas de cobre o hematita incluidas en el cristal, que producen reflejos anaranjados a rojo cobrizo según la iluminación.",
             particularites = "Aventurescencia debida a partículas de cobre nativo, a diferencia del cuarzo aventurina coloreado por la fuchsita.",
+            inclusions = "Laminillas de hematita o goethita como inclusiones planas y orientadas, responsables del brillo característico (aventurescencia).",
             lithotherapie = "Se dice que la piedra de sol aporta alegría de vivir, vitalidad y confianza en uno mismo, a imagen de su brillo cálido."
         ),
         "fluorine" to GemTranslation(
@@ -1198,6 +1329,7 @@ object GemTranslationsEs {
             descriptionCourte = "La paleta de colores más extensa del reino mineral.",
             descriptionLongue = "La fluorita puede presentarse en casi todos los colores, a veces varios en un mismo cristal zonado. Su blandura y su exfoliación perfecta en cuatro direcciones limitan su uso en joyería, pero la convierten en una piedra de colección extremadamente apreciada.",
             particularites = "Exfoliación perfecta en cuatro direcciones; fluorescencia característica bajo luz UV, en el origen del término «fluorescencia».",
+            inclusions = "Zonación de color en bandas a veces visible, finas inclusiones líquidas; clivaje perfecto en cuatro direcciones que hace frágil la piedra para llevarla en joyería.",
             lithotherapie = "La fluorita se utiliza mucho para favorecer la concentración y la claridad mental, especialmente durante periodos de estudio o de trabajo intenso."
         ),
         "ammolite" to GemTranslation(
@@ -1226,6 +1358,7 @@ object GemTranslationsEs {
             descriptionCourte = "Resina de árbol fosilizada durante millones de años.",
             descriptionLongue = "El ámbar es resina de coníferas o de árboles con flores fosilizada durante millones de años. Su característica ligereza y sus inclusiones a veces espectaculares (insectos, vegetales) lo convirtieron en un material precioso desde la Prehistoria, especialmente a lo largo de la «ruta del ámbar» báltica.",
             particularites = "Flota en agua salada; puede contener inclusiones fósiles (insectos, vegetales) muy buscadas.",
+            inclusions = "Puede contener espectaculares inclusiones fósiles -insectos, restos vegetales, burbujas de aire-, auténticas ventanas a ecosistemas antiguos, especialmente apreciadas en la ruta báltica.",
             lithotherapie = "El ámbar es apreciado desde la Antigüedad por sus virtudes calmantes y protectoras, que aportan calidez y consuelo emocional."
         ),
         "perle" to GemTranslation(
@@ -1233,6 +1366,7 @@ object GemTranslationsEs {
             descriptionCourte = "La única gema producida por un ser vivo.",
             descriptionLongue = "Formada por un molusco en reacción a un cuerpo extraño, la perla está constituida por capas concéntricas de nácar. Casi la totalidad de las perlas comercializadas hoy en día son perlas cultivadas (Akoya, Tahití, mares del Sur), limitándose la intervención humana a la implantación del núcleo inicial.",
             particularites = "El precio se evalúa por pieza o por hilo según el tamaño, la forma, el lustre y el origen, no por quilate.",
+            inclusions = "Estructura en capas concéntricas de nácar a veces visible en transparencia en las perlas finas; irregularidades de crecimiento propias de cada perla, sello de su autenticidad natural o de cultivo.",
             lithotherapie = "La perla cultivada se asocia a la pureza, a la sabiduría y a la armonía en las relaciones afectivas."
         ),
         "aventurine" to GemTranslation(
@@ -1240,6 +1374,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un cuarzo verde centelleante, moteado de laminillas de fucsita.",
             descriptionLongue = "La aventurina debe su nombre y su centelleo característico (aventurinado) a finas inclusiones de mica cromífera (fucsita) o de hematites diseminadas en una masa de cuarzo microcristalino. La variedad verde, la más extendida, se extrae en gran cantidad en la India desde hace siglos.",
             particularites = "El aventurinado, ese centelleo metálico, proviene del reflejo de la luz sobre las laminillas de mica incluidas; el término se retomó después para designar el vidrio artificial que imita este efecto.",
+            inclusions = "Laminillas de fuchsita (mica cromífera) dispersas en el cuarzo, responsables del brillo característico (aventurescencia).",
             lithotherapie = "La aventurina verde tiene fama de ser una piedra de la buena suerte, asociada a la fortuna, la abundancia y el sosiego emocional."
         ),
         "epidote" to GemTranslation(
@@ -1247,6 +1382,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un verde pistacho característico, raramente facetado debido a su marcado pleocroísmo.",
             descriptionLongue = "La epidota da nombre a todo un grupo mineral y se presenta en cristales alargados de color verde pistacho a verde oliva, cuyo color proviene del hierro. Su fuerte pleocroísmo, que hace aparecer tonalidades diferentes según el ángulo de observación, complica la talla de piedras de color homogéneo.",
             particularites = "El fuerte pleocroísmo (verde, amarillo pardo, incoloro rosado según el ángulo) debe tenerse en cuenta durante la talla para revelar la cara de color más hermosa.",
+            inclusions = "Fuerte pleocroísmo y finas inclusiones fibrosas o cristales accesorios según el yacimiento.",
             lithotherapie = "Se dice que la epidota favorece la transformación personal y ayuda a liberarse de patrones emocionales repetitivos."
         ),
         "gaspeite" to GemTranslation(
@@ -1261,6 +1397,7 @@ object GemTranslationsEs {
             descriptionCourte = "La variedad verde del espodumeno, coloreada por el cromo, prima de la kunzita.",
             descriptionLongue = "La hiddenita es la variedad verde del espodumeno, cuyo color proviene de trazas de cromo o de vanadio, a diferencia de la kunzita rosa, que debe el suyo al manganeso. Descubierta en Carolina del Norte a finales del siglo XIX, el mejor material sigue siendo estadounidense, aunque Brasil y Afganistán también la producen.",
             particularites = "Como todas las variedades de espodumeno, posee una exfoliación perfecta en dos direcciones y debe tallarse con precaución.",
+            inclusions = "Finas inclusiones líquidas y clivaje perfecto en dos direcciones, como la kunzita con la que comparte especie (espodumena).",
             lithotherapie = "Se dice que la hiddenita abre el corazón a la compasión al tiempo que aporta claridad y discernimiento en las decisiones importantes."
         ),
         "angelite" to GemTranslation(
@@ -1289,6 +1426,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un borato ultrarraro, uno de los minerales más duros después del corindón.",
             descriptionLongue = "La rodizita es un borato complejo de cesio, berilio y aluminio, que cristaliza en diminutos cristales incoloros a amarillo pálido casi exclusivamente en Madagascar. Su excepcional dureza, cercana a la del corindón, y su extrema rareza la convierten en una piedra destinada casi únicamente a coleccionistas expertos.",
             particularites = "Los cristales facetables que superan el quilate son excepcionalmente raros; la mayoría de las piedras talladas pesan menos de 0,5 quilates.",
+            inclusions = "Especie muy rara que se presenta en pequeños cristales dodecaédricos; inclusiones internas poco documentadas.",
             lithotherapie = "La rodizita se asocia con la armonización energética y la amplificación de las intenciones positivas."
         ),
         "sanidine" to GemTranslation(
@@ -1296,6 +1434,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un feldespato volcánico incoloro a amarillo pálido, cristalizado rápidamente en superficie.",
             descriptionLongue = "La sanidina es la forma de alta temperatura del feldespato potásico, que cristaliza rápidamente en rocas volcánicas y lavas, lo que la distingue de la ortosa, formada más lentamente en profundidad. Los cristales límpidos y facetables más buscados proceden de las proyecciones volcánicas del Eifel, en Alemania.",
             particularites = "Se distingue de la ortosa por su formación volcánica rápida y su estructura atómica más desordenada; ambas comparten la misma fórmula química.",
+            inclusions = "Generalmente limpia, con raras inclusiones cristalinas accesorias según el yacimiento volcánico de origen.",
             lithotherapie = "La sanidina se asocia con la claridad mental y la espontaneidad, en eco a su rápida formación en las rocas volcánicas."
         ),
         "tremolite" to GemTranslation(
@@ -1303,6 +1442,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un anfíbol blanco a gris, cuya variedad rosa es mucho más buscada.",
             descriptionLongue = "La tremolita es un anfíbol calcomagnésico que forma el polo rico en magnesio de la serie tremolita-actinolita; en forma fibrosa compacta, constituye uno de los componentes de la nefrita. Su variedad gema, generalmente blanca, gris o incolora, rara vez se faceta, con excepción de la rara variedad violeta llamada hexagonita.",
             particularites = "La rarísima variedad rosa-violeta, la hexagonita, debe su color al manganeso y a veces se confunde con la tanzanita antes del análisis.",
+            inclusions = "Estructura fibrosa característica, a menudo responsable de un efecto chatoyant en piedras talladas en cabujón.",
             lithotherapie = "Se dice que la tremolita aporta suavidad y flexibilidad frente a los cambios, en resonancia con su estructura fibrosa."
         ),
         "oeil-de-taureau" to GemTranslation(
@@ -1373,6 +1513,7 @@ object GemTranslationsEs {
             descriptionCourte = "Un ópalo de juego de colores vivo sobre fondo miel, pero hidrófano y por ello frágil frente al agua.",
             descriptionLongue = "Descubierto en la década de 2010 en la región de Wollo, el ópalo de Etiopía revolucionó el mercado por su juego de colores particularmente vivo sobre un fondo translúcido de tono miel a incoloro. Sin embargo, su naturaleza hidrófana, absorbe el agua como una esponja, lo vuelve inestable si se sumerge o se expone en exceso a la humedad.",
             particularites = "Naturaleza hidrófana: puede absorber hasta un 20% de su volumen en agua, agrietarse al secarse y ver su transparencia cambiar temporalmente en contacto con la humedad.",
+            inclusions = "Naturaleza hidrófana (porosa) que puede absorber agua y modificar temporalmente su transparencia; estructura interna en esférulas de sílice responsable del juego de color.",
             lithotherapie = "Se dice que el ópalo de Etiopía amplifica las emociones y la creatividad, como los demás ópalos preciosos."
         ),
     )

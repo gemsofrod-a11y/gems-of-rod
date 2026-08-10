@@ -1,12 +1,20 @@
 package fr.gemsofrod.encyclopedie.data
 
-/** Champs de [Gem] traduits pour une langue donnée. */
+/**
+ * Champs de [Gem] traduits pour une langue donnée.
+ *
+ * [inclusions] traduit [GemDiagnostic.inclusions] ; il reste `null` tant
+ * qu'aucune traduction n'existe pour cette gemme (notamment les gemmes
+ * translucides à opaques ou opaques, pour lesquelles le texte français
+ * source est lui-même vide).
+ */
 data class GemTranslation(
     val nom: String,
     val descriptionCourte: String,
     val descriptionLongue: String,
     val particularites: String,
-    val lithotherapie: String
+    val lithotherapie: String,
+    val inclusions: String? = null
 )
 
 /**
@@ -40,5 +48,15 @@ object GemLocalization {
             particularites = translation.particularites,
             lithotherapie = translation.lithotherapie
         )
+    }
+
+    /**
+     * Texte des inclusions typiques ([GemDiagnostic.inclusions]) traduit
+     * dans la langue demandée, ou le texte français d'origine si aucune
+     * traduction n'est disponible pour cette gemme et cette langue.
+     */
+    fun localizeInclusions(gemId: String, languageCode: String): String? {
+        val original = GemDiagnostics.data[gemId]?.inclusions?.takeIf { it.isNotBlank() } ?: return null
+        return byLanguage[languageCode]?.get(gemId)?.inclusions ?: original
     }
 }
