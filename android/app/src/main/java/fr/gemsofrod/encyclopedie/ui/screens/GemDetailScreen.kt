@@ -70,6 +70,7 @@ import fr.gemsofrod.encyclopedie.data.GemsRepository
 import fr.gemsofrod.encyclopedie.data.googleMapsSearchUrl
 import fr.gemsofrod.encyclopedie.data.priceRangePerCarat
 import fr.gemsofrod.encyclopedie.ui.localized
+import fr.gemsofrod.encyclopedie.ui.localizedInclusions
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
 import java.text.NumberFormat
@@ -246,7 +247,7 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
                 )
             }
 
-            val inclusions = GemDiagnostics.data[gem.id]?.inclusions
+            val inclusions = localizedInclusions(gem.id)
             if (!inclusions.isNullOrBlank()) {
                 Column {
                     Text(
