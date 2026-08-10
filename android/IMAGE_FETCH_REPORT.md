@@ -225,3 +225,28 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | meteorite-lunaire-nwa | ♻️ [File:Lunar meteorite NWA 10665, Feldspathic breccia-8937.jpg](https://commons.wikimedia.org/wiki/File:Lunar_meteorite_NWA_10665,_Feldspathic_breccia-8937.jpg) | — |
 
 **241 / 424** photos récupérées au total.
+
+## Photos d'inclusions
+
+Photos ciblées sur l'inclusion caractéristique de la pierre (jardin, soie, chiastolite, insecte dans l'ambre...), distinctes des photos de la pierre entière ci-dessus.
+
+| Gemme | Inclusion |
+|---|---|
+| rubis | ❌ non trouvée |
+| rubis-etoile | ✅ [Huge 10,800 Carats Maharlika Star Ruby](https://commons.wikimedia.org/w/index.php?curid=151149261) |
+| saphir-etoile | ✅ [File:World's 3rd Largest Star Sapphire with Asterism Star of Maharlika 04.jpg](https://commons.wikimedia.org/wiki/File:World's_3rd_Largest_Star_Sapphire_with_Asterism_Star_of_Maharlika_04.jpg) |
+| saphir-bleu | ❌ échec téléchargement |
+| emeraude | ✅ [File:Garnet lherzolite - xenolith from a kimberlite pipe, Kimberley SA.jpg](https://commons.wikimedia.org/wiki/File:Garnet_lherzolite_-_xenolith_from_a_kimberlite_pipe,_Kimberley_SA.jpg) |
+| quartz-rutile | ✅ [File:Rutile needles in quartz (6421636913).jpg](https://commons.wikimedia.org/wiki/File:Rutile_needles_in_quartz_(6421636913).jpg) |
+| quartz-a-inclusions | ✅ [File:Lodolite quartz - 1.JPG](https://commons.wikimedia.org/wiki/File:Lodolite_quartz_-_1.JPG) |
+| quartz-super-sept | ❌ non trouvée |
+| ambre | ✅ [File:Amber-000-12mm.jpg](https://commons.wikimedia.org/wiki/File:Amber-000-12mm.jpg) |
+| demantoide | ❌ non trouvée |
+| peridot | ❌ non trouvée |
+| tourmaline-pasteque | ✅ [File:Diggerite Slices.JPG](https://commons.wikimedia.org/wiki/File:Diggerite_Slices.JPG) |
+| oeil-de-tigre | ❌ non trouvée |
+| pierre-de-lune | ✅ [File:Moonstone NHMLA.png](https://commons.wikimedia.org/wiki/File:Moonstone_NHMLA.png) |
+| labradorite | ✅ [File:Labradorite schiller texture.jpg](https://commons.wikimedia.org/wiki/File:Labradorite_schiller_texture.jpg) |
+| andalousite | ✅ [File:Chiastolite 2581.jpg](https://commons.wikimedia.org/wiki/File:Chiastolite_2581.jpg) |
+
+**10 / 16** photos d'inclusions récupérées.
