@@ -290,7 +290,7 @@ INCLUSION_GEMS = [
     ("rubis-etoile", ["Star ruby asterism", "Star ruby cabochon macro"], ["star ruby", "asterism"]),
     ("saphir-etoile", ["Star sapphire asterism", "Star sapphire cabochon macro"], ["star sapphire", "asterism"]),
     ("saphir-bleu", ["Sapphire silk inclusions", "Sapphire rutile silk"], ["sapphire", "silk", "rutile"]),
-    ("emeraude", ["Emerald jardin inclusions", "Emerald inclusions macro"], ["emerald", "jardin", "inclusion"]),
+    ("emeraude", ["Emerald jardin inclusions", "Emerald inclusions macro"], ["emerald"]),
     ("quartz-rutile", ["Rutilated quartz inclusions macro", "Rutile needles in quartz"], ["rutilated quartz", "rutile"]),
     ("quartz-a-inclusions", ["Lodolite quartz inclusions", "Garden quartz inclusions macro"], ["lodolite", "garden quartz", "quartz"]),
     ("quartz-super-sept", ["Super seven quartz inclusions macro"], ["super seven", "quartz"]),
