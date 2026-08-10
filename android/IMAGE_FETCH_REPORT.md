@@ -236,7 +236,7 @@ Photos ciblées sur l'inclusion caractéristique de la pierre (jardin, soie, chi
 | rubis-etoile | ♻️ [Huge 10,800 Carats Maharlika Star Ruby](https://commons.wikimedia.org/w/index.php?curid=151149261) |
 | saphir-etoile | ♻️ [File:World's 3rd Largest Star Sapphire with Asterism Star of Maharlika 04.jpg](https://commons.wikimedia.org/wiki/File:World's_3rd_Largest_Star_Sapphire_with_Asterism_Star_of_Maharlika_04.jpg) |
 | saphir-bleu | ❌ échec téléchargement |
-| emeraude | ⏸️ recherche suspendue (deux faux positifs successifs — photos de xénolithe de lherzolite mentionnant "emerald" en légende ; termes désormais exclus, voir GIVE_UP_INCLUSION_SLOTS) |
+| emeraude | ⏸️ recherche suspendue |
 | quartz-rutile | ♻️ [File:Rutile needles in quartz (6421636913).jpg](https://commons.wikimedia.org/wiki/File:Rutile_needles_in_quartz_(6421636913).jpg) |
 | quartz-a-inclusions | ♻️ [File:Lodolite quartz - 1.JPG](https://commons.wikimedia.org/wiki/File:Lodolite_quartz_-_1.JPG) |
 | quartz-super-sept | ❌ non trouvée |
