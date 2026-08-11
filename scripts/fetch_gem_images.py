@@ -316,9 +316,11 @@ INCLUSION_ALLOWED_TOKENS = {
 # gem_id -> recherche d'inclusion suspendue après vérification manuelle
 # qu'aucune photo librement réutilisable n'existe (même principe que
 # GIVE_UP_SLOTS ci-dessous pour BRUTE/FACETTEE).
-GIVE_UP_INCLUSION_SLOTS: set = {
-    ("emeraude", INCLUSION),
-}
+#
+# "emeraude" a été retirée de cette liste : le faux positif récurrent
+# (xénolithe de lherzolite/kimberlite) est maintenant filtré à la racine
+# par EXCLUDED_TITLE_TOKENS ci-dessous, la recherche peut donc être retentée.
+GIVE_UP_INCLUSION_SLOTS: set = set()
 
 EXCLUDED_TITLE_TOKENS = [
     # Toute une série de photos de xénolithes de lherzolite (roche du manteau
