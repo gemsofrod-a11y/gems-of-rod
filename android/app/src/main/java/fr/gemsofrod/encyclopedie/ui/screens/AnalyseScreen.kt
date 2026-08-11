@@ -83,6 +83,7 @@ fun AnalyseScreen(
     var indiceRefractionInput by remember { mutableStateOf("") }
     var pleochroisme by remember { mutableStateOf<String?>(null) }
     var fluorescence by remember { mutableStateOf<String?>(null) }
+    var typeInclusion by remember { mutableStateOf<String?>(null) }
     var results by remember { mutableStateOf<List<AnalysisMatch>?>(null) }
 
     val systemesCristallins = remember { GemAnalyzer.systemesCristallins() }
@@ -100,7 +101,8 @@ fun AnalyseScreen(
             densite = parseDecimal(densiteInput),
             indiceRefraction = parseDecimal(indiceRefractionInput),
             pleochroisme = pleochroisme,
-            fluorescence = fluorescence
+            fluorescence = fluorescence,
+            typeInclusion = typeInclusion
         )
         results = runCatching { GemAnalyzer.analyze(criteria) }.getOrDefault(emptyList())
     }
@@ -116,6 +118,7 @@ fun AnalyseScreen(
         indiceRefractionInput = ""
         pleochroisme = null
         fluorescence = null
+        typeInclusion = null
         results = null
     }
 
@@ -269,6 +272,12 @@ fun AnalyseScreen(
                         selectedLabel = fluorescence?.let { localizedLabel(it) },
                         options = AnalysisVocabulary.FLUORESCENCE.map { it to localizedLabel(it) },
                         onSelect = { fluorescence = it }
+                    )
+                    DropdownField(
+                        label = stringResource(R.string.analyse_type_inclusion_label),
+                        selectedLabel = typeInclusion?.let { localizedLabel(it) },
+                        options = AnalysisVocabulary.TYPE_INCLUSION.map { it to localizedLabel(it) },
+                        onSelect = { typeInclusion = it }
                     )
                     DropdownField(
                         label = stringResource(R.string.analyse_systeme_cristallin_label),

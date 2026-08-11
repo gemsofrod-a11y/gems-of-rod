@@ -147,6 +147,7 @@
     <string name="analyse_clivage_label">Exfoliación</string>
     <string name="analyse_pleochroisme_label">Pleocroísmo</string>
     <string name="analyse_fluorescence_label">Fluorescencia UV</string>
+    <string name="analyse_type_inclusion_label">Tipo de inclusión</string>
     <string name="analyse_systeme_cristallin_label">Sistema cristalino</string>
     <string name="analyse_durete_label">Dureza (Mohs)</string>
     <string name="analyse_durete_placeholder">ej. 7</string>

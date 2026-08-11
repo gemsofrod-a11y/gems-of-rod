@@ -294,7 +294,33 @@ object LabelLocalization {
         "Modérée" to mapOf("en" to "Moderate", "es" to "Moderada", "it" to "Moderata", "de" to "Mäßig"),
         "Modérée à forte" to mapOf("en" to "Moderate to strong", "es" to "Moderada a fuerte", "it" to "Da moderata a forte", "de" to "Mäßig bis stark"),
         "Forte" to mapOf("en" to "Strong", "es" to "Fuerte", "it" to "Forte", "de" to "Stark"),
-        "Variable" to mapOf("en" to "Variable", "es" to "Variable", "it" to "Variabile", "de" to "Variabel")
+        "Variable" to mapOf("en" to "Variable", "es" to "Variable", "it" to "Variabile", "de" to "Variabel"),
+
+        // ---------- Analyse de pierre : type d'inclusion ----------
+        "Adularescence" to mapOf("en" to "Adularescence", "es" to "Adularescencia", "it" to "Adularescenza", "de" to "Adulareszenz"),
+        "Agrégat botryoïdal" to mapOf("en" to "Botryoidal aggregate", "es" to "Agregado botrioidal", "it" to "Aggregato botrioidale", "de" to "Traubiges Aggregat"),
+        "Astérisme" to mapOf("en" to "Asterism", "es" to "Asterismo", "it" to "Asterismo", "de" to "Asterismus"),
+        "Aventurescence" to mapOf("en" to "Aventurescence", "es" to "Aventurescencia", "it" to "Avventurescenza", "de" to "Aventureszenz"),
+        "Biréfringence" to mapOf("en" to "Birefringence", "es" to "Birrefringencia", "it" to "Birifrangenza", "de" to "Doppelbrechung"),
+        "Chatoyance" to mapOf("en" to "Chatoyancy", "es" to "Efecto ojo de gato", "it" to "Effetto occhio di gatto", "de" to "Katzenaugeneffekt"),
+        "Chiastolite" to mapOf("en" to "Chiastolite cross", "es" to "Cruz de quiastolita", "it" to "Croce di chiastolite", "de" to "Chiastolith-Kreuz"),
+        "Coloration diffuse" to mapOf("en" to "Diffuse coloration", "es" to "Coloración difusa", "it" to "Colorazione diffusa", "de" to "Diffuse Färbung"),
+        "Cristal accessoire" to mapOf("en" to "Accessory crystal", "es" to "Cristal accesorio", "it" to "Cristallo accessorio", "de" to "Akzessorischer Kristall"),
+        "Dispersion" to mapOf("en" to "Dispersion", "es" to "Dispersión", "it" to "Dispersione", "de" to "Dispersion"),
+        "Fracture interne" to mapOf("en" to "Internal fracture", "es" to "Fractura interna", "it" to "Frattura interna", "de" to "Innerer Bruch"),
+        "Halo de tension" to mapOf("en" to "Tension halo", "es" to "Halo de tensión", "it" to "Alone di tensione", "de" to "Spannungshof"),
+        "Inclusion fossile" to mapOf("en" to "Fossil inclusion", "es" to "Inclusión fósil", "it" to "Inclusione fossile", "de" to "Fossileinschluss"),
+        "Inclusion liquide" to mapOf("en" to "Liquid inclusion", "es" to "Inclusión líquida", "it" to "Inclusione liquida", "de" to "Flüssigkeitseinschluss"),
+        "Inclusion métallique" to mapOf("en" to "Metallic inclusion", "es" to "Inclusión metálica", "it" to "Inclusione metallica", "de" to "Metallischer Einschluss"),
+        "Jardin" to mapOf("en" to "Jardin", "es" to "Jardín", "it" to "Giardino", "de" to "Jardin"),
+        "Labradorescence" to mapOf("en" to "Labradorescence", "es" to "Labradorescencia", "it" to "Labradorescenza", "de" to "Labradoreszenz"),
+        "Macle" to mapOf("en" to "Twinning", "es" to "Maclado", "it" to "Geminazione", "de" to "Verzwilligung"),
+        "Pierre généralement limpide" to mapOf("en" to "Generally eye-clean stone", "es" to "Piedra generalmente limpia", "it" to "Pietra generalmente pulita", "de" to "Meist augenreiner Stein"),
+        "Soie" to mapOf("en" to "Silk", "es" to "Seda", "it" to "Seta", "de" to "Seide"),
+        "Structure fibreuse" to mapOf("en" to "Fibrous structure", "es" to "Estructura fibrosa", "it" to "Struttura fibrosa", "de" to "Faserstruktur"),
+        "Trichite" to mapOf("en" to "Trichite", "es" to "Tricita", "it" to "Tricite", "de" to "Trichit"),
+        "Ténébrescence" to mapOf("en" to "Tenebrescence", "es" to "Tenebrescencia", "it" to "Tenebrescenza", "de" to "Tenebreszenz"),
+        "Zonage de couleur" to mapOf("en" to "Color zoning", "es" to "Zonación de color", "it" to "Zonatura di colore", "de" to "Farbzonierung")
     )
 
     fun localize(label: String, languageCode: String): String =

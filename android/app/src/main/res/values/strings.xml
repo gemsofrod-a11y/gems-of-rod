@@ -147,6 +147,7 @@
     <string name="analyse_clivage_label">Clivage</string>
     <string name="analyse_pleochroisme_label">Pléochroïsme</string>
     <string name="analyse_fluorescence_label">Fluorescence UV</string>
+    <string name="analyse_type_inclusion_label">Type d\'inclusion</string>
     <string name="analyse_systeme_cristallin_label">Système cristallin</string>
     <string name="analyse_durete_label">Dureté (Mohs)</string>
     <string name="analyse_durete_placeholder">ex. 7</string>
