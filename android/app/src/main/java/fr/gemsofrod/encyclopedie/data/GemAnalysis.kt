@@ -56,6 +56,37 @@ object AnalysisVocabulary {
         "Forte",
         "Variable"
     )
+
+    /** Type d'inclusion dominant observé dans la pierre, dérivé de la
+     * description éditoriale de [GemDiagnostic.inclusions]. Rempli
+     * uniquement pour les gemmes possédant un degré de transparence,
+     * comme [GemDiagnostic.inclusions] lui-même. */
+    val TYPE_INCLUSION = listOf(
+        "Adularescence",
+        "Agrégat botryoïdal",
+        "Astérisme",
+        "Aventurescence",
+        "Biréfringence",
+        "Chatoyance",
+        "Chiastolite",
+        "Coloration diffuse",
+        "Cristal accessoire",
+        "Dispersion",
+        "Fracture interne",
+        "Halo de tension",
+        "Inclusion fossile",
+        "Inclusion liquide",
+        "Inclusion métallique",
+        "Jardin",
+        "Labradorescence",
+        "Macle",
+        "Pierre généralement limpide",
+        "Soie",
+        "Structure fibreuse",
+        "Trichite",
+        "Ténébrescence",
+        "Zonage de couleur"
+    )
 }
 
 /** Critères optionnels saisis par l'utilisateur dans l'outil d'analyse de
@@ -70,12 +101,13 @@ data class AnalysisCriteria(
     val densite: Double? = null,
     val indiceRefraction: Double? = null,
     val pleochroisme: String? = null,
-    val fluorescence: String? = null
+    val fluorescence: String? = null,
+    val typeInclusion: String? = null
 ) {
     val totalCriteria: Int
         get() = listOfNotNull(
             couleur, transparence, eclat, clivage, systemeCristallin, durete, densite, indiceRefraction,
-            pleochroisme, fluorescence
+            pleochroisme, fluorescence, typeInclusion
         ).size
 
     val isEmpty: Boolean get() = totalCriteria == 0
@@ -156,6 +188,7 @@ object GemAnalyzer {
         if (matchesNumeric(criteria.indiceRefraction, gem.indiceRefraction, tolerance = 0.02)) matched++
         if (criteria.pleochroisme != null && diag?.pleochroisme == criteria.pleochroisme) matched++
         if (criteria.fluorescence != null && diag?.fluorescence == criteria.fluorescence) matched++
+        if (criteria.typeInclusion != null && diag?.typeInclusion == criteria.typeInclusion) matched++
 
         return matched
     }

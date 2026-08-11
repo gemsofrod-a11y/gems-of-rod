@@ -147,6 +147,7 @@
     <string name="analyse_clivage_label">Sfaldatura</string>
     <string name="analyse_pleochroisme_label">Pleocroismo</string>
     <string name="analyse_fluorescence_label">Fluorescenza UV</string>
+    <string name="analyse_type_inclusion_label">Tipo di inclusione</string>
     <string name="analyse_systeme_cristallin_label">Sistema cristallino</string>
     <string name="analyse_durete_label">Durezza (Mohs)</string>
     <string name="analyse_durete_placeholder">es. 7</string>

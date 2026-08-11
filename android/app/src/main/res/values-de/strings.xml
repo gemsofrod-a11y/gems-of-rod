@@ -147,6 +147,7 @@
     <string name="analyse_clivage_label">Spaltbarkeit</string>
     <string name="analyse_pleochroisme_label">Pleochroismus</string>
     <string name="analyse_fluorescence_label">UV-Fluoreszenz</string>
+    <string name="analyse_type_inclusion_label">Einschlusstyp</string>
     <string name="analyse_systeme_cristallin_label">Kristallsystem</string>
     <string name="analyse_durete_label">Härte (Mohs)</string>
     <string name="analyse_durete_placeholder">z. B. 7</string>
