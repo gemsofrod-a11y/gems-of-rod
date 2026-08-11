@@ -104,7 +104,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | diopside | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
 | jade-nephrite | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
 | maw-sit-sit | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
-| tourmaline-chrome | ♻️ [Dravite-38386](https://commons.wikimedia.org/w/index.php?curid=10126876) | ❌ échec téléchargement |
+| tourmaline-chrome | ♻️ [Dravite-38386](https://commons.wikimedia.org/w/index.php?curid=10126876) | ✅ [Faceted chrome tourmaline 5](https://www.flickr.com/photos/47445767@N05/52319972413) |
 | azurite | ♻️ [File:Azurite, Burra Mine, South Australia.jpg](https://commons.wikimedia.org/wiki/File:Azurite,_Burra_Mine,_South_Australia.jpg) | ⏸️ recherche suspendue |
 | sodalite | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
 | larimar | ♻️ [File:Larimar hg.jpg](https://commons.wikimedia.org/wiki/File:Larimar_hg.jpg) | ⏸️ recherche suspendue |
@@ -224,7 +224,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | meteorite-alh-84001 | ♻️ [File:ALH 84001.jpg](https://commons.wikimedia.org/wiki/File:ALH_84001.jpg) | — |
 | meteorite-lunaire-nwa | ♻️ [File:Lunar meteorite NWA 10665, Feldspathic breccia-8937.jpg](https://commons.wikimedia.org/wiki/File:Lunar_meteorite_NWA_10665,_Feldspathic_breccia-8937.jpg) | — |
 
-**241 / 424** photos récupérées au total.
+**242 / 424** photos récupérées au total.
 
 ## Photos d'inclusions
 
