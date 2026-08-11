@@ -104,7 +104,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | diopside | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
 | jade-nephrite | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
 | maw-sit-sit | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
-| tourmaline-chrome | ♻️ [Dravite-38386](https://commons.wikimedia.org/w/index.php?curid=10126876) | ✅ [Faceted chrome tourmaline 5](https://www.flickr.com/photos/47445767@N05/52319972413) |
+| tourmaline-chrome | ♻️ [Dravite-38386](https://commons.wikimedia.org/w/index.php?curid=10126876) | ♻️ [Faceted chrome tourmaline 5](https://www.flickr.com/photos/47445767@N05/52319972413) |
 | azurite | ♻️ [File:Azurite, Burra Mine, South Australia.jpg](https://commons.wikimedia.org/wiki/File:Azurite,_Burra_Mine,_South_Australia.jpg) | ⏸️ recherche suspendue |
 | sodalite | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
 | larimar | ♻️ [File:Larimar hg.jpg](https://commons.wikimedia.org/wiki/File:Larimar_hg.jpg) | ⏸️ recherche suspendue |
@@ -236,7 +236,7 @@ Photos ciblées sur l'inclusion caractéristique de la pierre (jardin, soie, chi
 | rubis-etoile | ♻️ [Huge 10,800 Carats Maharlika Star Ruby](https://commons.wikimedia.org/w/index.php?curid=151149261) |
 | saphir-etoile | ♻️ [File:World's 3rd Largest Star Sapphire with Asterism Star of Maharlika 04.jpg](https://commons.wikimedia.org/wiki/File:World's_3rd_Largest_Star_Sapphire_with_Asterism_Star_of_Maharlika_04.jpg) |
 | saphir-bleu | ❌ échec téléchargement |
-| emeraude | ⏸️ recherche suspendue |
+| emeraude | ❌ non trouvée |
 | quartz-rutile | ♻️ [File:Rutile needles in quartz (6421636913).jpg](https://commons.wikimedia.org/wiki/File:Rutile_needles_in_quartz_(6421636913).jpg) |
 | quartz-a-inclusions | ♻️ [File:Lodolite quartz - 1.JPG](https://commons.wikimedia.org/wiki/File:Lodolite_quartz_-_1.JPG) |
 | quartz-super-sept | ❌ non trouvée |
