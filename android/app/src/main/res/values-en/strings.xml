@@ -79,6 +79,7 @@
     <string name="gem_photo_raw">Rough stone</string>
     <string name="gem_photo_cut">Cut stone</string>
     <string name="gem_photo_cut_or_cabochon">Cut stone / cabochon</string>
+    <string name="gem_photo_inclusion">Typical inclusion</string>
     <string name="photo_credit">Photo: %1$s — %2$s (Wikimedia Commons)</string>
 
     <!-- Value calculator -->

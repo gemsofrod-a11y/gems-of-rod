@@ -79,6 +79,7 @@
     <string name="gem_photo_raw">Piedra en bruto</string>
     <string name="gem_photo_cut">Piedra tallada</string>
     <string name="gem_photo_cut_or_cabochon">Piedra tallada / cabujón</string>
+    <string name="gem_photo_inclusion">Inclusión típica</string>
     <string name="photo_credit">Foto: %1$s — %2$s (Wikimedia Commons)</string>
 
     <!-- Calculadora de valor -->
