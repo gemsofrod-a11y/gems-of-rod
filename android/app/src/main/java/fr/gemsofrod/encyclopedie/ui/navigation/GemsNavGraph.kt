@@ -10,6 +10,7 @@ import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.data.GemFamilies
 import fr.gemsofrod.encyclopedie.data.GemOrigins
 import fr.gemsofrod.encyclopedie.data.GemsRepository
+import fr.gemsofrod.encyclopedie.ui.screens.AchievementsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.AnalyseScreen
 import fr.gemsofrod.encyclopedie.ui.screens.CertificateScreen
 import fr.gemsofrod.encyclopedie.ui.screens.ColorListScreen
@@ -61,6 +62,7 @@ private object Routes {
     const val METEORITE_CLASSIFICATION = "meteorite_classification"
     const val METEORITE_DETAIL = "meteorite/{meteoriteId}"
     const val QUIZ = "quiz"
+    const val ACHIEVEMENTS = "achievements"
 
     fun gemsList(colorName: String) = "gems/$colorName"
     fun meteoriteDetail(meteoriteId: String) = "meteorite/$meteoriteId"
@@ -88,11 +90,15 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onLanguageClick = { navController.navigate(Routes.LANGUAGE) },
                 onFavoritesClick = { navController.navigate(Routes.FAVORITES) },
                 onMeteoritesClick = { navController.navigate(Routes.METEORITES) },
-                onQuizClick = { navController.navigate(Routes.QUIZ) }
+                onQuizClick = { navController.navigate(Routes.QUIZ) },
+                onAchievementsClick = { navController.navigate(Routes.ACHIEVEMENTS) }
             )
         }
         composable(Routes.QUIZ) {
             QuizScreen(onBackClick = { navController.popBackStack() })
+        }
+        composable(Routes.ACHIEVEMENTS) {
+            AchievementsScreen(onBackClick = { navController.popBackStack() })
         }
         composable(Routes.METEORITES) {
             MeteoritesMenuScreen(

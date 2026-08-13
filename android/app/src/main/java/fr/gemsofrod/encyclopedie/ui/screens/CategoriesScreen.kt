@@ -27,6 +27,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
@@ -76,7 +77,8 @@ fun HomeScreen(
     onLanguageClick: () -> Unit,
     onFavoritesClick: () -> Unit,
     onMeteoritesClick: () -> Unit,
-    onQuizClick: () -> Unit
+    onQuizClick: () -> Unit,
+    onAchievementsClick: () -> Unit
 ) {
     val context = LocalContext.current
     val currentLanguage = remember { LanguageRepository.getLanguage(context) }
@@ -87,6 +89,9 @@ fun HomeScreen(
                 title = { Text("Gems of Rod") },
                 actions = {
                     LanguageButton(flagEmoji = currentLanguage.flagEmoji, onClick = onLanguageClick)
+                    IconButton(onClick = onAchievementsClick) {
+                        Icon(Icons.Filled.EmojiEvents, contentDescription = stringResource(R.string.achievements_title))
+                    }
                     IconButton(onClick = onFavoritesClick) {
                         Icon(Icons.Filled.Favorite, contentDescription = stringResource(R.string.favorites_title))
                     }

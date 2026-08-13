@@ -43,6 +43,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -59,6 +60,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
+import fr.gemsofrod.encyclopedie.data.AchievementsRepository
 import fr.gemsofrod.encyclopedie.data.FavoritesRepository
 import fr.gemsofrod.encyclopedie.data.Gem
 import fr.gemsofrod.encyclopedie.data.GemImageCredit
@@ -80,6 +82,7 @@ import java.util.Locale
 @Composable
 fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: () -> Unit) {
     val gem = GemsRepository.byId(gemId)?.localized()
+    LaunchedEffect(gemId) { AchievementsRepository.recordGemViewed(gemId) }
     val context = LocalContext.current
     val removeFavoriteLabel = stringResource(R.string.cd_remove_favorite)
     val addFavoriteLabel = stringResource(R.string.cd_add_favorite)
