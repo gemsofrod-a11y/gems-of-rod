@@ -134,7 +134,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | quartz-rose | ♻️ [File:Raw rose quartz.jpg](https://commons.wikimedia.org/wiki/File:Raw_rose_quartz.jpg) | ♻️ [File:Rose quartz-1.JPG](https://commons.wikimedia.org/wiki/File:Rose_quartz-1.JPG) |
 | phosphosiderite | ♻️ [Phosphosiderite-141096](https://commons.wikimedia.org/w/index.php?curid=14865728) | ⏸️ recherche suspendue |
 | saphir-blanc | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
-| topaze-blanche | ❌ échec téléchargement | ❌ échec téléchargement |
+| topaze-blanche | ✅ [Topaz ring](https://www.flickr.com/photos/76523360@N03/15063028108) | ✅ [Topaz with irradiated fragment - Smithsonian Museum of Natural History - 2012-05-17](https://www.flickr.com/photos/23165290@N00/7283942412) |
 | hambergite | ♻️ [File:Hambergite (GeoDIL number - 230).jpg](https://commons.wikimedia.org/wiki/File:Hambergite_(GeoDIL_number_-_230).jpg) | ⏸️ recherche suspendue |
 | petalite | ♻️ [File:Petalite.jpg](https://commons.wikimedia.org/wiki/File:Petalite.jpg) | ⏸️ recherche suspendue |
 | phenakite | ♻️ [File:Phenakite (GeoDIL number - 262).jpg](https://commons.wikimedia.org/wiki/File:Phenakite_(GeoDIL_number_-_262).jpg) | ♻️ [File:Shiny Phenakite.jpg](https://commons.wikimedia.org/wiki/File:Shiny_Phenakite.jpg) |
@@ -190,7 +190,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | howlite | ♻️ [File:Howlite-Crystal-Ball-02.png](https://commons.wikimedia.org/wiki/File:Howlite-Crystal-Ball-02.png) | ♻️ [File:Howlite - tumble polished stone.jpg](https://commons.wikimedia.org/wiki/File:Howlite_-_tumble_polished_stone.jpg) |
 | rhodizite | ♻️ [File:Rhodizite 4.JPG](https://commons.wikimedia.org/wiki/File:Rhodizite_4.JPG) | ♻️ [File:Rhodizite 1.JPG](https://commons.wikimedia.org/wiki/File:Rhodizite_1.JPG) |
 | sanidine | ♻️ [File:Rotherkopfite crystals.png](https://commons.wikimedia.org/wiki/File:Rotherkopfite_crystals.png) | ♻️ [File:Forsterite on Sanidine - Ochtendung, Eifel, Germany.jpg](https://commons.wikimedia.org/w/index.php?curid=9819497) |
-| tremolite | ♻️ [File:Tremolite (GeoDIL number - 1701).jpg](https://commons.wikimedia.org/wiki/File:Tremolite_(GeoDIL_number_-_1701).jpg) | ❌ échec téléchargement |
+| tremolite | ♻️ [File:Tremolite (GeoDIL number - 1701).jpg](https://commons.wikimedia.org/wiki/File:Tremolite_(GeoDIL_number_-_1701).jpg) | ✅ [Tremolite schist (Upper Marble, Grenville Series, Mesoproterozoic, 1.15-1.30 Ga; Balmat, Adirondack Lowlands, New York State, USA)](https://www.flickr.com/photos/47445767@N05/16921690192) |
 | oeil-de-taureau | ❌ non trouvée | ❌ non trouvée |
 | unakite | ❌ échec téléchargement | ❌ échec téléchargement |
 | oeil-de-sainte-lucie | — | ♻️ [File:Turbo petholatus Linnaeus, 1758 operculum - Wikimedia Commons (1).jpg](https://commons.wikimedia.org/wiki/File:Turbo_petholatus_Linnaeus,_1758_operculum_-_Wikimedia_Commons_(1).jpg) |
@@ -224,7 +224,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | meteorite-alh-84001 | ♻️ [File:ALH 84001.jpg](https://commons.wikimedia.org/wiki/File:ALH_84001.jpg) | — |
 | meteorite-lunaire-nwa | ♻️ [File:Lunar meteorite NWA 10665, Feldspathic breccia-8937.jpg](https://commons.wikimedia.org/wiki/File:Lunar_meteorite_NWA_10665,_Feldspathic_breccia-8937.jpg) | — |
 
-**242 / 424** photos récupérées au total.
+**245 / 424** photos récupérées au total.
 
 ## Photos d'inclusions
 
