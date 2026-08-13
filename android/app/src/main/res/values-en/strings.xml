@@ -16,6 +16,8 @@
     <string name="home_language_subtitle">Choose the app language.</string>
     <string name="home_meteorites_title">Meteorites</string>
     <string name="home_meteorites_subtitle">Celestial iron, pallasites and stones fallen from the sky: matter from beyond Earth.</string>
+    <string name="home_quiz_title">Gemology quiz</string>
+    <string name="home_quiz_subtitle">Test your knowledge: colors, families, rarity and vocabulary.</string>
 
     <!-- Gemology (search + categories) -->
     <string name="search_gems_placeholder">Search for a gem…</string>
@@ -188,4 +190,21 @@
     <string name="meteorite_fiche_qualite_gemme">Gem quality</string>
     <string name="meteorite_fiche_interet_joaillerie">Jewelry interest</string>
     <string name="meteorite_fiche_prix">Approximate price per gram</string>
+
+    <!-- Quiz -->
+    <string name="quiz_title">Gemology quiz</string>
+    <string name="quiz_intro">Answer %1$d multiple-choice questions drawn from the catalog and the glossary: color, mineral family, rarity and technical vocabulary. A new random draw every game.</string>
+    <string name="quiz_start_button">Start</string>
+    <string name="quiz_progress">Question %1$d of %2$d</string>
+    <string name="quiz_question_couleur">What is the characteristic color of %1$s?</string>
+    <string name="quiz_question_famille">Which mineral family does %1$s belong to?</string>
+    <string name="quiz_question_rarete">What is the rarity of %1$s?</string>
+    <string name="quiz_question_glossaire">Which term matches this definition?</string>
+    <string name="quiz_next_button">Next question</string>
+    <string name="quiz_finish_button">See score</string>
+    <string name="quiz_score_title">Score: %1$d / %2$d</string>
+    <string name="quiz_result_excellent">Excellent! True gemologist knowledge.</string>
+    <string name="quiz_result_good">Well done, you already know your subject well.</string>
+    <string name="quiz_result_encourage">Keep exploring the catalog and the glossary, it\'ll come!</string>
+    <string name="quiz_restart_button">Play again</string>
 </resources>

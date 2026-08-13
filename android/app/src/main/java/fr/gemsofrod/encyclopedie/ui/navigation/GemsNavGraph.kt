@@ -31,6 +31,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.MeteoriteClassificationScreen
 import fr.gemsofrod.encyclopedie.ui.screens.MeteoriteDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.MeteoritesMenuScreen
 import fr.gemsofrod.encyclopedie.ui.screens.PaysListScreen
+import fr.gemsofrod.encyclopedie.ui.screens.QuizScreen
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import java.net.URLDecoder
 import java.net.URLEncoder
@@ -59,6 +60,7 @@ private object Routes {
     const val METEORITES = "meteorites"
     const val METEORITE_CLASSIFICATION = "meteorite_classification"
     const val METEORITE_DETAIL = "meteorite/{meteoriteId}"
+    const val QUIZ = "quiz"
 
     fun gemsList(colorName: String) = "gems/$colorName"
     fun meteoriteDetail(meteoriteId: String) = "meteorite/$meteoriteId"
@@ -85,8 +87,12 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onLithotherapieClick = { navController.navigate(Routes.LITHOTHERAPIE_MENU) },
                 onLanguageClick = { navController.navigate(Routes.LANGUAGE) },
                 onFavoritesClick = { navController.navigate(Routes.FAVORITES) },
-                onMeteoritesClick = { navController.navigate(Routes.METEORITES) }
+                onMeteoritesClick = { navController.navigate(Routes.METEORITES) },
+                onQuizClick = { navController.navigate(Routes.QUIZ) }
             )
+        }
+        composable(Routes.QUIZ) {
+            QuizScreen(onBackClick = { navController.popBackStack() })
         }
         composable(Routes.METEORITES) {
             MeteoritesMenuScreen(

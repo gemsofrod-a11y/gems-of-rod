@@ -2193,7 +2193,24 @@
       "type": "BRUTE"
     }
   ],
-  "topaze-blanche": [],
+  "topaze-blanche": [
+    {
+      "artist": "Ervins Strauhmanis",
+      "license": "by 2.0",
+      "resource_name": "gem_topaze_blanche_brute",
+      "source_url": "https://www.flickr.com/photos/76523360@N03/15063028108",
+      "title": "Topaz ring",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Tim Evanson",
+      "license": "by-sa 2.0",
+      "resource_name": "gem_topaze_blanche_facette",
+      "source_url": "https://www.flickr.com/photos/23165290@N00/7283942412",
+      "title": "Topaz with irradiated fragment - Smithsonian Museum of Natural History - 2012-05-17",
+      "type": "FACETTEE"
+    }
+  ],
   "topaze-bleue": [
     {
       "artist": "MAURO CATEB from Brazil",
@@ -2325,6 +2342,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Tremolite_(GeoDIL_number_-_1701).jpg",
       "title": "File:Tremolite (GeoDIL number - 1701).jpg",
       "type": "BRUTE"
+    },
+    {
+      "artist": "James St. John",
+      "license": "by 2.0",
+      "resource_name": "gem_tremolite_facette",
+      "source_url": "https://www.flickr.com/photos/47445767@N05/16921690192",
+      "title": "Tremolite schist (Upper Marble, Grenville Series, Mesoproterozoic, 1.15-1.30 Ga; Balmat, Adirondack Lowlands, New York State, USA)",
+      "type": "FACETTEE"
     }
   ],
   "tsavorite": [

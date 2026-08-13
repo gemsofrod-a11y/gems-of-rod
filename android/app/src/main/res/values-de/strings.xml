@@ -16,6 +16,8 @@
     <string name="home_language_subtitle">Wählen Sie die Sprache der App.</string>
     <string name="home_meteorites_title">Meteorite</string>
     <string name="home_meteorites_subtitle">Himmlisches Eisen, Pallasite und vom Himmel gefallene Steine: Materie jenseits der Erde.</string>
+    <string name="home_quiz_title">Gemmologie-Quiz</string>
+    <string name="home_quiz_subtitle">Testen Sie Ihr Wissen: Farben, Familien, Seltenheit und Fachbegriffe.</string>
 
     <!-- Gemmologie (Suche + Kategorien) -->
     <string name="search_gems_placeholder">Nach einem Edelstein suchen…</string>
@@ -188,4 +190,21 @@
     <string name="meteorite_fiche_qualite_gemme">Schmuckqualität</string>
     <string name="meteorite_fiche_interet_joaillerie">Interesse für die Schmuckherstellung</string>
     <string name="meteorite_fiche_prix">Ungefährer Preis pro Gramm</string>
+
+    <!-- Quiz -->
+    <string name="quiz_title">Gemmologie-Quiz</string>
+    <string name="quiz_intro">Beantworten Sie %1$d Multiple-Choice-Fragen aus dem Katalog und dem Glossar: Farbe, Mineralfamilie, Seltenheit und Fachvokabular. Bei jedem Spiel eine neue Zufallsauswahl.</string>
+    <string name="quiz_start_button">Starten</string>
+    <string name="quiz_progress">Frage %1$d von %2$d</string>
+    <string name="quiz_question_couleur">Welche Farbe ist charakteristisch für %1$s?</string>
+    <string name="quiz_question_famille">Zu welcher Mineralfamilie gehört %1$s?</string>
+    <string name="quiz_question_rarete">Wie selten ist %1$s?</string>
+    <string name="quiz_question_glossaire">Welcher Begriff passt zu dieser Definition?</string>
+    <string name="quiz_next_button">Nächste Frage</string>
+    <string name="quiz_finish_button">Ergebnis ansehen</string>
+    <string name="quiz_score_title">Ergebnis: %1$d / %2$d</string>
+    <string name="quiz_result_excellent">Ausgezeichnet! Echtes Gemmologen-Wissen.</string>
+    <string name="quiz_result_good">Gut gemacht, Sie kennen sich schon gut aus.</string>
+    <string name="quiz_result_encourage">Erkunden Sie weiter den Katalog und das Glossar, es wird kommen!</string>
+    <string name="quiz_restart_button">Nochmal spielen</string>
 </resources>

@@ -75,7 +75,8 @@ fun HomeScreen(
     onLithotherapieClick: () -> Unit,
     onLanguageClick: () -> Unit,
     onFavoritesClick: () -> Unit,
-    onMeteoritesClick: () -> Unit
+    onMeteoritesClick: () -> Unit,
+    onQuizClick: () -> Unit
 ) {
     val context = LocalContext.current
     val currentLanguage = remember { LanguageRepository.getLanguage(context) }
@@ -130,6 +131,13 @@ fun HomeScreen(
                 onClick = onMeteoritesClick,
                 backgroundDrawable = null,
                 leadingEmoji = "☄️"
+            )
+            HomeSectionCard(
+                title = stringResource(R.string.home_quiz_title),
+                subtitle = stringResource(R.string.home_quiz_subtitle),
+                onClick = onQuizClick,
+                backgroundDrawable = null,
+                leadingEmoji = "🧠"
             )
         }
     }
