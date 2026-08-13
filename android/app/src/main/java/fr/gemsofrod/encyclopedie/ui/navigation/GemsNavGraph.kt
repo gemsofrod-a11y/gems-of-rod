@@ -1,15 +1,27 @@
 package fr.gemsofrod.encyclopedie.ui.navigation
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import fr.gemsofrod.encyclopedie.R
+import fr.gemsofrod.encyclopedie.data.Achievements
+import fr.gemsofrod.encyclopedie.data.AchievementsRepository
 import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.data.GemFamilies
 import fr.gemsofrod.encyclopedie.data.GemOrigins
 import fr.gemsofrod.encyclopedie.data.GemsRepository
+import fr.gemsofrod.encyclopedie.ui.localizedBadgeTitle
 import fr.gemsofrod.encyclopedie.ui.screens.AchievementsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.AnalyseScreen
 import fr.gemsofrod.encyclopedie.ui.screens.CertificateScreen
@@ -34,6 +46,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.MeteoritesMenuScreen
 import fr.gemsofrod.encyclopedie.ui.screens.PaysListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.QuizScreen
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
+import kotlinx.coroutines.delay
 import java.net.URLDecoder
 import java.net.URLEncoder
 
@@ -79,8 +92,39 @@ private object Routes {
     fun decode(value: String): String = URLDecoder.decode(value, "UTF-8")
 }
 
+/**
+ * Écoute [AchievementsRepository] pour afficher une notification (snackbar)
+ * à chaque succès nouvellement débloqué, quel que soit l'écran affiché au
+ * moment du déblocage (fiche gemme, quiz, favoris...). Résolution des
+ * titres de succès une seule fois ici plutôt qu'à chaque notification, pour
+ * rester utilisable depuis la boucle d'écoute (hors contexte @Composable).
+ */
+@Composable
+private fun AchievementUnlockNotifier(snackbarHostState: SnackbarHostState) {
+    val unlockedFormat = stringResource(R.string.achievement_unlocked_snackbar)
+    val badgeTitles = Achievements.BADGES.associate { it.id to localizedBadgeTitle(it) }
+    val badgeEmojis = remember { Achievements.BADGES.associate { it.id to it.emoji } }
+
+    LaunchedEffect(Unit) {
+        while (true) {
+            val badgeId = AchievementsRepository.consumePendingUnlock()
+            if (badgeId != null) {
+                val title = badgeTitles[badgeId].orEmpty()
+                val emoji = badgeEmojis[badgeId].orEmpty()
+                snackbarHostState.showSnackbar(String.format(unlockedFormat, emoji, title))
+            } else {
+                delay(250)
+            }
+        }
+    }
+}
+
 @Composable
 fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
+    val snackbarHostState = remember { SnackbarHostState() }
+    AchievementUnlockNotifier(snackbarHostState)
+
+    Box(modifier = Modifier.fillMaxSize()) {
     NavHost(navController = navController, startDestination = Routes.HOME) {
         composable(Routes.HOME) {
             HomeScreen(
@@ -255,5 +299,10 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onBackClick = { navController.popBackStack() }
             )
         }
+    }
+        SnackbarHost(
+            hostState = snackbarHostState,
+            modifier = Modifier.align(Alignment.BottomCenter)
+        )
     }
 }

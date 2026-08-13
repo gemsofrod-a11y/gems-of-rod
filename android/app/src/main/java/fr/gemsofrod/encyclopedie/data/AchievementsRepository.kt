@@ -38,6 +38,9 @@ object AchievementsRepository {
     private var quizzesCompleted by mutableIntStateOf(0)
     private var hasPerfectQuizScore by mutableStateOf(false)
 
+    /** Succès venant d'être débloqués, en attente d'affichage (notification). */
+    private val pendingUnlocks = mutableStateListOf<String>()
+
     fun init(context: Context) {
         if (prefs != null) return
         val sharedPrefs = context.applicationContext.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -49,17 +52,21 @@ object AchievementsRepository {
 
     fun recordGemViewed(gemId: String) {
         if (viewedGemIds.contains(gemId)) return
+        val before = stats()
         viewedGemIds.add(gemId)
         prefs?.edit()?.putStringSet(KEY_VIEWED_GEM_IDS, viewedGemIds.toSet())?.apply()
+        checkNewlyUnlocked(before, stats())
     }
 
     fun recordQuizCompleted(score: Int, total: Int) {
+        val before = stats()
         quizzesCompleted++
         prefs?.edit()?.putInt(KEY_QUIZZES_COMPLETED, quizzesCompleted)?.apply()
         if (total > 0 && score == total) {
             hasPerfectQuizScore = true
             prefs?.edit()?.putBoolean(KEY_PERFECT_QUIZ_SCORE, true)?.apply()
         }
+        checkNewlyUnlocked(before, stats())
     }
 
     fun stats(): AchievementStats {
@@ -72,4 +79,20 @@ object AchievementsRepository {
             hasPerfectQuizScore = hasPerfectQuizScore
         )
     }
+
+    /**
+     * Compare la progression avant/après une action (gemme consultée, quiz
+     * terminé, favori ajouté) et met en attente les succès qui viennent de
+     * passer de verrouillé à débloqué, pour être notifiés à l'utilisateur.
+     * Appelée aussi depuis [FavoritesRepository.toggle], seule autre action
+     * de l'app capable de débloquer un succès.
+     */
+    fun checkNewlyUnlocked(before: AchievementStats, after: AchievementStats) {
+        val unlockedBefore = Achievements.BADGES.filter { it.isUnlocked(before) }.map { it.id }.toSet()
+        val unlockedAfter = Achievements.BADGES.filter { it.isUnlocked(after) }.map { it.id }.toSet()
+        pendingUnlocks.addAll((unlockedAfter - unlockedBefore).sorted())
+    }
+
+    /** Retire et renvoie le prochain succès débloqué en attente de notification, ou `null`. */
+    fun consumePendingUnlock(): String? = if (pendingUnlocks.isEmpty()) null else pendingUnlocks.removeAt(0)
 }
