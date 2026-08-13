@@ -263,4 +263,27 @@
     <string name="guided_step_indice_refraction_instruction">Legen Sie den Stein mit einer Kontaktflüssigkeit auf das Prisma eines Refraktometers. Lesen Sie den Grenzwinkel der Totalreflexion auf der Skala ab: Je höher der Index, desto stärker bricht der Stein das Licht.</string>
     <string name="guided_step_systeme_cristallin_instruction">Ein Polariskop hilft festzustellen, ob der Stein isotrop ist (bei jeder Drehung vollständig dunkel) oder anisotrop. Zusammen mit der Form des Rohkristalls, falls vorhanden, weist dies auf ein bestimmtes Kristallsystem hin.</string>
     <string name="guided_step_fluorescence_instruction">Beleuchten Sie den Stein im Dunkeln mit einer UV-Lampe (kurz- und langwellig). Notieren Sie, ob er sichtbar leuchtet, in welcher Farbe und Intensität – ein zusätzlicher Hinweis, besonders um bestimmte Behandlungen zu erkennen.</string>
+
+    <!-- Feldnotizbuch -->
+    <string name="lab_notebook_title">Feldnotizbuch</string>
+    <string name="lab_notebook_subtitle">Halten Sie Ihre eigenen Messungen fest, aufgenommen mit Ihren Instrumenten.</string>
+    <string name="notebook_empty_state">Noch keine Proben erfasst. Fügen Sie Ihren ersten Feldeintrag hinzu.</string>
+    <string name="notebook_add_button">Neue Probe</string>
+    <string name="notebook_criteria_count">%1$d Kriterien erfasst</string>
+    <string name="notebook_label_field">Name der Probe</string>
+    <string name="notebook_label_placeholder">z. B. Blauer Stein — Fluss X</string>
+    <string name="notebook_notes_field">Notizen</string>
+    <string name="notebook_notes_placeholder">Kontext, Herkunft, freie Beobachtungen…</string>
+    <string name="notebook_criteria_section_title">Gemessene Eigenschaften</string>
+    <string name="notebook_no_criteria">Keine Eigenschaft erfasst.</string>
+    <string name="notebook_save_button">Speichern</string>
+    <string name="notebook_form_new_title">Neue Probe</string>
+    <string name="notebook_form_edit_title">Probe bearbeiten</string>
+    <string name="notebook_edit_button">Bearbeiten</string>
+    <string name="notebook_delete_button">Löschen</string>
+    <string name="notebook_delete_confirm_title">Diese Probe löschen?</string>
+    <string name="notebook_delete_confirm_message">Diese Aktion kann nicht rückgängig gemacht werden.</string>
+    <string name="notebook_delete_confirm_button">Löschen</string>
+    <string name="notebook_cancel_button">Abbrechen</string>
+    <string name="notebook_compare_button">Mit Katalog vergleichen</string>
 </resources>

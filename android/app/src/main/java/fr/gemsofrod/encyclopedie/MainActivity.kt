@@ -11,6 +11,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import fr.gemsofrod.encyclopedie.data.AchievementsRepository
 import fr.gemsofrod.encyclopedie.data.FavoritesRepository
+import fr.gemsofrod.encyclopedie.data.LabNotebookRepository
 import fr.gemsofrod.encyclopedie.data.LanguageRepository
 import fr.gemsofrod.encyclopedie.ui.navigation.GemsNavGraph
 import fr.gemsofrod.encyclopedie.ui.theme.GemsEncyclopedieTheme
@@ -30,6 +31,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         FavoritesRepository.init(this)
         AchievementsRepository.init(this)
+        LabNotebookRepository.init(this)
         enableEdgeToEdge()
         setContent {
             GemsEncyclopedieTheme {

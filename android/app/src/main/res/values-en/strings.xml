@@ -263,4 +263,27 @@
     <string name="guided_step_indice_refraction_instruction">Place the stone on a refractometer\'s prism with a contact liquid. Read the critical angle of total internal reflection on the graduated scale: the higher the index, the more the stone bends light.</string>
     <string name="guided_step_systeme_cristallin_instruction">A polariscope helps determine whether the stone is isotropic (it goes fully dark on every rotation) or anisotropic. Combined with the rough crystal\'s shape if available, this points to a specific crystal system.</string>
     <string name="guided_step_fluorescence_instruction">In darkness, light the stone with a UV lamp (shortwave and longwave). Note whether it emits a visible glow, its color and intensity — an extra clue, especially for spotting certain treatments.</string>
+
+    <!-- Field notebook -->
+    <string name="lab_notebook_title">Field notebook</string>
+    <string name="lab_notebook_subtitle">Log your own measurements, taken with your instruments.</string>
+    <string name="notebook_empty_state">No samples logged yet. Add your first field entry.</string>
+    <string name="notebook_add_button">New sample</string>
+    <string name="notebook_criteria_count">%1$d criteria logged</string>
+    <string name="notebook_label_field">Sample name</string>
+    <string name="notebook_label_placeholder">e.g. Blue stone — river X</string>
+    <string name="notebook_notes_field">Notes</string>
+    <string name="notebook_notes_placeholder">Context, provenance, free observations…</string>
+    <string name="notebook_criteria_section_title">Measured characteristics</string>
+    <string name="notebook_no_criteria">No characteristics logged.</string>
+    <string name="notebook_save_button">Save</string>
+    <string name="notebook_form_new_title">New sample</string>
+    <string name="notebook_form_edit_title">Edit sample</string>
+    <string name="notebook_edit_button">Edit</string>
+    <string name="notebook_delete_button">Delete</string>
+    <string name="notebook_delete_confirm_title">Delete this sample?</string>
+    <string name="notebook_delete_confirm_message">This action cannot be undone.</string>
+    <string name="notebook_delete_confirm_button">Delete</string>
+    <string name="notebook_cancel_button">Cancel</string>
+    <string name="notebook_compare_button">Compare to catalog</string>
 </resources>
