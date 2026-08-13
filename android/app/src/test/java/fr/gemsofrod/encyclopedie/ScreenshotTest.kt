@@ -1,6 +1,7 @@
 package fr.gemsofrod.encyclopedie
 
 import android.graphics.Bitmap
+import android.os.Looper
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -19,6 +20,7 @@ import fr.gemsofrod.encyclopedie.ui.theme.GemsEncyclopedieTheme
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 import java.io.File
@@ -50,7 +52,13 @@ class ScreenshotTest {
                 Surface(modifier = Modifier.fillMaxSize(), content = content)
             }
         }
-        composeTestRule.waitForIdle()
+        // `waitForIdle()` s'appuie sur un mécanisme d'idling-resource qui
+        // reste bloqué sous Robolectric (LooperMode.PAUSED par défaut,
+        // aucun pompage automatique de la file d'attente du looper) :
+        // `setContent` a déjà réalisé la composition/mesure/dessin initiaux
+        // de façon synchrone, il suffit de vider les tâches en attente
+        // (ripple, focus...) via le looper Robolectric directement.
+        shadowOf(Looper.getMainLooper()).idle()
         val bitmap = composeTestRule.onRoot().captureToImage().asAndroidBitmap()
         FileOutputStream(File(outputDir, "$name.png")).use { out ->
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
