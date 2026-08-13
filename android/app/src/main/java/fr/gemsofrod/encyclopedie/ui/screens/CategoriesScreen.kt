@@ -78,7 +78,8 @@ fun HomeScreen(
     onFavoritesClick: () -> Unit,
     onMeteoritesClick: () -> Unit,
     onQuizClick: () -> Unit,
-    onAchievementsClick: () -> Unit
+    onAchievementsClick: () -> Unit,
+    onLabClick: () -> Unit
 ) {
     val context = LocalContext.current
     val currentLanguage = remember { LanguageRepository.getLanguage(context) }
@@ -117,6 +118,13 @@ fun HomeScreen(
                 subtitle = stringResource(R.string.home_gemmologie_subtitle),
                 onClick = onGemmologieClick,
                 backgroundDrawable = "gem_saphir_bleu"
+            )
+            HomeSectionCard(
+                title = stringResource(R.string.home_lab_title),
+                subtitle = stringResource(R.string.home_lab_subtitle),
+                onClick = onLabClick,
+                backgroundDrawable = null,
+                leadingEmoji = "🔬"
             )
             HomeSectionCard(
                 title = stringResource(R.string.home_familles_title),

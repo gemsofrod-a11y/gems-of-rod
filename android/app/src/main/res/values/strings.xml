@@ -18,6 +18,8 @@
     <string name="home_meteorites_subtitle">Fer céleste, pallasites et pierres tombées du ciel : une matière au-delà de la Terre.</string>
     <string name="home_quiz_title">Quiz gemmologique</string>
     <string name="home_quiz_subtitle">Testez vos connaissances : couleurs, familles, rareté et vocabulaire.</string>
+    <string name="home_lab_title">Laboratoire</string>
+    <string name="home_lab_subtitle">Identifiez une pierre comme un vrai gemmologue, étape par étape.</string>
 
     <!-- Gemmologie (recherche + catégories) -->
     <string name="search_gems_placeholder">Rechercher une gemme…</string>
@@ -237,4 +239,28 @@
     <string name="quiz_result_good">Bien joué, vous connaissez déjà bien votre sujet.</string>
     <string name="quiz_result_encourage">Continuez à explorer le catalogue et le lexique, ça viendra !</string>
     <string name="quiz_restart_button">Rejouer</string>
+
+    <!-- Laboratoire -->
+    <string name="lab_menu_title">Laboratoire</string>
+    <string name="lab_menu_intro">Un espace dédié à l\'identification des pierres : formulaire rapide, protocole guidé pas-à-pas, instruments et lexique du gemmologue.</string>
+    <string name="lab_quick_analysis_title">Analyse rapide</string>
+    <string name="lab_quick_analysis_subtitle">Remplissez les critères que vous connaissez, dans n\'importe quel ordre.</string>
+    <string name="lab_guided_analysis_title">Analyse guidée</string>
+    <string name="lab_guided_analysis_subtitle">Un protocole étape par étape, comme un vrai gemmologue.</string>
+    <string name="guided_step_progress">Étape %1$d / %2$d</string>
+    <string name="guided_previous_button">Précédent</string>
+    <string name="guided_next_button">Suivant</string>
+    <string name="guided_finish_button">Voir les résultats</string>
+    <string name="guided_restart_button">Recommencer l\'analyse</string>
+    <string name="guided_step_couleur_instruction">Observez la pierre sous une lumière neutre (idéalement lumière du jour indirecte), sur un fond blanc. Notez la teinte dominante — la couleur perçue peut varier selon l\'éclairage, évitez donc la lumière artificielle chaude ou les néons colorés.</string>
+    <string name="guided_step_transparence_instruction">Tenez la pierre devant une source de lumière et observez si vous distinguez nettement les contours d\'un objet à travers elle (transparente), une silhouette floue (translucide), ou rien du tout (opaque).</string>
+    <string name="guided_step_eclat_instruction">Observez comment la lumière se réfléchit sur la surface polie de la pierre : brillant et vitré comme du verre, gras comme de la cire, ou métallique comme un miroir. C\'est un indice rapide sur la nature du matériau.</string>
+    <string name="guided_step_clivage_instruction">Examinez à la loupe les éventuelles cassures internes. Un clivage se reconnaît à des plans plats et brillants qui suivent une direction régulière, contrairement à une fracture qui est irrégulière et vitreuse.</string>
+    <string name="guided_step_type_inclusion_instruction">À la loupe 10x, cherchez les inclusions caractéristiques : aiguilles soyeuses, jardin d\'inclusions, halo autour d\'un cristal, structure fibreuse... Elles sont souvent le meilleur indice pour distinguer deux pierres de couleur similaire.</string>
+    <string name="guided_step_durete_instruction">Avec un kit de pointes de dureté (ou des objets de dureté connue comme un ongle ≈2,5, une lame de couteau ≈5,5, une lime en acier ≈6,5), déterminez le degré à partir duquel la pierre commence à se rayer. Testez sur une face peu visible.</string>
+    <string name="guided_step_densite_instruction">Pesez la pierre dans l\'air, puis immergée dans l\'eau, avec une balance hydrostatique. La densité relative se calcule par la différence entre les deux pesées, rapportée au poids dans l\'air.</string>
+    <string name="guided_step_pleochroisme_instruction">À l\'aide d\'un dichroscope, observez la pierre sous plusieurs angles : si les deux images juxtaposées montrent des couleurs différentes, la pierre est pléochroïque.</string>
+    <string name="guided_step_indice_refraction_instruction">Posez la pierre sur le prisme d\'un réfractomètre avec un liquide de contact. Lisez l\'angle de réflexion totale interne sur l\'échelle graduée : plus l\'indice est élevé, plus la pierre dévie la lumière.</string>
+    <string name="guided_step_systeme_cristallin_instruction">Le polariscope aide à déterminer si la pierre est isotrope (elle s\'éteint totalement en tournant) ou anisotrope. Combiné à la forme du cristal brut si disponible, cela oriente vers un système cristallin précis.</string>
+    <string name="guided_step_fluorescence_instruction">Dans l\'obscurité, éclairez la pierre avec une lampe UV (ondes courtes et longues). Notez si elle émet une lueur visible, sa couleur et son intensité — un indice supplémentaire, notamment pour distinguer certains traitements.</string>
 </resources>

@@ -18,6 +18,8 @@
     <string name="home_meteorites_subtitle">Celestial iron, pallasites and stones fallen from the sky: matter from beyond Earth.</string>
     <string name="home_quiz_title">Gemology quiz</string>
     <string name="home_quiz_subtitle">Test your knowledge: colors, families, rarity and vocabulary.</string>
+    <string name="home_lab_title">Lab</string>
+    <string name="home_lab_subtitle">Identify a stone like a real gemologist, step by step.</string>
 
     <!-- Gemology (search + categories) -->
     <string name="search_gems_placeholder">Search for a gem…</string>
@@ -237,4 +239,28 @@
     <string name="quiz_result_good">Well done, you already know your subject well.</string>
     <string name="quiz_result_encourage">Keep exploring the catalog and the glossary, it\'ll come!</string>
     <string name="quiz_restart_button">Play again</string>
+
+    <!-- Lab -->
+    <string name="lab_menu_title">Lab</string>
+    <string name="lab_menu_intro">A dedicated space for stone identification: quick form, guided step-by-step protocol, instruments and gemologist\'s glossary.</string>
+    <string name="lab_quick_analysis_title">Quick analysis</string>
+    <string name="lab_quick_analysis_subtitle">Fill in the criteria you know, in any order.</string>
+    <string name="lab_guided_analysis_title">Guided analysis</string>
+    <string name="lab_guided_analysis_subtitle">A step-by-step protocol, like a real gemologist.</string>
+    <string name="guided_step_progress">Step %1$d of %2$d</string>
+    <string name="guided_previous_button">Previous</string>
+    <string name="guided_next_button">Next</string>
+    <string name="guided_finish_button">See results</string>
+    <string name="guided_restart_button">Restart analysis</string>
+    <string name="guided_step_couleur_instruction">Observe the stone under neutral light (ideally indirect daylight), against a white background. Note the dominant hue — perceived color can vary with lighting, so avoid warm artificial light or colored neon.</string>
+    <string name="guided_step_transparence_instruction">Hold the stone in front of a light source and see whether you can clearly make out an object\'s outline through it (transparent), a blurred silhouette (translucent), or nothing at all (opaque).</string>
+    <string name="guided_step_eclat_instruction">Observe how light reflects off the stone\'s polished surface: bright and glassy like glass, greasy like wax, or metallic like a mirror. It\'s a quick clue to the material\'s nature.</string>
+    <string name="guided_step_clivage_instruction">Examine any internal breaks with a loupe. Cleavage shows flat, shiny planes following a regular direction, unlike a fracture, which is irregular and glassy.</string>
+    <string name="guided_step_type_inclusion_instruction">Under a 10x loupe, look for characteristic inclusions: silky needles, a garden of inclusions, a halo around a crystal, a fibrous structure... They\'re often the best clue to tell apart two similarly colored stones.</string>
+    <string name="guided_step_durete_instruction">With a hardness pick set (or objects of known hardness like a fingernail ≈2.5, a knife blade ≈5.5, a steel file ≈6.5), find the point at which the stone starts to scratch. Test on an inconspicuous face.</string>
+    <string name="guided_step_densite_instruction">Weigh the stone in air, then submerged in water, with a hydrostatic balance. Relative density is calculated from the difference between the two weighings, relative to the weight in air.</string>
+    <string name="guided_step_pleochroisme_instruction">Using a dichroscope, observe the stone from several angles: if the two juxtaposed images show different colors, the stone is pleochroic.</string>
+    <string name="guided_step_indice_refraction_instruction">Place the stone on a refractometer\'s prism with a contact liquid. Read the critical angle of total internal reflection on the graduated scale: the higher the index, the more the stone bends light.</string>
+    <string name="guided_step_systeme_cristallin_instruction">A polariscope helps determine whether the stone is isotropic (it goes fully dark on every rotation) or anisotropic. Combined with the rough crystal\'s shape if available, this points to a specific crystal system.</string>
+    <string name="guided_step_fluorescence_instruction">In darkness, light the stone with a UV lamp (shortwave and longwave). Note whether it emits a visible glow, its color and intensity — an extra clue, especially for spotting certain treatments.</string>
 </resources>

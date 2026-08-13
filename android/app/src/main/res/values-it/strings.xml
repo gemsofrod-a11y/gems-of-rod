@@ -18,6 +18,8 @@
     <string name="home_meteorites_subtitle">Ferro celeste, pallasiti e pietre cadute dal cielo: materia oltre la Terra.</string>
     <string name="home_quiz_title">Quiz di gemmologia</string>
     <string name="home_quiz_subtitle">Metti alla prova le tue conoscenze: colori, famiglie, rarità e vocabolario.</string>
+    <string name="home_lab_title">Laboratorio</string>
+    <string name="home_lab_subtitle">Identifica una pietra come un vero gemmologo, passo dopo passo.</string>
 
     <!-- Gemmologia (ricerca + categorie) -->
     <string name="search_gems_placeholder">Cerca una gemma…</string>
@@ -237,4 +239,28 @@
     <string name="quiz_result_good">Ben fatto, conosci già bene l\'argomento.</string>
     <string name="quiz_result_encourage">Continua a esplorare il catalogo e il glossario, ci arriverai!</string>
     <string name="quiz_restart_button">Rigioca</string>
+
+    <!-- Laboratorio -->
+    <string name="lab_menu_title">Laboratorio</string>
+    <string name="lab_menu_intro">Uno spazio dedicato all\'identificazione delle pietre: modulo rapido, protocollo guidato passo dopo passo, strumenti e glossario del gemmologo.</string>
+    <string name="lab_quick_analysis_title">Analisi rapida</string>
+    <string name="lab_quick_analysis_subtitle">Compila i criteri che conosci, in qualsiasi ordine.</string>
+    <string name="lab_guided_analysis_title">Analisi guidata</string>
+    <string name="lab_guided_analysis_subtitle">Un protocollo passo dopo passo, come un vero gemmologo.</string>
+    <string name="guided_step_progress">Passo %1$d di %2$d</string>
+    <string name="guided_previous_button">Precedente</string>
+    <string name="guided_next_button">Avanti</string>
+    <string name="guided_finish_button">Vedi risultati</string>
+    <string name="guided_restart_button">Ricomincia analisi</string>
+    <string name="guided_step_couleur_instruction">Osserva la pietra sotto una luce neutra (idealmente luce diurna indiretta), su uno sfondo bianco. Annota la tonalità dominante: il colore percepito può variare con l\'illuminazione, quindi evita la luce artificiale calda o i neon colorati.</string>
+    <string name="guided_step_transparence_instruction">Tieni la pietra davanti a una fonte di luce e osserva se distingui chiaramente il contorno di un oggetto attraverso di essa (trasparente), una sagoma sfocata (traslucida) o nulla (opaca).</string>
+    <string name="guided_step_eclat_instruction">Osserva come la luce si riflette sulla superficie levigata della pietra: brillante e vetrosa come il vetro, untuosa come la cera, o metallica come uno specchio. È un indizio rapido sulla natura del materiale.</string>
+    <string name="guided_step_clivage_instruction">Esamina con una lente eventuali rotture interne. La sfaldatura si riconosce da piani lisci e lucenti che seguono una direzione regolare, a differenza di una frattura, irregolare e vetrosa.</string>
+    <string name="guided_step_type_inclusion_instruction">Con una lente 10x, cerca le inclusioni caratteristiche: aghi setosi, giardino di inclusioni, alone attorno a un cristallo, struttura fibrosa... Sono spesso il miglior indizio per distinguere due pietre di colore simile.</string>
+    <string name="guided_step_durete_instruction">Con un kit di punte di durezza (o oggetti di durezza nota come un\'unghia ≈2,5, una lama di coltello ≈5,5, una lima d\'acciaio ≈6,5), determina da quale grado la pietra inizia a graffiarsi. Prova su una faccia poco visibile.</string>
+    <string name="guided_step_densite_instruction">Pesa la pietra in aria, poi immersa in acqua, con una bilancia idrostatica. La densità relativa si calcola dalla differenza tra le due pesate, rapportata al peso in aria.</string>
+    <string name="guided_step_pleochroisme_instruction">Con un dicroscopio, osserva la pietra da più angolazioni: se le due immagini affiancate mostrano colori diversi, la pietra è pleocroica.</string>
+    <string name="guided_step_indice_refraction_instruction">Posiziona la pietra sul prisma di un rifrattometro con un liquido di contatto. Leggi l\'angolo di riflessione totale interna sulla scala graduata: più alto è l\'indice, più la pietra devia la luce.</string>
+    <string name="guided_step_systeme_cristallin_instruction">Un polariscopio aiuta a determinare se la pietra è isotropa (si scurisce completamente a ogni rotazione) o anisotropa. Combinato con la forma del cristallo grezzo se disponibile, questo orienta verso un sistema cristallino preciso.</string>
+    <string name="guided_step_fluorescence_instruction">Al buio, illumina la pietra con una lampada UV (onde corte e lunghe). Annota se emette un bagliore visibile, il suo colore e la sua intensità: un indizio in più, utile in particolare per individuare alcuni trattamenti.</string>
 </resources>
