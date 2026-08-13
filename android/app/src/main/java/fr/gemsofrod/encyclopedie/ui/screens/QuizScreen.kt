@@ -33,6 +33,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
+import fr.gemsofrod.encyclopedie.data.AchievementsRepository
 import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.data.GemGlossary
 import fr.gemsofrod.encyclopedie.data.GemRarete
@@ -110,7 +111,11 @@ fun QuizScreen(onBackClick: () -> Unit) {
                         }
                     },
                     onNextClick = {
-                        currentIndex++
+                        val nextIndex = currentIndex + 1
+                        if (nextIndex >= currentQuiz.size) {
+                            AchievementsRepository.recordQuizCompleted(score, currentQuiz.size)
+                        }
+                        currentIndex = nextIndex
                         selectedChoice = null
                     }
                 )

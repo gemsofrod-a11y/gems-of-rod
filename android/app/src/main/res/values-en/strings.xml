@@ -191,6 +191,35 @@
     <string name="meteorite_fiche_interet_joaillerie">Jewelry interest</string>
     <string name="meteorite_fiche_prix">Approximate price per gram</string>
 
+    <!-- Achievements -->
+    <string name="achievements_title">Achievements</string>
+    <string name="achievements_progress_summary">%1$d / %2$d achievements unlocked</string>
+    <string name="achievement_progress_format">%1$d / %2$d</string>
+    <string name="achievement_first_gem_title">First step</string>
+    <string name="achievement_first_gem_desc">View a gem\'s sheet for the first time.</string>
+    <string name="achievement_curious_title">Curious</string>
+    <string name="achievement_curious_desc">View 10 different gem sheets.</string>
+    <string name="achievement_collector_title">Collector</string>
+    <string name="achievement_collector_desc">View 50 different gem sheets.</string>
+    <string name="achievement_encyclopedist_title">Encyclopedist</string>
+    <string name="achievement_encyclopedist_desc">View 100 different gem sheets.</string>
+    <string name="achievement_master_title">Master gemologist</string>
+    <string name="achievement_master_desc">View all %1$d gems in the catalog.</string>
+    <string name="achievement_rainbow_title">Rainbow</string>
+    <string name="achievement_rainbow_desc">View at least one gem from each of the %1$d color categories.</string>
+    <string name="achievement_first_favorite_title">First favorite</string>
+    <string name="achievement_first_favorite_desc">Add a gem to your favorites.</string>
+    <string name="achievement_fan_title">Fan</string>
+    <string name="achievement_fan_desc">Add 10 gems to your favorites.</string>
+    <string name="achievement_big_collector_title">Big collector</string>
+    <string name="achievement_big_collector_desc">Add 25 gems to your favorites.</string>
+    <string name="achievement_first_quiz_title">First quiz</string>
+    <string name="achievement_first_quiz_desc">Complete a round of the gemology quiz.</string>
+    <string name="achievement_quiz_regular_title">Regular</string>
+    <string name="achievement_quiz_regular_desc">Complete 10 rounds of the gemology quiz.</string>
+    <string name="achievement_perfect_score_title">Flawless</string>
+    <string name="achievement_perfect_score_desc">Get a perfect score in the gemology quiz.</string>
+
     <!-- Quiz -->
     <string name="quiz_title">Gemology quiz</string>
     <string name="quiz_intro">Answer %1$d multiple-choice questions drawn from the catalog and the glossary: color, mineral family, rarity and technical vocabulary. A new random draw every game.</string>

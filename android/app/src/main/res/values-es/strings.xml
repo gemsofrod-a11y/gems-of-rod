@@ -191,6 +191,35 @@
     <string name="meteorite_fiche_interet_joaillerie">Interés en joyería</string>
     <string name="meteorite_fiche_prix">Precio aproximado por gramo</string>
 
+    <!-- Logros -->
+    <string name="achievements_title">Logros</string>
+    <string name="achievements_progress_summary">%1$d / %2$d logros desbloqueados</string>
+    <string name="achievement_progress_format">%1$d / %2$d</string>
+    <string name="achievement_first_gem_title">Primer paso</string>
+    <string name="achievement_first_gem_desc">Consulte la ficha de una gema por primera vez.</string>
+    <string name="achievement_curious_title">Curioso</string>
+    <string name="achievement_curious_desc">Consulte 10 fichas de gemas diferentes.</string>
+    <string name="achievement_collector_title">Coleccionista</string>
+    <string name="achievement_collector_desc">Consulte 50 fichas de gemas diferentes.</string>
+    <string name="achievement_encyclopedist_title">Enciclopedista</string>
+    <string name="achievement_encyclopedist_desc">Consulte 100 fichas de gemas diferentes.</string>
+    <string name="achievement_master_title">Maestro gemólogo</string>
+    <string name="achievement_master_desc">Consulte las %1$d gemas del catálogo.</string>
+    <string name="achievement_rainbow_title">Arcoíris</string>
+    <string name="achievement_rainbow_desc">Consulte al menos una gema de cada una de las %1$d categorías de color.</string>
+    <string name="achievement_first_favorite_title">Primer favorito</string>
+    <string name="achievement_first_favorite_desc">Añada una gema a sus favoritos.</string>
+    <string name="achievement_fan_title">Aficionado</string>
+    <string name="achievement_fan_desc">Añada 10 gemas a sus favoritos.</string>
+    <string name="achievement_big_collector_title">Gran coleccionista</string>
+    <string name="achievement_big_collector_desc">Añada 25 gemas a sus favoritos.</string>
+    <string name="achievement_first_quiz_title">Primer quiz</string>
+    <string name="achievement_first_quiz_desc">Complete una partida del quiz de gemología.</string>
+    <string name="achievement_quiz_regular_title">Asiduo</string>
+    <string name="achievement_quiz_regular_desc">Complete 10 partidas del quiz de gemología.</string>
+    <string name="achievement_perfect_score_title">Sin fallos</string>
+    <string name="achievement_perfect_score_desc">Obtenga una puntuación perfecta en el quiz de gemología.</string>
+
     <!-- Quiz -->
     <string name="quiz_title">Quiz de gemología</string>
     <string name="quiz_intro">Responda a %1$d preguntas de opción múltiple extraídas del catálogo y del glosario: color, familia mineral, rareza y vocabulario técnico. Un nuevo sorteo aleatorio en cada partida.</string>

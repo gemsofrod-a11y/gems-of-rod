@@ -191,6 +191,35 @@
     <string name="meteorite_fiche_interet_joaillerie">Interesse für die Schmuckherstellung</string>
     <string name="meteorite_fiche_prix">Ungefährer Preis pro Gramm</string>
 
+    <!-- Erfolge -->
+    <string name="achievements_title">Erfolge</string>
+    <string name="achievements_progress_summary">%1$d / %2$d Erfolge freigeschaltet</string>
+    <string name="achievement_progress_format">%1$d / %2$d</string>
+    <string name="achievement_first_gem_title">Erster Schritt</string>
+    <string name="achievement_first_gem_desc">Sehen Sie sich zum ersten Mal ein Edelstein-Profil an.</string>
+    <string name="achievement_curious_title">Neugierig</string>
+    <string name="achievement_curious_desc">Sehen Sie sich 10 verschiedene Edelstein-Profile an.</string>
+    <string name="achievement_collector_title">Sammler</string>
+    <string name="achievement_collector_desc">Sehen Sie sich 50 verschiedene Edelstein-Profile an.</string>
+    <string name="achievement_encyclopedist_title">Enzyklopädist</string>
+    <string name="achievement_encyclopedist_desc">Sehen Sie sich 100 verschiedene Edelstein-Profile an.</string>
+    <string name="achievement_master_title">Meister-Gemmologe</string>
+    <string name="achievement_master_desc">Sehen Sie sich alle %1$d Edelsteine im Katalog an.</string>
+    <string name="achievement_rainbow_title">Regenbogen</string>
+    <string name="achievement_rainbow_desc">Sehen Sie sich mindestens einen Edelstein aus jeder der %1$d Farbkategorien an.</string>
+    <string name="achievement_first_favorite_title">Erster Favorit</string>
+    <string name="achievement_first_favorite_desc">Fügen Sie einen Edelstein zu Ihren Favoriten hinzu.</string>
+    <string name="achievement_fan_title">Fan</string>
+    <string name="achievement_fan_desc">Fügen Sie 10 Edelsteine zu Ihren Favoriten hinzu.</string>
+    <string name="achievement_big_collector_title">Großsammler</string>
+    <string name="achievement_big_collector_desc">Fügen Sie 25 Edelsteine zu Ihren Favoriten hinzu.</string>
+    <string name="achievement_first_quiz_title">Erstes Quiz</string>
+    <string name="achievement_first_quiz_desc">Schließen Sie eine Runde des Gemmologie-Quiz ab.</string>
+    <string name="achievement_quiz_regular_title">Stammspieler</string>
+    <string name="achievement_quiz_regular_desc">Schließen Sie 10 Runden des Gemmologie-Quiz ab.</string>
+    <string name="achievement_perfect_score_title">Fehlerfrei</string>
+    <string name="achievement_perfect_score_desc">Erzielen Sie eine perfekte Punktzahl im Gemmologie-Quiz.</string>
+
     <!-- Quiz -->
     <string name="quiz_title">Gemmologie-Quiz</string>
     <string name="quiz_intro">Beantworten Sie %1$d Multiple-Choice-Fragen aus dem Katalog und dem Glossar: Farbe, Mineralfamilie, Seltenheit und Fachvokabular. Bei jedem Spiel eine neue Zufallsauswahl.</string>
