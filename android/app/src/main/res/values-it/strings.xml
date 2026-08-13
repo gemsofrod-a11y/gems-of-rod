@@ -263,4 +263,27 @@
     <string name="guided_step_indice_refraction_instruction">Posiziona la pietra sul prisma di un rifrattometro con un liquido di contatto. Leggi l\'angolo di riflessione totale interna sulla scala graduata: più alto è l\'indice, più la pietra devia la luce.</string>
     <string name="guided_step_systeme_cristallin_instruction">Un polariscopio aiuta a determinare se la pietra è isotropa (si scurisce completamente a ogni rotazione) o anisotropa. Combinato con la forma del cristallo grezzo se disponibile, questo orienta verso un sistema cristallino preciso.</string>
     <string name="guided_step_fluorescence_instruction">Al buio, illumina la pietra con una lampada UV (onde corte e lunghe). Annota se emette un bagliore visibile, il suo colore e la sua intensità: un indizio in più, utile in particolare per individuare alcuni trattamenti.</string>
+
+    <!-- Taccuino da campo -->
+    <string name="lab_notebook_title">Taccuino da campo</string>
+    <string name="lab_notebook_subtitle">Registra le tue misurazioni, effettuate con i tuoi strumenti.</string>
+    <string name="notebook_empty_state">Nessun campione registrato. Aggiungi la tua prima scheda di campo.</string>
+    <string name="notebook_add_button">Nuovo campione</string>
+    <string name="notebook_criteria_count">%1$d criteri registrati</string>
+    <string name="notebook_label_field">Nome del campione</string>
+    <string name="notebook_label_placeholder">es. Pietra blu — fiume X</string>
+    <string name="notebook_notes_field">Note</string>
+    <string name="notebook_notes_placeholder">Contesto, provenienza, osservazioni libere…</string>
+    <string name="notebook_criteria_section_title">Caratteristiche misurate</string>
+    <string name="notebook_no_criteria">Nessuna caratteristica registrata.</string>
+    <string name="notebook_save_button">Salva</string>
+    <string name="notebook_form_new_title">Nuovo campione</string>
+    <string name="notebook_form_edit_title">Modifica campione</string>
+    <string name="notebook_edit_button">Modifica</string>
+    <string name="notebook_delete_button">Elimina</string>
+    <string name="notebook_delete_confirm_title">Eliminare questo campione?</string>
+    <string name="notebook_delete_confirm_message">Questa azione è irreversibile.</string>
+    <string name="notebook_delete_confirm_button">Elimina</string>
+    <string name="notebook_cancel_button">Annulla</string>
+    <string name="notebook_compare_button">Confronta con il catalogo</string>
 </resources>

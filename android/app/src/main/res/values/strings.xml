@@ -263,4 +263,27 @@
     <string name="guided_step_indice_refraction_instruction">Posez la pierre sur le prisme d\'un réfractomètre avec un liquide de contact. Lisez l\'angle de réflexion totale interne sur l\'échelle graduée : plus l\'indice est élevé, plus la pierre dévie la lumière.</string>
     <string name="guided_step_systeme_cristallin_instruction">Le polariscope aide à déterminer si la pierre est isotrope (elle s\'éteint totalement en tournant) ou anisotrope. Combiné à la forme du cristal brut si disponible, cela oriente vers un système cristallin précis.</string>
     <string name="guided_step_fluorescence_instruction">Dans l\'obscurité, éclairez la pierre avec une lampe UV (ondes courtes et longues). Notez si elle émet une lueur visible, sa couleur et son intensité — un indice supplémentaire, notamment pour distinguer certains traitements.</string>
+
+    <!-- Carnet de terrain -->
+    <string name="lab_notebook_title">Carnet de terrain</string>
+    <string name="lab_notebook_subtitle">Consignez vos propres mesures, prises avec vos instruments.</string>
+    <string name="notebook_empty_state">Aucun échantillon enregistré. Ajoutez votre première fiche de terrain.</string>
+    <string name="notebook_add_button">Nouvel échantillon</string>
+    <string name="notebook_criteria_count">%1$d critère(s) renseigné(s)</string>
+    <string name="notebook_label_field">Nom de l\'échantillon</string>
+    <string name="notebook_label_placeholder">ex. Pierre bleue — rivière X</string>
+    <string name="notebook_notes_field">Notes</string>
+    <string name="notebook_notes_placeholder">Contexte, provenance, observations libres…</string>
+    <string name="notebook_criteria_section_title">Caractéristiques mesurées</string>
+    <string name="notebook_no_criteria">Aucune caractéristique renseignée.</string>
+    <string name="notebook_save_button">Enregistrer</string>
+    <string name="notebook_form_new_title">Nouvel échantillon</string>
+    <string name="notebook_form_edit_title">Modifier l\'échantillon</string>
+    <string name="notebook_edit_button">Modifier</string>
+    <string name="notebook_delete_button">Supprimer</string>
+    <string name="notebook_delete_confirm_title">Supprimer cet échantillon ?</string>
+    <string name="notebook_delete_confirm_message">Cette action est irréversible.</string>
+    <string name="notebook_delete_confirm_button">Supprimer</string>
+    <string name="notebook_cancel_button">Annuler</string>
+    <string name="notebook_compare_button">Comparer au catalogue</string>
 </resources>

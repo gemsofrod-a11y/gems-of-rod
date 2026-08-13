@@ -36,6 +36,9 @@ import fr.gemsofrod.encyclopedie.ui.screens.GuidedAnalysisScreen
 import fr.gemsofrod.encyclopedie.ui.screens.HomeScreen
 import fr.gemsofrod.encyclopedie.ui.screens.InstrumentsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LabMenuScreen
+import fr.gemsofrod.encyclopedie.ui.screens.LabNotebookDetailScreen
+import fr.gemsofrod.encyclopedie.ui.screens.LabNotebookFormScreen
+import fr.gemsofrod.encyclopedie.ui.screens.LabNotebookScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LanguageScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieGemsScreen
@@ -80,8 +83,14 @@ private object Routes {
     const val ACHIEVEMENTS = "achievements"
     const val LAB_MENU = "lab_menu"
     const val GUIDED_ANALYSE = "guided_analyse"
+    const val LAB_NOTEBOOK = "lab_notebook"
+    const val LAB_NOTEBOOK_NEW = "lab_notebook_new"
+    const val LAB_NOTEBOOK_EDIT = "lab_notebook_edit/{sampleId}"
+    const val LAB_NOTEBOOK_DETAIL = "lab_notebook_detail/{sampleId}"
 
     fun gemsList(colorName: String) = "gems/$colorName"
+    fun labNotebookEdit(sampleId: String) = "lab_notebook_edit/$sampleId"
+    fun labNotebookDetail(sampleId: String) = "lab_notebook_detail/$sampleId"
     fun meteoriteDetail(meteoriteId: String) = "meteorite/$meteoriteId"
     fun paysDetail(country: String) = "pays/${encode(country)}"
     fun gemDetail(gemId: String) = "gem/$gemId"
@@ -153,6 +162,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             LabMenuScreen(
                 onQuickAnalysisClick = { navController.navigate(Routes.ANALYSE) },
                 onGuidedAnalysisClick = { navController.navigate(Routes.GUIDED_ANALYSE) },
+                onNotebookClick = { navController.navigate(Routes.LAB_NOTEBOOK) },
                 onInstrumentsClick = { navController.navigate(Routes.INSTRUMENTS) },
                 onGlossaireClick = { navController.navigate(Routes.GLOSSAIRE) },
                 onBackClick = { navController.popBackStack() }
@@ -161,6 +171,38 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         composable(Routes.GUIDED_ANALYSE) {
             GuidedAnalysisScreen(
                 onGemClick = { gemId -> navController.navigate(Routes.gemDetail(gemId)) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.LAB_NOTEBOOK) {
+            LabNotebookScreen(
+                onSampleClick = { sampleId -> navController.navigate(Routes.labNotebookDetail(sampleId)) },
+                onAddClick = { navController.navigate(Routes.LAB_NOTEBOOK_NEW) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.LAB_NOTEBOOK_NEW) {
+            LabNotebookFormScreen(
+                sampleId = null,
+                onSaved = { navController.popBackStack() },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.LAB_NOTEBOOK_EDIT) { backStackEntry ->
+            val sampleId = backStackEntry.arguments?.getString("sampleId").orEmpty()
+            LabNotebookFormScreen(
+                sampleId = sampleId,
+                onSaved = { navController.popBackStack() },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.LAB_NOTEBOOK_DETAIL) { backStackEntry ->
+            val sampleId = backStackEntry.arguments?.getString("sampleId").orEmpty()
+            LabNotebookDetailScreen(
+                sampleId = sampleId,
+                onGemClick = { gemId -> navController.navigate(Routes.gemDetail(gemId)) },
+                onEditClick = { id -> navController.navigate(Routes.labNotebookEdit(id)) },
+                onDeleted = { navController.popBackStack() },
                 onBackClick = { navController.popBackStack() }
             )
         }

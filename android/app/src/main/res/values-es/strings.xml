@@ -263,4 +263,27 @@
     <string name="guided_step_indice_refraction_instruction">Coloque la piedra sobre el prisma de un refractómetro con un líquido de contacto. Lea el ángulo de reflexión total interna en la escala graduada: cuanto más alto es el índice, más desvía la piedra la luz.</string>
     <string name="guided_step_systeme_cristallin_instruction">Un polariscopio ayuda a determinar si la piedra es isótropa (se oscurece totalmente en cada rotación) o anisótropa. Combinado con la forma del cristal en bruto si está disponible, esto orienta hacia un sistema cristalino concreto.</string>
     <string name="guided_step_fluorescence_instruction">En la oscuridad, ilumine la piedra con una lámpara UV (onda corta y larga). Anote si emite un brillo visible, su color e intensidad: una pista adicional, especialmente para detectar ciertos tratamientos.</string>
+
+    <!-- Cuaderno de campo -->
+    <string name="lab_notebook_title">Cuaderno de campo</string>
+    <string name="lab_notebook_subtitle">Registre sus propias mediciones, tomadas con sus instrumentos.</string>
+    <string name="notebook_empty_state">Aún no hay muestras registradas. Añada su primera ficha de campo.</string>
+    <string name="notebook_add_button">Nueva muestra</string>
+    <string name="notebook_criteria_count">%1$d criterios registrados</string>
+    <string name="notebook_label_field">Nombre de la muestra</string>
+    <string name="notebook_label_placeholder">ej. Piedra azul — río X</string>
+    <string name="notebook_notes_field">Notas</string>
+    <string name="notebook_notes_placeholder">Contexto, procedencia, observaciones libres…</string>
+    <string name="notebook_criteria_section_title">Características medidas</string>
+    <string name="notebook_no_criteria">No se ha registrado ninguna característica.</string>
+    <string name="notebook_save_button">Guardar</string>
+    <string name="notebook_form_new_title">Nueva muestra</string>
+    <string name="notebook_form_edit_title">Editar muestra</string>
+    <string name="notebook_edit_button">Editar</string>
+    <string name="notebook_delete_button">Eliminar</string>
+    <string name="notebook_delete_confirm_title">¿Eliminar esta muestra?</string>
+    <string name="notebook_delete_confirm_message">Esta acción no se puede deshacer.</string>
+    <string name="notebook_delete_confirm_button">Eliminar</string>
+    <string name="notebook_cancel_button">Cancelar</string>
+    <string name="notebook_compare_button">Comparar con el catálogo</string>
 </resources>

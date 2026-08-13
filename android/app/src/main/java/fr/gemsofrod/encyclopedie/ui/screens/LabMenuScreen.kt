@@ -14,6 +14,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.Biotech
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Science
 import androidx.compose.material3.Card
@@ -46,6 +47,7 @@ import fr.gemsofrod.encyclopedie.R
 fun LabMenuScreen(
     onQuickAnalysisClick: () -> Unit,
     onGuidedAnalysisClick: () -> Unit,
+    onNotebookClick: () -> Unit,
     onInstrumentsClick: () -> Unit,
     onGlossaireClick: () -> Unit,
     onBackClick: () -> Unit
@@ -91,6 +93,12 @@ fun LabMenuScreen(
                 title = stringResource(R.string.lab_guided_analysis_title),
                 subtitle = stringResource(R.string.lab_guided_analysis_subtitle),
                 onClick = onGuidedAnalysisClick
+            )
+            LabMenuCard(
+                icon = Icons.Filled.Edit,
+                title = stringResource(R.string.lab_notebook_title),
+                subtitle = stringResource(R.string.lab_notebook_subtitle),
+                onClick = onNotebookClick
             )
             LabMenuCard(
                 icon = Icons.Filled.Info,
