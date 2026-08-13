@@ -18,6 +18,8 @@
     <string name="home_meteorites_subtitle">Himmlisches Eisen, Pallasite und vom Himmel gefallene Steine: Materie jenseits der Erde.</string>
     <string name="home_quiz_title">Gemmologie-Quiz</string>
     <string name="home_quiz_subtitle">Testen Sie Ihr Wissen: Farben, Familien, Seltenheit und Fachbegriffe.</string>
+    <string name="home_lab_title">Labor</string>
+    <string name="home_lab_subtitle">Bestimmen Sie einen Stein wie ein echter Gemmologe, Schritt für Schritt.</string>
 
     <!-- Gemmologie (Suche + Kategorien) -->
     <string name="search_gems_placeholder">Nach einem Edelstein suchen…</string>
@@ -237,4 +239,28 @@
     <string name="quiz_result_good">Gut gemacht, Sie kennen sich schon gut aus.</string>
     <string name="quiz_result_encourage">Erkunden Sie weiter den Katalog und das Glossar, es wird kommen!</string>
     <string name="quiz_restart_button">Nochmal spielen</string>
+
+    <!-- Labor -->
+    <string name="lab_menu_title">Labor</string>
+    <string name="lab_menu_intro">Ein eigener Bereich für die Steinbestimmung: Schnellformular, geführtes Schritt-für-Schritt-Protokoll, Instrumente und Glossar des Gemmologen.</string>
+    <string name="lab_quick_analysis_title">Schnellanalyse</string>
+    <string name="lab_quick_analysis_subtitle">Füllen Sie die Ihnen bekannten Kriterien in beliebiger Reihenfolge aus.</string>
+    <string name="lab_guided_analysis_title">Geführte Analyse</string>
+    <string name="lab_guided_analysis_subtitle">Ein Schritt-für-Schritt-Protokoll, wie bei einem echten Gemmologen.</string>
+    <string name="guided_step_progress">Schritt %1$d von %2$d</string>
+    <string name="guided_previous_button">Zurück</string>
+    <string name="guided_next_button">Weiter</string>
+    <string name="guided_finish_button">Ergebnisse ansehen</string>
+    <string name="guided_restart_button">Analyse neu starten</string>
+    <string name="guided_step_couleur_instruction">Betrachten Sie den Stein bei neutralem Licht (idealerweise indirektem Tageslicht) vor weißem Hintergrund. Notieren Sie den dominanten Farbton – die wahrgenommene Farbe kann je nach Beleuchtung variieren, vermeiden Sie also warmes Kunstlicht oder farbige Neonlichter.</string>
+    <string name="guided_step_transparence_instruction">Halten Sie den Stein vor eine Lichtquelle und beobachten Sie, ob Sie die Umrisse eines Objekts klar erkennen (transparent), nur eine verschwommene Silhouette (durchscheinend) oder gar nichts (undurchsichtig).</string>
+    <string name="guided_step_eclat_instruction">Beobachten Sie, wie sich das Licht auf der polierten Oberfläche des Steins spiegelt: glänzend und glasig wie Glas, fettig wie Wachs, oder metallisch wie ein Spiegel. Das ist ein schneller Hinweis auf die Art des Materials.</string>
+    <string name="guided_step_clivage_instruction">Untersuchen Sie mit einer Lupe eventuelle innere Brüche. Spaltbarkeit erkennt man an glatten, glänzenden Ebenen, die einer regelmäßigen Richtung folgen, im Gegensatz zu einem Bruch, der unregelmäßig und glasig ist.</string>
+    <string name="guided_step_type_inclusion_instruction">Suchen Sie unter einer 10x-Lupe nach charakteristischen Einschlüssen: seidige Nadeln, ein „Garten" aus Einschlüssen, ein Hof um einen Kristall, eine faserige Struktur... Sie sind oft der beste Hinweis, um zwei ähnlich gefärbte Steine zu unterscheiden.</string>
+    <string name="guided_step_durete_instruction">Bestimmen Sie mit einem Härteprüfsatz (oder Gegenständen bekannter Härte wie einem Fingernagel ≈2,5, einer Messerklinge ≈5,5, einer Stahlfeile ≈6,5), ab welchem Grad der Stein zu zerkratzen beginnt. Testen Sie an einer unauffälligen Fläche.</string>
+    <string name="guided_step_densite_instruction">Wiegen Sie den Stein in der Luft und dann unter Wasser mit einer hydrostatischen Waage. Die relative Dichte ergibt sich aus der Differenz der beiden Wägungen, bezogen auf das Gewicht in Luft.</string>
+    <string name="guided_step_pleochroisme_instruction">Beobachten Sie den Stein mit einem Dichroskop aus mehreren Winkeln: Zeigen die beiden nebeneinanderliegenden Bilder unterschiedliche Farben, ist der Stein pleochroitisch.</string>
+    <string name="guided_step_indice_refraction_instruction">Legen Sie den Stein mit einer Kontaktflüssigkeit auf das Prisma eines Refraktometers. Lesen Sie den Grenzwinkel der Totalreflexion auf der Skala ab: Je höher der Index, desto stärker bricht der Stein das Licht.</string>
+    <string name="guided_step_systeme_cristallin_instruction">Ein Polariskop hilft festzustellen, ob der Stein isotrop ist (bei jeder Drehung vollständig dunkel) oder anisotrop. Zusammen mit der Form des Rohkristalls, falls vorhanden, weist dies auf ein bestimmtes Kristallsystem hin.</string>
+    <string name="guided_step_fluorescence_instruction">Beleuchten Sie den Stein im Dunkeln mit einer UV-Lampe (kurz- und langwellig). Notieren Sie, ob er sichtbar leuchtet, in welcher Farbe und Intensität – ein zusätzlicher Hinweis, besonders um bestimmte Behandlungen zu erkennen.</string>
 </resources>

@@ -32,8 +32,10 @@ import fr.gemsofrod.encyclopedie.ui.screens.GemDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemmologieMenuScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemsListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GlossaryScreen
+import fr.gemsofrod.encyclopedie.ui.screens.GuidedAnalysisScreen
 import fr.gemsofrod.encyclopedie.ui.screens.HomeScreen
 import fr.gemsofrod.encyclopedie.ui.screens.InstrumentsScreen
+import fr.gemsofrod.encyclopedie.ui.screens.LabMenuScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LanguageScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieGemsScreen
@@ -76,6 +78,8 @@ private object Routes {
     const val METEORITE_DETAIL = "meteorite/{meteoriteId}"
     const val QUIZ = "quiz"
     const val ACHIEVEMENTS = "achievements"
+    const val LAB_MENU = "lab_menu"
+    const val GUIDED_ANALYSE = "guided_analyse"
 
     fun gemsList(colorName: String) = "gems/$colorName"
     fun meteoriteDetail(meteoriteId: String) = "meteorite/$meteoriteId"
@@ -135,7 +139,8 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onFavoritesClick = { navController.navigate(Routes.FAVORITES) },
                 onMeteoritesClick = { navController.navigate(Routes.METEORITES) },
                 onQuizClick = { navController.navigate(Routes.QUIZ) },
-                onAchievementsClick = { navController.navigate(Routes.ACHIEVEMENTS) }
+                onAchievementsClick = { navController.navigate(Routes.ACHIEVEMENTS) },
+                onLabClick = { navController.navigate(Routes.LAB_MENU) }
             )
         }
         composable(Routes.QUIZ) {
@@ -143,6 +148,21 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         }
         composable(Routes.ACHIEVEMENTS) {
             AchievementsScreen(onBackClick = { navController.popBackStack() })
+        }
+        composable(Routes.LAB_MENU) {
+            LabMenuScreen(
+                onQuickAnalysisClick = { navController.navigate(Routes.ANALYSE) },
+                onGuidedAnalysisClick = { navController.navigate(Routes.GUIDED_ANALYSE) },
+                onInstrumentsClick = { navController.navigate(Routes.INSTRUMENTS) },
+                onGlossaireClick = { navController.navigate(Routes.GLOSSAIRE) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.GUIDED_ANALYSE) {
+            GuidedAnalysisScreen(
+                onGemClick = { gemId -> navController.navigate(Routes.gemDetail(gemId)) },
+                onBackClick = { navController.popBackStack() }
+            )
         }
         composable(Routes.METEORITES) {
             MeteoritesMenuScreen(
