@@ -123,8 +123,7 @@ fun HomeScreen(
                 title = stringResource(R.string.home_lab_title),
                 subtitle = stringResource(R.string.home_lab_subtitle),
                 onClick = onLabClick,
-                backgroundDrawable = null,
-                leadingEmoji = "🔬"
+                backgroundDrawable = "gem_quartz_rutile_inclusion"
             )
             HomeSectionCard(
                 title = stringResource(R.string.home_familles_title),
@@ -142,15 +141,13 @@ fun HomeScreen(
                 title = stringResource(R.string.home_meteorites_title),
                 subtitle = stringResource(R.string.home_meteorites_subtitle),
                 onClick = onMeteoritesClick,
-                backgroundDrawable = null,
-                leadingEmoji = "☄️"
+                backgroundDrawable = "gem_meteorite_gibeon_facette"
             )
             HomeSectionCard(
                 title = stringResource(R.string.home_quiz_title),
                 subtitle = stringResource(R.string.home_quiz_subtitle),
                 onClick = onQuizClick,
-                backgroundDrawable = null,
-                leadingEmoji = "🧠"
+                backgroundDrawable = "gem_opale_de_feu"
             )
         }
     }
