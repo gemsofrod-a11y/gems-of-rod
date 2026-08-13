@@ -73,6 +73,14 @@ android {
         }
     }
 
+    // Nécessaire pour que les tests Robolectric (ScreenshotTest) résolvent
+    // les ressources (drawables des photos de gemmes, strings) à l'exécution.
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
+
     // Le choix de langue est fait dans l'app (LanguageScreen), indépendamment
     // de la langue système de l'appareil. Sans ceci, Play Feature Delivery ne
     // livre à chaque appareil que les ressources de sa langue système,
@@ -97,4 +105,13 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.7.7")
 
     debugImplementation("androidx.compose.ui:ui-tooling")
+
+    // Captures d'écran de l'app (ScreenshotTest) : rendu Compose sur JVM via
+    // Robolectric, sans émulateur, pour alimenter la fiche Play Store.
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("androidx.test.ext:junit:1.2.1")
+    testImplementation("org.robolectric:robolectric:4.13")
+    testImplementation(platform("androidx.compose:compose-bom:2024.06.00"))
+    testImplementation("androidx.compose.ui:ui-test-junit4")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
 }
