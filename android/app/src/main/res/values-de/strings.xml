@@ -195,6 +195,7 @@
     <string name="achievements_title">Erfolge</string>
     <string name="achievements_progress_summary">%1$d / %2$d Erfolge freigeschaltet</string>
     <string name="achievement_progress_format">%1$d / %2$d</string>
+    <string name="achievement_unlocked_snackbar">%1$s %2$s freigeschaltet!</string>
     <string name="achievement_first_gem_title">Erster Schritt</string>
     <string name="achievement_first_gem_desc">Sehen Sie sich zum ersten Mal ein Edelstein-Profil an.</string>
     <string name="achievement_curious_title">Neugierig</string>

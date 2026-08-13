@@ -195,6 +195,7 @@
     <string name="achievements_title">Succès</string>
     <string name="achievements_progress_summary">%1$d / %2$d succès débloqués</string>
     <string name="achievement_progress_format">%1$d / %2$d</string>
+    <string name="achievement_unlocked_snackbar">%1$s %2$s débloqué !</string>
     <string name="achievement_first_gem_title">Premier pas</string>
     <string name="achievement_first_gem_desc">Consultez la fiche d\'une gemme pour la première fois.</string>
     <string name="achievement_curious_title">Curieux</string>

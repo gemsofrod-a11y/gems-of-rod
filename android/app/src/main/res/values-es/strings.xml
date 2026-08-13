@@ -195,6 +195,7 @@
     <string name="achievements_title">Logros</string>
     <string name="achievements_progress_summary">%1$d / %2$d logros desbloqueados</string>
     <string name="achievement_progress_format">%1$d / %2$d</string>
+    <string name="achievement_unlocked_snackbar">%1$s ¡%2$s desbloqueado!</string>
     <string name="achievement_first_gem_title">Primer paso</string>
     <string name="achievement_first_gem_desc">Consulte la ficha de una gema por primera vez.</string>
     <string name="achievement_curious_title">Curioso</string>

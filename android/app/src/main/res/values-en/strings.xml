@@ -195,6 +195,7 @@
     <string name="achievements_title">Achievements</string>
     <string name="achievements_progress_summary">%1$d / %2$d achievements unlocked</string>
     <string name="achievement_progress_format">%1$d / %2$d</string>
+    <string name="achievement_unlocked_snackbar">%1$s %2$s unlocked!</string>
     <string name="achievement_first_gem_title">First step</string>
     <string name="achievement_first_gem_desc">View a gem\'s sheet for the first time.</string>
     <string name="achievement_curious_title">Curious</string>

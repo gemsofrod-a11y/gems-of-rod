@@ -28,12 +28,14 @@ object FavoritesRepository {
     fun isFavorite(gemId: String): Boolean = ids.contains(gemId)
 
     fun toggle(gemId: String) {
+        val before = AchievementsRepository.stats()
         if (ids.contains(gemId)) {
             ids.remove(gemId)
         } else {
             ids.add(gemId)
         }
         persist()
+        AchievementsRepository.checkNewlyUnlocked(before, AchievementsRepository.stats())
     }
 
     private fun persist() {
