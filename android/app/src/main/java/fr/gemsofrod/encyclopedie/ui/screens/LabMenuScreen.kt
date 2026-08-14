@@ -16,6 +16,7 @@ import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.Biotech
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.Science
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -50,6 +51,7 @@ fun LabMenuScreen(
     onNotebookClick: () -> Unit,
     onInstrumentsClick: () -> Unit,
     onGlossaireClick: () -> Unit,
+    onLegendaryClick: () -> Unit,
     onBackClick: () -> Unit
 ) {
     Scaffold(
@@ -111,6 +113,12 @@ fun LabMenuScreen(
                 title = stringResource(R.string.glossaire_title),
                 subtitle = stringResource(R.string.analyse_glossaire_card_subtitle),
                 onClick = onGlossaireClick
+            )
+            LabMenuCard(
+                icon = Icons.Filled.Public,
+                title = stringResource(R.string.legendary_menu_title),
+                subtitle = stringResource(R.string.legendary_menu_subtitle),
+                onClick = onLegendaryClick
             )
         }
     }

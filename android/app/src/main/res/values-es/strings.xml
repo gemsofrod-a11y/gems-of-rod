@@ -198,6 +198,8 @@
     <string name="achievements_title">Logros</string>
     <string name="achievements_progress_summary">%1$d / %2$d logros desbloqueados</string>
     <string name="achievement_progress_format">%1$d / %2$d</string>
+    <string name="achievement_secret_title">\?\?\?</string>
+    <string name="achievement_secret_desc">Un secreto le espera en algún lugar de la aplicación…</string>
     <string name="achievement_unlocked_snackbar">%1$s ¡%2$s desbloqueado!</string>
     <string name="achievement_first_gem_title">Primer paso</string>
     <string name="achievement_first_gem_desc">Consulte la ficha de una gema por primera vez.</string>
@@ -223,6 +225,8 @@
     <string name="achievement_quiz_regular_desc">Complete 10 partidas del quiz de gemología.</string>
     <string name="achievement_perfect_score_title">Sin fallos</string>
     <string name="achievement_perfect_score_desc">Obtenga una puntuación perfecta en el quiz de gemología.</string>
+    <string name="achievement_legendary_title">Legendario</string>
+    <string name="achievement_legendary_desc">Resuelva el enigma legendario oculto en el laboratorio.</string>
 
     <!-- Quiz -->
     <string name="quiz_title">Quiz de gemología</string>
@@ -287,4 +291,23 @@
     <string name="notebook_delete_confirm_button">Eliminar</string>
     <string name="notebook_cancel_button">Cancelar</string>
     <string name="notebook_compare_button">Comparar con el catálogo</string>
+    <string name="legendary_menu_title">Enigma legendario</string>
+    <string name="legendary_menu_subtitle">Un misterio espera a los más curiosos…</string>
+
+    <!-- Enigma legendario -->
+    <string name="legendary_riddle_title">Enigma legendario</string>
+    <string name="legendary_riddle_intro">Una gema del catálogo se esconde tras estas pistas. Descúbrala y señale su país de origen en el mapa.</string>
+    <string name="legendary_clue_label">Pista %1$d</string>
+    <string name="legendary_clue_1">En 1951, un gemólogo británico descubrió un mineral desconocido, sin saber que acababa de hallar lo que sería, durante casi cincuenta años, el mineral gema más raro del mundo.</string>
+    <string name="legendary_clue_2">Un único yacimiento en el mundo lo ha producido jamás. Las piedras talladas rara vez superan los dos quilates.</string>
+    <string name="legendary_clue_3">Su color va del rojo pardo al anaranjado, y su dureza rivaliza con la del corindón: suficiente para engañar a más de un coleccionista.</string>
+    <string name="legendary_clue_4">Encuentre en el mapa el país que alberga este yacimiento único, y demuestre que ha descifrado el secreto.</string>
+    <string name="legendary_next_clue_button">Siguiente pista</string>
+    <string name="legendary_open_map_button">Abrir el mapa</string>
+    <string name="legendary_map_title">El mapa del secreto</string>
+    <string name="legendary_map_instruction">Toque el país que alberga este yacimiento único.</string>
+    <string name="legendary_wrong_country">Ese no es el país correcto. Inténtelo de nuevo.</string>
+    <string name="legendary_success_title">¡El secreto está resuelto!</string>
+    <string name="legendary_success_body">Ha encontrado Birmania (Myanmar), el único yacimiento conocido de painita en el mundo: la piedra considerada durante mucho tiempo el mineral gema más raro del planeta.</string>
+    <string name="legendary_success_view_gem_button">Ver la ficha de la Painita</string>
 </resources>
