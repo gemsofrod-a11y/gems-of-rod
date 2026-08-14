@@ -1414,24 +1414,7 @@
       "type": "FACETTEE"
     }
   ],
-  "opale-commune": [
-    {
-      "artist": "James St. John",
-      "license": "CC BY 2.0",
-      "resource_name": "gem_opale_commune_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Flint_Ridge_Knap-In_speed_competition_(Flint_Ridge,_Ohio,_USA).jpg",
-      "title": "File:Flint Ridge Knap-In speed competition (Flint Ridge, Ohio, USA).jpg",
-      "type": "BRUTE"
-    },
-    {
-      "artist": "James St. John",
-      "license": "by 2.0",
-      "resource_name": "gem_opale_commune_facette",
-      "source_url": "https://www.flickr.com/photos/47445767@N05/52312972190",
-      "title": "Fire opal (Mexico) 6",
-      "type": "FACETTEE"
-    }
-  ],
+  "opale-commune": [],
   "opale-de-feu": [
     {
       "artist": "James St. John",
