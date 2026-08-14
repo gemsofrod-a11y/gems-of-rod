@@ -198,7 +198,7 @@
     <string name="achievements_title">Successi</string>
     <string name="achievements_progress_summary">%1$d / %2$d successi sbloccati</string>
     <string name="achievement_progress_format">%1$d / %2$d</string>
-    <string name="achievement_secret_title">???</string>
+    <string name="achievement_secret_title">\?\?\?</string>
     <string name="achievement_secret_desc">Un segreto ti aspetta da qualche parte nell\'app…</string>
     <string name="achievement_unlocked_snackbar">%1$s %2$s sbloccato!</string>
     <string name="achievement_first_gem_title">Primo passo</string>
