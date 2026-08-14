@@ -199,6 +199,8 @@
     <string name="achievements_progress_summary">%1$d / %2$d succès débloqués</string>
     <string name="achievement_progress_format">%1$d / %2$d</string>
     <string name="achievement_unlocked_snackbar">%1$s %2$s débloqué !</string>
+    <string name="achievement_secret_title">???</string>
+    <string name="achievement_secret_desc">Un secret vous attend quelque part dans l\'application…</string>
     <string name="achievement_first_gem_title">Premier pas</string>
     <string name="achievement_first_gem_desc">Consultez la fiche d\'une gemme pour la première fois.</string>
     <string name="achievement_curious_title">Curieux</string>
@@ -223,6 +225,8 @@
     <string name="achievement_quiz_regular_desc">Terminez 10 parties du quiz gemmologique.</string>
     <string name="achievement_perfect_score_title">Sans faute</string>
     <string name="achievement_perfect_score_desc">Obtenez un score parfait au quiz gemmologique.</string>
+    <string name="achievement_legendary_title">Légendaire</string>
+    <string name="achievement_legendary_desc">Percez le secret de l\'énigme légendaire cachée dans le laboratoire.</string>
 
     <!-- Quiz -->
     <string name="quiz_title">Quiz gemmologique</string>
@@ -287,4 +291,23 @@
     <string name="notebook_delete_confirm_button">Supprimer</string>
     <string name="notebook_cancel_button">Annuler</string>
     <string name="notebook_compare_button">Comparer au catalogue</string>
+    <string name="legendary_menu_title">Énigme légendaire</string>
+    <string name="legendary_menu_subtitle">Un mystère attend les plus curieux…</string>
+
+    <!-- Énigme légendaire -->
+    <string name="legendary_riddle_title">Énigme légendaire</string>
+    <string name="legendary_riddle_intro">Une gemme du catalogue se cache derrière ces indices. Découvrez-la, puis désignez son pays d\'origine sur la carte.</string>
+    <string name="legendary_clue_label">Indice %1$d</string>
+    <string name="legendary_clue_1">En 1951, un gemmologue britannique mit au jour un minéral inconnu — sans se douter qu\'il venait de découvrir ce qui allait rester, pendant près de cinquante ans, la pierre gemme la plus rare du monde.</string>
+    <string name="legendary_clue_2">Un seul et unique gisement au monde en a jamais livré des cristaux. Les pierres taillées dépassent rarement les deux carats.</string>
+    <string name="legendary_clue_3">Sa teinte va du rouge-brun à l\'orangé, et sa dureté rivalise avec celle du corindon — de quoi tromper plus d\'un collectionneur.</string>
+    <string name="legendary_clue_4">Retrouvez sur la carte le pays qui abrite cet unique gisement, et prouvez que vous avez percé le secret.</string>
+    <string name="legendary_next_clue_button">Indice suivant</string>
+    <string name="legendary_open_map_button">Ouvrir la carte</string>
+    <string name="legendary_map_title">La carte du secret</string>
+    <string name="legendary_map_instruction">Touchez le pays qui abrite cet unique gisement.</string>
+    <string name="legendary_wrong_country">Ce n\'est pas le bon pays. Réessayez.</string>
+    <string name="legendary_success_title">Le secret est percé !</string>
+    <string name="legendary_success_body">Vous avez retrouvé la Birmanie, seul gisement connu de painite au monde — la pierre longtemps considérée comme le minéral gemme le plus rare de la planète.</string>
+    <string name="legendary_success_view_gem_button">Voir la fiche de la Painite</string>
 </resources>

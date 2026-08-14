@@ -40,6 +40,8 @@ import fr.gemsofrod.encyclopedie.ui.screens.LabNotebookDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LabNotebookFormScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LabNotebookScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LanguageScreen
+import fr.gemsofrod.encyclopedie.ui.screens.LegendaryMapScreen
+import fr.gemsofrod.encyclopedie.ui.screens.LegendaryRiddleScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieGemsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieInfoScreen
@@ -87,6 +89,8 @@ private object Routes {
     const val LAB_NOTEBOOK_NEW = "lab_notebook_new"
     const val LAB_NOTEBOOK_EDIT = "lab_notebook_edit/{sampleId}"
     const val LAB_NOTEBOOK_DETAIL = "lab_notebook_detail/{sampleId}"
+    const val LEGENDARY_RIDDLE = "legendary_riddle"
+    const val LEGENDARY_MAP = "legendary_map"
 
     fun gemsList(colorName: String) = "gems/$colorName"
     fun labNotebookEdit(sampleId: String) = "lab_notebook_edit/$sampleId"
@@ -165,6 +169,19 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onNotebookClick = { navController.navigate(Routes.LAB_NOTEBOOK) },
                 onInstrumentsClick = { navController.navigate(Routes.INSTRUMENTS) },
                 onGlossaireClick = { navController.navigate(Routes.GLOSSAIRE) },
+                onLegendaryClick = { navController.navigate(Routes.LEGENDARY_RIDDLE) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.LEGENDARY_RIDDLE) {
+            LegendaryRiddleScreen(
+                onOpenMapClick = { navController.navigate(Routes.LEGENDARY_MAP) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.LEGENDARY_MAP) {
+            LegendaryMapScreen(
+                onGemClick = { gemId -> navController.navigate(Routes.gemDetail(gemId)) },
                 onBackClick = { navController.popBackStack() }
             )
         }

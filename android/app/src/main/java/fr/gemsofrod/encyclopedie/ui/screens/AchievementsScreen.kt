@@ -90,6 +90,7 @@ fun AchievementsScreen(onBackClick: () -> Unit) {
 @Composable
 private fun BadgeCard(badge: Badge, stats: AchievementStats) {
     val unlocked = badge.isUnlocked(stats)
+    val isMasked = badge.secret && !unlocked
     val progress = badge.progress(stats).coerceAtMost(badge.threshold)
     val containerColor = if (unlocked) {
         MaterialTheme.colorScheme.tertiaryContainer
@@ -115,23 +116,27 @@ private fun BadgeCard(badge: Badge, stats: AchievementStats) {
             horizontalArrangement = Arrangement.spacedBy(14.dp)
         ) {
             Text(
-                text = badge.emoji,
+                text = if (isMasked) "❔" else badge.emoji,
                 fontSize = 32.sp,
                 modifier = Modifier.alpha(if (unlocked) 1f else 0.35f)
             )
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = localizedBadgeTitle(badge),
+                    text = if (isMasked) stringResource(R.string.achievement_secret_title) else localizedBadgeTitle(badge),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = contentColor
                 )
                 Text(
-                    text = localizedBadgeDescription(badge),
+                    text = if (isMasked) {
+                        stringResource(R.string.achievement_secret_desc)
+                    } else {
+                        localizedBadgeDescription(badge)
+                    },
                     style = MaterialTheme.typography.bodySmall,
                     color = if (unlocked) contentColor else MaterialTheme.colorScheme.onSurfaceVariant
                 )
-                if (!unlocked) {
+                if (!unlocked && !badge.secret) {
                     Text(
                         text = stringResource(R.string.achievement_progress_format, progress, badge.threshold),
                         style = MaterialTheme.typography.labelSmall,

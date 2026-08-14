@@ -12,6 +12,7 @@ private const val PREFS_NAME = "gems_of_rod_achievements"
 private const val KEY_VIEWED_GEM_IDS = "viewed_gem_ids"
 private const val KEY_QUIZZES_COMPLETED = "quizzes_completed"
 private const val KEY_PERFECT_QUIZ_SCORE = "perfect_quiz_score"
+private const val KEY_LEGENDARY_RIDDLE_SOLVED = "legendary_riddle_solved"
 
 /**
  * Statistiques de progression utilisées pour déterminer quels succès
@@ -23,7 +24,8 @@ data class AchievementStats(
     val colorsCoveredCount: Int,
     val favoritesCount: Int,
     val quizzesCompleted: Int,
-    val hasPerfectQuizScore: Boolean
+    val hasPerfectQuizScore: Boolean,
+    val hasSolvedLegendaryRiddle: Boolean
 )
 
 /**
@@ -37,6 +39,7 @@ object AchievementsRepository {
     private val viewedGemIds = mutableStateListOf<String>()
     private var quizzesCompleted by mutableIntStateOf(0)
     private var hasPerfectQuizScore by mutableStateOf(false)
+    private var hasSolvedLegendaryRiddle by mutableStateOf(false)
 
     /** Succès venant d'être débloqués, en attente d'affichage (notification). */
     private val pendingUnlocks = mutableStateListOf<String>()
@@ -48,6 +51,7 @@ object AchievementsRepository {
         viewedGemIds.addAll(sharedPrefs.getStringSet(KEY_VIEWED_GEM_IDS, emptySet()).orEmpty())
         quizzesCompleted = sharedPrefs.getInt(KEY_QUIZZES_COMPLETED, 0)
         hasPerfectQuizScore = sharedPrefs.getBoolean(KEY_PERFECT_QUIZ_SCORE, false)
+        hasSolvedLegendaryRiddle = sharedPrefs.getBoolean(KEY_LEGENDARY_RIDDLE_SOLVED, false)
     }
 
     fun recordGemViewed(gemId: String) {
@@ -69,6 +73,14 @@ object AchievementsRepository {
         checkNewlyUnlocked(before, stats())
     }
 
+    fun recordLegendaryRiddleSolved() {
+        if (hasSolvedLegendaryRiddle) return
+        val before = stats()
+        hasSolvedLegendaryRiddle = true
+        prefs?.edit()?.putBoolean(KEY_LEGENDARY_RIDDLE_SOLVED, true)?.apply()
+        checkNewlyUnlocked(before, stats())
+    }
+
     fun stats(): AchievementStats {
         val colorsCovered = viewedGemIds.mapNotNull { GemsRepository.byId(it)?.couleur }.distinct().size
         return AchievementStats(
@@ -76,7 +88,8 @@ object AchievementsRepository {
             colorsCoveredCount = colorsCovered,
             favoritesCount = FavoritesRepository.favoriteIds().size,
             quizzesCompleted = quizzesCompleted,
-            hasPerfectQuizScore = hasPerfectQuizScore
+            hasPerfectQuizScore = hasPerfectQuizScore,
+            hasSolvedLegendaryRiddle = hasSolvedLegendaryRiddle
         )
     }
 

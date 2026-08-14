@@ -198,6 +198,8 @@
     <string name="achievements_title">Erfolge</string>
     <string name="achievements_progress_summary">%1$d / %2$d Erfolge freigeschaltet</string>
     <string name="achievement_progress_format">%1$d / %2$d</string>
+    <string name="achievement_secret_title">???</string>
+    <string name="achievement_secret_desc">Irgendwo in der App wartet ein Geheimnis…</string>
     <string name="achievement_unlocked_snackbar">%1$s %2$s freigeschaltet!</string>
     <string name="achievement_first_gem_title">Erster Schritt</string>
     <string name="achievement_first_gem_desc">Sehen Sie sich zum ersten Mal ein Edelstein-Profil an.</string>
@@ -223,6 +225,8 @@
     <string name="achievement_quiz_regular_desc">Schließen Sie 10 Runden des Gemmologie-Quiz ab.</string>
     <string name="achievement_perfect_score_title">Fehlerfrei</string>
     <string name="achievement_perfect_score_desc">Erzielen Sie eine perfekte Punktzahl im Gemmologie-Quiz.</string>
+    <string name="achievement_legendary_title">Legendär</string>
+    <string name="achievement_legendary_desc">Lösen Sie das legendäre Rätsel, das im Labor versteckt ist.</string>
 
     <!-- Quiz -->
     <string name="quiz_title">Gemmologie-Quiz</string>
@@ -287,4 +291,23 @@
     <string name="notebook_delete_confirm_button">Löschen</string>
     <string name="notebook_cancel_button">Abbrechen</string>
     <string name="notebook_compare_button">Mit Katalog vergleichen</string>
+    <string name="legendary_menu_title">Legendäres Rätsel</string>
+    <string name="legendary_menu_subtitle">Ein Geheimnis wartet auf die Neugierigsten…</string>
+
+    <!-- Legendäres Rätsel -->
+    <string name="legendary_riddle_title">Legendäres Rätsel</string>
+    <string name="legendary_riddle_intro">Ein Edelstein aus dem Katalog verbirgt sich hinter diesen Hinweisen. Finden Sie ihn und bestimmen Sie dann sein Herkunftsland auf der Karte.</string>
+    <string name="legendary_clue_label">Hinweis %1$d</string>
+    <string name="legendary_clue_1">1951 entdeckte ein britischer Gemmologe ein unbekanntes Mineral – ohne zu ahnen, dass er soeben das für fast fünfzig Jahre seltenste Schmucksteinmineral der Welt gefunden hatte.</string>
+    <string name="legendary_clue_2">Nur eine einzige Fundstätte auf der Welt hat es je hervorgebracht. Geschliffene Steine überschreiten selten zwei Karat.</string>
+    <string name="legendary_clue_3">Seine Farbe reicht von rotbraun bis orange, und seine Härte steht der von Korund in nichts nach – genug, um so manchen Sammler zu täuschen.</string>
+    <string name="legendary_clue_4">Finden Sie auf der Karte das Land, das diese einzigartige Fundstätte beherbergt, und beweisen Sie, dass Sie das Geheimnis gelüftet haben.</string>
+    <string name="legendary_next_clue_button">Nächster Hinweis</string>
+    <string name="legendary_open_map_button">Karte öffnen</string>
+    <string name="legendary_map_title">Die Karte des Geheimnisses</string>
+    <string name="legendary_map_instruction">Tippen Sie auf das Land, das diese einzigartige Fundstätte beherbergt.</string>
+    <string name="legendary_wrong_country">Das ist nicht das richtige Land. Versuchen Sie es erneut.</string>
+    <string name="legendary_success_title">Das Geheimnis ist gelüftet!</string>
+    <string name="legendary_success_body">Sie haben Myanmar gefunden, die einzige bekannte Painit-Fundstätte der Welt – den Stein, der lange als das seltenste Schmucksteinmineral der Welt galt.</string>
+    <string name="legendary_success_view_gem_button">Painit-Eintrag ansehen</string>
 </resources>

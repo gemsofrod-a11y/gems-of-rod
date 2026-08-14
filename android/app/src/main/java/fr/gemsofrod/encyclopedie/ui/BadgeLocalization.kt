@@ -26,6 +26,7 @@ fun localizedBadgeTitle(badge: Badge): String = when (badge.id) {
     "first_quiz" -> stringResource(R.string.achievement_first_quiz_title)
     "quiz_regular" -> stringResource(R.string.achievement_quiz_regular_title)
     "perfect_score" -> stringResource(R.string.achievement_perfect_score_title)
+    "legendary" -> stringResource(R.string.achievement_legendary_title)
     else -> badge.id
 }
 
@@ -43,5 +44,6 @@ fun localizedBadgeDescription(badge: Badge): String = when (badge.id) {
     "first_quiz" -> stringResource(R.string.achievement_first_quiz_desc)
     "quiz_regular" -> stringResource(R.string.achievement_quiz_regular_desc)
     "perfect_score" -> stringResource(R.string.achievement_perfect_score_desc)
+    "legendary" -> stringResource(R.string.achievement_legendary_desc)
     else -> ""
 }

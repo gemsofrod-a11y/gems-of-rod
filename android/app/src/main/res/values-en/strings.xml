@@ -199,6 +199,8 @@
     <string name="achievements_progress_summary">%1$d / %2$d achievements unlocked</string>
     <string name="achievement_progress_format">%1$d / %2$d</string>
     <string name="achievement_unlocked_snackbar">%1$s %2$s unlocked!</string>
+    <string name="achievement_secret_title">???</string>
+    <string name="achievement_secret_desc">A secret awaits somewhere in the app…</string>
     <string name="achievement_first_gem_title">First step</string>
     <string name="achievement_first_gem_desc">View a gem\'s sheet for the first time.</string>
     <string name="achievement_curious_title">Curious</string>
@@ -223,6 +225,8 @@
     <string name="achievement_quiz_regular_desc">Complete 10 rounds of the gemology quiz.</string>
     <string name="achievement_perfect_score_title">Flawless</string>
     <string name="achievement_perfect_score_desc">Get a perfect score in the gemology quiz.</string>
+    <string name="achievement_legendary_title">Legendary</string>
+    <string name="achievement_legendary_desc">Solve the legendary riddle hidden in the lab.</string>
 
     <!-- Quiz -->
     <string name="quiz_title">Gemology quiz</string>
@@ -287,4 +291,23 @@
     <string name="notebook_delete_confirm_button">Delete</string>
     <string name="notebook_cancel_button">Cancel</string>
     <string name="notebook_compare_button">Compare to catalog</string>
+    <string name="legendary_menu_title">Legendary riddle</string>
+    <string name="legendary_menu_subtitle">A mystery awaits the curious…</string>
+
+    <!-- Legendary riddle -->
+    <string name="legendary_riddle_title">Legendary riddle</string>
+    <string name="legendary_riddle_intro">A gem from the catalog is hiding behind these clues. Find it, then point out its country of origin on the map.</string>
+    <string name="legendary_clue_label">Clue %1$d</string>
+    <string name="legendary_clue_1">In 1951, a British gemologist uncovered an unknown mineral — unaware he had just discovered what would remain, for nearly fifty years, the rarest gem mineral on Earth.</string>
+    <string name="legendary_clue_2">Only one deposit in the world has ever produced it. Cut stones rarely exceed two carats.</string>
+    <string name="legendary_clue_3">Its color ranges from brownish-red to orange, and its hardness rivals corundum — enough to fool more than one collector.</string>
+    <string name="legendary_clue_4">Find on the map the country that holds this unique deposit, and prove you\'ve cracked the secret.</string>
+    <string name="legendary_next_clue_button">Next clue</string>
+    <string name="legendary_open_map_button">Open the map</string>
+    <string name="legendary_map_title">The map of the secret</string>
+    <string name="legendary_map_instruction">Tap the country that holds this unique deposit.</string>
+    <string name="legendary_wrong_country">That\'s not the right country. Try again.</string>
+    <string name="legendary_success_title">The secret is solved!</string>
+    <string name="legendary_success_body">You found Myanmar, the only known painite deposit in the world — the stone long considered the rarest gem mineral on the planet.</string>
+    <string name="legendary_success_view_gem_button">View the Painite entry</string>
 </resources>
