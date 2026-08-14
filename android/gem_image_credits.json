@@ -567,7 +567,16 @@
       "type": "BRUTE"
     }
   ],
-  "eudialyte": [],
+  "eudialyte": [
+    {
+      "artist": "Gems of Rod",
+      "license": "© Gems of Rod",
+      "resource_name": "gem_eudialyte_brute",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Eudialyte brute — photo Gems of Rod",
+      "type": "BRUTE"
+    }
+  ],
   "fluorine": [
     {
       "artist": "Robert M. Lavinsky",
