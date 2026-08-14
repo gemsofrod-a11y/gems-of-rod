@@ -1293,14 +1293,6 @@
       "type": "FACETTEE"
     },
     {
-      "artist": "H. Raab (User:Vesta)",
-      "license": "CC BY-SA 3.0",
-      "resource_name": "gem_moldavite_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Moldavite_Besednice.jpg",
-      "title": "File:Moldavite Besednice.jpg",
-      "type": "BRUTE"
-    },
-    {
       "artist": "Coraline Minéraux",
       "license": "© Coraline Minéraux",
       "resource_name": "gem_moldavite_brute_coraline",
@@ -1422,7 +1414,24 @@
       "type": "FACETTEE"
     }
   ],
-  "opale-commune": [],
+  "opale-commune": [
+    {
+      "artist": "James St. John",
+      "license": "CC BY 2.0",
+      "resource_name": "gem_opale_commune_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Flint_Ridge_Knap-In_speed_competition_(Flint_Ridge,_Ohio,_USA).jpg",
+      "title": "File:Flint Ridge Knap-In speed competition (Flint Ridge, Ohio, USA).jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "James St. John",
+      "license": "by 2.0",
+      "resource_name": "gem_opale_commune_facette",
+      "source_url": "https://www.flickr.com/photos/47445767@N05/52312972190",
+      "title": "Fire opal (Mexico) 6",
+      "type": "FACETTEE"
+    }
+  ],
   "opale-de-feu": [
     {
       "artist": "James St. John",
@@ -1477,7 +1486,16 @@
       "type": "FACETTEE"
     }
   ],
-  "opale-peruvienne": [],
+  "opale-peruvienne": [
+    {
+      "artist": "Zawezome",
+      "license": "by 2.0",
+      "resource_name": "gem_opale_peruvienne_brute",
+      "source_url": "https://www.flickr.com/photos/8699239@N04/4134119626",
+      "title": "Peruvian opal wire wrapped ring with brass band",
+      "type": "BRUTE"
+    }
+  ],
   "orthose": [],
   "os-fossilise": [],
   "padparadscha": [

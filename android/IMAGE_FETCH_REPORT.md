@@ -84,7 +84,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | ambre | ♻️ [File:Amber Bernstein many stones.jpg](https://commons.wikimedia.org/wiki/File:Amber_Bernstein_many_stones.jpg) | ⏸️ recherche suspendue |
 | perle | — | ♻️ [File:Various pearls.jpg](https://commons.wikimedia.org/wiki/File:Various_pearls.jpg) |
 | grenat-pyrope | ⏸️ recherche suspendue | ♻️ [File:Pyrope.jpg](https://commons.wikimedia.org/wiki/File:Pyrope.jpg) |
-| eudialyte | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| eudialyte | ♻️ [Eudialyte brute — photo Gems of Rod](https://gems-of-rod.fr) | ⏸️ recherche suspendue |
 | crocoite | ♻️ [File:Dundasite and Crocoite.jpg](https://commons.wikimedia.org/wiki/File:Dundasite_and_Crocoite.jpg) | ⏸️ recherche suspendue |
 | grenat-malaya | ⏸️ recherche suspendue | ♻️ [Malaya-garnet-Lizunova-Fine-Jewels-Sydney-jeweller-Chifley-Square](https://commons.wikimedia.org/w/index.php?curid=93251282) |
 | zircon-hyacinthe | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
@@ -134,7 +134,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | quartz-rose | ♻️ [File:Raw rose quartz.jpg](https://commons.wikimedia.org/wiki/File:Raw_rose_quartz.jpg) | ♻️ [File:Rose quartz-1.JPG](https://commons.wikimedia.org/wiki/File:Rose_quartz-1.JPG) |
 | phosphosiderite | ♻️ [Phosphosiderite-141096](https://commons.wikimedia.org/w/index.php?curid=14865728) | ⏸️ recherche suspendue |
 | saphir-blanc | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
-| topaze-blanche | ✅ [Topaz ring](https://www.flickr.com/photos/76523360@N03/15063028108) | ✅ [Topaz with irradiated fragment - Smithsonian Museum of Natural History - 2012-05-17](https://www.flickr.com/photos/23165290@N00/7283942412) |
+| topaze-blanche | ♻️ [Topaz ring](https://www.flickr.com/photos/76523360@N03/15063028108) | ♻️ [Topaz with irradiated fragment - Smithsonian Museum of Natural History - 2012-05-17](https://www.flickr.com/photos/23165290@N00/7283942412) |
 | hambergite | ♻️ [File:Hambergite (GeoDIL number - 230).jpg](https://commons.wikimedia.org/wiki/File:Hambergite_(GeoDIL_number_-_230).jpg) | ⏸️ recherche suspendue |
 | petalite | ♻️ [File:Petalite.jpg](https://commons.wikimedia.org/wiki/File:Petalite.jpg) | ⏸️ recherche suspendue |
 | phenakite | ♻️ [File:Phenakite (GeoDIL number - 262).jpg](https://commons.wikimedia.org/wiki/File:Phenakite_(GeoDIL_number_-_262).jpg) | ♻️ [File:Shiny Phenakite.jpg](https://commons.wikimedia.org/wiki/File:Shiny_Phenakite.jpg) |
@@ -166,7 +166,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | quartz-rutile | ♻️ [File:Rutilated Quartz Specimen from Madagascar, including Copper Rutiles and Schorl, Polished.jpg](https://commons.wikimedia.org/wiki/File:Rutilated_Quartz_Specimen_from_Madagascar,_including_Copper_Rutiles_and_Schorl,_Polished.jpg) | ♻️ [File:3 rutilated quartz.jpg](https://commons.wikimedia.org/wiki/File:3_rutilated_quartz.jpg) |
 | quartz-super-sept | ♻️ [File:Super 7.jpg](https://commons.wikimedia.org/wiki/File:Super_7.jpg) | ❌ non trouvée |
 | smithsonite | ♻️ [File:Smithsonite - Pink Variety.jpg](https://commons.wikimedia.org/wiki/File:Smithsonite_-_Pink_Variety.jpg) | ⏸️ recherche suspendue |
-| moldavite | ♻️ [File:Moldavite Besednice.jpg](https://commons.wikimedia.org/wiki/File:Moldavite_Besednice.jpg) | ♻️ [File:Faceted natural Moldavite - Moldavite gemstones.jpg](https://commons.wikimedia.org/wiki/File:Faceted_natural_Moldavite_-_Moldavite_gemstones.jpg) |
+| moldavite | ♻️ [Moldavite en pendentif — photo Coraline Minéraux](https://gems-of-rod.fr) | ♻️ [File:Faceted natural Moldavite - Moldavite gemstones.jpg](https://commons.wikimedia.org/wiki/File:Faceted_natural_Moldavite_-_Moldavite_gemstones.jpg) |
 | verre-libyque | ♻️ [File:Libyan Desert Glass.jpg](https://commons.wikimedia.org/wiki/File:Libyan_Desert_Glass.jpg) | ⏸️ recherche suspendue |
 | saphir-vert | ⏸️ recherche suspendue | ♻️ [File:3.54ct-oval-Australian-sapphire-Lizunova-Fine-Jewels-Jeweller-Sydney-NSW-Australia.jpg](https://commons.wikimedia.org/wiki/File:3.54ct-oval-Australian-sapphire-Lizunova-Fine-Jewels-Jeweller-Sydney-NSW-Australia.jpg) |
 | andesine | ⏸️ recherche suspendue | ❌ non trouvée |
@@ -190,14 +190,14 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | howlite | ♻️ [File:Howlite-Crystal-Ball-02.png](https://commons.wikimedia.org/wiki/File:Howlite-Crystal-Ball-02.png) | ♻️ [File:Howlite - tumble polished stone.jpg](https://commons.wikimedia.org/wiki/File:Howlite_-_tumble_polished_stone.jpg) |
 | rhodizite | ♻️ [File:Rhodizite 4.JPG](https://commons.wikimedia.org/wiki/File:Rhodizite_4.JPG) | ♻️ [File:Rhodizite 1.JPG](https://commons.wikimedia.org/wiki/File:Rhodizite_1.JPG) |
 | sanidine | ♻️ [File:Rotherkopfite crystals.png](https://commons.wikimedia.org/wiki/File:Rotherkopfite_crystals.png) | ♻️ [File:Forsterite on Sanidine - Ochtendung, Eifel, Germany.jpg](https://commons.wikimedia.org/w/index.php?curid=9819497) |
-| tremolite | ♻️ [File:Tremolite (GeoDIL number - 1701).jpg](https://commons.wikimedia.org/wiki/File:Tremolite_(GeoDIL_number_-_1701).jpg) | ✅ [Tremolite schist (Upper Marble, Grenville Series, Mesoproterozoic, 1.15-1.30 Ga; Balmat, Adirondack Lowlands, New York State, USA)](https://www.flickr.com/photos/47445767@N05/16921690192) |
+| tremolite | ♻️ [File:Tremolite (GeoDIL number - 1701).jpg](https://commons.wikimedia.org/wiki/File:Tremolite_(GeoDIL_number_-_1701).jpg) | ♻️ [Tremolite schist (Upper Marble, Grenville Series, Mesoproterozoic, 1.15-1.30 Ga; Balmat, Adirondack Lowlands, New York State, USA)](https://www.flickr.com/photos/47445767@N05/16921690192) |
 | oeil-de-taureau | ❌ non trouvée | ❌ non trouvée |
 | unakite | ❌ échec téléchargement | ❌ échec téléchargement |
 | oeil-de-sainte-lucie | — | ♻️ [File:Turbo petholatus Linnaeus, 1758 operculum - Wikimedia Commons (1).jpg](https://commons.wikimedia.org/wiki/File:Turbo_petholatus_Linnaeus,_1758_operculum_-_Wikimedia_Commons_(1).jpg) |
 | jais | ♻️ [File:Gagat-Holzmaden.JPG](https://commons.wikimedia.org/wiki/File:Gagat-Holzmaden.JPG) | ♻️ [File:Jet Jewellery.jpg](https://commons.wikimedia.org/wiki/File:Jet_Jewellery.jpg) |
 | grenat-etoile | ♻️ [File:Star of idaho.JPG](https://commons.wikimedia.org/wiki/File:Star_of_idaho.JPG) | ♻️ [File:Idahostargarnet.jpg](https://commons.wikimedia.org/wiki/File:Idahostargarnet.jpg) |
-| opale-peruvienne | ❌ échec téléchargement | ❌ échec téléchargement |
-| opale-commune | ♻️ [File:Flint Ridge Knap-In speed competition (Flint Ridge, Ohio, USA).jpg](https://commons.wikimedia.org/wiki/File:Flint_Ridge_Knap-In_speed_competition_(Flint_Ridge,_Ohio,_USA).jpg) | ❌ échec téléchargement |
+| opale-peruvienne | ✅ [Peruvian opal wire wrapped ring with brass band](https://www.flickr.com/photos/8699239@N04/4134119626) | ❌ échec téléchargement |
+| opale-commune | ✅ [File:Flint Ridge Knap-In speed competition (Flint Ridge, Ohio, USA).jpg](https://commons.wikimedia.org/wiki/File:Flint_Ridge_Knap-In_speed_competition_(Flint_Ridge,_Ohio,_USA).jpg) | ✅ [Fire opal (Mexico) 6](https://www.flickr.com/photos/47445767@N05/52312972190) |
 | opale-noire | ♻️ [File:8ct Lightning Ridge Black Opal.JPG](https://commons.wikimedia.org/wiki/File:8ct_Lightning_Ridge_Black_Opal.JPG) | ♻️ [File:16.42cts Lightning Ridge black Opal.JPG](https://commons.wikimedia.org/wiki/File:16.42cts_Lightning_Ridge_black_Opal.JPG) |
 | opale-boulder | ♻️ [File:Veined boulder opal from Queensland.jpg](https://commons.wikimedia.org/wiki/File:Veined_boulder_opal_from_Queensland.jpg) | ♻️ [File:Boulder Opal.jpg](https://commons.wikimedia.org/wiki/File:Boulder_Opal.jpg) |
 | opale-ethiopie | ♻️ [File:Wire wrapped Ethiopian Opal & Sapphire.jpg](https://commons.wikimedia.org/wiki/File:Wire_wrapped_Ethiopian_Opal_&_Sapphire.jpg) | ♻️ [File:Ethiopian Welo Wello Opal Pendant.jpg](https://commons.wikimedia.org/wiki/File:Ethiopian_Welo_Wello_Opal_Pendant.jpg) |
@@ -224,7 +224,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | meteorite-alh-84001 | ♻️ [File:ALH 84001.jpg](https://commons.wikimedia.org/wiki/File:ALH_84001.jpg) | — |
 | meteorite-lunaire-nwa | ♻️ [File:Lunar meteorite NWA 10665, Feldspathic breccia-8937.jpg](https://commons.wikimedia.org/wiki/File:Lunar_meteorite_NWA_10665,_Feldspathic_breccia-8937.jpg) | — |
 
-**245 / 424** photos récupérées au total.
+**248 / 424** photos récupérées au total.
 
 ## Photos d'inclusions
 
