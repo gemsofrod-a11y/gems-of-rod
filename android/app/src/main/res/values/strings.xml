@@ -84,7 +84,8 @@
     <string name="gem_photo_cut">Pierre taillée</string>
     <string name="gem_photo_cut_or_cabochon">Pierre taillée / cabochon</string>
     <string name="gem_photo_inclusion">Inclusion typique</string>
-    <string name="photo_credit">Photo : %1$s — %2$s (Wikimedia Commons)</string>
+    <string name="photo_credit">Photo : %1$s — %2$s</string>
+    <string name="photo_credit_wikimedia">Photo : %1$s — %2$s (Wikimedia Commons)</string>
 
     <!-- Calculateur de valeur -->
     <string name="price_calc_title">Estimer la valeur de votre pierre</string>
