@@ -1299,6 +1299,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Moldavite_Besednice.jpg",
       "title": "File:Moldavite Besednice.jpg",
       "type": "BRUTE"
+    },
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_moldavite_brute_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Moldavite en pendentif — photo Coraline Minéraux",
+      "type": "BRUTE"
     }
   ],
   "montebrasite": [
@@ -1414,16 +1422,7 @@
       "type": "FACETTEE"
     }
   ],
-  "opale-commune": [
-    {
-      "artist": "James St. John",
-      "license": "CC BY 2.0",
-      "resource_name": "gem_opale_commune_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Flint_Ridge_Knap-In_speed_competition_(Flint_Ridge,_Ohio,_USA).jpg",
-      "title": "File:Flint Ridge Knap-In speed competition (Flint Ridge, Ohio, USA).jpg",
-      "type": "BRUTE"
-    }
-  ],
+  "opale-commune": [],
   "opale-de-feu": [
     {
       "artist": "James St. John",
