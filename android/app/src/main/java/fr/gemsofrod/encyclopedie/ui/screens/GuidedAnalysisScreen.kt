@@ -29,8 +29,6 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -40,10 +38,10 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.AnalysisCriteria
-import fr.gemsofrod.encyclopedie.data.AnalysisMatch
 import fr.gemsofrod.encyclopedie.data.AnalysisVocabulary
 import fr.gemsofrod.encyclopedie.data.GemAnalyzer
 import fr.gemsofrod.encyclopedie.data.GemColorCategory
+import fr.gemsofrod.encyclopedie.data.GuidedAnalysisState
 import fr.gemsofrod.encyclopedie.ui.components.AnalysisResultRow
 import fr.gemsofrod.encyclopedie.ui.components.DropdownField
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
@@ -62,19 +60,19 @@ private const val TOTAL_STEPS = 11
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GuidedAnalysisScreen(onGemClick: (String) -> Unit, onBackClick: () -> Unit) {
-    var stepIndex by remember { mutableIntStateOf(0) }
-    var couleur by remember { mutableStateOf<GemColorCategory?>(null) }
-    var transparence by remember { mutableStateOf<String?>(null) }
-    var eclat by remember { mutableStateOf<String?>(null) }
-    var clivage by remember { mutableStateOf<String?>(null) }
-    var typeInclusion by remember { mutableStateOf<String?>(null) }
-    var dureteInput by remember { mutableStateOf("") }
-    var densiteInput by remember { mutableStateOf("") }
-    var pleochroisme by remember { mutableStateOf<String?>(null) }
-    var indiceRefractionInput by remember { mutableStateOf("") }
-    var systemeCristallin by remember { mutableStateOf<String?>(null) }
-    var fluorescence by remember { mutableStateOf<String?>(null) }
-    var results by remember { mutableStateOf<List<AnalysisMatch>?>(null) }
+    var stepIndex by GuidedAnalysisState.stepIndex
+    var couleur by GuidedAnalysisState.couleur
+    var transparence by GuidedAnalysisState.transparence
+    var eclat by GuidedAnalysisState.eclat
+    var clivage by GuidedAnalysisState.clivage
+    var typeInclusion by GuidedAnalysisState.typeInclusion
+    var dureteInput by GuidedAnalysisState.dureteInput
+    var densiteInput by GuidedAnalysisState.densiteInput
+    var pleochroisme by GuidedAnalysisState.pleochroisme
+    var indiceRefractionInput by GuidedAnalysisState.indiceRefractionInput
+    var systemeCristallin by GuidedAnalysisState.systemeCristallin
+    var fluorescence by GuidedAnalysisState.fluorescence
+    var results by GuidedAnalysisState.results
 
     val systemesCristallins = remember { GemAnalyzer.systemesCristallins() }
 

@@ -30,7 +30,6 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -41,10 +40,10 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.AnalysisCriteria
-import fr.gemsofrod.encyclopedie.data.AnalysisMatch
 import fr.gemsofrod.encyclopedie.data.AnalysisVocabulary
 import fr.gemsofrod.encyclopedie.data.GemAnalyzer
 import fr.gemsofrod.encyclopedie.data.GemColorCategory
+import fr.gemsofrod.encyclopedie.data.QuickAnalysisState
 import fr.gemsofrod.encyclopedie.ui.components.AnalysisResultRow
 import fr.gemsofrod.encyclopedie.ui.components.DropdownField
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
@@ -66,18 +65,18 @@ fun AnalyseScreen(
     onGlossaireClick: () -> Unit,
     onBackClick: () -> Unit
 ) {
-    var couleur by remember { mutableStateOf<GemColorCategory?>(null) }
-    var transparence by remember { mutableStateOf<String?>(null) }
-    var eclat by remember { mutableStateOf<String?>(null) }
-    var clivage by remember { mutableStateOf<String?>(null) }
-    var systemeCristallin by remember { mutableStateOf<String?>(null) }
-    var dureteInput by remember { mutableStateOf("") }
-    var densiteInput by remember { mutableStateOf("") }
-    var indiceRefractionInput by remember { mutableStateOf("") }
-    var pleochroisme by remember { mutableStateOf<String?>(null) }
-    var fluorescence by remember { mutableStateOf<String?>(null) }
-    var typeInclusion by remember { mutableStateOf<String?>(null) }
-    var results by remember { mutableStateOf<List<AnalysisMatch>?>(null) }
+    var couleur by QuickAnalysisState.couleur
+    var transparence by QuickAnalysisState.transparence
+    var eclat by QuickAnalysisState.eclat
+    var clivage by QuickAnalysisState.clivage
+    var systemeCristallin by QuickAnalysisState.systemeCristallin
+    var dureteInput by QuickAnalysisState.dureteInput
+    var densiteInput by QuickAnalysisState.densiteInput
+    var indiceRefractionInput by QuickAnalysisState.indiceRefractionInput
+    var pleochroisme by QuickAnalysisState.pleochroisme
+    var fluorescence by QuickAnalysisState.fluorescence
+    var typeInclusion by QuickAnalysisState.typeInclusion
+    var results by QuickAnalysisState.results
 
     val systemesCristallins = remember { GemAnalyzer.systemesCristallins() }
 
