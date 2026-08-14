@@ -595,6 +595,8 @@ EXCLUDED_TITLE_TOKENS = [
 # collages ambigus ou des espèces voisines) ; on ne retente plus tant que
 # cette liste n'est pas éditée à la main après vérification visuelle.
 GIVE_UP_SLOTS = {
+    ("opale-commune", BRUTE),
+    ("opale-commune", FACETTEE),
     ("emeraude", FACETTEE),
     ("lapis-lazuli", FACETTEE),
     ("tsavorite", FACETTEE),
