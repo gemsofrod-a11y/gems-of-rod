@@ -84,7 +84,8 @@
     <string name="gem_photo_cut">Piedra tallada</string>
     <string name="gem_photo_cut_or_cabochon">Piedra tallada / cabujón</string>
     <string name="gem_photo_inclusion">Inclusión típica</string>
-    <string name="photo_credit">Foto: %1$s — %2$s (Wikimedia Commons)</string>
+    <string name="photo_credit">Foto: %1$s — %2$s</string>
+    <string name="photo_credit_wikimedia">Foto: %1$s — %2$s (Wikimedia Commons)</string>
 
     <!-- Calculadora de valor -->
     <string name="price_calc_title">Estimar el valor de tu piedra</string>

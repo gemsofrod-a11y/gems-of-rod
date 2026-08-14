@@ -442,7 +442,15 @@ private fun GemImageCard(credit: GemImageCredit) {
             modifier = Modifier.padding(top = 6.dp)
         )
         Text(
-            text = stringResource(R.string.photo_credit, credit.author, credit.license),
+            text = stringResource(
+                if (credit.sourceUrl.contains("wikimedia.org", ignoreCase = true)) {
+                    R.string.photo_credit_wikimedia
+                } else {
+                    R.string.photo_credit
+                },
+                credit.author,
+                credit.license
+            ),
             style = MaterialTheme.typography.bodyMedium,
             fontStyle = FontStyle.Italic,
             color = MaterialTheme.colorScheme.onSurfaceVariant

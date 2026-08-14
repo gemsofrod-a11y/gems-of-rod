@@ -84,7 +84,8 @@
     <string name="gem_photo_cut">Geschliffener Stein</string>
     <string name="gem_photo_cut_or_cabochon">Geschliffener Stein / Cabochon</string>
     <string name="gem_photo_inclusion">Typischer Einschluss</string>
-    <string name="photo_credit">Foto: %1$s — %2$s (Wikimedia Commons)</string>
+    <string name="photo_credit">Foto: %1$s — %2$s</string>
+    <string name="photo_credit_wikimedia">Foto: %1$s — %2$s (Wikimedia Commons)</string>
 
     <!-- Wertrechner -->
     <string name="price_calc_title">Schätzen Sie den Wert Ihres Steins</string>
