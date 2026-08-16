@@ -130,7 +130,16 @@
     }
   ],
   "andesine": [],
-  "angelite": [],
+  "angelite": [
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_angelite_brute_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Angélite en bracelet — photo Coraline Minéraux",
+      "type": "BRUTE"
+    }
+  ],
   "anhydrite": [
     {
       "artist": "Alcinoe",
@@ -858,6 +867,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Unpolished_jasper.jpg",
       "title": "File:Unpolished jasper.jpg",
       "type": "BRUTE"
+    },
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_jaspe_facette_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Jaspe bréchique poli — photo Coraline Minéraux",
+      "type": "FACETTEE"
     }
   ],
   "jeremejevite": [
