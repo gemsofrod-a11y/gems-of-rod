@@ -158,6 +158,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Apatite_crystal_(GeoDIL_number_-_23).jpg",
       "title": "File:Apatite crystal (GeoDIL number - 23).jpg",
       "type": "BRUTE"
+    },
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_apatite_bleue_facette_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Apatite bleue polie — photo Coraline Minéraux",
+      "type": "FACETTEE"
     }
   ],
   "aragonite": [
@@ -526,7 +534,16 @@
     }
   ],
   "diopside": [],
-  "dioptase": [],
+  "dioptase": [
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_dioptase_brute_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Dioptase brute — photo Coraline Minéraux",
+      "type": "BRUTE"
+    }
+  ],
   "dumortierite": [],
   "emeraude": [
     {
@@ -875,6 +892,14 @@
       "source_url": "https://gems-of-rod.fr",
       "title": "Jaspe bréchique poli — photo Coraline Minéraux",
       "type": "FACETTEE"
+    },
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_jaspe_oeil_oiseau_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Jaspe œil d'oiseau poli — photo Coraline Minéraux",
+      "type": "FACETTEE"
     }
   ],
   "jeremejevite": [
@@ -961,6 +986,16 @@
       "resource_name": "gem_lepidolite_brute",
       "source_url": "https://commons.wikimedia.org/wiki/File:Lepidolite_from_Høydalen,_Norway.jpg",
       "title": "File:Lepidolite from Høydalen, Norway.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "libethenite": [
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_libethenite_brute_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Libéthénite brute — photo Coraline Minéraux",
       "type": "BRUTE"
     }
   ],
@@ -1392,7 +1427,16 @@
       "type": "FACETTEE"
     }
   ],
-  "oeil-de-taureau": [],
+  "oeil-de-taureau": [
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_oeil_de_taureau_facette_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Œil de taureau poli — photo Coraline Minéraux",
+      "type": "FACETTEE"
+    }
+  ],
   "oeil-de-tigre": [
     {
       "artist": "James St. John",
@@ -1834,7 +1878,16 @@
       "type": "FACETTEE"
     }
   ],
-  "rhodonite": [],
+  "rhodonite": [
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_rhodonite_brute_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Rhodonite polie — photo Coraline Minéraux",
+      "type": "BRUTE"
+    }
+  ],
   "rubis": [
     {
       "artist": "Parent Géry",

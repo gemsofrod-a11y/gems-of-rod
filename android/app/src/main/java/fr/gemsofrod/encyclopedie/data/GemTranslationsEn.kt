@@ -271,6 +271,13 @@ object GemTranslationsEn {
             inclusions = "Crystals often associated with dolomite or calcite from the host rock; rarely faceted due to its perfect cleavage.",
             lithotherapie = "Dioptase is associated with deep emotional healing, fostering forgiveness and the soothing of heart wounds."
         ),
+        "libethenite" to GemTranslation(
+            nom = "Libethenite",
+            descriptionCourte = "An olive to dark green hydrated copper phosphate, a rare collector's mineral.",
+            descriptionLongue = "Libethenite forms small prismatic or pyramidal crystals of olive to dark, almost black green, gathered in druse-like aggregates on an oxidized matrix. Discovered in the 19th century at Ľubietová (formerly Libethen) in Slovakia, which gives it its name, it forms in the oxidation zone of copper deposits, often alongside malachite and other copper phosphates. Faceted cutting remains exceptional: it is above all a collector's mineral.",
+            particularites = "A secondary mineral of the weathered zone of copper deposits, often associated with malachite and other copper phosphates; its rarity makes it a piece almost exclusively reserved for mineral collectors.",
+            lithotherapie = "Libethenite is sometimes associated in crystal healing with grounding and regeneration, in keeping with copper minerals reputed to be energizing."
+        ),
         "amazonite" to GemTranslation(
             nom = "Amazonite",
             descriptionCourte = "An opaque blue-green streaked with white, despite its name having no link to the Amazon.",

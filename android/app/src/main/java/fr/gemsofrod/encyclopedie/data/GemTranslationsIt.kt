@@ -271,6 +271,13 @@ object GemTranslationsIt {
             inclusions = "Cristalli spesso associati a dolomite o calcite provenienti dalla roccia madre; raramente sfaccettata per la sua sfaldatura perfetta.",
             lithotherapie = "Il dioptasio è associato alla guarigione emotiva profonda, favorendo il perdono e la pacificazione delle ferite del cuore."
         ),
+        "libethenite" to GemTranslation(
+            nom = "Libetenite",
+            descriptionCourte = "Un fosfato di rame idrato verde oliva-verde scuro, raro minerale da collezione.",
+            descriptionLongue = "La libetenite forma piccoli cristalli prismatici o piramidali di un verde oliva-verde scuro, quasi nero, riuniti in aggregati drusiformi su una ganga ossidata. Scoperta nel XIX secolo a Ľubietová (un tempo Libethen), in Slovacchia, da cui prende il nome, si forma nella zona di ossidazione dei giacimenti di rame, spesso insieme alla malachite e ad altri fosfati di rame. Il taglio sfaccettato resta eccezionale: è soprattutto un minerale da collezione.",
+            particularites = "Minerale secondario della zona di alterazione dei giacimenti di rame, spesso associato alla malachite e ad altri fosfati di rame; la sua rarità ne fa un pezzo quasi esclusivamente riservato ai collezionisti di minerali.",
+            lithotherapie = "La libetenite è talvolta associata in litoterapia al radicamento e alla rigenerazione, in linea con i minerali cupriferi ritenuti energizzanti."
+        ),
         "amazonite" to GemTranslation(
             nom = "Amazzonite",
             descriptionCourte = "Un verde-blu opaco striato di bianco, nonostante il nome non abbia alcun legame con il Rio delle Amazzoni.",

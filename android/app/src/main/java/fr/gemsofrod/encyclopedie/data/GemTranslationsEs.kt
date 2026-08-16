@@ -271,6 +271,13 @@ object GemTranslationsEs {
             inclusions = "Cristales a menudo asociados a dolomita o calcita procedentes de la roca huésped; raramente facetada por su clivaje perfecto.",
             lithotherapie = "La dioptasa se asocia con la sanación emocional profunda, favoreciendo el perdón y el sosiego de las heridas del corazón."
         ),
+        "libethenite" to GemTranslation(
+            nom = "Libetenita",
+            descriptionCourte = "Un fosfato de cobre hidratado verde oliva a verde oscuro, mineral raro de colección.",
+            descriptionLongue = "La libetenita forma pequeños cristales prismáticos o piramidales de un verde oliva a verde oscuro, casi negro, reunidos en agregados drusiformes sobre una ganga oxidada. Descubierta en el siglo XIX en Ľubietová (antes Libethen), en Eslovaquia, que le da su nombre, se forma en la zona de oxidación de los yacimientos cupríferos, a menudo junto a la malaquita y otros fosfatos de cobre. Su talla facetada sigue siendo excepcional: es ante todo un mineral de colección.",
+            particularites = "Mineral secundario de la zona de alteración de los yacimientos de cobre, a menudo asociado a la malaquita y a otros fosfatos de cobre; su rareza la convierte en una pieza casi exclusivamente reservada a los coleccionistas de minerales.",
+            lithotherapie = "La libetenita se asocia a veces en litoterapia con el anclaje y la regeneración, en la línea de los minerales cupríferos considerados estimulantes de la energía."
+        ),
         "amazonite" to GemTranslation(
             nom = "Amazonita",
             descriptionCourte = "Un verde azulado opaco veteado de blanco, pese a su nombre sin relación con el Amazonas.",

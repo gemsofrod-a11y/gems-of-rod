@@ -271,6 +271,13 @@ object GemTranslationsDe {
             inclusions = "Kristalle oft verbunden mit Dolomit oder Calcit aus dem Wirtsgestein; wegen der vollkommenen Spaltbarkeit selten facettiert.",
             lithotherapie = "Dioptas wird mit tiefgreifender emotionaler Heilung assoziiert und soll Vergebung sowie die Linderung von Herzenswunden fördern."
         ),
+        "libethenite" to GemTranslation(
+            nom = "Libethenit",
+            descriptionCourte = "Ein oliv- bis dunkelgrünes wasserhaltiges Kupferphosphat, ein seltener Sammlermineral.",
+            descriptionLongue = "Libethenit bildet kleine prismatische oder pyramidale Kristalle in oliv- bis dunkelgrüner, fast schwarzer Farbe, die zu drusenartigen Aggregaten auf oxidierter Gangart zusammenwachsen. Er wurde im 19. Jahrhundert in Ľubietová (früher Libethen) in der Slowakei entdeckt, wonach er benannt ist, und entsteht in der Oxidationszone von Kupferlagerstätten, oft zusammen mit Malachit und anderen Kupferphosphaten. Ein facettierter Schliff bleibt eine Ausnahme: Er ist vor allem ein Sammlermineral.",
+            particularites = "Sekundäres Mineral der Verwitterungszone von Kupferlagerstätten, oft mit Malachit und anderen Kupferphosphaten vergesellschaftet; seine Seltenheit macht ihn fast ausschließlich zu einem Stück für Mineraliensammler.",
+            lithotherapie = "Libethenit wird in der Kristallheilkunde manchmal mit Erdung und Regeneration in Verbindung gebracht, in der Tradition der als energetisierend geltenden Kupferminerale."
+        ),
         "amazonite" to GemTranslation(
             nom = "Amazonit",
             descriptionCourte = "Ein opakes Blaugrün mit weißen Streifen, trotz seines Namens ohne Bezug zum Amazonas.",

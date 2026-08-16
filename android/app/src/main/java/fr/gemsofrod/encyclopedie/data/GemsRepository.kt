@@ -1153,6 +1153,24 @@ object GemsRepository {
             prixCaratEur = "100 – 1 000 €/ct",
             rarete = GemRarete.RARE
         ),
+        Gem(
+            id = "libethenite",
+            nom = "Libéthénite",
+            nomLatin = "Phosphate de cuivre hydraté",
+            famille = "Libéthénite",
+            couleur = GemColorCategory.VERT,
+            descriptionCourte = "Un phosphate de cuivre vert olive à vert sombre, minéral rare de collection.",
+            descriptionLongue = "La libéthénite forme de petits cristaux prismatiques ou pyramidaux d'un vert olive à vert sombre, parfois presque noir, réunis en agrégats druitiques sur une gangue oxydée. Découverte au XIXᵉ siècle à Ľubietová (autrefois Libethen), en Slovaquie, qui lui donne son nom, elle se forme dans la zone d'oxydation des gisements cuprifères, souvent en compagnie de la malachite et d'autres phosphates de cuivre. Sa taille facettée reste exceptionnelle : c'est avant tout un minéral de collection.",
+            formuleChimique = "Cu₂(PO₄)(OH)",
+            systemeCristallin = "Orthorhombique",
+            durete = "4",
+            indiceRefraction = "1,720 – 1,777",
+            origines = listOf("Slovaquie (Ľubietová, gisement type)", "République démocratique du Congo (Katanga)", "Royaume-Uni (Cornouailles)"),
+            particularites = "Minéral secondaire de la zone d'altération des gisements de cuivre, souvent associé à la malachite et à d'autres phosphates de cuivre ; sa rareté en fait une pièce presque exclusivement réservée aux collectionneurs de minéraux.",
+            lithotherapie = "La libéthénite est parfois associée en lithothérapie à l'ancrage et à la régénération, dans la continuité des minéraux cuprifères réputés stimulants pour l'énergie.",
+            prixCaratEur = "50 – 300 €/ct (matière de collection, très rarement facettée)",
+            rarete = GemRarete.RARE
+        ),
         // ---------- BLEU ----------
         Gem(
             id = "azurite",
