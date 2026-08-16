@@ -1886,6 +1886,30 @@
       "source_url": "https://gems-of-rod.fr",
       "title": "Rhodonite polie — photo Coraline Minéraux",
       "type": "BRUTE"
+    },
+    {
+      "artist": "Céc.C",
+      "license": "© Céc.C",
+      "resource_name": "gem_rhodonite_facette_cecc",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Rhodonite en perles — photo Céc.C",
+      "type": "FACETTEE"
+    },
+    {
+      "artist": "Céc.C",
+      "license": "© Céc.C",
+      "resource_name": "gem_rhodonite_facette2_cecc",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Rhodonite veinée en perles — photo Céc.C",
+      "type": "FACETTEE"
+    },
+    {
+      "artist": "Céc.C",
+      "license": "© Céc.C",
+      "resource_name": "gem_rhodonite_facette3_cecc",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Rhodonite en perles rondes — photo Céc.C",
+      "type": "FACETTEE"
     }
   ],
   "rubis": [
@@ -2135,7 +2159,16 @@
       "type": "BRUTE"
     }
   ],
-  "sodalite": [],
+  "sodalite": [
+    {
+      "artist": "Céc.C",
+      "license": "© Céc.C",
+      "resource_name": "gem_sodalite_facette_cecc",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Sodalite en perles — photo Céc.C",
+      "type": "FACETTEE"
+    }
+  ],
   "sphalerite": [
     {
       "artist": "Eurico Zimbres.    Zimbres",
@@ -2442,7 +2475,16 @@
     }
   ],
   "turquoise": [],
-  "unakite": [],
+  "unakite": [
+    {
+      "artist": "Céc.C",
+      "license": "© Céc.C",
+      "resource_name": "gem_unakite_brute_cecc",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Unakite en perles — photo Céc.C",
+      "type": "BRUTE"
+    }
+  ],
   "uvarovite": [
     {
       "artist": "Robert M. Lavinsky",
