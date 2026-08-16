@@ -1417,7 +1417,16 @@
       "type": "FACETTEE"
     }
   ],
-  "oeil-de-taureau": [],
+  "oeil-de-taureau": [
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_oeil_de_taureau_facette_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Œil de taureau poli — photo Coraline Minéraux",
+      "type": "FACETTEE"
+    }
+  ],
   "oeil-de-tigre": [
     {
       "artist": "James St. John",
