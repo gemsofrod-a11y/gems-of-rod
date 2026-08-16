@@ -171,6 +171,7 @@ object GemImages {
         "sillimanite" to listOf(GemImageCredit(GemImageType.FACETTEE, "gem_sillimanite_facette", "Eurico Zimbres   Zimbres", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Sillimanite_cut.jpg")),
         "sinhalite" to listOf(GemImageCredit(GemImageType.BRUTE, "gem_sinhalite_brute", "Raimond Spekking", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Sinhalite._Wet_Lu_mine,_Mogok,_Burma-9122.jpg")),
         "smithsonite" to listOf(GemImageCredit(GemImageType.BRUTE, "gem_smithsonite_brute", "cobalt123", "CC BY-SA 2.0", "https://commons.wikimedia.org/wiki/File:Smithsonite_-_Pink_Variety.jpg")),
+        "sodalite" to listOf(GemImageCredit(GemImageType.FACETTEE, "gem_sodalite_facette_cecc", "Céc.C", "© Céc.C", "https://gems-of-rod.fr")),
         "sphalerite" to listOf(GemImageCredit(GemImageType.FACETTEE, "gem_sphalerite_facette", "Eurico Zimbres.    Zimbres", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Sphalerite_cut.jpg"), GemImageCredit(GemImageType.BRUTE, "gem_sphalerite_brute", "Nessa Eull", "CC0", "https://commons.wikimedia.org/wiki/File:Sphalerite_(GeoDIL_number_-_1083).jpg")),
         "sphene" to listOf(GemImageCredit(GemImageType.BRUTE, "gem_sphene_brute", "Shannon Heinle", "CC0", "https://commons.wikimedia.org/wiki/File:Titanite_(sphene)_(GeoDIL_number_-_259).jpg")),
         "spinelle-bleu" to listOf(GemImageCredit(GemImageType.BRUTE, "gem_spinelle_bleu_brute", "Robert M. Lavinsky", "CC BY-SA 3.0", "https://commons.wikimedia.org/wiki/File:Spinel-42128.jpg")),

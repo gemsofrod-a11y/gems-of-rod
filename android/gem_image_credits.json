@@ -2143,7 +2143,16 @@
       "type": "BRUTE"
     }
   ],
-  "sodalite": [],
+  "sodalite": [
+    {
+      "artist": "Céc.C",
+      "license": "© Céc.C",
+      "resource_name": "gem_sodalite_facette_cecc",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Sodalite en perles — photo Céc.C",
+      "type": "FACETTEE"
+    }
+  ],
   "sphalerite": [
     {
       "artist": "Eurico Zimbres.    Zimbres",
