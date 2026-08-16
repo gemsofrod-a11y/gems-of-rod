@@ -534,7 +534,16 @@
     }
   ],
   "diopside": [],
-  "dioptase": [],
+  "dioptase": [
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_dioptase_brute_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Dioptase brute — photo Coraline Minéraux",
+      "type": "BRUTE"
+    }
+  ],
   "dumortierite": [],
   "emeraude": [
     {
