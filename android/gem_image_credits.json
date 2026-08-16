@@ -2442,7 +2442,16 @@
     }
   ],
   "turquoise": [],
-  "unakite": [],
+  "unakite": [
+    {
+      "artist": "Céc.C",
+      "license": "© Céc.C",
+      "resource_name": "gem_unakite_brute_cecc",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Unakite en perles — photo Céc.C",
+      "type": "BRUTE"
+    }
+  ],
   "uvarovite": [
     {
       "artist": "Robert M. Lavinsky",
