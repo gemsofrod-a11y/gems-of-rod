@@ -91,6 +91,7 @@ object GemImages {
         "larimar" to listOf(GemImageCredit(GemImageType.BRUTE, "gem_larimar_brute", "Hannes Grobe", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Larimar_hg.jpg")),
         "lazulite" to listOf(GemImageCredit(GemImageType.BRUTE, "gem_lazulite_brute", "HolDu", "CC BY-SA 3.0 de", "https://commons.wikimedia.org/wiki/File:Lazulite_(OM1-197).jpg")),
         "lepidolite" to listOf(GemImageCredit(GemImageType.BRUTE, "gem_lepidolite_brute", "Zbynek Burival", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Lepidolite_from_Høydalen,_Norway.jpg")),
+        "libethenite" to listOf(GemImageCredit(GemImageType.BRUTE, "gem_libethenite_brute_coraline", "Coraline Minéraux", "© Coraline Minéraux", "https://gems-of-rod.fr")),
         "malachite" to listOf(GemImageCredit(GemImageType.BRUTE, "gem_malachite_brute", "TheFurther21", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:Botryoidal_malachite_02.jpg")),
         "meteorite-admire" to listOf(GemImageCredit(GemImageType.BRUTE, "gem_meteorite_admire_brute", "Steve Jurvetson from Los Altos, USA", "CC BY 2.0", "https://commons.wikimedia.org/wiki/File:Space_Face_—_the_Admire_Pallasite_(50275698047).jpg"), GemImageCredit(GemImageType.FACETTEE, "gem_meteorite_admire_facette", "jurvetson", "by 2.0", "https://www.flickr.com/photos/44124348109@N01/50275698047")),
         "meteorite-alh-84001" to listOf(GemImageCredit(GemImageType.BRUTE, "gem_meteorite_alh_84001_brute", "Kunalm", "CC BY-SA 4.0", "https://commons.wikimedia.org/wiki/File:ALH_84001.jpg")),
