@@ -13,6 +13,7 @@ private const val KEY_VIEWED_GEM_IDS = "viewed_gem_ids"
 private const val KEY_QUIZZES_COMPLETED = "quizzes_completed"
 private const val KEY_PERFECT_QUIZ_SCORE = "perfect_quiz_score"
 private const val KEY_LEGENDARY_RIDDLE_SOLVED = "legendary_riddle_solved"
+private const val KEY_UNLOCKED_BADGE_IDS = "unlocked_badge_ids"
 
 /**
  * Statistiques de progression utilisées pour déterminer quels succès
@@ -41,6 +42,14 @@ object AchievementsRepository {
     private var hasPerfectQuizScore by mutableStateOf(false)
     private var hasSolvedLegendaryRiddle by mutableStateOf(false)
 
+    /**
+     * Succès déjà débloqués un jour, persistés indépendamment des compteurs
+     * vivants (ex. [AchievementStats.favoritesCount]) : une fois débloqué,
+     * un succès basé sur les favoris reste acquis même si l'utilisateur
+     * supprime ensuite ses favoris.
+     */
+    private val unlockedBadgeIds = mutableStateListOf<String>()
+
     /** Succès venant d'être débloqués, en attente d'affichage (notification). */
     private val pendingUnlocks = mutableStateListOf<String>()
 
@@ -52,6 +61,7 @@ object AchievementsRepository {
         quizzesCompleted = sharedPrefs.getInt(KEY_QUIZZES_COMPLETED, 0)
         hasPerfectQuizScore = sharedPrefs.getBoolean(KEY_PERFECT_QUIZ_SCORE, false)
         hasSolvedLegendaryRiddle = sharedPrefs.getBoolean(KEY_LEGENDARY_RIDDLE_SOLVED, false)
+        unlockedBadgeIds.addAll(sharedPrefs.getStringSet(KEY_UNLOCKED_BADGE_IDS, emptySet()).orEmpty())
     }
 
     fun recordGemViewed(gemId: String) {
@@ -101,9 +111,35 @@ object AchievementsRepository {
      * de l'app capable de débloquer un succès.
      */
     fun checkNewlyUnlocked(before: AchievementStats, after: AchievementStats) {
-        val unlockedBefore = Achievements.BADGES.filter { it.isUnlocked(before) }.map { it.id }.toSet()
-        val unlockedAfter = Achievements.BADGES.filter { it.isUnlocked(after) }.map { it.id }.toSet()
-        pendingUnlocks.addAll((unlockedAfter - unlockedBefore).sorted())
+        val newlyCrossed = Achievements.BADGES.filter { !it.isUnlocked(before) && it.isUnlocked(after) }
+        for (badge in newlyCrossed) {
+            if (markUnlocked(badge.id)) {
+                pendingUnlocks.add(badge.id)
+            }
+        }
+    }
+
+    /**
+     * Indique si [badge] est débloqué, en tenant compte de l'acquisition
+     * permanente : un succès déjà débloqué un jour le reste, même si le
+     * compteur vivant sous-jacent (ex. nombre de favoris) redescend ensuite
+     * sous le seuil. Persiste l'acquisition au premier appel qui la détecte.
+     */
+    fun isUnlocked(badge: Badge): Boolean {
+        if (unlockedBadgeIds.contains(badge.id)) return true
+        if (badge.isUnlocked(stats())) {
+            markUnlocked(badge.id)
+            return true
+        }
+        return false
+    }
+
+    /** Enregistre [badgeId] comme définitivement débloqué. Renvoie `true` si c'était nouveau. */
+    private fun markUnlocked(badgeId: String): Boolean {
+        if (unlockedBadgeIds.contains(badgeId)) return false
+        unlockedBadgeIds.add(badgeId)
+        prefs?.edit()?.putStringSet(KEY_UNLOCKED_BADGE_IDS, unlockedBadgeIds.toSet())?.apply()
+        return true
     }
 
     /** Retire et renvoie le prochain succès débloqué en attente de notification, ou `null`. */
