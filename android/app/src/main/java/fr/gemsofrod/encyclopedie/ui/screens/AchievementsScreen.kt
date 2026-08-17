@@ -49,7 +49,7 @@ import fr.gemsofrod.encyclopedie.ui.localizedBadgeTitle
 @Composable
 fun AchievementsScreen(onBackClick: () -> Unit) {
     val stats = AchievementsRepository.stats()
-    val unlockedCount = Achievements.BADGES.count { it.isUnlocked(stats) }
+    val unlockedCount = Achievements.BADGES.count { AchievementsRepository.isUnlocked(it) }
 
     Scaffold(
         topBar = {
@@ -89,7 +89,7 @@ fun AchievementsScreen(onBackClick: () -> Unit) {
 
 @Composable
 private fun BadgeCard(badge: Badge, stats: AchievementStats) {
-    val unlocked = badge.isUnlocked(stats)
+    val unlocked = AchievementsRepository.isUnlocked(badge)
     val isMasked = badge.secret && !unlocked
     val progress = badge.progress(stats).coerceAtMost(badge.threshold)
     val containerColor = if (unlocked) {
