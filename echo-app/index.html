@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Écho — Journal vocal</title>
+<meta name="theme-color" content="#6f8cff">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon.svg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-name">Écho</span>
+  </div>
+</header>
+
+<main id="app">
+
+  <!-- ÉCRAN : ENREGISTRER -->
+  <section id="view-record" class="view view-active">
+    <p class="hint">Parle librement pendant environ 30 secondes. Comment s'est passée ta journée ?</p>
+
+    <div class="record-stage">
+      <button id="btn-record" class="mic-btn" aria-label="Démarrer l'enregistrement">
+        <span class="mic-icon" aria-hidden="true"></span>
+      </button>
+      <div id="timer" class="timer">00:00</div>
+      <div id="rec-status" class="rec-status" aria-live="polite"></div>
+    </div>
+
+    <div id="live-transcript" class="live-transcript" hidden></div>
+
+    <p id="unsupported" class="unsupported" hidden>
+      Ton navigateur ne supporte pas la reconnaissance vocale (Web Speech API).
+      Essaie avec Chrome, Edge ou Safari récent.
+    </p>
+  </section>
+
+  <!-- ÉCRAN : RÉSUMÉ DU JOUR -->
+  <section id="view-summary" class="view">
+    <h2>Ton résumé du jour</h2>
+    <div id="summary-content" class="summary-card"></div>
+    <div class="actions">
+      <button class="btn-secondary" data-nav="record">Nouvel enregistrement</button>
+      <button class="btn-primary" data-nav="trends">Voir mes tendances</button>
+    </div>
+  </section>
+
+  <!-- ÉCRAN : HISTORIQUE -->
+  <section id="view-history" class="view">
+    <h2>Historique</h2>
+    <div id="history-list" class="history-list"></div>
+  </section>
+
+  <!-- ÉCRAN : TENDANCES -->
+  <section id="view-trends" class="view">
+    <h2>Tendances</h2>
+    <div id="insights" class="insights"></div>
+
+    <h3 class="chart-title">Énergie &amp; stress — 14 derniers jours</h3>
+    <canvas id="chart-timeline" width="600" height="220" class="chart"></canvas>
+    <div class="legend">
+      <span class="legend-item"><i class="dot dot-energy"></i>Énergie</span>
+      <span class="legend-item"><i class="dot dot-stress"></i>Stress</span>
+    </div>
+
+    <h3 class="chart-title">Stress moyen par jour de la semaine</h3>
+    <canvas id="chart-weekday" width="600" height="180" class="chart"></canvas>
+  </section>
+
+  <!-- ÉCRAN : RÉGLAGES -->
+  <section id="view-settings" class="view">
+    <h2>Réglages</h2>
+    <div class="settings-list">
+      <button id="btn-export" class="btn-secondary full">Exporter mes données (JSON)</button>
+      <label class="btn-secondary full file-label">
+        Importer des données
+        <input type="file" id="input-import" accept="application/json" hidden>
+      </label>
+      <button id="btn-clear" class="btn-danger full">Tout effacer</button>
+    </div>
+    <p class="privacy-note">
+      Toutes tes données restent sur cet appareil (aucun serveur, aucun compte).
+      La reconnaissance vocale utilise le moteur de ton navigateur ; selon le
+      navigateur, l'audio peut être traité par le service de reconnaissance
+      vocale du fournisseur (ex. Chrome/Google) le temps de la transcription —
+      rien n'est stocké ni envoyé par Écho lui-même.
+    </p>
+  </section>
+
+</main>
+
+<nav class="tabbar">
+  <button class="tab-btn tab-active" data-nav="record" aria-label="Enregistrer">
+    <span class="tab-icon icon-mic"></span><span>Parler</span>
+  </button>
+  <button class="tab-btn" data-nav="history" aria-label="Historique">
+    <span class="tab-icon icon-history"></span><span>Historique</span>
+  </button>
+  <button class="tab-btn" data-nav="trends" aria-label="Tendances">
+    <span class="tab-icon icon-trends"></span><span>Tendances</span>
+  </button>
+  <button class="tab-btn" data-nav="settings" aria-label="Réglages">
+    <span class="tab-icon icon-settings"></span><span>Réglages</span>
+  </button>
+</nav>
+
+<script src="js/storage.js"></script>
+<script src="js/analysis.js"></script>
+<script src="js/recorder.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
