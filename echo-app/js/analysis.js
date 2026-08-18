@@ -89,6 +89,17 @@ const Analysis = (() => {
     return nums.reduce((a, b) => a + b, 0) / nums.length;
   }
 
+  function groupByWeekday(sorted, field) {
+    const byWeekday = {};
+    sorted.forEach((e) => {
+      const wd = new Date(e.date).getDay();
+      (byWeekday[wd] = byWeekday[wd] || []).push(e.scores[field]);
+    });
+    return Object.entries(byWeekday)
+      .filter(([, vals]) => vals.length >= 2)
+      .map(([wd, vals]) => ({ wd: Number(wd), avg: average(vals) }));
+  }
+
   function generateInsights(entries) {
     const insights = [];
     if (entries.length < 3) {
@@ -98,14 +109,7 @@ const Analysis = (() => {
     const sorted = [...entries].sort((a, b) => new Date(a.date) - new Date(b.date));
 
     // 1. Motif par jour de la semaine (stress).
-    const byWeekday = {};
-    sorted.forEach((e) => {
-      const wd = new Date(e.date).getDay();
-      (byWeekday[wd] = byWeekday[wd] || []).push(e.scores.stress);
-    });
-    const weekdayAverages = Object.entries(byWeekday)
-      .filter(([, vals]) => vals.length >= 2)
-      .map(([wd, vals]) => ({ wd: Number(wd), avg: average(vals) }));
+    const weekdayAverages = groupByWeekday(sorted, "stress");
 
     if (weekdayAverages.length >= 2) {
       const overallAvg = average(sorted.map((e) => e.scores.stress));
@@ -178,5 +182,76 @@ const Analysis = (() => {
     return streak;
   }
 
-  return { computeScores, generateInsights, WEEKDAYS };
+  const SUGGESTIONS = {
+    stress: "Essaie une respiration 4-4-6 : 4 secondes d'inspiration, 4 de rétention, 6 d'expiration, pendant 2 minutes.",
+    fatigue: "Une courte sieste (15-20 min) ou une nuit de sommeil en avance pourrait t'aider.",
+    lowMood: "Une marche de 10 minutes dehors, ou appeler quelqu'un de proche, peut faire du bien.",
+    lowEnergy: "Quelques étirements, un verre d'eau et une pause loin de l'écran peuvent relancer l'énergie.",
+    positive: "Continue comme ça : prends un instant pour savourer ce qui a bien fonctionné aujourd'hui.",
+  };
+
+  function getSuggestions(scores) {
+    const picks = [];
+    if (scores.stress >= 65) picks.push({ priority: scores.stress, text: SUGGESTIONS.stress });
+    if (scores.fatigue >= 65) picks.push({ priority: scores.fatigue, text: SUGGESTIONS.fatigue });
+    if (scores.mood <= 35) picks.push({ priority: 100 - scores.mood, text: SUGGESTIONS.lowMood });
+    if (scores.energy <= 35) picks.push({ priority: 100 - scores.energy, text: SUGGESTIONS.lowEnergy });
+
+    if (!picks.length) {
+      return [SUGGESTIONS.positive];
+    }
+    picks.sort((a, b) => b.priority - a.priority);
+    const texts = [...new Set(picks.map((p) => p.text))];
+    return texts.slice(0, 2);
+  }
+
+  function bucket(value, lowLabel, midLabel, highLabel) {
+    if (value <= 40) return lowLabel;
+    if (value >= 60) return highLabel;
+    return midLabel;
+  }
+
+  function generateWeeklySummary(entries) {
+    if (entries.length < 3) return null;
+
+    const sorted = [...entries].sort((a, b) => new Date(a.date) - new Date(b.date));
+    const week = sorted.slice(-7);
+    const prior = sorted.slice(-14, -7);
+
+    const avgEnergy = average(week.map((e) => e.scores.energy));
+    const avgStress = average(week.map((e) => e.scores.stress));
+    const avgFatigue = average(week.map((e) => e.scores.fatigue));
+    const avgMood = average(week.map((e) => e.scores.mood));
+
+    const sentences = [];
+    sentences.push(
+      `Sur ${week.length} enregistrement${week.length > 1 ? "s" : ""} cette semaine, ton énergie a été plutôt ${bucket(avgEnergy, "basse", "moyenne", "élevée")} et ton niveau de stress plutôt ${bucket(avgStress, "faible", "modéré", "élevé")}.`
+    );
+
+    if (prior.length >= 2) {
+      const diffEnergy = avgEnergy - average(prior.map((e) => e.scores.energy));
+      const diffStress = avgStress - average(prior.map((e) => e.scores.stress));
+      const clauses = [];
+      if (diffEnergy >= 7) clauses.push("ton énergie est en hausse");
+      else if (diffEnergy <= -7) clauses.push("ton énergie est en baisse");
+      if (diffStress >= 7) clauses.push("ton stress a augmenté");
+      else if (diffStress <= -7) clauses.push("ton stress a diminué");
+      if (clauses.length) {
+        sentences.push(`Par rapport à la semaine précédente, ${clauses.join(" et ")}.`);
+      }
+    }
+
+    if (avgFatigue >= 60) {
+      sentences.push("Tu sembles avoir accumulé de la fatigue ces derniers jours.");
+    }
+    if (avgMood <= 40) {
+      sentences.push("Ton humeur générale a semblé plus difficile que d'habitude.");
+    } else if (avgMood >= 70) {
+      sentences.push("Ton humeur générale est restée plutôt positive.");
+    }
+
+    return sentences.join(" ");
+  }
+
+  return { computeScores, generateInsights, generateWeeklySummary, getSuggestions, WEEKDAYS };
 })();

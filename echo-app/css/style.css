@@ -207,6 +207,26 @@ h3.chart-title { font-size: 14px; color: var(--text-muted); margin: 24px 0 8px; 
 .history-excerpt { font-size: 14px; line-height: 1.4; }
 .history-empty, .insights-empty { color: var(--text-muted); font-size: 14px; text-align: center; margin-top: 30px; }
 
+.weekly-summary {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 12px 0 20px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.suggestions { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+.suggestion-card {
+  background: rgba(79, 209, 165, 0.1);
+  border-left: 4px solid var(--energy);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
 .insights { display: flex; flex-direction: column; gap: 10px; margin-bottom: 8px; }
 .insight-card {
   background: var(--surface);

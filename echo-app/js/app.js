@@ -13,6 +13,8 @@
     insights: document.getElementById("insights"),
     chartTimeline: document.getElementById("chart-timeline"),
     chartWeekday: document.getElementById("chart-weekday"),
+    btnWeeklySummary: document.getElementById("btn-weekly-summary"),
+    weeklySummary: document.getElementById("weekly-summary"),
     btnExport: document.getElementById("btn-export"),
     inputImport: document.getElementById("input-import"),
     btnClear: document.getElementById("btn-clear"),
@@ -22,6 +24,7 @@
   let startTime = 0;
   let timerInterval = null;
   let lastEntry = null;
+  let sessionFinalized = false;
 
   function navigate(view) {
     els.views.forEach((v) => v.classList.toggle("view-active", v.id === `view-${view}`));
@@ -47,6 +50,7 @@
       return;
     }
     isRecording = true;
+    sessionFinalized = false;
     startTime = Date.now();
     els.btnRecord.classList.add("recording");
     els.btnRecord.setAttribute("aria-label", "Arrêter l'enregistrement");
@@ -67,20 +71,32 @@
         stopRecording();
       },
       onEnd: () => {
-        if (isRecording) finalizeRecording();
+        // Cet événement est asynchrone : par exemple, il peut arriver après
+        // qu'un clic manuel sur "Arrêter" ait déjà mis isRecording à false.
+        // On finalise donc systématiquement ici (une seule fois par session),
+        // plutôt que de dépendre de l'état isRecording au moment du clic.
+        if (!sessionFinalized) finalizeRecording();
       },
     });
   }
 
-  function stopRecording() {
+  function resetRecordingUI() {
     isRecording = false;
     clearInterval(timerInterval);
     els.btnRecord.classList.remove("recording");
     els.btnRecord.setAttribute("aria-label", "Démarrer l'enregistrement");
+  }
+
+  function stopRecording() {
+    resetRecordingUI();
     Recorder.stop();
   }
 
   function finalizeRecording() {
+    if (sessionFinalized) return;
+    sessionFinalized = true;
+    resetRecordingUI();
+
     const durationSec = Math.max(1, Math.round((Date.now() - startTime) / 1000));
     const transcript = Recorder.getTranscript();
     els.recStatus.textContent = "";
@@ -142,6 +158,13 @@
         .join("")}</div>`;
     }
 
+    const suggestions = Analysis.getSuggestions(s);
+    if (suggestions.length) {
+      html += `<div class="suggestions">${suggestions
+        .map((sg) => `<div class="suggestion-card">${escapeHtml(sg)}</div>`)
+        .join("")}</div>`;
+    }
+
     html += `<p class="transcript-quote">"${escapeHtml(truncate(entry.transcript, 220))}"</p>`;
     els.summaryContent.innerHTML = html;
   }
@@ -169,6 +192,10 @@
     const entries = [...Storage.getEntries()].sort((a, b) => new Date(a.date) - new Date(b.date));
     const insights = Analysis.generateInsights(entries);
 
+    els.weeklySummary.hidden = true;
+    els.weeklySummary.textContent = "";
+    els.btnWeeklySummary.disabled = entries.length < 3;
+
     if (!entries.length) {
       els.insights.innerHTML = `<p class="insights-empty">Enregistre-toi quelques jours pour voir apparaître tes tendances ici.</p>`;
     } else if (!insights.length) {
@@ -190,6 +217,13 @@
   function truncate(str, n) {
     return str.length > n ? str.slice(0, n).trim() + "…" : str;
   }
+
+  els.btnWeeklySummary.addEventListener("click", () => {
+    const entries = Storage.getEntries();
+    const summary = Analysis.generateWeeklySummary(entries);
+    els.weeklySummary.textContent = summary || "Enregistre-toi encore quelques jours pour débloquer ton résumé de la semaine.";
+    els.weeklySummary.hidden = false;
+  });
 
   // Réglages : export / import / suppression.
   els.btnExport.addEventListener("click", () => {
