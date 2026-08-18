@@ -14,6 +14,9 @@
     crisisCard: document.getElementById("crisis-card"),
     companionCard: document.getElementById("companion-card"),
     companionText: document.getElementById("companion-text"),
+    waveformCard: document.getElementById("waveform-card"),
+    chartWaveform: document.getElementById("chart-waveform"),
+    waveformStats: document.getElementById("waveform-stats"),
     historyList: document.getElementById("history-list"),
     insights: document.getElementById("insights"),
     chartTimeline: document.getElementById("chart-timeline"),
@@ -64,6 +67,11 @@
     els.liveTranscript.hidden = false;
     els.liveTranscript.textContent = "";
 
+    // Capture audio best-effort, en plus de la transcription : si le micro
+    // n'est pas disponible pour ça (refusé, non supporté...), l'app continue
+    // de fonctionner normalement, juste sans la piste audio du jour.
+    AudioCapture.start();
+
     timerInterval = setInterval(() => {
       const elapsedMs = Date.now() - startTime;
       els.timer.textContent = formatTimer(elapsedMs);
@@ -107,7 +115,7 @@
     Recorder.stop();
   }
 
-  function finalizeRecording() {
+  async function finalizeRecording() {
     if (sessionFinalized) return;
     sessionFinalized = true;
     resetRecordingUI();
@@ -116,6 +124,10 @@
     const transcript = Recorder.getTranscript();
     els.recStatus.textContent = "";
     els.timer.textContent = "00:00";
+
+    // Toujours libérer le micro utilisé pour la piste audio, même si la
+    // transcription est vide (l'utilisateur va probablement réessayer).
+    const audioBlob = await AudioCapture.stop().catch(() => null);
 
     if (!transcript) {
       els.recStatus.textContent = "Aucune parole détectée, réessaie.";
@@ -141,8 +153,10 @@
 
       Storage.saveEntry(entry);
       lastEntry = entry;
-      renderSummary(entry);
+      const sessionId = renderSummary(entry);
       navigate("summary");
+
+      if (audioBlob) processAudioProsody(entry, audioBlob, sessionId);
     } catch (err) {
       console.error("Écho: échec de la finalisation de l'enregistrement", err);
       els.recStatus.textContent = "Une erreur est survenue en traitant ton enregistrement. Réessaie.";
@@ -163,7 +177,11 @@
       </div>`;
   }
 
+  let summarySessionId = 0;
+
   function renderSummary(entry) {
+    const sessionId = ++summarySessionId;
+
     const isCrisis = Analysis.detectCrisisSignal(entry.transcript);
     els.crisisCard.hidden = !isCrisis;
 
@@ -171,7 +189,9 @@
     els.companionText.innerHTML = "";
     // En cas de signal de crise, on s'en tient au message local fiable
     // ci-dessus plutôt que d'ajouter une réponse IA moins prévisible.
-    if (!isCrisis) requestCompanionResponse(entry);
+    if (!isCrisis) requestCompanionResponse(entry, sessionId);
+
+    els.waveformCard.hidden = true;
 
     const s = entry.scores;
     let html = "";
@@ -209,12 +229,11 @@
 
     html += `<p class="transcript-quote">"${escapeHtml(truncate(entry.transcript, 220))}"</p>`;
     els.summaryContent.innerHTML = html;
+
+    return sessionId;
   }
 
-  let companionRequestId = 0;
-
-  async function requestCompanionResponse(entry) {
-    const requestId = ++companionRequestId;
+  async function requestCompanionResponse(entry, sessionId) {
     const message = await Companion.getResponse({
       transcript: entry.transcript,
       scores: entry.scores,
@@ -222,9 +241,42 @@
     // Ignore une réponse arrivée en retard si l'utilisateur a depuis lancé
     // un nouvel enregistrement (on ne veut pas afficher un message qui ne
     // correspond plus à l'entrée actuellement affichée).
-    if (requestId !== companionRequestId || !message) return;
+    if (sessionId !== summarySessionId || !message) return;
     els.companionText.textContent = message;
     els.companionCard.hidden = false;
+  }
+
+  // Analyse locale de la piste audio (pauses, pics de volume) : ça prend un
+  // instant (décodage audio), donc ça se fait en arrière-plan après avoir
+  // déjà affiché le résumé texte, pour ne pas retarder l'écran principal.
+  async function processAudioProsody(entry, audioBlob, sessionId) {
+    AudioStore.saveAudio(entry.id, audioBlob);
+
+    const metrics = await Prosody.analyze(audioBlob);
+    if (!metrics) return;
+
+    Storage.updateEntry(entry.id, { prosody: metrics });
+
+    // Si l'utilisateur a depuis lancé un nouvel enregistrement, l'écran de
+    // résumé affiché n'est plus celui de cette entrée : on n'y touche pas.
+    if (sessionId !== summarySessionId) return;
+    renderWaveform(metrics);
+  }
+
+  function renderWaveform(metrics) {
+    Charts.drawWaveform(els.chartWaveform, metrics.envelope, metrics.pauseMask);
+
+    const stats = [];
+    stats.push(`${metrics.pauseCount} pause${metrics.pauseCount !== 1 ? "s" : ""}`);
+    if (metrics.longestPauseMs > 0) {
+      stats.push(`la plus longue : ${(metrics.longestPauseMs / 1000).toFixed(1)}s`);
+    }
+    stats.push(`${Math.round(metrics.speakingRatio * 100)}% du temps parlé activement`);
+    if (metrics.peakCount > 0) {
+      stats.push(`${metrics.peakCount} pic${metrics.peakCount !== 1 ? "s" : ""} de voix`);
+    }
+    els.waveformStats.innerHTML = stats.map((s) => `<span>${escapeHtml(s)}</span>`).join("");
+    els.waveformCard.hidden = false;
   }
 
   function renderHistory() {
@@ -314,6 +366,7 @@
   els.btnClear.addEventListener("click", () => {
     if (confirm("Effacer définitivement tous tes enregistrements ?")) {
       Storage.clearAll();
+      AudioStore.clearAll();
       renderHistory();
       renderTrends();
     }

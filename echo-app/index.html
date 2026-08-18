@@ -50,6 +50,11 @@
       <p>Ce que tu viens de dire me préoccupe. Si tu es en danger immédiat, appelle le <strong>15</strong> (SAMU) ou le <strong>112</strong> (urgences européennes). Le <strong>3114</strong>, numéro national de prévention du suicide, est gratuit, confidentiel et disponible 24h/24 — quelqu'un peut t'écouter maintenant.</p>
     </div>
     <div id="summary-content" class="summary-card"></div>
+    <div id="waveform-card" class="waveform-card" hidden>
+      <div class="waveform-title">Ta voix aujourd'hui</div>
+      <canvas id="chart-waveform" width="600" height="90" class="chart waveform-canvas"></canvas>
+      <div id="waveform-stats" class="waveform-stats"></div>
+    </div>
     <div id="companion-card" class="companion-card" hidden>
       <div class="companion-title">Ton compagnon</div>
       <div id="companion-text" class="companion-text"></div>
@@ -106,6 +111,13 @@
       rien n'est stocké ni envoyé par Écho lui-même.
     </p>
     <p class="privacy-note">
+      La piste audio de chaque enregistrement est aussi conservée sur cet
+      appareil (stockage local du navigateur) pour afficher les pauses et
+      pics de volume — jamais envoyée nulle part. Elle n'est pas incluse
+      dans l'export JSON (fichier trop volumineux) et est effacée avec le
+      bouton "Tout effacer" ci-dessus.
+    </p>
+    <p class="privacy-note">
       "Ton compagnon" (sur l'écran de résumé) est une fonctionnalité optionnelle
       qui envoie la transcription du jour et tes scores à un service d'IA
       (Claude, via une fonction serveur Netlify) pour générer une réponse
@@ -152,6 +164,9 @@
 <script src="js/storage.js"></script>
 <script src="js/analysis.js"></script>
 <script src="js/recorder.js"></script>
+<script src="js/audiocapture.js"></script>
+<script src="js/audiostore.js"></script>
+<script src="js/prosody.js"></script>
 <script src="js/charts.js"></script>
 <script src="js/companion.js"></script>
 <script src="js/onboarding.js"></script>

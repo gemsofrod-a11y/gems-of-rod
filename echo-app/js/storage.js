@@ -25,6 +25,18 @@ const Storage = (() => {
     localStorage.removeItem(KEY);
   }
 
+  // Fusionne `patch` dans l'entrée `id` déjà enregistrée — utilisé pour
+  // attacher des données calculées après coup (ex. l'analyse audio, qui
+  // prend un instant et ne doit pas retarder l'affichage du résumé).
+  function updateEntry(id, patch) {
+    const list = getEntries();
+    const index = list.findIndex((e) => e.id === id);
+    if (index === -1) return list;
+    list[index] = { ...list[index], ...patch };
+    localStorage.setItem(KEY, JSON.stringify(list));
+    return list;
+  }
+
   function exportJSON() {
     return JSON.stringify({ version: 1, exportedAt: new Date().toISOString(), entries: getEntries() }, null, 2);
   }
@@ -37,5 +49,5 @@ const Storage = (() => {
     return entries;
   }
 
-  return { getEntries, saveEntry, clearAll, exportJSON, importJSON };
+  return { getEntries, saveEntry, updateEntry, clearAll, exportJSON, importJSON };
 })();

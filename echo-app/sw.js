@@ -1,4 +1,4 @@
-const CACHE_NAME = "echo-cache-v4";
+const CACHE_NAME = "echo-cache-v5";
 const ASSETS = [
   "./",
   "./index.html",
@@ -7,6 +7,9 @@ const ASSETS = [
   "./js/storage.js",
   "./js/analysis.js",
   "./js/recorder.js",
+  "./js/audiocapture.js",
+  "./js/audiostore.js",
+  "./js/prosody.js",
   "./js/charts.js",
   "./js/companion.js",
   "./js/onboarding.js",

@@ -143,5 +143,51 @@ const Charts = (() => {
     ctx.fillText(text, width / 2, height / 2);
   }
 
-  return { drawTimeline, drawWeekdayBars };
+  // Piste audio du jour : une barre par segment temporel, hauteur = énergie
+  // sonore relative, segments de pause visuellement estompés.
+  function drawWaveform(canvas, envelope, pauseMask) {
+    const { ctx, width, height } = setupCanvas(canvas);
+    ctx.clearRect(0, 0, width, height);
+
+    if (!envelope || !envelope.length) {
+      drawEmptyMessage(ctx, width, height, "Pas de piste audio pour cet enregistrement");
+      return;
+    }
+
+    const pad = { top: 10, right: 4, bottom: 4, left: 4 };
+    const plotW = width - pad.left - pad.right;
+    const plotH = height - pad.top - pad.bottom;
+    const n = envelope.length;
+    const gap = 2;
+    const barW = Math.max(1, plotW / n - gap);
+
+    const voiceColor = getCssVar("--primary") || "#6f8cff";
+    const pauseColor = getCssVar("--border") || "#e7e3f5";
+    const minBarH = 3;
+
+    for (let i = 0; i < n; i++) {
+      const x = pad.left + i * (barW + gap);
+      const isPause = pauseMask && pauseMask[i];
+      const h = Math.max(minBarH, envelope[i] * plotH);
+      const y = pad.top + plotH - h;
+      ctx.fillStyle = isPause ? pauseColor : voiceColor;
+      ctx.globalAlpha = isPause ? 0.6 : 1;
+      const r = Math.min(2, barW / 2);
+      roundedRect(ctx, x, y, barW, h, r);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function roundedRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  return { drawTimeline, drawWeekdayBars, drawWaveform };
 })();
