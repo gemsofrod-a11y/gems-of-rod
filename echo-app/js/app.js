@@ -1,13 +1,18 @@
 (() => {
   const MAX_RECORDING_MS = 3 * 60 * 1000;
-  // Désactivé : demander l'accès au micro via getUserMedia (pour la piste
-  // audio) en même temps que la reconnaissance vocale a empêché celle-ci de
-  // capter quoi que ce soit sur au moins un appareil Android réel ("Aucune
-  // parole détectée" alors que le micro fonctionnait très bien juste avant).
-  // Le code de la fonctionnalité reste en place (js/audiocapture.js,
-  // audiostore.js, prosody.js) mais désactivé tant qu'on n'a pas trouvé un
-  // moyen fiable de capturer l'audio sans perturber la reconnaissance vocale.
-  const AUDIO_TRACK_ENABLED = false;
+
+  // Expérimental, désactivé par défaut : demander l'accès au micro via
+  // getUserMedia (pour la piste audio) en même temps que la reconnaissance
+  // vocale a déjà empêché celle-ci de capter quoi que ce soit sur au moins
+  // un appareil Android réel ("Aucune parole détectée" alors que le micro
+  // fonctionnait très bien juste avant). Réglable dans Réglages plutôt que
+  // codé en dur, pour que l'utilisateur puisse la couper lui-même
+  // instantanément si ça se reproduit, sans attendre un nouveau déploiement.
+  const AUDIO_TRACK_SETTING_KEY = "echo_audio_track_enabled";
+
+  function isAudioTrackEnabled() {
+    return localStorage.getItem(AUDIO_TRACK_SETTING_KEY) === "1";
+  }
 
   const els = {
     views: document.querySelectorAll(".view"),
@@ -35,6 +40,7 @@
     inputImport: document.getElementById("input-import"),
     btnClear: document.getElementById("btn-clear"),
     btnHelp: document.getElementById("btn-help"),
+    audioTrackToggle: document.getElementById("audio-track-toggle"),
   };
 
   let isRecording = false;
@@ -42,6 +48,7 @@
   let timerInterval = null;
   let lastEntry = null;
   let sessionFinalized = false;
+  let audioTrackStarted = false;
 
   function navigate(view) {
     els.views.forEach((v) => v.classList.toggle("view-active", v.id === `view-${view}`));
@@ -74,11 +81,7 @@
     els.recStatus.textContent = "Je t'écoute...";
     els.liveTranscript.hidden = false;
     els.liveTranscript.textContent = "";
-
-    // Capture audio best-effort, en plus de la transcription : si le micro
-    // n'est pas disponible pour ça (refusé, non supporté...), l'app continue
-    // de fonctionner normalement, juste sans la piste audio du jour.
-    if (AUDIO_TRACK_ENABLED) AudioCapture.start();
+    audioTrackStarted = false;
 
     timerInterval = setInterval(() => {
       const elapsedMs = Date.now() - startTime;
@@ -96,6 +99,17 @@
     Recorder.start({
       onInterim: (text) => {
         els.liveTranscript.textContent = text || "...";
+        // On ne démarre la capture audio (getUserMedia) qu'une fois la
+        // reconnaissance vocale confirmée active (premier résultat reçu),
+        // jamais au même instant que son propre démarrage — c'est cette
+        // simultanéité qui semble avoir perturbé la reconnaissance sur au
+        // moins un appareil réel. On perd le tout début de la piste audio,
+        // c'est un compromis délibéré pour ne jamais risquer la
+        // transcription, qui reste la fonctionnalité principale de l'app.
+        if (isAudioTrackEnabled() && !audioTrackStarted) {
+          audioTrackStarted = true;
+          AudioCapture.start();
+        }
       },
       onError: (err) => {
         els.recStatus.textContent = "Erreur : " + err.message;
@@ -378,6 +392,11 @@
       renderHistory();
       renderTrends();
     }
+  });
+
+  els.audioTrackToggle.checked = isAudioTrackEnabled();
+  els.audioTrackToggle.addEventListener("change", () => {
+    localStorage.setItem(AUDIO_TRACK_SETTING_KEY, els.audioTrackToggle.checked ? "1" : "0");
   });
 
   if (!Recorder.isSupported()) {
