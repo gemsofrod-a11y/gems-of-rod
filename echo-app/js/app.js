@@ -38,6 +38,8 @@
     chartWeekday: document.getElementById("chart-weekday"),
     btnWeeklySummary: document.getElementById("btn-weekly-summary"),
     weeklySummary: document.getElementById("weekly-summary"),
+    btnScaleInfo: document.getElementById("btn-scale-info"),
+    scaleInfo: document.getElementById("scale-info"),
     btnExport: document.getElementById("btn-export"),
     inputImport: document.getElementById("input-import"),
     btnClear: document.getElementById("btn-clear"),
@@ -111,11 +113,20 @@
         // moins un appareil réel. On perd le tout début de la piste audio,
         // c'est un compromis délibéré pour ne jamais risquer la
         // transcription, qui reste la fonctionnalité principale de l'app.
+        //
+        // Le compteur de niveau en direct (startLiveMeter) N'EST PAS démarré
+        // ici volontairement : sur un appareil réel, l'activer en plus de
+        // AudioCapture a fait se figer la reconnaissance vocale en cours
+        // d'enregistrement (aucune erreur, juste plus aucun résultat), même
+        // avec ce délai. Un AudioContext + AnalyserNode branché en direct
+        // sur le micro semble entrer en conflit avec le moteur de
+        // reconnaissance de façon plus agressive qu'un simple MediaRecorder.
+        // Le compteur live reste donc désactivé tant que ça n'est pas
+        // confirmé sûr ; seule l'analyse différée (après coup, sur le blob
+        // audio déjà enregistré) reste active pour les pauses/pics/Hz.
         if (isAudioTrackEnabled() && !audioTrackStarted) {
           audioTrackStarted = true;
-          AudioCapture.start().then((ok) => {
-            if (ok) startLiveMeter(AudioCapture.getStream());
-          });
+          AudioCapture.start();
         }
       },
       onError: (err) => {
@@ -438,6 +449,10 @@
     const summary = Analysis.generateWeeklySummary(entries);
     els.weeklySummary.textContent = summary || "Enregistre-toi encore quelques jours pour débloquer ton résumé de la semaine.";
     els.weeklySummary.hidden = false;
+  });
+
+  els.btnScaleInfo.addEventListener("click", () => {
+    els.scaleInfo.hidden = !els.scaleInfo.hidden;
   });
 
   // Réglages : export / import / suppression.

@@ -85,11 +85,19 @@
 
     <div id="insights" class="insights"></div>
 
-    <h3 class="chart-title">Énergie &amp; stress — 14 derniers jours</h3>
+    <h3 class="chart-title">
+      Énergie &amp; stress — 14 derniers jours
+      <button id="btn-scale-info" class="info-btn" aria-label="Comment lire ces courbes ?">?</button>
+    </h3>
     <canvas id="chart-timeline" width="600" height="220" class="chart"></canvas>
     <div class="legend">
       <span class="legend-item"><i class="dot dot-energy"></i>Énergie</span>
       <span class="legend-item"><i class="dot dot-stress"></i>Stress</span>
+    </div>
+    <div id="scale-info" class="scale-info" hidden>
+      <p><strong>Énergie</strong> : en dessous de 30, ton énergie était plutôt basse ce jour-là ; au-dessus de 70, plutôt haute. Entre les deux, une énergie modérée.</p>
+      <p><strong>Stress</strong> : en dessous de 30, plutôt calme ; au-dessus de 70, un stress marqué ce jour-là.</p>
+      <p class="scale-info-note">Ces scores viennent d'une analyse de mots-clés dans ta transcription, propre à ton propre journal — pas un seuil clinique ni un diagnostic.</p>
     </div>
 
     <h3 class="chart-title">Stress moyen par jour de la semaine</h3>

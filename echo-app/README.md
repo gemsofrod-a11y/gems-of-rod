@@ -53,7 +53,14 @@ statique gratuit comme GitHub Pages).
   ; la capture démarre donc désormais seulement après le premier résultat
   confirmé de la reconnaissance vocale (jamais au même instant), et reste
   activable/désactivable par l'utilisateur sans redéploiement si le
-  problème revient sur un appareil donné. Un indicateur de niveau sonore
-  s'affiche en direct pendant l'enregistrement (comme un dictaphone), et le
-  résumé affiche ensuite un "ton moyen" en Hz estimé par autocorrélation —
-  une mesure acoustique brute, pas une détection d'émotion.
+  problème revient sur un appareil donné. Le résumé affiche ensuite un
+  "ton moyen" en Hz estimé par autocorrélation — une mesure acoustique
+  brute, pas une détection d'émotion. Un indicateur de niveau sonore en
+  direct (façon dictaphone) a été tenté mais désactivé après avoir, lui
+  aussi, figé la reconnaissance vocale sur un appareil réel : brancher un
+  `AudioContext`/`AnalyserNode` en direct sur le micro semble entrer en
+  conflit avec le moteur de reconnaissance plus fortement qu'un simple
+  `MediaRecorder` seul (voir le commentaire dans `js/app.js`).
+- **Bulle d'aide sur les courbes tendances** : un bouton "?" à côté du
+  graphique Énergie/Stress explique ce que veulent dire des scores hauts ou
+  bas, pour ne pas laisser deviner l'échelle 0–100.
