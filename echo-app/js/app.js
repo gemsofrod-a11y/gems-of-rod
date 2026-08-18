@@ -1,5 +1,13 @@
 (() => {
   const MAX_RECORDING_MS = 3 * 60 * 1000;
+  // Désactivé : demander l'accès au micro via getUserMedia (pour la piste
+  // audio) en même temps que la reconnaissance vocale a empêché celle-ci de
+  // capter quoi que ce soit sur au moins un appareil Android réel ("Aucune
+  // parole détectée" alors que le micro fonctionnait très bien juste avant).
+  // Le code de la fonctionnalité reste en place (js/audiocapture.js,
+  // audiostore.js, prosody.js) mais désactivé tant qu'on n'a pas trouvé un
+  // moyen fiable de capturer l'audio sans perturber la reconnaissance vocale.
+  const AUDIO_TRACK_ENABLED = false;
 
   const els = {
     views: document.querySelectorAll(".view"),
@@ -70,7 +78,7 @@
     // Capture audio best-effort, en plus de la transcription : si le micro
     // n'est pas disponible pour ça (refusé, non supporté...), l'app continue
     // de fonctionner normalement, juste sans la piste audio du jour.
-    AudioCapture.start();
+    if (AUDIO_TRACK_ENABLED) AudioCapture.start();
 
     timerInterval = setInterval(() => {
       const elapsedMs = Date.now() - startTime;
