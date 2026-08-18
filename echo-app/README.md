@@ -19,6 +19,21 @@ tendances émotionnelles (énergie, stress, fatigue, humeur) dans le temps.
   3114) s'affiche systématiquement — sans dépendre du réseau — si des mots
   de détresse aiguë sont détectés dans la transcription.
 
+## Tester en développement
+
+Les Deploy Previews Netlify liées à une Pull Request disparaissent une fois
+celle-ci fermée ou fusionnée. Pour un lien stable pendant le développement
+(utile pour tester à plusieurs sans dépendre d'une PR précise), un "branch
+deploy" Netlify reste accessible tant que la branche existe :
+
+```
+https://claude-voice-mental-health-app-hx0nek--nimble-daffodil-e07745.netlify.app/echo-app/
+```
+
+Chaque personne qui ouvre ce lien a ses propres données en local
+(`localStorage` du navigateur) : pas de compte, pas de partage de données
+entre deux personnes qui testent en même temps.
+
 ## Lancer en local
 
 La reconnaissance vocale et le service worker nécessitent d'être servis en
