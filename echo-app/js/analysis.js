@@ -216,28 +216,66 @@ const Analysis = (() => {
     return streak;
   }
 
+  // Plusieurs formulations par catégorie, tirées au hasard : avec un
+  // lexique aussi réduit qu'une analyse locale, la même phrase mot pour mot
+  // revient vite et finit par sonner robotique. La variété ne rend pas
+  // l'analyse plus précise, juste moins mécanique à l'usage quotidien.
   const SUGGESTIONS = {
-    stress: "Essaie une respiration 4-4-6 : 4 secondes d'inspiration, 4 de rétention, 6 d'expiration, pendant 2 minutes.",
-    fatigue: "Une courte sieste (15-20 min) ou une nuit de sommeil en avance pourrait t'aider.",
-    lowMood: "Une marche de 10 minutes dehors, ou appeler quelqu'un de proche, peut faire du bien.",
-    lowEnergy: "Quelques étirements, un verre d'eau et une pause loin de l'écran peuvent relancer l'énergie.",
-    positive: "Continue comme ça : prends un instant pour savourer ce qui a bien fonctionné aujourd'hui.",
+    stress: [
+      "Essaie une respiration 4-4-6 : 4 secondes d'inspiration, 4 de rétention, 6 d'expiration, pendant 2 minutes.",
+      "Quelques minutes à l'écart, sans écran, peuvent suffire à faire redescendre la pression.",
+      "Et si tu notais juste une chose qui dépend de toi aujourd'hui, pour desserrer un peu l'étau ?",
+    ],
+    fatigue: [
+      "Une courte sieste (15-20 min) ou une nuit de sommeil en avance pourrait t'aider.",
+      "Ton corps te dit peut-être de ralentir un peu aujourd'hui — écoute-le si tu peux.",
+      "Un verre d'eau, un peu d'air, et une pause sans rien faire : parfois ça suffit.",
+    ],
+    lowMood: [
+      "Une marche de 10 minutes dehors, ou appeler quelqu'un de proche, peut faire du bien.",
+      "Pas besoin de se sentir bien tout de suite — se laisser un peu de douceur aujourd'hui peut déjà aider.",
+      "Écrire ou dire à voix haute ce qui pèse, même sans rien résoudre, allège parfois un peu.",
+    ],
+    lowEnergy: [
+      "Quelques étirements, un verre d'eau et une pause loin de l'écran peuvent relancer l'énergie.",
+      "Un petit truc simple et rapide à accomplir peut parfois relancer la machine.",
+      "Pas grave si le rythme est plus lent aujourd'hui — tout ne doit pas être fait maintenant.",
+    ],
+    positive: [
+      "Belle énergie aujourd'hui — prends un instant pour savourer ce qui a bien fonctionné.",
+      "Ça a l'air d'avoir été une bonne journée : de quoi es-tu le/la plus fier·ère ?",
+      "Profite de cet élan pour faire un peu de ce qui te fait du bien.",
+    ],
+    neutral: [
+      "Journée en demi-teinte, ni franchement haute ni basse — c'est aussi une journée normale.",
+      "On dirait un peu de tout aujourd'hui, motivation et flemme mêlées — c'est très humain.",
+      "Pas de grand signal aujourd'hui : parfois une journée tranquille n'a besoin de rien de plus.",
+    ],
     veryLowMood: "Si ce sentiment persiste ou devient lourd à porter, en parler à quelqu'un de confiance ou à un professionnel de santé peut vraiment aider. Écho est un outil de bien-être, pas un substitut à un accompagnement professionnel.",
   };
 
+  function pickRandom(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
   function getSuggestions(scores) {
     const picks = [];
-    if (scores.stress >= 65) picks.push({ priority: scores.stress, text: SUGGESTIONS.stress });
-    if (scores.fatigue >= 65) picks.push({ priority: scores.fatigue, text: SUGGESTIONS.fatigue });
-    if (scores.mood <= 35) picks.push({ priority: 100 - scores.mood, text: SUGGESTIONS.lowMood });
-    if (scores.energy <= 35) picks.push({ priority: 100 - scores.energy, text: SUGGESTIONS.lowEnergy });
+    if (scores.stress >= 65) picks.push({ priority: scores.stress, pool: SUGGESTIONS.stress });
+    if (scores.fatigue >= 65) picks.push({ priority: scores.fatigue, pool: SUGGESTIONS.fatigue });
+    if (scores.mood <= 35) picks.push({ priority: 100 - scores.mood, pool: SUGGESTIONS.lowMood });
+    if (scores.energy <= 35) picks.push({ priority: 100 - scores.energy, pool: SUGGESTIONS.lowEnergy });
 
     let result;
     if (!picks.length) {
-      result = [SUGGESTIONS.positive];
+      // Pas de signal fort dans un sens ou l'autre : soit une vraie bonne
+      // journée (humeur/énergie nettement au-dessus de la neutralité), soit
+      // un ressenti mitigé ou sans relief particulier — deux situations
+      // différentes qui méritent des messages différents.
+      const isGenuinelyPositive = scores.mood >= 60 || scores.energy >= 60;
+      result = [pickRandom(isGenuinelyPositive ? SUGGESTIONS.positive : SUGGESTIONS.neutral)];
     } else {
       picks.sort((a, b) => b.priority - a.priority);
-      result = [...new Set(picks.map((p) => p.text))].slice(0, 2);
+      result = picks.slice(0, 2).map((p) => pickRandom(p.pool));
     }
 
     // Note bienveillante, toujours affichée en plus (pas soumise à la limite
