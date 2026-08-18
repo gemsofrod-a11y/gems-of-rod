@@ -5,7 +5,13 @@
 // au navigateur. Si la clé n'est pas configurée, la fonction répond par une
 // erreur claire et le client bascule silencieusement sur les suggestions
 // locales (voir js/companion.js côté app).
-const Anthropic = require("@anthropic-ai/sdk");
+//
+// Appel direct en HTTP (fetch natif de Node, sans @anthropic-ai/sdk) : ce
+// site Netlify n'a pas d'étape de build qui installerait les dépendances
+// npm du dossier de la fonction, et on préfère ne pas toucher à la
+// configuration de build partagée avec le site principal Gems of Rod.
+const ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages";
+const ANTHROPIC_VERSION = "2023-06-01";
 
 const SYSTEM_PROMPT = `Tu es le compagnon bienveillant intégré à Écho, une application personnelle de journal vocal. Un utilisateur vient d'enregistrer un journal audio décrivant sa journée ou son ressenti. Tu reçois la transcription de ce qu'il a dit, des scores indicatifs (énergie, stress, fatigue, humeur, de 0 à 100, calculés localement par mots-clés) et parfois un bref contexte récent.
 
@@ -55,18 +61,34 @@ exports.handler = async (event) => {
     recentSummary ? `Contexte récent : ${recentSummary}` : null,
   ].filter(Boolean).join("\n");
 
-  const client = new Anthropic({ apiKey });
-
   try {
-    const response = await client.messages.create({
-      model: "claude-opus-5",
-      max_tokens: 300,
-      output_config: { effort: "low" },
-      system: SYSTEM_PROMPT,
-      messages: [{ role: "user", content: userContent }],
+    const apiRes = await fetch(ANTHROPIC_API_URL, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "x-api-key": apiKey,
+        "anthropic-version": ANTHROPIC_VERSION,
+      },
+      body: JSON.stringify({
+        model: "claude-opus-5",
+        max_tokens: 300,
+        output_config: { effort: "low" },
+        system: SYSTEM_PROMPT,
+        messages: [{ role: "user", content: userContent }],
+      }),
     });
 
-    const textBlock = response.content.find((b) => b.type === "text");
+    const data = await apiRes.json();
+
+    if (!apiRes.ok) {
+      const errMessage = data && data.error && data.error.message ? data.error.message : `HTTP ${apiRes.status}`;
+      return {
+        statusCode: apiRes.status,
+        body: JSON.stringify({ error: "Erreur API Claude : " + errMessage }),
+      };
+    }
+
+    const textBlock = (data.content || []).find((b) => b.type === "text");
     const message = textBlock ? textBlock.text.trim() : "";
 
     if (!message) {
@@ -79,10 +101,9 @@ exports.handler = async (event) => {
       body: JSON.stringify({ message }),
     };
   } catch (err) {
-    const status = err && err.status ? err.status : 502;
     return {
-      statusCode: status,
-      body: JSON.stringify({ error: "Erreur API Claude : " + (err && err.message ? err.message : "inconnue") }),
+      statusCode: 502,
+      body: JSON.stringify({ error: "Erreur réseau : " + (err && err.message ? err.message : "inconnue") }),
     };
   }
 };
