@@ -6,6 +6,51 @@ const Prosody = (() => {
   const WINDOW_MS = 50;
   const PAUSE_MIN_MS = 300;
   const TARGET_BARS = 72;
+  // Plage de fréquence fondamentale d'une voix humaine parlée (grave à aiguë).
+  const PITCH_MIN_HZ = 75;
+  const PITCH_MAX_HZ = 400;
+  // Confiance minimale (corrélation normalisée) pour retenir une estimation
+  // de hauteur plutôt que du bruit non périodique.
+  const PITCH_MIN_CONFIDENCE = 0.35;
+
+  // Estimation de la fréquence fondamentale (F0) par autocorrélation — une
+  // mesure acoustique objective (en Hz), pas une déduction d'émotion. Reste
+  // approximative (algorithme simple, pas de post-traitement avancé) : on
+  // l'affiche comme telle plutôt que d'en tirer des conclusions fortes.
+  function estimatePitch(samples, sampleRate) {
+    const minLag = Math.floor(sampleRate / PITCH_MAX_HZ);
+    const maxLag = Math.floor(sampleRate / PITCH_MIN_HZ);
+    if (samples.length < maxLag * 2) return null;
+
+    const corrs = new Array(maxLag - minLag + 1);
+    for (let lag = minLag; lag <= maxLag; lag++) {
+      let corr = 0;
+      let normA = 0;
+      let normB = 0;
+      const limit = samples.length - lag;
+      for (let i = 0; i < limit; i++) {
+        corr += samples[i] * samples[i + lag];
+        normA += samples[i] * samples[i];
+        normB += samples[i + lag] * samples[i + lag];
+      }
+      const norm = Math.sqrt(normA * normB);
+      corrs[lag - minLag] = norm > 0 ? corr / norm : 0;
+    }
+
+    // Premier pic local dépassant le seuil de confiance, en partant du lag
+    // le plus court (fréquence la plus aiguë) : une simple recherche du
+    // maximum global se cale souvent sur une sous-harmonique (un multiple
+    // de la vraie période, qui corrèle presque aussi bien mais correspond
+    // à une fréquence deux fois trop basse ou plus).
+    for (let i = 0; i < corrs.length; i++) {
+      const prev = i > 0 ? corrs[i - 1] : -Infinity;
+      const next = i < corrs.length - 1 ? corrs[i + 1] : -Infinity;
+      if (corrs[i] >= PITCH_MIN_CONFIDENCE && corrs[i] >= prev && corrs[i] >= next) {
+        return sampleRate / (minLag + i);
+      }
+    }
+    return null;
+  }
 
   function isSupported() {
     return !!(window.AudioContext || window.webkitAudioContext);
@@ -91,6 +136,27 @@ const Prosody = (() => {
       }
     }
 
+    // Fréquence fondamentale (Hz) par fenêtre vocalisée, agrégée en moyenne
+    // et coefficient de variation — mesure acoustique brute, pas une émotion.
+    const pitchValues = [];
+    for (let i = 0; i < windowCount; i++) {
+      if (rms[i] < silenceThreshold) continue;
+      const start = i * windowSize;
+      const end = Math.min(data.length, start + windowSize);
+      const pitch = estimatePitch(data.subarray(start, end), sampleRate);
+      if (pitch !== null) pitchValues.push(pitch);
+    }
+
+    let pitchMeanHz = null;
+    let pitchVariation = null;
+    if (pitchValues.length >= 3) {
+      const mean = pitchValues.reduce((a, b) => a + b, 0) / pitchValues.length;
+      const variance =
+        pitchValues.reduce((a, b) => a + (b - mean) * (b - mean), 0) / pitchValues.length;
+      pitchMeanHz = Math.round(mean);
+      pitchVariation = mean > 0 ? Math.sqrt(variance) / mean : null;
+    }
+
     const durationMs = Math.round((data.length / sampleRate) * 1000);
     const speakingRatio = durationMs > 0 ? Math.max(0, 1 - totalSilenceMs / durationMs) : 1;
 
@@ -114,6 +180,8 @@ const Prosody = (() => {
       peakCount,
       speakingRatio,
       durationMs,
+      pitchMeanHz,
+      pitchVariation,
     };
   }
 

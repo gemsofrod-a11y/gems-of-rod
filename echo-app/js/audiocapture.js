@@ -50,5 +50,9 @@ const AudioCapture = (() => {
     });
   }
 
-  return { isSupported, start, stop };
+  function getStream() {
+    return stream;
+  }
+
+  return { isSupported, start, stop, getStream };
 })();

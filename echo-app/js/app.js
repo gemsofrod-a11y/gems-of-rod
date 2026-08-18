@@ -22,6 +22,8 @@
     timer: document.getElementById("timer"),
     recStatus: document.getElementById("rec-status"),
     liveTranscript: document.getElementById("live-transcript"),
+    liveMeter: document.getElementById("live-meter"),
+    liveMeterCanvas: document.getElementById("live-meter-canvas"),
     unsupported: document.getElementById("unsupported"),
     summaryContent: document.getElementById("summary-content"),
     crisisCard: document.getElementById("crisis-card"),
@@ -49,6 +51,9 @@
   let lastEntry = null;
   let sessionFinalized = false;
   let audioTrackStarted = false;
+  let meterAudioCtx = null;
+  let meterAnalyser = null;
+  let meterRafId = null;
 
   function navigate(view) {
     els.views.forEach((v) => v.classList.toggle("view-active", v.id === `view-${view}`));
@@ -108,7 +113,9 @@
         // transcription, qui reste la fonctionnalité principale de l'app.
         if (isAudioTrackEnabled() && !audioTrackStarted) {
           audioTrackStarted = true;
-          AudioCapture.start();
+          AudioCapture.start().then((ok) => {
+            if (ok) startLiveMeter(AudioCapture.getStream());
+          });
         }
       },
       onError: (err) => {
@@ -130,6 +137,71 @@
     clearInterval(timerInterval);
     els.btnRecord.classList.remove("recording");
     els.btnRecord.setAttribute("aria-label", "Démarrer l'enregistrement");
+    stopLiveMeter();
+  }
+
+  // Indicateur de niveau sonore en direct pendant l'enregistrement (comme un
+  // dictaphone). Réutilise le flux déjà ouvert par AudioCapture plutôt que
+  // de redemander le micro, pour ne jamais risquer de perturber à nouveau la
+  // reconnaissance vocale.
+  function startLiveMeter(stream) {
+    if (!stream || !(window.AudioContext || window.webkitAudioContext)) return;
+    try {
+      const AudioContextCtor = window.AudioContext || window.webkitAudioContext;
+      meterAudioCtx = new AudioContextCtor();
+      const source = meterAudioCtx.createMediaStreamSource(stream);
+      meterAnalyser = meterAudioCtx.createAnalyser();
+      meterAnalyser.fftSize = 256;
+      source.connect(meterAnalyser);
+      els.liveMeter.hidden = false;
+      drawLiveMeter();
+    } catch (e) {
+      // Purement visuel : une erreur ici ne doit jamais gêner l'enregistrement.
+    }
+  }
+
+  function drawLiveMeter() {
+    if (!meterAnalyser) return;
+    const canvas = els.liveMeterCanvas;
+    const ctx = canvas.getContext("2d");
+    const width = canvas.width;
+    const height = canvas.height;
+    const data = new Uint8Array(meterAnalyser.fftSize);
+    meterAnalyser.getByteTimeDomainData(data);
+
+    let sumSq = 0;
+    for (let i = 0; i < data.length; i++) {
+      const v = (data[i] - 128) / 128;
+      sumSq += v * v;
+    }
+    const level = Math.min(1, Math.sqrt(sumSq / data.length) * 3.5);
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.fillStyle = "rgba(111, 140, 255, 0.15)";
+    ctx.fillRect(0, 0, width, height);
+    const barWidth = Math.max(4, level * width);
+    const gradient = ctx.createLinearGradient(0, 0, barWidth, 0);
+    gradient.addColorStop(0, "#6f8cff");
+    gradient.addColorStop(1, "#ff7a7a");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, height * 0.25, barWidth, height * 0.5);
+
+    meterRafId = requestAnimationFrame(drawLiveMeter);
+  }
+
+  function stopLiveMeter() {
+    if (meterRafId) cancelAnimationFrame(meterRafId);
+    meterRafId = null;
+    meterAnalyser = null;
+    if (meterAudioCtx) {
+      meterAudioCtx.close().catch(() => {});
+      meterAudioCtx = null;
+    }
+    if (els.liveMeter) els.liveMeter.hidden = true;
+    if (els.liveMeterCanvas) {
+      const ctx = els.liveMeterCanvas.getContext("2d");
+      ctx.clearRect(0, 0, els.liveMeterCanvas.width, els.liveMeterCanvas.height);
+    }
   }
 
   function stopRecording() {
@@ -296,6 +368,17 @@
     stats.push(`${Math.round(metrics.speakingRatio * 100)}% du temps parlé activement`);
     if (metrics.peakCount > 0) {
       stats.push(`${metrics.peakCount} pic${metrics.peakCount !== 1 ? "s" : ""} de voix`);
+    }
+    // Mesure acoustique brute (fréquence fondamentale), pas une émotion :
+    // on l'affiche comme telle, sans en tirer de conclusion sur l'humeur.
+    if (metrics.pitchMeanHz) {
+      const variationLabel =
+        metrics.pitchVariation == null
+          ? ""
+          : metrics.pitchVariation < 0.18
+          ? " (plutôt stable)"
+          : " (assez variée)";
+      stats.push(`ton moyen : ${metrics.pitchMeanHz} Hz${variationLabel}`);
     }
     els.waveformStats.innerHTML = stats.map((s) => `<span>${escapeHtml(s)}</span>`).join("");
     els.waveformCard.hidden = false;
