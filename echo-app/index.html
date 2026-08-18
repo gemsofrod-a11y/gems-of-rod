@@ -17,6 +17,7 @@
     <span class="brand-mark" aria-hidden="true"></span>
     <span class="brand-name">Écho</span>
   </div>
+  <button id="btn-help" class="help-btn" aria-label="Revoir la présentation de l'app">?</button>
 </header>
 
 <main id="app">
@@ -114,10 +115,27 @@
   </button>
 </nav>
 
+<!-- TOUR GUIDÉ (bulles d'introduction) -->
+<div id="onboarding-overlay" class="onboarding-overlay" hidden>
+  <div id="onboarding-highlight" class="onboarding-highlight"></div>
+  <div id="onboarding-bubble" class="onboarding-bubble">
+    <div id="onboarding-title" class="onboarding-title"></div>
+    <div id="onboarding-text" class="onboarding-text"></div>
+    <div class="onboarding-footer">
+      <div id="onboarding-dots" class="onboarding-dots"></div>
+      <div class="onboarding-actions">
+        <button id="onboarding-skip" class="onboarding-skip">Passer</button>
+        <button id="onboarding-next" class="btn-primary onboarding-next">Suivant</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="js/storage.js"></script>
 <script src="js/analysis.js"></script>
 <script src="js/recorder.js"></script>
 <script src="js/charts.js"></script>
+<script src="js/onboarding.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

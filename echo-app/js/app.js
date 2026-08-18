@@ -20,6 +20,7 @@
     btnExport: document.getElementById("btn-export"),
     inputImport: document.getElementById("input-import"),
     btnClear: document.getElementById("btn-clear"),
+    btnHelp: document.getElementById("btn-help"),
   };
 
   let isRecording = false;
@@ -283,5 +284,8 @@
     });
   }
 
+  els.btnHelp.addEventListener("click", () => Onboarding.start());
+
   navigate("record");
+  Onboarding.autostart();
 })();
