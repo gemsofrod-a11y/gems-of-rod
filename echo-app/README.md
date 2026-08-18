@@ -46,10 +46,11 @@ statique gratuit comme GitHub Pages).
 - Pas de sauvegarde cloud : exporter régulièrement ses données (onglet
   Réglages) pour ne pas les perdre en cas de changement d'appareil ou de
   nettoyage du navigateur.
-- **Piste audio (pauses, pics de volume) temporairement désactivée** :
-  le code existe (`js/audiocapture.js`, `js/audiostore.js`, `js/prosody.js`)
-  mais `AUDIO_TRACK_ENABLED` est à `false` dans `js/app.js`, car demander le
-  micro via `getUserMedia` en parallèle de la reconnaissance vocale a
-  empêché celle-ci de capter quoi que ce soit sur au moins un appareil
-  Android réel. À réactiver seulement après avoir trouvé un moyen fiable de
-  capturer l'audio sans perturber la reconnaissance vocale.
+- **Piste audio (pauses, pics de volume) expérimentale, désactivée par
+  défaut** : interrupteur dans Réglages. Demander le micro via
+  `getUserMedia` en parallèle de la reconnaissance vocale avait empêché
+  celle-ci de capter quoi que ce soit sur au moins un appareil Android réel
+  ; la capture démarre donc désormais seulement après le premier résultat
+  confirmé de la reconnaissance vocale (jamais au même instant), et reste
+  activable/désactivable par l'utilisateur sans redéploiement si le
+  problème revient sur un appareil donné.
