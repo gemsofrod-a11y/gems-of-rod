@@ -230,7 +230,15 @@ h3.chart-title { font-size: 14px; color: var(--text-muted); margin: 24px 0 8px; 
   line-height: 1.6;
 }
 
-.suggestions { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+.suggestions-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-top: 16px;
+}
+.suggestions-title { font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 10px; }
+.suggestions { display: flex; flex-direction: column; gap: 8px; }
 .suggestion-card {
   background: rgba(79, 209, 165, 0.1);
   border-left: 4px solid var(--energy);
@@ -238,6 +246,10 @@ h3.chart-title { font-size: 14px; color: var(--text-muted); margin: 24px 0 8px; 
   padding: 10px 14px;
   font-size: 14px;
   line-height: 1.4;
+}
+.suggestion-card-care {
+  background: rgba(111, 140, 255, 0.1);
+  border-left: 4px solid var(--primary);
 }
 
 .insights { display: flex; flex-direction: column; gap: 10px; margin-bottom: 8px; }

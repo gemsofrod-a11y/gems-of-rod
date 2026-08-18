@@ -163,17 +163,23 @@
       html += `<p class="transcript-quote">Peu de signaux détectés aujourd'hui — les scores restent proches de la neutralité, c'est normal.</p>`;
     }
 
+    const suggestions = Analysis.getSuggestions(s);
+    if (suggestions.length) {
+      html += `<div class="suggestions-block">`;
+      html += `<div class="suggestions-title">Ce que tu peux faire maintenant</div>`;
+      html += `<div class="suggestions">${suggestions
+        .map((sg) => {
+          const isCareNote = sg.includes("professionnel de santé");
+          return `<div class="suggestion-card${isCareNote ? " suggestion-card-care" : ""}">${escapeHtml(sg)}</div>`;
+        })
+        .join("")}</div>`;
+      html += `</div>`;
+    }
+
     if (s.keywords.length) {
       html += `<div class="tags">${s.keywords
         .slice(0, 6)
         .map((k) => `<span class="tag">${escapeHtml(k)}</span>`)
-        .join("")}</div>`;
-    }
-
-    const suggestions = Analysis.getSuggestions(s);
-    if (suggestions.length) {
-      html += `<div class="suggestions">${suggestions
-        .map((sg) => `<div class="suggestion-card">${escapeHtml(sg)}</div>`)
         .join("")}</div>`;
     }
 

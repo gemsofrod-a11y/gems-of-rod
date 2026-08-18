@@ -28,7 +28,8 @@ const Analysis = (() => {
     negative: [
       "triste", "déprimé", "déprimée", "mal", "difficile", "dur", "dure", "seul",
       "seule", "découragé", "découragée", "déçu", "déçue", "en colère", "frustré",
-      "frustrée",
+      "frustrée", "envie de rien", "envies de rien", "aucune envie", "plus goût à rien", "à quoi bon",
+      "sans motivation", "démotivé", "démotivée", "vide",
     ],
   };
 
@@ -36,16 +37,36 @@ const Analysis = (() => {
     return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   }
 
-  function countMatches(text, words) {
+  // N\u00e9gations fran\u00e7aises courantes : un mot par ailleurs positif ("bien",
+  // "motiv\u00e9"...) pr\u00e9c\u00e9d\u00e9 de pr\u00e8s par l'une d'elles change de sens ("je ne
+  // me sens pas bien" n'est pas un signal positif). On regarde une petite
+  // fen\u00eatre de texte juste avant chaque occurrence plut\u00f4t que d'exiger une
+  // grammaire compl\u00e8te \u2014 suffisant pour les tournures les plus fr\u00e9quentes.
+  const NEGATION_MARKERS = ["ne", "n'", "pas", "jamais", "aucun", "aucune"];
+  const NEGATION_WINDOW = 24;
+
+  function isNegated(normalizedText, matchIndex) {
+    const windowStart = Math.max(0, matchIndex - NEGATION_WINDOW);
+    const window = normalizedText.slice(windowStart, matchIndex);
+    return NEGATION_MARKERS.some((n) => new RegExp(`(?:^|[^a-z])${n}(?:$|[^a-z'])`).test(window));
+  }
+
+  // Rep\u00e8re les occurrences d'une liste de mots/expressions dans le texte, en
+  // s\u00e9parant celles pr\u00e9c\u00e9d\u00e9es d'une n\u00e9gation (ex. "pas bien") de celles qui
+  // ne le sont pas \u2014 un mot n\u00e9g\u00e9 compte pour la cat\u00e9gorie oppos\u00e9e.
+  function findOccurrences(text, words) {
     const normalized = stripAccents(text.toLowerCase());
-    let hits = [];
+    const affirmed = [];
+    const negated = [];
     for (const w of words) {
       const needle = stripAccents(w.toLowerCase());
       const re = new RegExp(`(?:^|[^a-z0-9])${needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?:$|[^a-z0-9])`, "g");
-      const matches = normalized.match(re);
-      if (matches) hits = hits.concat(matches.map(() => w));
+      let m;
+      while ((m = re.exec(normalized)) !== null) {
+        (isNegated(normalized, m.index) ? negated : affirmed).push(w);
+      }
     }
-    return hits;
+    return { affirmed, negated };
   }
 
   function clamp(v) {
@@ -54,32 +75,45 @@ const Analysis = (() => {
 
   function computeScores(transcript, durationSec, wordCount) {
     const text = transcript || "";
-    const stressHits = countMatches(text, LEXICON.stress);
-    const calmHits = countMatches(text, LEXICON.calm);
-    const fatigueHits = countMatches(text, LEXICON.fatigue);
-    const energyHits = countMatches(text, LEXICON.energy);
-    const positiveHits = countMatches(text, LEXICON.positive);
-    const negativeHits = countMatches(text, LEXICON.negative);
+    const stress = findOccurrences(text, LEXICON.stress);
+    const calm = findOccurrences(text, LEXICON.calm);
+    const fatigue = findOccurrences(text, LEXICON.fatigue);
+    const energy = findOccurrences(text, LEXICON.energy);
+    const positive = findOccurrences(text, LEXICON.positive);
+    const negative = findOccurrences(text, LEXICON.negative);
+
+    // Un mot n\u00e9g\u00e9 bascule vers la cat\u00e9gorie oppos\u00e9e ("pas stress\u00e9" -> calme).
+    const stressCount = stress.affirmed.length + calm.negated.length;
+    const calmCount = calm.affirmed.length + stress.negated.length;
+    const fatigueCount = fatigue.affirmed.length + energy.negated.length;
+    const energyCount = energy.affirmed.length + fatigue.negated.length;
+    const positiveCount = positive.affirmed.length + negative.negated.length;
+    const negativeCount = negative.affirmed.length + positive.negated.length;
 
     const wpm = durationSec > 0 ? (wordCount / durationSec) * 60 : 0;
     const paceFast = wpm > 150 ? Math.min(6, (wpm - 150) / 10) : 0;
     const paceSlow = wpm > 0 && wpm < 80 ? Math.min(6, (80 - wpm) / 8) : 0;
 
-    let stress = 50 + stressHits.length * 9 - calmHits.length * 7 + paceFast;
-    let energy = 50 + energyHits.length * 9 - fatigueHits.length * 7 - paceSlow + paceFast * 0.5;
-    let fatigue = 50 + fatigueHits.length * 9 - energyHits.length * 7 + paceSlow;
-    let mood = 50 + positiveHits.length * 9 - negativeHits.length * 9;
+    let stressScore = 50 + stressCount * 9 - calmCount * 7 + paceFast;
+    let energyScore = 50 + energyCount * 9 - fatigueCount * 7 - paceSlow + paceFast * 0.5;
+    let fatigueScore = 50 + fatigueCount * 9 - energyCount * 7 + paceSlow;
+    let moodScore = 50 + positiveCount * 9 - negativeCount * 9;
 
-    const allHits = [...stressHits, ...calmHits, ...fatigueHits, ...energyHits, ...positiveHits, ...negativeHits];
-    const uniqueKeywords = [...new Set(allHits)];
+    const keywordTags = [];
+    [stress, calm, fatigue, energy, positive, negative].forEach((cat) => {
+      keywordTags.push(...cat.affirmed);
+      keywordTags.push(...cat.negated.map((w) => `pas ${w}`));
+    });
+    const uniqueKeywords = [...new Set(keywordTags)];
+    const hasSignal = keywordTags.length > 0;
 
     return {
-      stress: clamp(stress),
-      energy: clamp(energy),
-      fatigue: clamp(fatigue),
-      mood: clamp(mood),
+      stress: clamp(stressScore),
+      energy: clamp(energyScore),
+      fatigue: clamp(fatigueScore),
+      mood: clamp(moodScore),
       keywords: uniqueKeywords,
-      hasSignal: allHits.length > 0,
+      hasSignal,
       wpm: Math.round(wpm),
     };
   }
@@ -188,6 +222,7 @@ const Analysis = (() => {
     lowMood: "Une marche de 10 minutes dehors, ou appeler quelqu'un de proche, peut faire du bien.",
     lowEnergy: "Quelques étirements, un verre d'eau et une pause loin de l'écran peuvent relancer l'énergie.",
     positive: "Continue comme ça : prends un instant pour savourer ce qui a bien fonctionné aujourd'hui.",
+    veryLowMood: "Si ce sentiment persiste ou devient lourd à porter, en parler à quelqu'un de confiance ou à un professionnel de santé peut vraiment aider. Écho est un outil de bien-être, pas un substitut à un accompagnement professionnel.",
   };
 
   function getSuggestions(scores) {
@@ -197,12 +232,20 @@ const Analysis = (() => {
     if (scores.mood <= 35) picks.push({ priority: 100 - scores.mood, text: SUGGESTIONS.lowMood });
     if (scores.energy <= 35) picks.push({ priority: 100 - scores.energy, text: SUGGESTIONS.lowEnergy });
 
+    let result;
     if (!picks.length) {
-      return [SUGGESTIONS.positive];
+      result = [SUGGESTIONS.positive];
+    } else {
+      picks.sort((a, b) => b.priority - a.priority);
+      result = [...new Set(picks.map((p) => p.text))].slice(0, 2);
     }
-    picks.sort((a, b) => b.priority - a.priority);
-    const texts = [...new Set(picks.map((p) => p.text))];
-    return texts.slice(0, 2);
+
+    // Note bienveillante, toujours affichée en plus (pas soumise à la limite
+    // de 2 suggestions) quand l'humeur détectée est particulièrement basse.
+    if (scores.mood <= 20) {
+      result = [...result, SUGGESTIONS.veryLowMood];
+    }
+    return result;
   }
 
   function bucket(value, lowLabel, midLabel, highLabel) {
