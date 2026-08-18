@@ -1,4 +1,6 @@
 (() => {
+  const MAX_RECORDING_MS = 3 * 60 * 1000;
+
   const els = {
     views: document.querySelectorAll(".view"),
     tabs: document.querySelectorAll(".tab-btn"),
@@ -59,7 +61,16 @@
     els.liveTranscript.textContent = "";
 
     timerInterval = setInterval(() => {
-      els.timer.textContent = formatTimer(Date.now() - startTime);
+      const elapsedMs = Date.now() - startTime;
+      els.timer.textContent = formatTimer(elapsedMs);
+      // Filet de sécurité : le moteur de reconnaissance redémarre tout
+      // seul en continu tant qu'on ne clique pas sur "Arrêter" (voir
+      // recorder.js). On coupe automatiquement après quelques minutes
+      // pour éviter une écoute qui tournerait indéfiniment en arrière-plan.
+      if (elapsedMs >= MAX_RECORDING_MS) {
+        els.recStatus.textContent = "Durée maximale atteinte, enregistrement arrêté.";
+        stopRecording();
+      }
     }, 250);
 
     Recorder.start({

@@ -5,6 +5,7 @@ const Recorder = (() => {
   let recognition = null;
   let listening = false;
   let finalTranscript = "";
+  let manualStop = false;
 
   function isSupported() {
     return !!SpeechRecognitionCtor;
@@ -16,6 +17,7 @@ const Recorder = (() => {
       return;
     }
     finalTranscript = "";
+    manualStop = false;
     recognition = new SpeechRecognitionCtor();
     recognition.lang = "fr-FR";
     recognition.continuous = true;
@@ -41,20 +43,19 @@ const Recorder = (() => {
       return `${e} ${n}`;
     }
 
-    // Si le moteur redémarre en interne (la liste de résultats redevient
-    // plus courte qu'avant), on fige le segment précédent dans un préfixe
-    // "committed" avant de repartir sur une nouvelle liste.
+    // Quand on relance nous-mêmes la reconnaissance après un arrêt
+    // automatique du moteur (voir onend plus bas), on fige le segment qui
+    // vient de se terminer dans un préfixe "committed" avant de repartir
+    // sur une nouvelle liste de résultats (qui recommence à zéro).
     let committedPrefix = "";
     let currentSegmentFinal = "";
-    let lastResultsLength = 0;
+
+    function consolidateSegment() {
+      committedPrefix = mergeFinal(committedPrefix, currentSegmentFinal);
+      currentSegmentFinal = "";
+    }
 
     recognition.onresult = (event) => {
-      if (event.results.length < lastResultsLength) {
-        committedPrefix = mergeFinal(committedPrefix, currentSegmentFinal);
-        currentSegmentFinal = "";
-      }
-      lastResultsLength = event.results.length;
-
       let segmentFinal = "";
       let interim = "";
       for (let i = 0; i < event.results.length; i++) {
@@ -69,12 +70,31 @@ const Recorder = (() => {
     };
 
     recognition.onerror = (event) => {
+      // "no-speech" et "aborted" surviennent couramment lors des redémarrages
+      // automatiques (silence détecté, ou arrêt volontaire) : ce ne sont pas
+      // des erreurs fatales, onend s'en charge juste après.
+      if (event.error === "no-speech" || event.error === "aborted") return;
       onError && onError(new Error(event.error || "Erreur de reconnaissance vocale"));
     };
 
     recognition.onend = () => {
-      listening = false;
-      onEnd && onEnd(finalTranscript.trim());
+      if (manualStop) {
+        listening = false;
+        onEnd && onEnd(finalTranscript.trim());
+        return;
+      }
+      // Même en mode "continuous", le moteur (Chrome Android notamment)
+      // s'arrête tout seul après une pause dans la parole. Tant que
+      // l'utilisateur n'a pas explicitement demandé l'arrêt, on relance
+      // pour que l'enregistrement reste continu de son point de vue —
+      // le fold-merge ci-dessus recolle proprement les segments.
+      consolidateSegment();
+      try {
+        recognition.start();
+      } catch (e) {
+        listening = false;
+        onEnd && onEnd(finalTranscript.trim());
+      }
     };
 
     recognition.start();
@@ -82,6 +102,7 @@ const Recorder = (() => {
   }
 
   function stop() {
+    manualStop = true;
     if (recognition && listening) {
       recognition.stop();
     }
