@@ -1,17 +1,22 @@
 (() => {
   const MAX_RECORDING_MS = 3 * 60 * 1000;
 
-  // Expérimental, désactivé par défaut : demander l'accès au micro via
-  // getUserMedia (pour la piste audio) en même temps que la reconnaissance
-  // vocale a déjà empêché celle-ci de capter quoi que ce soit sur au moins
-  // un appareil Android réel ("Aucune parole détectée" alors que le micro
-  // fonctionnait très bien juste avant). Réglable dans Réglages plutôt que
-  // codé en dur, pour que l'utilisateur puisse la couper lui-même
-  // instantanément si ça se reproduit, sans attendre un nouveau déploiement.
+  // Désactivée en dur (pas seulement par défaut) : demander l'accès au
+  // micro via getUserMedia PENDANT que la reconnaissance vocale tourne
+  // encore casse la transcription sur au moins un appareil Android réel
+  // (plus aucun résultat, sans erreur) — confirmé à deux reprises, une
+  // fois avec le compteur en direct (AudioContext) et une fois sans (juste
+  // AudioCapture/MediaRecorder). Ce n'est donc pas un problème de timing
+  // ni du compteur en direct spécifiquement : toute capture audio brute
+  // simultanée à la reconnaissance semble incompatible avec ce moteur. Tant
+  // qu'une approche fiable n'est pas trouvée (ex. capture non simultanée),
+  // la fonction reste coupée pour ne jamais risquer la reconnaissance
+  // vocale, qui est le cœur de l'app.
   const AUDIO_TRACK_SETTING_KEY = "echo_audio_track_enabled";
+  localStorage.removeItem(AUDIO_TRACK_SETTING_KEY);
 
   function isAudioTrackEnabled() {
-    return localStorage.getItem(AUDIO_TRACK_SETTING_KEY) === "1";
+    return false;
   }
 
   const els = {
@@ -492,10 +497,8 @@
     }
   });
 
-  els.audioTrackToggle.checked = isAudioTrackEnabled();
-  els.audioTrackToggle.addEventListener("change", () => {
-    localStorage.setItem(AUDIO_TRACK_SETTING_KEY, els.audioTrackToggle.checked ? "1" : "0");
-  });
+  els.audioTrackToggle.checked = false;
+  els.audioTrackToggle.disabled = true;
 
   if (!Recorder.isSupported()) {
     els.unsupported.hidden = false;

@@ -46,21 +46,19 @@ statique gratuit comme GitHub Pages).
 - Pas de sauvegarde cloud : exporter régulièrement ses données (onglet
   Réglages) pour ne pas les perdre en cas de changement d'appareil ou de
   nettoyage du navigateur.
-- **Piste audio (pauses, pics de volume, ton moyen en Hz) expérimentale,
-  désactivée par défaut** : interrupteur dans Réglages. Demander le micro
-  via `getUserMedia` en parallèle de la reconnaissance vocale avait empêché
-  celle-ci de capter quoi que ce soit sur au moins un appareil Android réel
-  ; la capture démarre donc désormais seulement après le premier résultat
-  confirmé de la reconnaissance vocale (jamais au même instant), et reste
-  activable/désactivable par l'utilisateur sans redéploiement si le
-  problème revient sur un appareil donné. Le résumé affiche ensuite un
-  "ton moyen" en Hz estimé par autocorrélation — une mesure acoustique
-  brute, pas une détection d'émotion. Un indicateur de niveau sonore en
-  direct (façon dictaphone) a été tenté mais désactivé après avoir, lui
-  aussi, figé la reconnaissance vocale sur un appareil réel : brancher un
-  `AudioContext`/`AnalyserNode` en direct sur le micro semble entrer en
-  conflit avec le moteur de reconnaissance plus fortement qu'un simple
-  `MediaRecorder` seul (voir le commentaire dans `js/app.js`).
+- **Piste audio (pauses, pics de volume, ton moyen en Hz) : coupée en dur
+  pour l'instant.** Deux tentatives — capturer le micro via `getUserMedia`
+  seulement après le premier résultat confirmé de reconnaissance vocale, et
+  brancher en plus un compteur de niveau en direct (`AudioContext` /
+  `AnalyserNode`) — ont toutes les deux fini par figer la transcription en
+  plein enregistrement sur un appareil Android réel (aucune erreur, plus
+  aucun résultat). Toute capture audio brute simultanée à la reconnaissance
+  vocale semble donc incompatible avec ce moteur, pas seulement une
+  question de timing. Le réglage dans Réglages est désactivé (grisé) et
+  `isAudioTrackEnabled()` renvoie toujours `false` en dur dans `js/app.js`
+  tant qu'une approche non simultanée n'a pas été trouvée et validée sur
+  appareil réel — la transcription reste la fonction principale d'Écho et
+  ne doit jamais être mise en danger pour cette fonctionnalité annexe.
 - **Bulle d'aide sur les courbes tendances** : un bouton "?" à côté du
   graphique Énergie/Stress explique ce que veulent dire des scores hauts ou
   bas, pour ne pas laisser deviner l'échelle 0–100.

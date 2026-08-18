@@ -383,6 +383,7 @@ h3.chart-title { font-size: 14px; color: var(--text-muted); margin: 24px 0 8px; 
 }
 .toggle-switch input:checked + .toggle-slider { background: var(--primary); }
 .toggle-switch input:checked + .toggle-slider::before { transform: translateX(18px); }
+.toggle-switch input:disabled + .toggle-slider { opacity: 0.5; cursor: not-allowed; }
 
 .tabbar {
   position: fixed;
