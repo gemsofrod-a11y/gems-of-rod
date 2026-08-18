@@ -1,4 +1,4 @@
-const CACHE_NAME = "echo-cache-v1";
+const CACHE_NAME = "echo-cache-v2";
 const ASSETS = [
   "./",
   "./index.html",
@@ -26,16 +26,20 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+// Réseau en priorité (network-first) : tant que l'app est en ligne, on sert
+// toujours la dernière version déployée. Le cache ne sert que de secours
+// hors-ligne, pour éviter de rester bloqué sur une version obsolète après
+// une mise à jour (l'ancienne stratégie cache-first servait indéfiniment
+// les fichiers JS mis en cache lors de la première visite).
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
   event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) return cached;
-      return fetch(event.request).then((response) => {
+    fetch(event.request)
+      .then((response) => {
         const copy = response.clone();
         caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
         return response;
-      }).catch(() => cached);
-    })
+      })
+      .catch(() => caches.match(event.request))
   );
 });
