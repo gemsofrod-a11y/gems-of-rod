@@ -122,22 +122,31 @@
       return;
     }
 
-    const wordCount = transcript.split(/\s+/).filter(Boolean).length;
-    const scores = Analysis.computeScores(transcript, durationSec, wordCount);
+    // Filet de sécurité : quoi qu'il arrive à partir d'ici (bug d'analyse,
+    // de rendu...), on doit soit afficher le résumé, soit prévenir
+    // clairement — jamais rester bloqué sans rien afficher sur l'écran
+    // d'enregistrement comme si rien ne s'était passé.
+    try {
+      const wordCount = transcript.split(/\s+/).filter(Boolean).length;
+      const scores = Analysis.computeScores(transcript, durationSec, wordCount);
 
-    const entry = {
-      id: `${Date.now()}`,
-      date: new Date().toISOString(),
-      durationSec,
-      transcript,
-      wordCount,
-      scores,
-    };
+      const entry = {
+        id: `${Date.now()}`,
+        date: new Date().toISOString(),
+        durationSec,
+        transcript,
+        wordCount,
+        scores,
+      };
 
-    Storage.saveEntry(entry);
-    lastEntry = entry;
-    renderSummary(entry);
-    navigate("summary");
+      Storage.saveEntry(entry);
+      lastEntry = entry;
+      renderSummary(entry);
+      navigate("summary");
+    } catch (err) {
+      console.error("Écho: échec de la finalisation de l'enregistrement", err);
+      els.recStatus.textContent = "Une erreur est survenue en traitant ton enregistrement. Réessaie.";
+    }
   }
 
   els.btnRecord.addEventListener("click", () => {
