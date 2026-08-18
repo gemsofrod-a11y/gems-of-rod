@@ -21,17 +21,35 @@ const Recorder = (() => {
     recognition.continuous = true;
     recognition.interimResults = true;
 
+    // Certains navigateurs (Chrome Android notamment) réémettent le même
+    // résultat "final" plusieurs fois de suite en l'affinant, plutôt que
+    // d'en émettre un nouveau à chaque fois. On reconstruit donc la
+    // transcription du segment en cours à partir de la liste complète des
+    // résultats à chaque événement (au lieu de l'accumuler par ajout), pour
+    // éviter les doublons. Si le moteur redémarre en interne (la liste de
+    // résultats redevient plus courte), on fige le segment précédent avant
+    // de repartir sur un nouveau.
+    let committedPrefix = "";
+    let currentSegmentFinal = "";
+    let lastResultsLength = 0;
+
     recognition.onresult = (event) => {
-      let interim = "";
-      for (let i = event.resultIndex; i < event.results.length; i++) {
-        const chunk = event.results[i][0].transcript;
-        if (event.results[i].isFinal) {
-          finalTranscript += chunk + " ";
-          onFinalChunk && onFinalChunk(finalTranscript.trim());
-        } else {
-          interim += chunk;
-        }
+      if (event.results.length < lastResultsLength) {
+        committedPrefix = (committedPrefix + " " + currentSegmentFinal).trim();
+        currentSegmentFinal = "";
       }
+      lastResultsLength = event.results.length;
+
+      let segmentFinal = "";
+      let interim = "";
+      for (let i = 0; i < event.results.length; i++) {
+        const chunk = event.results[i][0].transcript;
+        if (event.results[i].isFinal) segmentFinal += chunk + " ";
+        else interim += chunk;
+      }
+      currentSegmentFinal = segmentFinal;
+      finalTranscript = (committedPrefix + " " + segmentFinal).trim();
+      onFinalChunk && onFinalChunk(finalTranscript);
       onInterim && onInterim((finalTranscript + " " + interim).trim());
     };
 
