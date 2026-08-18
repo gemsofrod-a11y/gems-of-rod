@@ -1,0 +1,7 @@
+{
+  "name": "echo-companion-function",
+  "private": true,
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.117.1"
+  }
+}

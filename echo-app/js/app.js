@@ -11,6 +11,9 @@
     liveTranscript: document.getElementById("live-transcript"),
     unsupported: document.getElementById("unsupported"),
     summaryContent: document.getElementById("summary-content"),
+    crisisCard: document.getElementById("crisis-card"),
+    companionCard: document.getElementById("companion-card"),
+    companionText: document.getElementById("companion-text"),
     historyList: document.getElementById("history-list"),
     insights: document.getElementById("insights"),
     chartTimeline: document.getElementById("chart-timeline"),
@@ -152,6 +155,15 @@
   }
 
   function renderSummary(entry) {
+    const isCrisis = Analysis.detectCrisisSignal(entry.transcript);
+    els.crisisCard.hidden = !isCrisis;
+
+    els.companionCard.hidden = true;
+    els.companionText.innerHTML = "";
+    // En cas de signal de crise, on s'en tient au message local fiable
+    // ci-dessus plutôt que d'ajouter une réponse IA moins prévisible.
+    if (!isCrisis) requestCompanionResponse(entry);
+
     const s = entry.scores;
     let html = "";
     html += scoreRow("Énergie", s.energy, "var(--energy)");
@@ -163,7 +175,10 @@
       html += `<p class="transcript-quote">Peu de signaux détectés aujourd'hui — les scores restent proches de la neutralité, c'est normal.</p>`;
     }
 
-    const suggestions = Analysis.getSuggestions(s);
+    // En cas de signal de crise, la carte d'alerte ci-dessus suffit : un
+    // conseil générique ("continue comme ça"...) juste en dessous serait
+    // déplacé, donc on n'affiche pas le bloc de suggestions habituel.
+    const suggestions = isCrisis ? [] : Analysis.getSuggestions(s);
     if (suggestions.length) {
       html += `<div class="suggestions-block">`;
       html += `<div class="suggestions-title">Ce que tu peux faire maintenant</div>`;
@@ -185,6 +200,22 @@
 
     html += `<p class="transcript-quote">"${escapeHtml(truncate(entry.transcript, 220))}"</p>`;
     els.summaryContent.innerHTML = html;
+  }
+
+  let companionRequestId = 0;
+
+  async function requestCompanionResponse(entry) {
+    const requestId = ++companionRequestId;
+    const message = await Companion.getResponse({
+      transcript: entry.transcript,
+      scores: entry.scores,
+    });
+    // Ignore une réponse arrivée en retard si l'utilisateur a depuis lancé
+    // un nouvel enregistrement (on ne veut pas afficher un message qui ne
+    // correspond plus à l'entrée actuellement affichée).
+    if (requestId !== companionRequestId || !message) return;
+    els.companionText.textContent = message;
+    els.companionCard.hidden = false;
   }
 
   function renderHistory() {

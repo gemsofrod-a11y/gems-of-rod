@@ -45,7 +45,16 @@
   <!-- ÉCRAN : RÉSUMÉ DU JOUR -->
   <section id="view-summary" class="view">
     <h2>Ton résumé du jour</h2>
+    <div id="crisis-card" class="crisis-card" hidden>
+      <div class="crisis-title">Tu n'es pas seul·e</div>
+      <p>Ce que tu viens de dire me préoccupe. Si tu es en danger immédiat, appelle le <strong>15</strong> (SAMU) ou le <strong>112</strong> (urgences européennes). Le <strong>3114</strong>, numéro national de prévention du suicide, est gratuit, confidentiel et disponible 24h/24 — quelqu'un peut t'écouter maintenant.</p>
+    </div>
     <div id="summary-content" class="summary-card"></div>
+    <div id="companion-card" class="companion-card" hidden>
+      <div class="companion-title">Ton compagnon</div>
+      <div id="companion-text" class="companion-text"></div>
+      <div class="companion-disclaimer">Réponse générée par IA — ne remplace pas un professionnel de santé.</div>
+    </div>
     <div class="actions">
       <button class="btn-secondary" data-nav="record">Nouvel enregistrement</button>
       <button class="btn-primary" data-nav="trends">Voir mes tendances</button>
@@ -96,6 +105,15 @@
       vocale du fournisseur (ex. Chrome/Google) le temps de la transcription —
       rien n'est stocké ni envoyé par Écho lui-même.
     </p>
+    <p class="privacy-note">
+      "Ton compagnon" (sur l'écran de résumé) est une fonctionnalité optionnelle
+      qui envoie la transcription du jour et tes scores à un service d'IA
+      (Claude, via une fonction serveur Netlify) pour générer une réponse
+      personnalisée. Elle ne s'active que si une clé API a été configurée côté
+      serveur ; sans elle, l'app continue de fonctionner normalement avec les
+      suggestions locales uniquement. Écho reste un outil de bien-être, pas un
+      substitut à un accompagnement professionnel.
+    </p>
   </section>
 
 </main>
@@ -135,6 +153,7 @@
 <script src="js/analysis.js"></script>
 <script src="js/recorder.js"></script>
 <script src="js/charts.js"></script>
+<script src="js/companion.js"></script>
 <script src="js/onboarding.js"></script>
 <script src="js/app.js"></script>
 </body>

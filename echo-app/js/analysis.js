@@ -296,5 +296,26 @@ const Analysis = (() => {
     return sentences.join(" ");
   }
 
-  return { computeScores, generateInsights, generateWeeklySummary, getSuggestions, WEEKDAYS };
+  // Filet de sécurité local : quelques tournures explicites de détresse
+  // aiguë. Volontairement restreint (peu de faux positifs) et volontairement
+  // 100% local — ce signal doit rester fiable même sans réseau ni API.
+  const CRISIS_PHRASES = [
+    "envie de mourir", "je veux mourir", "en finir avec tout", "en finir avec ma vie",
+    "me suicider", "plus envie de vivre", "ne plus vivre", "me faire du mal",
+    "me tuer", "en finir avec la vie",
+  ];
+
+  function detectCrisisSignal(transcript) {
+    const normalized = stripAccents((transcript || "").toLowerCase());
+    return CRISIS_PHRASES.some((p) => normalized.includes(stripAccents(p)));
+  }
+
+  return {
+    computeScores,
+    generateInsights,
+    generateWeeklySummary,
+    getSuggestions,
+    detectCrisisSignal,
+    WEEKDAYS,
+  };
 })();

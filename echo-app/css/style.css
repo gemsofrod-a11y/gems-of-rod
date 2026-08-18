@@ -162,6 +162,29 @@ h3.chart-title { font-size: 14px; color: var(--text-muted); margin: 24px 0 8px; 
   padding: 20px;
 }
 
+.crisis-card {
+  background: rgba(229, 72, 77, 0.1);
+  border: 1px solid var(--danger);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 16px;
+}
+.crisis-title { font-weight: 700; color: var(--danger); margin-bottom: 6px; }
+.crisis-card p { margin: 0; font-size: 14px; line-height: 1.6; }
+
+.companion-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary-2);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-top: 16px;
+}
+.companion-title { font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 8px; }
+.companion-text { font-size: 15px; line-height: 1.6; }
+.companion-disclaimer { font-size: 12px; color: var(--text-muted); margin-top: 12px; }
+.companion-loading { font-size: 13px; color: var(--text-muted); font-style: italic; }
+
 .score-row {
   display: flex;
   align-items: center;
