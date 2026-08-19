@@ -22,16 +22,6 @@ android {
     namespace = "fr.gemsofrod.encyclopedie"
     compileSdk = 35
 
-    // Avec androidTarget() (KMP), AGP attend par défaut le manifeste et les
-    // ressources sous src/androidMain/ ; on les repointe explicitement vers
-    // src/main/ pour ne déplacer aucun fichier durant cette phase de socle.
-    sourceSets {
-        getByName("main") {
-            manifest.srcFile("src/main/AndroidManifest.xml")
-            res.srcDirs("src/main/res")
-        }
-    }
-
     defaultConfig {
         applicationId = "fr.gemsofrod.encyclopedie"
         minSdk = 26
@@ -120,10 +110,14 @@ kotlin {
         }
 
         val androidMain by getting {
-            // Le code de l'appli reste physiquement sous src/main/java le temps
-            // de la migration progressive vers commonMain (phases suivantes du
+            // Le code Kotlin reste physiquement sous src/main/java le temps de
+            // la migration progressive vers commonMain (phases suivantes du
             // plan de portage) ; androidMain ajoute ce dossier existant sans
-            // déplacer aucun fichier.
+            // déplacer de code. Le manifeste, res/ et assets/ ont dû être
+            // déplacés vers src/androidMain/ (contrairement au code Kotlin) :
+            // avec androidTarget(), AGP les attend à cet emplacement par
+            // convention et ignore un android.sourceSets["main"] réécrit
+            // manuellement.
             kotlin.srcDir("src/main/java")
             dependencies {
                 implementation("androidx.core:core-ktx:1.13.1")
