@@ -1,20 +1,23 @@
 package fr.gemsofrod.encyclopedie.data
 
-import fr.gemsofrod.encyclopedie.R
-
 /**
  * Grande famille de météorites, au sens de la classification traditionnelle
  * par composition (sidérites, sidérolithes, aérolithes), complétée ici par
  * deux catégories d'usage pour un lapidaire : les pièces de prestige
  * scientifique (non taillées) et les météorites martiennes/lunaires
  * (rareté et prix hors norme).
+ *
+ * `labelKey` identifie la chaîne localisée à afficher dans l'UI (résolue
+ * côté plateforme — sur Android via
+ * [fr.gemsofrod.encyclopedie.ui.resolveLabelStringRes] vers la ressource
+ * `R.string` de même nom).
  */
-enum class MeteoriteFamille(val labelRes: Int) {
-    FERREUSE(R.string.meteorite_famille_ferreuse),
-    PALLASITE(R.string.meteorite_famille_pallasite),
-    CHONDRITE(R.string.meteorite_famille_chondrite),
-    PRESTIGE(R.string.meteorite_famille_prestige),
-    MARTIENNE_LUNAIRE(R.string.meteorite_famille_martienne_lunaire)
+enum class MeteoriteFamille(val labelKey: String) {
+    FERREUSE("meteorite_famille_ferreuse"),
+    PALLASITE("meteorite_famille_pallasite"),
+    CHONDRITE("meteorite_famille_chondrite"),
+    PRESTIGE("meteorite_famille_prestige"),
+    MARTIENNE_LUNAIRE("meteorite_famille_martienne_lunaire")
 }
 
 /**

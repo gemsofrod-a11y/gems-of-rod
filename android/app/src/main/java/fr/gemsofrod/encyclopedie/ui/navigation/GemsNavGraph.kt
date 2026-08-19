@@ -21,6 +21,7 @@ import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.data.GemFamilies
 import fr.gemsofrod.encyclopedie.data.GemOrigins
 import fr.gemsofrod.encyclopedie.data.GemsRepository
+import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localizedBadgeTitle
 import fr.gemsofrod.encyclopedie.ui.screens.AchievementsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.AnalyseScreen

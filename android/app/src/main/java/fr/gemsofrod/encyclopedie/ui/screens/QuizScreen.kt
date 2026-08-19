@@ -41,6 +41,7 @@ import fr.gemsofrod.encyclopedie.data.GemsRepository
 import fr.gemsofrod.encyclopedie.data.QuizEngine
 import fr.gemsofrod.encyclopedie.data.QuizQuestion
 import fr.gemsofrod.encyclopedie.data.QuizQuestionType
+import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 

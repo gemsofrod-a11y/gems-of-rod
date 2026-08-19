@@ -42,6 +42,7 @@ import fr.gemsofrod.encyclopedie.data.AnalysisMatch
 import fr.gemsofrod.encyclopedie.data.GemAnalyzer
 import fr.gemsofrod.encyclopedie.data.LabNotebookRepository
 import fr.gemsofrod.encyclopedie.ui.components.AnalysisResultRow
+import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import java.text.DateFormat
 import java.util.Date
