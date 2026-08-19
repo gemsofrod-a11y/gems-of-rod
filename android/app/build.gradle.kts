@@ -22,6 +22,16 @@ android {
     namespace = "fr.gemsofrod.encyclopedie"
     compileSdk = 35
 
+    // Avec androidTarget() (KMP), AGP attend par défaut le manifeste et les
+    // ressources sous src/androidMain/ ; on les repointe explicitement vers
+    // src/main/ pour ne déplacer aucun fichier durant cette phase de socle.
+    sourceSets {
+        getByName("main") {
+            manifest.srcFile("src/main/AndroidManifest.xml")
+            res.srcDirs("src/main/res")
+        }
+    }
+
     defaultConfig {
         applicationId = "fr.gemsofrod.encyclopedie"
         minSdk = 26
