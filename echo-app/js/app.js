@@ -53,6 +53,7 @@
     crisisCard: document.getElementById("crisis-card"),
     companionCard: document.getElementById("companion-card"),
     companionText: document.getElementById("companion-text"),
+    btnCompanionSpeak: document.getElementById("btn-companion-speak"),
     waveformCard: document.getElementById("waveform-card"),
     chartWaveform: document.getElementById("chart-waveform"),
     waveformStats: document.getElementById("waveform-stats"),
@@ -323,6 +324,8 @@
 
     els.companionCard.hidden = true;
     els.companionText.innerHTML = "";
+    els.btnCompanionSpeak.hidden = true;
+    if ("speechSynthesis" in window) speechSynthesis.cancel();
     // En cas de signal de crise, on s'en tient au message local fiable
     // ci-dessus plutôt que d'ajouter une réponse IA moins prévisible.
     if (!isCrisis) requestCompanionResponse(entry, sessionId);
@@ -380,7 +383,30 @@
     if (sessionId !== summarySessionId || !message) return;
     els.companionText.textContent = message;
     els.companionCard.hidden = false;
+    els.btnCompanionSpeak.hidden = !isTTSSupported();
+    els.btnCompanionSpeak.classList.remove("speak-btn-active");
   }
+
+  function isTTSSupported() {
+    return "speechSynthesis" in window;
+  }
+
+  function toggleCompanionSpeech() {
+    if (!isTTSSupported()) return;
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+      els.btnCompanionSpeak.classList.remove("speak-btn-active");
+      return;
+    }
+    const utterance = new SpeechSynthesisUtterance(els.companionText.textContent);
+    utterance.lang = "fr-FR";
+    utterance.onend = () => els.btnCompanionSpeak.classList.remove("speak-btn-active");
+    utterance.onerror = () => els.btnCompanionSpeak.classList.remove("speak-btn-active");
+    els.btnCompanionSpeak.classList.add("speak-btn-active");
+    speechSynthesis.speak(utterance);
+  }
+
+  els.btnCompanionSpeak.addEventListener("click", toggleCompanionSpeech);
 
   // Analyse locale de la piste audio (pauses, pics de volume) : ça prend un
   // instant (décodage audio), donc ça se fait en arrière-plan après avoir
