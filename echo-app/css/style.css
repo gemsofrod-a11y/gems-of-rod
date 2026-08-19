@@ -576,3 +576,40 @@ h3.chart-title { font-size: 14px; color: var(--text-muted); margin: 24px 0 8px; 
   .print-report th, .print-report td { border: 1px solid #ccc; padding: 6px 8px; text-align: left; }
   .print-report .print-disclaimer { color: #666; font-size: 11px; margin-top: 24px; border-top: 1px solid #ccc; padding-top: 12px; }
 }
+
+.checkin-trigger {
+  display: block;
+  margin: 20px auto 0;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.checkin-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(10, 8, 20, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.checkin-overlay[hidden] { display: none; }
+.checkin-card {
+  width: 100%;
+  max-width: 340px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+}
+.checkin-title { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+.checkin-subtitle { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+.checkin-field { margin-bottom: 18px; }
+.checkin-field label { display: block; font-size: 14px; margin-bottom: 8px; }
+.checkin-field input[type="range"] { width: 100%; }
+.checkin-actions { display: flex; gap: 12px; margin-top: 4px; }
+.checkin-actions .btn-secondary, .checkin-actions .btn-primary { flex: 1; }

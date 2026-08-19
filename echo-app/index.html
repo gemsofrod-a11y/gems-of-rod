@@ -39,6 +39,25 @@
   </div>
 </div>
 
+<div id="checkin-overlay" class="checkin-overlay" hidden>
+  <div class="checkin-card">
+    <div class="checkin-title">Check-in rapide</div>
+    <p class="checkin-subtitle">Deux curseurs, pas de voix — utile entre deux journaux complets.</p>
+    <div class="checkin-field">
+      <label for="checkin-energy">Énergie : <span id="checkin-energy-value">50</span></label>
+      <input type="range" id="checkin-energy" min="0" max="100" value="50">
+    </div>
+    <div class="checkin-field">
+      <label for="checkin-stress">Stress : <span id="checkin-stress-value">50</span></label>
+      <input type="range" id="checkin-stress" min="0" max="100" value="50">
+    </div>
+    <div class="checkin-actions">
+      <button id="checkin-cancel" class="btn-secondary">Annuler</button>
+      <button id="checkin-save" class="btn-primary">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
 <header class="topbar">
   <div class="brand">
     <span class="brand-mark" aria-hidden="true"></span>
@@ -71,6 +90,8 @@
       Ton navigateur ne supporte pas la reconnaissance vocale (Web Speech API).
       Essaie avec Chrome, Edge ou Safari récent.
     </p>
+
+    <button id="btn-checkin" class="checkin-trigger">Check-in rapide, sans la voix</button>
   </section>
 
   <!-- ÉCRAN : RÉSUMÉ DU JOUR -->

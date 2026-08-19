@@ -80,6 +80,14 @@
     audioTrackToggle: document.getElementById("audio-track-toggle"),
     btnLockToggle: document.getElementById("btn-lock-toggle"),
     lockSettingDesc: document.getElementById("lock-setting-desc"),
+    btnCheckin: document.getElementById("btn-checkin"),
+    checkinOverlay: document.getElementById("checkin-overlay"),
+    checkinEnergy: document.getElementById("checkin-energy"),
+    checkinEnergyValue: document.getElementById("checkin-energy-value"),
+    checkinStress: document.getElementById("checkin-stress"),
+    checkinStressValue: document.getElementById("checkin-stress-value"),
+    checkinCancel: document.getElementById("checkin-cancel"),
+    checkinSave: document.getElementById("checkin-save"),
   };
 
   let isRecording = false;
@@ -478,10 +486,14 @@
       .map((e) => {
         const d = new Date(e.date);
         const dateLabel = d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" });
+        const excerpt =
+          e.type === "checkin"
+            ? `Check-in rapide — énergie ${e.scores.energy}, stress ${e.scores.stress}`
+            : truncate(e.transcript, 140);
         return `
           <div class="history-item">
             <div class="history-date">${dateLabel}</div>
-            <div class="history-excerpt">${escapeHtml(truncate(e.transcript, 140))}</div>
+            <div class="history-excerpt">${escapeHtml(excerpt)}</div>
           </div>`;
       })
       .join("");
@@ -599,6 +611,47 @@
     const summary = Analysis.generateWeeklySummary(entries);
     els.weeklySummary.textContent = summary || "Enregistre-toi encore quelques jours pour débloquer ton résumé de la semaine.";
     els.weeklySummary.hidden = false;
+  });
+
+  // Check-in rapide : deux curseurs (énergie, stress) reportés directement
+  // par l'utilisateur, sans passer par la voix. Contrairement à un journal
+  // vocal, fatigue/humeur n'y sont pas mesurées — laissées à 50 (neutre,
+  // "pas de signal") plutôt que déduites de l'énergie/stress, pour ne
+  // jamais afficher une valeur inventée comme si elle avait été rapportée.
+  els.checkinEnergy.addEventListener("input", () => {
+    els.checkinEnergyValue.textContent = els.checkinEnergy.value;
+  });
+  els.checkinStress.addEventListener("input", () => {
+    els.checkinStressValue.textContent = els.checkinStress.value;
+  });
+  els.btnCheckin.addEventListener("click", () => {
+    els.checkinEnergy.value = 50;
+    els.checkinEnergyValue.textContent = "50";
+    els.checkinStress.value = 50;
+    els.checkinStressValue.textContent = "50";
+    els.checkinOverlay.hidden = false;
+  });
+  els.checkinCancel.addEventListener("click", () => {
+    els.checkinOverlay.hidden = true;
+  });
+  els.checkinSave.addEventListener("click", () => {
+    const energy = Number(els.checkinEnergy.value);
+    const stress = Number(els.checkinStress.value);
+    const entry = {
+      id: `${Date.now()}`,
+      date: new Date().toISOString(),
+      durationSec: 0,
+      transcript: "",
+      wordCount: 0,
+      type: "checkin",
+      scores: { energy, stress, fatigue: 50, mood: 50, keywords: [], hasSignal: true, wpm: 0 },
+    };
+    Storage.saveEntry(entry);
+    els.checkinOverlay.hidden = true;
+    els.recStatus.textContent = "Check-in enregistré.";
+    setTimeout(() => {
+      if (els.recStatus.textContent === "Check-in enregistré.") els.recStatus.textContent = "";
+    }, 2500);
   });
 
   els.btnScaleInfo.addEventListener("click", () => {
