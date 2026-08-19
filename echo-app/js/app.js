@@ -19,6 +19,51 @@
     return RECORD_PROMPTS[dayIndex % RECORD_PROMPTS.length];
   }
 
+  // Rappel quotidien. Honnête sur sa limite : sans backend d'envoi push, un
+  // navigateur ne peut pas notifier de façon fiable une fois l'app
+  // complètement fermée. Ce qu'on peut garantir, c'est une bannière dans
+  // l'app + une notification best-effort au moment où l'app est rouverte
+  // après l'heure choisie, tant qu'aucune entrée n'a encore été faite ce
+  // jour-là.
+  const REMINDER_ENABLED_KEY = "echo_reminder_enabled";
+  const REMINDER_TIME_KEY = "echo_reminder_time";
+
+  function isReminderEnabled() {
+    return localStorage.getItem(REMINDER_ENABLED_KEY) === "1";
+  }
+  function getReminderTime() {
+    return localStorage.getItem(REMINDER_TIME_KEY) || "19:00";
+  }
+  function todayKey() {
+    return new Date().toDateString();
+  }
+  function hasJournaledToday() {
+    return Storage.getEntries().some((e) => new Date(e.date).toDateString() === todayKey());
+  }
+  function reminderDismissKey() {
+    return `echo_reminder_dismissed_${todayKey()}`;
+  }
+  function shouldShowReminder() {
+    if (!isReminderEnabled() || hasJournaledToday()) return false;
+    if (localStorage.getItem(reminderDismissKey()) === "1") return false;
+    const [h, m] = getReminderTime().split(":").map(Number);
+    const now = new Date();
+    return now.getHours() * 60 + now.getMinutes() >= h * 60 + m;
+  }
+  function checkReminder() {
+    els.reminderBanner.hidden = !shouldShowReminder();
+    if (els.reminderBanner.hidden) return;
+    const notifiedKey = `echo_reminder_notified_${todayKey()}`;
+    if ("Notification" in window && Notification.permission === "granted" && !sessionStorage.getItem(notifiedKey)) {
+      try {
+        new Notification("Écho", { body: "Tu n'as pas encore journalisé aujourd'hui." });
+        sessionStorage.setItem(notifiedKey, "1");
+      } catch (e) {
+        // Best-effort uniquement : la bannière dans l'app reste le rappel fiable.
+      }
+    }
+  }
+
   // Désactivée en dur (pas seulement par défaut) : demander l'accès au
   // micro via getUserMedia PENDANT que la reconnaissance vocale tourne
   // encore casse la transcription sur au moins un appareil Android réel
@@ -88,6 +133,11 @@
     checkinStressValue: document.getElementById("checkin-stress-value"),
     checkinCancel: document.getElementById("checkin-cancel"),
     checkinSave: document.getElementById("checkin-save"),
+    reminderBanner: document.getElementById("reminder-banner"),
+    reminderBannerDismiss: document.getElementById("reminder-banner-dismiss"),
+    reminderToggle: document.getElementById("reminder-toggle"),
+    reminderTimeRow: document.getElementById("reminder-time-row"),
+    reminderTime: document.getElementById("reminder-time"),
   };
 
   let isRecording = false;
@@ -303,6 +353,7 @@
 
       Storage.saveEntry(entry);
       lastEntry = entry;
+      checkReminder();
       const sessionId = renderSummary(entry);
       navigate("summary");
 
@@ -647,6 +698,7 @@
       scores: { energy, stress, fatigue: 50, mood: 50, keywords: [], hasSignal: true, wpm: 0 },
     };
     Storage.saveEntry(entry);
+    checkReminder();
     els.checkinOverlay.hidden = true;
     els.recStatus.textContent = "Check-in enregistré.";
     setTimeout(() => {
@@ -715,6 +767,27 @@
     }, () => {});
   });
 
+  els.reminderToggle.checked = isReminderEnabled();
+  els.reminderTimeRow.hidden = !isReminderEnabled();
+  els.reminderTime.value = getReminderTime();
+  els.reminderToggle.addEventListener("change", () => {
+    const enabled = els.reminderToggle.checked;
+    localStorage.setItem(REMINDER_ENABLED_KEY, enabled ? "1" : "0");
+    els.reminderTimeRow.hidden = !enabled;
+    if (enabled && "Notification" in window && Notification.permission === "default") {
+      Notification.requestPermission();
+    }
+    checkReminder();
+  });
+  els.reminderTime.addEventListener("change", () => {
+    localStorage.setItem(REMINDER_TIME_KEY, els.reminderTime.value);
+    checkReminder();
+  });
+  els.reminderBannerDismiss.addEventListener("click", () => {
+    localStorage.setItem(reminderDismissKey(), "1");
+    els.reminderBanner.hidden = true;
+  });
+
   if (!Recorder.isSupported()) {
     els.unsupported.hidden = false;
     els.btnRecord.disabled = true;
@@ -729,6 +802,7 @@
   els.btnHelp.addEventListener("click", () => Onboarding.start());
 
   els.recordHint.textContent = todaysPrompt();
+  checkReminder();
 
   navigate("record");
   if (Lock.needsUnlock()) {

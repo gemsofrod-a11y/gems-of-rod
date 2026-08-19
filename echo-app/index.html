@@ -70,6 +70,11 @@
 
   <!-- ÉCRAN : ENREGISTRER -->
   <section id="view-record" class="view view-active">
+    <div id="reminder-banner" class="reminder-banner" hidden>
+      <span>Tu n'as pas encore journalisé aujourd'hui.</span>
+      <button id="reminder-banner-dismiss" class="reminder-banner-dismiss" aria-label="Fermer le rappel">✕</button>
+    </div>
+
     <p id="record-hint" class="hint">Parle librement pendant environ 30 secondes. Comment s'est passée ta journée ?</p>
 
     <div class="record-stage">
@@ -191,6 +196,28 @@
         </div>
       </div>
       <button id="btn-lock-toggle" class="btn-secondary">Activer</button>
+    </div>
+
+    <div class="setting-toggle-row">
+      <div class="setting-toggle-text">
+        <div class="setting-toggle-title">Rappel quotidien</div>
+        <div class="setting-toggle-desc">
+          Affiche un rappel dans l'app (et une notification si autorisée) si
+          tu n'as pas encore journalisé aujourd'hui après l'heure choisie.
+          Ne fonctionne que quand tu ouvres l'app : les navigateurs ne
+          permettent pas de notification fiable app fermée sans service
+          d'envoi payant, donc ce rappel n'est pas garanti si tu n'ouvres
+          jamais l'app dans la journée.
+        </div>
+        <div id="reminder-time-row" class="reminder-time-row" hidden>
+          <label for="reminder-time">À partir de</label>
+          <input type="time" id="reminder-time" value="19:00">
+        </div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="reminder-toggle">
+        <span class="toggle-slider"></span>
+      </label>
     </div>
 
     <div class="setting-toggle-row">

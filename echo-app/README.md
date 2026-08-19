@@ -18,6 +18,22 @@ tendances émotionnelles (énergie, stress, fatigue, humeur) dans le temps.
 - **Filet de sécurité** : une carte avec des numéros d'urgence (15, 112,
   3114) s'affiche systématiquement — sans dépendre du réseau — si des mots
   de détresse aiguë sont détectés dans la transcription.
+- **Verrouillage par code (optionnel)** : code à 4 chiffres, hashé
+  (SHA-256, Web Crypto), jamais stocké en clair. "Code oublié ?" efface
+  toutes les données locales plutôt que de laisser quiconque contourner le
+  code sans coût.
+- **Prompts du jour** : la question posée à l'enregistrement change chaque
+  jour (7 variantes) plutôt que de toujours être la même.
+- **Mots-clés récurrents, vue mensuelle, recherche dans l'historique,
+  bilan imprimable/PDF** : dans les onglets Tendances/Historique.
+- **Check-in rapide** : deux curseurs (énergie, stress) sans passer par la
+  voix, pour un point ponctuel entre deux journaux complets.
+- **Rappel quotidien (optionnel)** : bannière dans l'app (+ notification
+  best-effort) si rien n'a encore été journalisé après l'heure choisie —
+  honnêtement limité : sans backend d'envoi push, aucun navigateur ne
+  garantit un rappel quand l'app est complètement fermée.
+- **Lecture audio de la réponse du compagnon** via la synthèse vocale du
+  navigateur (fr-FR), sans dépendance ni appel réseau.
 
 ## Tester en développement
 

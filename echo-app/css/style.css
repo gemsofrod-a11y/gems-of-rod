@@ -81,6 +81,39 @@ h3.chart-title { font-size: 14px; color: var(--text-muted); margin: 24px 0 8px; 
   max-width: 340px;
 }
 
+.reminder-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: rgba(111, 140, 255, 0.12);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 14px;
+  margin-top: 12px;
+}
+.reminder-banner-dismiss {
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 4px;
+}
+
+.reminder-time-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+.reminder-time-row label { font-size: 13px; color: var(--text-muted); }
+.reminder-time-row input[type="time"] {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  padding: 6px 8px;
+  font-size: 13px;
+}
+
 .record-stage {
   display: flex;
   flex-direction: column;
