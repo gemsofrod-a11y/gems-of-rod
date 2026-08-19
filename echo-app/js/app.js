@@ -436,10 +436,30 @@
     return sessionId;
   }
 
+  // Court résumé des entrées récentes (hors l'entrée en cours), pour que le
+  // compagnon puisse s'y référer explicitement ("tu disais hier que...")
+  // plutôt que de traiter chaque journal comme isolé. Reste court : le
+  // serveur tronque de toute façon à 500 caractères.
+  function buildRecentSummary(currentEntry) {
+    const recent = Storage.getEntries()
+      .filter((e) => e.id !== currentEntry.id)
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 4);
+    if (!recent.length) return "";
+    return recent
+      .map((e) => {
+        const dayLabel = new Date(e.date).toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "short" });
+        const s = e.scores;
+        return `${dayLabel} : énergie ${s.energy}, stress ${s.stress}, humeur ${s.mood}`;
+      })
+      .join(" / ");
+  }
+
   async function requestCompanionResponse(entry, sessionId) {
     const message = await Companion.getResponse({
       transcript: entry.transcript,
       scores: entry.scores,
+      recentSummary: buildRecentSummary(entry),
     });
     // Ignore une réponse arrivée en retard si l'utilisateur a depuis lancé
     // un nouvel enregistrement (on ne veut pas afficher un message qui ne

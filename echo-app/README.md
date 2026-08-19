@@ -14,7 +14,14 @@ tendances émotionnelles (énergie, stress, fatigue, humeur) dans le temps.
   côté serveur (variable d'environnement Netlify, voir
   `netlify/functions/companion.js`), l'écran de résumé affiche en plus une
   réponse courte et personnalisée générée par Claude. Sans clé, l'app
-  continue de fonctionner normalement avec les suggestions locales.
+  continue de fonctionner normalement avec les suggestions locales. Le
+  prompt s'inspire de techniques d'écoute active et d'entretien
+  motivationnel (reformulation, question ouverte, appui sur le contexte des
+  derniers jours) — mais il ne prétend jamais être un·e psychologue ou un
+  professionnel de santé, ne diagnostique rien, et invite à consulter un
+  proche ou un professionnel si le ressenti semble intense. Cette limite
+  est non négociable dans le prompt, volontairement placée au-dessus des
+  consignes de style.
 - **Filet de sécurité** : une carte avec des numéros d'urgence (15, 112,
   3114) s'affiche systématiquement — sans dépendre du réseau — si des mots
   de détresse aiguë sont détectés dans la transcription.
