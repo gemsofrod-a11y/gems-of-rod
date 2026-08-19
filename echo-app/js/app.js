@@ -67,6 +67,8 @@
     monthlySection: document.getElementById("monthly-section"),
     chartMonthly: document.getElementById("chart-monthly"),
     bestMonthNote: document.getElementById("best-month-note"),
+    btnPrintReport: document.getElementById("btn-print-report"),
+    printReport: document.getElementById("print-report"),
     btnWeeklySummary: document.getElementById("btn-weekly-summary"),
     weeklySummary: document.getElementById("weekly-summary"),
     btnScaleInfo: document.getElementById("btn-scale-info"),
@@ -531,6 +533,56 @@
       els.monthlySection.hidden = true;
     }
   }
+
+  // Bilan imprimable : construit une page dédiée, non stylée comme l'app,
+  // affichée uniquement via @media print (voir style.css) puis imprimée /
+  // exportée en PDF avec la fonction native du navigateur — pas de
+  // dépendance PDF externe.
+  function buildPrintReport() {
+    const entries = [...Storage.getEntries()].sort((a, b) => new Date(a.date) - new Date(b.date));
+    const dateLabel = new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+
+    let html = `<h1>Bilan Écho</h1><p class="print-date">Généré le ${dateLabel}</p>`;
+
+    if (!entries.length) {
+      html += `<p>Aucune donnée enregistrée pour l'instant.</p>`;
+    } else {
+      const weeklySummary = Analysis.generateWeeklySummary(entries);
+      if (weeklySummary) {
+        html += `<h2>Résumé de la semaine</h2><p>${escapeHtml(weeklySummary)}</p>`;
+      }
+
+      const insights = Analysis.generateInsights(entries);
+      if (insights.length) {
+        html += `<h2>Tendances</h2><ul>${insights.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul>`;
+      }
+
+      const monthly = Analysis.monthlyAverages(entries);
+      if (monthly.length) {
+        html += `<h2>Moyennes par mois</h2><table><tr><th>Mois</th><th>Énergie</th><th>Stress</th><th>Fatigue</th><th>Humeur</th><th>Entrées</th></tr>`;
+        html += monthly
+          .map(
+            (m) =>
+              `<tr><td>${escapeHtml(m.label)}</td><td>${Math.round(m.energy)}</td><td>${Math.round(m.stress)}</td><td>${Math.round(m.fatigue)}</td><td>${Math.round(m.mood)}</td><td>${m.count}</td></tr>`
+          )
+          .join("");
+        html += `</table>`;
+      }
+
+      const keywords = Analysis.recurringKeywords(entries, 10);
+      if (keywords.length) {
+        html += `<h2>Mots-clés qui reviennent</h2><p>${escapeHtml(keywords.map((k) => `${k.word} (${k.count})`).join(", "))}</p>`;
+      }
+    }
+
+    html += `<p class="print-disclaimer">Écho est un outil de bien-être personnel, pas un dispositif médical ni un diagnostic. Les scores viennent d'une analyse de mots-clés locale, propre à ce journal — pas un seuil clinique.</p>`;
+    els.printReport.innerHTML = html;
+  }
+
+  els.btnPrintReport.addEventListener("click", () => {
+    buildPrintReport();
+    window.print();
+  });
 
   function escapeHtml(str) {
     const div = document.createElement("div");
