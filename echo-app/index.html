@@ -51,7 +51,7 @@
 
   <!-- ÉCRAN : ENREGISTRER -->
   <section id="view-record" class="view view-active">
-    <p class="hint">Parle librement pendant environ 30 secondes. Comment s'est passée ta journée ?</p>
+    <p id="record-hint" class="hint">Parle librement pendant environ 30 secondes. Comment s'est passée ta journée ?</p>
 
     <div class="record-stage">
       <button id="btn-record" class="mic-btn" aria-label="Démarrer l'enregistrement">
@@ -100,6 +100,7 @@
   <!-- ÉCRAN : HISTORIQUE -->
   <section id="view-history" class="view">
     <h2>Historique</h2>
+    <input id="history-search" type="search" class="history-search" placeholder="Rechercher dans tes journaux...">
     <div id="history-list" class="history-list"></div>
   </section>
 
@@ -111,6 +112,11 @@
     <div id="weekly-summary" class="weekly-summary" hidden></div>
 
     <div id="insights" class="insights"></div>
+
+    <div id="keywords-card" class="keywords-card" hidden>
+      <div class="keywords-title">Mots-clés qui reviennent</div>
+      <div id="keywords-list" class="keywords-list"></div>
+    </div>
 
     <h3 class="chart-title">
       Énergie &amp; stress — 14 derniers jours

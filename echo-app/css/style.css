@@ -254,6 +254,16 @@ h3.chart-title { font-size: 14px; color: var(--text-muted); margin: 24px 0 8px; 
 .full { width: 100%; display: block; text-align: center; margin-bottom: 12px; }
 .file-label { display: flex; align-items: center; justify-content: center; }
 
+.history-search {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 14px;
+  margin-bottom: 14px;
+}
 .history-list { display: flex; flex-direction: column; gap: 10px; }
 .history-item {
   background: var(--surface);
@@ -306,6 +316,25 @@ h3.chart-title { font-size: 14px; color: var(--text-muted); margin: 24px 0 8px; 
   padding: 12px 14px;
   font-size: 14px;
 }
+
+.keywords-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+.keywords-title { font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 10px; }
+.keywords-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.keyword-chip {
+  background: rgba(111, 140, 255, 0.1);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: var(--text);
+}
+.keyword-chip-count { color: var(--text-muted); margin-left: 4px; }
 
 .chart { width: 100%; height: auto; display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; }
 

@@ -203,6 +203,26 @@ const Analysis = (() => {
     return streak;
   }
 
+  // Mots-clés (déjà extraits par computeScores, sur le lexique stress/
+  // calme/fatigue/énergie/positif/négatif) qui reviennent le plus souvent
+  // sur l'historique récent — pas une nouvelle analyse, juste une fréquence
+  // sur ce qui est déjà détecté par entrée, dédupliqué par jour pour éviter
+  // qu'un mot répété plusieurs fois dans un seul enregistrement écrase les
+  // autres.
+  function recurringKeywords(entries, limit) {
+    const counts = {};
+    entries.forEach((e) => {
+      (e.scores.keywords || []).forEach((k) => {
+        counts[k] = (counts[k] || 0) + 1;
+      });
+    });
+    return Object.entries(counts)
+      .filter(([, count]) => count >= 2)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, limit || 5)
+      .map(([word, count]) => ({ word, count }));
+  }
+
   function countJournalingStreak(sorted) {
     const days = [...new Set(sorted.map((e) => e.date.slice(0, 10)))].sort();
     let streak = 1;
@@ -354,6 +374,7 @@ const Analysis = (() => {
     generateWeeklySummary,
     getSuggestions,
     detectCrisisSignal,
+    recurringKeywords,
     WEEKDAYS,
   };
 })();

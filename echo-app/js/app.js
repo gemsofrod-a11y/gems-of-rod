@@ -1,6 +1,24 @@
 (() => {
   const MAX_RECORDING_MS = 3 * 60 * 1000;
 
+  // Une question différente chaque jour plutôt que toujours la même, pour
+  // éviter la lassitude et creuser des angles différents. Choisie par date
+  // (pas au hasard à chaque ouverture) pour rester stable toute la journée.
+  const RECORD_PROMPTS = [
+    "Parle librement pendant environ 30 secondes. Comment s'est passée ta journée ?",
+    "Qu'est-ce qui t'a pris le plus d'énergie aujourd'hui ?",
+    "Y a-t-il quelque chose dont tu es reconnaissant·e aujourd'hui, même petit ?",
+    "Qu'est-ce qui t'a stressé ou pesé aujourd'hui ?",
+    "Quelle a été ta petite victoire du jour ?",
+    "Comment tu te sens, là, maintenant, en quelques mots ?",
+    "Qu'est-ce que tu aimerais faire différemment demain ?",
+  ];
+
+  function todaysPrompt() {
+    const dayIndex = Math.floor(Date.now() / 86400000);
+    return RECORD_PROMPTS[dayIndex % RECORD_PROMPTS.length];
+  }
+
   // Désactivée en dur (pas seulement par défaut) : demander l'accès au
   // micro via getUserMedia PENDANT que la reconnaissance vocale tourne
   // encore casse la transcription sur au moins un appareil Android réel
@@ -23,6 +41,7 @@
     views: document.querySelectorAll(".view"),
     tabs: document.querySelectorAll(".tab-btn"),
     navButtons: document.querySelectorAll("[data-nav]"),
+    recordHint: document.getElementById("record-hint"),
     btnRecord: document.getElementById("btn-record"),
     timer: document.getElementById("timer"),
     recStatus: document.getElementById("rec-status"),
@@ -37,8 +56,11 @@
     waveformCard: document.getElementById("waveform-card"),
     chartWaveform: document.getElementById("chart-waveform"),
     waveformStats: document.getElementById("waveform-stats"),
+    historySearch: document.getElementById("history-search"),
     historyList: document.getElementById("history-list"),
     insights: document.getElementById("insights"),
+    keywordsCard: document.getElementById("keywords-card"),
+    keywordsList: document.getElementById("keywords-list"),
     chartTimeline: document.getElementById("chart-timeline"),
     chartWeekday: document.getElementById("chart-weekday"),
     btnWeeklySummary: document.getElementById("btn-weekly-summary"),
@@ -74,6 +96,8 @@
   els.navButtons.forEach((btn) => {
     btn.addEventListener("click", () => navigate(btn.dataset.nav));
   });
+
+  els.historySearch.addEventListener("input", () => renderHistory());
 
   function formatTimer(ms) {
     const totalSec = Math.floor(ms / 1000);
@@ -403,11 +427,22 @@
   }
 
   function renderHistory() {
-    const entries = [...Storage.getEntries()].sort((a, b) => new Date(b.date) - new Date(a.date));
-    if (!entries.length) {
+    const allEntries = [...Storage.getEntries()].sort((a, b) => new Date(b.date) - new Date(a.date));
+    if (!allEntries.length) {
       els.historyList.innerHTML = `<p class="history-empty">Aucun enregistrement pour l'instant. Va dans l'onglet "Parler" pour commencer.</p>`;
       return;
     }
+
+    const query = els.historySearch.value.trim().toLocaleLowerCase("fr-FR");
+    const entries = query
+      ? allEntries.filter((e) => (e.transcript || "").toLocaleLowerCase("fr-FR").includes(query))
+      : allEntries;
+
+    if (!entries.length) {
+      els.historyList.innerHTML = `<p class="history-empty">Aucun journal ne contient "${escapeHtml(els.historySearch.value.trim())}".</p>`;
+      return;
+    }
+
     els.historyList.innerHTML = entries
       .map((e) => {
         const d = new Date(e.date);
@@ -435,6 +470,16 @@
       els.insights.innerHTML = `<p class="insights-empty">Continue à enregistrer régulièrement pour révéler des tendances.</p>`;
     } else {
       els.insights.innerHTML = insights.map((i) => `<div class="insight-card">${escapeHtml(i)}</div>`).join("");
+    }
+
+    const keywords = Analysis.recurringKeywords(entries, 6);
+    if (keywords.length) {
+      els.keywordsList.innerHTML = keywords
+        .map((k) => `<span class="keyword-chip">${escapeHtml(k.word)}<span class="keyword-chip-count">×${k.count}</span></span>`)
+        .join("");
+      els.keywordsCard.hidden = false;
+    } else {
+      els.keywordsCard.hidden = true;
     }
 
     Charts.drawTimeline(els.chartTimeline, entries);
@@ -531,6 +576,8 @@
   }
 
   els.btnHelp.addEventListener("click", () => Onboarding.start());
+
+  els.recordHint.textContent = todaysPrompt();
 
   navigate("record");
   if (Lock.needsUnlock()) {
