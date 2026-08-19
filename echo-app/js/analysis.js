@@ -223,6 +223,48 @@ const Analysis = (() => {
       .map(([word, count]) => ({ word, count }));
   }
 
+  const MONTH_NAMES = [
+    "janvier", "février", "mars", "avril", "mai", "juin",
+    "juillet", "août", "septembre", "octobre", "novembre", "décembre",
+  ];
+
+  // Agrège les entrées par mois calendaire pour une vue plus large que les
+  // 14 derniers jours — utile une fois plusieurs mois de journal accumulés.
+  function monthlyAverages(entries) {
+    const byMonth = {};
+    entries.forEach((e) => {
+      const d = new Date(e.date);
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+      (byMonth[key] = byMonth[key] || []).push(e);
+    });
+    return Object.entries(byMonth)
+      .map(([key, list]) => {
+        const [year, month] = key.split("-").map(Number);
+        return {
+          key,
+          year,
+          month: month - 1,
+          label: `${MONTH_NAMES[month - 1]} ${year}`,
+          count: list.length,
+          energy: average(list.map((e) => e.scores.energy)),
+          stress: average(list.map((e) => e.scores.stress)),
+          fatigue: average(list.map((e) => e.scores.fatigue)),
+          mood: average(list.map((e) => e.scores.mood)),
+        };
+      })
+      .sort((a, b) => a.key.localeCompare(b.key));
+  }
+
+  // "Meilleur mois" = humeur moyenne la plus haute, parmi les mois avec
+  // assez d'entrées pour que la moyenne veuille dire quelque chose — sans
+  // ça, un mois avec une seule entrée exceptionnelle fausserait la
+  // comparaison.
+  function bestMonth(monthly) {
+    const eligible = monthly.filter((m) => m.count >= 3);
+    if (eligible.length < 2) return null;
+    return eligible.reduce((best, m) => (m.mood > best.mood ? m : best));
+  }
+
   function countJournalingStreak(sorted) {
     const days = [...new Set(sorted.map((e) => e.date.slice(0, 10)))].sort();
     let streak = 1;
@@ -375,6 +417,8 @@ const Analysis = (() => {
     getSuggestions,
     detectCrisisSignal,
     recurringKeywords,
+    monthlyAverages,
+    bestMonth,
     WEEKDAYS,
   };
 })();

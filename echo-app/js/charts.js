@@ -136,6 +136,39 @@ const Charts = (() => {
     });
   }
 
+  const MONTH_ABBR = ["janv", "févr", "mars", "avr", "mai", "juin", "juil", "août", "sept", "oct", "nov", "déc"];
+
+  function drawMonthlyBars(canvas, monthly) {
+    const { ctx, width, height } = setupCanvas(canvas);
+    ctx.clearRect(0, 0, width, height);
+
+    if (!monthly.length) {
+      drawEmptyMessage(ctx, width, height, "Pas encore de données");
+      return;
+    }
+
+    const pad = { top: 16, right: 16, bottom: 24, left: 16 };
+    const plotW = width - pad.left - pad.right;
+    const plotH = height - pad.top - pad.bottom;
+
+    const months = monthly.slice(-6);
+    const barW = plotW / months.length;
+    const moodColor = getCssVar("--primary") || "#6f8cff";
+    const textColor = getCssVar("--text-muted") || "#888";
+
+    months.forEach((m, i) => {
+      const x = pad.left + i * barW + barW * 0.2;
+      const w = barW * 0.6;
+      const h = (m.mood / 100) * plotH;
+      ctx.fillStyle = moodColor;
+      ctx.fillRect(x, pad.top + plotH - h, w, h);
+      ctx.fillStyle = textColor;
+      ctx.font = "11px sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(MONTH_ABBR[m.month], x + w / 2, height - 6);
+    });
+  }
+
   function drawEmptyMessage(ctx, width, height, text) {
     ctx.fillStyle = getCssVar("--text-muted") || "#888";
     ctx.font = "13px sans-serif";
@@ -189,5 +222,5 @@ const Charts = (() => {
     ctx.closePath();
   }
 
-  return { drawTimeline, drawWeekdayBars, drawWaveform };
+  return { drawTimeline, drawWeekdayBars, drawMonthlyBars, drawWaveform };
 })();

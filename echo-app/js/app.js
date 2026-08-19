@@ -64,6 +64,9 @@
     keywordsList: document.getElementById("keywords-list"),
     chartTimeline: document.getElementById("chart-timeline"),
     chartWeekday: document.getElementById("chart-weekday"),
+    monthlySection: document.getElementById("monthly-section"),
+    chartMonthly: document.getElementById("chart-monthly"),
+    bestMonthNote: document.getElementById("best-month-note"),
     btnWeeklySummary: document.getElementById("btn-weekly-summary"),
     weeklySummary: document.getElementById("weekly-summary"),
     btnScaleInfo: document.getElementById("btn-scale-info"),
@@ -510,6 +513,23 @@
 
     Charts.drawTimeline(els.chartTimeline, entries);
     Charts.drawWeekdayBars(els.chartWeekday, entries);
+
+    // La vue mensuelle n'a de sens qu'une fois plusieurs mois de données
+    // accumulés — inutile de l'afficher pour un seul mois en cours.
+    const monthly = Analysis.monthlyAverages(entries);
+    if (monthly.length >= 2) {
+      Charts.drawMonthlyBars(els.chartMonthly, monthly);
+      const best = Analysis.bestMonth(monthly);
+      if (best) {
+        els.bestMonthNote.textContent = `Ton meilleur mois jusqu'ici : ${best.label}.`;
+        els.bestMonthNote.hidden = false;
+      } else {
+        els.bestMonthNote.hidden = true;
+      }
+      els.monthlySection.hidden = false;
+    } else {
+      els.monthlySection.hidden = true;
+    }
   }
 
   function escapeHtml(str) {

@@ -350,6 +350,9 @@ h3.chart-title { font-size: 14px; color: var(--text-muted); margin: 24px 0 8px; 
 
 .chart { width: 100%; height: auto; display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; }
 
+.monthly-section { margin-top: 8px; }
+.best-month-note { font-size: 13px; color: var(--text-muted); margin-top: 10px; text-align: center; }
+
 .legend { display: flex; gap: 18px; justify-content: center; margin-top: 8px; font-size: 13px; color: var(--text-muted); }
 .legend-item { display: flex; align-items: center; gap: 6px; }
 .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
