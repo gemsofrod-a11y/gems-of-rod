@@ -1,9 +1,10 @@
-const CACHE_NAME = "echo-cache-v6";
+const CACHE_NAME = "echo-cache-v7";
 const ASSETS = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
   "./css/style.css",
+  "./js/lock.js",
   "./js/storage.js",
   "./js/analysis.js",
   "./js/recorder.js",

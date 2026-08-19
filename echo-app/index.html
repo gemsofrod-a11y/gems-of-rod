@@ -12,6 +12,33 @@
 </head>
 <body>
 
+<div id="lock-overlay" class="lock-overlay" hidden>
+  <div class="lock-card">
+    <div class="lock-title">Écho verrouillé</div>
+    <div id="lock-subtitle" class="lock-subtitle">Entre ton code</div>
+    <div id="lock-dots" class="lock-dots">
+      <span class="lock-dot"></span><span class="lock-dot"></span><span class="lock-dot"></span><span class="lock-dot"></span>
+    </div>
+    <div id="lock-error" class="lock-error" hidden>Code incorrect</div>
+    <div id="lock-keypad" class="lock-keypad">
+      <button class="lock-key" data-key="1">1</button>
+      <button class="lock-key" data-key="2">2</button>
+      <button class="lock-key" data-key="3">3</button>
+      <button class="lock-key" data-key="4">4</button>
+      <button class="lock-key" data-key="5">5</button>
+      <button class="lock-key" data-key="6">6</button>
+      <button class="lock-key" data-key="7">7</button>
+      <button class="lock-key" data-key="8">8</button>
+      <button class="lock-key" data-key="9">9</button>
+      <span></span>
+      <button class="lock-key" data-key="0">0</button>
+      <button class="lock-key lock-key-del" data-key="del" aria-label="Effacer">⌫</button>
+    </div>
+    <button id="lock-cancel" class="lock-cancel" hidden>Annuler</button>
+    <button id="lock-forgot" class="lock-cancel" hidden>Code oublié ?</button>
+  </div>
+</div>
+
 <header class="topbar">
   <div class="brand">
     <span class="brand-mark" aria-hidden="true"></span>
@@ -118,6 +145,18 @@
 
     <div class="setting-toggle-row">
       <div class="setting-toggle-text">
+        <div class="setting-toggle-title">Verrouillage par code</div>
+        <div id="lock-setting-desc" class="setting-toggle-desc">
+          Demande un code à 4 chiffres à l'ouverture de l'app. Le code reste
+          uniquement sur cet appareil (aucun compte, aucun serveur) : s'il
+          est oublié, il faut effacer les données pour redéverrouiller l'app.
+        </div>
+      </div>
+      <button id="btn-lock-toggle" class="btn-secondary">Activer</button>
+    </div>
+
+    <div class="setting-toggle-row">
+      <div class="setting-toggle-text">
         <div class="setting-toggle-title">Piste audio (pauses, pics de volume, ton en Hz)</div>
         <div class="setting-toggle-desc">
           Temporairement désactivée : capturer l'audio en plus de la
@@ -191,6 +230,7 @@
   </div>
 </div>
 
+<script src="js/lock.js"></script>
 <script src="js/storage.js"></script>
 <script src="js/analysis.js"></script>
 <script src="js/recorder.js"></script>

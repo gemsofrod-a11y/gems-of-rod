@@ -50,6 +50,8 @@
     btnClear: document.getElementById("btn-clear"),
     btnHelp: document.getElementById("btn-help"),
     audioTrackToggle: document.getElementById("audio-track-toggle"),
+    btnLockToggle: document.getElementById("btn-lock-toggle"),
+    lockSettingDesc: document.getElementById("lock-setting-desc"),
   };
 
   let isRecording = false;
@@ -500,6 +502,23 @@
   els.audioTrackToggle.checked = false;
   els.audioTrackToggle.disabled = true;
 
+  function updateLockButton() {
+    els.btnLockToggle.textContent = Lock.isEnabled() ? "Désactiver" : "Activer";
+  }
+  updateLockButton();
+  els.btnLockToggle.addEventListener("click", () => {
+    if (Lock.isEnabled()) {
+      if (confirm("Désactiver le verrouillage par code ?")) {
+        Lock.disable();
+        updateLockButton();
+      }
+      return;
+    }
+    Lock.showSetup(() => {
+      updateLockButton();
+    }, () => {});
+  });
+
   if (!Recorder.isSupported()) {
     els.unsupported.hidden = false;
     els.btnRecord.disabled = true;
@@ -514,5 +533,9 @@
   els.btnHelp.addEventListener("click", () => Onboarding.start());
 
   navigate("record");
-  Onboarding.autostart();
+  if (Lock.needsUnlock()) {
+    Lock.showUnlock(() => Onboarding.autostart());
+  } else {
+    Onboarding.autostart();
+  }
 })();
