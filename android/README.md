@@ -67,7 +67,7 @@ affiché sous chaque image.
 Pour (re)générer les photos : lancer manuellement le workflow GitHub Actions
 **"Fetch gem images"** (`.github/workflows/fetch-gem-images.yml`, déclenché
 via `workflow_dispatch`). Il exécute `scripts/fetch_gem_images.py`, qui :
-- télécharge une photo par gemme dans `app/src/main/res/drawable-nodpi/`,
+- télécharge une photo par gemme dans `app/src/androidMain/res/drawable-nodpi/`,
 - régénère `app/src/main/java/.../data/GemImages.kt` (mapping id → photo + crédit),
 - publie `android/IMAGE_FETCH_REPORT.md` (liste des sources/licences pour revue),
 et commit directement le résultat sur la branche.

@@ -398,6 +398,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Chrysoprase_brute_(Australie).jpg",
       "title": "File:Chrysoprase brute (Australie).jpg",
       "type": "BRUTE"
+    },
+    {
+      "artist": "Darla Sondrol",
+      "license": "CC0",
+      "resource_name": "gem_chrysoprase_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Quartz,_chrysoprase_(GeoDIL_number_-_2465).jpg",
+      "title": "File:Quartz, chrysoprase (GeoDIL number - 2465).jpg",
+      "type": "FACETTEE"
     }
   ],
   "citrine": [
@@ -884,14 +892,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Unpolished_jasper.jpg",
       "title": "File:Unpolished jasper.jpg",
       "type": "BRUTE"
-    },
-    {
-      "artist": "Coraline Minéraux",
-      "license": "© Coraline Minéraux",
-      "resource_name": "gem_jaspe_facette_coraline",
-      "source_url": "https://gems-of-rod.fr",
-      "title": "Jaspe bréchique poli — photo Coraline Minéraux",
-      "type": "FACETTEE"
     },
     {
       "artist": "Coraline Minéraux",
@@ -1886,22 +1886,6 @@
       "source_url": "https://gems-of-rod.fr",
       "title": "Rhodonite polie — photo Coraline Minéraux",
       "type": "BRUTE"
-    },
-    {
-      "artist": "Céc.C",
-      "license": "© Céc.C",
-      "resource_name": "gem_rhodonite_facette_cecc",
-      "source_url": "https://gems-of-rod.fr",
-      "title": "Rhodonite en perles — photo Céc.C",
-      "type": "FACETTEE"
-    },
-    {
-      "artist": "Céc.C",
-      "license": "© Céc.C",
-      "resource_name": "gem_rhodonite_facette2_cecc",
-      "source_url": "https://gems-of-rod.fr",
-      "title": "Rhodonite veinée en perles — photo Céc.C",
-      "type": "FACETTEE"
     },
     {
       "artist": "Céc.C",

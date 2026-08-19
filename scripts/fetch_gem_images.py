@@ -2,7 +2,7 @@
 """
 Récupère, pour chaque gemme de l'encyclopédie, une photo de la pierre BRUTE
 et une photo de la pierre FACETTÉE/taillée sur Wikimedia Commons, et génère :
-  - les fichiers image dans android/app/src/main/res/drawable-nodpi/
+  - les fichiers image dans android/app/src/androidMain/res/drawable-nodpi/
   - android/gem_image_credits.json (source de vérité : crédits accumulés)
   - android/app/src/main/java/fr/gemsofrod/encyclopedie/data/GemImages.kt
     (régénéré à partir du JSON, mapping id de gemme -> liste de photos+crédits)
@@ -35,7 +35,7 @@ OPENVERSE_API_URL = "https://api.openverse.org/v1/images/"
 USER_AGENT = "GemsOfRodEncyclopedieBot/1.0 (contact: gemsofrod@gmail.com)"
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-DRAWABLE_DIR = REPO_ROOT / "android/app/src/main/res/drawable-nodpi"
+DRAWABLE_DIR = REPO_ROOT / "android/app/src/androidMain/res/drawable-nodpi"
 KOTLIN_OUT = REPO_ROOT / "android/app/src/main/java/fr/gemsofrod/encyclopedie/data/GemImages.kt"
 CREDITS_JSON = REPO_ROOT / "android/gem_image_credits.json"
 REPORT_OUT = REPO_ROOT / "android/IMAGE_FETCH_REPORT.md"

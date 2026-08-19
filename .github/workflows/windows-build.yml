@@ -1,0 +1,44 @@
+name: Build Windows desktop app
+
+# Vérification de compilation continue pour la cible bureau (Compose
+# Multiplatform / jvm("desktop")), en parallèle du build Android habituel.
+# Voir le plan de portage /root/.claude/plans/humble-scribbling-island.md.
+# `windows-latest` est nécessaire : jpackage (utilisé par le plugin Compose
+# Desktop pour produire un exécutable natif) ne fait pas de cross-compilation
+# depuis Linux/macOS.
+
+on:
+  push:
+    branches:
+      - "**"
+    paths:
+      - "android/**"
+      - ".github/workflows/windows-build.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: android
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      # Distributable non empaqueté (pas de .msi) : suffisant pour vérifier
+      # que la cible desktop compile et se lance, beaucoup plus rapide que
+      # l'empaquetage complet fait par windows-release.yml.
+      - name: Build desktop distributable
+        run: .\gradlew.bat :app:createDistributable --no-daemon
