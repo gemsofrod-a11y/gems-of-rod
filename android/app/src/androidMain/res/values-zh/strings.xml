@@ -1,0 +1,313 @@
+<resources>
+    <string name="app_name">Gems of Rod – 宝石百科</string>
+
+    <!-- 通用 -->
+    <string name="cd_back">返回</string>
+    <string name="cd_clear">清除</string>
+
+    <!-- 首页 -->
+    <string name="home_gemmologie_title">宝石学</string>
+    <string name="home_gemmologie_subtitle">按颜色分类的完整目录：技术卡片、价格、产地。</string>
+    <string name="home_familles_title">矿物族</string>
+    <string name="home_familles_subtitle">按矿物族分类的目录：绿柱石、石英、刚玉、石榴石……</string>
+    <string name="home_lithotherapie_title">水晶疗法</string>
+    <string name="home_lithotherapie_subtitle">每种宝石相关的传统功效与用途。</string>
+    <string name="home_language_title">语言</string>
+    <string name="home_language_subtitle">选择应用语言。</string>
+    <string name="home_meteorites_title">陨石</string>
+    <string name="home_meteorites_subtitle">天铁、橄榄陨铁与坠落自天空的岩石：一种超越地球的物质。</string>
+    <string name="home_quiz_title">宝石学问答</string>
+    <string name="home_quiz_subtitle">测试您的知识：颜色、族别、稀有度与专业词汇。</string>
+    <string name="home_lab_title">实验室</string>
+    <string name="home_lab_subtitle">像真正的宝石学家一样，逐步鉴定一块宝石。</string>
+
+    <!-- 宝石学（搜索 + 分类） -->
+    <string name="search_gems_placeholder">搜索一种宝石……</string>
+    <string name="search_no_results">没有与「%1$s」匹配的宝石。</string>
+    <string name="gemmologie_couleur_title">颜色</string>
+    <string name="gemmologie_couleur_subtitle">按色调分类的目录：红色、蓝色、绿色……</string>
+    <string name="gemmologie_pays_title">原产国</string>
+    <string name="gemmologie_pays_subtitle">按地理产地分类的目录。</string>
+    <plurals name="gem_count">
+        <item quantity="one">%1$d 颗宝石</item>
+        <item quantity="other">%1$d 颗宝石</item>
+    </plurals>
+
+    <!-- 颜色 -->
+    <string name="color_rouge">红色</string>
+    <string name="color_orange">橙色</string>
+    <string name="color_jaune">黄色</string>
+    <string name="color_vert">绿色</string>
+    <string name="color_bleu">蓝色</string>
+    <string name="color_violet">紫色</string>
+    <string name="color_rose">粉色</string>
+    <string name="color_incolore">无色 &amp; 白色</string>
+    <string name="color_brun">棕色 &amp; 褐色</string>
+    <string name="color_noir">黑色</string>
+    <string name="color_multicolore">多色</string>
+
+    <!-- 稀有度 -->
+    <string name="rarete_courante">常见</string>
+    <string name="rarete_peu_commune">不常见</string>
+    <string name="rarete_rare">稀有</string>
+    <string name="rarete_exceptionnelle">极其罕见</string>
+
+    <!-- 收藏 -->
+    <string name="favorites_title">我的收藏</string>
+    <string name="favorites_empty_title">暂无收藏</string>
+    <string name="favorites_empty_subtitle">点击宝石卡片上的爱心，即可在此找到它。</string>
+    <string name="cd_remove_favorite">从收藏中移除</string>
+    <string name="cd_add_favorite">添加到收藏</string>
+
+    <!-- 宝石卡片 -->
+    <string name="fiche_categorie">类别</string>
+    <string name="fiche_famille">矿物族</string>
+    <string name="fiche_formule_chimique">化学式</string>
+    <string name="fiche_systeme_cristallin">晶系</string>
+    <string name="fiche_durete">硬度（莫氏）</string>
+    <string name="fiche_indice_refraction">折射率</string>
+    <string name="fiche_transparence">透明度</string>
+    <string name="fiche_eclat">光泽</string>
+    <string name="fiche_clivage">解理</string>
+    <string name="fiche_densite">密度</string>
+    <string name="fiche_pleochroisme">多色性</string>
+    <string name="fiche_fluorescence">紫外荧光</string>
+    <string name="fiche_prix_indicatif">参考价格</string>
+    <string name="create_certificate_button">创建证书</string>
+    <string name="particularites_title">特殊性状</string>
+    <string name="inclusions_title">典型内含物</string>
+    <string name="origins_title">矿区与产地</string>
+    <string name="origins_hint">点击一个地点即可在 Google 地图中打开。</string>
+    <string name="share_chooser_title">分享卡片</string>
+    <string name="share_subject">Gems of Rod — %1$s</string>
+    <string name="gem_photo_raw">原石</string>
+    <string name="gem_photo_cut">琢型宝石</string>
+    <string name="gem_photo_cut_or_cabochon">琢型宝石 / 弧面型</string>
+    <string name="gem_photo_inclusion">典型内含物</string>
+    <string name="photo_credit">照片：%1$s — %2$s</string>
+    <string name="photo_credit_wikimedia">照片：%1$s — %2$s（维基共享资源）</string>
+
+    <!-- 价值计算器 -->
+    <string name="price_calc_title">估算您宝石的价值</string>
+    <string name="price_calc_intro">输入您宝石的重量和每克拉价格，以估算其总价值。每克拉价格不能超过参考区间的最大值（%1$s/克拉）。</string>
+    <string name="price_calc_carats_label">克拉数</string>
+    <string name="price_calc_price_label">价格/克拉（€）</string>
+    <string name="price_calc_exceeds_max">所输入的价格超过了该卡片的最大值（%1$s/克拉）。</string>
+    <string name="price_calc_result">估算价值：%1$s</string>
+    <string name="price_calc_button">计算</string>
+
+    <!-- 矿物族 -->
+    <string name="familles_title">矿物族</string>
+
+    <!-- 水晶疗法 -->
+    <string name="scheme_zodiac_title">星座</string>
+    <string name="scheme_chakra_title">脉轮</string>
+    <string name="scheme_bienfait_title">所求功效</string>
+    <string name="scheme_mois_title">出生月份</string>
+    <string name="litho_zodiac_subtitle">发现传统上与您的星座相关联的宝石。</string>
+    <string name="litho_chakra_subtitle">按七大传统脉轮分类的宝石。</string>
+    <string name="litho_bienfait_subtitle">压力、自信、爱情、保护、睡眠……</string>
+    <string name="litho_mois_subtitle">诞生石，每月一种。</string>
+    <string name="litho_no_gems">该分类目前暂无宝石。</string>
+    <string name="litho_virtues_title">水晶疗法功效</string>
+    <string name="litho_disclaimer">这些信息属于传统信仰与习俗范畴，不构成医学意见或治疗性宣称，亦不能替代咨询专业医疗人员。</string>
+    <string name="litho_nettoyage_title">净化 &amp; 充能</string>
+    <string name="litho_nettoyage_subtitle">用于净化和恢复宝石能量的传统方法。</string>
+    <string name="litho_associations_title">宝石搭配</string>
+    <string name="litho_associations_subtitle">根据所求功效组合多种宝石。</string>
+
+    <!-- 证书 -->
+    <string name="certificate_title">证书</string>
+    <string name="certificate_intro">输入您宝石的信息以生成 PDF 证书。</string>
+    <string name="certificate_field_emitter_label">签发方</string>
+    <string name="certificate_field_emitter_placeholder">例：Martin 珠宝店 — contact@exemple.com</string>
+    <string name="certificate_field_dimensions_label">尺寸</string>
+    <string name="certificate_field_dimensions_placeholder">例：8.2 x 6.1 x 4.3 毫米</string>
+    <string name="certificate_field_weight_label">重量</string>
+    <string name="certificate_field_weight_placeholder">例：1.25 克拉</string>
+    <string name="certificate_field_origin_label">产地</string>
+    <string name="certificate_field_origin_placeholder">例：斯里兰卡</string>
+    <string name="certificate_field_treatment_label">处理方式</string>
+    <string name="certificate_field_treatment_placeholder">例：未经处理</string>
+    <string name="certificate_export_chooser">导出证书</string>
+    <string name="certificate_photo_picker_hint">从手机添加照片</string>
+    <string name="cd_certificate_photo">宝石照片</string>
+    <string name="certificate_generate_button">生成并导出 PDF</string>
+    <string name="certificate_pdf_title">真品证书</string>
+    <string name="certificate_pdf_issued_on">签发日期：%1$s</string>
+    <string name="certificate_pdf_disclaimer">本文件描述的是用户自行填写的样本信息，不构成专业鉴定意见。</string>
+
+    <!-- 语言 -->
+    <string name="language_title">语言</string>
+
+    <!-- 宝石分析 -->
+    <string name="gemmologie_analyse_title">宝石分析</string>
+    <string name="gemmologie_analyse_subtitle">根据观察到的特征鉴定一块宝石。</string>
+    <string name="analyse_intro">请填写您已知或观察到的特征。只需一项条件即可开始；填写的信息越多，结果越精确。</string>
+    <string name="analyse_instruments_card_title">宝石学家的工具</string>
+    <string name="analyse_instruments_card_subtitle">了解用于分析宝石的各种仪器。</string>
+    <string name="analyse_couleur_label">颜色</string>
+    <string name="analyse_transparence_label">透明度</string>
+    <string name="analyse_eclat_label">光泽</string>
+    <string name="analyse_clivage_label">解理</string>
+    <string name="analyse_pleochroisme_label">多色性</string>
+    <string name="analyse_fluorescence_label">紫外荧光</string>
+    <string name="analyse_type_inclusion_label">内含物类型</string>
+    <string name="analyse_systeme_cristallin_label">晶系</string>
+    <string name="analyse_durete_label">硬度（莫氏）</string>
+    <string name="analyse_durete_placeholder">例：7</string>
+    <string name="analyse_densite_label">密度</string>
+    <string name="analyse_densite_placeholder">例：3.5</string>
+    <string name="analyse_indice_refraction_label">折射率</string>
+    <string name="analyse_indice_refraction_placeholder">例：1.55</string>
+    <string name="analyse_option_any">不限</string>
+    <string name="analyse_button">分析</string>
+    <string name="analyse_reset_button">重置</string>
+    <string name="analyse_results_title">结果</string>
+    <string name="analyse_empty_state">请至少填写以上一项条件，然后点击「分析」。</string>
+    <string name="analyse_no_results">没有符合所填条件的宝石。</string>
+    <string name="analyse_match_score">%1$d/%2$d 项条件</string>
+
+    <!-- 分析工具 -->
+    <string name="instruments_title">分析工具</string>
+    <string name="analyse_glossaire_card_title">宝石学词典</string>
+    <string name="analyse_glossaire_card_subtitle">了解专业词汇（丝状包裹体、应力晕、双折射……）。</string>
+    <string name="glossaire_title">宝石学词典</string>
+
+    <!-- 陨石 -->
+    <string name="meteorites_intro">来自小行星、火星或月球的碎片，经过数百万年的旅程坠落到地球。有些陨石可以像细工宝石一样被切割和抛光；另一些则始终是科学收藏品。本部分对二者加以区分。</string>
+    <string name="meteorites_classification_title">分类</string>
+    <string name="meteorites_classification_subtitle">铁陨石、石铁陨石、石陨石：了解陨石的主要类别。</string>
+    <string name="meteorite_famille_ferreuse">铁陨石</string>
+    <string name="meteorite_famille_pallasite">橄榄陨铁（石铁陨石）</string>
+    <string name="meteorite_famille_chondrite">球粒陨石（石陨石）</string>
+    <string name="meteorite_famille_prestige">科学珍品</string>
+    <string name="meteorite_famille_martienne_lunaire">火星与月球陨石</string>
+    <string name="meteorite_fiche_origine">产地</string>
+    <string name="meteorite_fiche_classification">分类</string>
+    <string name="meteorite_fiche_composition">矿物成分</string>
+    <string name="meteorite_fiche_durete">硬度（莫氏）</string>
+    <string name="meteorite_fiche_densite">密度</string>
+    <string name="meteorite_fiche_couleur">颜色</string>
+    <string name="meteorite_fiche_taille">可切割性</string>
+    <string name="meteorite_fiche_qualite_gemme">宝石级品质</string>
+    <string name="meteorite_fiche_interet_joaillerie">珠宝价值</string>
+    <string name="meteorite_fiche_prix">每克大致价格</string>
+
+    <!-- 成就 -->
+    <string name="achievements_title">成就</string>
+    <string name="achievements_progress_summary">已解锁 %1$d / %2$d 项成就</string>
+    <string name="achievement_progress_format">%1$d / %2$d</string>
+    <string name="achievement_unlocked_snackbar">已解锁「%1$s %2$s」！</string>
+    <string name="achievement_secret_title">\?\?\?</string>
+    <string name="achievement_secret_desc">应用中的某处藏着一个秘密……</string>
+    <string name="achievement_first_gem_title">第一步</string>
+    <string name="achievement_first_gem_desc">首次查看一块宝石的卡片。</string>
+    <string name="achievement_curious_title">好奇心</string>
+    <string name="achievement_curious_desc">查看 10 张不同的宝石卡片。</string>
+    <string name="achievement_collector_title">收藏家</string>
+    <string name="achievement_collector_desc">查看 50 张不同的宝石卡片。</string>
+    <string name="achievement_encyclopedist_title">百科全书学者</string>
+    <string name="achievement_encyclopedist_desc">查看 100 张不同的宝石卡片。</string>
+    <string name="achievement_master_title">宝石学大师</string>
+    <string name="achievement_master_desc">查看目录中全部 %1$d 种宝石。</string>
+    <string name="achievement_rainbow_title">彩虹</string>
+    <string name="achievement_rainbow_desc">查看 %1$d 个颜色分类中每类至少一种宝石。</string>
+    <string name="achievement_first_favorite_title">第一个收藏</string>
+    <string name="achievement_first_favorite_desc">将一块宝石添加到收藏。</string>
+    <string name="achievement_fan_title">爱好者</string>
+    <string name="achievement_fan_desc">将 10 块宝石添加到收藏。</string>
+    <string name="achievement_big_collector_title">资深收藏家</string>
+    <string name="achievement_big_collector_desc">将 25 块宝石添加到收藏。</string>
+    <string name="achievement_first_quiz_title">第一次问答</string>
+    <string name="achievement_first_quiz_desc">完成一局宝石学问答。</string>
+    <string name="achievement_quiz_regular_title">常客</string>
+    <string name="achievement_quiz_regular_desc">完成 10 局宝石学问答。</string>
+    <string name="achievement_perfect_score_title">满分</string>
+    <string name="achievement_perfect_score_desc">在宝石学问答中获得满分。</string>
+    <string name="achievement_legendary_title">传说</string>
+    <string name="achievement_legendary_desc">揭开隐藏在实验室中的传说谜题的秘密。</string>
+
+    <!-- 问答 -->
+    <string name="quiz_title">宝石学问答</string>
+    <string name="quiz_intro">回答 %1$d 道选自目录与词典的选择题：颜色、矿物族、稀有度与专业词汇。每局都会随机重新出题。</string>
+    <string name="quiz_start_button">开始</string>
+    <string name="quiz_progress">第 %1$d / %2$d 题</string>
+    <string name="quiz_question_couleur">%1$s 的特征颜色是什么？</string>
+    <string name="quiz_question_famille">%1$s 属于哪个矿物族？</string>
+    <string name="quiz_question_rarete">%1$s 的稀有度是什么？</string>
+    <string name="quiz_question_glossaire">哪个术语对应这个定义？</string>
+    <string name="quiz_next_button">下一题</string>
+    <string name="quiz_finish_button">查看得分</string>
+    <string name="quiz_score_title">得分：%1$d / %2$d</string>
+    <string name="quiz_result_excellent">太棒了！真正的宝石学家水准。</string>
+    <string name="quiz_result_good">做得好，您对这个主题已经相当了解。</string>
+    <string name="quiz_result_encourage">继续探索目录与词典，您会越来越熟练！</string>
+    <string name="quiz_restart_button">再玩一次</string>
+
+    <!-- 实验室 -->
+    <string name="lab_menu_title">实验室</string>
+    <string name="lab_menu_intro">专门用于宝石鉴定的空间：快速表单、逐步引导流程、仪器与宝石学词典。</string>
+    <string name="lab_quick_analysis_title">快速分析</string>
+    <string name="lab_quick_analysis_subtitle">按任意顺序填写您已知的条件。</string>
+    <string name="lab_guided_analysis_title">引导式分析</string>
+    <string name="lab_guided_analysis_subtitle">像真正的宝石学家一样，逐步进行分析。</string>
+    <string name="guided_step_progress">第 %1$d / %2$d 步</string>
+    <string name="guided_previous_button">上一步</string>
+    <string name="guided_next_button">下一步</string>
+    <string name="guided_finish_button">查看结果</string>
+    <string name="guided_restart_button">重新开始分析</string>
+    <string name="guided_step_couleur_instruction">在中性光线下（理想情况为间接日光）、白色背景前观察宝石。记录主色调——所感知的颜色可能因光源而异，因此应避免使用暖色人工光或彩色霓虹灯。</string>
+    <string name="guided_step_transparence_instruction">将宝石置于光源前，观察您是否能清晰看到透过它的物体轮廓（透明）、模糊的轮廓（半透明），还是什么都看不到（不透明）。</string>
+    <string name="guided_step_eclat_instruction">观察光线在宝石抛光表面的反射方式：如玻璃般明亮通透、如蜡般油润，或如镜面般呈金属光泽。这是快速判断材质性质的线索。</string>
+    <string name="guided_step_clivage_instruction">用放大镜检查内部可能存在的裂纹。解理表现为沿规则方向延伸的平坦光亮平面，而断口则不规则且呈玻璃状。</string>
+    <string name="guided_step_type_inclusion_instruction">使用 10 倍放大镜寻找特征性内含物：丝状针状体、内含物花园、晶体周围的晕圈、纤维状结构……它们往往是区分两种颜色相似宝石的最佳线索。</string>
+    <string name="guided_step_durete_instruction">使用硬度测试笔套装（或已知硬度的物品，如指甲≈2.5、刀刃≈5.5、钢锉≈6.5），确定宝石开始被划伤的硬度等级。请在不显眼的表面进行测试。</string>
+    <string name="guided_step_densite_instruction">用静水天平先在空气中称量宝石，再将其浸入水中称量。相对密度由两次称量之差与空气中重量的比值计算得出。</string>
+    <string name="guided_step_pleochroisme_instruction">使用二色镜从多个角度观察宝石：如果两幅并列的图像显示不同颜色，则该宝石具有多色性。</string>
+    <string name="guided_step_indice_refraction_instruction">将宝石放置在折射仪的棱镜上，并使用接触液。读取刻度上的全内反射角：折射率越高，宝石对光的偏折程度越大。</string>
+    <string name="guided_step_systeme_cristallin_instruction">偏光镜有助于判断宝石是均质体（旋转时完全消光）还是非均质体。如有原石晶形可供参考，结合起来可确定具体的晶系。</string>
+    <string name="guided_step_fluorescence_instruction">在黑暗环境中用紫外灯（短波与长波）照射宝石。记录是否发出可见荧光、其颜色与强度——这是区分某些处理方式的额外线索。</string>
+
+    <!-- 野外笔记 -->
+    <string name="lab_notebook_title">野外笔记</string>
+    <string name="lab_notebook_subtitle">记录您用自己的仪器测得的数据。</string>
+    <string name="notebook_empty_state">尚未记录任何样本。添加您的第一张野外记录卡。</string>
+    <string name="notebook_add_button">新样本</string>
+    <string name="notebook_criteria_count">已填写 %1$d 项条件</string>
+    <string name="notebook_label_field">样本名称</string>
+    <string name="notebook_label_placeholder">例：蓝色石头 — X 河</string>
+    <string name="notebook_notes_field">备注</string>
+    <string name="notebook_notes_placeholder">背景、来源、自由观察记录……</string>
+    <string name="notebook_criteria_section_title">已测量特征</string>
+    <string name="notebook_no_criteria">未填写任何特征。</string>
+    <string name="notebook_save_button">保存</string>
+    <string name="notebook_form_new_title">新样本</string>
+    <string name="notebook_form_edit_title">编辑样本</string>
+    <string name="notebook_edit_button">编辑</string>
+    <string name="notebook_delete_button">删除</string>
+    <string name="notebook_delete_confirm_title">删除该样本？</string>
+    <string name="notebook_delete_confirm_message">此操作不可撤销。</string>
+    <string name="notebook_delete_confirm_button">删除</string>
+    <string name="notebook_cancel_button">取消</string>
+    <string name="notebook_compare_button">与目录比对</string>
+    <string name="legendary_menu_title">传说谜题</string>
+    <string name="legendary_menu_subtitle">一个谜团正等待着最好奇的人……</string>
+
+    <!-- 传说谜题 -->
+    <string name="legendary_riddle_title">传说谜题</string>
+    <string name="legendary_riddle_intro">目录中有一块宝石隐藏在这些线索之后。找出它，然后在地图上指出它的原产国。</string>
+    <string name="legendary_clue_label">线索 %1$d</string>
+    <string name="legendary_clue_1">1951 年，一位英国宝石学家发现了一种未知矿物——他当时并不知道，自己发现的正是此后近五十年间被视为世界上最稀有的宝石。</string>
+    <string name="legendary_clue_2">全世界仅有一处矿床曾出产过它的晶体。切割成品很少超过两克拉。</string>
+    <string name="legendary_clue_3">它的色调从红棕色到橙色不等，其硬度可与刚玉媲美——足以迷惑不止一位收藏家。</string>
+    <string name="legendary_clue_4">在地图上找到拥有这处独一无二矿床的国家，证明您已揭开这个秘密。</string>
+    <string name="legendary_next_clue_button">下一条线索</string>
+    <string name="legendary_open_map_button">打开地图</string>
+    <string name="legendary_map_title">秘密地图</string>
+    <string name="legendary_map_instruction">点击拥有这处独一无二矿床的国家。</string>
+    <string name="legendary_wrong_country">这不是正确的国家，请再试一次。</string>
+    <string name="legendary_success_title">秘密已揭晓！</string>
+    <string name="legendary_success_body">您找到了缅甸——世界上唯一已知的钇铝榴石（painite）产地，这种宝石曾长期被认为是地球上最稀有的宝石矿物。</string>
+    <string name="legendary_success_view_gem_button">查看该宝石的卡片</string>
+</resources>

@@ -6,7 +6,11 @@ enum class AppLanguage(val code: String, val label: String, val flagEmoji: Strin
     EN("en", "English", "🇬🇧"),
     ES("es", "Español", "🇪🇸"),
     IT("it", "Italiano", "🇮🇹"),
-    DE("de", "Deutsch", "🇩🇪");
+    DE("de", "Deutsch", "🇩🇪"),
+    PT("pt", "Português", "🇵🇹"),
+    ZH("zh", "中文", "🇨🇳"),
+    RU("ru", "Русский", "🇷🇺"),
+    NL("nl", "Nederlands", "🇳🇱");
 
     companion object {
         fun fromCode(code: String): AppLanguage = entries.firstOrNull { it.code == code } ?: FR
