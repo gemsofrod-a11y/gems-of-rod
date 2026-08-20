@@ -48,6 +48,9 @@ import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieGemsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieInfoScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieLabelListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieMenuScreen
+import fr.gemsofrod.encyclopedie.ui.screens.FossileClassificationScreen
+import fr.gemsofrod.encyclopedie.ui.screens.FossileDetailScreen
+import fr.gemsofrod.encyclopedie.ui.screens.FossilesMenuScreen
 import fr.gemsofrod.encyclopedie.ui.screens.MeteoriteClassificationScreen
 import fr.gemsofrod.encyclopedie.ui.screens.MeteoriteDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.MeteoritesMenuScreen
@@ -82,6 +85,9 @@ private object Routes {
     const val METEORITES = "meteorites"
     const val METEORITE_CLASSIFICATION = "meteorite_classification"
     const val METEORITE_DETAIL = "meteorite/{meteoriteId}"
+    const val FOSSILES = "fossiles"
+    const val FOSSILE_CLASSIFICATION = "fossile_classification"
+    const val FOSSILE_DETAIL = "fossile/{fossileId}"
     const val QUIZ = "quiz"
     const val ACHIEVEMENTS = "achievements"
     const val LAB_MENU = "lab_menu"
@@ -97,6 +103,7 @@ private object Routes {
     fun labNotebookEdit(sampleId: String) = "lab_notebook_edit/$sampleId"
     fun labNotebookDetail(sampleId: String) = "lab_notebook_detail/$sampleId"
     fun meteoriteDetail(meteoriteId: String) = "meteorite/$meteoriteId"
+    fun fossileDetail(fossileId: String) = "fossile/$fossileId"
     fun paysDetail(country: String) = "pays/${encode(country)}"
     fun gemDetail(gemId: String) = "gem/$gemId"
     fun certificate(gemId: String) = "certificate/$gemId"
@@ -152,6 +159,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onLanguageClick = { navController.navigate(Routes.LANGUAGE) },
                 onFavoritesClick = { navController.navigate(Routes.FAVORITES) },
                 onMeteoritesClick = { navController.navigate(Routes.METEORITES) },
+                onFossilesClick = { navController.navigate(Routes.FOSSILES) },
                 onQuizClick = { navController.navigate(Routes.QUIZ) },
                 onAchievementsClick = { navController.navigate(Routes.ACHIEVEMENTS) },
                 onLabClick = { navController.navigate(Routes.LAB_MENU) }
@@ -238,6 +246,23 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             val meteoriteId = backStackEntry.arguments?.getString("meteoriteId").orEmpty()
             MeteoriteDetailScreen(
                 meteoriteId = meteoriteId,
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.FOSSILES) {
+            FossilesMenuScreen(
+                onClassificationClick = { navController.navigate(Routes.FOSSILE_CLASSIFICATION) },
+                onFossileClick = { fossile -> navController.navigate(Routes.fossileDetail(fossile.id)) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.FOSSILE_CLASSIFICATION) {
+            FossileClassificationScreen(onBackClick = { navController.popBackStack() })
+        }
+        composable(Routes.FOSSILE_DETAIL) { backStackEntry ->
+            val fossileId = backStackEntry.arguments?.getString("fossileId").orEmpty()
+            FossileDetailScreen(
+                fossileId = fossileId,
                 onBackClick = { navController.popBackStack() }
             )
         }

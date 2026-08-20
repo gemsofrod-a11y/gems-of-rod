@@ -194,6 +194,31 @@
     <string name="meteorite_fiche_interet_joaillerie">Interesse für die Schmuckherstellung</string>
     <string name="meteorite_fiche_prix">Ungefährer Preis pro Gramm</string>
 
+    <!-- Fossilien -->
+    <string name="home_fossiles_title">Fossilien</string>
+    <string name="home_fossiles_subtitle">Ammoniten, Trilobiten, Bernstein und versteinertes Holz: fossiles Leben durch die geologischen Zeitalter.</string>
+    <string name="fossiles_intro">Von milliardenjahre alten mikrobiellen Spuren über Megalodon-Zähne bis hin zu Bernstein und versteinertem Holz: Dieser Bereich unterscheidet Fossilien, die wie ein Schmuckstein geschnitten und poliert werden können, von solchen, die wissenschaftliche Sammlerstücke bleiben.</string>
+    <string name="fossiles_classification_title">Klassifikation</string>
+    <string name="fossiles_classification_subtitle">Weichtiere, Gliederfüßer, Wirbeltiere, Pflanzen, Harze, Korallen: die großen Fossilienfamilien verstehen.</string>
+    <string name="fossile_famille_ammonite">Ammoniten &amp; Weichtiere</string>
+    <string name="fossile_famille_trilobite">Trilobiten &amp; Gliederfüßer</string>
+    <string name="fossile_famille_vertebre">Wirbeltiere</string>
+    <string name="fossile_famille_vegetal">Pflanzen</string>
+    <string name="fossile_famille_ambre">Bernstein &amp; Insekten</string>
+    <string name="fossile_famille_corail">Korallen &amp; Stachelhäuter</string>
+    <string name="fossile_fiche_origine">Herkunft</string>
+    <string name="fossile_fiche_periode">Geologische Periode</string>
+    <string name="fossile_fiche_age">Ungefähres Alter</string>
+    <string name="fossile_fiche_classification">Klassifikation</string>
+    <string name="fossile_fiche_composition">Mineralzusammensetzung</string>
+    <string name="fossile_fiche_durete">Härte (Mohs)</string>
+    <string name="fossile_fiche_densite">Dichte</string>
+    <string name="fossile_fiche_couleur">Farbe</string>
+    <string name="fossile_fiche_taille">Schleifmöglichkeit</string>
+    <string name="fossile_fiche_qualite_gemme">Schmucksteinqualität</string>
+    <string name="fossile_fiche_interet_joaillerie">Interesse für die Schmuckherstellung</string>
+    <string name="fossile_fiche_prix">Ungefährer Preis pro Gramm</string>
+
     <!-- Erfolge -->
     <string name="achievements_title">Erfolge</string>
     <string name="achievements_progress_summary">%1$d / %2$d Erfolge freigeschaltet</string>

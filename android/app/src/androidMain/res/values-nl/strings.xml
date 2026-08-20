@@ -194,6 +194,31 @@
     <string name="meteorite_fiche_interet_joaillerie">Interesse voor de juwelierskunst</string>
     <string name="meteorite_fiche_prix">Geschatte prijs per gram</string>
 
+    <!-- Fossielen -->
+    <string name="home_fossiles_title">Fossielen</string>
+    <string name="home_fossiles_subtitle">Ammonieten, trilobieten, barnsteen en versteend hout: gefossiliseerd leven doorheen de geologische tijdperken.</string>
+    <string name="fossiles_intro">Van miljarden jaren oude microbiële sporen tot megalodontanden, barnsteen en versteend hout: deze sectie maakt onderscheid tussen fossielen die kunnen worden geslepen en gepolijst als een halfedelsteen en fossielen die wetenschappelijke verzamelstukken blijven.</string>
+    <string name="fossiles_classification_title">Classificatie</string>
+    <string name="fossiles_classification_subtitle">Weekdieren, geleedpotigen, gewervelden, planten, harsen, koralen: begrijp de grote families van fossielen.</string>
+    <string name="fossile_famille_ammonite">Ammonieten &amp; weekdieren</string>
+    <string name="fossile_famille_trilobite">Trilobieten &amp; geleedpotigen</string>
+    <string name="fossile_famille_vertebre">Gewervelden</string>
+    <string name="fossile_famille_vegetal">Planten</string>
+    <string name="fossile_famille_ambre">Barnsteen &amp; insecten</string>
+    <string name="fossile_famille_corail">Koralen &amp; stekelhuidigen</string>
+    <string name="fossile_fiche_origine">Herkomst</string>
+    <string name="fossile_fiche_periode">Geologisch tijdperk</string>
+    <string name="fossile_fiche_age">Geschatte ouderdom</string>
+    <string name="fossile_fiche_classification">Classificatie</string>
+    <string name="fossile_fiche_composition">Mineraalsamenstelling</string>
+    <string name="fossile_fiche_durete">Hardheid (Mohs)</string>
+    <string name="fossile_fiche_densite">Dichtheid</string>
+    <string name="fossile_fiche_couleur">Kleur</string>
+    <string name="fossile_fiche_taille">Mogelijkheid tot slijpen</string>
+    <string name="fossile_fiche_qualite_gemme">Edelsteenkwaliteit</string>
+    <string name="fossile_fiche_interet_joaillerie">Interesse voor de juwelierskunst</string>
+    <string name="fossile_fiche_prix">Geschatte prijs per gram</string>
+
     <!-- Prestaties -->
     <string name="achievements_title">Prestaties</string>
     <string name="achievements_progress_summary">%1$d / %2$d prestaties ontgrendeld</string>

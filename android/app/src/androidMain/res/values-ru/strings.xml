@@ -194,6 +194,31 @@
     <string name="meteorite_fiche_interet_joaillerie">Интерес для ювелирного дела</string>
     <string name="meteorite_fiche_prix">Ориентировочная цена за грамм</string>
 
+    <!-- Окаменелости -->
+    <string name="home_fossiles_title">Окаменелости</string>
+    <string name="home_fossiles_subtitle">Аммониты, трилобиты, янтарь и окаменелое дерево: окаменевшая жизнь сквозь геологические эпохи.</string>
+    <string name="fossiles_intro">От миллиардолетних микробных следов до зубов мегалодона, янтаря и окаменелого дерева: этот раздел отличает окаменелости, которые можно огранить и отполировать как поделочный камень, от тех, что остаются предметами научного коллекционирования.</string>
+    <string name="fossiles_classification_title">Классификация</string>
+    <string name="fossiles_classification_subtitle">Моллюски, членистоногие, позвоночные, растения, смолы, кораллы: разберитесь в основных семействах окаменелостей.</string>
+    <string name="fossile_famille_ammonite">Аммониты и моллюски</string>
+    <string name="fossile_famille_trilobite">Трилобиты и членистоногие</string>
+    <string name="fossile_famille_vertebre">Позвоночные</string>
+    <string name="fossile_famille_vegetal">Растения</string>
+    <string name="fossile_famille_ambre">Янтарь и насекомые</string>
+    <string name="fossile_famille_corail">Кораллы и иглокожие</string>
+    <string name="fossile_fiche_origine">Происхождение</string>
+    <string name="fossile_fiche_periode">Геологический период</string>
+    <string name="fossile_fiche_age">Приблизительный возраст</string>
+    <string name="fossile_fiche_classification">Классификация</string>
+    <string name="fossile_fiche_composition">Минеральный состав</string>
+    <string name="fossile_fiche_durete">Твёрдость (Мооса)</string>
+    <string name="fossile_fiche_densite">Плотность</string>
+    <string name="fossile_fiche_couleur">Цвет</string>
+    <string name="fossile_fiche_taille">Возможность огранки</string>
+    <string name="fossile_fiche_qualite_gemme">Ювелирное качество</string>
+    <string name="fossile_fiche_interet_joaillerie">Интерес для ювелирного дела</string>
+    <string name="fossile_fiche_prix">Ориентировочная цена за грамм</string>
+
     <!-- Достижения -->
     <string name="achievements_title">Достижения</string>
     <string name="achievements_progress_summary">%1$d / %2$d достижений разблокировано</string>

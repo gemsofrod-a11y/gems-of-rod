@@ -78,6 +78,7 @@ fun HomeScreen(
     onLanguageClick: () -> Unit,
     onFavoritesClick: () -> Unit,
     onMeteoritesClick: () -> Unit,
+    onFossilesClick: () -> Unit,
     onQuizClick: () -> Unit,
     onAchievementsClick: () -> Unit,
     onLabClick: () -> Unit
@@ -143,6 +144,12 @@ fun HomeScreen(
                 subtitle = stringResource(R.string.home_meteorites_subtitle),
                 onClick = onMeteoritesClick,
                 backgroundDrawable = "gem_meteorite_gibeon_facette"
+            )
+            HomeSectionCard(
+                title = stringResource(R.string.home_fossiles_title),
+                subtitle = stringResource(R.string.home_fossiles_subtitle),
+                onClick = onFossilesClick,
+                backgroundDrawable = "gem_fossile_ammonite_madagascar_facette"
             )
             HomeSectionCard(
                 title = stringResource(R.string.home_quiz_title),
