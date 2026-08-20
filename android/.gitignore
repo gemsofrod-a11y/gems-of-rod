@@ -14,11 +14,3 @@ local.properties
 keystore.properties
 *.jks
 *.keystore
-
-# Temporaire — traductions de fiches de gemmes en cours de génération par
-# des agents en arrière-plan (PT/ZH/RU/NL) : ces fichiers sont écrits de
-# façon incrémentale et n'ont donc pas d'état intermédiaire syntaxiquement
-# garanti. Un commit précédent d'un état intermédiaire a cassé la CI
-# (GemTranslationsNl.kt:6:1 Syntax error). À retirer de ce fichier une fois
-# chaque traduction terminée et vérifiée, puis committer normalement.
-app/src/commonMain/kotlin/fr/gemsofrod/encyclopedie/data/GemTranslationsRu.kt

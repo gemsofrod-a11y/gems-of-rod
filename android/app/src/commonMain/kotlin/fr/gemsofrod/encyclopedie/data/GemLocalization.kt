@@ -39,7 +39,8 @@ object GemLocalization {
         AppLanguage.DE.code to GemTranslationsDe.data,
         AppLanguage.ZH.code to GemTranslationsZh.data,
         AppLanguage.PT.code to GemTranslationsPt.data,
-        AppLanguage.NL.code to GemTranslationsNl.data
+        AppLanguage.NL.code to GemTranslationsNl.data,
+        AppLanguage.RU.code to GemTranslationsRu.data
     )
 
     fun localize(gem: Gem, languageCode: String): Gem {
