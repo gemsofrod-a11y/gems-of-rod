@@ -22,4 +22,3 @@ keystore.properties
 # (GemTranslationsNl.kt:6:1 Syntax error). À retirer de ce fichier une fois
 # chaque traduction terminée et vérifiée, puis committer normalement.
 app/src/commonMain/kotlin/fr/gemsofrod/encyclopedie/data/GemTranslationsRu.kt
-app/src/commonMain/kotlin/fr/gemsofrod/encyclopedie/data/GemTranslationsNl.kt
