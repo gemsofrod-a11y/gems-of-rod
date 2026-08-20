@@ -71,6 +71,7 @@ import fr.gemsofrod.encyclopedie.data.GemRarete
 import fr.gemsofrod.encyclopedie.data.GemsRepository
 import fr.gemsofrod.encyclopedie.data.googleMapsSearchUrl
 import fr.gemsofrod.encyclopedie.data.priceRangePerCarat
+import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.localizedInclusions
 import fr.gemsofrod.encyclopedie.ui.localizedLabel

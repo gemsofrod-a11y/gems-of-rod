@@ -44,6 +44,7 @@ import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.data.GuidedAnalysisState
 import fr.gemsofrod.encyclopedie.ui.components.AnalysisResultRow
 import fr.gemsofrod.encyclopedie.ui.components.DropdownField
+import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 
 private const val TOTAL_STEPS = 11

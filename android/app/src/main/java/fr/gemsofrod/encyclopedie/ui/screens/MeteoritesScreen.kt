@@ -54,6 +54,7 @@ import fr.gemsofrod.encyclopedie.data.MeteoriteClassificationInfo
 import fr.gemsofrod.encyclopedie.data.MeteoriteFamille
 import fr.gemsofrod.encyclopedie.data.MeteoriteFamilyExplainer
 import fr.gemsofrod.encyclopedie.data.MeteoritesRepository
+import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
 

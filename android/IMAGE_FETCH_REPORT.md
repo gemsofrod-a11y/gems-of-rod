@@ -153,7 +153,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | paesine | ♻️ [File:Pietra paesina Val d'Arno Caillois Donation MNHN n10.jpg](https://commons.wikimedia.org/wiki/File:Pietra_paesina_Val_d'Arno_Caillois_Donation_MNHN_n10.jpg) | ⏸️ recherche suspendue |
 | hematite | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
 | magnetite | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
-| quartz-tourmaline | ♻️ [File:Elbaite-Quartz-168224.jpg](https://commons.wikimedia.org/w/index.php?curid=10149221) | ✅ [Elbaite with quartz albite and microcline - Smithsonian Museum of Natural History - 2012-05-17](https://www.flickr.com/photos/23165290@N00/7283942136) |
+| quartz-tourmaline | ♻️ [File:Elbaite-Quartz-168224.jpg](https://commons.wikimedia.org/w/index.php?curid=10149221) | ♻️ [Elbaite with quartz albite and microcline - Smithsonian Museum of Natural History - 2012-05-17](https://www.flickr.com/photos/23165290@N00/7283942136) |
 | rubis-etoile | ⏸️ recherche suspendue | ♻️ [File:Huge 10,800 Carats Maharlika Star Ruby.jpg](https://commons.wikimedia.org/wiki/File:Huge_10,800_Carats_Maharlika_Star_Ruby.jpg) |
 | saphir-etoile | ⏸️ recherche suspendue | ♻️ [File:Black Star of Queensland Star Sapphire.jpg](https://commons.wikimedia.org/wiki/File:Black_Star_of_Queensland_Star_Sapphire.jpg) |
 | diaspore-zultanite | ♻️ [File:Zultanite rough crystal and gemstones.jpg](https://commons.wikimedia.org/wiki/File:Zultanite_rough_crystal_and_gemstones.jpg) | ♻️ [Zultanite](https://commons.wikimedia.org/w/index.php?curid=22102715) |
