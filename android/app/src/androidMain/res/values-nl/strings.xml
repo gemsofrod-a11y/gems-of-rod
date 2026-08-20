@@ -1,0 +1,313 @@
+<resources>
+    <string name="app_name">Gems of Rod – Encyclopedie</string>
+
+    <!-- Algemeen -->
+    <string name="cd_back">Terug</string>
+    <string name="cd_clear">Wissen</string>
+
+    <!-- Home -->
+    <string name="home_gemmologie_title">Gemmologie</string>
+    <string name="home_gemmologie_subtitle">De volledige catalogus per kleur: technische fiches, prijzen, herkomst.</string>
+    <string name="home_familles_title">Mineraalfamilies</string>
+    <string name="home_familles_subtitle">De catalogus ingedeeld per familie: beryl, kwarts, korund, granaat…</string>
+    <string name="home_lithotherapie_title">Lithotherapie</string>
+    <string name="home_lithotherapie_subtitle">De traditionele eigenschappen en toepassingen van elke steen.</string>
+    <string name="home_language_title">Taal</string>
+    <string name="home_language_subtitle">Kies de taal van de app.</string>
+    <string name="home_meteorites_title">Meteorieten</string>
+    <string name="home_meteorites_subtitle">Hemels ijzer, pallasieten en stenen die uit de lucht vielen: materie van voorbij de Aarde.</string>
+    <string name="home_quiz_title">Gemmologiequiz</string>
+    <string name="home_quiz_subtitle">Test uw kennis: kleuren, families, zeldzaamheid en vaktermen.</string>
+    <string name="home_lab_title">Laboratorium</string>
+    <string name="home_lab_subtitle">Identificeer een steen zoals een echte gemmoloog, stap voor stap.</string>
+
+    <!-- Gemmologie (zoeken + categorieën) -->
+    <string name="search_gems_placeholder">Een edelsteen zoeken…</string>
+    <string name="search_no_results">Geen edelsteen komt overeen met « %1$s ».</string>
+    <string name="gemmologie_couleur_title">Kleur</string>
+    <string name="gemmologie_couleur_subtitle">De catalogus ingedeeld per tint: rood, blauw, groen…</string>
+    <string name="gemmologie_pays_title">Land van herkomst</string>
+    <string name="gemmologie_pays_subtitle">De catalogus ingedeeld per geografische herkomst.</string>
+    <plurals name="gem_count">
+        <item quantity="one">%1$d edelsteen</item>
+        <item quantity="other">%1$d edelstenen</item>
+    </plurals>
+
+    <!-- Kleuren -->
+    <string name="color_rouge">Rood</string>
+    <string name="color_orange">Oranje</string>
+    <string name="color_jaune">Geel</string>
+    <string name="color_vert">Groen</string>
+    <string name="color_bleu">Blauw</string>
+    <string name="color_violet">Paars</string>
+    <string name="color_rose">Roze</string>
+    <string name="color_incolore">Kleurloos &amp; wit</string>
+    <string name="color_brun">Bruin &amp; roodbruin</string>
+    <string name="color_noir">Zwart</string>
+    <string name="color_multicolore">Meerkleurig</string>
+
+    <!-- Zeldzaamheid -->
+    <string name="rarete_courante">Gangbaar</string>
+    <string name="rarete_peu_commune">Weinig voorkomend</string>
+    <string name="rarete_rare">Zeldzaam</string>
+    <string name="rarete_exceptionnelle">Uitzonderlijk</string>
+
+    <!-- Favorieten -->
+    <string name="favorites_title">Mijn favorieten</string>
+    <string name="favorites_empty_title">Nog geen favorieten</string>
+    <string name="favorites_empty_subtitle">Tik op het hartje op de fiche van een edelsteen om die hier terug te vinden.</string>
+    <string name="cd_remove_favorite">Uit favorieten verwijderen</string>
+    <string name="cd_add_favorite">Aan favorieten toevoegen</string>
+
+    <!-- Edelsteenfiche -->
+    <string name="fiche_categorie">Categorie</string>
+    <string name="fiche_famille">Familie</string>
+    <string name="fiche_formule_chimique">Chemische formule</string>
+    <string name="fiche_systeme_cristallin">Kristalsysteem</string>
+    <string name="fiche_durete">Hardheid (Mohs)</string>
+    <string name="fiche_indice_refraction">Brekingsindex</string>
+    <string name="fiche_transparence">Transparantie</string>
+    <string name="fiche_eclat">Glans</string>
+    <string name="fiche_clivage">Splijting</string>
+    <string name="fiche_densite">Dichtheid</string>
+    <string name="fiche_pleochroisme">Pleochroïsme</string>
+    <string name="fiche_fluorescence">UV-fluorescentie</string>
+    <string name="fiche_prix_indicatif">Richtprijs</string>
+    <string name="create_certificate_button">Certificaat aanmaken</string>
+    <string name="particularites_title">Bijzonderheden</string>
+    <string name="inclusions_title">Typische insluitsels</string>
+    <string name="origins_title">Mijnen en herkomstregio\'s</string>
+    <string name="origins_hint">Tik op een plaats om deze in Google Maps te openen.</string>
+    <string name="share_chooser_title">Fiche delen</string>
+    <string name="share_subject">Gems of Rod — %1$s</string>
+    <string name="gem_photo_raw">Ruwe steen</string>
+    <string name="gem_photo_cut">Geslepen steen</string>
+    <string name="gem_photo_cut_or_cabochon">Geslepen steen / cabochon</string>
+    <string name="gem_photo_inclusion">Typisch insluitsel</string>
+    <string name="photo_credit">Foto: %1$s — %2$s</string>
+    <string name="photo_credit_wikimedia">Foto: %1$s — %2$s (Wikimedia Commons)</string>
+
+    <!-- Waardeberekening -->
+    <string name="price_calc_title">Bereken de waarde van uw steen</string>
+    <string name="price_calc_intro">Geef het gewicht en de prijs per karaat van uw steen op om de totale waarde te schatten. De prijs per karaat mag het maximum van de richtprijsvork niet overschrijden (%1$s/ct).</string>
+    <string name="price_calc_carats_label">Karaat</string>
+    <string name="price_calc_price_label">Prijs/ct (€)</string>
+    <string name="price_calc_exceeds_max">De opgegeven prijs overschrijdt het maximum van de fiche (%1$s/ct).</string>
+    <string name="price_calc_result">Geschatte waarde: %1$s</string>
+    <string name="price_calc_button">Berekenen</string>
+
+    <!-- Mineraalfamilies -->
+    <string name="familles_title">Mineraalfamilies</string>
+
+    <!-- Lithotherapie -->
+    <string name="scheme_zodiac_title">Sterrenbeeld</string>
+    <string name="scheme_chakra_title">Chakra</string>
+    <string name="scheme_bienfait_title">Gewenst effect</string>
+    <string name="scheme_mois_title">Geboortemaand</string>
+    <string name="litho_zodiac_subtitle">Ontdek de stenen die traditioneel met uw sterrenbeeld worden geassocieerd.</string>
+    <string name="litho_chakra_subtitle">De stenen ingedeeld volgens de 7 traditionele chakra\'s.</string>
+    <string name="litho_bienfait_subtitle">Stress, zelfvertrouwen, liefde, bescherming, slaap…</string>
+    <string name="litho_mois_subtitle">De geboortestenen, één per maand.</string>
+    <string name="litho_no_gems">Voorlopig geen edelstenen in deze categorie.</string>
+    <string name="litho_virtues_title">Eigenschappen in de lithotherapie</string>
+    <string name="litho_disclaimer">Deze informatie is gebaseerd op traditionele overtuigingen en gebruiken. Ze vormt geen medisch advies en geen therapeutische bewering, en vervangt geen raadpleging van een zorgprofessional.</string>
+    <string name="litho_nettoyage_title">Reiniging &amp; opladen</string>
+    <string name="litho_nettoyage_subtitle">De traditionele praktijken om uw stenen te zuiveren en te herladen.</string>
+    <string name="litho_associations_title">Combinatie van stenen</string>
+    <string name="litho_associations_subtitle">Meerdere stenen combineren op basis van het gewenste effect.</string>
+
+    <!-- Certificaat -->
+    <string name="certificate_title">Certificaat</string>
+    <string name="certificate_intro">Geef de gegevens van uw steen op om een PDF-certificaat te genereren.</string>
+    <string name="certificate_field_emitter_label">Uitgegeven door</string>
+    <string name="certificate_field_emitter_placeholder">bv. Juwelier Martin — contact@voorbeeld.com</string>
+    <string name="certificate_field_dimensions_label">Afmetingen</string>
+    <string name="certificate_field_dimensions_placeholder">bv. 8,2 x 6,1 x 4,3 mm</string>
+    <string name="certificate_field_weight_label">Gewicht</string>
+    <string name="certificate_field_weight_placeholder">bv. 1,25 ct</string>
+    <string name="certificate_field_origin_label">Herkomst</string>
+    <string name="certificate_field_origin_placeholder">bv. Sri Lanka</string>
+    <string name="certificate_field_treatment_label">Behandeling</string>
+    <string name="certificate_field_treatment_placeholder">bv. Onbehandeld</string>
+    <string name="certificate_export_chooser">Certificaat exporteren</string>
+    <string name="certificate_photo_picker_hint">Een foto vanaf de telefoon toevoegen</string>
+    <string name="cd_certificate_photo">Foto van de steen</string>
+    <string name="certificate_generate_button">PDF genereren en exporteren</string>
+    <string name="certificate_pdf_title">CERTIFICAAT VAN ECHTHEID</string>
+    <string name="certificate_pdf_issued_on">Uitgegeven op %1$s</string>
+    <string name="certificate_pdf_disclaimer">Dit document beschrijft een exemplaar zoals ingevuld door de gebruiker; het vormt geen expertise.</string>
+
+    <!-- Taal -->
+    <string name="language_title">Taal</string>
+
+    <!-- Steenanalyse -->
+    <string name="gemmologie_analyse_title">Steenanalyse</string>
+    <string name="gemmologie_analyse_subtitle">Identificeer een steen op basis van de waargenomen kenmerken.</string>
+    <string name="analyse_intro">Geef de kenmerken op die u kent of waarneemt. Eén criterium volstaat om te beginnen; hoe meer u opgeeft, hoe nauwkeuriger het resultaat.</string>
+    <string name="analyse_instruments_card_title">De gereedschappen van de gemmoloog</string>
+    <string name="analyse_instruments_card_subtitle">Ontdek de instrumenten die worden gebruikt om een steen te analyseren.</string>
+    <string name="analyse_couleur_label">Kleur</string>
+    <string name="analyse_transparence_label">Transparantie</string>
+    <string name="analyse_eclat_label">Glans</string>
+    <string name="analyse_clivage_label">Splijting</string>
+    <string name="analyse_pleochroisme_label">Pleochroïsme</string>
+    <string name="analyse_fluorescence_label">UV-fluorescentie</string>
+    <string name="analyse_type_inclusion_label">Type insluitsel</string>
+    <string name="analyse_systeme_cristallin_label">Kristalsysteem</string>
+    <string name="analyse_durete_label">Hardheid (Mohs)</string>
+    <string name="analyse_durete_placeholder">bv. 7</string>
+    <string name="analyse_densite_label">Dichtheid</string>
+    <string name="analyse_densite_placeholder">bv. 3,5</string>
+    <string name="analyse_indice_refraction_label">Brekingsindex</string>
+    <string name="analyse_indice_refraction_placeholder">bv. 1,55</string>
+    <string name="analyse_option_any">Maakt niet uit</string>
+    <string name="analyse_button">Analyseren</string>
+    <string name="analyse_reset_button">Reset</string>
+    <string name="analyse_results_title">Resultaten</string>
+    <string name="analyse_empty_state">Vul minstens één criterium hierboven in en tik dan op « Analyseren ».</string>
+    <string name="analyse_no_results">Geen edelsteen komt overeen met de opgegeven criteria.</string>
+    <string name="analyse_match_score">%1$d/%2$d criteria</string>
+
+    <!-- Analysehulpmiddelen -->
+    <string name="instruments_title">Analysehulpmiddelen</string>
+    <string name="analyse_glossaire_card_title">Gemmologisch lexicon</string>
+    <string name="analyse_glossaire_card_subtitle">Begrijp de vaktaal (zijde-effect, spanningshalo, dubbele breking...).</string>
+    <string name="glossaire_title">Gemmologisch lexicon</string>
+
+    <!-- Meteorieten -->
+    <string name="meteorites_intro">Een fragment van een asteroïde, van Mars of van de Maan, na een reis van miljoenen jaren op Aarde neergekomen. Sommige meteorieten kunnen worden geslepen en gepolijst als een halfedelsteen; andere blijven wetenschappelijke verzamelstukken. Deze sectie maakt het onderscheid.</string>
+    <string name="meteorites_classification_title">Classificatie</string>
+    <string name="meteorites_classification_subtitle">Sideriet, siderolieten, aerolieten: begrijp de grote families van meteorieten.</string>
+    <string name="meteorite_famille_ferreuse">IJzermeteorieten (sideriet)</string>
+    <string name="meteorite_famille_pallasite">Pallasieten (siderolieten)</string>
+    <string name="meteorite_famille_chondrite">Chondrieten (aerolieten)</string>
+    <string name="meteorite_famille_prestige">Wetenschappelijke prestigestukken</string>
+    <string name="meteorite_famille_martienne_lunaire">Marsiaans &amp; maanmeteorieten</string>
+    <string name="meteorite_fiche_origine">Herkomst</string>
+    <string name="meteorite_fiche_classification">Classificatie</string>
+    <string name="meteorite_fiche_composition">Mineraalsamenstelling</string>
+    <string name="meteorite_fiche_durete">Hardheid (Mohs)</string>
+    <string name="meteorite_fiche_densite">Dichtheid</string>
+    <string name="meteorite_fiche_couleur">Kleur</string>
+    <string name="meteorite_fiche_taille">Mogelijkheid tot slijpen</string>
+    <string name="meteorite_fiche_qualite_gemme">Edelsteenkwaliteit</string>
+    <string name="meteorite_fiche_interet_joaillerie">Interesse voor de juwelierskunst</string>
+    <string name="meteorite_fiche_prix">Geschatte prijs per gram</string>
+
+    <!-- Prestaties -->
+    <string name="achievements_title">Prestaties</string>
+    <string name="achievements_progress_summary">%1$d / %2$d prestaties ontgrendeld</string>
+    <string name="achievement_progress_format">%1$d / %2$d</string>
+    <string name="achievement_unlocked_snackbar">%1$s %2$s ontgrendeld!</string>
+    <string name="achievement_secret_title">\?\?\?</string>
+    <string name="achievement_secret_desc">Ergens in de app wacht een geheim op u…</string>
+    <string name="achievement_first_gem_title">Eerste stap</string>
+    <string name="achievement_first_gem_desc">Bekijk voor het eerst de fiche van een edelsteen.</string>
+    <string name="achievement_curious_title">Nieuwsgierig</string>
+    <string name="achievement_curious_desc">Bekijk 10 verschillende edelsteenfiches.</string>
+    <string name="achievement_collector_title">Verzamelaar</string>
+    <string name="achievement_collector_desc">Bekijk 50 verschillende edelsteenfiches.</string>
+    <string name="achievement_encyclopedist_title">Encyclopedist</string>
+    <string name="achievement_encyclopedist_desc">Bekijk 100 verschillende edelsteenfiches.</string>
+    <string name="achievement_master_title">Meester-gemmoloog</string>
+    <string name="achievement_master_desc">Bekijk alle %1$d edelstenen uit de catalogus.</string>
+    <string name="achievement_rainbow_title">Regenboog</string>
+    <string name="achievement_rainbow_desc">Bekijk minstens één edelsteen uit elk van de %1$d kleurcategorieën.</string>
+    <string name="achievement_first_favorite_title">Eerste favoriet</string>
+    <string name="achievement_first_favorite_desc">Voeg een edelsteen toe aan uw favorieten.</string>
+    <string name="achievement_fan_title">Liefhebber</string>
+    <string name="achievement_fan_desc">Voeg 10 edelstenen toe aan uw favorieten.</string>
+    <string name="achievement_big_collector_title">Grote verzamelaar</string>
+    <string name="achievement_big_collector_desc">Voeg 25 edelstenen toe aan uw favorieten.</string>
+    <string name="achievement_first_quiz_title">Eerste quiz</string>
+    <string name="achievement_first_quiz_desc">Rond een spelronde van de gemmologiequiz af.</string>
+    <string name="achievement_quiz_regular_title">Volhouder</string>
+    <string name="achievement_quiz_regular_desc">Rond 10 spelrondes van de gemmologiequiz af.</string>
+    <string name="achievement_perfect_score_title">Foutloos</string>
+    <string name="achievement_perfect_score_desc">Behaal een perfecte score op de gemmologiequiz.</string>
+    <string name="achievement_legendary_title">Legendarisch</string>
+    <string name="achievement_legendary_desc">Ontrafel het geheim van het legendarische raadsel verborgen in het laboratorium.</string>
+
+    <!-- Quiz -->
+    <string name="quiz_title">Gemmologiequiz</string>
+    <string name="quiz_intro">Beantwoord %1$d meerkeuzevragen uit de catalogus en het lexicon: kleur, mineraalfamilie, zeldzaamheid en vaktaal. Een nieuwe willekeurige selectie bij elke ronde.</string>
+    <string name="quiz_start_button">Beginnen</string>
+    <string name="quiz_progress">Vraag %1$d / %2$d</string>
+    <string name="quiz_question_couleur">Wat is de karakteristieke kleur van %1$s?</string>
+    <string name="quiz_question_famille">Tot welke mineraalfamilie behoort %1$s?</string>
+    <string name="quiz_question_rarete">Wat is de zeldzaamheid van %1$s?</string>
+    <string name="quiz_question_glossaire">Welke term hoort bij deze definitie?</string>
+    <string name="quiz_next_button">Volgende vraag</string>
+    <string name="quiz_finish_button">Score bekijken</string>
+    <string name="quiz_score_title">Score: %1$d / %2$d</string>
+    <string name="quiz_result_excellent">Uitstekend! Echte kennis van een gemmoloog.</string>
+    <string name="quiz_result_good">Goed gedaan, u kent het onderwerp al goed.</string>
+    <string name="quiz_result_encourage">Blijf de catalogus en het lexicon verkennen, het komt vanzelf!</string>
+    <string name="quiz_restart_button">Opnieuw spelen</string>
+
+    <!-- Laboratorium -->
+    <string name="lab_menu_title">Laboratorium</string>
+    <string name="lab_menu_intro">Een ruimte gewijd aan het identificeren van stenen: snel formulier, stapsgewijs begeleid protocol, instrumenten en lexicon van de gemmoloog.</string>
+    <string name="lab_quick_analysis_title">Snelle analyse</string>
+    <string name="lab_quick_analysis_subtitle">Vul de criteria in die u kent, in willekeurige volgorde.</string>
+    <string name="lab_guided_analysis_title">Begeleide analyse</string>
+    <string name="lab_guided_analysis_subtitle">Een stapsgewijs protocol, zoals een echte gemmoloog.</string>
+    <string name="guided_step_progress">Stap %1$d / %2$d</string>
+    <string name="guided_previous_button">Vorige</string>
+    <string name="guided_next_button">Volgende</string>
+    <string name="guided_finish_button">Resultaten bekijken</string>
+    <string name="guided_restart_button">Analyse herstarten</string>
+    <string name="guided_step_couleur_instruction">Bekijk de steen onder neutraal licht (idealiter indirect daglicht), tegen een witte achtergrond. Noteer de dominante tint — de waargenomen kleur kan variëren afhankelijk van de verlichting, vermijd dus warm kunstlicht of gekleurde tl-lampen.</string>
+    <string name="guided_step_transparence_instruction">Houd de steen voor een lichtbron en kijk of u de contouren van een voorwerp er duidelijk doorheen ziet (transparant), een vage omtrek (doorschijnend), of niets (ondoorzichtig).</string>
+    <string name="guided_step_eclat_instruction">Bekijk hoe het licht wordt weerkaatst op het gepolijste oppervlak van de steen: helder en glazig zoals glas, vettig zoals was, of metallisch zoals een spiegel. Dit is een snelle aanwijzing over de aard van het materiaal.</string>
+    <string name="guided_step_clivage_instruction">Onderzoek met een loep de eventuele interne breuken. Splijting is te herkennen aan platte, glanzende vlakken die een regelmatige richting volgen, in tegenstelling tot een breuk, die onregelmatig en glazig is.</string>
+    <string name="guided_step_type_inclusion_instruction">Zoek met een 10x-loep naar karakteristieke insluitsels: zijdeachtige naaldjes, insluitseltuintjes, halo rond een kristal, vezelstructuur... Ze zijn vaak de beste aanwijzing om twee stenen van vergelijkbare kleur te onderscheiden.</string>
+    <string name="guided_step_durete_instruction">Bepaal met een set hardheidspennen (of voorwerpen met bekende hardheid zoals een vingernagel ≈2,5, een mesblad ≈5,5, een stalen vijl ≈6,5) vanaf welke graad de steen begint te krassen. Test op een minder zichtbaar oppervlak.</string>
+    <string name="guided_step_densite_instruction">Weeg de steen in de lucht en vervolgens ondergedompeld in water, met een hydrostatische weegschaal. De relatieve dichtheid wordt berekend uit het verschil tussen de twee wegingen, gedeeld door het gewicht in de lucht.</string>
+    <string name="guided_step_pleochroisme_instruction">Bekijk de steen met een dichroscoop onder verschillende hoeken: als de twee naast elkaar geplaatste beelden verschillende kleuren tonen, is de steen pleochroïsch.</string>
+    <string name="guided_step_indice_refraction_instruction">Plaats de steen op het prisma van een refractometer met een contactvloeistof. Lees de hoek van totale interne reflectie af op de gegradueerde schaal: hoe hoger de index, hoe meer de steen het licht afbuigt.</string>
+    <string name="guided_step_systeme_cristallin_instruction">De polariscoop helpt bepalen of de steen isotroop is (dooft volledig uit bij draaien) of anisotroop. Gecombineerd met de vorm van het ruwe kristal, indien beschikbaar, wijst dit naar een specifiek kristalsysteem.</string>
+    <string name="guided_step_fluorescence_instruction">Verlicht de steen in het donker met een UV-lamp (korte en lange golven). Noteer of er een zichtbare gloed optreedt, de kleur en de intensiteit ervan — een extra aanwijzing, met name om bepaalde behandelingen te onderscheiden.</string>
+
+    <!-- Veldnotitieboek -->
+    <string name="lab_notebook_title">Veldnotitieboek</string>
+    <string name="lab_notebook_subtitle">Leg uw eigen metingen vast, gedaan met uw instrumenten.</string>
+    <string name="notebook_empty_state">Geen monster opgeslagen. Voeg uw eerste veldfiche toe.</string>
+    <string name="notebook_add_button">Nieuw monster</string>
+    <string name="notebook_criteria_count">%1$d criterium/criteria ingevuld</string>
+    <string name="notebook_label_field">Naam van het monster</string>
+    <string name="notebook_label_placeholder">bv. Blauwe steen — rivier X</string>
+    <string name="notebook_notes_field">Notities</string>
+    <string name="notebook_notes_placeholder">Context, herkomst, vrije opmerkingen…</string>
+    <string name="notebook_criteria_section_title">Gemeten kenmerken</string>
+    <string name="notebook_no_criteria">Geen kenmerk ingevuld.</string>
+    <string name="notebook_save_button">Opslaan</string>
+    <string name="notebook_form_new_title">Nieuw monster</string>
+    <string name="notebook_form_edit_title">Monster bewerken</string>
+    <string name="notebook_edit_button">Bewerken</string>
+    <string name="notebook_delete_button">Verwijderen</string>
+    <string name="notebook_delete_confirm_title">Dit monster verwijderen?</string>
+    <string name="notebook_delete_confirm_message">Deze actie is onomkeerbaar.</string>
+    <string name="notebook_delete_confirm_button">Verwijderen</string>
+    <string name="notebook_cancel_button">Annuleren</string>
+    <string name="notebook_compare_button">Vergelijken met de catalogus</string>
+    <string name="legendary_menu_title">Legendarisch raadsel</string>
+    <string name="legendary_menu_subtitle">Een mysterie wacht op de nieuwsgierigsten…</string>
+
+    <!-- Legendarisch raadsel -->
+    <string name="legendary_riddle_title">Legendarisch raadsel</string>
+    <string name="legendary_riddle_intro">Een edelsteen uit de catalogus schuilt achter deze aanwijzingen. Ontdek hem en wijs dan zijn land van herkomst aan op de kaart.</string>
+    <string name="legendary_clue_label">Aanwijzing %1$d</string>
+    <string name="legendary_clue_1">In 1951 ontdekte een Britse gemmoloog een onbekend mineraal — zonder te vermoeden dat hij zojuist datgene had gevonden wat bijna vijftig jaar lang de zeldzaamste edelsteen ter wereld zou blijven.</string>
+    <string name="legendary_clue_2">Slechts één enkele vindplaats ter wereld heeft ooit kristallen ervan opgeleverd. De geslepen stenen overschrijden zelden twee karaat.</string>
+    <string name="legendary_clue_3">De tint loopt van roodbruin tot oranje, en de hardheid wedijvert met die van korund — genoeg om menig verzamelaar om de tuin te leiden.</string>
+    <string name="legendary_clue_4">Vind op de kaart het land waar deze unieke vindplaats zich bevindt, en bewijs dat u het geheim hebt ontraadseld.</string>
+    <string name="legendary_next_clue_button">Volgende aanwijzing</string>
+    <string name="legendary_open_map_button">Kaart openen</string>
+    <string name="legendary_map_title">De kaart van het geheim</string>
+    <string name="legendary_map_instruction">Tik op het land waar deze unieke vindplaats zich bevindt.</string>
+    <string name="legendary_wrong_country">Dit is niet het juiste land. Probeer opnieuw.</string>
+    <string name="legendary_success_title">Het geheim is ontraadseld!</string>
+    <string name="legendary_success_body">U heeft Myanmar gevonden, de enige bekende vindplaats van painiet ter wereld — de steen die lange tijd werd beschouwd als het zeldzaamste edelmineraal van de planeet.</string>
+    <string name="legendary_success_view_gem_button">Bekijk de fiche van Painiet</string>
+</resources>

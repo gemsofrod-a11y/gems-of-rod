@@ -1,0 +1,313 @@
+<resources>
+    <string name="app_name">Gems of Rod – Энциклопедия</string>
+
+    <!-- Общее -->
+    <string name="cd_back">Назад</string>
+    <string name="cd_clear">Очистить</string>
+
+    <!-- Главная -->
+    <string name="home_gemmologie_title">Геммология</string>
+    <string name="home_gemmologie_subtitle">Полный каталог по цвету: технические карточки, цены, происхождение.</string>
+    <string name="home_familles_title">Минеральные семейства</string>
+    <string name="home_familles_subtitle">Каталог по семействам: берилл, кварц, корунд, гранат…</string>
+    <string name="home_lithotherapie_title">Литотерапия</string>
+    <string name="home_lithotherapie_subtitle">Традиционные свойства и применение каждого камня.</string>
+    <string name="home_language_title">Язык</string>
+    <string name="home_language_subtitle">Выберите язык приложения.</string>
+    <string name="home_meteorites_title">Метеориты</string>
+    <string name="home_meteorites_subtitle">Небесное железо, палласиты и камни, упавшие с неба: материя за пределами Земли.</string>
+    <string name="home_quiz_title">Геммологическая викторина</string>
+    <string name="home_quiz_subtitle">Проверьте свои знания: цвета, семейства, редкость и терминология.</string>
+    <string name="home_lab_title">Лаборатория</string>
+    <string name="home_lab_subtitle">Определите камень как настоящий геммолог, шаг за шагом.</string>
+
+    <!-- Геммология (поиск + категории) -->
+    <string name="search_gems_placeholder">Найти камень…</string>
+    <string name="search_no_results">Ни один камень не соответствует запросу « %1$s ».</string>
+    <string name="gemmologie_couleur_title">Цвет</string>
+    <string name="gemmologie_couleur_subtitle">Каталог по оттенкам: красный, синий, зелёный…</string>
+    <string name="gemmologie_pays_title">Страна происхождения</string>
+    <string name="gemmologie_pays_subtitle">Каталог по географическому происхождению.</string>
+    <plurals name="gem_count">
+        <item quantity="one">%1$d камень</item>
+        <item quantity="other">%1$d камней</item>
+    </plurals>
+
+    <!-- Цвета -->
+    <string name="color_rouge">Красный</string>
+    <string name="color_orange">Оранжевый</string>
+    <string name="color_jaune">Жёлтый</string>
+    <string name="color_vert">Зелёный</string>
+    <string name="color_bleu">Синий</string>
+    <string name="color_violet">Фиолетовый</string>
+    <string name="color_rose">Розовый</string>
+    <string name="color_incolore">Бесцветный и белый</string>
+    <string name="color_brun">Коричневый и бурый</string>
+    <string name="color_noir">Чёрный</string>
+    <string name="color_multicolore">Многоцветный</string>
+
+    <!-- Редкость -->
+    <string name="rarete_courante">Обычная</string>
+    <string name="rarete_peu_commune">Малораспространённая</string>
+    <string name="rarete_rare">Редкая</string>
+    <string name="rarete_exceptionnelle">Исключительная</string>
+
+    <!-- Избранное -->
+    <string name="favorites_title">Мои избранные</string>
+    <string name="favorites_empty_title">Пока нет избранного</string>
+    <string name="favorites_empty_subtitle">Нажмите на сердечко на карточке камня, чтобы найти его здесь.</string>
+    <string name="cd_remove_favorite">Убрать из избранного</string>
+    <string name="cd_add_favorite">Добавить в избранное</string>
+
+    <!-- Карточка камня -->
+    <string name="fiche_categorie">Категория</string>
+    <string name="fiche_famille">Семейство</string>
+    <string name="fiche_formule_chimique">Химическая формула</string>
+    <string name="fiche_systeme_cristallin">Кристаллическая система</string>
+    <string name="fiche_durete">Твёрдость (Мооса)</string>
+    <string name="fiche_indice_refraction">Показатель преломления</string>
+    <string name="fiche_transparence">Прозрачность</string>
+    <string name="fiche_eclat">Блеск</string>
+    <string name="fiche_clivage">Спайность</string>
+    <string name="fiche_densite">Плотность</string>
+    <string name="fiche_pleochroisme">Плеохроизм</string>
+    <string name="fiche_fluorescence">УФ-флуоресценция</string>
+    <string name="fiche_prix_indicatif">Ориентировочная цена</string>
+    <string name="create_certificate_button">Создать сертификат</string>
+    <string name="particularites_title">Особенности</string>
+    <string name="inclusions_title">Типичные включения</string>
+    <string name="origins_title">Месторождения и регионы происхождения</string>
+    <string name="origins_hint">Нажмите на место, чтобы открыть его в Google Maps.</string>
+    <string name="share_chooser_title">Поделиться карточкой</string>
+    <string name="share_subject">Gems of Rod — %1$s</string>
+    <string name="gem_photo_raw">Необработанный камень</string>
+    <string name="gem_photo_cut">Огранённый камень</string>
+    <string name="gem_photo_cut_or_cabochon">Огранённый камень / кабошон</string>
+    <string name="gem_photo_inclusion">Типичное включение</string>
+    <string name="photo_credit">Фото: %1$s — %2$s</string>
+    <string name="photo_credit_wikimedia">Фото: %1$s — %2$s (Wikimedia Commons)</string>
+
+    <!-- Калькулятор стоимости -->
+    <string name="price_calc_title">Оценить стоимость вашего камня</string>
+    <string name="price_calc_intro">Укажите вес и цену за карат вашего камня, чтобы оценить его общую стоимость. Цена за карат не может превышать максимум ориентировочного диапазона (%1$s/кар).</string>
+    <string name="price_calc_carats_label">Караты</string>
+    <string name="price_calc_price_label">Цена/кар (€)</string>
+    <string name="price_calc_exceeds_max">Указанная цена превышает максимум карточки (%1$s/кар).</string>
+    <string name="price_calc_result">Оценочная стоимость: %1$s</string>
+    <string name="price_calc_button">Рассчитать</string>
+
+    <!-- Минеральные семейства -->
+    <string name="familles_title">Минеральные семейства</string>
+
+    <!-- Литотерапия -->
+    <string name="scheme_zodiac_title">Знак зодиака</string>
+    <string name="scheme_chakra_title">Чакра</string>
+    <string name="scheme_bienfait_title">Искомая польза</string>
+    <string name="scheme_mois_title">Месяц рождения</string>
+    <string name="litho_zodiac_subtitle">Откройте камни, традиционно связанные с вашим знаком зодиака.</string>
+    <string name="litho_chakra_subtitle">Камни, распределённые по 7 традиционным чакрам.</string>
+    <string name="litho_bienfait_subtitle">Стресс, уверенность, любовь, защита, сон…</string>
+    <string name="litho_mois_subtitle">Камни по месяцу рождения, по одному на месяц.</string>
+    <string name="litho_no_gems">Пока нет камней в этой категории.</string>
+    <string name="litho_virtues_title">Свойства в литотерапии</string>
+    <string name="litho_disclaimer">Эта информация основана на традиционных верованиях и практиках. Она не является медицинским заключением или терапевтическим утверждением и не заменяет консультацию специалиста здравоохранения.</string>
+    <string name="litho_nettoyage_title">Очищение и подзарядка</string>
+    <string name="litho_nettoyage_subtitle">Традиционные практики очищения и восстановления энергии ваших камней.</string>
+    <string name="litho_associations_title">Сочетание камней</string>
+    <string name="litho_associations_subtitle">Комбинирование нескольких камней в зависимости от искомой пользы.</string>
+
+    <!-- Сертификат -->
+    <string name="certificate_title">Сертификат</string>
+    <string name="certificate_intro">Укажите информацию о вашем камне, чтобы создать PDF-сертификат.</string>
+    <string name="certificate_field_emitter_label">Выдан</string>
+    <string name="certificate_field_emitter_placeholder">напр. Ювелирный дом Мартен — contact@exemple.com</string>
+    <string name="certificate_field_dimensions_label">Размеры</string>
+    <string name="certificate_field_dimensions_placeholder">напр. 8,2 x 6,1 x 4,3 мм</string>
+    <string name="certificate_field_weight_label">Вес</string>
+    <string name="certificate_field_weight_placeholder">напр. 1,25 кар</string>
+    <string name="certificate_field_origin_label">Происхождение</string>
+    <string name="certificate_field_origin_placeholder">напр. Шри-Ланка</string>
+    <string name="certificate_field_treatment_label">Обработка</string>
+    <string name="certificate_field_treatment_placeholder">напр. Без обработки</string>
+    <string name="certificate_export_chooser">Экспортировать сертификат</string>
+    <string name="certificate_photo_picker_hint">Добавить фото с телефона</string>
+    <string name="cd_certificate_photo">Фото камня</string>
+    <string name="certificate_generate_button">Создать и экспортировать PDF</string>
+    <string name="certificate_pdf_title">СЕРТИФИКАТ ПОДЛИННОСТИ</string>
+    <string name="certificate_pdf_issued_on">Выдан %1$s</string>
+    <string name="certificate_pdf_disclaimer">Этот документ описывает экземпляр, заполненный пользователем; он не является экспертным заключением.</string>
+
+    <!-- Язык -->
+    <string name="language_title">Язык</string>
+
+    <!-- Анализ камня -->
+    <string name="gemmologie_analyse_title">Анализ камня</string>
+    <string name="gemmologie_analyse_subtitle">Определите камень по его наблюдаемым характеристикам.</string>
+    <string name="analyse_intro">Укажите известные или наблюдаемые характеристики. Достаточно одного критерия для начала; чем больше вы укажете, тем точнее будет результат.</string>
+    <string name="analyse_instruments_card_title">Инструменты геммолога</string>
+    <string name="analyse_instruments_card_subtitle">Узнайте об инструментах, используемых для анализа камня.</string>
+    <string name="analyse_couleur_label">Цвет</string>
+    <string name="analyse_transparence_label">Прозрачность</string>
+    <string name="analyse_eclat_label">Блеск</string>
+    <string name="analyse_clivage_label">Спайность</string>
+    <string name="analyse_pleochroisme_label">Плеохроизм</string>
+    <string name="analyse_fluorescence_label">УФ-флуоресценция</string>
+    <string name="analyse_type_inclusion_label">Тип включения</string>
+    <string name="analyse_systeme_cristallin_label">Кристаллическая система</string>
+    <string name="analyse_durete_label">Твёрдость (Мооса)</string>
+    <string name="analyse_durete_placeholder">напр. 7</string>
+    <string name="analyse_densite_label">Плотность</string>
+    <string name="analyse_densite_placeholder">напр. 3,5</string>
+    <string name="analyse_indice_refraction_label">Показатель преломления</string>
+    <string name="analyse_indice_refraction_placeholder">напр. 1,55</string>
+    <string name="analyse_option_any">Неважно</string>
+    <string name="analyse_button">Анализировать</string>
+    <string name="analyse_reset_button">Сбросить</string>
+    <string name="analyse_results_title">Результаты</string>
+    <string name="analyse_empty_state">Заполните хотя бы один критерий выше, затем нажмите «Анализировать».</string>
+    <string name="analyse_no_results">Ни один камень не соответствует указанным критериям.</string>
+    <string name="analyse_match_score">%1$d/%2$d критериев</string>
+
+    <!-- Инструменты анализа -->
+    <string name="instruments_title">Инструменты анализа</string>
+    <string name="analyse_glossaire_card_title">Геммологический словарь</string>
+    <string name="analyse_glossaire_card_subtitle">Разберитесь в технических терминах (шёлк, напряжённый ореол, двулучепреломление...).</string>
+    <string name="glossaire_title">Геммологический словарь</string>
+
+    <!-- Метеориты -->
+    <string name="meteorites_intro">Фрагмент астероида, Марса или Луны, упавший на Землю после путешествия длиной в миллионы лет. Некоторые метеориты можно огранить и отполировать, как поделочный камень; другие остаются предметами научного коллекционирования. Этот раздел проводит различие между ними.</string>
+    <string name="meteorites_classification_title">Классификация</string>
+    <string name="meteorites_classification_subtitle">Сидериты, сидеролиты, аэролиты: разберитесь в основных семействах метеоритов.</string>
+    <string name="meteorite_famille_ferreuse">Железные (сидериты)</string>
+    <string name="meteorite_famille_pallasite">Палласиты (сидеролиты)</string>
+    <string name="meteorite_famille_chondrite">Хондриты (аэролиты)</string>
+    <string name="meteorite_famille_prestige">Образцы научного престижа</string>
+    <string name="meteorite_famille_martienne_lunaire">Марсианские и лунные</string>
+    <string name="meteorite_fiche_origine">Происхождение</string>
+    <string name="meteorite_fiche_classification">Классификация</string>
+    <string name="meteorite_fiche_composition">Минеральный состав</string>
+    <string name="meteorite_fiche_durete">Твёрдость (Мооса)</string>
+    <string name="meteorite_fiche_densite">Плотность</string>
+    <string name="meteorite_fiche_couleur">Цвет</string>
+    <string name="meteorite_fiche_taille">Возможность огранки</string>
+    <string name="meteorite_fiche_qualite_gemme">Ювелирное качество</string>
+    <string name="meteorite_fiche_interet_joaillerie">Интерес для ювелирного дела</string>
+    <string name="meteorite_fiche_prix">Ориентировочная цена за грамм</string>
+
+    <!-- Достижения -->
+    <string name="achievements_title">Достижения</string>
+    <string name="achievements_progress_summary">%1$d / %2$d достижений разблокировано</string>
+    <string name="achievement_progress_format">%1$d / %2$d</string>
+    <string name="achievement_unlocked_snackbar">%1$s %2$s разблокировано!</string>
+    <string name="achievement_secret_title">\?\?\?</string>
+    <string name="achievement_secret_desc">Секрет ждёт вас где-то в приложении…</string>
+    <string name="achievement_first_gem_title">Первый шаг</string>
+    <string name="achievement_first_gem_desc">Откройте карточку камня в первый раз.</string>
+    <string name="achievement_curious_title">Любознательный</string>
+    <string name="achievement_curious_desc">Откройте 10 разных карточек камней.</string>
+    <string name="achievement_collector_title">Коллекционер</string>
+    <string name="achievement_collector_desc">Откройте 50 разных карточек камней.</string>
+    <string name="achievement_encyclopedist_title">Энциклопедист</string>
+    <string name="achievement_encyclopedist_desc">Откройте 100 разных карточек камней.</string>
+    <string name="achievement_master_title">Мастер-геммолог</string>
+    <string name="achievement_master_desc">Откройте все %1$d камней каталога.</string>
+    <string name="achievement_rainbow_title">Радуга</string>
+    <string name="achievement_rainbow_desc">Откройте хотя бы один камень из каждой из %1$d цветовых категорий.</string>
+    <string name="achievement_first_favorite_title">Первое избранное</string>
+    <string name="achievement_first_favorite_desc">Добавьте камень в избранное.</string>
+    <string name="achievement_fan_title">Увлечённый</string>
+    <string name="achievement_fan_desc">Добавьте 10 камней в избранное.</string>
+    <string name="achievement_big_collector_title">Большой коллекционер</string>
+    <string name="achievement_big_collector_desc">Добавьте 25 камней в избранное.</string>
+    <string name="achievement_first_quiz_title">Первая викторина</string>
+    <string name="achievement_first_quiz_desc">Завершите одну игру геммологической викторины.</string>
+    <string name="achievement_quiz_regular_title">Постоянный игрок</string>
+    <string name="achievement_quiz_regular_desc">Завершите 10 игр геммологической викторины.</string>
+    <string name="achievement_perfect_score_title">Без единой ошибки</string>
+    <string name="achievement_perfect_score_desc">Наберите максимальный балл в геммологической викторине.</string>
+    <string name="achievement_legendary_title">Легендарный</string>
+    <string name="achievement_legendary_desc">Раскройте тайну легендарной загадки, спрятанной в лаборатории.</string>
+
+    <!-- Викторина -->
+    <string name="quiz_title">Геммологическая викторина</string>
+    <string name="quiz_intro">Ответьте на %1$d вопросов с несколькими вариантами ответа из каталога и словаря: цвет, минеральное семейство, редкость и техническая терминология. Новая случайная выборка при каждой игре.</string>
+    <string name="quiz_start_button">Начать</string>
+    <string name="quiz_progress">Вопрос %1$d / %2$d</string>
+    <string name="quiz_question_couleur">Какой характерный цвет у %1$s?</string>
+    <string name="quiz_question_famille">К какому минеральному семейству относится %1$s?</string>
+    <string name="quiz_question_rarete">Какова редкость %1$s?</string>
+    <string name="quiz_question_glossaire">Какой термин соответствует этому определению?</string>
+    <string name="quiz_next_button">Следующий вопрос</string>
+    <string name="quiz_finish_button">Посмотреть результат</string>
+    <string name="quiz_score_title">Результат: %1$d / %2$d</string>
+    <string name="quiz_result_excellent">Отлично! Настоящие знания геммолога.</string>
+    <string name="quiz_result_good">Хорошая работа, вы уже хорошо знаете тему.</string>
+    <string name="quiz_result_encourage">Продолжайте изучать каталог и словарь, всё придёт!</string>
+    <string name="quiz_restart_button">Играть снова</string>
+
+    <!-- Лаборатория -->
+    <string name="lab_menu_title">Лаборатория</string>
+    <string name="lab_menu_intro">Пространство, посвящённое определению камней: быстрая форма, пошаговый управляемый протокол, инструменты и словарь геммолога.</string>
+    <string name="lab_quick_analysis_title">Быстрый анализ</string>
+    <string name="lab_quick_analysis_subtitle">Заполните известные вам критерии в любом порядке.</string>
+    <string name="lab_guided_analysis_title">Управляемый анализ</string>
+    <string name="lab_guided_analysis_subtitle">Пошаговый протокол, как у настоящего геммолога.</string>
+    <string name="guided_step_progress">Шаг %1$d / %2$d</string>
+    <string name="guided_previous_button">Назад</string>
+    <string name="guided_next_button">Далее</string>
+    <string name="guided_finish_button">Посмотреть результаты</string>
+    <string name="guided_restart_button">Начать анализ заново</string>
+    <string name="guided_step_couleur_instruction">Рассмотрите камень при нейтральном освещении (в идеале при непрямом дневном свете) на белом фоне. Отметьте доминирующий оттенок — воспринимаемый цвет может меняться в зависимости от освещения, поэтому избегайте тёплого искусственного света или цветных ламп.</string>
+    <string name="guided_step_transparence_instruction">Поднесите камень к источнику света и посмотрите, чётко ли вы различаете контуры предмета сквозь него (прозрачный), размытый силуэт (полупрозрачный) или ничего (непрозрачный).</string>
+    <string name="guided_step_eclat_instruction">Понаблюдайте, как свет отражается от полированной поверхности камня: ярко и стекловидно, как стекло, маслянисто, как воск, или металлически, как зеркало. Это быстрый показатель природы материала.</string>
+    <string name="guided_step_clivage_instruction">Рассмотрите под лупой возможные внутренние трещины. Спайность распознаётся по плоским блестящим плоскостям, следующим в одном регулярном направлении, в отличие от излома, который неровный и стекловидный.</string>
+    <string name="guided_step_type_inclusion_instruction">Под 10-кратной лупой ищите характерные включения: шёлковистые иглы, «сад» включений, ореол вокруг кристалла, волокнистую структуру... Они часто являются лучшим признаком для различения двух камней похожего цвета.</string>
+    <string name="guided_step_durete_instruction">С помощью набора эталонов твёрдости (или предметов известной твёрдости, таких как ноготь ≈2,5, лезвие ножа ≈5,5, стальной напильник ≈6,5), определите степень, начиная с которой камень начинает царапаться. Проверяйте на малозаметной грани.</string>
+    <string name="guided_step_densite_instruction">Взвесьте камень на воздухе, а затем погружённым в воду, с помощью гидростатических весов. Относительная плотность вычисляется по разнице двух взвешиваний, отнесённой к весу на воздухе.</string>
+    <string name="guided_step_pleochroisme_instruction">С помощью дихроскопа рассмотрите камень под разными углами: если два сопоставленных изображения показывают разные цвета, камень плеохроичен.</string>
+    <string name="guided_step_indice_refraction_instruction">Поместите камень на призму рефрактометра с контактной жидкостью. Считайте угол полного внутреннего отражения по градуированной шкале: чем выше показатель, тем сильнее камень отклоняет свет.</string>
+    <string name="guided_step_systeme_cristallin_instruction">Поляризационный прибор помогает определить, является ли камень изотропным (полностью гаснет при вращении) или анизотропным. В сочетании с формой необработанного кристалла, если она доступна, это указывает на конкретную кристаллическую систему.</string>
+    <string name="guided_step_fluorescence_instruction">В темноте осветите камень УФ-лампой (короткие и длинные волны). Отметьте, излучает ли он видимое свечение, его цвет и интенсивность — дополнительный признак, особенно для различения некоторых видов обработки.</string>
+
+    <!-- Полевой дневник -->
+    <string name="lab_notebook_title">Полевой дневник</string>
+    <string name="lab_notebook_subtitle">Записывайте собственные измерения, сделанные своими инструментами.</string>
+    <string name="notebook_empty_state">Нет сохранённых образцов. Добавьте свою первую полевую карточку.</string>
+    <string name="notebook_add_button">Новый образец</string>
+    <string name="notebook_criteria_count">%1$d критериев указано</string>
+    <string name="notebook_label_field">Название образца</string>
+    <string name="notebook_label_placeholder">напр. Синий камень — река X</string>
+    <string name="notebook_notes_field">Заметки</string>
+    <string name="notebook_notes_placeholder">Контекст, происхождение, свободные наблюдения…</string>
+    <string name="notebook_criteria_section_title">Измеренные характеристики</string>
+    <string name="notebook_no_criteria">Характеристики не указаны.</string>
+    <string name="notebook_save_button">Сохранить</string>
+    <string name="notebook_form_new_title">Новый образец</string>
+    <string name="notebook_form_edit_title">Изменить образец</string>
+    <string name="notebook_edit_button">Изменить</string>
+    <string name="notebook_delete_button">Удалить</string>
+    <string name="notebook_delete_confirm_title">Удалить этот образец?</string>
+    <string name="notebook_delete_confirm_message">Это действие необратимо.</string>
+    <string name="notebook_delete_confirm_button">Удалить</string>
+    <string name="notebook_cancel_button">Отмена</string>
+    <string name="notebook_compare_button">Сравнить с каталогом</string>
+    <string name="legendary_menu_title">Легендарная загадка</string>
+    <string name="legendary_menu_subtitle">Тайна ждёт самых любознательных…</string>
+
+    <!-- Легендарная загадка -->
+    <string name="legendary_riddle_title">Легендарная загадка</string>
+    <string name="legendary_riddle_intro">Один камень из каталога скрывается за этими подсказками. Найдите его, а затем укажите его страну происхождения на карте.</string>
+    <string name="legendary_clue_label">Подсказка %1$d</string>
+    <string name="legendary_clue_1">В 1951 году британский геммолог обнаружил неизвестный минерал — не подозревая, что нашёл то, что почти пятьдесят лет оставалось самым редким драгоценным камнем в мире.</string>
+    <string name="legendary_clue_2">Единственное в мире месторождение когда-либо давало его кристаллы. Огранённые камни редко превышают два карата.</string>
+    <string name="legendary_clue_3">Его оттенок варьируется от красновато-коричневого до оранжевого, а твёрдость соперничает с корундом — этого достаточно, чтобы обмануть не одного коллекционера.</string>
+    <string name="legendary_clue_4">Найдите на карте страну, где находится это единственное месторождение, и докажите, что вы раскрыли тайну.</string>
+    <string name="legendary_next_clue_button">Следующая подсказка</string>
+    <string name="legendary_open_map_button">Открыть карту</string>
+    <string name="legendary_map_title">Карта тайны</string>
+    <string name="legendary_map_instruction">Нажмите на страну, где находится это единственное месторождение.</string>
+    <string name="legendary_wrong_country">Это не та страна. Попробуйте ещё раз.</string>
+    <string name="legendary_success_title">Тайна раскрыта!</string>
+    <string name="legendary_success_body">Вы нашли Мьянму — единственное известное месторождение painite в мире, камня, который долгое время считался самым редким драгоценным минералом планеты.</string>
+    <string name="legendary_success_view_gem_button">Посмотреть карточку Пейнита</string>
+</resources>

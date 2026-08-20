@@ -1,0 +1,313 @@
+<resources>
+    <string name="app_name">Gems of Rod – Enciclopédia</string>
+
+    <!-- Comum -->
+    <string name="cd_back">Voltar</string>
+    <string name="cd_clear">Limpar</string>
+
+    <!-- Início -->
+    <string name="home_gemmologie_title">Gemologia</string>
+    <string name="home_gemmologie_subtitle">O catálogo completo por cor: fichas técnicas, preços, origens.</string>
+    <string name="home_familles_title">Famílias minerais</string>
+    <string name="home_familles_subtitle">O catálogo organizado por família: berilo, quartzo, corindo, granada…</string>
+    <string name="home_lithotherapie_title">Litoterapia</string>
+    <string name="home_lithotherapie_subtitle">As virtudes e usos tradicionais associados a cada pedra.</string>
+    <string name="home_language_title">Idioma</string>
+    <string name="home_language_subtitle">Escolha o idioma do aplicativo.</string>
+    <string name="home_meteorites_title">Meteoritos</string>
+    <string name="home_meteorites_subtitle">Ferro celeste, palasitos e pedras caídas do céu: uma matéria além da Terra.</string>
+    <string name="home_quiz_title">Quiz de gemologia</string>
+    <string name="home_quiz_subtitle">Teste seus conhecimentos: cores, famílias, raridade e vocabulário.</string>
+    <string name="home_lab_title">Laboratório</string>
+    <string name="home_lab_subtitle">Identifique uma pedra como um verdadeiro gemólogo, passo a passo.</string>
+
+    <!-- Gemologia (busca + categorias) -->
+    <string name="search_gems_placeholder">Buscar uma gema…</string>
+    <string name="search_no_results">Nenhuma gema corresponde a « %1$s ».</string>
+    <string name="gemmologie_couleur_title">Cor</string>
+    <string name="gemmologie_couleur_subtitle">O catálogo organizado por tonalidade: vermelho, azul, verde…</string>
+    <string name="gemmologie_pays_title">País de origem</string>
+    <string name="gemmologie_pays_subtitle">O catálogo organizado por proveniência geográfica.</string>
+    <plurals name="gem_count">
+        <item quantity="one">%1$d gema</item>
+        <item quantity="other">%1$d gemas</item>
+    </plurals>
+
+    <!-- Cores -->
+    <string name="color_rouge">Vermelho</string>
+    <string name="color_orange">Laranja</string>
+    <string name="color_jaune">Amarelo</string>
+    <string name="color_vert">Verde</string>
+    <string name="color_bleu">Azul</string>
+    <string name="color_violet">Violeta</string>
+    <string name="color_rose">Rosa</string>
+    <string name="color_incolore">Incolor &amp; branco</string>
+    <string name="color_brun">Castanho &amp; marrom</string>
+    <string name="color_noir">Preto</string>
+    <string name="color_multicolore">Multicolor</string>
+
+    <!-- Raridade -->
+    <string name="rarete_courante">Comum</string>
+    <string name="rarete_peu_commune">Pouco comum</string>
+    <string name="rarete_rare">Rara</string>
+    <string name="rarete_exceptionnelle">Excepcional</string>
+
+    <!-- Favoritos -->
+    <string name="favorites_title">Meus favoritos</string>
+    <string name="favorites_empty_title">Nenhum favorito por enquanto</string>
+    <string name="favorites_empty_subtitle">Toque no coração na ficha de uma gema para encontrá-la aqui.</string>
+    <string name="cd_remove_favorite">Remover dos favoritos</string>
+    <string name="cd_add_favorite">Adicionar aos favoritos</string>
+
+    <!-- Ficha da gema -->
+    <string name="fiche_categorie">Categoria</string>
+    <string name="fiche_famille">Família</string>
+    <string name="fiche_formule_chimique">Fórmula química</string>
+    <string name="fiche_systeme_cristallin">Sistema cristalino</string>
+    <string name="fiche_durete">Dureza (Mohs)</string>
+    <string name="fiche_indice_refraction">Índice de refração</string>
+    <string name="fiche_transparence">Transparência</string>
+    <string name="fiche_eclat">Brilho</string>
+    <string name="fiche_clivage">Clivagem</string>
+    <string name="fiche_densite">Densidade</string>
+    <string name="fiche_pleochroisme">Pleocroísmo</string>
+    <string name="fiche_fluorescence">Fluorescência UV</string>
+    <string name="fiche_prix_indicatif">Preço indicativo</string>
+    <string name="create_certificate_button">Criar um certificado</string>
+    <string name="particularites_title">Particularidades</string>
+    <string name="inclusions_title">Inclusões típicas</string>
+    <string name="origins_title">Minas e regiões de origem</string>
+    <string name="origins_hint">Toque em um local para abri-lo no Google Maps.</string>
+    <string name="share_chooser_title">Compartilhar a ficha</string>
+    <string name="share_subject">Gems of Rod — %1$s</string>
+    <string name="gem_photo_raw">Pedra bruta</string>
+    <string name="gem_photo_cut">Pedra lapidada</string>
+    <string name="gem_photo_cut_or_cabochon">Pedra lapidada / cabochão</string>
+    <string name="gem_photo_inclusion">Inclusão típica</string>
+    <string name="photo_credit">Foto: %1$s — %2$s</string>
+    <string name="photo_credit_wikimedia">Foto: %1$s — %2$s (Wikimedia Commons)</string>
+
+    <!-- Calculadora de valor -->
+    <string name="price_calc_title">Estimar o valor da sua pedra</string>
+    <string name="price_calc_intro">Informe o peso e o preço por quilate da sua pedra para estimar seu valor total. O preço por quilate não pode ultrapassar o máximo da faixa indicativa (%1$s/ct).</string>
+    <string name="price_calc_carats_label">Quilates</string>
+    <string name="price_calc_price_label">Preço/ct (€)</string>
+    <string name="price_calc_exceeds_max">O preço indicado ultrapassa o máximo da ficha (%1$s/ct).</string>
+    <string name="price_calc_result">Valor estimado: %1$s</string>
+    <string name="price_calc_button">Calcular</string>
+
+    <!-- Famílias minerais -->
+    <string name="familles_title">Famílias minerais</string>
+
+    <!-- Litoterapia -->
+    <string name="scheme_zodiac_title">Signo do zodíaco</string>
+    <string name="scheme_chakra_title">Chakra</string>
+    <string name="scheme_bienfait_title">Benefício buscado</string>
+    <string name="scheme_mois_title">Mês de nascimento</string>
+    <string name="litho_zodiac_subtitle">Descubra as pedras tradicionalmente associadas ao seu signo.</string>
+    <string name="litho_chakra_subtitle">As pedras organizadas segundo os 7 chakras tradicionais.</string>
+    <string name="litho_bienfait_subtitle">Estresse, confiança, amor, proteção, sono…</string>
+    <string name="litho_mois_subtitle">As pedras de nascimento, uma por mês.</string>
+    <string name="litho_no_gems">Nenhuma gema no momento nesta categoria.</string>
+    <string name="litho_virtues_title">Virtudes em litoterapia</string>
+    <string name="litho_disclaimer">Estas informações são baseadas em crenças e usos tradicionais. Não constituem parecer médico nem alegação terapêutica, e não substituem uma consulta com um profissional de saúde.</string>
+    <string name="litho_nettoyage_title">Limpeza &amp; recarga</string>
+    <string name="litho_nettoyage_subtitle">As práticas tradicionais para purificar e revitalizar suas pedras.</string>
+    <string name="litho_associations_title">Associação de pedras</string>
+    <string name="litho_associations_subtitle">Combinar várias pedras segundo os benefícios buscados.</string>
+
+    <!-- Certificado -->
+    <string name="certificate_title">Certificado</string>
+    <string name="certificate_intro">Informe os dados da sua pedra para gerar um certificado em PDF.</string>
+    <string name="certificate_field_emitter_label">Emitido por</string>
+    <string name="certificate_field_emitter_placeholder">ex. Joalheria Martin — contato@exemplo.com</string>
+    <string name="certificate_field_dimensions_label">Dimensões</string>
+    <string name="certificate_field_dimensions_placeholder">ex. 8,2 x 6,1 x 4,3 mm</string>
+    <string name="certificate_field_weight_label">Peso</string>
+    <string name="certificate_field_weight_placeholder">ex. 1,25 ct</string>
+    <string name="certificate_field_origin_label">Origem</string>
+    <string name="certificate_field_origin_placeholder">ex. Sri Lanka</string>
+    <string name="certificate_field_treatment_label">Tratamento</string>
+    <string name="certificate_field_treatment_placeholder">ex. Não tratado</string>
+    <string name="certificate_export_chooser">Exportar o certificado</string>
+    <string name="certificate_photo_picker_hint">Adicionar uma foto do telefone</string>
+    <string name="cd_certificate_photo">Foto da pedra</string>
+    <string name="certificate_generate_button">Gerar e exportar o PDF</string>
+    <string name="certificate_pdf_title">CERTIFICADO DE AUTENTICIDADE</string>
+    <string name="certificate_pdf_issued_on">Emitido em %1$s</string>
+    <string name="certificate_pdf_disclaimer">Este documento descreve um exemplar informado pelo usuário; não constitui um laudo pericial.</string>
+
+    <!-- Idioma -->
+    <string name="language_title">Idioma</string>
+
+    <!-- Análise de pedra -->
+    <string name="gemmologie_analyse_title">Análise de pedra</string>
+    <string name="gemmologie_analyse_subtitle">Identifique uma pedra a partir de suas características observadas.</string>
+    <string name="analyse_intro">Informe as características que você conhece ou observa. Um único critério já é suficiente para começar; quanto mais indicar, mais preciso será o resultado.</string>
+    <string name="analyse_instruments_card_title">As ferramentas do gemólogo</string>
+    <string name="analyse_instruments_card_subtitle">Descubra os instrumentos usados para analisar uma pedra.</string>
+    <string name="analyse_couleur_label">Cor</string>
+    <string name="analyse_transparence_label">Transparência</string>
+    <string name="analyse_eclat_label">Brilho</string>
+    <string name="analyse_clivage_label">Clivagem</string>
+    <string name="analyse_pleochroisme_label">Pleocroísmo</string>
+    <string name="analyse_fluorescence_label">Fluorescência UV</string>
+    <string name="analyse_type_inclusion_label">Tipo de inclusão</string>
+    <string name="analyse_systeme_cristallin_label">Sistema cristalino</string>
+    <string name="analyse_durete_label">Dureza (Mohs)</string>
+    <string name="analyse_durete_placeholder">ex. 7</string>
+    <string name="analyse_densite_label">Densidade</string>
+    <string name="analyse_densite_placeholder">ex. 3,5</string>
+    <string name="analyse_indice_refraction_label">Índice de refração</string>
+    <string name="analyse_indice_refraction_placeholder">ex. 1,55</string>
+    <string name="analyse_option_any">Tanto faz</string>
+    <string name="analyse_button">Analisar</string>
+    <string name="analyse_reset_button">Reiniciar</string>
+    <string name="analyse_results_title">Resultados</string>
+    <string name="analyse_empty_state">Preencha ao menos um critério acima e toque em « Analisar ».</string>
+    <string name="analyse_no_results">Nenhuma gema corresponde aos critérios indicados.</string>
+    <string name="analyse_match_score">%1$d/%2$d critérios</string>
+
+    <!-- Ferramentas de análise -->
+    <string name="instruments_title">Ferramentas de análise</string>
+    <string name="analyse_glossaire_card_title">Léxico gemológico</string>
+    <string name="analyse_glossaire_card_subtitle">Entenda o vocabulário técnico (seda, halo de tensão, birrefringência...).</string>
+    <string name="glossaire_title">Léxico gemológico</string>
+
+    <!-- Meteoritos -->
+    <string name="meteorites_intro">Um fragmento de asteroide, de Marte ou da Lua, caído na Terra após uma viagem de milhões de anos. Alguns meteoritos podem ser lapidados e polidos como uma pedra fina; outros permanecem peças de coleção científica. Esta seção os diferencia.</string>
+    <string name="meteorites_classification_title">Classificação</string>
+    <string name="meteorites_classification_subtitle">Sideritos, siderólitos, aerólitos: entenda as grandes famílias de meteoritos.</string>
+    <string name="meteorite_famille_ferreuse">Ferrosos (sideritos)</string>
+    <string name="meteorite_famille_pallasite">Palasitos (siderólitos)</string>
+    <string name="meteorite_famille_chondrite">Condritos (aerólitos)</string>
+    <string name="meteorite_famille_prestige">Peças de prestígio científico</string>
+    <string name="meteorite_famille_martienne_lunaire">Marcianos &amp; lunares</string>
+    <string name="meteorite_fiche_origine">Origem</string>
+    <string name="meteorite_fiche_classification">Classificação</string>
+    <string name="meteorite_fiche_composition">Composição mineral</string>
+    <string name="meteorite_fiche_durete">Dureza (Mohs)</string>
+    <string name="meteorite_fiche_densite">Densidade</string>
+    <string name="meteorite_fiche_couleur">Cor</string>
+    <string name="meteorite_fiche_taille">Possibilidade de lapidação</string>
+    <string name="meteorite_fiche_qualite_gemme">Qualidade gema</string>
+    <string name="meteorite_fiche_interet_joaillerie">Interesse em joalheria</string>
+    <string name="meteorite_fiche_prix">Preço aproximado por grama</string>
+
+    <!-- Conquistas -->
+    <string name="achievements_title">Conquistas</string>
+    <string name="achievements_progress_summary">%1$d / %2$d conquistas desbloqueadas</string>
+    <string name="achievement_progress_format">%1$d / %2$d</string>
+    <string name="achievement_unlocked_snackbar">%1$s %2$s desbloqueada!</string>
+    <string name="achievement_secret_title">\?\?\?</string>
+    <string name="achievement_secret_desc">Um segredo espera por você em algum lugar do aplicativo…</string>
+    <string name="achievement_first_gem_title">Primeiro passo</string>
+    <string name="achievement_first_gem_desc">Consulte a ficha de uma gema pela primeira vez.</string>
+    <string name="achievement_curious_title">Curioso</string>
+    <string name="achievement_curious_desc">Consulte 10 fichas de gemas diferentes.</string>
+    <string name="achievement_collector_title">Colecionador</string>
+    <string name="achievement_collector_desc">Consulte 50 fichas de gemas diferentes.</string>
+    <string name="achievement_encyclopedist_title">Enciclopedista</string>
+    <string name="achievement_encyclopedist_desc">Consulte 100 fichas de gemas diferentes.</string>
+    <string name="achievement_master_title">Mestre gemólogo</string>
+    <string name="achievement_master_desc">Consulte as %1$d gemas do catálogo.</string>
+    <string name="achievement_rainbow_title">Arco-íris</string>
+    <string name="achievement_rainbow_desc">Consulte ao menos uma gema de cada uma das %1$d categorias de cor.</string>
+    <string name="achievement_first_favorite_title">Primeiro favorito</string>
+    <string name="achievement_first_favorite_desc">Adicione uma gema aos seus favoritos.</string>
+    <string name="achievement_fan_title">Apaixonado</string>
+    <string name="achievement_fan_desc">Adicione 10 gemas aos seus favoritos.</string>
+    <string name="achievement_big_collector_title">Grande colecionador</string>
+    <string name="achievement_big_collector_desc">Adicione 25 gemas aos seus favoritos.</string>
+    <string name="achievement_first_quiz_title">Primeiro quiz</string>
+    <string name="achievement_first_quiz_desc">Termine uma partida do quiz de gemologia.</string>
+    <string name="achievement_quiz_regular_title">Assíduo</string>
+    <string name="achievement_quiz_regular_desc">Termine 10 partidas do quiz de gemologia.</string>
+    <string name="achievement_perfect_score_title">Pontuação perfeita</string>
+    <string name="achievement_perfect_score_desc">Obtenha uma pontuação perfeita no quiz de gemologia.</string>
+    <string name="achievement_legendary_title">Lendário</string>
+    <string name="achievement_legendary_desc">Descubra o segredo do enigma lendário escondido no laboratório.</string>
+
+    <!-- Quiz -->
+    <string name="quiz_title">Quiz de gemologia</string>
+    <string name="quiz_intro">Responda a %1$d perguntas de múltipla escolha extraídas do catálogo e do léxico: cor, família mineral, raridade e vocabulário técnico. Um novo sorteio aleatório a cada partida.</string>
+    <string name="quiz_start_button">Começar</string>
+    <string name="quiz_progress">Pergunta %1$d / %2$d</string>
+    <string name="quiz_question_couleur">Qual é a cor característica de %1$s?</string>
+    <string name="quiz_question_famille">A qual família mineral %1$s pertence?</string>
+    <string name="quiz_question_rarete">Qual é a raridade de %1$s?</string>
+    <string name="quiz_question_glossaire">Qual termo corresponde a esta definição?</string>
+    <string name="quiz_next_button">Próxima pergunta</string>
+    <string name="quiz_finish_button">Ver pontuação</string>
+    <string name="quiz_score_title">Pontuação: %1$d / %2$d</string>
+    <string name="quiz_result_excellent">Excelente! Um verdadeiro conhecimento de gemólogo.</string>
+    <string name="quiz_result_good">Muito bem, você já conhece bem o assunto.</string>
+    <string name="quiz_result_encourage">Continue explorando o catálogo e o léxico, você vai chegar lá!</string>
+    <string name="quiz_restart_button">Jogar novamente</string>
+
+    <!-- Laboratório -->
+    <string name="lab_menu_title">Laboratório</string>
+    <string name="lab_menu_intro">Um espaço dedicado à identificação de pedras: formulário rápido, protocolo guiado passo a passo, instrumentos e léxico do gemólogo.</string>
+    <string name="lab_quick_analysis_title">Análise rápida</string>
+    <string name="lab_quick_analysis_subtitle">Preencha os critérios que você conhece, em qualquer ordem.</string>
+    <string name="lab_guided_analysis_title">Análise guiada</string>
+    <string name="lab_guided_analysis_subtitle">Um protocolo passo a passo, como um verdadeiro gemólogo.</string>
+    <string name="guided_step_progress">Etapa %1$d / %2$d</string>
+    <string name="guided_previous_button">Anterior</string>
+    <string name="guided_next_button">Próximo</string>
+    <string name="guided_finish_button">Ver resultados</string>
+    <string name="guided_restart_button">Recomeçar a análise</string>
+    <string name="guided_step_couleur_instruction">Observe a pedra sob luz neutra (idealmente luz do dia indireta), sobre um fundo branco. Anote o tom dominante — a cor percebida pode variar conforme a iluminação, evite portanto luz artificial quente ou lâmpadas coloridas.</string>
+    <string name="guided_step_transparence_instruction">Segure a pedra diante de uma fonte de luz e observe se você distingue nitidamente os contornos de um objeto através dela (transparente), uma silhueta desfocada (translúcida), ou nada (opaca).</string>
+    <string name="guided_step_eclat_instruction">Observe como a luz reflete na superfície polida da pedra: brilhante e vítreo como vidro, gorduroso como cera, ou metálico como um espelho. É um indício rápido sobre a natureza do material.</string>
+    <string name="guided_step_clivage_instruction">Examine com uma lupa as eventuais fraturas internas. A clivagem se reconhece por planos lisos e brilhantes que seguem uma direção regular, ao contrário de uma fratura, que é irregular e vítrea.</string>
+    <string name="guided_step_type_inclusion_instruction">Com uma lupa de 10x, procure inclusões características: agulhas sedosas, jardim de inclusões, halo ao redor de um cristal, estrutura fibrosa... Elas costumam ser o melhor indício para distinguir duas pedras de cor semelhante.</string>
+    <string name="guided_step_durete_instruction">Com um kit de pontas de dureza (ou objetos de dureza conhecida como uma unha ≈2,5, uma lâmina de faca ≈5,5, uma lima de aço ≈6,5), determine a partir de qual grau a pedra começa a se riscar. Teste em uma face pouco visível.</string>
+    <string name="guided_step_densite_instruction">Pese a pedra no ar e depois imersa em água, com uma balança hidrostática. A densidade relativa se calcula pela diferença entre as duas pesagens, em relação ao peso no ar.</string>
+    <string name="guided_step_pleochroisme_instruction">Com um dicroscópio, observe a pedra sob vários ângulos: se as duas imagens justapostas mostram cores diferentes, a pedra é pleocroica.</string>
+    <string name="guided_step_indice_refraction_instruction">Coloque a pedra sobre o prisma de um refratômetro com um líquido de contato. Leia o ângulo de reflexão total interna na escala graduada: quanto maior o índice, mais a pedra desvia a luz.</string>
+    <string name="guided_step_systeme_cristallin_instruction">O polariscópio ajuda a determinar se a pedra é isotrópica (ela se apaga totalmente ao girar) ou anisotrópica. Combinado com a forma do cristal bruto, se disponível, isso orienta para um sistema cristalino preciso.</string>
+    <string name="guided_step_fluorescence_instruction">No escuro, ilumine a pedra com uma lâmpada UV (ondas curtas e longas). Anote se ela emite um brilho visível, sua cor e intensidade — um indício adicional, especialmente para distinguir certos tratamentos.</string>
+
+    <!-- Caderno de campo -->
+    <string name="lab_notebook_title">Caderno de campo</string>
+    <string name="lab_notebook_subtitle">Registre suas próprias medições, feitas com seus instrumentos.</string>
+    <string name="notebook_empty_state">Nenhuma amostra registrada. Adicione sua primeira ficha de campo.</string>
+    <string name="notebook_add_button">Nova amostra</string>
+    <string name="notebook_criteria_count">%1$d critério(s) informado(s)</string>
+    <string name="notebook_label_field">Nome da amostra</string>
+    <string name="notebook_label_placeholder">ex. Pedra azul — rio X</string>
+    <string name="notebook_notes_field">Notas</string>
+    <string name="notebook_notes_placeholder">Contexto, proveniência, observações livres…</string>
+    <string name="notebook_criteria_section_title">Características medidas</string>
+    <string name="notebook_no_criteria">Nenhuma característica informada.</string>
+    <string name="notebook_save_button">Salvar</string>
+    <string name="notebook_form_new_title">Nova amostra</string>
+    <string name="notebook_form_edit_title">Editar amostra</string>
+    <string name="notebook_edit_button">Editar</string>
+    <string name="notebook_delete_button">Excluir</string>
+    <string name="notebook_delete_confirm_title">Excluir esta amostra?</string>
+    <string name="notebook_delete_confirm_message">Esta ação é irreversível.</string>
+    <string name="notebook_delete_confirm_button">Excluir</string>
+    <string name="notebook_cancel_button">Cancelar</string>
+    <string name="notebook_compare_button">Comparar com o catálogo</string>
+    <string name="legendary_menu_title">Enigma lendário</string>
+    <string name="legendary_menu_subtitle">Um mistério espera pelos mais curiosos…</string>
+
+    <!-- Enigma lendário -->
+    <string name="legendary_riddle_title">Enigma lendário</string>
+    <string name="legendary_riddle_intro">Uma gema do catálogo se esconde atrás destas pistas. Descubra-a e depois indique seu país de origem no mapa.</string>
+    <string name="legendary_clue_label">Pista %1$d</string>
+    <string name="legendary_clue_1">Em 1951, um gemólogo britânico descobriu um mineral desconhecido — sem imaginar que acabara de encontrar o que permaneceria, por quase cinquenta anos, a pedra preciosa mais rara do mundo.</string>
+    <string name="legendary_clue_2">Um único depósito no mundo já forneceu cristais dela. As pedras lapidadas raramente ultrapassam dois quilates.</string>
+    <string name="legendary_clue_3">Seu tom varia do vermelho-acastanhado ao alaranjado, e sua dureza rivaliza com a do corindo — o suficiente para enganar mais de um colecionador.</string>
+    <string name="legendary_clue_4">Encontre no mapa o país que abriga este depósito único, e prove que você desvendou o segredo.</string>
+    <string name="legendary_next_clue_button">Próxima pista</string>
+    <string name="legendary_open_map_button">Abrir o mapa</string>
+    <string name="legendary_map_title">O mapa do segredo</string>
+    <string name="legendary_map_instruction">Toque no país que abriga este depósito único.</string>
+    <string name="legendary_wrong_country">Este não é o país certo. Tente novamente.</string>
+    <string name="legendary_success_title">O segredo foi desvendado!</string>
+    <string name="legendary_success_body">Você encontrou Mianmar, o único depósito conhecido de painita no mundo — a pedra por muito tempo considerada o mineral gema mais raro do planeta.</string>
+    <string name="legendary_success_view_gem_button">Ver a ficha da Painita</string>
+</resources>
