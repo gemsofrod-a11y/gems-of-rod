@@ -115,6 +115,8 @@
     <string name="litho_nettoyage_subtitle">Традиционные практики очищения и восстановления энергии ваших камней.</string>
     <string name="litho_associations_title">Сочетание камней</string>
     <string name="litho_associations_subtitle">Комбинирование нескольких камней в зависимости от искомой пользы.</string>
+    <string name="assoc_stones_title">Сочетаемые камни</string>
+    <string name="assoc_advice_title">Совет по использованию</string>
 
     <!-- Сертификат -->
     <string name="certificate_title">Сертификат</string>

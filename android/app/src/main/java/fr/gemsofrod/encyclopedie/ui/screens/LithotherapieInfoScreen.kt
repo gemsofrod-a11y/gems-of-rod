@@ -154,7 +154,7 @@ private fun LithoInfoListRow(item: LithoInfoListItem) {
 }
 
 @Composable
-private fun LithoInfoDisclaimer(title: String, body: String) {
+fun LithoInfoDisclaimer(title: String, body: String) {
     Card(
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer),

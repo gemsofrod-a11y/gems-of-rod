@@ -105,6 +105,7 @@ object LithotherapieSchemes {
 fun LithotherapieMenuScreen(
     onSchemeClick: (String) -> Unit,
     onInfoClick: (String) -> Unit,
+    onAssociationsClick: () -> Unit,
     onBackClick: () -> Unit
 ) {
     Scaffold(
@@ -145,17 +146,18 @@ fun LithotherapieMenuScreen(
                     onClick = { onSchemeClick(scheme) }
                 )
             }
-            items(
-                listOf(
-                    LithotherapieInfo.NETTOYAGE_RECHARGEMENT to Pair(R.string.litho_nettoyage_title, R.string.litho_nettoyage_subtitle),
-                    LithotherapieInfo.ASSOCIATIONS to Pair(R.string.litho_associations_title, R.string.litho_associations_subtitle)
-                )
-            ) { (topic, res) ->
-                val (titleRes, subtitleRes) = res
+            item {
                 SchemeCard(
-                    title = stringResource(titleRes),
-                    subtitle = stringResource(subtitleRes),
-                    onClick = { onInfoClick(topic) }
+                    title = stringResource(R.string.litho_nettoyage_title),
+                    subtitle = stringResource(R.string.litho_nettoyage_subtitle),
+                    onClick = { onInfoClick(LithotherapieInfo.NETTOYAGE_RECHARGEMENT) }
+                )
+            }
+            item {
+                SchemeCard(
+                    title = stringResource(R.string.litho_associations_title),
+                    subtitle = stringResource(R.string.litho_associations_subtitle),
+                    onClick = onAssociationsClick
                 )
             }
         }

@@ -2,6 +2,8 @@ package fr.gemsofrod.encyclopedie.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalConfiguration
+import fr.gemsofrod.encyclopedie.data.Association
+import fr.gemsofrod.encyclopedie.data.AssociationLocalization
 import fr.gemsofrod.encyclopedie.data.Fossile
 import fr.gemsofrod.encyclopedie.data.FossileLocalization
 import fr.gemsofrod.encyclopedie.data.Gem
@@ -42,6 +44,17 @@ fun Meteorite.localized(): Meteorite {
 fun Fossile.localized(): Fossile {
     val languageCode = LocalConfiguration.current.locales[0].language
     return FossileLocalization.localize(this, languageCode)
+}
+
+/**
+ * Renvoie cette association de pierres avec ses textes traduits dans la
+ * langue d'interface actuelle, ou telle quelle si aucune traduction n'est
+ * disponible pour cette langue.
+ */
+@Composable
+fun Association.localized(): Association {
+    val languageCode = LocalConfiguration.current.locales[0].language
+    return AssociationLocalization.localize(this, languageCode)
 }
 
 /**
