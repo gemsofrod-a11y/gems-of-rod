@@ -231,7 +231,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | fossile-trilobite-phacops | ♻️ [File:Phacops rana crassituberculata, eye.jpg](https://commons.wikimedia.org/wiki/File:Phacops_rana_crassituberculata,_eye.jpg) | — |
 | fossile-trilobite-calymene | ♻️ [File:Calymene Trilobite Fossil.jpg](https://commons.wikimedia.org/wiki/File:Calymene_Trilobite_Fossil.jpg) | — |
 | fossile-dent-megalodon | ♻️ [File:Megalodon shark tooth fossil.jpg](https://commons.wikimedia.org/wiki/File:Megalodon_shark_tooth_fossil.jpg) | — |
-| fossile-os-dinosaure-gembone | ❌ non trouvée | ❌ échec téléchargement |
+| fossile-os-dinosaure-gembone | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
 | fossile-poisson-green-river | ♻️ [File:Knightia Fossil Fish (20255016550).jpg](https://commons.wikimedia.org/wiki/File:Knightia_Fossil_Fish_(20255016550).jpg) | — |
 | fossile-dent-mosasaure | ♻️ [File:Dollosaurus sp. tooth.png](https://commons.wikimedia.org/wiki/File:Dollosaurus_sp._tooth.png) | — |
 | fossile-ivoire-mammouth | ♻️ [File:Mammuthus primigenius tusk - MUSE.jpg](https://commons.wikimedia.org/wiki/File:Mammuthus_primigenius_tusk_-_MUSE.jpg) | ♻️ [File:Mammuthus meridionalis tusk section.jpg](https://commons.wikimedia.org/wiki/File:Mammuthus_meridionalis_tusk_section.jpg) |
@@ -239,11 +239,11 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | fossile-fougere | ♻️ [File:Fossil fern with galls, from Late Triassic, Alborz, Iran 02.jpg](https://commons.wikimedia.org/wiki/File:Fossil_fern_with_galls,_from_Late_Triassic,_Alborz,_Iran_02.jpg) | — |
 | fossile-ambre-baltique | ♻️ [File:Baltic amber Coleoptera Anobiidae Episernus.JPG](https://commons.wikimedia.org/wiki/File:Baltic_amber_Coleoptera_Anobiidae_Episernus.JPG) | ♻️ [File:Neotype male of Electrostephanus petiolatus Brues in Baltic amber (AMNH B-JWJ-260).png](https://commons.wikimedia.org/wiki/File:Neotype_male_of_Electrostephanus_petiolatus_Brues_in_Baltic_amber_(AMNH_B-JWJ-260).png) |
 | fossile-ambre-inclusion | ♻️ [File:Amber-000-12mm.jpg](https://commons.wikimedia.org/wiki/File:Amber-000-12mm.jpg) | — |
-| fossile-copal | ❌ échec téléchargement | — |
+| fossile-copal | ⏸️ recherche suspendue | — |
 | fossile-corail-agatise | ♻️ [File:Fossil agatized coral Florida.JPG](https://commons.wikimedia.org/wiki/File:Fossil_agatized_coral_Florida.JPG) | ♻️ [File:Fossil agatized coral Florida (cropped).JPG](https://commons.wikimedia.org/wiki/File:Fossil_agatized_coral_Florida_(cropped).JPG) |
 | fossile-oursin | ♻️ [File:Fossil sea urchin (FindID 551527) cropped transparent background.png](https://commons.wikimedia.org/wiki/File:Fossil_sea_urchin_(FindID_551527)_cropped_transparent_background.png) | — |
 | fossile-crinoide | ♻️ [File:Ordovician crinoid stem fragments.jpg](https://commons.wikimedia.org/wiki/File:Ordovician_crinoid_stem_fragments.jpg) | ♻️ [File:Crushed crinoid stems from the Jurassic, Iran.jpg](https://commons.wikimedia.org/wiki/File:Crushed_crinoid_stems_from_the_Jurassic,_Iran.jpg) |
-| fossile-stromatolite | ♻️ [File:Stromatolite "Cryptozoon proliferum" surface.png](https://commons.wikimedia.org/wiki/File:Stromatolite_"Cryptozoon_proliferum"_surface.png) | ❌ échec téléchargement |
+| fossile-stromatolite | ♻️ [File:Stromatolite "Cryptozoon proliferum" surface.png](https://commons.wikimedia.org/wiki/File:Stromatolite_"Cryptozoon_proliferum"_surface.png) | ⏸️ recherche suspendue |
 | fossile-belemnite | ♻️ [File:Rostre de bélemnite sur craie (Belgique) 1.JPG](https://commons.wikimedia.org/wiki/File:Rostre_de_bélemnite_sur_craie_(Belgique)_1.JPG) | — |
 
 **286 / 456** photos récupérées au total.
