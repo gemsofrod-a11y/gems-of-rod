@@ -1,0 +1,19 @@
+{
+  "name": "Écho — Journal vocal",
+  "short_name": "Écho",
+  "description": "Journal vocal quotidien de 30 secondes avec tendances émotionnelles, 100% local et gratuit.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f2fb",
+  "theme_color": "#6f8cff",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

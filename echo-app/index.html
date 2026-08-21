@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Écho — Journal vocal</title>
+<meta name="theme-color" content="#6f8cff">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon.svg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="lock-overlay" class="lock-overlay" hidden>
+  <div class="lock-card">
+    <div class="lock-title">Écho verrouillé</div>
+    <div id="lock-subtitle" class="lock-subtitle">Entre ton code</div>
+    <div id="lock-dots" class="lock-dots">
+      <span class="lock-dot"></span><span class="lock-dot"></span><span class="lock-dot"></span><span class="lock-dot"></span>
+    </div>
+    <div id="lock-error" class="lock-error" hidden>Code incorrect</div>
+    <div id="lock-keypad" class="lock-keypad">
+      <button class="lock-key" data-key="1">1</button>
+      <button class="lock-key" data-key="2">2</button>
+      <button class="lock-key" data-key="3">3</button>
+      <button class="lock-key" data-key="4">4</button>
+      <button class="lock-key" data-key="5">5</button>
+      <button class="lock-key" data-key="6">6</button>
+      <button class="lock-key" data-key="7">7</button>
+      <button class="lock-key" data-key="8">8</button>
+      <button class="lock-key" data-key="9">9</button>
+      <span></span>
+      <button class="lock-key" data-key="0">0</button>
+      <button class="lock-key lock-key-del" data-key="del" aria-label="Effacer">⌫</button>
+    </div>
+    <button id="lock-cancel" class="lock-cancel" hidden>Annuler</button>
+    <button id="lock-forgot" class="lock-cancel" hidden>Code oublié ?</button>
+  </div>
+</div>
+
+<div id="checkin-overlay" class="checkin-overlay" hidden>
+  <div class="checkin-card">
+    <div class="checkin-title">Check-in rapide</div>
+    <p class="checkin-subtitle">Deux curseurs, pas de voix — utile entre deux journaux complets.</p>
+    <div class="checkin-field">
+      <label for="checkin-energy">Énergie : <span id="checkin-energy-value">50</span></label>
+      <input type="range" id="checkin-energy" min="0" max="100" value="50">
+    </div>
+    <div class="checkin-field">
+      <label for="checkin-stress">Stress : <span id="checkin-stress-value">50</span></label>
+      <input type="range" id="checkin-stress" min="0" max="100" value="50">
+    </div>
+    <div class="checkin-actions">
+      <button id="checkin-cancel" class="btn-secondary">Annuler</button>
+      <button id="checkin-save" class="btn-primary">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-name">Écho</span>
+  </div>
+  <button id="btn-help" class="help-btn" aria-label="Revoir la présentation de l'app">?</button>
+</header>
+
+<main id="app">
+
+  <!-- ÉCRAN : ENREGISTRER -->
+  <section id="view-record" class="view view-active">
+    <div id="reminder-banner" class="reminder-banner" hidden>
+      <span>Tu n'as pas encore journalisé aujourd'hui.</span>
+      <button id="reminder-banner-dismiss" class="reminder-banner-dismiss" aria-label="Fermer le rappel">✕</button>
+    </div>
+
+    <div id="streak-badges" class="streak-badges" hidden></div>
+
+    <p id="record-hint" class="hint">Parle librement pendant environ 30 secondes. Comment s'est passée ta journée ?</p>
+
+    <div class="record-stage">
+      <button id="btn-record" class="mic-btn" aria-label="Démarrer l'enregistrement">
+        <span class="mic-icon" aria-hidden="true"></span>
+      </button>
+      <div id="timer" class="timer">00:00</div>
+      <div id="rec-status" class="rec-status" aria-live="polite"></div>
+    </div>
+
+    <div id="live-meter" class="live-meter" hidden>
+      <canvas id="live-meter-canvas" width="300" height="48" class="live-meter-canvas"></canvas>
+    </div>
+
+    <div id="live-transcript" class="live-transcript" hidden></div>
+
+    <p id="unsupported" class="unsupported" hidden>
+      Ton navigateur ne supporte pas la reconnaissance vocale (Web Speech API).
+      Essaie avec Chrome, Edge ou Safari récent.
+    </p>
+
+    <button id="btn-checkin" class="checkin-trigger">Check-in rapide, sans la voix</button>
+  </section>
+
+  <!-- ÉCRAN : RÉSUMÉ DU JOUR -->
+  <section id="view-summary" class="view">
+    <h2>Ton résumé du jour</h2>
+    <div id="summary-confetti" class="summary-confetti" aria-hidden="true"></div>
+    <div id="crisis-card" class="crisis-card" hidden>
+      <div class="crisis-title">Tu n'es pas seul·e</div>
+      <p>Ce que tu viens de dire me préoccupe. Si tu es en danger immédiat, appelle le <strong>15</strong> (SAMU) ou le <strong>112</strong> (urgences européennes). Le <strong>3114</strong>, numéro national de prévention du suicide, est gratuit, confidentiel et disponible 24h/24 — quelqu'un peut t'écouter maintenant.</p>
+    </div>
+    <div id="summary-content" class="summary-card"></div>
+    <div id="waveform-card" class="waveform-card" hidden>
+      <div class="waveform-title">Ta voix aujourd'hui</div>
+      <canvas id="chart-waveform" width="600" height="90" class="chart waveform-canvas"></canvas>
+      <div id="waveform-stats" class="waveform-stats"></div>
+    </div>
+    <div id="companion-card" class="companion-card" hidden>
+      <div class="companion-header">
+        <div class="companion-title">Ton compagnon</div>
+        <button id="btn-companion-speak" class="speak-btn" aria-label="Écouter la réponse" hidden>🔊</button>
+      </div>
+      <div id="companion-text" class="companion-text"></div>
+      <div class="companion-disclaimer">Réponse générée par IA — ne remplace pas un professionnel de santé.</div>
+    </div>
+    <div class="actions">
+      <button class="btn-secondary" data-nav="record">Nouvel enregistrement</button>
+      <button class="btn-primary" data-nav="trends">Voir mes tendances</button>
+    </div>
+  </section>
+
+  <!-- ÉCRAN : HISTORIQUE -->
+  <section id="view-history" class="view">
+    <h2>Historique</h2>
+    <div id="history-heatmap" class="history-heatmap"></div>
+    <input id="history-search" type="search" class="history-search" placeholder="Rechercher dans tes journaux...">
+    <div id="history-list" class="history-list"></div>
+  </section>
+
+  <!-- ÉCRAN : TENDANCES -->
+  <section id="view-trends" class="view">
+    <h2>Tendances</h2>
+
+    <button id="btn-weekly-summary" class="btn-primary full">Générer mon résumé de la semaine</button>
+    <div id="weekly-summary" class="weekly-summary" hidden></div>
+
+    <div id="insights" class="insights"></div>
+
+    <div id="keywords-card" class="keywords-card" hidden>
+      <div class="keywords-title">Mots-clés qui reviennent</div>
+      <div id="keywords-list" class="keywords-list"></div>
+    </div>
+
+    <h3 class="chart-title">
+      Énergie &amp; stress — 14 derniers jours
+      <button id="btn-scale-info" class="info-btn" aria-label="Comment lire ces courbes ?">?</button>
+    </h3>
+    <canvas id="chart-timeline" width="600" height="220" class="chart"></canvas>
+    <div class="legend">
+      <span class="legend-item"><i class="dot dot-energy"></i>Énergie</span>
+      <span class="legend-item"><i class="dot dot-stress"></i>Stress</span>
+    </div>
+    <div id="scale-info" class="scale-info" hidden>
+      <p><strong>Énergie</strong> : en dessous de 30, ton énergie était plutôt basse ce jour-là ; au-dessus de 70, plutôt haute. Entre les deux, une énergie modérée.</p>
+      <p><strong>Stress</strong> : en dessous de 30, plutôt calme ; au-dessus de 70, un stress marqué ce jour-là.</p>
+      <p class="scale-info-note">Ces scores viennent d'une analyse de mots-clés dans ta transcription, propre à ton propre journal — pas un seuil clinique ni un diagnostic.</p>
+    </div>
+
+    <h3 class="chart-title">Stress moyen par jour de la semaine</h3>
+    <canvas id="chart-weekday" width="600" height="180" class="chart"></canvas>
+
+    <div id="monthly-section" class="monthly-section" hidden>
+      <h3 class="chart-title">Humeur moyenne par mois</h3>
+      <canvas id="chart-monthly" width="600" height="180" class="chart"></canvas>
+      <p id="best-month-note" class="best-month-note" hidden></p>
+    </div>
+
+    <button id="btn-print-report" class="btn-secondary full print-report-btn">Imprimer / enregistrer en PDF</button>
+  </section>
+
+  <!-- ÉCRAN : RÉGLAGES -->
+  <section id="view-settings" class="view">
+    <h2>Réglages</h2>
+    <div class="settings-list">
+      <button id="btn-export" class="btn-secondary full">Exporter mes données (JSON)</button>
+      <label class="btn-secondary full file-label">
+        Importer des données
+        <input type="file" id="input-import" accept="application/json" hidden>
+      </label>
+      <button id="btn-clear" class="btn-danger full">Tout effacer</button>
+    </div>
+
+    <div class="setting-toggle-row">
+      <div class="setting-toggle-text">
+        <div class="setting-toggle-title">Couleur d'accent</div>
+        <div class="setting-toggle-desc">Personnalise la couleur principale de l'app, uniquement sur cet appareil.</div>
+        <div id="accent-swatches" class="accent-swatches">
+          <button class="accent-swatch" data-accent="violet" style="background:#6f8cff" aria-label="Violet"></button>
+          <button class="accent-swatch" data-accent="bleu" style="background:#3d9cf2" aria-label="Bleu"></button>
+          <button class="accent-swatch" data-accent="vert" style="background:#34b378" aria-label="Vert"></button>
+          <button class="accent-swatch" data-accent="ambre" style="background:#e8a33d" aria-label="Ambre"></button>
+          <button class="accent-swatch" data-accent="rose" style="background:#e0609f" aria-label="Rose"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="setting-toggle-row">
+      <div class="setting-toggle-text">
+        <div class="setting-toggle-title">Verrouillage par code</div>
+        <div id="lock-setting-desc" class="setting-toggle-desc">
+          Demande un code à 4 chiffres à l'ouverture de l'app. Le code reste
+          uniquement sur cet appareil (aucun compte, aucun serveur) : s'il
+          est oublié, il faut effacer les données pour redéverrouiller l'app.
+        </div>
+      </div>
+      <button id="btn-lock-toggle" class="btn-secondary">Activer</button>
+    </div>
+
+    <div class="setting-toggle-row">
+      <div class="setting-toggle-text">
+        <div class="setting-toggle-title">Rappel quotidien</div>
+        <div class="setting-toggle-desc">
+          Affiche un rappel dans l'app (et une notification si autorisée) si
+          tu n'as pas encore journalisé aujourd'hui après l'heure choisie.
+          Ne fonctionne que quand tu ouvres l'app : les navigateurs ne
+          permettent pas de notification fiable app fermée sans service
+          d'envoi payant, donc ce rappel n'est pas garanti si tu n'ouvres
+          jamais l'app dans la journée.
+        </div>
+        <div id="reminder-time-row" class="reminder-time-row" hidden>
+          <label for="reminder-time">À partir de</label>
+          <input type="time" id="reminder-time" value="19:00">
+        </div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="reminder-toggle">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+
+    <div class="setting-toggle-row">
+      <div class="setting-toggle-text">
+        <div class="setting-toggle-title">Piste audio (pauses, pics de volume, ton en Hz)</div>
+        <div class="setting-toggle-desc">
+          Temporairement désactivée : capturer l'audio en plus de la
+          transcription fait planter la reconnaissance vocale en cours
+          d'enregistrement sur certains téléphones. Le temps de trouver une
+          solution fiable, cette option reste coupée pour ne pas risquer la
+          transcription, qui est la fonction principale d'Écho.
+        </div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="audio-track-toggle">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+
+    <p class="privacy-note">
+      Toutes tes données restent sur cet appareil (aucun serveur, aucun compte).
+      La reconnaissance vocale utilise le moteur de ton navigateur ; selon le
+      navigateur, l'audio peut être traité par le service de reconnaissance
+      vocale du fournisseur (ex. Chrome/Google) le temps de la transcription —
+      rien n'est stocké ni envoyé par Écho lui-même.
+    </p>
+    <p class="privacy-note">
+      Si tu actives la piste audio ci-dessus, elle est aussi conservée sur cet
+      appareil (stockage local du navigateur) pour afficher les pauses et
+      pics de volume — jamais envoyée nulle part. Elle n'est pas incluse dans
+      l'export JSON (fichier trop volumineux) et est effacée avec le bouton
+      "Tout effacer" ci-dessus.
+    </p>
+    <p class="privacy-note">
+      "Ton compagnon" (sur l'écran de résumé) est une fonctionnalité optionnelle
+      qui envoie la transcription du jour et tes scores à un service d'IA
+      (Claude, via une fonction serveur Netlify) pour générer une réponse
+      personnalisée. Elle ne s'active que si une clé API a été configurée côté
+      serveur ; sans elle, l'app continue de fonctionner normalement avec les
+      suggestions locales uniquement. Écho reste un outil de bien-être, pas un
+      substitut à un accompagnement professionnel.
+    </p>
+  </section>
+
+</main>
+
+<div id="print-report" class="print-report"></div>
+
+<nav class="tabbar">
+  <button class="tab-btn tab-active" data-nav="record" aria-label="Enregistrer">
+    <span class="tab-icon icon-mic"></span><span>Parler</span>
+  </button>
+  <button class="tab-btn" data-nav="history" aria-label="Historique">
+    <span class="tab-icon icon-history"></span><span>Historique</span>
+  </button>
+  <button class="tab-btn" data-nav="trends" aria-label="Tendances">
+    <span class="tab-icon icon-trends"></span><span>Tendances</span>
+  </button>
+  <button class="tab-btn" data-nav="settings" aria-label="Réglages">
+    <span class="tab-icon icon-settings"></span><span>Réglages</span>
+  </button>
+</nav>
+
+<!-- TOUR GUIDÉ (bulles d'introduction) -->
+<div id="onboarding-overlay" class="onboarding-overlay" hidden>
+  <div id="onboarding-highlight" class="onboarding-highlight"></div>
+  <div id="onboarding-bubble" class="onboarding-bubble">
+    <div id="onboarding-title" class="onboarding-title"></div>
+    <div id="onboarding-text" class="onboarding-text"></div>
+    <div class="onboarding-footer">
+      <div id="onboarding-dots" class="onboarding-dots"></div>
+      <div class="onboarding-actions">
+        <button id="onboarding-skip" class="onboarding-skip">Passer</button>
+        <button id="onboarding-next" class="btn-primary onboarding-next">Suivant</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/lock.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/analysis.js"></script>
+<script src="js/recorder.js"></script>
+<script src="js/audiocapture.js"></script>
+<script src="js/audiostore.js"></script>
+<script src="js/prosody.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/companion.js"></script>
+<script src="js/onboarding.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+# Déclare uniquement le dossier des fonctions serverless (pour la fonction
+# compagnon d'Écho, netlify/functions/companion.js). Volontairement sans
+# bloc [build] : la configuration de build/publish du site (déjà en place
+# pour le site principal Gems of Rod) reste gérée depuis le tableau de bord
+# Netlify et n'est pas modifiée ici.
+[functions]
+  directory = "netlify/functions"
