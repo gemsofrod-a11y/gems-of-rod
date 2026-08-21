@@ -32,7 +32,10 @@ tendances émotionnelles (énergie, stress, fatigue, humeur) dans le temps.
 - **Prompts du jour** : la question posée à l'enregistrement change chaque
   jour (7 variantes) plutôt que de toujours être la même.
 - **Mots-clés récurrents, vue mensuelle, recherche dans l'historique,
-  bilan imprimable/PDF** : dans les onglets Tendances/Historique.
+  bilan imprimable/PDF** : dans les onglets Tendances/Historique. La réponse
+  du compagnon est aussi conservée sur chaque entrée et réaffichée dans
+  l'Historique, pour un vrai suivi dans le temps plutôt qu'une réponse
+  visible seulement sur l'écran de résumé du jour même.
 - **Check-in rapide** : deux curseurs (énergie, stress) sans passer par la
   voix, pour un point ponctuel entre deux journaux complets.
 - **Rappel quotidien (optionnel)** : bannière dans l'app (+ notification

@@ -461,10 +461,17 @@
       scores: entry.scores,
       recentSummary: buildRecentSummary(entry),
     });
+    if (!message) return;
+    // Conservée sur l'entrée pour apparaître dans l'historique — sans ça,
+    // la réponse du compagnon disparaissait dès qu'on quittait l'écran de
+    // résumé, aucun moyen d'y revenir pour suivre l'accompagnement dans
+    // le temps.
+    Storage.updateEntry(entry.id, { companionResponse: message });
     // Ignore une réponse arrivée en retard si l'utilisateur a depuis lancé
     // un nouvel enregistrement (on ne veut pas afficher un message qui ne
-    // correspond plus à l'entrée actuellement affichée).
-    if (sessionId !== summarySessionId || !message) return;
+    // correspond plus à l'entrée actuellement affichée) — mais elle reste
+    // bien sauvegardée ci-dessus pour l'historique.
+    if (sessionId !== summarySessionId) return;
     els.companionText.textContent = message;
     els.companionCard.hidden = false;
     els.btnCompanionSpeak.hidden = !isTTSSupported();
@@ -561,10 +568,14 @@
           e.type === "checkin"
             ? `Check-in rapide — énergie ${e.scores.energy}, stress ${e.scores.stress}`
             : truncate(e.transcript, 140);
+        const companionHtml = e.companionResponse
+          ? `<div class="history-companion"><span class="history-companion-label">Ton compagnon</span>${escapeHtml(e.companionResponse)}</div>`
+          : "";
         return `
           <div class="history-item">
             <div class="history-date">${dateLabel}</div>
             <div class="history-excerpt">${escapeHtml(excerpt)}</div>
+            ${companionHtml}
           </div>`;
       })
       .join("");

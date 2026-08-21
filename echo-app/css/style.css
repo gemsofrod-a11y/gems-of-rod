@@ -93,6 +93,7 @@ h3.chart-title { font-size: 14px; color: var(--text-muted); margin: 24px 0 8px; 
   font-size: 14px;
   margin-top: 12px;
 }
+.reminder-banner[hidden] { display: none; }
 .reminder-banner-dismiss {
   border: none;
   background: none;
@@ -318,6 +319,23 @@ h3.chart-title { font-size: 14px; color: var(--text-muted); margin: 24px 0 8px; 
 }
 .history-date { font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
 .history-excerpt { font-size: 14px; line-height: 1.4; }
+.history-companion {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+.history-companion-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--primary-2);
+  margin-bottom: 4px;
+}
 .history-empty, .insights-empty { color: var(--text-muted); font-size: 14px; text-align: center; margin-top: 30px; }
 
 .weekly-summary {
