@@ -50,6 +50,28 @@
     const now = new Date();
     return now.getHours() * 60 + now.getMinutes() >= h * 60 + m;
   }
+  // Petits badges ludiques, purement décoratifs : une série en cours (si
+  // >= 2 jours) et le plus grand palier de journaux totaux atteint. Aucun
+  // impact sur l'analyse — juste un repère satisfaisant à l'ouverture.
+  const STREAK_MILESTONES = [7, 14, 30, 60, 100, 200, 365];
+
+  function renderStreakBadges() {
+    const entries = Storage.getEntries();
+    const streak = Analysis.currentStreak(entries);
+    const milestone = [...STREAK_MILESTONES].reverse().find((m) => entries.length >= m);
+
+    const badges = [];
+    if (streak >= 2) badges.push(`🔥 ${streak} jours d'affilée`);
+    if (milestone) badges.push(`🏅 ${milestone} journaux`);
+
+    if (!badges.length) {
+      els.streakBadges.hidden = true;
+      return;
+    }
+    els.streakBadges.innerHTML = badges.map((b) => `<span class="streak-badge">${escapeHtml(b)}</span>`).join("");
+    els.streakBadges.hidden = false;
+  }
+
   function checkReminder() {
     els.reminderBanner.hidden = !shouldShowReminder();
     if (els.reminderBanner.hidden) return;
@@ -87,6 +109,7 @@
     tabs: document.querySelectorAll(".tab-btn"),
     navButtons: document.querySelectorAll("[data-nav]"),
     recordHint: document.getElementById("record-hint"),
+    streakBadges: document.getElementById("streak-badges"),
     btnRecord: document.getElementById("btn-record"),
     timer: document.getElementById("timer"),
     recStatus: document.getElementById("rec-status"),
@@ -102,6 +125,7 @@
     waveformCard: document.getElementById("waveform-card"),
     chartWaveform: document.getElementById("chart-waveform"),
     waveformStats: document.getElementById("waveform-stats"),
+    historyHeatmap: document.getElementById("history-heatmap"),
     historySearch: document.getElementById("history-search"),
     historyList: document.getElementById("history-list"),
     insights: document.getElementById("insights"),
@@ -354,6 +378,7 @@
       Storage.saveEntry(entry);
       lastEntry = entry;
       checkReminder();
+      renderStreakBadges();
       const sessionId = renderSummary(entry);
       navigate("summary");
 
@@ -543,8 +568,29 @@
     els.waveformCard.hidden = false;
   }
 
+  function renderHeatmap(entries) {
+    if (!entries.length) {
+      els.historyHeatmap.innerHTML = "";
+      return;
+    }
+    const daysWithEntry = new Set(entries.map((e) => new Date(e.date).toDateString()));
+    const totalDays = 35;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    let html = "";
+    for (let i = totalDays - 1; i >= 0; i--) {
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+      const active = daysWithEntry.has(d.toDateString());
+      const label = d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
+      html += `<div class="heatmap-cell${active ? " heatmap-cell-active" : ""}${i === 0 ? " heatmap-cell-today" : ""}" title="${label}"></div>`;
+    }
+    els.historyHeatmap.innerHTML = html;
+  }
+
   function renderHistory() {
     const allEntries = [...Storage.getEntries()].sort((a, b) => new Date(b.date) - new Date(a.date));
+    renderHeatmap(allEntries);
     if (!allEntries.length) {
       els.historyList.innerHTML = `<p class="history-empty">Aucun enregistrement pour l'instant. Va dans l'onglet "Parler" pour commencer.</p>`;
       return;
@@ -730,6 +776,7 @@
     };
     Storage.saveEntry(entry);
     checkReminder();
+    renderStreakBadges();
     els.checkinOverlay.hidden = true;
     els.recStatus.textContent = "Check-in enregistré.";
     setTimeout(() => {
@@ -834,6 +881,7 @@
 
   els.recordHint.textContent = todaysPrompt();
   checkReminder();
+  renderStreakBadges();
 
   navigate("record");
   if (Lock.needsUnlock()) {

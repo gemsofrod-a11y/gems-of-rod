@@ -265,6 +265,23 @@ const Analysis = (() => {
     return eligible.reduce((best, m) => (m.mood > best.mood ? m : best));
   }
 
+  // Série "vivante" pour affichage (badge) : contrairement à
+  // countJournalingStreak (utilisée pour les insights, sur des entrées déjà
+  // triées), celle-ci renvoie 0 si le dernier journal remonte à plus d'un
+  // jour — sinon un badge afficherait une série déjà cassée comme si elle
+  // était toujours en cours.
+  function currentStreak(entries) {
+    if (!entries.length) return 0;
+    const sorted = [...entries].sort((a, b) => new Date(a.date) - new Date(b.date));
+    const lastDate = new Date(sorted[sorted.length - 1].date);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    lastDate.setHours(0, 0, 0, 0);
+    const diffDays = Math.round((today - lastDate) / 86400000);
+    if (diffDays > 1) return 0;
+    return countJournalingStreak(sorted);
+  }
+
   function countJournalingStreak(sorted) {
     const days = [...new Set(sorted.map((e) => e.date.slice(0, 10)))].sort();
     let streak = 1;
@@ -419,6 +436,7 @@ const Analysis = (() => {
     recurringKeywords,
     monthlyAverages,
     bestMonth,
+    currentStreak,
     WEEKDAYS,
   };
 })();

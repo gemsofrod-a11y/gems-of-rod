@@ -94,6 +94,20 @@ h3.chart-title { font-size: 14px; color: var(--text-muted); margin: 24px 0 8px; 
   margin-top: 12px;
 }
 .reminder-banner[hidden] { display: none; }
+
+.streak-badges { display: flex; justify-content: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+.streak-badges[hidden] { display: none; }
+.streak-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+}
 .reminder-banner-dismiss {
   border: none;
   background: none;
@@ -299,6 +313,20 @@ h3.chart-title { font-size: 14px; color: var(--text-muted); margin: 24px 0 8px; 
 .btn-danger { background: rgba(229,72,77,0.1); color: var(--danger); }
 .full { width: 100%; display: block; text-align: center; margin-bottom: 12px; }
 .file-label { display: flex; align-items: center; justify-content: center; }
+
+.history-heatmap {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 16px;
+}
+.heatmap-cell {
+  aspect-ratio: 1;
+  border-radius: 4px;
+  background: var(--border);
+}
+.heatmap-cell-active { background: var(--primary); }
+.heatmap-cell-today { box-shadow: 0 0 0 2px var(--primary-2); }
 
 .history-search {
   width: 100%;
