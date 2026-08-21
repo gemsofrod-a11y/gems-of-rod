@@ -238,6 +238,8 @@
     <string name="achievement_master_desc">Bekijk alle %1$d edelstenen uit de catalogus.</string>
     <string name="achievement_rainbow_title">Regenboog</string>
     <string name="achievement_rainbow_desc">Bekijk minstens één edelsteen uit elk van de %1$d kleurcategorieën.</string>
+    <string name="achievement_fossil_collector_title">Paleontoloog</string>
+    <string name="achievement_fossil_collector_desc">Bekijk alle %1$d fossielen uit de catalogus.</string>
     <string name="achievement_first_favorite_title">Eerste favoriet</string>
     <string name="achievement_first_favorite_desc">Voeg een edelsteen toe aan uw favorieten.</string>
     <string name="achievement_fan_title">Liefhebber</string>
@@ -262,6 +264,7 @@
     <string name="quiz_question_famille">Tot welke mineraalfamilie behoort %1$s?</string>
     <string name="quiz_question_rarete">Wat is de zeldzaamheid van %1$s?</string>
     <string name="quiz_question_glossaire">Welke term hoort bij deze definitie?</string>
+    <string name="quiz_question_fossile_famille">Tot welke familie behoort het fossiel %1$s?</string>
     <string name="quiz_next_button">Volgende vraag</string>
     <string name="quiz_finish_button">Score bekijken</string>
     <string name="quiz_score_title">Score: %1$d / %2$d</string>

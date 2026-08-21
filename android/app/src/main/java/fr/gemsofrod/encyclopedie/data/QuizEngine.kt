@@ -1,7 +1,7 @@
 package fr.gemsofrod.encyclopedie.data
 
 /** Type de question posée dans le quiz de révision gemmologique. */
-enum class QuizQuestionType { COULEUR, FAMILLE, RARETE, GLOSSAIRE }
+enum class QuizQuestionType { COULEUR, FAMILLE, RARETE, GLOSSAIRE, FOSSILE_FAMILLE }
 
 /**
  * Une question du quiz. Les champs pertinents dépendent de [type] :
@@ -13,11 +13,14 @@ enum class QuizQuestionType { COULEUR, FAMILLE, RARETE, GLOSSAIRE }
  * - [GLOSSAIRE] : [glossaryChoiceIndices] contient des index dans
  *   `GemGlossary.page(langue).termes`, dont un correspond à [correctIndex] ;
  *   la définition à afficher est celle du terme à cet index.
+ * - [FOSSILE_FAMILLE] : [fossileId] renseigné, [choiceKeys] contient les
+ *   noms d'enum [FossileFamille.name] dont un correspond à [correctIndex].
  */
 data class QuizQuestion(
     val type: QuizQuestionType,
     val correctIndex: Int,
     val gemId: String? = null,
+    val fossileId: String? = null,
     val choiceKeys: List<String> = emptyList(),
     val glossaryChoiceIndices: List<Int> = emptyList()
 )
@@ -48,6 +51,16 @@ object QuizEngine {
         allFamilies: List<String>,
         glossaryTermCount: Int
     ): QuizQuestion = when (type) {
+        QuizQuestionType.FOSSILE_FAMILLE -> {
+            val fossile = FossilesRepository.all().random()
+            val choices = (FossileFamille.entries.filter { it != fossile.famille }.shuffled().take(3) + fossile.famille).shuffled()
+            QuizQuestion(
+                type = QuizQuestionType.FOSSILE_FAMILLE,
+                fossileId = fossile.id,
+                correctIndex = choices.indexOf(fossile.famille),
+                choiceKeys = choices.map { it.name }
+            )
+        }
         QuizQuestionType.COULEUR -> {
             val gem = gems.random()
             val choices = (GemColorCategory.entries.filter { it != gem.couleur }.shuffled().take(3) + gem.couleur).shuffled()

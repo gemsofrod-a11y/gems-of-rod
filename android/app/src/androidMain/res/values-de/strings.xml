@@ -238,6 +238,8 @@
     <string name="achievement_master_desc">Sehen Sie sich alle %1$d Edelsteine im Katalog an.</string>
     <string name="achievement_rainbow_title">Regenbogen</string>
     <string name="achievement_rainbow_desc">Sehen Sie sich mindestens einen Edelstein aus jeder der %1$d Farbkategorien an.</string>
+    <string name="achievement_fossil_collector_title">Paläontologe</string>
+    <string name="achievement_fossil_collector_desc">Sehen Sie sich alle %1$d Fossilien des Katalogs an.</string>
     <string name="achievement_first_favorite_title">Erster Favorit</string>
     <string name="achievement_first_favorite_desc">Fügen Sie einen Edelstein zu Ihren Favoriten hinzu.</string>
     <string name="achievement_fan_title">Fan</string>
@@ -262,6 +264,7 @@
     <string name="quiz_question_famille">Zu welcher Mineralfamilie gehört %1$s?</string>
     <string name="quiz_question_rarete">Wie selten ist %1$s?</string>
     <string name="quiz_question_glossaire">Welcher Begriff passt zu dieser Definition?</string>
+    <string name="quiz_question_fossile_famille">Zu welcher Familie gehört das Fossil %1$s?</string>
     <string name="quiz_next_button">Nächste Frage</string>
     <string name="quiz_finish_button">Ergebnis ansehen</string>
     <string name="quiz_score_title">Ergebnis: %1$d / %2$d</string>
