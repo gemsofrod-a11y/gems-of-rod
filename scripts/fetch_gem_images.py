@@ -636,6 +636,14 @@ GIVE_UP_SLOTS = {
     ("onyx", BRUTE),
     ("andesine", BRUTE),
     ("saphir-vert", BRUTE),
+    # Fossiles : 3 tentatives successives (recherche + nouveaux termes x2)
+    # ont échoué de façon identique sur ces 4 créneaux — soit aucun candidat
+    # trouvé, soit un échec de téléchargement systématique du même fichier.
+    # On arrête les frais tant qu'une recherche manuelle n'aura pas été faite.
+    ("fossile-os-dinosaure-gembone", BRUTE),
+    ("fossile-os-dinosaure-gembone", FACETTEE),
+    ("fossile-copal", BRUTE),
+    ("fossile-stromatolite", FACETTEE),
     # Ci-dessous : espèces dont les 2 tentatives automatiques successives
     # n'ont renvoyé que des spécimens bruts / cristaux sur gangue / bijoux
     # montés / photos hors-sujet pour le créneau FACETTEE. On arrête les
