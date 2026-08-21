@@ -194,6 +194,31 @@
     <string name="meteorite_fiche_interet_joaillerie">Interesse in gioielleria</string>
     <string name="meteorite_fiche_prix">Prezzo approssimativo al grammo</string>
 
+    <!-- Fossili -->
+    <string name="home_fossiles_title">Fossili</string>
+    <string name="home_fossiles_subtitle">Ammoniti, trilobiti, ambra e legno pietrificato: la vita fossilizzata attraverso le ere geologiche.</string>
+    <string name="fossiles_intro">Dalle tracce microbiche vecchie di miliardi di anni ai denti di megalodonte, passando per l\'ambra e il legno pietrificato: questa sezione distingue i fossili che si tagliano e si lucidano come una pietra fine da quelli che restano pezzi da collezione scientifica.</string>
+    <string name="fossiles_classification_title">Classificazione</string>
+    <string name="fossiles_classification_subtitle">Molluschi, artropodi, vertebrati, vegetali, resine, coralli: comprendere le grandi famiglie di fossili.</string>
+    <string name="fossile_famille_ammonite">Ammoniti e molluschi</string>
+    <string name="fossile_famille_trilobite">Trilobiti e artropodi</string>
+    <string name="fossile_famille_vertebre">Vertebrati</string>
+    <string name="fossile_famille_vegetal">Vegetali</string>
+    <string name="fossile_famille_ambre">Ambra e insetti</string>
+    <string name="fossile_famille_corail">Coralli ed echinodermi</string>
+    <string name="fossile_fiche_origine">Origine</string>
+    <string name="fossile_fiche_periode">Periodo geologico</string>
+    <string name="fossile_fiche_age">Età approssimativa</string>
+    <string name="fossile_fiche_classification">Classificazione</string>
+    <string name="fossile_fiche_composition">Composizione minerale</string>
+    <string name="fossile_fiche_durete">Durezza (Mohs)</string>
+    <string name="fossile_fiche_densite">Densità</string>
+    <string name="fossile_fiche_couleur">Colore</string>
+    <string name="fossile_fiche_taille">Possibilità di taglio</string>
+    <string name="fossile_fiche_qualite_gemme">Qualità gemma</string>
+    <string name="fossile_fiche_interet_joaillerie">Interesse in gioielleria</string>
+    <string name="fossile_fiche_prix">Prezzo approssimativo al grammo</string>
+
     <!-- Successi -->
     <string name="achievements_title">Successi</string>
     <string name="achievements_progress_summary">%1$d / %2$d successi sbloccati</string>

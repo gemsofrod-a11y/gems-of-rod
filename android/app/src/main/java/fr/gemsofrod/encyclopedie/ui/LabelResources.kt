@@ -1,6 +1,7 @@
 package fr.gemsofrod.encyclopedie.ui
 
 import fr.gemsofrod.encyclopedie.R
+import fr.gemsofrod.encyclopedie.data.FossileFamille
 import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.data.GemRarete
 import fr.gemsofrod.encyclopedie.data.MeteoriteFamille
@@ -8,8 +9,9 @@ import fr.gemsofrod.encyclopedie.data.MeteoriteFamille
 /**
  * Résout la ressource de chaîne localisée Android correspondant à
  * `labelKey` (ex. [GemColorCategory.labelKey], [GemRarete.labelKey],
- * [MeteoriteFamille.labelKey]) — ces enums vivent en commonMain et ne
- * peuvent donc pas référencer directement `R.string`.
+ * [MeteoriteFamille.labelKey], [FossileFamille.labelKey]) — ces enums
+ * vivent en commonMain et ne peuvent donc pas référencer directement
+ * `R.string`.
  */
 fun resolveLabelStringRes(labelKey: String): Int = when (labelKey) {
     "rarete_courante" -> R.string.rarete_courante
@@ -35,9 +37,17 @@ fun resolveLabelStringRes(labelKey: String): Int = when (labelKey) {
     "meteorite_famille_prestige" -> R.string.meteorite_famille_prestige
     "meteorite_famille_martienne_lunaire" -> R.string.meteorite_famille_martienne_lunaire
 
+    "fossile_famille_ammonite" -> R.string.fossile_famille_ammonite
+    "fossile_famille_trilobite" -> R.string.fossile_famille_trilobite
+    "fossile_famille_vertebre" -> R.string.fossile_famille_vertebre
+    "fossile_famille_vegetal" -> R.string.fossile_famille_vegetal
+    "fossile_famille_ambre" -> R.string.fossile_famille_ambre
+    "fossile_famille_corail" -> R.string.fossile_famille_corail
+
     else -> error("Clé de libellé inconnue : $labelKey")
 }
 
 val GemRarete.labelRes: Int get() = resolveLabelStringRes(labelKey)
 val GemColorCategory.labelRes: Int get() = resolveLabelStringRes(labelKey)
 val MeteoriteFamille.labelRes: Int get() = resolveLabelStringRes(labelKey)
+val FossileFamille.labelRes: Int get() = resolveLabelStringRes(labelKey)

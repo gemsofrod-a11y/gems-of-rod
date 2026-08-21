@@ -194,6 +194,31 @@
     <string name="meteorite_fiche_interet_joaillerie">Jewelry interest</string>
     <string name="meteorite_fiche_prix">Approximate price per gram</string>
 
+    <!-- Fossils -->
+    <string name="home_fossiles_title">Fossils</string>
+    <string name="home_fossiles_subtitle">Ammonites, trilobites, amber and petrified wood: fossilized life across the geological ages.</string>
+    <string name="fossiles_intro">From billion-year-old microbial traces to megalodon teeth, amber and petrified wood: this section distinguishes fossils that can be cut and polished like a fine stone from those that remain scientific collector\'s pieces.</string>
+    <string name="fossiles_classification_title">Classification</string>
+    <string name="fossiles_classification_subtitle">Mollusks, arthropods, vertebrates, plants, resins, corals: understanding the main families of fossils.</string>
+    <string name="fossile_famille_ammonite">Ammonites &amp; mollusks</string>
+    <string name="fossile_famille_trilobite">Trilobites &amp; arthropods</string>
+    <string name="fossile_famille_vertebre">Vertebrates</string>
+    <string name="fossile_famille_vegetal">Plants</string>
+    <string name="fossile_famille_ambre">Amber &amp; insects</string>
+    <string name="fossile_famille_corail">Corals &amp; echinoderms</string>
+    <string name="fossile_fiche_origine">Origin</string>
+    <string name="fossile_fiche_periode">Geological period</string>
+    <string name="fossile_fiche_age">Approximate age</string>
+    <string name="fossile_fiche_classification">Classification</string>
+    <string name="fossile_fiche_composition">Mineral composition</string>
+    <string name="fossile_fiche_durete">Hardness (Mohs)</string>
+    <string name="fossile_fiche_densite">Density</string>
+    <string name="fossile_fiche_couleur">Color</string>
+    <string name="fossile_fiche_taille">Cutting possibility</string>
+    <string name="fossile_fiche_qualite_gemme">Gem quality</string>
+    <string name="fossile_fiche_interet_joaillerie">Interest in jewelry</string>
+    <string name="fossile_fiche_prix">Approximate price per gram</string>
+
     <!-- Achievements -->
     <string name="achievements_title">Achievements</string>
     <string name="achievements_progress_summary">%1$d / %2$d achievements unlocked</string>

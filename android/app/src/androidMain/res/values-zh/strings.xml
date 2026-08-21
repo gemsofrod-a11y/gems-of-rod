@@ -194,6 +194,31 @@
     <string name="meteorite_fiche_interet_joaillerie">珠宝价值</string>
     <string name="meteorite_fiche_prix">每克大致价格</string>
 
+    <!-- 化石 -->
+    <string name="home_fossiles_title">化石</string>
+    <string name="home_fossiles_subtitle">菊石、三叶虫、琥珀与硅化木：跨越地质年代的化石生命。</string>
+    <string name="fossiles_intro">从数十亿年前的微生物痕迹到巨齿鲨牙齿，再到琥珀与硅化木：本板块区分可像细工宝石一样切割抛光的化石与仍属科学收藏品的化石。</string>
+    <string name="fossiles_classification_title">分类</string>
+    <string name="fossiles_classification_subtitle">软体动物、节肢动物、脊椎动物、植物、树脂、珊瑚：了解化石的主要类别。</string>
+    <string name="fossile_famille_ammonite">菊石与软体动物</string>
+    <string name="fossile_famille_trilobite">三叶虫与节肢动物</string>
+    <string name="fossile_famille_vertebre">脊椎动物</string>
+    <string name="fossile_famille_vegetal">植物</string>
+    <string name="fossile_famille_ambre">琥珀与昆虫</string>
+    <string name="fossile_famille_corail">珊瑚与棘皮动物</string>
+    <string name="fossile_fiche_origine">产地</string>
+    <string name="fossile_fiche_periode">地质年代</string>
+    <string name="fossile_fiche_age">大致年代</string>
+    <string name="fossile_fiche_classification">分类</string>
+    <string name="fossile_fiche_composition">矿物成分</string>
+    <string name="fossile_fiche_durete">硬度（莫氏）</string>
+    <string name="fossile_fiche_densite">密度</string>
+    <string name="fossile_fiche_couleur">颜色</string>
+    <string name="fossile_fiche_taille">可切割性</string>
+    <string name="fossile_fiche_qualite_gemme">宝石级品质</string>
+    <string name="fossile_fiche_interet_joaillerie">珠宝价值</string>
+    <string name="fossile_fiche_prix">每克大致价格</string>
+
     <!-- 成就 -->
     <string name="achievements_title">成就</string>
     <string name="achievements_progress_summary">已解锁 %1$d / %2$d 项成就</string>

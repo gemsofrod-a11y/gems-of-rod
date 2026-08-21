@@ -194,6 +194,31 @@
     <string name="meteorite_fiche_interet_joaillerie">Intérêt en joaillerie</string>
     <string name="meteorite_fiche_prix">Prix approximatif au gramme</string>
 
+    <!-- Fossiles -->
+    <string name="home_fossiles_title">Fossiles</string>
+    <string name="home_fossiles_subtitle">Ammonites, trilobites, ambre et bois pétrifié : la vie fossilisée à travers les âges géologiques.</string>
+    <string name="fossiles_intro">Des empreintes microbiennes vieilles de plusieurs milliards d\'années aux dents de mégalodon, en passant par l\'ambre et le bois pétrifié : cette section distingue les fossiles qui se taillent et se polissent comme une pierre fine de ceux qui restent des pièces de collection scientifique.</string>
+    <string name="fossiles_classification_title">Classification</string>
+    <string name="fossiles_classification_subtitle">Mollusques, arthropodes, vertébrés, végétaux, résines, coraux : comprendre les grandes familles de fossiles.</string>
+    <string name="fossile_famille_ammonite">Ammonites &amp; mollusques</string>
+    <string name="fossile_famille_trilobite">Trilobites &amp; arthropodes</string>
+    <string name="fossile_famille_vertebre">Vertébrés</string>
+    <string name="fossile_famille_vegetal">Végétaux</string>
+    <string name="fossile_famille_ambre">Ambre &amp; insectes</string>
+    <string name="fossile_famille_corail">Coraux &amp; échinodermes</string>
+    <string name="fossile_fiche_origine">Origine</string>
+    <string name="fossile_fiche_periode">Période géologique</string>
+    <string name="fossile_fiche_age">Âge approximatif</string>
+    <string name="fossile_fiche_classification">Classification</string>
+    <string name="fossile_fiche_composition">Composition minérale</string>
+    <string name="fossile_fiche_durete">Dureté (Mohs)</string>
+    <string name="fossile_fiche_densite">Densité</string>
+    <string name="fossile_fiche_couleur">Couleur</string>
+    <string name="fossile_fiche_taille">Possibilité de taille</string>
+    <string name="fossile_fiche_qualite_gemme">Qualité gemme</string>
+    <string name="fossile_fiche_interet_joaillerie">Intérêt en joaillerie</string>
+    <string name="fossile_fiche_prix">Prix approximatif au gramme</string>
+
     <!-- Succès -->
     <string name="achievements_title">Succès</string>
     <string name="achievements_progress_summary">%1$d / %2$d succès débloqués</string>
