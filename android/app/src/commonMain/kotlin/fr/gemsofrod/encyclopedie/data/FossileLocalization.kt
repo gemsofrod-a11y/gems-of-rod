@@ -17,13 +17,18 @@ data class FossileTranslation(
  * nécessitent pas de traduction, ou dont la traduction est gérée séparément
  * (la famille, via l'enum [FossileFamille] et ses ressources de chaînes
  * localisées).
- *
- * Traductions non françaises à venir (voir [MeteoriteLocalization] pour le
- * patron à suivre) ; en attendant, [localize] retombe sur le contenu
- * français pour toute langue non couverte.
  */
 object FossileLocalization {
-    private val byLanguage: Map<String, Map<String, FossileTranslation>> = emptyMap()
+    private val byLanguage: Map<String, Map<String, FossileTranslation>> = mapOf(
+        AppLanguage.EN.code to FossileTranslationsEn.data,
+        AppLanguage.ES.code to FossileTranslationsEs.data,
+        AppLanguage.IT.code to FossileTranslationsIt.data,
+        AppLanguage.DE.code to FossileTranslationsDe.data,
+        AppLanguage.PT.code to FossileTranslationsPt.data,
+        AppLanguage.ZH.code to FossileTranslationsZh.data,
+        AppLanguage.RU.code to FossileTranslationsRu.data,
+        AppLanguage.NL.code to FossileTranslationsNl.data
+    )
 
     fun localize(fossile: Fossile, languageCode: String): Fossile {
         val translation = byLanguage[languageCode]?.get(fossile.id) ?: return fossile

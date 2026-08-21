@@ -238,6 +238,8 @@
     <string name="achievement_master_desc">Consulte as %1$d gemas do catálogo.</string>
     <string name="achievement_rainbow_title">Arco-íris</string>
     <string name="achievement_rainbow_desc">Consulte ao menos uma gema de cada uma das %1$d categorias de cor.</string>
+    <string name="achievement_fossil_collector_title">Paleontólogo</string>
+    <string name="achievement_fossil_collector_desc">Consulte os %1$d fósseis do catálogo.</string>
     <string name="achievement_first_favorite_title">Primeiro favorito</string>
     <string name="achievement_first_favorite_desc">Adicione uma gema aos seus favoritos.</string>
     <string name="achievement_fan_title">Apaixonado</string>
@@ -262,6 +264,7 @@
     <string name="quiz_question_famille">A qual família mineral %1$s pertence?</string>
     <string name="quiz_question_rarete">Qual é a raridade de %1$s?</string>
     <string name="quiz_question_glossaire">Qual termo corresponde a esta definição?</string>
+    <string name="quiz_question_fossile_famille">A que família pertence o fóssil %1$s?</string>
     <string name="quiz_next_button">Próxima pergunta</string>
     <string name="quiz_finish_button">Ver pontuação</string>
     <string name="quiz_score_title">Pontuação: %1$d / %2$d</string>

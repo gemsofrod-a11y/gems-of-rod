@@ -238,6 +238,8 @@
     <string name="achievement_master_desc">查看目录中全部 %1$d 种宝石。</string>
     <string name="achievement_rainbow_title">彩虹</string>
     <string name="achievement_rainbow_desc">查看 %1$d 个颜色分类中每类至少一种宝石。</string>
+    <string name="achievement_fossil_collector_title">古生物学家</string>
+    <string name="achievement_fossil_collector_desc">查看目录中全部 %1$d 件化石。</string>
     <string name="achievement_first_favorite_title">第一个收藏</string>
     <string name="achievement_first_favorite_desc">将一块宝石添加到收藏。</string>
     <string name="achievement_fan_title">爱好者</string>
@@ -262,6 +264,7 @@
     <string name="quiz_question_famille">%1$s 属于哪个矿物族？</string>
     <string name="quiz_question_rarete">%1$s 的稀有度是什么？</string>
     <string name="quiz_question_glossaire">哪个术语对应这个定义？</string>
+    <string name="quiz_question_fossile_famille">化石 %1$s 属于哪个类别？</string>
     <string name="quiz_next_button">下一题</string>
     <string name="quiz_finish_button">查看得分</string>
     <string name="quiz_score_title">得分：%1$d / %2$d</string>

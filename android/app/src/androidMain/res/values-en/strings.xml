@@ -238,6 +238,8 @@
     <string name="achievement_master_desc">View all %1$d gems in the catalog.</string>
     <string name="achievement_rainbow_title">Rainbow</string>
     <string name="achievement_rainbow_desc">View at least one gem from each of the %1$d color categories.</string>
+    <string name="achievement_fossil_collector_title">Paleontologist</string>
+    <string name="achievement_fossil_collector_desc">View all %1$d fossils in the catalog.</string>
     <string name="achievement_first_favorite_title">First favorite</string>
     <string name="achievement_first_favorite_desc">Add a gem to your favorites.</string>
     <string name="achievement_fan_title">Fan</string>
@@ -262,6 +264,7 @@
     <string name="quiz_question_famille">Which mineral family does %1$s belong to?</string>
     <string name="quiz_question_rarete">What is the rarity of %1$s?</string>
     <string name="quiz_question_glossaire">Which term matches this definition?</string>
+    <string name="quiz_question_fossile_famille">Which family does the fossil %1$s belong to?</string>
     <string name="quiz_next_button">Next question</string>
     <string name="quiz_finish_button">See score</string>
     <string name="quiz_score_title">Score: %1$d / %2$d</string>

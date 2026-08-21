@@ -10,6 +10,7 @@ import androidx.compose.runtime.setValue
 
 private const val PREFS_NAME = "gems_of_rod_achievements"
 private const val KEY_VIEWED_GEM_IDS = "viewed_gem_ids"
+private const val KEY_VIEWED_FOSSILE_IDS = "viewed_fossile_ids"
 private const val KEY_QUIZZES_COMPLETED = "quizzes_completed"
 private const val KEY_PERFECT_QUIZ_SCORE = "perfect_quiz_score"
 private const val KEY_LEGENDARY_RIDDLE_SOLVED = "legendary_riddle_solved"
@@ -26,7 +27,8 @@ data class AchievementStats(
     val favoritesCount: Int,
     val quizzesCompleted: Int,
     val hasPerfectQuizScore: Boolean,
-    val hasSolvedLegendaryRiddle: Boolean
+    val hasSolvedLegendaryRiddle: Boolean,
+    val fossilesViewedCount: Int
 )
 
 /**
@@ -38,6 +40,7 @@ data class AchievementStats(
 object AchievementsRepository {
     private var prefs: SharedPreferences? = null
     private val viewedGemIds = mutableStateListOf<String>()
+    private val viewedFossileIds = mutableStateListOf<String>()
     private var quizzesCompleted by mutableIntStateOf(0)
     private var hasPerfectQuizScore by mutableStateOf(false)
     private var hasSolvedLegendaryRiddle by mutableStateOf(false)
@@ -58,6 +61,7 @@ object AchievementsRepository {
         val sharedPrefs = context.applicationContext.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         prefs = sharedPrefs
         viewedGemIds.addAll(sharedPrefs.getStringSet(KEY_VIEWED_GEM_IDS, emptySet()).orEmpty())
+        viewedFossileIds.addAll(sharedPrefs.getStringSet(KEY_VIEWED_FOSSILE_IDS, emptySet()).orEmpty())
         quizzesCompleted = sharedPrefs.getInt(KEY_QUIZZES_COMPLETED, 0)
         hasPerfectQuizScore = sharedPrefs.getBoolean(KEY_PERFECT_QUIZ_SCORE, false)
         hasSolvedLegendaryRiddle = sharedPrefs.getBoolean(KEY_LEGENDARY_RIDDLE_SOLVED, false)
@@ -69,6 +73,14 @@ object AchievementsRepository {
         val before = stats()
         viewedGemIds.add(gemId)
         prefs?.edit()?.putStringSet(KEY_VIEWED_GEM_IDS, viewedGemIds.toSet())?.apply()
+        checkNewlyUnlocked(before, stats())
+    }
+
+    fun recordFossileViewed(fossileId: String) {
+        if (viewedFossileIds.contains(fossileId)) return
+        val before = stats()
+        viewedFossileIds.add(fossileId)
+        prefs?.edit()?.putStringSet(KEY_VIEWED_FOSSILE_IDS, viewedFossileIds.toSet())?.apply()
         checkNewlyUnlocked(before, stats())
     }
 
@@ -99,7 +111,8 @@ object AchievementsRepository {
             favoritesCount = FavoritesRepository.favoriteIds().size,
             quizzesCompleted = quizzesCompleted,
             hasPerfectQuizScore = hasPerfectQuizScore,
-            hasSolvedLegendaryRiddle = hasSolvedLegendaryRiddle
+            hasSolvedLegendaryRiddle = hasSolvedLegendaryRiddle,
+            fossilesViewedCount = viewedFossileIds.size
         )
     }
 

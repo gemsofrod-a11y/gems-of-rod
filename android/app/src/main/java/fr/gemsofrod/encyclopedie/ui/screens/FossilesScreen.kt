@@ -33,6 +33,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -44,6 +45,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
+import fr.gemsofrod.encyclopedie.data.AchievementsRepository
 import fr.gemsofrod.encyclopedie.data.Fossile
 import fr.gemsofrod.encyclopedie.data.FossileClassificationInfo
 import fr.gemsofrod.encyclopedie.data.FossileFamille
@@ -310,6 +312,7 @@ private fun FossileClassificationDisclaimer(title: String, body: String) {
 @Composable
 fun FossileDetailScreen(fossileId: String, onBackClick: () -> Unit) {
     val fossile = FossilesRepository.byId(fossileId)?.localized()
+    LaunchedEffect(fossileId) { AchievementsRepository.recordFossileViewed(fossileId) }
 
     Scaffold(
         topBar = {
