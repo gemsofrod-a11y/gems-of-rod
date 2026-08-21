@@ -629,6 +629,272 @@
       "type": "FACETTEE"
     }
   ],
+  "fossile-ambre-baltique": [
+    {
+      "artist": "Anders L. Damgaard - www.amber-inclusions.dk",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_fossile_ambre_baltique_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Baltic_amber_Coleoptera_Anobiidae_Episernus.JPG",
+      "title": "File:Baltic amber Coleoptera Anobiidae Episernus.JPG",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Engel M, Ortega-Blanco J (2008)",
+      "license": "CC BY 3.0",
+      "resource_name": "gem_fossile_ambre_baltique_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Neotype_male_of_Electrostephanus_petiolatus_Brues_in_Baltic_amber_(AMNH_B-JWJ-260).png",
+      "title": "File:Neotype male of Electrostephanus petiolatus Brues in Baltic amber (AMNH B-JWJ-260).png",
+      "type": "FACETTEE"
+    }
+  ],
+  "fossile-ambre-inclusion": [
+    {
+      "artist": "Koltovoi",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_fossile_ambre_inclusion_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Amber-000-12mm.jpg",
+      "title": "File:Amber-000-12mm.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "fossile-ammolite": [
+    {
+      "artist": "David Abercrombie",
+      "license": "CC BY-SA 2.0",
+      "resource_name": "gem_fossile_ammolite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ammolite_(5103548263).jpg",
+      "title": "File:Ammolite (5103548263).jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Auteur non renseigné",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_fossile_ammolite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ammolite.jpg",
+      "title": "File:Ammolite.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "fossile-ammonite-madagascar": [
+    {
+      "artist": "Dlyj0604",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_fossile_ammonite_madagascar_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ammonite_indet_from_Madagascar.jpg",
+      "title": "File:Ammonite indet from Madagascar.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Gozitano",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_fossile_ammonite_madagascar_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ammonite_geode.jpg",
+      "title": "File:Ammonite geode.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "fossile-belemnite": [
+    {
+      "artist": "Géry Parent",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_fossile_belemnite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Rostre_de_bélemnite_sur_craie_(Belgique)_1.JPG",
+      "title": "File:Rostre de bélemnite sur craie (Belgique) 1.JPG",
+      "type": "BRUTE"
+    }
+  ],
+  "fossile-bois-petrifie": [
+    {
+      "artist": "YellowstoneNPS",
+      "license": "Public domain",
+      "resource_name": "gem_fossile_bois_petrifie_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Petrified_wood_along_the_trail_on_Specimen_Ridge_(50016468316).jpg",
+      "title": "File:Petrified wood along the trail on Specimen Ridge (50016468316).jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Shannon Heinle",
+      "license": "CC0",
+      "resource_name": "gem_fossile_bois_petrifie_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Petrified_Wood_(GeoDIL_number_-_607).jpg",
+      "title": "File:Petrified Wood (GeoDIL number - 607).jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "fossile-copal": [],
+  "fossile-corail-agatise": [
+    {
+      "artist": "Wilson44691",
+      "license": "CC0",
+      "resource_name": "gem_fossile_corail_agatise_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fossil_agatized_coral_Florida.JPG",
+      "title": "File:Fossil agatized coral Florida.JPG",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Wilson44691",
+      "license": "CC0",
+      "resource_name": "gem_fossile_corail_agatise_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fossil_agatized_coral_Florida_(cropped).JPG",
+      "title": "File:Fossil agatized coral Florida (cropped).JPG",
+      "type": "FACETTEE"
+    }
+  ],
+  "fossile-crinoide": [
+    {
+      "artist": "ErikAbner",
+      "license": "CC BY 4.0",
+      "resource_name": "gem_fossile_crinoide_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ordovician_crinoid_stem_fragments.jpg",
+      "title": "File:Ordovician crinoid stem fragments.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Amir Ali Iranshahi 3",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_fossile_crinoide_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Crushed_crinoid_stems_from_the_Jurassic,_Iran.jpg",
+      "title": "File:Crushed crinoid stems from the Jurassic, Iran.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "fossile-dent-megalodon": [
+    {
+      "artist": "WorldwrestlingfederationVKM",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_fossile_dent_megalodon_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Megalodon_shark_tooth_fossil.jpg",
+      "title": "File:Megalodon shark tooth fossil.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "fossile-dent-mosasaure": [
+    {
+      "artist": "Ichthyovenator",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_fossile_dent_mosasaure_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Dollosaurus_sp._tooth.png",
+      "title": "File:Dollosaurus sp. tooth.png",
+      "type": "BRUTE"
+    }
+  ],
+  "fossile-fougere": [
+    {
+      "artist": "Amir Ali Iranshahi 3",
+      "license": "CC0",
+      "resource_name": "gem_fossile_fougere_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fossil_fern_with_galls,_from_Late_Triassic,_Alborz,_Iran_02.jpg",
+      "title": "File:Fossil fern with galls, from Late Triassic, Alborz, Iran 02.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "fossile-goniatite": [
+    {
+      "artist": "Jesse Burgle Johnson",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_fossile_goniatite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Goniatite_Fossils_found_on_the_shores_of_Lough_Allen_(Slieve_Anierin).jpg",
+      "title": "File:Goniatite Fossils found on the shores of Lough Allen (Slieve Anierin).jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "fossile-ivoire-mammouth": [
+    {
+      "artist": "Auteur non renseigné",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_fossile_ivoire_mammouth_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mammuthus_primigenius_tusk_-_MUSE.jpg",
+      "title": "File:Mammuthus primigenius tusk - MUSE.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Ghedoghedo",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_fossile_ivoire_mammouth_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mammuthus_meridionalis_tusk_section.jpg",
+      "title": "File:Mammuthus meridionalis tusk section.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "fossile-orthocere": [
+    {
+      "artist": "Diego Delso",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_fossile_orthocere_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Orthoceras,_Erfoud,_Marruecos,_2021-01-24,_DD_001-047_FS.jpg",
+      "title": "File:Orthoceras, Erfoud, Marruecos, 2021-01-24, DD 001-047 FS.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "“Jon Zander (Digon3)\"",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_fossile_orthocere_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Silurian_Orthoceras_Fossil_Macro_2.JPG",
+      "title": "File:Silurian Orthoceras Fossil Macro 2.JPG",
+      "type": "FACETTEE"
+    }
+  ],
+  "fossile-os-dinosaure-gembone": [],
+  "fossile-oursin": [
+    {
+      "artist": "Lincolnshire County Council, Adam Daubney, 2013-03-21 16:38:14",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_fossile_oursin_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fossil_sea_urchin_(FindID_551527)_cropped_transparent_background.png",
+      "title": "File:Fossil sea urchin (FindID 551527) cropped transparent background.png",
+      "type": "BRUTE"
+    }
+  ],
+  "fossile-poisson-green-river": [
+    {
+      "artist": "Joe deSousa",
+      "license": "CC0",
+      "resource_name": "gem_fossile_poisson_green_river_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Knightia_Fossil_Fish_(20255016550).jpg",
+      "title": "File:Knightia Fossil Fish (20255016550).jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "fossile-stromatolite": [
+    {
+      "artist": "Ed Landing & Markes E. Johnson (in: Journal of Marine Science and Engineering, 2024)",
+      "license": "CC BY 4.0",
+      "resource_name": "gem_fossile_stromatolite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Stromatolite_\"Cryptozoon_proliferum\"_surface.png",
+      "title": "File:Stromatolite \"Cryptozoon proliferum\" surface.png",
+      "type": "BRUTE"
+    }
+  ],
+  "fossile-trilobite-calymene": [
+    {
+      "artist": "Hallettx",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_fossile_trilobite_calymene_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Calymene_Trilobite_Fossil.jpg",
+      "title": "File:Calymene Trilobite Fossil.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "fossile-trilobite-elrathia": [
+    {
+      "artist": "Dave Dyet http://www.shutterstone.com  http://www.dyet.com",
+      "license": "Public domain",
+      "resource_name": "gem_fossile_trilobite_elrathia_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Elrathia_kingii_Dyet_2174.jpg",
+      "title": "File:Elrathia kingii Dyet 2174.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "fossile-trilobite-phacops": [
+    {
+      "artist": "Dwergenpaartje",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_fossile_trilobite_phacops_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Phacops_rana_crassituberculata,_eye.jpg",
+      "title": "File:Phacops rana crassituberculata, eye.jpg",
+      "type": "BRUTE"
+    }
+  ],
   "gaspeite": [],
   "goshenite": [],
   "grandidierite": [

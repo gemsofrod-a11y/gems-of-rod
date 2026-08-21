@@ -276,6 +276,30 @@ GEMS = [
     ("meteorite-nwa-7034", ['NWA 7034 meteorite', 'Black Beauty meteorite Mars'], ['nwa 7034', 'black beauty'], (BRUTE,)),
     ("meteorite-alh-84001", ['ALH 84001 meteorite', 'Allan Hills 84001 meteorite'], ['alh 84001', 'allan hills'], (BRUTE,)),
     ("meteorite-lunaire-nwa", ['Lunar meteorite NWA', 'Lunar meteorite fragment'], ['lunar meteorite'], (BRUTE,)),
+
+    # ---------- FOSSILES ----------
+    ("fossile-ammonite-madagascar", ['Ammonite fossil Madagascar', 'Ammonite fossil rough', 'Ammonite fossil polished slice'], ['ammonite'], (BRUTE, FACETTEE)),
+    ("fossile-ammolite", ['Ammolite specimen', 'Ammolite gemstone', 'Ammolite polished'], ['ammolite'], (BRUTE, FACETTEE)),
+    ("fossile-orthocere", ['Orthoceras fossil', 'Orthoceras fossil polished slab'], ['orthoceras', 'orthocone'], (BRUTE, FACETTEE)),
+    ("fossile-goniatite", ['Goniatite fossil', 'Goniatite fossil specimen'], ['goniatite'], (BRUTE,)),
+    ("fossile-trilobite-elrathia", ['Elrathia kingii fossil', 'Elrathia trilobite fossil'], ['elrathia', 'trilobite'], (BRUTE,)),
+    ("fossile-trilobite-phacops", ['Phacops rana fossil', 'Phacops trilobite fossil'], ['phacops', 'trilobite'], (BRUTE,)),
+    ("fossile-trilobite-calymene", ['Calymene trilobite fossil', 'Calymene fossil specimen'], ['calymene', 'trilobite'], (BRUTE,)),
+    ("fossile-dent-megalodon", ['Megalodon tooth fossil', 'Megalodon shark tooth'], ['megalodon'], (BRUTE,)),
+    ("fossile-os-dinosaure-gembone", ['Agatized dinosaur bone', 'Dinosaur bone jasper', 'Fossilized dinosaur bone polished slice'], ['dinosaur bone', 'agatized', 'gembone'], (BRUTE, FACETTEE)),
+    ("fossile-poisson-green-river", ['Knightia fossil fish Green River', 'Fossil fish Green River Formation'], ['knightia', 'green river', 'fossil fish'], (BRUTE,)),
+    ("fossile-dent-mosasaure", ['Mosasaur tooth fossil', 'Mosasaurus tooth fossil'], ['mosasaur'], (BRUTE,)),
+    ("fossile-ivoire-mammouth", ['Mammoth tusk', 'Woolly mammoth ivory', 'Mammoth ivory museum', 'Mammuthus tusk fossil'], ['mammoth', 'ivory', 'tusk'], (BRUTE, FACETTEE)),
+    ("fossile-bois-petrifie", ['Petrified wood specimen', 'Petrified wood rough', 'Petrified wood polished slice'], ['petrified wood'], (BRUTE, FACETTEE)),
+    ("fossile-fougere", ['Fossil fern', 'Pecopteris fossil', 'Fern fossil shale imprint'], ['fern', 'pecopteris', 'fossil'], (BRUTE,)),
+    ("fossile-ambre-baltique", ['Baltic amber raw', 'Baltic amber specimen', 'Baltic amber polished'], ['baltic amber', 'amber'], (BRUTE, FACETTEE)),
+    ("fossile-ambre-inclusion", ['Amber insect inclusion', 'Dominican amber insect inclusion'], ['amber', 'insect', 'inclusion'], (BRUTE,)),
+    ("fossile-copal", ['Copal amber resin', 'Kauri copal resin specimen', 'Copal resin nugget'], ['copal'], (BRUTE,)),
+    ("fossile-corail-agatise", ['Agatized coral fossil', 'Agatized coral Florida', 'Agatized coral polished'], ['agatized coral'], (BRUTE, FACETTEE)),
+    ("fossile-oursin", ['Fossil sea urchin echinoid', 'Echinoid fossil test'], ['echinoid', 'sea urchin fossil'], (BRUTE,)),
+    ("fossile-crinoide", ['Crinoid stem fossil', 'Crinoidal limestone polished'], ['crinoid'], (BRUTE, FACETTEE)),
+    ("fossile-stromatolite", ['Stromatolite fossil specimen', 'Stromatolite cross section polished', 'Stromatolite slab cut'], ['stromatolite'], (BRUTE, FACETTEE)),
+    ("fossile-belemnite", ['Belemnite fossil rostrum', 'Belemnite fossil specimen'], ['belemnite'], (BRUTE,)),
 ]
 
 # Photos dédiées aux inclusions typiques (macro/loupe), distinctes des photos
@@ -612,6 +636,14 @@ GIVE_UP_SLOTS = {
     ("onyx", BRUTE),
     ("andesine", BRUTE),
     ("saphir-vert", BRUTE),
+    # Fossiles : 3 tentatives successives (recherche + nouveaux termes x2)
+    # ont échoué de façon identique sur ces 4 créneaux — soit aucun candidat
+    # trouvé, soit un échec de téléchargement systématique du même fichier.
+    # On arrête les frais tant qu'une recherche manuelle n'aura pas été faite.
+    ("fossile-os-dinosaure-gembone", BRUTE),
+    ("fossile-os-dinosaure-gembone", FACETTEE),
+    ("fossile-copal", BRUTE),
+    ("fossile-stromatolite", FACETTEE),
     # Ci-dessous : espèces dont les 2 tentatives automatiques successives
     # n'ont renvoyé que des spécimens bruts / cristaux sur gangue / bijoux
     # montés / photos hors-sujet pour le créneau FACETTEE. On arrête les
