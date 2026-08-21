@@ -118,6 +118,7 @@
     liveMeterCanvas: document.getElementById("live-meter-canvas"),
     unsupported: document.getElementById("unsupported"),
     summaryContent: document.getElementById("summary-content"),
+    summaryConfetti: document.getElementById("summary-confetti"),
     crisisCard: document.getElementById("crisis-card"),
     companionCard: document.getElementById("companion-card"),
     companionText: document.getElementById("companion-text"),
@@ -403,6 +404,32 @@
       </div>`;
   }
 
+  const CONFETTI_COLORS = ["var(--primary)", "var(--primary-2)", "var(--energy)", "#ffd166"];
+
+  function playConfetti() {
+    const container = els.summaryConfetti;
+    if (!container) return;
+    container.innerHTML = "";
+    const pieces = 10;
+    for (let i = 0; i < pieces; i++) {
+      const span = document.createElement("span");
+      span.className = "confetti-piece";
+      const angle = (360 / pieces) * i + (Math.random() * 20 - 10);
+      const distance = 60 + Math.random() * 40;
+      const dx = Math.cos((angle * Math.PI) / 180) * distance;
+      const dy = Math.sin((angle * Math.PI) / 180) * distance;
+      span.style.setProperty("--dx", `${dx}px`);
+      span.style.setProperty("--dy", `${dy}px`);
+      span.style.background = CONFETTI_COLORS[i % CONFETTI_COLORS.length];
+      span.style.animationDelay = `${Math.random() * 80}ms`;
+      container.appendChild(span);
+    }
+    // Nettoie après l'animation pour ne pas laisser de nœuds inertes.
+    setTimeout(() => {
+      container.innerHTML = "";
+    }, 900);
+  }
+
   let summarySessionId = 0;
 
   function renderSummary(entry) {
@@ -410,6 +437,12 @@
 
     const isCrisis = Analysis.detectCrisisSignal(entry.transcript);
     els.crisisCard.hidden = !isCrisis;
+    // Petit effet de clôture satisfaisant — jamais en cas de signal de
+    // crise, où ce serait déplacé, et jamais si l'utilisateur préfère
+    // réduire les animations.
+    if (!isCrisis && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      playConfetti();
+    }
 
     els.companionCard.hidden = true;
     els.companionText.innerHTML = "";
