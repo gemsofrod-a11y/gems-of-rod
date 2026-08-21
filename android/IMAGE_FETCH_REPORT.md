@@ -231,12 +231,12 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | fossile-trilobite-phacops | ♻️ [File:Phacops rana crassituberculata, eye.jpg](https://commons.wikimedia.org/wiki/File:Phacops_rana_crassituberculata,_eye.jpg) | — |
 | fossile-trilobite-calymene | ♻️ [File:Calymene Trilobite Fossil.jpg](https://commons.wikimedia.org/wiki/File:Calymene_Trilobite_Fossil.jpg) | — |
 | fossile-dent-megalodon | ♻️ [File:Megalodon shark tooth fossil.jpg](https://commons.wikimedia.org/wiki/File:Megalodon_shark_tooth_fossil.jpg) | — |
-| fossile-os-dinosaure-gembone | ❌ échec téléchargement | ❌ échec téléchargement |
+| fossile-os-dinosaure-gembone | ❌ non trouvée | ❌ échec téléchargement |
 | fossile-poisson-green-river | ♻️ [File:Knightia Fossil Fish (20255016550).jpg](https://commons.wikimedia.org/wiki/File:Knightia_Fossil_Fish_(20255016550).jpg) | — |
 | fossile-dent-mosasaure | ♻️ [File:Dollosaurus sp. tooth.png](https://commons.wikimedia.org/wiki/File:Dollosaurus_sp._tooth.png) | — |
-| fossile-ivoire-mammouth | ✅ [File:Mammuthus primigenius tusk - MUSE.jpg](https://commons.wikimedia.org/wiki/File:Mammuthus_primigenius_tusk_-_MUSE.jpg) | ✅ [File:Mammuthus meridionalis tusk section.jpg](https://commons.wikimedia.org/wiki/File:Mammuthus_meridionalis_tusk_section.jpg) |
+| fossile-ivoire-mammouth | ♻️ [File:Mammuthus primigenius tusk - MUSE.jpg](https://commons.wikimedia.org/wiki/File:Mammuthus_primigenius_tusk_-_MUSE.jpg) | ♻️ [File:Mammuthus meridionalis tusk section.jpg](https://commons.wikimedia.org/wiki/File:Mammuthus_meridionalis_tusk_section.jpg) |
 | fossile-bois-petrifie | ♻️ [File:Petrified wood along the trail on Specimen Ridge (50016468316).jpg](https://commons.wikimedia.org/wiki/File:Petrified_wood_along_the_trail_on_Specimen_Ridge_(50016468316).jpg) | ♻️ [File:Petrified Wood (GeoDIL number - 607).jpg](https://commons.wikimedia.org/wiki/File:Petrified_Wood_(GeoDIL_number_-_607).jpg) |
-| fossile-fougere | ✅ [File:Fossil fern with galls, from Late Triassic, Alborz, Iran 02.jpg](https://commons.wikimedia.org/wiki/File:Fossil_fern_with_galls,_from_Late_Triassic,_Alborz,_Iran_02.jpg) | — |
+| fossile-fougere | ♻️ [File:Fossil fern with galls, from Late Triassic, Alborz, Iran 02.jpg](https://commons.wikimedia.org/wiki/File:Fossil_fern_with_galls,_from_Late_Triassic,_Alborz,_Iran_02.jpg) | — |
 | fossile-ambre-baltique | ♻️ [File:Baltic amber Coleoptera Anobiidae Episernus.JPG](https://commons.wikimedia.org/wiki/File:Baltic_amber_Coleoptera_Anobiidae_Episernus.JPG) | ♻️ [File:Neotype male of Electrostephanus petiolatus Brues in Baltic amber (AMNH B-JWJ-260).png](https://commons.wikimedia.org/wiki/File:Neotype_male_of_Electrostephanus_petiolatus_Brues_in_Baltic_amber_(AMNH_B-JWJ-260).png) |
 | fossile-ambre-inclusion | ♻️ [File:Amber-000-12mm.jpg](https://commons.wikimedia.org/wiki/File:Amber-000-12mm.jpg) | — |
 | fossile-copal | ❌ échec téléchargement | — |
