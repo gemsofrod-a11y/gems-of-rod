@@ -778,7 +778,16 @@
       "type": "BRUTE"
     }
   ],
-  "fossile-fougere": [],
+  "fossile-fougere": [
+    {
+      "artist": "Amir Ali Iranshahi 3",
+      "license": "CC0",
+      "resource_name": "gem_fossile_fougere_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fossil_fern_with_galls,_from_Late_Triassic,_Alborz,_Iran_02.jpg",
+      "title": "File:Fossil fern with galls, from Late Triassic, Alborz, Iran 02.jpg",
+      "type": "BRUTE"
+    }
+  ],
   "fossile-goniatite": [
     {
       "artist": "Jesse Burgle Johnson",
@@ -789,7 +798,24 @@
       "type": "BRUTE"
     }
   ],
-  "fossile-ivoire-mammouth": [],
+  "fossile-ivoire-mammouth": [
+    {
+      "artist": "Auteur non renseigné",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_fossile_ivoire_mammouth_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mammuthus_primigenius_tusk_-_MUSE.jpg",
+      "title": "File:Mammuthus primigenius tusk - MUSE.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Ghedoghedo",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_fossile_ivoire_mammouth_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mammuthus_meridionalis_tusk_section.jpg",
+      "title": "File:Mammuthus meridionalis tusk section.jpg",
+      "type": "FACETTEE"
+    }
+  ],
   "fossile-orthocere": [
     {
       "artist": "Diego Delso",
