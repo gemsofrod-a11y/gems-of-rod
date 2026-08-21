@@ -115,6 +115,8 @@
     <string name="litho_nettoyage_subtitle">Traditionelle Praktiken zur Reinigung und Revitalisierung deiner Steine.</string>
     <string name="litho_associations_title">Steinkombinationen</string>
     <string name="litho_associations_subtitle">Mehrere Steine je nach gewünschter Wirkung kombinieren.</string>
+    <string name="assoc_stones_title">Kombinierte Steine</string>
+    <string name="assoc_advice_title">Anwendungstipp</string>
 
     <!-- Zertifikat -->
     <string name="certificate_title">Zertifikat</string>

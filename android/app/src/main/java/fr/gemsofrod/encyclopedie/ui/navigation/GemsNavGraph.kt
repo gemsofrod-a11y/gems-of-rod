@@ -43,6 +43,8 @@ import fr.gemsofrod.encyclopedie.ui.screens.LabNotebookScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LanguageScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LegendaryMapScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LegendaryRiddleScreen
+import fr.gemsofrod.encyclopedie.ui.screens.AssociationDetailScreen
+import fr.gemsofrod.encyclopedie.ui.screens.AssociationsListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieGemsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieInfoScreen
@@ -81,6 +83,8 @@ private object Routes {
     const val LITHOTHERAPIE_GEMS = "lithotherapie_gems/{scheme}/{label}"
     const val LITHOTHERAPIE_DETAIL = "lithotherapie_detail/{gemId}"
     const val LITHOTHERAPIE_INFO = "lithotherapie_info/{topic}"
+    const val ASSOCIATIONS_LIST = "associations_list"
+    const val ASSOCIATION_DETAIL = "association/{associationId}"
     const val LANGUAGE = "language"
     const val METEORITES = "meteorites"
     const val METEORITE_CLASSIFICATION = "meteorite_classification"
@@ -112,6 +116,7 @@ private object Routes {
     fun lithotherapieGems(scheme: String, label: String) = "lithotherapie_gems/$scheme/${encode(label)}"
     fun lithotherapieDetail(gemId: String) = "lithotherapie_detail/$gemId"
     fun lithotherapieInfo(topic: String) = "lithotherapie_info/$topic"
+    fun associationDetail(associationId: String) = "association/$associationId"
 
     fun encode(value: String): String = URLEncoder.encode(value, "UTF-8")
     fun decode(value: String): String = URLDecoder.decode(value, "UTF-8")
@@ -322,6 +327,21 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             LithotherapieMenuScreen(
                 onSchemeClick = { scheme -> navController.navigate(Routes.lithotherapieLabels(scheme)) },
                 onInfoClick = { topic -> navController.navigate(Routes.lithotherapieInfo(topic)) },
+                onAssociationsClick = { navController.navigate(Routes.ASSOCIATIONS_LIST) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.ASSOCIATIONS_LIST) {
+            AssociationsListScreen(
+                onAssociationClick = { association -> navController.navigate(Routes.associationDetail(association.id)) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.ASSOCIATION_DETAIL) { backStackEntry ->
+            val associationId = backStackEntry.arguments?.getString("associationId").orEmpty()
+            AssociationDetailScreen(
+                associationId = associationId,
+                onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
                 onBackClick = { navController.popBackStack() }
             )
         }

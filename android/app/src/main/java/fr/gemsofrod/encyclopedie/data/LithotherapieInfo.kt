@@ -47,15 +47,7 @@ object LithotherapieInfo {
             disclaimerBody = "Ces pratiques relèvent de traditions et de croyances populaires, sans fondement scientifique démontré. Il n'existe aucune obligation de nettoyer ou de recharger ses pierres : libre à chacun de suivre ou non ces usages, selon sa sensibilité."
         ),
         ASSOCIATIONS to LithoInfoPage(
-            intro = "Associer plusieurs pierres entre elles est une pratique courante en lithothérapie traditionnelle, dans l'idée de cumuler ou d'équilibrer leurs vertus respectives.",
-            listTitle = "Quelques associations traditionnelles",
-            listItems = listOf(
-                LithoInfoListItem("Améthyste + Quartz rose", "Une association réputée pour apaiser les émotions et favoriser la sérénité affective."),
-                LithoInfoListItem("Œil de tigre + Citrine", "Traditionnellement associées à la confiance en soi et à l'abondance."),
-                LithoInfoListItem("Labradorite + Pierre de lune", "Deux pierres souvent réunies pour accompagner l'intuition et les périodes de transition."),
-                LithoInfoListItem("Grenat + Cornaline", "Une combinaison traditionnellement liée à l'énergie et à la vitalité."),
-                LithoInfoListItem("Aigue-marine + Lapis-lazuli", "Associées à la communication et à l'expression de soi.")
-            ),
+            intro = "Associer plusieurs pierres entre elles est une pratique courante en lithothérapie traditionnelle, dans l'idée de cumuler ou d'équilibrer leurs vertus respectives. Voici les associations les plus connues, chacune reliée aux fiches des gemmes concernées.",
             note = "Il n'existe pas de règle stricte : certains préfèrent se concentrer sur une seule pierre à la fois, d'autres aiment en associer plusieurs. La tradition recommande simplement de privilégier la cohérence de l'intention recherchée, plutôt que de multiplier les pierres aux vertus contradictoires.",
             disclaimerTitle = "Une question de croyance",
             disclaimerBody = "Comme pour le nettoyage et le rechargement, ces associations relèvent de croyances traditionnelles, sans obligation ni fondement scientifique validé — à explorer librement, selon votre ressenti."
@@ -86,15 +78,7 @@ object LithotherapieInfo {
             disclaimerBody = "These practices stem from folk traditions and beliefs, with no demonstrated scientific basis. There is no obligation to cleanse or recharge your stones: it is entirely up to you whether or not to follow these customs, according to your own sensibility."
         ),
         ASSOCIATIONS to LithoInfoPage(
-            intro = "Pairing several stones together is a common practice in traditional crystal healing, with the idea of combining or balancing their respective virtues.",
-            listTitle = "A few traditional pairings",
-            listItems = listOf(
-                LithoInfoListItem("Amethyst + Rose quartz", "A pairing reputed to soothe emotions and foster emotional serenity."),
-                LithoInfoListItem("Tiger's eye + Citrine", "Traditionally associated with self-confidence and abundance."),
-                LithoInfoListItem("Labradorite + Moonstone", "Two stones often brought together to support intuition and times of transition."),
-                LithoInfoListItem("Garnet + Carnelian", "A combination traditionally linked to energy and vitality."),
-                LithoInfoListItem("Aquamarine + Lapis lazuli", "Associated with communication and self-expression.")
-            ),
+            intro = "Pairing several stones together is a common practice in traditional crystal healing, with the idea of combining or balancing their respective virtues. Here are the best-known pairings, each linked to the relevant gem sheets.",
             note = "There is no strict rule: some prefer to focus on a single stone at a time, while others enjoy combining several. Tradition simply recommends favouring coherence of intent, rather than multiplying stones with contradictory virtues.",
             disclaimerTitle = "A matter of belief",
             disclaimerBody = "As with cleansing and recharging, these pairings stem from traditional beliefs, with no obligation or validated scientific basis — to be explored freely, according to your own feeling."
@@ -125,15 +109,7 @@ object LithotherapieInfo {
             disclaimerBody = "Estas prácticas provienen de tradiciones y creencias populares, sin fundamento científico demostrado. No existe ninguna obligación de limpiar o recargar tus piedras: cada persona es libre de seguir o no estos usos, según su propia sensibilidad."
         ),
         ASSOCIATIONS to LithoInfoPage(
-            intro = "Asociar varias piedras entre sí es una práctica habitual en la litoterapia tradicional, con la idea de sumar o equilibrar sus respectivas virtudes.",
-            listTitle = "Algunas asociaciones tradicionales",
-            listItems = listOf(
-                LithoInfoListItem("Amatista + Cuarzo rosa", "Una asociación reputada por calmar las emociones y favorecer la serenidad afectiva."),
-                LithoInfoListItem("Ojo de tigre + Citrina", "Tradicionalmente asociadas a la confianza en uno mismo y a la abundancia."),
-                LithoInfoListItem("Labradorita + Piedra de luna", "Dos piedras a menudo reunidas para acompañar la intuición y los periodos de transición."),
-                LithoInfoListItem("Granate + Cornalina", "Una combinación tradicionalmente ligada a la energía y la vitalidad."),
-                LithoInfoListItem("Aguamarina + Lapislázuli", "Asociadas a la comunicación y la expresión de uno mismo.")
-            ),
+            intro = "Asociar varias piedras entre sí es una práctica habitual en la litoterapia tradicional, con la idea de sumar o equilibrar sus respectivas virtudes. Estas son las asociaciones más conocidas, cada una enlazada con las fichas de las gemas correspondientes.",
             note = "No existe una regla estricta: algunos prefieren centrarse en una sola piedra a la vez, mientras que otros disfrutan combinando varias. La tradición simplemente recomienda privilegiar la coherencia de la intención buscada, en lugar de multiplicar piedras con virtudes contradictorias.",
             disclaimerTitle = "Una cuestión de creencia",
             disclaimerBody = "Al igual que la limpieza y la recarga, estas asociaciones provienen de creencias tradicionales, sin obligación ni fundamento científico validado — para explorar libremente, según tu propio sentir."
@@ -164,15 +140,7 @@ object LithotherapieInfo {
             disclaimerBody = "Queste pratiche derivano da tradizioni e credenze popolari, senza un fondamento scientifico dimostrato. Non esiste alcun obbligo di pulire o ricaricare le proprie pietre: ognuno è libero di seguire o meno queste usanze, secondo la propria sensibilità."
         ),
         ASSOCIATIONS to LithoInfoPage(
-            intro = "Abbinare più pietre tra loro è una pratica comune nella litoterapia tradizionale, con l'idea di sommare o bilanciare le rispettive virtù.",
-            listTitle = "Alcuni abbinamenti tradizionali",
-            listItems = listOf(
-                LithoInfoListItem("Ametista + Quarzo rosa", "Un abbinamento noto per calmare le emozioni e favorire la serenità affettiva."),
-                LithoInfoListItem("Occhio di tigre + Citrino", "Tradizionalmente associate alla fiducia in sé stessi e all'abbondanza."),
-                LithoInfoListItem("Labradorite + Pietra di luna", "Due pietre spesso riunite per accompagnare l'intuizione e i periodi di transizione."),
-                LithoInfoListItem("Granato + Corniola", "Una combinazione tradizionalmente legata all'energia e alla vitalità."),
-                LithoInfoListItem("Acquamarina + Lapislazzuli", "Associate alla comunicazione e all'espressione di sé.")
-            ),
+            intro = "Abbinare più pietre tra loro è una pratica comune nella litoterapia tradizionale, con l'idea di sommare o bilanciare le rispettive virtù. Ecco gli abbinamenti più conosciuti, ciascuno collegato alle relative schede delle gemme.",
             note = "Non esiste una regola rigida: alcuni preferiscono concentrarsi su una sola pietra alla volta, altri amano combinarne diverse. La tradizione raccomanda semplicemente di privilegiare la coerenza dell'intenzione ricercata, piuttosto che moltiplicare pietre dalle virtù contraddittorie.",
             disclaimerTitle = "Una questione di credenza",
             disclaimerBody = "Come per la pulizia e la ricarica, questi abbinamenti derivano da credenze tradizionali, senza obbligo né fondamento scientifico validato — da esplorare liberamente, secondo la propria sensibilità."
@@ -203,15 +171,7 @@ object LithotherapieInfo {
             disclaimerBody = "Diese Praktiken entstammen volkstümlichen Überlieferungen und Glaubensvorstellungen, ohne nachgewiesene wissenschaftliche Grundlage. Es besteht keinerlei Verpflichtung, seine Steine zu reinigen oder aufzuladen: Es steht jedem frei, diesen Gepflogenheiten zu folgen oder nicht — ganz nach eigenem Empfinden."
         ),
         ASSOCIATIONS to LithoInfoPage(
-            intro = "Mehrere Steine miteinander zu kombinieren ist in der traditionellen Kristallheilkunde eine verbreitete Praxis, mit der Idee, ihre jeweiligen Wirkungen zu vereinen oder auszugleichen.",
-            listTitle = "Einige traditionelle Kombinationen",
-            listItems = listOf(
-                LithoInfoListItem("Amethyst + Rosenquarz", "Eine Kombination, der nachgesagt wird, Emotionen zu beruhigen und emotionale Gelassenheit zu fördern."),
-                LithoInfoListItem("Tigerauge + Citrin", "Traditionell mit Selbstvertrauen und Fülle assoziiert."),
-                LithoInfoListItem("Labradorit + Mondstein", "Zwei Steine, die oft zusammen verwendet werden, um Intuition und Übergangsphasen zu begleiten."),
-                LithoInfoListItem("Granat + Karneol", "Eine Kombination, die traditionell mit Energie und Vitalität verbunden wird."),
-                LithoInfoListItem("Aquamarin + Lapislazuli", "Mit Kommunikation und Selbstausdruck assoziiert.")
-            ),
+            intro = "Mehrere Steine miteinander zu kombinieren ist in der traditionellen Kristallheilkunde eine verbreitete Praxis, mit der Idee, ihre jeweiligen Wirkungen zu vereinen oder auszugleichen. Hier sind die bekanntesten Kombinationen, jeweils verlinkt mit den entsprechenden Steinprofilen.",
             note = "Es gibt keine strikte Regel: Manche bevorzugen es, sich auf einen einzigen Stein zu konzentrieren, andere kombinieren gerne mehrere. Die Überlieferung empfiehlt lediglich, auf die Kohärenz der gewünschten Wirkung zu achten, anstatt Steine mit widersprüchlichen Eigenschaften zu häufen.",
             disclaimerTitle = "Eine Frage des Glaubens",
             disclaimerBody = "Wie bei Reinigung und Aufladung entstammen auch diese Kombinationen traditionellen Glaubensvorstellungen, ohne Verpflichtung oder validierte wissenschaftliche Grundlage — frei zu erkunden, ganz nach eigenem Gefühl."

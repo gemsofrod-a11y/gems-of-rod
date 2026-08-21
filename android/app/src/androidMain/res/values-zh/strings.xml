@@ -115,6 +115,8 @@
     <string name="litho_nettoyage_subtitle">用于净化和恢复宝石能量的传统方法。</string>
     <string name="litho_associations_title">宝石搭配</string>
     <string name="litho_associations_subtitle">根据所求功效组合多种宝石。</string>
+    <string name="assoc_stones_title">搭配的宝石</string>
+    <string name="assoc_advice_title">使用建议</string>
 
     <!-- 证书 -->
     <string name="certificate_title">证书</string>

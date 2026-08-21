@@ -115,6 +115,8 @@
     <string name="litho_nettoyage_subtitle">Les pratiques traditionnelles pour purifier et revitaliser vos pierres.</string>
     <string name="litho_associations_title">Association de pierres</string>
     <string name="litho_associations_subtitle">Combiner plusieurs pierres selon les vertus recherchées.</string>
+    <string name="assoc_stones_title">Pierres associées</string>
+    <string name="assoc_advice_title">Conseil d\'utilisation</string>
 
     <!-- Certificat -->
     <string name="certificate_title">Certificat</string>

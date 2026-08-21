@@ -115,6 +115,8 @@
     <string name="litho_nettoyage_subtitle">De traditionele praktijken om uw stenen te zuiveren en te herladen.</string>
     <string name="litho_associations_title">Combinatie van stenen</string>
     <string name="litho_associations_subtitle">Meerdere stenen combineren op basis van het gewenste effect.</string>
+    <string name="assoc_stones_title">Gecombineerde stenen</string>
+    <string name="assoc_advice_title">Gebruikstip</string>
 
     <!-- Certificaat -->
     <string name="certificate_title">Certificaat</string>
