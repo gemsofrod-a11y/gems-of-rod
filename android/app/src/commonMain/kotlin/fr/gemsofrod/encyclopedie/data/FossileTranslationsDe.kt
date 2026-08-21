@@ -42,7 +42,7 @@ object FossileTranslationsDe {
         "fossile-trilobite-calymene" to FossileTranslation(
             nom = "Trilobit Calymene",
             descriptionCourte = "Ein klassischer, erschwinglicher Trilobit, oft eingerollt wie eine fossile Assel gefunden.",
-            descriptionLongue = "Die Gattung Calymene, weit verbreitet in marokkanischen Lagerstätten und in England lange unter dem Spitznamen „Dudley Bug" bekannt, zeichnet sich durch ihre Fähigkeit aus, sich zur Verteidigung vollständig einzurollen – genau wie eine heutige Assel. Dieses fossilisierte „Kugel"-Verhalten macht sie zu einem der gängigsten Einsteigerstücke für angehende Sammler.",
+            descriptionLongue = "Die Gattung Calymene, weit verbreitet in marokkanischen Lagerstätten und in England lange unter dem Spitznamen „Dudley Bug“ bekannt, zeichnet sich durch ihre Fähigkeit aus, sich zur Verteidigung vollständig einzurollen – genau wie eine heutige Assel. Dieses fossilisierte „Kugel“-Verhalten macht sie zu einem der gängigsten Einsteigerstücke für angehende Sammler.",
             interetJoaillerie = "Gering: Sammlung und Dekoration"
         ),
         "fossile-dent-megalodon" to FossileTranslation(
@@ -52,9 +52,9 @@ object FossileTranslationsDe {
             interetJoaillerie = "Hoch: als Krallenfassung gefasste rohe Anhänger, sehr gefragt in der dekorativen Schmuckherstellung"
         ),
         "fossile-os-dinosaure-gembone" to FossileTranslation(
-            nom = "Achatisierter Dinosaurierknochen („Gembone")",
+            nom = "Achatisierter Dinosaurierknochen („Gembone“)",
             descriptionCourte = "Ein Dinosaurierknochen, Molekül für Molekül vollständig durch farbigen Achat ersetzt.",
-            descriptionLongue = "In bestimmten Lagerstätten der amerikanischen Jurazeit wurden vergrabene Dinosaurierknochen vollständig silifiziert: Die ursprüngliche Knochensubstanz löste sich auf und wurde nach und nach durch farbige Kieselsäure ersetzt, wobei die poröse Zellstruktur des Knochens originalgetreu erhalten blieb, während sie sich in polierfähigen Achat verwandelte. Das von Lapidaren „Gembone" genannte Ergebnis vereint den wissenschaftlichen Wert eines echten Dinosaurierfossils mit der ästhetischen Anziehungskraft eines Halbedelsteins mit einzigartigen Mustern.",
+            descriptionLongue = "In bestimmten Lagerstätten der amerikanischen Jurazeit wurden vergrabene Dinosaurierknochen vollständig silifiziert: Die ursprüngliche Knochensubstanz löste sich auf und wurde nach und nach durch farbige Kieselsäure ersetzt, wobei die poröse Zellstruktur des Knochens originalgetreu erhalten blieb, während sie sich in polierfähigen Achat verwandelte. Das von Lapidaren „Gembone“ genannte Ergebnis vereint den wissenschaftlichen Wert eines echten Dinosaurierfossils mit der ästhetischen Anziehungskraft eines Halbedelsteins mit einzigartigen Mustern.",
             interetJoaillerie = "Hoch: sehr gefragte Cabochons, einzigartiges Zellmuster, das sich nicht nachahmen lässt"
         ),
         "fossile-poisson-green-river" to FossileTranslation(
@@ -101,7 +101,7 @@ object FossileTranslationsDe {
         ),
         "fossile-copal" to FossileTranslation(
             nom = "Kopal",
-            descriptionCourte = "Das „jugendliche" Stadium des Bernsteins: ein fossiles Harz, das zu jung ist, um vollständig polymerisiert zu sein.",
+            descriptionCourte = "Das „jugendliche“ Stadium des Bernsteins: ein fossiles Harz, das zu jung ist, um vollständig polymerisiert zu sein.",
             descriptionLongue = "Kopal ist ein pflanzliches Harz, das die langsame chemische Polymerisation, die ein Harz über Jahrmillionen in echten Bernstein verwandelt, noch nicht abgeschlossen hat. Weicher, besser löslich in Lösungsmitteln und oft transparenter, wird er mitunter fälschlich als Bernstein verkauft – ein einfacher Acetontest (der Kopal an der Oberfläche klebrig macht, echten Bernstein aber unverändert lässt) erlaubt die Unterscheidung.",
             interetJoaillerie = "Mäßig: handwerklicher lokaler Schmuck, in einer Verkaufsbeschreibung klar vom Bernstein zu unterscheiden"
         ),
@@ -114,13 +114,13 @@ object FossileTranslationsDe {
         "fossile-oursin" to FossileTranslation(
             nom = "Fossiler Seeigel",
             descriptionCourte = "Das kalkige, perfekt symmetrische Gehäuse eines Seeigels, lange als Talisman getragen.",
-            descriptionLongue = "Die Gehäuse (Schalen) fossiler Seeigel mit ihrer charakteristischen fünfstrahligen radiären Symmetrie finden sich in großer Zahl in den kreidezeitlichen Kreidevorkommen Europas und Nordafrikas. In der europäischen Folklore als „Feenbrot" oder „Petrusstein" bekannt, wurden sie traditionell als Glücksbringer oder Schutz für das Haus aufbewahrt, lange bevor sie wissenschaftlich untersucht wurden.",
-            interetJoaillerie = "Gering bis mäßig: traditionell als roher Anhänger getragen („Petrusstein" oder „Feenbrot" in Europa)"
+            descriptionLongue = "Die Gehäuse (Schalen) fossiler Seeigel mit ihrer charakteristischen fünfstrahligen radiären Symmetrie finden sich in großer Zahl in den kreidezeitlichen Kreidevorkommen Europas und Nordafrikas. In der europäischen Folklore als „Feenbrot“ oder „Petrusstein“ bekannt, wurden sie traditionell als Glücksbringer oder Schutz für das Haus aufbewahrt, lange bevor sie wissenschaftlich untersucht wurden.",
+            interetJoaillerie = "Gering bis mäßig: traditionell als roher Anhänger getragen („Petrusstein“ oder „Feenbrot“ in Europa)"
         ),
         "fossile-crinoide" to FossileTranslation(
             nom = "Crinoide (Seelilienstiel)",
-            descriptionCourte = "Die aufgereihten Kalkringe des Stiels einer „Seelilie" – ein festsitzendes Stachelhäutertier, keine Pflanze.",
-            descriptionLongue = "Trotz seines irreführenden Namens „Seelilie" ist der Crinoide ein Stachelhäutertier, verwandt mit Seeigel und Seestern, das mit einem langen gegliederten Stiel am Meeresboden verankert war. Dieser Stiel, zusammengesetzt aus aufeinandergestapelten Kalkringen wie Münzen, zerfällt nach dem Tod des Tieres leicht und findet sich in großer Menge in bestimmten Kalksteinen wieder – Geologen bezeichnen den polierten Plattenkalkstein mit solchen Einschlüssen als Crinoidenkalk.",
+            descriptionCourte = "Die aufgereihten Kalkringe des Stiels einer „Seelilie“ – ein festsitzendes Stachelhäutertier, keine Pflanze.",
+            descriptionLongue = "Trotz seines irreführenden Namens „Seelilie“ ist der Crinoide ein Stachelhäutertier, verwandt mit Seeigel und Seestern, das mit einem langen gegliederten Stiel am Meeresboden verankert war. Dieser Stiel, zusammengesetzt aus aufeinandergestapelten Kalkringen wie Münzen, zerfällt nach dem Tod des Tieres leicht und findet sich in großer Menge in bestimmten Kalksteinen wieder – Geologen bezeichnen den polierten Plattenkalkstein mit solchen Einschlüssen als Crinoidenkalk.",
             interetJoaillerie = "Mäßig: Platten und Dekorationsobjekte statt Schmuck, gelegentlich Cabochons aus isolierten Stielgliedern"
         ),
         "fossile-stromatolite" to FossileTranslation(
@@ -131,8 +131,8 @@ object FossileTranslationsDe {
         ),
         "fossile-belemnite" to FossileTranslation(
             nom = "Belemnit",
-            descriptionCourte = "Der fossile „Rostrum" eines prähistorischen Tintenfischs, in der Folklore lange mit einem Donnerkeil verwechselt.",
-            descriptionLongue = "Was man fossilisiert findet, ist nicht das gesamte Tier, sondern sein Rostrum – eine starre innere Kalkstruktur, die dem weichen Körper des Kopffüßers, eines ausgestorbenen Verwandten der heutigen Tintenfische, als Gegengewicht und Stütze diente. Seine kegelförmige, längliche Gestalt, in der europäischen Volksfolklore oft mit einem vom Himmel gefallenen „Donnerkeil" verwechselt, macht ihn selbst für Laien leicht erkennbar.",
+            descriptionCourte = "Der fossile „Rostrum“ eines prähistorischen Tintenfischs, in der Folklore lange mit einem Donnerkeil verwechselt.",
+            descriptionLongue = "Was man fossilisiert findet, ist nicht das gesamte Tier, sondern sein Rostrum – eine starre innere Kalkstruktur, die dem weichen Körper des Kopffüßers, eines ausgestorbenen Verwandten der heutigen Tintenfische, als Gegengewicht und Stütze diente. Seine kegelförmige, längliche Gestalt, in der europäischen Volksfolklore oft mit einem vom Himmel gefallenen „Donnerkeil“ verwechselt, macht ihn selbst für Laien leicht erkennbar.",
             interetJoaillerie = "Gering: Sammlung, gelegentliche rohe Anhänger"
         ),
     )
