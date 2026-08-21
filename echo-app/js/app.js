@@ -19,6 +19,28 @@
     return RECORD_PROMPTS[dayIndex % RECORD_PROMPTS.length];
   }
 
+  // Couleur d'accent personnalisable, purement cosmétique (--primary /
+  // --primary-2 uniquement) : n'affecte jamais --energy/--stress, qui
+  // restent les couleurs fixes des scores dans les graphiques.
+  const ACCENT_KEY = "echo_accent_color";
+  const ACCENT_PALETTE = {
+    violet: { primary: "#6f8cff", primary2: "#8f6fff" },
+    bleu: { primary: "#3d9cf2", primary2: "#5fb8ff" },
+    vert: { primary: "#34b378", primary2: "#5ecf95" },
+    ambre: { primary: "#e8a33d", primary2: "#f0bc63" },
+    rose: { primary: "#e0609f", primary2: "#ec85b8" },
+  };
+
+  function applyAccent(name) {
+    const accent = ACCENT_PALETTE[name];
+    if (!accent) return;
+    document.documentElement.style.setProperty("--primary", accent.primary);
+    document.documentElement.style.setProperty("--primary-2", accent.primary2);
+    els.accentSwatches.querySelectorAll(".accent-swatch").forEach((btn) => {
+      btn.classList.toggle("accent-swatch-active", btn.dataset.accent === name);
+    });
+  }
+
   // Rappel quotidien. Honnête sur sa limite : sans backend d'envoi push, un
   // navigateur ne peut pas notifier de façon fiable une fois l'app
   // complètement fermée. Ce qu'on peut garantir, c'est une bannière dans
@@ -148,6 +170,7 @@
     btnClear: document.getElementById("btn-clear"),
     btnHelp: document.getElementById("btn-help"),
     audioTrackToggle: document.getElementById("audio-track-toggle"),
+    accentSwatches: document.getElementById("accent-swatches"),
     btnLockToggle: document.getElementById("btn-lock-toggle"),
     lockSettingDesc: document.getElementById("lock-setting-desc"),
     btnCheckin: document.getElementById("btn-checkin"),
@@ -876,6 +899,15 @@
     Lock.showSetup(() => {
       updateLockButton();
     }, () => {});
+  });
+
+  applyAccent(localStorage.getItem(ACCENT_KEY) || "violet");
+  els.accentSwatches.addEventListener("click", (e) => {
+    const btn = e.target.closest(".accent-swatch");
+    if (!btn) return;
+    const name = btn.dataset.accent;
+    localStorage.setItem(ACCENT_KEY, name);
+    applyAccent(name);
   });
 
   els.reminderToggle.checked = isReminderEnabled();

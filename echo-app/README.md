@@ -44,6 +44,12 @@ tendances émotionnelles (énergie, stress, fatigue, humeur) dans le temps.
   garantit un rappel quand l'app est complètement fermée.
 - **Lecture audio de la réponse du compagnon** via la synthèse vocale du
   navigateur (fr-FR), sans dépendance ni appel réseau.
+- **Petites touches ludiques** : badge de série ("🔥 X jours d'affilée",
+  visible seulement si la série est encore vivante) et de paliers ("🏅 X
+  journaux"), calendrier visuel des 35 derniers jours dans l'Historique,
+  petite animation de clôture après un enregistrement (jamais en cas de
+  signal de crise, ni si `prefers-reduced-motion` est activé), et 5
+  couleurs d'accent au choix dans Réglages.
 
 ## Tester en développement
 
