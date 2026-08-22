@@ -44,3 +44,7 @@ jobs:
           name: test-report
           path: android/app/build/reports/tests/testDebugUnitTest/
           if-no-files-found: warn
+
+      - name: Print test failure stack traces on failure
+        if: failure()
+        run: cat android/app/build/test-results/testDebugUnitTest/*.xml || true
