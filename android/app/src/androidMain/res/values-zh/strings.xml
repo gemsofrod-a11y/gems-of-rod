@@ -147,6 +147,19 @@
     <!-- 宝石分析 -->
     <string name="gemmologie_analyse_title">宝石分析</string>
     <string name="gemmologie_analyse_subtitle">根据观察到的特征鉴定一块宝石。</string>
+
+    <!-- 宝石对比 -->
+    <string name="gemmologie_comparer_title">对比两颗宝石</string>
+    <string name="gemmologie_comparer_subtitle">硬度、折射率、密度……一目了然的图表对比。</string>
+    <string name="comparer_gem_a_label">宝石 A</string>
+    <string name="comparer_gem_b_label">宝石 B</string>
+    <string name="comparer_select_prompt">选择两颗宝石以比较它们的特性。</string>
+    <string name="comparer_axis_durete_short">硬度</string>
+    <string name="comparer_axis_indice_short">折射率</string>
+    <string name="comparer_axis_densite_short">密度</string>
+    <string name="comparer_axis_fluorescence_short">荧光</string>
+    <string name="comparer_axis_pleochroisme_short">多色性</string>
+    <string name="comparer_details_title">特性详情</string>
     <string name="analyse_intro">请填写您已知或观察到的特征。只需一项条件即可开始；填写的信息越多，结果越精确。</string>
     <string name="analyse_instruments_card_title">宝石学家的工具</string>
     <string name="analyse_instruments_card_subtitle">了解用于分析宝石的各种仪器。</string>

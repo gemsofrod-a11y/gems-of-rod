@@ -147,6 +147,19 @@
     <!-- Steinanalyse -->
     <string name="gemmologie_analyse_title">Steinanalyse</string>
     <string name="gemmologie_analyse_subtitle">Einen Stein anhand seiner beobachteten Eigenschaften bestimmen.</string>
+
+    <!-- Steinvergleich -->
+    <string name="gemmologie_comparer_title">Zwei Steine vergleichen</string>
+    <string name="gemmologie_comparer_subtitle">Härte, Brechungsindex, Dichte… auf einen Blick im Diagramm.</string>
+    <string name="comparer_gem_a_label">Stein A</string>
+    <string name="comparer_gem_b_label">Stein B</string>
+    <string name="comparer_select_prompt">Wählen Sie zwei Steine, um ihre Eigenschaften zu vergleichen.</string>
+    <string name="comparer_axis_durete_short">Härte</string>
+    <string name="comparer_axis_indice_short">Brechung</string>
+    <string name="comparer_axis_densite_short">Dichte</string>
+    <string name="comparer_axis_fluorescence_short">Fluo.</string>
+    <string name="comparer_axis_pleochroisme_short">Pleo.</string>
+    <string name="comparer_details_title">Details der Eigenschaften</string>
     <string name="analyse_intro">Gib die Eigenschaften ein, die du kennst oder beobachtest. Ein einziges Kriterium genügt für den Start; je mehr du angibst, desto genauer wird das Ergebnis.</string>
     <string name="analyse_instruments_card_title">Die Werkzeuge des Gemmologen</string>
     <string name="analyse_instruments_card_subtitle">Entdecken Sie die Instrumente zur Analyse eines Steins.</string>

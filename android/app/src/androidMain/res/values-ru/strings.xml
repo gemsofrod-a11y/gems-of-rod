@@ -147,6 +147,19 @@
     <!-- Анализ камня -->
     <string name="gemmologie_analyse_title">Анализ камня</string>
     <string name="gemmologie_analyse_subtitle">Определите камень по его наблюдаемым характеристикам.</string>
+
+    <!-- Сравнение камней -->
+    <string name="gemmologie_comparer_title">Сравнить два камня</string>
+    <string name="gemmologie_comparer_subtitle">Твёрдость, показатель преломления, плотность… наглядно на графике.</string>
+    <string name="comparer_gem_a_label">Камень A</string>
+    <string name="comparer_gem_b_label">Камень B</string>
+    <string name="comparer_select_prompt">Выберите два камня, чтобы сравнить их характеристики.</string>
+    <string name="comparer_axis_durete_short">Твёрдость</string>
+    <string name="comparer_axis_indice_short">Преломление</string>
+    <string name="comparer_axis_densite_short">Плотность</string>
+    <string name="comparer_axis_fluorescence_short">Флюор.</string>
+    <string name="comparer_axis_pleochroisme_short">Плеохр.</string>
+    <string name="comparer_details_title">Детали характеристик</string>
     <string name="analyse_intro">Укажите известные или наблюдаемые характеристики. Достаточно одного критерия для начала; чем больше вы укажете, тем точнее будет результат.</string>
     <string name="analyse_instruments_card_title">Инструменты геммолога</string>
     <string name="analyse_instruments_card_subtitle">Узнайте об инструментах, используемых для анализа камня.</string>
