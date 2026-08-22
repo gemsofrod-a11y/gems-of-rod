@@ -348,7 +348,7 @@ fun LithotherapieAllGemsScreen(
     onGemClick: (Gem) -> Unit,
     onBackClick: () -> Unit
 ) {
-    val gems = GemsRepository.all().map { it.localized() }.sortedBy { it.nom }
+    val gems = GemsRepository.gems.map { it.localized() }.sortedBy { it.nom }
 
     Scaffold(
         topBar = {
