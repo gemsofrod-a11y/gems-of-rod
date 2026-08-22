@@ -117,6 +117,8 @@
     <string name="litho_associations_subtitle">Combinar várias pedras segundo os benefícios buscados.</string>
     <string name="assoc_stones_title">Pedras associadas</string>
     <string name="assoc_advice_title">Conselho de uso</string>
+    <string name="litho_all_title">Todas as pedras</string>
+    <string name="litho_all_subtitle">Explore os benefícios de todas as pedras do catálogo.</string>
 
     <!-- Certificado -->
     <string name="certificate_title">Certificado</string>

@@ -46,6 +46,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.LegendaryMapScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LegendaryRiddleScreen
 import fr.gemsofrod.encyclopedie.ui.screens.AssociationDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.AssociationsListScreen
+import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieAllGemsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieGemsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieInfoScreen
@@ -80,6 +81,7 @@ private object Routes {
     const val FAMILLES_LIST = "familles"
     const val FAMILLE_DETAIL = "familles/{familySlug}"
     const val LITHOTHERAPIE_MENU = "lithotherapie_menu"
+    const val LITHOTHERAPIE_ALL = "lithotherapie_all"
     const val LITHOTHERAPIE_LABELS = "lithotherapie_labels/{scheme}"
     const val LITHOTHERAPIE_GEMS = "lithotherapie_gems/{scheme}/{label}"
     const val LITHOTHERAPIE_DETAIL = "lithotherapie_detail/{gemId}"
@@ -329,6 +331,13 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onSchemeClick = { scheme -> navController.navigate(Routes.lithotherapieLabels(scheme)) },
                 onInfoClick = { topic -> navController.navigate(Routes.lithotherapieInfo(topic)) },
                 onAssociationsClick = { navController.navigate(Routes.ASSOCIATIONS_LIST) },
+                onAllGemsClick = { navController.navigate(Routes.LITHOTHERAPIE_ALL) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.LITHOTHERAPIE_ALL) {
+            LithotherapieAllGemsScreen(
+                onGemClick = { gem -> navController.navigate(Routes.lithotherapieDetail(gem.id)) },
                 onBackClick = { navController.popBackStack() }
             )
         }

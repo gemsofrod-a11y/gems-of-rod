@@ -117,6 +117,8 @@
     <string name="litho_associations_subtitle">Комбинирование нескольких камней в зависимости от искомой пользы.</string>
     <string name="assoc_stones_title">Сочетаемые камни</string>
     <string name="assoc_advice_title">Совет по использованию</string>
+    <string name="litho_all_title">Все камни</string>
+    <string name="litho_all_subtitle">Ознакомьтесь со свойствами всех камней каталога.</string>
 
     <!-- Сертификат -->
     <string name="certificate_title">Сертификат</string>

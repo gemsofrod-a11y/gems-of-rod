@@ -106,6 +106,7 @@ fun LithotherapieMenuScreen(
     onSchemeClick: (String) -> Unit,
     onInfoClick: (String) -> Unit,
     onAssociationsClick: () -> Unit,
+    onAllGemsClick: () -> Unit,
     onBackClick: () -> Unit
 ) {
     Scaffold(
@@ -132,6 +133,13 @@ fun LithotherapieMenuScreen(
                 .fillMaxSize()
                 .padding(padding)
         ) {
+            item {
+                SchemeCard(
+                    title = stringResource(R.string.litho_all_title),
+                    subtitle = stringResource(R.string.litho_all_subtitle),
+                    onClick = onAllGemsClick
+                )
+            }
             items(
                 listOf(
                     LithotherapieSchemes.ZODIAC to R.string.litho_zodiac_subtitle,
@@ -328,6 +336,46 @@ fun LithotherapieGemsScreen(
                 items(gems) { gem ->
                     LithotherapieRow(gem = gem, onClick = { onGemClick(gem) })
                 }
+            }
+        }
+    }
+}
+
+/** Toutes les gemmes du catalogue avec leurs vertus en lithothérapie, triées par nom localisé. */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun LithotherapieAllGemsScreen(
+    onGemClick: (Gem) -> Unit,
+    onBackClick: () -> Unit
+) {
+    val gems = GemsRepository.gems.map { it.localized() }.sortedBy { it.nom }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.litho_all_title)) },
+                navigationIcon = {
+                    IconButton(onClick = onBackClick) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background,
+                    titleContentColor = MaterialTheme.colorScheme.onBackground
+                )
+            )
+        },
+        containerColor = MaterialTheme.colorScheme.background
+    ) { padding ->
+        LazyColumn(
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+        ) {
+            items(gems) { gem ->
+                LithotherapieRow(gem = gem, onClick = { onGemClick(gem) })
             }
         }
     }

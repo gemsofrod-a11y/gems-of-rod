@@ -117,6 +117,8 @@
     <string name="litho_associations_subtitle">Meerdere stenen combineren op basis van het gewenste effect.</string>
     <string name="assoc_stones_title">Gecombineerde stenen</string>
     <string name="assoc_advice_title">Gebruikstip</string>
+    <string name="litho_all_title">Alle stenen</string>
+    <string name="litho_all_subtitle">Ontdek de eigenschappen van alle stenen uit de catalogus.</string>
 
     <!-- Certificaat -->
     <string name="certificate_title">Certificaat</string>

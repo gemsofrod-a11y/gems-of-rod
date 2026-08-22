@@ -117,6 +117,8 @@
     <string name="litho_associations_subtitle">根据所求功效组合多种宝石。</string>
     <string name="assoc_stones_title">搭配的宝石</string>
     <string name="assoc_advice_title">使用建议</string>
+    <string name="litho_all_title">所有宝石</string>
+    <string name="litho_all_subtitle">浏览目录中所有宝石的功效。</string>
 
     <!-- 证书 -->
     <string name="certificate_title">证书</string>
