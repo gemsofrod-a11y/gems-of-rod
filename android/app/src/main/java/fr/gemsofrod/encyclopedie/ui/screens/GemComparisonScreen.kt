@@ -73,12 +73,16 @@ import kotlin.math.PI
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun GemComparisonScreen(onBackClick: () -> Unit) {
+fun GemComparisonScreen(
+    onBackClick: () -> Unit,
+    initialGemAId: String? = null,
+    initialGemBId: String? = null
+) {
     val allGems = remember { GemsRepository.gems }
     val localizedGems = allGems.map { it.localized() }.sortedBy { it.nom }
 
-    var gemA by remember { mutableStateOf<Gem?>(null) }
-    var gemB by remember { mutableStateOf<Gem?>(null) }
+    var gemA by remember { mutableStateOf(initialGemAId?.let { id -> localizedGems.find { it.id == id } }) }
+    var gemB by remember { mutableStateOf(initialGemBId?.let { id -> localizedGems.find { it.id == id } }) }
 
     val accentA = MaterialTheme.colorScheme.primary
     val accentB = MaterialTheme.colorScheme.tertiary

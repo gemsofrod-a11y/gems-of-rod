@@ -12,6 +12,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onRoot
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import fr.gemsofrod.encyclopedie.ui.screens.AnalyseScreen
+import fr.gemsofrod.encyclopedie.ui.screens.GemComparisonScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GlossaryScreen
 import fr.gemsofrod.encyclopedie.ui.screens.HomeScreen
@@ -74,7 +75,10 @@ class ScreenshotTest {
             onLanguageClick = {},
             onFavoritesClick = {},
             onMeteoritesClick = {},
-            onQuizClick = {}
+            onFossilesClick = {},
+            onQuizClick = {},
+            onAchievementsClick = {},
+            onLabClick = {}
         )
     }
 
@@ -96,5 +100,10 @@ class ScreenshotTest {
     @Test
     fun glossaire() = capture("05_lexique") {
         GlossaryScreen(onBackClick = {})
+    }
+
+    @Test
+    fun comparer() = capture("06_comparer") {
+        GemComparisonScreen(onBackClick = {}, initialGemAId = "rubis", initialGemBId = "saphir-bleu")
     }
 }
