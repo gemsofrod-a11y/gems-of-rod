@@ -117,6 +117,8 @@
     <string name="litho_associations_subtitle">Combining several stones according to the virtues sought.</string>
     <string name="assoc_stones_title">Paired stones</string>
     <string name="assoc_advice_title">Usage tip</string>
+    <string name="litho_all_title">All stones</string>
+    <string name="litho_all_subtitle">Browse the virtues of every stone in the catalogue.</string>
 
     <!-- Certificate -->
     <string name="certificate_title">Certificate</string>

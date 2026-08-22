@@ -117,6 +117,8 @@
     <string name="litho_associations_subtitle">Combinare più pietre secondo le virtù ricercate.</string>
     <string name="assoc_stones_title">Pietre abbinate</string>
     <string name="assoc_advice_title">Consiglio d\'uso</string>
+    <string name="litho_all_title">Tutte le pietre</string>
+    <string name="litho_all_subtitle">Sfoglia le virtù di tutte le pietre del catalogo.</string>
 
     <!-- Certificato -->
     <string name="certificate_title">Certificato</string>
