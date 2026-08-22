@@ -147,6 +147,19 @@
     <!-- Analyse de pierre -->
     <string name="gemmologie_analyse_title">Analyse de pierre</string>
     <string name="gemmologie_analyse_subtitle">Identifiez une pierre à partir de ses caractéristiques observées.</string>
+
+    <!-- Comparaison de pierres -->
+    <string name="gemmologie_comparer_title">Comparer deux pierres</string>
+    <string name="gemmologie_comparer_subtitle">Dureté, indice de réfraction, densité… en un coup d\'œil sur un graphique.</string>
+    <string name="comparer_gem_a_label">Pierre A</string>
+    <string name="comparer_gem_b_label">Pierre B</string>
+    <string name="comparer_select_prompt">Choisissez deux pierres pour comparer leurs caractéristiques.</string>
+    <string name="comparer_axis_durete_short">Dureté</string>
+    <string name="comparer_axis_indice_short">Réfraction</string>
+    <string name="comparer_axis_densite_short">Densité</string>
+    <string name="comparer_axis_fluorescence_short">Fluo.</string>
+    <string name="comparer_axis_pleochroisme_short">Pléo.</string>
+    <string name="comparer_details_title">Détail des caractéristiques</string>
     <string name="analyse_intro">Renseignez les caractéristiques que vous connaissez ou observez. Un seul critère suffit pour démarrer ; plus vous en indiquez, plus le résultat sera précis.</string>
     <string name="analyse_instruments_card_title">Les outils du gemmologue</string>
     <string name="analyse_instruments_card_subtitle">Découvrez les instruments utilisés pour analyser une pierre.</string>

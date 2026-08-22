@@ -30,6 +30,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.CertificateScreen
 import fr.gemsofrod.encyclopedie.ui.screens.ColorListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.FamillesListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.FavoritesScreen
+import fr.gemsofrod.encyclopedie.ui.screens.GemComparisonScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemmologieMenuScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemsListScreen
@@ -73,6 +74,7 @@ private object Routes {
     const val PAYS_LIST = "pays_list"
     const val PAYS_DETAIL = "pays/{country}"
     const val ANALYSE = "analyse"
+    const val COMPARER = "comparer"
     const val INSTRUMENTS = "instruments"
     const val GLOSSAIRE = "glossaire"
     const val GEM_DETAIL = "gem/{gemId}"
@@ -285,9 +287,13 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onCouleurClick = { navController.navigate(Routes.COULEUR_LIST) },
                 onPaysClick = { navController.navigate(Routes.PAYS_LIST) },
                 onAnalyseClick = { navController.navigate(Routes.ANALYSE) },
+                onComparerClick = { navController.navigate(Routes.COMPARER) },
                 onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
                 onBackClick = { navController.popBackStack() }
             )
+        }
+        composable(Routes.COMPARER) {
+            GemComparisonScreen(onBackClick = { navController.popBackStack() })
         }
         composable(Routes.ANALYSE) {
             AnalyseScreen(

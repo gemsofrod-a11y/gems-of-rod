@@ -147,6 +147,19 @@
     <!-- Steenanalyse -->
     <string name="gemmologie_analyse_title">Steenanalyse</string>
     <string name="gemmologie_analyse_subtitle">Identificeer een steen op basis van de waargenomen kenmerken.</string>
+
+    <!-- Stenen vergelijken -->
+    <string name="gemmologie_comparer_title">Twee stenen vergelijken</string>
+    <string name="gemmologie_comparer_subtitle">Hardheid, brekingsindex, dichtheid… in één oogopslag op een grafiek.</string>
+    <string name="comparer_gem_a_label">Steen A</string>
+    <string name="comparer_gem_b_label">Steen B</string>
+    <string name="comparer_select_prompt">Kies twee stenen om hun eigenschappen te vergelijken.</string>
+    <string name="comparer_axis_durete_short">Hardheid</string>
+    <string name="comparer_axis_indice_short">Breking</string>
+    <string name="comparer_axis_densite_short">Dichtheid</string>
+    <string name="comparer_axis_fluorescence_short">Fluor.</string>
+    <string name="comparer_axis_pleochroisme_short">Pleo.</string>
+    <string name="comparer_details_title">Details van de eigenschappen</string>
     <string name="analyse_intro">Geef de kenmerken op die u kent of waarneemt. Eén criterium volstaat om te beginnen; hoe meer u opgeeft, hoe nauwkeuriger het resultaat.</string>
     <string name="analyse_instruments_card_title">De gereedschappen van de gemmoloog</string>
     <string name="analyse_instruments_card_subtitle">Ontdek de instrumenten die worden gebruikt om een steen te analyseren.</string>

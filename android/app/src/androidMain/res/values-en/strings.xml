@@ -147,6 +147,19 @@
     <!-- Stone analysis -->
     <string name="gemmologie_analyse_title">Stone analysis</string>
     <string name="gemmologie_analyse_subtitle">Identify a stone from its observed characteristics.</string>
+
+    <!-- Stone comparison -->
+    <string name="gemmologie_comparer_title">Compare two stones</string>
+    <string name="gemmologie_comparer_subtitle">Hardness, refractive index, density… at a glance on a chart.</string>
+    <string name="comparer_gem_a_label">Stone A</string>
+    <string name="comparer_gem_b_label">Stone B</string>
+    <string name="comparer_select_prompt">Choose two stones to compare their characteristics.</string>
+    <string name="comparer_axis_durete_short">Hardness</string>
+    <string name="comparer_axis_indice_short">Refraction</string>
+    <string name="comparer_axis_densite_short">Density</string>
+    <string name="comparer_axis_fluorescence_short">Fluo.</string>
+    <string name="comparer_axis_pleochroisme_short">Pleo.</string>
+    <string name="comparer_details_title">Characteristic details</string>
     <string name="analyse_intro">Enter the characteristics you know or observe. A single criterion is enough to get started; the more you provide, the more precise the results.</string>
     <string name="analyse_instruments_card_title">The gemologist\'s tools</string>
     <string name="analyse_instruments_card_subtitle">Discover the instruments used to analyse a stone.</string>
