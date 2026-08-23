@@ -245,8 +245,23 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | fossile-crinoide | ♻️ [File:Ordovician crinoid stem fragments.jpg](https://commons.wikimedia.org/wiki/File:Ordovician_crinoid_stem_fragments.jpg) | ♻️ [File:Crushed crinoid stems from the Jurassic, Iran.jpg](https://commons.wikimedia.org/wiki/File:Crushed_crinoid_stems_from_the_Jurassic,_Iran.jpg) |
 | fossile-stromatolite | ♻️ [File:Stromatolite "Cryptozoon proliferum" surface.png](https://commons.wikimedia.org/wiki/File:Stromatolite_"Cryptozoon_proliferum"_surface.png) | ⏸️ recherche suspendue |
 | fossile-belemnite | ♻️ [File:Rostre de bélemnite sur craie (Belgique) 1.JPG](https://commons.wikimedia.org/wiki/File:Rostre_de_bélemnite_sur_craie_(Belgique)_1.JPG) | — |
+| coquillage-ormeau | ✅ [File:Abalone.jpg](https://commons.wikimedia.org/wiki/File:Abalone.jpg) | — |
+| coquillage-cauri-monnaie | ✅ [File:Monetaria moneta - Money cowrie (কড়ি) 03.jpg](https://commons.wikimedia.org/wiki/File:Monetaria_moneta_-_Money_cowrie_(কড়ি)_03.jpg) | — |
+| coquillage-cypree-doree | ✅ [File:Callistocypraea aurantium 01.jpg](https://commons.wikimedia.org/wiki/File:Callistocypraea_aurantium_01.jpg) | — |
+| coquillage-conque-reine | ✅ [File:Queen Conch shell. Kilmaronock, Military Road, West Dunbartonshire.jpg](https://commons.wikimedia.org/wiki/File:Queen_Conch_shell._Kilmaronock,_Military_Road,_West_Dunbartonshire.jpg) | — |
+| coquillage-trocas | ✅ [File:A shell of Trochus niloticus snail.jpg](https://commons.wikimedia.org/wiki/File:A_shell_of_Trochus_niloticus_snail.jpg) | — |
+| coquillage-burgau-vert | ✅ [File:Turbo Marmoratus Madagascar.jpg](https://commons.wikimedia.org/wiki/File:Turbo_Marmoratus_Madagascar.jpg) | — |
+| coquillage-murex-pourpre | ✅ [File:Bolinus brandaris 01.jpg](https://commons.wikimedia.org/wiki/File:Bolinus_brandaris_01.jpg) | — |
+| coquillage-lambis | ✅ [File:Lambis crocata 2010 G1.jpg](https://commons.wikimedia.org/wiki/File:Lambis_crocata_2010_G1.jpg) | — |
+| coquillage-huitre-perliere-noire | ✅ [File:Pinctada margaritifera 001.png](https://commons.wikimedia.org/wiki/File:Pinctada_margaritifera_001.png) | — |
+| coquillage-huitre-perliere-doree | ✅ [File:Naturalis Biodiversity Center - RMNH.MOL.318379 - Pinctada maxima (Jameson, 1901) - Pteriidae - Mollusc shell.jpeg](https://commons.wikimedia.org/wiki/File:Naturalis_Biodiversity_Center_-_RMNH.MOL.318379_-_Pinctada_maxima_(Jameson,_1901)_-_Pteriidae_-_Mollusc_shell.jpeg) | — |
+| coquillage-saint-jacques | ✅ [File:Pecten maximus 02.jpg](https://commons.wikimedia.org/wiki/File:Pecten_maximus_02.jpg) | — |
+| coquillage-spondyle | ✅ [File:Spondylus versicolor 01.jpg](https://commons.wikimedia.org/wiki/File:Spondylus_versicolor_01.jpg) | — |
+| coquillage-benitier-geant | ✅ [File:Tridacna gigas 01.jpg](https://commons.wikimedia.org/wiki/File:Tridacna_gigas_01.jpg) | — |
+| coquillage-moule-perliere-eau-douce | ✅ [File:Margaritifera margaritifera-buiten.jpg](https://commons.wikimedia.org/wiki/File:Margaritifera_margaritifera-buiten.jpg) | — |
+| coquillage-nautile | ✅ [File:Nautilus pompilius albino.jpg](https://commons.wikimedia.org/wiki/File:Nautilus_pompilius_albino.jpg) | ✅ [File:Nautilus Pompilius MN 01.jpg](https://commons.wikimedia.org/wiki/File:Nautilus_Pompilius_MN_01.jpg) |
 
-**286 / 456** photos récupérées au total.
+**302 / 472** photos récupérées au total.
 
 ## Photos d'inclusions
 
