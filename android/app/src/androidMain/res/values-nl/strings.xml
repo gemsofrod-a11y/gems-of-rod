@@ -236,6 +236,25 @@
     <string name="fossile_fiche_interet_joaillerie">Interesse voor de juwelierskunst</string>
     <string name="fossile_fiche_prix">Geschatte prijs per gram</string>
 
+    <!-- Schelpen -->
+    <string name="home_coquillages_title">Schelpen</string>
+    <string name="home_coquillages_subtitle">Parelmoer, kauri\'s, koningsslakken en nautilus: de gebeeldhouwde schoonheid van zeeweekdieren.</string>
+    <string name="coquillages_intro">Van de camee uit roze koningsslak tot het glanzende parelmoer van de zee-oor, en de kauri\'s die op drie continenten als betaalmiddel dienden: dit onderdeel verkent de schelpen die interessant zijn voor de steensnijder en de juwelier, naast enkele stukken die vooral om hun geschiedenis of symboliek worden gewaardeerd.</string>
+    <string name="coquillages_classification_title">Classificatie</string>
+    <string name="coquillages_classification_subtitle">Buikpotigen, tweekleppigen, koppotige met schelp: de grote schelpenfamilies begrijpen.</string>
+    <string name="coquillage_famille_gastropode">Buikpotigen</string>
+    <string name="coquillage_famille_bivalve">Tweekleppigen</string>
+    <string name="coquillage_famille_cephalopode">Koppotige met schelp</string>
+    <string name="coquillage_fiche_origine">Herkomst</string>
+    <string name="coquillage_fiche_composition">Minerale samenstelling</string>
+    <string name="coquillage_fiche_durete">Hardheid (Mohs)</string>
+    <string name="coquillage_fiche_densite">Dichtheid</string>
+    <string name="coquillage_fiche_couleur">Kleur</string>
+    <string name="coquillage_fiche_taille">Slijpbaarheid</string>
+    <string name="coquillage_fiche_qualite_gemme">Edelsteenkwaliteit</string>
+    <string name="coquillage_fiche_interet_joaillerie">Belang voor sieraden</string>
+    <string name="coquillage_fiche_prix">Geschatte prijs</string>
+
     <!-- Prestaties -->
     <string name="achievements_title">Prestaties</string>
     <string name="achievements_progress_summary">%1$d / %2$d prestaties ontgrendeld</string>
@@ -257,6 +276,8 @@
     <string name="achievement_rainbow_desc">Bekijk minstens één edelsteen uit elk van de %1$d kleurcategorieën.</string>
     <string name="achievement_fossil_collector_title">Paleontoloog</string>
     <string name="achievement_fossil_collector_desc">Bekijk alle %1$d fossielen uit de catalogus.</string>
+    <string name="achievement_shell_collector_title">Schelpenkenner</string>
+    <string name="achievement_shell_collector_desc">Bekijk alle %1$d schelpen uit de catalogus.</string>
     <string name="achievement_first_favorite_title">Eerste favoriet</string>
     <string name="achievement_first_favorite_desc">Voeg een edelsteen toe aan uw favorieten.</string>
     <string name="achievement_fan_title">Liefhebber</string>

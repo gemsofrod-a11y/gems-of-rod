@@ -236,6 +236,25 @@
     <string name="fossile_fiche_interet_joaillerie">Interés en joyería</string>
     <string name="fossile_fiche_prix">Precio aproximado por gramo</string>
 
+    <!-- Conchas marinas -->
+    <string name="home_coquillages_title">Conchas marinas</string>
+    <string name="home_coquillages_subtitle">Nácar, cauris, caracolas y nautilo: la belleza esculpida de los moluscos marinos.</string>
+    <string name="coquillages_intro">Desde el camafeo de caracola rosa hasta el nácar irisado del abulón, sin olvidar los cauris que sirvieron de moneda en tres continentes: esta sección explora las conchas marinas de interés para el lapidario y el joyero, junto con algunas piezas apreciadas sobre todo por su historia o simbolismo.</string>
+    <string name="coquillages_classification_title">Clasificación</string>
+    <string name="coquillages_classification_subtitle">Gasterópodos, bivalvos, cefalópodo con concha: comprender las grandes familias de conchas marinas.</string>
+    <string name="coquillage_famille_gastropode">Gasterópodos</string>
+    <string name="coquillage_famille_bivalve">Bivalvos</string>
+    <string name="coquillage_famille_cephalopode">Cefalópodo con concha</string>
+    <string name="coquillage_fiche_origine">Origen</string>
+    <string name="coquillage_fiche_composition">Composición mineral</string>
+    <string name="coquillage_fiche_durete">Dureza (Mohs)</string>
+    <string name="coquillage_fiche_densite">Densidad</string>
+    <string name="coquillage_fiche_couleur">Color</string>
+    <string name="coquillage_fiche_taille">Posibilidad de talla</string>
+    <string name="coquillage_fiche_qualite_gemme">Calidad gema</string>
+    <string name="coquillage_fiche_interet_joaillerie">Interés en joyería</string>
+    <string name="coquillage_fiche_prix">Precio aproximado</string>
+
     <!-- Logros -->
     <string name="achievements_title">Logros</string>
     <string name="achievements_progress_summary">%1$d / %2$d logros desbloqueados</string>
@@ -257,6 +276,8 @@
     <string name="achievement_rainbow_desc">Consulte al menos una gema de cada una de las %1$d categorías de color.</string>
     <string name="achievement_fossil_collector_title">Paleontólogo</string>
     <string name="achievement_fossil_collector_desc">Consulte los %1$d fósiles del catálogo.</string>
+    <string name="achievement_shell_collector_title">Conquiliólogo</string>
+    <string name="achievement_shell_collector_desc">Consulte las %1$d conchas marinas del catálogo.</string>
     <string name="achievement_first_favorite_title">Primer favorito</string>
     <string name="achievement_first_favorite_desc">Añada una gema a sus favoritos.</string>
     <string name="achievement_fan_title">Aficionado</string>

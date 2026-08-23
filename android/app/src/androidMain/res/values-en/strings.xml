@@ -236,6 +236,25 @@
     <string name="fossile_fiche_interet_joaillerie">Interest in jewelry</string>
     <string name="fossile_fiche_prix">Approximate price per gram</string>
 
+    <!-- Seashells -->
+    <string name="home_coquillages_title">Seashells</string>
+    <string name="home_coquillages_subtitle">Mother-of-pearl, cowries, conchs and nautilus: the sculpted beauty of marine mollusks.</string>
+    <string name="coquillages_intro">From the pink conch cameo to the iridescent nacre of the abalone, not forgetting the cowries once used as currency on three continents: this section explores the seashells of interest to lapidaries and jewellers, alongside a few pieces valued mainly for their history or symbolism.</string>
+    <string name="coquillages_classification_title">Classification</string>
+    <string name="coquillages_classification_subtitle">Gastropods, bivalves, shelled cephalopod: understanding the main seashell families.</string>
+    <string name="coquillage_famille_gastropode">Gastropods</string>
+    <string name="coquillage_famille_bivalve">Bivalves</string>
+    <string name="coquillage_famille_cephalopode">Shelled cephalopod</string>
+    <string name="coquillage_fiche_origine">Origin</string>
+    <string name="coquillage_fiche_composition">Mineral composition</string>
+    <string name="coquillage_fiche_durete">Hardness (Mohs)</string>
+    <string name="coquillage_fiche_densite">Density</string>
+    <string name="coquillage_fiche_couleur">Colour</string>
+    <string name="coquillage_fiche_taille">Cuttability</string>
+    <string name="coquillage_fiche_qualite_gemme">Gem quality</string>
+    <string name="coquillage_fiche_interet_joaillerie">Jewellery interest</string>
+    <string name="coquillage_fiche_prix">Approximate price</string>
+
     <!-- Achievements -->
     <string name="achievements_title">Achievements</string>
     <string name="achievements_progress_summary">%1$d / %2$d achievements unlocked</string>
@@ -257,6 +276,8 @@
     <string name="achievement_rainbow_desc">View at least one gem from each of the %1$d color categories.</string>
     <string name="achievement_fossil_collector_title">Paleontologist</string>
     <string name="achievement_fossil_collector_desc">View all %1$d fossils in the catalog.</string>
+    <string name="achievement_shell_collector_title">Conchologist</string>
+    <string name="achievement_shell_collector_desc">View all %1$d seashells in the catalog.</string>
     <string name="achievement_first_favorite_title">First favorite</string>
     <string name="achievement_first_favorite_desc">Add a gem to your favorites.</string>
     <string name="achievement_fan_title">Fan</string>

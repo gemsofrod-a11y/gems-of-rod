@@ -1,6 +1,7 @@
 package fr.gemsofrod.encyclopedie.ui
 
 import fr.gemsofrod.encyclopedie.R
+import fr.gemsofrod.encyclopedie.data.CoquillageFamille
 import fr.gemsofrod.encyclopedie.data.FossileFamille
 import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.data.GemRarete
@@ -44,6 +45,10 @@ fun resolveLabelStringRes(labelKey: String): Int = when (labelKey) {
     "fossile_famille_ambre" -> R.string.fossile_famille_ambre
     "fossile_famille_corail" -> R.string.fossile_famille_corail
 
+    "coquillage_famille_gastropode" -> R.string.coquillage_famille_gastropode
+    "coquillage_famille_bivalve" -> R.string.coquillage_famille_bivalve
+    "coquillage_famille_cephalopode" -> R.string.coquillage_famille_cephalopode
+
     else -> error("Clé de libellé inconnue : $labelKey")
 }
 
@@ -51,3 +56,4 @@ val GemRarete.labelRes: Int get() = resolveLabelStringRes(labelKey)
 val GemColorCategory.labelRes: Int get() = resolveLabelStringRes(labelKey)
 val MeteoriteFamille.labelRes: Int get() = resolveLabelStringRes(labelKey)
 val FossileFamille.labelRes: Int get() = resolveLabelStringRes(labelKey)
+val CoquillageFamille.labelRes: Int get() = resolveLabelStringRes(labelKey)

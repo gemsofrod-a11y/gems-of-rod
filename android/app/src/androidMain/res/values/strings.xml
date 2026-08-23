@@ -236,6 +236,25 @@
     <string name="fossile_fiche_interet_joaillerie">Intérêt en joaillerie</string>
     <string name="fossile_fiche_prix">Prix approximatif au gramme</string>
 
+    <!-- Coquillages -->
+    <string name="home_coquillages_title">Coquillages</string>
+    <string name="home_coquillages_subtitle">Nacre, cauris, conques et nautile : la beauté sculptée des mollusques marins.</string>
+    <string name="coquillages_intro">Du camée en conque rose à la nacre irisée de l\'ormeau, en passant par les cauris qui ont servi de monnaie sur trois continents : cette section explore les coquillages qui intéressent le lapidaire et le joaillier, aux côtés de quelques pièces à la portée avant tout historique ou symbolique.</string>
+    <string name="coquillages_classification_title">Classification</string>
+    <string name="coquillages_classification_subtitle">Gastéropodes, bivalves, céphalopode à coquille : comprendre les grandes familles de coquillages.</string>
+    <string name="coquillage_famille_gastropode">Gastéropodes</string>
+    <string name="coquillage_famille_bivalve">Bivalves</string>
+    <string name="coquillage_famille_cephalopode">Céphalopode à coquille</string>
+    <string name="coquillage_fiche_origine">Origine</string>
+    <string name="coquillage_fiche_composition">Composition minérale</string>
+    <string name="coquillage_fiche_durete">Dureté (Mohs)</string>
+    <string name="coquillage_fiche_densite">Densité</string>
+    <string name="coquillage_fiche_couleur">Couleur</string>
+    <string name="coquillage_fiche_taille">Possibilité de taille</string>
+    <string name="coquillage_fiche_qualite_gemme">Qualité gemme</string>
+    <string name="coquillage_fiche_interet_joaillerie">Intérêt en joaillerie</string>
+    <string name="coquillage_fiche_prix">Prix approximatif</string>
+
     <!-- Succès -->
     <string name="achievements_title">Succès</string>
     <string name="achievements_progress_summary">%1$d / %2$d succès débloqués</string>
@@ -257,6 +276,8 @@
     <string name="achievement_rainbow_desc">Consultez au moins une gemme de chacune des %1$d catégories de couleur.</string>
     <string name="achievement_fossil_collector_title">Paléontologue</string>
     <string name="achievement_fossil_collector_desc">Consultez les %1$d fossiles du catalogue.</string>
+    <string name="achievement_shell_collector_title">Conchyliologue</string>
+    <string name="achievement_shell_collector_desc">Consultez les %1$d coquillages du catalogue.</string>
     <string name="achievement_first_favorite_title">Premier favori</string>
     <string name="achievement_first_favorite_desc">Ajoutez une gemme à vos favoris.</string>
     <string name="achievement_fan_title">Passionné</string>

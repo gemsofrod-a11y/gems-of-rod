@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalConfiguration
 import fr.gemsofrod.encyclopedie.data.Association
 import fr.gemsofrod.encyclopedie.data.AssociationLocalization
+import fr.gemsofrod.encyclopedie.data.Coquillage
+import fr.gemsofrod.encyclopedie.data.CoquillageLocalization
 import fr.gemsofrod.encyclopedie.data.Fossile
 import fr.gemsofrod.encyclopedie.data.FossileLocalization
 import fr.gemsofrod.encyclopedie.data.Gem
@@ -55,6 +57,17 @@ fun Fossile.localized(): Fossile {
 fun Association.localized(): Association {
     val languageCode = LocalConfiguration.current.locales[0].language
     return AssociationLocalization.localize(this, languageCode)
+}
+
+/**
+ * Renvoie ce coquillage avec son nom et ses textes descriptifs traduits dans
+ * la langue d'interface actuelle, ou tel quel si aucune traduction n'est
+ * disponible pour cette langue.
+ */
+@Composable
+fun Coquillage.localized(): Coquillage {
+    val languageCode = LocalConfiguration.current.locales[0].language
+    return CoquillageLocalization.localize(this, languageCode)
 }
 
 /**

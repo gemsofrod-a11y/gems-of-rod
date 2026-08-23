@@ -56,6 +56,9 @@ import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieMenuScreen
 import fr.gemsofrod.encyclopedie.ui.screens.FossileClassificationScreen
 import fr.gemsofrod.encyclopedie.ui.screens.FossileDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.FossilesMenuScreen
+import fr.gemsofrod.encyclopedie.ui.screens.CoquillageClassificationScreen
+import fr.gemsofrod.encyclopedie.ui.screens.CoquillageDetailScreen
+import fr.gemsofrod.encyclopedie.ui.screens.CoquillagesMenuScreen
 import fr.gemsofrod.encyclopedie.ui.screens.MeteoriteClassificationScreen
 import fr.gemsofrod.encyclopedie.ui.screens.MeteoriteDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.MeteoritesMenuScreen
@@ -97,6 +100,9 @@ private object Routes {
     const val FOSSILES = "fossiles"
     const val FOSSILE_CLASSIFICATION = "fossile_classification"
     const val FOSSILE_DETAIL = "fossile/{fossileId}"
+    const val COQUILLAGES = "coquillages"
+    const val COQUILLAGE_CLASSIFICATION = "coquillage_classification"
+    const val COQUILLAGE_DETAIL = "coquillage/{coquillageId}"
     const val QUIZ = "quiz"
     const val ACHIEVEMENTS = "achievements"
     const val LAB_MENU = "lab_menu"
@@ -113,6 +119,7 @@ private object Routes {
     fun labNotebookDetail(sampleId: String) = "lab_notebook_detail/$sampleId"
     fun meteoriteDetail(meteoriteId: String) = "meteorite/$meteoriteId"
     fun fossileDetail(fossileId: String) = "fossile/$fossileId"
+    fun coquillageDetail(coquillageId: String) = "coquillage/$coquillageId"
     fun paysDetail(country: String) = "pays/${encode(country)}"
     fun gemDetail(gemId: String) = "gem/$gemId"
     fun certificate(gemId: String) = "certificate/$gemId"
@@ -170,6 +177,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onFavoritesClick = { navController.navigate(Routes.FAVORITES) },
                 onMeteoritesClick = { navController.navigate(Routes.METEORITES) },
                 onFossilesClick = { navController.navigate(Routes.FOSSILES) },
+                onCoquillagesClick = { navController.navigate(Routes.COQUILLAGES) },
                 onQuizClick = { navController.navigate(Routes.QUIZ) },
                 onAchievementsClick = { navController.navigate(Routes.ACHIEVEMENTS) },
                 onLabClick = { navController.navigate(Routes.LAB_MENU) }
@@ -273,6 +281,23 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             val fossileId = backStackEntry.arguments?.getString("fossileId").orEmpty()
             FossileDetailScreen(
                 fossileId = fossileId,
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.COQUILLAGES) {
+            CoquillagesMenuScreen(
+                onClassificationClick = { navController.navigate(Routes.COQUILLAGE_CLASSIFICATION) },
+                onCoquillageClick = { coquillage -> navController.navigate(Routes.coquillageDetail(coquillage.id)) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.COQUILLAGE_CLASSIFICATION) {
+            CoquillageClassificationScreen(onBackClick = { navController.popBackStack() })
+        }
+        composable(Routes.COQUILLAGE_DETAIL) { backStackEntry ->
+            val coquillageId = backStackEntry.arguments?.getString("coquillageId").orEmpty()
+            CoquillageDetailScreen(
+                coquillageId = coquillageId,
                 onBackClick = { navController.popBackStack() }
             )
         }

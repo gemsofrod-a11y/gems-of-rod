@@ -236,6 +236,25 @@
     <string name="fossile_fiche_interet_joaillerie">Interesse in gioielleria</string>
     <string name="fossile_fiche_prix">Prezzo approssimativo al grammo</string>
 
+    <!-- Conchiglie -->
+    <string name="home_coquillages_title">Conchiglie</string>
+    <string name="home_coquillages_subtitle">Madreperla, ciprea, conchiglie regina e nautilus: la bellezza scolpita dei molluschi marini.</string>
+    <string name="coquillages_intro">Dal cammeo di conchiglia rosa alla madreperla iridescente dell\'abalone, senza dimenticare le ciprea usate come moneta su tre continenti: questa sezione esplora le conchiglie di interesse per il lapidario e il gioielliere, insieme ad alcuni pezzi apprezzati soprattutto per la loro storia o il loro simbolismo.</string>
+    <string name="coquillages_classification_title">Classificazione</string>
+    <string name="coquillages_classification_subtitle">Gasteropodi, bivalvi, cefalopode con conchiglia: comprendere le grandi famiglie di conchiglie.</string>
+    <string name="coquillage_famille_gastropode">Gasteropodi</string>
+    <string name="coquillage_famille_bivalve">Bivalvi</string>
+    <string name="coquillage_famille_cephalopode">Cefalopode con conchiglia</string>
+    <string name="coquillage_fiche_origine">Origine</string>
+    <string name="coquillage_fiche_composition">Composizione minerale</string>
+    <string name="coquillage_fiche_durete">Durezza (Mohs)</string>
+    <string name="coquillage_fiche_densite">Densità</string>
+    <string name="coquillage_fiche_couleur">Colore</string>
+    <string name="coquillage_fiche_taille">Possibilità di taglio</string>
+    <string name="coquillage_fiche_qualite_gemme">Qualità gemma</string>
+    <string name="coquillage_fiche_interet_joaillerie">Interesse in gioielleria</string>
+    <string name="coquillage_fiche_prix">Prezzo approssimativo</string>
+
     <!-- Successi -->
     <string name="achievements_title">Successi</string>
     <string name="achievements_progress_summary">%1$d / %2$d successi sbloccati</string>
@@ -257,6 +276,8 @@
     <string name="achievement_rainbow_desc">Consulta almeno una gemma per ciascuna delle %1$d categorie di colore.</string>
     <string name="achievement_fossil_collector_title">Paleontologo</string>
     <string name="achievement_fossil_collector_desc">Consulta i %1$d fossili del catalogo.</string>
+    <string name="achievement_shell_collector_title">Conchigliologo</string>
+    <string name="achievement_shell_collector_desc">Consulta le %1$d conchiglie del catalogo.</string>
     <string name="achievement_first_favorite_title">Primo preferito</string>
     <string name="achievement_first_favorite_desc">Aggiungi una gemma ai tuoi preferiti.</string>
     <string name="achievement_fan_title">Appassionato</string>

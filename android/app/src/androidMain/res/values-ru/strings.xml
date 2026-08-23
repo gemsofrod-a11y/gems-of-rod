@@ -236,6 +236,25 @@
     <string name="fossile_fiche_interet_joaillerie">Интерес для ювелирного дела</string>
     <string name="fossile_fiche_prix">Ориентировочная цена за грамм</string>
 
+    <!-- Ракушки -->
+    <string name="home_coquillages_title">Ракушки</string>
+    <string name="home_coquillages_subtitle">Перламутр, каури, стромбусы и наутилус: скульптурная красота морских моллюсков.</string>
+    <string name="coquillages_intro">От камеи из розовой раковины стромбуса до переливающегося перламутра морского ушка, не забывая о каури, служивших монетой на трёх континентах: этот раздел рассказывает о ракушках, интересных огранщику и ювелиру, а также о нескольких экземплярах, ценных прежде всего своей историей или символикой.</string>
+    <string name="coquillages_classification_title">Классификация</string>
+    <string name="coquillages_classification_subtitle">Брюхоногие, двустворчатые, головоногие с раковиной: основные семейства ракушек.</string>
+    <string name="coquillage_famille_gastropode">Брюхоногие</string>
+    <string name="coquillage_famille_bivalve">Двустворчатые</string>
+    <string name="coquillage_famille_cephalopode">Головоногие с раковиной</string>
+    <string name="coquillage_fiche_origine">Происхождение</string>
+    <string name="coquillage_fiche_composition">Минеральный состав</string>
+    <string name="coquillage_fiche_durete">Твёрдость (по Моосу)</string>
+    <string name="coquillage_fiche_densite">Плотность</string>
+    <string name="coquillage_fiche_couleur">Цвет</string>
+    <string name="coquillage_fiche_taille">Возможность огранки</string>
+    <string name="coquillage_fiche_qualite_gemme">Ювелирное качество</string>
+    <string name="coquillage_fiche_interet_joaillerie">Ценность в ювелирном деле</string>
+    <string name="coquillage_fiche_prix">Приблизительная цена</string>
+
     <!-- Достижения -->
     <string name="achievements_title">Достижения</string>
     <string name="achievements_progress_summary">%1$d / %2$d достижений разблокировано</string>
@@ -257,6 +276,8 @@
     <string name="achievement_rainbow_desc">Откройте хотя бы один камень из каждой из %1$d цветовых категорий.</string>
     <string name="achievement_fossil_collector_title">Палеонтолог</string>
     <string name="achievement_fossil_collector_desc">Просмотрите все %1$d окаменелостей каталога.</string>
+    <string name="achievement_shell_collector_title">Конхиолог</string>
+    <string name="achievement_shell_collector_desc">Просмотрите все %1$d ракушек каталога.</string>
     <string name="achievement_first_favorite_title">Первое избранное</string>
     <string name="achievement_first_favorite_desc">Добавьте камень в избранное.</string>
     <string name="achievement_fan_title">Увлечённый</string>
