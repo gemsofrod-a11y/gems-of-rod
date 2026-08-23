@@ -156,7 +156,7 @@ fun HomeScreen(
                 title = stringResource(R.string.home_coquillages_title),
                 subtitle = stringResource(R.string.home_coquillages_subtitle),
                 onClick = onCoquillagesClick,
-                backgroundDrawable = "gem_coquillage_nacre_ormeau_brute"
+                backgroundDrawable = "gem_coquillage_ormeau_brute"
             )
             HomeSectionCard(
                 title = stringResource(R.string.home_quiz_title),
