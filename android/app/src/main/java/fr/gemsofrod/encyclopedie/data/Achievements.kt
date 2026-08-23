@@ -41,6 +41,7 @@ object Achievements {
         Badge("master", BadgeCategory.EXPLORATION, "👑", threshold = GemsRepository.gems.size) { it.gemsViewedCount },
         Badge("rainbow", BadgeCategory.EXPLORATION, "🌈", threshold = GemColorCategory.entries.size) { it.colorsCoveredCount },
         Badge("fossil_collector", BadgeCategory.EXPLORATION, "🦴", threshold = FossilesRepository.all().size) { it.fossilesViewedCount },
+        Badge("shell_collector", BadgeCategory.EXPLORATION, "🐚", threshold = CoquillagesRepository.all().size) { it.coquillagesViewedCount },
         Badge("first_favorite", BadgeCategory.FAVORIS, "💛", threshold = 1) { it.favoritesCount },
         Badge("fan", BadgeCategory.FAVORIS, "💖", threshold = 10) { it.favoritesCount },
         Badge("big_collector", BadgeCategory.FAVORIS, "💎", threshold = 25) { it.favoritesCount },

@@ -436,6 +436,164 @@
       "type": "BRUTE"
     }
   ],
+  "coquillage-benitier-geant": [
+    {
+      "artist": "H. Zell",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_coquillage_benitier_geant_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tridacna_gigas_01.jpg",
+      "title": "File:Tridacna gigas 01.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "coquillage-burgau-vert": [
+    {
+      "artist": "JialiangGao www.peace-on-earth.org",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_coquillage_burgau_vert_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Turbo_Marmoratus_Madagascar.jpg",
+      "title": "File:Turbo Marmoratus Madagascar.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "coquillage-cauri-monnaie": [
+    {
+      "artist": "JIBON",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_coquillage_cauri_monnaie_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Monetaria_moneta_-_Money_cowrie_(কড়ি)_03.jpg",
+      "title": "File:Monetaria moneta - Money cowrie (কড়ি) 03.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "coquillage-conque-reine": [
+    {
+      "artist": "Rosser1954",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_coquillage_conque_reine_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Queen_Conch_shell._Kilmaronock,_Military_Road,_West_Dunbartonshire.jpg",
+      "title": "File:Queen Conch shell. Kilmaronock, Military Road, West Dunbartonshire.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "coquillage-cypree-doree": [
+    {
+      "artist": "H. Zell",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_coquillage_cypree_doree_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Callistocypraea_aurantium_01.jpg",
+      "title": "File:Callistocypraea aurantium 01.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "coquillage-huitre-perliere-doree": [
+    {
+      "artist": "Jameson, 1901",
+      "license": "CC0",
+      "resource_name": "gem_coquillage_huitre_perliere_doree_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Naturalis_Biodiversity_Center_-_RMNH.MOL.318379_-_Pinctada_maxima_(Jameson,_1901)_-_Pteriidae_-_Mollusc_shell.jpeg",
+      "title": "File:Naturalis Biodiversity Center - RMNH.MOL.318379 - Pinctada maxima (Jameson, 1901) - Pteriidae - Mollusc shell.jpeg",
+      "type": "BRUTE"
+    }
+  ],
+  "coquillage-huitre-perliere-noire": [
+    {
+      "artist": "British Museum",
+      "license": "Public domain",
+      "resource_name": "gem_coquillage_huitre_perliere_noire_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Pinctada_margaritifera_001.png",
+      "title": "File:Pinctada margaritifera 001.png",
+      "type": "BRUTE"
+    }
+  ],
+  "coquillage-lambis": [
+    {
+      "artist": "George Chernilevsky",
+      "license": "Public domain",
+      "resource_name": "gem_coquillage_lambis_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lambis_crocata_2010_G1.jpg",
+      "title": "File:Lambis crocata 2010 G1.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "coquillage-moule-perliere-eau-douce": [
+    {
+      "artist": "Tom Meijer",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_coquillage_moule_perliere_eau_douce_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Margaritifera_margaritifera-buiten.jpg",
+      "title": "File:Margaritifera margaritifera-buiten.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "coquillage-murex-pourpre": [
+    {
+      "artist": "H. Zell",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_coquillage_murex_pourpre_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Bolinus_brandaris_01.jpg",
+      "title": "File:Bolinus brandaris 01.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "coquillage-nautile": [
+    {
+      "artist": "Eric Polk",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_coquillage_nautile_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Nautilus_pompilius_albino.jpg",
+      "title": "File:Nautilus pompilius albino.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Dornicke",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_coquillage_nautile_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Nautilus_Pompilius_MN_01.jpg",
+      "title": "File:Nautilus Pompilius MN 01.jpg",
+      "type": "FACETTEE"
+    }
+  ],
+  "coquillage-ormeau": [
+    {
+      "artist": "Auteur non renseigné",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_coquillage_ormeau_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Abalone.jpg",
+      "title": "File:Abalone.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "coquillage-saint-jacques": [
+    {
+      "artist": "H. Zell",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_coquillage_saint_jacques_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Pecten_maximus_02.jpg",
+      "title": "File:Pecten maximus 02.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "coquillage-spondyle": [
+    {
+      "artist": "H. Zell",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_coquillage_spondyle_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Spondylus_versicolor_01.jpg",
+      "title": "File:Spondylus versicolor 01.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "coquillage-trocas": [
+    {
+      "artist": "Narodowe Muzeum Morskie w Gdańsku",
+      "license": "CC BY-SA 3.0 pl",
+      "resource_name": "gem_coquillage_trocas_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:A_shell_of_Trochus_niloticus_snail.jpg",
+      "title": "File:A shell of Trochus niloticus snail.jpg",
+      "type": "BRUTE"
+    }
+  ],
   "corail": [
     {
       "artist": "James St. John",

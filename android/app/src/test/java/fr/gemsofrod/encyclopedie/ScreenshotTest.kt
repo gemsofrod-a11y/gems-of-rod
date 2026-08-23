@@ -76,6 +76,7 @@ class ScreenshotTest {
             onFavoritesClick = {},
             onMeteoritesClick = {},
             onFossilesClick = {},
+            onCoquillagesClick = {},
             onQuizClick = {},
             onAchievementsClick = {},
             onLabClick = {}

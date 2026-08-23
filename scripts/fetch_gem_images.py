@@ -300,6 +300,23 @@ GEMS = [
     ("fossile-crinoide", ['Crinoid stem fossil', 'Crinoidal limestone polished'], ['crinoid'], (BRUTE, FACETTEE)),
     ("fossile-stromatolite", ['Stromatolite fossil specimen', 'Stromatolite cross section polished', 'Stromatolite slab cut'], ['stromatolite'], (BRUTE, FACETTEE)),
     ("fossile-belemnite", ['Belemnite fossil rostrum', 'Belemnite fossil specimen'], ['belemnite'], (BRUTE,)),
+
+    # ---------- COQUILLAGES ----------
+    ("coquillage-ormeau", ['Abalone shell nacre', 'Haliotis shell iridescent', 'Abalone shell inside'], ['abalone', 'haliotis'], (BRUTE,)),
+    ("coquillage-cauri-monnaie", ['Monetaria moneta cowrie', 'Money cowrie shell'], ['money cowrie', 'monetaria'], (BRUTE,)),
+    ("coquillage-cypree-doree", ['Cypraea aurantium golden cowrie', 'Golden cowrie shell'], ['golden cowrie', 'cypraea aurantium'], (BRUTE,)),
+    ("coquillage-conque-reine", ['Queen conch shell', 'Lobatus gigas shell', 'Strombus gigas shell'], ['queen conch', 'lobatus gigas'], (BRUTE,)),
+    ("coquillage-trocas", ['Trochus niloticus shell', 'Trochus shell nacre'], ['trochus', 'tectus niloticus'], (BRUTE,)),
+    ("coquillage-burgau-vert", ['Turbo marmoratus shell', 'Green turban shell nacre'], ['turbo marmoratus', 'green turban'], (BRUTE,)),
+    ("coquillage-murex-pourpre", ['Bolinus brandaris shell', 'Murex brandaris shell'], ['bolinus brandaris', 'murex brandaris'], (BRUTE,)),
+    ("coquillage-lambis", ['Lambis lambis shell', 'Spider conch shell'], ['lambis', 'spider conch'], (BRUTE,)),
+    ("coquillage-huitre-perliere-noire", ['Pinctada margaritifera shell', 'Black-lipped pearl oyster shell'], ['pinctada margaritifera', 'black-lipped pearl oyster'], (BRUTE,)),
+    ("coquillage-huitre-perliere-doree", ['Pinctada maxima shell', 'Gold-lipped pearl oyster shell'], ['pinctada maxima', 'gold-lipped pearl oyster'], (BRUTE,)),
+    ("coquillage-saint-jacques", ['Pecten maximus shell', 'Great scallop shell'], ['pecten maximus', 'great scallop'], (BRUTE,)),
+    ("coquillage-spondyle", ['Spondylus shell', 'Spiny oyster shell'], ['spondylus', 'spiny oyster'], (BRUTE,)),
+    ("coquillage-benitier-geant", ['Tridacna gigas shell', 'Giant clam shell'], ['tridacna gigas', 'giant clam'], (BRUTE,)),
+    ("coquillage-moule-perliere-eau-douce", ['Margaritifera margaritifera shell', 'Freshwater pearl mussel shell'], ['margaritifera margaritifera', 'freshwater pearl mussel'], (BRUTE,)),
+    ("coquillage-nautile", ['Nautilus pompilius shell', 'Nautilus shell cross section'], ['nautilus pompilius', 'nautilus shell'], (BRUTE, FACETTEE)),
 ]
 
 # Photos dédiées aux inclusions typiques (macro/loupe), distinctes des photos

@@ -79,6 +79,7 @@ fun HomeScreen(
     onFavoritesClick: () -> Unit,
     onMeteoritesClick: () -> Unit,
     onFossilesClick: () -> Unit,
+    onCoquillagesClick: () -> Unit,
     onQuizClick: () -> Unit,
     onAchievementsClick: () -> Unit,
     onLabClick: () -> Unit
@@ -150,6 +151,12 @@ fun HomeScreen(
                 subtitle = stringResource(R.string.home_fossiles_subtitle),
                 onClick = onFossilesClick,
                 backgroundDrawable = "gem_fossile_ammonite_madagascar_facette"
+            )
+            HomeSectionCard(
+                title = stringResource(R.string.home_coquillages_title),
+                subtitle = stringResource(R.string.home_coquillages_subtitle),
+                onClick = onCoquillagesClick,
+                backgroundDrawable = "gem_coquillage_ormeau_brute"
             )
             HomeSectionCard(
                 title = stringResource(R.string.home_quiz_title),

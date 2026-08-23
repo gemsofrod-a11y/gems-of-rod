@@ -236,6 +236,25 @@
     <string name="fossile_fiche_interet_joaillerie">珠宝价值</string>
     <string name="fossile_fiche_prix">每克大致价格</string>
 
+    <!-- 贝壳 -->
+    <string name="home_coquillages_title">贝壳</string>
+    <string name="home_coquillages_subtitle">珍珠母贝、宝螺、凤凰螺与鹦鹉螺：海洋软体动物雕琢而成的美。</string>
+    <string name="coquillages_intro">从粉红色凤凰螺浮雕到鲍鱼绚丽的珍珠层，还有曾在三大洲充当货币的宝螺——本板块介绍宝石匠与珠宝商感兴趣的贝壳，以及一些主要因历史或象征意义而受重视的藏品。</string>
+    <string name="coquillages_classification_title">分类</string>
+    <string name="coquillages_classification_subtitle">腹足纲、双壳纲、有壳头足纲：了解贝壳的主要家族。</string>
+    <string name="coquillage_famille_gastropode">腹足纲</string>
+    <string name="coquillage_famille_bivalve">双壳纲</string>
+    <string name="coquillage_famille_cephalopode">有壳头足纲</string>
+    <string name="coquillage_fiche_origine">产地</string>
+    <string name="coquillage_fiche_composition">矿物成分</string>
+    <string name="coquillage_fiche_durete">硬度（莫氏）</string>
+    <string name="coquillage_fiche_densite">密度</string>
+    <string name="coquillage_fiche_couleur">颜色</string>
+    <string name="coquillage_fiche_taille">可加工性</string>
+    <string name="coquillage_fiche_qualite_gemme">宝石品质</string>
+    <string name="coquillage_fiche_interet_joaillerie">珠宝价值</string>
+    <string name="coquillage_fiche_prix">参考价格</string>
+
     <!-- 成就 -->
     <string name="achievements_title">成就</string>
     <string name="achievements_progress_summary">已解锁 %1$d / %2$d 项成就</string>
@@ -257,6 +276,8 @@
     <string name="achievement_rainbow_desc">查看 %1$d 个颜色分类中每类至少一种宝石。</string>
     <string name="achievement_fossil_collector_title">古生物学家</string>
     <string name="achievement_fossil_collector_desc">查看目录中全部 %1$d 件化石。</string>
+    <string name="achievement_shell_collector_title">贝类学家</string>
+    <string name="achievement_shell_collector_desc">查看目录中全部 %1$d 个贝壳。</string>
     <string name="achievement_first_favorite_title">第一个收藏</string>
     <string name="achievement_first_favorite_desc">将一块宝石添加到收藏。</string>
     <string name="achievement_fan_title">爱好者</string>

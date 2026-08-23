@@ -236,6 +236,25 @@
     <string name="fossile_fiche_interet_joaillerie">Interesse für die Schmuckherstellung</string>
     <string name="fossile_fiche_prix">Ungefährer Preis pro Gramm</string>
 
+    <!-- Muscheln & Schnecken -->
+    <string name="home_coquillages_title">Muscheln &amp; Schnecken</string>
+    <string name="home_coquillages_subtitle">Perlmutt, Kaurischnecken, Fechterschnecken und Nautilus: die geschnitzte Schönheit der Meeresweichtiere.</string>
+    <string name="coquillages_intro">Von der Gemme aus rosa Fechterschnecke bis zum schillernden Perlmutt des Abalone, nicht zu vergessen die Kaurischnecken, die auf drei Kontinenten als Zahlungsmittel dienten: Dieser Bereich stellt die für Steinschleifer und Juweliere interessanten Muscheln und Schnecken vor, neben einigen Stücken, die vor allem wegen ihrer Geschichte oder Symbolik geschätzt werden.</string>
+    <string name="coquillages_classification_title">Klassifikation</string>
+    <string name="coquillages_classification_subtitle">Schnecken, Muscheln, Kopffüßer mit Schale: die großen Familien der Meeresschalen verstehen.</string>
+    <string name="coquillage_famille_gastropode">Schnecken</string>
+    <string name="coquillage_famille_bivalve">Muscheln</string>
+    <string name="coquillage_famille_cephalopode">Kopffüßer mit Schale</string>
+    <string name="coquillage_fiche_origine">Herkunft</string>
+    <string name="coquillage_fiche_composition">Mineralische Zusammensetzung</string>
+    <string name="coquillage_fiche_durete">Härte (Mohs)</string>
+    <string name="coquillage_fiche_densite">Dichte</string>
+    <string name="coquillage_fiche_couleur">Farbe</string>
+    <string name="coquillage_fiche_taille">Schleifbarkeit</string>
+    <string name="coquillage_fiche_qualite_gemme">Edelsteinqualität</string>
+    <string name="coquillage_fiche_interet_joaillerie">Bedeutung für die Schmuckherstellung</string>
+    <string name="coquillage_fiche_prix">Ungefährer Preis</string>
+
     <!-- Erfolge -->
     <string name="achievements_title">Erfolge</string>
     <string name="achievements_progress_summary">%1$d / %2$d Erfolge freigeschaltet</string>
@@ -257,6 +276,8 @@
     <string name="achievement_rainbow_desc">Sehen Sie sich mindestens einen Edelstein aus jeder der %1$d Farbkategorien an.</string>
     <string name="achievement_fossil_collector_title">Paläontologe</string>
     <string name="achievement_fossil_collector_desc">Sehen Sie sich alle %1$d Fossilien des Katalogs an.</string>
+    <string name="achievement_shell_collector_title">Muschelkundler</string>
+    <string name="achievement_shell_collector_desc">Sehen Sie sich alle %1$d Muscheln des Katalogs an.</string>
     <string name="achievement_first_favorite_title">Erster Favorit</string>
     <string name="achievement_first_favorite_desc">Fügen Sie einen Edelstein zu Ihren Favoriten hinzu.</string>
     <string name="achievement_fan_title">Fan</string>

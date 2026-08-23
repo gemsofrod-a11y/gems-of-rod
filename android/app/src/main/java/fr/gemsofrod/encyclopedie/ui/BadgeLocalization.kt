@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.Badge
+import fr.gemsofrod.encyclopedie.data.CoquillagesRepository
+import fr.gemsofrod.encyclopedie.data.FossilesRepository
 import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.data.GemsRepository
 
@@ -20,6 +22,8 @@ fun localizedBadgeTitle(badge: Badge): String = when (badge.id) {
     "encyclopedist" -> stringResource(R.string.achievement_encyclopedist_title)
     "master" -> stringResource(R.string.achievement_master_title)
     "rainbow" -> stringResource(R.string.achievement_rainbow_title)
+    "fossil_collector" -> stringResource(R.string.achievement_fossil_collector_title)
+    "shell_collector" -> stringResource(R.string.achievement_shell_collector_title)
     "first_favorite" -> stringResource(R.string.achievement_first_favorite_title)
     "fan" -> stringResource(R.string.achievement_fan_title)
     "big_collector" -> stringResource(R.string.achievement_big_collector_title)
@@ -38,6 +42,8 @@ fun localizedBadgeDescription(badge: Badge): String = when (badge.id) {
     "encyclopedist" -> stringResource(R.string.achievement_encyclopedist_desc)
     "master" -> stringResource(R.string.achievement_master_desc, GemsRepository.gems.size)
     "rainbow" -> stringResource(R.string.achievement_rainbow_desc, GemColorCategory.entries.size)
+    "fossil_collector" -> stringResource(R.string.achievement_fossil_collector_desc, FossilesRepository.all().size)
+    "shell_collector" -> stringResource(R.string.achievement_shell_collector_desc, CoquillagesRepository.all().size)
     "first_favorite" -> stringResource(R.string.achievement_first_favorite_desc)
     "fan" -> stringResource(R.string.achievement_fan_desc)
     "big_collector" -> stringResource(R.string.achievement_big_collector_desc)
