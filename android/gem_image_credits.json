@@ -49,19 +49,19 @@
   ],
   "ambre": [
     {
-      "artist": "uploaded with permission from User Lanzi by Ra'ike on de.wikipedia",
-      "license": "CC BY-SA 3.0",
-      "resource_name": "gem_ambre_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Amber_Bernstein_many_stones.jpg",
-      "title": "File:Amber Bernstein many stones.jpg",
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_ambre_brute_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Ambre brute — photo Coraline Minéraux",
       "type": "BRUTE"
     },
     {
-      "artist": "Koltovoi",
-      "license": "CC BY-SA 4.0",
-      "resource_name": "gem_ambre_inclusion",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Amber-000-12mm.jpg",
-      "title": "File:Amber-000-12mm.jpg",
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_ambre_inclusion_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Ambre à inclusions à contre-jour — photo Coraline Minéraux",
       "type": "INCLUSION"
     }
   ],
