@@ -32,15 +32,15 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | uvarovite | ♻️ [File:Uvarovite-uvarclose.jpg](https://commons.wikimedia.org/wiki/File:Uvarovite-uvarclose.jpg) | ⏸️ recherche suspendue |
 | vesuvianite | ♻️ [File:Vesuvianite-199353.jpg](https://commons.wikimedia.org/wiki/File:Vesuvianite-199353.jpg) | ⏸️ recherche suspendue |
 | prehnite | ♻️ [File:Prehnite-105970.jpg](https://commons.wikimedia.org/wiki/File:Prehnite-105970.jpg) | ⏸️ recherche suspendue |
-| chrysocolle | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
-| variscite | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
-| serpentine | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| chrysocolle | ✅ [File:Chrysocolla USA.jpg](https://commons.wikimedia.org/wiki/File:Chrysocolla_USA.jpg) | ✅ [File:Chrysocolla displayed at Mining Museum of Akita University.jpg](https://commons.wikimedia.org/wiki/File:Chrysocolla_displayed_at_Mining_Museum_of_Akita_University.jpg) |
+| variscite | ✅ [File:Cacoxenite and variscite from Třenice, Czech Republic.jpg](https://commons.wikimedia.org/wiki/File:Cacoxenite_and_variscite_from_Třenice,_Czech_Republic.jpg) | ✅ [File:Variscite.jpg](https://commons.wikimedia.org/wiki/File:Variscite.jpg) |
+| serpentine | ✅ [File:Black Serpentine12.jpg](https://commons.wikimedia.org/wiki/File:Black_Serpentine12.jpg) | ✅ [File:Milford Sound, 2016-01-31, pounamu stone in Visitor Terminal.jpg](https://commons.wikimedia.org/wiki/File:Milford_Sound,_2016-01-31,_pounamu_stone_in_Visitor_Terminal.jpg) |
 | grandidierite | ♻️ [File:Grandidierite-169886.jpg](https://commons.wikimedia.org/wiki/File:Grandidierite-169886.jpg) | ⏸️ recherche suspendue |
 | saphir-bleu | ♻️ [File:Sapphire (corundum) (26663158752).jpg](https://commons.wikimedia.org/wiki/File:Sapphire_(corundum)_(26663158752).jpg) | ♻️ [File:Yogo2783 Close crop.JPG](https://commons.wikimedia.org/wiki/File:Yogo2783_Close_crop.JPG) |
 | aigue-marine | ♻️ [File:Beryl-sd345a.jpg](https://commons.wikimedia.org/wiki/File:Beryl-sd345a.jpg) | ♻️ [File:5 Brazilian aquamarine.JPG](https://commons.wikimedia.org/wiki/File:5_Brazilian_aquamarine.JPG) |
 | tanzanite | ♻️ [File:Zoisite-20887.jpg](https://commons.wikimedia.org/wiki/File:Zoisite-20887.jpg) | ⏸️ recherche suspendue |
 | lapis-lazuli | ♻️ [File:Lazurite-159353.jpg](https://commons.wikimedia.org/wiki/File:Lazurite-159353.jpg) | ⏸️ recherche suspendue |
-| turquoise | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| turquoise | ✅ [File:Raw-hubei-turquoise.jpg](https://commons.wikimedia.org/wiki/File:Raw-hubei-turquoise.jpg) | ✅ [File:Gemstone hand sorting at Millenia-old Neyshabur Persian Turquoise Mine.jpg](https://commons.wikimedia.org/wiki/File:Gemstone_hand_sorting_at_Millenia-old_Neyshabur_Persian_Turquoise_Mine.jpg) |
 | spinelle-bleu | ♻️ [File:Spinel-42128.jpg](https://commons.wikimedia.org/wiki/File:Spinel-42128.jpg) | ⏸️ recherche suspendue |
 | paraiba-tourmaline | ♻️ [File:Elbaite-Quartz-133547.jpg](https://commons.wikimedia.org/wiki/File:Elbaite-Quartz-133547.jpg) | ♻️ [File:Paraiba-Turmalin-G-EmpireTheWorldOfGems.jpg](https://commons.wikimedia.org/wiki/File:Paraiba-Turmalin-G-EmpireTheWorldOfGems.jpg) |
 | apatite-bleue | ♻️ [File:Apatite crystal (GeoDIL number - 23).jpg](https://commons.wikimedia.org/wiki/File:Apatite_crystal_(GeoDIL_number_-_23).jpg) | ♻️ [Apatite bleue polie — photo Coraline Minéraux](https://gems-of-rod.fr) |
@@ -49,7 +49,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | jeremejevite | ♻️ [File:Jeremejevite-jerem-3a.jpg](https://commons.wikimedia.org/wiki/File:Jeremejevite-jerem-3a.jpg) | ⏸️ recherche suspendue |
 | amethyste | ♻️ [File:Amethysts-1ab.JPG](https://commons.wikimedia.org/wiki/File:Amethysts-1ab.JPG) | ♻️ [File:Collection of Amethyst Gemstones.JPG](https://commons.wikimedia.org/wiki/File:Collection_of_Amethyst_Gemstones.JPG) |
 | spinelle-violet | ♻️ [File:Spinel-Chondrodite-278475.jpg](https://commons.wikimedia.org/wiki/File:Spinel-Chondrodite-278475.jpg) | ⏸️ recherche suspendue |
-| iolite | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| iolite | ✅ [File:Cordierite (GeoDIL number - 1863).jpg](https://commons.wikimedia.org/wiki/File:Cordierite_(GeoDIL_number_-_1863).jpg) | ✅ [File:Cordierite (GeoDIL number - 1862).jpg](https://commons.wikimedia.org/wiki/File:Cordierite_(GeoDIL_number_-_1862).jpg) |
 | grenat-rhodolite-violet | ♻️ [File:Corundum, garnet, mica, feldspar.jpg](https://commons.wikimedia.org/wiki/File:Corundum,_garnet,_mica,_feldspar.jpg) | ⏸️ recherche suspendue |
 | sugilite | ♻️ [File:Sugilite-76750.jpg](https://commons.wikimedia.org/wiki/File:Sugilite-76750.jpg) | ❌ échec téléchargement |
 | charoite | ♻️ [File:Tinaksite, Charoite-543035.png](https://commons.wikimedia.org/wiki/File:Tinaksite,_Charoite-543035.png) | ⏸️ recherche suspendue |
@@ -60,9 +60,9 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | saphir-rose | ⏸️ recherche suspendue | ♻️ [File:Sapphire pink octagon 1.17cts.jpg](https://commons.wikimedia.org/wiki/File:Sapphire_pink_octagon_1.17cts.jpg) |
 | tourmaline-rose | ♻️ [File:Iron-gem7-15b.jpg](https://commons.wikimedia.org/wiki/File:Iron-gem7-15b.jpg) | ♻️ [File:Tourmaline (GeoDIL number - 2751).jpg](https://commons.wikimedia.org/wiki/File:Tourmaline_(GeoDIL_number_-_2751).jpg) |
 | rhodochrosite | ♻️ [File:Rhodochrosite-76764.jpg](https://commons.wikimedia.org/wiki/File:Rhodochrosite-76764.jpg) | ♻️ [File:Colorado red rhodochrosite - Cleveland Museum of Natural History - 2014-12-26 (20482806373).jpg](https://commons.wikimedia.org/wiki/File:Colorado_red_rhodochrosite_-_Cleveland_Museum_of_Natural_History_-_2014-12-26_(20482806373).jpg) |
-| diamant | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| diamant | ✅ [File:Diamond, Missouri - downtown with main street.jpg](https://commons.wikimedia.org/wiki/File:Diamond,_Missouri_-_downtown_with_main_street.jpg) | ✅ [File:Round Brilliant Cut Diamond.jpg](https://commons.wikimedia.org/wiki/File:Round_Brilliant_Cut_Diamond.jpg) |
 | zircon-blanc | ♻️ [File:Zircon (GeoDIL number - 255).jpg](https://commons.wikimedia.org/wiki/File:Zircon_(GeoDIL_number_-_255).jpg) | ⏸️ recherche suspendue |
-| goshenite | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| goshenite | ✅ [File:Goshénite.jpg](https://commons.wikimedia.org/wiki/File:Goshénite.jpg) | ✅ [File:Goshenite. Xuebaoding Mt., Mianyang City, Sichuan province, China-9048.jpg](https://commons.wikimedia.org/wiki/File:Goshenite._Xuebaoding_Mt.,_Mianyang_City,_Sichuan_province,_China-9048.jpg) |
 | cristal-de-roche | ♻️ [File:Rough rock crystals.JPG](https://commons.wikimedia.org/wiki/File:Rough_rock_crystals.JPG) | ⏸️ recherche suspendue |
 | danburite | ♻️ [File:Danburite-34745.jpg](https://commons.wikimedia.org/wiki/File:Danburite-34745.jpg) | ⏸️ recherche suspendue |
 | quartz-fume | ⏸️ recherche suspendue | ♻️ [File:2 Smoky quartz.JPG](https://commons.wikimedia.org/wiki/File:2_Smoky_quartz.JPG) |
@@ -74,24 +74,24 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | spinelle-noir | ♻️ [File:Picotite (GeoDIL number - 1573).jpg](https://commons.wikimedia.org/wiki/File:Picotite_(GeoDIL_number_-_1573).jpg) | ⏸️ recherche suspendue |
 | tourmaline-noire | ♻️ [File:Schorl tourmaline 3 (32115883705).jpg](https://commons.wikimedia.org/wiki/File:Schorl_tourmaline_3_(32115883705).jpg) | ⏸️ recherche suspendue |
 | obsidienne | ♻️ [File:Obsidian & devitrified obsidian gravel (Obsidian Cliff, Yellowstone, Wyoming, USA) 4.jpg](https://commons.wikimedia.org/wiki/File:Obsidian_&_devitrified_obsidian_gravel_(Obsidian_Cliff,_Yellowstone,_Wyoming,_USA)_4.jpg) | ⏸️ recherche suspendue |
-| alexandrite | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| alexandrite | ✅ [File:Alexandrite.jpg](https://commons.wikimedia.org/wiki/File:Alexandrite.jpg) | ✅ [File:Alexandrite1(1).jpg](https://commons.wikimedia.org/wiki/File:Alexandrite1(1).jpg) |
 | tourmaline-pasteque | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
 | labradorite | ♻️ [File:Labradorite specimen.jpg](https://commons.wikimedia.org/wiki/File:Labradorite_specimen.jpg) | ⏸️ recherche suspendue |
 | pierre-de-lune | ⏸️ recherche suspendue | ♻️ [File:Natural Blue Moonstone loose gemstone.jpg](https://commons.wikimedia.org/wiki/File:Natural_Blue_Moonstone_loose_gemstone.jpg) |
 | pierre-de-soleil | ♻️ [File:Oligoclase-Sunstone from India2.jpg](https://commons.wikimedia.org/wiki/File:Oligoclase-Sunstone_from_India2.jpg) | ♻️ [File:Sunstone (Tertiary; Spectrum Mine, Oregon, USA) 12.jpg](https://commons.wikimedia.org/wiki/File:Sunstone_(Tertiary;_Spectrum_Mine,_Oregon,_USA)_12.jpg) |
 | fluorine | ♻️ [File:Fluorite-Sphalerite-34768.jpg](https://commons.wikimedia.org/wiki/File:Fluorite-Sphalerite-34768.jpg) | ♻️ [File:Fluorite cut.jpg](https://commons.wikimedia.org/wiki/File:Fluorite_cut.jpg) |
 | ammolite | ♻️ [File:Pierre shale ammolite.jpg](https://commons.wikimedia.org/wiki/File:Pierre_shale_ammolite.jpg) | ⏸️ recherche suspendue |
-| ambre | ♻️ [File:Amber Bernstein many stones.jpg](https://commons.wikimedia.org/wiki/File:Amber_Bernstein_many_stones.jpg) | ⏸️ recherche suspendue |
+| ambre | ♻️ [Ambre brute — photo Coraline Minéraux](https://gems-of-rod.fr) | ⏸️ recherche suspendue |
 | perle | — | ♻️ [File:Various pearls.jpg](https://commons.wikimedia.org/wiki/File:Various_pearls.jpg) |
 | grenat-pyrope | ⏸️ recherche suspendue | ♻️ [File:Pyrope.jpg](https://commons.wikimedia.org/wiki/File:Pyrope.jpg) |
 | eudialyte | ♻️ [Eudialyte brute — photo Gems of Rod](https://gems-of-rod.fr) | ⏸️ recherche suspendue |
 | crocoite | ♻️ [File:Dundasite and Crocoite.jpg](https://commons.wikimedia.org/wiki/File:Dundasite_and_Crocoite.jpg) | ⏸️ recherche suspendue |
 | grenat-malaya | ⏸️ recherche suspendue | ♻️ [Malaya-garnet-Lizunova-Fine-Jewels-Sydney-jeweller-Chifley-Square](https://commons.wikimedia.org/w/index.php?curid=93251282) |
-| zircon-hyacinthe | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
-| zircon-dore | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| zircon-hyacinthe | ✅ [File:Zircon (GeoDIL number - 252).jpg](https://commons.wikimedia.org/wiki/File:Zircon_(GeoDIL_number_-_252).jpg) | ✅ [File:The oldest zircon crystall (4.276 billion years old). American Museum of Natural History.jpg](https://commons.wikimedia.org/wiki/File:The_oldest_zircon_crystall_(4.276_billion_years_old)._American_Museum_of_Natural_History.jpg) |
+| zircon-dore | ✅ [File:Zircon (GeoDIL number - 252).jpg](https://commons.wikimedia.org/wiki/File:Zircon_(GeoDIL_number_-_252).jpg) | ✅ [File:Zircon on сlinochlore SEM image.png](https://commons.wikimedia.org/wiki/File:Zircon_on_сlinochlore_SEM_image.png) |
 | pyrite | ♻️ [File:Pyrite trimouns.jpg](https://commons.wikimedia.org/wiki/File:Pyrite_trimouns.jpg) | ⏸️ recherche suspendue |
 | scheelite | ♻️ [File:Scheelite, mica, UVL 1.jpg](https://commons.wikimedia.org/wiki/File:Scheelite,_mica,_UVL_1.jpg) | ♻️ [File:Scheelite cut.jpg](https://commons.wikimedia.org/wiki/File:Scheelite_cut.jpg) |
-| tourmaline-jaune | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| tourmaline-jaune | ✅ [Elbaite-24412](https://commons.wikimedia.org/w/index.php?curid=10122034) | ✅ [Elbaite-252609](https://commons.wikimedia.org/w/index.php?curid=10167818) |
 | bastnasite | ♻️ [File:Bastnäsite-(Ce) crystal with inclusions.jpg](https://commons.wikimedia.org/wiki/File:Bastnäsite-(Ce)_crystal_with_inclusions.jpg) | ⏸️ recherche suspendue |
 | malachite | ♻️ [File:Botryoidal malachite 02.jpg](https://commons.wikimedia.org/wiki/File:Botryoidal_malachite_02.jpg) | ⏸️ recherche suspendue |
 | dioptase | ♻️ [Dioptase brute — photo Coraline Minéraux](https://gems-of-rod.fr) | ⏸️ recherche suspendue |
@@ -101,28 +101,28 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | sillimanite | ⏸️ recherche suspendue | ♻️ [File:Sillimanite cut.jpg](https://commons.wikimedia.org/wiki/File:Sillimanite_cut.jpg) |
 | seraphinite | ♻️ [File:Clinochlore (Seraphinite).jpg](https://commons.wikimedia.org/wiki/File:Clinochlore_(Seraphinite).jpg) | ⏸️ recherche suspendue |
 | grenat-grossulaire | ♻️ [File:Grossular garnet from Quebec, collected by Dr John Hunter in the 18th century, Hunterian Museum, Glasgow.jpg](https://commons.wikimedia.org/wiki/File:Grossular_garnet_from_Quebec,_collected_by_Dr_John_Hunter_in_the_18th_century,_Hunterian_Museum,_Glasgow.jpg) | ⏸️ recherche suspendue |
-| diopside | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
-| jade-nephrite | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
-| maw-sit-sit | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| diopside | ✅ [File:Diopside (GeoDIL number - 395).jpg](https://commons.wikimedia.org/wiki/File:Diopside_(GeoDIL_number_-_395).jpg) | ✅ [File:Diopside 1.jpg](https://commons.wikimedia.org/wiki/File:Diopside_1.jpg) |
+| jade-nephrite | ✅ [File:Black-nephrite-jade-bangle.jpg](https://commons.wikimedia.org/wiki/File:Black-nephrite-jade-bangle.jpg) | ✅ [File:Amphibole - Nephrite Jade Basic calcium magnesium iron silicate Lander County Wyoming 2077.jpg](https://commons.wikimedia.org/wiki/File:Amphibole_-_Nephrite_Jade_Basic_calcium_magnesium_iron_silicate_Lander_County_Wyoming_2077.jpg) |
+| maw-sit-sit | ❌ échec téléchargement | ❌ échec téléchargement |
 | tourmaline-chrome | ♻️ [Dravite-38386](https://commons.wikimedia.org/w/index.php?curid=10126876) | ♻️ [Faceted chrome tourmaline 5](https://www.flickr.com/photos/47445767@N05/52319972413) |
 | azurite | ♻️ [File:Azurite, Burra Mine, South Australia.jpg](https://commons.wikimedia.org/wiki/File:Azurite,_Burra_Mine,_South_Australia.jpg) | ⏸️ recherche suspendue |
 | sodalite | ⏸️ recherche suspendue | ♻️ [Sodalite en perles — photo Céc.C](https://gems-of-rod.fr) |
 | larimar | ♻️ [File:Larimar hg.jpg](https://commons.wikimedia.org/wiki/File:Larimar_hg.jpg) | ⏸️ recherche suspendue |
 | lazulite | ♻️ [File:Lazulite (OM1-197).jpg](https://commons.wikimedia.org/wiki/File:Lazulite_(OM1-197).jpg) | ⏸️ recherche suspendue |
 | hauyne | ♻️ [File:Hauyne.jpg](https://commons.wikimedia.org/wiki/File:Hauyne.jpg) | ⏸️ recherche suspendue |
-| cavansite | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| cavansite | ✅ [File:Cavansite on heulandite - Wagholi quarry, Maharashtra, India.jpg](https://commons.wikimedia.org/wiki/File:Cavansite_on_heulandite_-_Wagholi_quarry,_Maharashtra,_India.jpg) | ✅ [File:Cavansite, Musee de Mineralogie, Paris, 2025.jpg](https://commons.wikimedia.org/wiki/File:Cavansite,_Musee_de_Mineralogie,_Paris,_2025.jpg) |
 | celestite | ♻️ [File:Celestite (GeoDIL number - 601).jpg](https://commons.wikimedia.org/wiki/File:Celestite_(GeoDIL_number_-_601).jpg) | ⏸️ recherche suspendue |
 | euclase | ♻️ [File:Euclase. Galileia, Brazil-9105.jpg](https://commons.wikimedia.org/wiki/File:Euclase._Galileia,_Brazil-9105.jpg) | ⏸️ recherche suspendue |
 | topaze-bleue | ♻️ [File:Topaz, Virgem de Lapa, Minas Gerais, Brazil-8781.jpg](https://commons.wikimedia.org/wiki/File:Topaz,_Virgem_de_Lapa,_Minas_Gerais,_Brazil-8781.jpg) | ♻️ [File:Blue topaz (8358129568).jpg](https://commons.wikimedia.org/wiki/File:Blue_topaz_(8358129568).jpg) |
-| tourmaline-bleue | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| tourmaline-bleue | ✅ [File:Indicolite 3.jpg](https://commons.wikimedia.org/wiki/File:Indicolite_3.jpg) | ✅ [File:Indicolite, lépidolite.JPG](https://commons.wikimedia.org/wiki/File:Indicolite,_lépidolite.JPG) |
 | zircon-bleu | ⏸️ recherche suspendue | ♻️ [File:0.45cts gem grade blue zircon.jpg](https://commons.wikimedia.org/wiki/File:0.45cts_gem_grade_blue_zircon.jpg) |
-| hemimorphite | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| hemimorphite | ✅ [File:Hemimorphite (GeoDIL number - 559).jpg](https://commons.wikimedia.org/wiki/File:Hemimorphite_(GeoDIL_number_-_559).jpg) | ✅ [File:Hemimorphite from Italy 01.jpg](https://commons.wikimedia.org/wiki/File:Hemimorphite_from_Italy_01.jpg) |
 | shattuckite | ♻️ [File:Shattuckite, quartz, malachite.jpg](https://commons.wikimedia.org/wiki/File:Shattuckite,_quartz,_malachite.jpg) | ⏸️ recherche suspendue |
-| sapphirine | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
-| dumortierite | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
-| afghanite | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| sapphirine | ✅ [File:Sapphirine, mica.JPG](https://commons.wikimedia.org/wiki/File:Sapphirine,_mica.JPG) | ✅ [Sapphirine-744805](https://commons.wikimedia.org/w/index.php?curid=74675788) |
+| dumortierite | ✅ [File:Dumortierite (GeoDIL number - 271).jpg](https://commons.wikimedia.org/wiki/File:Dumortierite_(GeoDIL_number_-_271).jpg) | ✅ [File:Dumortierite - Blue (2932215927).jpg](https://commons.wikimedia.org/wiki/File:Dumortierite_-_Blue_(2932215927).jpg) |
+| afghanite | ✅ [File:Pitiglianoite.jpg](https://commons.wikimedia.org/wiki/File:Pitiglianoite.jpg) | ✅ [File:Afghanite, pyrite, calcite 4.JPG](https://commons.wikimedia.org/wiki/File:Afghanite,_pyrite,_calcite_4.JPG) |
 | violane | ♻️ [File:Naturkundemuseum Berlin - Diopsid (Violan), St. Marcel, Valle d'Aosta, Italien.jpg](https://commons.wikimedia.org/wiki/File:Naturkundemuseum_Berlin_-_Diopsid_(Violan),_St._Marcel,_Valle_d'Aosta,_Italien.jpg) | ⏸️ recherche suspendue |
-| saphir-violet | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| saphir-violet | ✅ [File:- star sapphire.png](https://commons.wikimedia.org/wiki/File:-_star_sapphire.png) | ✅ [File:Medieval gold finger-ring with sapphire (FindID 653035).jpg](https://commons.wikimedia.org/wiki/File:Medieval_gold_finger-ring_with_sapphire_(FindID_653035).jpg) |
 | purpurite | ♻️ [File:Purpurite - Sandamab Pegmatite, Erongo Region, Namibia 1.jpg](https://commons.wikimedia.org/wiki/File:Purpurite_-_Sandamab_Pegmatite,_Erongo_Region,_Namibia_1.jpg) | ⏸️ recherche suspendue |
 | hackmanite | ♻️ [File:Hackmanite - LW.jpg](https://commons.wikimedia.org/wiki/File:Hackmanite_-_LW.jpg) | ⏸️ recherche suspendue |
 | lepidolite | ♻️ [File:Lepidolite from Høydalen, Norway.jpg](https://commons.wikimedia.org/wiki/File:Lepidolite_from_Høydalen,_Norway.jpg) | ⏸️ recherche suspendue |
@@ -130,10 +130,10 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | cobaltocalcite | ♻️ [File:Cobaltoan calcite 14.jpg](https://commons.wikimedia.org/wiki/File:Cobaltoan_calcite_14.jpg) | ⏸️ recherche suspendue |
 | thulite | ♻️ [File:Zoisite variety Thulite Hydrous calcium aluminum silicate Tvedestrand Norway 1915.jpg](https://commons.wikimedia.org/wiki/File:Zoisite_variety_Thulite_Hydrous_calcium_aluminum_silicate_Tvedestrand_Norway_1915.jpg) | ⏸️ recherche suspendue |
 | rhodonite | ♻️ [Rhodonite polie — photo Coraline Minéraux](https://gems-of-rod.fr) | ♻️ [Rhodonite en perles rondes — photo Céc.C](https://gems-of-rod.fr) |
-| topaze-rose | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| topaze-rose | ✅ [File:Uncut pink topaz - Cleveland Museum of Natural History - 2014-12-26 (21077656066).jpg](https://commons.wikimedia.org/wiki/File:Uncut_pink_topaz_-_Cleveland_Museum_of_Natural_History_-_2014-12-26_(21077656066).jpg) | ✅ [File:Marie, Princess William of Wurttemberg wearing the Wurttemberg Pink Topaz Tiara.jpg](https://commons.wikimedia.org/wiki/File:Marie,_Princess_William_of_Wurttemberg_wearing_the_Wurttemberg_Pink_Topaz_Tiara.jpg) |
 | quartz-rose | ♻️ [File:Raw rose quartz.jpg](https://commons.wikimedia.org/wiki/File:Raw_rose_quartz.jpg) | ♻️ [File:Rose quartz-1.JPG](https://commons.wikimedia.org/wiki/File:Rose_quartz-1.JPG) |
 | phosphosiderite | ♻️ [Phosphosiderite-141096](https://commons.wikimedia.org/w/index.php?curid=14865728) | ⏸️ recherche suspendue |
-| saphir-blanc | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| saphir-blanc | ✅ [File:Engagement ring 18K yellow gold with yellow sapphire and diamonds.jpg](https://commons.wikimedia.org/wiki/File:Engagement_ring_18K_yellow_gold_with_yellow_sapphire_and_diamonds.jpg) | ✅ [File:River Scene Ring 2.jpg](https://commons.wikimedia.org/wiki/File:River_Scene_Ring_2.jpg) |
 | topaze-blanche | ♻️ [Topaz ring](https://www.flickr.com/photos/76523360@N03/15063028108) | ♻️ [Topaz with irradiated fragment - Smithsonian Museum of Natural History - 2012-05-17](https://www.flickr.com/photos/23165290@N00/7283942412) |
 | hambergite | ♻️ [File:Hambergite (GeoDIL number - 230).jpg](https://commons.wikimedia.org/wiki/File:Hambergite_(GeoDIL_number_-_230).jpg) | ⏸️ recherche suspendue |
 | petalite | ♻️ [File:Petalite.jpg](https://commons.wikimedia.org/wiki/File:Petalite.jpg) | ⏸️ recherche suspendue |
@@ -147,12 +147,12 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | cerusite | ♻️ [File:Cerussite - Nakhlak mine, Anarak, Esfahan, Iran.jpg](https://commons.wikimedia.org/wiki/File:Cerussite_-_Nakhlak_mine,_Anarak,_Esfahan,_Iran.jpg) | ⏸️ recherche suspendue |
 | montebrasite | ♻️ [File:Amblygonite (GeoDIL number - 925).jpg](https://commons.wikimedia.org/wiki/File:Amblygonite_(GeoDIL_number_-_925).jpg) | ♻️ [File:Montebrasite.jpg](https://commons.wikimedia.org/wiki/File:Montebrasite.jpg) |
 | bois-fossilise | ♻️ [File:Polished Petrified Wood Macro.JPG](https://commons.wikimedia.org/wiki/File:Polished_Petrified_Wood_Macro.JPG) | ⏸️ recherche suspendue |
-| os-fossilise | ⏸️ recherche suspendue | ❌ échec téléchargement |
-| kornerupine | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
-| hyperstene | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| os-fossilise | ❌ échec téléchargement | ❌ échec téléchargement |
+| kornerupine | ✅ [File:Kornerupine (GeoDIL number - 274).jpg](https://commons.wikimedia.org/wiki/File:Kornerupine_(GeoDIL_number_-_274).jpg) | ✅ [Kornerupine-244946](https://commons.wikimedia.org/w/index.php?curid=15867784) |
+| hyperstene | ✅ [File:Labradorite with hypersthene (GeoDIL number - 392).jpg](https://commons.wikimedia.org/wiki/File:Labradorite_with_hypersthene_(GeoDIL_number_-_392).jpg) | ✅ [File:Bronzite (orthopyroxene) (GeoDIL number - 406).jpg](https://commons.wikimedia.org/wiki/File:Bronzite_(orthopyroxene)_(GeoDIL_number_-_406).jpg) |
 | paesine | ♻️ [File:Pietra paesina Val d'Arno Caillois Donation MNHN n10.jpg](https://commons.wikimedia.org/wiki/File:Pietra_paesina_Val_d'Arno_Caillois_Donation_MNHN_n10.jpg) | ⏸️ recherche suspendue |
-| hematite | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
-| magnetite | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| hematite | ✅ [File:Pyrit-with-hematite-01.jpg](https://commons.wikimedia.org/wiki/File:Pyrit-with-hematite-01.jpg) | ✅ [File:Hematite intaglio- Standing deity MET DP280576.jpg](https://commons.wikimedia.org/wiki/File:Hematite_intaglio-_Standing_deity_MET_DP280576.jpg) |
+| magnetite | ✅ [File:Magnetite Russia.jpg](https://commons.wikimedia.org/wiki/File:Magnetite_Russia.jpg) | ✅ [File:Magnetite Payún Matrú Minéraux SU.jpg](https://commons.wikimedia.org/wiki/File:Magnetite_Payún_Matrú_Minéraux_SU.jpg) |
 | quartz-tourmaline | ♻️ [File:Elbaite-Quartz-168224.jpg](https://commons.wikimedia.org/w/index.php?curid=10149221) | ♻️ [Elbaite with quartz albite and microcline - Smithsonian Museum of Natural History - 2012-05-17](https://www.flickr.com/photos/23165290@N00/7283942136) |
 | rubis-etoile | ⏸️ recherche suspendue | ♻️ [File:Huge 10,800 Carats Maharlika Star Ruby.jpg](https://commons.wikimedia.org/wiki/File:Huge_10,800_Carats_Maharlika_Star_Ruby.jpg) |
 | saphir-etoile | ⏸️ recherche suspendue | ♻️ [File:Black Star of Queensland Star Sapphire.jpg](https://commons.wikimedia.org/wiki/File:Black_Star_of_Queensland_Star_Sapphire.jpg) |
@@ -169,12 +169,12 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | moldavite | ♻️ [Moldavite en pendentif — photo Coraline Minéraux](https://gems-of-rod.fr) | ♻️ [File:Faceted natural Moldavite - Moldavite gemstones.jpg](https://commons.wikimedia.org/wiki/File:Faceted_natural_Moldavite_-_Moldavite_gemstones.jpg) |
 | verre-libyque | ♻️ [File:Libyan Desert Glass.jpg](https://commons.wikimedia.org/wiki/File:Libyan_Desert_Glass.jpg) | ⏸️ recherche suspendue |
 | saphir-vert | ⏸️ recherche suspendue | ♻️ [File:3.54ct-oval-Australian-sapphire-Lizunova-Fine-Jewels-Jeweller-Sydney-NSW-Australia.jpg](https://commons.wikimedia.org/wiki/File:3.54ct-oval-Australian-sapphire-Lizunova-Fine-Jewels-Jeweller-Sydney-NSW-Australia.jpg) |
-| andesine | ⏸️ recherche suspendue | ❌ non trouvée |
+| andesine | ❌ non trouvée | ❌ non trouvée |
 | chondrodite | ♻️ [File:Spinelle et chondrodite (Chine).JPG](https://commons.wikimedia.org/wiki/File:Spinelle_et_chondrodite_(Chine).JPG) | ⏸️ recherche suspendue |
 | enstatite | ♻️ [File:Hypersthene - Enstatite-Ferrosilite-serial.jpg](https://commons.wikimedia.org/wiki/File:Hypersthene_-_Enstatite-Ferrosilite-serial.jpg) | ⏸️ recherche suspendue |
 | sphalerite | ♻️ [File:Sphalerite (GeoDIL number - 1083).jpg](https://commons.wikimedia.org/wiki/File:Sphalerite_(GeoDIL_number_-_1083).jpg) | ♻️ [File:Sphalerite cut.jpg](https://commons.wikimedia.org/wiki/File:Sphalerite_cut.jpg) |
 | rutile | ♻️ [File:Rutile (GeoDIL number - 1562).jpg](https://commons.wikimedia.org/wiki/File:Rutile_(GeoDIL_number_-_1562).jpg) | ⏸️ recherche suspendue |
-| orthose | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| orthose | ✅ [Orthoclase-t07-43b](https://commons.wikimedia.org/w/index.php?curid=10465333) | ✅ [Orthoclase-t07-43a](https://commons.wikimedia.org/w/index.php?curid=10465331) |
 | corail | ♻️ [File:Corallium rubrum (red coral) 2 (15529370228).jpg](https://commons.wikimedia.org/wiki/File:Corallium_rubrum_(red_coral)_2_(15529370228).jpg) | ⏸️ recherche suspendue |
 | perle-conque | — | ♻️ [File:- conch pearl.png](https://commons.wikimedia.org/wiki/File:-_conch_pearl.png) |
 | saphir-auvergne | ❌ non trouvée | ❌ non trouvée |
@@ -197,7 +197,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | jais | ♻️ [File:Gagat-Holzmaden.JPG](https://commons.wikimedia.org/wiki/File:Gagat-Holzmaden.JPG) | ♻️ [File:Jet Jewellery.jpg](https://commons.wikimedia.org/wiki/File:Jet_Jewellery.jpg) |
 | grenat-etoile | ♻️ [File:Star of idaho.JPG](https://commons.wikimedia.org/wiki/File:Star_of_idaho.JPG) | ♻️ [File:Idahostargarnet.jpg](https://commons.wikimedia.org/wiki/File:Idahostargarnet.jpg) |
 | opale-peruvienne | ♻️ [Peruvian opal wire wrapped ring with brass band](https://www.flickr.com/photos/8699239@N04/4134119626) | ❌ échec téléchargement |
-| opale-commune | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| opale-commune | ✅ [File:Flint Ridge Knap-In speed competition (Flint Ridge, Ohio, USA).jpg](https://commons.wikimedia.org/wiki/File:Flint_Ridge_Knap-In_speed_competition_(Flint_Ridge,_Ohio,_USA).jpg) | ❌ échec téléchargement |
 | opale-noire | ♻️ [File:8ct Lightning Ridge Black Opal.JPG](https://commons.wikimedia.org/wiki/File:8ct_Lightning_Ridge_Black_Opal.JPG) | ♻️ [File:16.42cts Lightning Ridge black Opal.JPG](https://commons.wikimedia.org/wiki/File:16.42cts_Lightning_Ridge_black_Opal.JPG) |
 | opale-boulder | ♻️ [File:Veined boulder opal from Queensland.jpg](https://commons.wikimedia.org/wiki/File:Veined_boulder_opal_from_Queensland.jpg) | ♻️ [File:Boulder Opal.jpg](https://commons.wikimedia.org/wiki/File:Boulder_Opal.jpg) |
 | opale-ethiopie | ♻️ [File:Wire wrapped Ethiopian Opal & Sapphire.jpg](https://commons.wikimedia.org/wiki/File:Wire_wrapped_Ethiopian_Opal_&_Sapphire.jpg) | ♻️ [File:Ethiopian Welo Wello Opal Pendant.jpg](https://commons.wikimedia.org/wiki/File:Ethiopian_Welo_Wello_Opal_Pendant.jpg) |
@@ -231,7 +231,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | fossile-trilobite-phacops | ♻️ [File:Phacops rana crassituberculata, eye.jpg](https://commons.wikimedia.org/wiki/File:Phacops_rana_crassituberculata,_eye.jpg) | — |
 | fossile-trilobite-calymene | ♻️ [File:Calymene Trilobite Fossil.jpg](https://commons.wikimedia.org/wiki/File:Calymene_Trilobite_Fossil.jpg) | — |
 | fossile-dent-megalodon | ♻️ [File:Megalodon shark tooth fossil.jpg](https://commons.wikimedia.org/wiki/File:Megalodon_shark_tooth_fossil.jpg) | — |
-| fossile-os-dinosaure-gembone | ⏸️ recherche suspendue | ⏸️ recherche suspendue |
+| fossile-os-dinosaure-gembone | ❌ non trouvée | ❌ échec téléchargement |
 | fossile-poisson-green-river | ♻️ [File:Knightia Fossil Fish (20255016550).jpg](https://commons.wikimedia.org/wiki/File:Knightia_Fossil_Fish_(20255016550).jpg) | — |
 | fossile-dent-mosasaure | ♻️ [File:Dollosaurus sp. tooth.png](https://commons.wikimedia.org/wiki/File:Dollosaurus_sp._tooth.png) | — |
 | fossile-ivoire-mammouth | ♻️ [File:Mammuthus primigenius tusk - MUSE.jpg](https://commons.wikimedia.org/wiki/File:Mammuthus_primigenius_tusk_-_MUSE.jpg) | ♻️ [File:Mammuthus meridionalis tusk section.jpg](https://commons.wikimedia.org/wiki/File:Mammuthus_meridionalis_tusk_section.jpg) |
@@ -239,7 +239,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | fossile-fougere | ♻️ [File:Fossil fern with galls, from Late Triassic, Alborz, Iran 02.jpg](https://commons.wikimedia.org/wiki/File:Fossil_fern_with_galls,_from_Late_Triassic,_Alborz,_Iran_02.jpg) | — |
 | fossile-ambre-baltique | ♻️ [File:Baltic amber Coleoptera Anobiidae Episernus.JPG](https://commons.wikimedia.org/wiki/File:Baltic_amber_Coleoptera_Anobiidae_Episernus.JPG) | ♻️ [File:Neotype male of Electrostephanus petiolatus Brues in Baltic amber (AMNH B-JWJ-260).png](https://commons.wikimedia.org/wiki/File:Neotype_male_of_Electrostephanus_petiolatus_Brues_in_Baltic_amber_(AMNH_B-JWJ-260).png) |
 | fossile-ambre-inclusion | ♻️ [File:Amber-000-12mm.jpg](https://commons.wikimedia.org/wiki/File:Amber-000-12mm.jpg) | — |
-| fossile-copal | ⏸️ recherche suspendue | — |
+| fossile-copal | ❌ échec téléchargement | — |
 | fossile-corail-agatise | ♻️ [File:Fossil agatized coral Florida.JPG](https://commons.wikimedia.org/wiki/File:Fossil_agatized_coral_Florida.JPG) | ♻️ [File:Fossil agatized coral Florida (cropped).JPG](https://commons.wikimedia.org/wiki/File:Fossil_agatized_coral_Florida_(cropped).JPG) |
 | fossile-oursin | ♻️ [File:Fossil sea urchin (FindID 551527) cropped transparent background.png](https://commons.wikimedia.org/wiki/File:Fossil_sea_urchin_(FindID_551527)_cropped_transparent_background.png) | — |
 | fossile-crinoide | ♻️ [File:Ordovician crinoid stem fragments.jpg](https://commons.wikimedia.org/wiki/File:Ordovician_crinoid_stem_fragments.jpg) | ♻️ [File:Crushed crinoid stems from the Jurassic, Iran.jpg](https://commons.wikimedia.org/wiki/File:Crushed_crinoid_stems_from_the_Jurassic,_Iran.jpg) |
@@ -261,7 +261,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | coquillage-moule-perliere-eau-douce | ♻️ [File:Margaritifera margaritifera-buiten.jpg](https://commons.wikimedia.org/wiki/File:Margaritifera_margaritifera-buiten.jpg) | — |
 | coquillage-nautile | ♻️ [File:Nautilus pompilius albino.jpg](https://commons.wikimedia.org/wiki/File:Nautilus_pompilius_albino.jpg) | ♻️ [File:Nautilus Pompilius MN 01.jpg](https://commons.wikimedia.org/wiki/File:Nautilus_Pompilius_MN_01.jpg) |
 
-**302 / 472** photos récupérées au total.
+**357 / 472** photos récupérées au total.
 
 ## Photos d'inclusions
 
@@ -277,7 +277,7 @@ Photos ciblées sur l'inclusion caractéristique de la pierre (jardin, soie, chi
 | quartz-rutile | ♻️ [File:Rutile needles in quartz (6421636913).jpg](https://commons.wikimedia.org/wiki/File:Rutile_needles_in_quartz_(6421636913).jpg) |
 | quartz-a-inclusions | ♻️ [File:Lodolite quartz - 1.JPG](https://commons.wikimedia.org/wiki/File:Lodolite_quartz_-_1.JPG) |
 | quartz-super-sept | ❌ non trouvée |
-| ambre | ♻️ [File:Amber-000-12mm.jpg](https://commons.wikimedia.org/wiki/File:Amber-000-12mm.jpg) |
+| ambre | ♻️ [Ambre à inclusions à contre-jour — photo Coraline Minéraux](https://gems-of-rod.fr) |
 | demantoide | ❌ non trouvée |
 | peridot | ❌ non trouvée |
 | tourmaline-pasteque | ♻️ [File:Diggerite Slices.JPG](https://commons.wikimedia.org/wiki/File:Diggerite_Slices.JPG) |
