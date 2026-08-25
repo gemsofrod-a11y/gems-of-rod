@@ -50,25 +50,32 @@ jobs:
           KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: ./gradlew bundleRelease --no-daemon
 
-      # Preuve directe sur l'artefact réellement produit (pas seulement sur
-      # build.gradle.kts) : le sandbox de développement ne peut pas
-      # télécharger les artefacts GitHub Actions (voir commentaire équivalent
-      # dans screenshots.yml), donc on lit le manifeste ici et on l'imprime
-      # dans les logs du job, consultables via l'API sans téléchargement.
-      - name: Vérifie le SDK cible réellement empaqueté dans l'AAB
-        run: |
-          curl -sSL -o /tmp/bundletool.jar https://github.com/google/bundletool/releases/latest/download/bundletool-all.jar
-          echo "=== Manifeste du module base (app-release.aab) ==="
-          java -jar /tmp/bundletool.jar dump manifest --bundle=app/build/outputs/bundle/release/app-release.aab
-          echo "=== Ligne uses-sdk ==="
-          java -jar /tmp/bundletool.jar dump manifest --bundle=app/build/outputs/bundle/release/app-release.aab | grep -i "sdk"
-
       - name: Nettoie le keystore du runner
         if: always()
         run: rm -f gems-of-rod-upload.jks
 
+      # L'upload passe avant tout diagnostic annexe : un build signé produit
+      # avec succès doit toujours être livrable, même si l'étape suivante
+      # (best-effort) échoue.
       - name: Upload de l'App Bundle (.aab)
         uses: actions/upload-artifact@v4
         with:
           name: gems-of-rod-encyclopedie-release-aab
           path: android/app/build/outputs/bundle/release/app-release.aab
+
+      # Preuve directe sur l'artefact réellement produit (pas seulement sur
+      # build.gradle.kts) : le sandbox de développement ne peut pas
+      # télécharger les artefacts GitHub Actions (voir commentaire équivalent
+      # dans screenshots.yml), donc on lit le manifeste ici et on l'imprime
+      # dans les logs du job, consultables via l'API sans téléchargement.
+      # continue-on-error : purement diagnostique, ne doit jamais bloquer la
+      # livraison d'un AAB par ailleurs valide (ex. téléchargement de
+      # bundletool échoué/corrompu — déjà arrivé une fois en pratique).
+      - name: Vérifie le SDK cible réellement empaqueté dans l'AAB
+        continue-on-error: true
+        run: |
+          curl -fsSL -o /tmp/bundletool.jar https://github.com/google/bundletool/releases/latest/download/bundletool-all.jar
+          echo "=== Manifeste du module base (app-release.aab) ==="
+          java -jar /tmp/bundletool.jar dump manifest --bundle=app/build/outputs/bundle/release/app-release.aab
+          echo "=== Ligne uses-sdk ==="
+          java -jar /tmp/bundletool.jar dump manifest --bundle=app/build/outputs/bundle/release/app-release.aab | grep -i "sdk" || true
