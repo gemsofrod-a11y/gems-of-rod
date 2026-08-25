@@ -123,4 +123,49 @@ class ReflectivityMeterTest {
         assertTrue(estimateLow.refractiveIndexLow <= estimateLow.refractiveIndexHigh)
         assertTrue(estimateHigh.refractiveIndexLow <= estimateHigh.refractiveIndexHigh)
     }
+
+    @Test
+    fun calibrationRecord_validatesPointsAtConstruction() {
+        assertFailsWith<IllegalArgumentException> {
+            ReflectivityCalibrationRecord(
+                pointA = CalibrationPoint(1.5, 100.0),
+                pointB = CalibrationPoint(1.8, 100.0),
+                calibratedAtEpochMillis = 0L
+            )
+        }
+    }
+
+    @Test
+    fun calibrationRecord_exposesWorkingCalibration() {
+        val record = ReflectivityCalibrationRecord(
+            pointA = CalibrationPoint(1.544, 100.0),
+            pointB = CalibrationPoint(1.762, 200.0),
+            calibratedAtEpochMillis = 0L
+        )
+
+        val estimate = record.calibration.estimate(150.0)
+        assertTrue(estimate.refractiveIndexLow <= estimate.refractiveIndexCenter)
+        assertTrue(estimate.refractiveIndexCenter <= estimate.refractiveIndexHigh)
+    }
+
+    @Test
+    fun calibrationRecord_isStale() {
+        val oneDayMillis = 24L * 60 * 60 * 1000
+        val record = ReflectivityCalibrationRecord(
+            pointA = CalibrationPoint(1.5, 100.0),
+            pointB = CalibrationPoint(1.8, 200.0),
+            calibratedAtEpochMillis = 1_000_000L
+        )
+
+        // Pile 7 jours plus tard : pas encore périmée (strictement >).
+        assertTrue(
+            !record.isStale(1_000_000L + ReflectivityCalibrationRecord.DEFAULT_MAX_AGE_MILLIS)
+        )
+        // Un jour de plus : périmée.
+        assertTrue(
+            record.isStale(1_000_000L + ReflectivityCalibrationRecord.DEFAULT_MAX_AGE_MILLIS + oneDayMillis)
+        )
+        // Une heure après la calibration : pas périmée.
+        assertTrue(!record.isStale(1_000_000L + 60 * 60 * 1000))
+    }
 }

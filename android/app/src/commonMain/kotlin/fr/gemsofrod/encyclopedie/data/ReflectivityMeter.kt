@@ -106,3 +106,30 @@ class ReflectivityCalibration(
         private const val MAX_VALID_REFLECTANCE: Double = 0.999
     }
 }
+
+/** Calibration persistée pour une session de mesure (Phase B du plan) :
+ * les deux points bruts tels que saisis/mesurés, plus la date de calibration
+ * pour proposer une recalibration périodique — la lumière ambiante et le
+ * capot changent d'une séance à l'autre.
+ *
+ * [calibration] est calculé une seule fois à la construction plutôt qu'à
+ * chaque accès : cela valide aussi les deux points immédiatement (utile pour
+ * détecter des préférences corrompues rechargées depuis le disque, avant même
+ * de tenter une estimation).
+ */
+data class ReflectivityCalibrationRecord(
+    val pointA: CalibrationPoint,
+    val pointB: CalibrationPoint,
+    val calibratedAtEpochMillis: Long
+) {
+    val calibration: ReflectivityCalibration = ReflectivityCalibration(pointA, pointB)
+
+    /** Vrai si la calibration date de plus de [maxAgeMillis]. Valeur de
+     * départ à 7 jours, à ajuster lors de la validation terrain (Phase F). */
+    fun isStale(nowEpochMillis: Long, maxAgeMillis: Long = DEFAULT_MAX_AGE_MILLIS): Boolean =
+        nowEpochMillis - calibratedAtEpochMillis > maxAgeMillis
+
+    companion object {
+        const val DEFAULT_MAX_AGE_MILLIS: Long = 7L * 24 * 60 * 60 * 1000
+    }
+}
