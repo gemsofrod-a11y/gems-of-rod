@@ -109,6 +109,16 @@ kotlin {
             }
         }
 
+        val commonTest by getting {
+            // Tests de logique pure (sans dépendance Android/Compose), ex.
+            // ReflectivityMeterTest — s'exécutent aussi bien via
+            // androidUnitTest que desktopTest grâce à la hiérarchie de
+            // source sets par défaut de Kotlin Multiplatform.
+            dependencies {
+                implementation(kotlin("test"))
+            }
+        }
+
         val androidMain by getting {
             // Le code Kotlin reste physiquement sous src/main/java le temps de
             // la migration progressive vers commonMain (phases suivantes du
