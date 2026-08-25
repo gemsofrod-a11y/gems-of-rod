@@ -338,6 +338,26 @@
     <!-- Taccuino da campo -->
     <string name="lab_notebook_title">Taccuino da campo</string>
     <string name="lab_notebook_subtitle">Registra le tue misurazioni, effettuate con i tuoi strumenti.</string>
+
+    <!-- Réflectomètre (Phase C) -->
+    <string name="lab_reflectivity_title">Riflettometro</string>
+    <string name="lab_reflectivity_subtitle">Stima l\'indice di rifrazione con la fotocamera (beta).</string>
+    <string name="reflectivity_title">Riflettometro (beta)</string>
+    <string name="reflectivity_disclaimer">Stima indicativa per riflettività, NON una misurazione di laboratorio — non sostituisce un rifrattometro professionale.</string>
+    <string name="reflectivity_permission_rationale">L\'accesso alla fotocamera è necessario per misurare la luminosità riflessa dalla pietra.</string>
+    <string name="reflectivity_permission_request">Consenti l\'accesso alla fotocamera</string>
+    <string name="reflectivity_capture_error">Cattura non riuscita. Riprova.</string>
+    <string name="reflectivity_calibration_intro">Calibra prima il dispositivo con due pietre campione di indice di rifrazione noto, fotografate nelle stesse condizioni (stesso cappuccio, stessa illuminazione) della pietra da misurare.</string>
+    <string name="reflectivity_point_a_label">Pietra campione A</string>
+    <string name="reflectivity_point_b_label">Pietra campione B</string>
+    <string name="reflectivity_known_ri_label">Indice di rifrazione noto</string>
+    <string name="reflectivity_capture">Fotografare</string>
+    <string name="reflectivity_recapture">Rifai la foto</string>
+    <string name="reflectivity_save_calibration">Salva calibrazione</string>
+    <string name="reflectivity_calibrated_status">Dispositivo calibrato. Fotografa la pietra da misurare nelle stesse condizioni.</string>
+    <string name="reflectivity_measure">Misura la pietra</string>
+    <string name="reflectivity_result_title">Indice di rifrazione stimato</string>
+    <string name="reflectivity_recalibrate">Ricalibra</string>
     <string name="notebook_empty_state">Nessun campione registrato. Aggiungi la tua prima scheda di campo.</string>
     <string name="notebook_add_button">Nuovo campione</string>
     <string name="notebook_criteria_count">%1$d criteri registrati</string>

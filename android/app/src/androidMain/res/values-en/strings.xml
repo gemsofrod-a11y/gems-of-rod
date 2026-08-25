@@ -338,6 +338,26 @@
     <!-- Field notebook -->
     <string name="lab_notebook_title">Field notebook</string>
     <string name="lab_notebook_subtitle">Log your own measurements, taken with your instruments.</string>
+
+    <!-- Réflectomètre (Phase C) -->
+    <string name="lab_reflectivity_title">Reflectometer</string>
+    <string name="lab_reflectivity_subtitle">Estimate the refractive index with the camera (beta).</string>
+    <string name="reflectivity_title">Reflectometer (beta)</string>
+    <string name="reflectivity_disclaimer">Indicative reflectivity estimate, NOT a laboratory measurement — does not replace a professional refractometer.</string>
+    <string name="reflectivity_permission_rationale">Camera access is needed to measure the brightness reflected by the stone.</string>
+    <string name="reflectivity_permission_request">Allow camera access</string>
+    <string name="reflectivity_capture_error">Capture failed. Please try again.</string>
+    <string name="reflectivity_calibration_intro">First calibrate the device with two reference stones of known refractive index, photographed under the same conditions (same hood, same lighting) as the stone to be measured.</string>
+    <string name="reflectivity_point_a_label">Reference stone A</string>
+    <string name="reflectivity_point_b_label">Reference stone B</string>
+    <string name="reflectivity_known_ri_label">Known refractive index</string>
+    <string name="reflectivity_capture">Take photo</string>
+    <string name="reflectivity_recapture">Retake photo</string>
+    <string name="reflectivity_save_calibration">Save calibration</string>
+    <string name="reflectivity_calibrated_status">Device calibrated. Photograph the stone to be measured under the same conditions.</string>
+    <string name="reflectivity_measure">Measure the stone</string>
+    <string name="reflectivity_result_title">Estimated refractive index</string>
+    <string name="reflectivity_recalibrate">Recalibrate</string>
     <string name="notebook_empty_state">No samples logged yet. Add your first field entry.</string>
     <string name="notebook_add_button">New sample</string>
     <string name="notebook_criteria_count">%1$d criteria logged</string>
