@@ -13,6 +13,7 @@ import fr.gemsofrod.encyclopedie.data.AchievementsRepository
 import fr.gemsofrod.encyclopedie.data.FavoritesRepository
 import fr.gemsofrod.encyclopedie.data.LabNotebookRepository
 import fr.gemsofrod.encyclopedie.data.LanguageRepository
+import fr.gemsofrod.encyclopedie.data.ReflectivityCalibrationRepository
 import fr.gemsofrod.encyclopedie.ui.navigation.GemsNavGraph
 import fr.gemsofrod.encyclopedie.ui.theme.GemsEncyclopedieTheme
 import java.util.Locale
@@ -32,6 +33,7 @@ class MainActivity : ComponentActivity() {
         FavoritesRepository.init(this)
         AchievementsRepository.init(this)
         LabNotebookRepository.init(this)
+        ReflectivityCalibrationRepository.init(this)
         enableEdgeToEdge()
         setContent {
             GemsEncyclopedieTheme {

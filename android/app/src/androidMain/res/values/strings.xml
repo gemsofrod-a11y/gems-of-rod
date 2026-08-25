@@ -338,6 +338,26 @@
     <!-- Carnet de terrain -->
     <string name="lab_notebook_title">Carnet de terrain</string>
     <string name="lab_notebook_subtitle">Consignez vos propres mesures, prises avec vos instruments.</string>
+
+    <!-- Réflectomètre (Phase C) -->
+    <string name="lab_reflectivity_title">Réflectomètre</string>
+    <string name="lab_reflectivity_subtitle">Estimez l\'indice de réfraction avec l\'appareil photo (bêta).</string>
+    <string name="reflectivity_title">Réflectomètre (bêta)</string>
+    <string name="reflectivity_disclaimer">Estimation indicative par réflectivité, PAS une mesure de laboratoire — ne remplace pas un réfractomètre professionnel.</string>
+    <string name="reflectivity_permission_rationale">L\'accès à l\'appareil photo est nécessaire pour mesurer la brillance réfléchie par la pierre.</string>
+    <string name="reflectivity_permission_request">Autoriser l\'appareil photo</string>
+    <string name="reflectivity_capture_error">Échec de la capture. Réessayez.</string>
+    <string name="reflectivity_calibration_intro">Calibrez d\'abord l\'appareil avec deux pierres-étalon d\'indice de réfraction connu, photographiées dans les mêmes conditions (même capot, même éclairage) que la pierre à mesurer.</string>
+    <string name="reflectivity_point_a_label">Pierre-étalon A</string>
+    <string name="reflectivity_point_b_label">Pierre-étalon B</string>
+    <string name="reflectivity_known_ri_label">Indice de réfraction connu</string>
+    <string name="reflectivity_capture">Photographier</string>
+    <string name="reflectivity_recapture">Reprendre la photo</string>
+    <string name="reflectivity_save_calibration">Enregistrer la calibration</string>
+    <string name="reflectivity_calibrated_status">Appareil calibré. Photographiez la pierre à mesurer dans les mêmes conditions.</string>
+    <string name="reflectivity_measure">Mesurer la pierre</string>
+    <string name="reflectivity_result_title">Indice de réfraction estimé</string>
+    <string name="reflectivity_recalibrate">Recalibrer</string>
     <string name="notebook_empty_state">Aucun échantillon enregistré. Ajoutez votre première fiche de terrain.</string>
     <string name="notebook_add_button">Nouvel échantillon</string>
     <string name="notebook_criteria_count">%1$d critère(s) renseigné(s)</string>

@@ -338,6 +338,26 @@
     <!-- Veldnotitieboek -->
     <string name="lab_notebook_title">Veldnotitieboek</string>
     <string name="lab_notebook_subtitle">Leg uw eigen metingen vast, gedaan met uw instrumenten.</string>
+
+    <!-- Réflectomètre (Phase C) -->
+    <string name="lab_reflectivity_title">Reflectometer</string>
+    <string name="lab_reflectivity_subtitle">Schat de brekingsindex met de camera (bèta).</string>
+    <string name="reflectivity_title">Reflectometer (bèta)</string>
+    <string name="reflectivity_disclaimer">Indicatieve schatting op basis van reflectiviteit, GEEN laboratoriummeting — vervangt geen professionele refractometer.</string>
+    <string name="reflectivity_permission_rationale">Cameratoegang is nodig om de door de steen gereflecteerde helderheid te meten.</string>
+    <string name="reflectivity_permission_request">Cameratoegang toestaan</string>
+    <string name="reflectivity_capture_error">Opname mislukt. Probeer opnieuw.</string>
+    <string name="reflectivity_calibration_intro">Kalibreer het apparaat eerst met twee referentiestenen met bekende brekingsindex, gefotografeerd onder dezelfde omstandigheden (dezelfde kap, dezelfde verlichting) als de te meten steen.</string>
+    <string name="reflectivity_point_a_label">Referentiesteen A</string>
+    <string name="reflectivity_point_b_label">Referentiesteen B</string>
+    <string name="reflectivity_known_ri_label">Bekende brekingsindex</string>
+    <string name="reflectivity_capture">Fotograferen</string>
+    <string name="reflectivity_recapture">Foto opnieuw maken</string>
+    <string name="reflectivity_save_calibration">Kalibratie opslaan</string>
+    <string name="reflectivity_calibrated_status">Apparaat gekalibreerd. Fotografeer de te meten steen onder dezelfde omstandigheden.</string>
+    <string name="reflectivity_measure">Steen meten</string>
+    <string name="reflectivity_result_title">Geschatte brekingsindex</string>
+    <string name="reflectivity_recalibrate">Herkalibreren</string>
     <string name="notebook_empty_state">Geen monster opgeslagen. Voeg uw eerste veldfiche toe.</string>
     <string name="notebook_add_button">Nieuw monster</string>
     <string name="notebook_criteria_count">%1$d criterium/criteria ingevuld</string>

@@ -338,6 +338,26 @@
     <!-- Cuaderno de campo -->
     <string name="lab_notebook_title">Cuaderno de campo</string>
     <string name="lab_notebook_subtitle">Registre sus propias mediciones, tomadas con sus instrumentos.</string>
+
+    <!-- Réflectomètre (Phase C) -->
+    <string name="lab_reflectivity_title">Reflectómetro</string>
+    <string name="lab_reflectivity_subtitle">Estime el índice de refracción con la cámara (beta).</string>
+    <string name="reflectivity_title">Reflectómetro (beta)</string>
+    <string name="reflectivity_disclaimer">Estimación indicativa por reflectividad, NO es una medición de laboratorio — no sustituye a un refractómetro profesional.</string>
+    <string name="reflectivity_permission_rationale">Se necesita acceso a la cámara para medir el brillo reflejado por la piedra.</string>
+    <string name="reflectivity_permission_request">Permitir el acceso a la cámara</string>
+    <string name="reflectivity_capture_error">Error al capturar. Inténtelo de nuevo.</string>
+    <string name="reflectivity_calibration_intro">Calibre primero el dispositivo con dos piedras patrón de índice de refracción conocido, fotografiadas en las mismas condiciones (misma capucha, misma iluminación) que la piedra a medir.</string>
+    <string name="reflectivity_point_a_label">Piedra patrón A</string>
+    <string name="reflectivity_point_b_label">Piedra patrón B</string>
+    <string name="reflectivity_known_ri_label">Índice de refracción conocido</string>
+    <string name="reflectivity_capture">Fotografiar</string>
+    <string name="reflectivity_recapture">Repetir la foto</string>
+    <string name="reflectivity_save_calibration">Guardar calibración</string>
+    <string name="reflectivity_calibrated_status">Dispositivo calibrado. Fotografíe la piedra a medir en las mismas condiciones.</string>
+    <string name="reflectivity_measure">Medir la piedra</string>
+    <string name="reflectivity_result_title">Índice de refracción estimado</string>
+    <string name="reflectivity_recalibrate">Recalibrar</string>
     <string name="notebook_empty_state">Aún no hay muestras registradas. Añada su primera ficha de campo.</string>
     <string name="notebook_add_button">Nueva muestra</string>
     <string name="notebook_criteria_count">%1$d criterios registrados</string>

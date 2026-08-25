@@ -338,6 +338,26 @@
     <!-- Полевой дневник -->
     <string name="lab_notebook_title">Полевой дневник</string>
     <string name="lab_notebook_subtitle">Записывайте собственные измерения, сделанные своими инструментами.</string>
+
+    <!-- Réflectomètre (Phase C) -->
+    <string name="lab_reflectivity_title">Рефлектометр</string>
+    <string name="lab_reflectivity_subtitle">Оцените показатель преломления с помощью камеры (бета).</string>
+    <string name="reflectivity_title">Рефлектометр (бета)</string>
+    <string name="reflectivity_disclaimer">Ориентировочная оценка по отражательной способности, а НЕ лабораторное измерение — не заменяет профессиональный рефрактометр.</string>
+    <string name="reflectivity_permission_rationale">Для измерения яркости, отражённой камнем, необходим доступ к камере.</string>
+    <string name="reflectivity_permission_request">Разрешить доступ к камере</string>
+    <string name="reflectivity_capture_error">Не удалось сделать снимок. Повторите попытку.</string>
+    <string name="reflectivity_calibration_intro">Сначала откалибруйте устройство с помощью двух эталонных камней с известным показателем преломления, сфотографированных в тех же условиях (тот же колпак, то же освещение), что и измеряемый камень.</string>
+    <string name="reflectivity_point_a_label">Эталонный камень A</string>
+    <string name="reflectivity_point_b_label">Эталонный камень B</string>
+    <string name="reflectivity_known_ri_label">Известный показатель преломления</string>
+    <string name="reflectivity_capture">Сфотографировать</string>
+    <string name="reflectivity_recapture">Переснять</string>
+    <string name="reflectivity_save_calibration">Сохранить калибровку</string>
+    <string name="reflectivity_calibrated_status">Устройство откалибровано. Сфотографируйте измеряемый камень в тех же условиях.</string>
+    <string name="reflectivity_measure">Измерить камень</string>
+    <string name="reflectivity_result_title">Оценённый показатель преломления</string>
+    <string name="reflectivity_recalibrate">Перекалибровать</string>
     <string name="notebook_empty_state">Нет сохранённых образцов. Добавьте свою первую полевую карточку.</string>
     <string name="notebook_add_button">Новый образец</string>
     <string name="notebook_criteria_count">%1$d критериев указано</string>

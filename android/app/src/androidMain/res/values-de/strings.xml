@@ -338,6 +338,26 @@
     <!-- Feldnotizbuch -->
     <string name="lab_notebook_title">Feldnotizbuch</string>
     <string name="lab_notebook_subtitle">Halten Sie Ihre eigenen Messungen fest, aufgenommen mit Ihren Instrumenten.</string>
+
+    <!-- Réflectomètre (Phase C) -->
+    <string name="lab_reflectivity_title">Reflektometer</string>
+    <string name="lab_reflectivity_subtitle">Schätzen Sie den Brechungsindex mit der Kamera (Beta).</string>
+    <string name="reflectivity_title">Reflektometer (Beta)</string>
+    <string name="reflectivity_disclaimer">Richtwert per Reflexionsmessung, KEINE Labormessung — ersetzt kein professionelles Refraktometer.</string>
+    <string name="reflectivity_permission_rationale">Der Kamerazugriff ist erforderlich, um die vom Stein reflektierte Helligkeit zu messen.</string>
+    <string name="reflectivity_permission_request">Kamerazugriff erlauben</string>
+    <string name="reflectivity_capture_error">Aufnahme fehlgeschlagen. Bitte erneut versuchen.</string>
+    <string name="reflectivity_calibration_intro">Kalibrieren Sie das Gerät zunächst mit zwei Referenzsteinen bekannten Brechungsindex, fotografiert unter denselben Bedingungen (gleiche Haube, gleiche Beleuchtung) wie der zu messende Stein.</string>
+    <string name="reflectivity_point_a_label">Referenzstein A</string>
+    <string name="reflectivity_point_b_label">Referenzstein B</string>
+    <string name="reflectivity_known_ri_label">Bekannter Brechungsindex</string>
+    <string name="reflectivity_capture">Fotografieren</string>
+    <string name="reflectivity_recapture">Foto wiederholen</string>
+    <string name="reflectivity_save_calibration">Kalibrierung speichern</string>
+    <string name="reflectivity_calibrated_status">Gerät kalibriert. Fotografieren Sie den zu messenden Stein unter denselben Bedingungen.</string>
+    <string name="reflectivity_measure">Stein messen</string>
+    <string name="reflectivity_result_title">Geschätzter Brechungsindex</string>
+    <string name="reflectivity_recalibrate">Neu kalibrieren</string>
     <string name="notebook_empty_state">Noch keine Proben erfasst. Fügen Sie Ihren ersten Feldeintrag hinzu.</string>
     <string name="notebook_add_button">Neue Probe</string>
     <string name="notebook_criteria_count">%1$d Kriterien erfasst</string>

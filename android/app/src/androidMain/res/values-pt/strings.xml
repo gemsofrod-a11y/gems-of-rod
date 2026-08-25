@@ -338,6 +338,26 @@
     <!-- Caderno de campo -->
     <string name="lab_notebook_title">Caderno de campo</string>
     <string name="lab_notebook_subtitle">Registre suas próprias medições, feitas com seus instrumentos.</string>
+
+    <!-- Réflectomètre (Phase C) -->
+    <string name="lab_reflectivity_title">Refletômetro</string>
+    <string name="lab_reflectivity_subtitle">Estime o índice de refração com a câmera (beta).</string>
+    <string name="reflectivity_title">Refletômetro (beta)</string>
+    <string name="reflectivity_disclaimer">Estimativa indicativa por refletividade, NÃO é uma medição de laboratório — não substitui um refratômetro profissional.</string>
+    <string name="reflectivity_permission_rationale">É necessário acesso à câmera para medir o brilho refletido pela pedra.</string>
+    <string name="reflectivity_permission_request">Permitir acesso à câmera</string>
+    <string name="reflectivity_capture_error">Falha na captura. Tente novamente.</string>
+    <string name="reflectivity_calibration_intro">Calibre primeiro o aparelho com duas pedras-padrão de índice de refração conhecido, fotografadas nas mesmas condições (mesma capota, mesma iluminação) que a pedra a medir.</string>
+    <string name="reflectivity_point_a_label">Pedra-padrão A</string>
+    <string name="reflectivity_point_b_label">Pedra-padrão B</string>
+    <string name="reflectivity_known_ri_label">Índice de refração conhecido</string>
+    <string name="reflectivity_capture">Fotografar</string>
+    <string name="reflectivity_recapture">Repetir a foto</string>
+    <string name="reflectivity_save_calibration">Salvar calibração</string>
+    <string name="reflectivity_calibrated_status">Aparelho calibrado. Fotografe a pedra a medir nas mesmas condições.</string>
+    <string name="reflectivity_measure">Medir a pedra</string>
+    <string name="reflectivity_result_title">Índice de refração estimado</string>
+    <string name="reflectivity_recalibrate">Recalibrar</string>
     <string name="notebook_empty_state">Nenhuma amostra registrada. Adicione sua primeira ficha de campo.</string>
     <string name="notebook_add_button">Nova amostra</string>
     <string name="notebook_criteria_count">%1$d critério(s) informado(s)</string>

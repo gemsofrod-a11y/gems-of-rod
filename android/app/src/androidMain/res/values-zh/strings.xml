@@ -338,6 +338,26 @@
     <!-- 野外笔记 -->
     <string name="lab_notebook_title">野外笔记</string>
     <string name="lab_notebook_subtitle">记录您用自己的仪器测得的数据。</string>
+
+    <!-- Réflectomètre (Phase C) -->
+    <string name="lab_reflectivity_title">反射仪</string>
+    <string name="lab_reflectivity_subtitle">用相机估算折射率(测试版)。</string>
+    <string name="reflectivity_title">反射仪(测试版)</string>
+    <string name="reflectivity_disclaimer">参考性反射率估算,并非实验室测量结果 — 不能替代专业折射仪。</string>
+    <string name="reflectivity_permission_rationale">需要访问相机才能测量宝石反射的亮度。</string>
+    <string name="reflectivity_permission_request">允许访问相机</string>
+    <string name="reflectivity_capture_error">拍摄失败,请重试。</string>
+    <string name="reflectivity_calibration_intro">请先用两颗折射率已知的标准石在与待测石相同的条件下(相同遮光罩、相同光照)拍照,校准设备。</string>
+    <string name="reflectivity_point_a_label">标准石 A</string>
+    <string name="reflectivity_point_b_label">标准石 B</string>
+    <string name="reflectivity_known_ri_label">已知折射率</string>
+    <string name="reflectivity_capture">拍照</string>
+    <string name="reflectivity_recapture">重新拍照</string>
+    <string name="reflectivity_save_calibration">保存校准</string>
+    <string name="reflectivity_calibrated_status">设备已校准。请在相同条件下拍摄待测石。</string>
+    <string name="reflectivity_measure">测量宝石</string>
+    <string name="reflectivity_result_title">估算折射率</string>
+    <string name="reflectivity_recalibrate">重新校准</string>
     <string name="notebook_empty_state">尚未记录任何样本。添加您的第一张野外记录卡。</string>
     <string name="notebook_add_button">新样本</string>
     <string name="notebook_criteria_count">已填写 %1$d 项条件</string>

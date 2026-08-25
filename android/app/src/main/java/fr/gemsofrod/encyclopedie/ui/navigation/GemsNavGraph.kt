@@ -64,6 +64,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.MeteoriteDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.MeteoritesMenuScreen
 import fr.gemsofrod.encyclopedie.ui.screens.PaysListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.QuizScreen
+import fr.gemsofrod.encyclopedie.ui.screens.ReflectivityMeterScreen
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import kotlinx.coroutines.delay
 import java.net.URLDecoder
@@ -111,6 +112,7 @@ private object Routes {
     const val LAB_NOTEBOOK_NEW = "lab_notebook_new"
     const val LAB_NOTEBOOK_EDIT = "lab_notebook_edit/{sampleId}"
     const val LAB_NOTEBOOK_DETAIL = "lab_notebook_detail/{sampleId}"
+    const val REFLECTIVITY_METER = "reflectivity_meter"
     const val LEGENDARY_RIDDLE = "legendary_riddle"
     const val LEGENDARY_MAP = "legendary_map"
 
@@ -196,9 +198,13 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onNotebookClick = { navController.navigate(Routes.LAB_NOTEBOOK) },
                 onInstrumentsClick = { navController.navigate(Routes.INSTRUMENTS) },
                 onGlossaireClick = { navController.navigate(Routes.GLOSSAIRE) },
+                onReflectivityMeterClick = { navController.navigate(Routes.REFLECTIVITY_METER) },
                 onLegendaryClick = { navController.navigate(Routes.LEGENDARY_RIDDLE) },
                 onBackClick = { navController.popBackStack() }
             )
+        }
+        composable(Routes.REFLECTIVITY_METER) {
+            ReflectivityMeterScreen(onBackClick = { navController.popBackStack() })
         }
         composable(Routes.LEGENDARY_RIDDLE) {
             LegendaryRiddleScreen(

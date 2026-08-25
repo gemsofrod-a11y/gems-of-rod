@@ -26,8 +26,8 @@ android {
         applicationId = "fr.gemsofrod.encyclopedie"
         minSdk = 26
         targetSdk = 36
-        versionCode = 100
-        versionName = "8.7"
+        versionCode = 101
+        versionName = "8.8"
     }
 
     signingConfigs {
@@ -109,6 +109,16 @@ kotlin {
             }
         }
 
+        val commonTest by getting {
+            // Tests de logique pure (sans dépendance Android/Compose), ex.
+            // ReflectivityMeterTest — s'exécutent aussi bien via
+            // androidUnitTest que desktopTest grâce à la hiérarchie de
+            // source sets par défaut de Kotlin Multiplatform.
+            dependencies {
+                implementation(kotlin("test"))
+            }
+        }
+
         val androidMain by getting {
             // Le code Kotlin reste physiquement sous src/main/java le temps de
             // la migration progressive vers commonMain (phases suivantes du
@@ -126,6 +136,13 @@ kotlin {
                 implementation("androidx.navigation:navigation-compose:2.7.7")
                 implementation(compose.preview)
                 implementation(compose.uiTooling)
+                // Réflectomètre par caméra (Phase C) : capture avec verrouillage
+                // manuel de l'exposition (camera-camera2, interop Camera2CameraControl)
+                // et torche continue pour un éclairage constant pendant la mesure.
+                implementation("androidx.camera:camera-core:1.4.1")
+                implementation("androidx.camera:camera-camera2:1.4.1")
+                implementation("androidx.camera:camera-lifecycle:1.4.1")
+                implementation("androidx.camera:camera-view:1.4.1")
             }
         }
 

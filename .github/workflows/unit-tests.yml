@@ -1,0 +1,57 @@
+name: Unit tests
+
+# Tests de logique pure (commonTest, sans Robolectric/Compose) — voir
+# android/app/src/commonTest/. Contrairement à screenshots.yml (rendu
+# Compose, coûteux, déclenché à la demande), ce test task est rapide et
+# tourne à chaque push comme android-build.yml.
+
+on:
+  push:
+    branches:
+      - "**"
+    paths:
+      - "android/**"
+      - ".github/workflows/unit-tests.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: android
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      # Filtré sur le package data.* : exclut ScreenshotTest (rendu Compose
+      # via Robolectric, coûteux et déjà couvert par screenshots.yml à la
+      # demande) pour garder ce job rapide à chaque push.
+      - name: Run unit tests (JVM, sans émulateur)
+        run: ./gradlew :app:testDebugUnitTest --tests "fr.gemsofrod.encyclopedie.data.*" --no-daemon
+
+      - name: Upload test report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit-test-report
+          path: android/app/build/reports/tests/testDebugUnitTest/
+          if-no-files-found: warn
+
+      - name: Print test failure stack traces on failure
+        if: failure()
+        run: cat app/build/test-results/testDebugUnitTest/*.xml || true
