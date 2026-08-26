@@ -199,11 +199,159 @@ object GemGlossary {
         )
     )
 
+    private val pt = GemGlossaryPage(
+        intro = "O vocabulário da gemologia pode parecer técnico à primeira vista. Este glossário explica em linguagem clara os termos mais comuns — os usados nas fichas de inclusões típicas e na ferramenta de análise — para compreender melhor o que a observação de uma pedra revela.",
+        termes = listOf(
+            GemGlossaryTerm("Adularescência", "Reflexo azulado e flutuante que parece deslocar-se sob a superfície de uma pedra, causado pela difração da luz entre finas camadas internas; característico da pedra da lua."),
+            GemGlossaryTerm("Agregado botrioidal", "Conjunto de pequenas esferas soldadas entre si, em forma de cacho de uvas, típico de certos minerais formados perto da superfície, como a smithsonita ou a hemimorfite."),
+            GemGlossaryTerm("Asterismo", "Estrela luminosa de quatro, seis ou doze pontas que se desloca à superfície de uma pedra lapidada em cabochão, provocada pela reflexão da luz em inclusões fibrosas orientadas segundo os eixos do cristal."),
+            GemGlossaryTerm("Aventurescência", "Cintilação produzida pela reflexão da luz em finas lamelas minerais orientadas no interior da pedra, como na aventurina ou na pedra do sol."),
+            GemGlossaryTerm("Birrefringência", "Propriedade de certos cristais de desdobrar um raio de luz que os atravessa em dois raios distintos; uma forte birrefringência provoca um desdobramento visível das arestas internas com lupa."),
+            GemGlossaryTerm("Efeito olho-de-gato (chatoyance)", "Faixa luminosa móvel que percorre a superfície de uma pedra lapidada em cabochão, causada pela reflexão da luz em inclusões fibrosas ou canais paralelos."),
+            GemGlossaryTerm("Clivagem", "Tendência de um cristal a fender-se segundo planos lisos e regulares, ligados à sua estrutura atómica; uma clivagem perfeita torna uma pedra mais delicada de lapidar e de usar."),
+            GemGlossaryTerm("Cristal negativo", "Cavidade interna vazia ou preenchida por fluido, cuja forma reproduz exatamente a geometria do sistema cristalino da pedra hospedeira."),
+            GemGlossaryTerm("Densidade (peso específico)", "Relação entre a massa de uma pedra e a de um volume igual de água; medida com a balança hidrostática, é um critério muito discriminante entre espécies de aparência semelhante."),
+            GemGlossaryTerm("Dispersão", "Capacidade de uma pedra de decompor a luz branca nas suas cores espectrais, percebida como lampejos coloridos (o \"fogo\"); particularmente forte no diamante e na esfena."),
+            GemGlossaryTerm("Brilho", "Aspeto da luz refletida pela superfície de uma pedra (vítreo, adamantino, sedoso, gorduroso, resinoso, nacarado...), que depende do seu índice de refração e do seu polimento."),
+            GemGlossaryTerm("Inclusão em impressão digital (de cicatrização)", "Rede de finas inclusões fluidas em voluta, semelhante a uma impressão digital, formada pela cicatrização parcial de uma fratura interna durante o crescimento do cristal."),
+            GemGlossaryTerm("Exsolução (lamelas de exsolução)", "Finas lamelas internas formadas quando dois minerais misturados a alta temperatura se separam ao arrefecer; na origem de efeitos ópticos como a adularescência ou a labradorescência."),
+            GemGlossaryTerm("Fluorescência", "Emissão de luz visível por uma pedra exposta a raios ultravioleta, cuja cor e intensidade ajudam a identificar uma espécie ou um tratamento."),
+            GemGlossaryTerm("Halo de tensão", "Fina fissura circular que se forma em torno de um cristal incluído sob o efeito das tensões internas exercidas durante o crescimento da pedra hospedeira."),
+            GemGlossaryTerm("Índice de refração", "Medida do desvio da luz ao penetrar numa pedra, característica de cada espécie e medida com o refratómetro."),
+            GemGlossaryTerm("Inclusão", "Qualquer elemento estranho (cristal, fluido, gás, fratura) aprisionado no interior de uma pedra durante a sua formação; o seu estudo é uma das principais ferramentas de identificação e autenticação em gemologia."),
+            GemGlossaryTerm("Jardim", "Termo usado para designar o conjunto das inclusões visíveis de uma esmeralda, cuja riqueza e natureza ajudam a determinar a sua origem geográfica."),
+            GemGlossaryTerm("Labradorescência", "Jogo de cores metálicas (azul, verde, laranja) que aparece ao rodar a pedra, devido à difração da luz em finas lamelas internas; característico da labradorite."),
+            GemGlossaryTerm("Macla", "Associação de dois ou mais cristais da mesma espécie, orientados segundo uma regra geométrica precisa, formando um cristal composto único."),
+            GemGlossaryTerm("Metamítico", "Diz-se de um cristal cuja estrutura atómica foi parcialmente desorganizada pela desintegração radioativa de elementos vestigiais que contém, como certos zircões."),
+            GemGlossaryTerm("Pleocroísmo", "Propriedade de certas pedras de mostrar cores diferentes consoante o ângulo de observação, devido à absorção desigual da luz segundo os eixos do cristal."),
+            GemGlossaryTerm("Seda", "Finas inclusões aciculares (frequentemente de rutilo), dispostas em redes densas, que conferem um aspeto sedoso à pedra e estão na origem do asterismo quando orientadas segundo vários eixos."),
+            GemGlossaryTerm("Estrutura fibrorradiada", "Conjunto de fibras minerais dispostas em leque a partir de um ponto central, conferindo um aspeto acetinado ou sedoso à pedra."),
+            GemGlossaryTerm("Sistema cristalino", "Uma das sete famílias geométricas (cúbico, tetragonal, hexagonal, trigonal, ortorrômbico, monoclínico, triclínico) segundo as quais se organiza a estrutura atómica de um cristal."),
+            GemGlossaryTerm("Tenebrescência", "Alteração de cor reversível de uma pedra exposta e depois retirada da luz (ou dos UV), observada nomeadamente na hackmanite."),
+            GemGlossaryTerm("Transparência", "Grau em que a luz atravessa uma pedra, do transparente (imagem nítida através da pedra) ao translúcido (luz difusa) até ao opaco (nenhuma luz transmitida)."),
+            GemGlossaryTerm("Tricita", "Inclusão líquida fragmentada em finos filamentos ramificados, que evocam fios de algodão, frequente nas turmalinas."),
+            GemGlossaryTerm("Tubo oco (canal de crescimento)", "Fina cavidade alongada, paralela ao eixo de crescimento do cristal, por vezes preenchida com líquido; característica de numerosos berilos."),
+            GemGlossaryTerm("Zonamento de cor", "Distribuição desigual da cor no interior de uma pedra, organizada em faixas ou setores que seguem a geometria de crescimento do cristal.")
+        )
+    )
+
+    private val zh = GemGlossaryPage(
+        intro = "宝石学词汇初看可能显得专业艰深。本词汇表用通俗的语言解释最常见的术语——即典型内含物说明和分析工具中所使用的词汇——帮助您更好地理解观察一颗宝石所揭示的信息。",
+        termes = listOf(
+            GemGlossaryTerm("月光效应", "宝石表面下方一种漂浮的蓝色光晕，看似在移动，由光线在细薄内部层间发生衍射所致；月光石的特征效应。"),
+            GemGlossaryTerm("葡萄状集合体", "由许多小球体熔合聚集而成、形似一串葡萄的矿物集合体，常见于菱锌矿或异极矿等近地表形成的矿物。"),
+            GemGlossaryTerm("星光效应", "在弧面型宝石表面移动的四射、六射或十二射光芒星形，由光线在沿晶轴排列的纤维状内含物上反射而产生。"),
+            GemGlossaryTerm("砂金效应", "光线在宝石内部定向排列的细小矿物薄片上反射所产生的闪光效果，如砂金石或日光石中所见。"),
+            GemGlossaryTerm("双折射", "某些晶体将穿过其内部的一束光分裂为两束不同光线的特性；强双折射会使放大观察时内部刻面棱线出现明显的重影。"),
+            GemGlossaryTerm("猫眼效应", "在弧面型宝石表面移动的一条光带，由光线在平行的纤维状内含物或管状通道上反射所致。"),
+            GemGlossaryTerm("解理", "晶体沿与其原子结构相关的平整规则平面裂开的倾向；完全解理使宝石在切割和佩戴时更为脆弱。"),
+            GemGlossaryTerm("负晶", "内部的空洞或充满流体的空腔，其形状精确复刻寄主宝石晶系的几何结构。"),
+            GemGlossaryTerm("密度（比重）", "宝石质量与同体积水质量之比；用静水天平测定，是区分外观相近品种的重要判据。"),
+            GemGlossaryTerm("色散", "宝石将白光分解为光谱色的能力，表现为彩色的闪光（即\"火彩\"）；在钻石和榍石中尤为显著。"),
+            GemGlossaryTerm("光泽", "宝石表面反射光线所呈现的外观（玻璃光泽、金刚光泽、丝绢光泽、油脂光泽、树脂光泽、珍珠光泽等），取决于其折射率和抛光质量。"),
+            GemGlossaryTerm("指纹状内含物（愈合裂隙）", "由细小卷曲流体内含物构成的网络，形似指纹，是晶体生长过程中内部裂隙部分愈合所形成。"),
+            GemGlossaryTerm("出溶（出溶片晶）", "两种矿物在高温下混合后冷却分离时形成的细薄内部层理；是月光效应或拉长石效应等光学现象的成因。"),
+            GemGlossaryTerm("荧光", "宝石在紫外线照射下发出可见光的现象，其颜色和强度有助于鉴定品种或识别处理方式。"),
+            GemGlossaryTerm("应力晕", "在寄主宝石生长过程中因内部应力作用而在包裹晶体周围形成的细小环形裂纹。"),
+            GemGlossaryTerm("折射率", "光线进入宝石时发生偏折的量度，是每个品种的特征值，用折射仪测定。"),
+            GemGlossaryTerm("内含物", "宝石形成过程中被包裹在内部的任何外来物质（晶体、流体、气体、裂隙）；对内含物的研究是宝石学中鉴定与鉴真的主要手段之一。"),
+            GemGlossaryTerm("花园状内含物", "用于形容祖母绿中可见内含物整体外观的术语，其丰富程度和性质有助于判断其产地。"),
+            GemGlossaryTerm("拉长石效应", "转动宝石时出现的金属色彩变幻（蓝、绿、橙），由光线在细薄内部层理上衍射所致；拉长石的特征效应。"),
+            GemGlossaryTerm("双晶", "两个或多个同种晶体按精确的几何规律结合，形成一个单一复合晶体。"),
+            GemGlossaryTerm("变生质（蜕晶化）", "形容一种晶体，其原子结构因所含微量放射性元素的衰变而部分紊乱，某些锆石即属此类。"),
+            GemGlossaryTerm("多色性", "某些宝石因光线沿晶轴的不均匀吸收，而在不同观察角度呈现不同颜色的特性。"),
+            GemGlossaryTerm("绢丝状内含物", "细密排列成网状的针状内含物（常为金红石），赋予宝石丝绢般的外观，当沿多个方向排列时会产生星光效应。"),
+            GemGlossaryTerm("纤维放射状结构", "矿物纤维从中心点呈扇形排列的集合体，赋予宝石缎光或丝绢般的外观。"),
+            GemGlossaryTerm("晶系", "晶体原子结构所遵循的七种几何分类之一（等轴晶系、四方晶系、六方晶系、三方晶系、斜方晶系、单斜晶系、三斜晶系）。"),
+            GemGlossaryTerm("光敏变色效应", "宝石经光照（或紫外线照射）后再移除光源时发生的可逆颜色变化，尤见于紫方钠石。"),
+            GemGlossaryTerm("透明度", "光线穿透宝石的程度，从透明（可清晰透视宝石内部）到半透明（光线散射）直至不透明（无光线透过）。"),
+            GemGlossaryTerm("发状内含物", "分裂成细密分支纤维状的液态内含物，形似棉絮细丝，常见于碧玺中。"),
+            GemGlossaryTerm("中空管道（生长通道）", "与晶体生长轴平行的细长空腔，有时充满液体；多见于绿柱石类宝石。"),
+            GemGlossaryTerm("色带", "宝石内部颜色分布不均的现象，呈条带状或区块状排列，沿晶体生长的几何方向延伸。")
+        )
+    )
+
+    private val ru = GemGlossaryPage(
+        intro = "Геммологическая терминология может на первый взгляд показаться сложной. Этот словарь простым языком объясняет наиболее употребительные термины — те, что используются в описаниях типичных включений и в инструменте анализа, — чтобы лучше понимать, что раскрывает изучение камня.",
+        termes = listOf(
+            GemGlossaryTerm("Адуляресценция", "Плавающий голубоватый отблеск, будто перемещающийся под поверхностью камня, вызванный дифракцией света между тонкими внутренними слоями; характерен для лунного камня."),
+            GemGlossaryTerm("Гроздевидный агрегат", "Скопление мелких сросшихся сферолитов, напоминающее виноградную гроздь, характерное для некоторых минералов, образующихся близ поверхности, таких как смитсонит или гемиморфит."),
+            GemGlossaryTerm("Астеризм", "Светящаяся звезда с четырьмя, шестью или двенадцатью лучами, перемещающаяся по поверхности камня, ограненного кабошоном, вызванная отражением света от волокнистых включений, ориентированных вдоль осей кристалла."),
+            GemGlossaryTerm("Авантюресценция", "Мерцание, возникающее при отражении света от тонких минеральных пластинок, ориентированных внутри камня, как в авантюрине или солнечном камне."),
+            GemGlossaryTerm("Двупреломление", "Свойство некоторых кристаллов разделять проходящий через них луч света на два отдельных луча; сильное двупреломление вызывает заметное под лупой раздвоение внутренних граней."),
+            GemGlossaryTerm("Эффект кошачьего глаза (шатойанс)", "Подвижная светлая полоса, пробегающая по поверхности камня, ограненного кабошоном, вызванная отражением света от параллельных волокнистых включений или каналов."),
+            GemGlossaryTerm("Спайность", "Способность кристалла раскалываться по ровным правильным плоскостям, связанным с его атомной структурой; совершенная спайность делает камень более уязвимым при огранке и ношении."),
+            GemGlossaryTerm("Отрицательный кристалл", "Внутренняя полость, пустая или заполненная флюидом, форма которой в точности повторяет геометрию кристаллической системы вмещающего камня."),
+            GemGlossaryTerm("Плотность (удельный вес)", "Отношение массы камня к массе равного объёма воды; измеряется гидростатическими весами и служит важным критерием для различения внешне схожих видов."),
+            GemGlossaryTerm("Дисперсия", "Способность камня разлагать белый свет на спектральные цвета, воспринимаемая как цветные вспышки («игра» камня); особенно сильна у алмаза и сфена."),
+            GemGlossaryTerm("Блеск", "Характер света, отражённого поверхностью камня (стеклянный, алмазный, шелковистый, жирный, смолистый, перламутровый...), зависящий от показателя преломления и качества полировки."),
+            GemGlossaryTerm("Включение типа «отпечаток пальца» (заживший разрыв)", "Сеть тонких завитых флюидных включений, напоминающая отпечаток пальца, образованная частичным заживлением внутренней трещины в процессе роста кристалла."),
+            GemGlossaryTerm("Распад твёрдого раствора (пластинки распада)", "Тонкие внутренние пластинки, образующиеся при разделении двух минералов, смешанных при высокой температуре, в процессе охлаждения; лежат в основе таких оптических эффектов, как адуляресценция или лабрадоресценция."),
+            GemGlossaryTerm("Флуоресценция", "Излучение видимого света камнем под воздействием ультрафиолетовых лучей; цвет и интенсивность свечения помогают определить вид камня или выявить облагораживание."),
+            GemGlossaryTerm("Ореол напряжения", "Тонкая кольцевая трещина, образующаяся вокруг включённого кристалла под действием внутренних напряжений в процессе роста вмещающего камня."),
+            GemGlossaryTerm("Показатель преломления", "Мера отклонения света при входе в камень, характерная для каждого вида и измеряемая рефрактометром."),
+            GemGlossaryTerm("Включение", "Любой посторонний элемент (кристалл, флюид, газ, трещина), заключённый внутри камня в процессе его формирования; изучение включений — один из главных инструментов идентификации и подтверждения подлинности в геммологии."),
+            GemGlossaryTerm("«Сад» (жарден)", "Термин, обозначающий совокупность видимых включений в изумруде; их богатство и характер помогают определить географическое происхождение камня."),
+            GemGlossaryTerm("Лабрадоресценция", "Игра металлических цветов (синего, зелёного, оранжевого), появляющаяся при повороте камня, вызванная дифракцией света на тонких внутренних пластинках; характерна для лабрадорита."),
+            GemGlossaryTerm("Двойник", "Сросток из двух или более кристаллов одного вида, ориентированных по строгому геометрическому закону и образующих единый составной кристалл."),
+            GemGlossaryTerm("Метамиктный", "Определение для кристалла, атомная структура которого частично нарушена радиоактивным распадом содержащихся в нём микропримесей, как у некоторых цирконов."),
+            GemGlossaryTerm("Плеохроизм", "Свойство некоторых камней демонстрировать разные цвета в зависимости от угла наблюдения, обусловленное неравномерным поглощением света вдоль осей кристалла."),
+            GemGlossaryTerm("Шёлк", "Тонкие игольчатые включения (часто рутиловые), расположенные плотными сетками, придающие камню шелковистый вид и лежащие в основе астеризма при ориентации по нескольким осям."),
+            GemGlossaryTerm("Волокнисто-лучистая структура", "Скопление минеральных волокон, расходящихся веерообразно из одной центральной точки, придающее камню атласный или шелковистый вид."),
+            GemGlossaryTerm("Кристаллическая система", "Одна из семи геометрических категорий (кубическая, тетрагональная, гексагональная, тригональная, ромбическая, моноклинная, триклинная), по которым организована атомная структура кристалла."),
+            GemGlossaryTerm("Тенебресценция", "Обратимое изменение цвета камня при воздействии света (или УФ-излучения) и после его удаления, наблюдаемое, в частности, у гакманита."),
+            GemGlossaryTerm("Прозрачность", "Степень, в которой свет проходит через камень, от прозрачного (чёткое изображение сквозь камень) до полупрозрачного (рассеянный свет) и непрозрачного (свет не проходит)."),
+            GemGlossaryTerm("Трихит", "Жидкое включение, распавшееся на тонкие ветвящиеся нити, напоминающие хлопковые волокна, часто встречающееся в турмалинах."),
+            GemGlossaryTerm("Полый канал (канал роста)", "Тонкая удлинённая полость, параллельная оси роста кристалла, иногда заполненная жидкостью; характерна для многих бериллов."),
+            GemGlossaryTerm("Зональная окраска", "Неравномерное распределение цвета внутри камня, организованное в виде полос или секторов, следующих геометрии роста кристалла.")
+        )
+    )
+
+    private val nl = GemGlossaryPage(
+        intro = "Gemmologische terminologie kan op het eerste gezicht technisch overkomen. Dit lexicon legt in duidelijke taal de meest gangbare termen uit — die welke worden gebruikt in de fiches over typische insluitsels en in het analyse-instrument — om beter te begrijpen wat de observatie van een steen onthult.",
+        termes = listOf(
+            GemGlossaryTerm("Adularescentie", "Een zwevende, blauwachtige glans die onder het oppervlak van een steen lijkt te bewegen, veroorzaakt door lichtdiffractie tussen fijne interne lagen; kenmerkend voor maansteen."),
+            GemGlossaryTerm("Druivenvormig aggregaat", "Verzameling kleine, aan elkaar gesmolten bolletjes in de vorm van een druiventros, typisch voor bepaalde mineralen die nabij het oppervlak ontstaan, zoals smithsoniet of hemimorfiet."),
+            GemGlossaryTerm("Asterisme", "Een lichtgevende ster met vier, zes of twaalf stralen die over het oppervlak van een cabochon geslepen steen beweegt, veroorzaakt door lichtreflectie op vezelige insluitsels die zijn uitgelijnd volgens de kristalassen."),
+            GemGlossaryTerm("Aventurescentie", "Een fonkeling die ontstaat door lichtreflectie op fijne mineraalplaatjes die zich binnenin de steen bevinden, zoals bij aventurijn of zonnesteen."),
+            GemGlossaryTerm("Dubbele breking", "De eigenschap van bepaalde kristallen om een doorgaande lichtstraal te splitsen in twee afzonderlijke stralen; sterke dubbele breking veroorzaakt een zichtbare verdubbeling van interne facetranden onder de loep."),
+            GemGlossaryTerm("Kattenoogeffect (chatoyance)", "Een bewegende lichtband die over het oppervlak van een cabochon geslepen steen loopt, veroorzaakt door lichtreflectie op parallelle vezelige insluitsels of kanalen."),
+            GemGlossaryTerm("Splijting", "De neiging van een kristal om te splijten langs vlakke, regelmatige vlakken die samenhangen met zijn atoomstructuur; volmaakte splijting maakt een steen kwetsbaarder bij het slijpen en dragen."),
+            GemGlossaryTerm("Negatief kristal", "Een interne holte, leeg of met vloeistof gevuld, waarvan de vorm exact de kristalstelsel-geometrie van de gastheersteen weergeeft."),
+            GemGlossaryTerm("Dichtheid (soortelijk gewicht)", "De verhouding tussen de massa van een steen en die van eenzelfde volume water; gemeten met de hydrostatische weegschaal, is dit een sterk onderscheidend criterium tussen soorten met een vergelijkbaar uiterlijk."),
+            GemGlossaryTerm("Dispersie", "Het vermogen van een steen om wit licht te ontleden in zijn spectrale kleuren, waargenomen als kleurige flitsen (het \"vuur\"); bijzonder sterk bij diamant en sfeen."),
+            GemGlossaryTerm("Glans", "Het uiterlijk van het licht dat wordt weerkaatst door het oppervlak van een steen (glasachtig, diamantachtig, zijdeachtig, vettig, harsachtig, parelmoerachtig...), afhankelijk van de brekingsindex en de polijsting."),
+            GemGlossaryTerm("Vingerafdruk-insluitsel (genezingsinsluitsel)", "Een netwerk van fijne, kronkelende vloeistofinsluitsels dat op een vingerafdruk lijkt, gevormd door de gedeeltelijke genezing van een interne breuk tijdens de groei van het kristal."),
+            GemGlossaryTerm("Ontmenging (ontmengingslamellen)", "Fijne interne laagjes die ontstaan wanneer twee bij hoge temperatuur gemengde mineralen zich bij afkoeling scheiden; de oorzaak van optische effecten zoals adularescentie of labradorescentie."),
+            GemGlossaryTerm("Fluorescentie", "De uitzending van zichtbaar licht door een steen die aan ultraviolette straling wordt blootgesteld; kleur en intensiteit helpen bij het identificeren van een soort of een behandeling."),
+            GemGlossaryTerm("Spanningshalo", "Een fijne cirkelvormige scheur die zich vormt rond een ingesloten kristal onder invloed van de interne spanningen tijdens de groei van de gastheersteen."),
+            GemGlossaryTerm("Brekingsindex", "Een maat voor de afbuiging van licht bij het binnendringen van een steen, kenmerkend voor elke soort en gemeten met de refractometer."),
+            GemGlossaryTerm("Insluitsel", "Elk vreemd element (kristal, vloeistof, gas, breuk) dat tijdens de vorming van een steen daarbinnen is opgesloten; de studie ervan is een van de belangrijkste hulpmiddelen voor identificatie en authenticatie in de gemmologie."),
+            GemGlossaryTerm("Jardin (\"tuin\")", "Term die wordt gebruikt voor het geheel van zichtbare insluitsels in een smaragd, waarvan de rijkdom en aard helpen de geografische herkomst te bepalen."),
+            GemGlossaryTerm("Labradorescentie", "Een spel van metaalachtige kleuren (blauw, groen, oranje) dat verschijnt wanneer de steen wordt gedraaid, veroorzaakt door lichtdiffractie op fijne interne laagjes; kenmerkend voor labradoriet."),
+            GemGlossaryTerm("Tweeling", "De vergroeiing van twee of meer kristallen van dezelfde soort, verbonden volgens een precieze geometrische regel, die samen één enkel samengesteld kristal vormen."),
+            GemGlossaryTerm("Metamict", "Beschrijft een kristal waarvan de atoomstructuur gedeeltelijk is verstoord door het radioactieve verval van sporenelementen die het bevat, zoals bij sommige zirkonen."),
+            GemGlossaryTerm("Pleochroïsme", "De eigenschap van bepaalde stenen om, afhankelijk van de kijkhoek, verschillende kleuren te tonen, veroorzaakt door ongelijke lichtabsorptie langs de kristalassen."),
+            GemGlossaryTerm("Zijde", "Fijne naaldvormige insluitsels (vaak rutiel), gerangschikt in dichte netwerken, die een steen een zijdeachtig uiterlijk geven en asterisme veroorzaken wanneer ze langs meerdere assen zijn uitgelijnd."),
+            GemGlossaryTerm("Vezelig-stralende structuur", "Een geheel van minerale vezels die waaiervormig vanuit een centraal punt zijn gerangschikt, wat de steen een satijnachtig of zijdeachtig uiterlijk geeft."),
+            GemGlossaryTerm("Kristalstelsel", "Een van de zeven geometrische families (kubisch, tetragonaal, hexagonaal, trigonaal, orthorombisch, monoklien, triklien) waarnaar de atoomstructuur van een kristal is georganiseerd."),
+            GemGlossaryTerm("Tenebrescentie", "Een omkeerbare kleurverandering van een steen die aan licht (of UV) wordt blootgesteld en er vervolgens weer aan wordt onttrokken, met name waargenomen bij hackmaniet."),
+            GemGlossaryTerm("Transparantie", "De mate waarin licht een steen doordringt, van doorzichtig (een scherp beeld door de steen heen) via doorschijnend (verstrooid licht) tot ondoorzichtig (geen doorgelaten licht)."),
+            GemGlossaryTerm("Trichiet", "Een vloeibaar insluitsel dat uiteenvalt in fijne vertakte draadjes, die aan katoenvezels doen denken, veel voorkomend in toermalijnen."),
+            GemGlossaryTerm("Holle buis (groeikanaal)", "Een fijne, langwerpige holte evenwijdig aan de groeias van het kristal, soms met vloeistof gevuld; kenmerkend voor vele berylsoorten."),
+            GemGlossaryTerm("Kleurzonering", "Een ongelijke verdeling van kleur binnenin een steen, gerangschikt in banden of sectoren die de groeigeometrie van het kristal volgen.")
+        )
+    )
+
     private val byLanguage: Map<String, GemGlossaryPage> = mapOf(
         AppLanguage.EN.code to en,
         AppLanguage.ES.code to es,
         AppLanguage.IT.code to it,
-        AppLanguage.DE.code to de
+        AppLanguage.DE.code to de,
+        AppLanguage.PT.code to pt,
+        AppLanguage.ZH.code to zh,
+        AppLanguage.RU.code to ru,
+        AppLanguage.NL.code to nl
     )
 
     fun page(languageCode: String): GemGlossaryPage = byLanguage[languageCode] ?: fr

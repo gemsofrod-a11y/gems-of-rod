@@ -161,11 +161,127 @@ object MeteoriteClassificationInfo {
         disclaimerBody = "Wie der Edelsteinmarkt zieht auch der Meteoritenmarkt eine wachsende Zahl von Fälschungen und \"Meteor-wrongs\" (irdische Gesteine, die für Meteorite gehalten werden) an. Verlangen Sie bei einem für Schnitt oder Sammlung bestimmten Kauf stets eine dokumentierte Herkunft und idealerweise eine im Meteoritical Bulletin veröffentlichte oder von einem IMCA-Mitglied (International Meteorite Collectors Association) erstellte Klassifikation. Die in diesem Abschnitt angegebenen Preise sind rein indikativ: Sie schwanken enorm je nach Fragmentgröße, Aufbereitungsqualität und Marktlage."
     )
 
+    private val pt = MeteoriteClassificationPage(
+        intro = "Os meteoritos classificam-se antes de mais pela sua composição: metal, rocha, ou uma mistura de ambos. Esta classificação determina diretamente o seu interesse para um lapidário — os meteoritos de ferro e as palasites podem ser cortados e polidos, enquanto a maioria dos meteoritos pedregosos permanece como peças de coleção científica.",
+        familles = listOf(
+            MeteoriteFamilyExplainer(
+                nom = "Sideritos (meteoritos de ferro)",
+                sousTypes = "Classificados por estrutura (hexaedritos, octaedritos, ataxitos) e por grupo químico (IAB, IIAB, IIIAB, IVA, IVB...)",
+                description = "Compostos quase inteiramente por uma liga de ferro e níquel, provêm do núcleo metálico de asteroides diferenciados, fragmentados por colisões. Um ataque com ácido nítrico numa fatia polida revela muitas vezes o padrão de Widmanstätten, uma malha geométrica característica do seu lento arrefecimento, por vezes ao longo de milhões de anos. São os meteoritos mais trabalhados em joalharia e em coutelaria de arte."
+            ),
+            MeteoriteFamilyExplainer(
+                nom = "Siderólitos (meteoritos mistos)",
+                sousTypes = "Palasites (olivina numa matriz de ferro) e mesosideritos (silicatos e metal numa mistura brechificada)",
+                description = "Estes meteoritos misturam metal e silicatos em proporções sensivelmente iguais. As palasites, as mais procuradas, apresentam cristais de olivina — frequentemente de qualidade gema, de cor peridoto — engastados numa matriz de ferro-níquel: cortadas e polidas, contam-se entre as mais belas peças da lapidação meteorítica. Os mesosideritos, de textura mais caótica, são sobretudo peças de coleção."
+            ),
+            MeteoriteFamilyExplainer(
+                nom = "Aerólitos (meteoritos pedregosos) — Condritos",
+                sousTypes = "Condritos carbonáceos (CI, CM, CO, CV, CK, CR, CH, CB), condritos ordinários (H, L, LL), condritos de enstatite (EH, EL)",
+                description = "Os meteoritos mais comuns, devem o seu nome aos côndrulos, minúsculas esférulas de silicatos formadas nos primeiríssimos instantes do sistema solar, ainda antes da formação dos planetas. Os condritos carbonáceos, ricos em compostos orgânicos, são os mais estudados cientificamente; os condritos ordinários, mais abundantes, são por vezes cortados em fatias económicas, embora mais frágeis do que o ferro ou a palasite."
+            ),
+            MeteoriteFamilyExplainer(
+                nom = "Aerólitos (meteoritos pedregosos) — Acondritos",
+                sousTypes = "HED (Vesta), aubritos, ureilitos, angritos, acapulcoítos, lodranitos, winonaítos, e os raríssimos meteoritos marcianos e lunares",
+                description = "Ao contrário dos condritos, os acondritos provêm de corpos-mãe suficientemente grandes para terem fundido e se terem diferenciado internamente, como a crosta do asteroide Vesta (grupo HED) — ou mesmo a de Marte e da Lua. Estes últimos, ejetados por impactos e depois capturados pela gravidade terrestre após uma longa viagem interplanetária, contam-se entre os materiais mais raros e mais caros do planeta."
+            )
+        ),
+        disclaimerTitle = "Autenticidade e proveniência",
+        disclaimerBody = "Tal como o mercado das pedras preciosas, o mercado dos meteoritos atrai um número crescente de imitações e de «meteor-wrongs» (rochas terrestres confundidas com meteoritos). Para uma compra destinada ao corte ou à coleção, exija sempre uma proveniência documentada e, idealmente, uma classificação publicada no Meteoritical Bulletin ou estabelecida por um membro da IMCA (International Meteorite Collectors Association). Os preços indicados nesta secção são meramente indicativos: variam enormemente consoante o tamanho do fragmento, a qualidade da preparação e o estado do mercado."
+    )
+
+    private val zh = MeteoriteClassificationPage(
+        intro = "陨石首先按其成分分类:金属、岩石,或两者的混合体。这一分类直接决定了它们对雕琢工艺的意义——铁陨石和橄榄陨铁可以切割和抛光,而大多数石陨石仍属于科学收藏品。",
+        familles = listOf(
+            MeteoriteFamilyExplainer(
+                nom = "陨铁(铁陨石)",
+                sousTypes = "按结构分类(六面体陨铁、八面体陨铁、无纹陨铁)及按化学族分类(IAB、IIAB、IIIAB、IVA、IVB等)",
+                description = "陨铁几乎完全由铁镍合金组成,来自经历分异作用的小行星金属核心,在碰撞中破碎而成。在抛光切片上以硝酸蚀刻,常可显现出魏德曼斯坦花纹——一种因其缓慢冷却(有时历时数百万年)而形成的特征性几何网状结构。这是珠宝制作和艺术刀具制造中加工最广泛的陨石类型。"
+            ),
+            MeteoriteFamilyExplainer(
+                nom = "陨铁石(混合型陨石)",
+                sousTypes = "橄榄陨铁(铁质基质中的橄榄石)与中铁陨石(角砾状混合的硅酸盐与金属)",
+                description = "这类陨石中金属与硅酸盐的比例大致相当。其中最受追捧的橄榄陨铁,其橄榄石晶体——常达宝石级品质,呈橄榄石绿色——镶嵌于铁镍基质之中:经切割抛光后,是陨石雕琢工艺中最精美的作品之一。而中铁陨石质地更为杂乱,主要作为收藏标本存在。"
+            ),
+            MeteoriteFamilyExplainer(
+                nom = "石陨石——球粒陨石",
+                sousTypes = "碳质球粒陨石(CI、CM、CO、CV、CK、CR、CH、CB)、普通球粒陨石(H、L、LL)、顽火辉石球粒陨石(EH、EL)",
+                description = "球粒陨石是最常见的陨石类型,其名称源自球粒——一种在太阳系形成之初、甚至早于行星形成之前便已产生的微小硅酸盐球体。碳质球粒陨石富含有机化合物,是科学研究最深入的类型;更为常见的普通球粒陨石有时被切割成价格亲民的薄片出售,不过比铁陨石或橄榄陨铁更为脆弱。"
+            ),
+            MeteoriteFamilyExplainer(
+                nom = "石陨石——无球粒陨石",
+                sousTypes = "HED族(源自灶神星)、顽火辉石无球粒陨石、稀有元素无球粒陨石、钙长辉长无球粒陨石、顶点无球粒陨石、洛德兰无球粒陨石、温诺纳无球粒陨石,以及极为罕见的火星陨石与月球陨石",
+                description = "与球粒陨石不同,无球粒陨石来自足够大、内部曾发生熔融和分异的母体,例如灶神星小行星的地壳(HED族)——甚至火星和月球的地壳。后者因撞击被抛入太空,经过漫长的星际旅程后被地球引力捕获,是地球上最稀有、最昂贵的材料之一。"
+            )
+        ),
+        disclaimerTitle = "真实性与来源",
+        disclaimerBody = "如同宝石市场一样,陨石市场也吸引着越来越多的仿制品与“疑似陨石”(即被误认为陨石的地球岩石)。若购买用途是雕琢或收藏,务必要求提供有据可查的来源证明,并最好附有已发表于《陨石学通报》(Meteoritical Bulletin)或由国际陨石收藏家协会(IMCA)会员认定的分类鉴定。本节所列价格仅供参考:实际价格会因碎片大小、加工品质及市场状况而有极大差异。"
+    )
+
+    private val ru = MeteoriteClassificationPage(
+        intro = "Метеориты классифицируют прежде всего по составу: металл, камень или смесь того и другого. Эта классификация напрямую определяет их интерес для лапидара — железные метеориты и палласиты можно резать и полировать, тогда как большинство каменных метеоритов остаются научными коллекционными образцами.",
+        familles = listOf(
+            MeteoriteFamilyExplainer(
+                nom = "Сидериты (железные метеориты)",
+                sousTypes = "Классифицируются по структуре (гексаэдриты, октаэдриты, атакситы) и по химической группе (IAB, IIAB, IIIAB, IVA, IVB...)",
+                description = "Состоящие почти целиком из железо-никелевого сплава, они происходят из металлического ядра дифференцированных астероидов, раздробленных при столкновениях. Травление азотной кислотой полированного среза часто выявляет видманштеттенов узор — геометрическую сетку, характерную для их медленного охлаждения, иногда продолжавшегося миллионы лет. Это наиболее широко обрабатываемые метеориты в ювелирном деле и художественном ножевом производстве."
+            ),
+            MeteoriteFamilyExplainer(
+                nom = "Сидеролиты (смешанные метеориты)",
+                sousTypes = "Палласиты (оливин в железной матрице) и мезосидериты (силикаты и металл в брекчиевидной смеси)",
+                description = "Эти метеориты смешивают металл и силикаты примерно в равных долях. Палласиты, наиболее востребованные из них, содержат кристаллы оливина — часто ювелирного качества, цвета перидота, — заключённые в железо-никелевую матрицу: распиленные и отполированные, они входят в число красивейших образцов метеоритной обработки камня. Мезосидериты с их более хаотичной текстурой являются в основном коллекционными предметами."
+            ),
+            MeteoriteFamilyExplainer(
+                nom = "Аэролиты (каменные метеориты) — хондриты",
+                sousTypes = "Углистые хондриты (CI, CM, CO, CV, CK, CR, CH, CB), обыкновенные хондриты (H, L, LL), энстатитовые хондриты (EH, EL)",
+                description = "Самые распространённые метеориты, обязанные своим названием хондрам — крошечным силикатным сферулам, образовавшимся в самые первые мгновения существования Солнечной системы, ещё до появления планет. Углистые хондриты, богатые органическими соединениями, наиболее изучены с научной точки зрения; обыкновенные хондриты, более многочисленные, иногда режут на недорогие срезы, хотя они более хрупки, чем железо или палласит."
+            ),
+            MeteoriteFamilyExplainer(
+                nom = "Аэролиты (каменные метеориты) — ахондриты",
+                sousTypes = "HED (Веста), обриты, уреилиты, ангриты, акапулькоиты, лодраниты, винонаиты и чрезвычайно редкие марсианские и лунные метеориты",
+                description = "В отличие от хондритов, ахондриты происходят от родительских тел, достаточно крупных, чтобы расплавиться и дифференцироваться внутри, таких как кора астероида Веста (группа HED) — или даже кора Марса и Луны. Последние, выброшенные при ударах и впоследствии захваченные земной гравитацией после долгого межпланетного путешествия, входят в число самых редких и самых дорогих материалов на планете."
+            )
+        ),
+        disclaimerTitle = "Подлинность и происхождение",
+        disclaimerBody = "Как и рынок драгоценных камней, рынок метеоритов привлекает всё больше подделок и «meteor-wrongs» (земных пород, ошибочно принимаемых за метеориты). При покупке образца для обработки или коллекционирования всегда требуйте документально подтверждённое происхождение и, в идеале, классификацию, опубликованную в Meteoritical Bulletin или установленную членом IMCA (International Meteorite Collectors Association). Цены, указанные в этом разделе, носят исключительно ориентировочный характер: они значительно варьируются в зависимости от размера фрагмента, качества подготовки и состояния рынка."
+    )
+
+    private val nl = MeteoriteClassificationPage(
+        intro = "Meteorieten worden allereerst ingedeeld naar samenstelling: metaal, gesteente, of een mengsel van beide. Deze indeling bepaalt rechtstreeks hun belang voor een lapidair — ijzermeteorieten en pallasieten kunnen worden gesneden en gepolijst, terwijl de meeste steenmeteorieten wetenschappelijke verzamelstukken blijven.",
+        familles = listOf(
+            MeteoriteFamilyExplainer(
+                nom = "Sideriet (ijzermeteorieten)",
+                sousTypes = "Geclassificeerd naar structuur (hexaëdrieten, octaëdrieten, ataxieten) en naar chemische groep (IAB, IIAB, IIIAB, IVA, IVB...)",
+                description = "Bijna volledig samengesteld uit een ijzer-nikkellegering, zijn ze afkomstig uit de metalen kern van gedifferentieerde asteroïden die bij botsingen zijn gefragmenteerd. Een salpeterzuur-ets op een gepolijste plak onthult vaak het Widmanstätten-patroon, een geometrisch vlechtwerk dat kenmerkend is voor hun trage afkoeling, soms verspreid over miljoenen jaren. Dit zijn de meteorieten die het meest worden bewerkt in de sieradenmakerij en de kunstmessenmakerij."
+            ),
+            MeteoriteFamilyExplainer(
+                nom = "Siderolieten (gemengde meteorieten)",
+                sousTypes = "Pallasieten (olivijn in een ijzermatrix) en mesosideriten (silicaten en metaal in een breccieachtig mengsel)",
+                description = "Deze meteorieten mengen metaal en silicaten in min of meer gelijke verhoudingen. Pallasieten, de meest gegeerde, tonen olivijnkristallen — vaak van edelsteenkwaliteit, peridootkleurig — gevat in een ijzer-nikkelmatrix: gesneden en gepolijst behoren ze tot de mooiste stukken uit de meteorietbewerking. Mesosideriten, met hun chaotischere textuur, zijn vooral verzamelstukken."
+            ),
+            MeteoriteFamilyExplainer(
+                nom = "Aëroliet (steenmeteorieten) — chondrieten",
+                sousTypes = "Koolstofhoudende chondrieten (CI, CM, CO, CV, CK, CR, CH, CB), gewone chondrieten (H, L, LL), enstatietchondrieten (EH, EL)",
+                description = "De meest voorkomende meteorieten danken hun naam aan chondrules, minuscule silicaatbolletjes die zijn gevormd in de allereerste momenten van het zonnestelsel, nog voordat de planeten bestonden. Koolstofhoudende chondrieten, rijk aan organische verbindingen, zijn wetenschappelijk het meest bestudeerd; gewone chondrieten, die talrijker zijn, worden soms gesneden tot betaalbare plakken, hoewel ze breekbaarder zijn dan ijzer of pallasiet."
+            ),
+            MeteoriteFamilyExplainer(
+                nom = "Aëroliet (steenmeteorieten) — achondrieten",
+                sousTypes = "HED (Vesta), aubrieten, ureilieten, angrieten, acapulcoïeten, lodranieten, winonaïeten, en de uiterst zeldzame Mars- en maanmeteorieten",
+                description = "In tegenstelling tot chondrieten zijn achondrieten afkomstig van moederlichamen die groot genoeg waren om intern te smelten en te differentiëren, zoals de korst van de asteroïde Vesta (HED-groep) — of zelfs die van Mars en de Maan. Deze laatste, weggeslingerd door inslagen en vervolgens ingevangen door de aardse zwaartekracht na een lange interplanetaire reis, behoren tot de zeldzaamste en duurste materialen op de planeet."
+            )
+        ),
+        disclaimerTitle = "Echtheid en herkomst",
+        disclaimerBody = "Net als de markt voor edelstenen trekt ook de meteorietenmarkt een groeiend aantal namaakstukken en „meteor-wrongs” (aardse gesteenten die voor meteorieten worden aangezien) aan. Eis bij een aankoop bestemd voor snijwerk of verzameling steeds een gedocumenteerde herkomst en idealiter een classificatie gepubliceerd in de Meteoritical Bulletin of vastgesteld door een lid van de IMCA (International Meteorite Collectors Association). De in dit gedeelte vermelde prijzen zijn louter indicatief: ze variëren enorm naargelang de grootte van het fragment, de kwaliteit van de bewerking en de marktsituatie."
+    )
+
     private val byLanguage: Map<String, MeteoriteClassificationPage> = mapOf(
         AppLanguage.EN.code to en,
         AppLanguage.ES.code to es,
         AppLanguage.IT.code to it,
-        AppLanguage.DE.code to de
+        AppLanguage.DE.code to de,
+        AppLanguage.PT.code to pt,
+        AppLanguage.ZH.code to zh,
+        AppLanguage.RU.code to ru,
+        AppLanguage.NL.code to nl
     )
 
     fun page(languageCode: String): MeteoriteClassificationPage = byLanguage[languageCode] ?: fr

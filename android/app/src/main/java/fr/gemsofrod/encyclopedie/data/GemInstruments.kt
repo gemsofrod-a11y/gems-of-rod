@@ -342,11 +342,271 @@ object GemInstrumentsInfo {
         disclaimerBody = "Diese Instrumente erfordern eine technische Schulung und einen korrekt vorbereiteten Stein, um zuverlässige Ergebnisse zu liefern. Das Analysewerkzeug der App ist eine Orientierungshilfe auf Basis der von Ihnen beobachteten oder gemessenen Merkmale; für eine offizielle Identifikation oder Zertifizierung ist ausschließlich ein akkreditiertes gemmologisches Labor (GIA, Gübelin, GFCO...) maßgeblich."
     )
 
+    private val pt = GemInstrumentsPage(
+        intro = "Para além do olhar treinado, os gemólogos profissionais recorrem a um punhado de instrumentos normalizados para caracterizar uma pedra de forma objetiva. Eis as ferramentas de base de um laboratório de gemologia, e o que cada uma permite determinar.",
+        instruments = listOf(
+            GemInstrument(
+                nom = "Refratómetro",
+                mesure = "Mede o índice de refração",
+                description = "Um líquido de contacto óptico apoia a pedra sobre um prisma de vidro de alto índice; o ângulo de reflexão total interna, lido numa escala graduada, dá o índice de refração — e a sua variação consoante a orientação nas pedras birrefringentes.",
+                astuce = "A ferramenta básica de todo gemólogo: rápida e não destrutiva, mas limitada a índices inferiores a cerca de 1,81 — além disso, como na maioria dos granadas ou no diamante, deixa de funcionar."
+            ),
+            GemInstrument(
+                nom = "Balança hidrostática",
+                mesure = "Mede a densidade",
+                description = "A pedra é pesada ao ar e depois imersa em água; a diferença entre as duas pesagens, aplicando o princípio de Arquimedes, dá a densidade relativa — um dado muito discriminante entre espécies de aparência semelhante.",
+                astuce = "Requer uma pedra solta, não montada, e uma pesagem precisa ao centésimo de quilate."
+            ),
+            GemInstrument(
+                nom = "Dicroscópio",
+                mesure = "Revela o pleocroísmo",
+                description = "Um pequeno tubo óptico equipado com um cristal de calcite desdobra a luz que atravessa a pedra em duas imagens justapostas; se as suas cores diferirem, a pedra é pleocroica — um indício valioso para distinguir, por exemplo, uma safira (pleocroica) de uma espinela azul (nunca pleocroica)."
+            ),
+            GemInstrument(
+                nom = "Polariscópio",
+                mesure = "Determina o carácter óptico",
+                description = "A pedra é observada entre dois filtros polarizadores cruzados sob luz rotativa: apaga-se totalmente a cada rotação se for isótropa (granada, espinela, vidro), ou alterna entre claro e escuro se for anisótropa, como a maioria das pedras facetadas.",
+                astuce = "Permite também detetar tensões internas e o desdobramento de arestas característico de uma forte birrefringência."
+            ),
+            GemInstrument(
+                nom = "Espectroscópio manual",
+                mesure = "Analisa o espectro de absorção",
+                description = "Ao decompor a luz que atravessa a pedra, o instrumento revela bandas de absorção características de certos elementos cromóforos (crómio, ferro, cobalto...) — uma assinatura por vezes própria de uma espécie ou de um tratamento, como as linhas do crómio no rubi e na esmeralda."
+            ),
+            GemInstrument(
+                nom = "Lupa 10x e microscópio binocular",
+                mesure = "Observa as inclusões",
+                description = "A ampliação revela as inclusões internas (cristais, fraturas, bolhas, estruturas de crescimento) que denunciam a origem natural ou sintética de uma pedra, bem como eventuais tratamentos — fraturas preenchidas com vidro ou óleo, por exemplo.",
+                astuce = "A ferramenta mais universal do gemólogo, frequentemente o primeiro passo de qualquer exame."
+            ),
+            GemInstrument(
+                nom = "Lâmpada UV (ondas curtas e longas)",
+                mesure = "Observa a fluorescência",
+                description = "Algumas pedras emitem luz visível sob radiação ultravioleta invisível; a intensidade e a cor dessa fluorescência, observadas em câmara escura, ajudam a identificar uma espécie ou a detetar certos tratamentos e preenchimentos."
+            ),
+            GemInstrument(
+                nom = "Filtro de Chelsea",
+                mesure = "Deteta o crómio",
+                description = "Este filtro colorido só deixa passar duas bandas estreitas do espetro: uma pedra verde que contém crómio, como a esmeralda natural, aparece avermelhada através dele, enquanto a maioria das imitações permanece verde.",
+                astuce = "Um teste rápido e pouco dispendioso, mas sempre a confirmar por outros métodos."
+            ),
+            GemInstrument(
+                nom = "Kit de dureza de Mohs (pontas de teste)",
+                mesure = "Testa a resistência ao risco",
+                description = "Uma série de pontas calibradas de dureza conhecida, de 2 a 9, é aplicada com cuidado numa faceta discreta; a mais dura que risca a pedra sem ser riscada por ela situa a sua dureza na escala de Mohs.",
+                astuce = "Um teste destrutivo, a reservar como último recurso e nunca sobre uma pedra de valor já lapidada."
+            ),
+            GemInstrument(
+                nom = "Testador de condutividade térmica e elétrica",
+                mesure = "Distingue o diamante dos seus simulantes",
+                description = "Uma sonda mede a velocidade a que a pedra dissipa o calor; o diamante, condutor térmico excecionalmente bom, destaca-se claramente de simulantes como a zircónia cúbica ou o vidro. Os modelos mais recentes acrescentam um teste de condutividade elétrica para desmascarar a moissanite, a única pedra que também imita a sua condutividade térmica."
+            )
+        ),
+        disclaimerTitle = "Um uso profissional",
+        disclaimerBody = "Estes instrumentos exigem formação técnica e uma pedra corretamente preparada para dar resultados fiáveis. A ferramenta de análise da aplicação é um guia orientativo a partir das características que conseguiu observar ou medir; para uma identificação ou certificação oficial, apenas um laboratório gemológico acreditado (GIA, Gübelin, GFCO...) faz fé."
+    )
+
+    private val zh = GemInstrumentsPage(
+        intro = "除了训练有素的眼力，专业宝石学家还依靠一系列标准化仪器来客观地鉴定宝石特征。以下是宝石学实验室的基本工具，以及每种仪器能够测定的内容。",
+        instruments = listOf(
+            GemInstrument(
+                nom = "折射仪",
+                mesure = "测量折射率",
+                description = "光学接触液使宝石贴合在高折射率玻璃棱镜上；在刻度盘上读取的全内反射角度即可得出折射率——对于双折射宝石，还能读出其随方向变化的数值。",
+                astuce = "每位宝石学家的基本工具：快速且无损，但仅适用于折射率约低于1.81的宝石——超过此范围，如大多数石榴石或钻石，仪器便不再适用。"
+            ),
+            GemInstrument(
+                nom = "静水天平",
+                mesure = "测量密度",
+                description = "先在空气中称量宝石，再将其浸入水中称量；两次读数之差依据阿基米德原理换算出比重——这是区分外观相近品种的重要判据。",
+                astuce = "需要一颗未镶嵌的裸石，以及精确到百分之一克拉的称量。"
+            ),
+            GemInstrument(
+                nom = "二色镜",
+                mesure = "揭示多色性",
+                description = "一根装有方解石晶体的小型光学镜筒，将穿过宝石的光分裂为两幅并列的图像；若两者颜色不同，则该宝石具有多色性——这是区分例如蓝宝石（具多色性）与蓝色尖晶石（从不具多色性）的宝贵线索。"
+            ),
+            GemInstrument(
+                nom = "偏光镜",
+                mesure = "判定光学性质",
+                description = "宝石在旋转光线下置于两片交叉的偏振滤光片之间观察：若为均质体（如石榴石、尖晶石、玻璃），每次旋转均会完全变暗；若为非均质体——如大多数刻面宝石——则会明暗交替。",
+                astuce = "还可用于发现内部应力，以及强双折射所特有的刻面棱线重影现象。"
+            ),
+            GemInstrument(
+                nom = "手持分光镜",
+                mesure = "分析吸收光谱",
+                description = "通过分解穿过宝石的光线，该仪器能揭示某些致色元素（铬、铁、钴等）所特有的吸收谱带——这种特征有时是某一品种或处理方式所独有的，例如红宝石和祖母绿中的铬吸收线。"
+            ),
+            GemInstrument(
+                nom = "10倍放大镜与双目显微镜",
+                mesure = "观察内含物",
+                description = "放大观察可揭示内部内含物（晶体、裂隙、气泡、生长结构），从而判断宝石的天然或合成来源，以及可能的处理痕迹——例如充填玻璃或油类的裂隙。",
+                astuce = "宝石学家最通用的工具，通常是任何鉴定的第一步。"
+            ),
+            GemInstrument(
+                nom = "紫外灯（短波与长波）",
+                mesure = "观察荧光",
+                description = "某些宝石在不可见的紫外线照射下会发出可见光；在暗室中观察这种荧光的强度和颜色，有助于鉴定品种或发现某些处理和填充痕迹。"
+            ),
+            GemInstrument(
+                nom = "切尔西滤色镜",
+                mesure = "检测铬元素",
+                description = "这种彩色滤镜只允许光谱中两条狭窄谱带通过：含铬的绿色宝石，如天然祖母绿，透过它会呈现偏红色，而大多数仿制品则仍呈绿色。",
+                astuce = "一种快速且成本低廉的测试，但仍需通过其他方法加以确认。"
+            ),
+            GemInstrument(
+                nom = "莫氏硬度测试套件（测试针）",
+                mesure = "测试抗刮擦能力",
+                description = "一套硬度已知、从2到9校准的测试针，小心地施加于不显眼的刻面上；能刻划宝石而自身不被刻划的最硬测试针，即可确定其在莫氏硬度表上的位置。",
+                astuce = "一种破坏性测试，应作为最后手段使用，绝不可用于已切割的贵重宝石。"
+            ),
+            GemInstrument(
+                nom = "热导率与电导率测试仪",
+                mesure = "区分钻石与其仿制品",
+                description = "探头测量宝石导热的速度；钻石作为异常优良的热导体，与立方氧化锆或玻璃等仿制品明显区分开来。较新型号还增加了电导率测试，以识别莫桑石——唯一一种同时模仿钻石热导率的宝石。"
+            )
+        ),
+        disclaimerTitle = "专业用途",
+        disclaimerBody = "这些仪器需要专业技术培训和正确制备的宝石样本才能给出可靠结果。应用程序中的分析工具是基于您所能观察或测量的特征提供的参考指引；如需官方鉴定或证书，唯有经认可的宝石学实验室（GIA、Gübelin、GFCO等）出具的结果具有权威性。"
+    )
+
+    private val ru = GemInstrumentsPage(
+        intro = "Помимо натренированного глаза, профессиональные геммологи опираются на ряд стандартизированных приборов для объективной характеристики камня. Вот базовые инструменты геммологической лаборатории и то, что каждый из них позволяет определить.",
+        instruments = listOf(
+            GemInstrument(
+                nom = "Рефрактометр",
+                mesure = "Измеряет показатель преломления",
+                description = "Оптическая контактная жидкость помещает камень на стеклянную призму с высоким показателем преломления; угол полного внутреннего отражения, считанный по градуированной шкале, даёт показатель преломления — и его изменение в зависимости от ориентации для двупреломляющих камней.",
+                astuce = "Базовый инструмент каждого геммолога: быстрый и неразрушающий, но ограниченный показателями ниже примерно 1,81 — выше этого значения, как у большинства гранатов или алмаза, он перестаёт работать."
+            ),
+            GemInstrument(
+                nom = "Гидростатические весы",
+                mesure = "Измеряют плотность",
+                description = "Камень взвешивают на воздухе, затем погружают в воду; разница между двумя показаниями, применённая к принципу Архимеда, даёт относительную плотность — весьма показательный параметр для различения внешне схожих видов.",
+                astuce = "Требует несомненного, неоправленного камня и взвешивания с точностью до сотой карата."
+            ),
+            GemInstrument(
+                nom = "Дихроскоп",
+                mesure = "Выявляет плеохроизм",
+                description = "Небольшая оптическая трубка с кристаллом кальцита разделяет проходящий через камень свет на два расположенных рядом изображения; если их цвета различаются, камень плеохроичен — ценный признак для отличия, например, сапфира (плеохроичного) от синей шпинели (никогда не плеохроичной)."
+            ),
+            GemInstrument(
+                nom = "Полярископ",
+                mesure = "Определяет оптический характер",
+                description = "Камень рассматривают между двумя скрещенными поляризационными фильтрами при вращающемся освещении: он полностью темнеет при каждом повороте, если он изотропен (гранат, шпинель, стекло), либо чередует светлые и тёмные участки, если анизотропен, как большинство огранённых камней.",
+                astuce = "Также позволяет выявить внутренние напряжения и раздвоение граней, характерное для сильного двупреломления."
+            ),
+            GemInstrument(
+                nom = "Ручной спектроскоп",
+                mesure = "Анализирует спектр поглощения",
+                description = "Разлагая свет, проходящий через камень, этот прибор выявляет полосы поглощения, характерные для определённых хромофорных элементов (хрома, железа, кобальта...) — иногда эта сигнатура характерна именно для конкретного вида или облагораживания, как линии хрома в рубине и изумруде."
+            ),
+            GemInstrument(
+                nom = "Лупа 10x и бинокулярный микроскоп",
+                mesure = "Изучает включения",
+                description = "Увеличение выявляет внутренние включения (кристаллы, трещины, пузырьки, структуры роста), которые указывают на природное или синтетическое происхождение камня, а также на возможное облагораживание — например, трещины, заполненные стеклом или маслом.",
+                astuce = "Самый универсальный инструмент геммолога, часто первый шаг любого исследования."
+            ),
+            GemInstrument(
+                nom = "УФ-лампа (коротковолновая и длинноволновая)",
+                mesure = "Наблюдает флуоресценцию",
+                description = "Некоторые камни излучают видимый свет под воздействием невидимого ультрафиолетового излучения; интенсивность и цвет этой флуоресценции, наблюдаемые в тёмной камере, помогают определить вид камня или выявить некоторые виды облагораживания и заполнения."
+            ),
+            GemInstrument(
+                nom = "Фильтр Челси",
+                mesure = "Выявляет хром",
+                description = "Этот цветной фильтр пропускает лишь две узкие полосы спектра: зелёный камень, содержащий хром, например природный изумруд, кажется через него красноватым, тогда как большинство имитаций остаются зелёными.",
+                astuce = "Быстрый и недорогой тест, который, однако, всегда следует подтверждать другими методами."
+            ),
+            GemInstrument(
+                nom = "Набор для определения твёрдости по Моосу (пробные иглы)",
+                mesure = "Проверяет устойчивость к царапинам",
+                description = "Набор калиброванных игл известной твёрдости, от 2 до 9, осторожно прикладывают к неприметной грани; самая твёрдая игла, которая царапает камень, сама не будучи им поцарапана, определяет его твёрдость по шкале Мооса.",
+                astuce = "Разрушающий тест, применяемый лишь в крайнем случае и никогда — на уже огранённом ценном камне."
+            ),
+            GemInstrument(
+                nom = "Прибор для измерения тепло- и электропроводности",
+                mesure = "Отличает алмаз от его имитаций",
+                description = "Датчик измеряет скорость, с которой камень отводит тепло; алмаз, исключительно хороший проводник тепла, чётко выделяется на фоне имитаций, таких как кубический цирконий или стекло. Более новые модели дополнительно проверяют электропроводность, чтобы разоблачить муассанит — единственный камень, имитирующий также теплопроводность алмаза."
+            )
+        ),
+        disclaimerTitle = "Профессиональное применение",
+        disclaimerBody = "Эти приборы требуют технической подготовки и правильно подготовленного камня для получения достоверных результатов. Инструмент анализа приложения служит ориентировочным руководством на основе характеристик, которые вы смогли наблюдать или измерить; для официальной идентификации или сертификации авторитетным является только аккредитованная геммологическая лаборатория (GIA, Gübelin, GFCO...)."
+    )
+
+    private val nl = GemInstrumentsPage(
+        intro = "Naast het geoefende oog vertrouwen professionele gemmologen op een handvol gestandaardiseerde instrumenten om een steen objectief te karakteriseren. Hier zijn de basisinstrumenten van een gemmologisch laboratorium, en wat elk ervan kan bepalen.",
+        instruments = listOf(
+            GemInstrument(
+                nom = "Refractometer",
+                mesure = "Meet de brekingsindex",
+                description = "Een optische contactvloeistof legt de steen op een glazen prisma met hoge brekingsindex; de hoek van totale interne reflectie, afgelezen op een schaalverdeling, geeft de brekingsindex — en de variatie ervan naargelang de oriëntatie bij dubbelbrekende stenen.",
+                astuce = "Het basisinstrument van elke gemmoloog: snel en niet-destructief, maar beperkt tot indices onder ongeveer 1,81 — daarboven, zoals bij de meeste granaten of diamant, werkt het niet meer."
+            ),
+            GemInstrument(
+                nom = "Hydrostatische weegschaal",
+                mesure = "Meet de dichtheid",
+                description = "De steen wordt in de lucht gewogen en vervolgens in water ondergedompeld; het verschil tussen de twee wegingen, toegepast op het principe van Archimedes, geeft het soortelijk gewicht — een sterk onderscheidend gegeven tussen soorten met een vergelijkbaar uiterlijk.",
+                astuce = "Vereist een losse, ongezette steen en een weging nauwkeurig tot op een honderdste karaat."
+            ),
+            GemInstrument(
+                nom = "Dichroscoop",
+                mesure = "Onthult pleochroïsme",
+                description = "Een kleine optische buis met een calcietkristal splitst het licht dat door de steen valt in twee naast elkaar liggende beelden; als hun kleuren verschillen, is de steen pleochroïtisch — een waardevolle aanwijzing om bijvoorbeeld een saffier (pleochroïtisch) van een blauwe spinel (nooit pleochroïtisch) te onderscheiden."
+            ),
+            GemInstrument(
+                nom = "Polariscoop",
+                mesure = "Bepaalt het optische karakter",
+                description = "De steen wordt bekeken tussen twee gekruiste polarisatiefilters onder draaiend licht: hij wordt bij elke draaiing volledig donker als hij isotroop is (granaat, spinel, glas), of wisselt tussen licht en donker als hij anisotroop is, zoals de meeste geslepen stenen.",
+                astuce = "Maakt het ook mogelijk interne spanningen en de verdubbeling van facetranden, kenmerkend voor sterke dubbele breking, op te sporen."
+            ),
+            GemInstrument(
+                nom = "Handspectroscoop",
+                mesure = "Analyseert het absorptiespectrum",
+                description = "Door het licht dat door de steen valt te ontleden, onthult dit instrument absorptiebanden die kenmerkend zijn voor bepaalde kleurgevende elementen (chroom, ijzer, kobalt...) — een signatuur die soms specifiek is voor een soort of een behandeling, zoals de chroomlijnen in robijn en smaragd."
+            ),
+            GemInstrument(
+                nom = "10x loep en binoculaire microscoop",
+                mesure = "Onderzoekt insluitsels",
+                description = "De vergroting onthult interne insluitsels (kristallen, breuken, bellen, groeistructuren) die de natuurlijke of synthetische oorsprong van een steen verraden, evenals eventuele behandelingen — bijvoorbeeld met glas of olie gevulde breuken.",
+                astuce = "Het meest universele instrument van de gemmoloog, vaak de eerste stap van elk onderzoek."
+            ),
+            GemInstrument(
+                nom = "UV-lamp (kortgolvig en langgolvig)",
+                mesure = "Observeert de fluorescentie",
+                description = "Sommige stenen zenden zichtbaar licht uit onder onzichtbare ultraviolette straling; de intensiteit en kleur van deze fluorescentie, waargenomen in een donkere kamer, helpen een soort te identificeren of bepaalde behandelingen en vullingen op te sporen."
+            ),
+            GemInstrument(
+                nom = "Chelsea-filter",
+                mesure = "Detecteert chroom",
+                description = "Dit gekleurde filter laat slechts twee smalle banden van het spectrum door: een groene steen met chroom, zoals een natuurlijke smaragd, lijkt erdoor roodachtig, terwijl de meeste imitaties groen blijven.",
+                astuce = "Een snelle, goedkope test, maar altijd te bevestigen met andere methoden."
+            ),
+            GemInstrument(
+                nom = "Mohs-hardheidsset (testpunten)",
+                mesure = "Test de krasvastheid",
+                description = "Een reeks gekalibreerde punten van bekende hardheid, van 2 tot 9, wordt voorzichtig op een onopvallend facet aangebracht; de hardste punt die de steen kan krassen zonder er zelf door gekrast te worden, plaatst de hardheid ervan op de Mohs-schaal.",
+                astuce = "Een destructieve test, voorbehouden aan het uiterste geval en nooit toe te passen op een reeds geslepen waardevolle steen."
+            ),
+            GemInstrument(
+                nom = "Warmte- en elektrische-geleidbaarheidstester",
+                mesure = "Onderscheidt diamant van zijn simulanten",
+                description = "Een sonde meet hoe snel de steen warmte afvoert; diamant, een uitzonderlijk goede warmtegeleider, onderscheidt zich duidelijk van simulanten zoals kubisch zirkonia of glas. Nieuwere modellen voegen een test voor elektrische geleidbaarheid toe om moissaniet te ontmaskeren, de enige steen die ook de warmtegeleiding van diamant nabootst."
+            )
+        ),
+        disclaimerTitle = "Een professioneel gebruik",
+        disclaimerBody = "Deze instrumenten vereisen technische scholing en een correct voorbereide steen om betrouwbare resultaten te geven. Het analyse-instrument van de app is een oriënterende gids op basis van de kenmerken die u hebt kunnen observeren of meten; voor een officiële identificatie of certificering is alleen een erkend gemmologisch laboratorium (GIA, Gübelin, GFCO...) gezaghebbend."
+    )
+
     private val byLanguage: Map<String, GemInstrumentsPage> = mapOf(
         AppLanguage.EN.code to en,
         AppLanguage.ES.code to es,
         AppLanguage.IT.code to it,
-        AppLanguage.DE.code to de
+        AppLanguage.DE.code to de,
+        AppLanguage.PT.code to pt,
+        AppLanguage.ZH.code to zh,
+        AppLanguage.RU.code to ru,
+        AppLanguage.NL.code to nl
     )
 
     fun page(languageCode: String): GemInstrumentsPage = byLanguage[languageCode] ?: fr

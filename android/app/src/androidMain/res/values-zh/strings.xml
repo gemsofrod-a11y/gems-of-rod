@@ -344,6 +344,8 @@
     <string name="lab_reflectivity_subtitle">用相机估算折射率(测试版)。</string>
     <string name="reflectivity_title">反射仪(测试版)</string>
     <string name="reflectivity_disclaimer">参考性反射率估算,并非实验室测量结果 — 不能替代专业折射仪。</string>
+    <string name="reflectivity_howto_title">使用方法</string>
+    <string name="reflectivity_howto_body">反射仪通过比较宝石反射的亮度与两颗已知折射率的标准石(在相同条件下拍摄)的亮度,来估算宝石的折射率。\n\n1. 准备两颗折射率已知的标准石(可参考宝石鉴定卡、证书等)。\n2. 在光线较暗的环境中操作,保持手机和宝石静止,以减少杂散反射。\n3. 将第一颗标准石对准镜头,输入其已知折射率(逗号或句点均可),然后点击“拍照”。对第二颗标准石重复此操作,然后点击“保存校准”。\n4. 接着在相同条件下拍摄待鉴定的宝石:应用将显示估算的折射率范围。\n\n每次更换光源或设备时都应重新校准:该测量仅比较相对亮度,从不代表绝对数值。</string>
     <string name="reflectivity_permission_rationale">需要访问相机才能测量宝石反射的亮度。</string>
     <string name="reflectivity_permission_request">允许访问相机</string>
     <string name="reflectivity_capture_error">拍摄失败,请重试。</string>

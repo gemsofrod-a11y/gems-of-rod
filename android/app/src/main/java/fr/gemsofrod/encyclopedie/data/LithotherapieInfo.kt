@@ -178,11 +178,139 @@ object LithotherapieInfo {
         )
     )
 
+    private val pt: Map<String, LithoInfoPage> = mapOf(
+        NETTOYAGE_RECHARGEMENT to LithoInfoPage(
+            intro = "Na litoterapia tradicional, dois gestos são frequentemente confundidos: limpar uma pedra e recarregá-la. Não se trata de manutenção física, mas de práticas simbólicas herdadas de crenças antigas.",
+            sections = listOf(
+                LithoInfoSection(
+                    title = "Limpar não é recarregar",
+                    body = "A limpeza visa libertar uma pedra das energias que teria acumulado em contacto com o seu ambiente ou com outras pessoas. A recarga, por sua vez, consiste em restaurar ou reforçar a sua vibração própria, uma vez limpa a pedra. Limpa-se, portanto, antes de recarregar, nunca o contrário."
+                )
+            ),
+            listTitle = "Os diferentes métodos de recarga",
+            listItems = listOf(
+                LithoInfoListItem("Luz da lua cheia", "O método mais suave: deixar a pedra uma noite à luz da lua é adequado a todas as pedras."),
+                LithoInfoListItem("Luz solar", "A reservar para pedras escuras e resistentes: uma exposição prolongada pode desbotar pedras claras como a ametista, a citrina ou o quartzo rosa."),
+                LithoInfoListItem("Aglomerado de quartzo ou drusa de ametista", "Colocar a pedra sobre um aglomerado de quartzo ou uma drusa de ametista é um método comum, reputado como suave e sem risco."),
+                LithoInfoListItem("Terra", "Enterrar a pedra algumas horas na terra e depois lavá-la antes de a recuperar — a evitar em pedras que se riscam ou embaciam facilmente."),
+                LithoInfoListItem("Água", "Um enxaguamento com água limpa, por vezes salgada, é uma prática comum — mas a evitar em pedras macias ou porosas (selenite, malaquite, turquesa, pirite, lápis-lazúli...), que podem danificar-se em contacto com a água."),
+                LithoInfoListItem("Fumigação", "O fumo de salva branca, palo santo ou incenso é tradicionalmente usado para purificar uma pedra sem contacto direto."),
+                LithoInfoListItem("Som", "O som de uma taça tibetana, de um sino ou de um diapasão é por vezes usado para fazer vibrar a pedra e libertá-la das energias acumuladas."),
+                LithoInfoListItem("Pedras autolimpantes", "A selenite, a cianite ou o quartzo são consideradas pedras que nunca precisam de ser limpas nem recarregadas, podendo mesmo servir para recarregar outras pedras.")
+            ),
+            disclaimerTitle = "Uma questão de crença",
+            disclaimerBody = "Estas práticas decorrem de tradições e crenças populares, sem fundamento científico demonstrado. Não existe qualquer obrigação de limpar ou recarregar as suas pedras: cada um é livre de seguir ou não estes usos, de acordo com a sua própria sensibilidade."
+        ),
+        ASSOCIATIONS to LithoInfoPage(
+            intro = "Associar várias pedras entre si é uma prática comum na litoterapia tradicional, com a ideia de acumular ou equilibrar as suas respetivas virtudes. Eis as associações mais conhecidas, cada uma ligada às fichas das gemas em causa.",
+            note = "Não existe uma regra estrita: alguns preferem concentrar-se numa única pedra de cada vez, outros gostam de associar várias. A tradição recomenda simplesmente privilegiar a coerência da intenção procurada, em vez de multiplicar pedras com virtudes contraditórias.",
+            disclaimerTitle = "Uma questão de crença",
+            disclaimerBody = "Tal como para a limpeza e a recarga, estas associações decorrem de crenças tradicionais, sem obrigação nem fundamento científico validado — a explorar livremente, segundo o seu próprio sentir."
+        )
+    )
+
+    private val zh: Map<String, LithoInfoPage> = mapOf(
+        NETTOYAGE_RECHARGEMENT to LithoInfoPage(
+            intro = "在传统水晶疗法中，两种做法常被混淆：清洁一颗宝石与为其充能。这并非物理上的保养，而是承袭自古老信仰的象征性习俗。",
+            sections = listOf(
+                LithoInfoSection(
+                    title = "清洁不等于充能",
+                    body = "清洁旨在去除宝石因接触其所处环境或他人而据信积累的能量。充能则是在宝石清洁之后，恢复或增强其自身的振动。因此，应先清洁再充能，绝不可颠倒顺序。"
+                )
+            ),
+            listTitle = "各种充能方法",
+            listItems = listOf(
+                LithoInfoListItem("满月月光", "最温和的方法：将宝石在月光下放置一整夜，适用于所有宝石。"),
+                LithoInfoListItem("阳光", "仅建议用于深色且耐晒的宝石：长时间曝晒可能使紫水晶、黄水晶或粉晶等浅色宝石褪色。"),
+                LithoInfoListItem("水晶簇或紫晶洞", "将宝石放置在水晶簇或紫晶洞上，是一种常见方法，被认为温和且无风险。"),
+                LithoInfoListItem("土壤", "将宝石埋入土中数小时，取出后清洗——容易被刮伤或失去光泽的宝石应避免使用此法。"),
+                LithoInfoListItem("水", "用清水（有时是盐水）冲洗是一种普遍做法——但对于质地较软或多孔的宝石（透石膏、孔雀石、绿松石、黄铁矿、青金石等）应避免使用，因为接触水可能会造成损伤。"),
+                LithoInfoListItem("烟熏净化", "传统上使用白鼠尾草、圣木或熏香的烟雾，在不直接接触的情况下净化宝石。"),
+                LithoInfoListItem("声音", "颂钵、铃铛或音叉的声音有时被用来使宝石产生振动，从而释放积累的能量。"),
+                LithoInfoListItem("自净宝石", "透石膏、蓝晶石和石英被认为从不需要清洁或充能，甚至可以用来为其他宝石充能。")
+            ),
+            disclaimerTitle = "一种信仰问题",
+            disclaimerBody = "这些做法源于民间传统与信仰，并无经证实的科学依据。清洁或充能宝石并非任何形式的义务：是否遵循这些习俗，完全取决于个人的感受与选择。"
+        ),
+        ASSOCIATIONS to LithoInfoPage(
+            intro = "将多颗宝石相互搭配是传统水晶疗法中的常见做法，旨在叠加或平衡它们各自的功效。以下是最广为人知的搭配方式，每一种都关联到相关宝石的说明页面。",
+            note = "并没有严格的规则：有些人偏好一次专注于一颗宝石，也有人喜欢同时搭配多颗。传统上仅建议优先考虑所追求意图的一致性，而非堆砌功效相互矛盾的宝石。",
+            disclaimerTitle = "一种信仰问题",
+            disclaimerBody = "与清洁和充能一样，这些搭配源于传统信仰，并无义务性质，也无经证实的科学依据——可根据个人感受自由探索。"
+        )
+    )
+
+    private val ru: Map<String, LithoInfoPage> = mapOf(
+        NETTOYAGE_RECHARGEMENT to LithoInfoPage(
+            intro = "В традиционной кристаллотерапии часто путают два действия: очищение камня и его подзарядку. Речь идёт не о физическом уходе, а о символических практиках, унаследованных от древних поверий.",
+            sections = listOf(
+                LithoInfoSection(
+                    title = "Очищение — не то же самое, что подзарядка",
+                    body = "Очищение направлено на то, чтобы избавить камень от энергий, которые он якобы накопил в контакте со своей средой или другими людьми. Подзарядка же заключается в восстановлении или усилении его собственной вибрации после очищения камня. Таким образом, камень сначала очищают, а затем подзаряжают, но никогда не наоборот."
+                )
+            ),
+            listTitle = "Различные методы подзарядки",
+            listItems = listOf(
+                LithoInfoListItem("Свет полной луны", "Самый мягкий метод: оставить камень на ночь под светом луны подходит для всех камней."),
+                LithoInfoListItem("Солнечный свет", "Рекомендуется только для тёмных, стойких камней: длительное пребывание на солнце может вызвать выцветание светлых камней, таких как аметист, цитрин или розовый кварц."),
+                LithoInfoListItem("Друза кварца или аметиста", "Положить камень на друзу кварца или аметиста — распространённый метод, считающийся мягким и безопасным."),
+                LithoInfoListItem("Земля", "Закопать камень на несколько часов в землю, а затем промыть его перед тем, как достать — не рекомендуется для камней, которые легко царапаются или тускнеют."),
+                LithoInfoListItem("Вода", "Ополаскивание чистой, иногда солёной водой — распространённая практика, но её следует избегать для мягких или пористых камней (селенит, малахит, бирюза, пирит, лазурит...), которые могут повредиться при контакте с водой."),
+                LithoInfoListItem("Окуривание дымом", "Дым белого шалфея, пало-санто или благовоний традиционно используется для очищения камня без прямого контакта."),
+                LithoInfoListItem("Звук", "Звук поющей чаши, колокольчика или камертона иногда используют, чтобы заставить камень вибрировать и освободить его от накопленных энергий."),
+                LithoInfoListItem("Самоочищающиеся камни", "Селенит, кианит и кварц считаются камнями, которые сами никогда не нуждаются в очищении или подзарядке, и их даже можно использовать для подзарядки других камней.")
+            ),
+            disclaimerTitle = "Вопрос веры",
+            disclaimerBody = "Эти практики относятся к народным традициям и поверьям, не имеющим доказанного научного обоснования. Не существует никакой обязанности очищать или подзаряжать свои камни: каждый вправе следовать этим обычаям или нет, в зависимости от собственных ощущений."
+        ),
+        ASSOCIATIONS to LithoInfoPage(
+            intro = "Сочетание нескольких камней между собой — распространённая практика в традиционной кристаллотерапии, основанная на идее суммирования или уравновешивания их соответствующих свойств. Вот наиболее известные сочетания, каждое из которых связано с описанием соответствующих камней.",
+            note = "Строгих правил не существует: одни предпочитают сосредоточиться на одном камне за раз, другие любят сочетать несколько. Традиция лишь рекомендует отдавать предпочтение согласованности искомого намерения, а не умножать число камней с противоречивыми свойствами.",
+            disclaimerTitle = "Вопрос веры",
+            disclaimerBody = "Как и в случае очищения и подзарядки, эти сочетания основаны на традиционных поверьях, не несут никаких обязательств и не имеют подтверждённого научного обоснования — их можно свободно исследовать, доверяя собственным ощущениям."
+        )
+    )
+
+    private val nl: Map<String, LithoInfoPage> = mapOf(
+        NETTOYAGE_RECHARGEMENT to LithoInfoPage(
+            intro = "In de traditionele kristalgenezing worden twee handelingen vaak door elkaar gehaald: het reinigen van een steen en het opladen ervan. Het gaat hierbij niet om fysiek onderhoud, maar om symbolische praktijken die voortkomen uit oude overtuigingen.",
+            sections = listOf(
+                LithoInfoSection(
+                    title = "Reinigen is niet hetzelfde als opladen",
+                    body = "Reinigen is bedoeld om een steen te bevrijden van de energieën die hij zou hebben opgebouwd door contact met zijn omgeving of andere personen. Opladen bestaat er daarentegen in om zijn eigen trilling te herstellen of te versterken, zodra de steen is gereinigd. Men reinigt dus vóór het opladen, nooit andersom."
+                )
+            ),
+            listTitle = "De verschillende oplaadmethoden",
+            listItems = listOf(
+                LithoInfoListItem("Licht van volle maan", "De zachtste methode: de steen een nacht lang in het maanlicht laten liggen is geschikt voor alle stenen."),
+                LithoInfoListItem("Zonlicht", "Voorbehouden aan donkere, robuuste stenen: langdurige blootstelling kan lichte stenen zoals amethist, citrien of rozenkwarts doen verbleken."),
+                LithoInfoListItem("Kwartscluster of amethistdruze", "De steen op een kwartscluster of amethistdruze leggen is een gangbare methode, die als zacht en risicoloos geldt."),
+                LithoInfoListItem("Aarde", "De steen enkele uren in de aarde begraven en vervolgens wassen voordat u hem terughaalt — te vermijden bij stenen die gemakkelijk krassen of dof worden."),
+                LithoInfoListItem("Water", "Spoelen met helder, soms gezouten water is een wijdverbreide praktijk — maar te vermijden bij zachte of poreuze stenen (seleniet, malachiet, turkoois, pyriet, lapis lazuli...), die door contact met water beschadigd kunnen raken."),
+                LithoInfoListItem("Reukwerk (smudging)", "De rook van witte salie, palo santo of wierook wordt van oudsher gebruikt om een steen te zuiveren zonder direct contact."),
+                LithoInfoListItem("Klank", "Het geluid van een klankschaal, een bel of een stemvork wordt soms gebruikt om de steen te laten trillen en hem te bevrijden van opgehoopte energieën."),
+                LithoInfoListItem("Zelfreinigende stenen", "Seleniet, kyaniet en kwarts worden beschouwd als stenen die zelf nooit gereinigd of opgeladen hoeven te worden, en die zelfs kunnen worden gebruikt om andere stenen op te laden.")
+            ),
+            disclaimerTitle = "Een kwestie van geloof",
+            disclaimerBody = "Deze praktijken komen voort uit volkstradities en overtuigingen, zonder aangetoonde wetenschappelijke grondslag. Er bestaat geen enkele verplichting om uw stenen te reinigen of op te laden: het staat iedereen vrij deze gebruiken al dan niet te volgen, naargelang zijn eigen gevoel."
+        ),
+        ASSOCIATIONS to LithoInfoPage(
+            intro = "Meerdere stenen met elkaar combineren is een gangbare praktijk in de traditionele kristalgenezing, met het idee hun respectieve eigenschappen te combineren of in evenwicht te brengen. Hier zijn de bekendste combinaties, elk gekoppeld aan de fiches van de betreffende edelstenen.",
+            note = "Er bestaat geen strikte regel: sommigen kiezen ervoor zich op één enkele steen tegelijk te concentreren, anderen combineren er graag meerdere. De traditie beveelt eenvoudigweg aan de samenhang van de gezochte intentie te laten voorgaan, in plaats van stenen met tegenstrijdige eigenschappen te vermenigvuldigen.",
+            disclaimerTitle = "Een kwestie van geloof",
+            disclaimerBody = "Zoals bij reiniging en opladen, komen ook deze combinaties voort uit traditionele overtuigingen, zonder verplichting of gevalideerde wetenschappelijke grondslag — vrij te verkennen, naargelang uw eigen gevoel."
+        )
+    )
+
     private val byLanguage: Map<String, Map<String, LithoInfoPage>> = mapOf(
         AppLanguage.EN.code to en,
         AppLanguage.ES.code to es,
         AppLanguage.IT.code to it,
-        AppLanguage.DE.code to de
+        AppLanguage.DE.code to de,
+        AppLanguage.PT.code to pt,
+        AppLanguage.ZH.code to zh,
+        AppLanguage.RU.code to ru,
+        AppLanguage.NL.code to nl
     )
 
     fun page(topic: String, languageCode: String): LithoInfoPage =

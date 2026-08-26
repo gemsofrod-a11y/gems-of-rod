@@ -22,7 +22,11 @@ object MeteoriteLocalization {
         AppLanguage.EN.code to MeteoriteTranslationsEn.data,
         AppLanguage.ES.code to MeteoriteTranslationsEs.data,
         AppLanguage.IT.code to MeteoriteTranslationsIt.data,
-        AppLanguage.DE.code to MeteoriteTranslationsDe.data
+        AppLanguage.DE.code to MeteoriteTranslationsDe.data,
+        AppLanguage.PT.code to MeteoriteTranslationsPt.data,
+        AppLanguage.ZH.code to MeteoriteTranslationsZh.data,
+        AppLanguage.RU.code to MeteoriteTranslationsRu.data,
+        AppLanguage.NL.code to MeteoriteTranslationsNl.data
     )
 
     fun localize(meteorite: Meteorite, languageCode: String): Meteorite {
