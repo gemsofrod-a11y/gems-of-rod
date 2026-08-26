@@ -34,7 +34,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -47,7 +46,7 @@ import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.data.GemsRepository
 import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
-import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
+import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -142,10 +141,10 @@ private fun FavoriteRow(gem: Gem, onClick: () -> Unit) {
             val thumbnailCredit = GemImages.creditsFor(gem.id).let { credits ->
                 credits.firstOrNull { it.type == GemImageType.FACETTEE } ?: credits.firstOrNull()
             }
-            val imageResId = rememberDrawableResId(thumbnailCredit?.drawableName)
-            if (imageResId != 0) {
+            val imagePainter = rememberSampledDrawablePainter(thumbnailCredit?.drawableName, 48.dp)
+            if (imagePainter != null) {
                 Image(
-                    painter = painterResource(id = imageResId),
+                    painter = imagePainter,
                     contentDescription = localizedGem.nom,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier

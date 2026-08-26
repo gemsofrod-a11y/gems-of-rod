@@ -36,7 +36,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
@@ -50,7 +49,7 @@ import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.data.GemsRepository
 import fr.gemsofrod.encyclopedie.data.LithotherapieInfo
 import fr.gemsofrod.encyclopedie.ui.localized
-import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
+import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
 
 /**
  * Liste de toutes les associations de pierres traditionnellement reconnues
@@ -178,10 +177,10 @@ private fun GemThumbnail(gemId: String, size: Dp) {
     val credit = GemImages.creditsFor(gemId).let { credits ->
         credits.firstOrNull { it.type == GemImageType.FACETTEE } ?: credits.firstOrNull()
     }
-    val imageResId = rememberDrawableResId(credit?.drawableName)
-    if (imageResId != 0) {
+    val imagePainter = rememberSampledDrawablePainter(credit?.drawableName, size)
+    if (imagePainter != null) {
         Image(
-            painter = painterResource(id = imageResId),
+            painter = imagePainter,
             contentDescription = gem?.nom,
             contentScale = ContentScale.Crop,
             modifier = Modifier

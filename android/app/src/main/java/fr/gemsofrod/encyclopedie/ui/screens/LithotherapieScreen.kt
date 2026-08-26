@@ -41,7 +41,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
@@ -61,7 +60,7 @@ import fr.gemsofrod.encyclopedie.data.ZodiacSigns
 import fr.gemsofrod.encyclopedie.data.BirthMonths
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
-import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
+import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
 
 /** Identifiants des sous-catégories de la section Lithothérapie. */
 object LithotherapieSchemes {
@@ -400,10 +399,10 @@ private fun LithotherapieRow(gem: Gem, onClick: () -> Unit) {
             val thumbnailCredit = GemImages.creditsFor(gem.id).let { credits ->
                 credits.firstOrNull { it.type == GemImageType.FACETTEE } ?: credits.firstOrNull()
             }
-            val imageResId = rememberDrawableResId(thumbnailCredit?.drawableName)
-            if (imageResId != 0) {
+            val imagePainter = rememberSampledDrawablePainter(thumbnailCredit?.drawableName, 48.dp)
+            if (imagePainter != null) {
                 Image(
-                    painter = painterResource(id = imageResId),
+                    painter = imagePainter,
                     contentDescription = localizedGem.nom,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -558,13 +557,12 @@ private fun LithotherapieImageGallery(images: List<GemImageCredit>) {
 
 @Composable
 private fun LithotherapieImageCard(credit: GemImageCredit) {
-    val imageResId = rememberDrawableResId(credit.drawableName)
-    if (imageResId == 0) return
+    val imagePainter = rememberSampledDrawablePainter(credit.drawableName, 220.dp) ?: return
 
     val caption = stringResource(if (credit.type == GemImageType.BRUTE) R.string.gem_photo_raw else R.string.gem_photo_cut_or_cabochon)
     Column(modifier = Modifier.width(220.dp)) {
         Image(
-            painter = painterResource(id = imageResId),
+            painter = imagePainter,
             contentDescription = caption,
             contentScale = ContentScale.Crop,
             modifier = Modifier

@@ -39,7 +39,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -57,7 +56,7 @@ import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.data.GemRarete
 import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
-import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
+import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
 
 /**
  * Écran d'entrée de la section Fossiles, distincte du catalogue Gemmologie et
@@ -421,13 +420,12 @@ private fun FossileImageGallery(images: List<GemImageCredit>) {
 
 @Composable
 private fun FossileImageCard(credit: GemImageCredit) {
-    val imageResId = rememberDrawableResId(credit.drawableName)
-    if (imageResId == 0) return
+    val imagePainter = rememberSampledDrawablePainter(credit.drawableName, 220.dp) ?: return
 
     val caption = stringResource(if (credit.type == GemImageType.BRUTE) R.string.gem_photo_raw else R.string.gem_photo_cut)
     Column(modifier = Modifier.width(220.dp)) {
         Image(
-            painter = painterResource(id = imageResId),
+            painter = imagePainter,
             contentDescription = caption,
             contentScale = ContentScale.Crop,
             modifier = Modifier
