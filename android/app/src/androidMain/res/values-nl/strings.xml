@@ -344,6 +344,8 @@
     <string name="lab_reflectivity_subtitle">Schat de brekingsindex met de camera (bèta).</string>
     <string name="reflectivity_title">Reflectometer (bèta)</string>
     <string name="reflectivity_disclaimer">Indicatieve schatting op basis van reflectiviteit, GEEN laboratoriummeting — vervangt geen professionele refractometer.</string>
+    <string name="reflectivity_howto_title">Gebruiksaanwijzing</string>
+    <string name="reflectivity_howto_body">De reflectometer schat de brekingsindex van een steen door de gereflecteerde helderheid te vergelijken met die van twee referentiestenen met bekende index, gefotografeerd onder dezelfde omstandigheden.\n\n1. Zorg voor twee referentiestenen waarvan u de brekingsindex kent (gemmologische fiche, certificaat...).\n2. Werk in een donkere ruimte en houd telefoon en steen stil, om storende reflecties te beperken.\n3. Plaats de eerste referentiesteen voor de lens, voer de bekende index in (komma of punt, beide werken) en tik op “Fotograferen”. Herhaal met de tweede referentiesteen en tik op “Kalibratie opslaan”.\n4. Fotografeer vervolgens de te identificeren steen onder dezelfde omstandigheden: de app toont een geschat brekingsindexbereik.\n\nKalibreer opnieuw bij elke verandering van belichting of toestel: de meting vergelijkt alleen relatieve helderheid, nooit een absolute waarde.</string>
     <string name="reflectivity_permission_rationale">Cameratoegang is nodig om de door de steen gereflecteerde helderheid te meten.</string>
     <string name="reflectivity_permission_request">Cameratoegang toestaan</string>
     <string name="reflectivity_capture_error">Opname mislukt. Probeer opnieuw.</string>

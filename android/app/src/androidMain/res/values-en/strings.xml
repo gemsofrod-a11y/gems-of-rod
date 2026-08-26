@@ -344,6 +344,8 @@
     <string name="lab_reflectivity_subtitle">Estimate the refractive index with the camera (beta).</string>
     <string name="reflectivity_title">Reflectometer (beta)</string>
     <string name="reflectivity_disclaimer">Indicative reflectivity estimate, NOT a laboratory measurement — does not replace a professional refractometer.</string>
+    <string name="reflectivity_howto_title">How to use it</string>
+    <string name="reflectivity_howto_body">The reflectometer estimates a stone\'s refractive index by comparing its reflected brightness to that of two reference stones of known index, photographed under the same conditions.\n\n1. Get two reference stones with a known refractive index (gemological sheet, certificate...).\n2. Work in a dark room, keeping the phone and the stone still, to limit stray reflections.\n3. Place the first reference stone in front of the lens, enter its known index (comma or period both work), then tap “Photograph”. Repeat with the second reference stone, then tap “Save calibration”.\n4. Then photograph the stone you want to identify under the same conditions: the app shows an estimated refractive index range.\n\nRecalibrate whenever the lighting or the device changes: the measurement only compares relative brightness, never an absolute value.</string>
     <string name="reflectivity_permission_rationale">Camera access is needed to measure the brightness reflected by the stone.</string>
     <string name="reflectivity_permission_request">Allow camera access</string>
     <string name="reflectivity_capture_error">Capture failed. Please try again.</string>

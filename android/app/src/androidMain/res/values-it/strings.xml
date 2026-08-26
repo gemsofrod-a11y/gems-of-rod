@@ -344,6 +344,8 @@
     <string name="lab_reflectivity_subtitle">Stima l\'indice di rifrazione con la fotocamera (beta).</string>
     <string name="reflectivity_title">Riflettometro (beta)</string>
     <string name="reflectivity_disclaimer">Stima indicativa per riflettività, NON una misurazione di laboratorio — non sostituisce un rifrattometro professionale.</string>
+    <string name="reflectivity_howto_title">Come si usa</string>
+    <string name="reflectivity_howto_body">Il riflettometro stima l\'indice di rifrazione di una pietra confrontando la sua luminosità riflessa con quella di due pietre campione di indice noto, fotografate nelle stesse condizioni.\n\n1. Procuratevi due pietre campione di cui conoscete l\'indice di rifrazione (scheda gemmologica, certificato...).\n2. Posizionatevi in un ambiente buio, con telefono e pietra ben fermi, per limitare i riflessi indesiderati.\n3. Posizionate la prima pietra campione davanti all\'obiettivo, inserite il suo indice noto (virgola o punto, entrambi funzionano), quindi toccate «Fotografa». Ripetete con la seconda pietra campione, quindi toccate «Salva calibrazione».\n4. Fotografate poi la pietra da identificare nelle stesse condizioni: l\'app mostrerà un intervallo di indice di rifrazione stimato.\n\nRicalibrate a ogni cambio di illuminazione o di dispositivo: la misurazione confronta solo luminosità relative, mai un valore assoluto.</string>
     <string name="reflectivity_permission_rationale">L\'accesso alla fotocamera è necessario per misurare la luminosità riflessa dalla pietra.</string>
     <string name="reflectivity_permission_request">Consenti l\'accesso alla fotocamera</string>
     <string name="reflectivity_capture_error">Cattura non riuscita. Riprova.</string>

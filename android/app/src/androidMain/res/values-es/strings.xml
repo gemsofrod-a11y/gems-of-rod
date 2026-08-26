@@ -344,6 +344,8 @@
     <string name="lab_reflectivity_subtitle">Estime el índice de refracción con la cámara (beta).</string>
     <string name="reflectivity_title">Reflectómetro (beta)</string>
     <string name="reflectivity_disclaimer">Estimación indicativa por reflectividad, NO es una medición de laboratorio — no sustituye a un refractómetro profesional.</string>
+    <string name="reflectivity_howto_title">Modo de empleo</string>
+    <string name="reflectivity_howto_body">El reflectómetro estima el índice de refracción de una piedra comparando su brillo reflejado con el de dos piedras patrón de índice conocido, fotografiadas en las mismas condiciones.\n\n1. Consiga dos piedras patrón cuyo índice de refracción conozca (ficha gemológica, certificado...).\n2. Colóquese en un lugar oscuro, con el teléfono y la piedra inmóviles, para limitar los reflejos parásitos.\n3. Coloque la primera piedra patrón frente al objetivo, introduzca su índice conocido (coma o punto, ambos funcionan) y pulse «Fotografiar». Repita con la segunda piedra patrón y pulse «Guardar calibración».\n4. A continuación, fotografíe la piedra que desea identificar en las mismas condiciones: la app mostrará un rango de índice de refracción estimado.\n\nVuelva a calibrar cada vez que cambie la iluminación o el dispositivo: la medición solo compara brillos relativos, nunca un valor absoluto.</string>
     <string name="reflectivity_permission_rationale">Se necesita acceso a la cámara para medir el brillo reflejado por la piedra.</string>
     <string name="reflectivity_permission_request">Permitir el acceso a la cámara</string>
     <string name="reflectivity_capture_error">Error al capturar. Inténtelo de nuevo.</string>

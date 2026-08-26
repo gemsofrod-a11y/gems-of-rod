@@ -13,9 +13,11 @@ import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,6 +28,8 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -75,6 +79,14 @@ import kotlin.coroutines.resumeWithException
 private const val FIXED_EXPOSURE_NANOS = 16_666_666L // ~1/60s
 private const val FIXED_ISO = 100
 
+// Le clavier décimal affiche une virgule dans la plupart des locales
+// francophones (« 1,54 ») alors que Double.parseDouble n'accepte que le
+// point ; sans cette normalisation, le champ semblait valide à l'écran mais
+// le bouton de capture restait désactivé indéfiniment (toDoubleOrNull()
+// renvoyait null sur toute saisie contenant une virgule).
+private fun parseRefractiveIndex(input: String): Double? =
+    input.trim().replace(',', '.').toDoubleOrNull()
+
 /**
  * Mode réflectivité (voir ReflectivityMeter.kt) : mesure de l'indice de
  * réfraction par comparaison de brillance réfléchie, sans hémicylindre ni
@@ -118,6 +130,8 @@ fun ReflectivityMeterScreen(onBackClick: () -> Unit) {
 
     var lastEstimate by remember { mutableStateOf<ReflectivityEstimate?>(null) }
 
+    var howToExpanded by remember { mutableStateOf(true) }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -149,6 +163,38 @@ fun ReflectivityMeterScreen(onBackClick: () -> Unit) {
                 color = MaterialTheme.colorScheme.error
             )
 
+            Card(
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { howToExpanded = !howToExpanded },
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            text = stringResource(R.string.reflectivity_howto_title),
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold
+                        )
+                        Icon(
+                            if (howToExpanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
+                            contentDescription = null
+                        )
+                    }
+                    if (howToExpanded) {
+                        Text(
+                            text = stringResource(R.string.reflectivity_howto_body),
+                            style = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.padding(top = 8.dp)
+                        )
+                    }
+                }
+            }
+
             if (!hasCameraPermission) {
                 Text(
                     text = stringResource(R.string.reflectivity_permission_rationale),
@@ -171,9 +217,10 @@ fun ReflectivityMeterScreen(onBackClick: () -> Unit) {
                 Box(modifier = Modifier.fillMaxSize()) {
                     CameraPreview(
                         onImageCaptureReady = { capture -> imageCapture = capture },
-                        onCameraReady = { cameraReady = true }
+                        onCameraReady = { cameraReady = true },
+                        onCameraError = { message -> captureError = message }
                     )
-                    if (!cameraReady) {
+                    if (!cameraReady && captureError == null) {
                         CircularProgressIndicator(modifier = Modifier.padding(24.dp))
                     }
                 }
@@ -195,7 +242,7 @@ fun ReflectivityMeterScreen(onBackClick: () -> Unit) {
                     onKnownRiChange = { pointARi = it },
                     brightness = pointABrightness,
                     capturing = isCapturing,
-                    captureEnabled = cameraReady && imageCapture != null && pointARi.toDoubleOrNull() != null,
+                    captureEnabled = cameraReady && imageCapture != null && parseRefractiveIndex(pointARi) != null,
                     onCaptureClick = {
                         val capture = imageCapture ?: return@CalibrationPointRow
                         isCapturing = true
@@ -214,7 +261,7 @@ fun ReflectivityMeterScreen(onBackClick: () -> Unit) {
                     onKnownRiChange = { pointBRi = it },
                     brightness = pointBBrightness,
                     capturing = isCapturing,
-                    captureEnabled = cameraReady && imageCapture != null && pointBRi.toDoubleOrNull() != null,
+                    captureEnabled = cameraReady && imageCapture != null && parseRefractiveIndex(pointBRi) != null,
                     onCaptureClick = {
                         val capture = imageCapture ?: return@CalibrationPointRow
                         isCapturing = true
@@ -228,8 +275,8 @@ fun ReflectivityMeterScreen(onBackClick: () -> Unit) {
                     }
                 )
 
-                val riA = pointARi.toDoubleOrNull()
-                val riB = pointBRi.toDoubleOrNull()
+                val riA = parseRefractiveIndex(pointARi)
+                val riB = parseRefractiveIndex(pointBRi)
                 val canSave = riA != null && riB != null && pointABrightness != null && pointBBrightness != null
 
                 Button(
@@ -348,7 +395,8 @@ private fun CalibrationPointRow(
 @Composable
 private fun CameraPreview(
     onImageCaptureReady: (ImageCapture) -> Unit,
-    onCameraReady: () -> Unit
+    onCameraReady: () -> Unit,
+    onCameraError: (String) -> Unit
 ) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -361,35 +409,44 @@ private fun CameraPreview(
     DisposableEffect(previewView) {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(context)
         cameraProviderFuture.addListener({
-            val cameraProvider = cameraProviderFuture.get()
-            val preview = Preview.Builder().build().also { it.surfaceProvider = previewView.surfaceProvider }
-            val imageCapture = ImageCapture.Builder().build()
+            // Sans ce try/catch, une exception ici (liaison caméra refusée,
+            // exposition manuelle non supportée par le capteur du device...)
+            // remontait telle quelle sur le thread principal : le bouton de
+            // capture restait désactivé indéfiniment derrière un indicateur
+            // de chargement, sans aucun message pour comprendre pourquoi.
+            runCatching {
+                val cameraProvider = cameraProviderFuture.get()
+                val preview = Preview.Builder().build().also { it.surfaceProvider = previewView.surfaceProvider }
+                val imageCapture = ImageCapture.Builder().build()
 
-            cameraProvider.unbindAll()
-            val camera = cameraProvider.bindToLifecycle(
-                lifecycleOwner,
-                CameraSelector.DEFAULT_BACK_CAMERA,
-                preview,
-                imageCapture
-            )
+                cameraProvider.unbindAll()
+                val camera = cameraProvider.bindToLifecycle(
+                    lifecycleOwner,
+                    CameraSelector.DEFAULT_BACK_CAMERA,
+                    preview,
+                    imageCapture
+                )
 
-            // Éclairage constant pendant toute la session plutôt qu'un flash
-            // ponctuel : évite les écarts de synchronisation entre torche et
-            // capture qui fausseraient la comparaison de brillance.
-            camera.cameraControl.enableTorch(true)
+                // Éclairage constant pendant toute la session plutôt qu'un flash
+                // ponctuel : évite les écarts de synchronisation entre torche et
+                // capture qui fausseraient la comparaison de brillance.
+                camera.cameraControl.enableTorch(true)
 
-            // Verrouillage manuel de l'exposition : sans cela, l'auto-exposition
-            // du téléphone compenserait les écarts de brillance entre pierres,
-            // ce qui invaliderait toute la mesure par réflectivité.
-            val captureRequestOptions = CaptureRequestOptions.Builder()
-                .setCaptureRequestOption(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_OFF)
-                .setCaptureRequestOption(CaptureRequest.SENSOR_EXPOSURE_TIME, FIXED_EXPOSURE_NANOS)
-                .setCaptureRequestOption(CaptureRequest.SENSOR_SENSITIVITY, FIXED_ISO)
-                .build()
-            Camera2CameraControl.from(camera.cameraControl).setCaptureRequestOptions(captureRequestOptions)
+                // Verrouillage manuel de l'exposition : sans cela, l'auto-exposition
+                // du téléphone compenserait les écarts de brillance entre pierres,
+                // ce qui invaliderait toute la mesure par réflectivité.
+                val captureRequestOptions = CaptureRequestOptions.Builder()
+                    .setCaptureRequestOption(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_OFF)
+                    .setCaptureRequestOption(CaptureRequest.SENSOR_EXPOSURE_TIME, FIXED_EXPOSURE_NANOS)
+                    .setCaptureRequestOption(CaptureRequest.SENSOR_SENSITIVITY, FIXED_ISO)
+                    .build()
+                Camera2CameraControl.from(camera.cameraControl).setCaptureRequestOptions(captureRequestOptions)
 
-            onImageCaptureReady(imageCapture)
-            onCameraReady()
+                onImageCaptureReady(imageCapture)
+                onCameraReady()
+            }.onFailure { error ->
+                onCameraError(error.message ?: error.javaClass.simpleName)
+            }
         }, ContextCompat.getMainExecutor(context))
 
         onDispose {

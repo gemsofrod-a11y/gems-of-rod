@@ -344,6 +344,8 @@
     <string name="lab_reflectivity_subtitle">Estimez l\'indice de réfraction avec l\'appareil photo (bêta).</string>
     <string name="reflectivity_title">Réflectomètre (bêta)</string>
     <string name="reflectivity_disclaimer">Estimation indicative par réflectivité, PAS une mesure de laboratoire — ne remplace pas un réfractomètre professionnel.</string>
+    <string name="reflectivity_howto_title">Mode d\'emploi</string>
+    <string name="reflectivity_howto_body">Le réflectomètre estime l\'indice de réfraction d\'une pierre en comparant sa brillance réfléchie à celle de deux pierres-étalon d\'indice connu, photographiées dans les mêmes conditions.\n\n1. Munissez-vous de deux pierres-étalon dont vous connaissez l\'indice de réfraction (fiche gemmologique, certificat...).\n2. Installez-vous dans un endroit sombre, téléphone et pierre bien immobiles, pour limiter les reflets parasites.\n3. Posez la première pierre-étalon face à l\'objectif, saisissez son indice connu (virgule ou point, les deux fonctionnent), puis appuyez sur « Photographier ». Répétez avec la seconde pierre-étalon, puis appuyez sur « Enregistrer la calibration ».\n4. Photographiez ensuite la pierre à identifier dans les mêmes conditions : l\'app affiche une plage d\'indice de réfraction estimée.\n\nRecalibrez à chaque changement d\'éclairage ou d\'appareil : la mesure ne compare que des brillances relatives, jamais une valeur absolue.</string>
     <string name="reflectivity_permission_rationale">L\'accès à l\'appareil photo est nécessaire pour mesurer la brillance réfléchie par la pierre.</string>
     <string name="reflectivity_permission_request">Autoriser l\'appareil photo</string>
     <string name="reflectivity_capture_error">Échec de la capture. Réessayez.</string>
