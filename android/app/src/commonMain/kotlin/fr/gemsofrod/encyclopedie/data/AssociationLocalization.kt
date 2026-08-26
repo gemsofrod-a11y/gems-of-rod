@@ -15,7 +15,16 @@ data class AssociationTranslation(
  * les textes descriptifs sont traduits.
  */
 object AssociationLocalization {
-    private val byLanguage: Map<String, Map<String, AssociationTranslation>> = emptyMap()
+    private val byLanguage: Map<String, Map<String, AssociationTranslation>> = mapOf(
+        AppLanguage.EN.code to AssociationTranslationsEn.data,
+        AppLanguage.ES.code to AssociationTranslationsEs.data,
+        AppLanguage.IT.code to AssociationTranslationsIt.data,
+        AppLanguage.DE.code to AssociationTranslationsDe.data,
+        AppLanguage.PT.code to AssociationTranslationsPt.data,
+        AppLanguage.ZH.code to AssociationTranslationsZh.data,
+        AppLanguage.RU.code to AssociationTranslationsRu.data,
+        AppLanguage.NL.code to AssociationTranslationsNl.data
+    )
 
     fun localize(association: Association, languageCode: String): Association {
         val translation = byLanguage[languageCode]?.get(association.id) ?: return association
