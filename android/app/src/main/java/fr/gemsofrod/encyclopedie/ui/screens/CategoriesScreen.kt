@@ -53,7 +53,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -67,7 +66,7 @@ import fr.gemsofrod.encyclopedie.data.GemsRepository
 import fr.gemsofrod.encyclopedie.data.LanguageRepository
 import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
-import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
+import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -203,10 +202,10 @@ private fun HomeSectionCard(
             .height(140.dp)
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
-            val imageResId = backgroundDrawable?.let { rememberDrawableResId(it) } ?: 0
-            if (imageResId != 0) {
+            val imagePainter = backgroundDrawable?.let { rememberSampledDrawablePainter(it, 400.dp) }
+            if (imagePainter != null) {
                 Image(
-                    painter = painterResource(id = imageResId),
+                    painter = imagePainter,
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()

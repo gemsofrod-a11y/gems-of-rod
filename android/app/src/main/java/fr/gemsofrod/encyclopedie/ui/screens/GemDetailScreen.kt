@@ -53,7 +53,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -75,7 +74,7 @@ import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.localizedInclusions
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
-import fr.gemsofrod.encyclopedie.ui.rememberDrawableResId
+import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -415,8 +414,7 @@ private fun GemImageGallery(images: List<GemImageCredit>) {
 
 @Composable
 private fun GemImageCard(credit: GemImageCredit) {
-    val imageResId = rememberDrawableResId(credit.drawableName)
-    if (imageResId == 0) return
+    val imagePainter = rememberSampledDrawablePainter(credit.drawableName, 220.dp) ?: return
 
     val caption = stringResource(
         when (credit.type) {
@@ -427,7 +425,7 @@ private fun GemImageCard(credit: GemImageCredit) {
     )
     Column(modifier = Modifier.width(220.dp)) {
         Image(
-            painter = painterResource(id = imageResId),
+            painter = imagePainter,
             contentDescription = caption,
             contentScale = ContentScale.Crop,
             modifier = Modifier
