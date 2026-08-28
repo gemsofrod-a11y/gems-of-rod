@@ -175,6 +175,31 @@ main {
   font-size: 0.9rem;
 }
 
+.letter-final {
+  border-top: 1px dashed var(--gold);
+  margin-top: 0.4rem;
+  padding-top: 0.5rem;
+}
+
+.letter-final-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.letter-final-letter {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.letter-final-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
 .example-text {
   color: var(--muted);
 }
@@ -223,8 +248,37 @@ main {
 .phrase-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 0.6rem;
+}
+
+.variant-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--blue-dark);
+  margin: 0.6rem 0 0.2rem;
+}
+
+.phrase-variant {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--border);
+  padding-top: 0.5rem;
+  margin-top: 0.3rem;
+}
+
+.phrase-variant:first-of-type {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.phrase-variant .phrase-sentence {
+  flex: 1;
+  min-width: 0;
 }
 
 .badge {

@@ -76,6 +76,38 @@ function renderAlphabet() {
     example.appendChild(speakerButton(item.example.he, `Écouter ${item.example.translit}`));
     card.appendChild(example);
 
+    if (item.final) {
+      const finalBlock = document.createElement("div");
+      finalBlock.className = "letter-final";
+
+      const finalHeader = document.createElement("div");
+      finalHeader.className = "letter-final-header";
+      const finalLetterEl = document.createElement("span");
+      finalLetterEl.className = "he letter-final-letter";
+      finalLetterEl.textContent = item.final.letter;
+      const finalDesc = document.createElement("span");
+      finalDesc.className = "letter-final-desc";
+      finalDesc.textContent = item.final.desc;
+      finalHeader.appendChild(finalLetterEl);
+      finalHeader.appendChild(finalDesc);
+      finalBlock.appendChild(finalHeader);
+
+      const finalExample = document.createElement("div");
+      finalExample.className = "letter-example";
+      const finalExHe = document.createElement("span");
+      finalExHe.className = "he";
+      finalExHe.textContent = item.final.example.he;
+      const finalExText = document.createElement("span");
+      finalExText.className = "example-text";
+      finalExText.textContent = ` ${item.final.example.translit} — ${item.final.example.fr}`;
+      finalExample.appendChild(finalExHe);
+      finalExample.appendChild(finalExText);
+      finalExample.appendChild(speakerButton(item.final.example.he, `Écouter ${item.final.example.translit}`));
+      finalBlock.appendChild(finalExample);
+
+      card.appendChild(finalBlock);
+    }
+
     grid.appendChild(card);
   });
 }
@@ -124,6 +156,75 @@ function renderVocab() {
 }
 
 /* ---------- Phrases ---------- */
+
+/* Construit la ligne de mots cliquables (hébreu, RTL) d'une variante de phrase,
+   avec un bouton d'écoute global pour la variante entière. */
+function buildVariantBlock(words) {
+  const wrapper = document.createElement("div");
+  wrapper.className = "phrase-variant";
+
+  const sentence = document.createElement("div");
+  sentence.className = "he phrase-sentence";
+
+  words.forEach((w, idx) => {
+    const span = document.createElement("span");
+    span.className = "clickable-word";
+    span.textContent = w.he;
+    span.tabIndex = 0;
+    span.setAttribute("role", "button");
+    span.setAttribute("aria-expanded", "false");
+
+    const tooltip = document.createElement("span");
+    tooltip.className = "word-tooltip";
+    tooltip.hidden = true;
+
+    const translitLine = document.createElement("span");
+    translitLine.className = "tooltip-translit";
+    translitLine.textContent = w.translit;
+    tooltip.appendChild(translitLine);
+
+    const frLine = document.createElement("span");
+    frLine.className = "tooltip-fr";
+    frLine.textContent = w.fr;
+    tooltip.appendChild(frLine);
+
+    tooltip.appendChild(speakerButton(w.he, `Écouter ${w.translit}`));
+
+    span.appendChild(tooltip);
+
+    const toggle = () => {
+      const isOpen = !tooltip.hidden;
+      document.querySelectorAll(".word-tooltip").forEach(t => (t.hidden = true));
+      document.querySelectorAll(".clickable-word").forEach(w2 => w2.setAttribute("aria-expanded", "false"));
+      if (!isOpen) {
+        tooltip.hidden = false;
+        span.setAttribute("aria-expanded", "true");
+      }
+    };
+
+    span.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggle();
+    });
+    span.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggle();
+      }
+    });
+
+    sentence.appendChild(span);
+    if (idx < words.length - 1) sentence.appendChild(document.createTextNode(" "));
+  });
+
+  wrapper.appendChild(sentence);
+
+  const fullHe = words.map(w => w.he).join(" ");
+  wrapper.appendChild(speakerButton(fullHe, "Écouter cette phrase"));
+
+  return wrapper;
+}
+
 function renderPhrases() {
   const container = document.getElementById("phrases-container");
 
@@ -139,66 +240,17 @@ function renderPhrases() {
     level.textContent = phrase.level;
     header.appendChild(level);
 
-    const fullHe = phrase.words.map(w => w.he).join(" ");
-    header.appendChild(speakerButton(fullHe, "Écouter la phrase"));
-
     card.appendChild(header);
 
-    const sentence = document.createElement("div");
-    sentence.className = "he phrase-sentence";
-
-    phrase.words.forEach((w, idx) => {
-      const span = document.createElement("span");
-      span.className = "clickable-word";
-      span.textContent = w.he;
-      span.tabIndex = 0;
-      span.setAttribute("role", "button");
-      span.setAttribute("aria-expanded", "false");
-
-      const tooltip = document.createElement("span");
-      tooltip.className = "word-tooltip";
-      tooltip.hidden = true;
-
-      const translitLine = document.createElement("span");
-      translitLine.className = "tooltip-translit";
-      translitLine.textContent = w.translit;
-      tooltip.appendChild(translitLine);
-
-      const frLine = document.createElement("span");
-      frLine.className = "tooltip-fr";
-      frLine.textContent = w.fr;
-      tooltip.appendChild(frLine);
-
-      tooltip.appendChild(speakerButton(w.he, `Écouter ${w.translit}`));
-
-      span.appendChild(tooltip);
-
-      const toggle = () => {
-        const isOpen = !tooltip.hidden;
-        document.querySelectorAll(".word-tooltip").forEach(t => (t.hidden = true));
-        document.querySelectorAll(".clickable-word").forEach(w2 => w2.setAttribute("aria-expanded", "false"));
-        if (!isOpen) {
-          tooltip.hidden = false;
-          span.setAttribute("aria-expanded", "true");
-        }
-      };
-
-      span.addEventListener("click", (e) => {
-        e.stopPropagation();
-        toggle();
-      });
-      span.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          toggle();
-        }
-      });
-
-      sentence.appendChild(span);
-      if (idx < phrase.words.length - 1) sentence.appendChild(document.createTextNode(" "));
+    phrase.variants.forEach(variant => {
+      if (variant.label) {
+        const variantLabel = document.createElement("div");
+        variantLabel.className = "variant-label";
+        variantLabel.textContent = variant.label;
+        card.appendChild(variantLabel);
+      }
+      card.appendChild(buildVariantBlock(variant.words));
     });
-
-    card.appendChild(sentence);
 
     const fr = document.createElement("p");
     fr.className = "phrase-fr";

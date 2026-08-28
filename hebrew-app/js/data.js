@@ -12,14 +12,14 @@ const ALPHABET = [
   { letter: "ח", name: "Het", translit: "kh", desc: "Raclée au fond de la gorge, comme la « jota » espagnole.", example: { he: "חלב", translit: "khalav", fr: "lait" } },
   { letter: "ט", name: "Tet", translit: "t", desc: "Comme le « t » français.", example: { he: "טוב", translit: "tov", fr: "bon" } },
   { letter: "י", name: "Yod", translit: "y", desc: "Comme le « y » de « yaourt ».", example: { he: "ילד", translit: "yeled", fr: "garçon / enfant" } },
-  { letter: "כ", name: "Kaf / Khaf", translit: "k / kh", desc: "« k » (avec point) ou « kh » raclé (sans point).", example: { he: "כלב", translit: "kelev", fr: "chien" } },
+  { letter: "כ", name: "Kaf / Khaf", translit: "k / kh", desc: "« k » (avec point) ou « kh » raclé (sans point).", example: { he: "כלב", translit: "kelev", fr: "chien" }, final: { letter: "ך", desc: "Forme finale : s'écrit ainsi en fin de mot.", example: { he: "מלך", translit: "melekh", fr: "roi" } } },
   { letter: "ל", name: "Lamed", translit: "l", desc: "Comme le « l » français.", example: { he: "לב", translit: "lev", fr: "cœur" } },
-  { letter: "מ", name: "Mem", translit: "m", desc: "Comme le « m » français.", example: { he: "מים", translit: "mayim", fr: "eau" } },
-  { letter: "נ", name: "Noun", translit: "n", desc: "Comme le « n » français.", example: { he: "נר", translit: "ner", fr: "bougie" } },
+  { letter: "מ", name: "Mem", translit: "m", desc: "Comme le « m » français.", example: { he: "מים", translit: "mayim", fr: "eau" }, final: { letter: "ם", desc: "Forme finale : s'écrit ainsi en fin de mot.", example: { he: "יום", translit: "yom", fr: "jour" } } },
+  { letter: "נ", name: "Noun", translit: "n", desc: "Comme le « n » français.", example: { he: "נר", translit: "ner", fr: "bougie" }, final: { letter: "ן", desc: "Forme finale : s'écrit ainsi en fin de mot.", example: { he: "גן", translit: "gan", fr: "jardin" } } },
   { letter: "ס", name: "Samekh", translit: "s", desc: "Comme le « s » français.", example: { he: "ספר", translit: "sefer", fr: "livre" } },
   { letter: "ע", name: "Ayin", translit: "muette*", desc: "Son guttural très léger, quasi muet en hébreu moderne.", example: { he: "עין", translit: "ayin", fr: "œil" } },
-  { letter: "פ", name: "Pé / Fé", translit: "p / f", desc: "« p » (avec point) ou « f » (sans point).", example: { he: "פרח", translit: "perakh", fr: "fleur" } },
-  { letter: "צ", name: "Tsadi", translit: "ts", desc: "Comme « ts » dans « tsar ».", example: { he: "צל", translit: "tsel", fr: "ombre" } },
+  { letter: "פ", name: "Pé / Fé", translit: "p / f", desc: "« p » (avec point) ou « f » (sans point).", example: { he: "פרח", translit: "perakh", fr: "fleur" }, final: { letter: "ף", desc: "Forme finale : s'écrit ainsi en fin de mot.", example: { he: "כף", translit: "kaf", fr: "cuillère" } } },
+  { letter: "צ", name: "Tsadi", translit: "ts", desc: "Comme « ts » dans « tsar ».", example: { he: "צל", translit: "tsel", fr: "ombre" }, final: { letter: "ץ", desc: "Forme finale : s'écrit ainsi en fin de mot.", example: { he: "עץ", translit: "ets", fr: "arbre" } } },
   { letter: "ק", name: "Qof", translit: "k", desc: "Comme le « k » français.", example: { he: "קפה", translit: "kafe", fr: "café" } },
   { letter: "ר", name: "Resh", translit: "r", desc: "« r » roulé/guttural, à l'arrière de la gorge.", example: { he: "ראש", translit: "rosh", fr: "tête" } },
   { letter: "ש", name: "Shin / Sin", translit: "ch / s", desc: "« ch » (point à gauche) ou « s » (point à droite).", example: { he: "שמש", translit: "shemesh", fr: "soleil" } },
@@ -117,99 +117,198 @@ const VOCAB_CATEGORIES = [
   }
 ];
 
-/* Chaque phrase est décomposée en mots pour permettre le clic mot-à-mot. */
+/* Chaque phrase est décomposée en mots pour permettre le clic mot-à-mot.
+   Quand une phrase change selon le genre de la personne à qui l'on parle
+   (ou qui parle), "variants" liste chaque forme avec son "label". Une
+   phrase sans variation de genre n'a qu'un seul variant, sans label. */
 const PHRASES = [
   {
     level: "Intermédiaire",
-    fr: "Comment tu t'appelles ? (à un homme)",
-    words: [
-      { he: "איך", translit: "eikh", fr: "comment" },
-      { he: "קוראים", translit: "korim", fr: "(on) appelle" },
-      { he: "לך", translit: "lekha", fr: "à toi" }
+    fr: "Comment tu t'appelles ?",
+    variants: [
+      {
+        label: "à un homme",
+        words: [
+          { he: "איך", translit: "eikh", fr: "comment" },
+          { he: "קוראים", translit: "korim", fr: "(on) appelle" },
+          { he: "לך", translit: "lekha", fr: "à toi (masc.)" }
+        ]
+      },
+      {
+        label: "à une femme",
+        words: [
+          { he: "איך", translit: "eikh", fr: "comment" },
+          { he: "קוראים", translit: "korim", fr: "(on) appelle" },
+          { he: "לך", translit: "lakh", fr: "à toi (fém., même orthographe que « lekha »)" }
+        ]
+      }
     ]
   },
   {
     level: "Intermédiaire",
-    fr: "Je m'appelle... (littéralement « on m'appelle »)",
-    words: [
-      { he: "קוראים", translit: "korim", fr: "(on) appelle" },
-      { he: "לי", translit: "li", fr: "à moi" }
+    fr: "Je m'appelle... (littéralement « on m'appelle », identique au masculin et au féminin)",
+    variants: [
+      {
+        words: [
+          { he: "קוראים", translit: "korim", fr: "(on) appelle" },
+          { he: "לי", translit: "li", fr: "à moi" }
+        ]
+      }
     ]
   },
   {
     level: "Intermédiaire",
-    fr: "Enchanté (litt. « agréable de connaître »)",
-    words: [
-      { he: "נעים", translit: "naim", fr: "agréable" },
-      { he: "להכיר", translit: "lehakir", fr: "de connaître" }
+    fr: "Enchanté(e) (litt. « agréable de connaître »)",
+    variants: [
+      {
+        label: "un homme parle",
+        words: [
+          { he: "נעים", translit: "naim", fr: "agréable (masc.)" },
+          { he: "להכיר", translit: "lehakir", fr: "de connaître" }
+        ]
+      },
+      {
+        label: "une femme parle",
+        words: [
+          { he: "נעימה", translit: "neima", fr: "agréable (fém.)" },
+          { he: "להכיר", translit: "lehakir", fr: "de connaître" }
+        ]
+      }
     ]
   },
   {
     level: "Intermédiaire",
-    fr: "D'où viens-tu ? (à un homme)",
-    words: [
-      { he: "מאיפה", translit: "me'eifo", fr: "d'où" },
-      { he: "אתה", translit: "ata", fr: "tu (masc.)" }
+    fr: "D'où viens-tu ?",
+    variants: [
+      {
+        label: "à un homme",
+        words: [
+          { he: "מאיפה", translit: "me'eifo", fr: "d'où" },
+          { he: "אתה", translit: "ata", fr: "tu (masc.)" }
+        ]
+      },
+      {
+        label: "à une femme",
+        words: [
+          { he: "מאיפה", translit: "me'eifo", fr: "d'où" },
+          { he: "את", translit: "at", fr: "tu (fém.)" }
+        ]
+      }
     ]
   },
   {
     level: "Intermédiaire",
-    fr: "Je viens de France",
-    words: [
-      { he: "אני", translit: "ani", fr: "je" },
-      { he: "מצרפת", translit: "mi-Tsarfat", fr: "de France" }
+    fr: "Je viens de France (identique au masculin et au féminin)",
+    variants: [
+      {
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "מצרפת", translit: "mi-Tsarfat", fr: "de France" }
+        ]
+      }
     ]
   },
   {
     level: "Avancé",
     fr: "Combien ça coûte ?",
-    words: [
-      { he: "כמה", translit: "kama", fr: "combien" },
-      { he: "זה", translit: "ze", fr: "ça / ce" },
-      { he: "עולה", translit: "ole", fr: "coûte" }
+    variants: [
+      {
+        words: [
+          { he: "כמה", translit: "kama", fr: "combien" },
+          { he: "זה", translit: "ze", fr: "ça / ce" },
+          { he: "עולה", translit: "ole", fr: "coûte" }
+        ]
+      }
     ]
   },
   {
     level: "Avancé",
     fr: "Où sont les toilettes ?",
-    words: [
-      { he: "איפה", translit: "eifo", fr: "où" },
-      { he: "השירותים", translit: "ha-sherutim", fr: "les toilettes" }
+    variants: [
+      {
+        words: [
+          { he: "איפה", translit: "eifo", fr: "où" },
+          { he: "השירותים", translit: "ha-sherutim", fr: "les toilettes" }
+        ]
+      }
     ]
   },
   {
     level: "Avancé",
-    fr: "Je ne comprends pas (un homme parle)",
-    words: [
-      { he: "אני", translit: "ani", fr: "je" },
-      { he: "לא", translit: "lo", fr: "ne... pas" },
-      { he: "מבין", translit: "mevin", fr: "comprends (masc.)" }
+    fr: "Je ne comprends pas",
+    variants: [
+      {
+        label: "un homme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "לא", translit: "lo", fr: "ne... pas" },
+          { he: "מבין", translit: "mevin", fr: "comprends (masc.)" }
+        ]
+      },
+      {
+        label: "une femme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "לא", translit: "lo", fr: "ne... pas" },
+          { he: "מבינה", translit: "mevina", fr: "comprends (fém.)" }
+        ]
+      }
     ]
   },
   {
     level: "Avancé",
-    fr: "Parles-tu anglais ? (à un homme)",
-    words: [
-      { he: "אתה", translit: "ata", fr: "tu (masc.)" },
-      { he: "מדבר", translit: "medaber", fr: "parles" },
-      { he: "אנגלית", translit: "anglit", fr: "anglais" }
+    fr: "Parles-tu anglais ?",
+    variants: [
+      {
+        label: "à un homme",
+        words: [
+          { he: "אתה", translit: "ata", fr: "tu (masc.)" },
+          { he: "מדבר", translit: "medaber", fr: "parles (masc.)" },
+          { he: "אנגלית", translit: "anglit", fr: "anglais" }
+        ]
+      },
+      {
+        label: "à une femme",
+        words: [
+          { he: "את", translit: "at", fr: "tu (fém.)" },
+          { he: "מדברת", translit: "medaberet", fr: "parles (fém.)" },
+          { he: "אנגלית", translit: "anglit", fr: "anglais" }
+        ]
+      }
     ]
   },
   {
     level: "Avancé",
     fr: "Donne-moi, s'il te plaît",
-    words: [
-      { he: "תן", translit: "ten", fr: "donne (impératif, masc.)" },
-      { he: "לי", translit: "li", fr: "à moi" },
-      { he: "בבקשה", translit: "bevakasha", fr: "s'il te plaît" }
+    variants: [
+      {
+        label: "à un homme",
+        words: [
+          { he: "תן", translit: "ten", fr: "donne (impératif, masc.)" },
+          { he: "לי", translit: "li", fr: "à moi" },
+          { he: "בבקשה", translit: "bevakasha", fr: "s'il te plaît" }
+        ]
+      },
+      {
+        label: "à une femme",
+        words: [
+          { he: "תני", translit: "tni", fr: "donne (impératif, fém.)" },
+          { he: "לי", translit: "li", fr: "à moi" },
+          { he: "בבקשה", translit: "bevakasha", fr: "s'il te plaît" }
+        ]
+      }
     ]
   },
   {
     level: "Avancé",
-    fr: "Joyeuse fête ! (utilisé pour les fêtes juives)",
-    words: [
-      { he: "חג", translit: "khag", fr: "fête" },
-      { he: "שמח", translit: "sameakh", fr: "joyeux" }
+    fr: "Joyeuse fête ! (utilisé pour les fêtes juives, identique au masculin et au féminin)",
+    variants: [
+      {
+        words: [
+          { he: "חג", translit: "khag", fr: "fête" },
+          { he: "שמח", translit: "sameakh", fr: "joyeux" }
+        ]
+      }
     ]
   }
 ];
