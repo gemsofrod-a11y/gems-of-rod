@@ -310,5 +310,165 @@ const PHRASES = [
         ]
       }
     ]
+  },
+  {
+    level: "Intermédiaire",
+    fr: "Comment ça va ? (informel, litt. « quoi s'entend »)",
+    variants: [
+      {
+        words: [
+          { he: "מה", translit: "ma", fr: "quoi" },
+          { he: "נשמע", translit: "nishma", fr: "s'entend / ça va" }
+        ]
+      }
+    ]
+  },
+  {
+    level: "Intermédiaire",
+    fr: "Quelle heure est-il ?",
+    variants: [
+      {
+        words: [
+          { he: "מה", translit: "ma", fr: "quelle" },
+          { he: "השעה", translit: "ha-shaa", fr: "l'heure" }
+        ]
+      }
+    ]
+  },
+  {
+    level: "Intermédiaire",
+    fr: "Bon appétit !",
+    variants: [
+      {
+        words: [
+          { he: "בתאבון", translit: "betavon", fr: "bon appétit" }
+        ]
+      }
+    ]
+  },
+  {
+    level: "Intermédiaire",
+    fr: "Bonne chance !",
+    variants: [
+      {
+        words: [
+          { he: "בהצלחה", translit: "behatslakha", fr: "bonne chance" }
+        ]
+      }
+    ]
+  },
+  {
+    level: "Intermédiaire",
+    fr: "Félicitations ! (litt. « bonne étoile »)",
+    variants: [
+      {
+        words: [
+          { he: "מזל", translit: "mazal", fr: "chance / étoile" },
+          { he: "טוב", translit: "tov", fr: "bon" }
+        ]
+      }
+    ]
+  },
+  {
+    level: "Avancé",
+    fr: "J'ai faim",
+    variants: [
+      {
+        label: "un homme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "רעב", translit: "raev", fr: "affamé (masc.)" }
+        ]
+      },
+      {
+        label: "une femme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "רעבה", translit: "re'eva", fr: "affamée (fém.)" }
+        ]
+      }
+    ]
+  },
+  {
+    level: "Avancé",
+    fr: "J'ai soif",
+    variants: [
+      {
+        label: "un homme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "צמא", translit: "tsame", fr: "assoiffé (masc.)" }
+        ]
+      },
+      {
+        label: "une femme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "צמאה", translit: "tsmea", fr: "assoiffée (fém.)" }
+        ]
+      }
+    ]
+  },
+  {
+    level: "Avancé",
+    fr: "Je suis fatigué(e)",
+    variants: [
+      {
+        label: "un homme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "עייף", translit: "ayef", fr: "fatigué (masc.)" }
+        ]
+      },
+      {
+        label: "une femme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "עייפה", translit: "ayefa", fr: "fatiguée (fém.)" }
+        ]
+      }
+    ]
+  },
+  {
+    level: "Avancé",
+    fr: "Je suis désolé(e)",
+    variants: [
+      {
+        label: "un homme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "מצטער", translit: "mitstaer", fr: "désolé (masc.)" }
+        ]
+      },
+      {
+        label: "une femme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "מצטערת", translit: "mitstaeret", fr: "désolée (fém.)" }
+        ]
+      }
+    ]
+  },
+  {
+    level: "Avancé",
+    fr: "Je t'aime (le pronom « toi » varie aussi selon qui l'on s'adresse : « otkha » à un homme, « otakh » à une femme — ici on s'adresse à un homme)",
+    variants: [
+      {
+        label: "un homme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "אוהב", translit: "ohev", fr: "aime (masc.)" },
+          { he: "אותך", translit: "otkha", fr: "toi" }
+        ]
+      },
+      {
+        label: "une femme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "אוהבת", translit: "ohevet", fr: "aime (fém.)" },
+          { he: "אותך", translit: "otkha", fr: "toi" }
+        ]
+      }
+    ]
   }
 ];
