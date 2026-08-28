@@ -205,8 +205,42 @@ main {
 }
 
 /* Vocab */
+.subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.3rem;
+}
+
+.subnav-btn {
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--blue-dark);
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.subnav-btn:hover {
+  background: #eef3fb;
+}
+
+.subnav-btn.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #fff;
+}
+
 .vocab-category {
+  display: none;
   margin-bottom: 1.8rem;
+}
+
+.vocab-category.active {
+  display: block;
 }
 
 .vocab-category h3 {

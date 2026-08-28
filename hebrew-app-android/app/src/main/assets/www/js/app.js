@@ -115,9 +115,27 @@ function renderAlphabet() {
 /* ---------- Vocabulaire de base ---------- */
 function renderVocab() {
   const container = document.getElementById("vocab-container");
-  VOCAB_CATEGORIES.forEach(cat => {
+
+  const subnav = document.createElement("div");
+  subnav.className = "subnav";
+  container.appendChild(subnav);
+
+  const sections = document.createElement("div");
+  container.appendChild(sections);
+
+  VOCAB_CATEGORIES.forEach((cat, idx) => {
+    const catId = "vocab-cat-" + idx;
+
+    const tabBtn = document.createElement("button");
+    tabBtn.type = "button";
+    tabBtn.className = "subnav-btn" + (idx === 0 ? " active" : "");
+    tabBtn.textContent = cat.title;
+    tabBtn.dataset.target = catId;
+    subnav.appendChild(tabBtn);
+
     const section = document.createElement("div");
-    section.className = "vocab-category";
+    section.className = "vocab-category" + (idx === 0 ? " active" : "");
+    section.id = catId;
 
     const title = document.createElement("h3");
     title.textContent = cat.title;
@@ -151,7 +169,16 @@ function renderVocab() {
     });
 
     section.appendChild(grid);
-    container.appendChild(section);
+    sections.appendChild(section);
+  });
+
+  subnav.addEventListener("click", (e) => {
+    const btn = e.target.closest(".subnav-btn");
+    if (!btn) return;
+    subnav.querySelectorAll(".subnav-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    sections.querySelectorAll(".vocab-category").forEach(s => s.classList.remove("active"));
+    document.getElementById(btn.dataset.target).classList.add("active");
   });
 }
 
