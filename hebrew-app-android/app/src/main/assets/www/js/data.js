@@ -23,7 +23,7 @@ const ALPHABET = [
   { letter: "ק", name: "Qof", translit: "k", desc: "Comme le « k » français.", example: { he: "קפה", translit: "kafe", fr: "café" } },
   { letter: "ר", name: "Resh", translit: "r", desc: "« r » roulé/guttural, à l'arrière de la gorge.", example: { he: "ראש", translit: "rosh", fr: "tête" } },
   { letter: "ש", name: "Shin / Sin", translit: "ch / s", desc: "« ch » (point à gauche) ou « s » (point à droite).", example: { he: "שמש", translit: "shemesh", fr: "soleil" } },
-  { letter: "ת", name: "Tav", translit: "t", desc: "Comme le « t » français.", example: { he: "תפוח", translit: "tapoukh", fr: "pomme" } }
+  { letter: "ת", name: "Tav", translit: "t", desc: "Comme le « t » français.", example: { he: "תפוח", translit: "tapouakh", fr: "pomme" } }
 ];
 
 const VOCAB_CATEGORIES = [
@@ -124,14 +124,14 @@ const VOCAB_CATEGORIES = [
 const PHRASES = [
   {
     level: "Intermédiaire",
-    fr: "Comment tu t'appelles ?",
+    fr: "Comment tu t'appelles ? (« לך » s'écrit à l'identique au masculin et au féminin sans les points-voyelles ; ici on l'a vocalisé — לְךָ / לָךְ — pour que l'audio prononce bien la bonne forme)",
     variants: [
       {
         label: "à un homme",
         words: [
           { he: "איך", translit: "eikh", fr: "comment" },
           { he: "קוראים", translit: "korim", fr: "(on) appelle" },
-          { he: "לך", translit: "lekha", fr: "à toi (masc.)" }
+          { he: "לְךָ", translit: "lekha", fr: "à toi (masc.)" }
         ]
       },
       {
@@ -139,7 +139,7 @@ const PHRASES = [
         words: [
           { he: "איך", translit: "eikh", fr: "comment" },
           { he: "קוראים", translit: "korim", fr: "(on) appelle" },
-          { he: "לך", translit: "lakh", fr: "à toi (fém., même orthographe que « lekha »)" }
+          { he: "לָךְ", translit: "lakh", fr: "à toi (fém.)" }
         ]
       }
     ]
@@ -170,7 +170,7 @@ const PHRASES = [
       {
         label: "une femme parle",
         words: [
-          { he: "נעימה", translit: "neima", fr: "agréable (fém.)" },
+          { he: "נעימה", translit: "ne'ima", fr: "agréable (fém.)" },
           { he: "להכיר", translit: "lehakir", fr: "de connaître" }
         ]
       }
@@ -330,7 +330,7 @@ const PHRASES = [
       {
         words: [
           { he: "מה", translit: "ma", fr: "quelle" },
-          { he: "השעה", translit: "ha-shaa", fr: "l'heure" }
+          { he: "השעה", translit: "ha-sha'a", fr: "l'heure" }
         ]
       }
     ]
@@ -341,7 +341,7 @@ const PHRASES = [
     variants: [
       {
         words: [
-          { he: "בתאבון", translit: "betavon", fr: "bon appétit" }
+          { he: "בתאבון", translit: "bete'avon", fr: "bon appétit" }
         ]
       }
     ]
@@ -377,7 +377,7 @@ const PHRASES = [
         label: "un homme parle",
         words: [
           { he: "אני", translit: "ani", fr: "je" },
-          { he: "רעב", translit: "raev", fr: "affamé (masc.)" }
+          { he: "רעב", translit: "ra'ev", fr: "affamé (masc.)" }
         ]
       },
       {
@@ -404,7 +404,7 @@ const PHRASES = [
         label: "une femme parle",
         words: [
           { he: "אני", translit: "ani", fr: "je" },
-          { he: "צמאה", translit: "tsmea", fr: "assoiffée (fém.)" }
+          { he: "צמאה", translit: "tsme'a", fr: "assoiffée (fém.)" }
         ]
       }
     ]
@@ -437,14 +437,14 @@ const PHRASES = [
         label: "un homme parle",
         words: [
           { he: "אני", translit: "ani", fr: "je" },
-          { he: "מצטער", translit: "mitstaer", fr: "désolé (masc.)" }
+          { he: "מצטער", translit: "mitsta'er", fr: "désolé (masc.)" }
         ]
       },
       {
         label: "une femme parle",
         words: [
           { he: "אני", translit: "ani", fr: "je" },
-          { he: "מצטערת", translit: "mitstaeret", fr: "désolée (fém.)" }
+          { he: "מצטערת", translit: "mitsta'eret", fr: "désolée (fém.)" }
         ]
       }
     ]
