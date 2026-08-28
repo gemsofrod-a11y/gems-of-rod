@@ -56,13 +56,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.LocalConfiguration
 import fr.gemsofrod.encyclopedie.R
+import fr.gemsofrod.encyclopedie.data.GemLocalization
 import fr.gemsofrod.encyclopedie.data.GemsRepository
 import fr.gemsofrod.encyclopedie.data.StockItem
 import fr.gemsofrod.encyclopedie.data.StockPhotoStorage
 import fr.gemsofrod.encyclopedie.data.StockRepository
 import fr.gemsofrod.encyclopedie.data.StockStatus
-import fr.gemsofrod.encyclopedie.ui.localized
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -115,9 +116,13 @@ fun StockFormScreen(itemId: String?, onSaveComplete: () -> Unit, onBackClick: ()
         photoChanged = true
     }
 
-    val suggestions = remember(nom) {
+    val languageCode = LocalConfiguration.current.locales[0].language
+    val catalogGems = remember(languageCode) {
+        GemsRepository.gems.map { GemLocalization.localize(it, languageCode) }
+    }
+    val suggestions = remember(nom, catalogGems) {
         if (nom.length < 2) emptyList()
-        else GemsRepository.gems.map { it.localized() }
+        else catalogGems
             .filter { it.nom.contains(nom, ignoreCase = true) }
             .take(5)
     }
