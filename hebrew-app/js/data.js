@@ -114,6 +114,43 @@ const VOCAB_CATEGORIES = [
       { he: "מחר", translit: "makhar", fr: "demain" },
       { he: "אתמול", translit: "etmol", fr: "hier" }
     ]
+  },
+  {
+    title: "Animaux",
+    words: [
+      { he: "כלב", translit: "kelev", fr: "chien" },
+      { he: "חתול", translit: "khatul", fr: "chat" },
+      { he: "ציפור", translit: "tsipor", fr: "oiseau" },
+      { he: "סוס", translit: "sus", fr: "cheval" },
+      { he: "פרה", translit: "para", fr: "vache" },
+      { he: "אריה", translit: "arye", fr: "lion" },
+      { he: "פיל", translit: "pil", fr: "éléphant" },
+      { he: "דוב", translit: "dov", fr: "ours" },
+      { he: "קוף", translit: "kof", fr: "singe" },
+      { he: "ארנב", translit: "arnav", fr: "lapin" }
+    ]
+  },
+  {
+    title: "Nature",
+    words: [
+      { he: "ירח", translit: "yareakh", fr: "lune" },
+      { he: "כוכב", translit: "kokhav", fr: "étoile" },
+      { he: "שמיים", translit: "shamayim", fr: "ciel" },
+      { he: "ים", translit: "yam", fr: "mer" },
+      { he: "נהר", translit: "nahar", fr: "rivière" },
+      { he: "יער", translit: "ya'ar", fr: "forêt" },
+      { he: "אש", translit: "esh", fr: "feu" },
+      { he: "אוויר", translit: "avir", fr: "air" }
+    ]
+  },
+  {
+    title: "Saisons",
+    words: [
+      { he: "אביב", translit: "aviv", fr: "printemps" },
+      { he: "קיץ", translit: "kayits", fr: "été" },
+      { he: "סתיו", translit: "stav", fr: "automne" },
+      { he: "חורף", translit: "khoref", fr: "hiver" }
+    ]
   }
 ];
 
