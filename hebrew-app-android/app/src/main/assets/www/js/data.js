@@ -158,19 +158,11 @@ const PHRASES = [
   },
   {
     level: "Intermédiaire",
-    fr: "Enchanté(e) (litt. « agréable de connaître »)",
+    fr: "Enchanté(e) (litt. « agréable de connaître » ; ici נעים est impersonnel — comme dans « il est agréable de... » — donc invariable, quel que soit le genre du locuteur ou de la personne rencontrée)",
     variants: [
       {
-        label: "un homme parle",
         words: [
-          { he: "נעים", translit: "na'im", fr: "agréable (masc.)" },
-          { he: "להכיר", translit: "lehakir", fr: "de connaître" }
-        ]
-      },
-      {
-        label: "une femme parle",
-        words: [
-          { he: "נעימה", translit: "ne'ima", fr: "agréable (fém.)" },
+          { he: "נעים", translit: "na'im", fr: "agréable" },
           { he: "להכיר", translit: "lehakir", fr: "de connaître" }
         ]
       }
@@ -178,7 +170,7 @@ const PHRASES = [
   },
   {
     level: "Intermédiaire",
-    fr: "D'où viens-tu ?",
+    fr: "D'où viens-tu ? (« את » non vocalisé se confond avec le marqueur d'objet direct « et » — bien plus fréquent — d'où le risque de mauvaise prononciation ; on l'a vocalisé ici : אַתְּ)",
     variants: [
       {
         label: "à un homme",
@@ -191,19 +183,19 @@ const PHRASES = [
         label: "à une femme",
         words: [
           { he: "מאיפה", translit: "me'eifo", fr: "d'où" },
-          { he: "את", translit: "at", fr: "tu (fém.)" }
+          { he: "אַתְּ", translit: "at", fr: "tu (fém.)" }
         ]
       }
     ]
   },
   {
     level: "Intermédiaire",
-    fr: "Je viens de France (identique au masculin et au féminin)",
+    fr: "Je viens de France (identique au masculin et au féminin ; le préfixe מ- de « מצרפת » est vocalisé pour bien marquer « de/depuis »)",
     variants: [
       {
         words: [
           { he: "אני", translit: "ani", fr: "je" },
-          { he: "מצרפת", translit: "mi-Tsarfat", fr: "de France" }
+          { he: "מִצרפת", translit: "mi-Tsarfat", fr: "de France" }
         ]
       }
     ]
@@ -270,7 +262,7 @@ const PHRASES = [
       {
         label: "à une femme",
         words: [
-          { he: "את", translit: "at", fr: "tu (fém.)" },
+          { he: "אַתְּ", translit: "at", fr: "tu (fém.)" },
           { he: "מדברת", translit: "medaberet", fr: "parles (fém.)" },
           { he: "אנגלית", translit: "anglit", fr: "anglais" }
         ]
@@ -279,7 +271,7 @@ const PHRASES = [
   },
   {
     level: "Avancé",
-    fr: "Donne-moi, s'il te plaît",
+    fr: "Donne-moi, s'il te plaît (« תני » commence par un groupe de deux consonnes « t-n » peu courant en début de mot : le premier son peut être difficile à entendre, y compris à l'oreille de natifs)",
     variants: [
       {
         label: "à un homme",
@@ -292,7 +284,7 @@ const PHRASES = [
       {
         label: "à une femme",
         words: [
-          { he: "תני", translit: "tni", fr: "donne (impératif, fém.)" },
+          { he: "תְּנִי", translit: "tni", fr: "donne (impératif, fém.)" },
           { he: "לי", translit: "li", fr: "à moi" },
           { he: "בבקשה", translit: "bevakasha", fr: "s'il te plaît" }
         ]
