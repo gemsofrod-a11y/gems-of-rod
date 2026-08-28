@@ -34,7 +34,7 @@ const VOCAB_CATEGORIES = [
       { he: "בוקר טוב", translit: "boker tov", fr: "bonjour (le matin)" },
       { he: "ערב טוב", translit: "erev tov", fr: "bonsoir" },
       { he: "לילה טוב", translit: "laila tov", fr: "bonne nuit" },
-      { he: "להתראות", translit: "lehitraot", fr: "au revoir" },
+      { he: "להתראות", translit: "lehitra'ot", fr: "au revoir" },
       { he: "מה שלומך", translit: "ma shlomkha", fr: "comment vas-tu ?" },
       { he: "טוב, תודה", translit: "tov, toda", fr: "bien, merci" },
       { he: "תודה", translit: "toda", fr: "merci" },
@@ -43,7 +43,7 @@ const VOCAB_CATEGORIES = [
       { he: "סליחה", translit: "slikha", fr: "excuse-moi / pardon" },
       { he: "כן", translit: "ken", fr: "oui" },
       { he: "לא", translit: "lo", fr: "non" },
-      { he: "נעים מאוד", translit: "naim meod", fr: "enchanté" }
+      { he: "נעים מאוד", translit: "na'im me'od", fr: "enchanté" }
     ]
   },
   {
@@ -81,7 +81,7 @@ const VOCAB_CATEGORIES = [
       { he: "יום ראשון", translit: "yom rishon", fr: "dimanche" },
       { he: "יום שני", translit: "yom sheni", fr: "lundi" },
       { he: "יום שלישי", translit: "yom shlishi", fr: "mardi" },
-      { he: "יום רביעי", translit: "yom revii", fr: "mercredi" },
+      { he: "יום רביעי", translit: "yom revi'i", fr: "mercredi" },
       { he: "יום חמישי", translit: "yom khamishi", fr: "jeudi" },
       { he: "יום שישי", translit: "yom shishi", fr: "vendredi" },
       { he: "שבת", translit: "shabbat", fr: "samedi" }
@@ -163,7 +163,7 @@ const PHRASES = [
       {
         label: "un homme parle",
         words: [
-          { he: "נעים", translit: "naim", fr: "agréable (masc.)" },
+          { he: "נעים", translit: "na'im", fr: "agréable (masc.)" },
           { he: "להכיר", translit: "lehakir", fr: "de connaître" }
         ]
       },
