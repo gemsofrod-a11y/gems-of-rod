@@ -398,4 +398,50 @@
     <string name="legendary_success_title">Le secret est percé !</string>
     <string name="legendary_success_body">Vous avez retrouvé la Birmanie, seul gisement connu de painite au monde — la pierre longtemps considérée comme le minéral gemme le plus rare de la planète.</string>
     <string name="legendary_success_view_gem_button">Voir la fiche de la Painite</string>
+
+    <!-- Traitements gemmologiques -->
+    <string name="lab_treatments_title">Traitements courants</string>
+    <string name="lab_treatments_subtitle">Chauffage, huilage, irradiation… ce qu\'il faut savoir et divulguer.</string>
+    <string name="treatments_title">Traitements courants</string>
+    <string name="treatments_species_label">Espèces concernées</string>
+    <string name="treatments_detection_label">Indices de détection</string>
+    <string name="treatments_disclosure_label">Obligation de divulgation</string>
+
+    <!-- Gestionnaire de stock -->
+    <string name="lab_stock_title">Gestion du stock</string>
+    <string name="lab_stock_subtitle">Suivez vos pierres en stock, réservées ou vendues.</string>
+    <string name="stock_title">Stock</string>
+    <string name="stock_empty_state">Aucune pierre en stock. Ajoutez votre première fiche.</string>
+    <string name="stock_add_button">Ajouter une pierre</string>
+    <string name="stock_export_button">Exporter en CSV</string>
+    <string name="stock_export_chooser_title">Exporter le stock</string>
+    <string name="stock_weight_ct_format">%1$s ct</string>
+    <string name="stock_add_title">Nouvelle pierre</string>
+    <string name="stock_edit_title">Modifier la pierre</string>
+    <string name="stock_save_button">Enregistrer</string>
+    <string name="stock_edit_button">Modifier</string>
+    <string name="stock_delete_button">Supprimer</string>
+    <string name="stock_cancel_button">Annuler</string>
+    <string name="stock_delete_confirm_title">Supprimer cette pierre ?</string>
+    <string name="stock_delete_confirm_message">Cette action est irréversible.</string>
+    <string name="stock_delete_confirm_action">Supprimer</string>
+    <string name="stock_photo_picker_hint">Ajouter une photo</string>
+    <string name="stock_field_name_label">Nom</string>
+    <string name="stock_field_weight_label">Poids (carats)</string>
+    <string name="stock_field_cut_label">Taille</string>
+    <string name="stock_field_color_label">Couleur</string>
+    <string name="stock_field_clarity_label">Pureté</string>
+    <string name="stock_field_treatment_label">Traitement</string>
+    <string name="stock_field_certificate_number_label">Numéro de certificat</string>
+    <string name="stock_field_laboratory_label">Laboratoire</string>
+    <string name="stock_field_supplier_label">Fournisseur</string>
+    <string name="stock_field_purchase_date_label">Date d\'achat</string>
+    <string name="stock_field_purchase_cost_label">Coût d\'achat</string>
+    <string name="stock_field_selling_price_label">Prix de vente</string>
+    <string name="stock_field_status_label">Statut</string>
+    <string name="stock_field_notes_label">Notes</string>
+    <string name="stock_status_en_stock">En stock</string>
+    <string name="stock_status_reserve">Réservée</string>
+    <string name="stock_status_vendu">Vendue</string>
+    <string name="stock_status_consignation">Consignation</string>
 </resources>

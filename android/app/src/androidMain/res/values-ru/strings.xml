@@ -398,4 +398,50 @@
     <string name="legendary_success_title">Тайна раскрыта!</string>
     <string name="legendary_success_body">Вы нашли Мьянму — единственное известное месторождение painite в мире, камня, который долгое время считался самым редким драгоценным минералом планеты.</string>
     <string name="legendary_success_view_gem_button">Посмотреть карточку Пейнита</string>
+
+    <!-- Геммологические обработки -->
+    <string name="lab_treatments_title">Распространённые обработки</string>
+    <string name="lab_treatments_subtitle">Термообработка, промасливание, облучение… что нужно знать и раскрывать.</string>
+    <string name="treatments_title">Распространённые обработки</string>
+    <string name="treatments_species_label">Затронутые виды камней</string>
+    <string name="treatments_detection_label">Признаки обнаружения</string>
+    <string name="treatments_disclosure_label">Обязанность раскрытия информации</string>
+
+    <!-- Управление складом -->
+    <string name="lab_stock_title">Управление складом</string>
+    <string name="lab_stock_subtitle">Отслеживайте камни на складе, забронированные или проданные.</string>
+    <string name="stock_title">Склад</string>
+    <string name="stock_empty_state">На складе нет камней. Добавьте первую карточку.</string>
+    <string name="stock_add_button">Добавить камень</string>
+    <string name="stock_export_button">Экспортировать в CSV</string>
+    <string name="stock_export_chooser_title">Экспортировать склад</string>
+    <string name="stock_weight_ct_format">%1$s кар</string>
+    <string name="stock_add_title">Новый камень</string>
+    <string name="stock_edit_title">Изменить камень</string>
+    <string name="stock_save_button">Сохранить</string>
+    <string name="stock_edit_button">Изменить</string>
+    <string name="stock_delete_button">Удалить</string>
+    <string name="stock_cancel_button">Отмена</string>
+    <string name="stock_delete_confirm_title">Удалить этот камень?</string>
+    <string name="stock_delete_confirm_message">Это действие необратимо.</string>
+    <string name="stock_delete_confirm_action">Удалить</string>
+    <string name="stock_photo_picker_hint">Добавить фото</string>
+    <string name="stock_field_name_label">Название</string>
+    <string name="stock_field_weight_label">Вес (караты)</string>
+    <string name="stock_field_cut_label">Огранка</string>
+    <string name="stock_field_color_label">Цвет</string>
+    <string name="stock_field_clarity_label">Чистота</string>
+    <string name="stock_field_treatment_label">Обработка</string>
+    <string name="stock_field_certificate_number_label">Номер сертификата</string>
+    <string name="stock_field_laboratory_label">Лаборатория</string>
+    <string name="stock_field_supplier_label">Поставщик</string>
+    <string name="stock_field_purchase_date_label">Дата покупки</string>
+    <string name="stock_field_purchase_cost_label">Стоимость покупки</string>
+    <string name="stock_field_selling_price_label">Цена продажи</string>
+    <string name="stock_field_status_label">Статус</string>
+    <string name="stock_field_notes_label">Заметки</string>
+    <string name="stock_status_en_stock">На складе</string>
+    <string name="stock_status_reserve">Забронирован</string>
+    <string name="stock_status_vendu">Продан</string>
+    <string name="stock_status_consignation">Консигнация</string>
 </resources>
