@@ -252,44 +252,83 @@ function buildVariantBlock(words) {
   return wrapper;
 }
 
+function buildPhraseCard(phrase) {
+  const card = document.createElement("div");
+  card.className = "card phrase-card";
+
+  const header = document.createElement("div");
+  header.className = "phrase-header";
+
+  const level = document.createElement("span");
+  level.className = "badge";
+  level.textContent = phrase.level;
+  header.appendChild(level);
+
+  card.appendChild(header);
+
+  phrase.variants.forEach(variant => {
+    if (variant.label) {
+      const variantLabel = document.createElement("div");
+      variantLabel.className = "variant-label";
+      variantLabel.textContent = variant.label;
+      card.appendChild(variantLabel);
+    }
+    card.appendChild(buildVariantBlock(variant.words));
+  });
+
+  const fr = document.createElement("p");
+  fr.className = "phrase-fr";
+  fr.textContent = phrase.fr;
+  card.appendChild(fr);
+
+  const hint = document.createElement("p");
+  hint.className = "phrase-hint";
+  hint.textContent = "Cliquez sur un mot pour voir sa phonétique.";
+  card.appendChild(hint);
+
+  return card;
+}
+
 function renderPhrases() {
   const container = document.getElementById("phrases-container");
 
-  PHRASES.forEach(phrase => {
-    const card = document.createElement("div");
-    card.className = "card phrase-card";
+  const categories = [...new Set(PHRASES.map(p => p.category))];
 
-    const header = document.createElement("div");
-    header.className = "phrase-header";
+  const subnav = document.createElement("div");
+  subnav.className = "subnav";
+  container.appendChild(subnav);
 
-    const level = document.createElement("span");
-    level.className = "badge";
-    level.textContent = phrase.level;
-    header.appendChild(level);
+  const sections = document.createElement("div");
+  container.appendChild(sections);
 
-    card.appendChild(header);
+  categories.forEach((catName, idx) => {
+    const catId = "phrase-cat-" + idx;
 
-    phrase.variants.forEach(variant => {
-      if (variant.label) {
-        const variantLabel = document.createElement("div");
-        variantLabel.className = "variant-label";
-        variantLabel.textContent = variant.label;
-        card.appendChild(variantLabel);
-      }
-      card.appendChild(buildVariantBlock(variant.words));
+    const tabBtn = document.createElement("button");
+    tabBtn.type = "button";
+    tabBtn.className = "subnav-btn" + (idx === 0 ? " active" : "");
+    tabBtn.textContent = catName;
+    tabBtn.dataset.target = catId;
+    subnav.appendChild(tabBtn);
+
+    const section = document.createElement("div");
+    section.className = "phrase-category" + (idx === 0 ? " active" : "");
+    section.id = catId;
+
+    PHRASES.filter(p => p.category === catName).forEach(phrase => {
+      section.appendChild(buildPhraseCard(phrase));
     });
 
-    const fr = document.createElement("p");
-    fr.className = "phrase-fr";
-    fr.textContent = phrase.fr;
-    card.appendChild(fr);
+    sections.appendChild(section);
+  });
 
-    const hint = document.createElement("p");
-    hint.className = "phrase-hint";
-    hint.textContent = "Cliquez sur un mot pour voir sa phonétique.";
-    card.appendChild(hint);
-
-    container.appendChild(card);
+  subnav.addEventListener("click", (e) => {
+    const btn = e.target.closest(".subnav-btn");
+    if (!btn) return;
+    subnav.querySelectorAll(".subnav-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    sections.querySelectorAll(".phrase-category").forEach(s => s.classList.remove("active"));
+    document.getElementById(btn.dataset.target).classList.add("active");
   });
 
   document.addEventListener("click", () => {

@@ -243,6 +243,14 @@ main {
   display: block;
 }
 
+.phrase-category {
+  display: none;
+}
+
+.phrase-category.active {
+  display: block;
+}
+
 .vocab-category h3 {
   color: var(--blue-dark);
   border-bottom: 2px solid var(--gold);

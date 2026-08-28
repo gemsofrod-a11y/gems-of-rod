@@ -155,11 +155,13 @@ const VOCAB_CATEGORIES = [
 ];
 
 /* Chaque phrase est décomposée en mots pour permettre le clic mot-à-mot.
-   Quand une phrase change selon le genre de la personne à qui l'on parle
-   (ou qui parle), "variants" liste chaque forme avec son "label". Une
-   phrase sans variation de genre n'a qu'un seul variant, sans label. */
+   "category" range la phrase dans un onglet du même nom. Quand une phrase
+   change selon le genre de la personne à qui l'on parle (ou qui parle),
+   "variants" liste chaque forme avec son "label". Une phrase sans variation
+   de genre n'a qu'un seul variant, sans label. */
 const PHRASES = [
   {
+    category: "Présentation",
     level: "Intermédiaire",
     fr: "Comment tu t'appelles ? (« לך » s'écrit à l'identique au masculin et au féminin sans les points-voyelles ; ici on l'a vocalisé — לְךָ / לָךְ — pour que l'audio prononce bien la bonne forme)",
     variants: [
@@ -182,6 +184,7 @@ const PHRASES = [
     ]
   },
   {
+    category: "Présentation",
     level: "Intermédiaire",
     fr: "Je m'appelle... (littéralement « on m'appelle », identique au masculin et au féminin)",
     variants: [
@@ -194,6 +197,7 @@ const PHRASES = [
     ]
   },
   {
+    category: "Présentation",
     level: "Intermédiaire",
     fr: "Enchanté(e) (litt. « agréable de connaître » ; ici נעים est impersonnel — comme dans « il est agréable de... » — donc invariable, quel que soit le genre du locuteur ou de la personne rencontrée)",
     variants: [
@@ -206,6 +210,7 @@ const PHRASES = [
     ]
   },
   {
+    category: "Présentation",
     level: "Intermédiaire",
     fr: "D'où viens-tu ? (« את » non vocalisé se confond avec le marqueur d'objet direct « et » — bien plus fréquent — d'où le risque de mauvaise prononciation ; on l'a vocalisé ici : אַתְּ)",
     variants: [
@@ -226,6 +231,7 @@ const PHRASES = [
     ]
   },
   {
+    category: "Présentation",
     level: "Intermédiaire",
     fr: "Je viens de France (identique au masculin et au féminin ; le préfixe מ- de « מצרפת » est vocalisé pour bien marquer « de/depuis »)",
     variants: [
@@ -237,7 +243,9 @@ const PHRASES = [
       }
     ]
   },
+
   {
+    category: "Interrogation",
     level: "Avancé",
     fr: "Combien ça coûte ?",
     variants: [
@@ -251,40 +259,7 @@ const PHRASES = [
     ]
   },
   {
-    level: "Avancé",
-    fr: "Où sont les toilettes ?",
-    variants: [
-      {
-        words: [
-          { he: "איפה", translit: "eifo", fr: "où" },
-          { he: "השירותים", translit: "ha-sherutim", fr: "les toilettes" }
-        ]
-      }
-    ]
-  },
-  {
-    level: "Avancé",
-    fr: "Je ne comprends pas",
-    variants: [
-      {
-        label: "un homme parle",
-        words: [
-          { he: "אני", translit: "ani", fr: "je" },
-          { he: "לא", translit: "lo", fr: "ne... pas" },
-          { he: "מבין", translit: "mevin", fr: "comprends (masc.)" }
-        ]
-      },
-      {
-        label: "une femme parle",
-        words: [
-          { he: "אני", translit: "ani", fr: "je" },
-          { he: "לא", translit: "lo", fr: "ne... pas" },
-          { he: "מבינה", translit: "mevina", fr: "comprends (fém.)" }
-        ]
-      }
-    ]
-  },
-  {
+    category: "Interrogation",
     level: "Avancé",
     fr: "Parles-tu anglais ?",
     variants: [
@@ -307,6 +282,306 @@ const PHRASES = [
     ]
   },
   {
+    category: "Interrogation",
+    level: "Intermédiaire",
+    fr: "Comment ça va ? (informel, litt. « quoi s'entend »)",
+    variants: [
+      {
+        words: [
+          { he: "מה", translit: "ma", fr: "quoi" },
+          { he: "נשמע", translit: "nishma", fr: "s'entend / ça va" }
+        ]
+      }
+    ]
+  },
+  {
+    category: "Interrogation",
+    level: "Intermédiaire",
+    fr: "Quelle heure est-il ?",
+    variants: [
+      {
+        words: [
+          { he: "מה", translit: "ma", fr: "quelle" },
+          { he: "השעה", translit: "ha-sha'a", fr: "l'heure" }
+        ]
+      }
+    ]
+  },
+
+  {
+    category: "Négation",
+    level: "Avancé",
+    fr: "Je ne comprends pas",
+    variants: [
+      {
+        label: "un homme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "לא", translit: "lo", fr: "ne... pas" },
+          { he: "מבין", translit: "mevin", fr: "comprends (masc.)" }
+        ]
+      },
+      {
+        label: "une femme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "לא", translit: "lo", fr: "ne... pas" },
+          { he: "מבינה", translit: "mevina", fr: "comprends (fém.)" }
+        ]
+      }
+    ]
+  },
+  {
+    category: "Négation",
+    level: "Avancé",
+    fr: "Je ne sais pas",
+    variants: [
+      {
+        label: "un homme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "לא", translit: "lo", fr: "ne... pas" },
+          { he: "יודע", translit: "yodea", fr: "sais (masc.)" }
+        ]
+      },
+      {
+        label: "une femme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "לא", translit: "lo", fr: "ne... pas" },
+          { he: "יודעת", translit: "yoda'at", fr: "sais (fém.)" }
+        ]
+      }
+    ]
+  },
+
+  {
+    category: "Affirmation",
+    level: "Intermédiaire",
+    fr: "D'accord",
+    variants: [
+      {
+        words: [
+          { he: "בסדר", translit: "beseder", fr: "d'accord / ça va" }
+        ]
+      }
+    ]
+  },
+  {
+    category: "Affirmation",
+    level: "Intermédiaire",
+    fr: "Bien sûr",
+    variants: [
+      {
+        words: [
+          { he: "בטח", translit: "betakh", fr: "bien sûr" }
+        ]
+      }
+    ]
+  },
+  {
+    category: "Affirmation",
+    level: "Intermédiaire",
+    fr: "Exactement",
+    variants: [
+      {
+        words: [
+          { he: "בדיוק", translit: "bediyuk", fr: "exactement" }
+        ]
+      }
+    ]
+  },
+
+  {
+    category: "Émotions & besoins",
+    level: "Avancé",
+    fr: "J'ai faim",
+    variants: [
+      {
+        label: "un homme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "רעב", translit: "ra'ev", fr: "affamé (masc.)" }
+        ]
+      },
+      {
+        label: "une femme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "רעבה", translit: "re'eva", fr: "affamée (fém.)" }
+        ]
+      }
+    ]
+  },
+  {
+    category: "Émotions & besoins",
+    level: "Avancé",
+    fr: "J'ai soif",
+    variants: [
+      {
+        label: "un homme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "צמא", translit: "tsame", fr: "assoiffé (masc.)" }
+        ]
+      },
+      {
+        label: "une femme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "צמאה", translit: "tsme'a", fr: "assoiffée (fém.)" }
+        ]
+      }
+    ]
+  },
+  {
+    category: "Émotions & besoins",
+    level: "Avancé",
+    fr: "Je suis fatigué(e)",
+    variants: [
+      {
+        label: "un homme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "עייף", translit: "ayef", fr: "fatigué (masc.)" }
+        ]
+      },
+      {
+        label: "une femme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "עייפה", translit: "ayefa", fr: "fatiguée (fém.)" }
+        ]
+      }
+    ]
+  },
+  {
+    category: "Émotions & besoins",
+    level: "Avancé",
+    fr: "Je suis désolé(e)",
+    variants: [
+      {
+        label: "un homme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "מצטער", translit: "mitsta'er", fr: "désolé (masc.)" }
+        ]
+      },
+      {
+        label: "une femme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "מצטערת", translit: "mitsta'eret", fr: "désolée (fém.)" }
+        ]
+      }
+    ]
+  },
+  {
+    category: "Émotions & besoins",
+    level: "Avancé",
+    fr: "Je t'aime (le pronom « toi » varie aussi selon qui l'on s'adresse : « otkha » à un homme, « otakh » à une femme — ici on s'adresse à un homme)",
+    variants: [
+      {
+        label: "un homme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "אוהב", translit: "ohev", fr: "aime (masc.)" },
+          { he: "אותך", translit: "otkha", fr: "toi" }
+        ]
+      },
+      {
+        label: "une femme parle",
+        words: [
+          { he: "אני", translit: "ani", fr: "je" },
+          { he: "אוהבת", translit: "ohevet", fr: "aime (fém.)" },
+          { he: "אותך", translit: "otkha", fr: "toi" }
+        ]
+      }
+    ]
+  },
+
+  {
+    category: "Famille",
+    level: "Intermédiaire",
+    fr: "J'ai une grande famille (« יש לי » = « j'ai », litt. « il y a à moi » — invariable, ne change pas selon le genre du locuteur)",
+    variants: [
+      {
+        words: [
+          { he: "יש", translit: "yesh", fr: "il y a" },
+          { he: "לי", translit: "li", fr: "à moi" },
+          { he: "משפחה", translit: "mishpakha", fr: "famille" },
+          { he: "גדולה", translit: "gdola", fr: "grande" }
+        ]
+      }
+    ]
+  },
+  {
+    category: "Famille",
+    level: "Intermédiaire",
+    fr: "Voici ma mère (« זו » s'accorde avec אמא, qui est féminin — on dirait « זה אבא שלי » pour « voici mon père »)",
+    variants: [
+      {
+        words: [
+          { he: "זו", translit: "zo", fr: "voici (fém.)" },
+          { he: "אמא", translit: "ima", fr: "maman" },
+          { he: "שלי", translit: "sheli", fr: "à moi / ma" }
+        ]
+      }
+    ]
+  },
+
+  {
+    category: "Direction",
+    level: "Avancé",
+    fr: "Où sont les toilettes ?",
+    variants: [
+      {
+        words: [
+          { he: "איפה", translit: "eifo", fr: "où" },
+          { he: "השירותים", translit: "ha-sherutim", fr: "les toilettes" }
+        ]
+      }
+    ]
+  },
+  {
+    category: "Direction",
+    level: "Intermédiaire",
+    fr: "Tout droit",
+    variants: [
+      {
+        words: [
+          { he: "ישר", translit: "yashar", fr: "tout droit" }
+        ]
+      }
+    ]
+  },
+  {
+    category: "Direction",
+    level: "Intermédiaire",
+    fr: "À droite",
+    variants: [
+      {
+        words: [
+          { he: "ימינה", translit: "yamina", fr: "à droite" }
+        ]
+      }
+    ]
+  },
+  {
+    category: "Direction",
+    level: "Intermédiaire",
+    fr: "À gauche",
+    variants: [
+      {
+        words: [
+          { he: "שמאלה", translit: "smola", fr: "à gauche" }
+        ]
+      }
+    ]
+  },
+
+  {
+    category: "Politesse",
     level: "Avancé",
     fr: "Donne-moi, s'il te plaît (« תני » commence par un groupe de deux consonnes « t-n » peu courant en début de mot : le premier son peut être difficile à entendre, y compris à l'oreille de natifs)",
     variants: [
@@ -329,6 +604,7 @@ const PHRASES = [
     ]
   },
   {
+    category: "Politesse",
     level: "Avancé",
     fr: "Joyeuse fête ! (utilisé pour les fêtes juives, identique au masculin et au féminin)",
     variants: [
@@ -341,30 +617,7 @@ const PHRASES = [
     ]
   },
   {
-    level: "Intermédiaire",
-    fr: "Comment ça va ? (informel, litt. « quoi s'entend »)",
-    variants: [
-      {
-        words: [
-          { he: "מה", translit: "ma", fr: "quoi" },
-          { he: "נשמע", translit: "nishma", fr: "s'entend / ça va" }
-        ]
-      }
-    ]
-  },
-  {
-    level: "Intermédiaire",
-    fr: "Quelle heure est-il ?",
-    variants: [
-      {
-        words: [
-          { he: "מה", translit: "ma", fr: "quelle" },
-          { he: "השעה", translit: "ha-sha'a", fr: "l'heure" }
-        ]
-      }
-    ]
-  },
-  {
+    category: "Politesse",
     level: "Intermédiaire",
     fr: "Bon appétit !",
     variants: [
@@ -376,6 +629,7 @@ const PHRASES = [
     ]
   },
   {
+    category: "Politesse",
     level: "Intermédiaire",
     fr: "Bonne chance !",
     variants: [
@@ -387,6 +641,7 @@ const PHRASES = [
     ]
   },
   {
+    category: "Politesse",
     level: "Intermédiaire",
     fr: "Félicitations ! (litt. « bonne étoile »)",
     variants: [
@@ -394,108 +649,6 @@ const PHRASES = [
         words: [
           { he: "מזל", translit: "mazal", fr: "chance / étoile" },
           { he: "טוב", translit: "tov", fr: "bon" }
-        ]
-      }
-    ]
-  },
-  {
-    level: "Avancé",
-    fr: "J'ai faim",
-    variants: [
-      {
-        label: "un homme parle",
-        words: [
-          { he: "אני", translit: "ani", fr: "je" },
-          { he: "רעב", translit: "ra'ev", fr: "affamé (masc.)" }
-        ]
-      },
-      {
-        label: "une femme parle",
-        words: [
-          { he: "אני", translit: "ani", fr: "je" },
-          { he: "רעבה", translit: "re'eva", fr: "affamée (fém.)" }
-        ]
-      }
-    ]
-  },
-  {
-    level: "Avancé",
-    fr: "J'ai soif",
-    variants: [
-      {
-        label: "un homme parle",
-        words: [
-          { he: "אני", translit: "ani", fr: "je" },
-          { he: "צמא", translit: "tsame", fr: "assoiffé (masc.)" }
-        ]
-      },
-      {
-        label: "une femme parle",
-        words: [
-          { he: "אני", translit: "ani", fr: "je" },
-          { he: "צמאה", translit: "tsme'a", fr: "assoiffée (fém.)" }
-        ]
-      }
-    ]
-  },
-  {
-    level: "Avancé",
-    fr: "Je suis fatigué(e)",
-    variants: [
-      {
-        label: "un homme parle",
-        words: [
-          { he: "אני", translit: "ani", fr: "je" },
-          { he: "עייף", translit: "ayef", fr: "fatigué (masc.)" }
-        ]
-      },
-      {
-        label: "une femme parle",
-        words: [
-          { he: "אני", translit: "ani", fr: "je" },
-          { he: "עייפה", translit: "ayefa", fr: "fatiguée (fém.)" }
-        ]
-      }
-    ]
-  },
-  {
-    level: "Avancé",
-    fr: "Je suis désolé(e)",
-    variants: [
-      {
-        label: "un homme parle",
-        words: [
-          { he: "אני", translit: "ani", fr: "je" },
-          { he: "מצטער", translit: "mitsta'er", fr: "désolé (masc.)" }
-        ]
-      },
-      {
-        label: "une femme parle",
-        words: [
-          { he: "אני", translit: "ani", fr: "je" },
-          { he: "מצטערת", translit: "mitsta'eret", fr: "désolée (fém.)" }
-        ]
-      }
-    ]
-  },
-  {
-    level: "Avancé",
-    fr: "Je t'aime (le pronom « toi » varie aussi selon qui l'on s'adresse : « otkha » à un homme, « otakh » à une femme — ici on s'adresse à un homme)",
-    variants: [
-      {
-        label: "un homme parle",
-        words: [
-          { he: "אני", translit: "ani", fr: "je" },
-          { he: "אוהב", translit: "ohev", fr: "aime (masc.)" },
-          { he: "אותך", translit: "otkha", fr: "toi" }
-        ]
-      },
-      {
-        label: "une femme parle",
-        words: [
-          { he: "אני", translit: "ani", fr: "je" },
-          { he: "אוהבת", translit: "ohevet", fr: "aime (fém.)" },
-          { he: "אותך", translit: "otkha", fr: "toi" }
         ]
       }
     ]
