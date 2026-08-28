@@ -398,4 +398,50 @@
     <string name="legendary_success_title">O segredo foi desvendado!</string>
     <string name="legendary_success_body">Você encontrou Mianmar, o único depósito conhecido de painita no mundo — a pedra por muito tempo considerada o mineral gema mais raro do planeta.</string>
     <string name="legendary_success_view_gem_button">Ver a ficha da Painita</string>
+
+    <!-- Tratamentos gemológicos -->
+    <string name="lab_treatments_title">Tratamentos comuns</string>
+    <string name="lab_treatments_subtitle">Aquecimento, oleação, irradiação… o que é preciso saber e divulgar.</string>
+    <string name="treatments_title">Tratamentos comuns</string>
+    <string name="treatments_species_label">Espécies afetadas</string>
+    <string name="treatments_detection_label">Indícios de deteção</string>
+    <string name="treatments_disclosure_label">Obrigação de divulgação</string>
+
+    <!-- Gestão de stock -->
+    <string name="lab_stock_title">Gestão de stock</string>
+    <string name="lab_stock_subtitle">Acompanhe as suas pedras em stock, reservadas ou vendidas.</string>
+    <string name="stock_title">Stock</string>
+    <string name="stock_empty_state">Nenhuma pedra em stock. Adicione a sua primeira ficha.</string>
+    <string name="stock_add_button">Adicionar uma pedra</string>
+    <string name="stock_export_button">Exportar em CSV</string>
+    <string name="stock_export_chooser_title">Exportar o stock</string>
+    <string name="stock_weight_ct_format">%1$s ct</string>
+    <string name="stock_add_title">Nova pedra</string>
+    <string name="stock_edit_title">Editar a pedra</string>
+    <string name="stock_save_button">Guardar</string>
+    <string name="stock_edit_button">Editar</string>
+    <string name="stock_delete_button">Eliminar</string>
+    <string name="stock_cancel_button">Cancelar</string>
+    <string name="stock_delete_confirm_title">Eliminar esta pedra?</string>
+    <string name="stock_delete_confirm_message">Esta ação é irreversível.</string>
+    <string name="stock_delete_confirm_action">Eliminar</string>
+    <string name="stock_photo_picker_hint">Adicionar uma foto</string>
+    <string name="stock_field_name_label">Nome</string>
+    <string name="stock_field_weight_label">Peso (quilates)</string>
+    <string name="stock_field_cut_label">Lapidação</string>
+    <string name="stock_field_color_label">Cor</string>
+    <string name="stock_field_clarity_label">Pureza</string>
+    <string name="stock_field_treatment_label">Tratamento</string>
+    <string name="stock_field_certificate_number_label">Número do certificado</string>
+    <string name="stock_field_laboratory_label">Laboratório</string>
+    <string name="stock_field_supplier_label">Fornecedor</string>
+    <string name="stock_field_purchase_date_label">Data de compra</string>
+    <string name="stock_field_purchase_cost_label">Custo de compra</string>
+    <string name="stock_field_selling_price_label">Preço de venda</string>
+    <string name="stock_field_status_label">Estado</string>
+    <string name="stock_field_notes_label">Notas</string>
+    <string name="stock_status_en_stock">Em stock</string>
+    <string name="stock_status_reserve">Reservada</string>
+    <string name="stock_status_vendu">Vendida</string>
+    <string name="stock_status_consignation">Consignação</string>
 </resources>

@@ -65,6 +65,10 @@ import fr.gemsofrod.encyclopedie.ui.screens.MeteoritesMenuScreen
 import fr.gemsofrod.encyclopedie.ui.screens.PaysListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.QuizScreen
 import fr.gemsofrod.encyclopedie.ui.screens.ReflectivityMeterScreen
+import fr.gemsofrod.encyclopedie.ui.screens.StockDetailScreen
+import fr.gemsofrod.encyclopedie.ui.screens.StockFormScreen
+import fr.gemsofrod.encyclopedie.ui.screens.StockListScreen
+import fr.gemsofrod.encyclopedie.ui.screens.TreatmentsScreen
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import kotlinx.coroutines.delay
 import java.net.URLDecoder
@@ -115,6 +119,11 @@ private object Routes {
     const val REFLECTIVITY_METER = "reflectivity_meter"
     const val LEGENDARY_RIDDLE = "legendary_riddle"
     const val LEGENDARY_MAP = "legendary_map"
+    const val TREATMENTS = "treatments"
+    const val STOCK_LIST = "stock_list"
+    const val STOCK_NEW = "stock_new"
+    const val STOCK_EDIT = "stock_edit/{itemId}"
+    const val STOCK_DETAIL = "stock_detail/{itemId}"
 
     fun gemsList(colorName: String) = "gems/$colorName"
     fun labNotebookEdit(sampleId: String) = "lab_notebook_edit/$sampleId"
@@ -131,6 +140,8 @@ private object Routes {
     fun lithotherapieDetail(gemId: String) = "lithotherapie_detail/$gemId"
     fun lithotherapieInfo(topic: String) = "lithotherapie_info/$topic"
     fun associationDetail(associationId: String) = "association/$associationId"
+    fun stockEdit(itemId: String) = "stock_edit/$itemId"
+    fun stockDetail(itemId: String) = "stock_detail/$itemId"
 
     fun encode(value: String): String = URLEncoder.encode(value, "UTF-8")
     fun decode(value: String): String = URLDecoder.decode(value, "UTF-8")
@@ -199,7 +210,43 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onInstrumentsClick = { navController.navigate(Routes.INSTRUMENTS) },
                 onGlossaireClick = { navController.navigate(Routes.GLOSSAIRE) },
                 onReflectivityMeterClick = { navController.navigate(Routes.REFLECTIVITY_METER) },
+                onTreatmentsClick = { navController.navigate(Routes.TREATMENTS) },
+                onStockClick = { navController.navigate(Routes.STOCK_LIST) },
                 onLegendaryClick = { navController.navigate(Routes.LEGENDARY_RIDDLE) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.TREATMENTS) {
+            TreatmentsScreen(onBackClick = { navController.popBackStack() })
+        }
+        composable(Routes.STOCK_LIST) {
+            StockListScreen(
+                onItemClick = { itemId -> navController.navigate(Routes.stockDetail(itemId)) },
+                onAddClick = { navController.navigate(Routes.STOCK_NEW) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.STOCK_NEW) {
+            StockFormScreen(
+                itemId = null,
+                onSaveComplete = { navController.popBackStack() },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.STOCK_EDIT) { backStackEntry ->
+            val itemId = backStackEntry.arguments?.getString("itemId").orEmpty()
+            StockFormScreen(
+                itemId = itemId,
+                onSaveComplete = { navController.popBackStack() },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.STOCK_DETAIL) { backStackEntry ->
+            val itemId = backStackEntry.arguments?.getString("itemId").orEmpty()
+            StockDetailScreen(
+                itemId = itemId,
+                onEditClick = { id -> navController.navigate(Routes.stockEdit(id)) },
+                onDeleted = { navController.popBackStack() },
                 onBackClick = { navController.popBackStack() }
             )
         }

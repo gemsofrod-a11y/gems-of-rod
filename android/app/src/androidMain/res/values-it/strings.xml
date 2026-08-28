@@ -398,4 +398,50 @@
     <string name="legendary_success_title">Il segreto è svelato!</string>
     <string name="legendary_success_body">Hai trovato il Myanmar, l\'unico giacimento conosciuto di painite al mondo: la pietra a lungo considerata il minerale gemma più raro del pianeta.</string>
     <string name="legendary_success_view_gem_button">Vedi la scheda della Painite</string>
+
+    <!-- Trattamenti gemmologici -->
+    <string name="lab_treatments_title">Trattamenti comuni</string>
+    <string name="lab_treatments_subtitle">Riscaldamento, oliatura, irradiazione… cosa sapere e dichiarare.</string>
+    <string name="treatments_title">Trattamenti comuni</string>
+    <string name="treatments_species_label">Specie interessate</string>
+    <string name="treatments_detection_label">Indizi di rilevamento</string>
+    <string name="treatments_disclosure_label">Obbligo di divulgazione</string>
+
+    <!-- Gestione del magazzino -->
+    <string name="lab_stock_title">Gestione del magazzino</string>
+    <string name="lab_stock_subtitle">Tieni traccia delle pietre in magazzino, riservate o vendute.</string>
+    <string name="stock_title">Magazzino</string>
+    <string name="stock_empty_state">Nessuna pietra in magazzino. Aggiungi la tua prima scheda.</string>
+    <string name="stock_add_button">Aggiungi una pietra</string>
+    <string name="stock_export_button">Esporta in CSV</string>
+    <string name="stock_export_chooser_title">Esporta il magazzino</string>
+    <string name="stock_weight_ct_format">%1$s ct</string>
+    <string name="stock_add_title">Nuova pietra</string>
+    <string name="stock_edit_title">Modifica la pietra</string>
+    <string name="stock_save_button">Salva</string>
+    <string name="stock_edit_button">Modifica</string>
+    <string name="stock_delete_button">Elimina</string>
+    <string name="stock_cancel_button">Annulla</string>
+    <string name="stock_delete_confirm_title">Eliminare questa pietra?</string>
+    <string name="stock_delete_confirm_message">Questa azione è irreversibile.</string>
+    <string name="stock_delete_confirm_action">Elimina</string>
+    <string name="stock_photo_picker_hint">Aggiungi una foto</string>
+    <string name="stock_field_name_label">Nome</string>
+    <string name="stock_field_weight_label">Peso (carati)</string>
+    <string name="stock_field_cut_label">Taglio</string>
+    <string name="stock_field_color_label">Colore</string>
+    <string name="stock_field_clarity_label">Purezza</string>
+    <string name="stock_field_treatment_label">Trattamento</string>
+    <string name="stock_field_certificate_number_label">Numero di certificato</string>
+    <string name="stock_field_laboratory_label">Laboratorio</string>
+    <string name="stock_field_supplier_label">Fornitore</string>
+    <string name="stock_field_purchase_date_label">Data di acquisto</string>
+    <string name="stock_field_purchase_cost_label">Costo di acquisto</string>
+    <string name="stock_field_selling_price_label">Prezzo di vendita</string>
+    <string name="stock_field_status_label">Stato</string>
+    <string name="stock_field_notes_label">Note</string>
+    <string name="stock_status_en_stock">In magazzino</string>
+    <string name="stock_status_reserve">Riservata</string>
+    <string name="stock_status_vendu">Venduta</string>
+    <string name="stock_status_consignation">Conto vendita</string>
 </resources>

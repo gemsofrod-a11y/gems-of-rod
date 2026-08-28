@@ -398,4 +398,50 @@
     <string name="legendary_success_title">Das Geheimnis ist gelüftet!</string>
     <string name="legendary_success_body">Sie haben Myanmar gefunden, die einzige bekannte Painit-Fundstätte der Welt – den Stein, der lange als das seltenste Schmucksteinmineral der Welt galt.</string>
     <string name="legendary_success_view_gem_button">Painit-Eintrag ansehen</string>
+
+    <!-- Gemmologische Behandlungen -->
+    <string name="lab_treatments_title">Gängige Behandlungen</string>
+    <string name="lab_treatments_subtitle">Erhitzen, Ölen, Bestrahlung… was Sie wissen und offenlegen müssen.</string>
+    <string name="treatments_title">Gängige Behandlungen</string>
+    <string name="treatments_species_label">Betroffene Arten</string>
+    <string name="treatments_detection_label">Erkennungsmerkmale</string>
+    <string name="treatments_disclosure_label">Offenlegungspflicht</string>
+
+    <!-- Lagerverwaltung -->
+    <string name="lab_stock_title">Lagerverwaltung</string>
+    <string name="lab_stock_subtitle">Behalten Sie Ihre Steine im Lager, reserviert oder verkauft, im Blick.</string>
+    <string name="stock_title">Lager</string>
+    <string name="stock_empty_state">Keine Steine im Lager. Fügen Sie Ihren ersten Eintrag hinzu.</string>
+    <string name="stock_add_button">Stein hinzufügen</string>
+    <string name="stock_export_button">Als CSV exportieren</string>
+    <string name="stock_export_chooser_title">Lager exportieren</string>
+    <string name="stock_weight_ct_format">%1$s ct</string>
+    <string name="stock_add_title">Neuer Stein</string>
+    <string name="stock_edit_title">Stein bearbeiten</string>
+    <string name="stock_save_button">Speichern</string>
+    <string name="stock_edit_button">Bearbeiten</string>
+    <string name="stock_delete_button">Löschen</string>
+    <string name="stock_cancel_button">Abbrechen</string>
+    <string name="stock_delete_confirm_title">Diesen Stein löschen?</string>
+    <string name="stock_delete_confirm_message">Diese Aktion kann nicht rückgängig gemacht werden.</string>
+    <string name="stock_delete_confirm_action">Löschen</string>
+    <string name="stock_photo_picker_hint">Foto hinzufügen</string>
+    <string name="stock_field_name_label">Name</string>
+    <string name="stock_field_weight_label">Gewicht (Karat)</string>
+    <string name="stock_field_cut_label">Schliff</string>
+    <string name="stock_field_color_label">Farbe</string>
+    <string name="stock_field_clarity_label">Reinheit</string>
+    <string name="stock_field_treatment_label">Behandlung</string>
+    <string name="stock_field_certificate_number_label">Zertifikatsnummer</string>
+    <string name="stock_field_laboratory_label">Labor</string>
+    <string name="stock_field_supplier_label">Lieferant</string>
+    <string name="stock_field_purchase_date_label">Kaufdatum</string>
+    <string name="stock_field_purchase_cost_label">Kaufpreis</string>
+    <string name="stock_field_selling_price_label">Verkaufspreis</string>
+    <string name="stock_field_status_label">Status</string>
+    <string name="stock_field_notes_label">Notizen</string>
+    <string name="stock_status_en_stock">Auf Lager</string>
+    <string name="stock_status_reserve">Reserviert</string>
+    <string name="stock_status_vendu">Verkauft</string>
+    <string name="stock_status_consignation">Kommission</string>
 </resources>

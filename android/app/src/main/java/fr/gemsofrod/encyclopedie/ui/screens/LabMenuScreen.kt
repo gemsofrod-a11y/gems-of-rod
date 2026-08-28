@@ -16,9 +16,11 @@ import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.Biotech
 import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Inventory2
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.Science
+import androidx.compose.material.icons.filled.Verified
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -53,6 +55,8 @@ fun LabMenuScreen(
     onInstrumentsClick: () -> Unit,
     onGlossaireClick: () -> Unit,
     onReflectivityMeterClick: () -> Unit,
+    onTreatmentsClick: () -> Unit,
+    onStockClick: () -> Unit,
     onLegendaryClick: () -> Unit,
     onBackClick: () -> Unit
 ) {
@@ -121,6 +125,18 @@ fun LabMenuScreen(
                 title = stringResource(R.string.lab_reflectivity_title),
                 subtitle = stringResource(R.string.lab_reflectivity_subtitle),
                 onClick = onReflectivityMeterClick
+            )
+            LabMenuCard(
+                icon = Icons.Filled.Verified,
+                title = stringResource(R.string.lab_treatments_title),
+                subtitle = stringResource(R.string.lab_treatments_subtitle),
+                onClick = onTreatmentsClick
+            )
+            LabMenuCard(
+                icon = Icons.Filled.Inventory2,
+                title = stringResource(R.string.lab_stock_title),
+                subtitle = stringResource(R.string.lab_stock_subtitle),
+                onClick = onStockClick
             )
             LabMenuCard(
                 icon = Icons.Filled.Public,

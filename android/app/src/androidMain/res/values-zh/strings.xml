@@ -398,4 +398,50 @@
     <string name="legendary_success_title">秘密已揭晓！</string>
     <string name="legendary_success_body">您找到了缅甸——世界上唯一已知的钇铝榴石（painite）产地，这种宝石曾长期被认为是地球上最稀有的宝石矿物。</string>
     <string name="legendary_success_view_gem_button">查看该宝石的卡片</string>
+
+    <!-- 宝石处理 -->
+    <string name="lab_treatments_title">常见处理</string>
+    <string name="lab_treatments_subtitle">加热、注油、辐照……您需要了解并披露的信息。</string>
+    <string name="treatments_title">常见处理</string>
+    <string name="treatments_species_label">涉及的宝石种类</string>
+    <string name="treatments_detection_label">检测线索</string>
+    <string name="treatments_disclosure_label">披露义务</string>
+
+    <!-- 库存管理 -->
+    <string name="lab_stock_title">库存管理</string>
+    <string name="lab_stock_subtitle">追踪您库存中、已预订或已售出的宝石。</string>
+    <string name="stock_title">库存</string>
+    <string name="stock_empty_state">库存中暂无宝石。添加您的第一条记录。</string>
+    <string name="stock_add_button">添加宝石</string>
+    <string name="stock_export_button">导出为CSV</string>
+    <string name="stock_export_chooser_title">导出库存</string>
+    <string name="stock_weight_ct_format">%1$s 克拉</string>
+    <string name="stock_add_title">新增宝石</string>
+    <string name="stock_edit_title">编辑宝石</string>
+    <string name="stock_save_button">保存</string>
+    <string name="stock_edit_button">编辑</string>
+    <string name="stock_delete_button">删除</string>
+    <string name="stock_cancel_button">取消</string>
+    <string name="stock_delete_confirm_title">删除这块宝石？</string>
+    <string name="stock_delete_confirm_message">此操作无法撤销。</string>
+    <string name="stock_delete_confirm_action">删除</string>
+    <string name="stock_photo_picker_hint">添加照片</string>
+    <string name="stock_field_name_label">名称</string>
+    <string name="stock_field_weight_label">重量（克拉）</string>
+    <string name="stock_field_cut_label">切工</string>
+    <string name="stock_field_color_label">颜色</string>
+    <string name="stock_field_clarity_label">净度</string>
+    <string name="stock_field_treatment_label">处理方式</string>
+    <string name="stock_field_certificate_number_label">证书编号</string>
+    <string name="stock_field_laboratory_label">鉴定实验室</string>
+    <string name="stock_field_supplier_label">供应商</string>
+    <string name="stock_field_purchase_date_label">购买日期</string>
+    <string name="stock_field_purchase_cost_label">购买成本</string>
+    <string name="stock_field_selling_price_label">销售价格</string>
+    <string name="stock_field_status_label">状态</string>
+    <string name="stock_field_notes_label">备注</string>
+    <string name="stock_status_en_stock">库存中</string>
+    <string name="stock_status_reserve">已预订</string>
+    <string name="stock_status_vendu">已售出</string>
+    <string name="stock_status_consignation">寄售</string>
 </resources>

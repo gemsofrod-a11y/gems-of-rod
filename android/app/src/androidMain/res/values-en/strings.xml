@@ -398,4 +398,50 @@
     <string name="legendary_success_title">The secret is solved!</string>
     <string name="legendary_success_body">You found Myanmar, the only known painite deposit in the world — the stone long considered the rarest gem mineral on the planet.</string>
     <string name="legendary_success_view_gem_button">View the Painite entry</string>
+
+    <!-- Gemological treatments -->
+    <string name="lab_treatments_title">Common Treatments</string>
+    <string name="lab_treatments_subtitle">Heating, oiling, irradiation… what you need to know and disclose.</string>
+    <string name="treatments_title">Common Treatments</string>
+    <string name="treatments_species_label">Species concerned</string>
+    <string name="treatments_detection_label">Detection clues</string>
+    <string name="treatments_disclosure_label">Disclosure requirement</string>
+
+    <!-- Stock manager -->
+    <string name="lab_stock_title">Stock Management</string>
+    <string name="lab_stock_subtitle">Track your stones in stock, reserved, or sold.</string>
+    <string name="stock_title">Stock</string>
+    <string name="stock_empty_state">No stones in stock. Add your first entry.</string>
+    <string name="stock_add_button">Add a stone</string>
+    <string name="stock_export_button">Export as CSV</string>
+    <string name="stock_export_chooser_title">Export stock</string>
+    <string name="stock_weight_ct_format">%1$s ct</string>
+    <string name="stock_add_title">New stone</string>
+    <string name="stock_edit_title">Edit stone</string>
+    <string name="stock_save_button">Save</string>
+    <string name="stock_edit_button">Edit</string>
+    <string name="stock_delete_button">Delete</string>
+    <string name="stock_cancel_button">Cancel</string>
+    <string name="stock_delete_confirm_title">Delete this stone?</string>
+    <string name="stock_delete_confirm_message">This action cannot be undone.</string>
+    <string name="stock_delete_confirm_action">Delete</string>
+    <string name="stock_photo_picker_hint">Add a photo</string>
+    <string name="stock_field_name_label">Name</string>
+    <string name="stock_field_weight_label">Weight (carats)</string>
+    <string name="stock_field_cut_label">Cut</string>
+    <string name="stock_field_color_label">Color</string>
+    <string name="stock_field_clarity_label">Clarity</string>
+    <string name="stock_field_treatment_label">Treatment</string>
+    <string name="stock_field_certificate_number_label">Certificate number</string>
+    <string name="stock_field_laboratory_label">Laboratory</string>
+    <string name="stock_field_supplier_label">Supplier</string>
+    <string name="stock_field_purchase_date_label">Purchase date</string>
+    <string name="stock_field_purchase_cost_label">Purchase cost</string>
+    <string name="stock_field_selling_price_label">Selling price</string>
+    <string name="stock_field_status_label">Status</string>
+    <string name="stock_field_notes_label">Notes</string>
+    <string name="stock_status_en_stock">In stock</string>
+    <string name="stock_status_reserve">Reserved</string>
+    <string name="stock_status_vendu">Sold</string>
+    <string name="stock_status_consignation">Consignment</string>
 </resources>
