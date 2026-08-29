@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apprendre l'hébreu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1><span class="he">לומדים עברית</span></h1>
+    <p class="subtitle">Apprendre l'hébreu — alphabet, vocabulaire et phrases</p>
+    <p id="audio-note" class="audio-note" hidden>
+      La synthèse vocale n'est pas disponible sur ce navigateur/appareil. Essayez avec Chrome pour entendre la prononciation.
+    </p>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab-btn active" data-target="panel-alphabet">Alphabet</button>
+    <button class="tab-btn" data-target="panel-vocab">Notions de base</button>
+    <button class="tab-btn" data-target="panel-phrases">Phrases</button>
+  </nav>
+
+  <main>
+    <section id="panel-alphabet" class="tab-panel active">
+      <p class="panel-intro">Les 22 lettres de l'alphabet hébreu, avec leur prononciation et un exemple de mot. Cinq lettres (כ, מ, נ, פ, צ) ont une forme spéciale quand elles terminent un mot : elle est indiquée sous la lettre concernée.</p>
+      <div id="alphabet-grid" class="grid alphabet-grid"></div>
+    </section>
+
+    <section id="panel-vocab" class="tab-panel">
+      <p class="panel-intro">Vocabulaire de base classé par thème. Cliquez sur un onglet pour changer de thème.</p>
+      <div id="vocab-container"></div>
+    </section>
+
+    <section id="panel-phrases" class="tab-panel">
+      <p class="panel-intro">Phrases plus avancées, classées par thème. Cliquez sur un mot pour afficher sa phonétique, ou utilisez le bouton haut-parleur pour l'écouter.</p>
+      <div id="phrases-container"></div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Prononciation générée par la synthèse vocale de votre navigateur (voix hébraïque « he-IL » si disponible).</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
