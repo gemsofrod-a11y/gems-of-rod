@@ -143,6 +143,13 @@ main {
   gap: 0.4rem;
 }
 
+.letter-big-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
 .letter-big {
   font-size: 2.4rem;
   font-weight: 700;

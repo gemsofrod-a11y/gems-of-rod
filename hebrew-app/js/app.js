@@ -48,10 +48,14 @@ function renderAlphabet() {
     const card = document.createElement("div");
     card.className = "card letter-card";
 
+    const letterRow = document.createElement("div");
+    letterRow.className = "letter-big-row";
     const letterEl = document.createElement("div");
     letterEl.className = "letter-big he";
     letterEl.textContent = item.letter;
-    card.appendChild(letterEl);
+    letterRow.appendChild(letterEl);
+    letterRow.appendChild(speakerButton(item.letter, `Écouter la lettre ${item.name}`));
+    card.appendChild(letterRow);
 
     const name = document.createElement("div");
     name.className = "letter-name";
@@ -90,6 +94,7 @@ function renderAlphabet() {
       finalDesc.textContent = item.final.desc;
       finalHeader.appendChild(finalLetterEl);
       finalHeader.appendChild(finalDesc);
+      finalHeader.appendChild(speakerButton(item.final.letter, `Écouter la forme finale de ${item.name}`));
       finalBlock.appendChild(finalHeader);
 
       const finalExample = document.createElement("div");
