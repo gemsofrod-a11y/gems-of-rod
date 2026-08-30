@@ -65,7 +65,7 @@ object LapidaireInfo {
     private val fr = LapidairePage(
         intro = "Le lapidaire façonne et polit les pierres brutes en pierres taillées. Ce métier recouvre plusieurs spécialités — la taille de facettes (faceting) pour les pierres transparentes, le cabochon pour les pierres opaques ou translucides, la gravure et le travail ornemental — mais la taille de facettes, la plus technique, est celle qui donne à une pierre son jeu de lumière. Cette fiche présente le matériel et les repères de base du métier ; elle s'adresse aux professionnels et aux amateurs éclairés, pas à un premier apprentissage sans encadrement.",
         machinesTitle = "La machine à facettes",
-        machinesIntro = "Une machine à facettes (faceting machine) maintient la pierre à un angle et un index précis contre un disque abrasif rotatif (le plateau, ou lap). Sa précision mécanique — au dixième de degré près pour l'angle, au point près pour l'index — est ce qui distingue une taille professionnelle d'un simple meulage à main levée.",
+        machinesIntro = "Une machine à facettes (faceting machine) maintient la pierre à un angle et un index précis contre un disque abrasif rotatif (le plateau, ou lap). Sa précision mécanique — au dixième de degré près pour l'angle, au point près pour l'index — est ce qui distingue une taille professionnelle d'un simple meulage à main levée. Le matériel va du simple bâton avec évention (artisanal, rapide mais peu précis) aux machines à diviseur mécanique (amovibles ou fixes, précises mais de production plus lente) jusqu'aux modèles pilotés par ordinateur pour la taille en série.",
         machines = listOf(
             LapidaireComponent(
                 nom = "Mât (mast)",
@@ -77,23 +77,27 @@ object LapidaireInfo {
             ),
             LapidaireComponent(
                 nom = "Tête d'index (index gear)",
-                description = "Molette dentée fixée au bout de la quille, généralement graduée sur 96 crans (parfois 64 ou 32 sur d'anciens modèles), qui bloque la rotation de la pierre sur une position précise à chaque facette — condition indispensable à la symétrie d'une taille comme le brillant rond, qui répartit ses facettes selon une symétrie d'ordre 8."
+                description = "Molette dentée fixée au bout de la quille, disponible chez la plupart des fabricants en plusieurs graduations — 64, 72, 80, 96 ou 120 crans — pour couvrir tous les types de facettages ; un disque « index rapide », à moins de crans, se superpose souvent à l'index normal pour accélérer le repérage lors d'une taille en série. Le blocage sur une position précise à chaque facette est indispensable à la symétrie d'une taille comme le brillant rond, qui répartit ses facettes selon une symétrie d'ordre 8."
             ),
             LapidaireComponent(
-                nom = "Cheater (micromètre de rattrapage)",
-                description = "Bague de réglage fin superposée à l'angle affiché sur le bras, qui permet de corriger de quelques dixièmes de degré sans toucher au réglage principal — utile pour compenser l'usure irrégulière d'un plateau ou ajuster un angle non prévu par la table d'index."
+                nom = "Cheater (« tricheur »)",
+                description = "Bague de réglage fin superposée à l'angle affiché sur le bras. Son usage principal n'est pas de modifier l'angle de coupe lui-même, mais de rétablir le parallélisme entre la facette en cours et le plateau lorsque celui-ci s'est légèrement voilé ou usé de façon inégale — un réglage à refaire chaque fois qu'une facette ne se polit plus uniformément sur toute sa surface."
             ),
             LapidaireComponent(
                 nom = "Dop",
-                description = "Tige métallique (laiton ou acier) sur laquelle la pierre brute est fixée par collage ou par cire chauffée, avant d'être insérée dans la quille. Un second dop, plus court, sert à retourner la pierre pour tailler la couronne après le pavillon (ou l'inverse selon la méthode)."
+                description = "Tige (bois, aluminium ou laiton — ces deux derniers retiennent mieux la chaleur de préchauffage) sur laquelle la pierre est fixée avant d'être insérée dans la quille. La fixation se fait à la cire chauffée (le plus courant, fond vers 80 °C), à la colle cyanoacrylate (« superglue », prise rapide mais résidus difficiles à retirer) ou à l'époxy (bonne tenue, mais réaction exothermique à surveiller sur pierre sensible à la chaleur). Les dops sophistiqués portent un ergot, un téton ou une rainure qui les oriente toujours de la même façon dans le diviseur — condition indispensable pour transférer la pierre d'un dop à l'autre (tailler la couronne après le pavillon) sans désaxement ni pivotement parasite."
             ),
             LapidaireComponent(
                 nom = "Plateau (lap)",
-                description = "Disque métallique rotatif sur lequel est fixé ou chargé l'abrasif — diamant électrodéposé ou aggloméré pour le dégrossissage et le formage, étain ou cuivre chargé en pâte diamantée pour le polissage final. Une machine dispose généralement de plusieurs plateaux interchangeables, un par étape du grain."
+                description = "Disque métallique rotatif, généralement de 6\" (≈ 152 mm) ou 8\" (≈ 203 mm) de diamètre, sur lequel est fixé ou chargé l'abrasif. On distingue les plateaux pour tailler (diamant électrodéposé en surface, ou fonte imprégnée de particules de diamant par roulage) des plateaux pour polir, de matière plus tendre. Une machine dispose généralement de plusieurs plateaux interchangeables, un par étape du grain."
+            ),
+            LapidaireComponent(
+                nom = "Goniomètre",
+                description = "Instrument de contrôle qui mesure l'angle réel d'une pierre déjà taillée, sur deux facettes principales diamétralement opposées, pour vérifier la coupe obtenue. L'angle mesuré (C' pour la couronne, P' pour le pavillon) se convertit par la formule angle = (180° − angle mesuré) / 2, puisque le rapporteur relève l'angle complémentaire formé avec le plan du rondiste."
             )
         ),
         disquesTitle = "Disques de mise en forme et de polissage",
-        disquesIntro = "La taille progresse par étapes de grain de plus en plus fin, chacune effaçant les micro-rayures laissées par la précédente ; sauter une étape laisse des marques que le polissage final ne peut plus rattraper.",
+        disquesIntro = "La taille progresse par étapes de grain de plus en plus fin, chacune effaçant les micro-rayures laissées par la précédente ; sauter une étape laisse des marques que le polissage final ne peut plus rattraper. La vitesse de rotation du plateau accompagne cette progression : plutôt lente à l'ébauche (100 à 300 tours/minute), plus rapide au formage des facettes (300 à 600 tr/min), et la plus rapide au polissage (700 à 1000 tr/min ou plus) — toujours en fonction de la sensibilité de la pierre, ralentie sans hésiter pour une pierre tendre ou clivable.",
         disques = listOf(
             LapidaireDisc(
                 nom = "Dégrossissage",
@@ -113,11 +117,11 @@ object LapidaireInfo {
             LapidaireDisc(
                 nom = "Polissage final",
                 grain = "Pâte ou poudre submicronique (souvent oxyde de cérium ou diamant très fin)",
-                usage = "Plateau doux (étain, cuivre, plomb-étain ou parfois résine/laiton chargée en pâte diamantée) qui donne aux facettes leur brillance miroir, sans enlever de matière ni modifier la géométrie. Le choix du plateau de polissage varie selon la dureté et la sensibilité thermique de l'espèce taillée."
+                usage = "Le plateau de polissage se choisit par dureté (échelle de Mohs), du plus dur au plus tendre : céramique (9), cuivre (3), zinc (2,5), phénolique (2,2), plexiglas ou étain-plomb (2), étain pur (1,7), plomb (1,5), PVC (1) et cire additionnée de charges diverses (0,3, variable selon la formule). Ce n'est jamais le plateau lui-même qui polit, seulement la poudre appliquée dessus qui joue le rôle d'agent abrasif — le plateau n'est qu'un support dont la dureté doit correspondre à celle de la pierre. Polissage à sec (poudre fixée par un liant gras) ou humide (poudre délayée dans l'eau, appliquée en continu) selon la méthode retenue."
             )
         ),
         anglesTitle = "Angles de référence : le brillant rond",
-        anglesIntro = "Les proportions ci-dessous sont celles publiées par le mathématicien belge Marcel Tolkowsky en 1919, qui a établi par le calcul l'angle optimal pour maximiser le retour de lumière (brillance) et la dispersion (feu) d'un diamant taillé en brillant rond — c'est la référence historique encore utilisée comme point de départ aujourd'hui, bien que les laboratoires modernes (GIA notamment) admettent une plage de tolérance autour de ces valeurs plutôt qu'un chiffre unique. Les autres tailles (princesse, ovale, poire, émeraude, coussin...) suivent chacune leur propre diagramme, très variable selon le fabricant du diagramme et l'objectif recherché (rendement de matière contre performance optique) : il n'existe pas de valeur universelle comparable à citer sans se référer à un diagramme précis.",
+        anglesIntro = "Les proportions ci-dessous sont celles publiées par le mathématicien belge Marcel Tolkowsky en 1919, qui a établi par le calcul l'angle optimal pour maximiser le retour de lumière (brillance) et la dispersion (feu) d'un diamant taillé en brillant rond — c'est la référence historique encore utilisée comme point de départ aujourd'hui, bien que les laboratoires modernes (GIA notamment) admettent une plage de tolérance autour de ces valeurs plutôt qu'un chiffre unique. Pour les pierres de couleur, dont l'indice de réfraction diffère de celui du diamant, le rapport classique entre couronne et rondiste se situe plutôt entre 25/75 % et 30/70 %. Règle impérative, quelle que soit la pierre : ne jamais tailler une facette de pavillon à un angle inférieur à l'angle critique de l'espèce (les rayons s'échappent alors par le pavillon, effet de « fenêtre »), ni supérieur à l'angle d'extinction (zones sombres). Pour vérifier une pierre déjà taillée, un goniomètre mesure l'angle sur deux facettes principales opposées : l'angle réel de couronne ou de pavillon se déduit de la lecture par la formule (180° − angle mesuré) / 2. Les autres tailles (princesse, ovale, poire, émeraude, coussin...) suivent chacune leur propre diagramme, très variable selon le fabricant du diagramme et l'objectif recherché (rendement de matière contre performance optique) : il n'existe pas de valeur universelle comparable à citer sans se référer à un diagramme précis.",
         angles = listOf(
             LapidaireAngles(
                 coupe = "Brillant rond (Tolkowsky, 1919)",
@@ -155,7 +159,10 @@ object LapidaireInfo {
             LapidaireTip(texte = "Contrôler les points de rencontre (meet points) entre facettes à la loupe sous un éclairage rasant à chaque étape : un point de rencontre manqué se corrige facilement au stade du formage, presque plus une fois le pré-polissage entamé."),
             LapidaireTip(texte = "Adapter la lubrification à la matière du plateau : l'eau convient à la plupart des plateaux diamantés électrodéposés, tandis que certains plateaux de polissage (étain notamment) donnent de meilleurs résultats avec une lubrification à l'huile ou un mélange spécifique — se référer aux recommandations du fabricant du plateau."),
             LapidaireTip(texte = "Vérifier la sensibilité thermique et le clivage de l'espèce avant de tailler : certaines pierres (topaze, kunzite) ont un clivage net qui peut se propager sous la chaleur ou la pression d'un dégrossissage trop agressif."),
-            LapidaireTip(texte = "Tester la symétrie finale en observant la pierre de face sous une source ponctuelle : les reflets des facettes de la couronne doivent former un motif régulier ; une asymétrie visible à l'œil nu à ce stade ne se rattrape plus au polissage.")
+            LapidaireTip(texte = "Tester la symétrie finale en observant la pierre de face sous une source ponctuelle : les reflets des facettes de la couronne doivent former un motif régulier ; une asymétrie visible à l'œil nu à ce stade ne se rattrape plus au polissage."),
+            LapidaireTip(texte = "Ne jamais poser la pierre sur un plateau à l'arrêt puis le démarrer : lancez toujours le plateau en rotation avant d'y présenter la pierre, avec un mouvement pendulaire léger pour éviter qu'elle ne reste figée au même endroit, ce qui userait le disque de façon inégale et userait la pierre elle-même de façon irrégulière."),
+            LapidaireTip(texte = "Une table qui semble « éteinte » alors que le contour de la pierre reste brillant signale un effet de fenêtre : le pavillon est trop peu profond et laisse la lumière s'échapper par en dessous plutôt que de la renvoyer par la table — corrigez en approfondissant l'angle du pavillon, sans jamais dépasser l'angle d'extinction."),
+            LapidaireTip(texte = "Sur les pierres allongées (ovale, navette, poire, coussin...), une croix sombre visible au centre (effet dit « X+ ») trahit des facettes de longueur et de largeur mal raccordées sur le pavillon ; un diagramme de coupe bien étudié pour la forme choisie l'évite mieux qu'un ajustement au cas par cas.")
         ),
         disclaimerTitle = "Un métier qui s'apprend en atelier",
         disclaimerBody = "Cette fiche présente des repères généraux, pas un mode d'emploi complet : la taille de facettes s'apprend par la pratique encadrée, avec du matériel adapté et des consignes de sécurité (protection oculaire et respiratoire, refroidissement continu du plateau) propres à chaque atelier et à chaque machine. Les diagrammes affichés proviennent de sources réelles et libres de droits (voir crédits) ; en leur absence temporaire, seule la légende reste affichée."
@@ -164,7 +171,7 @@ object LapidaireInfo {
     private val en = LapidairePage(
         intro = "The lapidary shapes and polishes rough stones into cut gemstones. The trade covers several specialities — faceting for transparent stones, cabochon cutting for opaque or translucent stones, engraving and ornamental carving — but faceting, the most technical of them, is what gives a stone its play of light. This sheet presents the basic equipment and reference points of the trade; it is written for professionals and informed enthusiasts, not as a first, unsupervised lesson.",
         machinesTitle = "The faceting machine",
-        machinesIntro = "A faceting machine holds the stone at a precise angle and index against a rotating abrasive disc (the lap). Its mechanical precision — to a tenth of a degree for the angle, to the exact point for the index — is what sets professional cutting apart from simple freehand grinding.",
+        machinesIntro = "A faceting machine holds the stone at a precise angle and index against a rotating abrasive disc (the lap). Its mechanical precision — to a tenth of a degree for the angle, to the exact point for the index — is what sets professional cutting apart from simple freehand grinding. Equipment ranges from a simple stick-and-cheater rig (hand-held, fast but imprecise) to machines with a mechanical index head (detachable or fixed, precise but slower) up to computer-controlled models for series cutting.",
         machines = listOf(
             LapidaireComponent(
                 nom = "Mast",
@@ -176,23 +183,27 @@ object LapidaireInfo {
             ),
             LapidaireComponent(
                 nom = "Index gear",
-                description = "Toothed wheel fixed at the end of the quill, usually graduated in 96 notches (sometimes 64 or 32 on older models), which locks the stone's rotation at a precise position for each facet — essential for the symmetry of a cut like the round brilliant, which arranges its facets in 8-fold symmetry."
+                description = "Toothed wheel fixed at the end of the quill, typically available from manufacturers in several counts — 64, 72, 80, 96 or 120 notches — to cover every style of cut; a lower-count \"quick index\" disc is often layered on top of the standard one to speed up positioning when cutting a series of stones. Locking the stone's rotation at a precise position for each facet is essential for the symmetry of a cut like the round brilliant, which arranges its facets in 8-fold symmetry."
             ),
             LapidaireComponent(
                 nom = "Cheater",
-                description = "Fine-adjustment ring layered on top of the angle shown on the arm, allowing corrections of a few tenths of a degree without touching the main setting — useful for compensating uneven lap wear or setting an angle not covered by the index table."
+                description = "Fine-adjustment ring layered on top of the angle shown on the arm. Its main purpose is not to change the cutting angle itself, but to restore parallelism between the facet being cut and the lap once the lap has warped slightly or worn unevenly — a setting to revisit whenever a facet stops polishing uniformly across its whole surface."
             ),
             LapidaireComponent(
                 nom = "Dop",
-                description = "Metal rod (brass or steel) onto which the rough stone is fixed with glue or heated wax before being inserted into the quill. A second, shorter dop is used to flip the stone in order to cut the crown after the pavilion (or the reverse, depending on the method)."
+                description = "A rod (wood, aluminium, or brass — the latter two hold preheating warmth better) onto which the stone is fixed before being inserted into the quill. Fixing is done with heated wax (the most common method, melting around 80°C), cyanoacrylate glue (\"superglue\", fast-setting but leaves residue that is hard to remove), or epoxy (strong hold, but its exothermic cure needs watching on heat-sensitive stones). Sophisticated dops carry a pin, stud, or groove that always orients them the same way in the index head — essential for transferring the stone from one dop to another (cutting the crown after the pavilion) without misalignment or unwanted rotation."
             ),
             LapidaireComponent(
                 nom = "Lap",
-                description = "Rotating metal disc onto which the abrasive is fixed or charged — electroplated or sintered diamond for coarse grinding and facet shaping, tin or copper charged with diamond paste for final polishing. A machine typically carries several interchangeable laps, one per grit stage."
+                description = "Rotating metal disc, typically 6\" (≈152 mm) or 8\" (≈203 mm) in diameter, onto which the abrasive is fixed or charged. Cutting laps (surface-electroplated diamond, or cast metal impregnated with diamond particles by rolling) are distinct from polishing laps, made of softer material. A machine typically carries several interchangeable laps, one per grit stage."
+            ),
+            LapidaireComponent(
+                nom = "Goniometer",
+                description = "A checking instrument that measures the actual angle of an already-cut stone, on two opposite main facets, to verify the cut obtained. The measured angle (C' for the crown, P' for the pavilion) converts via the formula angle = (180° − measured angle) / 2, since the protractor reads the supplementary angle formed with the girdle plane."
             )
         ),
         disquesTitle = "Shaping and polishing discs",
-        disquesIntro = "Cutting proceeds through progressively finer grit stages, each erasing the micro-scratches left by the previous one; skipping a stage leaves marks that final polishing can no longer remove.",
+        disquesIntro = "Cutting proceeds through progressively finer grit stages, each erasing the micro-scratches left by the previous one; skipping a stage leaves marks that final polishing can no longer remove. Lap rotation speed follows the same progression: fairly slow for rough grinding (100 to 300 rpm), faster for facet shaping (300 to 600 rpm), and fastest for polishing (700 to 1000 rpm or more) — always tempered by how sensitive the stone is, slowed without hesitation for a soft or cleavable species.",
         disques = listOf(
             LapidaireDisc(
                 nom = "Coarse grinding",
@@ -212,11 +223,11 @@ object LapidaireInfo {
             LapidaireDisc(
                 nom = "Final polish",
                 grain = "Sub-micron paste or powder (often cerium oxide or very fine diamond)",
-                usage = "Soft lap (tin, copper, lead-tin, or sometimes resin/brass charged with diamond paste) that gives the facets their mirror brilliance without removing material or altering the geometry. The choice of polishing lap depends on the hardness and heat sensitivity of the species being cut."
+                usage = "The polishing lap is chosen by hardness (Mohs scale), from hardest to softest: ceramic (9), copper (3), zinc (2.5), phenolic resin (2.2), acrylic or lead-tin (2), pure tin (1.7), lead (1.5), PVC (1), and wax loaded with various fillers (0.3, variable by formula). It is never the lap itself that polishes, only the powder applied to it, which acts as the abrasive agent — the lap is only a support whose hardness should match the stone's. Dry polishing (powder held by a greasy binder) or wet polishing (powder diluted in water, applied continuously), depending on the method used."
             )
         ),
         anglesTitle = "Reference angles: the round brilliant",
-        anglesIntro = "The proportions below are those published by the Belgian mathematician Marcel Tolkowsky in 1919, who calculated the optimal angle to maximise light return (brilliance) and dispersion (fire) in a round-brilliant-cut diamond — the historical benchmark still used as a starting point today, though modern laboratories (GIA in particular) accept a tolerance range around these values rather than a single figure. Other cuts (princess, oval, pear, emerald, cushion...) each follow their own diagram, which varies widely by diagram designer and by goal (material yield versus optical performance): there is no comparable universal value to cite without referring to a specific diagram.",
+        anglesIntro = "The proportions below are those published by the Belgian mathematician Marcel Tolkowsky in 1919, who calculated the optimal angle to maximise light return (brilliance) and dispersion (fire) in a round-brilliant-cut diamond — the historical benchmark still used as a starting point today, though modern laboratories (GIA in particular) accept a tolerance range around these values rather than a single figure. For coloured stones, whose refractive index differs from diamond's, the classic crown-to-girdle ratio instead sits between 25/75% and 30/70%. A firm rule regardless of species: never cut a pavilion facet at an angle below the species' critical angle (light then escapes through the pavilion, a \"window\" effect), nor above the extinction angle (dark zones). To check an already-cut stone, a goniometer measures the angle on two opposite main facets: the true crown or pavilion angle is derived from the reading via the formula (180° − measured angle) / 2. Other cuts (princess, oval, pear, emerald, cushion...) each follow their own diagram, which varies widely by diagram designer and by goal (material yield versus optical performance): there is no comparable universal value to cite without referring to a specific diagram.",
         angles = listOf(
             LapidaireAngles(
                 coupe = "Round brilliant (Tolkowsky, 1919)",
@@ -254,7 +265,10 @@ object LapidaireInfo {
             LapidaireTip(texte = "Check meet points between facets with a loupe under raking light at every stage: a missed meet point is easy to correct during shaping, almost impossible once pre-polishing has begun."),
             LapidaireTip(texte = "Match lubrication to the lap material: water suits most electroplated diamond laps, while some polishing laps (tin in particular) give better results with oil-based lubrication or a specific mix — follow the lap manufacturer's recommendations."),
             LapidaireTip(texte = "Check the species' heat sensitivity and cleavage before cutting: some stones (topaz, kunzite) have a distinct cleavage that can propagate under the heat or pressure of overly aggressive grinding."),
-            LapidaireTip(texte = "Test final symmetry by viewing the stone face-up under a point light source: the crown facets' reflections should form a regular pattern; an asymmetry visible to the naked eye at this stage can no longer be fixed by polishing.")
+            LapidaireTip(texte = "Test final symmetry by viewing the stone face-up under a point light source: the crown facets' reflections should form a regular pattern; an asymmetry visible to the naked eye at this stage can no longer be fixed by polishing."),
+            LapidaireTip(texte = "Never rest the stone on a lap at a standstill and then start the motor: always get the lap spinning first before presenting the stone, with a light pendulum motion to keep it from sitting still in one spot, which wears the disc unevenly and the stone irregularly."),
+            LapidaireTip(texte = "A table that looks \"dead\" while the stone's outline stays bright signals a window effect: the pavilion is too shallow and lets light escape underneath instead of returning it through the table — fix it by deepening the pavilion angle, never past the extinction angle."),
+            LapidaireTip(texte = "On elongated shapes (oval, marquise, pear, cushion...), a dark cross visible at the centre (the \"X+\" effect) points to pavilion facets whose length and width sides don't meet correctly; a cutting diagram designed for that specific shape prevents it far better than a case-by-case adjustment.")
         ),
         disclaimerTitle = "A trade learned in the workshop",
         disclaimerBody = "This sheet presents general reference points, not a complete manual: faceting is learned through supervised practice, with suitable equipment and safety guidelines (eye and respiratory protection, continuous lap cooling) specific to each workshop and each machine. The diagrams shown come from real, freely licensed sources (see credits); while temporarily unavailable, only the caption is shown."
@@ -263,7 +277,7 @@ object LapidaireInfo {
     private val es = LapidairePage(
         intro = "El lapidario da forma y pule las piedras en bruto hasta convertirlas en piedras talladas. Este oficio abarca varias especialidades — la talla de facetas (faceting) para piedras transparentes, el cabujón para piedras opacas o translúcidas, el grabado y el trabajo ornamental —, pero la talla de facetas, la más técnica, es la que da a una piedra su juego de luz. Esta ficha presenta el equipo y las referencias básicas del oficio; está dirigida a profesionales y aficionados avanzados, no a un primer aprendizaje sin supervisión.",
         machinesTitle = "La máquina de tallar facetas",
-        machinesIntro = "Una máquina de tallar facetas (faceting machine) mantiene la piedra en un ángulo y un índice precisos contra un disco abrasivo giratorio (el plato o lap). Su precisión mecánica —una décima de grado en el ángulo, un punto exacto en el índice— es lo que distingue una talla profesional de un simple desbaste a mano alzada.",
+        machinesIntro = "Una máquina de tallar facetas (faceting machine) mantiene la piedra en un ángulo y un índice precisos contra un disco abrasivo giratorio (el plato o lap). Su precisión mecánica —una décima de grado en el ángulo, un punto exacto en el índice— es lo que distingue una talla profesional de un simple desbaste a mano alzada. El equipo va desde el simple bastón con «cheater» (artesanal, rápido pero poco preciso) hasta las máquinas con cabezal divisor mecánico (desmontable o fijo, precisas pero de producción más lenta) y los modelos controlados por ordenador para la talla en serie.",
         machines = listOf(
             LapidaireComponent(
                 nom = "Mástil (mast)",
@@ -275,23 +289,27 @@ object LapidaireInfo {
             ),
             LapidaireComponent(
                 nom = "Rueda de índice (index gear)",
-                description = "Rueda dentada fijada en el extremo de la caña, generalmente graduada en 96 muescas (a veces 64 o 32 en modelos antiguos), que bloquea la rotación de la piedra en una posición precisa para cada faceta — condición indispensable para la simetría de una talla como el brillante redondo, que reparte sus facetas con simetría de orden 8."
+                description = "Rueda dentada fijada en el extremo de la caña, disponible habitualmente en varias graduaciones —64, 72, 80, 96 o 120 muescas— para cubrir todos los estilos de talla; un disco de «índice rápido», con menos muescas, suele superponerse al índice normal para agilizar el posicionado al tallar una serie de piedras. Bloquear la rotación de la piedra en una posición precisa para cada faceta es condición indispensable para la simetría de una talla como el brillante redondo, que reparte sus facetas con simetría de orden 8."
             ),
             LapidaireComponent(
-                nom = "Cheater (micrómetro de ajuste fino)",
-                description = "Anillo de ajuste fino superpuesto al ángulo indicado en el brazo, que permite corregir unas décimas de grado sin tocar el ajuste principal — útil para compensar el desgaste irregular de un plato o ajustar un ángulo no previsto por la tabla de índice."
+                nom = "Cheater",
+                description = "Anillo de ajuste fino superpuesto al ángulo indicado en el brazo. Su función principal no es modificar el ángulo de talla en sí, sino restablecer el paralelismo entre la faceta en curso y el plato cuando este se ha alabeado ligeramente o desgastado de forma desigual — un ajuste a repetir cada vez que una faceta deja de pulirse de manera uniforme en toda su superficie."
             ),
             LapidaireComponent(
                 nom = "Dop",
-                description = "Varilla metálica (latón o acero) sobre la que se fija la piedra en bruto mediante pegamento o cera caliente, antes de insertarla en la caña. Un segundo dop, más corto, sirve para invertir la piedra y tallar la corona después del pabellón (o al revés, según el método)."
+                description = "Varilla (madera, aluminio o latón —estos dos últimos retienen mejor el calor del precalentamiento—) sobre la que se fija la piedra antes de insertarla en la caña. La fijación se hace con cera caliente (lo más habitual, funde hacia 80 °C), pegamento cianocrilato («superglue», fija rápido pero deja residuos difíciles de retirar) o epoxi (buen agarre, pero su reacción exotérmica hay que vigilarla en piedras sensibles al calor). Los dops más sofisticados llevan una espiga, un resalte o una ranura que los orienta siempre de la misma forma en el divisor — condición indispensable para transferir la piedra de un dop a otro (tallar la corona después del pabellón) sin desalineación ni giro parásito."
             ),
             LapidaireComponent(
                 nom = "Plato (lap)",
-                description = "Disco metálico giratorio sobre el que se fija o se carga el abrasivo — diamante electrodepositado o aglomerado para el desbaste y el formado, estaño o cobre cargado con pasta diamantada para el pulido final. Una máquina suele disponer de varios platos intercambiables, uno por cada etapa de grano."
+                description = "Disco metálico giratorio, generalmente de 6\" (≈152 mm) u 8\" (≈203 mm) de diámetro, sobre el que se fija o se carga el abrasivo. Se distinguen los platos para tallar (diamante electrodepositado en superficie, o fundición impregnada de partículas de diamante por laminado) de los platos para pulir, de material más blando. Una máquina suele disponer de varios platos intercambiables, uno por cada etapa de grano."
+            ),
+            LapidaireComponent(
+                nom = "Goniómetro",
+                description = "Instrumento de control que mide el ángulo real de una piedra ya tallada, sobre dos facetas principales diametralmente opuestas, para verificar la talla obtenida. El ángulo medido (C' para la corona, P' para el pabellón) se convierte mediante la fórmula ángulo = (180° − ángulo medido) / 2, ya que el transportador registra el ángulo suplementario formado con el plano del rondel."
             )
         ),
         disquesTitle = "Discos de formado y pulido",
-        disquesIntro = "La talla avanza por etapas de grano cada vez más fino, cada una elimina las microrrayas dejadas por la anterior; saltarse una etapa deja marcas que el pulido final ya no puede corregir.",
+        disquesIntro = "La talla avanza por etapas de grano cada vez más fino, cada una elimina las microrrayas dejadas por la anterior; saltarse una etapa deja marcas que el pulido final ya no puede corregir. La velocidad de rotación del plato acompaña esta progresión: bastante lenta en el desbaste (100 a 300 rpm), más rápida en el formado de facetas (300 a 600 rpm), y la más rápida en el pulido (700 a 1000 rpm o más) —siempre en función de la sensibilidad de la piedra, reducida sin dudar para una piedra blanda o exfoliable.",
         disques = listOf(
             LapidaireDisc(
                 nom = "Desbaste",
@@ -311,11 +329,11 @@ object LapidaireInfo {
             LapidaireDisc(
                 nom = "Pulido final",
                 grain = "Pasta o polvo submicrónico (a menudo óxido de cerio o diamante muy fino)",
-                usage = "Plato blando (estaño, cobre, plomo-estaño o a veces resina/latón cargados con pasta diamantada) que da a las facetas su brillo espejo, sin eliminar material ni alterar la geometría. La elección del plato de pulido depende de la dureza y la sensibilidad térmica de la especie tallada."
+                usage = "El plato de pulido se elige por dureza (escala de Mohs), de más duro a más blando: cerámica (9), cobre (3), zinc (2,5), fenólico (2,2), plexiglás o plomo-estaño (2), estaño puro (1,7), plomo (1,5), PVC (1) y cera con diversas cargas (0,3, variable según la fórmula). Nunca es el plato en sí el que pule, solo el polvo aplicado sobre él actúa como agente abrasivo — el plato es solo un soporte cuya dureza debe corresponder a la de la piedra. Pulido en seco (polvo fijado con un aglutinante graso) o húmedo (polvo diluido en agua, aplicado de forma continua), según el método elegido."
             )
         ),
         anglesTitle = "Ángulos de referencia: el brillante redondo",
-        anglesIntro = "Las proporciones siguientes son las publicadas por el matemático belga Marcel Tolkowsky en 1919, quien calculó el ángulo óptimo para maximizar el retorno de luz (brillo) y la dispersión (fuego) de un diamante tallado en brillante redondo — es la referencia histórica que aún hoy se usa como punto de partida, aunque los laboratorios modernos (especialmente el GIA) admiten un margen de tolerancia alrededor de estos valores en lugar de una cifra única. Las demás tallas (princesa, ovalada, pera, esmeralda, cojín...) siguen cada una su propio diagrama, muy variable según el creador del diagrama y el objetivo buscado (rendimiento de material frente a rendimiento óptico): no existe un valor universal comparable que citar sin remitirse a un diagrama concreto.",
+        anglesIntro = "Las proporciones siguientes son las publicadas por el matemático belga Marcel Tolkowsky en 1919, quien calculó el ángulo óptimo para maximizar el retorno de luz (brillo) y la dispersión (fuego) de un diamante tallado en brillante redondo — es la referencia histórica que aún hoy se usa como punto de partida, aunque los laboratorios modernos (especialmente el GIA) admiten un margen de tolerancia alrededor de estos valores en lugar de una cifra única. Para las piedras de color, cuyo índice de refracción difiere del diamante, la proporción clásica entre corona y rondel se sitúa más bien entre 25/75 % y 30/70 %. Regla imperativa, sea cual sea la piedra: nunca tallar una faceta de pabellón con un ángulo inferior al ángulo crítico de la especie (la luz se escapa entonces por el pabellón, efecto «ventana»), ni superior al ángulo de extinción (zonas oscuras). Para verificar una piedra ya tallada, un goniómetro mide el ángulo sobre dos facetas principales opuestas: el ángulo real de corona o pabellón se deduce de la lectura mediante la fórmula (180° − ángulo medido) / 2. Las demás tallas (princesa, ovalada, pera, esmeralda, cojín...) siguen cada una su propio diagrama, muy variable según el creador del diagrama y el objetivo buscado (rendimiento de material frente a rendimiento óptico): no existe un valor universal comparable que citar sin remitirse a un diagrama concreto.",
         angles = listOf(
             LapidaireAngles(
                 coupe = "Brillante redondo (Tolkowsky, 1919)",
@@ -353,7 +371,10 @@ object LapidaireInfo {
             LapidaireTip(texte = "Controle los puntos de encuentro (meet points) entre facetas con lupa y luz rasante en cada etapa: un punto de encuentro fallido se corrige fácilmente durante el formado, casi imposible una vez iniciado el prepulido."),
             LapidaireTip(texte = "Adapte la lubricación al material del plato: el agua es adecuada para la mayoría de los platos diamantados electrodepositados, mientras que algunos platos de pulido (el estaño en particular) dan mejores resultados con lubricación a base de aceite o una mezcla específica — siga las recomendaciones del fabricante del plato."),
             LapidaireTip(texte = "Verifique la sensibilidad térmica y el clivaje de la especie antes de tallar: algunas piedras (topacio, kunzita) tienen un clivaje marcado que puede propagarse por el calor o la presión de un desbaste demasiado agresivo."),
-            LapidaireTip(texte = "Compruebe la simetría final observando la piedra de frente bajo una fuente de luz puntual: los reflejos de las facetas de la corona deben formar un patrón regular; una asimetría visible a simple vista en esta etapa ya no se puede corregir en el pulido.")
+            LapidaireTip(texte = "Compruebe la simetría final observando la piedra de frente bajo una fuente de luz puntual: los reflejos de las facetas de la corona deben formar un patrón regular; una asimetría visible a simple vista en esta etapa ya no se puede corregir en el pulido."),
+            LapidaireTip(texte = "Nunca apoye la piedra sobre un plato parado y luego lo ponga en marcha: arranque siempre el plato en rotación antes de presentarle la piedra, con un ligero movimiento pendular para evitar que quede fija en el mismo punto, lo que desgastaría el disco de forma desigual y la piedra de manera irregular."),
+            LapidaireTip(texte = "Una tabla que parece «apagada» mientras el contorno de la piedra sigue brillante señala un efecto ventana: el pabellón es demasiado poco profundo y deja escapar la luz por debajo en lugar de devolverla por la tabla — corríjalo profundizando el ángulo del pabellón, sin superar nunca el ángulo de extinción."),
+            LapidaireTip(texte = "En piedras alargadas (óvalo, marquesa, pera, cojín...), una cruz oscura visible en el centro (el efecto llamado «X+») delata facetas de longitud y anchura mal empalmadas en el pabellón; un diagrama de talla bien estudiado para la forma elegida lo evita mucho mejor que un ajuste caso por caso.")
         ),
         disclaimerTitle = "Un oficio que se aprende en el taller",
         disclaimerBody = "Esta ficha presenta referencias generales, no un manual completo: la talla de facetas se aprende mediante práctica supervisada, con material adecuado y normas de seguridad (protección ocular y respiratoria, refrigeración continua del plato) propias de cada taller y de cada máquina. Los diagramas mostrados proceden de fuentes reales y libres de derechos (véanse los créditos); en su ausencia temporal, solo se muestra la leyenda."
@@ -362,7 +383,7 @@ object LapidaireInfo {
     private val it = LapidairePage(
         intro = "Il lapidario dà forma e lucida le pietre grezze trasformandole in pietre tagliate. Questo mestiere comprende diverse specializzazioni — la sfaccettatura (faceting) per le pietre trasparenti, il cabochon per le pietre opache o traslucide, l'incisione e il lavoro ornamentale — ma la sfaccettatura, la più tecnica, è quella che dà a una pietra il suo gioco di luce. Questa scheda presenta l'attrezzatura e i riferimenti di base del mestiere; è rivolta a professionisti e appassionati esperti, non a un primo apprendimento senza supervisione.",
         machinesTitle = "La macchina sfaccettatrice",
-        machinesIntro = "Una macchina sfaccettatrice (faceting machine) mantiene la pietra a un angolo e un indice precisi contro un disco abrasivo rotante (il piatto, o lap). La sua precisione meccanica — al decimo di grado per l'angolo, al punto esatto per l'indice — è ciò che distingue un taglio professionale da una semplice smerigliatura a mano libera.",
+        machinesIntro = "Una macchina sfaccettatrice (faceting machine) mantiene la pietra a un angolo e un indice precisi contro un disco abrasivo rotante (il piatto, o lap). La sua precisione meccanica — al decimo di grado per l'angolo, al punto esatto per l'indice — è ciò che distingue un taglio professionale da una semplice smerigliatura a mano libera. L'attrezzatura spazia dal semplice bastone con cheater (artigianale, veloce ma poco preciso) alle macchine con testa divisoria meccanica (amovibile o fissa, precise ma di produzione più lenta), fino ai modelli controllati da computer per il taglio in serie.",
         machines = listOf(
             LapidaireComponent(
                 nom = "Albero (mast)",
@@ -374,23 +395,27 @@ object LapidaireInfo {
             ),
             LapidaireComponent(
                 nom = "Ruota d'indice (index gear)",
-                description = "Ruota dentata fissata all'estremità della cannula, generalmente graduata su 96 tacche (talvolta 64 o 32 nei modelli più vecchi), che blocca la rotazione della pietra in una posizione precisa per ogni sfaccettatura — condizione indispensabile per la simmetria di un taglio come il brillante rotondo, che distribuisce le sue sfaccettature con simmetria di ordine 8."
+                description = "Ruota dentata fissata all'estremità della cannula, generalmente disponibile in diverse graduazioni — 64, 72, 80, 96 o 120 tacche — per coprire ogni stile di taglio; un disco a «indice rapido», con meno tacche, si sovrappone spesso all'indice normale per velocizzare il posizionamento quando si taglia una serie di pietre. Bloccare la rotazione della pietra in una posizione precisa per ogni sfaccettatura è condizione indispensabile per la simmetria di un taglio come il brillante rotondo, che distribuisce le sue sfaccettature con simmetria di ordine 8."
             ),
             LapidaireComponent(
-                nom = "Cheater (micrometro di correzione)",
-                description = "Ghiera di regolazione fine sovrapposta all'angolo indicato sul braccio, che permette di correggere di qualche decimo di grado senza toccare la regolazione principale — utile per compensare l'usura irregolare di un piatto o impostare un angolo non previsto dalla tabella d'indice."
+                nom = "Cheater",
+                description = "Ghiera di regolazione fine sovrapposta all'angolo indicato sul braccio. Il suo scopo principale non è modificare l'angolo di taglio in sé, ma ripristinare il parallelismo tra la sfaccettatura in lavorazione e il piatto quando quest'ultimo si è leggermente deformato o usurato in modo irregolare — una regolazione da rifare ogni volta che una sfaccettatura smette di lucidarsi in modo uniforme su tutta la sua superficie."
             ),
             LapidaireComponent(
                 nom = "Dop",
-                description = "Asta metallica (ottone o acciaio) sulla quale la pietra grezza viene fissata con colla o cera calda, prima di essere inserita nella cannula. Un secondo dop, più corto, serve a capovolgere la pietra per tagliare la corona dopo il padiglione (o viceversa, a seconda del metodo)."
+                description = "Asta (legno, alluminio o ottone — questi ultimi due trattengono meglio il calore del preriscaldamento) sulla quale la pietra viene fissata prima di essere inserita nella cannula. Il fissaggio avviene con cera calda (il metodo più comune, fonde intorno agli 80 °C), colla cianoacrilica («superglue», presa rapida ma residui difficili da rimuovere) o epossidica (buona tenuta, ma la sua reazione esotermica va tenuta d'occhio su pietre sensibili al calore). I dop più sofisticati hanno un perno, un risalto o una scanalatura che li orienta sempre allo stesso modo nel divisore — condizione indispensabile per trasferire la pietra da un dop all'altro (tagliare la corona dopo il padiglione) senza disallineamento né rotazione indesiderata."
             ),
             LapidaireComponent(
                 nom = "Piatto (lap)",
-                description = "Disco metallico rotante sul quale è fissato o caricato l'abrasivo — diamante elettrodepositato o sinterizzato per la sgrossatura e la formatura, stagno o rame caricati con pasta diamantata per la lucidatura finale. Una macchina dispone generalmente di più piatti intercambiabili, uno per ogni fase di grana."
+                description = "Disco metallico rotante, generalmente da 6\" (≈152 mm) o 8\" (≈203 mm) di diametro, sul quale è fissato o caricato l'abrasivo. Si distinguono i piatti per tagliare (diamante elettrodepositato in superficie, o ghisa impregnata di particelle di diamante mediante rullatura) dai piatti per lucidare, di materiale più morbido. Una macchina dispone generalmente di più piatti intercambiabili, uno per ogni fase di grana."
+            ),
+            LapidaireComponent(
+                nom = "Goniometro",
+                description = "Strumento di controllo che misura l'angolo reale di una pietra già tagliata, su due sfaccettature principali diametralmente opposte, per verificare il taglio ottenuto. L'angolo misurato (C' per la corona, P' per il padiglione) si converte con la formula angolo = (180° − angolo misurato) / 2, poiché il goniometro rileva l'angolo supplementare formato con il piano della cintura."
             )
         ),
         disquesTitle = "Dischi di formatura e lucidatura",
-        disquesIntro = "Il taglio procede per fasi di grana via via più fine, ciascuna delle quali cancella i micrograffi lasciati dalla precedente; saltare una fase lascia segni che la lucidatura finale non può più correggere.",
+        disquesIntro = "Il taglio procede per fasi di grana via via più fine, ciascuna delle quali cancella i micrograffi lasciati dalla precedente; saltare una fase lascia segni che la lucidatura finale non può più correggere. La velocità di rotazione del piatto accompagna questa progressione: piuttosto lenta nella sgrossatura (100-300 giri/min), più rapida nella formatura delle sfaccettature (300-600 giri/min), e più rapida ancora nella lucidatura (700-1000 giri/min o più) — sempre in base alla sensibilità della pietra, rallentata senza esitazione per una pietra tenera o sfaldabile.",
         disques = listOf(
             LapidaireDisc(
                 nom = "Sgrossatura",
@@ -410,11 +435,11 @@ object LapidaireInfo {
             LapidaireDisc(
                 nom = "Lucidatura finale",
                 grain = "Pasta o polvere submicronica (spesso ossido di cerio o diamante finissimo)",
-                usage = "Piatto morbido (stagno, rame, piombo-stagno o talvolta resina/ottone caricati con pasta diamantata) che dà alle sfaccettature la loro brillantezza a specchio, senza asportare materiale né alterare la geometria. La scelta del piatto di lucidatura varia secondo la durezza e la sensibilità termica della specie tagliata."
+                usage = "Il piatto di lucidatura si sceglie per durezza (scala di Mohs), dal più duro al più morbido: ceramica (9), rame (3), zinco (2,5), fenolico (2,2), plexiglas o piombo-stagno (2), stagno puro (1,7), piombo (1,5), PVC (1) e cera con varie cariche (0,3, variabile a seconda della formula). Non è mai il piatto in sé a lucidare, ma solo la polvere applicata su di esso che funge da agente abrasivo — il piatto è solo un supporto la cui durezza deve corrispondere a quella della pietra. Lucidatura a secco (polvere fissata da un legante grasso) o a umido (polvere diluita in acqua, applicata di continuo), a seconda del metodo scelto."
             )
         ),
         anglesTitle = "Angoli di riferimento: il brillante rotondo",
-        anglesIntro = "Le proporzioni seguenti sono quelle pubblicate dal matematico belga Marcel Tolkowsky nel 1919, che calcolò l'angolo ottimale per massimizzare il ritorno di luce (brillantezza) e la dispersione (fuoco) di un diamante tagliato a brillante rotondo — è il riferimento storico ancora oggi usato come punto di partenza, sebbene i laboratori moderni (in particolare il GIA) ammettano un intervallo di tolleranza attorno a questi valori anziché una cifra unica. Gli altri tagli (princess, ovale, a pera, smeraldo, cuscino...) seguono ciascuno un proprio diagramma, molto variabile a seconda di chi lo ha ideato e dell'obiettivo perseguito (resa di materiale contro resa ottica): non esiste un valore universale comparabile da citare senza fare riferimento a un diagramma preciso.",
+        anglesIntro = "Le proporzioni seguenti sono quelle pubblicate dal matematico belga Marcel Tolkowsky nel 1919, che calcolò l'angolo ottimale per massimizzare il ritorno di luce (brillantezza) e la dispersione (fuoco) di un diamante tagliato a brillante rotondo — è il riferimento storico ancora oggi usato come punto di partenza, sebbene i laboratori moderni (in particolare il GIA) ammettano un intervallo di tolleranza attorno a questi valori anziché una cifra unica. Per le pietre colorate, il cui indice di rifrazione differisce da quello del diamante, il rapporto classico tra corona e cintura si colloca piuttosto tra il 25/75% e il 30/70%. Regola imperativa, qualunque sia la pietra: non tagliare mai una sfaccettatura di padiglione con un angolo inferiore all'angolo critico della specie (la luce sfugge allora dal padiglione, effetto «finestra»), né superiore all'angolo di estinzione (zone scure). Per verificare una pietra già tagliata, un goniometro misura l'angolo su due sfaccettature principali opposte: l'angolo reale di corona o padiglione si deduce dalla lettura con la formula (180° − angolo misurato) / 2. Gli altri tagli (princess, ovale, a pera, smeraldo, cuscino...) seguono ciascuno un proprio diagramma, molto variabile a seconda di chi lo ha ideato e dell'obiettivo perseguito (resa di materiale contro resa ottica): non esiste un valore universale comparabile da citare senza fare riferimento a un diagramma preciso.",
         angles = listOf(
             LapidaireAngles(
                 coupe = "Brillante rotondo (Tolkowsky, 1919)",
@@ -452,7 +477,10 @@ object LapidaireInfo {
             LapidaireTip(texte = "Controllare i punti d'incontro (meet points) tra le sfaccettature con la lente sotto luce radente a ogni fase: un punto d'incontro mancato si corregge facilmente durante la formatura, quasi impossibile una volta iniziata la prelucidatura."),
             LapidaireTip(texte = "Adattare la lubrificazione al materiale del piatto: l'acqua è adatta alla maggior parte dei piatti diamantati elettrodepositati, mentre alcuni piatti di lucidatura (in particolare lo stagno) danno risultati migliori con una lubrificazione a base d'olio o una miscela specifica — attenersi alle raccomandazioni del produttore del piatto."),
             LapidaireTip(texte = "Verificare la sensibilità termica e la sfaldatura della specie prima di tagliare: alcune pietre (topazio, kunzite) hanno una sfaldatura netta che può propagarsi sotto il calore o la pressione di una sgrossatura troppo aggressiva."),
-            LapidaireTip(texte = "Verificare la simmetria finale osservando la pietra frontalmente sotto una sorgente di luce puntiforme: i riflessi delle sfaccettature della corona devono formare un motivo regolare; un'asimmetria visibile a occhio nudo a questo stadio non è più correggibile in fase di lucidatura.")
+            LapidaireTip(texte = "Verificare la simmetria finale osservando la pietra frontalmente sotto una sorgente di luce puntiforme: i riflessi delle sfaccettature della corona devono formare un motivo regolare; un'asimmetria visibile a occhio nudo a questo stadio non è più correggibile in fase di lucidatura."),
+            LapidaireTip(texte = "Non appoggiare mai la pietra su un piatto fermo per poi avviarlo: mettere sempre il piatto in rotazione prima di presentargli la pietra, con un leggero movimento pendolare per evitare che resti ferma nello stesso punto, il che usurerebbe il disco in modo irregolare e la pietra in modo disomogeneo."),
+            LapidaireTip(texte = "Una tavola che appare «spenta» mentre il contorno della pietra resta brillante segnala un effetto finestra: il padiglione è troppo poco profondo e lascia sfuggire la luce da sotto invece di rimandarla attraverso la tavola — correggere approfondendo l'angolo del padiglione, senza mai superare l'angolo di estinzione."),
+            LapidaireTip(texte = "Sulle pietre allungate (ovale, marquise, a pera, cuscino...), una croce scura visibile al centro (il cosiddetto effetto «X+») rivela sfaccettature di lunghezza e larghezza mal raccordate sul padiglione; un diagramma di taglio ben studiato per la forma scelta lo evita molto meglio di un aggiustamento caso per caso.")
         ),
         disclaimerTitle = "Un mestiere che si impara in laboratorio",
         disclaimerBody = "Questa scheda presenta riferimenti generali, non un manuale completo: la sfaccettatura si impara con la pratica seguita da un istruttore, con attrezzatura adeguata e norme di sicurezza (protezione degli occhi e delle vie respiratorie, raffreddamento continuo del piatto) proprie di ogni laboratorio e di ogni macchina. I diagrammi mostrati provengono da fonti reali e libere da diritti (vedi crediti); in loro assenza temporanea, viene mostrata solo la didascalia."
@@ -461,7 +489,7 @@ object LapidaireInfo {
     private val de = LapidairePage(
         intro = "Der Lapidar formt und poliert Rohsteine zu geschliffenen Edelsteinen. Das Handwerk umfasst mehrere Spezialgebiete — den Facettenschliff für transparente Steine, den Cabochonschliff für opake oder durchscheinende Steine, Gravur und ornamentale Arbeiten —, doch der Facettenschliff, der technisch anspruchsvollste, ist es, der einem Stein sein Lichtspiel verleiht. Dieses Merkblatt stellt die Grundausstattung und die wichtigsten Kennwerte des Handwerks vor; es richtet sich an Fachleute und erfahrene Amateure, nicht an einen unbetreuten Erstversuch.",
         machinesTitle = "Die Facettiermaschine",
-        machinesIntro = "Eine Facettiermaschine (faceting machine) hält den Stein in einem präzisen Winkel und Index gegen eine rotierende Schleifscheibe (den Lap). Ihre mechanische Präzision — auf ein Zehntel Grad beim Winkel, auf den Punkt genau beim Index — unterscheidet einen professionellen Schliff von einfachem freihändigem Schleifen.",
+        machinesIntro = "Eine Facettiermaschine (faceting machine) hält den Stein in einem präzisen Winkel und Index gegen eine rotierende Schleifscheibe (den Lap). Ihre mechanische Präzision — auf ein Zehntel Grad beim Winkel, auf den Punkt genau beim Index — unterscheidet einen professionellen Schliff von einfachem freihändigem Schleifen. Die Ausstattung reicht vom einfachen Stab mit Cheater (handwerklich, schnell, aber wenig präzise) über Maschinen mit mechanischem Indexkopf (abnehmbar oder fest, präzise, aber langsamer in der Fertigung) bis zu computergesteuerten Modellen für die Serienfertigung.",
         machines = listOf(
             LapidaireComponent(
                 nom = "Mast",
@@ -473,23 +501,27 @@ object LapidaireInfo {
             ),
             LapidaireComponent(
                 nom = "Indexrad (index gear)",
-                description = "Gezahntes Rad am Ende der Pinole, meist mit 96 Rasten (bei älteren Modellen manchmal 64 oder 32), das die Drehung des Steins für jede Facette an einer präzisen Position feststellt — unerlässlich für die Symmetrie eines Schliffs wie des runden Brillanten, dessen Facetten 8-zählig symmetrisch angeordnet sind."
+                description = "Gezahntes Rad am Ende der Pinole, üblicherweise bei den meisten Herstellern in mehreren Abstufungen erhältlich — 64, 72, 80, 96 oder 120 Rasten —, um jede Schliffart abzudecken; eine „Schnellindex“-Scheibe mit weniger Rasten wird oft über den normalen Index gelegt, um die Positionierung bei einer Serienfertigung zu beschleunigen. Das Feststellen der Steindrehung an einer präzisen Position für jede Facette ist unerlässlich für die Symmetrie eines Schliffs wie des runden Brillanten, dessen Facetten 8-zählig symmetrisch angeordnet sind."
             ),
             LapidaireComponent(
-                nom = "Cheater (Feinjustierring)",
-                description = "Feinjustierring, der dem am Arm angezeigten Winkel überlagert wird und Korrekturen um wenige Zehntelgrad erlaubt, ohne die Hauptgrundeinstellung anzurühren — nützlich, um ungleichmäßigen Verschleiß eines Laps auszugleichen oder einen von der Indextabelle nicht vorgesehenen Winkel einzustellen."
+                nom = "Cheater",
+                description = "Feinjustierring, der dem am Arm angezeigten Winkel überlagert wird. Sein Hauptzweck ist nicht, den Schliffwinkel selbst zu ändern, sondern die Parallelität zwischen der gerade geschliffenen Facette und dem Lap wiederherzustellen, wenn dieser sich leicht verzogen oder ungleichmäßig abgenutzt hat — eine Einstellung, die immer dann neu vorzunehmen ist, wenn eine Facette nicht mehr gleichmäßig über ihre gesamte Fläche poliert."
             ),
             LapidaireComponent(
                 nom = "Dop",
-                description = "Metallstab (Messing oder Stahl), auf den der Rohstein mit Kleber oder erhitztem Wachs befestigt wird, bevor er in die Pinole eingesetzt wird. Ein zweiter, kürzerer Dop dient dazu, den Stein zu wenden, um nach dem Pavillon die Krone zu schleifen (oder umgekehrt, je nach Methode)."
+                description = "Ein Stab (Holz, Aluminium oder Messing — die beiden letzteren halten die Vorwärmwärme besser), auf den der Stein befestigt wird, bevor er in die Pinole eingesetzt wird. Die Befestigung erfolgt mit erhitztem Wachs (am gebräuchlichsten, schmilzt bei rund 80 °C), Cyanacrylat-Kleber („Sekundenkleber“, schnell abbindend, aber schwer zu entfernende Rückstände) oder Epoxidharz (guter Halt, doch dessen exotherme Reaktion ist bei hitzeempfindlichen Steinen zu beachten). Ausgefeiltere Dops tragen einen Stift, einen Nocken oder eine Nut, die sie stets gleich im Indexkopf ausrichten — unerlässlich, um den Stein ohne Dezentrierung oder unerwünschte Drehung von einem Dop auf einen anderen zu übertragen (Krone nach dem Pavillon schleifen)."
             ),
             LapidaireComponent(
                 nom = "Lap",
-                description = "Rotierende Metallscheibe, auf der das Schleifmittel befestigt oder aufgetragen ist — galvanisch gebundener oder gesinterter Diamant zum Grobschliff und zur Facettenformung, mit Diamantpaste beladenes Zinn oder Kupfer für die Endpolitur. Eine Maschine verfügt in der Regel über mehrere austauschbare Laps, einen pro Körnungsstufe."
+                description = "Rotierende Metallscheibe, meist 6\" (≈152 mm) oder 8\" (≈203 mm) im Durchmesser, auf der das Schleifmittel befestigt oder aufgetragen ist. Man unterscheidet Schleif-Laps (oberflächlich galvanisch aufgebrachter Diamant, oder Gusseisen, in das Diamantpartikel eingewalzt wurden) von Polier-Laps aus weicherem Material. Eine Maschine verfügt in der Regel über mehrere austauschbare Laps, einen pro Körnungsstufe."
+            ),
+            LapidaireComponent(
+                nom = "Goniometer",
+                description = "Kontrollinstrument, das den tatsächlichen Winkel eines bereits geschliffenen Steins an zwei diametral gegenüberliegenden Hauptfacetten misst, um den erzielten Schliff zu überprüfen. Der gemessene Winkel (C' für die Krone, P' für den Pavillon) wird mit der Formel Winkel = (180° − gemessener Winkel) / 2 umgerechnet, da das Winkelmessgerät den Ergänzungswinkel zur Rondistenebene abliest."
             )
         ),
         disquesTitle = "Form- und Polierscheiben",
-        disquesIntro = "Der Schliff schreitet in Stufen zunehmend feinerer Körnung voran, wobei jede die von der vorherigen hinterlassenen Mikrokratzer entfernt; das Überspringen einer Stufe hinterlässt Spuren, die die Endpolitur nicht mehr beseitigen kann.",
+        disquesIntro = "Der Schliff schreitet in Stufen zunehmend feinerer Körnung voran, wobei jede die von der vorherigen hinterlassenen Mikrokratzer entfernt; das Überspringen einer Stufe hinterlässt Spuren, die die Endpolitur nicht mehr beseitigen kann. Die Drehzahl des Laps folgt derselben Abstufung: eher langsam beim Grobschliff (100 bis 300 U/min), schneller bei der Facettenformung (300 bis 600 U/min) und am schnellsten beim Polieren (700 bis 1000 U/min oder mehr) — stets abhängig von der Empfindlichkeit des Steins, bei weichen oder spaltbaren Arten ohne Zögern verlangsamt.",
         disques = listOf(
             LapidaireDisc(
                 nom = "Grobschliff",
@@ -509,11 +541,11 @@ object LapidaireInfo {
             LapidaireDisc(
                 nom = "Endpolitur",
                 grain = "Submikron-Paste oder -Pulver (oft Ceroxid oder sehr feiner Diamant)",
-                usage = "Weicher Lap (Zinn, Kupfer, Blei-Zinn oder manchmal mit Diamantpaste beladenes Harz/Messing), der den Facetten ihren spiegelnden Glanz verleiht, ohne Material abzutragen oder die Geometrie zu verändern. Die Wahl des Polier-Laps richtet sich nach Härte und Hitzeempfindlichkeit der geschliffenen Art."
+                usage = "Der Polier-Lap wird nach Härte (Mohs-Skala) gewählt, vom härtesten zum weichsten: Keramik (9), Kupfer (3), Zink (2,5), Phenolharz (2,2), Plexiglas oder Blei-Zinn (2), reines Zinn (1,7), Blei (1,5), PVC (1) sowie Wachs mit verschiedenen Füllstoffen (0,3, je nach Rezeptur variabel). Nie poliert der Lap selbst, sondern nur das darauf aufgetragene Pulver, das als Schleifmittel wirkt — der Lap ist nur ein Träger, dessen Härte zur Härte des Steins passen muss. Trockenpolitur (Pulver durch ein fettiges Bindemittel fixiert) oder Nasspolitur (Pulver in Wasser verdünnt, kontinuierlich aufgetragen), je nach gewählter Methode."
             )
         ),
         anglesTitle = "Referenzwinkel: der runde Brillant",
-        anglesIntro = "Die folgenden Proportionen wurden 1919 vom belgischen Mathematiker Marcel Tolkowsky veröffentlicht, der den optimalen Winkel berechnete, um Lichtrückwurf (Brillanz) und Dispersion (Feuer) eines rund geschliffenen Brillanten zu maximieren — der historische Bezugspunkt, der noch heute als Ausgangswert dient, auch wenn moderne Labore (insbesondere das GIA) statt einer einzelnen Zahl einen Toleranzbereich um diese Werte akzeptieren. Andere Schliffformen (Princess, Oval, Tropfen, Smaragd, Kissen...) folgen jeweils einem eigenen Diagramm, das je nach Entwickler und Zielsetzung (Materialausbeute gegenüber optischer Leistung) stark variiert: Ohne Bezug auf ein konkretes Diagramm gibt es keinen vergleichbaren, allgemeingültigen Wert.",
+        anglesIntro = "Die folgenden Proportionen wurden 1919 vom belgischen Mathematiker Marcel Tolkowsky veröffentlicht, der den optimalen Winkel berechnete, um Lichtrückwurf (Brillanz) und Dispersion (Feuer) eines rund geschliffenen Brillanten zu maximieren — der historische Bezugspunkt, der noch heute als Ausgangswert dient, auch wenn moderne Labore (insbesondere das GIA) statt einer einzelnen Zahl einen Toleranzbereich um diese Werte akzeptieren. Bei Farbsteinen, deren Brechungsindex sich vom Diamanten unterscheidet, liegt das klassische Verhältnis von Krone zu Rondiste eher zwischen 25/75 % und 30/70 %. Zwingende Regel, unabhängig von der Steinart: Niemals eine Pavillonfacette unterhalb des kritischen Winkels der Art schleifen (das Licht entweicht dann durch den Pavillon, „Fenster“-Effekt), noch oberhalb des Auslöschungswinkels (dunkle Zonen). Zur Kontrolle eines bereits geschliffenen Steins misst ein Goniometer den Winkel an zwei gegenüberliegenden Hauptfacetten: Der tatsächliche Kronen- oder Pavillonwinkel ergibt sich aus der Ablesung über die Formel (180° − gemessener Winkel) / 2. Andere Schliffformen (Princess, Oval, Tropfen, Smaragd, Kissen...) folgen jeweils einem eigenen Diagramm, das je nach Entwickler und Zielsetzung (Materialausbeute gegenüber optischer Leistung) stark variiert: Ohne Bezug auf ein konkretes Diagramm gibt es keinen vergleichbaren, allgemeingültigen Wert.",
         angles = listOf(
             LapidaireAngles(
                 coupe = "Runder Brillant (Tolkowsky, 1919)",
@@ -551,7 +583,10 @@ object LapidaireInfo {
             LapidaireTip(texte = "Die Treffpunkte (meet points) zwischen Facetten in jeder Stufe mit der Lupe im Streiflicht kontrollieren: Ein verfehlter Treffpunkt lässt sich während der Formung leicht korrigieren, kaum noch, sobald die Vorpolitur begonnen hat."),
             LapidaireTip(texte = "Die Schmierung an das Lap-Material anpassen: Wasser eignet sich für die meisten galvanisch gebundenen Diamant-Laps, während manche Polier-Laps (insbesondere Zinn) mit ölbasierter Schmierung oder einer speziellen Mischung bessere Ergebnisse liefern — die Empfehlungen des Lap-Herstellers befolgen."),
             LapidaireTip(texte = "Vor dem Schleifen Hitzeempfindlichkeit und Spaltbarkeit der Art prüfen: Manche Steine (Topas, Kunzit) besitzen eine ausgeprägte Spaltbarkeit, die sich unter der Hitze oder dem Druck eines zu aggressiven Grobschliffs fortsetzen kann."),
-            LapidaireTip(texte = "Die endgültige Symmetrie prüfen, indem der Stein von vorn unter einer punktförmigen Lichtquelle betrachtet wird: Die Reflexe der Kronenfacetten sollten ein regelmäßiges Muster bilden; eine in dieser Stufe mit bloßem Auge sichtbare Asymmetrie lässt sich durch Polieren nicht mehr beheben.")
+            LapidaireTip(texte = "Die endgültige Symmetrie prüfen, indem der Stein von vorn unter einer punktförmigen Lichtquelle betrachtet wird: Die Reflexe der Kronenfacetten sollten ein regelmäßiges Muster bilden; eine in dieser Stufe mit bloßem Auge sichtbare Asymmetrie lässt sich durch Polieren nicht mehr beheben."),
+            LapidaireTip(texte = "Den Stein niemals auf einen stillstehenden Lap legen und dann erst starten: Den Lap stets zuerst in Drehung versetzen, bevor der Stein herangeführt wird, mit einer leichten Pendelbewegung, damit er nicht an derselben Stelle verharrt — sonst nutzt sich die Scheibe ungleichmäßig und der Stein unregelmäßig ab."),
+            LapidaireTip(texte = "Eine Tafel, die „tot“ wirkt, während der Umriss des Steins glänzend bleibt, deutet auf einen Fenster-Effekt hin: Der Pavillon ist zu flach und lässt das Licht nach unten entweichen, statt es durch die Tafel zurückzuwerfen — korrigieren Sie dies, indem Sie den Pavillonwinkel vertiefen, jedoch nie über den Auslöschungswinkel hinaus."),
+            LapidaireTip(texte = "Bei länglichen Formen (Oval, Navette, Tropfen, Kissen...) verrät ein dunkles Kreuz in der Mitte (der sogenannte „X+“-Effekt) am Pavillon schlecht aneinander angepasste Facetten in Länge und Breite; ein für die gewählte Form gut durchdachtes Schliffdiagramm vermeidet dies deutlich besser als eine Anpassung von Fall zu Fall.")
         ),
         disclaimerTitle = "Ein Handwerk, das man in der Werkstatt lernt",
         disclaimerBody = "Dieses Merkblatt zeigt allgemeine Anhaltspunkte, keine vollständige Anleitung: Der Facettenschliff wird durch angeleitete Praxis erlernt, mit geeigneter Ausrüstung und Sicherheitsvorschriften (Augen- und Atemschutz, durchgehende Lap-Kühlung), die für jede Werkstatt und jede Maschine spezifisch sind. Die gezeigten Diagramme stammen aus echten, frei lizenzierten Quellen (siehe Credits); solange sie vorübergehend fehlen, wird nur die Bildunterschrift angezeigt."
@@ -560,7 +595,7 @@ object LapidaireInfo {
     private val pt = LapidairePage(
         intro = "O lapidário dá forma e polimento às pedras brutas, transformando-as em pedras lapidadas. Este ofício abrange várias especialidades — a lapidação de facetas (faceting) para pedras transparentes, o cabochão para pedras opacas ou translúcidas, a gravação e o trabalho ornamental —, mas a lapidação de facetas, a mais técnica, é a que confere a uma pedra o seu jogo de luz. Esta ficha apresenta o equipamento e as referências básicas do ofício; destina-se a profissionais e amadores experientes, não a uma primeira aprendizagem sem supervisão.",
         machinesTitle = "A máquina de facetar",
-        machinesIntro = "Uma máquina de facetar (faceting machine) mantém a pedra num ângulo e índice precisos contra um disco abrasivo rotativo (o prato, ou lap). A sua precisão mecânica — a um décimo de grau no ângulo, ao ponto exato no índice — é o que distingue uma lapidação profissional de um simples desbaste à mão livre.",
+        machinesIntro = "Uma máquina de facetar (faceting machine) mantém a pedra num ângulo e índice precisos contra um disco abrasivo rotativo (o prato, ou lap). A sua precisão mecânica — a um décimo de grau no ângulo, ao ponto exato no índice — é o que distingue uma lapidação profissional de um simples desbaste à mão livre. O equipamento vai desde a simples vara com cheater (artesanal, rápida mas pouco precisa) até às máquinas com cabeça divisora mecânica (amovível ou fixa, precisas mas de produção mais lenta), passando pelos modelos controlados por computador para a lapidação em série.",
         machines = listOf(
             LapidaireComponent(
                 nom = "Mastro (mast)",
@@ -572,23 +607,27 @@ object LapidaireInfo {
             ),
             LapidaireComponent(
                 nom = "Roda de índice (index gear)",
-                description = "Roda dentada fixada na extremidade da cânula, geralmente graduada em 96 entalhes (por vezes 64 ou 32 em modelos antigos), que trava a rotação da pedra numa posição precisa para cada faceta — condição indispensável para a simetria de uma lapidação como o brilhante redondo, que distribui as suas facetas com simetria de ordem 8."
+                description = "Roda dentada fixada na extremidade da cânula, geralmente disponível em várias graduações — 64, 72, 80, 96 ou 120 entalhes — para cobrir todos os estilos de lapidação; um disco de «índice rápido», com menos entalhes, sobrepõe-se muitas vezes ao índice normal para acelerar o posicionamento ao lapidar uma série de pedras. Travar a rotação da pedra numa posição precisa para cada faceta é condição indispensável para a simetria de uma lapidação como o brilhante redondo, que distribui as suas facetas com simetria de ordem 8."
             ),
             LapidaireComponent(
-                nom = "Cheater (micrómetro de afinação)",
-                description = "Anel de afinação fina sobreposto ao ângulo indicado no braço, que permite corrigir alguns décimos de grau sem tocar no ajuste principal — útil para compensar o desgaste irregular de um prato ou ajustar um ângulo não previsto pela tabela de índice."
+                nom = "Cheater",
+                description = "Anel de afinação fina sobreposto ao ângulo indicado no braço. A sua função principal não é alterar o ângulo de corte em si, mas restabelecer o paralelismo entre a faceta em curso e o prato quando este empenou ligeiramente ou desgastou de forma desigual — um ajuste a repetir sempre que uma faceta deixa de polir uniformemente em toda a sua superfície."
             ),
             LapidaireComponent(
                 nom = "Dop",
-                description = "Haste metálica (latão ou aço) na qual a pedra bruta é fixada com cola ou cera aquecida, antes de ser inserida na cânula. Um segundo dop, mais curto, serve para inverter a pedra e lapidar a coroa depois do pavilhão (ou o inverso, consoante o método)."
+                description = "Haste (madeira, alumínio ou latão — estes dois últimos retêm melhor o calor do pré-aquecimento) na qual a pedra é fixada antes de ser inserida na cânula. A fixação faz-se com cera aquecida (a mais comum, funde por volta dos 80 °C), cola cianoacrilato («super cola», presa rápida mas com resíduos difíceis de remover) ou epóxi (boa fixação, mas a sua reação exotérmica deve ser vigiada em pedras sensíveis ao calor). Os dops mais sofisticados têm um pino, um ressalto ou uma ranhura que os orienta sempre da mesma forma no divisor — condição indispensável para transferir a pedra de um dop para outro (lapidar a coroa depois do pavilhão) sem desalinhamento nem rotação indesejada."
             ),
             LapidaireComponent(
                 nom = "Prato (lap)",
-                description = "Disco metálico rotativo sobre o qual é fixado ou carregado o abrasivo — diamante eletrodepositado ou sinterizado para o desbaste e o formatado, estanho ou cobre carregados com pasta diamantada para o polimento final. Uma máquina dispõe geralmente de vários pratos intercambiáveis, um por cada etapa de grão."
+                description = "Disco metálico rotativo, geralmente de 6\" (≈152 mm) ou 8\" (≈203 mm) de diâmetro, sobre o qual é fixado ou carregado o abrasivo. Distinguem-se os pratos para desbastar/lapidar (diamante eletrodepositado à superfície, ou ferro fundido impregnado de partículas de diamante por laminagem) dos pratos para polir, de material mais macio. Uma máquina dispõe geralmente de vários pratos intercambiáveis, um por cada etapa de grão."
+            ),
+            LapidaireComponent(
+                nom = "Goniómetro",
+                description = "Instrumento de controlo que mede o ângulo real de uma pedra já lapidada, sobre duas facetas principais diametralmente opostas, para verificar o corte obtido. O ângulo medido (C' para a coroa, P' para o pavilhão) converte-se pela fórmula ângulo = (180° − ângulo medido) / 2, uma vez que o goniómetro regista o ângulo suplementar formado com o plano da cintura."
             )
         ),
         disquesTitle = "Discos de formatação e polimento",
-        disquesIntro = "A lapidação progride por etapas de grão cada vez mais fino, cada uma apagando os microrriscos deixados pela anterior; saltar uma etapa deixa marcas que o polimento final já não consegue corrigir.",
+        disquesIntro = "A lapidação progride por etapas de grão cada vez mais fino, cada uma apagando os microrriscos deixados pela anterior; saltar uma etapa deixa marcas que o polimento final já não consegue corrigir. A velocidade de rotação do prato acompanha esta progressão: bastante lenta no desbaste (100 a 300 rpm), mais rápida na formatação das facetas (300 a 600 rpm), e a mais rápida no polimento (700 a 1000 rpm ou mais) — sempre em função da sensibilidade da pedra, reduzida sem hesitar para uma pedra macia ou clivável.",
         disques = listOf(
             LapidaireDisc(
                 nom = "Desbaste",
@@ -608,11 +647,11 @@ object LapidaireInfo {
             LapidaireDisc(
                 nom = "Polimento final",
                 grain = "Pasta ou pó submicrónico (frequentemente óxido de cério ou diamante muito fino)",
-                usage = "Prato macio (estanho, cobre, chumbo-estanho ou por vezes resina/latão carregados com pasta diamantada) que dá às facetas o seu brilho espelhado, sem remover material nem alterar a geometria. A escolha do prato de polimento varia consoante a dureza e a sensibilidade térmica da espécie lapidada."
+                usage = "O prato de polimento escolhe-se pela dureza (escala de Mohs), do mais duro ao mais macio: cerâmica (9), cobre (3), zinco (2,5), fenólico (2,2), plexiglas ou estanho-chumbo (2), estanho puro (1,7), chumbo (1,5), PVC (1) e cera com diversas cargas (0,3, variável consoante a fórmula). Nunca é o prato em si que polir, apenas o pó aplicado sobre ele que atua como agente abrasivo — o prato é apenas um suporte cuja dureza deve corresponder à da pedra. Polimento a seco (pó fixado por um ligante gordo) ou húmido (pó diluído em água, aplicado continuamente) consoante o método adotado."
             )
         ),
         anglesTitle = "Ângulos de referência: o brilhante redondo",
-        anglesIntro = "As proporções abaixo são as publicadas pelo matemático belga Marcel Tolkowsky em 1919, que calculou o ângulo ótimo para maximizar o retorno de luz (brilho) e a dispersão (fogo) de um diamante lapidado em brilhante redondo — a referência histórica ainda hoje usada como ponto de partida, embora os laboratórios modernos (nomeadamente o GIA) admitam uma margem de tolerância em torno destes valores em vez de um único número. As restantes lapidações (princesa, oval, pera, esmeralda, almofada...) seguem cada uma o seu próprio diagrama, muito variável consoante o criador do diagrama e o objetivo procurado (rendimento de material versus desempenho ótico): não existe um valor universal comparável a citar sem recorrer a um diagrama preciso.",
+        anglesIntro = "As proporções abaixo são as publicadas pelo matemático belga Marcel Tolkowsky em 1919, que calculou o ângulo ótimo para maximizar o retorno de luz (brilho) e a dispersão (fogo) de um diamante lapidado em brilhante redondo — a referência histórica ainda hoje usada como ponto de partida, embora os laboratórios modernos (nomeadamente o GIA) admitam uma margem de tolerância em torno destes valores em vez de um único número. Para as pedras coloridas, cujo índice de refração difere do diamante, a relação clássica entre coroa e cintura situa-se antes entre 25/75 % e 30/70 %. Regra imperativa, seja qual for a pedra: nunca lapidar uma faceta de pavilhão a um ângulo inferior ao ângulo crítico da espécie (a luz escapa então pelo pavilhão, efeito de «janela»), nem superior ao ângulo de extinção (zonas escuras). Para verificar uma pedra já lapidada, um goniómetro mede o ângulo em duas facetas principais opostas: o ângulo real de coroa ou de pavilhão deduz-se da leitura pela fórmula (180° − ângulo medido) / 2. As restantes lapidações (princesa, oval, pera, esmeralda, almofada...) seguem cada uma o seu próprio diagrama, muito variável consoante o criador do diagrama e o objetivo procurado (rendimento de material versus desempenho ótico): não existe um valor universal comparável a citar sem recorrer a um diagrama preciso.",
         angles = listOf(
             LapidaireAngles(
                 coupe = "Brilhante redondo (Tolkowsky, 1919)",
@@ -650,7 +689,10 @@ object LapidaireInfo {
             LapidaireTip(texte = "Controle os pontos de encontro (meet points) entre facetas com lupa e luz rasante em cada etapa: um ponto de encontro falhado corrige-se facilmente durante a formatação, quase impossível depois de iniciado o pré-polimento."),
             LapidaireTip(texte = "Adapte a lubrificação ao material do prato: a água é adequada à maioria dos pratos diamantados eletrodepositados, enquanto alguns pratos de polimento (o estanho em particular) dão melhores resultados com lubrificação à base de óleo ou uma mistura específica — siga as recomendações do fabricante do prato."),
             LapidaireTip(texte = "Verifique a sensibilidade térmica e a clivagem da espécie antes de lapidar: algumas pedras (topázio, kunzite) têm uma clivagem nítida que pode propagar-se sob o calor ou a pressão de um desbaste demasiado agressivo."),
-            LapidaireTip(texte = "Teste a simetria final observando a pedra de frente sob uma fonte de luz pontual: os reflexos das facetas da coroa devem formar um padrão regular; uma assimetria visível a olho nu nesta fase já não se corrige no polimento.")
+            LapidaireTip(texte = "Teste a simetria final observando a pedra de frente sob uma fonte de luz pontual: os reflexos das facetas da coroa devem formar um padrão regular; uma assimetria visível a olho nu nesta fase já não se corrige no polimento."),
+            LapidaireTip(texte = "Nunca pouse a pedra sobre um prato parado para depois o ligar: coloque sempre o prato em rotação antes de apresentar a pedra, com um ligeiro movimento pendular para evitar que fique fixa sempre no mesmo ponto, o que desgastaria o disco de forma desigual e a própria pedra de forma irregular."),
+            LapidaireTip(texte = "Uma mesa que parece «apagada» enquanto o contorno da pedra permanece brilhante indica um efeito de janela: o pavilhão é demasiado raso e deixa a luz escapar por baixo em vez de a devolver pela mesa — corrija aprofundando o ângulo do pavilhão, sem nunca ultrapassar o ângulo de extinção."),
+            LapidaireTip(texte = "Nas pedras alongadas (oval, marquise, pera, almofada...), uma cruz escura visível ao centro (efeito dito «X+») revela facetas de comprimento e largura mal ligadas no pavilhão; um diagrama de corte bem estudado para a forma escolhida evita-o melhor do que um ajuste caso a caso.")
         ),
         disclaimerTitle = "Um ofício que se aprende na oficina",
         disclaimerBody = "Esta ficha apresenta referências gerais, não um manual completo: a lapidação de facetas aprende-se através de prática supervisionada, com equipamento adequado e normas de segurança (proteção ocular e respiratória, arrefecimento contínuo do prato) próprias de cada oficina e de cada máquina. Os diagramas apresentados provêm de fontes reais e livres de direitos (ver créditos); na sua ausência temporária, é apresentada apenas a legenda."
@@ -659,7 +701,7 @@ object LapidaireInfo {
     private val ru = LapidairePage(
         intro = "Огранщик придаёт форму и полирует необработанные камни, превращая их в гранёные драгоценные камни. Это ремесло охватывает несколько специализаций — огранку фасетами (faceting) для прозрачных камней, кабошон для непрозрачных или полупрозрачных камней, гравировку и декоративную обработку, — но именно фасетная огранка, самая техничная из них, придаёт камню игру света. В этой статье представлены базовое оборудование и ориентиры ремесла; она рассчитана на профессионалов и опытных любителей, а не на первое самостоятельное обучение без наставника.",
         machinesTitle = "Огранной станок",
-        machinesIntro = "Огранной станок (faceting machine) удерживает камень под точным углом и индексом относительно вращающегося абразивного диска (планшайбы, или лапа). Именно механическая точность — до десятой доли градуса по углу и до точки по индексу — отличает профессиональную огранку от простой ручной шлифовки.",
+        machinesIntro = "Огранной станок (faceting machine) удерживает камень под точным углом и индексом относительно вращающегося абразивного диска (планшайбы, или лапа). Именно механическая точность — до десятой доли градуса по углу и до точки по индексу — отличает профессиональную огранку от простой ручной шлифовки. Оборудование варьируется от простого штифта с читером (кустарного, быстрого, но неточного) до станков с механической делительной головкой (съёмной или фиксированной, точных, но более медленных в работе), а также моделей с компьютерным управлением для серийной огранки.",
         machines = listOf(
             LapidaireComponent(
                 nom = "Мачта (mast)",
@@ -671,23 +713,27 @@ object LapidaireInfo {
             ),
             LapidaireComponent(
                 nom = "Индексное колесо (index gear)",
-                description = "Зубчатое колесо на конце квиля, обычно градуированное на 96 позиций (иногда 64 или 32 у старых моделей), фиксирующее вращение камня в точном положении для каждой грани — необходимое условие симметрии такой огранки, как круглый бриллиант, чьи грани распределены с симметрией 8-го порядка."
+                description = "Зубчатое колесо на конце квиля, обычно доступное в нескольких градуировках — 64, 72, 80, 96 или 120 позиций — для покрытия всех стилей огранки; диск «быстрого индекса» с меньшим числом позиций часто накладывается поверх обычного индекса, чтобы ускорить позиционирование при огранке серии камней. Фиксация вращения камня в точном положении для каждой грани — необходимое условие симметрии такой огранки, как круглый бриллиант, чьи грани распределены с симметрией 8-го порядка."
             ),
             LapidaireComponent(
                 nom = "Читер (микрометр точной подстройки)",
-                description = "Кольцо тонкой регулировки, накладываемое поверх угла, указанного на рычаге, позволяющее скорректировать несколько десятых долей градуса, не трогая основную настройку — полезно для компенсации неравномерного износа планшайбы или для установки угла, не предусмотренного индексной таблицей."
+                description = "Кольцо тонкой регулировки, накладываемое поверх угла, указанного на рычаге. Его основная функция — не изменение самого угла огранки, а восстановление параллельности между текущей гранью и планшайбой, когда та слегка покоробилась или неравномерно износилась — регулировка, которую следует повторять всякий раз, когда грань перестаёт полироваться равномерно по всей своей поверхности."
             ),
             LapidaireComponent(
                 nom = "Доп (dop)",
-                description = "Металлический стержень (латунь или сталь), на который необработанный камень крепится клеем или разогретым воском перед установкой в квиль. Второй, более короткий доп используется для переворота камня, чтобы огранить коронку после павильона (или наоборот, в зависимости от метода)."
+                description = "Стержень (дерево, алюминий или латунь — последние два лучше удерживают тепло предварительного нагрева), на который камень крепится перед установкой в квиль. Крепление выполняется разогретым воском (наиболее распространённый способ, плавится около 80 °C), цианоакрилатным клеем («суперклей», быстрое схватывание, но с трудноудаляемыми остатками) или эпоксидной смолой (хорошее сцепление, но её экзотермическая реакция требует контроля на термочувствительных камнях). Более совершенные допы имеют штифт, выступ или паз, всегда ориентирующие их одинаково в делительной головке — необходимое условие для переноса камня с одного допа на другой (огранка коронки после павильона) без смещения или нежелательного поворота."
             ),
             LapidaireComponent(
                 nom = "Планшайба (lap)",
-                description = "Вращающийся металлический диск, на который нанесён или закреплён абразив — гальванически осаждённый или спечённый алмаз для обдирки и формирования граней, олово или медь с алмазной пастой для финальной полировки. На станке обычно установлено несколько сменных планшайб, по одной на каждый этап зернистости."
+                description = "Вращающийся металлический диск, обычно диаметром 6\" (≈152 мм) или 8\" (≈203 мм), на который нанесён или закреплён абразив. Различают планшайбы для обдирки/формирования граней (гальванически осаждённый алмаз или чугун, пропитанный алмазными частицами прокаткой) и планшайбы для полировки, более мягкие. На станке обычно установлено несколько сменных планшайб, по одной на каждый этап зернистости."
+            ),
+            LapidaireComponent(
+                nom = "Гониометр",
+                description = "Контрольный инструмент, измеряющий фактический угол уже огранённого камня по двум противоположным основным граням, чтобы проверить полученную огранку. Измеренный угол (C' для коронки, P' для павильона) пересчитывается по формуле угол = (180° − измеренный угол) / 2, поскольку гониометр показывает дополнительный угол, образованный с плоскостью рундиста."
             )
         ),
         disquesTitle = "Диски для формирования граней и полировки",
-        disquesIntro = "Огранка проходит через этапы всё более мелкой зернистости, каждый из которых устраняет микроцарапины, оставленные предыдущим; пропуск этапа оставляет следы, которые финальная полировка уже не устранит.",
+        disquesIntro = "Огранка проходит через этапы всё более мелкой зернистости, каждый из которых устраняет микроцарапины, оставленные предыдущим; пропуск этапа оставляет следы, которые финальная полировка уже не устранит. Скорость вращения планшайбы соответствует этому прогрессу: довольно медленная при обдирке (100–300 об/мин), быстрее при формировании граней (300–600 об/мин) и самая высокая при полировке (700–1000 об/мин и более) — всегда с учётом чувствительности камня, снижая скорость без колебаний для мягкого или спайного камня.",
         disques = listOf(
             LapidaireDisc(
                 nom = "Обдирка",
@@ -707,11 +753,11 @@ object LapidaireInfo {
             LapidaireDisc(
                 nom = "Финальная полировка",
                 grain = "Субмикронная паста или порошок (часто оксид церия или очень мелкий алмаз)",
-                usage = "Мягкая планшайба (олово, медь, свинцово-оловянный сплав или иногда смола/латунь с алмазной пастой), придающая граням зеркальный блеск без снятия материала и изменения геометрии. Выбор полировочной планшайбы зависит от твёрдости и термочувствительности гранимого минерала."
+                usage = "Полировочная планшайба выбирается по твёрдости (шкала Мооса), от самой твёрдой до самой мягкой: керамика (9), медь (3), цинк (2,5), фенопласт (2,2), плексиглас или свинцово-оловянный сплав (2), чистое олово (1,7), свинец (1,5), ПВХ (1) и воск с различными наполнителями (0,3, варьируется в зависимости от состава). Полирует никогда не сама планшайба, а только нанесённый на неё порошок, играющий роль абразива, — планшайба лишь основа, твёрдость которой должна соответствовать твёрдости камня. Сухая полировка (порошок, закреплённый жировым связующим) или мокрая (порошок, разведённый в воде, наносимый непрерывно) — в зависимости от выбранного метода."
             )
         ),
         anglesTitle = "Эталонные углы: круглый бриллиант",
-        anglesIntro = "Приведённые ниже пропорции опубликованы бельгийским математиком Марселем Толковски в 1919 году: он рассчитал оптимальный угол для максимизации возврата света (блеска) и дисперсии (игры) бриллианта круглой огранки — это исторический эталон, до сих пор служащий отправной точкой, хотя современные лаборатории (в частности, GIA) допускают диапазон допуска вокруг этих значений, а не единственное число. Другие огранки (принцесса, овал, груша, изумрудная, кушон...) следуют собственным схемам, сильно различающимся в зависимости от автора схемы и цели (выход материала против оптических характеристик): не существует сопоставимого универсального значения, которое можно было бы привести без обращения к конкретной схеме.",
+        anglesIntro = "Приведённые ниже пропорции опубликованы бельгийским математиком Марселем Толковски в 1919 году: он рассчитал оптимальный угол для максимизации возврата света (блеска) и дисперсии (игры) бриллианта круглой огранки — это исторический эталон, до сих пор служащий отправной точкой, хотя современные лаборатории (в частности, GIA) допускают диапазон допуска вокруг этих значений, а не единственное число. Для цветных камней, показатель преломления которых отличается от алмазного, классическое соотношение между коронкой и рундистом обычно составляет от 25/75 % до 30/70 %. Обязательное правило, независимо от камня: никогда не гранить грань павильона под углом меньше критического угла данного минерала (тогда свет уходит через павильон — эффект «окна»), и не больше угла погасания (тёмные зоны). Для проверки уже огранённого камня гониометр измеряет угол по двум противоположным основным граням: реальный угол коронки или павильона выводится из показания по формуле (180° − измеренный угол) / 2. Другие огранки (принцесса, овал, груша, изумрудная, кушон...) следуют собственным схемам, сильно различающимся в зависимости от автора схемы и цели (выход материала против оптических характеристик): не существует сопоставимого универсального значения, которое можно было бы привести без обращения к конкретной схеме.",
         angles = listOf(
             LapidaireAngles(
                 coupe = "Круглый бриллиант (Толковски, 1919)",
@@ -749,7 +795,10 @@ object LapidaireInfo {
             LapidaireTip(texte = "Проверяйте точки стыковки (meet points) между гранями через лупу при скользящем освещении на каждом этапе: пропущенная точка стыковки легко исправляется на этапе формирования и почти не поддаётся исправлению после начала предварительной полировки."),
             LapidaireTip(texte = "Подбирайте смазку под материал планшайбы: вода подходит для большинства гальванических алмазных планшайб, тогда как некоторые полировочные планшайбы (особенно оловянные) дают лучшие результаты со смазкой на масляной основе или специальной смесью — следуйте рекомендациям производителя планшайбы."),
             LapidaireTip(texte = "Перед огранкой проверяйте термочувствительность и спайность минерала: у некоторых камней (топаз, кунцит) выраженная спайность может распространиться под воздействием тепла или давления слишком агрессивной обдирки."),
-            LapidaireTip(texte = "Проверяйте окончательную симметрию, рассматривая камень анфас под точечным источником света: отражения граней коронки должны образовывать регулярный узор; асимметрия, видимая невооружённым глазом на этом этапе, уже не исправляется полировкой.")
+            LapidaireTip(texte = "Проверяйте окончательную симметрию, рассматривая камень анфас под точечным источником света: отражения граней коронки должны образовывать регулярный узор; асимметрия, видимая невооружённым глазом на этом этапе, уже не исправляется полировкой."),
+            LapidaireTip(texte = "Никогда не кладите камень на неподвижную планшайбу перед запуском: всегда сначала приводите планшайбу во вращение и лишь затем подводите камень, с лёгким маятниковым движением, чтобы он не оставался всё время в одной точке — это неравномерно изнашивает диск и сам камень."),
+            LapidaireTip(texte = "Площадка, которая кажется «погасшей», в то время как контур камня остаётся блестящим, указывает на эффект окна: павильон слишком мелкий и пропускает свет наружу снизу вместо того, чтобы возвращать его через площадку — исправляйте, углубляя угол павильона, никогда не превышая угол погасания."),
+            LapidaireTip(texte = "На вытянутых камнях (овал, маркиз, груша, кушон...) тёмный крест, видимый в центре (так называемый эффект «X+»), выдаёт грани длины и ширины, плохо состыкованные на павильоне; хорошо продуманная схема огранки для выбранной формы предотвращает это лучше, чем подгонка по месту.")
         ),
         disclaimerTitle = "Ремесло, которому учатся в мастерской",
         disclaimerBody = "Эта статья приводит общие ориентиры, а не полное руководство: фасетная огранка осваивается через практику под наставничеством, с подходящим оборудованием и правилами безопасности (защита глаз и органов дыхания, непрерывное охлаждение планшайбы), специфичными для каждой мастерской и каждого станка. Показанные схемы взяты из реальных источников со свободными лицензиями (см. указания авторства); при их временном отсутствии отображается только подпись."
@@ -758,7 +807,7 @@ object LapidaireInfo {
     private val nl = LapidairePage(
         intro = "De lapidarist geeft ruwe stenen vorm en polijst ze tot geslepen edelstenen. Dit vak omvat verschillende specialisaties — het facetteren voor transparante stenen, de cabochon voor ondoorzichtige of doorschijnende stenen, gravure en ornamenteel werk — maar het facetteren, het meest technische onderdeel, is wat een steen zijn lichtspel geeft. Dit overzicht presenteert de basisuitrusting en de belangrijkste kengetallen van het vak; het is bedoeld voor professionals en ervaren liefhebbers, niet als eerste, onbegeleide les.",
         machinesTitle = "De facetteermachine",
-        machinesIntro = "Een facetteermachine (faceting machine) houdt de steen onder een precieze hoek en index tegen een roterende slijpschijf (de lap). De mechanische precisie — tot op een tiende graad voor de hoek, tot op het punt nauwkeurig voor de index — is wat professioneel slijpwerk onderscheidt van eenvoudig uit de vrije hand slijpen.",
+        machinesIntro = "Een facetteermachine (faceting machine) houdt de steen onder een precieze hoek en index tegen een roterende slijpschijf (de lap). De mechanische precisie — tot op een tiende graad voor de hoek, tot op het punt nauwkeurig voor de index — is wat professioneel slijpwerk onderscheidt van eenvoudig uit de vrije hand slijpen. De apparatuur loopt uiteen van de eenvoudige staaf met cheater (ambachtelijk, snel maar weinig precies) tot machines met een mechanische deelkop (verwisselbaar of vast, nauwkeurig maar trager in gebruik), en computergestuurde modellen voor serieproductie.",
         machines = listOf(
             LapidaireComponent(
                 nom = "Mast",
@@ -770,23 +819,27 @@ object LapidaireInfo {
             ),
             LapidaireComponent(
                 nom = "Indexwiel (index gear)",
-                description = "Getand wiel aan het uiteinde van de pen, meestal verdeeld in 96 standen (soms 64 of 32 bij oudere modellen), dat de rotatie van de steen bij elke facet op een precieze positie vastzet — onmisbaar voor de symmetrie van een slijpvorm zoals de ronde briljant, waarvan de facetten volgens een 8-voudige symmetrie zijn verdeeld."
+                description = "Getand wiel aan het uiteinde van de pen, doorgaans verkrijgbaar in meerdere verdelingen — 64, 72, 80, 96 of 120 standen — om alle slijpstijlen te dekken; een „snelindex”-schijf met minder standen wordt vaak over de gewone index gelegd om het positioneren te versnellen bij het slijpen van een reeks stenen. Het vastzetten van de rotatie van de steen op een precieze positie bij elke facet is onmisbaar voor de symmetrie van een slijpvorm zoals de ronde briljant, waarvan de facetten volgens een 8-voudige symmetrie zijn verdeeld."
             ),
             LapidaireComponent(
                 nom = "Cheater (fijnafstelring)",
-                description = "Fijnafstelring die over de op de arm aangegeven hoek wordt gelegd en correcties van enkele tienden van een graad toelaat zonder de hoofdinstelling aan te raken — nuttig om oneffen slijtage van een lap te compenseren of een hoek in te stellen die niet in de indextabel voorkomt."
+                description = "Fijnafstelring die over de op de arm aangegeven hoek wordt gelegd. De belangrijkste functie ervan is niet het wijzigen van de slijphoek zelf, maar het herstellen van de parallelliteit tussen de bewerkte facet en de lap wanneer die licht is kromgetrokken of ongelijk versleten — een afstelling die herhaald moet worden telkens wanneer een facet niet meer gelijkmatig over het hele oppervlak polijst."
             ),
             LapidaireComponent(
                 nom = "Dop",
-                description = "Metalen staafje (messing of staal) waarop de ruwe steen met lijm of verwarmde was wordt bevestigd, voordat het in de pen wordt gestoken. Een tweede, kortere dop wordt gebruikt om de steen om te draaien en na het paviljoen de kroon te slijpen (of omgekeerd, afhankelijk van de methode)."
+                description = "Staafje (hout, aluminium of messing — die laatste twee houden de warmte van het voorverwarmen beter vast) waarop de steen wordt bevestigd voordat het in de pen wordt gestoken. De bevestiging gebeurt met verwarmde was (meest gebruikelijk, smelt rond 80 °C), cyanoacrylaatlijm („secondelijm”, snel uithardend maar met moeilijk te verwijderen resten) of epoxy (goede hechting, maar de exotherme reactie ervan moet in de gaten worden gehouden bij warmtegevoelige stenen). De meer geavanceerde dops hebben een pen, een nokje of een groef die ze altijd op dezelfde manier in de deelkop oriënteert — onmisbaar om de steen zonder verschuiving of ongewenste rotatie van de ene dop naar de andere over te brengen (de kroon slijpen na het paviljoen)."
             ),
             LapidaireComponent(
                 nom = "Lap",
-                description = "Roterende metalen schijf waarop het slijpmiddel is bevestigd of aangebracht — galvanisch of gesinterd diamant voor het grofslijpen en facetteren, tin of koper met diamantpasta voor de eindpolitoer. Een machine heeft doorgaans meerdere verwisselbare lappen, één per korrelfase."
+                description = "Roterende metalen schijf, meestal 6\" (≈152 mm) of 8\" (≈203 mm) in diameter, waarop het slijpmiddel is bevestigd of aangebracht. Er wordt onderscheid gemaakt tussen lappen voor grofslijpen/facetteren (galvanisch diamant of gietijzer geïmpregneerd met diamantdeeltjes door walsen) en zachtere polijstlappen. Een machine heeft doorgaans meerdere verwisselbare lappen, één per korrelfase."
+            ),
+            LapidaireComponent(
+                nom = "Goniometer",
+                description = "Controle-instrument dat de werkelijke hoek van een reeds geslepen steen meet op twee tegenoverliggende hoofdfacetten, om de bereikte slijpvorm te verifiëren. De gemeten hoek (C' voor de kroon, P' voor het paviljoen) wordt omgezet met de formule hoek = (180° − gemeten hoek) / 2, aangezien de goniometer de aanvullende hoek meet die met het rondistevlak wordt gevormd."
             )
         ),
         disquesTitle = "Vorm- en polijstschijven",
-        disquesIntro = "Het slijpen verloopt in steeds fijnere korrelfasen, waarbij elke fase de microkrasjes van de vorige verwijdert; het overslaan van een fase laat sporen achter die de eindpolitoer niet meer kan wegwerken.",
+        disquesIntro = "Het slijpen verloopt in steeds fijnere korrelfasen, waarbij elke fase de microkrasjes van de vorige verwijdert; het overslaan van een fase laat sporen achter die de eindpolitoer niet meer kan wegwerken. De rotatiesnelheid van de lap volgt deze opbouw: vrij traag bij het grofslijpen (100 tot 300 tpm), sneller bij het facetteren (300 tot 600 tpm), en het snelst bij het polijsten (700 tot 1000 tpm of meer) — steeds afhankelijk van de gevoeligheid van de steen, zonder aarzelen vertraagd voor een zachte of splijtbare steen.",
         disques = listOf(
             LapidaireDisc(
                 nom = "Grofslijpen",
@@ -806,11 +859,11 @@ object LapidaireInfo {
             LapidaireDisc(
                 nom = "Eindpolitoer",
                 grain = "Submicron pasta of poeder (vaak ceriumoxide of zeer fijn diamant)",
-                usage = "Zachte lap (tin, koper, lood-tin of soms hars/messing met diamantpasta) die de facetten hun spiegelglans geeft, zonder materiaal weg te nemen of de geometrie te veranderen. De keuze van de polijstlap hangt af van de hardheid en warmtegevoeligheid van de geslepen soort."
+                usage = "De polijstlap wordt gekozen op hardheid (schaal van Mohs), van hardst naar zachtst: keramiek (9), koper (3), zink (2,5), fenolhars (2,2), plexiglas of lood-tin (2), zuiver tin (1,7), lood (1,5), pvc (1) en was met diverse vulstoffen (0,3, variabel per samenstelling). Nooit is het de lap zelf die polijst, alleen het erop aangebrachte poeder werkt als slijpmiddel — de lap is slechts een drager waarvan de hardheid moet overeenkomen met die van de steen. Droog polijsten (poeder vastgehouden door een vettig bindmiddel) of nat (poeder aangelengd met water, continu aangebracht), afhankelijk van de gekozen methode."
             )
         ),
         anglesTitle = "Referentiehoeken: de ronde briljant",
-        anglesIntro = "Onderstaande verhoudingen zijn die welke de Belgische wiskundige Marcel Tolkowsky in 1919 publiceerde: hij berekende de optimale hoek om lichtterugkaatsing (schittering) en dispersie (vuur) van een rond geslepen briljant te maximaliseren — het historische referentiepunt dat nog steeds als uitgangspunt dient, hoewel moderne laboratoria (met name GIA) een tolerantiemarge rond deze waarden aanvaarden in plaats van één vast cijfer. Andere slijpvormen (prinses, ovaal, peer, smaragd, kussen...) volgen elk hun eigen diagram, dat sterk verschilt per ontwerper en doel (materiaalopbrengst tegenover optische prestatie): er bestaat geen vergelijkbare universele waarde die zonder verwijzing naar een precies diagram kan worden aangehaald.",
+        anglesIntro = "Onderstaande verhoudingen zijn die welke de Belgische wiskundige Marcel Tolkowsky in 1919 publiceerde: hij berekende de optimale hoek om lichtterugkaatsing (schittering) en dispersie (vuur) van een rond geslepen briljant te maximaliseren — het historische referentiepunt dat nog steeds als uitgangspunt dient, hoewel moderne laboratoria (met name GIA) een tolerantiemarge rond deze waarden aanvaarden in plaats van één vast cijfer. Voor gekleurde stenen, met een andere brekingsindex dan diamant, ligt de klassieke verhouding tussen kroon en rondiste eerder tussen 25/75% en 30/70%. Dwingende regel, ongeacht de steen: slijp een paviljoenfacet nooit onder de kritieke hoek van de soort (het licht ontsnapt dan via het paviljoen, het „venstereffect”), en nooit boven de uitdovingshoek (donkere zones). Om een reeds geslepen steen te controleren, meet een goniometer de hoek op twee tegenoverliggende hoofdfacetten: de werkelijke kroon- of paviljoenhoek wordt uit de aflezing afgeleid met de formule (180° − gemeten hoek) / 2. Andere slijpvormen (prinses, ovaal, peer, smaragd, kussen...) volgen elk hun eigen diagram, dat sterk verschilt per ontwerper en doel (materiaalopbrengst tegenover optische prestatie): er bestaat geen vergelijkbare universele waarde die zonder verwijzing naar een precies diagram kan worden aangehaald.",
         angles = listOf(
             LapidaireAngles(
                 coupe = "Ronde briljant (Tolkowsky, 1919)",
@@ -848,7 +901,10 @@ object LapidaireInfo {
             LapidaireTip(texte = "Controleer de ontmoetingspunten (meet points) tussen facetten in elke fase met een loep bij strijklicht: een gemist ontmoetingspunt is tijdens het vormen makkelijk te corrigeren, nauwelijks meer zodra de voorpolitoer is begonnen."),
             LapidaireTip(texte = "Pas de smering aan het lapmateriaal aan: water is geschikt voor de meeste galvanische diamantlappen, terwijl sommige polijstlappen (met name tin) betere resultaten geven met oliegebaseerde smering of een specifiek mengsel — volg de aanbevelingen van de lapfabrikant."),
             LapidaireTip(texte = "Controleer de warmtegevoeligheid en de splijting van de soort vóór het slijpen: sommige stenen (topaas, kunziet) hebben een duidelijke splijting die zich onder de hitte of druk van een te agressief grofslijpen kan voortzetten."),
-            LapidaireTip(texte = "Test de uiteindelijke symmetrie door de steen van voren onder een puntvormige lichtbron te bekijken: de reflecties van de kroonfacetten moeten een regelmatig patroon vormen; een asymmetrie die in deze fase met het blote oog zichtbaar is, kan niet meer door polijsten worden verholpen.")
+            LapidaireTip(texte = "Test de uiteindelijke symmetrie door de steen van voren onder een puntvormige lichtbron te bekijken: de reflecties van de kroonfacetten moeten een regelmatig patroon vormen; een asymmetrie die in deze fase met het blote oog zichtbaar is, kan niet meer door polijsten worden verholpen."),
+            LapidaireTip(texte = "Leg de steen nooit op een stilstaande lap om die daarna te starten: laat de lap altijd eerst draaien voordat u de steen aanbiedt, met een lichte pendelbeweging zodat hij niet steeds op dezelfde plek blijft — dat slijt de schijf ongelijk en de steen zelf onregelmatig."),
+            LapidaireTip(texte = "Een tafel die „dof” lijkt terwijl de omtrek van de steen wel glanst, wijst op een venstereffect: het paviljoen is te ondiep en laat het licht er onderaan uit ontsnappen in plaats van het via de tafel terug te kaatsen — corrigeer door de paviljoenhoek te verdiepen, zonder ooit de uitdovingshoek te overschrijden."),
+            LapidaireTip(texte = "Bij langwerpige vormen (ovaal, markies, peer, kussen...) verraadt een donker kruis zichtbaar in het midden (het zogenoemde „X+-effect”) lengte- en breedtefacetten die slecht op elkaar aansluiten op het paviljoen; een goed doordacht slijpdiagram voor de gekozen vorm voorkomt dit beter dan een aanpassing per geval.")
         ),
         disclaimerTitle = "Een vak dat je in de werkplaats leert",
         disclaimerBody = "Dit overzicht geeft algemene richtlijnen, geen volledige handleiding: facetteren wordt geleerd door begeleide praktijk, met geschikte apparatuur en veiligheidsvoorschriften (oog- en ademhalingsbescherming, continue lapkoeling) die per werkplaats en per machine verschillen. De getoonde diagrammen zijn afkomstig uit echte, vrij te gebruiken bronnen (zie credits); zolang ze tijdelijk ontbreken, wordt alleen het onderschrift getoond."
@@ -857,7 +913,7 @@ object LapidaireInfo {
     private val zh = LapidairePage(
         intro = "宝石切磨师将原石加工、抛光成琢磨宝石。这一行业涵盖多个专业方向——针对透明宝石的刻面切磨（faceting）、针对不透明或半透明宝石的凸圆面（cabochon）切磨，以及雕刻和装饰性加工——但技术含量最高的刻面切磨，正是赋予宝石光彩的关键工艺。本篇介绍这一行业的基本设备与参考要点，面向专业人士和有经验的爱好者，而非无人指导的初学者。",
         machinesTitle = "刻面切磨机",
-        machinesIntro = "刻面切磨机（faceting machine）以精确的角度和刻度索引将宝石抵住旋转的磨盘（lap）。其机械精度——角度精确到十分之一度，索引精确到点位——正是专业切磨区别于徒手打磨的关键。",
+        machinesIntro = "刻面切磨机（faceting machine）以精确的角度和刻度索引将宝石抵住旋转的磨盘（lap）。其机械精度——角度精确到十分之一度，索引精确到点位——正是专业切磨区别于徒手打磨的关键。设备种类从简单的带微调器手工杆（手工制作，速度快但精度低），到配备机械分度头（可拆卸式或固定式，精度高但加工较慢）的切磨机，再到用于批量切磨的电脑控制机型，各不相同。",
         machines = listOf(
             LapidaireComponent(
                 nom = "立柱（mast）",
@@ -869,23 +925,27 @@ object LapidaireInfo {
             ),
             LapidaireComponent(
                 nom = "索引齿轮（index gear）",
-                description = "固定在套筒末端的齿轮，通常刻有96个刻度（旧型号有时为64或32），可将宝石的旋转锁定在每个刻面对应的精确位置——这是圆形明亮式切工等按8重对称分布刻面的切工所必需的对称性保证。"
+                description = "固定在套筒末端的齿轮，通常有64、72、80、96或120等多种刻度可选，以适应各种切工风格；刻度更少的「快速索引」盘常叠加在常规索引上，以便在批量切磨时加快定位。将宝石的旋转锁定在每个刻面对应的精确位置，是圆形明亮式切工等按8重对称分布刻面的切工所必需的对称性保证。"
             ),
             LapidaireComponent(
                 nom = "微调器（cheater）",
-                description = "叠加在臂上所示角度之上的精细调节环，可在不改动主设定的情况下修正几分之一度——用于补偿磨盘不均匀磨损，或设定索引表未预设的角度。"
+                description = "叠加在臂上所示角度之上的精细调节环。它的主要作用并非改变切磨角度本身，而是在磨盘出现轻微翘曲或不均匀磨损时，恢复正在切磨的刻面与磨盘之间的平行关系——每当某个刻面无法在整个表面均匀抛光时，都需要重新进行这一调整。"
             ),
             LapidaireComponent(
                 nom = "夹持杆（dop）",
-                description = "金属杆（黄铜或钢），原石在插入套筒前用胶水或加热的蜡固定在其上。第二根较短的夹持杆用于翻转宝石，以便在亭部之后切磨冠部（或按方法相反顺序）。"
+                description = "杆件（木、铝或黄铜——后两者更能保持预热的热量），宝石在插入套筒前固定在其上。固定方式包括加热的蜡（最常见，约80°C熔化）、氰基丙烯酸酯胶（「瞬干胶」，粘接快但残留物难以清除）或环氧树脂（粘接牢固，但其放热反应需在对热敏感的宝石上加以注意）。较精密的夹持杆带有定位销、凸台或凹槽，可确保每次装入分度头时方向一致——这是将宝石从一根夹持杆转移到另一根（例如亭部切磨完成后再切磨冠部）而不发生错位或意外转动的必要条件。"
             ),
             LapidaireComponent(
                 nom = "磨盘（lap）",
-                description = "旋转金属圆盘，其上固定或涂敷磨料——电镀或烧结金刚石用于粗磨与刻面成型，锡或铜配以金刚石抛光膏用于最终抛光。一台切磨机通常配备多个可更换磨盘，每种粒度对应一片。"
+                description = "旋转金属圆盘，直径通常为6英寸（约152毫米）或8英寸（约203毫米），其上固定或涂敷磨料。粗磨/刻面成型磨盘（表面电镀金刚石，或以轧制方式将金刚石颗粒嵌入铸铁）与质地更软的抛光磨盘有所区别。一台切磨机通常配备多个可更换磨盘，每种粒度对应一片。"
+            ),
+            LapidaireComponent(
+                nom = "测角仪（goniometer）",
+                description = "一种检验仪器，在两个相对的主刻面上测量已切磨宝石的实际角度，以核实所得切工。测得角度（冠部为C'，亭部为P'）需通过公式：角度 = (180° − 测得角度) / 2 换算，因为测角仪读取的是与腰面所成的补角。"
             )
         ),
         disquesTitle = "成型与抛光磨盘",
-        disquesIntro = "切磨过程按粒度由粗到细逐级进行，每一级都会磨去上一级留下的微划痕；跳过某一级会留下最终抛光也无法消除的痕迹。",
+        disquesIntro = "切磨过程按粒度由粗到细逐级进行，每一级都会磨去上一级留下的微划痕；跳过某一级会留下最终抛光也无法消除的痕迹。磨盘转速随各阶段而变化：粗磨阶段较慢（每分钟100至300转），刻面成型阶段较快（每分钟300至600转），抛光阶段最快（每分钟700至1000转甚至更高）——始终需根据宝石的敏感程度调整，遇到质地较软或易解理的宝石应毫不犹豫地降低转速。",
         disques = listOf(
             LapidaireDisc(
                 nom = "粗磨",
@@ -905,11 +965,11 @@ object LapidaireInfo {
             LapidaireDisc(
                 nom = "最终抛光",
                 grain = "亚微米级抛光膏或粉末（常为氧化铈或极细金刚石）",
-                usage = "使用软质磨盘（锡、铜、铅锡合金，或有时配以金刚石抛光膏的树脂/黄铜），使刻面呈现镜面光泽，而不去除材料或改变几何形状。抛光磨盘的选择取决于所切磨宝石的硬度与热敏感性。"
+                usage = "抛光磨盘按硬度（莫氏硬度）由硬到软选择：陶瓷（9）、铜（3）、锌（2.5）、酚醛树脂（2.2）、有机玻璃或铅锡合金（2）、纯锡（1.7）、铅（1.5）、聚氯乙烯（1），以及加入各种填料的蜡（0.3，因配方而异）。真正起抛光作用的从来不是磨盘本身，而是涂敷其上的粉末，磨料才是抛光的关键——磨盘只是载体，其硬度须与宝石相匹配。可选择干抛（粉末以油性粘合剂固定）或湿抛（粉末以水调和、连续涂敷），视所用方法而定。"
             )
         ),
         anglesTitle = "参考角度：圆形明亮式切工",
-        anglesIntro = "以下比例出自比利时数学家马塞尔·托尔科夫斯基（Marcel Tolkowsky）1919年发表的计算结果，他推算出能使圆形明亮式切工钻石的回光（明亮度）与色散（火彩）最大化的最佳角度——这是至今仍被用作起点的历史基准，尽管现代实验室（尤其是GIA）在这些数值周围采用一个容差范围，而非单一数字。其他切工（公主方形、椭圆形、梨形、祖母绿形、垫形等）各自遵循不同的图纸，因设计者和目标（材料出成率与光学表现之间的取舍）不同而差异很大：若不参照具体图纸，并不存在一个可比较的通用数值。",
+        anglesIntro = "以下比例出自比利时数学家马塞尔·托尔科夫斯基（Marcel Tolkowsky）1919年发表的计算结果，他推算出能使圆形明亮式切工钻石的回光（明亮度）与色散（火彩）最大化的最佳角度——这是至今仍被用作起点的历史基准，尽管现代实验室（尤其是GIA）在这些数值周围采用一个容差范围，而非单一数字。对于折射率不同于钻石的彩色宝石，冠部与腰部的经典比例则更接近25/75%至30/70%之间。无论何种宝石都须遵守的硬性规则：亭部刻面角度绝不能低于该矿物的临界角（否则光线会从亭部漏出，形成「漏光窗」效应），也不能高于消光角（形成暗区）。要核验已切磨完成的宝石，可用测角仪在两个相对的主刻面上测量角度：实际的冠角或亭角可通过公式 (180° − 测得角度) / 2 由读数推算得出。其他切工（公主方形、椭圆形、梨形、祖母绿形、垫形等）各自遵循不同的图纸，因设计者和目标（材料出成率与光学表现之间的取舍）不同而差异很大：若不参照具体图纸，并不存在一个可比较的通用数值。",
         angles = listOf(
             LapidaireAngles(
                 coupe = "圆形明亮式切工（托尔科夫斯基，1919年）",
@@ -947,7 +1007,10 @@ object LapidaireInfo {
             LapidaireTip(texte = "在每个阶段用放大镜在侧光下检查刻面之间的交会点（meet points）：交会点偏差在成型阶段容易修正，一旦进入预抛光阶段则几乎无法再修正。"),
             LapidaireTip(texte = "根据磨盘材质调整润滑方式：水适用于大多数电镀金刚石磨盘，而某些抛光磨盘（尤其是锡质磨盘）使用油性润滑或特定配方效果更佳——请遵循磨盘制造商的建议。"),
             LapidaireTip(texte = "切磨前检查该矿物的热敏感性与解理：某些宝石（黄玉、锂辉石）具有明显解理，在粗磨过度侵蚀产生的高温或压力下可能扩展。"),
-            LapidaireTip(texte = "通过在点光源下正面观察宝石来检验最终对称性：冠部刻面的反光应形成规则图案；此阶段肉眼可见的不对称，抛光阶段已无法纠正。")
+            LapidaireTip(texte = "通过在点光源下正面观察宝石来检验最终对称性：冠部刻面的反光应形成规则图案；此阶段肉眼可见的不对称，抛光阶段已无法纠正。"),
+            LapidaireTip(texte = "切勿将宝石放在静止的磨盘上再启动磨盘：应始终先让磨盘转动起来，再轻轻以钟摆式动作将宝石送入接触，避免宝石始终停留在同一点，否则会使磨盘磨损不均，宝石本身也会磨损不规则。"),
+            LapidaireTip(texte = "若台面看起来「发暗」而宝石轮廓仍然明亮，说明出现了漏光窗效应：亭部过浅，光线从下方漏出而未能经台面反射回来——应加深亭部角度加以纠正，但绝不能超过消光角。"),
+            LapidaireTip(texte = "在细长形宝石（椭圆形、榄尖形、梨形、垫形等）上，中央出现明显暗十字（所谓「X+效应」）表明亭部长宽方向的刻面未能良好衔接；针对所选形状精心设计的切磨图纸，比逐案调整更能有效避免这一问题。")
         ),
         disclaimerTitle = "在工坊中学习的手艺",
         disclaimerBody = "本篇提供的是通用参考要点，而非完整操作手册：刻面切磨需要通过有指导的实践学习，配合适当设备，以及每个工坊、每台机器各自特有的安全规范（护目护呼吸装备、磨盘持续冷却）。所展示的图解均来自真实、可自由使用授权的来源（见版权说明）；在暂时缺失图片时，仅显示图注文字。"
