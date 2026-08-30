@@ -141,6 +141,7 @@ GEMS = [
     ("zircon-hyacinthe", ['Hyacinth zircon', 'Jacinth zircon'], ['hyacinth', 'zircon', 'jacinth'], (BRUTE, FACETTEE)),
     ("zircon-dore", ['Golden zircon', 'Yellow zircon'], ['zircon'], (BRUTE, FACETTEE)),
     ("pyrite", ['Pyrite'], ['pyrite'], (BRUTE, FACETTEE)),
+    ("marcassite", ['Marcasite'], ['marcasite'], (BRUTE, FACETTEE)),
     ("scheelite", ['Scheelite'], ['scheelite'], (BRUTE, FACETTEE)),
     ("tourmaline-jaune", ['Yellow tourmaline faceted', 'Tourmaline yellow Malawi', 'Elbaite yellow crystal'], ['tourmaline', 'elbaite'], (BRUTE, FACETTEE)),
     ("bastnasite", ['Bastnasite', 'Bastnäsite'], ['bastnasite', 'bastnäsite'], (BRUTE, FACETTEE)),
@@ -252,6 +253,7 @@ GEMS = [
     ("opale-noire", ['Black opal Lightning Ridge', 'Black opal gemstone'], ['black opal'], (BRUTE, FACETTEE)),
     ("opale-boulder", ['Boulder opal', 'Boulder opal Queensland'], ['boulder opal'], (BRUTE, FACETTEE)),
     ("opale-ethiopie", ['Ethiopian opal', 'Welo opal', 'Ethiopian opal gemstone'], ['ethiopian opal', 'welo opal'], (BRUTE, FACETTEE)),
+    ("astrophyllite", ['Astrophyllite', 'Astrophyllite cabochon', 'Astrophyllite crystal'], ['astrophyllite'], (BRUTE, FACETTEE)),
 
     # Météorites (section dédiée, distincte du catalogue Gemmologie)
     ("meteorite-gibeon", ['Gibeon meteorite slice', 'Gibeon meteorite Widmanstatten', 'Gibeon meteorite specimen'], ['gibeon'], (BRUTE, FACETTEE)),

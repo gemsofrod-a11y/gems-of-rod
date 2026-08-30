@@ -1523,5 +1523,19 @@ object GemTranslationsIt {
             inclusions = "Natura idrofana (porosa) che può assorbire acqua e modificarne temporaneamente la trasparenza; struttura interna a sferule di silice responsabile del gioco di colore.",
             lithotherapie = "L'opale d'Etiopia è ritenuta capace di amplificare le emozioni e la creatività, come le altre opali preziose."
         ),
+        "marcassite" to GemTranslation(
+            nom = "Marcasite",
+            descriptionCourte = "Il polimorfo ortorombico e più pallido della pirite, in ventagli metallici nei noduli di selce.",
+            descriptionLongue = "Chimicamente identica alla pirite (FeS₂) ma cristallizzante nel sistema ortorombico, la marcasite forma aggregati a ventaglio o a «cresta di gallo» di un giallo bronzo più pallido e argenteo. Si trova tipicamente in noduli all'interno della selce e del gesso, o associata a giacimenti di carbone. Più instabile della pirite, si decompone più facilmente se esposta a lungo all'umidità.",
+            particularites = "La «bigiotteria in marcasite» storica (georgiana, vittoriana, Art Déco) utilizza in realtà quasi sempre pirite tagliata a faccette: la vera marcasite, troppo fragile e instabile, non si presta alla sfaccettatura.",
+            lithotherapie = "Come la pirite, la marcasite è associata alla protezione e al radicamento, con una reputazione particolare di calma mentale e chiarezza."
+        ),
+        "astrophyllite" to GemTranslation(
+            nom = "Astrofillite",
+            descriptionCourte = "Fasci dorati a forma di stella, racchiusi in una roccia scura.",
+            descriptionLongue = "L'astrofillite deve il proprio nome al greco «astron» (stella) e «phyllon» (foglia): le sue sottili lamelle color rame-oro bronzo si dispiegano in fasci raggianti che evocano scoppi stellari, generalmente incastonate in una roccia ospite scura (egirina, feldspato). Sempre lavorata a cabochon per rivelare questo motivo spettacolare, proviene quasi esclusivamente dai massicci alcalini della penisola di Kola.",
+            particularites = "Sfaldatura perfetta in una direzione (struttura a lamelle, come la mica), che la rende fragile e impone una lavorazione a cabochon piuttosto che a faccette.",
+            lithotherapie = "Si ritiene che l'astrofillite favorisca l'introspezione e la chiarezza mentale, in risonanza con il suo motivo che evoca le stelle."
+        ),
     )
 }

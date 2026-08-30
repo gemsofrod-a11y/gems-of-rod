@@ -431,6 +431,24 @@ object GemsRepository {
             rarete = GemRarete.COURANTE
         ),
         Gem(
+            id = "marcassite",
+            nom = "Marcassite",
+            nomLatin = "Marcasite",
+            famille = "Sulfure de fer (marcassite)",
+            couleur = GemColorCategory.JAUNE,
+            descriptionCourte = "Le polymorphe orthorhombique et plus pâle de la pyrite, en éventails métalliques dans les nodules de silex.",
+            descriptionLongue = "Chimiquement identique à la pyrite (FeS₂) mais cristallisant dans le système orthorhombique, la marcassite forme des agrégats en éventail ou en « crête de coq » d'un jaune bronze plus pâle et argenté. On la trouve typiquement en nodules au cœur des silex et des craies, ou associée aux gisements de charbon. Plus instable que la pyrite, elle se décompose plus facilement au contact prolongé de l'humidité.",
+            formuleChimique = "FeS₂",
+            systemeCristallin = "Orthorhombique",
+            durete = "6 - 6,5",
+            indiceRefraction = "opaque (métallique, non applicable)",
+            origines = listOf("Royaume-Uni (falaises de craie du Kent)", "République tchèque (Kutná Hora)", "États-Unis (district du Tri-State, Missouri)"),
+            particularites = "La « bijouterie marcassite » historique (georgienne, victorienne, Art déco) utilise en réalité presque toujours de la pyrite taillée à facettes : la vraie marcassite, trop fragile et instable, ne se prête pas à la taille.",
+            lithotherapie = "Comme la pyrite, la marcassite est associée à la protection et à l'ancrage, avec une réputation particulière d'apaisement mental et de clarté d'esprit.",
+            prixCaratEur = "1 – 10 €/pièce (spécimen minéralogique, rarement vendue au carat)",
+            rarete = GemRarete.COURANTE
+        ),
+        Gem(
             id = "scheelite",
             nom = "Scheelite",
             nomLatin = "Tungstate de calcium",
@@ -3469,6 +3487,24 @@ object GemsRepository {
             particularites = "Nature hydrophane : peut absorber jusqu'à 20% de son volume en eau, se craqueler en séchant, et voir sa transparence changer temporairement au contact de l'humidité.",
             lithotherapie = "L'opale d'Éthiopie est réputée amplifier les émotions et la créativité, comme les autres opales précieuses.",
             prixCaratEur = "10 – 300 €/ct",
+            rarete = GemRarete.PEU_COMMUNE
+        ),
+        Gem(
+            id = "astrophyllite",
+            nom = "Astrophyllite",
+            nomLatin = "Astrophyllite",
+            famille = "Astrophyllite",
+            couleur = GemColorCategory.MULTICOLORE,
+            descriptionCourte = "Des gerbes dorées en étoile, figées dans une roche sombre.",
+            descriptionLongue = "L'astrophyllite doit son nom au grec « astron » (étoile) et « phyllon » (feuille) : ses fines lames cuivrées à doré bronze se déploient en gerbes rayonnantes évoquant des éclats d'étoile, généralement prises dans une roche hôte sombre (ægyrine, feldspath). Toujours travaillée en cabochon pour révéler ce motif spectaculaire, elle provient presque exclusivement des massifs alcalins de la péninsule de Kola.",
+            formuleChimique = "(K,Na)₃(Fe,Mn)₇Ti₂Si₈O₂₄(OH)₄F",
+            systemeCristallin = "Triclinique",
+            durete = "3 - 3,5",
+            indiceRefraction = "1,71 – 1,75 (rarement mesuré, pierre taillée en cabochon opaque)",
+            origines = listOf("Russie (péninsule de Kola, massifs de Khibiny et Lovozero)", "Norvège (Langesundfjord)", "Canada (Mont Saint-Hilaire, Québec)"),
+            particularites = "Clivage parfait dans une direction (structure en feuillets, comme le mica), ce qui la rend cassante et impose une taille en cabochon plutôt qu'à facettes.",
+            lithotherapie = "L'astrophyllite est réputée favoriser l'introspection et la clarté mentale, en résonance avec son motif évoquant les étoiles.",
+            prixCaratEur = "5 – 30 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
         // ---------- GEMMES ORGANIQUES ----------

@@ -51,6 +51,7 @@ import fr.gemsofrod.encyclopedie.data.StockCsvExporter
 import fr.gemsofrod.encyclopedie.data.StockItem
 import fr.gemsofrod.encyclopedie.data.StockRepository
 import fr.gemsofrod.encyclopedie.data.StockStatus
+import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
 import fr.gemsofrod.encyclopedie.ui.rememberStockPhotoBitmap
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -143,16 +144,36 @@ fun StockListScreen(
                 )
             }
         } else {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(padding)
-                    .verticalScroll(rememberScrollState())
-                    .padding(20.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                items.forEach { item ->
-                    StockItemRow(item = item, onClick = { onItemClick(item.id) })
+            var query by remember { mutableStateOf("") }
+            val displayedItems = if (query.isBlank()) items else items.filter { it.nom.contains(query, ignoreCase = true) }
+
+            Column(modifier = Modifier.fillMaxSize().padding(padding)) {
+                CatalogSearchField(
+                    query = query,
+                    onQueryChange = { query = it },
+                    placeholder = stringResource(R.string.catalog_search_placeholder)
+                )
+                if (query.isNotBlank() && displayedItems.isEmpty()) {
+                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
+                        Text(
+                            text = stringResource(R.string.catalog_search_no_results, query),
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(24.dp)
+                        )
+                    }
+                } else {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .verticalScroll(rememberScrollState())
+                            .padding(20.dp),
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        displayedItems.forEach { item ->
+                            StockItemRow(item = item, onClick = { onItemClick(item.id) })
+                        }
+                    }
                 }
             }
         }

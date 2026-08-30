@@ -24,6 +24,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
@@ -32,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.TreatmentEntry
 import fr.gemsofrod.encyclopedie.data.TreatmentsInfo
+import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
 
 /**
  * Référence des traitements gemmologiques courants (chauffage, huilage,
@@ -62,23 +67,48 @@ fun TreatmentsScreen(onBackClick: () -> Unit) {
         },
         containerColor = MaterialTheme.colorScheme.background
     ) { padding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .verticalScroll(rememberScrollState())
-                .padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(14.dp)
-        ) {
-            Text(
-                text = page.intro,
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onBackground
+        var query by remember { mutableStateOf("") }
+        val displayedTraitements = if (query.isBlank()) {
+            page.traitements
+        } else {
+            page.traitements.filter { it.nom.contains(query, ignoreCase = true) }
+        }
+
+        Column(modifier = Modifier.fillMaxSize().padding(padding)) {
+            CatalogSearchField(
+                query = query,
+                onQueryChange = { query = it },
+                placeholder = stringResource(R.string.catalog_search_placeholder)
             )
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+                    .padding(20.dp),
+                verticalArrangement = Arrangement.spacedBy(14.dp)
+            ) {
+                if (query.isBlank()) {
+                    Text(
+                        text = page.intro,
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
+                }
 
-            page.traitements.forEach { treatment -> TreatmentCard(treatment) }
+                if (query.isNotBlank() && displayedTraitements.isEmpty()) {
+                    Text(
+                        text = stringResource(R.string.catalog_search_no_results, query),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                } else {
+                    displayedTraitements.forEach { treatment -> TreatmentCard(treatment) }
+                }
 
-            TreatmentsDisclaimer(title = page.disclaimerTitle, body = page.disclaimerBody)
+                if (query.isBlank()) {
+                    TreatmentsDisclaimer(title = page.disclaimerTitle, body = page.disclaimerBody)
+                }
+            }
         }
     }
 }

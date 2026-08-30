@@ -1523,5 +1523,19 @@ object GemTranslationsPt {
             inclusions = "Natureza hidrófana (porosa) que pode absorver água e alterar temporariamente a sua transparência; estrutura interna de esferas de sílica responsável pelo jogo de cores.",
             lithotherapie = "A opala da Etiópia é reputada por amplificar as emoções e a criatividade, tal como as restantes opalas preciosas."
         ),
+        "marcassite" to GemTranslation(
+            nom = "Marcassita",
+            descriptionCourte = "O polimorfo ortorrômbico e mais pálido da pirite, em leques metálicos dentro de nódulos de sílex.",
+            descriptionLongue = "Quimicamente idêntica à pirite (FeS₂), mas cristalizando no sistema ortorrômbico, a marcassita forma agregados em leque ou em «crista de galo» de um amarelo bronze mais pálido e prateado. É encontrada tipicamente em nódulos no interior de sílex e giz, ou associada a jazidas de carvão. Mais instável que a pirite, decompõe-se mais facilmente com exposição prolongada à umidade.",
+            particularites = "A «joalheria de marcassita» histórica (georgiana, vitoriana, art déco) utiliza na realidade quase sempre pirite lapidada em facetas: a verdadeira marcassita, demasiado frágil e instável, não se presta à lapidação.",
+            lithotherapie = "Como a pirite, a marcassita é associada à proteção e ao enraizamento, com uma reputação particular de acalmar a mente e trazer clareza."
+        ),
+        "astrophyllite" to GemTranslation(
+            nom = "Astrofilita",
+            descriptionCourte = "Feixes dourados em forma de estrela, presos numa rocha escura.",
+            descriptionLongue = "A astrofilita deve o seu nome ao grego «astron» (estrela) e «phyllon» (folha): suas finas lâminas de tom cobre a dourado-bronze se estendem em feixes radiantes que evocam explosões estelares, geralmente engastadas numa rocha hospedeira escura (egirina, feldspato). Sempre trabalhada em cabochão para revelar este motivo espetacular, provém quase exclusivamente dos maciços alcalinos da península de Kola.",
+            particularites = "Clivagem perfeita numa direção (estrutura em lâminas, como a mica), o que a torna quebradiça e impõe um corte em cabochão em vez de facetado.",
+            lithotherapie = "A astrofilita é reputada por favorecer a introspecção e a clareza mental, em ressonância com o seu motivo que evoca as estrelas."
+        ),
     )
 }

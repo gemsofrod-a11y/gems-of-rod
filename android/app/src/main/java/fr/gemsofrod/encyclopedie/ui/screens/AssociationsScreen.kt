@@ -31,6 +31,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -48,6 +52,7 @@ import fr.gemsofrod.encyclopedie.data.GemImageType
 import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.data.GemsRepository
 import fr.gemsofrod.encyclopedie.data.LithotherapieInfo
+import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
 
@@ -83,36 +88,59 @@ fun AssociationsListScreen(
         },
         containerColor = MaterialTheme.colorScheme.background
     ) { padding ->
-        LazyColumn(
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-        ) {
-            item {
-                Text(
-                    text = page.intro,
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onBackground,
-                    modifier = Modifier.padding(bottom = 4.dp)
-                )
-            }
-            items(associations) { association ->
-                AssociationRow(association = association, onClick = { onAssociationClick(association) })
-            }
-            page.note?.let { note ->
-                item {
-                    Text(
-                        text = note,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(top = 4.dp)
-                    )
+        var query by remember { mutableStateOf("") }
+        val displayedAssociations = if (query.isBlank()) associations else associations.filter { it.titre.contains(query, ignoreCase = true) }
+
+        Column(modifier = Modifier.fillMaxSize().padding(padding)) {
+            CatalogSearchField(
+                query = query,
+                onQueryChange = { query = it },
+                placeholder = stringResource(R.string.catalog_search_placeholder)
+            )
+            LazyColumn(
+                contentPadding = PaddingValues(16.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+                modifier = Modifier.fillMaxSize()
+            ) {
+                if (query.isBlank()) {
+                    item {
+                        Text(
+                            text = page.intro,
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = MaterialTheme.colorScheme.onBackground,
+                            modifier = Modifier.padding(bottom = 4.dp)
+                        )
+                    }
                 }
-            }
-            item {
-                LithoInfoDisclaimer(title = page.disclaimerTitle, body = page.disclaimerBody)
+                if (query.isNotBlank() && displayedAssociations.isEmpty()) {
+                    item {
+                        Text(
+                            text = stringResource(R.string.catalog_search_no_results, query),
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(24.dp)
+                        )
+                    }
+                } else {
+                    items(displayedAssociations) { association ->
+                        AssociationRow(association = association, onClick = { onAssociationClick(association) })
+                    }
+                }
+                if (query.isBlank()) {
+                    page.note?.let { note ->
+                        item {
+                            Text(
+                                text = note,
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                modifier = Modifier.padding(top = 4.dp)
+                            )
+                        }
+                    }
+                    item {
+                        LithoInfoDisclaimer(title = page.disclaimerTitle, body = page.disclaimerBody)
+                    }
+                }
             }
         }
     }

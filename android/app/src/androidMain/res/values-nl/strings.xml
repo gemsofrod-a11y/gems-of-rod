@@ -24,6 +24,8 @@
     <!-- Gemmologie (zoeken + categorieën) -->
     <string name="search_gems_placeholder">Een edelsteen zoeken…</string>
     <string name="search_no_results">Geen edelsteen komt overeen met « %1$s ».</string>
+    <string name="catalog_search_placeholder">Zoeken…</string>
+    <string name="catalog_search_no_results">Geen resultaten voor « %1$s ».</string>
     <string name="gemmologie_couleur_title">Kleur</string>
     <string name="gemmologie_couleur_subtitle">De catalogus ingedeeld per tint: rood, blauw, groen…</string>
     <string name="gemmologie_pays_title">Land van herkomst</string>

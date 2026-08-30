@@ -23,6 +23,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
@@ -31,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.GemInstrument
 import fr.gemsofrod.encyclopedie.data.GemInstrumentsInfo
+import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
 
 /**
  * Section éditoriale présentant les instruments de base d'un laboratoire de
@@ -61,23 +66,48 @@ fun InstrumentsScreen(onBackClick: () -> Unit) {
         },
         containerColor = MaterialTheme.colorScheme.background
     ) { padding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .verticalScroll(rememberScrollState())
-                .padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(14.dp)
-        ) {
-            Text(
-                text = page.intro,
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onBackground
+        var query by remember { mutableStateOf("") }
+        val displayedInstruments = if (query.isBlank()) {
+            page.instruments
+        } else {
+            page.instruments.filter { it.nom.contains(query, ignoreCase = true) }
+        }
+
+        Column(modifier = Modifier.fillMaxSize().padding(padding)) {
+            CatalogSearchField(
+                query = query,
+                onQueryChange = { query = it },
+                placeholder = stringResource(R.string.catalog_search_placeholder)
             )
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+                    .padding(20.dp),
+                verticalArrangement = Arrangement.spacedBy(14.dp)
+            ) {
+                if (query.isBlank()) {
+                    Text(
+                        text = page.intro,
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
+                }
 
-            page.instruments.forEach { instrument -> InstrumentCard(instrument) }
+                if (query.isNotBlank() && displayedInstruments.isEmpty()) {
+                    Text(
+                        text = stringResource(R.string.catalog_search_no_results, query),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                } else {
+                    displayedInstruments.forEach { instrument -> InstrumentCard(instrument) }
+                }
 
-            InstrumentsDisclaimer(title = page.disclaimerTitle, body = page.disclaimerBody)
+                if (query.isBlank()) {
+                    InstrumentsDisclaimer(title = page.disclaimerTitle, body = page.disclaimerBody)
+                }
+            }
         }
     }
 }

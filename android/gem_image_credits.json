@@ -220,6 +220,24 @@
       "type": "FACETTEE"
     }
   ],
+  "astrophyllite": [
+    {
+      "artist": "Marie-Lan Taÿ Pamart",
+      "license": "CC BY 4.0",
+      "resource_name": "gem_astrophyllite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Astrophyllite_Eveslogchorr_Mt_Sorbonne_SU.jpg",
+      "title": "File:Astrophyllite Eveslogchorr Mt Sorbonne SU.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Robert M. Lavinsky",
+      "license": "by-sa 3.0",
+      "resource_name": "gem_astrophyllite_facette",
+      "source_url": "https://commons.wikimedia.org/w/index.php?curid=10162689",
+      "title": "Astrophyllite-224740",
+      "type": "FACETTEE"
+    }
+  ],
   "aventurine": [
     {
       "artist": "Deomar Pandan",
@@ -1689,6 +1707,24 @@
       "type": "BRUTE"
     }
   ],
+  "marcassite": [
+    {
+      "artist": "Ivar Leidus",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_marcassite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Marcasite_-_Reocín_mine,_Cantabria,_Spain.jpg",
+      "title": "File:Marcasite - Reocín mine, Cantabria, Spain.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Belovedfreak",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_marcassite_facette",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Marcasite_silver_and_glass_ring.JPG",
+      "title": "File:Marcasite silver and glass ring.JPG",
+      "type": "FACETTEE"
+    }
+  ],
   "maw-sit-sit": [],
   "meteorite-admire": [
     {
@@ -2162,6 +2198,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Flint_Ridge_Knap-In_speed_competition_(Flint_Ridge,_Ohio,_USA).jpg",
       "title": "File:Flint Ridge Knap-In speed competition (Flint Ridge, Ohio, USA).jpg",
       "type": "BRUTE"
+    },
+    {
+      "artist": "James St. John",
+      "license": "by 2.0",
+      "resource_name": "gem_opale_commune_facette",
+      "source_url": "https://www.flickr.com/photos/47445767@N05/52312972190",
+      "title": "Fire opal (Mexico) 6",
+      "type": "FACETTEE"
     }
   ],
   "opale-de-feu": [
@@ -2708,6 +2752,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Sapphire_(corundum)_(26663158752).jpg",
       "title": "File:Sapphire (corundum) (26663158752).jpg",
       "type": "BRUTE"
+    },
+    {
+      "artist": "Tim Evanson",
+      "license": "by-sa 2.0",
+      "resource_name": "gem_saphir_bleu_inclusion",
+      "source_url": "https://www.flickr.com/photos/23165290@N00/7283950562",
+      "title": "Star of Bombay corundum sapphire - Smithsonian Museum of Natural History - 2012-05-17",
+      "type": "INCLUSION"
     }
   ],
   "saphir-etoile": [

@@ -90,6 +90,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | zircon-hyacinthe | ♻️ [File:Zircon (GeoDIL number - 252).jpg](https://commons.wikimedia.org/wiki/File:Zircon_(GeoDIL_number_-_252).jpg) | ♻️ [File:The oldest zircon crystall (4.276 billion years old). American Museum of Natural History.jpg](https://commons.wikimedia.org/wiki/File:The_oldest_zircon_crystall_(4.276_billion_years_old)._American_Museum_of_Natural_History.jpg) |
 | zircon-dore | ♻️ [File:Zircon (GeoDIL number - 252).jpg](https://commons.wikimedia.org/wiki/File:Zircon_(GeoDIL_number_-_252).jpg) | ♻️ [File:Zircon on сlinochlore SEM image.png](https://commons.wikimedia.org/wiki/File:Zircon_on_сlinochlore_SEM_image.png) |
 | pyrite | ♻️ [File:Pyrite trimouns.jpg](https://commons.wikimedia.org/wiki/File:Pyrite_trimouns.jpg) | ⏸️ recherche suspendue |
+| marcassite | ✅ [File:Marcasite - Reocín mine, Cantabria, Spain.jpg](https://commons.wikimedia.org/wiki/File:Marcasite_-_Reocín_mine,_Cantabria,_Spain.jpg) | ✅ [File:Marcasite silver and glass ring.JPG](https://commons.wikimedia.org/wiki/File:Marcasite_silver_and_glass_ring.JPG) |
 | scheelite | ♻️ [File:Scheelite, mica, UVL 1.jpg](https://commons.wikimedia.org/wiki/File:Scheelite,_mica,_UVL_1.jpg) | ♻️ [File:Scheelite cut.jpg](https://commons.wikimedia.org/wiki/File:Scheelite_cut.jpg) |
 | tourmaline-jaune | ♻️ [Elbaite-24412](https://commons.wikimedia.org/w/index.php?curid=10122034) | ♻️ [Elbaite-252609](https://commons.wikimedia.org/w/index.php?curid=10167818) |
 | bastnasite | ♻️ [File:Bastnäsite-(Ce) crystal with inclusions.jpg](https://commons.wikimedia.org/wiki/File:Bastnäsite-(Ce)_crystal_with_inclusions.jpg) | ⏸️ recherche suspendue |
@@ -197,10 +198,11 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | jais | ♻️ [File:Gagat-Holzmaden.JPG](https://commons.wikimedia.org/wiki/File:Gagat-Holzmaden.JPG) | ♻️ [File:Jet Jewellery.jpg](https://commons.wikimedia.org/wiki/File:Jet_Jewellery.jpg) |
 | grenat-etoile | ♻️ [File:Star of idaho.JPG](https://commons.wikimedia.org/wiki/File:Star_of_idaho.JPG) | ♻️ [File:Idahostargarnet.jpg](https://commons.wikimedia.org/wiki/File:Idahostargarnet.jpg) |
 | opale-peruvienne | ♻️ [Peruvian opal wire wrapped ring with brass band](https://www.flickr.com/photos/8699239@N04/4134119626) | ❌ échec téléchargement |
-| opale-commune | ♻️ [File:Flint Ridge Knap-In speed competition (Flint Ridge, Ohio, USA).jpg](https://commons.wikimedia.org/wiki/File:Flint_Ridge_Knap-In_speed_competition_(Flint_Ridge,_Ohio,_USA).jpg) | ❌ échec téléchargement |
+| opale-commune | ♻️ [File:Flint Ridge Knap-In speed competition (Flint Ridge, Ohio, USA).jpg](https://commons.wikimedia.org/wiki/File:Flint_Ridge_Knap-In_speed_competition_(Flint_Ridge,_Ohio,_USA).jpg) | ✅ [Fire opal (Mexico) 6](https://www.flickr.com/photos/47445767@N05/52312972190) |
 | opale-noire | ♻️ [File:8ct Lightning Ridge Black Opal.JPG](https://commons.wikimedia.org/wiki/File:8ct_Lightning_Ridge_Black_Opal.JPG) | ♻️ [File:16.42cts Lightning Ridge black Opal.JPG](https://commons.wikimedia.org/wiki/File:16.42cts_Lightning_Ridge_black_Opal.JPG) |
 | opale-boulder | ♻️ [File:Veined boulder opal from Queensland.jpg](https://commons.wikimedia.org/wiki/File:Veined_boulder_opal_from_Queensland.jpg) | ♻️ [File:Boulder Opal.jpg](https://commons.wikimedia.org/wiki/File:Boulder_Opal.jpg) |
 | opale-ethiopie | ♻️ [File:Wire wrapped Ethiopian Opal & Sapphire.jpg](https://commons.wikimedia.org/wiki/File:Wire_wrapped_Ethiopian_Opal_&_Sapphire.jpg) | ♻️ [File:Ethiopian Welo Wello Opal Pendant.jpg](https://commons.wikimedia.org/wiki/File:Ethiopian_Welo_Wello_Opal_Pendant.jpg) |
+| astrophyllite | ✅ [File:Astrophyllite Eveslogchorr Mt Sorbonne SU.jpg](https://commons.wikimedia.org/wiki/File:Astrophyllite_Eveslogchorr_Mt_Sorbonne_SU.jpg) | ✅ [Astrophyllite-224740](https://commons.wikimedia.org/w/index.php?curid=10162689) |
 | meteorite-gibeon | ♻️ [File:Gibeon meteorite slice.jpg](https://commons.wikimedia.org/wiki/File:Gibeon_meteorite_slice.jpg) | ♻️ [File:Gibeon meteorite, slice TNS.jpg](https://commons.wikimedia.org/wiki/File:Gibeon_meteorite,_slice_TNS.jpg) |
 | meteorite-sikhote-alin | ♻️ [File:Oriented Sikhote-Alin Meteorite 2.jpg](https://commons.wikimedia.org/wiki/File:Oriented_Sikhote-Alin_Meteorite_2.jpg) | ♻️ [File:The third biggest piece of the Sikhote-Alin meteorite.jpg](https://commons.wikimedia.org/wiki/File:The_third_biggest_piece_of_the_Sikhote-Alin_meteorite.jpg) |
 | meteorite-campo-del-cielo | ♻️ [File:Campo del Cielo Meteorite 17g.jpg](https://commons.wikimedia.org/wiki/File:Campo_del_Cielo_Meteorite_17g.jpg) | ♻️ [File:Campo del Cielo meteorite, NHM, drawing.jpg](https://commons.wikimedia.org/wiki/File:Campo_del_Cielo_meteorite,_NHM,_drawing.jpg) |
@@ -261,7 +263,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | coquillage-moule-perliere-eau-douce | ♻️ [File:Margaritifera margaritifera-buiten.jpg](https://commons.wikimedia.org/wiki/File:Margaritifera_margaritifera-buiten.jpg) | — |
 | coquillage-nautile | ♻️ [File:Nautilus pompilius albino.jpg](https://commons.wikimedia.org/wiki/File:Nautilus_pompilius_albino.jpg) | ♻️ [File:Nautilus Pompilius MN 01.jpg](https://commons.wikimedia.org/wiki/File:Nautilus_Pompilius_MN_01.jpg) |
 
-**357 / 472** photos récupérées au total.
+**362 / 476** photos récupérées au total.
 
 ## Photos d'inclusions
 
@@ -272,7 +274,7 @@ Photos ciblées sur l'inclusion caractéristique de la pierre (jardin, soie, chi
 | rubis | ❌ non trouvée |
 | rubis-etoile | ♻️ [Huge 10,800 Carats Maharlika Star Ruby](https://commons.wikimedia.org/w/index.php?curid=151149261) |
 | saphir-etoile | ♻️ [File:World's 3rd Largest Star Sapphire with Asterism Star of Maharlika 04.jpg](https://commons.wikimedia.org/wiki/File:World's_3rd_Largest_Star_Sapphire_with_Asterism_Star_of_Maharlika_04.jpg) |
-| saphir-bleu | ❌ échec téléchargement |
+| saphir-bleu | ✅ [Star of Bombay corundum sapphire - Smithsonian Museum of Natural History - 2012-05-17](https://www.flickr.com/photos/23165290@N00/7283950562) |
 | emeraude | ❌ non trouvée |
 | quartz-rutile | ♻️ [File:Rutile needles in quartz (6421636913).jpg](https://commons.wikimedia.org/wiki/File:Rutile_needles_in_quartz_(6421636913).jpg) |
 | quartz-a-inclusions | ♻️ [File:Lodolite quartz - 1.JPG](https://commons.wikimedia.org/wiki/File:Lodolite_quartz_-_1.JPG) |
@@ -286,4 +288,4 @@ Photos ciblées sur l'inclusion caractéristique de la pierre (jardin, soie, chi
 | labradorite | ♻️ [File:Labradorite schiller texture.jpg](https://commons.wikimedia.org/wiki/File:Labradorite_schiller_texture.jpg) |
 | andalousite | ♻️ [File:Chiastolite 2581.jpg](https://commons.wikimedia.org/wiki/File:Chiastolite_2581.jpg) |
 
-**9 / 16** photos d'inclusions récupérées.
+**10 / 16** photos d'inclusions récupérées.
