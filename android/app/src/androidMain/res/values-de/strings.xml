@@ -446,4 +446,16 @@
     <string name="stock_status_reserve">Reserviert</string>
     <string name="stock_status_vendu">Verkauft</string>
     <string name="stock_status_consignation">Kommission</string>
+
+    <!-- Lapidar (Steinschleifen) -->
+    <string name="lab_lapidaire_title">Lapidar</string>
+    <string name="lab_lapidaire_subtitle">Maschinen, Scheiben und Schliffwinkel für das Facettieren.</string>
+    <string name="lapidaire_title">Lapidar</string>
+    <string name="lapidaire_disc_grain_label">Körnung: %1$s</string>
+    <string name="lapidaire_angle_crown_label">Krone</string>
+    <string name="lapidaire_angle_pavilion_label">Pavillon</string>
+    <string name="lapidaire_angle_table_label">Tafel</string>
+    <string name="lapidaire_angle_facets_label">Facetten</string>
+    <string name="lapidaire_angle_source_label">Quelle: %1$s</string>
+    <string name="lapidaire_diagram_credit_format">%1$s — %2$s</string>
 </resources>

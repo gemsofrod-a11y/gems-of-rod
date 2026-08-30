@@ -1,0 +1,47 @@
+name: Fetch lapidaire diagrams
+
+on:
+  push:
+    paths:
+      - "scripts/fetch_lapidaire_diagrams.py"
+      - ".github/workflows/fetch-lapidaire-diagrams.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-diagrams:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch royalty-free lapidaire diagrams from Wikimedia Commons
+        run: python3 scripts/fetch_lapidaire_diagrams.py
+
+      - name: Commit and push generated images and credits
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add android/app/src/androidMain/res/drawable-nodpi \
+                  android/app/src/commonMain/kotlin/fr/gemsofrod/encyclopedie/data/LapidaireDiagrams.kt \
+                  android/lapidaire_diagram_credits.json \
+                  android/LAPIDAIRE_DIAGRAM_FETCH_REPORT.md
+          if git diff --cached --quiet; then
+            echo "Rien à committer."
+          else
+            git commit -m "chore: diagrammes lapidaire (Wikimedia Commons, licences libres)"
+            for attempt in 1 2 3 4 5; do
+              if git push; then
+                break
+              fi
+              echo "Push rejeté (branche mise à jour entre-temps), rebase et nouvel essai..."
+              git fetch origin "$GITHUB_REF_NAME"
+              git rebase "origin/$GITHUB_REF_NAME"
+            done
+          fi

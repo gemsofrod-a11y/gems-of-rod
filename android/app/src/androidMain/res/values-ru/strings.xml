@@ -446,4 +446,16 @@
     <string name="stock_status_reserve">Забронирован</string>
     <string name="stock_status_vendu">Продан</string>
     <string name="stock_status_consignation">Консигнация</string>
+
+    <!-- Огранка (лапидарное дело) -->
+    <string name="lab_lapidaire_title">Огранка</string>
+    <string name="lab_lapidaire_subtitle">Станки, диски и углы огранки фасет.</string>
+    <string name="lapidaire_title">Огранка</string>
+    <string name="lapidaire_disc_grain_label">Зернистость: %1$s</string>
+    <string name="lapidaire_angle_crown_label">Коронка</string>
+    <string name="lapidaire_angle_pavilion_label">Павильон</string>
+    <string name="lapidaire_angle_table_label">Площадка</string>
+    <string name="lapidaire_angle_facets_label">Грани</string>
+    <string name="lapidaire_angle_source_label">Источник: %1$s</string>
+    <string name="lapidaire_diagram_credit_format">%1$s — %2$s</string>
 </resources>
