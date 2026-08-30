@@ -24,6 +24,8 @@
     <!-- Геммология (поиск + категории) -->
     <string name="search_gems_placeholder">Найти камень…</string>
     <string name="search_no_results">Ни один камень не соответствует запросу « %1$s ».</string>
+    <string name="catalog_search_placeholder">Поиск…</string>
+    <string name="catalog_search_no_results">Нет результатов по запросу « %1$s ».</string>
     <string name="gemmologie_couleur_title">Цвет</string>
     <string name="gemmologie_couleur_subtitle">Каталог по оттенкам: красный, синий, зелёный…</string>
     <string name="gemmologie_pays_title">Страна происхождения</string>

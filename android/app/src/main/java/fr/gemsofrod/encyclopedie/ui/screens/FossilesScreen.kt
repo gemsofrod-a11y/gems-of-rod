@@ -34,6 +34,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -54,6 +58,7 @@ import fr.gemsofrod.encyclopedie.data.GemImageCredit
 import fr.gemsofrod.encyclopedie.data.GemImageType
 import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.data.GemRarete
+import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
 import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
@@ -89,36 +94,57 @@ fun FossilesMenuScreen(
         },
         containerColor = MaterialTheme.colorScheme.background
     ) { padding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .verticalScroll(rememberScrollState())
-                .padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(18.dp)
-        ) {
-            Text(
-                text = stringResource(R.string.fossiles_intro),
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onBackground
+        var query by remember { mutableStateOf("") }
+        var anyResults = false
+
+        Column(modifier = Modifier.fillMaxSize().padding(padding)) {
+            CatalogSearchField(
+                query = query,
+                onQueryChange = { query = it },
+                placeholder = stringResource(R.string.catalog_search_placeholder)
             )
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+                    .padding(20.dp),
+                verticalArrangement = Arrangement.spacedBy(18.dp)
+            ) {
+                if (query.isBlank()) {
+                    Text(
+                        text = stringResource(R.string.fossiles_intro),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
+                    FossilesClassificationCard(onClick = onClassificationClick)
+                }
 
-            FossilesClassificationCard(onClick = onClassificationClick)
-
-            FossileFamille.entries.forEach { famille ->
-                val fossiles = FossilesRepository.byFamille(famille)
-                if (fossiles.isNotEmpty()) {
-                    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                        Text(
-                            text = stringResource(famille.labelRes),
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.SemiBold,
-                            color = MaterialTheme.colorScheme.onBackground
-                        )
-                        fossiles.forEach { fossile ->
-                            FossileRow(fossile = fossile.localized(), onClick = { onFossileClick(fossile) })
+                FossileFamille.entries.forEach { famille ->
+                    val fossiles = FossilesRepository.byFamille(famille)
+                        .map { it to it.localized() }
+                        .filter { (_, loc) -> query.isBlank() || loc.nom.contains(query, ignoreCase = true) }
+                    if (fossiles.isNotEmpty()) {
+                        anyResults = true
+                        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                            Text(
+                                text = stringResource(famille.labelRes),
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.SemiBold,
+                                color = MaterialTheme.colorScheme.onBackground
+                            )
+                            fossiles.forEach { (fossile, localizedFossile) ->
+                                FossileRow(fossile = localizedFossile, onClick = { onFossileClick(fossile) })
+                            }
                         }
                     }
+                }
+
+                if (query.isNotBlank() && !anyResults) {
+                    Text(
+                        text = stringResource(R.string.catalog_search_no_results, query),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
                 }
             }
         }

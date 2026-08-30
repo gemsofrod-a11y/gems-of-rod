@@ -24,6 +24,8 @@
     <!-- Gemmologia (ricerca + categorie) -->
     <string name="search_gems_placeholder">Cerca una gemma…</string>
     <string name="search_no_results">Nessuna gemma corrisponde a «%1$s».</string>
+    <string name="catalog_search_placeholder">Cerca…</string>
+    <string name="catalog_search_no_results">Nessun risultato per «%1$s».</string>
     <string name="gemmologie_couleur_title">Colore</string>
     <string name="gemmologie_couleur_subtitle">Il catalogo classificato per tonalità: rosso, blu, verde…</string>
     <string name="gemmologie_pays_title">Paese di origine</string>

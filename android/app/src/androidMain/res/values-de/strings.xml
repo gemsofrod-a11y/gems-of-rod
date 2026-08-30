@@ -24,6 +24,8 @@
     <!-- Gemmologie (Suche + Kategorien) -->
     <string name="search_gems_placeholder">Nach einem Edelstein suchen…</string>
     <string name="search_no_results">Kein Edelstein entspricht „%1$s“.</string>
+    <string name="catalog_search_placeholder">Suchen…</string>
+    <string name="catalog_search_no_results">Keine Ergebnisse für „%1$s“.</string>
     <string name="gemmologie_couleur_title">Farbe</string>
     <string name="gemmologie_couleur_subtitle">Der Katalog nach Farbton geordnet: Rot, Blau, Grün…</string>
     <string name="gemmologie_pays_title">Herkunftsland</string>

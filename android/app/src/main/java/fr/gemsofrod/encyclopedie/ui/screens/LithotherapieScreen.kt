@@ -37,6 +37,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -58,6 +62,7 @@ import fr.gemsofrod.encyclopedie.data.GemsRepository
 import fr.gemsofrod.encyclopedie.data.LithotherapieInfo
 import fr.gemsofrod.encyclopedie.data.ZodiacSigns
 import fr.gemsofrod.encyclopedie.data.BirthMonths
+import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
@@ -235,15 +240,39 @@ fun LithotherapieLabelListScreen(
         },
         containerColor = MaterialTheme.colorScheme.background
     ) { padding ->
-        LazyColumn(
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-        ) {
-            items(groups) { (label, gems) ->
-                FamilyStyleRow(name = localizedLabel(label), count = gems.size, onClick = { onLabelClick(label) })
+        var query by remember { mutableStateOf("") }
+        val localizedGroups = groups.map { (label, gems) -> Triple(label, localizedLabel(label), gems.size) }
+        val displayedGroups = if (query.isBlank()) {
+            localizedGroups
+        } else {
+            localizedGroups.filter { (_, localizedName, _) -> localizedName.contains(query, ignoreCase = true) }
+        }
+
+        Column(modifier = Modifier.fillMaxSize().padding(padding)) {
+            CatalogSearchField(
+                query = query,
+                onQueryChange = { query = it },
+                placeholder = stringResource(R.string.catalog_search_placeholder)
+            )
+            if (query.isNotBlank() && displayedGroups.isEmpty()) {
+                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
+                    Text(
+                        text = stringResource(R.string.catalog_search_no_results, query),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(24.dp)
+                    )
+                }
+            } else {
+                LazyColumn(
+                    contentPadding = PaddingValues(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    items(displayedGroups) { (label, localizedName, count) ->
+                        FamilyStyleRow(name = localizedName, count = count, onClick = { onLabelClick(label) })
+                    }
+                }
             }
         }
     }
@@ -325,15 +354,34 @@ fun LithotherapieGemsScreen(
                 )
             }
         } else {
-            LazyColumn(
-                contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(10.dp),
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(padding)
-            ) {
-                items(gems) { gem ->
-                    LithotherapieRow(gem = gem, onClick = { onGemClick(gem) })
+            var query by remember { mutableStateOf("") }
+            val displayedGems = if (query.isBlank()) gems else gems.filter { it.localized().nom.contains(query, ignoreCase = true) }
+
+            Column(modifier = Modifier.fillMaxSize().padding(padding)) {
+                CatalogSearchField(
+                    query = query,
+                    onQueryChange = { query = it },
+                    placeholder = stringResource(R.string.catalog_search_placeholder)
+                )
+                if (query.isNotBlank() && displayedGems.isEmpty()) {
+                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
+                        Text(
+                            text = stringResource(R.string.catalog_search_no_results, query),
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(24.dp)
+                        )
+                    }
+                } else {
+                    LazyColumn(
+                        contentPadding = PaddingValues(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(10.dp),
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        items(displayedGems) { gem ->
+                            LithotherapieRow(gem = gem, onClick = { onGemClick(gem) })
+                        }
+                    }
                 }
             }
         }
@@ -366,15 +414,34 @@ fun LithotherapieAllGemsScreen(
         },
         containerColor = MaterialTheme.colorScheme.background
     ) { padding ->
-        LazyColumn(
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-        ) {
-            items(gems) { gem ->
-                LithotherapieRow(gem = gem, onClick = { onGemClick(gem) })
+        var query by remember { mutableStateOf("") }
+        val displayedGems = if (query.isBlank()) gems else gems.filter { it.nom.contains(query, ignoreCase = true) }
+
+        Column(modifier = Modifier.fillMaxSize().padding(padding)) {
+            CatalogSearchField(
+                query = query,
+                onQueryChange = { query = it },
+                placeholder = stringResource(R.string.catalog_search_placeholder)
+            )
+            if (query.isNotBlank() && displayedGems.isEmpty()) {
+                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
+                    Text(
+                        text = stringResource(R.string.catalog_search_no_results, query),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(24.dp)
+                    )
+                }
+            } else {
+                LazyColumn(
+                    contentPadding = PaddingValues(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    items(displayedGems) { gem ->
+                        LithotherapieRow(gem = gem, onClick = { onGemClick(gem) })
+                    }
+                }
             }
         }
     }

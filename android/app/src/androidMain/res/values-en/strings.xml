@@ -24,6 +24,8 @@
     <!-- Gemology (search + categories) -->
     <string name="search_gems_placeholder">Search for a gem…</string>
     <string name="search_no_results">No gem matches “%1$s”.</string>
+    <string name="catalog_search_placeholder">Search…</string>
+    <string name="catalog_search_no_results">No results for “%1$s”.</string>
     <string name="gemmologie_couleur_title">Color</string>
     <string name="gemmologie_couleur_subtitle">The catalog sorted by hue: red, blue, green…</string>
     <string name="gemmologie_pays_title">Country of Origin</string>

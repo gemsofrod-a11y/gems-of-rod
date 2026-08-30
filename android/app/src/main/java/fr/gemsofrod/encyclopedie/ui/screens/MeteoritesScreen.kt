@@ -34,6 +34,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -53,6 +57,7 @@ import fr.gemsofrod.encyclopedie.data.MeteoriteClassificationInfo
 import fr.gemsofrod.encyclopedie.data.MeteoriteFamille
 import fr.gemsofrod.encyclopedie.data.MeteoriteFamilyExplainer
 import fr.gemsofrod.encyclopedie.data.MeteoritesRepository
+import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
 import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
@@ -87,36 +92,57 @@ fun MeteoritesMenuScreen(
         },
         containerColor = MaterialTheme.colorScheme.background
     ) { padding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .verticalScroll(rememberScrollState())
-                .padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(18.dp)
-        ) {
-            Text(
-                text = stringResource(R.string.meteorites_intro),
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onBackground
+        var query by remember { mutableStateOf("") }
+        var anyResults = false
+
+        Column(modifier = Modifier.fillMaxSize().padding(padding)) {
+            CatalogSearchField(
+                query = query,
+                onQueryChange = { query = it },
+                placeholder = stringResource(R.string.catalog_search_placeholder)
             )
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+                    .padding(20.dp),
+                verticalArrangement = Arrangement.spacedBy(18.dp)
+            ) {
+                if (query.isBlank()) {
+                    Text(
+                        text = stringResource(R.string.meteorites_intro),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
+                    ClassificationCard(onClick = onClassificationClick)
+                }
 
-            ClassificationCard(onClick = onClassificationClick)
-
-            MeteoriteFamille.entries.forEach { famille ->
-                val meteorites = MeteoritesRepository.byFamille(famille)
-                if (meteorites.isNotEmpty()) {
-                    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                        Text(
-                            text = stringResource(famille.labelRes),
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.SemiBold,
-                            color = MaterialTheme.colorScheme.onBackground
-                        )
-                        meteorites.forEach { meteorite ->
-                            MeteoriteRow(meteorite = meteorite.localized(), onClick = { onMeteoriteClick(meteorite) })
+                MeteoriteFamille.entries.forEach { famille ->
+                    val meteorites = MeteoritesRepository.byFamille(famille)
+                        .map { it to it.localized() }
+                        .filter { (_, loc) -> query.isBlank() || loc.nom.contains(query, ignoreCase = true) }
+                    if (meteorites.isNotEmpty()) {
+                        anyResults = true
+                        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                            Text(
+                                text = stringResource(famille.labelRes),
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.SemiBold,
+                                color = MaterialTheme.colorScheme.onBackground
+                            )
+                            meteorites.forEach { (meteorite, localizedMeteorite) ->
+                                MeteoriteRow(meteorite = localizedMeteorite, onClick = { onMeteoriteClick(meteorite) })
+                            }
                         }
                     }
+                }
+
+                if (query.isNotBlank() && !anyResults) {
+                    Text(
+                        text = stringResource(R.string.catalog_search_no_results, query),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
                 }
             }
         }
