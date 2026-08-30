@@ -446,4 +446,16 @@
     <string name="stock_status_reserve">Reserved</string>
     <string name="stock_status_vendu">Sold</string>
     <string name="stock_status_consignation">Consignment</string>
+
+    <!-- Lapidary -->
+    <string name="lab_lapidaire_title">Lapidary</string>
+    <string name="lab_lapidaire_subtitle">Machines, discs and cutting angles for faceting.</string>
+    <string name="lapidaire_title">Lapidary</string>
+    <string name="lapidaire_disc_grain_label">Grit: %1$s</string>
+    <string name="lapidaire_angle_crown_label">Crown</string>
+    <string name="lapidaire_angle_pavilion_label">Pavilion</string>
+    <string name="lapidaire_angle_table_label">Table</string>
+    <string name="lapidaire_angle_facets_label">Facets</string>
+    <string name="lapidaire_angle_source_label">Source: %1$s</string>
+    <string name="lapidaire_diagram_credit_format">%1$s — %2$s</string>
 </resources>

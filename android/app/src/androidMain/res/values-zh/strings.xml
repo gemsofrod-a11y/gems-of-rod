@@ -446,4 +446,16 @@
     <string name="stock_status_reserve">已预订</string>
     <string name="stock_status_vendu">已售出</string>
     <string name="stock_status_consignation">寄售</string>
+
+    <!-- 宝石切磨 -->
+    <string name="lab_lapidaire_title">宝石切磨</string>
+    <string name="lab_lapidaire_subtitle">切磨机器、磨盘与刻面角度。</string>
+    <string name="lapidaire_title">宝石切磨</string>
+    <string name="lapidaire_disc_grain_label">粒度：%1$s</string>
+    <string name="lapidaire_angle_crown_label">冠部</string>
+    <string name="lapidaire_angle_pavilion_label">亭部</string>
+    <string name="lapidaire_angle_table_label">台面</string>
+    <string name="lapidaire_angle_facets_label">刻面</string>
+    <string name="lapidaire_angle_source_label">来源：%1$s</string>
+    <string name="lapidaire_diagram_credit_format">%1$s — %2$s</string>
 </resources>

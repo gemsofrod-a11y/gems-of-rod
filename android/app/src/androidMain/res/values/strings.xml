@@ -446,4 +446,16 @@
     <string name="stock_status_reserve">Réservée</string>
     <string name="stock_status_vendu">Vendue</string>
     <string name="stock_status_consignation">Consignation</string>
+
+    <!-- Lapidaire -->
+    <string name="lab_lapidaire_title">Lapidaire</string>
+    <string name="lab_lapidaire_subtitle">Machines, disques et angles de taille des facettes.</string>
+    <string name="lapidaire_title">Lapidaire</string>
+    <string name="lapidaire_disc_grain_label">Grain : %1$s</string>
+    <string name="lapidaire_angle_crown_label">Couronne</string>
+    <string name="lapidaire_angle_pavilion_label">Pavillon</string>
+    <string name="lapidaire_angle_table_label">Table</string>
+    <string name="lapidaire_angle_facets_label">Facettes</string>
+    <string name="lapidaire_angle_source_label">Source : %1$s</string>
+    <string name="lapidaire_diagram_credit_format">%1$s — %2$s</string>
 </resources>

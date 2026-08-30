@@ -68,6 +68,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.ReflectivityMeterScreen
 import fr.gemsofrod.encyclopedie.ui.screens.StockDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.StockFormScreen
 import fr.gemsofrod.encyclopedie.ui.screens.StockListScreen
+import fr.gemsofrod.encyclopedie.ui.screens.LapidaireScreen
 import fr.gemsofrod.encyclopedie.ui.screens.TreatmentsScreen
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import kotlinx.coroutines.delay
@@ -120,6 +121,7 @@ private object Routes {
     const val LEGENDARY_RIDDLE = "legendary_riddle"
     const val LEGENDARY_MAP = "legendary_map"
     const val TREATMENTS = "treatments"
+    const val LAPIDAIRE = "lapidaire"
     const val STOCK_LIST = "stock_list"
     const val STOCK_NEW = "stock_new"
     const val STOCK_EDIT = "stock_edit/{itemId}"
@@ -212,12 +214,16 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onReflectivityMeterClick = { navController.navigate(Routes.REFLECTIVITY_METER) },
                 onTreatmentsClick = { navController.navigate(Routes.TREATMENTS) },
                 onStockClick = { navController.navigate(Routes.STOCK_LIST) },
+                onLapidaireClick = { navController.navigate(Routes.LAPIDAIRE) },
                 onLegendaryClick = { navController.navigate(Routes.LEGENDARY_RIDDLE) },
                 onBackClick = { navController.popBackStack() }
             )
         }
         composable(Routes.TREATMENTS) {
             TreatmentsScreen(onBackClick = { navController.popBackStack() })
+        }
+        composable(Routes.LAPIDAIRE) {
+            LapidaireScreen(onBackClick = { navController.popBackStack() })
         }
         composable(Routes.STOCK_LIST) {
             StockListScreen(
