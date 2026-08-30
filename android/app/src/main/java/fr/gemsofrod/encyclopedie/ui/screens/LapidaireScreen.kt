@@ -1,6 +1,9 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,11 +29,16 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInParent
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -45,6 +53,8 @@ import fr.gemsofrod.encyclopedie.data.LapidaireInfo
 import fr.gemsofrod.encyclopedie.data.LapidaireTip
 import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
+import kotlinx.coroutines.launch
+import kotlin.math.roundToInt
 
 /**
  * Section éditoriale dédiée au métier de lapidaire (taille des facettes) :
@@ -85,16 +95,39 @@ fun LapidaireScreen(onBackClick: () -> Unit) {
         val isSearching = query.isNotBlank()
         val noResults = isSearching && displayedMachines.isEmpty() && displayedDisques.isEmpty()
 
+        val scrollState = rememberScrollState()
+        val coroutineScope = rememberCoroutineScope()
+        // Position de chaque en-tête de section dans la colonne défilante,
+        // capturée à la composition via onGloballyPositioned sur SectionHeader ;
+        // la table des matières s'en sert pour faire défiler jusqu'à la section
+        // choisie plutôt que de dérouler tout l'écran manuellement.
+        val sectionOffsets = remember { mutableStateMapOf<String, Int>() }
+
         Column(modifier = Modifier.fillMaxSize().padding(padding)) {
             CatalogSearchField(
                 query = query,
                 onQueryChange = { query = it },
                 placeholder = stringResource(R.string.catalog_search_placeholder)
             )
+            if (!isSearching) {
+                LapidaireToc(
+                    entries = listOf(
+                        "machines" to page.machinesTitle,
+                        "disques" to page.disquesTitle,
+                        "angles" to page.anglesTitle,
+                        "diagrammes" to page.diagrammesTitle,
+                        "conseils" to page.tipsTitle
+                    ),
+                    onEntryClick = { key ->
+                        val target = sectionOffsets[key] ?: return@LapidaireToc
+                        coroutineScope.launch { scrollState.animateScrollTo(target) }
+                    }
+                )
+            }
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .verticalScroll(rememberScrollState())
+                    .verticalScroll(scrollState)
                     .padding(20.dp),
                 verticalArrangement = Arrangement.spacedBy(14.dp)
             ) {
@@ -114,7 +147,12 @@ fun LapidaireScreen(onBackClick: () -> Unit) {
                     )
                 } else {
                     if (displayedMachines.isNotEmpty()) {
-                        SectionHeader(page.machinesTitle)
+                        SectionHeader(
+                            title = page.machinesTitle,
+                            modifier = Modifier.onGloballyPositioned {
+                                sectionOffsets["machines"] = it.positionInParent().y.roundToInt()
+                            }
+                        )
                         if (!isSearching) {
                             Text(
                                 text = page.machinesIntro,
@@ -126,7 +164,12 @@ fun LapidaireScreen(onBackClick: () -> Unit) {
                     }
 
                     if (displayedDisques.isNotEmpty()) {
-                        SectionHeader(page.disquesTitle)
+                        SectionHeader(
+                            title = page.disquesTitle,
+                            modifier = Modifier.onGloballyPositioned {
+                                sectionOffsets["disques"] = it.positionInParent().y.roundToInt()
+                            }
+                        )
                         if (!isSearching) {
                             Text(
                                 text = page.disquesIntro,
@@ -139,7 +182,12 @@ fun LapidaireScreen(onBackClick: () -> Unit) {
                 }
 
                 if (!isSearching) {
-                    SectionHeader(page.anglesTitle)
+                    SectionHeader(
+                        title = page.anglesTitle,
+                        modifier = Modifier.onGloballyPositioned {
+                            sectionOffsets["angles"] = it.positionInParent().y.roundToInt()
+                        }
+                    )
                     Text(
                         text = page.anglesIntro,
                         style = MaterialTheme.typography.bodyMedium,
@@ -147,10 +195,20 @@ fun LapidaireScreen(onBackClick: () -> Unit) {
                     )
                     page.angles.forEach { AnglesCard(it) }
 
-                    SectionHeader(page.diagrammesTitle)
+                    SectionHeader(
+                        title = page.diagrammesTitle,
+                        modifier = Modifier.onGloballyPositioned {
+                            sectionOffsets["diagrammes"] = it.positionInParent().y.roundToInt()
+                        }
+                    )
                     page.diagrammes.forEach { DiagramCard(it) }
 
-                    SectionHeader(page.tipsTitle)
+                    SectionHeader(
+                        title = page.tipsTitle,
+                        modifier = Modifier.onGloballyPositioned {
+                            sectionOffsets["conseils"] = it.positionInParent().y.roundToInt()
+                        }
+                    )
                     page.tips.forEach { TipCard(it) }
 
                     LapidaireDisclaimer(title = page.disclaimerTitle, body = page.disclaimerBody)
@@ -161,12 +219,38 @@ fun LapidaireScreen(onBackClick: () -> Unit) {
 }
 
 @Composable
-private fun SectionHeader(title: String) {
+private fun LapidaireToc(entries: List<Pair<String, String>>, onEntryClick: (String) -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .horizontalScroll(rememberScrollState())
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        entries.forEach { (key, label) ->
+            Text(
+                text = label,
+                style = MaterialTheme.typography.labelLarge,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                modifier = Modifier
+                    .clip(RoundedCornerShape(20.dp))
+                    .background(MaterialTheme.colorScheme.primaryContainer)
+                    .clickable { onEntryClick(key) }
+                    .padding(horizontal = 14.dp, vertical = 8.dp)
+            )
+        }
+    }
+}
+
+@Composable
+private fun SectionHeader(title: String, modifier: Modifier = Modifier) {
     Text(
         text = title,
         style = MaterialTheme.typography.titleLarge,
         fontWeight = FontWeight.SemiBold,
-        color = MaterialTheme.colorScheme.primary
+        color = MaterialTheme.colorScheme.primary,
+        modifier = modifier
     )
 }
 

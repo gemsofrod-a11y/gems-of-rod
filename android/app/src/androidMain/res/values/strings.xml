@@ -448,8 +448,8 @@
     <string name="stock_status_consignation">Consignation</string>
 
     <!-- Lapidaire -->
-    <string name="lab_lapidaire_title">Lapidaire</string>
-    <string name="lab_lapidaire_subtitle">Machines, disques et angles de taille des facettes.</string>
+    <string name="gemmologie_lapidaire_title">Lapidaire</string>
+    <string name="gemmologie_lapidaire_subtitle">Machines, disques et angles de taille des facettes.</string>
     <string name="lapidaire_title">Lapidaire</string>
     <string name="lapidaire_disc_grain_label">Grain : %1$s</string>
     <string name="lapidaire_angle_crown_label">Couronne</string>

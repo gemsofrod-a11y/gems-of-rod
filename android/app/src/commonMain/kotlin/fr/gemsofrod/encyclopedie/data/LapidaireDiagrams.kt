@@ -13,7 +13,6 @@ data class LapidaireDiagramCredit(
 
 object LapidaireDiagrams {
     private val credits: Map<String, LapidaireDiagramCredit> = mapOf(
-        "machine_facettage_moderne" to LapidaireDiagramCredit("lapidaire_machine_facettage_moderne", "Kent County Council, Jo Ahmet, 2019-12-04 11:28:30", "CC BY 2.0", "https://commons.wikimedia.org/wiki/File:Possible_roman_facetted_bead_(FindID_983752-1083997).jpg"),
         "moulin_taille_historique" to LapidaireDiagramCredit("lapidaire_moulin_taille_historique", "Auteur non renseigné", "CC BY 4.0", "https://commons.wikimedia.org/wiki/File:Diamondworks;_interior_view,_a_wheel_used_by_diamond_cutters_Wellcome_V0023689.jpg"),
     )
 
