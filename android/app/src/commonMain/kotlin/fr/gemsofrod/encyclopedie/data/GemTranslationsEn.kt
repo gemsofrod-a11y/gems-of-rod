@@ -1523,5 +1523,19 @@ object GemTranslationsEn {
             inclusions = "Hydrophane (porous) nature that can absorb water and temporarily change its transparency; internal silica sphere structure responsible for the play-of-color.",
             lithotherapie = "Ethiopian opal is said to amplify emotions and creativity, like other precious opals."
         ),
+        "marcassite" to GemTranslation(
+            nom = "Marcasite",
+            descriptionCourte = "Pyrite's paler orthorhombic twin, forming metallic fans inside flint nodules.",
+            descriptionLongue = "Chemically identical to pyrite (FeS₂) but crystallizing in the orthorhombic system, marcasite forms fan-shaped or \"cockscomb\" aggregates of a paler, more silvery brass-yellow. It typically occurs as nodules within flint and chalk, or associated with coal deposits. Less stable than pyrite, it breaks down more readily on prolonged exposure to humidity.",
+            particularites = "Historical \"marcasite jewelry\" (Georgian, Victorian, Art Deco) almost always actually used faceted pyrite: true marcasite, too fragile and unstable, does not lend itself to faceting.",
+            lithotherapie = "Like pyrite, marcasite is associated with protection and grounding, with a particular reputation for calming the mind and sharpening clarity."
+        ),
+        "astrophyllite" to GemTranslation(
+            nom = "Astrophyllite",
+            descriptionCourte = "Golden star-shaped sprays frozen within dark rock.",
+            descriptionLongue = "Astrophyllite takes its name from the Greek \"astron\" (star) and \"phyllon\" (leaf): its fine copper to bronze-gold blades spread into radiating sprays evoking star bursts, usually set within a dark host rock (aegirine, feldspar). Always worked as a cabochon to reveal this striking pattern, it comes almost exclusively from the alkaline massifs of the Kola Peninsula.",
+            particularites = "Perfect cleavage in one direction (a layered, mica-like structure) makes it brittle and requires cabochon cutting rather than faceting.",
+            lithotherapie = "Astrophyllite is said to encourage introspection and mental clarity, echoing its star-like pattern."
+        ),
     )
 }

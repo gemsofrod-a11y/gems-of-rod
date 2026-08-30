@@ -1523,5 +1523,19 @@ object GemTranslationsDe {
             inclusions = "Hydrophane (poröse) Beschaffenheit, die Wasser aufnehmen und die Transparenz vorübergehend verändern kann; innere Struktur aus Kieselsäurekügelchen, verantwortlich für das Farbenspiel.",
             lithotherapie = "Dem Äthiopischen Opal wird, wie den anderen Edelopalen, nachgesagt, Emotionen und Kreativität zu verstärken."
         ),
+        "marcassite" to GemTranslation(
+            nom = "Markasit",
+            descriptionCourte = "Der blassere, orthorhombische Zwilling des Pyrits, in metallischen Fächern in Feuersteinknollen.",
+            descriptionLongue = "Chemisch identisch mit Pyrit (FeS₂), kristallisiert Markasit jedoch orthorhombisch und bildet fächer- oder „hahnenkammartige“ Aggregate von blasserem, silbrigerem Messinggelb. Er findet sich typischerweise als Knollen im Feuerstein und in der Kreide oder in Verbindung mit Kohlevorkommen. Weniger stabil als Pyrit, zersetzt er sich bei anhaltender Feuchtigkeit leichter.",
+            particularites = "Historischer „Markasitschmuck“ (georgianisch, viktorianisch, Art déco) verwendet in Wirklichkeit fast immer facettierten Pyrit: echter Markasit ist zu spröde und instabil, um sich zuverlässig facettieren zu lassen.",
+            lithotherapie = "Wie Pyrit wird Markasit mit Schutz und Erdung in Verbindung gebracht, mit einem besonderen Ruf für geistige Beruhigung und Klarheit."
+        ),
+        "astrophyllite" to GemTranslation(
+            nom = "Astrophyllit",
+            descriptionCourte = "Goldene sternförmige Büschel, eingeschlossen in dunklem Gestein.",
+            descriptionLongue = "Astrophyllit verdankt seinen Namen dem Griechischen „astron“ (Stern) und „phyllon“ (Blatt): seine feinen kupfer- bis bronzegoldenen Blättchen breiten sich in strahlenförmigen Büscheln aus, die an Sternenausbrüche erinnern, meist eingebettet in ein dunkles Wirtsgestein (Ägirin, Feldspat). Immer als Cabochon bearbeitet, um dieses spektakuläre Muster sichtbar zu machen, stammt er fast ausschließlich aus den alkalischen Massiven der Kola-Halbinsel.",
+            particularites = "Vollkommene Spaltbarkeit in eine Richtung (schichtige, glimmerartige Struktur) macht ihn brüchig und erfordert einen Cabochon- statt Facettenschliff.",
+            lithotherapie = "Astrophyllit wird nachgesagt, Introspektion und geistige Klarheit zu fördern, im Einklang mit seinem an Sterne erinnernden Muster."
+        ),
     )
 }

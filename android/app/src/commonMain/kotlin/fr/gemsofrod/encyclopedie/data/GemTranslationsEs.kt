@@ -1523,5 +1523,19 @@ object GemTranslationsEs {
             inclusions = "Naturaleza hidrófana (porosa) que puede absorber agua y modificar temporalmente su transparencia; estructura interna en esférulas de sílice responsable del juego de color.",
             lithotherapie = "Se dice que el ópalo de Etiopía amplifica las emociones y la creatividad, como los demás ópalos preciosos."
         ),
+        "marcassite" to GemTranslation(
+            nom = "Marcasita",
+            descriptionCourte = "El polimorfo ortorrómbico y más pálido de la pirita, en abanicos metálicos dentro de nódulos de sílex.",
+            descriptionLongue = "Químicamente idéntica a la pirita (FeS₂) pero cristalizando en el sistema ortorrómbico, la marcasita forma agregados en abanico o en «cresta de gallo» de un amarillo bronce más pálido y plateado. Se encuentra típicamente en nódulos dentro del sílex y la creta, o asociada a yacimientos de carbón. Más inestable que la pirita, se descompone con mayor facilidad tras una exposición prolongada a la humedad.",
+            particularites = "La «joyería de marcasita» histórica (georgiana, victoriana, art déco) utiliza en realidad casi siempre pirita tallada a facetas: la verdadera marcasita, demasiado frágil e inestable, no se presta a la talla.",
+            lithotherapie = "Como la pirita, la marcasita se asocia a la protección y el enraizamiento, con una reputación particular de calmar la mente y aportar claridad."
+        ),
+        "astrophyllite" to GemTranslation(
+            nom = "Astrofilita",
+            descriptionCourte = "Ráfagas doradas en forma de estrella, atrapadas en una roca oscura.",
+            descriptionLongue = "La astrofilita debe su nombre al griego «astron» (estrella) y «phyllon» (hoja): sus finas láminas de tono cobrizo a dorado bronce se despliegan en ráfagas radiantes que evocan estallidos estelares, generalmente incrustadas en una roca huésped oscura (egirina, feldespato). Siempre se trabaja en cabujón para revelar este motivo espectacular, y proviene casi exclusivamente de los macizos alcalinos de la península de Kola.",
+            particularites = "Exfoliación perfecta en una dirección (estructura laminar, como la mica), lo que la vuelve quebradiza y obliga a tallarla en cabujón en lugar de a facetas.",
+            lithotherapie = "Se dice que la astrofilita favorece la introspección y la claridad mental, en resonancia con su motivo que evoca las estrellas."
+        ),
     )
 }

@@ -1523,5 +1523,19 @@ object GemTranslationsNl {
             inclusions = "Hydrofane (poreuze) aard die water kan absorberen en de transparantie tijdelijk kan wijzigen; interne structuur van silicabolletjes verantwoordelijk voor het kleurenspel.",
             lithotherapie = "Ethiopische opaal wordt, zoals andere edelopalen, geacht emoties en creativiteit te versterken."
         ),
+        "marcassite" to GemTranslation(
+            nom = "Markasiet",
+            descriptionCourte = "De bleker, orthorombische tweelingbroer van pyriet, in metaalachtige waaiers in vuursteenknollen.",
+            descriptionLongue = "Chemisch identiek aan pyriet (FeS₂), maar kristalliserend in het orthorombische stelsel, vormt markasiet waaiervormige of \"hanenkam\"-achtige aggregaten in een bleker, zilveriger messinggeel. Het komt doorgaans voor als knollen in vuursteen en krijt, of in verband met steenkoollagen. Minder stabiel dan pyriet, valt het bij langdurige blootstelling aan vocht gemakkelijker uiteen.",
+            particularites = "Historische \"markasietsieraden\" (Georgian, Victoriaans, Art Deco) gebruikten in werkelijkheid vrijwel altijd geslepen pyriet: echt markasiet is te broos en instabiel om betrouwbaar te facetteren.",
+            lithotherapie = "Net als pyriet wordt markasiet geassocieerd met bescherming en aarding, met een bijzondere reputatie voor geestelijke rust en helderheid."
+        ),
+        "astrophyllite" to GemTranslation(
+            nom = "Astrofylliet",
+            descriptionCourte = "Gouden stervormige bundels, gevangen in donker gesteente.",
+            descriptionLongue = "Astrofylliet dankt zijn naam aan het Grieks \"astron\" (ster) en \"phyllon\" (blad): de fijne koper- tot brons-gouden lamellen ontvouwen zich in stralende bundels die aan sterexplosies doen denken, meestal ingebed in een donker gastgesteente (aegirien, veldspaat). Altijd tot cabochon bewerkt om dit spectaculaire patroon te tonen, komt het vrijwel uitsluitend uit de alkalische massieven van het Kola-schiereiland.",
+            particularites = "Volmaakte splijting in één richting (een gelaagde, mica-achtige structuur) maakt het broos en vereist cabochonslijpen in plaats van facetteren.",
+            lithotherapie = "Astrofylliet zou introspectie en mentale helderheid bevorderen, in resonantie met zijn stervormige patroon."
+        ),
     )
 }

@@ -233,5 +233,7 @@ object GemDiagnostics {
         "opale-noire" to GemDiagnostic(transparence = "Translucide à opaque", eclat = "Vitreux à résineux", clivage = "Aucun", densite = "1,98 – 2,20", pleochroisme = "Aucun", fluorescence = "Faible à modérée"),
         "opale-boulder" to GemDiagnostic(transparence = "Translucide à opaque", eclat = "Vitreux à résineux", clivage = "Aucun", densite = "1,98 – 2,20", pleochroisme = "Aucun", fluorescence = "Faible à modérée"),
         "opale-ethiopie" to GemDiagnostic(transparence = "Transparente à translucide", eclat = "Vitreux à résineux", clivage = "Aucun", densite = "1,80 – 2,00", pleochroisme = "Aucun", fluorescence = "Faible à modérée", inclusions = "Nature hydrophane (poreuse) pouvant absorber l'eau et modifier temporairement sa transparence ; structure interne en sphérules de silice responsable du jeu de couleur.", typeInclusion = "Agrégat botryoïdal"),
+        "marcassite" to GemDiagnostic(transparence = "Opaque", eclat = "Métallique", clivage = "Indistinct", densite = "4,87 – 4,90", pleochroisme = "Aucun", fluorescence = "Aucune"),
+        "astrophyllite" to GemDiagnostic(transparence = "Translucide à opaque", eclat = "Métallique à nacré", clivage = "Parfait dans une direction", densite = "3,30 – 3,40", pleochroisme = "Faible", fluorescence = "Aucune"),
     )
 }
