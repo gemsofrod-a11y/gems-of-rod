@@ -448,8 +448,8 @@
     <string name="stock_status_consignation">Consignação</string>
 
     <!-- Lapidação -->
-    <string name="lab_lapidaire_title">Lapidação</string>
-    <string name="lab_lapidaire_subtitle">Máquinas, discos e ângulos de corte de facetas.</string>
+    <string name="gemmologie_lapidaire_title">Lapidação</string>
+    <string name="gemmologie_lapidaire_subtitle">Máquinas, discos e ângulos de corte de facetas.</string>
     <string name="lapidaire_title">Lapidação</string>
     <string name="lapidaire_disc_grain_label">Granulação: %1$s</string>
     <string name="lapidaire_angle_crown_label">Coroa</string>

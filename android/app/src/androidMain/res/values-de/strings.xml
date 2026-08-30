@@ -448,8 +448,8 @@
     <string name="stock_status_consignation">Kommission</string>
 
     <!-- Lapidar (Steinschleifen) -->
-    <string name="lab_lapidaire_title">Lapidar</string>
-    <string name="lab_lapidaire_subtitle">Maschinen, Scheiben und Schliffwinkel für das Facettieren.</string>
+    <string name="gemmologie_lapidaire_title">Lapidar</string>
+    <string name="gemmologie_lapidaire_subtitle">Maschinen, Scheiben und Schliffwinkel für das Facettieren.</string>
     <string name="lapidaire_title">Lapidar</string>
     <string name="lapidaire_disc_grain_label">Körnung: %1$s</string>
     <string name="lapidaire_angle_crown_label">Krone</string>

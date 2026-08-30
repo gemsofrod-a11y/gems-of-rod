@@ -273,6 +273,7 @@ fun GemmologieMenuScreen(
     onPaysClick: () -> Unit,
     onAnalyseClick: () -> Unit,
     onComparerClick: () -> Unit,
+    onLapidaireClick: () -> Unit,
     onGemClick: (Gem) -> Unit,
     onBackClick: () -> Unit
 ) {
@@ -350,6 +351,11 @@ fun GemmologieMenuScreen(
                         title = stringResource(R.string.gemmologie_comparer_title),
                         subtitle = stringResource(R.string.gemmologie_comparer_subtitle),
                         onClick = onComparerClick
+                    )
+                    GemmologieMenuCard(
+                        title = stringResource(R.string.gemmologie_lapidaire_title),
+                        subtitle = stringResource(R.string.gemmologie_lapidaire_subtitle),
+                        onClick = onLapidaireClick
                     )
                 }
             } else if (results.isEmpty()) {

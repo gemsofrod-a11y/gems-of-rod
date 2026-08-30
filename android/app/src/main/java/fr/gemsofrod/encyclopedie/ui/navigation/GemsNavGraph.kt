@@ -214,7 +214,6 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onReflectivityMeterClick = { navController.navigate(Routes.REFLECTIVITY_METER) },
                 onTreatmentsClick = { navController.navigate(Routes.TREATMENTS) },
                 onStockClick = { navController.navigate(Routes.STOCK_LIST) },
-                onLapidaireClick = { navController.navigate(Routes.LAPIDAIRE) },
                 onLegendaryClick = { navController.navigate(Routes.LEGENDARY_RIDDLE) },
                 onBackClick = { navController.popBackStack() }
             )
@@ -372,6 +371,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onPaysClick = { navController.navigate(Routes.PAYS_LIST) },
                 onAnalyseClick = { navController.navigate(Routes.ANALYSE) },
                 onComparerClick = { navController.navigate(Routes.COMPARER) },
+                onLapidaireClick = { navController.navigate(Routes.LAPIDAIRE) },
                 onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
                 onBackClick = { navController.popBackStack() }
             )

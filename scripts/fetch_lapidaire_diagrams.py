@@ -58,7 +58,11 @@ DIAGRAMS = [
     (
         "machine_facettage_moderne",
         ["Faceting machine photograph", "Gem faceting machine", "Lapidary faceting machine"],
-        ["facet", "faceting", "lapidary"],
+        # Expressions composées uniquement (pas juste "facet" seul) : une
+        # recherche trop large a déjà renvoyé une perle romaine à facettes au
+        # lieu d'une machine, faux positif corrigé manuellement une fois
+        # repéré — ces mots-clés plus stricts visent à ne pas le reproduire.
+        ["faceting machine", "lapidary machine", "gem cutting machine"],
     ),
     (
         "etapes_taille_brut_facette",
