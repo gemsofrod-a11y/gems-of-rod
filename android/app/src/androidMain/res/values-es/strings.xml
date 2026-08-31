@@ -464,4 +464,6 @@
     <string name="lapidaire_angle_extinction_label">Ángulo de extinción</string>
     <string name="lapidaire_defaut_cause_label">Causa: %1$s</string>
     <string name="lapidaire_defaut_remede_label">Solución: %1$s</string>
+    <string name="lapidaire_index_title_format">Índice %1$s</string>
+    <string name="lapidaire_index_rotation_label">Rotación por muesca</string>
 </resources>

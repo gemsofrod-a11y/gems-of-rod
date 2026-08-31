@@ -464,4 +464,6 @@
     <string name="lapidaire_angle_extinction_label">Angle d\'extinction</string>
     <string name="lapidaire_defaut_cause_label">Cause : %1$s</string>
     <string name="lapidaire_defaut_remede_label">Remède : %1$s</string>
+    <string name="lapidaire_index_title_format">Index %1$s</string>
+    <string name="lapidaire_index_rotation_label">Rotation par cran</string>
 </resources>

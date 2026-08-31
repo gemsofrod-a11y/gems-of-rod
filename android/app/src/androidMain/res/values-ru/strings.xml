@@ -464,4 +464,6 @@
     <string name="lapidaire_angle_extinction_label">Угол погасания</string>
     <string name="lapidaire_defaut_cause_label">Причина: %1$s</string>
     <string name="lapidaire_defaut_remede_label">Решение: %1$s</string>
+    <string name="lapidaire_index_title_format">Головка %1$s</string>
+    <string name="lapidaire_index_rotation_label">Поворот на одну насечку</string>
 </resources>
