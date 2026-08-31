@@ -464,4 +464,6 @@
     <string name="lapidaire_angle_extinction_label">Uitdovingshoek</string>
     <string name="lapidaire_defaut_cause_label">Oorzaak: %1$s</string>
     <string name="lapidaire_defaut_remede_label">Oplossing: %1$s</string>
+    <string name="lapidaire_index_title_format">Index %1$s</string>
+    <string name="lapidaire_index_rotation_label">Rotatie per stand</string>
 </resources>

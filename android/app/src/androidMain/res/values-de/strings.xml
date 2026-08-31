@@ -464,4 +464,6 @@
     <string name="lapidaire_angle_extinction_label">Auslöschungswinkel</string>
     <string name="lapidaire_defaut_cause_label">Ursache: %1$s</string>
     <string name="lapidaire_defaut_remede_label">Abhilfe: %1$s</string>
+    <string name="lapidaire_index_title_format">Index %1$s</string>
+    <string name="lapidaire_index_rotation_label">Drehung pro Raste</string>
 </resources>

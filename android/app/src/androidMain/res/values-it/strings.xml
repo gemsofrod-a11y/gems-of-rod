@@ -464,4 +464,6 @@
     <string name="lapidaire_angle_extinction_label">Angolo di estinzione</string>
     <string name="lapidaire_defaut_cause_label">Causa: %1$s</string>
     <string name="lapidaire_defaut_remede_label">Soluzione: %1$s</string>
+    <string name="lapidaire_index_title_format">Indice %1$s</string>
+    <string name="lapidaire_index_rotation_label">Rotazione per tacca</string>
 </resources>

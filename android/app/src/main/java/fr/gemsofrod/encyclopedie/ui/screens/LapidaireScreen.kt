@@ -50,6 +50,7 @@ import fr.gemsofrod.encyclopedie.data.LapidaireDefaut
 import fr.gemsofrod.encyclopedie.data.LapidaireDiagram
 import fr.gemsofrod.encyclopedie.data.LapidaireDiagrams
 import fr.gemsofrod.encyclopedie.data.LapidaireDisc
+import fr.gemsofrod.encyclopedie.data.LapidaireIndexEntry
 import fr.gemsofrod.encyclopedie.data.LapidaireInfo
 import fr.gemsofrod.encyclopedie.data.LapidaireOptiqueEntry
 import fr.gemsofrod.encyclopedie.data.LapidaireTip
@@ -116,6 +117,7 @@ fun LapidaireScreen(onBackClick: () -> Unit) {
                     entries = listOf(
                         "machines" to page.machinesTitle,
                         "disques" to page.disquesTitle,
+                        "index" to page.indexTitle,
                         "angles" to page.anglesTitle,
                         "optique" to page.optiqueTitle,
                         "defauts" to page.defautsTitle,
@@ -186,6 +188,19 @@ fun LapidaireScreen(onBackClick: () -> Unit) {
                 }
 
                 if (!isSearching) {
+                    SectionHeader(
+                        title = page.indexTitle,
+                        modifier = Modifier.onGloballyPositioned {
+                            sectionOffsets["index"] = it.positionInParent().y.roundToInt()
+                        }
+                    )
+                    Text(
+                        text = page.indexIntro,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    page.indexTable.forEach { IndexCard(it) }
+
                     SectionHeader(
                         title = page.anglesTitle,
                         modifier = Modifier.onGloballyPositioned {
@@ -376,6 +391,30 @@ private fun AnglesRow(label: String, value: String) {
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
+    }
+}
+
+@Composable
+private fun IndexCard(entry: LapidaireIndexEntry) {
+    Card(
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            Text(
+                text = stringResource(R.string.lapidaire_index_title_format, entry.index),
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            AnglesRow(stringResource(R.string.lapidaire_index_rotation_label), entry.rotationParCran)
+            Text(
+                text = entry.cotesTaillables,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
     }
 }
 
