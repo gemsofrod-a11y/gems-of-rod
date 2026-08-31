@@ -29,6 +29,18 @@ data class LapidaireTip(
     val texte: String
 )
 
+data class LapidaireOptiqueEntry(
+    val pierre: String,
+    val angleCritique: String,
+    val angleExtinction: String
+)
+
+data class LapidaireDefaut(
+    val probleme: String,
+    val cause: String,
+    val remede: String
+)
+
 data class LapidairePage(
     val intro: String,
     val machinesTitle: String,
@@ -40,6 +52,12 @@ data class LapidairePage(
     val anglesTitle: String,
     val anglesIntro: String,
     val angles: List<LapidaireAngles>,
+    val optiqueTitle: String,
+    val optiqueIntro: String,
+    val optiqueTable: List<LapidaireOptiqueEntry>,
+    val defautsTitle: String,
+    val defautsIntro: String,
+    val defauts: List<LapidaireDefaut>,
     val diagrammesTitle: String,
     val diagrammes: List<LapidaireDiagram>,
     val tipsTitle: String,
@@ -77,7 +95,7 @@ object LapidaireInfo {
             ),
             LapidaireComponent(
                 nom = "Tête d'index (index gear)",
-                description = "Molette dentée fixée au bout de la quille, disponible chez la plupart des fabricants en plusieurs graduations — 64, 72, 80, 96 ou 120 crans — pour couvrir tous les types de facettages ; un disque « index rapide », à moins de crans, se superpose souvent à l'index normal pour accélérer le repérage lors d'une taille en série. Le blocage sur une position précise à chaque facette est indispensable à la symétrie d'une taille comme le brillant rond, qui répartit ses facettes selon une symétrie d'ordre 8."
+                description = "Molette dentée fixée au bout de la quille, disponible chez la plupart des fabricants en plusieurs graduations — 64, 72, 80, 96 ou 120 crans — pour couvrir tous les types de facettages ; un disque « index rapide », à moins de crans, se superpose souvent à l'index normal pour accélérer le repérage lors d'une taille en série. Le blocage sur une position précise à chaque facette est indispensable à la symétrie d'une taille comme le brillant rond, qui répartit ses facettes selon une symétrie d'ordre 8. Le choix de l'index dépend du nombre de côtés à tailler : il doit en être un multiple exact — un pentagone, par exemple, est infaisable avec un index 96 (96 ÷ 5 n'est pas entier) mais se taille sans problème avec un index 80 (80 ÷ 5 = 16)."
             ),
             LapidaireComponent(
                 nom = "Cheater (« tricheur »)",
@@ -132,6 +150,70 @@ object LapidaireInfo {
                 source = "Marcel Tolkowsky, « Diamond Design », 1919"
             )
         ),
+        optiqueTitle = "L'angle critique et l'angle d'extinction",
+        optiqueIntro = "Le pavillon d'une pierre facettée agit comme un miroir : en dessous de l'angle critique de l'espèce, la lumière entrant par la table fuit à travers le pavillon (effet de fenêtre déjà évoqué plus haut) ; taillé exactement à l'angle critique, un autre défaut apparaît, l'« œil de poisson » — la table paraît terne alors que le contour de la couronne reste brillant, car les rayons qui la traversent longent la paroi du cône de réflexion sans s'y réfléchir. Il existe aussi une limite haute, l'angle d'extinction, au-delà de laquelle le pavillon perd à nouveau la lumière par la facette opposée : angle d'extinction = 60° − (angle critique / 3). Un pavillon bien taillé respecte donc angle critique < angle du pavillon < angle d'extinction ; plus l'indice de réfraction de la gemme est élevé, plus cette fourchette de travail s'élargit — un diamant pardonne beaucoup plus d'écart qu'une fluorite. La couronne obéit à une règle complémentaire : son angle maximal est inversement proportionnel à celui du pavillon (un pavillon plus court autorise une couronne plus haute) et directement proportionnel à l'indice de réfraction ; travailler quelques dixièmes de degré en dessous de ces maximums reste le choix le plus sûr. Ces schémas de coupe s'appuient tous sur la Technique du Point de Jonction (méthode américaine, Long & Steele), qui utilise les intersections entre trois facettes ou plus comme repères pour garantir automatiquement de bonnes proportions et une bonne conservation de poids par rapport au brut ; pour estimer le poids d'une pierre déjà taillée sans la déserti, la formule usuelle est poids (en carats) = largeur³ × coefficient de volume de la coupe × poids spécifique de l'espèce / 200.",
+        optiqueTable = listOf(
+            LapidaireOptiqueEntry(pierre = "Diamant", angleCritique = "24,4°", angleExtinction = "51,85°"),
+            LapidaireOptiqueEntry(pierre = "Sphène (Titanite)", angleCritique = "31,76°", angleExtinction = "49,41°"),
+            LapidaireOptiqueEntry(pierre = "Zircon (haut)", angleCritique = "31,3°", angleExtinction = "49,57°"),
+            LapidaireOptiqueEntry(pierre = "Grenat démantoïde", angleCritique = "32,62°", angleExtinction = "49,13°"),
+            LapidaireOptiqueEntry(pierre = "Alexandrite (chrysobéryl)", angleCritique = "34,94°", angleExtinction = "48,35°"),
+            LapidaireOptiqueEntry(pierre = "Rubis et saphir (corindon)", angleCritique = "34,58°", angleExtinction = "48,47°"),
+            LapidaireOptiqueEntry(pierre = "Spinelle", angleCritique = "35,74°", angleExtinction = "48,09°"),
+            LapidaireOptiqueEntry(pierre = "Péridot", angleCritique = "37,2°", angleExtinction = "47,6°"),
+            LapidaireOptiqueEntry(pierre = "Tourmaline", angleCritique = "38,01°", angleExtinction = "47,33°"),
+            LapidaireOptiqueEntry(pierre = "Topaze", angleCritique = "38,15°", angleExtinction = "47,28°"),
+            LapidaireOptiqueEntry(pierre = "Béryl", angleCritique = "39,35°", angleExtinction = "46,88°"),
+            LapidaireOptiqueEntry(pierre = "Émeraude", angleCritique = "39,72°", angleExtinction = "46,76°"),
+            LapidaireOptiqueEntry(pierre = "Aigue-marine", angleCritique = "39,75°", angleExtinction = "46,75°"),
+            LapidaireOptiqueEntry(pierre = "Améthyste et quartz", angleCritique = "40,37°", angleExtinction = "46,54°"),
+            LapidaireOptiqueEntry(pierre = "Calcite", angleCritique = "42,29°", angleExtinction = "45,9°"),
+            LapidaireOptiqueEntry(pierre = "Fluorite", angleCritique = "44,21°", angleExtinction = "45,26°")
+        ),
+        defautsTitle = "Défauts courants et corrections",
+        defautsIntro = "La plupart des défauts de facettage viennent d'un report d'angle inexact, d'une indexation erronée ou d'un transfert de dop mal aligné plutôt que d'un problème de plateau. La règle de base pour corriger un mauvais raccordement ou un polissage inégal : toujours agir sur le côté opposé au défaut.",
+        defauts = listOf(
+            LapidaireDefaut(
+                probleme = "Facette décentrée ou mal polie sur un côté",
+                cause = "Léger défaut d'alignement de la pierre sur le correcteur.",
+                remede = "Tourner le correcteur pour incliner la pierre du côté opposé au défaut."
+            ),
+            LapidaireDefaut(
+                probleme = "Facette mal raccordée ou mal polie en haut, angle trop grand",
+                cause = "L'angle affiché sur le rapporteur est supérieur à ce qu'il devrait être.",
+                remede = "Réduire légèrement l'angle sur le rapporteur pour incliner la pierre vers le bas."
+            ),
+            LapidaireDefaut(
+                probleme = "Facette mal raccordée ou mal polie en bas, angle trop petit",
+                cause = "L'angle affiché sur le rapporteur est inférieur à ce qu'il devrait être.",
+                remede = "Augmenter légèrement l'angle sur le rapporteur pour incliner la pierre vers le haut."
+            ),
+            LapidaireDefaut(
+                probleme = "Défaut combiné en diagonale (par exemple en haut à gauche)",
+                cause = "La pierre a pu légèrement pivoter sur le dop pendant le transfert.",
+                remede = "Combiner une correction au correcteur et sur l'angle, en réduisant au besoin la vitesse de rotation du plateau le temps de reprendre la main."
+            ),
+            LapidaireDefaut(
+                probleme = "La pierre émet un bruit strident sur le plateau de polissage",
+                cause = "La facette en cours n'est pas parallèle au plateau.",
+                remede = "Arrêter et rectifier la position de la pierre avant de continuer — un signe fiable, à ne jamais ignorer."
+            ),
+            LapidaireDefaut(
+                probleme = "Stries parallèles traversant plusieurs facettes",
+                cause = "Plateau contaminé par des grains d'une granulométrie différente.",
+                remede = "Décontaminer le plateau (brossage à l'eau chaude savonneuse, puis raclage ou rectification si nécessaire) avant de reprendre."
+            ),
+            LapidaireDefaut(
+                probleme = "Traces de « brûlure » en surface d'une facette",
+                cause = "Polissage trop stationnaire, avec une pression excessive, provoquant un échauffement localisé.",
+                remede = "Balayer régulièrement la facette sur le plateau, réduire la pression, ajouter au besoin une goutte d'eau par seconde."
+            ),
+            LapidaireDefaut(
+                probleme = "Petite cavité qui apparaît en cours de facettage",
+                cause = "Une inclusion proche de la surface a été mise à jour.",
+                remede = "Mieux « nettoyer » les inclusions dès l'ébrutage reste la meilleure prévention ; une fois le trou apparu, retailler localement ou envisager une recoupe totale si nécessaire."
+            )
+        ),
         diagrammesTitle = "Diagrammes",
         diagrammes = listOf(
             LapidaireDiagram(
@@ -183,7 +265,7 @@ object LapidaireInfo {
             ),
             LapidaireComponent(
                 nom = "Index gear",
-                description = "Toothed wheel fixed at the end of the quill, typically available from manufacturers in several counts — 64, 72, 80, 96 or 120 notches — to cover every style of cut; a lower-count \"quick index\" disc is often layered on top of the standard one to speed up positioning when cutting a series of stones. Locking the stone's rotation at a precise position for each facet is essential for the symmetry of a cut like the round brilliant, which arranges its facets in 8-fold symmetry."
+                description = "Toothed wheel fixed at the end of the quill, typically available from manufacturers in several counts — 64, 72, 80, 96 or 120 notches — to cover every style of cut; a lower-count \"quick index\" disc is often layered on top of the standard one to speed up positioning when cutting a series of stones. Locking the stone's rotation at a precise position for each facet is essential for the symmetry of a cut like the round brilliant, which arranges its facets in 8-fold symmetry. The index chosen must be an exact multiple of the number of sides to be cut — a pentagon, for instance, cannot be cut on a 96 index (96 ÷ 5 is not a whole number) but cuts cleanly on an 80 index (80 ÷ 5 = 16)."
             ),
             LapidaireComponent(
                 nom = "Cheater",
@@ -238,6 +320,70 @@ object LapidaireInfo {
                 source = "Marcel Tolkowsky, \"Diamond Design\", 1919"
             )
         ),
+        optiqueTitle = "Critical angle and extinction angle",
+        optiqueIntro = "A cut stone's pavilion acts as a mirror: below the species' critical angle, light entering through the table escapes through the pavilion (the \"window\" effect already covered above); cut exactly at the critical angle, a different defect appears, the \"fish eye\" — the table looks dull while the crown's outline stays bright, because the rays crossing it graze the wall of the reflection cone without actually reflecting off it. There is also an upper limit, the extinction angle, beyond which the pavilion again loses light through the opposite facet: extinction angle = 60° − (critical angle / 3). A well-cut pavilion therefore keeps critical angle < pavilion angle < extinction angle; the higher the gem's refractive index, the wider this working range becomes — a diamond forgives far more deviation than a fluorite does. The crown follows a complementary rule: its maximum angle is inversely proportional to the pavilion's (a shorter pavilion allows a taller crown) and directly proportional to the refractive index; working a few tenths of a degree below these maximums is the safest choice. All of these cut diagrams rest on the Meet Point Technique (an American method, Long & Steele), which uses the intersections of three or more facets as reference points to automatically secure good proportions and good weight retention from the rough; to estimate the weight of an already-cut stone without unsetting it, the usual formula is weight (in carats) = width³ × the cut's volume coefficient × the species' specific gravity / 200.",
+        optiqueTable = listOf(
+            LapidaireOptiqueEntry(pierre = "Diamond", angleCritique = "24.4°", angleExtinction = "51.85°"),
+            LapidaireOptiqueEntry(pierre = "Sphene (titanite)", angleCritique = "31.76°", angleExtinction = "49.41°"),
+            LapidaireOptiqueEntry(pierre = "Zircon (high)", angleCritique = "31.3°", angleExtinction = "49.57°"),
+            LapidaireOptiqueEntry(pierre = "Demantoid garnet", angleCritique = "32.62°", angleExtinction = "49.13°"),
+            LapidaireOptiqueEntry(pierre = "Alexandrite (chrysoberyl)", angleCritique = "34.94°", angleExtinction = "48.35°"),
+            LapidaireOptiqueEntry(pierre = "Ruby and sapphire (corundum)", angleCritique = "34.58°", angleExtinction = "48.47°"),
+            LapidaireOptiqueEntry(pierre = "Spinel", angleCritique = "35.74°", angleExtinction = "48.09°"),
+            LapidaireOptiqueEntry(pierre = "Peridot", angleCritique = "37.2°", angleExtinction = "47.6°"),
+            LapidaireOptiqueEntry(pierre = "Tourmaline", angleCritique = "38.01°", angleExtinction = "47.33°"),
+            LapidaireOptiqueEntry(pierre = "Topaz", angleCritique = "38.15°", angleExtinction = "47.28°"),
+            LapidaireOptiqueEntry(pierre = "Beryl", angleCritique = "39.35°", angleExtinction = "46.88°"),
+            LapidaireOptiqueEntry(pierre = "Emerald", angleCritique = "39.72°", angleExtinction = "46.76°"),
+            LapidaireOptiqueEntry(pierre = "Aquamarine", angleCritique = "39.75°", angleExtinction = "46.75°"),
+            LapidaireOptiqueEntry(pierre = "Amethyst and quartz", angleCritique = "40.37°", angleExtinction = "46.54°"),
+            LapidaireOptiqueEntry(pierre = "Calcite", angleCritique = "42.29°", angleExtinction = "45.9°"),
+            LapidaireOptiqueEntry(pierre = "Fluorite", angleCritique = "44.21°", angleExtinction = "45.26°")
+        ),
+        defautsTitle = "Common defects and corrections",
+        defautsIntro = "Most faceting defects come from an inaccurate angle setting, a wrong index reading, or a badly aligned dop transfer rather than a problem with the lap itself. The basic rule for correcting a bad meet or an uneven polish: always act on the side opposite the defect.",
+        defauts = listOf(
+            LapidaireDefaut(
+                probleme = "Facet off-centre or poorly polished on one side",
+                cause = "Slight misalignment of the stone on the cheater.",
+                remede = "Turn the cheater to tilt the stone toward the side opposite the defect."
+            ),
+            LapidaireDefaut(
+                probleme = "Facet meets or polishes badly at the top, angle too large",
+                cause = "The angle shown on the protractor is higher than it should be.",
+                remede = "Slightly reduce the angle on the protractor to tilt the stone downward."
+            ),
+            LapidaireDefaut(
+                probleme = "Facet meets or polishes badly at the bottom, angle too small",
+                cause = "The angle shown on the protractor is lower than it should be.",
+                remede = "Slightly increase the angle on the protractor to tilt the stone upward."
+            ),
+            LapidaireDefaut(
+                probleme = "Combined diagonal defect (for example, top-left)",
+                cause = "The stone may have rotated slightly on the dop during transfer.",
+                remede = "Combine a correction on the cheater with one on the angle, slowing the lap's rotation speed if needed while you regain control."
+            ),
+            LapidaireDefaut(
+                probleme = "The stone squeals on the polishing lap",
+                cause = "The facet being worked is not parallel to the lap.",
+                remede = "Stop and correct the stone's position before continuing — a reliable warning sign, never to be ignored."
+            ),
+            LapidaireDefaut(
+                probleme = "Parallel scratches running across several facets",
+                cause = "The lap is contaminated with grit of a different grain size.",
+                remede = "Decontaminate the lap (scrub with hot soapy water, then scrape or true up the surface if needed) before resuming."
+            ),
+            LapidaireDefaut(
+                probleme = "\"Burn\" marks on a facet's surface",
+                cause = "Polishing held too long in one spot with too much pressure, causing local overheating.",
+                remede = "Sweep the facet regularly across the lap, reduce pressure, and add a drop of water per second if needed."
+            ),
+            LapidaireDefaut(
+                probleme = "A small cavity appears partway through faceting",
+                cause = "An inclusion close to the surface has been exposed.",
+                remede = "Cleaning up inclusions more thoroughly at the rough-grinding stage is the best prevention; once the hole appears, recut that area locally or consider a full recut if needed."
+            )
+        ),
         diagrammesTitle = "Diagrams",
         diagrammes = listOf(
             LapidaireDiagram(
@@ -289,7 +435,7 @@ object LapidaireInfo {
             ),
             LapidaireComponent(
                 nom = "Rueda de índice (index gear)",
-                description = "Rueda dentada fijada en el extremo de la caña, disponible habitualmente en varias graduaciones —64, 72, 80, 96 o 120 muescas— para cubrir todos los estilos de talla; un disco de «índice rápido», con menos muescas, suele superponerse al índice normal para agilizar el posicionado al tallar una serie de piedras. Bloquear la rotación de la piedra en una posición precisa para cada faceta es condición indispensable para la simetría de una talla como el brillante redondo, que reparte sus facetas con simetría de orden 8."
+                description = "Rueda dentada fijada en el extremo de la caña, disponible habitualmente en varias graduaciones —64, 72, 80, 96 o 120 muescas— para cubrir todos los estilos de talla; un disco de «índice rápido», con menos muescas, suele superponerse al índice normal para agilizar el posicionado al tallar una serie de piedras. Bloquear la rotación de la piedra en una posición precisa para cada faceta es condición indispensable para la simetría de una talla como el brillante redondo, que reparte sus facetas con simetría de orden 8. El índice elegido debe ser múltiplo exacto del número de lados a tallar: un pentágono, por ejemplo, es imposible con un índice 96 (96 ÷ 5 no es un número entero) pero se talla sin problema con un índice 80 (80 ÷ 5 = 16)."
             ),
             LapidaireComponent(
                 nom = "Cheater",
@@ -344,6 +490,70 @@ object LapidaireInfo {
                 source = "Marcel Tolkowsky, «Diamond Design», 1919"
             )
         ),
+        optiqueTitle = "El ángulo crítico y el ángulo de extinción",
+        optiqueIntro = "El pabellón de una piedra tallada actúa como un espejo: por debajo del ángulo crítico de la especie, la luz que entra por la tabla se escapa a través del pabellón (el efecto «ventana» ya visto más arriba); tallado exactamente en el ángulo crítico aparece otro defecto, el «ojo de pez» — la tabla se ve apagada mientras el contorno de la corona sigue brillante, porque los rayos que la atraviesan rozan la pared del cono de reflexión sin llegar a reflejarse en ella. También existe un límite superior, el ángulo de extinción, más allá del cual el pabellón vuelve a perder luz por la faceta opuesta: ángulo de extinción = 60° − (ángulo crítico / 3). Un pabellón bien tallado respeta por tanto ángulo crítico < ángulo del pabellón < ángulo de extinción; cuanto mayor es el índice de refracción de la gema, más se amplía este margen de trabajo — un diamante perdona mucho más desvío que una fluorita. La corona sigue una regla complementaria: su ángulo máximo es inversamente proporcional al del pabellón (un pabellón más corto permite una corona más alta) y directamente proporcional al índice de refracción; trabajar unas décimas de grado por debajo de estos máximos sigue siendo la opción más segura. Todos estos esquemas de talla se apoyan en la Técnica del Punto de Encuentro (método estadounidense, Long y Steele), que utiliza las intersecciones entre tres o más facetas como referencias para garantizar automáticamente buenas proporciones y una buena conservación del peso respecto al bruto; para estimar el peso de una piedra ya tallada sin desengastarla, la fórmula habitual es peso (en quilates) = anchura³ × coeficiente de volumen de la talla × peso específico de la especie / 200.",
+        optiqueTable = listOf(
+            LapidaireOptiqueEntry(pierre = "Diamante", angleCritique = "24,4°", angleExtinction = "51,85°"),
+            LapidaireOptiqueEntry(pierre = "Esfena (titanita)", angleCritique = "31,76°", angleExtinction = "49,41°"),
+            LapidaireOptiqueEntry(pierre = "Circón (alto)", angleCritique = "31,3°", angleExtinction = "49,57°"),
+            LapidaireOptiqueEntry(pierre = "Granate demantoide", angleCritique = "32,62°", angleExtinction = "49,13°"),
+            LapidaireOptiqueEntry(pierre = "Alejandrita (crisoberilo)", angleCritique = "34,94°", angleExtinction = "48,35°"),
+            LapidaireOptiqueEntry(pierre = "Rubí y zafiro (corindón)", angleCritique = "34,58°", angleExtinction = "48,47°"),
+            LapidaireOptiqueEntry(pierre = "Espinela", angleCritique = "35,74°", angleExtinction = "48,09°"),
+            LapidaireOptiqueEntry(pierre = "Peridoto", angleCritique = "37,2°", angleExtinction = "47,6°"),
+            LapidaireOptiqueEntry(pierre = "Turmalina", angleCritique = "38,01°", angleExtinction = "47,33°"),
+            LapidaireOptiqueEntry(pierre = "Topacio", angleCritique = "38,15°", angleExtinction = "47,28°"),
+            LapidaireOptiqueEntry(pierre = "Berilo", angleCritique = "39,35°", angleExtinction = "46,88°"),
+            LapidaireOptiqueEntry(pierre = "Esmeralda", angleCritique = "39,72°", angleExtinction = "46,76°"),
+            LapidaireOptiqueEntry(pierre = "Aguamarina", angleCritique = "39,75°", angleExtinction = "46,75°"),
+            LapidaireOptiqueEntry(pierre = "Amatista y cuarzo", angleCritique = "40,37°", angleExtinction = "46,54°"),
+            LapidaireOptiqueEntry(pierre = "Calcita", angleCritique = "42,29°", angleExtinction = "45,9°"),
+            LapidaireOptiqueEntry(pierre = "Fluorita", angleCritique = "44,21°", angleExtinction = "45,26°")
+        ),
+        defautsTitle = "Defectos habituales y correcciones",
+        defautsIntro = "La mayoría de los defectos de talla provienen de un ángulo mal ajustado, una indexación errónea o una transferencia de dop mal alineada, más que de un problema del plato. La regla básica para corregir un mal encuentro o un pulido desigual: actuar siempre en el lado opuesto al defecto.",
+        defauts = listOf(
+            LapidaireDefaut(
+                probleme = "Faceta descentrada o mal pulida en un lado",
+                cause = "Ligero desajuste de la piedra sobre el cheater.",
+                remede = "Girar el cheater para inclinar la piedra hacia el lado opuesto al defecto."
+            ),
+            LapidaireDefaut(
+                probleme = "Faceta mal encontrada o mal pulida arriba, ángulo demasiado grande",
+                cause = "El ángulo indicado en el transportador es superior al que debería ser.",
+                remede = "Reducir ligeramente el ángulo en el transportador para inclinar la piedra hacia abajo."
+            ),
+            LapidaireDefaut(
+                probleme = "Faceta mal encontrada o mal pulida abajo, ángulo demasiado pequeño",
+                cause = "El ángulo indicado en el transportador es inferior al que debería ser.",
+                remede = "Aumentar ligeramente el ángulo en el transportador para inclinar la piedra hacia arriba."
+            ),
+            LapidaireDefaut(
+                probleme = "Defecto combinado en diagonal (por ejemplo, arriba a la izquierda)",
+                cause = "La piedra pudo haber girado ligeramente sobre el dop durante la transferencia.",
+                remede = "Combinar una corrección en el cheater con otra en el ángulo, reduciendo si hace falta la velocidad de rotación del plato mientras se recupera el control."
+            ),
+            LapidaireDefaut(
+                probleme = "La piedra emite un chirrido en el plato de pulido",
+                cause = "La faceta en curso no es paralela al plato.",
+                remede = "Detenerse y corregir la posición de la piedra antes de continuar — una señal fiable que nunca debe ignorarse."
+            ),
+            LapidaireDefaut(
+                probleme = "Rayas paralelas que atraviesan varias facetas",
+                cause = "El plato está contaminado con granos de una granulometría distinta.",
+                remede = "Descontaminar el plato (cepillado con agua caliente y jabón, y raspado o rectificado si es necesario) antes de continuar."
+            ),
+            LapidaireDefaut(
+                probleme = "Marcas de «quemadura» en la superficie de una faceta",
+                cause = "Pulido demasiado estacionario, con presión excesiva, que provoca un sobrecalentamiento local.",
+                remede = "Barrer la faceta con regularidad sobre el plato, reducir la presión y añadir, si hace falta, una gota de agua por segundo."
+            ),
+            LapidaireDefaut(
+                probleme = "Aparece una pequeña cavidad durante la talla",
+                cause = "Se ha puesto al descubierto una inclusión próxima a la superficie.",
+                remede = "Limpiar mejor las inclusiones desde el desbaste sigue siendo la mejor prevención; una vez aparecido el agujero, retallar localmente o considerar una nueva talla completa si es necesario."
+            )
+        ),
         diagrammesTitle = "Diagramas",
         diagrammes = listOf(
             LapidaireDiagram(
@@ -395,7 +605,7 @@ object LapidaireInfo {
             ),
             LapidaireComponent(
                 nom = "Ruota d'indice (index gear)",
-                description = "Ruota dentata fissata all'estremità della cannula, generalmente disponibile in diverse graduazioni — 64, 72, 80, 96 o 120 tacche — per coprire ogni stile di taglio; un disco a «indice rapido», con meno tacche, si sovrappone spesso all'indice normale per velocizzare il posizionamento quando si taglia una serie di pietre. Bloccare la rotazione della pietra in una posizione precisa per ogni sfaccettatura è condizione indispensabile per la simmetria di un taglio come il brillante rotondo, che distribuisce le sue sfaccettature con simmetria di ordine 8."
+                description = "Ruota dentata fissata all'estremità della cannula, generalmente disponibile in diverse graduazioni — 64, 72, 80, 96 o 120 tacche — per coprire ogni stile di taglio; un disco a «indice rapido», con meno tacche, si sovrappone spesso all'indice normale per velocizzare il posizionamento quando si taglia una serie di pietre. Bloccare la rotazione della pietra in una posizione precisa per ogni sfaccettatura è condizione indispensabile per la simmetria di un taglio come il brillante rotondo, che distribuisce le sue sfaccettature con simmetria di ordine 8. L'indice scelto deve essere un multiplo esatto del numero di lati da tagliare: un pentagono, ad esempio, è impossibile con un indice 96 (96 ÷ 5 non è un numero intero) ma si taglia senza problemi con un indice 80 (80 ÷ 5 = 16)."
             ),
             LapidaireComponent(
                 nom = "Cheater",
@@ -450,6 +660,70 @@ object LapidaireInfo {
                 source = "Marcel Tolkowsky, «Diamond Design», 1919"
             )
         ),
+        optiqueTitle = "L'angolo critico e l'angolo di estinzione",
+        optiqueIntro = "Il padiglione di una pietra sfaccettata agisce come uno specchio: sotto l'angolo critico della specie, la luce che entra dalla tavola sfugge attraverso il padiglione (l'effetto «finestra» già visto sopra); tagliato esattamente all'angolo critico, compare un altro difetto, l'«occhio di pesce» — la tavola appare spenta mentre il contorno della corona resta brillante, perché i raggi che la attraversano sfiorano la parete del cono di riflessione senza riflettersi davvero. Esiste anche un limite superiore, l'angolo di estinzione, oltre il quale il padiglione perde di nuovo luce dalla sfaccettatura opposta: angolo di estinzione = 60° − (angolo critico / 3). Un padiglione ben tagliato rispetta quindi angolo critico < angolo del padiglione < angolo di estinzione; più è alto l'indice di rifrazione della gemma, più si allarga questo margine di lavoro — un diamante perdona molto più scarto di una fluorite. La corona segue una regola complementare: il suo angolo massimo è inversamente proporzionale a quello del padiglione (un padiglione più corto consente una corona più alta) e direttamente proporzionale all'indice di rifrazione; lavorare qualche decimo di grado sotto questi massimi resta la scelta più sicura. Tutti questi schemi di taglio si basano sulla Tecnica del Punto d'Incontro (metodo americano, Long e Steele), che usa le intersezioni tra tre o più sfaccettature come riferimenti per garantire automaticamente buone proporzioni e una buona conservazione del peso rispetto al grezzo; per stimare il peso di una pietra già tagliata senza smontarla dal castone, la formula abituale è peso (in carati) = larghezza³ × coefficiente di volume del taglio × peso specifico della specie / 200.",
+        optiqueTable = listOf(
+            LapidaireOptiqueEntry(pierre = "Diamante", angleCritique = "24,4°", angleExtinction = "51,85°"),
+            LapidaireOptiqueEntry(pierre = "Sfene (titanite)", angleCritique = "31,76°", angleExtinction = "49,41°"),
+            LapidaireOptiqueEntry(pierre = "Zircone (alto)", angleCritique = "31,3°", angleExtinction = "49,57°"),
+            LapidaireOptiqueEntry(pierre = "Granato demantoide", angleCritique = "32,62°", angleExtinction = "49,13°"),
+            LapidaireOptiqueEntry(pierre = "Alessandrite (crisoberillo)", angleCritique = "34,94°", angleExtinction = "48,35°"),
+            LapidaireOptiqueEntry(pierre = "Rubino e zaffiro (corindone)", angleCritique = "34,58°", angleExtinction = "48,47°"),
+            LapidaireOptiqueEntry(pierre = "Spinello", angleCritique = "35,74°", angleExtinction = "48,09°"),
+            LapidaireOptiqueEntry(pierre = "Peridoto", angleCritique = "37,2°", angleExtinction = "47,6°"),
+            LapidaireOptiqueEntry(pierre = "Tormalina", angleCritique = "38,01°", angleExtinction = "47,33°"),
+            LapidaireOptiqueEntry(pierre = "Topazio", angleCritique = "38,15°", angleExtinction = "47,28°"),
+            LapidaireOptiqueEntry(pierre = "Berillo", angleCritique = "39,35°", angleExtinction = "46,88°"),
+            LapidaireOptiqueEntry(pierre = "Smeraldo", angleCritique = "39,72°", angleExtinction = "46,76°"),
+            LapidaireOptiqueEntry(pierre = "Acquamarina", angleCritique = "39,75°", angleExtinction = "46,75°"),
+            LapidaireOptiqueEntry(pierre = "Ametista e quarzo", angleCritique = "40,37°", angleExtinction = "46,54°"),
+            LapidaireOptiqueEntry(pierre = "Calcite", angleCritique = "42,29°", angleExtinction = "45,9°"),
+            LapidaireOptiqueEntry(pierre = "Fluorite", angleCritique = "44,21°", angleExtinction = "45,26°")
+        ),
+        defautsTitle = "Difetti comuni e correzioni",
+        defautsIntro = "La maggior parte dei difetti di sfaccettatura deriva da un angolo mal impostato, un'indicizzazione errata o un trasferimento di dop mal allineato, più che da un problema del piatto. La regola di base per correggere un cattivo incontro o una lucidatura irregolare: agire sempre sul lato opposto al difetto.",
+        defauts = listOf(
+            LapidaireDefaut(
+                probleme = "Sfaccettatura decentrata o mal lucidata su un lato",
+                cause = "Leggero disallineamento della pietra sul cheater.",
+                remede = "Ruotare il cheater per inclinare la pietra verso il lato opposto al difetto."
+            ),
+            LapidaireDefaut(
+                probleme = "Sfaccettatura mal raccordata o mal lucidata in alto, angolo troppo grande",
+                cause = "L'angolo indicato sul goniometro è superiore a quanto dovrebbe essere.",
+                remede = "Ridurre leggermente l'angolo sul goniometro per inclinare la pietra verso il basso."
+            ),
+            LapidaireDefaut(
+                probleme = "Sfaccettatura mal raccordata o mal lucidata in basso, angolo troppo piccolo",
+                cause = "L'angolo indicato sul goniometro è inferiore a quanto dovrebbe essere.",
+                remede = "Aumentare leggermente l'angolo sul goniometro per inclinare la pietra verso l'alto."
+            ),
+            LapidaireDefaut(
+                probleme = "Difetto combinato in diagonale (ad esempio in alto a sinistra)",
+                cause = "La pietra potrebbe aver ruotato leggermente sul dop durante il trasferimento.",
+                remede = "Combinare una correzione sul cheater con una sull'angolo, riducendo se necessario la velocità di rotazione del piatto finché non si riprende il controllo."
+            ),
+            LapidaireDefaut(
+                probleme = "La pietra emette uno stridio sul piatto di lucidatura",
+                cause = "La sfaccettatura in lavorazione non è parallela al piatto.",
+                remede = "Fermarsi e correggere la posizione della pietra prima di continuare — un segnale affidabile, da non ignorare mai."
+            ),
+            LapidaireDefaut(
+                probleme = "Graffi paralleli che attraversano più sfaccettature",
+                cause = "Il piatto è contaminato da grani di granulometria diversa.",
+                remede = "Decontaminare il piatto (spazzolatura con acqua calda e sapone, poi raschiatura o rettifica se necessario) prima di riprendere."
+            ),
+            LapidaireDefaut(
+                probleme = "Tracce di «bruciatura» sulla superficie di una sfaccettatura",
+                cause = "Lucidatura troppo ferma in un punto, con pressione eccessiva, che provoca un surriscaldamento localizzato.",
+                remede = "Spazzolare regolarmente la sfaccettatura sul piatto, ridurre la pressione, aggiungere se necessario una goccia d'acqua al secondo."
+            ),
+            LapidaireDefaut(
+                probleme = "Compare una piccola cavità durante la sfaccettatura",
+                cause = "È stata messa a nudo un'inclusione vicina alla superficie.",
+                remede = "Ripulire meglio le inclusioni già in fase di sgrossatura resta la migliore prevenzione; una volta comparso il foro, ritagliare localmente o considerare un ritaglio completo se necessario."
+            )
+        ),
         diagrammesTitle = "Diagrammi",
         diagrammes = listOf(
             LapidaireDiagram(
@@ -501,7 +775,7 @@ object LapidaireInfo {
             ),
             LapidaireComponent(
                 nom = "Indexrad (index gear)",
-                description = "Gezahntes Rad am Ende der Pinole, üblicherweise bei den meisten Herstellern in mehreren Abstufungen erhältlich — 64, 72, 80, 96 oder 120 Rasten —, um jede Schliffart abzudecken; eine „Schnellindex“-Scheibe mit weniger Rasten wird oft über den normalen Index gelegt, um die Positionierung bei einer Serienfertigung zu beschleunigen. Das Feststellen der Steindrehung an einer präzisen Position für jede Facette ist unerlässlich für die Symmetrie eines Schliffs wie des runden Brillanten, dessen Facetten 8-zählig symmetrisch angeordnet sind."
+                description = "Gezahntes Rad am Ende der Pinole, üblicherweise bei den meisten Herstellern in mehreren Abstufungen erhältlich — 64, 72, 80, 96 oder 120 Rasten —, um jede Schliffart abzudecken; eine „Schnellindex“-Scheibe mit weniger Rasten wird oft über den normalen Index gelegt, um die Positionierung bei einer Serienfertigung zu beschleunigen. Das Feststellen der Steindrehung an einer präzisen Position für jede Facette ist unerlässlich für die Symmetrie eines Schliffs wie des runden Brillanten, dessen Facetten 8-zählig symmetrisch angeordnet sind. Der gewählte Index muss ein exaktes Vielfaches der zu schleifenden Seitenzahl sein: Ein Fünfeck etwa ist mit einem 96er-Index unmöglich (96 ÷ 5 ergibt keine ganze Zahl), lässt sich aber mit einem 80er-Index problemlos schleifen (80 ÷ 5 = 16)."
             ),
             LapidaireComponent(
                 nom = "Cheater",
@@ -556,6 +830,70 @@ object LapidaireInfo {
                 source = "Marcel Tolkowsky, „Diamond Design“, 1919"
             )
         ),
+        optiqueTitle = "Der kritische Winkel und der Auslöschungswinkel",
+        optiqueIntro = "Der Pavillon eines geschliffenen Steins wirkt wie ein Spiegel: Unterhalb des kritischen Winkels der Art entweicht durch die Tafel eintretendes Licht durch den Pavillon (der oben bereits behandelte „Fenster“-Effekt); genau am kritischen Winkel geschliffen, tritt ein anderer Fehler auf, das „Fischauge“ — die Tafel wirkt matt, während die Kronenkontur weiterhin glänzt, weil die sie durchquerenden Strahlen die Wand des Reflexionskegels streifen, ohne tatsächlich reflektiert zu werden. Es gibt außerdem eine obere Grenze, den Auslöschungswinkel, jenseits derer der Pavillon wieder Licht über die gegenüberliegende Facette verliert: Auslöschungswinkel = 60° − (kritischer Winkel / 3). Ein gut geschliffener Pavillon hält sich daher an kritischer Winkel < Pavillonwinkel < Auslöschungswinkel; je höher der Brechungsindex der Gemme, desto breiter wird dieser Arbeitsbereich — ein Diamant verzeiht deutlich mehr Abweichung als ein Fluorit. Die Krone folgt einer ergänzenden Regel: Ihr Maximalwinkel ist umgekehrt proportional zum Pavillonwinkel (ein kürzerer Pavillon erlaubt eine höhere Krone) und direkt proportional zum Brechungsindex; einige Zehntelgrad unterhalb dieser Maxima zu arbeiten, bleibt die sicherste Wahl. All diese Schliffdiagramme beruhen auf der Meetpoint-Technik (amerikanische Methode, Long & Steele), die die Schnittpunkte von drei oder mehr Facetten als Bezugspunkte nutzt, um automatisch gute Proportionen und eine gute Gewichtserhaltung gegenüber dem Rohstein zu sichern; um das Gewicht eines bereits geschliffenen, noch gefassten Steins zu schätzen, gilt üblicherweise die Formel Gewicht (in Karat) = Breite³ × Volumenkoeffizient des Schliffs × spezifisches Gewicht der Art / 200.",
+        optiqueTable = listOf(
+            LapidaireOptiqueEntry(pierre = "Diamant", angleCritique = "24,4°", angleExtinction = "51,85°"),
+            LapidaireOptiqueEntry(pierre = "Titanit (Sphen)", angleCritique = "31,76°", angleExtinction = "49,41°"),
+            LapidaireOptiqueEntry(pierre = "Zirkon (hoch)", angleCritique = "31,3°", angleExtinction = "49,57°"),
+            LapidaireOptiqueEntry(pierre = "Demantoid-Granat", angleCritique = "32,62°", angleExtinction = "49,13°"),
+            LapidaireOptiqueEntry(pierre = "Alexandrit (Chrysoberyll)", angleCritique = "34,94°", angleExtinction = "48,35°"),
+            LapidaireOptiqueEntry(pierre = "Rubin und Saphir (Korund)", angleCritique = "34,58°", angleExtinction = "48,47°"),
+            LapidaireOptiqueEntry(pierre = "Spinell", angleCritique = "35,74°", angleExtinction = "48,09°"),
+            LapidaireOptiqueEntry(pierre = "Peridot", angleCritique = "37,2°", angleExtinction = "47,6°"),
+            LapidaireOptiqueEntry(pierre = "Turmalin", angleCritique = "38,01°", angleExtinction = "47,33°"),
+            LapidaireOptiqueEntry(pierre = "Topas", angleCritique = "38,15°", angleExtinction = "47,28°"),
+            LapidaireOptiqueEntry(pierre = "Beryll", angleCritique = "39,35°", angleExtinction = "46,88°"),
+            LapidaireOptiqueEntry(pierre = "Smaragd", angleCritique = "39,72°", angleExtinction = "46,76°"),
+            LapidaireOptiqueEntry(pierre = "Aquamarin", angleCritique = "39,75°", angleExtinction = "46,75°"),
+            LapidaireOptiqueEntry(pierre = "Amethyst und Quarz", angleCritique = "40,37°", angleExtinction = "46,54°"),
+            LapidaireOptiqueEntry(pierre = "Calcit", angleCritique = "42,29°", angleExtinction = "45,9°"),
+            LapidaireOptiqueEntry(pierre = "Fluorit", angleCritique = "44,21°", angleExtinction = "45,26°")
+        ),
+        defautsTitle = "Häufige Fehler und Korrekturen",
+        defautsIntro = "Die meisten Schliffehler entstehen eher durch einen falsch eingestellten Winkel, eine fehlerhafte Indexierung oder einen schlecht ausgerichteten Dop-Transfer als durch ein Problem des Laps. Die Grundregel zur Korrektur eines schlechten Treffpunkts oder einer ungleichmäßigen Politur: immer auf der dem Fehler gegenüberliegenden Seite ansetzen.",
+        defauts = listOf(
+            LapidaireDefaut(
+                probleme = "Facette an einer Seite dezentriert oder schlecht poliert",
+                cause = "Leichte Fehlausrichtung des Steins am Cheater.",
+                remede = "Den Cheater drehen, um den Stein zur dem Fehler gegenüberliegenden Seite zu neigen."
+            ),
+            LapidaireDefaut(
+                probleme = "Facette trifft oben schlecht oder poliert dort schlecht, Winkel zu groß",
+                cause = "Der am Winkelmesser angezeigte Winkel ist höher als er sein sollte.",
+                remede = "Den Winkel am Winkelmesser leicht verringern, um den Stein nach unten zu neigen."
+            ),
+            LapidaireDefaut(
+                probleme = "Facette trifft unten schlecht oder poliert dort schlecht, Winkel zu klein",
+                cause = "Der am Winkelmesser angezeigte Winkel ist niedriger als er sein sollte.",
+                remede = "Den Winkel am Winkelmesser leicht erhöhen, um den Stein nach oben zu neigen."
+            ),
+            LapidaireDefaut(
+                probleme = "Kombinierter diagonaler Fehler (zum Beispiel oben links)",
+                cause = "Der Stein könnte sich beim Transfer leicht auf dem Dop verdreht haben.",
+                remede = "Eine Korrektur am Cheater mit einer am Winkel kombinieren, dabei bei Bedarf die Drehzahl des Laps verringern, bis die Kontrolle wieder gewonnen ist."
+            ),
+            LapidaireDefaut(
+                probleme = "Der Stein gibt auf dem Polier-Lap ein schrilles Geräusch von sich",
+                cause = "Die gerade bearbeitete Facette liegt nicht parallel zum Lap.",
+                remede = "Anhalten und die Position des Steins korrigieren, bevor es weitergeht — ein zuverlässiges Warnzeichen, das niemals ignoriert werden sollte."
+            ),
+            LapidaireDefaut(
+                probleme = "Parallele Kratzer, die mehrere Facetten durchziehen",
+                cause = "Der Lap ist mit Körnern anderer Korngröße verunreinigt.",
+                remede = "Den Lap dekontaminieren (Bürsten mit heißem Seifenwasser, bei Bedarf abschaben oder abrichten), bevor weitergearbeitet wird."
+            ),
+            LapidaireDefaut(
+                probleme = "„Brand“-Spuren auf der Oberfläche einer Facette",
+                cause = "Zu stationäre Politur mit zu hohem Druck, die eine örtliche Überhitzung verursacht.",
+                remede = "Die Facette regelmäßig über den Lap führen, den Druck verringern, bei Bedarf einen Wassertropfen pro Sekunde hinzufügen."
+            ),
+            LapidaireDefaut(
+                probleme = "Ein kleiner Hohlraum entsteht während des Schleifens",
+                cause = "Ein oberflächennaher Einschluss wurde freigelegt.",
+                remede = "Einschlüsse schon beim Grobschliff besser „aufzuräumen“ bleibt die beste Vorbeugung; ist das Loch erst entstanden, örtlich nachschleifen oder bei Bedarf einen kompletten Neuschliff in Betracht ziehen."
+            )
+        ),
         diagrammesTitle = "Diagramme",
         diagrammes = listOf(
             LapidaireDiagram(
@@ -607,7 +945,7 @@ object LapidaireInfo {
             ),
             LapidaireComponent(
                 nom = "Roda de índice (index gear)",
-                description = "Roda dentada fixada na extremidade da cânula, geralmente disponível em várias graduações — 64, 72, 80, 96 ou 120 entalhes — para cobrir todos os estilos de lapidação; um disco de «índice rápido», com menos entalhes, sobrepõe-se muitas vezes ao índice normal para acelerar o posicionamento ao lapidar uma série de pedras. Travar a rotação da pedra numa posição precisa para cada faceta é condição indispensável para a simetria de uma lapidação como o brilhante redondo, que distribui as suas facetas com simetria de ordem 8."
+                description = "Roda dentada fixada na extremidade da cânula, geralmente disponível em várias graduações — 64, 72, 80, 96 ou 120 entalhes — para cobrir todos os estilos de lapidação; um disco de «índice rápido», com menos entalhes, sobrepõe-se muitas vezes ao índice normal para acelerar o posicionamento ao lapidar uma série de pedras. Travar a rotação da pedra numa posição precisa para cada faceta é condição indispensável para a simetria de uma lapidação como o brilhante redondo, que distribui as suas facetas com simetria de ordem 8. O índice escolhido deve ser um múltiplo exato do número de lados a lapidar: um pentágono, por exemplo, é impossível com um índice 96 (96 ÷ 5 não é um número inteiro) mas lapida-se sem problemas com um índice 80 (80 ÷ 5 = 16)."
             ),
             LapidaireComponent(
                 nom = "Cheater",
@@ -662,6 +1000,70 @@ object LapidaireInfo {
                 source = "Marcel Tolkowsky, «Diamond Design», 1919"
             )
         ),
+        optiqueTitle = "O ângulo crítico e o ângulo de extinção",
+        optiqueIntro = "O pavilhão de uma pedra lapidada atua como um espelho: abaixo do ângulo crítico da espécie, a luz que entra pela mesa escapa através do pavilhão (o efeito «janela» já visto acima); lapidado exatamente no ângulo crítico, surge outro defeito, o «olho de peixe» — a mesa parece baça enquanto o contorno da coroa permanece brilhante, porque os raios que a atravessam roçam a parede do cone de reflexão sem chegarem a refletir-se nela. Existe também um limite superior, o ângulo de extinção, além do qual o pavilhão volta a perder luz pela faceta oposta: ângulo de extinção = 60° − (ângulo crítico / 3). Um pavilhão bem lapidado respeita assim ângulo crítico < ângulo do pavilhão < ângulo de extinção; quanto mais elevado for o índice de refração da gema, mais larga se torna esta margem de trabalho — um diamante perdoa muito mais desvio do que uma fluorite. A coroa segue uma regra complementar: o seu ângulo máximo é inversamente proporcional ao do pavilhão (um pavilhão mais curto permite uma coroa mais alta) e diretamente proporcional ao índice de refração; trabalhar algumas décimas de grau abaixo destes máximos continua a ser a escolha mais segura. Todos estes esquemas de corte assentam na Técnica do Ponto de Encontro (método americano, Long e Steele), que usa as interseções entre três ou mais facetas como referências para garantir automaticamente boas proporções e uma boa conservação de peso em relação ao bruto; para estimar o peso de uma pedra já lapidada sem a desengastar, a fórmula habitual é peso (em quilates) = largura³ × coeficiente de volume do corte × peso específico da espécie / 200.",
+        optiqueTable = listOf(
+            LapidaireOptiqueEntry(pierre = "Diamante", angleCritique = "24,4°", angleExtinction = "51,85°"),
+            LapidaireOptiqueEntry(pierre = "Esfena (titanite)", angleCritique = "31,76°", angleExtinction = "49,41°"),
+            LapidaireOptiqueEntry(pierre = "Zircão (alto)", angleCritique = "31,3°", angleExtinction = "49,57°"),
+            LapidaireOptiqueEntry(pierre = "Granada demantoide", angleCritique = "32,62°", angleExtinction = "49,13°"),
+            LapidaireOptiqueEntry(pierre = "Alexandrite (crisoberilo)", angleCritique = "34,94°", angleExtinction = "48,35°"),
+            LapidaireOptiqueEntry(pierre = "Rubi e safira (corindo)", angleCritique = "34,58°", angleExtinction = "48,47°"),
+            LapidaireOptiqueEntry(pierre = "Espinela", angleCritique = "35,74°", angleExtinction = "48,09°"),
+            LapidaireOptiqueEntry(pierre = "Peridoto", angleCritique = "37,2°", angleExtinction = "47,6°"),
+            LapidaireOptiqueEntry(pierre = "Turmalina", angleCritique = "38,01°", angleExtinction = "47,33°"),
+            LapidaireOptiqueEntry(pierre = "Topázio", angleCritique = "38,15°", angleExtinction = "47,28°"),
+            LapidaireOptiqueEntry(pierre = "Berilo", angleCritique = "39,35°", angleExtinction = "46,88°"),
+            LapidaireOptiqueEntry(pierre = "Esmeralda", angleCritique = "39,72°", angleExtinction = "46,76°"),
+            LapidaireOptiqueEntry(pierre = "Água-marinha", angleCritique = "39,75°", angleExtinction = "46,75°"),
+            LapidaireOptiqueEntry(pierre = "Ametista e quartzo", angleCritique = "40,37°", angleExtinction = "46,54°"),
+            LapidaireOptiqueEntry(pierre = "Calcite", angleCritique = "42,29°", angleExtinction = "45,9°"),
+            LapidaireOptiqueEntry(pierre = "Fluorite", angleCritique = "44,21°", angleExtinction = "45,26°")
+        ),
+        defautsTitle = "Defeitos comuns e correções",
+        defautsIntro = "A maioria dos defeitos de lapidação resulta de um ângulo mal regulado, de uma indexação errada ou de uma transferência de dop mal alinhada, mais do que de um problema do prato. A regra básica para corrigir um mau encontro ou um polimento desigual: agir sempre do lado oposto ao defeito.",
+        defauts = listOf(
+            LapidaireDefaut(
+                probleme = "Faceta descentrada ou mal polida de um lado",
+                cause = "Ligeiro desalinhamento da pedra sobre o cheater.",
+                remede = "Rodar o cheater para inclinar a pedra para o lado oposto ao defeito."
+            ),
+            LapidaireDefaut(
+                probleme = "Faceta mal encontrada ou mal polida em cima, ângulo demasiado grande",
+                cause = "O ângulo indicado no goniómetro é superior ao que deveria ser.",
+                remede = "Reduzir ligeiramente o ângulo no goniómetro para inclinar a pedra para baixo."
+            ),
+            LapidaireDefaut(
+                probleme = "Faceta mal encontrada ou mal polida em baixo, ângulo demasiado pequeno",
+                cause = "O ângulo indicado no goniómetro é inferior ao que deveria ser.",
+                remede = "Aumentar ligeiramente o ângulo no goniómetro para inclinar a pedra para cima."
+            ),
+            LapidaireDefaut(
+                probleme = "Defeito combinado na diagonal (por exemplo em cima à esquerda)",
+                cause = "A pedra pode ter rodado ligeiramente sobre o dop durante a transferência.",
+                remede = "Combinar uma correção no cheater com outra no ângulo, reduzindo se necessário a velocidade de rotação do prato até recuperar o controlo."
+            ),
+            LapidaireDefaut(
+                probleme = "A pedra emite um ruído estridente no prato de polimento",
+                cause = "A faceta em curso não está paralela ao prato.",
+                remede = "Parar e corrigir a posição da pedra antes de continuar — um sinal fiável, a nunca ignorar."
+            ),
+            LapidaireDefaut(
+                probleme = "Riscos paralelos que atravessam várias facetas",
+                cause = "O prato está contaminado com grãos de granulometria diferente.",
+                remede = "Descontaminar o prato (escovagem com água quente e sabão, depois raspagem ou retificação se necessário) antes de continuar."
+            ),
+            LapidaireDefaut(
+                probleme = "Marcas de «queimadura» na superfície de uma faceta",
+                cause = "Polimento demasiado estacionário, com pressão excessiva, provocando um sobreaquecimento localizado.",
+                remede = "Varrer regularmente a faceta sobre o prato, reduzir a pressão, acrescentar se necessário uma gota de água por segundo."
+            ),
+            LapidaireDefaut(
+                probleme = "Aparece uma pequena cavidade durante a lapidação",
+                cause = "Foi posta a descoberto uma inclusão próxima da superfície.",
+                remede = "Limpar melhor as inclusões logo no desbaste continua a ser a melhor prevenção; depois de aparecer o buraco, relapidar localmente ou considerar um recorte total se necessário."
+            )
+        ),
         diagrammesTitle = "Diagramas",
         diagrammes = listOf(
             LapidaireDiagram(
@@ -713,7 +1115,7 @@ object LapidaireInfo {
             ),
             LapidaireComponent(
                 nom = "Индексное колесо (index gear)",
-                description = "Зубчатое колесо на конце квиля, обычно доступное в нескольких градуировках — 64, 72, 80, 96 или 120 позиций — для покрытия всех стилей огранки; диск «быстрого индекса» с меньшим числом позиций часто накладывается поверх обычного индекса, чтобы ускорить позиционирование при огранке серии камней. Фиксация вращения камня в точном положении для каждой грани — необходимое условие симметрии такой огранки, как круглый бриллиант, чьи грани распределены с симметрией 8-го порядка."
+                description = "Зубчатое колесо на конце квиля, обычно доступное в нескольких градуировках — 64, 72, 80, 96 или 120 позиций — для покрытия всех стилей огранки; диск «быстрого индекса» с меньшим числом позиций часто накладывается поверх обычного индекса, чтобы ускорить позиционирование при огранке серии камней. Фиксация вращения камня в точном положении для каждой грани — необходимое условие симметрии такой огранки, как круглый бриллиант, чьи грани распределены с симметрией 8-го порядка. Выбранный индекс должен быть точным кратным числу граней: например, пятиугольник невозможно огранить с индексом 96 (96 ÷ 5 — не целое число), но он без труда гранится с индексом 80 (80 ÷ 5 = 16)."
             ),
             LapidaireComponent(
                 nom = "Читер (микрометр точной подстройки)",
@@ -768,6 +1170,70 @@ object LapidaireInfo {
                 source = "Марсель Толковски, «Diamond Design», 1919"
             )
         ),
+        optiqueTitle = "Критический угол и угол погасания",
+        optiqueIntro = "Павильон огранённого камня действует как зеркало: ниже критического угла минерала свет, входящий через площадку, уходит через павильон (эффект «окна», уже рассмотренный выше); при огранке точно на критическом угле появляется другой дефект, «рыбий глаз» — площадка выглядит тусклой, а контур коронки остаётся ярким, потому что проходящие через него лучи скользят по стенке конуса отражения, не отражаясь от неё по-настоящему. Существует и верхний предел — угол погасания, за которым павильон снова теряет свет через противоположную грань: угол погасания = 60° − (критический угол / 3). Хорошо огранённый павильон, таким образом, соблюдает соотношение критический угол < угол павильона < угол погасания; чем выше показатель преломления камня, тем шире этот рабочий диапазон — алмаз прощает намного больше отклонений, чем флюорит. Коронка подчиняется дополнительному правилу: её максимальный угол обратно пропорционален углу павильона (более короткий павильон допускает более высокую коронку) и прямо пропорционален показателю преломления; работать на несколько десятых градуса ниже этих максимумов остаётся самым надёжным выбором. Все эти схемы огранки опираются на Технику Точки Стыковки (американский метод, Лонг и Стил), использующую пересечения трёх и более граней как ориентиры для автоматического обеспечения хороших пропорций и хорошего сохранения веса относительно сырья; чтобы оценить вес уже огранённого камня, не снимая его с оправы, обычно применяют формулу вес (в каратах) = ширина³ × коэффициент объёма огранки × удельный вес минерала / 200.",
+        optiqueTable = listOf(
+            LapidaireOptiqueEntry(pierre = "Алмаз", angleCritique = "24,4°", angleExtinction = "51,85°"),
+            LapidaireOptiqueEntry(pierre = "Сфен (титанит)", angleCritique = "31,76°", angleExtinction = "49,41°"),
+            LapidaireOptiqueEntry(pierre = "Циркон (высокий)", angleCritique = "31,3°", angleExtinction = "49,57°"),
+            LapidaireOptiqueEntry(pierre = "Демантоид (гранат)", angleCritique = "32,62°", angleExtinction = "49,13°"),
+            LapidaireOptiqueEntry(pierre = "Александрит (хризоберилл)", angleCritique = "34,94°", angleExtinction = "48,35°"),
+            LapidaireOptiqueEntry(pierre = "Рубин и сапфир (корунд)", angleCritique = "34,58°", angleExtinction = "48,47°"),
+            LapidaireOptiqueEntry(pierre = "Шпинель", angleCritique = "35,74°", angleExtinction = "48,09°"),
+            LapidaireOptiqueEntry(pierre = "Перидот", angleCritique = "37,2°", angleExtinction = "47,6°"),
+            LapidaireOptiqueEntry(pierre = "Турмалин", angleCritique = "38,01°", angleExtinction = "47,33°"),
+            LapidaireOptiqueEntry(pierre = "Топаз", angleCritique = "38,15°", angleExtinction = "47,28°"),
+            LapidaireOptiqueEntry(pierre = "Берилл", angleCritique = "39,35°", angleExtinction = "46,88°"),
+            LapidaireOptiqueEntry(pierre = "Изумруд", angleCritique = "39,72°", angleExtinction = "46,76°"),
+            LapidaireOptiqueEntry(pierre = "Аквамарин", angleCritique = "39,75°", angleExtinction = "46,75°"),
+            LapidaireOptiqueEntry(pierre = "Аметист и кварц", angleCritique = "40,37°", angleExtinction = "46,54°"),
+            LapidaireOptiqueEntry(pierre = "Кальцит", angleCritique = "42,29°", angleExtinction = "45,9°"),
+            LapidaireOptiqueEntry(pierre = "Флюорит", angleCritique = "44,21°", angleExtinction = "45,26°")
+        ),
+        defautsTitle = "Частые дефекты и их устранение",
+        defautsIntro = "Большинство дефектов огранки возникает скорее из-за неточно выставленного угла, ошибочной индексации или плохо выровненного переноса допа, чем из-за проблемы с планшайбой. Базовое правило исправления плохой стыковки или неровной полировки: всегда действовать с противоположной дефекту стороны.",
+        defauts = listOf(
+            LapidaireDefaut(
+                probleme = "Грань смещена от центра или плохо отполирована с одной стороны",
+                cause = "Небольшая несоосность камня на читере.",
+                remede = "Повернуть читер, чтобы наклонить камень в сторону, противоположную дефекту."
+            ),
+            LapidaireDefaut(
+                probleme = "Грань плохо стыкуется или плохо полируется сверху, угол слишком большой",
+                cause = "Угол, показанный на угломере, выше, чем должен быть.",
+                remede = "Немного уменьшить угол на угломере, чтобы наклонить камень вниз."
+            ),
+            LapidaireDefaut(
+                probleme = "Грань плохо стыкуется или плохо полируется снизу, угол слишком маленький",
+                cause = "Угол, показанный на угломере, ниже, чем должен быть.",
+                remede = "Немного увеличить угол на угломере, чтобы наклонить камень вверх."
+            ),
+            LapidaireDefaut(
+                probleme = "Комбинированный диагональный дефект (например, вверху слева)",
+                cause = "Камень мог слегка повернуться на допе во время переноса.",
+                remede = "Совместить коррекцию на читере с коррекцией угла, при необходимости снизив скорость вращения планшайбы, пока не восстановится контроль."
+            ),
+            LapidaireDefaut(
+                probleme = "Камень издаёт резкий скрип на полировочной планшайбе",
+                cause = "Обрабатываемая грань не параллельна планшайбе.",
+                remede = "Остановиться и исправить положение камня, прежде чем продолжать — надёжный признак, который никогда нельзя игнорировать."
+            ),
+            LapidaireDefaut(
+                probleme = "Параллельные царапины, проходящие через несколько граней",
+                cause = "Планшайба загрязнена зёрнами другой зернистости.",
+                remede = "Обеззаразить планшайбу (чистка горячей мыльной водой, при необходимости соскабливание или рихтовка поверхности) перед продолжением работы."
+            ),
+            LapidaireDefaut(
+                probleme = "Следы «ожога» на поверхности грани",
+                cause = "Слишком долгая полировка на одном месте с чрезмерным давлением, вызывающая локальный перегрев.",
+                remede = "Регулярно перемещать грань по планшайбе, снизить давление, при необходимости добавлять каплю воды в секунду."
+            ),
+            LapidaireDefaut(
+                probleme = "В ходе огранки появляется небольшая полость",
+                cause = "Вскрылось включение, находившееся близко к поверхности.",
+                remede = "Более тщательная «очистка» включений ещё на этапе обдирки остаётся лучшей профилактикой; если отверстие уже появилось — переогранить этот участок локально или, при необходимости, рассмотреть полную переогранку."
+            )
+        ),
         diagrammesTitle = "Схемы",
         diagrammes = listOf(
             LapidaireDiagram(
@@ -819,7 +1285,7 @@ object LapidaireInfo {
             ),
             LapidaireComponent(
                 nom = "Indexwiel (index gear)",
-                description = "Getand wiel aan het uiteinde van de pen, doorgaans verkrijgbaar in meerdere verdelingen — 64, 72, 80, 96 of 120 standen — om alle slijpstijlen te dekken; een „snelindex”-schijf met minder standen wordt vaak over de gewone index gelegd om het positioneren te versnellen bij het slijpen van een reeks stenen. Het vastzetten van de rotatie van de steen op een precieze positie bij elke facet is onmisbaar voor de symmetrie van een slijpvorm zoals de ronde briljant, waarvan de facetten volgens een 8-voudige symmetrie zijn verdeeld."
+                description = "Getand wiel aan het uiteinde van de pen, doorgaans verkrijgbaar in meerdere verdelingen — 64, 72, 80, 96 of 120 standen — om alle slijpstijlen te dekken; een „snelindex”-schijf met minder standen wordt vaak over de gewone index gelegd om het positioneren te versnellen bij het slijpen van een reeks stenen. Het vastzetten van de rotatie van de steen op een precieze positie bij elke facet is onmisbaar voor de symmetrie van een slijpvorm zoals de ronde briljant, waarvan de facetten volgens een 8-voudige symmetrie zijn verdeeld. De gekozen index moet een exact veelvoud zijn van het aantal te slijpen zijden: een vijfhoek is bijvoorbeeld onmogelijk met een index 96 (96 ÷ 5 is geen geheel getal), maar lukt probleemloos met een index 80 (80 ÷ 5 = 16)."
             ),
             LapidaireComponent(
                 nom = "Cheater (fijnafstelring)",
@@ -874,6 +1340,70 @@ object LapidaireInfo {
                 source = "Marcel Tolkowsky, „Diamond Design”, 1919"
             )
         ),
+        optiqueTitle = "De kritieke hoek en de uitdovingshoek",
+        optiqueIntro = "Het paviljoen van een geslepen steen werkt als een spiegel: onder de kritieke hoek van de soort ontsnapt licht dat via de tafel binnenkomt door het paviljoen (het „venstereffect” hierboven al behandeld); precies op de kritieke hoek geslepen ontstaat een ander gebrek, het „vissenoog” — de tafel oogt dof terwijl de contour van de kroon helder blijft, omdat de stralen die erdoorheen gaan de wand van de reflectiekegel raken zonder er echt op te reflecteren. Er bestaat ook een bovengrens, de uitdovingshoek, waarboven het paviljoen opnieuw licht verliest via de tegenoverliggende facet: uitdovingshoek = 60° − (kritieke hoek / 3). Een goed geslepen paviljoen houdt zich dus aan kritieke hoek < paviljoenhoek < uitdovingshoek; hoe hoger de brekingsindex van de edelsteen, hoe breder deze werkmarge wordt — een diamant vergeeft veel meer afwijking dan een fluoriet. De kroon volgt een aanvullende regel: de maximale hoek ervan is omgekeerd evenredig met die van het paviljoen (een korter paviljoen staat een hogere kroon toe) en recht evenredig met de brekingsindex; enkele tienden van een graad onder deze maxima werken blijft de veiligste keuze. Al deze slijpschema's steunen op de Meetpoint-techniek (Amerikaanse methode, Long & Steele), die de snijpunten van drie of meer facetten als referentiepunten gebruikt om automatisch goede verhoudingen en een goed gewichtsbehoud ten opzichte van het ruwe materiaal te waarborgen; om het gewicht van een reeds geslepen, nog gevatte steen te schatten, geldt gewoonlijk de formule gewicht (in karaat) = breedte³ × volumecoëfficiënt van de slijpvorm × soortelijk gewicht van de soort / 200.",
+        optiqueTable = listOf(
+            LapidaireOptiqueEntry(pierre = "Diamant", angleCritique = "24,4°", angleExtinction = "51,85°"),
+            LapidaireOptiqueEntry(pierre = "Sfeen (titaniet)", angleCritique = "31,76°", angleExtinction = "49,41°"),
+            LapidaireOptiqueEntry(pierre = "Zirkoon (hoog)", angleCritique = "31,3°", angleExtinction = "49,57°"),
+            LapidaireOptiqueEntry(pierre = "Demantoïdgranaat", angleCritique = "32,62°", angleExtinction = "49,13°"),
+            LapidaireOptiqueEntry(pierre = "Alexandriet (chrysoberil)", angleCritique = "34,94°", angleExtinction = "48,35°"),
+            LapidaireOptiqueEntry(pierre = "Robijn en saffier (korund)", angleCritique = "34,58°", angleExtinction = "48,47°"),
+            LapidaireOptiqueEntry(pierre = "Spinel", angleCritique = "35,74°", angleExtinction = "48,09°"),
+            LapidaireOptiqueEntry(pierre = "Peridoot", angleCritique = "37,2°", angleExtinction = "47,6°"),
+            LapidaireOptiqueEntry(pierre = "Toermalijn", angleCritique = "38,01°", angleExtinction = "47,33°"),
+            LapidaireOptiqueEntry(pierre = "Topaas", angleCritique = "38,15°", angleExtinction = "47,28°"),
+            LapidaireOptiqueEntry(pierre = "Beril", angleCritique = "39,35°", angleExtinction = "46,88°"),
+            LapidaireOptiqueEntry(pierre = "Smaragd", angleCritique = "39,72°", angleExtinction = "46,76°"),
+            LapidaireOptiqueEntry(pierre = "Aquamarijn", angleCritique = "39,75°", angleExtinction = "46,75°"),
+            LapidaireOptiqueEntry(pierre = "Amethist en kwarts", angleCritique = "40,37°", angleExtinction = "46,54°"),
+            LapidaireOptiqueEntry(pierre = "Calciet", angleCritique = "42,29°", angleExtinction = "45,9°"),
+            LapidaireOptiqueEntry(pierre = "Fluoriet", angleCritique = "44,21°", angleExtinction = "45,26°")
+        ),
+        defautsTitle = "Veelvoorkomende gebreken en correcties",
+        defautsIntro = "De meeste slijpgebreken komen eerder voort uit een onjuist ingestelde hoek, een verkeerde indexering of een slecht uitgelijnde dopoverdracht dan uit een probleem met de lap. De basisregel om een slechte aansluiting of een ongelijke politoer te corrigeren: altijd ingrijpen aan de kant tegenover het gebrek.",
+        defauts = listOf(
+            LapidaireDefaut(
+                probleme = "Facet uit het midden of slecht gepolijst aan één kant",
+                cause = "Lichte verkeerde uitlijning van de steen op de cheater.",
+                remede = "Draai de cheater om de steen naar de kant tegenover het gebrek te kantelen."
+            ),
+            LapidaireDefaut(
+                probleme = "Facet sluit slecht aan of polijst slecht bovenaan, hoek te groot",
+                cause = "De hoek op de hoekmeter is hoger dan hij zou moeten zijn.",
+                remede = "Verlaag de hoek op de hoekmeter lichtjes om de steen naar beneden te kantelen."
+            ),
+            LapidaireDefaut(
+                probleme = "Facet sluit slecht aan of polijst slecht onderaan, hoek te klein",
+                cause = "De hoek op de hoekmeter is lager dan hij zou moeten zijn.",
+                remede = "Verhoog de hoek op de hoekmeter lichtjes om de steen naar boven te kantelen."
+            ),
+            LapidaireDefaut(
+                probleme = "Gecombineerd diagonaal gebrek (bijvoorbeeld linksboven)",
+                cause = "De steen kan tijdens de overdracht licht gedraaid zijn op de dop.",
+                remede = "Combineer een correctie op de cheater met een correctie op de hoek, en verlaag zo nodig de rotatiesnelheid van de lap tot de controle is hersteld."
+            ),
+            LapidaireDefaut(
+                probleme = "De steen piept op de polijstlap",
+                cause = "De bewerkte facet ligt niet parallel aan de lap.",
+                remede = "Stop en corrigeer de positie van de steen voordat u verdergaat — een betrouwbaar signaal dat nooit genegeerd mag worden."
+            ),
+            LapidaireDefaut(
+                probleme = "Evenwijdige krasjes over meerdere facetten",
+                cause = "De lap is verontreinigd met korrels van een andere korrelgrootte.",
+                remede = "Ontsmet de lap (borstelen met heet zeepwater, indien nodig afschrapen of africhten) voordat u verdergaat."
+            ),
+            LapidaireDefaut(
+                probleme = "„Brand”-sporen op het oppervlak van een facet",
+                cause = "Te stationair polijsten met te veel druk, waardoor plaatselijke oververhitting ontstaat.",
+                remede = "Beweeg de facet regelmatig over de lap, verminder de druk, voeg zo nodig een druppel water per seconde toe."
+            ),
+            LapidaireDefaut(
+                probleme = "Er verschijnt een kleine holte tijdens het slijpen",
+                cause = "Een insluitsel dicht bij het oppervlak is blootgelegd.",
+                remede = "Insluitsels beter „opruimen” al bij het grofslijpen blijft de beste preventie; eenmaal het gaatje verschenen is, plaatselijk naslijpen of zo nodig een volledige herslijping overwegen."
+            )
+        ),
         diagrammesTitle = "Diagrammen",
         diagrammes = listOf(
             LapidaireDiagram(
@@ -925,7 +1455,7 @@ object LapidaireInfo {
             ),
             LapidaireComponent(
                 nom = "索引齿轮（index gear）",
-                description = "固定在套筒末端的齿轮，通常有64、72、80、96或120等多种刻度可选，以适应各种切工风格；刻度更少的「快速索引」盘常叠加在常规索引上，以便在批量切磨时加快定位。将宝石的旋转锁定在每个刻面对应的精确位置，是圆形明亮式切工等按8重对称分布刻面的切工所必需的对称性保证。"
+                description = "固定在套筒末端的齿轮，通常有64、72、80、96或120等多种刻度可选，以适应各种切工风格；刻度更少的「快速索引」盘常叠加在常规索引上，以便在批量切磨时加快定位。将宝石的旋转锁定在每个刻面对应的精确位置，是圆形明亮式切工等按8重对称分布刻面的切工所必需的对称性保证。所选索引必须是所需切磨边数的精确倍数：例如五边形无法用96索引切磨（96÷5不是整数），但用80索引则可顺利完成（80÷5=16）。"
             ),
             LapidaireComponent(
                 nom = "微调器（cheater）",
@@ -978,6 +1508,70 @@ object LapidaireInfo {
                 table = "腰围直径的53%",
                 facettes = "57或58个刻面（冠部33个，亭部24或25个，8重对称）",
                 source = "马塞尔·托尔科夫斯基，《Diamond Design》，1919年"
+            )
+        ),
+        optiqueTitle = "临界角与消光角",
+        optiqueIntro = "琢磨宝石的亭部如同一面镜子：低于该矿物的临界角时，从台面射入的光线会从亭部漏出（即上文提到的「漏光窗」效应）；若恰好按临界角切磨，则会出现另一种缺陷——「鱼眼效应」：台面显得暗淡，而冠部轮廓依然明亮，因为穿过台面的光线只是掠过反射锥的锥壁，并未真正发生反射。此外还存在一个上限——消光角，超过这个角度，亭部会再次从对面的刻面漏光：消光角 = 60° − (临界角 / 3)。因此，切磨良好的亭部应满足临界角 < 亭部角度 < 消光角；宝石的折射率越高，这一可用角度范围就越宽——钻石允许的误差范围远大于萤石。冠部则遵循一条互补规则：其最大角度与亭部角度成反比（亭部越浅，冠部可以越高），与折射率成正比；将角度控制在这些最大值以下几分之一度，始终是最稳妥的做法。所有这些切磨图纸都建立在「交会点技术」（美国方法，由Long与Steele提出）之上，该技术利用三个或更多刻面的交会点作为基准，自动保证良好的比例并最大限度保留原石重量；若想在不拆下镶嵌的情况下估算已切磨宝石的重量，常用公式为：重量（克拉）= 宽度³ × 切工体积系数 × 该矿物的比重 / 200。",
+        optiqueTable = listOf(
+            LapidaireOptiqueEntry(pierre = "钻石", angleCritique = "24.4°", angleExtinction = "51.85°"),
+            LapidaireOptiqueEntry(pierre = "榍石（楔石）", angleCritique = "31.76°", angleExtinction = "49.41°"),
+            LapidaireOptiqueEntry(pierre = "锆石（高型）", angleCritique = "31.3°", angleExtinction = "49.57°"),
+            LapidaireOptiqueEntry(pierre = "翠榴石（石榴石）", angleCritique = "32.62°", angleExtinction = "49.13°"),
+            LapidaireOptiqueEntry(pierre = "亚历山大变石（金绿宝石）", angleCritique = "34.94°", angleExtinction = "48.35°"),
+            LapidaireOptiqueEntry(pierre = "红宝石与蓝宝石（刚玉）", angleCritique = "34.58°", angleExtinction = "48.47°"),
+            LapidaireOptiqueEntry(pierre = "尖晶石", angleCritique = "35.74°", angleExtinction = "48.09°"),
+            LapidaireOptiqueEntry(pierre = "橄榄石", angleCritique = "37.2°", angleExtinction = "47.6°"),
+            LapidaireOptiqueEntry(pierre = "碧玺", angleCritique = "38.01°", angleExtinction = "47.33°"),
+            LapidaireOptiqueEntry(pierre = "托帕石", angleCritique = "38.15°", angleExtinction = "47.28°"),
+            LapidaireOptiqueEntry(pierre = "绿柱石", angleCritique = "39.35°", angleExtinction = "46.88°"),
+            LapidaireOptiqueEntry(pierre = "祖母绿", angleCritique = "39.72°", angleExtinction = "46.76°"),
+            LapidaireOptiqueEntry(pierre = "海蓝宝石", angleCritique = "39.75°", angleExtinction = "46.75°"),
+            LapidaireOptiqueEntry(pierre = "紫水晶与石英", angleCritique = "40.37°", angleExtinction = "46.54°"),
+            LapidaireOptiqueEntry(pierre = "方解石", angleCritique = "42.29°", angleExtinction = "45.9°"),
+            LapidaireOptiqueEntry(pierre = "萤石", angleCritique = "44.21°", angleExtinction = "45.26°")
+        ),
+        defautsTitle = "常见问题与解决方法",
+        defautsIntro = "大多数切磨缺陷源于角度设置不准、索引读数错误或夹持杆转移时未对齐，而非磨盘本身的问题。修正交会不良或抛光不均的基本原则：始终在缺陷的对侧进行调整。",
+        defauts = listOf(
+            LapidaireDefaut(
+                probleme = "刻面一侧偏心或抛光不良",
+                cause = "宝石在微调器上略有偏移。",
+                remede = "转动微调器，使宝石向缺陷的对侧倾斜。"
+            ),
+            LapidaireDefaut(
+                probleme = "刻面上方交会或抛光不良，角度过大",
+                cause = "量角器上显示的角度高于应有的数值。",
+                remede = "在量角器上略微减小角度，使宝石向下倾斜。"
+            ),
+            LapidaireDefaut(
+                probleme = "刻面下方交会或抛光不良，角度过小",
+                cause = "量角器上显示的角度低于应有的数值。",
+                remede = "在量角器上略微增大角度，使宝石向上倾斜。"
+            ),
+            LapidaireDefaut(
+                probleme = "对角线方向的组合缺陷（例如左上方）",
+                cause = "宝石在转移夹持杆时可能发生了轻微转动。",
+                remede = "同时在微调器和角度上进行修正，必要时降低磨盘转速，直到重新掌握控制。"
+            ),
+            LapidaireDefaut(
+                probleme = "宝石在抛光磨盘上发出尖锐刺耳的声音",
+                cause = "正在加工的刻面与磨盘不平行。",
+                remede = "立即停止并修正宝石的位置后再继续——这是一个可靠的警示信号，绝不能忽视。"
+            ),
+            LapidaireDefaut(
+                probleme = "多个刻面上出现平行划痕",
+                cause = "磨盘被不同粒度的颗粒污染。",
+                remede = "先对磨盘进行去污处理（用热肥皂水刷洗，必要时刮除或重新修整表面），再继续作业。"
+            ),
+            LapidaireDefaut(
+                probleme = "刻面表面出现「烧痕」",
+                cause = "抛光时长时间停留同一位置且压力过大，导致局部过热。",
+                remede = "让刻面在磨盘上有规律地来回移动，减小压力，必要时每秒滴加一滴水。"
+            ),
+            LapidaireDefaut(
+                probleme = "切磨过程中出现小凹坑",
+                cause = "靠近表面的内含物被暴露了出来。",
+                remede = "在粗磨阶段更彻底地「清理」内含物是最好的预防措施；一旦出现凹坑，可对该区域局部重新切磨，必要时考虑整颗重新切磨。"
             )
         ),
         diagrammesTitle = "图解",

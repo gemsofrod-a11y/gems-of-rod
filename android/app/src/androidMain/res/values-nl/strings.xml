@@ -8,6 +8,8 @@
     <!-- Home -->
     <string name="home_gemmologie_title">Gemmologie</string>
     <string name="home_gemmologie_subtitle">De volledige catalogus per kleur: technische fiches, prijzen, herkomst.</string>
+    <string name="home_lapidaire_title">Lapidair</string>
+    <string name="home_lapidaire_subtitle">De kunst van het facetteren: machines, referentiehoeken, optica en correcties van veelvoorkomende gebreken.</string>
     <string name="home_familles_title">Mineraalfamilies</string>
     <string name="home_familles_subtitle">De catalogus ingedeeld per familie: beryl, kwarts, korund, granaat…</string>
     <string name="home_lithotherapie_title">Lithotherapie</string>
@@ -458,4 +460,8 @@
     <string name="lapidaire_angle_facets_label">Facetten</string>
     <string name="lapidaire_angle_source_label">Bron: %1$s</string>
     <string name="lapidaire_diagram_credit_format">%1$s — %2$s</string>
+    <string name="lapidaire_angle_critique_label">Kritieke hoek</string>
+    <string name="lapidaire_angle_extinction_label">Uitdovingshoek</string>
+    <string name="lapidaire_defaut_cause_label">Oorzaak: %1$s</string>
+    <string name="lapidaire_defaut_remede_label">Oplossing: %1$s</string>
 </resources>

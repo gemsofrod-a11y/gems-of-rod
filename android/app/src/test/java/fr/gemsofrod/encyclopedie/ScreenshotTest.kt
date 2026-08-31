@@ -79,7 +79,8 @@ class ScreenshotTest {
             onCoquillagesClick = {},
             onQuizClick = {},
             onAchievementsClick = {},
-            onLabClick = {}
+            onLabClick = {},
+            onLapidaireClick = {}
         )
     }
 

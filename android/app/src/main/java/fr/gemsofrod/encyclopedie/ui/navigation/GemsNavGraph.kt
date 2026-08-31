@@ -195,7 +195,8 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onCoquillagesClick = { navController.navigate(Routes.COQUILLAGES) },
                 onQuizClick = { navController.navigate(Routes.QUIZ) },
                 onAchievementsClick = { navController.navigate(Routes.ACHIEVEMENTS) },
-                onLabClick = { navController.navigate(Routes.LAB_MENU) }
+                onLabClick = { navController.navigate(Routes.LAB_MENU) },
+                onLapidaireClick = { navController.navigate(Routes.LAPIDAIRE) }
             )
         }
         composable(Routes.QUIZ) {

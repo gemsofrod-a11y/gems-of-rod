@@ -8,6 +8,8 @@
     <!-- Startseite -->
     <string name="home_gemmologie_title">Gemmologie</string>
     <string name="home_gemmologie_subtitle">Der vollständige Katalog nach Farbe: technische Datenblätter, Preise, Herkunft.</string>
+    <string name="home_lapidaire_title">Lapidar</string>
+    <string name="home_lapidaire_subtitle">Die Kunst des Facettenschliffs: Maschinen, Referenzwinkel, Optik und Korrekturen häufiger Fehler.</string>
     <string name="home_familles_title">Mineralfamilien</string>
     <string name="home_familles_subtitle">Der Katalog nach Familie sortiert: Beryll, Quarz, Korund, Granat…</string>
     <string name="home_lithotherapie_title">Lithotherapie</string>
@@ -458,4 +460,8 @@
     <string name="lapidaire_angle_facets_label">Facetten</string>
     <string name="lapidaire_angle_source_label">Quelle: %1$s</string>
     <string name="lapidaire_diagram_credit_format">%1$s — %2$s</string>
+    <string name="lapidaire_angle_critique_label">Grenzwinkel</string>
+    <string name="lapidaire_angle_extinction_label">Auslöschungswinkel</string>
+    <string name="lapidaire_defaut_cause_label">Ursache: %1$s</string>
+    <string name="lapidaire_defaut_remede_label">Abhilfe: %1$s</string>
 </resources>
