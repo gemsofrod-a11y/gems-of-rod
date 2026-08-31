@@ -60,6 +60,14 @@
     <string name="favorites_title">Мои избранные</string>
     <string name="favorites_empty_title">Пока нет избранного</string>
     <string name="favorites_empty_subtitle">Нажмите на сердечко на карточке камня, чтобы найти его здесь.</string>
+    <string name="favorites_export_button">Экспортировать в PDF</string>
+    <string name="favorites_export_chooser_title">Поделиться моей коллекцией</string>
+    <string name="favorites_pdf_title">Моя коллекция избранного — Gems of Rod</string>
+    <string name="favorites_pdf_generated_on">Создано %1$s</string>
+    <string name="favorites_pdf_count_format">Сохранено камней: %1$d</string>
+    <string name="widget_gem_of_day_label">КАМЕНЬ ДНЯ</string>
+    <string name="widget_gem_of_day_picker_label">Камень дня</string>
+    <string name="widget_gem_of_day_description">Открывайте новый камень каждый день прямо с главного экрана.</string>
     <string name="cd_remove_favorite">Убрать из избранного</string>
     <string name="cd_add_favorite">Добавить в избранное</string>
 

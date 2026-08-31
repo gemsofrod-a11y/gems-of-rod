@@ -60,6 +60,14 @@
     <string name="favorites_title">Mis favoritos</string>
     <string name="favorites_empty_title">Todavía no hay favoritos</string>
     <string name="favorites_empty_subtitle">Toca el corazón en la ficha de una gema para encontrarla aquí.</string>
+    <string name="favorites_export_button">Exportar como PDF</string>
+    <string name="favorites_export_chooser_title">Compartir mi colección</string>
+    <string name="favorites_pdf_title">Mi colección de favoritos — Gems of Rod</string>
+    <string name="favorites_pdf_generated_on">Generado el %1$s</string>
+    <string name="favorites_pdf_count_format">%1$d piedra(s) guardada(s)</string>
+    <string name="widget_gem_of_day_label">GEMA DEL DÍA</string>
+    <string name="widget_gem_of_day_picker_label">Gema del día</string>
+    <string name="widget_gem_of_day_description">Descubre una piedra diferente cada día, directamente desde tu pantalla de inicio.</string>
     <string name="cd_remove_favorite">Quitar de favoritos</string>
     <string name="cd_add_favorite">Añadir a favoritos</string>
 

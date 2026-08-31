@@ -60,6 +60,14 @@
     <string name="favorites_title">Mijn favorieten</string>
     <string name="favorites_empty_title">Nog geen favorieten</string>
     <string name="favorites_empty_subtitle">Tik op het hartje op de fiche van een edelsteen om die hier terug te vinden.</string>
+    <string name="favorites_export_button">Exporteren als PDF</string>
+    <string name="favorites_export_chooser_title">Mijn collectie delen</string>
+    <string name="favorites_pdf_title">Mijn favorietencollectie — Gems of Rod</string>
+    <string name="favorites_pdf_generated_on">Gegenereerd op %1$s</string>
+    <string name="favorites_pdf_count_format">%1$d steen/stenen opgeslagen</string>
+    <string name="widget_gem_of_day_label">EDELSTEEN VAN DE DAG</string>
+    <string name="widget_gem_of_day_picker_label">Edelsteen van de dag</string>
+    <string name="widget_gem_of_day_description">Ontdek elke dag een andere edelsteen, rechtstreeks vanaf uw startscherm.</string>
     <string name="cd_remove_favorite">Uit favorieten verwijderen</string>
     <string name="cd_add_favorite">Aan favorieten toevoegen</string>
 

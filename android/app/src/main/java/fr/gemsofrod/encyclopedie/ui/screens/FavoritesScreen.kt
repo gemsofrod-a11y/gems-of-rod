@@ -1,5 +1,6 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -19,8 +20,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.IosShare
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -33,16 +36,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.core.content.FileProvider
 import fr.gemsofrod.encyclopedie.R
+import fr.gemsofrod.encyclopedie.data.FavoritesPdfGenerator
 import fr.gemsofrod.encyclopedie.data.FavoritesRepository
 import fr.gemsofrod.encyclopedie.data.Gem
 import fr.gemsofrod.encyclopedie.data.GemImageType
@@ -52,6 +59,9 @@ import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
 import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -60,6 +70,11 @@ fun FavoritesScreen(
     onBackClick: () -> Unit
 ) {
     val gems = FavoritesRepository.favoriteIds().mapNotNull { GemsRepository.byId(it) }
+    val localizedGems = gems.map { it.localized() }
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    var isExporting by remember { mutableStateOf(false) }
+    val exportChooserTitle = stringResource(R.string.favorites_export_chooser_title)
 
     Scaffold(
         topBar = {
@@ -68,6 +83,38 @@ fun FavoritesScreen(
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
+                    }
+                },
+                actions = {
+                    IconButton(
+                        onClick = {
+                            if (isExporting || localizedGems.isEmpty()) return@IconButton
+                            isExporting = true
+                            scope.launch {
+                                val file = withContext(Dispatchers.IO) {
+                                    FavoritesPdfGenerator.generate(context, localizedGems)
+                                }
+                                isExporting = false
+                                val uri = FileProvider.getUriForFile(
+                                    context,
+                                    "${context.packageName}.fileprovider",
+                                    file
+                                )
+                                val sendIntent = Intent(Intent.ACTION_SEND).apply {
+                                    type = "application/pdf"
+                                    putExtra(Intent.EXTRA_STREAM, uri)
+                                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                                }
+                                context.startActivity(Intent.createChooser(sendIntent, exportChooserTitle))
+                            }
+                        },
+                        enabled = !isExporting && localizedGems.isNotEmpty()
+                    ) {
+                        if (isExporting) {
+                            CircularProgressIndicator(modifier = Modifier.size(20.dp), strokeWidth = 2.dp)
+                        } else {
+                            Icon(Icons.Filled.IosShare, contentDescription = stringResource(R.string.favorites_export_button))
+                        }
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
