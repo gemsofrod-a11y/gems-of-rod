@@ -466,4 +466,7 @@
     <string name="lapidaire_defaut_remede_label">Remède : %1$s</string>
     <string name="lapidaire_index_title_format">Index %1$s</string>
     <string name="lapidaire_index_rotation_label">Rotation par cran</string>
+    <string name="lapidaire_espece_orientation_label">Orientation : %1$s</string>
+    <string name="lapidaire_espece_fragilite_label">Fragilité : %1$s</string>
+    <string name="lapidaire_espece_polissage_label">Polissage : %1$s</string>
 </resources>

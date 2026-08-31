@@ -466,4 +466,7 @@
     <string name="lapidaire_defaut_remede_label">Solução: %1$s</string>
     <string name="lapidaire_index_title_format">Índice %1$s</string>
     <string name="lapidaire_index_rotation_label">Rotação por entalhe</string>
+    <string name="lapidaire_espece_orientation_label">Orientação: %1$s</string>
+    <string name="lapidaire_espece_fragilite_label">Fragilidade: %1$s</string>
+    <string name="lapidaire_espece_polissage_label">Polimento: %1$s</string>
 </resources>

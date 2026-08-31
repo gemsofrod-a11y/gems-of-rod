@@ -466,4 +466,7 @@
     <string name="lapidaire_defaut_remede_label">Решение: %1$s</string>
     <string name="lapidaire_index_title_format">Головка %1$s</string>
     <string name="lapidaire_index_rotation_label">Поворот на одну насечку</string>
+    <string name="lapidaire_espece_orientation_label">Ориентация: %1$s</string>
+    <string name="lapidaire_espece_fragilite_label">Хрупкость: %1$s</string>
+    <string name="lapidaire_espece_polissage_label">Полировка: %1$s</string>
 </resources>

@@ -55,6 +55,7 @@ import fr.gemsofrod.encyclopedie.data.LapidaireDefaut
 import fr.gemsofrod.encyclopedie.data.LapidaireDiagram
 import fr.gemsofrod.encyclopedie.data.LapidaireDiagrams
 import fr.gemsofrod.encyclopedie.data.LapidaireDisc
+import fr.gemsofrod.encyclopedie.data.LapidaireEspeceFiche
 import fr.gemsofrod.encyclopedie.data.LapidaireIndexEntry
 import fr.gemsofrod.encyclopedie.data.LapidaireInfo
 import fr.gemsofrod.encyclopedie.data.LapidaireOptiqueEntry
@@ -130,6 +131,7 @@ fun LapidaireScreen(onBackClick: () -> Unit) {
                         "poids" to page.poidsCalculator.title,
                         "optique" to page.optiqueTitle,
                         "defauts" to page.defautsTitle,
+                        "especes" to page.especesTitle,
                         "diagrammes" to page.diagrammesTitle,
                         "conseils" to page.tipsTitle
                     ),
@@ -261,6 +263,19 @@ fun LapidaireScreen(onBackClick: () -> Unit) {
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     page.defauts.forEach { DefautCard(it) }
+
+                    SectionHeader(
+                        title = page.especesTitle,
+                        modifier = Modifier.onGloballyPositioned {
+                            sectionOffsets["especes"] = it.positionInParent().y.roundToInt()
+                        }
+                    )
+                    Text(
+                        text = page.especesIntro,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    page.especes.forEach { EspeceCard(it) }
 
                     SectionHeader(
                         title = page.diagrammesTitle,
@@ -599,6 +614,39 @@ private fun DefautCard(defaut: LapidaireDefaut) {
             )
             Text(
                 text = stringResource(R.string.lapidaire_defaut_remede_label, defaut.remede),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+    }
+}
+
+@Composable
+private fun EspeceCard(espece: LapidaireEspeceFiche) {
+    Card(
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            Text(
+                text = espece.pierre,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Text(
+                text = stringResource(R.string.lapidaire_espece_orientation_label, espece.orientation),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Text(
+                text = stringResource(R.string.lapidaire_espece_fragilite_label, espece.fragilite),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Text(
+                text = stringResource(R.string.lapidaire_espece_polissage_label, espece.polissage),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
