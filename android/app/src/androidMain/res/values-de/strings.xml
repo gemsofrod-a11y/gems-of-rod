@@ -60,6 +60,14 @@
     <string name="favorites_title">Meine Favoriten</string>
     <string name="favorites_empty_title">Noch keine Favoriten</string>
     <string name="favorites_empty_subtitle">Tippen Sie auf das Herz auf einem Edelstein-Datenblatt, um ihn hier wiederzufinden.</string>
+    <string name="favorites_export_button">Als PDF exportieren</string>
+    <string name="favorites_export_chooser_title">Meine Sammlung teilen</string>
+    <string name="favorites_pdf_title">Meine Favoritensammlung — Gems of Rod</string>
+    <string name="favorites_pdf_generated_on">Erstellt am %1$s</string>
+    <string name="favorites_pdf_count_format">%1$d Stein(e) gespeichert</string>
+    <string name="widget_gem_of_day_label">EDELSTEIN DES TAGES</string>
+    <string name="widget_gem_of_day_picker_label">Edelstein des Tages</string>
+    <string name="widget_gem_of_day_description">Entdecken Sie jeden Tag einen anderen Edelstein, direkt von Ihrem Startbildschirm aus.</string>
     <string name="cd_remove_favorite">Aus Favoriten entfernen</string>
     <string name="cd_add_favorite">Zu Favoriten hinzufügen</string>
 

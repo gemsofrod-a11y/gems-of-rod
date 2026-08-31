@@ -60,6 +60,14 @@
     <string name="favorites_title">My Favorites</string>
     <string name="favorites_empty_title">No favorites yet</string>
     <string name="favorites_empty_subtitle">Tap the heart on a gem\'s sheet to find it here.</string>
+    <string name="favorites_export_button">Export as PDF</string>
+    <string name="favorites_export_chooser_title">Share my collection</string>
+    <string name="favorites_pdf_title">My favorites collection — Gems of Rod</string>
+    <string name="favorites_pdf_generated_on">Generated on %1$s</string>
+    <string name="favorites_pdf_count_format">%1$d stone(s) saved</string>
+    <string name="widget_gem_of_day_label">GEM OF THE DAY</string>
+    <string name="widget_gem_of_day_picker_label">Gem of the day</string>
+    <string name="widget_gem_of_day_description">Discover a different gem every day, right from your home screen.</string>
     <string name="cd_remove_favorite">Remove from favorites</string>
     <string name="cd_add_favorite">Add to favorites</string>
 
