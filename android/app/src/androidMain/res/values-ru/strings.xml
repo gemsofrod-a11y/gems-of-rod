@@ -460,8 +460,6 @@
     <string name="stock_status_consignation">Консигнация</string>
 
     <!-- Огранка (лапидарное дело) -->
-    <string name="gemmologie_lapidaire_title">Огранка</string>
-    <string name="gemmologie_lapidaire_subtitle">Станки, диски и углы огранки фасет.</string>
     <string name="lapidaire_title">Огранка</string>
     <string name="lapidaire_disc_grain_label">Зернистость: %1$s</string>
     <string name="lapidaire_angle_crown_label">Коронка</string>

@@ -460,8 +460,6 @@
     <string name="stock_status_consignation">寄售</string>
 
     <!-- 宝石切磨 -->
-    <string name="gemmologie_lapidaire_title">宝石切磨</string>
-    <string name="gemmologie_lapidaire_subtitle">切磨机器、磨盘与刻面角度。</string>
     <string name="lapidaire_title">宝石切磨</string>
     <string name="lapidaire_disc_grain_label">粒度：%1$s</string>
     <string name="lapidaire_angle_crown_label">冠部</string>
