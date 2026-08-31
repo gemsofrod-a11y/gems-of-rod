@@ -8,6 +8,8 @@
     <!-- Главная -->
     <string name="home_gemmologie_title">Геммология</string>
     <string name="home_gemmologie_subtitle">Полный каталог по цвету: технические карточки, цены, происхождение.</string>
+    <string name="home_lapidaire_title">Огранка</string>
+    <string name="home_lapidaire_subtitle">Искусство фасетной огранки: станки, эталонные углы, оптика и исправление типичных дефектов.</string>
     <string name="home_familles_title">Минеральные семейства</string>
     <string name="home_familles_subtitle">Каталог по семействам: берилл, кварц, корунд, гранат…</string>
     <string name="home_lithotherapie_title">Литотерапия</string>
@@ -458,4 +460,8 @@
     <string name="lapidaire_angle_facets_label">Грани</string>
     <string name="lapidaire_angle_source_label">Источник: %1$s</string>
     <string name="lapidaire_diagram_credit_format">%1$s — %2$s</string>
+    <string name="lapidaire_angle_critique_label">Критический угол</string>
+    <string name="lapidaire_angle_extinction_label">Угол погасания</string>
+    <string name="lapidaire_defaut_cause_label">Причина: %1$s</string>
+    <string name="lapidaire_defaut_remede_label">Решение: %1$s</string>
 </resources>

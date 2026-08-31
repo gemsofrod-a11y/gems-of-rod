@@ -8,6 +8,8 @@
     <!-- Home -->
     <string name="home_gemmologie_title">Gemmologia</string>
     <string name="home_gemmologie_subtitle">Il catalogo completo per colore: schede tecniche, prezzi, origini.</string>
+    <string name="home_lapidaire_title">Lapidario</string>
+    <string name="home_lapidaire_subtitle">L\'arte della sfaccettatura: macchine, angoli di riferimento, ottica e correzioni dei difetti comuni.</string>
     <string name="home_familles_title">Famiglie minerali</string>
     <string name="home_familles_subtitle">Il catalogo classificato per famiglia: berillo, quarzo, corindone, granato…</string>
     <string name="home_lithotherapie_title">Litoterapia</string>
@@ -458,4 +460,8 @@
     <string name="lapidaire_angle_facets_label">Sfaccettature</string>
     <string name="lapidaire_angle_source_label">Fonte: %1$s</string>
     <string name="lapidaire_diagram_credit_format">%1$s — %2$s</string>
+    <string name="lapidaire_angle_critique_label">Angolo critico</string>
+    <string name="lapidaire_angle_extinction_label">Angolo di estinzione</string>
+    <string name="lapidaire_defaut_cause_label">Causa: %1$s</string>
+    <string name="lapidaire_defaut_remede_label">Soluzione: %1$s</string>
 </resources>

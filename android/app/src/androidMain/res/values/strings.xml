@@ -8,6 +8,8 @@
     <!-- Accueil -->
     <string name="home_gemmologie_title">Gemmologie</string>
     <string name="home_gemmologie_subtitle">Le catalogue complet par couleur : fiches techniques, prix, origines.</string>
+    <string name="home_lapidaire_title">Lapidaire</string>
+    <string name="home_lapidaire_subtitle">L\'art de la taille de facettes : machines, angles de référence, optique et corrections des défauts courants.</string>
     <string name="home_familles_title">Familles minérales</string>
     <string name="home_familles_subtitle">Le catalogue classé par famille : béryl, quartz, corindon, grenat…</string>
     <string name="home_lithotherapie_title">Lithothérapie</string>
@@ -458,4 +460,8 @@
     <string name="lapidaire_angle_facets_label">Facettes</string>
     <string name="lapidaire_angle_source_label">Source : %1$s</string>
     <string name="lapidaire_diagram_credit_format">%1$s — %2$s</string>
+    <string name="lapidaire_angle_critique_label">Angle critique</string>
+    <string name="lapidaire_angle_extinction_label">Angle d\'extinction</string>
+    <string name="lapidaire_defaut_cause_label">Cause : %1$s</string>
+    <string name="lapidaire_defaut_remede_label">Remède : %1$s</string>
 </resources>

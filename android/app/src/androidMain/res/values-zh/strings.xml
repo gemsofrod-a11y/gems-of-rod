@@ -8,6 +8,8 @@
     <!-- 首页 -->
     <string name="home_gemmologie_title">宝石学</string>
     <string name="home_gemmologie_subtitle">按颜色分类的完整目录：技术卡片、价格、产地。</string>
+    <string name="home_lapidaire_title">宝石切磨</string>
+    <string name="home_lapidaire_subtitle">刻面切磨的艺术：切磨机、参考角度、光学原理与常见问题的解决方法。</string>
     <string name="home_familles_title">矿物族</string>
     <string name="home_familles_subtitle">按矿物族分类的目录：绿柱石、石英、刚玉、石榴石……</string>
     <string name="home_lithotherapie_title">水晶疗法</string>
@@ -458,4 +460,8 @@
     <string name="lapidaire_angle_facets_label">刻面</string>
     <string name="lapidaire_angle_source_label">来源：%1$s</string>
     <string name="lapidaire_diagram_credit_format">%1$s — %2$s</string>
+    <string name="lapidaire_angle_critique_label">临界角</string>
+    <string name="lapidaire_angle_extinction_label">消光角</string>
+    <string name="lapidaire_defaut_cause_label">原因：%1$s</string>
+    <string name="lapidaire_defaut_remede_label">解决方法：%1$s</string>
 </resources>

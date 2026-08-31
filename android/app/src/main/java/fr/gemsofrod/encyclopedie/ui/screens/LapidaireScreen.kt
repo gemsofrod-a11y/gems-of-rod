@@ -46,10 +46,12 @@ import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.LapidaireAngles
 import fr.gemsofrod.encyclopedie.data.LapidaireComponent
+import fr.gemsofrod.encyclopedie.data.LapidaireDefaut
 import fr.gemsofrod.encyclopedie.data.LapidaireDiagram
 import fr.gemsofrod.encyclopedie.data.LapidaireDiagrams
 import fr.gemsofrod.encyclopedie.data.LapidaireDisc
 import fr.gemsofrod.encyclopedie.data.LapidaireInfo
+import fr.gemsofrod.encyclopedie.data.LapidaireOptiqueEntry
 import fr.gemsofrod.encyclopedie.data.LapidaireTip
 import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
@@ -115,6 +117,8 @@ fun LapidaireScreen(onBackClick: () -> Unit) {
                         "machines" to page.machinesTitle,
                         "disques" to page.disquesTitle,
                         "angles" to page.anglesTitle,
+                        "optique" to page.optiqueTitle,
+                        "defauts" to page.defautsTitle,
                         "diagrammes" to page.diagrammesTitle,
                         "conseils" to page.tipsTitle
                     ),
@@ -194,6 +198,32 @@ fun LapidaireScreen(onBackClick: () -> Unit) {
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     page.angles.forEach { AnglesCard(it) }
+
+                    SectionHeader(
+                        title = page.optiqueTitle,
+                        modifier = Modifier.onGloballyPositioned {
+                            sectionOffsets["optique"] = it.positionInParent().y.roundToInt()
+                        }
+                    )
+                    Text(
+                        text = page.optiqueIntro,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    page.optiqueTable.forEach { OptiqueCard(it) }
+
+                    SectionHeader(
+                        title = page.defautsTitle,
+                        modifier = Modifier.onGloballyPositioned {
+                            sectionOffsets["defauts"] = it.positionInParent().y.roundToInt()
+                        }
+                    )
+                    Text(
+                        text = page.defautsIntro,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    page.defauts.forEach { DefautCard(it) }
 
                     SectionHeader(
                         title = page.diagrammesTitle,
@@ -346,6 +376,54 @@ private fun AnglesRow(label: String, value: String) {
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
+    }
+}
+
+@Composable
+private fun OptiqueCard(entry: LapidaireOptiqueEntry) {
+    Card(
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            Text(
+                text = entry.pierre,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            AnglesRow(stringResource(R.string.lapidaire_angle_critique_label), entry.angleCritique)
+            AnglesRow(stringResource(R.string.lapidaire_angle_extinction_label), entry.angleExtinction)
+        }
+    }
+}
+
+@Composable
+private fun DefautCard(defaut: LapidaireDefaut) {
+    Card(
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            Text(
+                text = defaut.probleme,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Text(
+                text = stringResource(R.string.lapidaire_defaut_cause_label, defaut.cause),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Text(
+                text = stringResource(R.string.lapidaire_defaut_remede_label, defaut.remede),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
     }
 }
 
