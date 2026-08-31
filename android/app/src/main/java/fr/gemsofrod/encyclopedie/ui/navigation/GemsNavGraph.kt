@@ -378,7 +378,6 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onPaysClick = { navController.navigate(Routes.PAYS_LIST) },
                 onAnalyseClick = { navController.navigate(Routes.ANALYSE) },
                 onComparerClick = { navController.navigate(Routes.COMPARER) },
-                onLapidaireClick = { navController.navigate(Routes.LAPIDAIRE) },
                 onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
                 onBackClick = { navController.popBackStack() }
             )

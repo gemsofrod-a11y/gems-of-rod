@@ -460,8 +460,6 @@
     <string name="stock_status_consignation">Conto vendita</string>
 
     <!-- Lapidario -->
-    <string name="gemmologie_lapidaire_title">Lapidario</string>
-    <string name="gemmologie_lapidaire_subtitle">Macchine, dischi e angoli di taglio delle sfaccettature.</string>
     <string name="lapidaire_title">Lapidario</string>
     <string name="lapidaire_disc_grain_label">Grana: %1$s</string>
     <string name="lapidaire_angle_crown_label">Corona</string>

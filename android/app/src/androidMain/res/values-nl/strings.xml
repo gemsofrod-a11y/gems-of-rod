@@ -460,8 +460,6 @@
     <string name="stock_status_consignation">Consignatie</string>
 
     <!-- Lapidair (slijpen) -->
-    <string name="gemmologie_lapidaire_title">Lapidair</string>
-    <string name="gemmologie_lapidaire_subtitle">Machines, schijven en slijphoeken voor het facetteren.</string>
     <string name="lapidaire_title">Lapidair</string>
     <string name="lapidaire_disc_grain_label">Korrel: %1$s</string>
     <string name="lapidaire_angle_crown_label">Kroon</string>
