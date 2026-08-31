@@ -47,8 +47,26 @@ REPORT_OUT = REPO_ROOT / "android/LAPIDAIRE_DIAGRAM_FETCH_REPORT.md"
 DIAGRAMS = [
     (
         "brillant_rond_proportions",
-        ["Diamond proportions crown pavilion diagram", "Round brilliant cut diagram", "Brilliant cut diamond diagram proportions"],
-        ["brilliant", "diamond", "crown", "pavilion", "facet"],
+        [
+            "Diamond proportions crown pavilion diagram",
+            "Round brilliant cut diagram",
+            "Brilliant cut diamond diagram proportions",
+            "Diamond anatomy diagram",
+            "Diamond cut proportions table crown pavilion girdle",
+            "Round brilliant cut anatomy",
+        ],
+        ["brilliant", "diamond", "crown", "pavilion", "facet", "girdle", "anatomy", "proportions"],
+    ),
+    (
+        "trajet_lumiere_pavillon",
+        [
+            "Diamond cut light path diagram",
+            "Diamond light performance cut diagram",
+            "Ideal cut shallow cut deep cut diamond diagram",
+            "Diamond light reflection cut quality diagram",
+            "Gemstone light path pavilion diagram",
+        ],
+        ["diamond", "light", "cut", "pavilion", "reflection", "brilliance"],
     ),
     (
         "moulin_taille_historique",
@@ -72,6 +90,15 @@ DIAGRAMS = [
 ]
 
 ALLOWED_IMAGE_EXTENSIONS = (".jpg", ".jpeg", ".png")
+# Wikimedia Commons rend aussi les fichiers .svg éligibles : l'API imageinfo,
+# interrogée avec iiurlwidth, retourne pour un SVG un thumburl déjà rendu en
+# PNG côté serveur (par ex. "...px-Foo.svg.png") — aucune rasterisation
+# locale n'est nécessaire. Beaucoup de diagrammes techniques (coupe de
+# pierre, trajet de la lumière) n'existent sur Commons qu'en SVG librement
+# licenciés (CC BY/CC BY-SA/CC0) ; les exclure purement sur l'extension du
+# fichier source, comme avant, les écartait à tort. Le filtre de licence
+# (license_is_free) continue d'écarter les SVG en GFDL seule.
+SOURCE_EXTENSIONS_ACCEPTED_FOR_SEARCH = ALLOWED_IMAGE_EXTENSIONS + (".svg",)
 
 ALLOWED_LICENSE_RE = re.compile(
     r"^(cc0|public domain|pd|cc[\s-]?by(?:[\s-]?sa)?[\s-]?\d(?:\.\d)?)",
@@ -164,8 +191,9 @@ def pick_image(terms: list, keywords: list, already_used_titles: set) -> Optiona
             if title in already_used_titles:
                 continue
             lower_title = title.lower()
-            if not lower_title.endswith(ALLOWED_IMAGE_EXTENSIONS):
+            if not lower_title.endswith(SOURCE_EXTENSIONS_ACCEPTED_FOR_SEARCH):
                 continue
+            is_svg_source = lower_title.endswith(".svg")
             try:
                 info = image_info(title)
             except Exception as exc:  # noqa: BLE001
@@ -179,8 +207,13 @@ def pick_image(terms: list, keywords: list, already_used_titles: set) -> Optiona
             if not license_is_free(license_short):
                 continue
 
+            # Pour un SVG, la largeur déclarée par Commons reflète la taille
+            # intrinsèque du fichier source (parfois un petit viewBox), pas
+            # la résolution du thumburl demandé via iiurlwidth — ce filtre ne
+            # s'applique donc qu'aux sources raster, où il évite les vignettes
+            # trop petites.
             width = info.get("width", 0)
-            if width and width < 300:
+            if not is_svg_source and width and width < 300:
                 continue
 
             description = strip_html(extmeta.get("ImageDescription", {}).get("value", ""))
@@ -190,7 +223,14 @@ def pick_image(terms: list, keywords: list, already_used_titles: set) -> Optiona
 
             artist = strip_html(extmeta.get("Artist", {}).get("value", "")) or "Auteur non renseigné"
             source_url = f"https://commons.wikimedia.org/wiki/{title.replace(' ', '_')}"
+            # thumburl : pour un SVG, Commons retourne déjà un rendu PNG côté
+            # serveur (ex. "...px-Foo.svg.png") à la largeur iiurlwidth
+            # demandée plus haut — jamais le fichier .svg brut.
             download_url = info.get("thumburl") or info.get("url")
+            if is_svg_source and not (download_url or "").lower().endswith((".png", ".jpg", ".jpeg")):
+                # Rendu serveur indisponible/inattendu : ne jamais retomber
+                # sur le SVG brut (pas géré par le pipeline drawable-nodpi).
+                continue
 
             return {
                 "title": title,
