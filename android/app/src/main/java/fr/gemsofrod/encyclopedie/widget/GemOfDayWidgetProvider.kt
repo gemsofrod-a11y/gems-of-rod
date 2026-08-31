@@ -68,6 +68,17 @@ class GemOfDayWidgetProvider : AppWidgetProvider() {
         private const val SCRIM_COLOR = 0x59000000
 
         /**
+         * Plafond de sécurité en pixels pour le bitmap composé : RemoteViews
+         * transmet les bitmaps tels quels via Binder IPC (pas de compression
+         * automatique), et un widget agrandi par l'utilisateur sur un écran
+         * haute densité peut sinon produire un bitmap assez lourd pour
+         * dépasser la limite de transaction Binder et faire échouer
+         * silencieusement (ou plus rarement, planter) la mise à jour.
+         */
+        private const val MAX_BITMAP_WIDTH_PX = 640
+        private const val MAX_BITMAP_HEIGHT_PX = 400
+
+        /**
          * Contexte dont les ressources sont résolues dans la langue choisie
          * par l'utilisateur dans l'application (indépendante de la langue
          * système), même patron que `MainActivity.attachBaseContext` — un
@@ -83,6 +94,13 @@ class GemOfDayWidgetProvider : AppWidgetProvider() {
         }
 
         fun updateWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int) {
+            // Ne doit jamais faire planter l'appelant (MainActivity.onCreate
+            // rafraîchit les widgets à chaque ouverture de l'app) : au pire,
+            // le widget garde son affichage précédent.
+            runCatching { updateWidgetInternal(context, appWidgetManager, appWidgetId) }
+        }
+
+        private fun updateWidgetInternal(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int) {
             val gems = GemsRepository.gems
             if (gems.isEmpty()) return
 
@@ -94,9 +112,9 @@ class GemOfDayWidgetProvider : AppWidgetProvider() {
             val density = context.resources.displayMetrics.density
             val options = appWidgetManager.getAppWidgetOptions(appWidgetId)
             val widthPx = (options.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH, DEFAULT_WIDTH_DP) * density)
-                .toInt().coerceAtLeast(1)
+                .toInt().coerceIn(1, MAX_BITMAP_WIDTH_PX)
             val heightPx = (options.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT, DEFAULT_HEIGHT_DP) * density)
-                .toInt().coerceAtLeast(1)
+                .toInt().coerceIn(1, MAX_BITMAP_HEIGHT_PX)
 
             val photo = loadGemPhoto(context, gemOfDay.id, widthPx, heightPx)
             val background = buildBackgroundBitmap(

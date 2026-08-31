@@ -1,5 +1,7 @@
 package fr.gemsofrod.encyclopedie
 
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
@@ -17,6 +19,7 @@ import fr.gemsofrod.encyclopedie.data.ReflectivityCalibrationRepository
 import fr.gemsofrod.encyclopedie.data.StockRepository
 import fr.gemsofrod.encyclopedie.ui.navigation.GemsNavGraph
 import fr.gemsofrod.encyclopedie.ui.theme.GemsEncyclopedieTheme
+import fr.gemsofrod.encyclopedie.widget.GemOfDayWidgetProvider
 import java.util.Locale
 
 class MainActivity : ComponentActivity() {
@@ -36,12 +39,32 @@ class MainActivity : ComponentActivity() {
         LabNotebookRepository.init(this)
         ReflectivityCalibrationRepository.init(this)
         StockRepository.init(this)
+        refreshGemOfDayWidgets()
         enableEdgeToEdge()
         setContent {
             GemsEncyclopedieTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
                     GemsNavGraph()
                 }
+            }
+        }
+    }
+
+    /**
+     * Un widget déjà posé sur l'écran d'accueil ne reçoit pas d'appel à
+     * `onUpdate` lors d'une mise à jour de l'app — il garde l'affichage
+     * poussé par l'ancienne version jusqu'à son prochain cycle
+     * (`updatePeriodMillis`, 24h) ou tant qu'il n'est pas retiré puis
+     * reposé. Ouvrir l'app est le déclencheur le plus naturel après une
+     * mise à jour : on en profite pour forcer le rafraîchissement de
+     * toutes les instances existantes du widget.
+     */
+    private fun refreshGemOfDayWidgets() {
+        runCatching {
+            val appWidgetManager = AppWidgetManager.getInstance(this)
+            val widgetIds = appWidgetManager.getAppWidgetIds(ComponentName(this, GemOfDayWidgetProvider::class.java))
+            for (widgetId in widgetIds) {
+                GemOfDayWidgetProvider.updateWidget(this, appWidgetManager, widgetId)
             }
         }
     }
