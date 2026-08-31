@@ -47,8 +47,26 @@ REPORT_OUT = REPO_ROOT / "android/LAPIDAIRE_DIAGRAM_FETCH_REPORT.md"
 DIAGRAMS = [
     (
         "brillant_rond_proportions",
-        ["Diamond proportions crown pavilion diagram", "Round brilliant cut diagram", "Brilliant cut diamond diagram proportions"],
-        ["brilliant", "diamond", "crown", "pavilion", "facet"],
+        [
+            "Diamond proportions crown pavilion diagram",
+            "Round brilliant cut diagram",
+            "Brilliant cut diamond diagram proportions",
+            "Diamond anatomy diagram",
+            "Diamond cut proportions table crown pavilion girdle",
+            "Round brilliant cut anatomy",
+        ],
+        ["brilliant", "diamond", "crown", "pavilion", "facet", "girdle", "anatomy", "proportions"],
+    ),
+    (
+        "trajet_lumiere_pavillon",
+        [
+            "Diamond cut light path diagram",
+            "Diamond light performance cut diagram",
+            "Ideal cut shallow cut deep cut diamond diagram",
+            "Diamond light reflection cut quality diagram",
+            "Gemstone light path pavilion diagram",
+        ],
+        ["diamond", "light", "cut", "pavilion", "reflection", "brilliance"],
     ),
     (
         "moulin_taille_historique",

@@ -221,6 +221,10 @@ object LapidaireInfo {
                 legende = "Diagramme de proportions du brillant rond : nomenclature de la couronne, du rondiste et du pavillon."
             ),
             LapidaireDiagram(
+                id = "trajet_lumiere_pavillon",
+                legende = "Diagramme du trajet de la lumière selon la profondeur du pavillon : trop peu profond, bien proportionné, ou trop profond."
+            ),
+            LapidaireDiagram(
                 id = "moulin_taille_historique",
                 legende = "Gravure ancienne représentant un moulin à tailler le diamant — la mécanique du plateau rotatif, inchangée dans son principe depuis des siècles."
             ),
@@ -389,6 +393,10 @@ object LapidaireInfo {
             LapidaireDiagram(
                 id = "brillant_rond_proportions",
                 legende = "Round brilliant proportions diagram: crown, girdle, and pavilion nomenclature."
+            ),
+            LapidaireDiagram(
+                id = "trajet_lumiere_pavillon",
+                legende = "Diagram of the light path depending on pavilion depth: too shallow, well-proportioned, or too deep."
             ),
             LapidaireDiagram(
                 id = "moulin_taille_historique",
@@ -561,6 +569,10 @@ object LapidaireInfo {
                 legende = "Diagrama de proporciones del brillante redondo: nomenclatura de la corona, el rondel y el pabellón."
             ),
             LapidaireDiagram(
+                id = "trajet_lumiere_pavillon",
+                legende = "Diagrama del trayecto de la luz según la profundidad del pabellón: demasiado poco profundo, bien proporcionado, o demasiado profundo."
+            ),
+            LapidaireDiagram(
                 id = "moulin_taille_historique",
                 legende = "Grabado antiguo que representa un molino para tallar diamantes — la mecánica del plato giratorio, prácticamente inalterada en su principio desde hace siglos."
             ),
@@ -729,6 +741,10 @@ object LapidaireInfo {
             LapidaireDiagram(
                 id = "brillant_rond_proportions",
                 legende = "Diagramma delle proporzioni del brillante rotondo: nomenclatura di corona, cintura e padiglione."
+            ),
+            LapidaireDiagram(
+                id = "trajet_lumiere_pavillon",
+                legende = "Diagramma del percorso della luce in base alla profondità del padiglione: troppo poco profondo, ben proporzionato, o troppo profondo."
             ),
             LapidaireDiagram(
                 id = "moulin_taille_historique",
@@ -901,6 +917,10 @@ object LapidaireInfo {
                 legende = "Proportionsdiagramm des runden Brillanten: Nomenklatur von Krone, Rondiste und Pavillon."
             ),
             LapidaireDiagram(
+                id = "trajet_lumiere_pavillon",
+                legende = "Diagramm des Lichtwegs je nach Pavillontiefe: zu flach, gut proportioniert oder zu tief."
+            ),
+            LapidaireDiagram(
                 id = "moulin_taille_historique",
                 legende = "Alter Stich einer Diamantschleifmühle — die Mechanik der rotierenden Scheibe, im Prinzip seit Jahrhunderten unverändert."
             ),
@@ -1069,6 +1089,10 @@ object LapidaireInfo {
             LapidaireDiagram(
                 id = "brillant_rond_proportions",
                 legende = "Diagrama de proporções do brilhante redondo: nomenclatura da coroa, da cintura e do pavilhão."
+            ),
+            LapidaireDiagram(
+                id = "trajet_lumiere_pavillon",
+                legende = "Diagrama do trajeto da luz conforme a profundidade do pavilhão: pouco profundo, bem proporcionado ou profundo demais."
             ),
             LapidaireDiagram(
                 id = "moulin_taille_historique",
@@ -1241,6 +1265,10 @@ object LapidaireInfo {
                 legende = "Схема пропорций круглого бриллианта: номенклатура коронки, рундиста и павильона."
             ),
             LapidaireDiagram(
+                id = "trajet_lumiere_pavillon",
+                legende = "Схема хода света в зависимости от глубины павильона: слишком мелкий, хорошо пропорционированный или слишком глубокий."
+            ),
+            LapidaireDiagram(
                 id = "moulin_taille_historique",
                 legende = "Старинная гравюра, изображающая мельницу для огранки алмазов — механика вращающейся планшайбы, принципиально не изменившаяся за века."
             ),
@@ -1411,6 +1439,10 @@ object LapidaireInfo {
                 legende = "Verhoudingsdiagram van de ronde briljant: naamgeving van kroon, rondiste en paviljoen."
             ),
             LapidaireDiagram(
+                id = "trajet_lumiere_pavillon",
+                legende = "Diagram van het lichtpad afhankelijk van de paviljoendiepte: te ondiep, goed geproportioneerd, of te diep."
+            ),
+            LapidaireDiagram(
                 id = "moulin_taille_historique",
                 legende = "Oude gravure van een diamantslijpmolen — de mechaniek van de roterende schijf, in principe al eeuwenlang ongewijzigd."
             ),
@@ -1579,6 +1611,10 @@ object LapidaireInfo {
             LapidaireDiagram(
                 id = "brillant_rond_proportions",
                 legende = "圆形明亮式切工比例图：冠部、腰部与亭部命名示意。"
+            ),
+            LapidaireDiagram(
+                id = "trajet_lumiere_pavillon",
+                legende = "根据亭部深度展示光路的示意图：过浅、比例良好或过深。"
             ),
             LapidaireDiagram(
                 id = "moulin_taille_historique",
