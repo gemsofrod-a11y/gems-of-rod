@@ -54,6 +54,11 @@ data class LapidaireEspeceFiche(
     val polissage: String
 )
 
+data class LapidaireConservationTip(
+    val titre: String,
+    val conseil: String
+)
+
 data class LapidairePoidsCalculator(
     val title: String,
     val intro: String,
@@ -96,6 +101,9 @@ data class LapidairePage(
     val diagrammes: List<LapidaireDiagram>,
     val tipsTitle: String,
     val tips: List<LapidaireTip>,
+    val conservationTitle: String,
+    val conservationIntro: String,
+    val conservation: List<LapidaireConservationTip>,
     val disclaimerTitle: String,
     val disclaimerBody: String
 )
@@ -400,6 +408,34 @@ object LapidaireInfo {
             LapidaireTip(texte = "Une table qui semble « éteinte » alors que le contour de la pierre reste brillant signale un effet de fenêtre : le pavillon est trop peu profond et laisse la lumière s'échapper par en dessous plutôt que de la renvoyer par la table — corrigez en approfondissant l'angle du pavillon, sans jamais dépasser l'angle d'extinction."),
             LapidaireTip(texte = "Sur les pierres allongées (ovale, navette, poire, coussin...), une croix sombre visible au centre (effet dit « X+ ») trahit des facettes de longueur et de largeur mal raccordées sur le pavillon ; un diagramme de coupe bien étudié pour la forme choisie l'évite mieux qu'un ajustement au cas par cas.")
         ),
+        conservationTitle = "Conservation et manipulation des pierres taillées",
+        conservationIntro = "Une pierre bien taillée reste vulnérable une fois montée ou stockée : quelques précautions simples évitent l'essentiel des rayures et des dégâts accidentels.",
+        conservation = listOf(
+            LapidaireConservationTip(
+                titre = "Nettoyage",
+                conseil = "Ne jamais essuyer une pierre à sec : la poussière agit comme un abrasif et raye la surface polie. Laver à l'eau tiède savonneuse avec une brosse douce, ou à l'alcool pour un dégraissage rapide, puis sécher avec un chiffon non pelucheux."
+            ),
+            LapidaireConservationTip(
+                titre = "Rangement individuel",
+                conseil = "Ranger chaque pierre séparément, dans un pli de papier ou une pochette individuelle : au contact les unes des autres, même bref, les pierres se rayent mutuellement."
+            ),
+            LapidaireConservationTip(
+                titre = "Ne jamais mélanger les duretés",
+                conseil = "Ne jamais réunir dans un même compartiment des pierres de dureté différente : la plus dure raye systématiquement la plus tendre, même par un simple frottement pendant le transport."
+            ),
+            LapidaireConservationTip(
+                titre = "Chocs thermiques et produits chimiques",
+                conseil = "Éviter les écarts brusques de température et les produits chimiques agressifs (javel, acides), qui peuvent fissurer certaines pierres ou altérer un traitement (émeraude huilée, pierre imprégnée). Le nettoyeur à ultrasons est à proscrire pour les pierres fracturées, huilées ou fragiles."
+            ),
+            LapidaireConservationTip(
+                titre = "Exposition à la lumière",
+                conseil = "Certaines pierres sont photosensibles : l'améthyste ou la kunzite exposées longtemps en pleine lumière peuvent pâlir. Conserver les pierres sensibles à l'abri d'une exposition prolongée."
+            ),
+            LapidaireConservationTip(
+                titre = "Transport et manipulation",
+                conseil = "Pour le transport, utiliser une pochette rembourrée et éviter tout contact direct entre plusieurs pierres ou bijoux réunis ensemble ; manipuler par la monture ou la table plutôt que par le pavillon, plus vulnérable aux chocs."
+            )
+        ),
         disclaimerTitle = "Un métier qui s'apprend en atelier",
         disclaimerBody = "Cette fiche présente des repères généraux, pas un mode d'emploi complet : la taille de facettes s'apprend par la pratique encadrée, avec du matériel adapté et des consignes de sécurité (protection oculaire et respiratoire, refroidissement continu du plateau) propres à chaque atelier et à chaque machine. Les diagrammes affichés proviennent de sources réelles et libres de droits (voir crédits) ; en leur absence temporaire, seule la légende reste affichée."
     )
@@ -689,6 +725,34 @@ object LapidaireInfo {
             LapidaireTip(texte = "Never rest the stone on a lap at a standstill and then start the motor: always get the lap spinning first before presenting the stone, with a light pendulum motion to keep it from sitting still in one spot, which wears the disc unevenly and the stone irregularly."),
             LapidaireTip(texte = "A table that looks \"dead\" while the stone's outline stays bright signals a window effect: the pavilion is too shallow and lets light escape underneath instead of returning it through the table — fix it by deepening the pavilion angle, never past the extinction angle."),
             LapidaireTip(texte = "On elongated shapes (oval, marquise, pear, cushion...), a dark cross visible at the centre (the \"X+\" effect) points to pavilion facets whose length and width sides don't meet correctly; a cutting diagram designed for that specific shape prevents it far better than a case-by-case adjustment.")
+        ),
+        conservationTitle = "Storing and handling cut stones",
+        conservationIntro = "A well-cut stone stays vulnerable once mounted or stored: a few simple precautions prevent most accidental scratches and damage.",
+        conservation = listOf(
+            LapidaireConservationTip(
+                titre = "Cleaning",
+                conseil = "Never wipe a stone dry: dust acts as an abrasive and scratches the polished surface. Wash with lukewarm soapy water and a soft brush, or with alcohol for a quick degreasing, then dry with a lint-free cloth."
+            ),
+            LapidaireConservationTip(
+                titre = "Individual storage",
+                conseil = "Store each stone separately, in a folded paper wrapper or an individual pouch: even brief contact between stones scratches them."
+            ),
+            LapidaireConservationTip(
+                titre = "Never mix hardnesses",
+                conseil = "Never keep stones of different hardness together in the same compartment: the harder one will systematically scratch the softer one, even from simple friction during transport."
+            ),
+            LapidaireConservationTip(
+                titre = "Thermal shock and chemicals",
+                conseil = "Avoid sudden temperature changes and harsh chemicals (bleach, acids), which can crack certain stones or damage a treatment (oiled emerald, impregnated stone). Ultrasonic cleaners should be avoided for fractured, oiled, or fragile stones."
+            ),
+            LapidaireConservationTip(
+                titre = "Light exposure",
+                conseil = "Some stones are photosensitive: amethyst or kunzite exposed to strong light for a long time can fade. Keep sensitive stones away from prolonged exposure."
+            ),
+            LapidaireConservationTip(
+                titre = "Transport and handling",
+                conseil = "For transport, use a padded pouch and avoid direct contact between several stones or pieces of jewelry kept together; handle by the setting or the table rather than the pavilion, which is more vulnerable to impact."
+            )
         ),
         disclaimerTitle = "A trade learned in the workshop",
         disclaimerBody = "This sheet presents general reference points, not a complete manual: faceting is learned through supervised practice, with suitable equipment and safety guidelines (eye and respiratory protection, continuous lap cooling) specific to each workshop and each machine. The diagrams shown come from real, freely licensed sources (see credits); while temporarily unavailable, only the caption is shown."
@@ -980,6 +1044,34 @@ object LapidaireInfo {
             LapidaireTip(texte = "Una tabla que parece «apagada» mientras el contorno de la piedra sigue brillante señala un efecto ventana: el pabellón es demasiado poco profundo y deja escapar la luz por debajo en lugar de devolverla por la tabla — corríjalo profundizando el ángulo del pabellón, sin superar nunca el ángulo de extinción."),
             LapidaireTip(texte = "En piedras alargadas (óvalo, marquesa, pera, cojín...), una cruz oscura visible en el centro (el efecto llamado «X+») delata facetas de longitud y anchura mal empalmadas en el pabellón; un diagrama de talla bien estudiado para la forma elegida lo evita mucho mejor que un ajuste caso por caso.")
         ),
+        conservationTitle = "Conservación y manipulación de las piedras talladas",
+        conservationIntro = "Una piedra bien tallada sigue siendo vulnerable una vez montada o guardada: unas pocas precauciones sencillas evitan la mayoría de los arañazos y daños accidentales.",
+        conservation = listOf(
+            LapidaireConservationTip(
+                titre = "Limpieza",
+                conseil = "Nunca frotar una piedra en seco: el polvo actúa como abrasivo y raya la superficie pulida. Lavar con agua tibia jabonosa y un cepillo suave, o con alcohol para un desengrasado rápido, y secar con un paño que no suelte pelusa."
+            ),
+            LapidaireConservationTip(
+                titre = "Guardado individual",
+                conseil = "Guardar cada piedra por separado, en un pliegue de papel o una bolsita individual: el contacto entre piedras, aunque sea breve, las raya mutuamente."
+            ),
+            LapidaireConservationTip(
+                titre = "Nunca mezclar durezas",
+                conseil = "Nunca reunir en un mismo compartimento piedras de dureza diferente: la más dura raya sistemáticamente a la más blanda, incluso por un simple roce durante el transporte."
+            ),
+            LapidaireConservationTip(
+                titre = "Choques térmicos y productos químicos",
+                conseil = "Evitar los cambios bruscos de temperatura y los productos químicos agresivos (lejía, ácidos), que pueden agrietar ciertas piedras o alterar un tratamiento (esmeralda aceitada, piedra impregnada). El limpiador ultrasónico debe evitarse en piedras fracturadas, aceitadas o frágiles."
+            ),
+            LapidaireConservationTip(
+                titre = "Exposición a la luz",
+                conseil = "Algunas piedras son fotosensibles: la amatista o la kunzita expuestas mucho tiempo a luz intensa pueden decolorarse. Conservar las piedras sensibles al abrigo de una exposición prolongada."
+            ),
+            LapidaireConservationTip(
+                titre = "Transporte y manipulación",
+                conseil = "Para el transporte, usar una bolsita acolchada y evitar el contacto directo entre varias piedras o joyas reunidas juntas; manipular por el engaste o la mesa y no por el pabellón, más vulnerable a los golpes."
+            )
+        ),
         disclaimerTitle = "Un oficio que se aprende en el taller",
         disclaimerBody = "Esta ficha presenta referencias generales, no un manual completo: la talla de facetas se aprende mediante práctica supervisada, con material adecuado y normas de seguridad (protección ocular y respiratoria, refrigeración continua del plato) propias de cada taller y de cada máquina. Los diagramas mostrados proceden de fuentes reales y libres de derechos (véanse los créditos); en su ausencia temporal, solo se muestra la leyenda."
     )
@@ -1269,6 +1361,34 @@ object LapidaireInfo {
             LapidaireTip(texte = "Non appoggiare mai la pietra su un piatto fermo per poi avviarlo: mettere sempre il piatto in rotazione prima di presentargli la pietra, con un leggero movimento pendolare per evitare che resti ferma nello stesso punto, il che usurerebbe il disco in modo irregolare e la pietra in modo disomogeneo."),
             LapidaireTip(texte = "Una tavola che appare «spenta» mentre il contorno della pietra resta brillante segnala un effetto finestra: il padiglione è troppo poco profondo e lascia sfuggire la luce da sotto invece di rimandarla attraverso la tavola — correggere approfondendo l'angolo del padiglione, senza mai superare l'angolo di estinzione."),
             LapidaireTip(texte = "Sulle pietre allungate (ovale, marquise, a pera, cuscino...), una croce scura visibile al centro (il cosiddetto effetto «X+») rivela sfaccettature di lunghezza e larghezza mal raccordate sul padiglione; un diagramma di taglio ben studiato per la forma scelta lo evita molto meglio di un aggiustamento caso per caso.")
+        ),
+        conservationTitle = "Conservazione e manipolazione delle pietre tagliate",
+        conservationIntro = "Una pietra ben tagliata resta vulnerabile una volta montata o conservata: poche precauzioni semplici evitano la maggior parte dei graffi e dei danni accidentali.",
+        conservation = listOf(
+            LapidaireConservationTip(
+                titre = "Pulizia",
+                conseil = "Non asciugare mai una pietra a secco: la polvere agisce come un abrasivo e graffia la superficie lucidata. Lavare con acqua tiepida e sapone e una spazzola morbida, oppure con alcol per uno sgrassaggio rapido, poi asciugare con un panno che non lasci pelucchi."
+            ),
+            LapidaireConservationTip(
+                titre = "Conservazione individuale",
+                conseil = "Conservare ogni pietra separatamente, in una piega di carta o in una bustina individuale: il contatto tra pietre, anche breve, le graffia a vicenda."
+            ),
+            LapidaireConservationTip(
+                titre = "Non mescolare mai le durezze",
+                conseil = "Non riunire mai nello stesso scomparto pietre di durezza diversa: la più dura graffia sistematicamente la più tenera, anche per un semplice sfregamento durante il trasporto."
+            ),
+            LapidaireConservationTip(
+                titre = "Sbalzi termici e prodotti chimici",
+                conseil = "Evitare bruschi sbalzi di temperatura e prodotti chimici aggressivi (candeggina, acidi), che possono fessurare alcune pietre o alterare un trattamento (smeraldo oliato, pietra impregnata). Il pulitore a ultrasuoni è da evitare per pietre fratturate, oliate o fragili."
+            ),
+            LapidaireConservationTip(
+                titre = "Esposizione alla luce",
+                conseil = "Alcune pietre sono fotosensibili: l'ametista o la kunzite esposte a lungo a luce intensa possono sbiadire. Conservare le pietre sensibili al riparo da un'esposizione prolungata."
+            ),
+            LapidaireConservationTip(
+                titre = "Trasporto e manipolazione",
+                conseil = "Per il trasporto, usare una bustina imbottita ed evitare il contatto diretto tra più pietre o gioielli riuniti insieme; maneggiare dalla montatura o dal tavolo piuttosto che dal padiglione, più vulnerabile agli urti."
+            )
         ),
         disclaimerTitle = "Un mestiere che si impara in laboratorio",
         disclaimerBody = "Questa scheda presenta riferimenti generali, non un manuale completo: la sfaccettatura si impara con la pratica seguita da un istruttore, con attrezzatura adeguata e norme di sicurezza (protezione degli occhi e delle vie respiratorie, raffreddamento continuo del piatto) proprie di ogni laboratorio e di ogni macchina. I diagrammi mostrati provengono da fonti reali e libere da diritti (vedi crediti); in loro assenza temporanea, viene mostrata solo la didascalia."
@@ -1560,6 +1680,34 @@ object LapidaireInfo {
             LapidaireTip(texte = "Eine Tafel, die „tot“ wirkt, während der Umriss des Steins glänzend bleibt, deutet auf einen Fenster-Effekt hin: Der Pavillon ist zu flach und lässt das Licht nach unten entweichen, statt es durch die Tafel zurückzuwerfen — korrigieren Sie dies, indem Sie den Pavillonwinkel vertiefen, jedoch nie über den Auslöschungswinkel hinaus."),
             LapidaireTip(texte = "Bei länglichen Formen (Oval, Navette, Tropfen, Kissen...) verrät ein dunkles Kreuz in der Mitte (der sogenannte „X+“-Effekt) am Pavillon schlecht aneinander angepasste Facetten in Länge und Breite; ein für die gewählte Form gut durchdachtes Schliffdiagramm vermeidet dies deutlich besser als eine Anpassung von Fall zu Fall.")
         ),
+        conservationTitle = "Aufbewahrung und Handhabung geschliffener Steine",
+        conservationIntro = "Ein gut geschliffener Stein bleibt auch gefasst oder gelagert empfindlich: ein paar einfache Vorsichtsmaßnahmen verhindern die meisten Kratzer und versehentlichen Schäden.",
+        conservation = listOf(
+            LapidaireConservationTip(
+                titre = "Reinigung",
+                conseil = "Einen Stein nie trocken abwischen: Staub wirkt wie ein Schleifmittel und zerkratzt die polierte Oberfläche. Mit lauwarmem Seifenwasser und einer weichen Bürste waschen, oder mit Alkohol für eine schnelle Entfettung, dann mit einem fusselfreien Tuch trocknen."
+            ),
+            LapidaireConservationTip(
+                titre = "Einzelne Aufbewahrung",
+                conseil = "Jeden Stein einzeln aufbewahren, in einer Papierfalte oder einem Einzelbeutel: Schon kurzer Kontakt zwischen Steinen zerkratzt sie gegenseitig."
+            ),
+            LapidaireConservationTip(
+                titre = "Härtegrade nie mischen",
+                conseil = "Nie Steine unterschiedlicher Härte im selben Fach aufbewahren: Der härtere zerkratzt den weicheren systematisch, selbst durch einfache Reibung beim Transport."
+            ),
+            LapidaireConservationTip(
+                titre = "Temperaturschocks und Chemikalien",
+                conseil = "Plötzliche Temperaturwechsel und aggressive Chemikalien (Bleichmittel, Säuren) vermeiden, die manche Steine sprengen oder eine Behandlung beeinträchtigen können (geölter Smaragd, imprägnierter Stein). Ultraschallreiniger sollten bei rissigen, geölten oder empfindlichen Steinen vermieden werden."
+            ),
+            LapidaireConservationTip(
+                titre = "Lichteinwirkung",
+                conseil = "Manche Steine sind lichtempfindlich: Amethyst oder Kunzit können bei langer, intensiver Lichteinwirkung verblassen. Empfindliche Steine vor längerer Lichteinwirkung schützen."
+            ),
+            LapidaireConservationTip(
+                titre = "Transport und Handhabung",
+                conseil = "Für den Transport einen gepolsterten Beutel verwenden und direkten Kontakt zwischen mehreren zusammen aufbewahrten Steinen oder Schmuckstücken vermeiden; am Fassungsrand oder an der Tafel anfassen statt am Pavillon, der stoßempfindlicher ist."
+            )
+        ),
         disclaimerTitle = "Ein Handwerk, das man in der Werkstatt lernt",
         disclaimerBody = "Dieses Merkblatt zeigt allgemeine Anhaltspunkte, keine vollständige Anleitung: Der Facettenschliff wird durch angeleitete Praxis erlernt, mit geeigneter Ausrüstung und Sicherheitsvorschriften (Augen- und Atemschutz, durchgehende Lap-Kühlung), die für jede Werkstatt und jede Maschine spezifisch sind. Die gezeigten Diagramme stammen aus echten, frei lizenzierten Quellen (siehe Credits); solange sie vorübergehend fehlen, wird nur die Bildunterschrift angezeigt."
     )
@@ -1849,6 +1997,34 @@ object LapidaireInfo {
             LapidaireTip(texte = "Nunca pouse a pedra sobre um prato parado para depois o ligar: coloque sempre o prato em rotação antes de apresentar a pedra, com um ligeiro movimento pendular para evitar que fique fixa sempre no mesmo ponto, o que desgastaria o disco de forma desigual e a própria pedra de forma irregular."),
             LapidaireTip(texte = "Uma mesa que parece «apagada» enquanto o contorno da pedra permanece brilhante indica um efeito de janela: o pavilhão é demasiado raso e deixa a luz escapar por baixo em vez de a devolver pela mesa — corrija aprofundando o ângulo do pavilhão, sem nunca ultrapassar o ângulo de extinção."),
             LapidaireTip(texte = "Nas pedras alongadas (oval, marquise, pera, almofada...), uma cruz escura visível ao centro (efeito dito «X+») revela facetas de comprimento e largura mal ligadas no pavilhão; um diagrama de corte bem estudado para a forma escolhida evita-o melhor do que um ajuste caso a caso.")
+        ),
+        conservationTitle = "Conservação e manuseamento das pedras lapidadas",
+        conservationIntro = "Uma pedra bem lapidada continua vulnerável depois de montada ou guardada: algumas precauções simples evitam a maior parte dos riscos e danos acidentais.",
+        conservation = listOf(
+            LapidaireConservationTip(
+                titre = "Limpeza",
+                conseil = "Nunca limpar uma pedra a seco: o pó age como abrasivo e risca a superfície polida. Lavar com água morna e sabão e uma escova macia, ou com álcool para um desengorduramento rápido, e secar com um pano que não largue fiapos."
+            ),
+            LapidaireConservationTip(
+                titre = "Guardar individualmente",
+                conseil = "Guardar cada pedra separadamente, numa dobra de papel ou num saquinho individual: o contacto entre pedras, mesmo breve, risca-as mutuamente."
+            ),
+            LapidaireConservationTip(
+                titre = "Nunca misturar durezas",
+                conseil = "Nunca reunir no mesmo compartimento pedras de dureza diferente: a mais dura risca sistematicamente a mais mole, mesmo por um simples atrito durante o transporte."
+            ),
+            LapidaireConservationTip(
+                titre = "Choques térmicos e produtos químicos",
+                conseil = "Evitar variações bruscas de temperatura e produtos químicos agressivos (lixívia, ácidos), que podem rachar certas pedras ou alterar um tratamento (esmeralda oleada, pedra impregnada). O limpador ultrassónico deve ser evitado em pedras fraturadas, oleadas ou frágeis."
+            ),
+            LapidaireConservationTip(
+                titre = "Exposição à luz",
+                conseil = "Algumas pedras são fotossensíveis: a ametista ou a kunzite expostas muito tempo a luz forte podem desbotar. Guardar as pedras sensíveis ao abrigo de exposição prolongada."
+            ),
+            LapidaireConservationTip(
+                titre = "Transporte e manuseamento",
+                conseil = "Para o transporte, usar um saquinho acolchoado e evitar o contacto direto entre várias pedras ou joias juntas; pegar pelo engaste ou pela mesa e não pelo pavilhão, mais vulnerável a choques."
+            )
         ),
         disclaimerTitle = "Um ofício que se aprende na oficina",
         disclaimerBody = "Esta ficha apresenta referências gerais, não um manual completo: a lapidação de facetas aprende-se através de prática supervisionada, com equipamento adequado e normas de segurança (proteção ocular e respiratória, arrefecimento contínuo do prato) próprias de cada oficina e de cada máquina. Os diagramas apresentados provêm de fontes reais e livres de direitos (ver créditos); na sua ausência temporária, é apresentada apenas a legenda."
@@ -2140,6 +2316,34 @@ object LapidaireInfo {
             LapidaireTip(texte = "Площадка, которая кажется «погасшей», в то время как контур камня остаётся блестящим, указывает на эффект окна: павильон слишком мелкий и пропускает свет наружу снизу вместо того, чтобы возвращать его через площадку — исправляйте, углубляя угол павильона, никогда не превышая угол погасания."),
             LapidaireTip(texte = "На вытянутых камнях (овал, маркиз, груша, кушон...) тёмный крест, видимый в центре (так называемый эффект «X+»), выдаёт грани длины и ширины, плохо состыкованные на павильоне; хорошо продуманная схема огранки для выбранной формы предотвращает это лучше, чем подгонка по месту.")
         ),
+        conservationTitle = "Хранение и обращение с огранёнными камнями",
+        conservationIntro = "Хорошо огранённый камень остаётся уязвимым и после того, как его закрепили в оправу или убрали на хранение: несколько простых мер предосторожности предотвращают большинство царапин и случайных повреждений.",
+        conservation = listOf(
+            LapidaireConservationTip(
+                titre = "Чистка",
+                conseil = "Никогда не протирайте камень насухо: пыль действует как абразив и царапает полированную поверхность. Промывайте тёплой мыльной водой мягкой щёткой или спиртом для быстрого обезжиривания, затем протирайте безворсовой тканью."
+            ),
+            LapidaireConservationTip(
+                titre = "Раздельное хранение",
+                conseil = "Храните каждый камень отдельно, в бумажном конвертике или индивидуальном мешочке: даже кратковременный контакт между камнями царапает их взаимно."
+            ),
+            LapidaireConservationTip(
+                titre = "Никогда не смешивайте твёрдости",
+                conseil = "Никогда не держите в одном отделении камни разной твёрдости: более твёрдый систематически царапает более мягкий, даже от простого трения при перевозке."
+            ),
+            LapidaireConservationTip(
+                titre = "Тепловой шок и химикаты",
+                conseil = "Избегайте резких перепадов температуры и агрессивных химикатов (отбеливателя, кислот), которые могут растрескать некоторые камни или повредить обработку (промасленный изумруд, пропитанный камень). Ультразвуковую чистку следует избегать для треснувших, промасленных или хрупких камней."
+            ),
+            LapidaireConservationTip(
+                titre = "Воздействие света",
+                conseil = "Некоторые камни светочувствительны: аметист или кунцит при длительном воздействии яркого света могут выцвести. Храните чувствительные камни вдали от длительного освещения."
+            ),
+            LapidaireConservationTip(
+                titre = "Перевозка и обращение",
+                conseil = "Для перевозки используйте мягкий мешочек и избегайте прямого контакта между несколькими камнями или украшениями, собранными вместе; берите за оправу или площадку, а не за павильон, который более уязвим к ударам."
+            )
+        ),
         disclaimerTitle = "Ремесло, которому учатся в мастерской",
         disclaimerBody = "Эта статья приводит общие ориентиры, а не полное руководство: фасетная огранка осваивается через практику под наставничеством, с подходящим оборудованием и правилами безопасности (защита глаз и органов дыхания, непрерывное охлаждение планшайбы), специфичными для каждой мастерской и каждого станка. Показанные схемы взяты из реальных источников со свободными лицензиями (см. указания авторства); при их временном отсутствии отображается только подпись."
     )
@@ -2430,6 +2634,34 @@ object LapidaireInfo {
             LapidaireTip(texte = "Een tafel die „dof” lijkt terwijl de omtrek van de steen wel glanst, wijst op een venstereffect: het paviljoen is te ondiep en laat het licht er onderaan uit ontsnappen in plaats van het via de tafel terug te kaatsen — corrigeer door de paviljoenhoek te verdiepen, zonder ooit de uitdovingshoek te overschrijden."),
             LapidaireTip(texte = "Bij langwerpige vormen (ovaal, markies, peer, kussen...) verraadt een donker kruis zichtbaar in het midden (het zogenoemde „X+-effect”) lengte- en breedtefacetten die slecht op elkaar aansluiten op het paviljoen; een goed doordacht slijpdiagram voor de gekozen vorm voorkomt dit beter dan een aanpassing per geval.")
         ),
+        conservationTitle = "Bewaren en hanteren van geslepen stenen",
+        conservationIntro = "Een goed geslepen steen blijft kwetsbaar eenmaal gezet of opgeborgen: een paar eenvoudige voorzorgsmaatregelen voorkomen de meeste krassen en onbedoelde schade.",
+        conservation = listOf(
+            LapidaireConservationTip(
+                titre = "Reiniging",
+                conseil = "Veeg een steen nooit droog af: stof werkt als schuurmiddel en krast het gepolijste oppervlak. Was met lauw zeepwater en een zachte borstel, of met alcohol voor een snelle ontvetting, en droog met een pluisvrije doek."
+            ),
+            LapidaireConservationTip(
+                titre = "Afzonderlijk bewaren",
+                conseil = "Bewaar elke steen apart, in een papieren vouw of een individueel zakje: zelfs kort contact tussen stenen krast ze onderling."
+            ),
+            LapidaireConservationTip(
+                titre = "Nooit hardheden mengen",
+                conseil = "Bewaar nooit stenen van verschillende hardheid samen in hetzelfde vakje: de hardere krast systematisch de zachtere, zelfs door eenvoudige wrijving tijdens het transport."
+            ),
+            LapidaireConservationTip(
+                titre = "Temperatuurschokken en chemicaliën",
+                conseil = "Vermijd plotselinge temperatuurschommelingen en agressieve chemicaliën (bleekwater, zuren), die bepaalde stenen kunnen doen barsten of een behandeling kunnen aantasten (geoliede smaragd, geïmpregneerde steen). Een ultrasoonreiniger is af te raden bij gebarsten, geoliede of breekbare stenen."
+            ),
+            LapidaireConservationTip(
+                titre = "Blootstelling aan licht",
+                conseil = "Sommige stenen zijn lichtgevoelig: amethist of kunziet die lang aan fel licht wordt blootgesteld, kan verbleken. Bewaar gevoelige stenen uit de buurt van langdurige blootstelling."
+            ),
+            LapidaireConservationTip(
+                titre = "Vervoer en hantering",
+                conseil = "Gebruik voor vervoer een gevoerd zakje en vermijd direct contact tussen meerdere stenen of sieraden die samen worden bewaard; vastpakken bij de zetting of de tafel in plaats van bij het paviljoen, dat gevoeliger is voor stoten."
+            )
+        ),
         disclaimerTitle = "Een vak dat je in de werkplaats leert",
         disclaimerBody = "Dit overzicht geeft algemene richtlijnen, geen volledige handleiding: facetteren wordt geleerd door begeleide praktijk, met geschikte apparatuur en veiligheidsvoorschriften (oog- en ademhalingsbescherming, continue lapkoeling) die per werkplaats en per machine verschillen. De getoonde diagrammen zijn afkomstig uit echte, vrij te gebruiken bronnen (zie credits); zolang ze tijdelijk ontbreken, wordt alleen het onderschrift getoond."
     )
@@ -2719,6 +2951,34 @@ object LapidaireInfo {
             LapidaireTip(texte = "切勿将宝石放在静止的磨盘上再启动磨盘：应始终先让磨盘转动起来，再轻轻以钟摆式动作将宝石送入接触，避免宝石始终停留在同一点，否则会使磨盘磨损不均，宝石本身也会磨损不规则。"),
             LapidaireTip(texte = "若台面看起来「发暗」而宝石轮廓仍然明亮，说明出现了漏光窗效应：亭部过浅，光线从下方漏出而未能经台面反射回来——应加深亭部角度加以纠正，但绝不能超过消光角。"),
             LapidaireTip(texte = "在细长形宝石（椭圆形、榄尖形、梨形、垫形等）上，中央出现明显暗十字（所谓「X+效应」）表明亭部长宽方向的刻面未能良好衔接；针对所选形状精心设计的切磨图纸，比逐案调整更能有效避免这一问题。")
+        ),
+        conservationTitle = "切磨宝石的保存与操作",
+        conservationIntro = "一颗切磨精良的宝石在镶嵌或存放之后仍然容易受损：几项简单的预防措施就能避免大部分意外划痕和损伤。",
+        conservation = listOf(
+            LapidaireConservationTip(
+                titre = "清洁",
+                conseil = "切勿干擦宝石：灰尘会起到研磨剂的作用，划伤抛光表面。用温肥皂水配软刷清洗，或用酒精快速去油，然后用无绒布擦干。"
+            ),
+            LapidaireConservationTip(
+                titre = "分开存放",
+                conseil = "每颗宝石应分开存放，用折叠的纸包或独立的小袋子：宝石之间哪怕短暂接触也会相互刮伤。"
+            ),
+            LapidaireConservationTip(
+                titre = "切勿混放不同硬度",
+                conseil = "切勿将不同硬度的宝石放在同一格子里：较硬的宝石会系统性地划伤较软的宝石，哪怕只是运输过程中的简单摩擦。"
+            ),
+            LapidaireConservationTip(
+                titre = "热冲击与化学品",
+                conseil = "避免温度骤变和刺激性化学品（漂白剂、酸类），它们可能使某些宝石开裂或破坏处理效果（注油祖母绿、浸渍宝石）。对于有裂纹、注油或脆弱的宝石，应避免使用超声波清洗机。"
+            ),
+            LapidaireConservationTip(
+                titre = "光照",
+                conseil = "有些宝石对光敏感：紫水晶或紫锂辉石长时间暴露在强光下可能褪色。应将敏感宝石存放在避免长时间光照的地方。"
+            ),
+            LapidaireConservationTip(
+                titre = "运输与操作",
+                conseil = "运输时应使用带衬垫的小袋，避免多颗宝石或首饰放在一起直接接触；拿取时应握住镶座或台面，而非更易受冲击的亭部。"
+            )
         ),
         disclaimerTitle = "在工坊中学习的手艺",
         disclaimerBody = "本篇提供的是通用参考要点，而非完整操作手册：刻面切磨需要通过有指导的实践学习，配合适当设备，以及每个工坊、每台机器各自特有的安全规范（护目护呼吸装备、磨盘持续冷却）。所展示的图解均来自真实、可自由使用授权的来源（见版权说明）；在暂时缺失图片时，仅显示图注文字。"

@@ -50,6 +50,7 @@ import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.LapidaireAngles
 import fr.gemsofrod.encyclopedie.data.LapidaireComponent
+import fr.gemsofrod.encyclopedie.data.LapidaireConservationTip
 import fr.gemsofrod.encyclopedie.data.LapidaireCutShape
 import fr.gemsofrod.encyclopedie.data.LapidaireDefaut
 import fr.gemsofrod.encyclopedie.data.LapidaireDiagram
@@ -133,7 +134,8 @@ fun LapidaireScreen(onBackClick: () -> Unit) {
                         "defauts" to page.defautsTitle,
                         "especes" to page.especesTitle,
                         "diagrammes" to page.diagrammesTitle,
-                        "conseils" to page.tipsTitle
+                        "conseils" to page.tipsTitle,
+                        "conservation" to page.conservationTitle
                     ),
                     onEntryClick = { key ->
                         val target = sectionOffsets[key] ?: return@LapidaireToc
@@ -292,6 +294,19 @@ fun LapidaireScreen(onBackClick: () -> Unit) {
                         }
                     )
                     page.tips.forEach { TipCard(it) }
+
+                    SectionHeader(
+                        title = page.conservationTitle,
+                        modifier = Modifier.onGloballyPositioned {
+                            sectionOffsets["conservation"] = it.positionInParent().y.roundToInt()
+                        }
+                    )
+                    Text(
+                        text = page.conservationIntro,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    page.conservation.forEach { ConservationCard(it) }
 
                     LapidaireDisclaimer(title = page.disclaimerTitle, body = page.disclaimerBody)
                 }
@@ -647,6 +662,29 @@ private fun EspeceCard(espece: LapidaireEspeceFiche) {
             )
             Text(
                 text = stringResource(R.string.lapidaire_espece_polissage_label, espece.polissage),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+    }
+}
+
+@Composable
+private fun ConservationCard(tip: LapidaireConservationTip) {
+    Card(
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            Text(
+                text = tip.titre,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Text(
+                text = tip.conseil,
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
