@@ -18,6 +18,7 @@ import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Inventory2
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.Science
 import androidx.compose.material.icons.filled.Verified
@@ -55,6 +56,7 @@ fun LabMenuScreen(
     onInstrumentsClick: () -> Unit,
     onGlossaireClick: () -> Unit,
     onReflectivityMeterClick: () -> Unit,
+    onNuancierClick: () -> Unit,
     onTreatmentsClick: () -> Unit,
     onStockClick: () -> Unit,
     onLegendaryClick: () -> Unit,
@@ -125,6 +127,12 @@ fun LabMenuScreen(
                 title = stringResource(R.string.lab_reflectivity_title),
                 subtitle = stringResource(R.string.lab_reflectivity_subtitle),
                 onClick = onReflectivityMeterClick
+            )
+            LabMenuCard(
+                icon = Icons.Filled.Palette,
+                title = stringResource(R.string.lab_nuancier_title),
+                subtitle = stringResource(R.string.lab_nuancier_subtitle),
+                onClick = onNuancierClick
             )
             LabMenuCard(
                 icon = Icons.Filled.Verified,

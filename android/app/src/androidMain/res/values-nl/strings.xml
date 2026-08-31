@@ -354,6 +354,8 @@
     <!-- Réflectomètre (Phase C) -->
     <string name="lab_reflectivity_title">Reflectometer</string>
     <string name="lab_reflectivity_subtitle">Schat de brekingsindex met de camera (bèta).</string>
+    <string name="lab_nuancier_title">Kleurenwaaier</string>
+    <string name="lab_nuancier_subtitle">Vergelijk de waargenomen kleur met handelsnamen (London Blue, Paraíba…).</string>
     <string name="reflectivity_title">Reflectometer (bèta)</string>
     <string name="reflectivity_disclaimer">Indicatieve schatting op basis van reflectiviteit, GEEN laboratoriummeting — vervangt geen professionele refractometer.</string>
     <string name="reflectivity_howto_title">Gebruiksaanwijzing</string>

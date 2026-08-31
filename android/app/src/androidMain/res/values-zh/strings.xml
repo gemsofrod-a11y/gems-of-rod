@@ -354,6 +354,8 @@
     <!-- Réflectomètre (Phase C) -->
     <string name="lab_reflectivity_title">反射仪</string>
     <string name="lab_reflectivity_subtitle">用相机估算折射率(测试版)。</string>
+    <string name="lab_nuancier_title">颜色比色卡</string>
+    <string name="lab_nuancier_subtitle">将观察到的颜色与商业色名进行比较（London Blue、Paraíba 等）。</string>
     <string name="reflectivity_title">反射仪(测试版)</string>
     <string name="reflectivity_disclaimer">参考性反射率估算,并非实验室测量结果 — 不能替代专业折射仪。</string>
     <string name="reflectivity_howto_title">使用方法</string>

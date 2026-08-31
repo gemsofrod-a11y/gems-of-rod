@@ -354,6 +354,8 @@
     <!-- Réflectomètre (Phase C) -->
     <string name="lab_reflectivity_title">Réflectomètre</string>
     <string name="lab_reflectivity_subtitle">Estimez l\'indice de réfraction avec l\'appareil photo (bêta).</string>
+    <string name="lab_nuancier_title">Nuancier de couleur</string>
+    <string name="lab_nuancier_subtitle">Comparez la couleur observée aux appellations commerciales (London Blue, Paraíba…).</string>
     <string name="reflectivity_title">Réflectomètre (bêta)</string>
     <string name="reflectivity_disclaimer">Estimation indicative par réflectivité, PAS une mesure de laboratoire — ne remplace pas un réfractomètre professionnel.</string>
     <string name="reflectivity_howto_title">Mode d\'emploi</string>
