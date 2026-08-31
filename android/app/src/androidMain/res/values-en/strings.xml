@@ -354,6 +354,8 @@
     <!-- Réflectomètre (Phase C) -->
     <string name="lab_reflectivity_title">Reflectometer</string>
     <string name="lab_reflectivity_subtitle">Estimate the refractive index with the camera (beta).</string>
+    <string name="lab_nuancier_title">Color chart</string>
+    <string name="lab_nuancier_subtitle">Compare the observed color to trade names (London Blue, Paraíba…).</string>
     <string name="reflectivity_title">Reflectometer (beta)</string>
     <string name="reflectivity_disclaimer">Indicative reflectivity estimate, NOT a laboratory measurement — does not replace a professional refractometer.</string>
     <string name="reflectivity_howto_title">How to use it</string>
