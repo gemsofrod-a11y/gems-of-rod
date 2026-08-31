@@ -47,6 +47,13 @@ data class LapidaireIndexEntry(
     val cotesTaillables: String
 )
 
+data class LapidaireEspeceFiche(
+    val pierre: String,
+    val orientation: String,
+    val fragilite: String,
+    val polissage: String
+)
+
 data class LapidairePoidsCalculator(
     val title: String,
     val intro: String,
@@ -82,6 +89,9 @@ data class LapidairePage(
     val defautsTitle: String,
     val defautsIntro: String,
     val defauts: List<LapidaireDefaut>,
+    val especesTitle: String,
+    val especesIntro: String,
+    val especes: List<LapidaireEspeceFiche>,
     val diagrammesTitle: String,
     val diagrammes: List<LapidaireDiagram>,
     val tipsTitle: String,
@@ -276,6 +286,82 @@ object LapidaireInfo {
                 probleme = "Petite cavité qui apparaît en cours de facettage",
                 cause = "Une inclusion proche de la surface a été mise à jour.",
                 remede = "Mieux « nettoyer » les inclusions dès l'ébrutage reste la meilleure prévention ; une fois le trou apparu, retailler localement ou envisager une recoupe totale si nécessaire."
+            )
+        ),
+        especesTitle = "Fiches pratiques par espèce",
+        especesIntro = "Au-delà de l'angle critique et de l'angle d'extinction déjà donnés plus haut, chaque espèce a ses propres habitudes de taille : orientation de la table selon le pléochroïsme ou le clivage, sensibilité particulière, plateau et poudre de polissage qui donnent les meilleurs résultats. Repères issus de la pratique, pas une règle universelle — chaque pierre garde ses particularités individuelles (inclusions, zonations, état de surface du brut).",
+        especes = listOf(
+            LapidaireEspeceFiche(
+                pierre = "Diamant",
+                orientation = "Isotrope : aucune contrainte d'orientation liée à un axe optique.",
+                fragilite = "Clivage parfait selon 4 plans octaédriques, bien identifié et exploité par les tailleurs plutôt que subi ; la pointe du pavillon reste le point le plus vulnérable aux chocs.",
+                polissage = "Plateau en fonte (scaife) chargé de poudre de diamant — seul le diamant polit le diamant."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Corindon (Rubis, Saphir)",
+                orientation = "Pas de clivage à prendre en compte pour l'orientation.",
+                fragilite = "Dureté 9, parmi les plus dures des pierres facettées : peu de précautions particulières.",
+                polissage = "Excellents résultats sur plateau cuivre et poudre de diamant."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Béryl (Émeraude, Aigue-marine, Morganite, Héliodore)",
+                orientation = "Clivage imparfait, sans réelle contrainte d'orientation.",
+                fragilite = "L'émeraude en particulier réclame une attention aux givres (inclusions), qui peuvent la faire se briser à la taille comme au polissage.",
+                polissage = "Acide acétique dans l'eau de refroidissement améliore le polissage ; poudre oxyde d'aluminium, de cérium ou d'étain, ou Linde A."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Quartz (Améthyste, Citrine, Cristal de roche, Quartz fumé)",
+                orientation = "Pas de clivage ; tenir compte des zonations de couleur au moment de l'orientation.",
+                fragilite = "Aucune fragilité de clivage particulière.",
+                polissage = "Le résultat réserve parfois des surprises inattendues, sans cause identifiée."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Topaze",
+                orientation = "Décaler la table d'environ 10° par rapport au plan de clivage basal, pour ne pas s'exposer directement dans son axe.",
+                fragilite = "Clivage net selon une seule direction (plan basal) — facile à facetter dès lors qu'on l'évite.",
+                polissage = "Pas de recommandation de plateau distincte des règles générales."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Tourmaline",
+                orientation = "Tailler de préférence la table parallèle à l'axe optique ; une pierre polychrome se sectionne nettement à la jonction de deux couleurs — mieux vaut la coller que la scier à cet endroit.",
+                fragilite = "Sensible à la chaleur et aux chocs en cours de taille.",
+                polissage = "Pas de recommandation de plateau distincte des règles générales."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Grenat (Almandin, Démantoïde, Grossulaire, Pyrope, Spessartite, Uvarovite)",
+                orientation = "Isotrope : orientation de table sans contrainte, aucune direction privilégiée.",
+                fragilite = "Aucun problème de fragilité lié au clivage.",
+                polissage = "Acide acétique (vinaigre) dans l'eau de refroidissement améliore systématiquement le résultat ; poudre oxyde de cérium, d'étain ou d'aluminium."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Spinelle",
+                orientation = "Isotrope, aucune contrainte d'orientation.",
+                fragilite = "Aucun problème de fragilité lié au clivage.",
+                polissage = "Se polit remarquablement bien sur disque cuivre et pâte diamantée."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Péridot (Olivine)",
+                orientation = "Pléochroïsme très faible, orientation peu contraignante.",
+                fragilite = "Aucune fragilité de clivage notable.",
+                polissage = "Le résultat réserve parfois des surprises inattendues ; la poudre diamantée convient bien."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Fluorite",
+                orientation = "Se sépare facilement selon 4 directions : bien choisir l'orientation pour limiter le risque.",
+                fragilite = "Un des angles critiques les plus fermés parmi les pierres facettées, très sensible aux chocs et à l'égrisure.",
+                polissage = "Plateau de préférence en cire ; l'acide améliore le résultat."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Calcite",
+                orientation = "Bien orienter pour ne pas exposer directement les plans de clivage.",
+                fragilite = "Dureté très faible (3) et clivage parfait selon 3 directions, forte sensibilité à la chaleur — pierre difficile à tailler et à polir ; tourner le plateau lentement (environ 100 tr/min).",
+                polissage = "Plateau bois ou cire, poudre oxyde d'étain ou de chrome, avec quelques gouttes d'acide oxalique."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Chrysobéryl (Alexandrite)",
+                orientation = "Pas de contrainte d'orientation liée au clivage.",
+                fragilite = "Dureté élevée (8,5), pierre dure sans souci particulier.",
+                polissage = "Se polit rapidement à l'acide et à la poudre Linde A ; excellents résultats sur plateau cuivre et poudre de diamant."
             )
         ),
         diagrammesTitle = "Diagrammes",
@@ -492,6 +578,82 @@ object LapidaireInfo {
                 remede = "Cleaning up inclusions more thoroughly at the rough-grinding stage is the best prevention; once the hole appears, recut that area locally or consider a full recut if needed."
             )
         ),
+        especesTitle = "Practical species sheets",
+        especesIntro = "Beyond the critical angle and extinction angle given above, each species has its own cutting habits: table orientation based on pleochroism or cleavage, particular sensitivities, and the lap and polishing powder that give the best results. Practice-based pointers, not a universal rule — each stone keeps its own individual quirks (inclusions, zoning, rough surface condition).",
+        especes = listOf(
+            LapidaireEspeceFiche(
+                pierre = "Diamond",
+                orientation = "Isotropic: no orientation constraint tied to an optical axis.",
+                fragilite = "Perfect cleavage along 4 octahedral planes, well understood and exploited by cutters rather than merely endured; the pavilion tip remains the most impact-vulnerable point.",
+                polissage = "Cast-iron lap (scaife) charged with diamond powder — only diamond polishes diamond."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Corundum (Ruby, Sapphire)",
+                orientation = "No cleavage to account for in orientation.",
+                fragilite = "Hardness 9, among the hardest faceted stones: few special precautions needed.",
+                polissage = "Excellent results on a copper lap with diamond powder."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Beryl (Emerald, Aquamarine, Morganite, Heliodor)",
+                orientation = "Imperfect cleavage, no real orientation constraint.",
+                fragilite = "Emerald in particular needs attention to jardin (inclusions), which can cause it to fracture during both cutting and polishing.",
+                polissage = "Acetic acid in the coolant water improves polishing; aluminum, cerium, or tin oxide powder, or Linde A."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Quartz (Amethyst, Citrine, Rock crystal, Smoky quartz)",
+                orientation = "No cleavage; account for color zoning when orienting.",
+                fragilite = "No particular cleavage fragility.",
+                polissage = "Results sometimes hold unexpected surprises, with no identified cause."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Topaz",
+                orientation = "Offset the table by about 10° from the basal cleavage plane, to avoid exposing it directly along its axis.",
+                fragilite = "Clean cleavage in a single direction (basal plane) — easy to facet once avoided.",
+                polissage = "No lap recommendation beyond the general rules."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Tourmaline",
+                orientation = "Preferably cut the table parallel to the optic axis; a parti-colored stone splits cleanly at the junction between two colors — better to glue it there than to saw it.",
+                fragilite = "Sensitive to heat and impact during cutting.",
+                polissage = "No lap recommendation beyond the general rules."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Garnet (Almandine, Demantoid, Grossular, Pyrope, Spessartine, Uvarovite)",
+                orientation = "Isotropic: table orientation is unconstrained, no preferred direction.",
+                fragilite = "No fragility issue tied to cleavage.",
+                polissage = "Acetic acid (vinegar) in the coolant water consistently improves the result; cerium, tin, or aluminum oxide powder."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Spinel",
+                orientation = "Isotropic, no orientation constraint.",
+                fragilite = "No fragility issue tied to cleavage.",
+                polissage = "Polishes remarkably well on a copper lap with diamond paste."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Peridot (Olivine)",
+                orientation = "Very weak pleochroism, orientation is not very constraining.",
+                fragilite = "No notable cleavage fragility.",
+                polissage = "Results sometimes hold unexpected surprises; diamond powder works well."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Fluorite",
+                orientation = "Splits easily along 4 directions: choose the orientation carefully to limit the risk.",
+                fragilite = "One of the most closed critical angles among faceted stones, very sensitive to impact and chipping.",
+                polissage = "Preferably a wax lap; acid improves the result."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Calcite",
+                orientation = "Orient carefully so as not to expose the cleavage planes directly.",
+                fragilite = "Very low hardness (3) and perfect cleavage in 3 directions, highly heat-sensitive — a stone difficult to cut and polish; run the lap slowly (about 100 rpm).",
+                polissage = "Wood or wax lap, tin or chromium oxide powder, with a few drops of oxalic acid."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Chrysoberyl (Alexandrite)",
+                orientation = "No orientation constraint tied to cleavage.",
+                fragilite = "High hardness (8.5), a tough stone with no particular concern.",
+                polissage = "Polishes quickly with acid and Linde A powder; excellent results on a copper lap with diamond powder."
+            )
+        ),
         diagrammesTitle = "Diagrams",
         diagrammes = listOf(
             LapidaireDiagram(
@@ -704,6 +866,82 @@ object LapidaireInfo {
                 probleme = "Aparece una pequeña cavidad durante la talla",
                 cause = "Se ha puesto al descubierto una inclusión próxima a la superficie.",
                 remede = "Limpiar mejor las inclusiones desde el desbaste sigue siendo la mejor prevención; una vez aparecido el agujero, retallar localmente o considerar una nueva talla completa si es necesario."
+            )
+        ),
+        especesTitle = "Fichas prácticas por especie",
+        especesIntro = "Más allá del ángulo crítico y el ángulo de extinción ya indicados, cada especie tiene sus propias costumbres de talla: orientación de la tabla según el pleocroísmo o el clivaje, sensibilidades particulares, y el disco y la pasta de pulido que dan mejores resultados. Son indicaciones basadas en la práctica, no una regla universal — cada piedra conserva sus propias particularidades (inclusiones, zonificación, estado de la superficie en bruto).",
+        especes = listOf(
+            LapidaireEspeceFiche(
+                pierre = "Diamante",
+                orientation = "Isótropo: sin restricción de orientación ligada a un eje óptico.",
+                fragilite = "Clivaje perfecto según 4 planos octaédricos, bien conocido y aprovechado por los talladores más que sufrido; la punta del pabellón sigue siendo el punto más vulnerable a los golpes.",
+                polissage = "Disco de fundición (scaife) cargado con polvo de diamante — solo el diamante pule el diamante."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Corindón (Rubí, Zafiro)",
+                orientation = "Sin clivaje que tener en cuenta para la orientación.",
+                fragilite = "Dureza 9, entre las más duras de las piedras talladas: pocas precauciones especiales.",
+                polissage = "Excelentes resultados en disco de cobre con polvo de diamante."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Berilo (Esmeralda, Aguamarina, Morganita, Heliodoro)",
+                orientation = "Clivaje imperfecto, sin restricción real de orientación.",
+                fragilite = "La esmeralda en particular requiere atención a los jardines (inclusiones), que pueden hacer que se fracture tanto al tallar como al pulir.",
+                polissage = "El ácido acético en el agua de refrigeración mejora el pulido; polvo de óxido de aluminio, cerio o estaño, o Linde A."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Cuarzo (Amatista, Citrino, Cristal de roca, Cuarzo ahumado)",
+                orientation = "Sin clivaje; tener en cuenta las zonificaciones de color al orientar.",
+                fragilite = "Sin fragilidad particular de clivaje.",
+                polissage = "El resultado a veces reserva sorpresas inesperadas, sin causa identificada."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Topacio",
+                orientation = "Desplazar la tabla unos 10° respecto al plano de clivaje basal, para no exponerlo directamente en su eje.",
+                fragilite = "Clivaje neto en una sola dirección (plano basal) — fácil de facetar una vez evitado.",
+                polissage = "Sin recomendación de disco más allá de las reglas generales."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Turmalina",
+                orientation = "Tallar preferiblemente la tabla paralela al eje óptico; una piedra policroma se secciona claramente en la unión de dos colores — mejor pegarla que serrarla en ese punto.",
+                fragilite = "Sensible al calor y a los golpes durante la talla.",
+                polissage = "Sin recomendación de disco más allá de las reglas generales."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Granate (Almandino, Demantoide, Grosularia, Piropo, Espesartina, Uvarovita)",
+                orientation = "Isótropo: orientación de la tabla sin restricción, sin dirección preferente.",
+                fragilite = "Sin problema de fragilidad ligado al clivaje.",
+                polissage = "El ácido acético (vinagre) en el agua de refrigeración mejora sistemáticamente el resultado; polvo de óxido de cerio, estaño o aluminio."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Espinela",
+                orientation = "Isótropa, sin restricción de orientación.",
+                fragilite = "Sin problema de fragilidad ligado al clivaje.",
+                polissage = "Se pule notablemente bien en disco de cobre con pasta de diamante."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Peridoto (Olivino)",
+                orientation = "Pleocroísmo muy débil, orientación poco restrictiva.",
+                fragilite = "Sin fragilidad de clivaje notable.",
+                polissage = "El resultado a veces reserva sorpresas inesperadas; el polvo de diamante funciona bien."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Fluorita",
+                orientation = "Se separa fácilmente según 4 direcciones: elegir bien la orientación para limitar el riesgo.",
+                fragilite = "Uno de los ángulos críticos más cerrados entre las piedras talladas, muy sensible a golpes y desconchados.",
+                polissage = "Disco preferiblemente de cera; el ácido mejora el resultado."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Calcita",
+                orientation = "Orientar con cuidado para no exponer directamente los planos de clivaje.",
+                fragilite = "Dureza muy baja (3) y clivaje perfecto en 3 direcciones, muy sensible al calor — piedra difícil de tallar y pulir; girar el disco despacio (unas 100 rpm).",
+                polissage = "Disco de madera o cera, polvo de óxido de estaño o cromo, con unas gotas de ácido oxálico."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Crisoberilo (Alejandrita)",
+                orientation = "Sin restricción de orientación ligada al clivaje.",
+                fragilite = "Dureza elevada (8,5), piedra dura sin problema particular.",
+                polissage = "Se pule rápido con ácido y polvo Linde A; excelentes resultados en disco de cobre con polvo de diamante."
             )
         ),
         diagrammesTitle = "Diagramas",
@@ -920,6 +1158,82 @@ object LapidaireInfo {
                 remede = "Ripulire meglio le inclusioni già in fase di sgrossatura resta la migliore prevenzione; una volta comparso il foro, ritagliare localmente o considerare un ritaglio completo se necessario."
             )
         ),
+        especesTitle = "Schede pratiche per specie",
+        especesIntro = "Oltre all'angolo critico e all'angolo di estinzione già indicati, ogni specie ha le proprie abitudini di taglio: orientamento della tavola in base al pleocroismo o alla sfaldatura, sensibilità particolari, e il disco e la polvere di lucidatura che danno i migliori risultati. Indicazioni tratte dalla pratica, non una regola universale — ogni pietra conserva le proprie particolarità (inclusioni, zonature, stato della superficie grezza).",
+        especes = listOf(
+            LapidaireEspeceFiche(
+                pierre = "Diamante",
+                orientation = "Isotropo: nessun vincolo di orientamento legato a un asse ottico.",
+                fragilite = "Sfaldatura perfetta secondo 4 piani ottaedrici, ben conosciuta e sfruttata dai tagliatori più che subita; la punta del padiglione resta il punto più vulnerabile agli urti.",
+                polissage = "Disco in ghisa (scaife) caricato con polvere di diamante — solo il diamante lucida il diamante."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Corindone (Rubino, Zaffiro)",
+                orientation = "Nessuna sfaldatura da considerare per l'orientamento.",
+                fragilite = "Durezza 9, tra le più dure fra le pietre sfaccettate: poche precauzioni particolari.",
+                polissage = "Ottimi risultati su disco di rame con polvere di diamante."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Berillo (Smeraldo, Acquamarina, Morganite, Eliodoro)",
+                orientation = "Sfaldatura imperfetta, senza vero vincolo di orientamento.",
+                fragilite = "Lo smeraldo in particolare richiede attenzione ai giardin (inclusioni), che possono causarne la rottura sia in taglio che in lucidatura.",
+                polissage = "L'acido acetico nell'acqua di raffreddamento migliora la lucidatura; polvere di ossido di alluminio, cerio o stagno, o Linde A."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Quarzo (Ametista, Citrino, Cristallo di rocca, Quarzo fumé)",
+                orientation = "Nessuna sfaldatura; tenere conto delle zonature di colore nell'orientamento.",
+                fragilite = "Nessuna fragilità particolare di sfaldatura.",
+                polissage = "Il risultato riserva talvolta sorprese inattese, senza causa identificata."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Topazio",
+                orientation = "Spostare la tavola di circa 10° rispetto al piano di sfaldatura basale, per non esporlo direttamente nel suo asse.",
+                fragilite = "Sfaldatura netta in una sola direzione (piano basale) — facile da sfaccettare una volta evitata.",
+                polissage = "Nessuna raccomandazione di disco oltre le regole generali."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Tormalina",
+                orientation = "Tagliare preferibilmente la tavola parallela all'asse ottico; una pietra policroma si sezione nettamente alla giunzione tra due colori — meglio incollarla che segarla in quel punto.",
+                fragilite = "Sensibile al calore e agli urti durante il taglio.",
+                polissage = "Nessuna raccomandazione di disco oltre le regole generali."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Granato (Almandino, Demantoide, Grossularia, Piropo, Spessartina, Uvarovite)",
+                orientation = "Isotropo: orientamento della tavola senza vincoli, nessuna direzione preferenziale.",
+                fragilite = "Nessun problema di fragilità legato alla sfaldatura.",
+                polissage = "L'acido acetico (aceto) nell'acqua di raffreddamento migliora sistematicamente il risultato; polvere di ossido di cerio, stagno o alluminio."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Spinello",
+                orientation = "Isotropo, nessun vincolo di orientamento.",
+                fragilite = "Nessun problema di fragilità legato alla sfaldatura.",
+                polissage = "Si lucida notevolmente bene su disco di rame con pasta diamantata."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Peridoto (Olivina)",
+                orientation = "Pleocroismo molto debole, orientamento poco vincolante.",
+                fragilite = "Nessuna fragilità di sfaldatura degna di nota.",
+                polissage = "Il risultato riserva talvolta sorprese inattese; la polvere diamantata funziona bene."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Fluorite",
+                orientation = "Si separa facilmente secondo 4 direzioni: scegliere bene l'orientamento per limitare il rischio.",
+                fragilite = "Uno degli angoli critici più chiusi tra le pietre sfaccettate, molto sensibile a urti e scheggiature.",
+                polissage = "Disco preferibilmente in cera; l'acido migliora il risultato."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Calcite",
+                orientation = "Orientare con cura per non esporre direttamente i piani di sfaldatura.",
+                fragilite = "Durezza molto bassa (3) e sfaldatura perfetta in 3 direzioni, fortemente sensibile al calore — pietra difficile da tagliare e lucidare; far girare il disco lentamente (circa 100 giri/min).",
+                polissage = "Disco in legno o cera, polvere di ossido di stagno o cromo, con qualche goccia di acido ossalico."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Crisoberillo (Alessandrite)",
+                orientation = "Nessun vincolo di orientamento legato alla sfaldatura.",
+                fragilite = "Durezza elevata (8,5), pietra dura senza problemi particolari.",
+                polissage = "Si lucida rapidamente con acido e polvere Linde A; ottimi risultati su disco di rame con polvere di diamante."
+            )
+        ),
         diagrammesTitle = "Diagrammi",
         diagrammes = listOf(
             LapidaireDiagram(
@@ -1132,6 +1446,82 @@ object LapidaireInfo {
                 probleme = "Ein kleiner Hohlraum entsteht während des Schleifens",
                 cause = "Ein oberflächennaher Einschluss wurde freigelegt.",
                 remede = "Einschlüsse schon beim Grobschliff besser „aufzuräumen“ bleibt die beste Vorbeugung; ist das Loch erst entstanden, örtlich nachschleifen oder bei Bedarf einen kompletten Neuschliff in Betracht ziehen."
+            )
+        ),
+        especesTitle = "Praktische Artensteckbriefe",
+        especesIntro = "Über den bereits genannten kritischen Winkel und Auslöschungswinkel hinaus hat jede Art ihre eigenen Schleifgewohnheiten: Tafelausrichtung je nach Pleochroismus oder Spaltbarkeit, besondere Empfindlichkeiten sowie die Schleifscheibe und das Polierpulver, die die besten Ergebnisse liefern. Praxiserprobte Anhaltspunkte, keine universelle Regel — jeder Stein behält seine eigenen Besonderheiten (Einschlüsse, Zonierung, Zustand der Rohsteinoberfläche).",
+        especes = listOf(
+            LapidaireEspeceFiche(
+                pierre = "Diamant",
+                orientation = "Isotrop: keine Ausrichtungsbeschränkung durch eine optische Achse.",
+                fragilite = "Vollkommene Spaltbarkeit entlang 4 Oktaederflächen, von Schleifern gut verstanden und genutzt statt nur erduldet; die Pavillonspitze bleibt der stoßempfindlichste Punkt.",
+                polissage = "Gusseisenscheibe (Scaife), mit Diamantpulver beladen — nur Diamant poliert Diamant."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Korund (Rubin, Saphir)",
+                orientation = "Keine Spaltbarkeit bei der Ausrichtung zu berücksichtigen.",
+                fragilite = "Härte 9, unter den härtesten Facettensteinen: kaum besondere Vorsichtsmaßnahmen nötig.",
+                polissage = "Ausgezeichnete Ergebnisse auf Kupferscheibe mit Diamantpulver."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Beryll (Smaragd, Aquamarin, Morganit, Heliodor)",
+                orientation = "Unvollkommene Spaltbarkeit, keine echte Ausrichtungsbeschränkung.",
+                fragilite = "Besonders der Smaragd erfordert Aufmerksamkeit für den Jardin (Einschlüsse), der ihn sowohl beim Schleifen als auch beim Polieren zerbrechen lassen kann.",
+                polissage = "Essigsäure im Kühlwasser verbessert das Polieren; Aluminium-, Cer- oder Zinnoxidpulver, oder Linde A."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Quarz (Amethyst, Citrin, Bergkristall, Rauchquarz)",
+                orientation = "Keine Spaltbarkeit; Farbzonierung bei der Ausrichtung berücksichtigen.",
+                fragilite = "Keine besondere Spaltbarkeits-Fragilität.",
+                polissage = "Das Ergebnis birgt manchmal unerwartete Überraschungen ohne erkennbare Ursache."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Topas",
+                orientation = "Die Tafel um etwa 10° gegenüber der basalen Spaltebene versetzen, um sie nicht direkt in ihrer Achse freizulegen.",
+                fragilite = "Klare Spaltbarkeit in nur einer Richtung (Basalebene) — leicht zu facettieren, sobald man sie vermeidet.",
+                polissage = "Keine besondere Scheibenempfehlung über die allgemeinen Regeln hinaus."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Turmalin",
+                orientation = "Die Tafel vorzugsweise parallel zur optischen Achse schneiden; ein mehrfarbiger Stein trennt sich sauber an der Grenze zweier Farben — dort besser kleben als sägen.",
+                fragilite = "Empfindlich gegenüber Hitze und Stößen beim Schleifen.",
+                polissage = "Keine besondere Scheibenempfehlung über die allgemeinen Regeln hinaus."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Granat (Almandin, Demantoid, Grossular, Pyrop, Spessartin, Uwarowit)",
+                orientation = "Isotrop: Tafelausrichtung ohne Einschränkung, keine bevorzugte Richtung.",
+                fragilite = "Kein Fragilitätsproblem durch Spaltbarkeit.",
+                polissage = "Essigsäure (Essig) im Kühlwasser verbessert das Ergebnis durchgängig; Cer-, Zinn- oder Aluminiumoxidpulver."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Spinell",
+                orientation = "Isotrop, keine Ausrichtungsbeschränkung.",
+                fragilite = "Kein Fragilitätsproblem durch Spaltbarkeit.",
+                polissage = "Poliert sich bemerkenswert gut auf Kupferscheibe mit Diamantpaste."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Peridot (Olivin)",
+                orientation = "Sehr schwacher Pleochroismus, wenig einschränkende Ausrichtung.",
+                fragilite = "Keine nennenswerte Spaltbarkeits-Fragilität.",
+                polissage = "Das Ergebnis birgt manchmal unerwartete Überraschungen; Diamantpulver eignet sich gut."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Fluorit",
+                orientation = "Trennt sich leicht entlang 4 Richtungen: die Ausrichtung sorgfältig wählen, um das Risiko zu begrenzen.",
+                fragilite = "Einer der geschlossensten kritischen Winkel unter den Facettensteinen, sehr stoß- und absplitterungsempfindlich.",
+                polissage = "Vorzugsweise Wachsscheibe; Säure verbessert das Ergebnis."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Calcit",
+                orientation = "Sorgfältig ausrichten, um die Spaltebenen nicht direkt freizulegen.",
+                fragilite = "Sehr geringe Härte (3) und vollkommene Spaltbarkeit in 3 Richtungen, stark hitzeempfindlich — ein Stein, der schwer zu schleifen und zu polieren ist; die Scheibe langsam drehen lassen (etwa 100 U/min).",
+                polissage = "Holz- oder Wachsscheibe, Zinn- oder Chromoxidpulver, mit einigen Tropfen Oxalsäure."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Chrysoberyll (Alexandrit)",
+                orientation = "Keine Ausrichtungsbeschränkung durch Spaltbarkeit.",
+                fragilite = "Hohe Härte (8,5), ein unproblematisch harter Stein.",
+                polissage = "Poliert sich schnell mit Säure und Linde-A-Pulver; ausgezeichnete Ergebnisse auf Kupferscheibe mit Diamantpulver."
             )
         ),
         diagrammesTitle = "Diagramme",
@@ -1348,6 +1738,82 @@ object LapidaireInfo {
                 remede = "Limpar melhor as inclusões logo no desbaste continua a ser a melhor prevenção; depois de aparecer o buraco, relapidar localmente ou considerar um recorte total se necessário."
             )
         ),
+        especesTitle = "Fichas práticas por espécie",
+        especesIntro = "Para além do ângulo crítico e do ângulo de extinção já indicados, cada espécie tem os seus próprios hábitos de lapidação: orientação da mesa consoante o pleocroísmo ou o clivagem, sensibilidades particulares, e o prato e o pó de polimento que dão melhores resultados. Indicações vindas da prática, não uma regra universal — cada pedra mantém as suas particularidades (inclusões, zonagem, estado da superfície em bruto).",
+        especes = listOf(
+            LapidaireEspeceFiche(
+                pierre = "Diamante",
+                orientation = "Isotrópico: sem restrição de orientação ligada a um eixo óptico.",
+                fragilite = "Clivagem perfeita segundo 4 planos octaédricos, bem conhecida e aproveitada pelos lapidadores mais do que sofrida; a ponta do pavilhão continua a ser o ponto mais vulnerável aos choques.",
+                polissage = "Prato de ferro fundido (scaife) carregado com pó de diamante — só o diamante polir o diamante."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Corindo (Rubi, Safira)",
+                orientation = "Sem clivagem a considerar na orientação.",
+                fragilite = "Dureza 9, entre as mais duras das pedras lapidadas: poucos cuidados especiais.",
+                polissage = "Excelentes resultados em prato de cobre com pó de diamante."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Berilo (Esmeralda, Água-marinha, Morganite, Heliodoro)",
+                orientation = "Clivagem imperfeita, sem restrição real de orientação.",
+                fragilite = "A esmeralda em particular exige atenção aos jardins (inclusões), que podem provocar a sua quebra tanto na lapidação como no polimento.",
+                polissage = "O ácido acético na água de refrigeração melhora o polimento; pó de óxido de alumínio, cério ou estanho, ou Linde A."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Quartzo (Ametista, Citrino, Cristal de rocha, Quartzo fumado)",
+                orientation = "Sem clivagem; ter em conta as zonagens de cor na orientação.",
+                fragilite = "Sem fragilidade particular de clivagem.",
+                polissage = "O resultado por vezes reserva surpresas inesperadas, sem causa identificada."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Topázio",
+                orientation = "Deslocar a mesa cerca de 10° em relação ao plano de clivagem basal, para não a expor diretamente no seu eixo.",
+                fragilite = "Clivagem nítida numa só direção (plano basal) — fácil de lapidar depois de evitada.",
+                polissage = "Sem recomendação de prato além das regras gerais."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Turmalina",
+                orientation = "Lapidar de preferência a mesa paralela ao eixo óptico; uma pedra policromática seciona-se claramente na junção de duas cores — melhor colar do que serrar nesse ponto.",
+                fragilite = "Sensível ao calor e aos choques durante a lapidação.",
+                polissage = "Sem recomendação de prato além das regras gerais."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Granada (Almandina, Demantoide, Grossulária, Piropo, Espessartite, Uvarovite)",
+                orientation = "Isotrópica: orientação da mesa sem restrição, sem direção preferencial.",
+                fragilite = "Sem problema de fragilidade ligado à clivagem.",
+                polissage = "O ácido acético (vinagre) na água de refrigeração melhora sistematicamente o resultado; pó de óxido de cério, estanho ou alumínio."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Espinela",
+                orientation = "Isotrópica, sem restrição de orientação.",
+                fragilite = "Sem problema de fragilidade ligado à clivagem.",
+                polissage = "Polir-se-á notavelmente bem em prato de cobre com pasta de diamante."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Peridoto (Olivina)",
+                orientation = "Pleocroísmo muito fraco, orientação pouco restritiva.",
+                fragilite = "Sem fragilidade de clivagem notável.",
+                polissage = "O resultado por vezes reserva surpresas inesperadas; o pó de diamante funciona bem."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Fluorite",
+                orientation = "Separa-se facilmente segundo 4 direções: escolher bem a orientação para limitar o risco.",
+                fragilite = "Um dos ângulos críticos mais fechados entre as pedras lapidadas, muito sensível a choques e lascamento.",
+                polissage = "Prato de preferência em cera; o ácido melhora o resultado."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Calcite",
+                orientation = "Orientar com cuidado para não expor diretamente os planos de clivagem.",
+                fragilite = "Dureza muito baixa (3) e clivagem perfeita em 3 direções, muito sensível ao calor — pedra difícil de lapidar e polir; rodar o prato devagar (cerca de 100 rpm).",
+                polissage = "Prato de madeira ou cera, pó de óxido de estanho ou crómio, com algumas gotas de ácido oxálico."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Crisoberilo (Alexandrite)",
+                orientation = "Sem restrição de orientação ligada à clivagem.",
+                fragilite = "Dureza elevada (8,5), pedra dura sem problema particular.",
+                polissage = "Polir-se-á rapidamente com ácido e pó Linde A; excelentes resultados em prato de cobre com pó de diamante."
+            )
+        ),
         diagrammesTitle = "Diagramas",
         diagrammes = listOf(
             LapidaireDiagram(
@@ -1560,6 +2026,82 @@ object LapidaireInfo {
                 probleme = "В ходе огранки появляется небольшая полость",
                 cause = "Вскрылось включение, находившееся близко к поверхности.",
                 remede = "Более тщательная «очистка» включений ещё на этапе обдирки остаётся лучшей профилактикой; если отверстие уже появилось — переогранить этот участок локально или, при необходимости, рассмотреть полную переогранку."
+            )
+        ),
+        especesTitle = "Практические справки по видам",
+        especesIntro = "Помимо уже указанных критического угла и угла погасания, у каждого вида есть свои особенности огранки: ориентация площадки по плеохроизму или спайности, особая чувствительность, а также планшайба и полировальный порошок, дающие лучший результат. Это ориентиры из практики, а не универсальное правило — у каждого камня остаются свои индивидуальные особенности (включения, зональность, состояние поверхности сырья).",
+        especes = listOf(
+            LapidaireEspeceFiche(
+                pierre = "Алмаз",
+                orientation = "Изотропен: ограничений по ориентации, связанных с оптической осью, нет.",
+                fragilite = "Совершенная спайность по 4 октаэдрическим плоскостям, хорошо изученная и используемая огранщиками, а не просто терпимая; вершина павильона остаётся наиболее уязвимой к ударам точкой.",
+                polissage = "Чугунная планшайба (скайф), заряженная алмазным порошком, — только алмаз полирует алмаз."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Корунд (Рубин, Сапфир)",
+                orientation = "Спайность при ориентации не учитывается.",
+                fragilite = "Твёрдость 9, один из самых твёрдых среди огранённых камней: особых предосторожностей не требуется.",
+                polissage = "Отличные результаты на медной планшайбе с алмазным порошком."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Берилл (Изумруд, Аквамарин, Морганит, Гелиодор)",
+                orientation = "Несовершенная спайность, реальных ограничений по ориентации нет.",
+                fragilite = "Изумруд особенно требует внимания к «саду» (включениям), из-за которых он может расколоться как при огранке, так и при полировке.",
+                polissage = "Уксусная кислота в охлаждающей воде улучшает полировку; порошок оксида алюминия, церия или олова, либо Linde A."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Кварц (Аметист, Цитрин, Горный хрусталь, Дымчатый кварц)",
+                orientation = "Спайности нет; при ориентации учитывать цветовую зональность.",
+                fragilite = "Особой хрупкости по спайности нет.",
+                polissage = "Результат иногда преподносит неожиданные сюрпризы без выясненной причины."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Топаз",
+                orientation = "Сместить площадку примерно на 10° относительно базальной плоскости спайности, чтобы не выставлять её прямо по оси.",
+                fragilite = "Чёткая спайность в одном направлении (базальная плоскость) — легко огранять, если её избегать.",
+                polissage = "Особых рекомендаций по планшайбе, кроме общих правил, нет."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Турмалин",
+                orientation = "Площадку желательно резать параллельно оптической оси; многоцветный камень чётко раскалывается на стыке двух цветов — в этом месте лучше склеить, чем распиливать.",
+                fragilite = "Чувствителен к нагреву и ударам при огранке.",
+                polissage = "Особых рекомендаций по планшайбе, кроме общих правил, нет."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Гранат (Альмандин, Демантоид, Гроссуляр, Пироп, Спессартин, Уваровит)",
+                orientation = "Изотропен: ориентация площадки без ограничений, предпочтительного направления нет.",
+                fragilite = "Проблем с хрупкостью из-за спайности нет.",
+                polissage = "Уксусная кислота (уксус) в охлаждающей воде стабильно улучшает результат; порошок оксида церия, олова или алюминия."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Шпинель",
+                orientation = "Изотропна, ограничений по ориентации нет.",
+                fragilite = "Проблем с хрупкостью из-за спайности нет.",
+                polissage = "Прекрасно полируется на медной планшайбе алмазной пастой."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Перидот (Оливин)",
+                orientation = "Очень слабый плеохроизм, ориентация не сильно ограничивает.",
+                fragilite = "Заметной хрупкости по спайности нет.",
+                polissage = "Результат иногда преподносит неожиданные сюрпризы; алмазный порошок подходит хорошо."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Флюорит",
+                orientation = "Легко раскалывается по 4 направлениям: тщательно выбирать ориентацию, чтобы снизить риск.",
+                fragilite = "Один из самых узких критических углов среди огранённых камней, очень чувствителен к ударам и сколам.",
+                polissage = "Планшайба предпочтительно восковая; кислота улучшает результат."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Кальцит",
+                orientation = "Тщательно ориентировать, чтобы не выставлять плоскости спайности напрямую.",
+                fragilite = "Очень низкая твёрдость (3) и совершенная спайность по 3 направлениям, сильная чувствительность к нагреву — камень, трудный в огранке и полировке; вращать планшайбу медленно (около 100 об/мин).",
+                polissage = "Деревянная или восковая планшайба, порошок оксида олова или хрома, с несколькими каплями щавелевой кислоты."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Хризоберилл (Александрит)",
+                orientation = "Ограничений по ориентации из-за спайности нет.",
+                fragilite = "Высокая твёрдость (8,5), камень твёрдый, без особых проблем.",
+                polissage = "Быстро полируется кислотой и порошком Linde A; отличные результаты на медной планшайбе с алмазным порошком."
             )
         ),
         diagrammesTitle = "Схемы",
@@ -1776,6 +2318,82 @@ object LapidaireInfo {
                 remede = "Insluitsels beter „opruimen” al bij het grofslijpen blijft de beste preventie; eenmaal het gaatje verschenen is, plaatselijk naslijpen of zo nodig een volledige herslijping overwegen."
             )
         ),
+        especesTitle = "Praktische soortenfiches",
+        especesIntro = "Naast de kritieke hoek en de uitdovingshoek die hierboven al gegeven zijn, heeft elke soort zijn eigen slijpgewoontes: tafeloriëntatie op basis van pleochroïsme of splijting, bijzondere gevoeligheden, en de schijf en polijstpoeder die de beste resultaten geven. Op de praktijk gebaseerde aanwijzingen, geen universele regel — elke steen behoudt zijn eigen bijzonderheden (insluitsels, zonering, staat van het ruwe oppervlak).",
+        especes = listOf(
+            LapidaireEspeceFiche(
+                pierre = "Diamant",
+                orientation = "Isotroop: geen oriëntatiebeperking gekoppeld aan een optische as.",
+                fragilite = "Perfecte splijting volgens 4 octaëdrische vlakken, door slijpers goed begrepen en benut in plaats van louter ondergaan; de paviljoenpunt blijft het meest stootgevoelige punt.",
+                polissage = "Gietijzeren schijf (scaife) beladen met diamantpoeder — alleen diamant polijst diamant."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Korund (Robijn, Saffier)",
+                orientation = "Geen splijting om rekening mee te houden bij de oriëntatie.",
+                fragilite = "Hardheid 9, een van de hardste geslepen stenen: weinig bijzondere voorzorgen nodig.",
+                polissage = "Uitstekende resultaten op een koperen schijf met diamantpoeder."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Beryl (Smaragd, Aquamarijn, Morganiet, Heliodoor)",
+                orientation = "Onvolkomen splijting, geen echte oriëntatiebeperking.",
+                fragilite = "Vooral smaragd vraagt aandacht voor de jardin (insluitsels), die de steen zowel bij het slijpen als bij het polijsten kunnen doen breken.",
+                polissage = "Azijnzuur in het koelwater verbetert het polijsten; aluminium-, cerium- of tinoxidepoeder, of Linde A."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Kwarts (Amethist, Citrien, Bergkristal, Rookkwarts)",
+                orientation = "Geen splijting; houd bij de oriëntatie rekening met kleurzonering.",
+                fragilite = "Geen bijzondere splijtingsgevoeligheid.",
+                polissage = "Het resultaat houdt soms onverwachte verrassingen in, zonder aanwijsbare oorzaak."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Topaas",
+                orientation = "Verschuif de tafel ongeveer 10° ten opzichte van het basale splijtingsvlak, om dit niet direct in de as bloot te leggen.",
+                fragilite = "Duidelijke splijting in één richting (basaal vlak) — eenvoudig te slijpen zodra men dit vermijdt.",
+                polissage = "Geen specifieke schijfaanbeveling naast de algemene regels."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Toermalijn",
+                orientation = "Slijp de tafel bij voorkeur parallel aan de optische as; een veelkleurige steen breekt netjes af op de overgang tussen twee kleuren — daar beter lijmen dan zagen.",
+                fragilite = "Gevoelig voor hitte en stoten tijdens het slijpen.",
+                polissage = "Geen specifieke schijfaanbeveling naast de algemene regels."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Granaat (Almandien, Demantoïde, Grossulaar, Pyroop, Spessartien, Uvarovite)",
+                orientation = "Isotroop: tafeloriëntatie zonder beperking, geen voorkeursrichting.",
+                fragilite = "Geen splijtingsgerelateerd broosheidsprobleem.",
+                polissage = "Azijnzuur (azijn) in het koelwater verbetert het resultaat stelselmatig; cerium-, tin- of aluminiumoxidepoeder."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Spinel",
+                orientation = "Isotroop, geen oriëntatiebeperking.",
+                fragilite = "Geen splijtingsgerelateerd broosheidsprobleem.",
+                polissage = "Polijst opmerkelijk goed op een koperen schijf met diamantpasta."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Peridoot (Olivijn)",
+                orientation = "Zeer zwak pleochroïsme, weinig beperkende oriëntatie.",
+                fragilite = "Geen noemenswaardige splijtingsgevoeligheid.",
+                polissage = "Het resultaat houdt soms onverwachte verrassingen in; diamantpoeder werkt goed."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Fluoriet",
+                orientation = "Splijt gemakkelijk in 4 richtingen: kies de oriëntatie zorgvuldig om het risico te beperken.",
+                fragilite = "Een van de meest gesloten kritieke hoeken onder de geslepen stenen, zeer gevoelig voor stoten en afsplinteren.",
+                polissage = "Bij voorkeur een wassen schijf; zuur verbetert het resultaat."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Calciet",
+                orientation = "Zorgvuldig oriënteren om de splijtingsvlakken niet direct bloot te leggen.",
+                fragilite = "Zeer lage hardheid (3) en perfecte splijting in 3 richtingen, sterk hittegevoelig — een steen die moeilijk te slijpen en te polijsten is; laat de schijf langzaam draaien (ongeveer 100 tpm).",
+                polissage = "Houten of wassen schijf, tin- of chroomoxidepoeder, met enkele druppels oxaalzuur."
+            ),
+            LapidaireEspeceFiche(
+                pierre = "Chrysoberyl (Alexandriet)",
+                orientation = "Geen oriëntatiebeperking gekoppeld aan splijting.",
+                fragilite = "Hoge hardheid (8,5), een harde steen zonder bijzonder probleem.",
+                polissage = "Polijst snel met zuur en Linde A-poeder; uitstekende resultaten op een koperen schijf met diamantpoeder."
+            )
+        ),
         diagrammesTitle = "Diagrammen",
         diagrammes = listOf(
             LapidaireDiagram(
@@ -1988,6 +2606,82 @@ object LapidaireInfo {
                 probleme = "切磨过程中出现小凹坑",
                 cause = "靠近表面的内含物被暴露了出来。",
                 remede = "在粗磨阶段更彻底地「清理」内含物是最好的预防措施；一旦出现凹坑，可对该区域局部重新切磨，必要时考虑整颗重新切磨。"
+            )
+        ),
+        especesTitle = "各品种实用要点",
+        especesIntro = "除了上文已给出的临界角和消光角之外，每个品种都有其自身的切磨习惯：根据多色性或解理确定台面朝向、特殊的敏感性，以及能获得最佳效果的抛光盘和抛光粉。这些是来自实践经验的参考，并非放之四海皆准的规则——每颗宝石都保留着自己的个体特点（内含物、色带、原石表面状况）。",
+        especes = listOf(
+            LapidaireEspeceFiche(
+                pierre = "钻石",
+                orientation = "均质体：不存在与光轴相关的定向限制。",
+                fragilite = "沿4个八面体方向具有完全解理，切磨师对此了然于胸并善加利用而非被动承受；亭部尖端始终是最易受冲击的部位。",
+                polissage = "铸铁抛光盘（scaife）加载金刚石粉——只有金刚石能抛光金刚石。"
+            ),
+            LapidaireEspeceFiche(
+                pierre = "刚玉（红宝石、蓝宝石）",
+                orientation = "定向时无需考虑解理。",
+                fragilite = "硬度9，是刻面宝石中最硬的品种之一：无需特别防范。",
+                polissage = "在铜盘上使用金刚石粉可获得极佳效果。"
+            ),
+            LapidaireEspeceFiche(
+                pierre = "绿柱石（祖母绿、海蓝宝石、摩根石、金绿柱石）",
+                orientation = "解理不完全，无真正的定向限制。",
+                fragilite = "祖母绿尤其需要留意其内部的\"花园\"（内含物），无论切磨还是抛光都可能因此而破裂。",
+                polissage = "冷却水中加入醋酸有助于抛光；使用氧化铝、氧化铈或氧化锡粉，或Linde A抛光粉。"
+            ),
+            LapidaireEspeceFiche(
+                pierre = "石英（紫水晶、黄水晶、水晶、烟晶）",
+                orientation = "无解理；定向时需考虑色带分布。",
+                fragilite = "无特别的解理脆性。",
+                polissage = "抛光效果有时会出现无法查明原因的意外情况。"
+            ),
+            LapidaireEspeceFiche(
+                pierre = "黄玉",
+                orientation = "台面相对底面解理方向偏移约10°，避免直接沿其轴向暴露。",
+                fragilite = "沿单一方向（底面）具有清晰解理——只要避开即容易切磨。",
+                polissage = "除一般规则外无特别的抛光盘建议。"
+            ),
+            LapidaireEspeceFiche(
+                pierre = "碧玺",
+                orientation = "台面最好平行于光轴切割；多色宝石在两种颜色交界处会整齐断裂——此处最好粘合而非锯切。",
+                fragilite = "切磨过程中对热和冲击敏感。",
+                polissage = "除一般规则外无特别的抛光盘建议。"
+            ),
+            LapidaireEspeceFiche(
+                pierre = "石榴石（铁铝榴石、翠榴石、钙铝榴石、镁铝榴石、锰铝榴石、钙铬榴石）",
+                orientation = "均质体：台面定向不受限制，无优先方向。",
+                fragilite = "无与解理相关的脆性问题。",
+                polissage = "冷却水中加入醋酸可持续改善效果；使用氧化铈、氧化锡或氧化铝粉。"
+            ),
+            LapidaireEspeceFiche(
+                pierre = "尖晶石",
+                orientation = "均质体，无定向限制。",
+                fragilite = "无与解理相关的脆性问题。",
+                polissage = "在铜盘上用金刚石抛光膏可获得极佳抛光效果。"
+            ),
+            LapidaireEspeceFiche(
+                pierre = "橄榄石",
+                orientation = "多色性很弱，定向限制不大。",
+                fragilite = "无明显的解理脆性。",
+                polissage = "抛光效果有时会出现意外情况；金刚石粉效果良好。"
+            ),
+            LapidaireEspeceFiche(
+                pierre = "萤石",
+                orientation = "沿4个方向容易裂开：需谨慎选择定向以降低风险。",
+                fragilite = "是刻面宝石中临界角最窄的品种之一，对冲击和崩裂非常敏感。",
+                polissage = "抛光盘最好使用蜡盘；加酸有助于提升效果。"
+            ),
+            LapidaireEspeceFiche(
+                pierre = "方解石",
+                orientation = "需谨慎定向，避免直接暴露解理面。",
+                fragilite = "硬度极低（3）且沿3个方向具有完全解理，对热非常敏感——是难以切磨和抛光的宝石；抛光盘应低速转动（约100转/分钟）。",
+                polissage = "木质或蜡质抛光盘，使用氧化锡或氧化铬粉，并加几滴草酸。"
+            ),
+            LapidaireEspeceFiche(
+                pierre = "金绿宝石（变石）",
+                orientation = "无与解理相关的定向限制。",
+                fragilite = "硬度高（8.5），坚硬且无特别问题。",
+                polissage = "用酸和Linde A粉抛光速度快；在铜盘上使用金刚石粉可获得极佳效果。"
             )
         ),
         diagrammesTitle = "图解",

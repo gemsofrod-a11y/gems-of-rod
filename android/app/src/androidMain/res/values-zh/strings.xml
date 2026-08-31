@@ -466,4 +466,7 @@
     <string name="lapidaire_defaut_remede_label">解决方法：%1$s</string>
     <string name="lapidaire_index_title_format">%1$s 分度头</string>
     <string name="lapidaire_index_rotation_label">每格旋转角度</string>
+    <string name="lapidaire_espece_orientation_label">定向：%1$s</string>
+    <string name="lapidaire_espece_fragilite_label">脆性：%1$s</string>
+    <string name="lapidaire_espece_polissage_label">抛光：%1$s</string>
 </resources>

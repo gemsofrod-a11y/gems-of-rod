@@ -466,4 +466,7 @@
     <string name="lapidaire_defaut_remede_label">Oplossing: %1$s</string>
     <string name="lapidaire_index_title_format">Index %1$s</string>
     <string name="lapidaire_index_rotation_label">Rotatie per stand</string>
+    <string name="lapidaire_espece_orientation_label">Oriëntatie: %1$s</string>
+    <string name="lapidaire_espece_fragilite_label">Breekbaarheid: %1$s</string>
+    <string name="lapidaire_espece_polissage_label">Polijsten: %1$s</string>
 </resources>

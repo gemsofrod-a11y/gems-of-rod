@@ -466,4 +466,7 @@
     <string name="lapidaire_defaut_remede_label">Abhilfe: %1$s</string>
     <string name="lapidaire_index_title_format">Index %1$s</string>
     <string name="lapidaire_index_rotation_label">Drehung pro Raste</string>
+    <string name="lapidaire_espece_orientation_label">Orientierung: %1$s</string>
+    <string name="lapidaire_espece_fragilite_label">Zerbrechlichkeit: %1$s</string>
+    <string name="lapidaire_espece_polissage_label">Polieren: %1$s</string>
 </resources>
