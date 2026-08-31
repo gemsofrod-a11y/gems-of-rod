@@ -47,6 +47,20 @@ data class LapidaireIndexEntry(
     val cotesTaillables: String
 )
 
+data class LapidairePoidsCalculator(
+    val title: String,
+    val intro: String,
+    val shapeLabels: Map<LapidaireCutShape, String>,
+    val dimension1Label: String,
+    val dimension2Label: String,
+    val heightLabel: String,
+    val sgLabel: String,
+    val computeLabel: String,
+    val resultLabel: String,
+    val disclaimer: String,
+    val errorMessage: String
+)
+
 data class LapidairePage(
     val intro: String,
     val machinesTitle: String,
@@ -58,6 +72,7 @@ data class LapidairePage(
     val indexTitle: String,
     val indexIntro: String,
     val indexTable: List<LapidaireIndexEntry>,
+    val poidsCalculator: LapidairePoidsCalculator,
     val anglesTitle: String,
     val anglesIntro: String,
     val angles: List<LapidaireAngles>,
@@ -158,6 +173,34 @@ object LapidaireInfo {
             LapidaireIndexEntry(index = "96", rotationParCran = "3,75° / cran", cotesTaillables = "Le plus courant — 9 polygones réguliers taillables au total, dont carré, hexagone, octogone, dodécagone"),
             LapidaireIndexEntry(index = "120", rotationParCran = "3° / cran", cotesTaillables = "Le plus complet — 14 polygones réguliers taillables au total, le maximum parmi les index courants"),
             LapidaireIndexEntry(index = "128", rotationParCran = "2,8125° / cran", cotesTaillables = "Carré (4), octogone (8), hexadécagone (16), 32 côtés, 64 côtés")
+        ),
+        poidsCalculator = LapidairePoidsCalculator(
+            title = "Poids estimé",
+            intro = "Pour une pierre déjà taillée et montée, impossible à peser directement : le poids se déduit du volume, à partir de mesures au pied à coulisse (précision au 1/100 mm) et du poids spécifique de l'espèce. Formule indicative, précision de l'ordre de 10 à 15 % — pas un pesage réel.",
+            shapeLabels = mapOf(
+                LapidaireCutShape.ROND to "Rond",
+                LapidaireCutShape.OVALE to "Ovale",
+                LapidaireCutShape.COUSSIN_CARRE to "Coussin carré",
+                LapidaireCutShape.COUSSIN_RECTANGULAIRE to "Coussin rectangulaire",
+                LapidaireCutShape.CARRE_A_GRADIN to "Carré à gradins",
+                LapidaireCutShape.RECTANGLE_A_GRADINS to "Rectangle à gradins",
+                LapidaireCutShape.COUSSIN_CARRE_GRADIN to "Coussin carré (gradins)",
+                LapidaireCutShape.COUSSIN_RECTANGULAIRE_GRADIN to "Coussin rectangulaire (gradins)",
+                LapidaireCutShape.MARQUISE to "Marquise",
+                LapidaireCutShape.POIRE to "Poire",
+                LapidaireCutShape.TRIANGLE_BOMBE to "Triangle bombé",
+                LapidaireCutShape.TRIANGLE to "Triangle",
+                LapidaireCutShape.TRAPEZE to "Trapèze",
+                LapidaireCutShape.COEUR to "Cœur"
+            ),
+            dimension1Label = "Longueur ou diamètre (mm)",
+            dimension2Label = "Largeur (mm)",
+            heightLabel = "Hauteur totale, table à culet (mm)",
+            sgLabel = "Poids spécifique de l'espèce",
+            computeLabel = "Calculer",
+            resultLabel = "Poids estimé : %s carats",
+            disclaimer = "Estimation par le volume, précision indicative 10 à 15 % — ne remplace pas une pesée réelle.",
+            errorMessage = "Renseignez des valeurs valides (nombres positifs) pour toutes les dimensions et le poids spécifique."
         ),
         anglesTitle = "Angles de référence : le brillant rond",
         anglesIntro = "Les proportions ci-dessous sont celles publiées par le mathématicien belge Marcel Tolkowsky en 1919, qui a établi par le calcul l'angle optimal pour maximiser le retour de lumière (brillance) et la dispersion (feu) d'un diamant taillé en brillant rond — c'est la référence historique encore utilisée comme point de départ aujourd'hui, bien que les laboratoires modernes (GIA notamment) admettent une plage de tolérance autour de ces valeurs plutôt qu'un chiffre unique. Pour les pierres de couleur, dont l'indice de réfraction diffère de celui du diamant, le rapport classique entre couronne et rondiste se situe plutôt entre 25/75 % et 30/70 %. Règle impérative, quelle que soit la pierre : ne jamais tailler une facette de pavillon à un angle inférieur à l'angle critique de l'espèce (les rayons s'échappent alors par le pavillon, effet de « fenêtre »), ni supérieur à l'angle d'extinction (zones sombres). Pour vérifier une pierre déjà taillée, un goniomètre mesure l'angle sur deux facettes principales opposées : l'angle réel de couronne ou de pavillon se déduit de la lecture par la formule (180° − angle mesuré) / 2. Les autres tailles (princesse, ovale, poire, émeraude, coussin...) suivent chacune leur propre diagramme, très variable selon le fabricant du diagramme et l'objectif recherché (rendement de matière contre performance optique) : il n'existe pas de valeur universelle comparable à citer sans se référer à un diagramme précis.",
@@ -345,6 +388,34 @@ object LapidaireInfo {
             LapidaireIndexEntry(index = "120", rotationParCran = "3° / notch", cotesTaillables = "The most complete — 14 regular polygons cuttable in total, the maximum among common indexes"),
             LapidaireIndexEntry(index = "128", rotationParCran = "2.8125° / notch", cotesTaillables = "Square (4), octagon (8), hexadecagon (16), 32 sides, 64 sides")
         ),
+        poidsCalculator = LapidairePoidsCalculator(
+            title = "Estimated weight",
+            intro = "For a stone already cut and set, impossible to weigh directly: weight is deduced from volume, from caliper measurements (accurate to 1/100 mm) and the species' specific gravity. An indicative formula, accurate to within about 10-15% — not a real weighing.",
+            shapeLabels = mapOf(
+                LapidaireCutShape.ROND to "Round",
+                LapidaireCutShape.OVALE to "Oval",
+                LapidaireCutShape.COUSSIN_CARRE to "Square cushion",
+                LapidaireCutShape.COUSSIN_RECTANGULAIRE to "Rectangular cushion",
+                LapidaireCutShape.CARRE_A_GRADIN to "Square step-cut",
+                LapidaireCutShape.RECTANGLE_A_GRADINS to "Rectangular step-cut",
+                LapidaireCutShape.COUSSIN_CARRE_GRADIN to "Square cushion (step-cut)",
+                LapidaireCutShape.COUSSIN_RECTANGULAIRE_GRADIN to "Rectangular cushion (step-cut)",
+                LapidaireCutShape.MARQUISE to "Marquise",
+                LapidaireCutShape.POIRE to "Pear",
+                LapidaireCutShape.TRIANGLE_BOMBE to "Bombé triangle",
+                LapidaireCutShape.TRIANGLE to "Triangle",
+                LapidaireCutShape.TRAPEZE to "Trapezoid",
+                LapidaireCutShape.COEUR to "Heart"
+            ),
+            dimension1Label = "Length or diameter (mm)",
+            dimension2Label = "Width (mm)",
+            heightLabel = "Total depth, table to culet (mm)",
+            sgLabel = "Species' specific gravity",
+            computeLabel = "Calculate",
+            resultLabel = "Estimated weight: %s carats",
+            disclaimer = "Volume-based estimate, indicative accuracy 10-15% — not a real weighing.",
+            errorMessage = "Enter valid values (positive numbers) for all dimensions and the specific gravity."
+        ),
         anglesTitle = "Reference angles: the round brilliant",
         anglesIntro = "The proportions below are those published by the Belgian mathematician Marcel Tolkowsky in 1919, who calculated the optimal angle to maximise light return (brilliance) and dispersion (fire) in a round-brilliant-cut diamond — the historical benchmark still used as a starting point today, though modern laboratories (GIA in particular) accept a tolerance range around these values rather than a single figure. For coloured stones, whose refractive index differs from diamond's, the classic crown-to-girdle ratio instead sits between 25/75% and 30/70%. A firm rule regardless of species: never cut a pavilion facet at an angle below the species' critical angle (light then escapes through the pavilion, a \"window\" effect), nor above the extinction angle (dark zones). To check an already-cut stone, a goniometer measures the angle on two opposite main facets: the true crown or pavilion angle is derived from the reading via the formula (180° − measured angle) / 2. Other cuts (princess, oval, pear, emerald, cushion...) each follow their own diagram, which varies widely by diagram designer and by goal (material yield versus optical performance): there is no comparable universal value to cite without referring to a specific diagram.",
         angles = listOf(
@@ -530,6 +601,34 @@ object LapidaireInfo {
             LapidaireIndexEntry(index = "96", rotationParCran = "3,75° / muesca", cotesTaillables = "El más habitual — 9 polígonos regulares tallables en total, entre ellos cuadrado, hexágono, octógono, dodecágono"),
             LapidaireIndexEntry(index = "120", rotationParCran = "3° / muesca", cotesTaillables = "El más completo — 14 polígonos regulares tallables en total, el máximo entre los índices habituales"),
             LapidaireIndexEntry(index = "128", rotationParCran = "2,8125° / muesca", cotesTaillables = "Cuadrado (4), octógono (8), hexadecágono (16), 32 lados, 64 lados")
+        ),
+        poidsCalculator = LapidairePoidsCalculator(
+            title = "Peso estimado",
+            intro = "Para una piedra ya tallada y montada, imposible de pesar directamente: el peso se deduce del volumen, a partir de medidas con calibre (precisión de 1/100 mm) y el peso específico de la especie. Fórmula indicativa, precisión del orden del 10-15 % — no es un pesaje real.",
+            shapeLabels = mapOf(
+                LapidaireCutShape.ROND to "Redondo",
+                LapidaireCutShape.OVALE to "Ovalado",
+                LapidaireCutShape.COUSSIN_CARRE to "Cojín cuadrado",
+                LapidaireCutShape.COUSSIN_RECTANGULAIRE to "Cojín rectangular",
+                LapidaireCutShape.CARRE_A_GRADIN to "Cuadrado escalonado",
+                LapidaireCutShape.RECTANGLE_A_GRADINS to "Rectángulo escalonado",
+                LapidaireCutShape.COUSSIN_CARRE_GRADIN to "Cojín cuadrado (escalonado)",
+                LapidaireCutShape.COUSSIN_RECTANGULAIRE_GRADIN to "Cojín rectangular (escalonado)",
+                LapidaireCutShape.MARQUISE to "Marquesa",
+                LapidaireCutShape.POIRE to "Pera",
+                LapidaireCutShape.TRIANGLE_BOMBE to "Triángulo abombado",
+                LapidaireCutShape.TRIANGLE to "Triángulo",
+                LapidaireCutShape.TRAPEZE to "Trapecio",
+                LapidaireCutShape.COEUR to "Corazón"
+            ),
+            dimension1Label = "Longitud o diámetro (mm)",
+            dimension2Label = "Anchura (mm)",
+            heightLabel = "Profundidad total, tabla a culata (mm)",
+            sgLabel = "Peso específico de la especie",
+            computeLabel = "Calcular",
+            resultLabel = "Peso estimado: %s quilates",
+            disclaimer = "Estimación por volumen, precisión indicativa del 10-15 % — no sustituye a un pesaje real.",
+            errorMessage = "Introduce valores válidos (números positivos) para todas las dimensiones y el peso específico."
         ),
         anglesTitle = "Ángulos de referencia: el brillante redondo",
         anglesIntro = "Las proporciones siguientes son las publicadas por el matemático belga Marcel Tolkowsky en 1919, quien calculó el ángulo óptimo para maximizar el retorno de luz (brillo) y la dispersión (fuego) de un diamante tallado en brillante redondo — es la referencia histórica que aún hoy se usa como punto de partida, aunque los laboratorios modernos (especialmente el GIA) admiten un margen de tolerancia alrededor de estos valores en lugar de una cifra única. Para las piedras de color, cuyo índice de refracción difiere del diamante, la proporción clásica entre corona y rondel se sitúa más bien entre 25/75 % y 30/70 %. Regla imperativa, sea cual sea la piedra: nunca tallar una faceta de pabellón con un ángulo inferior al ángulo crítico de la especie (la luz se escapa entonces por el pabellón, efecto «ventana»), ni superior al ángulo de extinción (zonas oscuras). Para verificar una piedra ya tallada, un goniómetro mide el ángulo sobre dos facetas principales opuestas: el ángulo real de corona o pabellón se deduce de la lectura mediante la fórmula (180° − ángulo medido) / 2. Las demás tallas (princesa, ovalada, pera, esmeralda, cojín...) siguen cada una su propio diagrama, muy variable según el creador del diagrama y el objetivo buscado (rendimiento de material frente a rendimiento óptico): no existe un valor universal comparable que citar sin remitirse a un diagrama concreto.",
@@ -717,6 +816,34 @@ object LapidaireInfo {
             LapidaireIndexEntry(index = "120", rotationParCran = "3° / tacca", cotesTaillables = "Il più completo — 14 poligoni regolari tagliabili in totale, il massimo tra gli indici comuni"),
             LapidaireIndexEntry(index = "128", rotationParCran = "2,8125° / tacca", cotesTaillables = "Quadrato (4), ottagono (8), esadecagono (16), 32 lati, 64 lati")
         ),
+        poidsCalculator = LapidairePoidsCalculator(
+            title = "Peso stimato",
+            intro = "Per una pietra già tagliata e montata, impossibile da pesare direttamente: il peso si deduce dal volume, a partire da misure al calibro (precisione di 1/100 mm) e dal peso specifico della specie. Formula indicativa, precisione dell'ordine del 10-15% — non è una pesata reale.",
+            shapeLabels = mapOf(
+                LapidaireCutShape.ROND to "Rotondo",
+                LapidaireCutShape.OVALE to "Ovale",
+                LapidaireCutShape.COUSSIN_CARRE to "Cuscino quadrato",
+                LapidaireCutShape.COUSSIN_RECTANGULAIRE to "Cuscino rettangolare",
+                LapidaireCutShape.CARRE_A_GRADIN to "Quadrato a gradini",
+                LapidaireCutShape.RECTANGLE_A_GRADINS to "Rettangolo a gradini",
+                LapidaireCutShape.COUSSIN_CARRE_GRADIN to "Cuscino quadrato (a gradini)",
+                LapidaireCutShape.COUSSIN_RECTANGULAIRE_GRADIN to "Cuscino rettangolare (a gradini)",
+                LapidaireCutShape.MARQUISE to "Marquise",
+                LapidaireCutShape.POIRE to "Goccia",
+                LapidaireCutShape.TRIANGLE_BOMBE to "Triangolo bombato",
+                LapidaireCutShape.TRIANGLE to "Triangolo",
+                LapidaireCutShape.TRAPEZE to "Trapezio",
+                LapidaireCutShape.COEUR to "Cuore"
+            ),
+            dimension1Label = "Lunghezza o diametro (mm)",
+            dimension2Label = "Larghezza (mm)",
+            heightLabel = "Profondità totale, tavola-culet (mm)",
+            sgLabel = "Peso specifico della specie",
+            computeLabel = "Calcola",
+            resultLabel = "Peso stimato: %s carati",
+            disclaimer = "Stima per volume, precisione indicativa 10-15% — non sostituisce una pesata reale.",
+            errorMessage = "Inserisci valori validi (numeri positivi) per tutte le dimensioni e il peso specifico."
+        ),
         anglesTitle = "Angoli di riferimento: il brillante rotondo",
         anglesIntro = "Le proporzioni seguenti sono quelle pubblicate dal matematico belga Marcel Tolkowsky nel 1919, che calcolò l'angolo ottimale per massimizzare il ritorno di luce (brillantezza) e la dispersione (fuoco) di un diamante tagliato a brillante rotondo — è il riferimento storico ancora oggi usato come punto di partenza, sebbene i laboratori moderni (in particolare il GIA) ammettano un intervallo di tolleranza attorno a questi valori anziché una cifra unica. Per le pietre colorate, il cui indice di rifrazione differisce da quello del diamante, il rapporto classico tra corona e cintura si colloca piuttosto tra il 25/75% e il 30/70%. Regola imperativa, qualunque sia la pietra: non tagliare mai una sfaccettatura di padiglione con un angolo inferiore all'angolo critico della specie (la luce sfugge allora dal padiglione, effetto «finestra»), né superiore all'angolo di estinzione (zone scure). Per verificare una pietra già tagliata, un goniometro misura l'angolo su due sfaccettature principali opposte: l'angolo reale di corona o padiglione si deduce dalla lettura con la formula (180° − angolo misurato) / 2. Gli altri tagli (princess, ovale, a pera, smeraldo, cuscino...) seguono ciascuno un proprio diagramma, molto variabile a seconda di chi lo ha ideato e dell'obiettivo perseguito (resa di materiale contro resa ottica): non esiste un valore universale comparabile da citare senza fare riferimento a un diagramma preciso.",
         angles = listOf(
@@ -902,6 +1029,34 @@ object LapidaireInfo {
             LapidaireIndexEntry(index = "96", rotationParCran = "3,75° / Raste", cotesTaillables = "Der gängigste — insgesamt 9 schleifbare regelmäßige Vielecke, darunter Quadrat, Sechseck, Achteck, Zwölfeck"),
             LapidaireIndexEntry(index = "120", rotationParCran = "3° / Raste", cotesTaillables = "Der vollständigste — insgesamt 14 schleifbare regelmäßige Vielecke, das Maximum unter den gängigen Indizes"),
             LapidaireIndexEntry(index = "128", rotationParCran = "2,8125° / Raste", cotesTaillables = "Quadrat (4), Achteck (8), Sechzehneck (16), 32 Seiten, 64 Seiten")
+        ),
+        poidsCalculator = LapidairePoidsCalculator(
+            title = "Geschätztes Gewicht",
+            intro = "Bei einem bereits geschliffenen und gefassten Stein lässt sich das Gewicht nicht direkt messen: Es wird aus dem Volumen abgeleitet, anhand von Messschieber-Messungen (Genauigkeit 1/100 mm) und dem spezifischen Gewicht der Art. Eine Richtformel mit einer Genauigkeit von etwa 10-15 % — kein echtes Wiegen.",
+            shapeLabels = mapOf(
+                LapidaireCutShape.ROND to "Rund",
+                LapidaireCutShape.OVALE to "Oval",
+                LapidaireCutShape.COUSSIN_CARRE to "Quadratisches Kissen",
+                LapidaireCutShape.COUSSIN_RECTANGULAIRE to "Rechteckiges Kissen",
+                LapidaireCutShape.CARRE_A_GRADIN to "Quadratischer Stufenschliff",
+                LapidaireCutShape.RECTANGLE_A_GRADINS to "Rechteckiger Stufenschliff",
+                LapidaireCutShape.COUSSIN_CARRE_GRADIN to "Quadratisches Kissen (Stufenschliff)",
+                LapidaireCutShape.COUSSIN_RECTANGULAIRE_GRADIN to "Rechteckiges Kissen (Stufenschliff)",
+                LapidaireCutShape.MARQUISE to "Marquise",
+                LapidaireCutShape.POIRE to "Tropfen",
+                LapidaireCutShape.TRIANGLE_BOMBE to "Gewölbtes Dreieck",
+                LapidaireCutShape.TRIANGLE to "Dreieck",
+                LapidaireCutShape.TRAPEZE to "Trapez",
+                LapidaireCutShape.COEUR to "Herz"
+            ),
+            dimension1Label = "Länge oder Durchmesser (mm)",
+            dimension2Label = "Breite (mm)",
+            heightLabel = "Gesamttiefe, Tafel bis Kulasse (mm)",
+            sgLabel = "Spezifisches Gewicht der Art",
+            computeLabel = "Berechnen",
+            resultLabel = "Geschätztes Gewicht: %s Karat",
+            disclaimer = "Schätzung über das Volumen, Richtgenauigkeit 10-15 % — ersetzt kein echtes Wiegen.",
+            errorMessage = "Bitte gültige Werte (positive Zahlen) für alle Abmessungen und das spezifische Gewicht eingeben."
         ),
         anglesTitle = "Referenzwinkel: der runde Brillant",
         anglesIntro = "Die folgenden Proportionen wurden 1919 vom belgischen Mathematiker Marcel Tolkowsky veröffentlicht, der den optimalen Winkel berechnete, um Lichtrückwurf (Brillanz) und Dispersion (Feuer) eines rund geschliffenen Brillanten zu maximieren — der historische Bezugspunkt, der noch heute als Ausgangswert dient, auch wenn moderne Labore (insbesondere das GIA) statt einer einzelnen Zahl einen Toleranzbereich um diese Werte akzeptieren. Bei Farbsteinen, deren Brechungsindex sich vom Diamanten unterscheidet, liegt das klassische Verhältnis von Krone zu Rondiste eher zwischen 25/75 % und 30/70 %. Zwingende Regel, unabhängig von der Steinart: Niemals eine Pavillonfacette unterhalb des kritischen Winkels der Art schleifen (das Licht entweicht dann durch den Pavillon, „Fenster“-Effekt), noch oberhalb des Auslöschungswinkels (dunkle Zonen). Zur Kontrolle eines bereits geschliffenen Steins misst ein Goniometer den Winkel an zwei gegenüberliegenden Hauptfacetten: Der tatsächliche Kronen- oder Pavillonwinkel ergibt sich aus der Ablesung über die Formel (180° − gemessener Winkel) / 2. Andere Schliffformen (Princess, Oval, Tropfen, Smaragd, Kissen...) folgen jeweils einem eigenen Diagramm, das je nach Entwickler und Zielsetzung (Materialausbeute gegenüber optischer Leistung) stark variiert: Ohne Bezug auf ein konkretes Diagramm gibt es keinen vergleichbaren, allgemeingültigen Wert.",
@@ -1089,6 +1244,34 @@ object LapidaireInfo {
             LapidaireIndexEntry(index = "120", rotationParCran = "3° / entalhe", cotesTaillables = "O mais completo — 14 polígonos regulares talháveis no total, o máximo entre os índices comuns"),
             LapidaireIndexEntry(index = "128", rotationParCran = "2,8125° / entalhe", cotesTaillables = "Quadrado (4), octógono (8), hexadecágono (16), 32 lados, 64 lados")
         ),
+        poidsCalculator = LapidairePoidsCalculator(
+            title = "Peso estimado",
+            intro = "Para uma pedra já lapidada e montada, impossível pesar diretamente: o peso deduz-se do volume, a partir de medições com paquímetro (precisão de 1/100 mm) e do peso específico da espécie. Fórmula indicativa, precisão da ordem de 10-15% — não é uma pesagem real.",
+            shapeLabels = mapOf(
+                LapidaireCutShape.ROND to "Redondo",
+                LapidaireCutShape.OVALE to "Oval",
+                LapidaireCutShape.COUSSIN_CARRE to "Almofada quadrada",
+                LapidaireCutShape.COUSSIN_RECTANGULAIRE to "Almofada retangular",
+                LapidaireCutShape.CARRE_A_GRADIN to "Quadrado em degraus",
+                LapidaireCutShape.RECTANGLE_A_GRADINS to "Retângulo em degraus",
+                LapidaireCutShape.COUSSIN_CARRE_GRADIN to "Almofada quadrada (em degraus)",
+                LapidaireCutShape.COUSSIN_RECTANGULAIRE_GRADIN to "Almofada retangular (em degraus)",
+                LapidaireCutShape.MARQUISE to "Marquise",
+                LapidaireCutShape.POIRE to "Pera",
+                LapidaireCutShape.TRIANGLE_BOMBE to "Triângulo bombeado",
+                LapidaireCutShape.TRIANGLE to "Triângulo",
+                LapidaireCutShape.TRAPEZE to "Trapézio",
+                LapidaireCutShape.COEUR to "Coração"
+            ),
+            dimension1Label = "Comprimento ou diâmetro (mm)",
+            dimension2Label = "Largura (mm)",
+            heightLabel = "Profundidade total, mesa a culassa (mm)",
+            sgLabel = "Peso específico da espécie",
+            computeLabel = "Calcular",
+            resultLabel = "Peso estimado: %s quilates",
+            disclaimer = "Estimativa pelo volume, precisão indicativa de 10-15% — não substitui uma pesagem real.",
+            errorMessage = "Introduza valores válidos (números positivos) para todas as dimensões e o peso específico."
+        ),
         anglesTitle = "Ângulos de referência: o brilhante redondo",
         anglesIntro = "As proporções abaixo são as publicadas pelo matemático belga Marcel Tolkowsky em 1919, que calculou o ângulo ótimo para maximizar o retorno de luz (brilho) e a dispersão (fogo) de um diamante lapidado em brilhante redondo — a referência histórica ainda hoje usada como ponto de partida, embora os laboratórios modernos (nomeadamente o GIA) admitam uma margem de tolerância em torno destes valores em vez de um único número. Para as pedras coloridas, cujo índice de refração difere do diamante, a relação clássica entre coroa e cintura situa-se antes entre 25/75 % e 30/70 %. Regra imperativa, seja qual for a pedra: nunca lapidar uma faceta de pavilhão a um ângulo inferior ao ângulo crítico da espécie (a luz escapa então pelo pavilhão, efeito de «janela»), nem superior ao ângulo de extinção (zonas escuras). Para verificar uma pedra já lapidada, um goniómetro mede o ângulo em duas facetas principais opostas: o ângulo real de coroa ou de pavilhão deduz-se da leitura pela fórmula (180° − ângulo medido) / 2. As restantes lapidações (princesa, oval, pera, esmeralda, almofada...) seguem cada uma o seu próprio diagrama, muito variável consoante o criador do diagrama e o objetivo procurado (rendimento de material versus desempenho ótico): não existe um valor universal comparável a citar sem recorrer a um diagrama preciso.",
         angles = listOf(
@@ -1274,6 +1457,34 @@ object LapidaireInfo {
             LapidaireIndexEntry(index = "96", rotationParCran = "3,75° / насечка", cotesTaillables = "Самая распространённая — всего 9 правильных многоугольников, включая квадрат, шестиугольник, восьмиугольник, двенадцатиугольник"),
             LapidaireIndexEntry(index = "120", rotationParCran = "3° / насечка", cotesTaillables = "Самая полная — всего 14 правильных многоугольников, максимум среди распространённых головок"),
             LapidaireIndexEntry(index = "128", rotationParCran = "2,8125° / насечка", cotesTaillables = "Квадрат (4), восьмиугольник (8), шестнадцатиугольник (16), 32 стороны, 64 стороны")
+        ),
+        poidsCalculator = LapidairePoidsCalculator(
+            title = "Оценочный вес",
+            intro = "Для уже огранённого и вставленного в оправу камня прямое взвешивание невозможно: вес выводится из объёма — по измерениям штангенциркулем (точность 1/100 мм) и удельному весу вида. Приблизительная формула, точность порядка 10-15% — не заменяет реальное взвешивание.",
+            shapeLabels = mapOf(
+                LapidaireCutShape.ROND to "Круглая",
+                LapidaireCutShape.OVALE to "Овальная",
+                LapidaireCutShape.COUSSIN_CARRE to "Квадратная кушон",
+                LapidaireCutShape.COUSSIN_RECTANGULAIRE to "Прямоугольная кушон",
+                LapidaireCutShape.CARRE_A_GRADIN to "Квадратная ступенчатая",
+                LapidaireCutShape.RECTANGLE_A_GRADINS to "Прямоугольная ступенчатая",
+                LapidaireCutShape.COUSSIN_CARRE_GRADIN to "Квадратная кушон (ступенчатая)",
+                LapidaireCutShape.COUSSIN_RECTANGULAIRE_GRADIN to "Прямоугольная кушон (ступенчатая)",
+                LapidaireCutShape.MARQUISE to "Маркиза",
+                LapidaireCutShape.POIRE to "Груша",
+                LapidaireCutShape.TRIANGLE_BOMBE to "Выпуклый треугольник",
+                LapidaireCutShape.TRIANGLE to "Треугольник",
+                LapidaireCutShape.TRAPEZE to "Трапеция",
+                LapidaireCutShape.COEUR to "Сердце"
+            ),
+            dimension1Label = "Длина или диаметр (мм)",
+            dimension2Label = "Ширина (мм)",
+            heightLabel = "Общая глубина, от площадки до шипа (мм)",
+            sgLabel = "Удельный вес вида",
+            computeLabel = "Рассчитать",
+            resultLabel = "Оценочный вес: %s карат",
+            disclaimer = "Оценка по объёму, приблизительная точность 10-15% — не заменяет реальное взвешивание.",
+            errorMessage = "Введите корректные значения (положительные числа) для всех размеров и удельного веса."
         ),
         anglesTitle = "Эталонные углы: круглый бриллиант",
         anglesIntro = "Приведённые ниже пропорции опубликованы бельгийским математиком Марселем Толковски в 1919 году: он рассчитал оптимальный угол для максимизации возврата света (блеска) и дисперсии (игры) бриллианта круглой огранки — это исторический эталон, до сих пор служащий отправной точкой, хотя современные лаборатории (в частности, GIA) допускают диапазон допуска вокруг этих значений, а не единственное число. Для цветных камней, показатель преломления которых отличается от алмазного, классическое соотношение между коронкой и рундистом обычно составляет от 25/75 % до 30/70 %. Обязательное правило, независимо от камня: никогда не гранить грань павильона под углом меньше критического угла данного минерала (тогда свет уходит через павильон — эффект «окна»), и не больше угла погасания (тёмные зоны). Для проверки уже огранённого камня гониометр измеряет угол по двум противоположным основным граням: реальный угол коронки или павильона выводится из показания по формуле (180° − измеренный угол) / 2. Другие огранки (принцесса, овал, груша, изумрудная, кушон...) следуют собственным схемам, сильно различающимся в зависимости от автора схемы и цели (выход материала против оптических характеристик): не существует сопоставимого универсального значения, которое можно было бы привести без обращения к конкретной схеме.",
@@ -1461,6 +1672,34 @@ object LapidaireInfo {
             LapidaireIndexEntry(index = "120", rotationParCran = "3° / stand", cotesTaillables = "De meest complete — in totaal 14 regelmatige veelhoeken slijpbaar, het maximum onder de gangbare indexen"),
             LapidaireIndexEntry(index = "128", rotationParCran = "2,8125° / stand", cotesTaillables = "Vierkant (4), achthoek (8), zestienhoek (16), 32 zijden, 64 zijden")
         ),
+        poidsCalculator = LapidairePoidsCalculator(
+            title = "Geschat gewicht",
+            intro = "Voor een steen die al geslepen en gezet is, is direct wegen onmogelijk: het gewicht wordt afgeleid uit het volume, op basis van schuifmaatmetingen (nauwkeurigheid 1/100 mm) en het soortelijk gewicht van de soort. Een indicatieve formule, met een nauwkeurigheid van ongeveer 10-15% — geen echte weging.",
+            shapeLabels = mapOf(
+                LapidaireCutShape.ROND to "Rond",
+                LapidaireCutShape.OVALE to "Ovaal",
+                LapidaireCutShape.COUSSIN_CARRE to "Vierkant kussen",
+                LapidaireCutShape.COUSSIN_RECTANGULAIRE to "Rechthoekig kussen",
+                LapidaireCutShape.CARRE_A_GRADIN to "Vierkante trapslijpvorm",
+                LapidaireCutShape.RECTANGLE_A_GRADINS to "Rechthoekige trapslijpvorm",
+                LapidaireCutShape.COUSSIN_CARRE_GRADIN to "Vierkant kussen (trapslijp)",
+                LapidaireCutShape.COUSSIN_RECTANGULAIRE_GRADIN to "Rechthoekig kussen (trapslijp)",
+                LapidaireCutShape.MARQUISE to "Marquise",
+                LapidaireCutShape.POIRE to "Peer",
+                LapidaireCutShape.TRIANGLE_BOMBE to "Bomberende driehoek",
+                LapidaireCutShape.TRIANGLE to "Driehoek",
+                LapidaireCutShape.TRAPEZE to "Trapezium",
+                LapidaireCutShape.COEUR to "Hart"
+            ),
+            dimension1Label = "Lengte of diameter (mm)",
+            dimension2Label = "Breedte (mm)",
+            heightLabel = "Totale diepte, tafel tot culet (mm)",
+            sgLabel = "Soortelijk gewicht van de soort",
+            computeLabel = "Berekenen",
+            resultLabel = "Geschat gewicht: %s karaat",
+            disclaimer = "Schatting op basis van volume, indicatieve nauwkeurigheid 10-15% — vervangt geen echte weging.",
+            errorMessage = "Voer geldige waarden (positieve getallen) in voor alle afmetingen en het soortelijk gewicht."
+        ),
         anglesTitle = "Referentiehoeken: de ronde briljant",
         anglesIntro = "Onderstaande verhoudingen zijn die welke de Belgische wiskundige Marcel Tolkowsky in 1919 publiceerde: hij berekende de optimale hoek om lichtterugkaatsing (schittering) en dispersie (vuur) van een rond geslepen briljant te maximaliseren — het historische referentiepunt dat nog steeds als uitgangspunt dient, hoewel moderne laboratoria (met name GIA) een tolerantiemarge rond deze waarden aanvaarden in plaats van één vast cijfer. Voor gekleurde stenen, met een andere brekingsindex dan diamant, ligt de klassieke verhouding tussen kroon en rondiste eerder tussen 25/75% en 30/70%. Dwingende regel, ongeacht de steen: slijp een paviljoenfacet nooit onder de kritieke hoek van de soort (het licht ontsnapt dan via het paviljoen, het „venstereffect”), en nooit boven de uitdovingshoek (donkere zones). Om een reeds geslepen steen te controleren, meet een goniometer de hoek op twee tegenoverliggende hoofdfacetten: de werkelijke kroon- of paviljoenhoek wordt uit de aflezing afgeleid met de formule (180° − gemeten hoek) / 2. Andere slijpvormen (prinses, ovaal, peer, smaragd, kussen...) volgen elk hun eigen diagram, dat sterk verschilt per ontwerper en doel (materiaalopbrengst tegenover optische prestatie): er bestaat geen vergelijkbare universele waarde die zonder verwijzing naar een precies diagram kan worden aangehaald.",
         angles = listOf(
@@ -1646,6 +1885,34 @@ object LapidaireInfo {
             LapidaireIndexEntry(index = "96", rotationParCran = "3.75°/格", cotesTaillables = "最常见——共可切割9种正多边形，包括正方形、六边形、八边形、十二边形"),
             LapidaireIndexEntry(index = "120", rotationParCran = "3°/格", cotesTaillables = "功能最全——共可切割14种正多边形，是常见分度头中的最大值"),
             LapidaireIndexEntry(index = "128", rotationParCran = "2.8125°/格", cotesTaillables = "正方形（4）、八边形（8）、十六边形（16）、32边、64边")
+        ),
+        poidsCalculator = LapidairePoidsCalculator(
+            title = "估算重量",
+            intro = "对于已切割镶嵌的宝石，无法直接称重：重量根据体积推算，需要用卡尺测量（精度1/100毫米）并知道该品种的比重。这是一个参考公式，精度约为10-15%——并非真实称重。",
+            shapeLabels = mapOf(
+                LapidaireCutShape.ROND to "圆形",
+                LapidaireCutShape.OVALE to "椭圆形",
+                LapidaireCutShape.COUSSIN_CARRE to "方形垫形",
+                LapidaireCutShape.COUSSIN_RECTANGULAIRE to "长方形垫形",
+                LapidaireCutShape.CARRE_A_GRADIN to "阶梯形方形",
+                LapidaireCutShape.RECTANGLE_A_GRADINS to "阶梯形长方形",
+                LapidaireCutShape.COUSSIN_CARRE_GRADIN to "方形垫形（阶梯形）",
+                LapidaireCutShape.COUSSIN_RECTANGULAIRE_GRADIN to "长方形垫形（阶梯形）",
+                LapidaireCutShape.MARQUISE to "马眼形",
+                LapidaireCutShape.POIRE to "梨形",
+                LapidaireCutShape.TRIANGLE_BOMBE to "凸面三角形",
+                LapidaireCutShape.TRIANGLE to "三角形",
+                LapidaireCutShape.TRAPEZE to "梯形",
+                LapidaireCutShape.COEUR to "心形"
+            ),
+            dimension1Label = "长度或直径（毫米）",
+            dimension2Label = "宽度（毫米）",
+            heightLabel = "总深度，台面至底尖（毫米）",
+            sgLabel = "该品种的比重",
+            computeLabel = "计算",
+            resultLabel = "估算重量：%s 克拉",
+            disclaimer = "根据体积估算，参考精度10-15%——不能替代真实称重。",
+            errorMessage = "请为所有尺寸和比重填写有效值（正数）。"
         ),
         anglesTitle = "参考角度：圆形明亮式切工",
         anglesIntro = "以下比例出自比利时数学家马塞尔·托尔科夫斯基（Marcel Tolkowsky）1919年发表的计算结果，他推算出能使圆形明亮式切工钻石的回光（明亮度）与色散（火彩）最大化的最佳角度——这是至今仍被用作起点的历史基准，尽管现代实验室（尤其是GIA）在这些数值周围采用一个容差范围，而非单一数字。对于折射率不同于钻石的彩色宝石，冠部与腰部的经典比例则更接近25/75%至30/70%之间。无论何种宝石都须遵守的硬性规则：亭部刻面角度绝不能低于该矿物的临界角（否则光线会从亭部漏出，形成「漏光窗」效应），也不能高于消光角（形成暗区）。要核验已切磨完成的宝石，可用测角仪在两个相对的主刻面上测量角度：实际的冠角或亭角可通过公式 (180° − 测得角度) / 2 由读数推算得出。其他切工（公主方形、椭圆形、梨形、祖母绿形、垫形等）各自遵循不同的图纸，因设计者和目标（材料出成率与光学表现之间的取舍）不同而差异很大：若不参照具体图纸，并不存在一个可比较的通用数值。",

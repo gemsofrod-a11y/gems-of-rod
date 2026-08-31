@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,12 +18,14 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -42,10 +45,12 @@ import androidx.compose.ui.layout.positionInParent
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.LapidaireAngles
 import fr.gemsofrod.encyclopedie.data.LapidaireComponent
+import fr.gemsofrod.encyclopedie.data.LapidaireCutShape
 import fr.gemsofrod.encyclopedie.data.LapidaireDefaut
 import fr.gemsofrod.encyclopedie.data.LapidaireDiagram
 import fr.gemsofrod.encyclopedie.data.LapidaireDiagrams
@@ -53,8 +58,11 @@ import fr.gemsofrod.encyclopedie.data.LapidaireDisc
 import fr.gemsofrod.encyclopedie.data.LapidaireIndexEntry
 import fr.gemsofrod.encyclopedie.data.LapidaireInfo
 import fr.gemsofrod.encyclopedie.data.LapidaireOptiqueEntry
+import fr.gemsofrod.encyclopedie.data.LapidairePoidsCalculator
 import fr.gemsofrod.encyclopedie.data.LapidaireTip
+import fr.gemsofrod.encyclopedie.data.LapidaireWeightEstimator
 import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
+import fr.gemsofrod.encyclopedie.ui.components.DropdownField
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
@@ -119,6 +127,7 @@ fun LapidaireScreen(onBackClick: () -> Unit) {
                         "disques" to page.disquesTitle,
                         "index" to page.indexTitle,
                         "angles" to page.anglesTitle,
+                        "poids" to page.poidsCalculator.title,
                         "optique" to page.optiqueTitle,
                         "defauts" to page.defautsTitle,
                         "diagrammes" to page.diagrammesTitle,
@@ -213,6 +222,19 @@ fun LapidaireScreen(onBackClick: () -> Unit) {
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     page.angles.forEach { AnglesCard(it) }
+
+                    SectionHeader(
+                        title = page.poidsCalculator.title,
+                        modifier = Modifier.onGloballyPositioned {
+                            sectionOffsets["poids"] = it.positionInParent().y.roundToInt()
+                        }
+                    )
+                    Text(
+                        text = page.poidsCalculator.intro,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    PoidsCalculatorCard(page.poidsCalculator)
 
                     SectionHeader(
                         title = page.optiqueTitle,
@@ -412,6 +434,124 @@ private fun IndexCard(entry: LapidaireIndexEntry) {
             Text(
                 text = entry.cotesTaillables,
                 style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+    }
+}
+
+@Composable
+private fun PoidsCalculatorCard(calculator: LapidairePoidsCalculator) {
+    var selectedShape by remember { mutableStateOf(LapidaireCutShape.ROND) }
+    var dimension1Text by remember { mutableStateOf("") }
+    var dimension2Text by remember { mutableStateOf("") }
+    var heightText by remember { mutableStateOf("") }
+    var sgText by remember { mutableStateOf("") }
+    var resultText by remember { mutableStateOf<String?>(null) }
+    var errorShown by remember { mutableStateOf(false) }
+
+    fun parse(text: String): Double? = text.trim().replace(',', '.').toDoubleOrNull()
+
+    Card(
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            DropdownField(
+                label = calculator.title,
+                selectedLabel = calculator.shapeLabels[selectedShape],
+                options = LapidaireCutShape.values().map { it to (calculator.shapeLabels[it] ?: it.name) },
+                onSelect = { shape ->
+                    if (shape != null) {
+                        selectedShape = shape
+                        resultText = null
+                        errorShown = false
+                    }
+                }
+            )
+            OutlinedTextField(
+                value = dimension1Text,
+                onValueChange = { dimension1Text = it; resultText = null; errorShown = false },
+                label = { Text(calculator.dimension1Label) },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                modifier = Modifier.fillMaxWidth()
+            )
+            if (selectedShape.requiresTwoDimensions) {
+                OutlinedTextField(
+                    value = dimension2Text,
+                    onValueChange = { dimension2Text = it; resultText = null; errorShown = false },
+                    label = { Text(calculator.dimension2Label) },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+            OutlinedTextField(
+                value = heightText,
+                onValueChange = { heightText = it; resultText = null; errorShown = false },
+                label = { Text(calculator.heightLabel) },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                modifier = Modifier.fillMaxWidth()
+            )
+            OutlinedTextField(
+                value = sgText,
+                onValueChange = { sgText = it; resultText = null; errorShown = false },
+                label = { Text(calculator.sgLabel) },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                modifier = Modifier.fillMaxWidth()
+            )
+            Button(
+                onClick = {
+                    val d1 = parse(dimension1Text)
+                    val d2 = if (selectedShape.requiresTwoDimensions) parse(dimension2Text) else null
+                    val h = parse(heightText)
+                    val sg = parse(sgText)
+                    val valid = d1 != null && d1 > 0.0 &&
+                        (!selectedShape.requiresTwoDimensions || (d2 != null && d2 > 0.0)) &&
+                        h != null && h > 0.0 && sg != null && sg > 0.0
+                    if (valid) {
+                        val weight = LapidaireWeightEstimator.estimateWeightCarats(
+                            shape = selectedShape,
+                            dimension1Mm = d1!!,
+                            dimension2Mm = d2,
+                            heightMm = h!!,
+                            specificGravity = sg!!
+                        )
+                        resultText = calculator.resultLabel.format(
+                            (kotlin.math.round(weight * 100) / 100).toString()
+                        )
+                        errorShown = false
+                    } else {
+                        resultText = null
+                        errorShown = true
+                    }
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(calculator.computeLabel)
+            }
+            resultText?.let {
+                Text(
+                    text = it,
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.primary
+                )
+            }
+            if (errorShown) {
+                Text(
+                    text = calculator.errorMessage,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.error
+                )
+            }
+            Text(
+                text = calculator.disclaimer,
+                style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
