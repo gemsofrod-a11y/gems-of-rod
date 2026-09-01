@@ -356,6 +356,8 @@
     <string name="lab_reflectivity_subtitle">Stima l\'indice di rifrazione con la fotocamera (beta).</string>
     <string name="lab_nuancier_title">Campionario colori</string>
     <string name="lab_nuancier_subtitle">Confronta il colore osservato con le denominazioni commerciali (London Blue, Paraíba…).</string>
+    <string name="lab_diamond_grading_title">Colore e purezza del diamante</string>
+    <string name="lab_diamond_grading_subtitle">Individua il colore (D-Z) e consulta la scala di purezza (FL-I3).</string>
     <string name="reflectivity_title">Riflettometro (beta)</string>
     <string name="reflectivity_disclaimer">Stima indicativa per riflettività, NON una misurazione di laboratorio — non sostituisce un rifrattometro professionale.</string>
     <string name="reflectivity_howto_title">Come si usa</string>

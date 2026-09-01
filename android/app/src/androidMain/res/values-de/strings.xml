@@ -356,6 +356,8 @@
     <string name="lab_reflectivity_subtitle">Schätzen Sie den Brechungsindex mit der Kamera (Beta).</string>
     <string name="lab_nuancier_title">Farbmuster</string>
     <string name="lab_nuancier_subtitle">Vergleichen Sie die beobachtete Farbe mit Handelsnamen (London Blue, Paraíba…).</string>
+    <string name="lab_diamond_grading_title">Farbe und Reinheit des Diamanten</string>
+    <string name="lab_diamond_grading_subtitle">Bestimmen Sie die Farbe (D bis Z) und sehen Sie die Reinheitsskala (FL bis I3) ein.</string>
     <string name="reflectivity_title">Reflektometer (Beta)</string>
     <string name="reflectivity_disclaimer">Richtwert per Reflexionsmessung, KEINE Labormessung — ersetzt kein professionelles Refraktometer.</string>
     <string name="reflectivity_howto_title">Anleitung</string>

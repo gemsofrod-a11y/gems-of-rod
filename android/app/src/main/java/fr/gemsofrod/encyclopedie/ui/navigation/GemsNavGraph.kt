@@ -65,6 +65,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.MeteoritesMenuScreen
 import fr.gemsofrod.encyclopedie.ui.screens.PaysListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.QuizScreen
 import fr.gemsofrod.encyclopedie.ui.screens.NuancierScreen
+import fr.gemsofrod.encyclopedie.ui.screens.DiamondGradingScreen
 import fr.gemsofrod.encyclopedie.ui.screens.ReflectivityMeterScreen
 import fr.gemsofrod.encyclopedie.ui.screens.StockDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.StockFormScreen
@@ -120,6 +121,7 @@ private object Routes {
     const val LAB_NOTEBOOK_DETAIL = "lab_notebook_detail/{sampleId}"
     const val REFLECTIVITY_METER = "reflectivity_meter"
     const val NUANCIER = "nuancier"
+    const val DIAMOND_GRADING = "diamond_grading"
     const val LEGENDARY_RIDDLE = "legendary_riddle"
     const val LEGENDARY_MAP = "legendary_map"
     const val TREATMENTS = "treatments"
@@ -216,6 +218,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onGlossaireClick = { navController.navigate(Routes.GLOSSAIRE) },
                 onReflectivityMeterClick = { navController.navigate(Routes.REFLECTIVITY_METER) },
                 onNuancierClick = { navController.navigate(Routes.NUANCIER) },
+                onDiamondGradingClick = { navController.navigate(Routes.DIAMOND_GRADING) },
                 onTreatmentsClick = { navController.navigate(Routes.TREATMENTS) },
                 onStockClick = { navController.navigate(Routes.STOCK_LIST) },
                 onLegendaryClick = { navController.navigate(Routes.LEGENDARY_RIDDLE) },
@@ -264,6 +267,9 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         }
         composable(Routes.NUANCIER) {
             NuancierScreen(onBackClick = { navController.popBackStack() })
+        }
+        composable(Routes.DIAMOND_GRADING) {
+            DiamondGradingScreen(onBackClick = { navController.popBackStack() })
         }
         composable(Routes.LEGENDARY_RIDDLE) {
             LegendaryRiddleScreen(
