@@ -213,7 +213,19 @@ class GemOfDayWidgetProvider : AppWidgetProvider() {
                 canvas.drawRect(rect, Paint(maskPaint).apply { color = fallbackColorArgb })
             }
 
-            canvas.drawRect(rect, Paint(maskPaint).apply { color = SCRIM_COLOR })
+            // Voile semi-transparent par-dessus le contenu déjà posé
+            // (photo ou couleur) : SRC_ATOP superpose normalement le voile
+            // tout en restant confiné à la forme arrondie déjà établie —
+            // contrairement à SRC_IN (utilisé ci-dessus pour poser le
+            // contenu), qui REMPLACE la destination au lieu de la
+            // superposer et effacerait donc entièrement la photo/couleur.
+            canvas.drawRect(
+                rect,
+                Paint(Paint.ANTI_ALIAS_FLAG).apply {
+                    color = SCRIM_COLOR
+                    xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP)
+                }
+            )
 
             val inset = borderWidthPx / 2f
             val borderPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
