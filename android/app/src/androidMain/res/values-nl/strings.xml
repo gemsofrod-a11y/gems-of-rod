@@ -356,6 +356,8 @@
     <string name="lab_reflectivity_subtitle">Schat de brekingsindex met de camera (bèta).</string>
     <string name="lab_nuancier_title">Kleurenwaaier</string>
     <string name="lab_nuancier_subtitle">Vergelijk de waargenomen kleur met handelsnamen (London Blue, Paraíba…).</string>
+    <string name="lab_diamond_grading_title">Kleur en zuiverheid van de diamant</string>
+    <string name="lab_diamond_grading_subtitle">Bepaal de kleur (D t/m Z) en raadpleeg de zuiverheidsschaal (FL t/m I3).</string>
     <string name="reflectivity_title">Reflectometer (bèta)</string>
     <string name="reflectivity_disclaimer">Indicatieve schatting op basis van reflectiviteit, GEEN laboratoriummeting — vervangt geen professionele refractometer.</string>
     <string name="reflectivity_howto_title">Gebruiksaanwijzing</string>

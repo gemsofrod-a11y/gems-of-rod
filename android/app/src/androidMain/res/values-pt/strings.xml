@@ -356,6 +356,8 @@
     <string name="lab_reflectivity_subtitle">Estime o índice de refração com a câmera (beta).</string>
     <string name="lab_nuancier_title">Amostra de cores</string>
     <string name="lab_nuancier_subtitle">Compare a cor observada com denominações comerciais (London Blue, Paraíba…).</string>
+    <string name="lab_diamond_grading_title">Cor e pureza do diamante</string>
+    <string name="lab_diamond_grading_subtitle">Localize a cor (D a Z) e consulte a escala de pureza (FL a I3).</string>
     <string name="reflectivity_title">Refletômetro (beta)</string>
     <string name="reflectivity_disclaimer">Estimativa indicativa por refletividade, NÃO é uma medição de laboratório — não substitui um refratômetro profissional.</string>
     <string name="reflectivity_howto_title">Modo de utilização</string>

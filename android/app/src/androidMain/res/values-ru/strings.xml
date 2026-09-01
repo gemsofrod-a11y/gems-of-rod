@@ -356,6 +356,8 @@
     <string name="lab_reflectivity_subtitle">Оцените показатель преломления с помощью камеры (бета).</string>
     <string name="lab_nuancier_title">Цветовая палитра</string>
     <string name="lab_nuancier_subtitle">Сравните наблюдаемый цвет с торговыми названиями (London Blue, Paraíba…).</string>
+    <string name="lab_diamond_grading_title">Цвет и чистота бриллианта</string>
+    <string name="lab_diamond_grading_subtitle">Определите цвет (D–Z) и ознакомьтесь со шкалой чистоты (FL–I3).</string>
     <string name="reflectivity_title">Рефлектометр (бета)</string>
     <string name="reflectivity_disclaimer">Ориентировочная оценка по отражательной способности, а НЕ лабораторное измерение — не заменяет профессиональный рефрактометр.</string>
     <string name="reflectivity_howto_title">Инструкция по использованию</string>

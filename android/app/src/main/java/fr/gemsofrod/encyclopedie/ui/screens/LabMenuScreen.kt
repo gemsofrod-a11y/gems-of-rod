@@ -15,6 +15,7 @@ import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.Biotech
 import androidx.compose.material.icons.filled.CameraAlt
+import androidx.compose.material.icons.filled.Diamond
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Inventory2
 import androidx.compose.material.icons.filled.Info
@@ -57,6 +58,7 @@ fun LabMenuScreen(
     onGlossaireClick: () -> Unit,
     onReflectivityMeterClick: () -> Unit,
     onNuancierClick: () -> Unit,
+    onDiamondGradingClick: () -> Unit,
     onTreatmentsClick: () -> Unit,
     onStockClick: () -> Unit,
     onLegendaryClick: () -> Unit,
@@ -133,6 +135,12 @@ fun LabMenuScreen(
                 title = stringResource(R.string.lab_nuancier_title),
                 subtitle = stringResource(R.string.lab_nuancier_subtitle),
                 onClick = onNuancierClick
+            )
+            LabMenuCard(
+                icon = Icons.Filled.Diamond,
+                title = stringResource(R.string.lab_diamond_grading_title),
+                subtitle = stringResource(R.string.lab_diamond_grading_subtitle),
+                onClick = onDiamondGradingClick
             )
             LabMenuCard(
                 icon = Icons.Filled.Verified,
