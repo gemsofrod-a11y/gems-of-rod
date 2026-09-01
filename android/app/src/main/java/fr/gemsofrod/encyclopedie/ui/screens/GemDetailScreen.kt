@@ -23,8 +23,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.filled.Description
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Button
@@ -60,7 +58,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.AchievementsRepository
-import fr.gemsofrod.encyclopedie.data.FavoritesRepository
 import fr.gemsofrod.encyclopedie.data.Gem
 import fr.gemsofrod.encyclopedie.data.GemImageCredit
 import fr.gemsofrod.encyclopedie.data.GemImageType
@@ -70,11 +67,15 @@ import fr.gemsofrod.encyclopedie.data.GemRarete
 import fr.gemsofrod.encyclopedie.data.GemsRepository
 import fr.gemsofrod.encyclopedie.data.googleMapsSearchUrl
 import fr.gemsofrod.encyclopedie.data.priceRangePerCarat
+import fr.gemsofrod.encyclopedie.ui.components.FavoriteToggleButton
 import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.localizedInclusions
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.tween
+import androidx.compose.ui.draw.alpha
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -84,8 +85,6 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
     val gem = GemsRepository.byId(gemId)?.localized()
     LaunchedEffect(gemId) { AchievementsRepository.recordGemViewed(gemId) }
     val context = LocalContext.current
-    val removeFavoriteLabel = stringResource(R.string.cd_remove_favorite)
-    val addFavoriteLabel = stringResource(R.string.cd_add_favorite)
     val shareChooserTitle = stringResource(R.string.share_chooser_title)
     val shareSubject = gem?.let { stringResource(R.string.share_subject, it.nom) }
     val familyLabel = stringResource(R.string.fiche_famille)
@@ -104,14 +103,10 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
                 },
                 actions = {
                     if (gem != null) {
-                        val isFavorite = FavoritesRepository.isFavorite(gem.id)
-                        IconButton(onClick = { FavoritesRepository.toggle(gem.id) }) {
-                            Icon(
-                                if (isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
-                                contentDescription = if (isFavorite) removeFavoriteLabel else addFavoriteLabel,
-                                tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onBackground
-                            )
-                        }
+                        FavoriteToggleButton(
+                            gemId = gem.id,
+                            inactiveTint = MaterialTheme.colorScheme.onBackground
+                        )
                         IconButton(onClick = {
                             val sendIntent = Intent(Intent.ACTION_SEND).apply {
                                 type = "text/plain"
@@ -416,6 +411,13 @@ private fun GemImageGallery(images: List<GemImageCredit>) {
 private fun GemImageCard(credit: GemImageCredit) {
     val imagePainter = rememberSampledDrawablePainter(credit.drawableName, 220.dp) ?: return
 
+    // Fondu d'apparition à la première composition de la carte (ouverture de
+    // la fiche ou défilement de la galerie) — évite le "pop" brut de l'image.
+    val imageAlpha = remember(credit.drawableName) { Animatable(0f) }
+    LaunchedEffect(credit.drawableName) {
+        imageAlpha.animateTo(1f, animationSpec = tween(durationMillis = 400))
+    }
+
     val caption = stringResource(
         when (credit.type) {
             GemImageType.BRUTE -> R.string.gem_photo_raw
@@ -432,6 +434,7 @@ private fun GemImageCard(credit: GemImageCredit) {
                 .fillMaxWidth()
                 .aspectRatio(1f)
                 .clip(RoundedCornerShape(16.dp))
+                .alpha(imageAlpha.value)
         )
         Text(
             text = caption,

@@ -24,8 +24,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -53,7 +51,6 @@ import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.Bienfaits
 import fr.gemsofrod.encyclopedie.data.Chakras
-import fr.gemsofrod.encyclopedie.data.FavoritesRepository
 import fr.gemsofrod.encyclopedie.data.Gem
 import fr.gemsofrod.encyclopedie.data.GemImageCredit
 import fr.gemsofrod.encyclopedie.data.GemImageType
@@ -63,6 +60,7 @@ import fr.gemsofrod.encyclopedie.data.LithotherapieInfo
 import fr.gemsofrod.encyclopedie.data.ZodiacSigns
 import fr.gemsofrod.encyclopedie.data.BirthMonths
 import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
+import fr.gemsofrod.encyclopedie.ui.components.FavoriteToggleButton
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
@@ -497,14 +495,7 @@ private fun LithotherapieRow(gem: Gem, onClick: () -> Unit) {
                     maxLines = 2
                 )
             }
-            val isFavorite = FavoritesRepository.isFavorite(gem.id)
-            IconButton(onClick = { FavoritesRepository.toggle(gem.id) }) {
-                Icon(
-                    if (isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
-                    contentDescription = stringResource(if (isFavorite) R.string.cd_remove_favorite else R.string.cd_add_favorite),
-                    tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
+            FavoriteToggleButton(gemId = gem.id)
         }
     }
 }
@@ -525,14 +516,10 @@ fun LithotherapieDetailScreen(gemId: String, onBackClick: () -> Unit) {
                 },
                 actions = {
                     if (gem != null) {
-                        val isFavorite = FavoritesRepository.isFavorite(gem.id)
-                        IconButton(onClick = { FavoritesRepository.toggle(gem.id) }) {
-                            Icon(
-                                if (isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
-                                contentDescription = stringResource(if (isFavorite) R.string.cd_remove_favorite else R.string.cd_add_favorite),
-                                tint = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onBackground
-                            )
-                        }
+                        FavoriteToggleButton(
+                            gemId = gem.id,
+                            inactiveTint = MaterialTheme.colorScheme.onBackground
+                        )
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
