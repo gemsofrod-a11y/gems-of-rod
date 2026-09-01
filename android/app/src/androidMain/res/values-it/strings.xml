@@ -158,11 +158,12 @@
 
     <!-- Analisi della pietra -->
     <string name="gemmologie_analyse_title">Analisi della pietra</string>
-    <string name="gemmologie_analyse_subtitle">Identifica una pietra a partire dalle sue caratteristiche osservate.</string>
 
     <!-- Confronto tra pietre -->
     <string name="gemmologie_comparer_title">Confronta due pietre</string>
     <string name="gemmologie_comparer_subtitle">Durezza, indice di rifrazione, densità… in un colpo d\'occhio su un grafico.</string>
+    <string name="gemmologie_crystal_systems_title">Sistemi cristallini</string>
+    <string name="gemmologie_crystal_systems_subtitle">I sei sistemi cristallini, ciascuno con uno schizzo semplificato.</string>
     <string name="comparer_gem_a_label">Pietra A</string>
     <string name="comparer_gem_b_label">Pietra B</string>
     <string name="comparer_select_prompt">Scegli due pietre per confrontarne le caratteristiche.</string>

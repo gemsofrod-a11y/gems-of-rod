@@ -158,11 +158,12 @@
 
     <!-- Steenanalyse -->
     <string name="gemmologie_analyse_title">Steenanalyse</string>
-    <string name="gemmologie_analyse_subtitle">Identificeer een steen op basis van de waargenomen kenmerken.</string>
 
     <!-- Stenen vergelijken -->
     <string name="gemmologie_comparer_title">Twee stenen vergelijken</string>
     <string name="gemmologie_comparer_subtitle">Hardheid, brekingsindex, dichtheid… in één oogopslag op een grafiek.</string>
+    <string name="gemmologie_crystal_systems_title">Kristalsystemen</string>
+    <string name="gemmologie_crystal_systems_subtitle">De zes kristalsystemen, elk met een vereenvoudigde schets.</string>
     <string name="comparer_gem_a_label">Steen A</string>
     <string name="comparer_gem_b_label">Steen B</string>
     <string name="comparer_select_prompt">Kies twee stenen om hun eigenschappen te vergelijken.</string>

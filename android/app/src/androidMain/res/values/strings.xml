@@ -158,11 +158,12 @@
 
     <!-- Analyse de pierre -->
     <string name="gemmologie_analyse_title">Analyse de pierre</string>
-    <string name="gemmologie_analyse_subtitle">Identifiez une pierre à partir de ses caractéristiques observées.</string>
 
     <!-- Comparaison de pierres -->
     <string name="gemmologie_comparer_title">Comparer deux pierres</string>
     <string name="gemmologie_comparer_subtitle">Dureté, indice de réfraction, densité… en un coup d\'œil sur un graphique.</string>
+    <string name="gemmologie_crystal_systems_title">Systèmes cristallins</string>
+    <string name="gemmologie_crystal_systems_subtitle">Les six systèmes cristallins et une esquisse simplifiée pour chacun.</string>
     <string name="comparer_gem_a_label">Pierre A</string>
     <string name="comparer_gem_b_label">Pierre B</string>
     <string name="comparer_select_prompt">Choisissez deux pierres pour comparer leurs caractéristiques.</string>

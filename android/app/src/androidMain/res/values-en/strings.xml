@@ -158,11 +158,12 @@
 
     <!-- Stone analysis -->
     <string name="gemmologie_analyse_title">Stone analysis</string>
-    <string name="gemmologie_analyse_subtitle">Identify a stone from its observed characteristics.</string>
 
     <!-- Stone comparison -->
     <string name="gemmologie_comparer_title">Compare two stones</string>
     <string name="gemmologie_comparer_subtitle">Hardness, refractive index, density… at a glance on a chart.</string>
+    <string name="gemmologie_crystal_systems_title">Crystal systems</string>
+    <string name="gemmologie_crystal_systems_subtitle">The six crystal systems, each with a simplified sketch.</string>
     <string name="comparer_gem_a_label">Stone A</string>
     <string name="comparer_gem_b_label">Stone B</string>
     <string name="comparer_select_prompt">Choose two stones to compare their characteristics.</string>
