@@ -158,11 +158,12 @@
 
     <!-- Steinanalyse -->
     <string name="gemmologie_analyse_title">Steinanalyse</string>
-    <string name="gemmologie_analyse_subtitle">Einen Stein anhand seiner beobachteten Eigenschaften bestimmen.</string>
 
     <!-- Steinvergleich -->
     <string name="gemmologie_comparer_title">Zwei Steine vergleichen</string>
     <string name="gemmologie_comparer_subtitle">Härte, Brechungsindex, Dichte… auf einen Blick im Diagramm.</string>
+    <string name="gemmologie_crystal_systems_title">Kristallsysteme</string>
+    <string name="gemmologie_crystal_systems_subtitle">Die sechs Kristallsysteme mit einer vereinfachten Skizze für jedes.</string>
     <string name="comparer_gem_a_label">Stein A</string>
     <string name="comparer_gem_b_label">Stein B</string>
     <string name="comparer_select_prompt">Wählen Sie zwei Steine, um ihre Eigenschaften zu vergleichen.</string>

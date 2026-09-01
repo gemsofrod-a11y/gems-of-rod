@@ -278,8 +278,8 @@ private fun HomeSectionCard(
 fun GemmologieMenuScreen(
     onCouleurClick: () -> Unit,
     onPaysClick: () -> Unit,
-    onAnalyseClick: () -> Unit,
     onComparerClick: () -> Unit,
+    onCrystalSystemsClick: () -> Unit,
     onGemClick: (Gem) -> Unit,
     onBackClick: () -> Unit
 ) {
@@ -349,14 +349,14 @@ fun GemmologieMenuScreen(
                         onClick = onPaysClick
                     )
                     GemmologieMenuCard(
-                        title = stringResource(R.string.gemmologie_analyse_title),
-                        subtitle = stringResource(R.string.gemmologie_analyse_subtitle),
-                        onClick = onAnalyseClick
-                    )
-                    GemmologieMenuCard(
                         title = stringResource(R.string.gemmologie_comparer_title),
                         subtitle = stringResource(R.string.gemmologie_comparer_subtitle),
                         onClick = onComparerClick
+                    )
+                    GemmologieMenuCard(
+                        title = stringResource(R.string.gemmologie_crystal_systems_title),
+                        subtitle = stringResource(R.string.gemmologie_crystal_systems_subtitle),
+                        onClick = onCrystalSystemsClick
                     )
                 }
             } else if (results.isEmpty()) {

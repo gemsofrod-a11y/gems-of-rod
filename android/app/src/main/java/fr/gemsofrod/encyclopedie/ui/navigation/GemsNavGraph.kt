@@ -66,6 +66,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.PaysListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.QuizScreen
 import fr.gemsofrod.encyclopedie.ui.screens.NuancierScreen
 import fr.gemsofrod.encyclopedie.ui.screens.DiamondGradingScreen
+import fr.gemsofrod.encyclopedie.ui.screens.CrystalSystemsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.ReflectivityMeterScreen
 import fr.gemsofrod.encyclopedie.ui.screens.StockDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.StockFormScreen
@@ -122,6 +123,7 @@ private object Routes {
     const val REFLECTIVITY_METER = "reflectivity_meter"
     const val NUANCIER = "nuancier"
     const val DIAMOND_GRADING = "diamond_grading"
+    const val CRYSTAL_SYSTEMS = "crystal_systems"
     const val LEGENDARY_RIDDLE = "legendary_riddle"
     const val LEGENDARY_MAP = "legendary_map"
     const val TREATMENTS = "treatments"
@@ -382,14 +384,17 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             GemmologieMenuScreen(
                 onCouleurClick = { navController.navigate(Routes.COULEUR_LIST) },
                 onPaysClick = { navController.navigate(Routes.PAYS_LIST) },
-                onAnalyseClick = { navController.navigate(Routes.ANALYSE) },
                 onComparerClick = { navController.navigate(Routes.COMPARER) },
+                onCrystalSystemsClick = { navController.navigate(Routes.CRYSTAL_SYSTEMS) },
                 onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
                 onBackClick = { navController.popBackStack() }
             )
         }
         composable(Routes.COMPARER) {
             GemComparisonScreen(onBackClick = { navController.popBackStack() })
+        }
+        composable(Routes.CRYSTAL_SYSTEMS) {
+            CrystalSystemsScreen(onBackClick = { navController.popBackStack() })
         }
         composable(Routes.ANALYSE) {
             AnalyseScreen(

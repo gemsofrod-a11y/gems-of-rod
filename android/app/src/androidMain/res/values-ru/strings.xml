@@ -158,11 +158,12 @@
 
     <!-- Анализ камня -->
     <string name="gemmologie_analyse_title">Анализ камня</string>
-    <string name="gemmologie_analyse_subtitle">Определите камень по его наблюдаемым характеристикам.</string>
 
     <!-- Сравнение камней -->
     <string name="gemmologie_comparer_title">Сравнить два камня</string>
     <string name="gemmologie_comparer_subtitle">Твёрдость, показатель преломления, плотность… наглядно на графике.</string>
+    <string name="gemmologie_crystal_systems_title">Кристаллические сингонии</string>
+    <string name="gemmologie_crystal_systems_subtitle">Шесть кристаллических систем, для каждой — упрощённая схема.</string>
     <string name="comparer_gem_a_label">Камень A</string>
     <string name="comparer_gem_b_label">Камень B</string>
     <string name="comparer_select_prompt">Выберите два камня, чтобы сравнить их характеристики.</string>
