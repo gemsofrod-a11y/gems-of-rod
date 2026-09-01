@@ -64,7 +64,24 @@ object NuancierInfo {
             NuancierCouleur("Rose de France", "Améthyste", 280f, 0.25f, 0.85f),
             NuancierCouleur("Hot Pink", "Spinelle", 330f, 0.7f, 0.8f),
             NuancierCouleur("Starlite", "Zircon", 210f, 0.6f, 0.75f),
-            NuancierCouleur("Lilac", "Kunzite", 300f, 0.3f, 0.85f)
+            NuancierCouleur("Lilac", "Kunzite", 300f, 0.3f, 0.85f),
+            NuancierCouleur("Tanzanite", "Zoïsite", 260f, 0.6f, 0.55f),
+            NuancierCouleur("Persian Blue", "Turquoise", 185f, 0.55f, 0.65f),
+            NuancierCouleur("Sleeping Beauty", "Turquoise", 190f, 0.45f, 0.7f),
+            NuancierCouleur("Fire Opal", "Opale", 25f, 0.75f, 0.85f),
+            NuancierCouleur("Black Opal", "Opale", 210f, 0.4f, 0.25f),
+            NuancierCouleur("Hessonite", "Grenat", 25f, 0.6f, 0.55f),
+            NuancierCouleur("Malaya", "Grenat", 20f, 0.55f, 0.7f),
+            NuancierCouleur("Cobalt Blue", "Spinelle", 215f, 0.65f, 0.6f),
+            NuancierCouleur("Flame Spinel", "Spinelle", 15f, 0.8f, 0.6f),
+            NuancierCouleur("Water Sapphire", "Iolite", 250f, 0.45f, 0.55f),
+            NuancierCouleur("Prasiolite", "Quartz", 130f, 0.35f, 0.85f),
+            NuancierCouleur("Rose Quartz", "Quartz", 340f, 0.25f, 0.9f),
+            NuancierCouleur("Smoky Quartz", "Quartz", 30f, 0.3f, 0.4f),
+            NuancierCouleur("Ox Blood", "Corail", 355f, 0.75f, 0.45f),
+            NuancierCouleur("Angel Skin", "Corail", 10f, 0.35f, 0.85f),
+            NuancierCouleur("Chrome Diopside", "Diopside chromifère", 135f, 0.7f, 0.5f),
+            NuancierCouleur("Larimar", "Pectolite", 195f, 0.35f, 0.8f)
         )
     )
 
@@ -106,7 +123,24 @@ object NuancierInfo {
             NuancierCouleur("Rose de France", "Amethyst", 280f, 0.25f, 0.85f),
             NuancierCouleur("Hot Pink", "Spinel", 330f, 0.7f, 0.8f),
             NuancierCouleur("Starlite", "Zircon", 210f, 0.6f, 0.75f),
-            NuancierCouleur("Lilac", "Kunzite", 300f, 0.3f, 0.85f)
+            NuancierCouleur("Lilac", "Kunzite", 300f, 0.3f, 0.85f),
+            NuancierCouleur("Tanzanite", "Zoisite", 260f, 0.6f, 0.55f),
+            NuancierCouleur("Persian Blue", "Turquoise", 185f, 0.55f, 0.65f),
+            NuancierCouleur("Sleeping Beauty", "Turquoise", 190f, 0.45f, 0.7f),
+            NuancierCouleur("Fire Opal", "Opal", 25f, 0.75f, 0.85f),
+            NuancierCouleur("Black Opal", "Opal", 210f, 0.4f, 0.25f),
+            NuancierCouleur("Hessonite", "Garnet", 25f, 0.6f, 0.55f),
+            NuancierCouleur("Malaya", "Garnet", 20f, 0.55f, 0.7f),
+            NuancierCouleur("Cobalt Blue", "Spinel", 215f, 0.65f, 0.6f),
+            NuancierCouleur("Flame Spinel", "Spinel", 15f, 0.8f, 0.6f),
+            NuancierCouleur("Water Sapphire", "Iolite", 250f, 0.45f, 0.55f),
+            NuancierCouleur("Prasiolite", "Quartz", 130f, 0.35f, 0.85f),
+            NuancierCouleur("Rose Quartz", "Quartz", 340f, 0.25f, 0.9f),
+            NuancierCouleur("Smoky Quartz", "Quartz", 30f, 0.3f, 0.4f),
+            NuancierCouleur("Ox Blood", "Coral", 355f, 0.75f, 0.45f),
+            NuancierCouleur("Angel Skin", "Coral", 10f, 0.35f, 0.85f),
+            NuancierCouleur("Chrome Diopside", "Chrome Diopside", 135f, 0.7f, 0.5f),
+            NuancierCouleur("Larimar", "Pectolite", 195f, 0.35f, 0.8f)
         )
     )
 
@@ -148,7 +182,24 @@ object NuancierInfo {
             NuancierCouleur("Rose de France", "Amatista", 280f, 0.25f, 0.85f),
             NuancierCouleur("Hot Pink", "Espinela", 330f, 0.7f, 0.8f),
             NuancierCouleur("Starlite", "Circón", 210f, 0.6f, 0.75f),
-            NuancierCouleur("Lilac", "Kunzita", 300f, 0.3f, 0.85f)
+            NuancierCouleur("Lilac", "Kunzita", 300f, 0.3f, 0.85f),
+            NuancierCouleur("Tanzanite", "Zoisita", 260f, 0.6f, 0.55f),
+            NuancierCouleur("Persian Blue", "Turquesa", 185f, 0.55f, 0.65f),
+            NuancierCouleur("Sleeping Beauty", "Turquesa", 190f, 0.45f, 0.7f),
+            NuancierCouleur("Fire Opal", "Ópalo", 25f, 0.75f, 0.85f),
+            NuancierCouleur("Black Opal", "Ópalo", 210f, 0.4f, 0.25f),
+            NuancierCouleur("Hessonite", "Granate", 25f, 0.6f, 0.55f),
+            NuancierCouleur("Malaya", "Granate", 20f, 0.55f, 0.7f),
+            NuancierCouleur("Cobalt Blue", "Espinela", 215f, 0.65f, 0.6f),
+            NuancierCouleur("Flame Spinel", "Espinela", 15f, 0.8f, 0.6f),
+            NuancierCouleur("Water Sapphire", "Iolita", 250f, 0.45f, 0.55f),
+            NuancierCouleur("Prasiolite", "Cuarzo", 130f, 0.35f, 0.85f),
+            NuancierCouleur("Rose Quartz", "Cuarzo", 340f, 0.25f, 0.9f),
+            NuancierCouleur("Smoky Quartz", "Cuarzo", 30f, 0.3f, 0.4f),
+            NuancierCouleur("Ox Blood", "Coral", 355f, 0.75f, 0.45f),
+            NuancierCouleur("Angel Skin", "Coral", 10f, 0.35f, 0.85f),
+            NuancierCouleur("Chrome Diopside", "Diópsido cromífero", 135f, 0.7f, 0.5f),
+            NuancierCouleur("Larimar", "Pectolita", 195f, 0.35f, 0.8f)
         )
     )
 
@@ -190,7 +241,24 @@ object NuancierInfo {
             NuancierCouleur("Rose de France", "Ametista", 280f, 0.25f, 0.85f),
             NuancierCouleur("Hot Pink", "Spinello", 330f, 0.7f, 0.8f),
             NuancierCouleur("Starlite", "Zircone", 210f, 0.6f, 0.75f),
-            NuancierCouleur("Lilac", "Kunzite", 300f, 0.3f, 0.85f)
+            NuancierCouleur("Lilac", "Kunzite", 300f, 0.3f, 0.85f),
+            NuancierCouleur("Tanzanite", "Zoisite", 260f, 0.6f, 0.55f),
+            NuancierCouleur("Persian Blue", "Turchese", 185f, 0.55f, 0.65f),
+            NuancierCouleur("Sleeping Beauty", "Turchese", 190f, 0.45f, 0.7f),
+            NuancierCouleur("Fire Opal", "Opale", 25f, 0.75f, 0.85f),
+            NuancierCouleur("Black Opal", "Opale", 210f, 0.4f, 0.25f),
+            NuancierCouleur("Hessonite", "Granato", 25f, 0.6f, 0.55f),
+            NuancierCouleur("Malaya", "Granato", 20f, 0.55f, 0.7f),
+            NuancierCouleur("Cobalt Blue", "Spinello", 215f, 0.65f, 0.6f),
+            NuancierCouleur("Flame Spinel", "Spinello", 15f, 0.8f, 0.6f),
+            NuancierCouleur("Water Sapphire", "Iolite", 250f, 0.45f, 0.55f),
+            NuancierCouleur("Prasiolite", "Quarzo", 130f, 0.35f, 0.85f),
+            NuancierCouleur("Rose Quartz", "Quarzo", 340f, 0.25f, 0.9f),
+            NuancierCouleur("Smoky Quartz", "Quarzo", 30f, 0.3f, 0.4f),
+            NuancierCouleur("Ox Blood", "Corallo", 355f, 0.75f, 0.45f),
+            NuancierCouleur("Angel Skin", "Corallo", 10f, 0.35f, 0.85f),
+            NuancierCouleur("Chrome Diopside", "Diopside cromifero", 135f, 0.7f, 0.5f),
+            NuancierCouleur("Larimar", "Pectolite", 195f, 0.35f, 0.8f)
         )
     )
 
@@ -232,7 +300,24 @@ object NuancierInfo {
             NuancierCouleur("Rose de France", "Amethyst", 280f, 0.25f, 0.85f),
             NuancierCouleur("Hot Pink", "Spinell", 330f, 0.7f, 0.8f),
             NuancierCouleur("Starlite", "Zirkon", 210f, 0.6f, 0.75f),
-            NuancierCouleur("Lilac", "Kunzit", 300f, 0.3f, 0.85f)
+            NuancierCouleur("Lilac", "Kunzit", 300f, 0.3f, 0.85f),
+            NuancierCouleur("Tanzanite", "Zoisit", 260f, 0.6f, 0.55f),
+            NuancierCouleur("Persian Blue", "Türkis", 185f, 0.55f, 0.65f),
+            NuancierCouleur("Sleeping Beauty", "Türkis", 190f, 0.45f, 0.7f),
+            NuancierCouleur("Fire Opal", "Opal", 25f, 0.75f, 0.85f),
+            NuancierCouleur("Black Opal", "Opal", 210f, 0.4f, 0.25f),
+            NuancierCouleur("Hessonite", "Granat", 25f, 0.6f, 0.55f),
+            NuancierCouleur("Malaya", "Granat", 20f, 0.55f, 0.7f),
+            NuancierCouleur("Cobalt Blue", "Spinell", 215f, 0.65f, 0.6f),
+            NuancierCouleur("Flame Spinel", "Spinell", 15f, 0.8f, 0.6f),
+            NuancierCouleur("Water Sapphire", "Iolith", 250f, 0.45f, 0.55f),
+            NuancierCouleur("Prasiolite", "Quarz", 130f, 0.35f, 0.85f),
+            NuancierCouleur("Rose Quartz", "Quarz", 340f, 0.25f, 0.9f),
+            NuancierCouleur("Smoky Quartz", "Quarz", 30f, 0.3f, 0.4f),
+            NuancierCouleur("Ox Blood", "Koralle", 355f, 0.75f, 0.45f),
+            NuancierCouleur("Angel Skin", "Koralle", 10f, 0.35f, 0.85f),
+            NuancierCouleur("Chrome Diopside", "Chromdiopsid", 135f, 0.7f, 0.5f),
+            NuancierCouleur("Larimar", "Pektolith", 195f, 0.35f, 0.8f)
         )
     )
 
@@ -274,7 +359,24 @@ object NuancierInfo {
             NuancierCouleur("Rose de France", "Ametista", 280f, 0.25f, 0.85f),
             NuancierCouleur("Hot Pink", "Espinela", 330f, 0.7f, 0.8f),
             NuancierCouleur("Starlite", "Zircão", 210f, 0.6f, 0.75f),
-            NuancierCouleur("Lilac", "Kunzita", 300f, 0.3f, 0.85f)
+            NuancierCouleur("Lilac", "Kunzita", 300f, 0.3f, 0.85f),
+            NuancierCouleur("Tanzanite", "Zoisita", 260f, 0.6f, 0.55f),
+            NuancierCouleur("Persian Blue", "Turquesa", 185f, 0.55f, 0.65f),
+            NuancierCouleur("Sleeping Beauty", "Turquesa", 190f, 0.45f, 0.7f),
+            NuancierCouleur("Fire Opal", "Opala", 25f, 0.75f, 0.85f),
+            NuancierCouleur("Black Opal", "Opala", 210f, 0.4f, 0.25f),
+            NuancierCouleur("Hessonite", "Granada", 25f, 0.6f, 0.55f),
+            NuancierCouleur("Malaya", "Granada", 20f, 0.55f, 0.7f),
+            NuancierCouleur("Cobalt Blue", "Espinela", 215f, 0.65f, 0.6f),
+            NuancierCouleur("Flame Spinel", "Espinela", 15f, 0.8f, 0.6f),
+            NuancierCouleur("Water Sapphire", "Iolita", 250f, 0.45f, 0.55f),
+            NuancierCouleur("Prasiolite", "Quartzo", 130f, 0.35f, 0.85f),
+            NuancierCouleur("Rose Quartz", "Quartzo", 340f, 0.25f, 0.9f),
+            NuancierCouleur("Smoky Quartz", "Quartzo", 30f, 0.3f, 0.4f),
+            NuancierCouleur("Ox Blood", "Coral", 355f, 0.75f, 0.45f),
+            NuancierCouleur("Angel Skin", "Coral", 10f, 0.35f, 0.85f),
+            NuancierCouleur("Chrome Diopside", "Diópsido crômico", 135f, 0.7f, 0.5f),
+            NuancierCouleur("Larimar", "Pectolite", 195f, 0.35f, 0.8f)
         )
     )
 
@@ -316,7 +418,24 @@ object NuancierInfo {
             NuancierCouleur("Rose de France", "Аметист", 280f, 0.25f, 0.85f),
             NuancierCouleur("Hot Pink", "Шпинель", 330f, 0.7f, 0.8f),
             NuancierCouleur("Starlite", "Циркон", 210f, 0.6f, 0.75f),
-            NuancierCouleur("Lilac", "Кунцит", 300f, 0.3f, 0.85f)
+            NuancierCouleur("Lilac", "Кунцит", 300f, 0.3f, 0.85f),
+            NuancierCouleur("Tanzanite", "Цоизит", 260f, 0.6f, 0.55f),
+            NuancierCouleur("Persian Blue", "Бирюза", 185f, 0.55f, 0.65f),
+            NuancierCouleur("Sleeping Beauty", "Бирюза", 190f, 0.45f, 0.7f),
+            NuancierCouleur("Fire Opal", "Опал", 25f, 0.75f, 0.85f),
+            NuancierCouleur("Black Opal", "Опал", 210f, 0.4f, 0.25f),
+            NuancierCouleur("Hessonite", "Гранат", 25f, 0.6f, 0.55f),
+            NuancierCouleur("Malaya", "Гранат", 20f, 0.55f, 0.7f),
+            NuancierCouleur("Cobalt Blue", "Шпинель", 215f, 0.65f, 0.6f),
+            NuancierCouleur("Flame Spinel", "Шпинель", 15f, 0.8f, 0.6f),
+            NuancierCouleur("Water Sapphire", "Иолит", 250f, 0.45f, 0.55f),
+            NuancierCouleur("Prasiolite", "Кварц", 130f, 0.35f, 0.85f),
+            NuancierCouleur("Rose Quartz", "Кварц", 340f, 0.25f, 0.9f),
+            NuancierCouleur("Smoky Quartz", "Кварц", 30f, 0.3f, 0.4f),
+            NuancierCouleur("Ox Blood", "Коралл", 355f, 0.75f, 0.45f),
+            NuancierCouleur("Angel Skin", "Коралл", 10f, 0.35f, 0.85f),
+            NuancierCouleur("Chrome Diopside", "Хромдиопсид", 135f, 0.7f, 0.5f),
+            NuancierCouleur("Larimar", "Пектолит", 195f, 0.35f, 0.8f)
         )
     )
 
@@ -358,7 +477,24 @@ object NuancierInfo {
             NuancierCouleur("Rose de France", "Amethist", 280f, 0.25f, 0.85f),
             NuancierCouleur("Hot Pink", "Spinel", 330f, 0.7f, 0.8f),
             NuancierCouleur("Starlite", "Zirkoon", 210f, 0.6f, 0.75f),
-            NuancierCouleur("Lilac", "Kunziet", 300f, 0.3f, 0.85f)
+            NuancierCouleur("Lilac", "Kunziet", 300f, 0.3f, 0.85f),
+            NuancierCouleur("Tanzanite", "Zoisiet", 260f, 0.6f, 0.55f),
+            NuancierCouleur("Persian Blue", "Turkoois", 185f, 0.55f, 0.65f),
+            NuancierCouleur("Sleeping Beauty", "Turkoois", 190f, 0.45f, 0.7f),
+            NuancierCouleur("Fire Opal", "Opaal", 25f, 0.75f, 0.85f),
+            NuancierCouleur("Black Opal", "Opaal", 210f, 0.4f, 0.25f),
+            NuancierCouleur("Hessonite", "Granaat", 25f, 0.6f, 0.55f),
+            NuancierCouleur("Malaya", "Granaat", 20f, 0.55f, 0.7f),
+            NuancierCouleur("Cobalt Blue", "Spinel", 215f, 0.65f, 0.6f),
+            NuancierCouleur("Flame Spinel", "Spinel", 15f, 0.8f, 0.6f),
+            NuancierCouleur("Water Sapphire", "Ioliet", 250f, 0.45f, 0.55f),
+            NuancierCouleur("Prasiolite", "Kwarts", 130f, 0.35f, 0.85f),
+            NuancierCouleur("Rose Quartz", "Kwarts", 340f, 0.25f, 0.9f),
+            NuancierCouleur("Smoky Quartz", "Kwarts", 30f, 0.3f, 0.4f),
+            NuancierCouleur("Ox Blood", "Koraal", 355f, 0.75f, 0.45f),
+            NuancierCouleur("Angel Skin", "Koraal", 10f, 0.35f, 0.85f),
+            NuancierCouleur("Chrome Diopside", "Chroomdiopsied", 135f, 0.7f, 0.5f),
+            NuancierCouleur("Larimar", "Pectoliet", 195f, 0.35f, 0.8f)
         )
     )
 
@@ -400,7 +536,24 @@ object NuancierInfo {
             NuancierCouleur("Rose de France", "紫水晶", 280f, 0.25f, 0.85f),
             NuancierCouleur("Hot Pink", "尖晶石", 330f, 0.7f, 0.8f),
             NuancierCouleur("Starlite", "锆石", 210f, 0.6f, 0.75f),
-            NuancierCouleur("Lilac", "紫锂辉石", 300f, 0.3f, 0.85f)
+            NuancierCouleur("Lilac", "紫锂辉石", 300f, 0.3f, 0.85f),
+            NuancierCouleur("Tanzanite", "黝帘石", 260f, 0.6f, 0.55f),
+            NuancierCouleur("Persian Blue", "绿松石", 185f, 0.55f, 0.65f),
+            NuancierCouleur("Sleeping Beauty", "绿松石", 190f, 0.45f, 0.7f),
+            NuancierCouleur("Fire Opal", "蛋白石", 25f, 0.75f, 0.85f),
+            NuancierCouleur("Black Opal", "蛋白石", 210f, 0.4f, 0.25f),
+            NuancierCouleur("Hessonite", "石榴石", 25f, 0.6f, 0.55f),
+            NuancierCouleur("Malaya", "石榴石", 20f, 0.55f, 0.7f),
+            NuancierCouleur("Cobalt Blue", "尖晶石", 215f, 0.65f, 0.6f),
+            NuancierCouleur("Flame Spinel", "尖晶石", 15f, 0.8f, 0.6f),
+            NuancierCouleur("Water Sapphire", "堇青石", 250f, 0.45f, 0.55f),
+            NuancierCouleur("Prasiolite", "石英", 130f, 0.35f, 0.85f),
+            NuancierCouleur("Rose Quartz", "石英", 340f, 0.25f, 0.9f),
+            NuancierCouleur("Smoky Quartz", "石英", 30f, 0.3f, 0.4f),
+            NuancierCouleur("Ox Blood", "珊瑚", 355f, 0.75f, 0.45f),
+            NuancierCouleur("Angel Skin", "珊瑚", 10f, 0.35f, 0.85f),
+            NuancierCouleur("Chrome Diopside", "铬透辉石", 135f, 0.7f, 0.5f),
+            NuancierCouleur("Larimar", "针钠钙石", 195f, 0.35f, 0.8f)
         )
     )
 
