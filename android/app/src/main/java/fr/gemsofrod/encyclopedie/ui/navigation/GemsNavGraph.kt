@@ -1,5 +1,10 @@
 package fr.gemsofrod.encyclopedie.ui.navigation
 
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -77,6 +82,8 @@ import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import kotlinx.coroutines.delay
 import java.net.URLDecoder
 import java.net.URLEncoder
+
+private const val NAV_TRANSITION_MS = 280
 
 private object Routes {
     const val HOME = "home"
@@ -188,7 +195,27 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
     AchievementUnlockNotifier(snackbarHostState)
 
     Box(modifier = Modifier.fillMaxSize()) {
-    NavHost(navController = navController, startDestination = Routes.HOME) {
+    NavHost(
+        navController = navController,
+        startDestination = Routes.HOME,
+        // Transitions discrètes (fondu + léger glissement) plutôt que le
+        // changement d'écran brutal par défaut — cohérent avec le ton
+        // feutré de la marque, sans effet trop marqué.
+        enterTransition = {
+            fadeIn(animationSpec = tween(NAV_TRANSITION_MS)) +
+                slideInHorizontally(animationSpec = tween(NAV_TRANSITION_MS)) { it / 8 }
+        },
+        exitTransition = {
+            fadeOut(animationSpec = tween(NAV_TRANSITION_MS))
+        },
+        popEnterTransition = {
+            fadeIn(animationSpec = tween(NAV_TRANSITION_MS))
+        },
+        popExitTransition = {
+            fadeOut(animationSpec = tween(NAV_TRANSITION_MS)) +
+                slideOutHorizontally(animationSpec = tween(NAV_TRANSITION_MS)) { it / 8 }
+        }
+    ) {
         composable(Routes.HOME) {
             HomeScreen(
                 onGemmologieClick = { navController.navigate(Routes.CATEGORIES) },
