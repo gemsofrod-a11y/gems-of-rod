@@ -2,29 +2,59 @@ package fr.gemsofrod.encyclopedie.data
 
 import android.content.Context
 import android.net.Uri
+import java.io.ByteArrayInputStream
 import java.text.SimpleDateFormat
 import java.util.Locale
+import java.util.zip.ZipInputStream
 
 data class StockCsvImportResult(val imported: Int, val skipped: Int)
 
 /**
- * Importe un fichier CSV généré par [StockCsvExporter] (même format : « ; »
+ * Importe une archive générée par [StockCsvExporter.exportZip] (« ; »
  * comme séparateur, champs entre guillemets, en-tête sur la première
- * ligne) — pensé pour transférer le stock d'un téléphone à un autre via le
- * fichier exporté. Chaque ligne valide devient une nouvelle fiche : aucune
- * correspondance avec le stock existant, un import répété du même fichier
- * crée donc des doublons. Les photos ne font pas partie du CSV et ne sont
- * donc jamais réimportées.
+ * ligne, photos dans « photos/ ») — pensé pour transférer le stock d'un
+ * téléphone à un autre, photos comprises. Accepte aussi un simple fichier
+ * .csv sans photos (anciens exports, ou fichier édité à la main) : le
+ * format est détecté à partir du contenu, pas de l'extension. Chaque ligne
+ * valide devient une nouvelle fiche : aucune correspondance avec le stock
+ * existant, un import répété du même fichier crée donc des doublons.
  */
 object StockCsvImporter {
     private val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE)
-    private const val EXPECTED_COLUMNS = 15
+    private const val MIN_COLUMNS = 15
+    private val ZIP_MAGIC = byteArrayOf(0x50, 0x4B) // "PK"
 
     fun import(context: Context, uri: Uri): StockCsvImportResult {
-        val text = context.contentResolver.openInputStream(uri)?.use { stream ->
-            stream.readBytes().toString(Charsets.UTF_8)
-        } ?: return StockCsvImportResult(0, 0)
+        val bytes = context.contentResolver.openInputStream(uri)?.use { it.readBytes() }
+            ?: return StockCsvImportResult(0, 0)
 
+        return if (bytes.size >= 2 && bytes[0] == ZIP_MAGIC[0] && bytes[1] == ZIP_MAGIC[1]) {
+            importZip(context, bytes)
+        } else {
+            importRows(context, bytes.toString(Charsets.UTF_8), emptyMap())
+        }
+    }
+
+    private fun importZip(context: Context, bytes: ByteArray): StockCsvImportResult {
+        var csvText: String? = null
+        val photos = mutableMapOf<String, ByteArray>()
+
+        ZipInputStream(ByteArrayInputStream(bytes)).use { zip ->
+            generateSequence { zip.nextEntry }.forEach { entry ->
+                val content = zip.readBytes()
+                when {
+                    entry.name == "stock.csv" -> csvText = content.toString(Charsets.UTF_8)
+                    entry.name.startsWith("photos/") -> photos[entry.name.removePrefix("photos/")] = content
+                }
+                zip.closeEntry()
+            }
+        }
+
+        val text = csvText ?: return StockCsvImportResult(0, 0)
+        return importRows(context, text, photos)
+    }
+
+    private fun importRows(context: Context, text: String, photos: Map<String, ByteArray>): StockCsvImportResult {
         // Retire le BOM UTF-8 ajouté par l'export, sinon la première colonne
         // du premier champ ("Nom") contiendrait le caractère invisible.
         val cleaned = text.removePrefix("﻿")
@@ -34,7 +64,7 @@ object StockCsvImporter {
         var imported = 0
         var skipped = 0
         rows.drop(1).forEach { fields -> // ignore la ligne d'en-tête
-            val item = fieldsToItem(fields)
+            val item = fieldsToItem(context, fields, photos)
             if (item != null) {
                 StockRepository.addItem(item)
                 imported++
@@ -45,10 +75,18 @@ object StockCsvImporter {
         return StockCsvImportResult(imported, skipped)
     }
 
-    private fun fieldsToItem(fields: List<String>): StockItem? {
-        if (fields.size < EXPECTED_COLUMNS) return null
+    private fun fieldsToItem(context: Context, fields: List<String>, photos: Map<String, ByteArray>): StockItem? {
+        if (fields.size < MIN_COLUMNS) return null
         val nom = fields[0]
         if (nom.isBlank()) return null
+
+        // Ne réutilise jamais le nom de fichier de l'archive : un nom local
+        // frais évite toute collision avec une photo déjà présente ici.
+        val photoFileName = fields.getOrNull(15)
+            ?.takeIf { it.isNotBlank() }
+            ?.let { key -> photos[key] }
+            ?.let { imageBytes -> StockPhotoStorage.saveImportedPhoto(context, imageBytes) }
+
         return StockItem(
             id = "",
             nom = nom,
@@ -67,7 +105,7 @@ object StockCsvImporter {
             prixVente = fields[12].toDoubleOrNull(),
             statut = runCatching { StockStatus.valueOf(fields[13]) }.getOrDefault(StockStatus.EN_STOCK),
             notes = fields[14],
-            photoFileName = null,
+            photoFileName = photoFileName,
             createdAtMillis = 0L
         )
     }

@@ -33,6 +33,20 @@ object StockPhotoStorage {
         runCatching { photoFile(context, fileName).delete() }
     }
 
+    /** Octets bruts de la photo (pour l'inclure telle quelle dans l'archive d'export), ou null si absente. */
+    fun photoBytesOrNull(context: Context, fileName: String?): ByteArray? {
+        if (fileName == null) return null
+        val file = photoFile(context, fileName)
+        return if (file.exists()) file.readBytes() else null
+    }
+
+    /** Enregistre des octets JPEG déjà encodés (extraits d'une archive importée) sous un nouveau nom de fichier local unique — jamais celui de l'archive, pour éviter toute collision avec les photos déjà présentes sur cet appareil. */
+    fun saveImportedPhoto(context: Context, bytes: ByteArray): String {
+        val fileName = "stock_import_${System.currentTimeMillis()}_${(0..999999).random()}.jpg"
+        photoFile(context, fileName).writeBytes(bytes)
+        return fileName
+    }
+
     /** Décode la photo sous-échantillonnée à environ [targetPx] (× 2 de marge), ou null si absente. */
     fun loadSampledBitmap(context: Context, fileName: String?, targetPx: Int): Bitmap? {
         if (fileName == null) return null

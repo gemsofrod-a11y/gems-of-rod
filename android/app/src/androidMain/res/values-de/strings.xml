@@ -430,7 +430,7 @@
     <string name="stock_title">Lager</string>
     <string name="stock_empty_state">Keine Steine im Lager. Fügen Sie Ihren ersten Eintrag hinzu.</string>
     <string name="stock_add_button">Stein hinzufügen</string>
-    <string name="stock_export_button">Als CSV exportieren</string>
+    <string name="stock_export_button">Exportieren (CSV + Fotos)</string>
     <string name="stock_export_chooser_title">Lager exportieren</string>
     <string name="stock_import_button">CSV importieren</string>
     <string name="stock_import_result_title">Import abgeschlossen</string>

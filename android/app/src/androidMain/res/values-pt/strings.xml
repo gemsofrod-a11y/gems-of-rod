@@ -430,7 +430,7 @@
     <string name="stock_title">Stock</string>
     <string name="stock_empty_state">Nenhuma pedra em stock. Adicione a sua primeira ficha.</string>
     <string name="stock_add_button">Adicionar uma pedra</string>
-    <string name="stock_export_button">Exportar em CSV</string>
+    <string name="stock_export_button">Exportar (CSV + fotos)</string>
     <string name="stock_export_chooser_title">Exportar o stock</string>
     <string name="stock_import_button">Importar CSV</string>
     <string name="stock_import_result_title">Importação concluída</string>

@@ -127,7 +127,7 @@ fun StockListScreen(
                             isExporting = true
                             scope.launch {
                                 val file = withContext(Dispatchers.IO) {
-                                    StockCsvExporter.export(context, items)
+                                    StockCsvExporter.exportZip(context, items)
                                 }
                                 isExporting = false
                                 val uri = FileProvider.getUriForFile(
@@ -136,7 +136,7 @@ fun StockListScreen(
                                     file
                                 )
                                 val sendIntent = Intent(Intent.ACTION_SEND).apply {
-                                    type = "text/csv"
+                                    type = "application/zip"
                                     putExtra(Intent.EXTRA_STREAM, uri)
                                     addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                                 }

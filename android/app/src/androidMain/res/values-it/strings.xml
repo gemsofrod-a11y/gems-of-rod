@@ -430,7 +430,7 @@
     <string name="stock_title">Magazzino</string>
     <string name="stock_empty_state">Nessuna pietra in magazzino. Aggiungi la tua prima scheda.</string>
     <string name="stock_add_button">Aggiungi una pietra</string>
-    <string name="stock_export_button">Esporta in CSV</string>
+    <string name="stock_export_button">Esporta (CSV + foto)</string>
     <string name="stock_export_chooser_title">Esporta il magazzino</string>
     <string name="stock_import_button">Importa CSV</string>
     <string name="stock_import_result_title">Importazione completata</string>
