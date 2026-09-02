@@ -432,6 +432,12 @@
     <string name="stock_add_button">Добавить камень</string>
     <string name="stock_export_button">Экспортировать в CSV</string>
     <string name="stock_export_chooser_title">Экспортировать склад</string>
+    <string name="stock_import_button">Импортировать CSV</string>
+    <string name="stock_import_result_title">Импорт завершён</string>
+    <string name="stock_import_count_format">Импортировано камней: %1$d</string>
+    <string name="stock_import_skipped_format">Пропущено строк: %1$d</string>
+    <string name="stock_import_empty_error">В этом файле не найдено допустимых данных.</string>
+    <string name="stock_import_ok_button">ОК</string>
     <string name="stock_weight_ct_format">%1$s кар</string>
     <string name="stock_add_title">Новый камень</string>
     <string name="stock_edit_title">Изменить камень</string>

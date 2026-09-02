@@ -432,6 +432,12 @@
     <string name="stock_add_button">Add a stone</string>
     <string name="stock_export_button">Export as CSV</string>
     <string name="stock_export_chooser_title">Export stock</string>
+    <string name="stock_import_button">Import CSV</string>
+    <string name="stock_import_result_title">Import complete</string>
+    <string name="stock_import_count_format">%1$d stone(s) imported</string>
+    <string name="stock_import_skipped_format">%1$d row(s) skipped</string>
+    <string name="stock_import_empty_error">No valid data found in this file.</string>
+    <string name="stock_import_ok_button">OK</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">New stone</string>
     <string name="stock_edit_title">Edit stone</string>

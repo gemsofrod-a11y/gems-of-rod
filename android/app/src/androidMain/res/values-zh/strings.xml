@@ -432,6 +432,12 @@
     <string name="stock_add_button">添加宝石</string>
     <string name="stock_export_button">导出为CSV</string>
     <string name="stock_export_chooser_title">导出库存</string>
+    <string name="stock_import_button">导入 CSV</string>
+    <string name="stock_import_result_title">导入完成</string>
+    <string name="stock_import_count_format">已导入 %1$d 颗宝石</string>
+    <string name="stock_import_skipped_format">已跳过 %1$d 行</string>
+    <string name="stock_import_empty_error">此文件中未找到有效数据。</string>
+    <string name="stock_import_ok_button">好</string>
     <string name="stock_weight_ct_format">%1$s 克拉</string>
     <string name="stock_add_title">新增宝石</string>
     <string name="stock_edit_title">编辑宝石</string>
