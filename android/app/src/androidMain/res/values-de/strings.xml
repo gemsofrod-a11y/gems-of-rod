@@ -432,6 +432,12 @@
     <string name="stock_add_button">Stein hinzufügen</string>
     <string name="stock_export_button">Als CSV exportieren</string>
     <string name="stock_export_chooser_title">Lager exportieren</string>
+    <string name="stock_import_button">CSV importieren</string>
+    <string name="stock_import_result_title">Import abgeschlossen</string>
+    <string name="stock_import_count_format">%1$d Stein(e) importiert</string>
+    <string name="stock_import_skipped_format">%1$d Zeile(n) übersprungen</string>
+    <string name="stock_import_empty_error">Keine gültigen Daten in dieser Datei gefunden.</string>
+    <string name="stock_import_ok_button">OK</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">Neuer Stein</string>
     <string name="stock_edit_title">Stein bearbeiten</string>

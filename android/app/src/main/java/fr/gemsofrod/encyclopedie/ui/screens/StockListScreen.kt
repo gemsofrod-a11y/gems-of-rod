@@ -1,6 +1,9 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
 import android.content.Intent
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,7 +21,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Diamond
+import androidx.compose.material.icons.filled.UploadFile
 import androidx.compose.material.icons.filled.IosShare
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -28,6 +33,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -48,6 +54,8 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.StockCsvExporter
+import fr.gemsofrod.encyclopedie.data.StockCsvImportResult
+import fr.gemsofrod.encyclopedie.data.StockCsvImporter
 import fr.gemsofrod.encyclopedie.data.StockItem
 import fr.gemsofrod.encyclopedie.data.StockRepository
 import fr.gemsofrod.encyclopedie.data.StockStatus
@@ -77,7 +85,21 @@ fun StockListScreen(
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     var isExporting by remember { mutableStateOf(false) }
+    var isImporting by remember { mutableStateOf(false) }
+    var importResult by remember { mutableStateOf<StockCsvImportResult?>(null) }
     val exportChooserTitle = stringResource(R.string.stock_export_chooser_title)
+
+    val importPicker = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        if (uri == null || isImporting) return@rememberLauncherForActivityResult
+        isImporting = true
+        scope.launch {
+            val result = withContext(Dispatchers.IO) { StockCsvImporter.import(context, uri) }
+            isImporting = false
+            importResult = result
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -89,6 +111,16 @@ fun StockListScreen(
                     }
                 },
                 actions = {
+                    IconButton(
+                        onClick = { if (!isImporting) importPicker.launch("*/*") },
+                        enabled = !isImporting
+                    ) {
+                        if (isImporting) {
+                            CircularProgressIndicator(modifier = Modifier.size(20.dp), strokeWidth = 2.dp)
+                        } else {
+                            Icon(Icons.Filled.UploadFile, contentDescription = stringResource(R.string.stock_import_button))
+                        }
+                    }
                     IconButton(
                         onClick = {
                             if (isExporting || items.isEmpty()) return@IconButton
@@ -179,6 +211,30 @@ fun StockListScreen(
                 }
             }
         }
+    }
+
+    importResult?.let { result ->
+        AlertDialog(
+            onDismissRequest = { importResult = null },
+            title = { Text(stringResource(R.string.stock_import_result_title)) },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    if (result.imported == 0 && result.skipped == 0) {
+                        Text(stringResource(R.string.stock_import_empty_error))
+                    } else {
+                        Text(stringResource(R.string.stock_import_count_format, result.imported))
+                        if (result.skipped > 0) {
+                            Text(stringResource(R.string.stock_import_skipped_format, result.skipped))
+                        }
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { importResult = null }) {
+                    Text(stringResource(R.string.stock_import_ok_button))
+                }
+            }
+        )
     }
 }
 
