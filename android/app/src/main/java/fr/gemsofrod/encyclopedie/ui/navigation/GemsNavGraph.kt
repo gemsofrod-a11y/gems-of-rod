@@ -3,13 +3,14 @@ package fr.gemsofrod.encyclopedie.ui.navigation
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -83,7 +84,8 @@ import kotlinx.coroutines.delay
 import java.net.URLDecoder
 import java.net.URLEncoder
 
-private const val NAV_TRANSITION_MS = 280
+private const val NAV_TRANSITION_MS = 360
+private val NAV_TRANSITION_ORIGIN = TransformOrigin(0.82f, 0.18f)
 
 private object Routes {
     const val HOME = "home"
@@ -198,12 +200,19 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
     NavHost(
         navController = navController,
         startDestination = Routes.HOME,
-        // Transitions discrètes (fondu + léger glissement) plutôt que le
-        // changement d'écran brutal par défaut — cohérent avec le ton
-        // feutré de la marque, sans effet trop marqué.
+        // Effet "écrin qui s'ouvre" : l'écran entrant apparaît en zoom-fondu
+        // depuis un point ancré en haut à droite, comme un coffret qu'on
+        // entrouvre, plutôt qu'un simple glissement latéral. Pas de vrai
+        // clip circulaire (non disponible nativement dans les transitions
+        // de Navigation Compose) : le zoom-fondu ancré donne la même
+        // sensation d'ouverture.
         enterTransition = {
             fadeIn(animationSpec = tween(NAV_TRANSITION_MS)) +
-                slideInHorizontally(animationSpec = tween(NAV_TRANSITION_MS)) { it / 8 }
+                scaleIn(
+                    animationSpec = tween(NAV_TRANSITION_MS),
+                    initialScale = 0.86f,
+                    transformOrigin = NAV_TRANSITION_ORIGIN
+                )
         },
         exitTransition = {
             fadeOut(animationSpec = tween(NAV_TRANSITION_MS))
@@ -213,7 +222,11 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         },
         popExitTransition = {
             fadeOut(animationSpec = tween(NAV_TRANSITION_MS)) +
-                slideOutHorizontally(animationSpec = tween(NAV_TRANSITION_MS)) { it / 8 }
+                scaleOut(
+                    animationSpec = tween(NAV_TRANSITION_MS),
+                    targetScale = 0.86f,
+                    transformOrigin = NAV_TRANSITION_ORIGIN
+                )
         }
     ) {
         composable(Routes.HOME) {
