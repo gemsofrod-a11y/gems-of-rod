@@ -461,6 +461,14 @@
     <string name="stock_status_reserve">Reserviert</string>
     <string name="stock_status_vendu">Verkauft</string>
     <string name="stock_status_consignation">Kommission</string>
+    <string name="stock_field_reference_label">Produktreferenz</string>
+    <string name="stock_label_section_title">Produktetikett</string>
+    <string name="stock_label_qr_option">QR-Code</string>
+    <string name="stock_label_barcode_option">Strichcode</string>
+    <string name="stock_label_print_button">Drucken</string>
+    <string name="stock_label_print_hint">Im Originalmaßstab (100 %) ohne Skalierung drucken, für ein Ergebnis von 3 × 3 cm.</string>
+    <string name="stock_label_unnamed">Unbenannt</string>
+    <string name="stock_label_reference_prefix">Ref. %1$s</string>
 
     <!-- Lapidar (Steinschleifen) -->
     <string name="lapidaire_title">Lapidar</string>

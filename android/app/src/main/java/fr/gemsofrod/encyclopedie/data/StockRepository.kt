@@ -26,6 +26,7 @@ enum class StockStatus {
 data class StockItem(
     val id: String,
     val nom: String,
+    val reference: String,
     val catalogGemId: String?,
     val poidsCarats: Double?,
     val taille: String,
@@ -51,6 +52,7 @@ private fun JSONObject.longOrNull(key: String): Long? = if (has(key) && !isNull(
 private fun StockItem.toJson(): JSONObject = JSONObject().apply {
     put("id", id)
     put("nom", nom)
+    put("reference", reference)
     catalogGemId?.let { put("catalogGemId", it) }
     poidsCarats?.let { put("poidsCarats", it) }
     put("taille", taille)
@@ -72,6 +74,7 @@ private fun StockItem.toJson(): JSONObject = JSONObject().apply {
 private fun itemFromJson(obj: JSONObject): StockItem = StockItem(
     id = obj.getString("id"),
     nom = obj.stringOrEmpty("nom"),
+    reference = obj.stringOrEmpty("reference"),
     catalogGemId = if (obj.has("catalogGemId")) obj.getString("catalogGemId") else null,
     poidsCarats = obj.doubleOrNull("poidsCarats"),
     taille = obj.stringOrEmpty("taille"),

@@ -461,6 +461,14 @@
     <string name="stock_status_reserve">Reserved</string>
     <string name="stock_status_vendu">Sold</string>
     <string name="stock_status_consignation">Consignment</string>
+    <string name="stock_field_reference_label">Product reference</string>
+    <string name="stock_label_section_title">Product label</string>
+    <string name="stock_label_qr_option">QR code</string>
+    <string name="stock_label_barcode_option">Barcode</string>
+    <string name="stock_label_print_button">Print</string>
+    <string name="stock_label_print_hint">Print at actual size (100%), with no scaling, for a 3 × 3 cm result.</string>
+    <string name="stock_label_unnamed">Unnamed</string>
+    <string name="stock_label_reference_prefix">Ref. %1$s</string>
 
     <!-- Lapidary -->
     <string name="lapidaire_title">Lapidary</string>

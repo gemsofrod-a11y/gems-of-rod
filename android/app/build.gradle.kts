@@ -26,8 +26,8 @@ android {
         applicationId = "fr.gemsofrod.encyclopedie"
         minSdk = 26
         targetSdk = 36
-        versionCode = 130
-        versionName = "9.27"
+        versionCode = 131
+        versionName = "9.28"
     }
 
     signingConfigs {
@@ -143,6 +143,9 @@ kotlin {
                 implementation("androidx.camera:camera-camera2:1.4.1")
                 implementation("androidx.camera:camera-lifecycle:1.4.1")
                 implementation("androidx.camera:camera-view:1.4.1")
+                // Génération d'étiquettes QR/code-barres pour le stock (pas de scan,
+                // seul le module "core" est nécessaire — pur Java, sans dépendance).
+                implementation("com.google.zxing:core:3.5.3")
             }
         }
 

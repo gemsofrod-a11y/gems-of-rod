@@ -83,6 +83,7 @@ fun StockFormScreen(itemId: String?, onSaveComplete: () -> Unit, onBackClick: ()
     val existing = remember(itemId) { itemId?.let { StockRepository.itemById(it) } }
 
     var nom by remember { mutableStateOf(existing?.nom ?: "") }
+    var reference by remember { mutableStateOf(existing?.reference ?: "") }
     var catalogGemId by remember { mutableStateOf(existing?.catalogGemId) }
     var poidsCarats by remember { mutableStateOf(existing?.poidsCarats?.toString() ?: "") }
     var taille by remember { mutableStateOf(existing?.taille ?: "") }
@@ -155,6 +156,7 @@ fun StockFormScreen(itemId: String?, onSaveComplete: () -> Unit, onBackClick: ()
                                 val item = StockItem(
                                     id = existing?.id ?: "",
                                     nom = nom,
+                                    reference = reference,
                                     catalogGemId = catalogGemId,
                                     poidsCarats = parseDecimalOrNull(poidsCarats),
                                     taille = taille,
@@ -232,6 +234,11 @@ fun StockFormScreen(itemId: String?, onSaveComplete: () -> Unit, onBackClick: ()
                 }
             }
 
+            StockField(
+                label = stringResource(R.string.stock_field_reference_label),
+                value = reference,
+                onValueChange = { reference = it }
+            )
             StockField(
                 label = stringResource(R.string.stock_field_weight_label),
                 value = poidsCarats,
