@@ -443,6 +443,13 @@
     <string name="stock_delete_confirm_message">Deze actie kan niet ongedaan worden gemaakt.</string>
     <string name="stock_delete_confirm_action">Verwijderen</string>
     <string name="stock_photo_picker_hint">Foto toevoegen</string>
+    <string name="stock_photo_gallery_button">Galerij</string>
+    <string name="stock_photo_camera_button">Camera</string>
+    <string name="stock_camera_permission_rationale">Cameratoegang is nodig om de steen rechtstreeks te fotograferen.</string>
+    <string name="stock_camera_permission_request">Camera toestaan</string>
+    <string name="stock_camera_close_cd">Sluiten</string>
+    <string name="stock_camera_capture_cd">Foto maken</string>
+    <string name="stock_camera_error">Opname mislukt. Probeer opnieuw.</string>
     <string name="stock_field_name_label">Naam</string>
     <string name="stock_field_weight_label">Gewicht (karaat)</string>
     <string name="stock_field_cut_label">Slijpvorm</string>

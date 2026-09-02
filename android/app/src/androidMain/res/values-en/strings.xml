@@ -443,6 +443,13 @@
     <string name="stock_delete_confirm_message">This action cannot be undone.</string>
     <string name="stock_delete_confirm_action">Delete</string>
     <string name="stock_photo_picker_hint">Add a photo</string>
+    <string name="stock_photo_gallery_button">Gallery</string>
+    <string name="stock_photo_camera_button">Camera</string>
+    <string name="stock_camera_permission_rationale">Camera access is needed to photograph the stone directly.</string>
+    <string name="stock_camera_permission_request">Allow camera access</string>
+    <string name="stock_camera_close_cd">Close</string>
+    <string name="stock_camera_capture_cd">Take photo</string>
+    <string name="stock_camera_error">Capture failed. Try again.</string>
     <string name="stock_field_name_label">Name</string>
     <string name="stock_field_weight_label">Weight (carats)</string>
     <string name="stock_field_cut_label">Cut</string>

@@ -443,6 +443,13 @@
     <string name="stock_delete_confirm_message">Esta ação é irreversível.</string>
     <string name="stock_delete_confirm_action">Eliminar</string>
     <string name="stock_photo_picker_hint">Adicionar uma foto</string>
+    <string name="stock_photo_gallery_button">Galeria</string>
+    <string name="stock_photo_camera_button">Câmera</string>
+    <string name="stock_camera_permission_rationale">O acesso à câmera é necessário para fotografar a pedra diretamente.</string>
+    <string name="stock_camera_permission_request">Permitir câmera</string>
+    <string name="stock_camera_close_cd">Fechar</string>
+    <string name="stock_camera_capture_cd">Tirar foto</string>
+    <string name="stock_camera_error">Falha na captura. Tente novamente.</string>
     <string name="stock_field_name_label">Nome</string>
     <string name="stock_field_weight_label">Peso (quilates)</string>
     <string name="stock_field_cut_label">Lapidação</string>

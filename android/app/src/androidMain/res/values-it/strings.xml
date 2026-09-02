@@ -443,6 +443,13 @@
     <string name="stock_delete_confirm_message">Questa azione è irreversibile.</string>
     <string name="stock_delete_confirm_action">Elimina</string>
     <string name="stock_photo_picker_hint">Aggiungi una foto</string>
+    <string name="stock_photo_gallery_button">Galleria</string>
+    <string name="stock_photo_camera_button">Fotocamera</string>
+    <string name="stock_camera_permission_rationale">L\'accesso alla fotocamera è necessario per fotografare direttamente la pietra.</string>
+    <string name="stock_camera_permission_request">Consenti fotocamera</string>
+    <string name="stock_camera_close_cd">Chiudi</string>
+    <string name="stock_camera_capture_cd">Scatta foto</string>
+    <string name="stock_camera_error">Cattura non riuscita. Riprova.</string>
     <string name="stock_field_name_label">Nome</string>
     <string name="stock_field_weight_label">Peso (carati)</string>
     <string name="stock_field_cut_label">Taglio</string>
