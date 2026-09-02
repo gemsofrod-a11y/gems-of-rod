@@ -443,6 +443,13 @@
     <string name="stock_delete_confirm_message">Это действие необратимо.</string>
     <string name="stock_delete_confirm_action">Удалить</string>
     <string name="stock_photo_picker_hint">Добавить фото</string>
+    <string name="stock_photo_gallery_button">Галерея</string>
+    <string name="stock_photo_camera_button">Камера</string>
+    <string name="stock_camera_permission_rationale">Для съёмки камня напрямую нужен доступ к камере.</string>
+    <string name="stock_camera_permission_request">Разрешить камеру</string>
+    <string name="stock_camera_close_cd">Закрыть</string>
+    <string name="stock_camera_capture_cd">Сделать снимок</string>
+    <string name="stock_camera_error">Не удалось сделать снимок. Повторите попытку.</string>
     <string name="stock_field_name_label">Название</string>
     <string name="stock_field_weight_label">Вес (караты)</string>
     <string name="stock_field_cut_label">Огранка</string>

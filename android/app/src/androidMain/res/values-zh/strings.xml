@@ -443,6 +443,13 @@
     <string name="stock_delete_confirm_message">此操作无法撤销。</string>
     <string name="stock_delete_confirm_action">删除</string>
     <string name="stock_photo_picker_hint">添加照片</string>
+    <string name="stock_photo_gallery_button">相册</string>
+    <string name="stock_photo_camera_button">相机</string>
+    <string name="stock_camera_permission_rationale">需要相机权限才能直接拍摄这颗宝石。</string>
+    <string name="stock_camera_permission_request">允许使用相机</string>
+    <string name="stock_camera_close_cd">关闭</string>
+    <string name="stock_camera_capture_cd">拍照</string>
+    <string name="stock_camera_error">拍摄失败，请重试。</string>
     <string name="stock_field_name_label">名称</string>
     <string name="stock_field_weight_label">重量（克拉）</string>
     <string name="stock_field_cut_label">切工</string>

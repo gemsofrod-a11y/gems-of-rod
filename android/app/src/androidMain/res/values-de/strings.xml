@@ -443,6 +443,13 @@
     <string name="stock_delete_confirm_message">Diese Aktion kann nicht rückgängig gemacht werden.</string>
     <string name="stock_delete_confirm_action">Löschen</string>
     <string name="stock_photo_picker_hint">Foto hinzufügen</string>
+    <string name="stock_photo_gallery_button">Galerie</string>
+    <string name="stock_photo_camera_button">Kamera</string>
+    <string name="stock_camera_permission_rationale">Für das direkte Fotografieren des Steins ist Kamerazugriff erforderlich.</string>
+    <string name="stock_camera_permission_request">Kamera erlauben</string>
+    <string name="stock_camera_close_cd">Schließen</string>
+    <string name="stock_camera_capture_cd">Foto aufnehmen</string>
+    <string name="stock_camera_error">Aufnahme fehlgeschlagen. Bitte erneut versuchen.</string>
     <string name="stock_field_name_label">Name</string>
     <string name="stock_field_weight_label">Gewicht (Karat)</string>
     <string name="stock_field_cut_label">Schliff</string>
