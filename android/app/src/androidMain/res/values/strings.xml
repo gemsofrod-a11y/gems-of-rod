@@ -461,6 +461,14 @@
     <string name="stock_status_reserve">Réservée</string>
     <string name="stock_status_vendu">Vendue</string>
     <string name="stock_status_consignation">Consignation</string>
+    <string name="stock_field_reference_label">Référence produit</string>
+    <string name="stock_label_section_title">Étiquette produit</string>
+    <string name="stock_label_qr_option">QR code</string>
+    <string name="stock_label_barcode_option">Code-barres</string>
+    <string name="stock_label_print_button">Imprimer</string>
+    <string name="stock_label_print_hint">Imprimez à taille réelle (100 %), sans mise à l\'échelle, pour un rendu de 3 × 3 cm.</string>
+    <string name="stock_label_unnamed">Sans nom</string>
+    <string name="stock_label_reference_prefix">Réf. %1$s</string>
 
     <!-- Lapidaire -->
     <string name="lapidaire_title">Lapidaire</string>

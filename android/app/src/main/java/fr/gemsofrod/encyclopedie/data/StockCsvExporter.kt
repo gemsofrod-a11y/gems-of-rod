@@ -20,7 +20,7 @@ object StockCsvExporter {
 
     fun export(context: Context, items: List<StockItem>): File {
         val header = listOf(
-            "Nom", "Poids (ct)", "Taille", "Couleur", "Pureté", "Traitement",
+            "Nom", "Référence", "Poids (ct)", "Taille", "Couleur", "Pureté", "Traitement",
             "N° certificat", "Laboratoire", "Fournisseur", "Date d'achat",
             "Coût d'achat (€)", "Prix de vente (€)", "Statut", "Notes"
         ).joinToString(";") { csvField(it) }
@@ -28,6 +28,7 @@ object StockCsvExporter {
         val rows = items.sortedByDescending { it.createdAtMillis }.map { item ->
             listOf(
                 item.nom,
+                item.reference,
                 item.poidsCarats?.toString() ?: "",
                 item.taille,
                 item.couleur,

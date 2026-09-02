@@ -461,6 +461,14 @@
     <string name="stock_status_reserve">Gereserveerd</string>
     <string name="stock_status_vendu">Verkocht</string>
     <string name="stock_status_consignation">Consignatie</string>
+    <string name="stock_field_reference_label">Productreferentie</string>
+    <string name="stock_label_section_title">Productlabel</string>
+    <string name="stock_label_qr_option">QR-code</string>
+    <string name="stock_label_barcode_option">Streepjescode</string>
+    <string name="stock_label_print_button">Afdrukken</string>
+    <string name="stock_label_print_hint">Druk af op ware grootte (100%), zonder schalen, voor een resultaat van 3 × 3 cm.</string>
+    <string name="stock_label_unnamed">Naamloos</string>
+    <string name="stock_label_reference_prefix">Ref. %1$s</string>
 
     <!-- Lapidair (slijpen) -->
     <string name="lapidaire_title">Lapidair</string>

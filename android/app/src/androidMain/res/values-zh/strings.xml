@@ -461,6 +461,14 @@
     <string name="stock_status_reserve">已预订</string>
     <string name="stock_status_vendu">已售出</string>
     <string name="stock_status_consignation">寄售</string>
+    <string name="stock_field_reference_label">产品编号</string>
+    <string name="stock_label_section_title">产品标签</string>
+    <string name="stock_label_qr_option">二维码</string>
+    <string name="stock_label_barcode_option">条形码</string>
+    <string name="stock_label_print_button">打印</string>
+    <string name="stock_label_print_hint">请按实际尺寸（100%）打印，不要缩放，以获得 3 × 3 厘米的效果。</string>
+    <string name="stock_label_unnamed">未命名</string>
+    <string name="stock_label_reference_prefix">编号 %1$s</string>
 
     <!-- 宝石切磨 -->
     <string name="lapidaire_title">宝石切磨</string>

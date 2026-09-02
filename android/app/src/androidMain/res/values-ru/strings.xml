@@ -461,6 +461,14 @@
     <string name="stock_status_reserve">Забронирован</string>
     <string name="stock_status_vendu">Продан</string>
     <string name="stock_status_consignation">Консигнация</string>
+    <string name="stock_field_reference_label">Артикул товара</string>
+    <string name="stock_label_section_title">Этикетка товара</string>
+    <string name="stock_label_qr_option">QR-код</string>
+    <string name="stock_label_barcode_option">Штрихкод</string>
+    <string name="stock_label_print_button">Печать</string>
+    <string name="stock_label_print_hint">Печатайте в реальном размере (100%), без масштабирования, чтобы получить 3 × 3 см.</string>
+    <string name="stock_label_unnamed">Без названия</string>
+    <string name="stock_label_reference_prefix">Арт. %1$s</string>
 
     <!-- Огранка (лапидарное дело) -->
     <string name="lapidaire_title">Огранка</string>
