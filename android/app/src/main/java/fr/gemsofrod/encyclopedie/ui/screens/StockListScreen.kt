@@ -56,6 +56,8 @@ import fr.gemsofrod.encyclopedie.ui.rememberStockPhotoBitmap
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.NumberFormat
+import java.util.Locale
 
 /**
  * Liste du stock professionnel, de la fiche la plus récemment ajoutée à la
@@ -235,7 +237,18 @@ private fun StockItemRow(item: StockItem, onClick: () -> Unit) {
                     )
                 }
             }
-            StockStatusBadge(status = item.statut)
+            Column(horizontalAlignment = Alignment.End, verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                StockStatusBadge(status = item.statut)
+                item.prixVente?.let { price ->
+                    val currencyFormat = remember { NumberFormat.getCurrencyInstance(Locale.FRANCE) }
+                    Text(
+                        text = currencyFormat.format(price),
+                        style = MaterialTheme.typography.labelMedium,
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                }
+            }
         }
     }
 }
