@@ -430,7 +430,7 @@
     <string name="stock_title">Stock</string>
     <string name="stock_empty_state">No stones in stock. Add your first entry.</string>
     <string name="stock_add_button">Add a stone</string>
-    <string name="stock_export_button">Export as CSV</string>
+    <string name="stock_export_button">Export (CSV + photos)</string>
     <string name="stock_export_chooser_title">Export stock</string>
     <string name="stock_import_button">Import CSV</string>
     <string name="stock_import_result_title">Import complete</string>

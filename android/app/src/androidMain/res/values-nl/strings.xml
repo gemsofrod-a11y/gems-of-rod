@@ -430,7 +430,7 @@
     <string name="stock_title">Voorraad</string>
     <string name="stock_empty_state">Geen stenen op voorraad. Voeg uw eerste fiche toe.</string>
     <string name="stock_add_button">Steen toevoegen</string>
-    <string name="stock_export_button">Exporteren als CSV</string>
+    <string name="stock_export_button">Exporteren (CSV + foto\'s)</string>
     <string name="stock_export_chooser_title">Voorraad exporteren</string>
     <string name="stock_import_button">CSV importeren</string>
     <string name="stock_import_result_title">Import voltooid</string>

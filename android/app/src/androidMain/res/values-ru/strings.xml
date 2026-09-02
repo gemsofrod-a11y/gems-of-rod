@@ -430,7 +430,7 @@
     <string name="stock_title">Склад</string>
     <string name="stock_empty_state">На складе нет камней. Добавьте первую карточку.</string>
     <string name="stock_add_button">Добавить камень</string>
-    <string name="stock_export_button">Экспортировать в CSV</string>
+    <string name="stock_export_button">Экспортировать (CSV + фото)</string>
     <string name="stock_export_chooser_title">Экспортировать склад</string>
     <string name="stock_import_button">Импортировать CSV</string>
     <string name="stock_import_result_title">Импорт завершён</string>
