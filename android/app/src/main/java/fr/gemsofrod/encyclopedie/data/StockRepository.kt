@@ -44,7 +44,8 @@ data class StockItem(
     val photoFileName: String?,
     val createdAtMillis: Long,
     val acheteurNom: String = "",
-    val venteDateMillis: Long? = null
+    val venteDateMillis: Long? = null,
+    val factureNotes: String = ""
 )
 
 private fun JSONObject.stringOrEmpty(key: String): String = optString(key, "")
@@ -73,6 +74,7 @@ private fun StockItem.toJson(): JSONObject = JSONObject().apply {
     put("createdAtMillis", createdAtMillis)
     put("acheteurNom", acheteurNom)
     venteDateMillis?.let { put("venteDateMillis", it) }
+    put("factureNotes", factureNotes)
 }
 
 private fun itemFromJson(obj: JSONObject): StockItem = StockItem(
@@ -96,7 +98,8 @@ private fun itemFromJson(obj: JSONObject): StockItem = StockItem(
     photoFileName = if (obj.has("photoFileName")) obj.getString("photoFileName") else null,
     createdAtMillis = if (obj.has("createdAtMillis")) obj.getLong("createdAtMillis") else 0L,
     acheteurNom = obj.stringOrEmpty("acheteurNom"),
-    venteDateMillis = obj.longOrNull("venteDateMillis")
+    venteDateMillis = obj.longOrNull("venteDateMillis"),
+    factureNotes = obj.stringOrEmpty("factureNotes")
 )
 
 /**

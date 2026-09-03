@@ -477,6 +477,9 @@
     <string name="stock_backup_last_done_format">Laatste back-up: %1$s</string>
     <string name="stock_backup_reminder_format">Laatste back-up %1$d dagen geleden — overweeg een nieuwe.</string>
     <string name="stock_backup_now_button">Nu back-uppen</string>
+    <string name="stock_invoice_edit_dialog_title">Verkoopbon bewerken</string>
+    <string name="stock_invoice_notes_label">Bonopmerkingen (optioneel)</string>
+    <string name="stock_invoice_edit_confirm">Genereren</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">Nieuwe steen</string>
     <string name="stock_edit_title">Steen bewerken</string>

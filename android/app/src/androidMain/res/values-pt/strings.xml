@@ -477,6 +477,9 @@
     <string name="stock_backup_last_done_format">Última cópia de segurança: %1$s</string>
     <string name="stock_backup_reminder_format">Última cópia de segurança há %1$d dias — pondere fazer outra.</string>
     <string name="stock_backup_now_button">Fazer cópia de segurança agora</string>
+    <string name="stock_invoice_edit_dialog_title">Editar o recibo de venda</string>
+    <string name="stock_invoice_notes_label">Notas do recibo (opcional)</string>
+    <string name="stock_invoice_edit_confirm">Gerar</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">Nova pedra</string>
     <string name="stock_edit_title">Editar a pedra</string>

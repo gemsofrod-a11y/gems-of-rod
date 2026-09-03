@@ -183,6 +183,10 @@ fun StockDetailScreen(
                     )
                     StockRepository.updateItem(updated)
                     item = updated
+                },
+                onUpdateInvoiceInfo = { updated ->
+                    StockRepository.updateItem(updated)
+                    item = updated
                 }
             )
 
@@ -280,15 +284,19 @@ private fun StockStatusChip(status: StockStatus) {
 /**
  * Marquer une pierre vendue enregistre l'acheteur (facultatif) et la date du
  * jour, puis bascule le statut sur [StockStatus.VENDU] (réutilise le champ
- * existant plutôt qu'un état de vente séparé). Une fois vendue, permet de
- * générer un reçu de vente PDF (voir [StockInvoicePdfGenerator]) — un
- * récapitulatif indicatif, pas une facture légale complète.
+ * existant plutôt qu'un état de vente séparé). Une fois vendue, le bouton de
+ * génération ouvre d'abord une boîte de dialogue d'édition (acheteur, notes
+ * libres) avant de produire le reçu de vente PDF (voir
+ * [StockInvoicePdfGenerator]) — un récapitulatif indicatif, pas une facture
+ * légale complète. Les modifications faites dans cette boîte de dialogue
+ * sont conservées sur la fiche pour les prochaines générations.
  */
 @Composable
-private fun StockSaleCard(item: StockItem, onMarkSold: (String) -> Unit) {
+private fun StockSaleCard(item: StockItem, onMarkSold: (String) -> Unit, onUpdateInvoiceInfo: (StockItem) -> Unit) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     var showDialog by remember { mutableStateOf(false) }
+    var showInvoiceEditDialog by remember { mutableStateOf(false) }
     var isGenerating by remember { mutableStateOf(false) }
 
     Card(
@@ -314,16 +322,7 @@ private fun StockSaleCard(item: StockItem, onMarkSold: (String) -> Unit) {
                 if (item.prixVente != null) {
                     OutlinedButton(
                         enabled = !isGenerating,
-                        onClick = {
-                            isGenerating = true
-                            scope.launch {
-                                val file = withContext(Dispatchers.IO) {
-                                    StockInvoicePdfGenerator.generate(context, item)
-                                }
-                                isGenerating = false
-                                printPdfFile(context, file, item.nom.ifBlank { item.id })
-                            }
-                        },
+                        onClick = { showInvoiceEditDialog = true },
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         if (isGenerating) {
@@ -378,6 +377,54 @@ private fun StockSaleCard(item: StockItem, onMarkSold: (String) -> Unit) {
             },
             dismissButton = {
                 OutlinedButton(onClick = { showDialog = false }) {
+                    Text(stringResource(R.string.stock_cancel_button))
+                }
+            }
+        )
+    }
+
+    if (showInvoiceEditDialog) {
+        var buyerName by remember { mutableStateOf(item.acheteurNom) }
+        var invoiceNotes by remember { mutableStateOf(item.factureNotes) }
+        AlertDialog(
+            onDismissRequest = { showInvoiceEditDialog = false },
+            title = { Text(stringResource(R.string.stock_invoice_edit_dialog_title)) },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    OutlinedTextField(
+                        value = buyerName,
+                        onValueChange = { buyerName = it },
+                        label = { Text(stringResource(R.string.stock_sale_buyer_field_label)) },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    OutlinedTextField(
+                        value = invoiceNotes,
+                        onValueChange = { invoiceNotes = it },
+                        label = { Text(stringResource(R.string.stock_invoice_notes_label)) },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    showInvoiceEditDialog = false
+                    val updated = item.copy(acheteurNom = buyerName.trim(), factureNotes = invoiceNotes.trim())
+                    onUpdateInvoiceInfo(updated)
+                    isGenerating = true
+                    scope.launch {
+                        val file = withContext(Dispatchers.IO) {
+                            StockInvoicePdfGenerator.generate(context, updated)
+                        }
+                        isGenerating = false
+                        printPdfFile(context, file, updated.nom.ifBlank { updated.id })
+                    }
+                }) {
+                    Text(stringResource(R.string.stock_invoice_edit_confirm))
+                }
+            },
+            dismissButton = {
+                OutlinedButton(onClick = { showInvoiceEditDialog = false }) {
                     Text(stringResource(R.string.stock_cancel_button))
                 }
             }

@@ -127,7 +127,16 @@ object StockInvoicePdfGenerator {
             context.getString(R.string.stock_invoice_total_format, currencyFormat.format(item.prixVente ?: 0.0)),
             MARGIN, y + 14f, totalPaint
         )
-        y += 44f
+        y += 36f
+
+        if (item.factureNotes.isNotBlank()) {
+            val contentWidth = PAGE_WIDTH - MARGIN * 2
+            wrapText(item.factureNotes, valuePaint, contentWidth).forEach { line ->
+                canvas.drawText(line, MARGIN, y + 10f, valuePaint)
+                y += 16f
+            }
+            y += 8f
+        }
 
         canvas.drawText(context.getString(R.string.stock_invoice_disclaimer), MARGIN, y, subtitlePaint)
 
@@ -140,5 +149,24 @@ object StockInvoicePdfGenerator {
         document.close()
 
         return outFile
+    }
+
+    /** Découpe un texte libre en lignes qui tiennent dans [maxWidth], mot par mot. */
+    private fun wrapText(text: String, paint: Paint, maxWidth: Float): List<String> {
+        val lines = mutableListOf<String>()
+        for (paragraph in text.split("\n")) {
+            var current = StringBuilder()
+            for (word in paragraph.split(" ")) {
+                val candidate = if (current.isEmpty()) word else "$current $word"
+                if (paint.measureText(candidate) > maxWidth && current.isNotEmpty()) {
+                    lines.add(current.toString())
+                    current = StringBuilder(word)
+                } else {
+                    current = StringBuilder(candidate)
+                }
+            }
+            lines.add(current.toString())
+        }
+        return lines
     }
 }

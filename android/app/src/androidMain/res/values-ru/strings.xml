@@ -477,6 +477,9 @@
     <string name="stock_backup_last_done_format">Последняя резервная копия: %1$s</string>
     <string name="stock_backup_reminder_format">Последняя резервная копия %1$d дн. назад — стоит сделать новую.</string>
     <string name="stock_backup_now_button">Создать резервную копию</string>
+    <string name="stock_invoice_edit_dialog_title">Изменить чек продажи</string>
+    <string name="stock_invoice_notes_label">Примечания к чеку (необязательно)</string>
+    <string name="stock_invoice_edit_confirm">Создать</string>
     <string name="stock_weight_ct_format">%1$s кар</string>
     <string name="stock_add_title">Новый камень</string>
     <string name="stock_edit_title">Изменить камень</string>
