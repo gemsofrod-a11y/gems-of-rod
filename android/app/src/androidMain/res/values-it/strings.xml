@@ -449,6 +449,12 @@
     <string name="stock_dashboard_alert_no_photo_format">%1$d scheda/e senza foto</string>
     <string name="stock_dashboard_no_alerts">Nessun avviso: tutte le schede hanno un prezzo e una foto.</string>
     <string name="stock_dashboard_empty_state">Aggiungi schede al magazzino per vedere qui le statistiche.</string>
+    <string name="stock_search_placeholder">Cerca per nome o riferimento…</string>
+    <string name="stock_filter_status_label">Stato</string>
+    <string name="stock_filter_price_min_label">Prezzo min. (€)</string>
+    <string name="stock_filter_price_max_label">Prezzo max. (€)</string>
+    <string name="stock_filter_clear_button">Reimposta filtri</string>
+    <string name="stock_filter_no_results">Nessuna scheda corrisponde ai filtri.</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">Nuova pietra</string>
     <string name="stock_edit_title">Modifica la pietra</string>

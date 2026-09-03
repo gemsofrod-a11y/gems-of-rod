@@ -6,6 +6,7 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -29,9 +31,12 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -51,6 +56,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import fr.gemsofrod.encyclopedie.R
@@ -184,18 +190,53 @@ fun StockListScreen(
             }
         } else {
             var query by remember { mutableStateOf("") }
-            val displayedItems = if (query.isBlank()) items else items.filter { it.nom.contains(query, ignoreCase = true) }
+            var selectedStatuses by remember { mutableStateOf(setOf<StockStatus>()) }
+            var minPriceText by remember { mutableStateOf("") }
+            var maxPriceText by remember { mutableStateOf("") }
+            val minPrice = minPriceText.toDoubleOrNull()
+            val maxPrice = maxPriceText.toDoubleOrNull()
+            val hasActiveFilters = selectedStatuses.isNotEmpty() || minPrice != null || maxPrice != null
+
+            val displayedItems = items.filter { item ->
+                val matchesQuery = query.isBlank() ||
+                    item.nom.contains(query, ignoreCase = true) ||
+                    item.reference.contains(query, ignoreCase = true)
+                val matchesStatus = selectedStatuses.isEmpty() || item.statut in selectedStatuses
+                val matchesMinPrice = minPrice == null || (item.prixVente != null && item.prixVente >= minPrice)
+                val matchesMaxPrice = maxPrice == null || (item.prixVente != null && item.prixVente <= maxPrice)
+                matchesQuery && matchesStatus && matchesMinPrice && matchesMaxPrice
+            }
 
             Column(modifier = Modifier.fillMaxSize().padding(padding)) {
                 CatalogSearchField(
                     query = query,
                     onQueryChange = { query = it },
-                    placeholder = stringResource(R.string.catalog_search_placeholder)
+                    placeholder = stringResource(R.string.stock_search_placeholder)
                 )
-                if (query.isNotBlank() && displayedItems.isEmpty()) {
+                StockFilterBar(
+                    selectedStatuses = selectedStatuses,
+                    onToggleStatus = { status ->
+                        selectedStatuses = if (status in selectedStatuses) selectedStatuses - status else selectedStatuses + status
+                    },
+                    minPriceText = minPriceText,
+                    onMinPriceChange = { minPriceText = it },
+                    maxPriceText = maxPriceText,
+                    onMaxPriceChange = { maxPriceText = it },
+                    hasActiveFilters = hasActiveFilters,
+                    onClearFilters = {
+                        selectedStatuses = emptySet()
+                        minPriceText = ""
+                        maxPriceText = ""
+                    }
+                )
+                if ((query.isNotBlank() || hasActiveFilters) && displayedItems.isEmpty()) {
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
                         Text(
-                            text = stringResource(R.string.catalog_search_no_results, query),
+                            text = if (query.isNotBlank()) {
+                                stringResource(R.string.catalog_search_no_results, query)
+                            } else {
+                                stringResource(R.string.stock_filter_no_results)
+                            },
                             style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             modifier = Modifier.padding(24.dp)
@@ -241,6 +282,79 @@ fun StockListScreen(
             }
         )
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun StockFilterBar(
+    selectedStatuses: Set<StockStatus>,
+    onToggleStatus: (StockStatus) -> Unit,
+    minPriceText: String,
+    onMinPriceChange: (String) -> Unit,
+    maxPriceText: String,
+    onMaxPriceChange: (String) -> Unit,
+    hasActiveFilters: Boolean,
+    onClearFilters: () -> Unit
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        Row(
+            modifier = Modifier.horizontalScroll(rememberScrollState()),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            StockStatus.entries.forEach { status ->
+                FilterChip(
+                    selected = status in selectedStatuses,
+                    onClick = { onToggleStatus(status) },
+                    label = { Text(stringResource(statusFilterLabelRes(status))) }
+                )
+            }
+        }
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            OutlinedTextField(
+                value = minPriceText,
+                onValueChange = onMinPriceChange,
+                label = { Text(stringResource(R.string.stock_filter_price_min_label)) },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface
+                ),
+                modifier = Modifier.weight(1f)
+            )
+            OutlinedTextField(
+                value = maxPriceText,
+                onValueChange = onMaxPriceChange,
+                label = { Text(stringResource(R.string.stock_filter_price_max_label)) },
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface
+                ),
+                modifier = Modifier.weight(1f)
+            )
+        }
+        if (hasActiveFilters) {
+            TextButton(onClick = onClearFilters) {
+                Text(stringResource(R.string.stock_filter_clear_button))
+            }
+        }
+    }
+}
+
+private fun statusFilterLabelRes(status: StockStatus): Int = when (status) {
+    StockStatus.EN_STOCK -> R.string.stock_status_en_stock
+    StockStatus.RESERVE -> R.string.stock_status_reserve
+    StockStatus.VENDU -> R.string.stock_status_vendu
+    StockStatus.CONSIGNATION -> R.string.stock_status_consignation
 }
 
 @Composable

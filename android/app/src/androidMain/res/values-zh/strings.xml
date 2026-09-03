@@ -449,6 +449,12 @@
     <string name="stock_dashboard_alert_no_photo_format">%1$d 条记录缺少照片</string>
     <string name="stock_dashboard_no_alerts">没有提醒：所有记录都有价格和照片。</string>
     <string name="stock_dashboard_empty_state">添加库存记录后，这里将显示统计信息。</string>
+    <string name="stock_search_placeholder">按名称或编号搜索…</string>
+    <string name="stock_filter_status_label">状态</string>
+    <string name="stock_filter_price_min_label">最低价格（€）</string>
+    <string name="stock_filter_price_max_label">最高价格（€）</string>
+    <string name="stock_filter_clear_button">重置筛选</string>
+    <string name="stock_filter_no_results">没有符合筛选条件的记录。</string>
     <string name="stock_weight_ct_format">%1$s 克拉</string>
     <string name="stock_add_title">新增宝石</string>
     <string name="stock_edit_title">编辑宝石</string>

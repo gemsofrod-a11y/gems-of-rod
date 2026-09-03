@@ -449,6 +449,12 @@
     <string name="stock_dashboard_alert_no_photo_format">%1$d ficha(s) sin foto</string>
     <string name="stock_dashboard_no_alerts">Sin alertas: todas las fichas tienen precio y foto.</string>
     <string name="stock_dashboard_empty_state">Añade fichas al stock para ver aquí las estadísticas.</string>
+    <string name="stock_search_placeholder">Buscar por nombre o referencia…</string>
+    <string name="stock_filter_status_label">Estado</string>
+    <string name="stock_filter_price_min_label">Precio mín. (€)</string>
+    <string name="stock_filter_price_max_label">Precio máx. (€)</string>
+    <string name="stock_filter_clear_button">Restablecer filtros</string>
+    <string name="stock_filter_no_results">Ninguna ficha coincide con los filtros.</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">Nueva piedra</string>
     <string name="stock_edit_title">Modificar la piedra</string>

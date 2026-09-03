@@ -449,6 +449,12 @@
     <string name="stock_dashboard_alert_no_photo_format">%1$d item(s) zonder foto</string>
     <string name="stock_dashboard_no_alerts">Geen meldingen: alle items hebben een prijs en een foto.</string>
     <string name="stock_dashboard_empty_state">Voeg items toe aan de voorraad om hier statistieken te zien.</string>
+    <string name="stock_search_placeholder">Zoeken op naam of referentie…</string>
+    <string name="stock_filter_status_label">Status</string>
+    <string name="stock_filter_price_min_label">Minimumprijs (€)</string>
+    <string name="stock_filter_price_max_label">Maximumprijs (€)</string>
+    <string name="stock_filter_clear_button">Filters wissen</string>
+    <string name="stock_filter_no_results">Geen item komt overeen met de filters.</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">Nieuwe steen</string>
     <string name="stock_edit_title">Steen bewerken</string>
