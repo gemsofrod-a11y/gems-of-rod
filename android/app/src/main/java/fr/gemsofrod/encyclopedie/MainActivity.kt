@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import fr.gemsofrod.encyclopedie.data.AchievementsRepository
+import fr.gemsofrod.encyclopedie.data.ClientRepository
 import fr.gemsofrod.encyclopedie.data.FavoritesRepository
 import fr.gemsofrod.encyclopedie.data.LabNotebookRepository
 import fr.gemsofrod.encyclopedie.data.LanguageRepository
@@ -39,6 +40,7 @@ class MainActivity : ComponentActivity() {
         LabNotebookRepository.init(this)
         ReflectivityCalibrationRepository.init(this)
         StockRepository.init(this)
+        ClientRepository.init(this)
         refreshGemOfDayWidgets()
         enableEdgeToEdge()
         setContent {
