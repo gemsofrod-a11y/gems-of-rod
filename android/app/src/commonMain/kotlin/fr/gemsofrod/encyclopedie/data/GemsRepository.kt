@@ -2911,6 +2911,24 @@ object GemsRepository {
             rarete = GemRarete.COURANTE
         ),
         Gem(
+            id = "wolframite",
+            nom = "Wolframite",
+            nomLatin = "Tungstate de fer et de manganèse",
+            famille = "Wolframite",
+            couleur = GemColorCategory.NOIR,
+            descriptionCourte = "Le principal minerai du tungstène, en cristaux lamellaires brun-noir.",
+            descriptionLongue = "La wolframite forme une série continue entre la ferbérite (riche en fer) et l'hübnerite (riche en manganèse), du brun-noir métallique à l'éclat submétallique. Minerai principal du tungstène avec la scheelite, elle n'est jamais taillée en joaillerie mais recherchée en spécimens par les collectionneurs, notamment les cristaux lamellaires de la mine portugaise de Panasqueira.",
+            formuleChimique = "(Fe,Mn)WO₄",
+            systemeCristallin = "Monoclinique",
+            durete = "4 - 4,5",
+            indiceRefraction = "opaque (submétallique, non applicable)",
+            origines = listOf("Chine (Jiangxi)", "Portugal (Panasqueira)", "Bolivie"),
+            particularites = "Doit son nom à l'allemand « Wolf Rahm » (écume de loup) : les fondeurs d'étain médiévaux l'accusaient de « dévorer » l'étain comme un loup dévore un mouton lors de la fonte.",
+            lithotherapie = "La wolframite n'a pas de tradition établie en lithothérapie, son usage restant quasi exclusivement minéralogique et industriel.",
+            prixCaratEur = "1 – 10 €/ct",
+            rarete = GemRarete.COURANTE
+        ),
+        Gem(
             id = "quartz-tourmaline",
             nom = "Quartz tourmaliné",
             nomLatin = "Quartz à inclusions de tourmaline noire",
