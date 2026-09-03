@@ -64,7 +64,7 @@ class GemOfDayWidgetProvider : AppWidgetProvider() {
         private const val DEFAULT_HEIGHT_DP = 90
         private const val CORNER_RADIUS_DP = 16f
         private const val BORDER_WIDTH_DP = 1f
-        private const val BORDER_COLOR = 0x33C9A227
+        private const val BORDER_COLOR = 0x33D6B872
         private const val SCRIM_COLOR = 0x59000000
 
         /**

@@ -1,3 +1,12 @@
 <resources>
     <style name="Theme.GemsEncyclopedie" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <!-- Écran de démarrage « Cabinet du Soir » : vert bouteille et le gemme
+         doré de l'icône de lancement, le temps que Compose prenne la main
+         (voir MainActivity.installSplashScreen()). -->
+    <style name="Theme.GemsEncyclopedie.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/gor_bottle_green</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.GemsEncyclopedie</item>
+    </style>
 </resources>
