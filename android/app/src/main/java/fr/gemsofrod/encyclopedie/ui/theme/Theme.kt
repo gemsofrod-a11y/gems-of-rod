@@ -9,26 +9,32 @@ import androidx.compose.ui.graphics.Color
 
 private val GorDarkColors = darkColorScheme(
     primary = GorGold,
-    onPrimary = GorAnthracite,
-    secondary = GorGoldLight,
-    background = GorAnthracite,
-    onBackground = GorCream,
-    surface = Color(0xFF242426),
-    onSurface = GorCream,
-    surfaceVariant = Color(0xFF2F2F32),
-    onSurfaceVariant = GorCream
+    onPrimary = GorInk,
+    secondary = GorVerdigris,
+    onSecondary = GorInk,
+    tertiary = GorGarnet,
+    onTertiary = GorIvory,
+    background = GorBottleGreen,
+    onBackground = GorIvory,
+    surface = GorBottleGreenSurface,
+    onSurface = GorIvory,
+    surfaceVariant = GorBottleGreenSurfaceVariant,
+    onSurfaceVariant = GorSage
 )
 
 private val GorLightColors = lightColorScheme(
     primary = GorGold,
-    onPrimary = Color(0xFFFFFFFF),
-    secondary = GorAnthracite,
-    background = GorCream,
-    onBackground = GorCharcoalText,
-    surface = Color(0xFFFFFFFF),
-    onSurface = GorCharcoalText,
-    surfaceVariant = Color(0xFFEDE6D8),
-    onSurfaceVariant = GorCharcoalText
+    onPrimary = GorInk,
+    secondary = GorBottleGreen,
+    onSecondary = GorIvory,
+    tertiary = GorGarnet,
+    onTertiary = GorIvory,
+    background = GorParchment,
+    onBackground = GorInk,
+    surface = Color(0xFFFFFBF2),
+    onSurface = GorInk,
+    surfaceVariant = GorParchmentVariant,
+    onSurfaceVariant = GorInk
 )
 
 @Composable
