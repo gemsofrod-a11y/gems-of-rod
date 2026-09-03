@@ -26,8 +26,8 @@ android {
         applicationId = "fr.gemsofrod.encyclopedie"
         minSdk = 26
         targetSdk = 36
-        versionCode = 145
-        versionName = "9.42"
+        versionCode = 146
+        versionName = "9.43"
     }
 
     signingConfigs {
@@ -134,6 +134,8 @@ kotlin {
                 implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
                 implementation("androidx.activity:activity-compose:1.9.1")
                 implementation("androidx.navigation:navigation-compose:2.7.7")
+                // Écran de démarrage natif (fond + icône) avant que Compose ne prenne la main.
+                implementation("androidx.core:core-splashscreen:1.0.1")
                 implementation(compose.preview)
                 implementation(compose.uiTooling)
                 // Réflectomètre par caméra (Phase C) : capture avec verrouillage

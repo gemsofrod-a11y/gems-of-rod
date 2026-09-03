@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Palette « Cabinet du Soir », miroir XML de ui/theme/Color.kt : ces
+         ressources servent aux vues natives que Compose ne couvre pas
+         (icône de lancement, écran de démarrage, widget d'écran d'accueil). -->
+    <color name="gor_bottle_green">#1E2E24</color>
+    <color name="gor_parchment">#EAE2CE</color>
+    <color name="gor_gold">#D6B872</color>
+    <color name="gor_garnet">#7A2036</color>
+    <color name="gor_verdigris">#6E8F79</color>
+    <color name="gor_ink">#241C1A</color>
+    <color name="gor_ivory">#EFE9DD</color>
+</resources>
