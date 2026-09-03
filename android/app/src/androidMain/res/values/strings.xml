@@ -472,6 +472,11 @@
     <string name="stock_invoice_buyer_format">Acheteur : %1$s</string>
     <string name="stock_invoice_total_format">Total : %1$s</string>
     <string name="stock_invoice_disclaimer">Ce document est un récapitulatif de vente, pas une facture officielle — ajoutez les mentions légales requises (SIRET, TVA…) si nécessaire.</string>
+    <string name="stock_backup_section_title">Sauvegarde</string>
+    <string name="stock_backup_never_done">Vous n\'avez pas encore sauvegardé votre stock. Il n\'est stocké que sur cet appareil — pensez à l\'exporter régulièrement.</string>
+    <string name="stock_backup_last_done_format">Dernière sauvegarde : %1$s</string>
+    <string name="stock_backup_reminder_format">Dernière sauvegarde il y a %1$d jours — pensez à en refaire une.</string>
+    <string name="stock_backup_now_button">Sauvegarder maintenant</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">Nouvelle pierre</string>
     <string name="stock_edit_title">Modifier la pierre</string>

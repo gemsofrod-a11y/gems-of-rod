@@ -472,6 +472,11 @@
     <string name="stock_invoice_buyer_format">Покупатель: %1$s</string>
     <string name="stock_invoice_total_format">Итого: %1$s</string>
     <string name="stock_invoice_disclaimer">Этот документ — сводка продажи, а не официальный счёт-фактура — при необходимости добавьте обязательные юридические реквизиты (ИНН/НДС и т. д.).</string>
+    <string name="stock_backup_section_title">Резервная копия</string>
+    <string name="stock_backup_never_done">Вы ещё не создавали резервную копию склада. Он хранится только на этом устройстве — регулярно экспортируйте его.</string>
+    <string name="stock_backup_last_done_format">Последняя резервная копия: %1$s</string>
+    <string name="stock_backup_reminder_format">Последняя резервная копия %1$d дн. назад — стоит сделать новую.</string>
+    <string name="stock_backup_now_button">Создать резервную копию</string>
     <string name="stock_weight_ct_format">%1$s кар</string>
     <string name="stock_add_title">Новый камень</string>
     <string name="stock_edit_title">Изменить камень</string>

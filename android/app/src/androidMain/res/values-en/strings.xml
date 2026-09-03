@@ -472,6 +472,11 @@
     <string name="stock_invoice_buyer_format">Buyer: %1$s</string>
     <string name="stock_invoice_total_format">Total: %1$s</string>
     <string name="stock_invoice_disclaimer">This document is a sale summary, not an official invoice — add any required legal details (VAT number, etc.) if needed.</string>
+    <string name="stock_backup_section_title">Backup</string>
+    <string name="stock_backup_never_done">You haven\'t backed up your stock yet. It\'s only stored on this device — remember to export it regularly.</string>
+    <string name="stock_backup_last_done_format">Last backup: %1$s</string>
+    <string name="stock_backup_reminder_format">Last backup %1$d days ago — consider doing another one.</string>
+    <string name="stock_backup_now_button">Back up now</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">New stone</string>
     <string name="stock_edit_title">Edit stone</string>

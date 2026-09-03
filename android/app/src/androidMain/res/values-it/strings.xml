@@ -472,6 +472,11 @@
     <string name="stock_invoice_buyer_format">Acquirente: %1$s</string>
     <string name="stock_invoice_total_format">Totale: %1$s</string>
     <string name="stock_invoice_disclaimer">Questo documento è un riepilogo di vendita, non una fattura ufficiale — aggiungi le indicazioni legali richieste (P.IVA, ecc.) se necessario.</string>
+    <string name="stock_backup_section_title">Backup</string>
+    <string name="stock_backup_never_done">Non hai ancora eseguito un backup del tuo magazzino. È salvato solo su questo dispositivo — esportalo regolarmente.</string>
+    <string name="stock_backup_last_done_format">Ultimo backup: %1$s</string>
+    <string name="stock_backup_reminder_format">Ultimo backup %1$d giorni fa — valuta di farne un altro.</string>
+    <string name="stock_backup_now_button">Esegui backup ora</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">Nuova pietra</string>
     <string name="stock_edit_title">Modifica la pietra</string>
