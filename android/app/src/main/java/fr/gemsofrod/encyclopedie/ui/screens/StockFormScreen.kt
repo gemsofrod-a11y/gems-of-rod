@@ -212,7 +212,9 @@ fun StockFormScreen(itemId: String?, onSaveComplete: () -> Unit, onBackClick: ()
                                     statut = statut,
                                     notes = notes,
                                     photoFileName = finalPhotoFileName,
-                                    createdAtMillis = existing?.createdAtMillis ?: 0L
+                                    createdAtMillis = existing?.createdAtMillis ?: 0L,
+                                    acheteurNom = existing?.acheteurNom ?: "",
+                                    venteDateMillis = existing?.venteDateMillis
                                 )
                                 if (existing == null) StockRepository.addItem(item) else StockRepository.updateItem(item)
                                 isSaving = false
