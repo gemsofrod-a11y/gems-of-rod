@@ -17,10 +17,12 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Print
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -29,6 +31,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -53,6 +56,7 @@ import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.BarcodeGenerator
 import fr.gemsofrod.encyclopedie.data.LabelCodeType
+import fr.gemsofrod.encyclopedie.data.StockInvoicePdfGenerator
 import fr.gemsofrod.encyclopedie.data.StockItem
 import fr.gemsofrod.encyclopedie.data.StockLabelPdfGenerator
 import fr.gemsofrod.encyclopedie.data.StockPhotoStorage
@@ -82,13 +86,18 @@ fun StockDetailScreen(
     onDeleted: () -> Unit,
     onBackClick: () -> Unit
 ) {
-    val item = remember(itemId) { StockRepository.itemById(itemId) }
+    val initialItem = remember(itemId) { StockRepository.itemById(itemId) }
 
-    if (item == null) {
+    if (initialItem == null) {
         LaunchedEffect(Unit) { onBackClick() }
         return
     }
 
+    // État mutable local (plutôt que le simple `val` initial) : marquer la
+    // pierre vendue met à jour le dépôt ET doit se refléter immédiatement à
+    // l'écran (statut, acheteur, date), sans attendre une navigation qui
+    // recomposerait l'écran depuis zéro.
+    var item by remember(itemId) { mutableStateOf(initialItem) }
     var showDeleteConfirm by remember { mutableStateOf(false) }
     val context = LocalContext.current
     val bitmap = rememberStockPhotoBitmap(item.photoFileName, 320.dp)
@@ -163,6 +172,19 @@ fun StockDetailScreen(
                     item.prixVente?.let { StockDetailRow(stringResource(R.string.stock_field_selling_price_label), currencyFormat.format(it)) }
                 }
             }
+
+            StockSaleCard(
+                item = item,
+                onMarkSold = { buyerName ->
+                    val updated = item.copy(
+                        statut = StockStatus.VENDU,
+                        acheteurNom = buyerName.trim(),
+                        venteDateMillis = System.currentTimeMillis()
+                    )
+                    StockRepository.updateItem(updated)
+                    item = updated
+                }
+            )
 
             if (item.notes.isNotBlank()) {
                 Card(
@@ -251,6 +273,114 @@ private fun StockStatusChip(status: StockStatus) {
             fontWeight = FontWeight.SemiBold,
             color = MaterialTheme.colorScheme.onPrimaryContainer,
             modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+        )
+    }
+}
+
+/**
+ * Marquer une pierre vendue enregistre l'acheteur (facultatif) et la date du
+ * jour, puis bascule le statut sur [StockStatus.VENDU] (réutilise le champ
+ * existant plutôt qu'un état de vente séparé). Une fois vendue, permet de
+ * générer un reçu de vente PDF (voir [StockInvoicePdfGenerator]) — un
+ * récapitulatif indicatif, pas une facture légale complète.
+ */
+@Composable
+private fun StockSaleCard(item: StockItem, onMarkSold: (String) -> Unit) {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    var showDialog by remember { mutableStateOf(false) }
+    var isGenerating by remember { mutableStateOf(false) }
+
+    Card(
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            Text(
+                text = stringResource(R.string.stock_sale_section_title),
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+
+            if (item.statut == StockStatus.VENDU) {
+                if (item.acheteurNom.isNotBlank()) {
+                    StockDetailRow(stringResource(R.string.stock_sale_buyer_label), item.acheteurNom)
+                }
+                item.venteDateMillis?.let {
+                    StockDetailRow(stringResource(R.string.stock_sale_date_label), displayDateFormat.format(it))
+                }
+                if (item.prixVente != null) {
+                    OutlinedButton(
+                        enabled = !isGenerating,
+                        onClick = {
+                            isGenerating = true
+                            scope.launch {
+                                val file = withContext(Dispatchers.IO) {
+                                    StockInvoicePdfGenerator.generate(context, item)
+                                }
+                                isGenerating = false
+                                printPdfFile(context, file, item.nom.ifBlank { item.id })
+                            }
+                        },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        if (isGenerating) {
+                            CircularProgressIndicator(modifier = Modifier.size(18.dp), strokeWidth = 2.dp)
+                        } else {
+                            Icon(Icons.Filled.Print, contentDescription = null, modifier = Modifier.size(18.dp))
+                            Text(stringResource(R.string.stock_sale_invoice_button), modifier = Modifier.padding(start = 8.dp))
+                        }
+                    }
+                } else {
+                    Text(
+                        text = stringResource(R.string.stock_sale_invoice_missing_price),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            } else {
+                Text(
+                    text = stringResource(R.string.stock_sale_hint),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Button(onClick = { showDialog = true }, modifier = Modifier.fillMaxWidth()) {
+                    Icon(Icons.Filled.CheckCircle, contentDescription = null, modifier = Modifier.size(18.dp))
+                    Text(stringResource(R.string.stock_sale_mark_button), modifier = Modifier.padding(start = 8.dp))
+                }
+            }
+        }
+    }
+
+    if (showDialog) {
+        var buyerName by remember { mutableStateOf("") }
+        AlertDialog(
+            onDismissRequest = { showDialog = false },
+            title = { Text(stringResource(R.string.stock_sale_dialog_title)) },
+            text = {
+                OutlinedTextField(
+                    value = buyerName,
+                    onValueChange = { buyerName = it },
+                    label = { Text(stringResource(R.string.stock_sale_buyer_field_label)) },
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    onMarkSold(buyerName)
+                    showDialog = false
+                }) {
+                    Text(stringResource(R.string.stock_sale_dialog_confirm))
+                }
+            },
+            dismissButton = {
+                OutlinedButton(onClick = { showDialog = false }) {
+                    Text(stringResource(R.string.stock_cancel_button))
+                }
+            }
         )
     }
 }
