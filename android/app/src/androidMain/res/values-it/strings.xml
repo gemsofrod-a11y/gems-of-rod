@@ -480,6 +480,13 @@
     <string name="stock_invoice_edit_dialog_title">Modifica la ricevuta di vendita</string>
     <string name="stock_invoice_notes_label">Note della ricevuta (facoltativo)</string>
     <string name="stock_invoice_edit_confirm">Genera</string>
+    <string name="stock_sales_history_title">Cronologia vendite</string>
+    <string name="stock_sales_period_this_month">Questo mese</string>
+    <string name="stock_sales_period_last_3_months">Ultimi 3 mesi</string>
+    <string name="stock_sales_period_this_year">Quest\'anno</string>
+    <string name="stock_sales_period_all">Tutto</string>
+    <string name="stock_sales_history_total_format">%1$d vendita/e — %2$s</string>
+    <string name="stock_sales_history_empty">Nessuna vendita in questo periodo.</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">Nuova pietra</string>
     <string name="stock_edit_title">Modifica la pietra</string>

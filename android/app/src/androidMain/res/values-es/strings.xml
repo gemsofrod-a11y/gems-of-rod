@@ -480,6 +480,13 @@
     <string name="stock_invoice_edit_dialog_title">Editar el recibo de venta</string>
     <string name="stock_invoice_notes_label">Notas del recibo (opcional)</string>
     <string name="stock_invoice_edit_confirm">Generar</string>
+    <string name="stock_sales_history_title">Historial de ventas</string>
+    <string name="stock_sales_period_this_month">Este mes</string>
+    <string name="stock_sales_period_last_3_months">Últimos 3 meses</string>
+    <string name="stock_sales_period_this_year">Este año</string>
+    <string name="stock_sales_period_all">Todo</string>
+    <string name="stock_sales_history_total_format">%1$d venta(s) — %2$s</string>
+    <string name="stock_sales_history_empty">Ninguna venta en este período.</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">Nueva piedra</string>
     <string name="stock_edit_title">Modificar la piedra</string>

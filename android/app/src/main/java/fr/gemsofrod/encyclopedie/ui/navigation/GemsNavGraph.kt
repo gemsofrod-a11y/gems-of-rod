@@ -78,6 +78,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.StockDashboardScreen
 import fr.gemsofrod.encyclopedie.ui.screens.StockDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.StockFormScreen
 import fr.gemsofrod.encyclopedie.ui.screens.StockListScreen
+import fr.gemsofrod.encyclopedie.ui.screens.StockSalesHistoryScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LapidaireScreen
 import fr.gemsofrod.encyclopedie.ui.screens.TreatmentsScreen
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
@@ -143,6 +144,7 @@ private object Routes {
     const val STOCK_EDIT = "stock_edit/{itemId}"
     const val STOCK_DETAIL = "stock_detail/{itemId}"
     const val STOCK_DASHBOARD = "stock_dashboard"
+    const val STOCK_SALES_HISTORY = "stock_sales_history"
 
     fun gemsList(colorName: String) = "gems/$colorName"
     fun labNotebookEdit(sampleId: String) = "lab_notebook_edit/$sampleId"
@@ -284,7 +286,16 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             )
         }
         composable(Routes.STOCK_DASHBOARD) {
-            StockDashboardScreen(onBackClick = { navController.popBackStack() })
+            StockDashboardScreen(
+                onBackClick = { navController.popBackStack() },
+                onSalesHistoryClick = { navController.navigate(Routes.STOCK_SALES_HISTORY) }
+            )
+        }
+        composable(Routes.STOCK_SALES_HISTORY) {
+            StockSalesHistoryScreen(
+                onBackClick = { navController.popBackStack() },
+                onItemClick = { itemId -> navController.navigate(Routes.stockDetail(itemId)) }
+            )
         }
         composable(Routes.STOCK_NEW) {
             StockFormScreen(

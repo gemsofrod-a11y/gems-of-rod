@@ -18,6 +18,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.History
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -71,7 +72,7 @@ import java.util.concurrent.TimeUnit
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun StockDashboardScreen(onBackClick: () -> Unit) {
+fun StockDashboardScreen(onBackClick: () -> Unit, onSalesHistoryClick: () -> Unit) {
     val items = StockRepository.allItems()
 
     Scaffold(
@@ -81,6 +82,11 @@ fun StockDashboardScreen(onBackClick: () -> Unit) {
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
+                    }
+                },
+                actions = {
+                    IconButton(onClick = onSalesHistoryClick) {
+                        Icon(Icons.Filled.History, contentDescription = stringResource(R.string.stock_sales_history_title))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(

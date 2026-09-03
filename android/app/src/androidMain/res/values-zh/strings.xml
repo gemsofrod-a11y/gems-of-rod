@@ -480,6 +480,13 @@
     <string name="stock_invoice_edit_dialog_title">编辑销售凭证</string>
     <string name="stock_invoice_notes_label">凭证备注（可选）</string>
     <string name="stock_invoice_edit_confirm">生成</string>
+    <string name="stock_sales_history_title">销售历史</string>
+    <string name="stock_sales_period_this_month">本月</string>
+    <string name="stock_sales_period_last_3_months">最近3个月</string>
+    <string name="stock_sales_period_this_year">今年</string>
+    <string name="stock_sales_period_all">全部</string>
+    <string name="stock_sales_history_total_format">共 %1$d 笔销售 — %2$s</string>
+    <string name="stock_sales_history_empty">此期间没有销售记录。</string>
     <string name="stock_weight_ct_format">%1$s 克拉</string>
     <string name="stock_add_title">新增宝石</string>
     <string name="stock_edit_title">编辑宝石</string>

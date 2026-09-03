@@ -480,6 +480,13 @@
     <string name="stock_invoice_edit_dialog_title">Verkaufsbeleg bearbeiten</string>
     <string name="stock_invoice_notes_label">Belegnotizen (optional)</string>
     <string name="stock_invoice_edit_confirm">Erstellen</string>
+    <string name="stock_sales_history_title">Verkaufsverlauf</string>
+    <string name="stock_sales_period_this_month">Diesen Monat</string>
+    <string name="stock_sales_period_last_3_months">Letzte 3 Monate</string>
+    <string name="stock_sales_period_this_year">Dieses Jahr</string>
+    <string name="stock_sales_period_all">Alle</string>
+    <string name="stock_sales_history_total_format">%1$d Verkauf/Verkäufe — %2$s</string>
+    <string name="stock_sales_history_empty">Keine Verkäufe in diesem Zeitraum.</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">Neuer Stein</string>
     <string name="stock_edit_title">Stein bearbeiten</string>
