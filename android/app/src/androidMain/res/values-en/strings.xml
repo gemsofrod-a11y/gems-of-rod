@@ -477,6 +477,9 @@
     <string name="stock_backup_last_done_format">Last backup: %1$s</string>
     <string name="stock_backup_reminder_format">Last backup %1$d days ago — consider doing another one.</string>
     <string name="stock_backup_now_button">Back up now</string>
+    <string name="stock_invoice_edit_dialog_title">Edit sale receipt</string>
+    <string name="stock_invoice_notes_label">Receipt notes (optional)</string>
+    <string name="stock_invoice_edit_confirm">Generate</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">New stone</string>
     <string name="stock_edit_title">Edit stone</string>

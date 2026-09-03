@@ -477,6 +477,9 @@
     <string name="stock_backup_last_done_format">上次备份：%1$s</string>
     <string name="stock_backup_reminder_format">距上次备份已 %1$d 天——建议再次备份。</string>
     <string name="stock_backup_now_button">立即备份</string>
+    <string name="stock_invoice_edit_dialog_title">编辑销售凭证</string>
+    <string name="stock_invoice_notes_label">凭证备注（可选）</string>
+    <string name="stock_invoice_edit_confirm">生成</string>
     <string name="stock_weight_ct_format">%1$s 克拉</string>
     <string name="stock_add_title">新增宝石</string>
     <string name="stock_edit_title">编辑宝石</string>

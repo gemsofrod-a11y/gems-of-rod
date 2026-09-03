@@ -477,6 +477,9 @@
     <string name="stock_backup_last_done_format">Letzte Sicherung: %1$s</string>
     <string name="stock_backup_reminder_format">Letzte Sicherung vor %1$d Tagen — erwägen Sie eine neue.</string>
     <string name="stock_backup_now_button">Jetzt sichern</string>
+    <string name="stock_invoice_edit_dialog_title">Verkaufsbeleg bearbeiten</string>
+    <string name="stock_invoice_notes_label">Belegnotizen (optional)</string>
+    <string name="stock_invoice_edit_confirm">Erstellen</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">Neuer Stein</string>
     <string name="stock_edit_title">Stein bearbeiten</string>
