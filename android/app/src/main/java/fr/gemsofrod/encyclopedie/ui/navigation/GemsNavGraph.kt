@@ -74,6 +74,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.NuancierScreen
 import fr.gemsofrod.encyclopedie.ui.screens.DiamondGradingScreen
 import fr.gemsofrod.encyclopedie.ui.screens.CrystalSystemsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.ReflectivityMeterScreen
+import fr.gemsofrod.encyclopedie.ui.screens.StockDashboardScreen
 import fr.gemsofrod.encyclopedie.ui.screens.StockDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.StockFormScreen
 import fr.gemsofrod.encyclopedie.ui.screens.StockListScreen
@@ -141,6 +142,7 @@ private object Routes {
     const val STOCK_NEW = "stock_new"
     const val STOCK_EDIT = "stock_edit/{itemId}"
     const val STOCK_DETAIL = "stock_detail/{itemId}"
+    const val STOCK_DASHBOARD = "stock_dashboard"
 
     fun gemsList(colorName: String) = "gems/$colorName"
     fun labNotebookEdit(sampleId: String) = "lab_notebook_edit/$sampleId"
@@ -277,8 +279,12 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             StockListScreen(
                 onItemClick = { itemId -> navController.navigate(Routes.stockDetail(itemId)) },
                 onAddClick = { navController.navigate(Routes.STOCK_NEW) },
+                onDashboardClick = { navController.navigate(Routes.STOCK_DASHBOARD) },
                 onBackClick = { navController.popBackStack() }
             )
+        }
+        composable(Routes.STOCK_DASHBOARD) {
+            StockDashboardScreen(onBackClick = { navController.popBackStack() })
         }
         composable(Routes.STOCK_NEW) {
             StockFormScreen(

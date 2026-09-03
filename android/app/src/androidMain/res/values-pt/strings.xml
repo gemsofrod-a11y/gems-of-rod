@@ -438,6 +438,17 @@
     <string name="stock_import_skipped_format">%1$d linha(s) ignorada(s)</string>
     <string name="stock_import_empty_error">Nenhum dado válido encontrado neste arquivo.</string>
     <string name="stock_import_ok_button">OK</string>
+    <string name="stock_dashboard_button">Painel</string>
+    <string name="stock_dashboard_title">Painel do stock</string>
+    <string name="stock_dashboard_total_value_label">Valor total (preço de venda)</string>
+    <string name="stock_dashboard_total_cost_label">Custo total de compra</string>
+    <string name="stock_dashboard_item_count_format">%1$d ficha(s) no total</string>
+    <string name="stock_dashboard_status_section_title">Repartição por estado</string>
+    <string name="stock_dashboard_alerts_section_title">Alertas</string>
+    <string name="stock_dashboard_alert_no_price_format">%1$d ficha(s) sem preço de venda</string>
+    <string name="stock_dashboard_alert_no_photo_format">%1$d ficha(s) sem foto</string>
+    <string name="stock_dashboard_no_alerts">Sem alertas: todas as fichas têm preço e foto.</string>
+    <string name="stock_dashboard_empty_state">Adicione fichas ao stock para ver aqui as estatísticas.</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">Nova pedra</string>
     <string name="stock_edit_title">Editar a pedra</string>

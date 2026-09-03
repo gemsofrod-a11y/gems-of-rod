@@ -20,6 +20,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Assessment
 import androidx.compose.material.icons.filled.Diamond
 import androidx.compose.material.icons.filled.UploadFile
 import androidx.compose.material.icons.filled.IosShare
@@ -79,6 +80,7 @@ import java.util.Locale
 fun StockListScreen(
     onItemClick: (String) -> Unit,
     onAddClick: () -> Unit,
+    onDashboardClick: () -> Unit,
     onBackClick: () -> Unit
 ) {
     val items = StockRepository.allItems()
@@ -111,6 +113,9 @@ fun StockListScreen(
                     }
                 },
                 actions = {
+                    IconButton(onClick = onDashboardClick) {
+                        Icon(Icons.Filled.Assessment, contentDescription = stringResource(R.string.stock_dashboard_button))
+                    }
                     IconButton(
                         onClick = { if (!isImporting) importPicker.launch("*/*") },
                         enabled = !isImporting

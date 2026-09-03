@@ -438,6 +438,17 @@
     <string name="stock_import_skipped_format">Пропущено строк: %1$d</string>
     <string name="stock_import_empty_error">В этом файле не найдено допустимых данных.</string>
     <string name="stock_import_ok_button">ОК</string>
+    <string name="stock_dashboard_button">Панель</string>
+    <string name="stock_dashboard_title">Панель склада</string>
+    <string name="stock_dashboard_total_value_label">Общая стоимость (цена продажи)</string>
+    <string name="stock_dashboard_total_cost_label">Общая стоимость закупки</string>
+    <string name="stock_dashboard_item_count_format">Всего позиций: %1$d</string>
+    <string name="stock_dashboard_status_section_title">Распределение по статусу</string>
+    <string name="stock_dashboard_alerts_section_title">Оповещения</string>
+    <string name="stock_dashboard_alert_no_price_format">%1$d позиций без цены продажи</string>
+    <string name="stock_dashboard_alert_no_photo_format">%1$d позиций без фото</string>
+    <string name="stock_dashboard_no_alerts">Нет оповещений: у всех позиций есть цена и фото.</string>
+    <string name="stock_dashboard_empty_state">Добавьте позиции в склад, чтобы здесь появилась статистика.</string>
     <string name="stock_weight_ct_format">%1$s кар</string>
     <string name="stock_add_title">Новый камень</string>
     <string name="stock_edit_title">Изменить камень</string>

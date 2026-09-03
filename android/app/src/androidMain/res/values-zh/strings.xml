@@ -438,6 +438,17 @@
     <string name="stock_import_skipped_format">已跳过 %1$d 行</string>
     <string name="stock_import_empty_error">此文件中未找到有效数据。</string>
     <string name="stock_import_ok_button">好</string>
+    <string name="stock_dashboard_button">仪表盘</string>
+    <string name="stock_dashboard_title">库存仪表盘</string>
+    <string name="stock_dashboard_total_value_label">总价值（销售价）</string>
+    <string name="stock_dashboard_total_cost_label">总采购成本</string>
+    <string name="stock_dashboard_item_count_format">共 %1$d 条记录</string>
+    <string name="stock_dashboard_status_section_title">按状态分布</string>
+    <string name="stock_dashboard_alerts_section_title">提醒</string>
+    <string name="stock_dashboard_alert_no_price_format">%1$d 条记录缺少销售价</string>
+    <string name="stock_dashboard_alert_no_photo_format">%1$d 条记录缺少照片</string>
+    <string name="stock_dashboard_no_alerts">没有提醒：所有记录都有价格和照片。</string>
+    <string name="stock_dashboard_empty_state">添加库存记录后，这里将显示统计信息。</string>
     <string name="stock_weight_ct_format">%1$s 克拉</string>
     <string name="stock_add_title">新增宝石</string>
     <string name="stock_edit_title">编辑宝石</string>

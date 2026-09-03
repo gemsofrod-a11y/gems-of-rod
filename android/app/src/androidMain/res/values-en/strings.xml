@@ -438,6 +438,17 @@
     <string name="stock_import_skipped_format">%1$d row(s) skipped</string>
     <string name="stock_import_empty_error">No valid data found in this file.</string>
     <string name="stock_import_ok_button">OK</string>
+    <string name="stock_dashboard_button">Dashboard</string>
+    <string name="stock_dashboard_title">Stock dashboard</string>
+    <string name="stock_dashboard_total_value_label">Total value (selling price)</string>
+    <string name="stock_dashboard_total_cost_label">Total purchase cost</string>
+    <string name="stock_dashboard_item_count_format">%1$d item(s) total</string>
+    <string name="stock_dashboard_status_section_title">Breakdown by status</string>
+    <string name="stock_dashboard_alerts_section_title">Alerts</string>
+    <string name="stock_dashboard_alert_no_price_format">%1$d item(s) without a selling price</string>
+    <string name="stock_dashboard_alert_no_photo_format">%1$d item(s) without a photo</string>
+    <string name="stock_dashboard_no_alerts">No alerts: every item has a price and a photo.</string>
+    <string name="stock_dashboard_empty_state">Add items to the stock to see statistics appear here.</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">New stone</string>
     <string name="stock_edit_title">Edit stone</string>
