@@ -79,6 +79,9 @@ import fr.gemsofrod.encyclopedie.ui.screens.StockDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.StockFormScreen
 import fr.gemsofrod.encyclopedie.ui.screens.StockListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.StockSalesHistoryScreen
+import fr.gemsofrod.encyclopedie.ui.screens.ClientDetailScreen
+import fr.gemsofrod.encyclopedie.ui.screens.ClientFormScreen
+import fr.gemsofrod.encyclopedie.ui.screens.ClientListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LapidaireScreen
 import fr.gemsofrod.encyclopedie.ui.screens.TreatmentsScreen
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
@@ -145,6 +148,10 @@ private object Routes {
     const val STOCK_DETAIL = "stock_detail/{itemId}"
     const val STOCK_DASHBOARD = "stock_dashboard"
     const val STOCK_SALES_HISTORY = "stock_sales_history"
+    const val CLIENT_LIST = "client_list"
+    const val CLIENT_NEW = "client_new"
+    const val CLIENT_EDIT = "client_edit/{clientId}"
+    const val CLIENT_DETAIL = "client_detail/{clientId}"
 
     fun gemsList(colorName: String) = "gems/$colorName"
     fun labNotebookEdit(sampleId: String) = "lab_notebook_edit/$sampleId"
@@ -163,6 +170,8 @@ private object Routes {
     fun associationDetail(associationId: String) = "association/$associationId"
     fun stockEdit(itemId: String) = "stock_edit/$itemId"
     fun stockDetail(itemId: String) = "stock_detail/$itemId"
+    fun clientEdit(clientId: String) = "client_edit/$clientId"
+    fun clientDetail(clientId: String) = "client_detail/$clientId"
 
     fun encode(value: String): String = URLEncoder.encode(value, "UTF-8")
     fun decode(value: String): String = URLDecoder.decode(value, "UTF-8")
@@ -267,6 +276,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onDiamondGradingClick = { navController.navigate(Routes.DIAMOND_GRADING) },
                 onTreatmentsClick = { navController.navigate(Routes.TREATMENTS) },
                 onStockClick = { navController.navigate(Routes.STOCK_LIST) },
+                onClientsClick = { navController.navigate(Routes.CLIENT_LIST) },
                 onLegendaryClick = { navController.navigate(Routes.LEGENDARY_RIDDLE) },
                 onBackClick = { navController.popBackStack() }
             )
@@ -295,6 +305,38 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             StockSalesHistoryScreen(
                 onBackClick = { navController.popBackStack() },
                 onItemClick = { itemId -> navController.navigate(Routes.stockDetail(itemId)) }
+            )
+        }
+        composable(Routes.CLIENT_LIST) {
+            ClientListScreen(
+                onClientClick = { clientId -> navController.navigate(Routes.clientDetail(clientId)) },
+                onAddClick = { navController.navigate(Routes.CLIENT_NEW) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.CLIENT_NEW) {
+            ClientFormScreen(
+                clientId = null,
+                onSaveComplete = { navController.popBackStack() },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.CLIENT_EDIT) { backStackEntry ->
+            val clientId = backStackEntry.arguments?.getString("clientId").orEmpty()
+            ClientFormScreen(
+                clientId = clientId,
+                onSaveComplete = { navController.popBackStack() },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.CLIENT_DETAIL) { backStackEntry ->
+            val clientId = backStackEntry.arguments?.getString("clientId").orEmpty()
+            ClientDetailScreen(
+                clientId = clientId,
+                onEditClick = { id -> navController.navigate(Routes.clientEdit(id)) },
+                onDeleted = { navController.popBackStack() },
+                onBackClick = { navController.popBackStack() },
+                onStockItemClick = { itemId -> navController.navigate(Routes.stockDetail(itemId)) }
             )
         }
         composable(Routes.STOCK_NEW) {

@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Inventory2
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Palette
+import androidx.compose.material.icons.filled.People
 import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.Science
 import androidx.compose.material.icons.filled.Verified
@@ -61,6 +62,7 @@ fun LabMenuScreen(
     onDiamondGradingClick: () -> Unit,
     onTreatmentsClick: () -> Unit,
     onStockClick: () -> Unit,
+    onClientsClick: () -> Unit,
     onLegendaryClick: () -> Unit,
     onBackClick: () -> Unit
 ) {
@@ -153,6 +155,12 @@ fun LabMenuScreen(
                 title = stringResource(R.string.lab_stock_title),
                 subtitle = stringResource(R.string.lab_stock_subtitle),
                 onClick = onStockClick
+            )
+            LabMenuCard(
+                icon = Icons.Filled.People,
+                title = stringResource(R.string.lab_clients_title),
+                subtitle = stringResource(R.string.lab_clients_subtitle),
+                onClick = onClientsClick
             )
             LabMenuCard(
                 icon = Icons.Filled.Public,
