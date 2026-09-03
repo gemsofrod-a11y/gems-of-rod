@@ -472,6 +472,11 @@
     <string name="stock_invoice_buyer_format">Comprador: %1$s</string>
     <string name="stock_invoice_total_format">Total: %1$s</string>
     <string name="stock_invoice_disclaimer">Este documento es un resumen de venta, no una factura oficial — añade las menciones legales necesarias (NIF/IVA, etc.) si procede.</string>
+    <string name="stock_backup_section_title">Copia de seguridad</string>
+    <string name="stock_backup_never_done">Todavía no has hecho una copia de seguridad de tu stock. Solo se guarda en este dispositivo — expórtalo con regularidad.</string>
+    <string name="stock_backup_last_done_format">Última copia de seguridad: %1$s</string>
+    <string name="stock_backup_reminder_format">Última copia de seguridad hace %1$d días — considera hacer otra.</string>
+    <string name="stock_backup_now_button">Hacer copia de seguridad ahora</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">Nueva piedra</string>
     <string name="stock_edit_title">Modificar la piedra</string>

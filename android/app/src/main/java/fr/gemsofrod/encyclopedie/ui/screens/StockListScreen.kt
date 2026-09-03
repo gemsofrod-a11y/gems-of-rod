@@ -60,6 +60,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import fr.gemsofrod.encyclopedie.R
+import fr.gemsofrod.encyclopedie.data.StockBackupPrefs
 import fr.gemsofrod.encyclopedie.data.StockCsvExporter
 import fr.gemsofrod.encyclopedie.data.StockCsvImportResult
 import fr.gemsofrod.encyclopedie.data.StockCsvImporter
@@ -152,6 +153,7 @@ fun StockListScreen(
                                     addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                                 }
                                 context.startActivity(Intent.createChooser(sendIntent, exportChooserTitle))
+                                StockBackupPrefs.recordBackupNow(context)
                             }
                         },
                         enabled = !isExporting && items.isNotEmpty()

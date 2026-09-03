@@ -1,5 +1,8 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -9,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -16,34 +20,54 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
+import fr.gemsofrod.encyclopedie.data.StockBackupPrefs
+import fr.gemsofrod.encyclopedie.data.StockCsvExporter
 import fr.gemsofrod.encyclopedie.data.StockItem
 import fr.gemsofrod.encyclopedie.data.StockRepository
 import fr.gemsofrod.encyclopedie.data.StockStatus
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.NumberFormat
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
+import java.util.concurrent.TimeUnit
 
 /**
  * Vue d'ensemble du stock : valeur totale, coût total d'achat, répartition
- * par statut et alertes simples (fiches sans prix ou sans photo) — calculées
- * à la volée depuis [StockRepository.allItems], sans état persisté propre.
+ * par statut, alertes simples (fiches sans prix ou sans photo) — calculées à
+ * la volée depuis [StockRepository.allItems], sans état persisté propre —
+ * et un rappel de sauvegarde ([StockBackupPrefs]). Le stock n'étant stocké
+ * que localement, la « sauvegarde » ici passe par le sélecteur de fichiers
+ * système ([ActivityResultContracts.CreateDocument]), qui permet de choisir
+ * Google Drive comme destination si l'app Drive est installée — sans
+ * intégration OAuth/API, l'OS gère l'authentification.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -103,6 +127,7 @@ fun StockDashboardScreen(onBackClick: () -> Unit) {
                 )
                 StatusBreakdownCard(items = items)
                 AlertsCard(noPriceCount = noPriceCount, noPhotoCount = noPhotoCount)
+                BackupCard(items = items)
             }
         }
     }
@@ -262,6 +287,86 @@ private fun AlertsCard(noPriceCount: Int, noPhotoCount: Int) {
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onTertiaryContainer
                     )
+                }
+            }
+        }
+    }
+}
+
+/** Au-delà de ce nombre de jours depuis la dernière sauvegarde, on relance le rappel. */
+private const val BACKUP_REMINDER_DAYS = 14
+
+@Composable
+private fun BackupCard(items: List<StockItem>) {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    var isSaving by remember { mutableStateOf(false) }
+    var lastBackupMillis by remember { mutableStateOf(StockBackupPrefs.lastBackupMillis(context)) }
+
+    val saveLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.CreateDocument("application/zip")
+    ) { uri: Uri? ->
+        if (uri == null) return@rememberLauncherForActivityResult
+        isSaving = true
+        scope.launch {
+            withContext(Dispatchers.IO) {
+                val file = StockCsvExporter.exportZip(context, items)
+                context.contentResolver.openOutputStream(uri)?.use { out ->
+                    file.inputStream().use { it.copyTo(out) }
+                }
+            }
+            StockBackupPrefs.recordBackupNow(context)
+            lastBackupMillis = StockBackupPrefs.lastBackupMillis(context)
+            isSaving = false
+        }
+    }
+
+    Card(
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            Text(
+                text = stringResource(R.string.stock_backup_section_title),
+                style = MaterialTheme.typography.titleSmall,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+
+            val backupMillis = lastBackupMillis
+            val message = if (backupMillis == null) {
+                stringResource(R.string.stock_backup_never_done)
+            } else {
+                val daysSince = TimeUnit.MILLISECONDS.toDays(System.currentTimeMillis() - backupMillis)
+                if (daysSince >= BACKUP_REMINDER_DAYS) {
+                    stringResource(R.string.stock_backup_reminder_format, daysSince.toInt())
+                } else {
+                    val dateFormat = remember { SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE) }
+                    stringResource(R.string.stock_backup_last_done_format, dateFormat.format(Date(backupMillis)))
+                }
+            }
+            Text(
+                text = message,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+
+            OutlinedButton(
+                enabled = !isSaving,
+                onClick = {
+                    val fileName = "stock_gems_of_rod_${SimpleDateFormat("yyyyMMdd_HHmmss", Locale.FRANCE).format(Date())}.zip"
+                    saveLauncher.launch(fileName)
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                if (isSaving) {
+                    CircularProgressIndicator(modifier = Modifier.size(18.dp), strokeWidth = 2.dp)
+                } else {
+                    Text(stringResource(R.string.stock_backup_now_button))
                 }
             }
         }
