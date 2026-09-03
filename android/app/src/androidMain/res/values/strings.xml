@@ -438,6 +438,17 @@
     <string name="stock_import_skipped_format">%1$d ligne(s) ignorée(s)</string>
     <string name="stock_import_empty_error">Aucune donnée valide trouvée dans ce fichier.</string>
     <string name="stock_import_ok_button">OK</string>
+    <string name="stock_dashboard_button">Tableau de bord</string>
+    <string name="stock_dashboard_title">Tableau de bord du stock</string>
+    <string name="stock_dashboard_total_value_label">Valeur totale (prix de vente)</string>
+    <string name="stock_dashboard_total_cost_label">Coût total d\'achat</string>
+    <string name="stock_dashboard_item_count_format">%1$d fiche(s) au total</string>
+    <string name="stock_dashboard_status_section_title">Répartition par statut</string>
+    <string name="stock_dashboard_alerts_section_title">Alertes</string>
+    <string name="stock_dashboard_alert_no_price_format">%1$d fiche(s) sans prix de vente</string>
+    <string name="stock_dashboard_alert_no_photo_format">%1$d fiche(s) sans photo</string>
+    <string name="stock_dashboard_no_alerts">Aucune alerte : toutes les fiches ont un prix et une photo.</string>
+    <string name="stock_dashboard_empty_state">Ajoutez des fiches au stock pour voir apparaître les statistiques ici.</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">Nouvelle pierre</string>
     <string name="stock_edit_title">Modifier la pierre</string>
