@@ -449,6 +449,12 @@
     <string name="stock_dashboard_alert_no_photo_format">%1$d позиций без фото</string>
     <string name="stock_dashboard_no_alerts">Нет оповещений: у всех позиций есть цена и фото.</string>
     <string name="stock_dashboard_empty_state">Добавьте позиции в склад, чтобы здесь появилась статистика.</string>
+    <string name="stock_search_placeholder">Поиск по названию или референсу…</string>
+    <string name="stock_filter_status_label">Статус</string>
+    <string name="stock_filter_price_min_label">Мин. цена (€)</string>
+    <string name="stock_filter_price_max_label">Макс. цена (€)</string>
+    <string name="stock_filter_clear_button">Сбросить фильтры</string>
+    <string name="stock_filter_no_results">Нет позиций, соответствующих фильтрам.</string>
     <string name="stock_weight_ct_format">%1$s кар</string>
     <string name="stock_add_title">Новый камень</string>
     <string name="stock_edit_title">Изменить камень</string>

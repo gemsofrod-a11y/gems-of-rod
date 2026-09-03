@@ -449,6 +449,12 @@
     <string name="stock_dashboard_alert_no_photo_format">%1$d item(s) without a photo</string>
     <string name="stock_dashboard_no_alerts">No alerts: every item has a price and a photo.</string>
     <string name="stock_dashboard_empty_state">Add items to the stock to see statistics appear here.</string>
+    <string name="stock_search_placeholder">Search by name or reference…</string>
+    <string name="stock_filter_status_label">Status</string>
+    <string name="stock_filter_price_min_label">Min price (€)</string>
+    <string name="stock_filter_price_max_label">Max price (€)</string>
+    <string name="stock_filter_clear_button">Clear filters</string>
+    <string name="stock_filter_no_results">No item matches the filters.</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">New stone</string>
     <string name="stock_edit_title">Edit stone</string>
