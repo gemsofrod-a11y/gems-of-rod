@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -37,6 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -77,6 +79,11 @@ fun DiamondGradingScreen(onBackClick: () -> Unit) {
 
     val tintGradient = remember {
         Brush.horizontalGradient(listOf(Color(0xFFFFFFFF), Color(0xFFF5EFA0)))
+    }
+    // Aperçu de la teinte sélectionnée : mêmes bornes que le dégradé du
+    // curseur, pour que le petit carré reflète exactement la position du pouce.
+    val selectedTintColor = remember(tint) {
+        lerp(Color(0xFFFFFFFF), Color(0xFFF5EFA0), tint)
     }
 
     Scaffold(
@@ -144,11 +151,24 @@ fun DiamondGradingScreen(onBackClick: () -> Unit) {
             ColorGradeResultField(page = page, matched = matched)
 
             Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                Text(
-                    text = page.tintLabel,
-                    style = MaterialTheme.typography.labelLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = page.tintLabel,
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Box(
+                        modifier = Modifier
+                            .size(28.dp)
+                            .clip(RoundedCornerShape(6.dp))
+                            .background(selectedTintColor)
+                            .border(1.dp, MaterialTheme.colorScheme.outline, RoundedCornerShape(6.dp))
+                    )
+                }
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
