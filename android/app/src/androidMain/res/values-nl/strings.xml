@@ -474,6 +474,13 @@
     <string name="supplier_delete_confirm_action">Verwijderen</string>
     <string name="lab_suppliers_title">Leveranciers</string>
     <string name="lab_suppliers_subtitle">Overzicht van steenslijpers, handelaars en partners.</string>
+    <string name="global_search_title">Zoeken</string>
+    <string name="global_search_placeholder">Zoek een steen, klant of leverancier…</string>
+    <string name="global_search_hint">Typ om te zoeken in de encyclopedie, voorraad, klanten en leveranciers.</string>
+    <string name="global_search_section_encyclopedie">Encyclopedie</string>
+    <string name="global_search_section_stock">Voorraad</string>
+    <string name="global_search_section_clients">Klanten</string>
+    <string name="global_search_section_suppliers">Leveranciers</string>
     <string name="stock_title">Voorraad</string>
     <string name="stock_empty_state">Geen stenen op voorraad. Voeg uw eerste fiche toe.</string>
     <string name="stock_add_button">Steen toevoegen</string>

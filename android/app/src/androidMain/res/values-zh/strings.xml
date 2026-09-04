@@ -474,6 +474,13 @@
     <string name="supplier_delete_confirm_action">删除</string>
     <string name="lab_suppliers_title">供应商</string>
     <string name="lab_suppliers_subtitle">宝石切磨师、经销商与合作伙伴名录。</string>
+    <string name="global_search_title">搜索</string>
+    <string name="global_search_placeholder">搜索宝石、客户或供应商…</string>
+    <string name="global_search_hint">输入以在百科全书、库存、客户和供应商中搜索。</string>
+    <string name="global_search_section_encyclopedie">百科全书</string>
+    <string name="global_search_section_stock">库存</string>
+    <string name="global_search_section_clients">客户</string>
+    <string name="global_search_section_suppliers">供应商</string>
     <string name="stock_title">库存</string>
     <string name="stock_empty_state">库存中暂无宝石。添加您的第一条记录。</string>
     <string name="stock_add_button">添加宝石</string>

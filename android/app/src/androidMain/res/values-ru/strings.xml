@@ -474,6 +474,13 @@
     <string name="supplier_delete_confirm_action">Удалить</string>
     <string name="lab_suppliers_title">Поставщики</string>
     <string name="lab_suppliers_subtitle">Справочник гранильщиков, трейдеров и партнёров.</string>
+    <string name="global_search_title">Поиск</string>
+    <string name="global_search_placeholder">Поиск камня, клиента, поставщика…</string>
+    <string name="global_search_hint">Введите текст для поиска по энциклопедии, складу, клиентам и поставщикам.</string>
+    <string name="global_search_section_encyclopedie">Энциклопедия</string>
+    <string name="global_search_section_stock">Склад</string>
+    <string name="global_search_section_clients">Клиенты</string>
+    <string name="global_search_section_suppliers">Поставщики</string>
     <string name="stock_title">Склад</string>
     <string name="stock_empty_state">На складе нет камней. Добавьте первую карточку.</string>
     <string name="stock_add_button">Добавить камень</string>

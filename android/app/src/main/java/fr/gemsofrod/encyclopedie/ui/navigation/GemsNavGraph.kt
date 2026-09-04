@@ -39,6 +39,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.FavoritesScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemComparisonScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemmologieMenuScreen
+import fr.gemsofrod.encyclopedie.ui.screens.GlobalSearchScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemsListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GlossaryScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GuidedAnalysisScreen
@@ -159,6 +160,7 @@ private object Routes {
     const val SUPPLIER_NEW = "supplier_new"
     const val SUPPLIER_EDIT = "supplier_edit/{supplierId}"
     const val SUPPLIER_DETAIL = "supplier_detail/{supplierId}"
+    const val GLOBAL_SEARCH = "global_search"
 
     fun gemsList(colorName: String) = "gems/$colorName"
     fun labNotebookEdit(sampleId: String) = "lab_notebook_edit/$sampleId"
@@ -264,7 +266,17 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onQuizClick = { navController.navigate(Routes.QUIZ) },
                 onAchievementsClick = { navController.navigate(Routes.ACHIEVEMENTS) },
                 onLabClick = { navController.navigate(Routes.LAB_MENU) },
-                onLapidaireClick = { navController.navigate(Routes.LAPIDAIRE) }
+                onLapidaireClick = { navController.navigate(Routes.LAPIDAIRE) },
+                onSearchClick = { navController.navigate(Routes.GLOBAL_SEARCH) }
+            )
+        }
+        composable(Routes.GLOBAL_SEARCH) {
+            GlobalSearchScreen(
+                onGemClick = { gemId -> navController.navigate(Routes.gemDetail(gemId)) },
+                onStockItemClick = { itemId -> navController.navigate(Routes.stockDetail(itemId)) },
+                onClientClick = { clientId -> navController.navigate(Routes.clientDetail(clientId)) },
+                onSupplierClick = { supplierId -> navController.navigate(Routes.supplierDetail(supplierId)) },
+                onBackClick = { navController.popBackStack() }
             )
         }
         composable(Routes.QUIZ) {

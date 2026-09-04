@@ -474,6 +474,13 @@
     <string name="supplier_delete_confirm_action">Eliminar</string>
     <string name="lab_suppliers_title">Fornecedores</string>
     <string name="lab_suppliers_subtitle">Diretório de lapidários, negociantes e parceiros.</string>
+    <string name="global_search_title">Pesquisa</string>
+    <string name="global_search_placeholder">Procurar uma pedra, um cliente, um fornecedor…</string>
+    <string name="global_search_hint">Digite para pesquisar na enciclopédia, no stock, nos clientes e nos fornecedores.</string>
+    <string name="global_search_section_encyclopedie">Enciclopédia</string>
+    <string name="global_search_section_stock">Stock</string>
+    <string name="global_search_section_clients">Clientes</string>
+    <string name="global_search_section_suppliers">Fornecedores</string>
     <string name="stock_title">Stock</string>
     <string name="stock_empty_state">Nenhuma pedra em stock. Adicione a sua primeira ficha.</string>
     <string name="stock_add_button">Adicionar uma pedra</string>

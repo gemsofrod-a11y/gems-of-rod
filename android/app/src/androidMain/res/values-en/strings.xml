@@ -474,6 +474,13 @@
     <string name="supplier_delete_confirm_action">Delete</string>
     <string name="lab_suppliers_title">Suppliers</string>
     <string name="lab_suppliers_subtitle">Directory of lapidaries, traders and partners.</string>
+    <string name="global_search_title">Search</string>
+    <string name="global_search_placeholder">Search a stone, a client, a supplier…</string>
+    <string name="global_search_hint">Type to search the encyclopedia, stock, clients and suppliers.</string>
+    <string name="global_search_section_encyclopedie">Encyclopedia</string>
+    <string name="global_search_section_stock">Stock</string>
+    <string name="global_search_section_clients">Clients</string>
+    <string name="global_search_section_suppliers">Suppliers</string>
     <string name="stock_title">Stock</string>
     <string name="stock_empty_state">No stones in stock. Add your first entry.</string>
     <string name="stock_add_button">Add a stone</string>

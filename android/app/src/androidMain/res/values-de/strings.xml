@@ -474,6 +474,13 @@
     <string name="supplier_delete_confirm_action">Löschen</string>
     <string name="lab_suppliers_title">Lieferanten</string>
     <string name="lab_suppliers_subtitle">Verzeichnis von Steinschleifern, Händlern und Partnern.</string>
+    <string name="global_search_title">Suche</string>
+    <string name="global_search_placeholder">Stein, Kunde oder Lieferant suchen…</string>
+    <string name="global_search_hint">Tippen, um Enzyklopädie, Bestand, Kunden und Lieferanten zu durchsuchen.</string>
+    <string name="global_search_section_encyclopedie">Enzyklopädie</string>
+    <string name="global_search_section_stock">Bestand</string>
+    <string name="global_search_section_clients">Kunden</string>
+    <string name="global_search_section_suppliers">Lieferanten</string>
     <string name="stock_title">Lager</string>
     <string name="stock_empty_state">Keine Steine im Lager. Fügen Sie Ihren ersten Eintrag hinzu.</string>
     <string name="stock_add_button">Stein hinzufügen</string>
