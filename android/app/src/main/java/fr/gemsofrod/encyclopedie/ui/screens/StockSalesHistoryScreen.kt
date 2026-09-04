@@ -99,6 +99,8 @@ fun StockSalesHistoryScreen(onBackClick: () -> Unit, onItemClick: (String) -> Un
 
     val currencyFormat = remember { NumberFormat.getCurrencyInstance(Locale.FRANCE) }
     val total = soldItems.sumOf { it.prixVente ?: 0.0 }
+    val itemsWithMargin = soldItems.filter { it.coutAchat != null && it.prixVente != null }
+    val totalMargin = itemsWithMargin.sumOf { (it.prixVente ?: 0.0) - (it.coutAchat ?: 0.0) }
 
     Scaffold(
         topBar = {
@@ -140,13 +142,27 @@ fun StockSalesHistoryScreen(onBackClick: () -> Unit, onItemClick: (String) -> Un
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp, vertical = 4.dp)
             ) {
-                Text(
-                    text = stringResource(R.string.stock_sales_history_total_format, soldItems.size, currencyFormat.format(total)),
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.SemiBold,
-                    color = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.padding(16.dp)
-                )
+                Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text(
+                        text = stringResource(R.string.stock_sales_history_total_format, soldItems.size, currencyFormat.format(total)),
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                    if (itemsWithMargin.isNotEmpty()) {
+                        Text(
+                            text = stringResource(R.string.stock_sales_history_margin_format, currencyFormat.format(totalMargin)),
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.tertiary
+                        )
+                        Text(
+                            text = stringResource(R.string.stock_sales_history_margin_hint),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
             }
 
             if (soldItems.isEmpty()) {

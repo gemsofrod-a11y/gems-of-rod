@@ -509,6 +509,8 @@
     <string name="stock_sales_period_this_year">今年</string>
     <string name="stock_sales_period_all">全部</string>
     <string name="stock_sales_history_total_format">共 %1$d 笔销售 — %2$s</string>
+    <string name="stock_sales_history_margin_format">利润：%1$s</string>
+    <string name="stock_sales_history_margin_hint">仅计算已记录采购成本的销售。</string>
     <string name="stock_sales_history_empty">此期间没有销售记录。</string>
     <string name="stock_weight_ct_format">%1$s 克拉</string>
     <string name="stock_add_title">新增宝石</string>
@@ -540,6 +542,8 @@
     <string name="stock_field_purchase_date_label">购买日期</string>
     <string name="stock_field_purchase_cost_label">购买成本</string>
     <string name="stock_field_selling_price_label">销售价格</string>
+    <string name="stock_field_margin_label">利润</string>
+    <string name="stock_margin_value_format">%1$s(成本的 %2$.1f%%)</string>
     <string name="stock_field_status_label">状态</string>
     <string name="stock_field_notes_label">备注</string>
     <string name="stock_status_en_stock">库存中</string>

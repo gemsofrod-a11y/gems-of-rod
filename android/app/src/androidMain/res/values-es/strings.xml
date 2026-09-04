@@ -509,6 +509,8 @@
     <string name="stock_sales_period_this_year">Este año</string>
     <string name="stock_sales_period_all">Todo</string>
     <string name="stock_sales_history_total_format">%1$d venta(s) — %2$s</string>
+    <string name="stock_sales_history_margin_format">Margen: %1$s</string>
+    <string name="stock_sales_history_margin_hint">Calculado sobre las ventas con coste de compra registrado.</string>
     <string name="stock_sales_history_empty">Ninguna venta en este período.</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">Nueva piedra</string>
@@ -540,6 +542,8 @@
     <string name="stock_field_purchase_date_label">Fecha de compra</string>
     <string name="stock_field_purchase_cost_label">Coste de compra</string>
     <string name="stock_field_selling_price_label">Precio de venta</string>
+    <string name="stock_field_margin_label">Margen</string>
+    <string name="stock_margin_value_format">%1$s (%2$.1f %% del coste)</string>
     <string name="stock_field_status_label">Estado</string>
     <string name="stock_field_notes_label">Notas</string>
     <string name="stock_status_en_stock">En stock</string>

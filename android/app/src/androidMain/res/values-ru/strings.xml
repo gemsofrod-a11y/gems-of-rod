@@ -509,6 +509,8 @@
     <string name="stock_sales_period_this_year">Этот год</string>
     <string name="stock_sales_period_all">Все</string>
     <string name="stock_sales_history_total_format">Продаж: %1$d — %2$s</string>
+    <string name="stock_sales_history_margin_format">Маржа: %1$s</string>
+    <string name="stock_sales_history_margin_hint">Рассчитано по продажам с указанной закупочной стоимостью.</string>
     <string name="stock_sales_history_empty">Нет продаж за этот период.</string>
     <string name="stock_weight_ct_format">%1$s кар</string>
     <string name="stock_add_title">Новый камень</string>
@@ -540,6 +542,8 @@
     <string name="stock_field_purchase_date_label">Дата покупки</string>
     <string name="stock_field_purchase_cost_label">Стоимость покупки</string>
     <string name="stock_field_selling_price_label">Цена продажи</string>
+    <string name="stock_field_margin_label">Маржа</string>
+    <string name="stock_margin_value_format">%1$s (%2$.1f %% от стоимости)</string>
     <string name="stock_field_status_label">Статус</string>
     <string name="stock_field_notes_label">Заметки</string>
     <string name="stock_status_en_stock">На складе</string>
