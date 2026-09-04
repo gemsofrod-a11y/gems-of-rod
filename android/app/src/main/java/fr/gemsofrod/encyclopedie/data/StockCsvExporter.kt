@@ -56,6 +56,51 @@ object StockCsvExporter {
     }
 
     /**
+     * Contenu CSV des ventes (une ligne par pierre au statut [StockStatus.VENDU]),
+     * marge comprise — pensé pour être transmis tel quel à l'expert-comptable
+     * ou importé dans un tableur, en complément de l'historique déjà
+     * consultable dans l'app ([StockSalesHistoryScreen]).
+     */
+    fun buildSalesCsv(items: List<StockItem>): String {
+        val header = listOf(
+            "Nom", "Référence", "Date de vente", "Acheteur",
+            "Coût d'achat (€)", "Prix de vente (€)", "Marge (€)"
+        ).joinToString(";") { csvField(it) }
+
+        val rows = items
+            .filter { it.statut == StockStatus.VENDU }
+            .sortedByDescending { it.venteDateMillis ?: it.createdAtMillis }
+            .map { item ->
+                val cout = item.coutAchat
+                val prix = item.prixVente
+                val marge = if (cout != null && prix != null) (prix - cout).toString() else ""
+                listOf(
+                    item.nom,
+                    item.reference,
+                    item.venteDateMillis?.let { dateFormat.format(it) } ?: "",
+                    item.acheteurNom,
+                    cout?.toString() ?: "",
+                    prix?.toString() ?: "",
+                    marge
+                ).joinToString(";") { csvField(it) }
+            }
+
+        return (listOf(header) + rows).joinToString("\n")
+    }
+
+    /** Contenu CSV des ventes encodé en UTF-8 avec BOM, pour un import propre dans Excel. */
+    fun salesCsvBytes(items: List<StockItem>): ByteArray =
+        byteArrayOf(0xEF.toByte(), 0xBB.toByte(), 0xBF.toByte()) + buildSalesCsv(items).toByteArray(Charsets.UTF_8)
+
+    /** Écrit le CSV des ventes dans un fichier temporaire, prêt à être partagé (voir [StockSalesHistoryScreen]). */
+    fun exportSalesCsvFile(context: Context, items: List<StockItem>): File {
+        val outDir = File(context.cacheDir, "stock_exports").apply { mkdirs() }
+        val outFile = File(outDir, "ventes_gems_of_rod_${System.currentTimeMillis()}.csv")
+        outFile.writeBytes(salesCsvBytes(items))
+        return outFile
+    }
+
+    /**
      * Archive complète du stock : « stock.csv » (colonne Photo référençant
      * les entrées « photos/<nom> ») plus une copie de chaque photo
      * réellement présente sur l'appareil.

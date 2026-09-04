@@ -552,6 +552,8 @@
     <string name="stock_sales_history_margin_format">Marge: %1$s</string>
     <string name="stock_sales_history_margin_hint">Berechnet anhand der Verkäufe mit erfasstem Einkaufspreis.</string>
     <string name="stock_sales_history_empty">Keine Verkäufe in diesem Zeitraum.</string>
+    <string name="stock_sales_export_button">Als CSV exportieren</string>
+    <string name="stock_sales_export_chooser_title">Verkäufe exportieren</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">Neuer Stein</string>
     <string name="stock_edit_title">Stein bearbeiten</string>

@@ -552,6 +552,8 @@
     <string name="stock_sales_history_margin_format">Маржа: %1$s</string>
     <string name="stock_sales_history_margin_hint">Рассчитано по продажам с указанной закупочной стоимостью.</string>
     <string name="stock_sales_history_empty">Нет продаж за этот период.</string>
+    <string name="stock_sales_export_button">Экспорт в CSV</string>
+    <string name="stock_sales_export_chooser_title">Экспорт продаж</string>
     <string name="stock_weight_ct_format">%1$s кар</string>
     <string name="stock_add_title">Новый камень</string>
     <string name="stock_edit_title">Изменить камень</string>

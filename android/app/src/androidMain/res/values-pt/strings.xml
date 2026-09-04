@@ -552,6 +552,8 @@
     <string name="stock_sales_history_margin_format">Margem: %1$s</string>
     <string name="stock_sales_history_margin_hint">Calculada sobre as vendas com custo de compra registado.</string>
     <string name="stock_sales_history_empty">Nenhuma venda neste período.</string>
+    <string name="stock_sales_export_button">Exportar em CSV</string>
+    <string name="stock_sales_export_chooser_title">Exportar as vendas</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">Nova pedra</string>
     <string name="stock_edit_title">Editar a pedra</string>

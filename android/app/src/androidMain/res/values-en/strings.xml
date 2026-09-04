@@ -552,6 +552,8 @@
     <string name="stock_sales_history_margin_format">Margin: %1$s</string>
     <string name="stock_sales_history_margin_hint">Calculated on sales with a recorded purchase cost.</string>
     <string name="stock_sales_history_empty">No sales in this period.</string>
+    <string name="stock_sales_export_button">Export as CSV</string>
+    <string name="stock_sales_export_chooser_title">Export sales</string>
     <string name="stock_weight_ct_format">%1$s ct</string>
     <string name="stock_add_title">New stone</string>
     <string name="stock_edit_title">Edit stone</string>

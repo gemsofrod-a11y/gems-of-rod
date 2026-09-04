@@ -552,6 +552,8 @@
     <string name="stock_sales_history_margin_format">利润：%1$s</string>
     <string name="stock_sales_history_margin_hint">仅计算已记录采购成本的销售。</string>
     <string name="stock_sales_history_empty">此期间没有销售记录。</string>
+    <string name="stock_sales_export_button">导出为 CSV</string>
+    <string name="stock_sales_export_chooser_title">导出销售记录</string>
     <string name="stock_weight_ct_format">%1$s 克拉</string>
     <string name="stock_add_title">新增宝石</string>
     <string name="stock_edit_title">编辑宝石</string>
