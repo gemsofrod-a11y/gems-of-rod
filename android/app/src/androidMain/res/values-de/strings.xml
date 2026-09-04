@@ -438,6 +438,7 @@
     <string name="client_field_email_label">E-Mail</string>
     <string name="client_field_adresse_label">Adresse</string>
     <string name="client_field_notes_label">Notizen</string>
+    <string name="client_field_vip_label">VIP-Kunde</string>
     <string name="client_form_title_add">Neuer Kunde</string>
     <string name="client_form_title_edit">Kunde bearbeiten</string>
     <string name="client_save_button">Speichern</string>
@@ -446,6 +447,10 @@
     <string name="client_delete_confirm_title">Diesen Kunden löschen?</string>
     <string name="client_delete_confirm_message">Diese Aktion ist endgültig. Die namensbasierte Kaufhistorie bleibt auf den betroffenen Lagerartikeln sichtbar.</string>
     <string name="client_delete_confirm_action">Löschen</string>
+    <string name="client_vip_badge">VIP-Kunde</string>
+    <string name="client_vip_last_contact_format">Letzter Kontakt: %1$s</string>
+    <string name="client_vip_no_contact">Noch kein Kontakt erfasst.</string>
+    <string name="client_vip_mark_contact_button">Kontakt für heute vermerken</string>
     <string name="client_purchases_section_title">Kaufhistorie</string>
     <string name="client_purchases_empty">Keine Käufe für diesen Namen gefunden.</string>
     <string name="client_purchases_hint">Basiert auf einem Namensabgleich mit erfassten Verkäufen — keine automatische Verknüpfung.</string>
@@ -502,6 +507,10 @@
     <string name="stock_dashboard_alert_no_price_format">%1$d Eintrag/Einträge ohne Verkaufspreis</string>
     <string name="stock_dashboard_alert_no_photo_format">%1$d Eintrag/Einträge ohne Foto</string>
     <string name="stock_dashboard_no_alerts">Keine Hinweise: Alle Einträge haben einen Preis und ein Foto.</string>
+    <string name="stock_dashboard_vip_section_title">VIP-Kunden-Nachverfolgung</string>
+    <string name="stock_dashboard_vip_no_reminder">Kein Nachfassen nötig: Alle VIP-Kunden wurden kürzlich kontaktiert.</string>
+    <string name="stock_dashboard_vip_reminder_days_format">Seit %1$d Tag(en) kein Kontakt</string>
+    <string name="stock_dashboard_vip_reminder_never">Nie kontaktiert</string>
     <string name="stock_dashboard_empty_state">Fügen Sie Einträge zum Lager hinzu, um hier Statistiken zu sehen.</string>
     <string name="stock_search_placeholder">Nach Name oder Referenz suchen…</string>
     <string name="stock_filter_status_label">Status</string>

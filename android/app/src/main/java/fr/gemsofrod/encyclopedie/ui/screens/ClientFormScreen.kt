@@ -2,6 +2,7 @@ package fr.gemsofrod.encyclopedie.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -17,6 +18,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -25,6 +27,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
@@ -44,6 +47,7 @@ fun ClientFormScreen(clientId: String?, onSaveComplete: () -> Unit, onBackClick:
     var email by remember { mutableStateOf(existing?.email ?: "") }
     var adresse by remember { mutableStateOf(existing?.adresse ?: "") }
     var notes by remember { mutableStateOf(existing?.notes ?: "") }
+    var estVip by remember { mutableStateOf(existing?.estVip ?: false) }
 
     Scaffold(
         topBar = {
@@ -65,7 +69,9 @@ fun ClientFormScreen(clientId: String?, onSaveComplete: () -> Unit, onBackClick:
                                 email = email.trim(),
                                 adresse = adresse.trim(),
                                 notes = notes.trim(),
-                                createdAtMillis = existing?.createdAtMillis ?: 0L
+                                createdAtMillis = existing?.createdAtMillis ?: 0L,
+                                estVip = estVip,
+                                dernierContactMillis = existing?.dernierContactMillis
                             )
                             if (existing == null) ClientRepository.addClient(client) else ClientRepository.updateClient(client)
                             onSaveComplete()
@@ -115,6 +121,14 @@ fun ClientFormScreen(clientId: String?, onSaveComplete: () -> Unit, onBackClick:
                 onValueChange = { notes = it },
                 singleLine = false
             )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(stringResource(R.string.client_field_vip_label), style = MaterialTheme.typography.bodyLarge)
+                Switch(checked = estVip, onCheckedChange = { estVip = it })
+            }
         }
     }
 }

@@ -66,13 +66,14 @@ fun ClientDetailScreen(
     onBackClick: () -> Unit,
     onStockItemClick: (String) -> Unit
 ) {
-    val client = remember(clientId) { ClientRepository.clientById(clientId) }
+    val initialClient = remember(clientId) { ClientRepository.clientById(clientId) }
 
-    if (client == null) {
+    if (initialClient == null) {
         LaunchedEffect(Unit) { onBackClick() }
         return
     }
 
+    var client by remember(clientId) { mutableStateOf(initialClient) }
     var showDeleteConfirm by remember { mutableStateOf(false) }
     val currencyFormat = remember { NumberFormat.getCurrencyInstance(Locale.FRANCE) }
 
@@ -116,6 +117,40 @@ fun ClientDetailScreen(
                 .padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
+            if (client.estVip) {
+                Card(
+                    shape = RoundedCornerShape(16.dp),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text(
+                            text = stringResource(R.string.client_vip_badge),
+                            style = MaterialTheme.typography.labelLarge,
+                            fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer
+                        )
+                        val contactMillis = client.dernierContactMillis
+                        Text(
+                            text = if (contactMillis != null) {
+                                stringResource(R.string.client_vip_last_contact_format, clientDateFormat.format(Date(contactMillis)))
+                            } else {
+                                stringResource(R.string.client_vip_no_contact)
+                            },
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer
+                        )
+                        OutlinedButton(onClick = {
+                            val updated = client.copy(dernierContactMillis = System.currentTimeMillis())
+                            ClientRepository.updateClient(updated)
+                            client = updated
+                        }) {
+                            Text(stringResource(R.string.client_vip_mark_contact_button))
+                        }
+                    }
+                }
+            }
+
             Card(
                 shape = RoundedCornerShape(16.dp),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),

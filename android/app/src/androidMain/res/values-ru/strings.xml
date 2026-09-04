@@ -438,6 +438,7 @@
     <string name="client_field_email_label">Email</string>
     <string name="client_field_adresse_label">Адрес</string>
     <string name="client_field_notes_label">Заметки</string>
+    <string name="client_field_vip_label">VIP-клиент</string>
     <string name="client_form_title_add">Новый клиент</string>
     <string name="client_form_title_edit">Изменить клиента</string>
     <string name="client_save_button">Сохранить</string>
@@ -446,6 +447,10 @@
     <string name="client_delete_confirm_title">Удалить этого клиента?</string>
     <string name="client_delete_confirm_message">Это действие необратимо. История покупок по имени останется видна в соответствующих карточках склада.</string>
     <string name="client_delete_confirm_action">Удалить</string>
+    <string name="client_vip_badge">VIP-клиент</string>
+    <string name="client_vip_last_contact_format">Последний контакт: %1$s</string>
+    <string name="client_vip_no_contact">Контакт ещё не зарегистрирован.</string>
+    <string name="client_vip_mark_contact_button">Отметить контакт сегодня</string>
     <string name="client_purchases_section_title">История покупок</string>
     <string name="client_purchases_empty">Покупки с этим именем не найдены.</string>
     <string name="client_purchases_hint">Основано на совпадении имени с зарегистрированными продажами — это не автоматическая связь.</string>
@@ -502,6 +507,10 @@
     <string name="stock_dashboard_alert_no_price_format">%1$d позиций без цены продажи</string>
     <string name="stock_dashboard_alert_no_photo_format">%1$d позиций без фото</string>
     <string name="stock_dashboard_no_alerts">Нет оповещений: у всех позиций есть цена и фото.</string>
+    <string name="stock_dashboard_vip_section_title">Напоминания по VIP-клиентам</string>
+    <string name="stock_dashboard_vip_no_reminder">Напоминаний нет: со всеми VIP-клиентами недавно связывались.</string>
+    <string name="stock_dashboard_vip_reminder_days_format">Нет контакта %1$d дн.</string>
+    <string name="stock_dashboard_vip_reminder_never">Не было контакта</string>
     <string name="stock_dashboard_empty_state">Добавьте позиции в склад, чтобы здесь появилась статистика.</string>
     <string name="stock_search_placeholder">Поиск по названию или референсу…</string>
     <string name="stock_filter_status_label">Статус</string>

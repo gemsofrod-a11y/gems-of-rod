@@ -438,6 +438,7 @@
     <string name="client_field_email_label">Email</string>
     <string name="client_field_adresse_label">Indirizzo</string>
     <string name="client_field_notes_label">Note</string>
+    <string name="client_field_vip_label">Cliente VIP</string>
     <string name="client_form_title_add">Nuovo cliente</string>
     <string name="client_form_title_edit">Modifica cliente</string>
     <string name="client_save_button">Salva</string>
@@ -446,6 +447,10 @@
     <string name="client_delete_confirm_title">Eliminare questo cliente?</string>
     <string name="client_delete_confirm_message">Questa azione è definitiva. La cronologia degli acquisti basata sul nome resterà visibile sulle schede di magazzino corrispondenti.</string>
     <string name="client_delete_confirm_action">Elimina</string>
+    <string name="client_vip_badge">Cliente VIP</string>
+    <string name="client_vip_last_contact_format">Ultimo contatto: %1$s</string>
+    <string name="client_vip_no_contact">Nessun contatto registrato.</string>
+    <string name="client_vip_mark_contact_button">Segna un contatto oggi</string>
     <string name="client_purchases_section_title">Cronologia acquisti</string>
     <string name="client_purchases_empty">Nessun acquisto trovato per questo nome.</string>
     <string name="client_purchases_hint">Basato su una corrispondenza di nome con le vendite registrate — non un collegamento automatico.</string>
@@ -502,6 +507,10 @@
     <string name="stock_dashboard_alert_no_price_format">%1$d scheda/e senza prezzo di vendita</string>
     <string name="stock_dashboard_alert_no_photo_format">%1$d scheda/e senza foto</string>
     <string name="stock_dashboard_no_alerts">Nessun avviso: tutte le schede hanno un prezzo e una foto.</string>
+    <string name="stock_dashboard_vip_section_title">Follow-up clienti VIP</string>
+    <string name="stock_dashboard_vip_no_reminder">Nessun follow-up necessario: tutti i clienti VIP sono stati contattati di recente.</string>
+    <string name="stock_dashboard_vip_reminder_days_format">Nessun contatto da %1$d giorno/i</string>
+    <string name="stock_dashboard_vip_reminder_never">Mai contattato</string>
     <string name="stock_dashboard_empty_state">Aggiungi schede al magazzino per vedere qui le statistiche.</string>
     <string name="stock_search_placeholder">Cerca per nome o riferimento…</string>
     <string name="stock_filter_status_label">Stato</string>

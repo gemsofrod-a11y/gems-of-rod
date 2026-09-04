@@ -438,6 +438,7 @@
     <string name="client_field_email_label">Email</string>
     <string name="client_field_adresse_label">Adresse</string>
     <string name="client_field_notes_label">Notes</string>
+    <string name="client_field_vip_label">Client VIP</string>
     <string name="client_form_title_add">Nouveau client</string>
     <string name="client_form_title_edit">Modifier le client</string>
     <string name="client_save_button">Enregistrer</string>
@@ -446,6 +447,10 @@
     <string name="client_delete_confirm_title">Supprimer ce client ?</string>
     <string name="client_delete_confirm_message">Cette action est définitive. L\'historique d\'achats basé sur le nom restera visible sur les fiches de stock concernées.</string>
     <string name="client_delete_confirm_action">Supprimer</string>
+    <string name="client_vip_badge">Client VIP</string>
+    <string name="client_vip_last_contact_format">Dernier contact : %1$s</string>
+    <string name="client_vip_no_contact">Aucun contact enregistré.</string>
+    <string name="client_vip_mark_contact_button">Marquer un contact aujourd\'hui</string>
     <string name="client_purchases_section_title">Historique d\'achats</string>
     <string name="client_purchases_empty">Aucun achat trouvé pour ce nom.</string>
     <string name="client_purchases_hint">Basé sur une correspondance de nom avec les ventes enregistrées — pas un lien automatique.</string>
@@ -502,6 +507,10 @@
     <string name="stock_dashboard_alert_no_price_format">%1$d fiche(s) sans prix de vente</string>
     <string name="stock_dashboard_alert_no_photo_format">%1$d fiche(s) sans photo</string>
     <string name="stock_dashboard_no_alerts">Aucune alerte : toutes les fiches ont un prix et une photo.</string>
+    <string name="stock_dashboard_vip_section_title">Relances clients VIP</string>
+    <string name="stock_dashboard_vip_no_reminder">Aucune relance : tous les clients VIP ont été contactés récemment.</string>
+    <string name="stock_dashboard_vip_reminder_days_format">Sans contact depuis %1$d jour(s)</string>
+    <string name="stock_dashboard_vip_reminder_never">Jamais contacté</string>
     <string name="stock_dashboard_empty_state">Ajoutez des fiches au stock pour voir apparaître les statistiques ici.</string>
     <string name="stock_search_placeholder">Rechercher par nom ou référence…</string>
     <string name="stock_filter_status_label">Statut</string>

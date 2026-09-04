@@ -438,6 +438,7 @@
     <string name="client_field_email_label">Email</string>
     <string name="client_field_adresse_label">Address</string>
     <string name="client_field_notes_label">Notes</string>
+    <string name="client_field_vip_label">VIP client</string>
     <string name="client_form_title_add">New client</string>
     <string name="client_form_title_edit">Edit client</string>
     <string name="client_save_button">Save</string>
@@ -446,6 +447,10 @@
     <string name="client_delete_confirm_title">Delete this client?</string>
     <string name="client_delete_confirm_message">This action is permanent. The name-based purchase history will remain visible on the related stock items.</string>
     <string name="client_delete_confirm_action">Delete</string>
+    <string name="client_vip_badge">VIP client</string>
+    <string name="client_vip_last_contact_format">Last contact: %1$s</string>
+    <string name="client_vip_no_contact">No contact recorded yet.</string>
+    <string name="client_vip_mark_contact_button">Mark a contact today</string>
     <string name="client_purchases_section_title">Purchase history</string>
     <string name="client_purchases_empty">No purchases found for this name.</string>
     <string name="client_purchases_hint">Based on a name match with recorded sales — not an automatic link.</string>
@@ -502,6 +507,10 @@
     <string name="stock_dashboard_alert_no_price_format">%1$d item(s) without a selling price</string>
     <string name="stock_dashboard_alert_no_photo_format">%1$d item(s) without a photo</string>
     <string name="stock_dashboard_no_alerts">No alerts: every item has a price and a photo.</string>
+    <string name="stock_dashboard_vip_section_title">VIP client follow-ups</string>
+    <string name="stock_dashboard_vip_no_reminder">No follow-up needed: all VIP clients were contacted recently.</string>
+    <string name="stock_dashboard_vip_reminder_days_format">No contact for %1$d day(s)</string>
+    <string name="stock_dashboard_vip_reminder_never">Never contacted</string>
     <string name="stock_dashboard_empty_state">Add items to the stock to see statistics appear here.</string>
     <string name="stock_search_placeholder">Search by name or reference…</string>
     <string name="stock_filter_status_label">Status</string>

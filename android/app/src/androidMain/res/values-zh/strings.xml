@@ -438,6 +438,7 @@
     <string name="client_field_email_label">电子邮箱</string>
     <string name="client_field_adresse_label">地址</string>
     <string name="client_field_notes_label">备注</string>
+    <string name="client_field_vip_label">VIP 客户</string>
     <string name="client_form_title_add">新增客户</string>
     <string name="client_form_title_edit">编辑客户</string>
     <string name="client_save_button">保存</string>
@@ -446,6 +447,10 @@
     <string name="client_delete_confirm_title">删除此客户？</string>
     <string name="client_delete_confirm_message">此操作不可撤销。基于姓名匹配的购买历史仍会显示在相关库存记录中。</string>
     <string name="client_delete_confirm_action">删除</string>
+    <string name="client_vip_badge">VIP 客户</string>
+    <string name="client_vip_last_contact_format">最近联系：%1$s</string>
+    <string name="client_vip_no_contact">尚无联系记录。</string>
+    <string name="client_vip_mark_contact_button">标记今日已联系</string>
     <string name="client_purchases_section_title">购买历史</string>
     <string name="client_purchases_empty">未找到该姓名对应的购买记录。</string>
     <string name="client_purchases_hint">基于与已记录销售的姓名匹配——并非自动关联。</string>
@@ -502,6 +507,10 @@
     <string name="stock_dashboard_alert_no_price_format">%1$d 条记录缺少销售价</string>
     <string name="stock_dashboard_alert_no_photo_format">%1$d 条记录缺少照片</string>
     <string name="stock_dashboard_no_alerts">没有提醒：所有记录都有价格和照片。</string>
+    <string name="stock_dashboard_vip_section_title">VIP 客户跟进</string>
+    <string name="stock_dashboard_vip_no_reminder">无需跟进：所有 VIP 客户近期均已联系。</string>
+    <string name="stock_dashboard_vip_reminder_days_format">已 %1$d 天未联系</string>
+    <string name="stock_dashboard_vip_reminder_never">从未联系</string>
     <string name="stock_dashboard_empty_state">添加库存记录后，这里将显示统计信息。</string>
     <string name="stock_search_placeholder">按名称或编号搜索…</string>
     <string name="stock_filter_status_label">状态</string>

@@ -438,6 +438,7 @@
     <string name="client_field_email_label">E-mail</string>
     <string name="client_field_adresse_label">Adres</string>
     <string name="client_field_notes_label">Notities</string>
+    <string name="client_field_vip_label">VIP-klant</string>
     <string name="client_form_title_add">Nieuwe klant</string>
     <string name="client_form_title_edit">Klant bewerken</string>
     <string name="client_save_button">Opslaan</string>
@@ -446,6 +447,10 @@
     <string name="client_delete_confirm_title">Deze klant verwijderen?</string>
     <string name="client_delete_confirm_message">Deze actie is definitief. De op naam gebaseerde aankoopgeschiedenis blijft zichtbaar op de betreffende voorraadfiches.</string>
     <string name="client_delete_confirm_action">Verwijderen</string>
+    <string name="client_vip_badge">VIP-klant</string>
+    <string name="client_vip_last_contact_format">Laatste contact: %1$s</string>
+    <string name="client_vip_no_contact">Nog geen contact geregistreerd.</string>
+    <string name="client_vip_mark_contact_button">Contact van vandaag registreren</string>
     <string name="client_purchases_section_title">Aankoopgeschiedenis</string>
     <string name="client_purchases_empty">Geen aankopen gevonden voor deze naam.</string>
     <string name="client_purchases_hint">Gebaseerd op een naamovereenkomst met geregistreerde verkopen — geen automatische koppeling.</string>
@@ -502,6 +507,10 @@
     <string name="stock_dashboard_alert_no_price_format">%1$d item(s) zonder verkoopprijs</string>
     <string name="stock_dashboard_alert_no_photo_format">%1$d item(s) zonder foto</string>
     <string name="stock_dashboard_no_alerts">Geen meldingen: alle items hebben een prijs en een foto.</string>
+    <string name="stock_dashboard_vip_section_title">Opvolging VIP-klanten</string>
+    <string name="stock_dashboard_vip_no_reminder">Geen opvolging nodig: alle VIP-klanten zijn recent gecontacteerd.</string>
+    <string name="stock_dashboard_vip_reminder_days_format">Geen contact sinds %1$d dag(en)</string>
+    <string name="stock_dashboard_vip_reminder_never">Nog nooit contact gehad</string>
     <string name="stock_dashboard_empty_state">Voeg items toe aan de voorraad om hier statistieken te zien.</string>
     <string name="stock_search_placeholder">Zoeken op naam of referentie…</string>
     <string name="stock_filter_status_label">Status</string>

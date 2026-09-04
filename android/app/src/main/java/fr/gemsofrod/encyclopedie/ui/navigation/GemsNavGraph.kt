@@ -320,7 +320,8 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         composable(Routes.STOCK_DASHBOARD) {
             StockDashboardScreen(
                 onBackClick = { navController.popBackStack() },
-                onSalesHistoryClick = { navController.navigate(Routes.STOCK_SALES_HISTORY) }
+                onSalesHistoryClick = { navController.navigate(Routes.STOCK_SALES_HISTORY) },
+                onClientClick = { clientId -> navController.navigate(Routes.clientDetail(clientId)) }
             )
         }
         composable(Routes.STOCK_SALES_HISTORY) {
