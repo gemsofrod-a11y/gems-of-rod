@@ -83,6 +83,9 @@ import fr.gemsofrod.encyclopedie.ui.screens.ClientDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.ClientFormScreen
 import fr.gemsofrod.encyclopedie.ui.screens.ClientListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LapidaireScreen
+import fr.gemsofrod.encyclopedie.ui.screens.SupplierDetailScreen
+import fr.gemsofrod.encyclopedie.ui.screens.SupplierFormScreen
+import fr.gemsofrod.encyclopedie.ui.screens.SupplierListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.TreatmentsScreen
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import kotlinx.coroutines.delay
@@ -152,6 +155,10 @@ private object Routes {
     const val CLIENT_NEW = "client_new"
     const val CLIENT_EDIT = "client_edit/{clientId}"
     const val CLIENT_DETAIL = "client_detail/{clientId}"
+    const val SUPPLIER_LIST = "supplier_list"
+    const val SUPPLIER_NEW = "supplier_new"
+    const val SUPPLIER_EDIT = "supplier_edit/{supplierId}"
+    const val SUPPLIER_DETAIL = "supplier_detail/{supplierId}"
 
     fun gemsList(colorName: String) = "gems/$colorName"
     fun labNotebookEdit(sampleId: String) = "lab_notebook_edit/$sampleId"
@@ -172,6 +179,8 @@ private object Routes {
     fun stockDetail(itemId: String) = "stock_detail/$itemId"
     fun clientEdit(clientId: String) = "client_edit/$clientId"
     fun clientDetail(clientId: String) = "client_detail/$clientId"
+    fun supplierEdit(supplierId: String) = "supplier_edit/$supplierId"
+    fun supplierDetail(supplierId: String) = "supplier_detail/$supplierId"
 
     fun encode(value: String): String = URLEncoder.encode(value, "UTF-8")
     fun decode(value: String): String = URLDecoder.decode(value, "UTF-8")
@@ -277,6 +286,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onTreatmentsClick = { navController.navigate(Routes.TREATMENTS) },
                 onStockClick = { navController.navigate(Routes.STOCK_LIST) },
                 onClientsClick = { navController.navigate(Routes.CLIENT_LIST) },
+                onSuppliersClick = { navController.navigate(Routes.SUPPLIER_LIST) },
                 onLegendaryClick = { navController.navigate(Routes.LEGENDARY_RIDDLE) },
                 onBackClick = { navController.popBackStack() }
             )
@@ -334,6 +344,38 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             ClientDetailScreen(
                 clientId = clientId,
                 onEditClick = { id -> navController.navigate(Routes.clientEdit(id)) },
+                onDeleted = { navController.popBackStack() },
+                onBackClick = { navController.popBackStack() },
+                onStockItemClick = { itemId -> navController.navigate(Routes.stockDetail(itemId)) }
+            )
+        }
+        composable(Routes.SUPPLIER_LIST) {
+            SupplierListScreen(
+                onSupplierClick = { supplierId -> navController.navigate(Routes.supplierDetail(supplierId)) },
+                onAddClick = { navController.navigate(Routes.SUPPLIER_NEW) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.SUPPLIER_NEW) {
+            SupplierFormScreen(
+                supplierId = null,
+                onSaveComplete = { navController.popBackStack() },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.SUPPLIER_EDIT) { backStackEntry ->
+            val supplierId = backStackEntry.arguments?.getString("supplierId").orEmpty()
+            SupplierFormScreen(
+                supplierId = supplierId,
+                onSaveComplete = { navController.popBackStack() },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.SUPPLIER_DETAIL) { backStackEntry ->
+            val supplierId = backStackEntry.arguments?.getString("supplierId").orEmpty()
+            SupplierDetailScreen(
+                supplierId = supplierId,
+                onEditClick = { id -> navController.navigate(Routes.supplierEdit(id)) },
                 onDeleted = { navController.popBackStack() },
                 onBackClick = { navController.popBackStack() },
                 onStockItemClick = { itemId -> navController.navigate(Routes.stockDetail(itemId)) }
