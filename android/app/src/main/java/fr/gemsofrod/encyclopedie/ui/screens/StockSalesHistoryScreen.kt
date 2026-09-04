@@ -1,5 +1,6 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
+import android.content.Intent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -8,13 +9,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.IosShare
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
@@ -28,16 +32,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.core.content.FileProvider
 import fr.gemsofrod.encyclopedie.R
+import fr.gemsofrod.encyclopedie.data.StockCsvExporter
 import fr.gemsofrod.encyclopedie.data.StockItem
 import fr.gemsofrod.encyclopedie.data.StockRepository
 import fr.gemsofrod.encyclopedie.data.StockStatus
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -99,6 +110,13 @@ fun StockSalesHistoryScreen(onBackClick: () -> Unit, onItemClick: (String) -> Un
 
     val currencyFormat = remember { NumberFormat.getCurrencyInstance(Locale.FRANCE) }
     val total = soldItems.sumOf { it.prixVente ?: 0.0 }
+    val itemsWithMargin = soldItems.filter { it.coutAchat != null && it.prixVente != null }
+    val totalMargin = itemsWithMargin.sumOf { (it.prixVente ?: 0.0) - (it.coutAchat ?: 0.0) }
+
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    var isExporting by remember { mutableStateOf(false) }
+    val exportChooserTitle = stringResource(R.string.stock_sales_export_chooser_title)
 
     Scaffold(
         topBar = {
@@ -107,6 +125,33 @@ fun StockSalesHistoryScreen(onBackClick: () -> Unit, onItemClick: (String) -> Un
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
+                    }
+                },
+                actions = {
+                    IconButton(
+                        enabled = !isExporting && soldItems.isNotEmpty(),
+                        onClick = {
+                            isExporting = true
+                            scope.launch {
+                                val file = withContext(Dispatchers.IO) {
+                                    StockCsvExporter.exportSalesCsvFile(context, soldItems)
+                                }
+                                isExporting = false
+                                val uri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file)
+                                val sendIntent = Intent(Intent.ACTION_SEND).apply {
+                                    type = "text/csv"
+                                    putExtra(Intent.EXTRA_STREAM, uri)
+                                    addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                                }
+                                context.startActivity(Intent.createChooser(sendIntent, exportChooserTitle))
+                            }
+                        }
+                    ) {
+                        if (isExporting) {
+                            CircularProgressIndicator(modifier = Modifier.size(20.dp), strokeWidth = 2.dp)
+                        } else {
+                            Icon(Icons.Filled.IosShare, contentDescription = stringResource(R.string.stock_sales_export_button))
+                        }
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -140,13 +185,27 @@ fun StockSalesHistoryScreen(onBackClick: () -> Unit, onItemClick: (String) -> Un
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp, vertical = 4.dp)
             ) {
-                Text(
-                    text = stringResource(R.string.stock_sales_history_total_format, soldItems.size, currencyFormat.format(total)),
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.SemiBold,
-                    color = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.padding(16.dp)
-                )
+                Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text(
+                        text = stringResource(R.string.stock_sales_history_total_format, soldItems.size, currencyFormat.format(total)),
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                    if (itemsWithMargin.isNotEmpty()) {
+                        Text(
+                            text = stringResource(R.string.stock_sales_history_margin_format, currencyFormat.format(totalMargin)),
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.tertiary
+                        )
+                        Text(
+                            text = stringResource(R.string.stock_sales_history_margin_hint),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
             }
 
             if (soldItems.isEmpty()) {

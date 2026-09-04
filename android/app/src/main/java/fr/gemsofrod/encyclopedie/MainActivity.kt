@@ -19,6 +19,7 @@ import fr.gemsofrod.encyclopedie.data.LabNotebookRepository
 import fr.gemsofrod.encyclopedie.data.LanguageRepository
 import fr.gemsofrod.encyclopedie.data.ReflectivityCalibrationRepository
 import fr.gemsofrod.encyclopedie.data.StockRepository
+import fr.gemsofrod.encyclopedie.data.SupplierRepository
 import fr.gemsofrod.encyclopedie.ui.navigation.GemsNavGraph
 import fr.gemsofrod.encyclopedie.ui.theme.GemsEncyclopedieTheme
 import fr.gemsofrod.encyclopedie.widget.GemOfDayWidgetProvider
@@ -43,6 +44,7 @@ class MainActivity : ComponentActivity() {
         ReflectivityCalibrationRepository.init(this)
         StockRepository.init(this)
         ClientRepository.init(this)
+        SupplierRepository.init(this)
         refreshGemOfDayWidgets()
         enableEdgeToEdge()
         setContent {

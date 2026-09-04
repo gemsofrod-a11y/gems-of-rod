@@ -4,6 +4,7 @@ import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -46,6 +47,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
+import fr.gemsofrod.encyclopedie.data.ClientRepository
 import fr.gemsofrod.encyclopedie.data.StockBackupPrefs
 import fr.gemsofrod.encyclopedie.data.StockCsvExporter
 import fr.gemsofrod.encyclopedie.data.StockItem
@@ -72,7 +74,7 @@ import java.util.concurrent.TimeUnit
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun StockDashboardScreen(onBackClick: () -> Unit, onSalesHistoryClick: () -> Unit) {
+fun StockDashboardScreen(onBackClick: () -> Unit, onSalesHistoryClick: () -> Unit, onClientClick: (String) -> Unit) {
     val items = StockRepository.allItems()
 
     Scaffold(
@@ -133,6 +135,7 @@ fun StockDashboardScreen(onBackClick: () -> Unit, onSalesHistoryClick: () -> Uni
                 )
                 StatusBreakdownCard(items = items)
                 AlertsCard(noPriceCount = noPriceCount, noPhotoCount = noPhotoCount)
+                VipReminderCard(onClientClick = onClientClick)
                 BackupCard(items = items)
             }
         }
@@ -293,6 +296,82 @@ private fun AlertsCard(noPriceCount: Int, noPhotoCount: Int) {
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onTertiaryContainer
                     )
+                }
+            }
+        }
+    }
+}
+
+/** Au-delà de ce nombre de jours sans contact enregistré, un client VIP est signalé. */
+private const val VIP_REMINDER_DAYS = 60
+
+/**
+ * Rappelle les clients VIP ([Client.estVip]) sans contact enregistré depuis
+ * plus de [VIP_REMINDER_DAYS] jours (ou jamais contactés) — cohérent avec la
+ * segmentation clients de la base de connaissance (VIP : contact direct,
+ * newsletter prioritaire). N'affiche rien si aucun client n'est marqué VIP.
+ */
+@Composable
+private fun VipReminderCard(onClientClick: (String) -> Unit) {
+    val vipClients = ClientRepository.allClients().filter { it.estVip }
+    if (vipClients.isEmpty()) return
+
+    val toRemind = vipClients.filter { client ->
+        val contactMillis = client.dernierContactMillis
+        contactMillis == null || TimeUnit.MILLISECONDS.toDays(System.currentTimeMillis() - contactMillis) >= VIP_REMINDER_DAYS
+    }
+
+    Card(
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            Text(
+                text = stringResource(R.string.stock_dashboard_vip_section_title),
+                style = MaterialTheme.typography.titleSmall,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            if (toRemind.isEmpty()) {
+                Text(
+                    text = stringResource(R.string.stock_dashboard_vip_no_reminder),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            } else {
+                toRemind.forEach { client ->
+                    val contactMillis = client.dernierContactMillis
+                    val subtitle = if (contactMillis != null) {
+                        val days = TimeUnit.MILLISECONDS.toDays(System.currentTimeMillis() - contactMillis).toInt()
+                        stringResource(R.string.stock_dashboard_vip_reminder_days_format, days)
+                    } else {
+                        stringResource(R.string.stock_dashboard_vip_reminder_never)
+                    }
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(MaterialTheme.colorScheme.surfaceVariant)
+                            .clickable { onClientClick(client.id) }
+                            .padding(horizontal = 12.dp, vertical = 10.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            text = client.nom,
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        Text(
+                            text = subtitle,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
                 }
             }
         }

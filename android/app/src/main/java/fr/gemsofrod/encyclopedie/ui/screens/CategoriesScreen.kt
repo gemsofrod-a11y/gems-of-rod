@@ -82,7 +82,8 @@ fun HomeScreen(
     onQuizClick: () -> Unit,
     onAchievementsClick: () -> Unit,
     onLabClick: () -> Unit,
-    onLapidaireClick: () -> Unit
+    onLapidaireClick: () -> Unit,
+    onSearchClick: () -> Unit
 ) {
     val context = LocalContext.current
     val currentLanguage = remember { LanguageRepository.getLanguage(context) }
@@ -93,6 +94,9 @@ fun HomeScreen(
                 title = { Text("Gems of Rod") },
                 actions = {
                     LanguageButton(flagEmoji = currentLanguage.flagEmoji, onClick = onLanguageClick)
+                    IconButton(onClick = onSearchClick) {
+                        Icon(Icons.Filled.Search, contentDescription = stringResource(R.string.global_search_title))
+                    }
                     IconButton(onClick = onAchievementsClick) {
                         Icon(Icons.Filled.EmojiEvents, contentDescription = stringResource(R.string.achievements_title))
                     }

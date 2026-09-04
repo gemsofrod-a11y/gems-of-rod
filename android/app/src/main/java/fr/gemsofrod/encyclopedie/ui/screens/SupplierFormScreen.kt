@@ -1,5 +1,6 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,12 +14,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -27,32 +28,32 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
-import fr.gemsofrod.encyclopedie.data.Client
-import fr.gemsofrod.encyclopedie.data.ClientRepository
+import fr.gemsofrod.encyclopedie.data.Supplier
+import fr.gemsofrod.encyclopedie.data.SupplierRepository
+import fr.gemsofrod.encyclopedie.data.SupplierType
 
-/** Ajout ou édition d'une fiche client — même patron que [StockFormScreen], en plus simple (pas de photo). */
+/** Ajout ou édition d'une fiche fournisseur — même patron que [ClientFormScreen], avec un sélecteur de type en plus. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ClientFormScreen(clientId: String?, onSaveComplete: () -> Unit, onBackClick: () -> Unit) {
-    val existing = remember(clientId) { clientId?.let { ClientRepository.clientById(it) } }
+fun SupplierFormScreen(supplierId: String?, onSaveComplete: () -> Unit, onBackClick: () -> Unit) {
+    val existing = remember(supplierId) { supplierId?.let { SupplierRepository.supplierById(it) } }
 
     var nom by remember { mutableStateOf(existing?.nom ?: "") }
+    var type by remember { mutableStateOf(existing?.type ?: SupplierType.NEGOCIANT) }
     var telephone by remember { mutableStateOf(existing?.telephone ?: "") }
     var email by remember { mutableStateOf(existing?.email ?: "") }
-    var adresse by remember { mutableStateOf(existing?.adresse ?: "") }
+    var pays by remember { mutableStateOf(existing?.pays ?: "") }
     var notes by remember { mutableStateOf(existing?.notes ?: "") }
-    var estVip by remember { mutableStateOf(existing?.estVip ?: false) }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(if (existing == null) R.string.client_form_title_add else R.string.client_form_title_edit)) },
+                title = { Text(stringResource(if (existing == null) R.string.supplier_form_title_add else R.string.supplier_form_title_edit)) },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
@@ -62,22 +63,21 @@ fun ClientFormScreen(clientId: String?, onSaveComplete: () -> Unit, onBackClick:
                     IconButton(
                         enabled = nom.isNotBlank(),
                         onClick = {
-                            val client = Client(
+                            val supplier = Supplier(
                                 id = existing?.id ?: "",
                                 nom = nom.trim(),
+                                type = type,
                                 telephone = telephone.trim(),
                                 email = email.trim(),
-                                adresse = adresse.trim(),
+                                pays = pays.trim(),
                                 notes = notes.trim(),
-                                createdAtMillis = existing?.createdAtMillis ?: 0L,
-                                estVip = estVip,
-                                dernierContactMillis = existing?.dernierContactMillis
+                                createdAtMillis = existing?.createdAtMillis ?: 0L
                             )
-                            if (existing == null) ClientRepository.addClient(client) else ClientRepository.updateClient(client)
+                            if (existing == null) SupplierRepository.addSupplier(supplier) else SupplierRepository.updateSupplier(supplier)
                             onSaveComplete()
                         }
                     ) {
-                        Icon(Icons.Filled.Check, contentDescription = stringResource(R.string.client_save_button))
+                        Icon(Icons.Filled.Check, contentDescription = stringResource(R.string.supplier_save_button))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -96,45 +96,55 @@ fun ClientFormScreen(clientId: String?, onSaveComplete: () -> Unit, onBackClick:
                 .padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
-            ClientField(label = stringResource(R.string.client_field_nom_label), value = nom, onValueChange = { nom = it })
-            ClientField(
+            SupplierField(label = stringResource(R.string.client_field_nom_label), value = nom, onValueChange = { nom = it })
+
+            Text(
+                text = stringResource(R.string.supplier_field_type_label),
+                style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Row(
+                modifier = Modifier.horizontalScroll(rememberScrollState()),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                SupplierType.entries.forEach { option ->
+                    FilterChip(
+                        selected = option == type,
+                        onClick = { type = option },
+                        label = { Text(stringResource(option.labelRes)) }
+                    )
+                }
+            }
+
+            SupplierField(
                 label = stringResource(R.string.client_field_telephone_label),
                 value = telephone,
                 onValueChange = { telephone = it },
                 keyboardType = KeyboardType.Phone
             )
-            ClientField(
+            SupplierField(
                 label = stringResource(R.string.client_field_email_label),
                 value = email,
                 onValueChange = { email = it },
                 keyboardType = KeyboardType.Email
             )
-            ClientField(
-                label = stringResource(R.string.client_field_adresse_label),
-                value = adresse,
-                onValueChange = { adresse = it },
-                singleLine = false
+            SupplierField(
+                label = stringResource(R.string.supplier_field_pays_label),
+                value = pays,
+                onValueChange = { pays = it }
             )
-            ClientField(
+            SupplierField(
                 label = stringResource(R.string.client_field_notes_label),
                 value = notes,
                 onValueChange = { notes = it },
                 singleLine = false
             )
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(stringResource(R.string.client_field_vip_label), style = MaterialTheme.typography.bodyLarge)
-                Switch(checked = estVip, onCheckedChange = { estVip = it })
-            }
         }
     }
 }
 
 @Composable
-private fun ClientField(
+private fun SupplierField(
     label: String,
     value: String,
     onValueChange: (String) -> Unit,

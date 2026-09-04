@@ -170,6 +170,17 @@ fun StockDetailScreen(
                     }
                     item.coutAchat?.let { StockDetailRow(stringResource(R.string.stock_field_purchase_cost_label), currencyFormat.format(it)) }
                     item.prixVente?.let { StockDetailRow(stringResource(R.string.stock_field_selling_price_label), currencyFormat.format(it)) }
+                    val coutAchat = item.coutAchat
+                    val prixVente = item.prixVente
+                    if (coutAchat != null && prixVente != null) {
+                        val marge = prixVente - coutAchat
+                        val margeValue = if (coutAchat != 0.0) {
+                            stringResource(R.string.stock_margin_value_format, currencyFormat.format(marge), (marge / coutAchat) * 100)
+                        } else {
+                            currencyFormat.format(marge)
+                        }
+                        StockDetailRow(stringResource(R.string.stock_field_margin_label), margeValue)
+                    }
                 }
             }
 

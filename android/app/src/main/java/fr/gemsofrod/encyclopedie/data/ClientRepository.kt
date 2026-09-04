@@ -24,10 +24,13 @@ data class Client(
     val email: String,
     val adresse: String,
     val notes: String,
-    val createdAtMillis: Long
+    val createdAtMillis: Long,
+    val estVip: Boolean = false,
+    val dernierContactMillis: Long? = null
 )
 
 private fun JSONObject.stringOrEmpty(key: String): String = optString(key, "")
+private fun JSONObject.longOrNull(key: String): Long? = if (has(key) && !isNull(key)) getLong(key) else null
 
 private fun Client.toJson(): JSONObject = JSONObject().apply {
     put("id", id)
@@ -37,6 +40,8 @@ private fun Client.toJson(): JSONObject = JSONObject().apply {
     put("adresse", adresse)
     put("notes", notes)
     put("createdAtMillis", createdAtMillis)
+    put("estVip", estVip)
+    put("dernierContactMillis", dernierContactMillis)
 }
 
 private fun clientFromJson(obj: JSONObject): Client = Client(
@@ -46,7 +51,9 @@ private fun clientFromJson(obj: JSONObject): Client = Client(
     email = obj.stringOrEmpty("email"),
     adresse = obj.stringOrEmpty("adresse"),
     notes = obj.stringOrEmpty("notes"),
-    createdAtMillis = if (obj.has("createdAtMillis")) obj.getLong("createdAtMillis") else 0L
+    createdAtMillis = if (obj.has("createdAtMillis")) obj.getLong("createdAtMillis") else 0L,
+    estVip = obj.optBoolean("estVip", false),
+    dernierContactMillis = obj.longOrNull("dernierContactMillis")
 )
 
 /**

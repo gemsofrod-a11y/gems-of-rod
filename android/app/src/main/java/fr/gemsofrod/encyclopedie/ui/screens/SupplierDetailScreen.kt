@@ -37,68 +37,65 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
-import fr.gemsofrod.encyclopedie.data.Client
-import fr.gemsofrod.encyclopedie.data.ClientRepository
 import fr.gemsofrod.encyclopedie.data.StockItem
 import fr.gemsofrod.encyclopedie.data.StockRepository
-import fr.gemsofrod.encyclopedie.data.StockStatus
+import fr.gemsofrod.encyclopedie.data.SupplierRepository
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-private val clientDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE)
+private val supplierDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE)
 
 /**
- * Fiche client : coordonnées et historique d'achats. L'historique se
- * calcule par correspondance de nom (insensible à la casse) entre
- * [Client.nom] et [StockItem.acheteurNom] des pierres vendues — il n'existe
- * pas de lien direct (pas de clientId sur [StockItem]) : un nom mal
- * orthographié lors d'une vente n'apparaîtra pas ici. Voir le disclaimer
- * affiché à l'écran.
+ * Fiche fournisseur : coordonnées et historique d'approvisionnement. Ce
+ * dernier se calcule par correspondance de nom (insensible à la casse) entre
+ * [fr.gemsofrod.encyclopedie.data.Supplier.nom] et [StockItem.fournisseur] —
+ * il n'existe pas de lien direct (pas de supplierId sur [StockItem]) : un nom
+ * mal orthographié lors d'une entrée de stock n'apparaîtra pas ici. Voir le
+ * disclaimer affiché à l'écran — même patron que [ClientDetailScreen].
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ClientDetailScreen(
-    clientId: String,
+fun SupplierDetailScreen(
+    supplierId: String,
     onEditClick: (String) -> Unit,
     onDeleted: () -> Unit,
     onBackClick: () -> Unit,
     onStockItemClick: (String) -> Unit
 ) {
-    val initialClient = remember(clientId) { ClientRepository.clientById(clientId) }
+    val supplier = remember(supplierId) { SupplierRepository.supplierById(supplierId) }
 
-    if (initialClient == null) {
+    if (supplier == null) {
         LaunchedEffect(Unit) { onBackClick() }
         return
     }
 
-    var client by remember(clientId) { mutableStateOf(initialClient) }
     var showDeleteConfirm by remember { mutableStateOf(false) }
     val currencyFormat = remember { NumberFormat.getCurrencyInstance(Locale.FRANCE) }
 
-    val purchases = remember(client) {
+    val suppliedItems = remember(supplier) {
         StockRepository.allItems()
-            .filter { it.statut == StockStatus.VENDU && it.acheteurNom.isNotBlank() && it.acheteurNom.equals(client.nom, ignoreCase = true) }
-            .sortedByDescending { it.venteDateMillis ?: it.createdAtMillis }
+            .filter { it.fournisseur.isNotBlank() && it.fournisseur.equals(supplier.nom, ignoreCase = true) }
+            .sortedByDescending { it.dateAchatMillis ?: it.createdAtMillis }
     }
-    val totalPurchases = purchases.sumOf { it.prixVente ?: 0.0 }
+    val totalCost = suppliedItems.sumOf { it.coutAchat ?: 0.0 }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(client.nom) },
+                title = { Text(supplier.nom) },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
                     }
                 },
                 actions = {
-                    IconButton(onClick = { onEditClick(client.id) }) {
-                        Icon(Icons.Filled.Edit, contentDescription = stringResource(R.string.client_edit_button))
+                    IconButton(onClick = { onEditClick(supplier.id) }) {
+                        Icon(Icons.Filled.Edit, contentDescription = stringResource(R.string.supplier_edit_button))
                     }
                     IconButton(onClick = { showDeleteConfirm = true }) {
-                        Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.client_delete_button))
+                        Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.supplier_delete_button))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -117,53 +114,20 @@ fun ClientDetailScreen(
                 .padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
-            if (client.estVip) {
-                Card(
-                    shape = RoundedCornerShape(16.dp),
-                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text(
-                            text = stringResource(R.string.client_vip_badge),
-                            style = MaterialTheme.typography.labelLarge,
-                            fontWeight = FontWeight.SemiBold,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer
-                        )
-                        val contactMillis = client.dernierContactMillis
-                        Text(
-                            text = if (contactMillis != null) {
-                                stringResource(R.string.client_vip_last_contact_format, clientDateFormat.format(Date(contactMillis)))
-                            } else {
-                                stringResource(R.string.client_vip_no_contact)
-                            },
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer
-                        )
-                        OutlinedButton(onClick = {
-                            val updated = client.copy(dernierContactMillis = System.currentTimeMillis())
-                            ClientRepository.updateClient(updated)
-                            client = updated
-                        }) {
-                            Text(stringResource(R.string.client_vip_mark_contact_button))
-                        }
-                    }
-                }
-            }
-
             Card(
                 shape = RoundedCornerShape(16.dp),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    ClientDetailRow(stringResource(R.string.client_field_telephone_label), client.telephone)
-                    ClientDetailRow(stringResource(R.string.client_field_email_label), client.email)
-                    ClientDetailRow(stringResource(R.string.client_field_adresse_label), client.adresse)
+                    SupplierDetailRow(stringResource(R.string.supplier_field_type_label), stringResource(supplier.type.labelRes))
+                    SupplierDetailRow(stringResource(R.string.client_field_telephone_label), supplier.telephone)
+                    SupplierDetailRow(stringResource(R.string.client_field_email_label), supplier.email)
+                    SupplierDetailRow(stringResource(R.string.supplier_field_pays_label), supplier.pays)
                 }
             }
 
-            if (client.notes.isNotBlank()) {
+            if (supplier.notes.isNotBlank()) {
                 Card(
                     shape = RoundedCornerShape(16.dp),
                     colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
@@ -177,7 +141,7 @@ fun ClientDetailScreen(
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                         Text(
-                            text = client.notes,
+                            text = supplier.notes,
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             modifier = Modifier.padding(top = 4.dp)
@@ -187,32 +151,32 @@ fun ClientDetailScreen(
             }
 
             Text(
-                text = stringResource(R.string.client_purchases_section_title),
+                text = stringResource(R.string.supplier_supplied_section_title),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold,
                 color = MaterialTheme.colorScheme.onBackground
             )
             Text(
-                text = stringResource(R.string.client_purchases_hint),
+                text = stringResource(R.string.supplier_supplied_hint),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
-            if (purchases.isEmpty()) {
+            if (suppliedItems.isEmpty()) {
                 Text(
-                    text = stringResource(R.string.client_purchases_empty),
+                    text = stringResource(R.string.supplier_supplied_empty),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             } else {
                 Text(
-                    text = stringResource(R.string.client_purchases_total_format, purchases.size, currencyFormat.format(totalPurchases)),
+                    text = stringResource(R.string.supplier_supplied_total_format, suppliedItems.size, currencyFormat.format(totalCost)),
                     style = MaterialTheme.typography.titleSmall,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.primary
                 )
-                purchases.forEach { item ->
-                    ClientPurchaseRow(item = item, currencyFormat = currencyFormat, onClick = { onStockItemClick(item.id) })
+                suppliedItems.forEach { item ->
+                    SupplierSuppliedRow(item = item, currencyFormat = currencyFormat, onClick = { onStockItemClick(item.id) })
                 }
             }
         }
@@ -221,15 +185,15 @@ fun ClientDetailScreen(
     if (showDeleteConfirm) {
         AlertDialog(
             onDismissRequest = { showDeleteConfirm = false },
-            title = { Text(stringResource(R.string.client_delete_confirm_title)) },
-            text = { Text(stringResource(R.string.client_delete_confirm_message)) },
+            title = { Text(stringResource(R.string.supplier_delete_confirm_title)) },
+            text = { Text(stringResource(R.string.supplier_delete_confirm_message)) },
             confirmButton = {
                 TextButton(onClick = {
-                    ClientRepository.deleteClient(client.id)
+                    SupplierRepository.deleteSupplier(supplier.id)
                     showDeleteConfirm = false
                     onDeleted()
                 }) {
-                    Text(stringResource(R.string.client_delete_confirm_action))
+                    Text(stringResource(R.string.supplier_delete_confirm_action))
                 }
             },
             dismissButton = {
@@ -242,7 +206,7 @@ fun ClientDetailScreen(
 }
 
 @Composable
-private fun ClientDetailRow(label: String, value: String) {
+private fun SupplierDetailRow(label: String, value: String) {
     if (value.isBlank()) return
     Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
         Text(
@@ -260,7 +224,7 @@ private fun ClientDetailRow(label: String, value: String) {
 }
 
 @Composable
-private fun ClientPurchaseRow(item: StockItem, currencyFormat: NumberFormat, onClick: () -> Unit) {
+private fun SupplierSuppliedRow(item: StockItem, currencyFormat: NumberFormat, onClick: () -> Unit) {
     Card(
         onClick = onClick,
         shape = RoundedCornerShape(14.dp),
@@ -280,17 +244,17 @@ private fun ClientPurchaseRow(item: StockItem, currencyFormat: NumberFormat, onC
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onSurface
                 )
-                item.venteDateMillis?.let {
+                item.dateAchatMillis?.let {
                     Text(
-                        text = clientDateFormat.format(Date(it)),
+                        text = supplierDateFormat.format(Date(it)),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
             }
-            item.prixVente?.let { price ->
+            item.coutAchat?.let { cost ->
                 Text(
-                    text = currencyFormat.format(price),
+                    text = currencyFormat.format(cost),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.primary
