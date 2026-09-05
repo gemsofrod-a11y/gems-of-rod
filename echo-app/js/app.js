@@ -186,6 +186,18 @@
     reminderToggle: document.getElementById("reminder-toggle"),
     reminderTimeRow: document.getElementById("reminder-time-row"),
     reminderTime: document.getElementById("reminder-time"),
+    accountSignedOut: document.getElementById("account-signed-out"),
+    accountSignedIn: document.getElementById("account-signed-in"),
+    accountEmail: document.getElementById("account-email"),
+    accountPassword: document.getElementById("account-password"),
+    accountError: document.getElementById("account-error"),
+    accountEmailDisplay: document.getElementById("account-email-display"),
+    accountSyncStatus: document.getElementById("account-sync-status"),
+    accountTestSubToggle: document.getElementById("account-test-sub-toggle"),
+    btnAccountSignin: document.getElementById("btn-account-signin"),
+    btnAccountSignup: document.getElementById("btn-account-signup"),
+    btnAccountSignout: document.getElementById("btn-account-signout"),
+    btnAccountImport: document.getElementById("btn-account-import"),
   };
 
   let isRecording = false;
@@ -400,6 +412,7 @@
       };
 
       Storage.saveEntry(entry);
+      CloudSync.pushEntry(entry);
       lastEntry = entry;
       checkReminder();
       renderStreakBadges();
@@ -547,7 +560,8 @@
     // la réponse du compagnon disparaissait dès qu'on quittait l'écran de
     // résumé, aucun moyen d'y revenir pour suivre l'accompagnement dans
     // le temps.
-    Storage.updateEntry(entry.id, { companionResponse: message });
+    const updated = Storage.updateEntry(entry.id, { companionResponse: message });
+    CloudSync.pushEntry(updated);
     // Ignore une réponse arrivée en retard si l'utilisateur a depuis lancé
     // un nouvel enregistrement (on ne veut pas afficher un message qui ne
     // correspond plus à l'entrée actuellement affichée) — mais elle reste
@@ -589,7 +603,8 @@
     const metrics = await Prosody.analyze(audioBlob);
     if (!metrics) return;
 
-    Storage.updateEntry(entry.id, { prosody: metrics });
+    const updated = Storage.updateEntry(entry.id, { prosody: metrics });
+    CloudSync.pushEntry(updated);
 
     // Si l'utilisateur a depuis lancé un nouvel enregistrement, l'écran de
     // résumé affiché n'est plus celui de cette entrée : on n'y touche pas.
@@ -831,6 +846,7 @@
       scores: { energy, stress, fatigue: 50, mood: 50, keywords: [], hasSignal: true, wpm: 0 },
     };
     Storage.saveEntry(entry);
+    CloudSync.pushEntry(entry);
     checkReminder();
     renderStreakBadges();
     els.checkinOverlay.hidden = true;
@@ -876,6 +892,7 @@
     if (confirm("Effacer définitivement tous tes enregistrements ?")) {
       Storage.clearAll();
       AudioStore.clearAll();
+      CloudSync.deleteAllRemote();
       renderHistory();
       renderTrends();
     }
@@ -930,6 +947,87 @@
     localStorage.setItem(reminderDismissKey(), "1");
     els.reminderBanner.hidden = true;
   });
+
+  // Compte & synchronisation cloud (optionnels, réservés aux abonné·e·s —
+  // voir cloudsync.js). Reste inerte tant que Firebase n'est pas configuré
+  // dans js/firebase-config.js : Auth.isConfigured() est alors toujours
+  // faux et cette section n'agit jamais sur rien.
+  function showAccountError(message) {
+    els.accountError.textContent = message || "";
+    els.accountError.hidden = !message;
+  }
+
+  function updateAccountUI() {
+    const user = Auth.getUser();
+    els.accountSignedOut.hidden = !!user;
+    els.accountSignedIn.hidden = !user;
+    if (user) els.accountEmailDisplay.textContent = user.email;
+  }
+
+  els.btnAccountSignup.addEventListener("click", async () => {
+    showAccountError("");
+    try {
+      await Auth.signUp(els.accountEmail.value.trim(), els.accountPassword.value);
+    } catch (e) {
+      showAccountError(e.message);
+    }
+  });
+
+  els.btnAccountSignin.addEventListener("click", async () => {
+    showAccountError("");
+    try {
+      await Auth.signIn(els.accountEmail.value.trim(), els.accountPassword.value);
+    } catch (e) {
+      showAccountError(e.message);
+    }
+  });
+
+  els.btnAccountSignout.addEventListener("click", () => {
+    Auth.signOut();
+  });
+
+  els.accountTestSubToggle.addEventListener("change", () => {
+    CloudSync.setTestSubscription(els.accountTestSubToggle.checked);
+  });
+
+  els.btnAccountImport.addEventListener("click", async () => {
+    els.btnAccountImport.disabled = true;
+    const result = await CloudSync.pushAllLocal();
+    els.btnAccountImport.disabled = false;
+    els.btnAccountImport.hidden = true;
+    const n = result.pushed;
+    els.accountSyncStatus.textContent = `Synchro active — ${n} journal${n !== 1 ? "aux" : ""} envoyé${n !== 1 ? "s" : ""} dans le cloud.`;
+  });
+
+  Auth.onAuthChange((user) => {
+    updateAccountUI();
+    if (user) {
+      els.accountPassword.value = "";
+      showAccountError("");
+    }
+  });
+
+  CloudSync.onStatusChange((status) => {
+    els.accountTestSubToggle.checked = status.isSubscribed;
+    if (!status.signedIn) return;
+    if (status.active) {
+      els.accountSyncStatus.textContent = "Synchro cloud active.";
+      els.btnAccountImport.hidden = false;
+      CloudSync.pullAndMerge().then((r) => {
+        if (r.pulled > 0) {
+          renderHistory();
+          renderTrends();
+          renderStreakBadges();
+        }
+      });
+    } else {
+      els.accountSyncStatus.textContent = "Compte connecté, synchro non active (abonnement requis).";
+      els.btnAccountImport.hidden = true;
+    }
+  });
+
+  Auth.init();
+  CloudSync.init();
 
   if (!Recorder.isSupported()) {
     els.unsupported.hidden = false;

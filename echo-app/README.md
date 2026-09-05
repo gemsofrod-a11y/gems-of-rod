@@ -50,6 +50,34 @@ tendances émotionnelles (énergie, stress, fatigue, humeur) dans le temps.
   petite animation de clôture après un enregistrement (jamais en cas de
   signal de crise, ni si `prefers-reduced-motion` est activé), et 5
   couleurs d'accent au choix dans Réglages.
+- **Compte & synchronisation cloud (optionnel, réservé aux abonné·e·s)** :
+  authentification Firebase (email + mot de passe, SDK "compat" chargé en
+  CDN — voir `js/firebase-config.js`, `js/auth.js`, `js/cloudsync.js`).
+  Le `localStorage` reste la source de vérité synchrone pour toute l'UI ;
+  Firestore n'est qu'un miroir en arrière-plan (chaque écriture locale est
+  aussi poussée vers le cloud, best-effort, et à la connexion les entrées
+  cloud absentes en local sont rapatriées — union par id, jamais de perte
+  ni de doublon). Reste totalement inerte tant que `FIREBASE_CONFIG.apiKey`
+  vaut `"REMPLACE-MOI"` : sans projet Firebase configuré, le compte est
+  simplement indisponible et l'app continue de fonctionner normalement en
+  local. **Le statut d'abonnement est un interrupteur de test** dans
+  Réglages (`isSubscribed` sur `users/{uid}`, modifiable directement par le
+  client) — aucune vraie facturation n'est branchée ; à remplacer par une
+  vérification serveur (Play Billing / Stripe) avant toute mise en
+  production réelle. Règles de sécurité Firestore recommandées :
+  ```
+  rules_version = '2';
+  service cloud.firestore {
+    match /databases/{database}/documents {
+      match /users/{userId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+        match /entries/{entryId} {
+          allow read, write: if request.auth != null && request.auth.uid == userId;
+        }
+      }
+    }
+  }
+  ```
 
 ## Tester en développement
 

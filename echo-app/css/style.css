@@ -119,6 +119,7 @@ h3.chart-title { font-size: 14px; color: var(--text-muted); margin: 24px 0 8px; 
 }
 
 .reminder-time-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+.reminder-time-row[hidden] { display: none; }
 .reminder-time-row label { font-size: 13px; color: var(--text-muted); }
 .reminder-time-row input[type="time"] {
   border: 1px solid var(--border);
@@ -332,6 +333,7 @@ h3.chart-title { font-size: 14px; color: var(--text-muted); margin: 24px 0 8px; 
 .btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
 .btn-danger { background: rgba(229,72,77,0.1); color: var(--danger); }
 .full { width: 100%; display: block; text-align: center; margin-bottom: 12px; }
+.full[hidden] { display: none; }
 .file-label { display: flex; align-items: center; justify-content: center; }
 
 .history-heatmap {
@@ -513,6 +515,31 @@ h3.chart-title { font-size: 14px; color: var(--text-muted); margin: 24px 0 8px; 
 }
 .accent-swatch-active { box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--text); }
 .setting-toggle-row .btn-secondary { flex-shrink: 0; white-space: nowrap; padding: 9px 14px; font-size: 13px; }
+
+.account-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-top: 8px;
+}
+.account-form { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+.account-form[hidden] { display: none; }
+.account-input {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text);
+  padding: 10px 12px;
+  font-size: 14px;
+}
+.account-error { color: var(--danger); font-size: 13px; }
+.account-actions { display: flex; gap: 10px; }
+.account-actions .btn-secondary, .account-actions .btn-primary { flex: 1; }
+.account-signed-in { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; }
+.account-signed-in[hidden] { display: none; }
+.account-email-display { font-size: 14px; font-weight: 600; margin: 0; }
+.account-sync-status { font-size: 13px; color: var(--text-muted); margin: 0; }
 
 .toggle-switch { position: relative; width: 44px; height: 26px; flex-shrink: 0; }
 .toggle-switch input { opacity: 0; width: 0; height: 0; }

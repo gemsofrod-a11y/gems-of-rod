@@ -31,10 +31,10 @@ const Storage = (() => {
   function updateEntry(id, patch) {
     const list = getEntries();
     const index = list.findIndex((e) => e.id === id);
-    if (index === -1) return list;
+    if (index === -1) return null;
     list[index] = { ...list[index], ...patch };
     localStorage.setItem(KEY, JSON.stringify(list));
-    return list;
+    return list[index];
   }
 
   function exportJSON() {

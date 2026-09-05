@@ -181,6 +181,48 @@
   <!-- ÉCRAN : RÉGLAGES -->
   <section id="view-settings" class="view">
     <h2>Réglages</h2>
+
+    <div id="account-section" class="account-section">
+      <div class="setting-toggle-title">Compte &amp; synchronisation cloud</div>
+      <p class="setting-toggle-desc">
+        Optionnel. Un compte permet de sauvegarder tes journaux dans le cloud
+        et de les retrouver sur un autre appareil — réservé aux abonné·e·s.
+        Sans compte, l'app continue de fonctionner normalement, uniquement
+        en local.
+      </p>
+
+      <div id="account-signed-out" class="account-form">
+        <input type="email" id="account-email" class="account-input" placeholder="Email" autocomplete="email">
+        <input type="password" id="account-password" class="account-input" placeholder="Mot de passe (6 caractères min.)" autocomplete="current-password">
+        <div id="account-error" class="account-error" hidden></div>
+        <div class="account-actions">
+          <button id="btn-account-signin" class="btn-secondary">Se connecter</button>
+          <button id="btn-account-signup" class="btn-primary">Créer un compte</button>
+        </div>
+      </div>
+
+      <div id="account-signed-in" class="account-signed-in" hidden>
+        <p id="account-email-display" class="account-email-display"></p>
+        <p id="account-sync-status" class="account-sync-status"></p>
+        <div class="setting-toggle-row">
+          <div class="setting-toggle-text">
+            <div class="setting-toggle-title">Synchro active (test)</div>
+            <div class="setting-toggle-desc">
+              Pas encore de vrai abonnement payant — cet interrupteur simule
+              le statut "abonné" en attendant l'intégration de la
+              facturation.
+            </div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="account-test-sub-toggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <button id="btn-account-import" class="btn-secondary full" hidden>Importer mes journaux locaux dans le cloud</button>
+        <button id="btn-account-signout" class="btn-secondary full">Se déconnecter</button>
+      </div>
+    </div>
+
     <div class="settings-list">
       <button id="btn-export" class="btn-secondary full">Exporter mes données (JSON)</button>
       <label class="btn-secondary full file-label">
@@ -325,6 +367,15 @@
 <script src="js/charts.js"></script>
 <script src="js/companion.js"></script>
 <script src="js/onboarding.js"></script>
+<!-- Compte & synchro cloud (optionnels) : SDK Firebase "compat" via CDN,
+     pas de dépendance npm, pas d'étape de build — reste inerte tant que
+     js/firebase-config.js n'a pas de vrai projet Firebase renseigné. -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/cloudsync.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
