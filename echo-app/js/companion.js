@@ -7,6 +7,11 @@
 // dépendance.
 const Companion = (() => {
   const ENDPOINT = "/.netlify/functions/companion";
+  // Simple déterrent anti-scan, pas une vraie authentification (visible
+  // dans ce fichier servi au navigateur) — voir le commentaire côté
+  // fonction Netlify pour le détail des limites et ce qu'il faudrait pour
+  // une vraie protection par utilisateur.
+  const CLIENT_SECRET = "echo-app-2026";
 
   async function getResponse({ transcript, scores, recentSummary }) {
     const controller = new AbortController();
@@ -14,7 +19,7 @@ const Companion = (() => {
     try {
       const res = await fetch(ENDPOINT, {
         method: "POST",
-        headers: { "content-type": "application/json" },
+        headers: { "content-type": "application/json", "x-echo-client": CLIENT_SECRET },
         body: JSON.stringify({ transcript, scores, recentSummary }),
         signal: controller.signal,
       });

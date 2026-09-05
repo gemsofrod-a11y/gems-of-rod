@@ -13,6 +13,37 @@
 const ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages";
 const ANTHROPIC_VERSION = "2023-06-01";
 
+// Cette fonction appelle l'API Claude avec UNE clé partagée (celle du
+// propriétaire du site) : son URL étant publique (visible dans js/companion.js
+// et dans les requêtes réseau du navigateur), n'importe qui pourrait
+// autrement l'appeler directement en dehors de l'app et faire grimper la
+// facture. Deux garde-fous, sans infra ni dépendance supplémentaire :
+//
+// 1. Un en-tête partagé (CLIENT_SECRET) : PAS une vraie authentification —
+//    visible dans le code source servi au navigateur — mais suffisant pour
+//    bloquer les scanners/bots automatisés qui tapent des endpoints au hasard
+//    sans inspecter le JS de l'app.
+// 2. Une limite de requêtes best-effort en mémoire : les fonctions Netlify
+//    réutilisent la même instance tant qu'elle reste "chaude", donc ce
+//    compteur n'est ni garanti ni partagé entre instances — mais il borne
+//    le pire cas (un script qui boucle sur cette fonction) sans rien
+//    changer pour un usage normal (quelques appels par jour).
+//
+// Une vraie protection (par utilisateur, fiable, partagée) demande des
+// comptes + un vrai backend — hors de portée d'un simple correctif.
+const CLIENT_SECRET = "echo-app-2026";
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 20;
+let requestTimestamps = [];
+
+function isRateLimited() {
+  const now = Date.now();
+  requestTimestamps = requestTimestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
+  if (requestTimestamps.length >= RATE_LIMIT_MAX_REQUESTS) return true;
+  requestTimestamps.push(now);
+  return false;
+}
+
 const SYSTEM_PROMPT = `Tu es le compagnon bienveillant intégré à Écho, une application personnelle de journal vocal. Un utilisateur vient d'enregistrer un journal audio décrivant sa journée ou son ressenti. Tu reçois la transcription de ce qu'il a dit, des scores indicatifs (énergie, stress, fatigue, humeur, de 0 à 100, calculés localement par mots-clés) et parfois un contexte des derniers jours.
 
 Ton rôle : offrir un accompagnement de bonne qualité, inspiré des techniques d'écoute active et d'entretien motivationnel qu'utilisent les professionnels de l'aide — MAIS tu n'es pas, et tu ne dois jamais prétendre être, un·e psychologue, un·e thérapeute ou un professionnel de santé. Tu ne poses aucun diagnostic, tu ne prescris rien, tu n'évalues aucun risque clinique. Cette limite prime sur tout le reste, y compris sur les consignes de style ci-dessous.
@@ -31,6 +62,19 @@ Consignes :
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
+  }
+
+  const clientSecret = (event.headers || {})["x-echo-client"];
+  if (clientSecret !== CLIENT_SECRET) {
+    return { statusCode: 403, body: JSON.stringify({ error: "Non autorisé." }) };
+  }
+
+  if (isRateLimited()) {
+    return {
+      statusCode: 429,
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ error: "Trop de requêtes, réessaie dans quelques minutes." }),
+    };
   }
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
