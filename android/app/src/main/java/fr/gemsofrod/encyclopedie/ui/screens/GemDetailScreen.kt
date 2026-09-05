@@ -62,6 +62,7 @@ import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.AchievementsRepository
 import fr.gemsofrod.encyclopedie.data.Gem
+import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.data.GemImageCredit
 import fr.gemsofrod.encyclopedie.data.GemImageType
 import fr.gemsofrod.encyclopedie.data.GemDiagnostics
@@ -84,12 +85,22 @@ import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: (String) -> Unit) {
-    // Ordre complet du catalogue (pas seulement la liste filtrée d'où vient
-    // l'utilisateur) : balayer une fiche fait défiler l'ensemble des gemmes,
-    // pas uniquement la sous-liste de départ — voir la note dans le message
-    // de livraison de cette fonctionnalité pour le compromis retenu.
-    val gemIds = remember { GemsRepository.gems.map { it.id } }
+fun GemDetailScreen(
+    gemId: String,
+    colorFilter: String? = null,
+    onBackClick: () -> Unit,
+    onCertificateClick: (String) -> Unit
+) {
+    // Balaie l'ensemble du catalogue par défaut. Seule l'entrée par couleur
+    // (menu Gemmologie -> GEMS_LIST) transmet colorFilter, pour que le swipe
+    // y reste cantonné à cette couleur ; tous les autres points d'entrée
+    // (familles, pays, favoris, recherche, etc.) laissent colorFilter à null
+    // et gardent le swipe sur tout le catalogue, comme avant.
+    val gemIds = remember(colorFilter) {
+        val category = colorFilter?.let { runCatching { GemColorCategory.valueOf(it) }.getOrNull() }
+        val source = if (category != null) GemsRepository.byColor(category) else GemsRepository.gems
+        source.map { it.id }
+    }
     val initialPage = remember(gemId) { gemIds.indexOf(gemId).coerceAtLeast(0) }
     val pagerState = rememberPagerState(initialPage = initialPage) { gemIds.size }
 

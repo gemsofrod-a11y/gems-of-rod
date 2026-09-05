@@ -18,9 +18,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.Achievements
 import fr.gemsofrod.encyclopedie.data.AchievementsRepository
@@ -108,7 +110,12 @@ private object Routes {
     const val COMPARER = "comparer"
     const val INSTRUMENTS = "instruments"
     const val GLOSSAIRE = "glossaire"
-    const val GEM_DETAIL = "gem/{gemId}"
+    // "color" est optionnel (query-style) : seule la liste par couleur
+    // (GEMS_LIST) le renseigne, pour que le swipe sur la fiche reste
+    // cantonné à cette couleur ; tous les autres points d'entrée (familles,
+    // pays, favoris, recherche, etc.) l'omettent et gardent le swipe sur
+    // l'ensemble du catalogue, comme avant.
+    const val GEM_DETAIL = "gem/{gemId}?color={colorName}"
     const val FAVORITES = "favorites"
     const val CERTIFICATE = "certificate/{gemId}"
     const val FAMILLES_LIST = "familles"
@@ -171,7 +178,8 @@ private object Routes {
     fun fossileDetail(fossileId: String) = "fossile/$fossileId"
     fun coquillageDetail(coquillageId: String) = "coquillage/$coquillageId"
     fun paysDetail(country: String) = "pays/${encode(country)}"
-    fun gemDetail(gemId: String) = "gem/$gemId"
+    fun gemDetail(gemId: String, colorName: String? = null) =
+        if (colorName != null) "gem/$gemId?color=$colorName" else "gem/$gemId"
     fun certificate(gemId: String) = "certificate/$gemId"
     fun familleDetail(familyName: String) = "familles/${encode(familyName)}"
     fun lithotherapieLabels(scheme: String) = "lithotherapie_labels/$scheme"
@@ -653,7 +661,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             GemsListScreen(
                 title = stringResource(category.labelRes),
                 gems = GemsRepository.byColor(category),
-                onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
+                onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id, colorName)) },
                 onBackClick = { navController.popBackStack() }
             )
         }
@@ -673,10 +681,21 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onBackClick = { navController.popBackStack() }
             )
         }
-        composable(Routes.GEM_DETAIL) { backStackEntry ->
+        composable(
+            route = Routes.GEM_DETAIL,
+            arguments = listOf(
+                navArgument("colorName") {
+                    type = NavType.StringType
+                    nullable = true
+                    defaultValue = null
+                }
+            )
+        ) { backStackEntry ->
             val gemId = backStackEntry.arguments?.getString("gemId").orEmpty()
+            val colorName = backStackEntry.arguments?.getString("colorName")
             GemDetailScreen(
                 gemId = gemId,
+                colorFilter = colorName,
                 onBackClick = { navController.popBackStack() },
                 onCertificateClick = { currentGemId -> navController.navigate(Routes.certificate(currentGemId)) }
             )
