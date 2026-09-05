@@ -84,6 +84,17 @@ statique gratuit comme GitHub Pages).
 
 - La Web Speech API n'est pas supportée par Firefox et varie selon les
   navigateurs mobiles — un message s'affiche si elle est indisponible.
+- **Vitesse de transcription** : elle dépend entièrement du moteur de
+  reconnaissance du téléphone (service cloud de Chrome/Google Play
+  Services) — l'app ne peut pas la rendre plus rapide directement, ce
+  n'est pas un paramètre exposé par cette API. Une connexion instable ou
+  Chrome/Play Services pas à jour peuvent nettement ralentir le ressenti.
+  Ce qui est sous notre contrôle et a été optimisé : à chaque redémarrage
+  automatique du moteur (il s'arrête tout seul après une pause, même en
+  mode continu), `js/recorder.js` recrée une instance fraîche de
+  `SpeechRecognition` plutôt que de rappeler `.start()` sur la même — ça
+  réduit la fenêtre pendant laquelle la parole n'est pas captée à ce
+  moment-là.
 - L'analyse par défaut est basée sur des mots-clés français simples, pas un
   vrai modèle de sentiment : elle donne une tendance indicative, pas un
   diagnostic. Le compagnon IA (optionnel) apporte une lecture plus nuancée

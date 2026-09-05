@@ -18,10 +18,6 @@ const Recorder = (() => {
     }
     finalTranscript = "";
     manualStop = false;
-    recognition = new SpeechRecognitionCtor();
-    recognition.lang = "fr-FR";
-    recognition.continuous = true;
-    recognition.interimResults = true;
 
     // Certains moteurs (Chrome Android notamment) n'émettent pas des
     // segments "finaux" distincts et complémentaires : ils réémettent, à
@@ -55,50 +51,69 @@ const Recorder = (() => {
       currentSegmentFinal = "";
     }
 
-    recognition.onresult = (event) => {
-      let segmentFinal = "";
-      let interim = "";
-      for (let i = 0; i < event.results.length; i++) {
-        const chunk = event.results[i][0].transcript;
-        if (event.results[i].isFinal) segmentFinal = mergeFinal(segmentFinal, chunk);
-        else interim += chunk;
-      }
-      currentSegmentFinal = segmentFinal;
-      finalTranscript = mergeFinal(committedPrefix, segmentFinal);
-      onFinalChunk && onFinalChunk(finalTranscript);
-      onInterim && onInterim((finalTranscript + " " + interim).trim());
-    };
+    function attachHandlers(rec) {
+      rec.onresult = (event) => {
+        let segmentFinal = "";
+        let interim = "";
+        for (let i = 0; i < event.results.length; i++) {
+          const chunk = event.results[i][0].transcript;
+          if (event.results[i].isFinal) segmentFinal = mergeFinal(segmentFinal, chunk);
+          else interim += chunk;
+        }
+        currentSegmentFinal = segmentFinal;
+        finalTranscript = mergeFinal(committedPrefix, segmentFinal);
+        onFinalChunk && onFinalChunk(finalTranscript);
+        onInterim && onInterim((finalTranscript + " " + interim).trim());
+      };
 
-    recognition.onerror = (event) => {
-      // "no-speech" et "aborted" surviennent couramment lors des redémarrages
-      // automatiques (silence détecté, ou arrêt volontaire) : ce ne sont pas
-      // des erreurs fatales, onend s'en charge juste après.
-      if (event.error === "no-speech" || event.error === "aborted") return;
-      onError && onError(new Error(event.error || "Erreur de reconnaissance vocale"));
-    };
+      rec.onerror = (event) => {
+        // "no-speech" et "aborted" surviennent couramment lors des redémarrages
+        // automatiques (silence détecté, ou arrêt volontaire) : ce ne sont pas
+        // des erreurs fatales, onend s'en charge juste après.
+        if (event.error === "no-speech" || event.error === "aborted") return;
+        onError && onError(new Error(event.error || "Erreur de reconnaissance vocale"));
+      };
 
-    recognition.onend = () => {
-      if (manualStop) {
-        listening = false;
-        onEnd && onEnd(finalTranscript.trim());
-        return;
-      }
-      // Même en mode "continuous", le moteur (Chrome Android notamment)
-      // s'arrête tout seul après une pause dans la parole. Tant que
-      // l'utilisateur n'a pas explicitement demandé l'arrêt, on relance
-      // pour que l'enregistrement reste continu de son point de vue —
-      // le fold-merge ci-dessus recolle proprement les segments.
-      consolidateSegment();
+      rec.onend = () => {
+        if (manualStop) {
+          listening = false;
+          onEnd && onEnd(finalTranscript.trim());
+          return;
+        }
+        // Même en mode "continuous", le moteur (Chrome Android notamment)
+        // s'arrête tout seul après une pause dans la parole. Tant que
+        // l'utilisateur n'a pas explicitement demandé l'arrêt, on relance
+        // pour que l'enregistrement reste continu de son point de vue —
+        // le fold-merge ci-dessus recolle proprement les segments.
+        consolidateSegment();
+        startNewInstance();
+      };
+    }
+
+    // Une instance fraîche à chaque redémarrage plutôt que de rappeler
+    // .start() sur la même : sur au moins un moteur réel, relancer la même
+    // instance semble reprendre l'écoute un peu plus lentement (état
+    // interne qui traîne), ce qui élargit la fenêtre de parole non captée
+    // à chaque pause — perçu comme "la reconnaissance a du mal à suivre".
+    // Le merge par préfixe ci-dessus ne dépend que du texte, jamais de
+    // l'identité de l'objet, donc ce changement ne modifie pas la logique
+    // de recollement des segments.
+    function startNewInstance() {
+      recognition = new SpeechRecognitionCtor();
+      recognition.lang = "fr-FR";
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      attachHandlers(recognition);
       try {
         recognition.start();
+        listening = true;
       } catch (e) {
         listening = false;
         onEnd && onEnd(finalTranscript.trim());
       }
-    };
+    }
 
-    recognition.start();
-    listening = true;
+    startNewInstance();
   }
 
   function stop() {
