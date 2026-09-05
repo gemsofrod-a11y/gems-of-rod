@@ -6,13 +6,6 @@
     "source_url": "https://gems-of-rod.fr",
     "title": "Brillant rond — proportions Tolkowsky (1919)"
   },
-  "trajet_lumiere_pavillon": {
-    "artist": "Gems of Rod",
-    "license": "Illustration originale — tous droits réservés",
-    "resource_name": "lapidaire_trajet_lumiere_pavillon",
-    "source_url": "https://gems-of-rod.fr",
-    "title": "Trajet de la lumière selon la profondeur du pavillon"
-  },
   "machine_facettage_moderne": {
     "artist": "Doug Coldwell",
     "license": "CC BY-SA 4.0",
@@ -20,11 +13,25 @@
     "source_url": "https://commons.wikimedia.org/wiki/File:Faceting_machine.JPG",
     "title": "File:Faceting machine.JPG"
   },
+  "machine_perceuse_gemmes": {
+    "artist": "Henry G. Gilbert Nursery and Seed Trade Catalog Collection.; Peter Henderson & Co.",
+    "license": "Public domain",
+    "resource_name": "lapidaire_machine_perceuse_gemmes",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Everything_for_the_garden_(16234349223).jpg",
+    "title": "File:Everything for the garden (16234349223).jpg"
+  },
   "moulin_taille_historique": {
     "artist": "Auteur non renseigné",
     "license": "CC BY 4.0",
     "resource_name": "lapidaire_moulin_taille_historique",
     "source_url": "https://commons.wikimedia.org/wiki/File:Diamondworks;_interior_view,_a_wheel_used_by_diamond_cutters_Wellcome_V0023689.jpg",
     "title": "File:Diamondworks; interior view, a wheel used by diamond cutters Wellcome V0023689.jpg"
+  },
+  "trajet_lumiere_pavillon": {
+    "artist": "Gems of Rod",
+    "license": "Illustration originale — tous droits réservés",
+    "resource_name": "lapidaire_trajet_lumiere_pavillon",
+    "source_url": "https://gems-of-rod.fr",
+    "title": "Trajet de la lumière selon la profondeur du pavillon"
   }
 }
