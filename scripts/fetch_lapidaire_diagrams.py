@@ -115,11 +115,11 @@ DIAGRAMS = [
         ["Lapidary trim saw photograph", "Diamond blade rock slab saw", "Gem trim saw lapidary equipment"],
         ["saw", "lapidary", "slab", "trim", "blade", "rock"],
     ),
-    (
-        "machine_perceuse_gemmes",
-        ["Gem drilling machine photograph", "Bead drilling machine lapidary", "Diamond core drill gemstone"],
-        ["drill", "gem", "bead", "lapidary", "core"],
-    ),
+    # "machine_perceuse_gemmes" volontairement retirée : la recherche
+    # ("drill"/"bead"/"core") a renvoyé un faux positif validé par erreur —
+    # une page de catalogue de jardinage ancien (semoirs à main, "seed
+    # drill"), rien à voir avec une perceuse de gemmes. Mots-clés trop
+    # génériques pour cette machine ; fiche texte uniquement.
 ]
 
 ALLOWED_IMAGE_EXTENSIONS = (".jpg", ".jpeg", ".png")
