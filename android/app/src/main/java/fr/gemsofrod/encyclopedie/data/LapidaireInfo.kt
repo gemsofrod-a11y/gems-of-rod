@@ -59,6 +59,17 @@ data class LapidaireConservationTip(
     val conseil: String
 )
 
+enum class LapidaireMachineCategorie { FACETTAGE, CABOCHON, POLYVALENT }
+
+data class LapidaireMachineFiche(
+    val photoId: String,
+    val nom: String,
+    val categorie: LapidaireMachineCategorie,
+    val description: String,
+    val caracteristiques: List<String>,
+    val technique: String
+)
+
 data class LapidairePoidsCalculator(
     val title: String,
     val intro: String,
@@ -105,7 +116,22 @@ data class LapidairePage(
     val conservationIntro: String,
     val conservation: List<LapidaireConservationTip>,
     val disclaimerTitle: String,
-    val disclaimerBody: String
+    val disclaimerBody: String,
+    // Section "Les machines du métier" : panorama des types de machines
+    // réellement utilisés en atelier (facettage et cabochonnage), distinct
+    // de [machines] ci-dessus qui décrit les composants d'une seule machine
+    // à facettes. Champs par défaut vides pour ne pas casser les 8 pages
+    // dans les autres langues : contenu français uniquement pour l'instant
+    // (même choix que RochesMeresInfo), l'écran masque la section si la
+    // liste est vide.
+    val machinesTypesTitle: String = "",
+    val machinesTypesIntro: String = "",
+    val categorieFacettageLabel: String = "",
+    val categorieCabochonLabel: String = "",
+    val categoriePolyvalentLabel: String = "",
+    val caracteristiquesLabel: String = "",
+    val techniqueLabel: String = "",
+    val machinesTypes: List<LapidaireMachineFiche> = emptyList()
 )
 
 /**
@@ -437,7 +463,146 @@ object LapidaireInfo {
             )
         ),
         disclaimerTitle = "Un métier qui s'apprend en atelier",
-        disclaimerBody = "Cette fiche présente des repères généraux, pas un mode d'emploi complet : la taille de facettes s'apprend par la pratique encadrée, avec du matériel adapté et des consignes de sécurité (protection oculaire et respiratoire, refroidissement continu du plateau) propres à chaque atelier et à chaque machine. Les diagrammes affichés proviennent de sources réelles et libres de droits (voir crédits) ; en leur absence temporaire, seule la légende reste affichée."
+        disclaimerBody = "Cette fiche présente des repères généraux, pas un mode d'emploi complet : la taille de facettes s'apprend par la pratique encadrée, avec du matériel adapté et des consignes de sécurité (protection oculaire et respiratoire, refroidissement continu du plateau) propres à chaque atelier et à chaque machine. Les diagrammes affichés proviennent de sources réelles et libres de droits (voir crédits) ; en leur absence temporaire, seule la légende reste affichée.",
+        machinesTypesTitle = "Les machines du métier",
+        machinesTypesIntro = "Au-delà des composants d'une machine à facettes détaillés plus haut, voici un panorama des différents types de machines réellement utilisés en atelier, pour le facettage comme pour le cabochonnage, avec leurs caractéristiques et la technique associée. Les marques citées le sont à titre d'exemple représentatif de leur catégorie, sans lien commercial avec Gems of Rod.",
+        categorieFacettageLabel = "Facettage",
+        categorieCabochonLabel = "Cabochonnage",
+        categoriePolyvalentLabel = "Polyvalent",
+        caracteristiquesLabel = "Caractéristiques",
+        techniqueLabel = "Technique",
+        machinesTypes = listOf(
+            LapidaireMachineFiche(
+                photoId = "machine_bras_manuel",
+                nom = "Bras manuel à jauge (jam-peg)",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Le plus simple et le plus ancien des outils de facettage : la pierre est collée au bout d'une tige tenue à la main contre la meule, l'angle étant réglé à l'œil ou à l'aide d'une jauge simple. Toujours enseigné dans les écoles traditionnelles de taille (Sri Lanka, Thaïlande).",
+                caracteristiques = listOf(
+                    "Aucune pièce mécanique d'indexation",
+                    "Coût quasi nul",
+                    "Dépend entièrement du savoir-faire du tailleur",
+                    "Cadence de travail rapide entre des mains expérimentées"
+                ),
+                technique = "La main du tailleur ajuste en continu l'angle et la pression contre le disque ; la précision des facettes tient à la répétition du geste, pas à la machine."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_index_amovible",
+                nom = "Facetteuse à tête d'index mécanique amovible",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Standard des ateliers occidentaux depuis les années 1970 (Facetron, Ultra Tec, Poly-Metric...) : une tête d'index interchangeable règle l'angle et la rotation de la pierre au dixième de degré, le bras glissant verticalement pour ajuster la profondeur de coupe.",
+                caracteristiques = listOf(
+                    "Précision d'angle au dixième de degré",
+                    "Têtes d'index interchangeables (facettes, écailles, cavetto)",
+                    "Butée de profondeur micrométrique",
+                    "Investissement significatif (machine + meules)"
+                ),
+                technique = "Le tailleur règle l'angle et le cran d'index avant chaque facette, puis abaisse la pierre contre la meule jusqu'à la butée réglée : la reproductibilité remplace le geste libre du bras manuel."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_index_fixe",
+                nom = "Facetteuse à tête d'index fixe intégrée",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Version plus abordable où la tête d'index est solidaire du bras plutôt qu'interchangeable, avec un nombre de crans gravés fixé à la fabrication (souvent 64, 96 ou 120 selon le modèle).",
+                caracteristiques = listOf(
+                    "Prix d'entrée nettement inférieur aux têtes amovibles",
+                    "Nombre de crans d'index limité et non modifiable",
+                    "Bonne robustesse pour un usage régulier",
+                    "Adaptée à l'apprentissage et aux tailles courantes"
+                ),
+                technique = "Même principe que la tête amovible, mais le choix des motifs de facettage se limite aux divisions d'index gravées sur la machine — suffisant pour la plupart des tailles classiques (rond, ovale, coussin)."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cnc",
+                nom = "Facetteuse assistée par ordinateur (CNC)",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Machine pilotée numériquement qui reproduit un plan de taille (diagramme d'angles et d'index) de façon identique sur une série de pierres, utilisée en production industrielle ou pour des tailles fantaisie très complexes.",
+                caracteristiques = listOf(
+                    "Reproductibilité parfaite d'une pierre à l'autre",
+                    "Programmation à partir d'un plan de taille numérique",
+                    "Investissement élevé, réservé à la production en volume",
+                    "Réduit la part de savoir-faire manuel dans le résultat final"
+                ),
+                technique = "Le plan de taille est chargé dans le logiciel de la machine, qui enchaîne automatiquement les angles et les index programmés ; le rôle du lapidaire se déplace vers le réglage et le contrôle qualité."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cabocheuse_multi_meules",
+                nom = "Cabocheuse à meules multiples en ligne",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Équipement de référence pour le cabochon (type Genie, CabKing) : 6 à 8 meules diamantées de grain dégressif puis des disques feutrés de polissage, alignées sur un même bâti avec arrosage continu.",
+                caracteristiques = listOf(
+                    "6 à 8 postes de grain dégressif sur un même arbre",
+                    "Arrosage en continu de chaque meule",
+                    "Passage rapide d'un poste à l'autre sans changer de disque",
+                    "Prix élevé mais très bonne longévité"
+                ),
+                technique = "Le cabochon est dégrossi puis affiné en passant d'une meule à l'autre par grain décroissant, jusqu'aux feutres de polissage finaux — chaque poste efface les micro-rayures laissées par le précédent."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cabocheuse_vevor",
+                nom = "Cabocheuse Vevor (multi-meules, entrée de gamme)",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Déclinaison économique de la cabocheuse à meules multiples, produite en Chine sous la marque Vevor : très répandue chez les débutants et petits ateliers grâce à un prix nettement inférieur aux marques spécialisées (Genie, CabKing).",
+                caracteristiques = listOf(
+                    "6 à 8 meules diamantées + feutres sur un même arbre, comme les modèles professionnels",
+                    "Moteur et roulements d'entrée de gamme, tolérances mécaniques plus larges",
+                    "Bac de récupération d'eau intégré",
+                    "Prix nettement inférieur aux marques spécialisées, au prix d'une durée de vie plus courte"
+                ),
+                technique = "Même principe de progression meule par meule qu'une cabocheuse professionnelle, mais avec davantage de vibrations : une pression de travail plus légère et un entretien plus fréquent des roulements compensent la mécanique moins précise."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_meuleuse_polisseuse",
+                nom = "Meuleuse-polisseuse combinée à arbre horizontal",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Version plus artisanale : un ou deux arbres horizontaux sur lesquels on monte soi-même les disques (meules, feutres) selon le besoin, plutôt qu'une ligne de postes fixes.",
+                caracteristiques = listOf(
+                    "Disques interchangeables au choix du lapidaire",
+                    "Également utilisée pour dégrossir un brut avant sciage",
+                    "Moins chère qu'une cabocheuse multi-meules dédiée",
+                    "Demande davantage de manipulations entre les étapes"
+                ),
+                technique = "Le lapidaire change lui-même le disque monté sur l'arbre à chaque étape de grain, contrairement à la cabocheuse multi-meules où les postes sont fixes et juxtaposés."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_scie_tranche",
+                nom = "Scie-tranche (trim saw)",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Petite scie circulaire à lame diamantée, utilisée en amont du cabochon pour débiter le brut en tranches (slabs) de l'épaisseur voulue avant la mise en forme sur les meules.",
+                caracteristiques = listOf(
+                    "Lame diamantée refroidie par bain d'huile ou d'eau",
+                    "Diamètre courant de 10 à 25 cm selon le modèle",
+                    "Guide de coupe réglable pour des tranches régulières",
+                    "Étape préalable indispensable, pas de taille de facettes"
+                ),
+                technique = "Le brut est avancé manuellement contre la lame en rotation lente ; l'épaisseur de la tranche obtenue détermine directement l'épaisseur maximale du futur cabochon."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_perceuse_gemmes",
+                nom = "Perceuse de gemmes",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Perceuse à colonne équipée de mèches diamantées creuses et d'un système d'arrosage, utilisée pour percer les perles et les cabochons destinés à être montés en pendentif ou enfilés.",
+                caracteristiques = listOf(
+                    "Mèches diamantées creuses de différents diamètres",
+                    "Refroidissement à l'eau obligatoire pour éviter la fissuration",
+                    "Vitesse de rotation réglable selon la dureté de la pierre",
+                    "Perçage en deux temps (des deux faces) sur les pierres fragiles"
+                ),
+                technique = "Le perçage se fait à vitesse lente et sous arrosage constant, souvent en attaquant la pierre depuis les deux faces pour éviter l'éclat de sortie caractéristique d'un perçage traversant en un seul passage."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_touret_combine",
+                nom = "Touret combiné facettage/cabochon d'entrée de gamme",
+                categorie = LapidaireMachineCategorie.POLYVALENT,
+                description = "Petite machine bon marché associant meules et feutres sur un même arbre pour s'initier aussi bien au cabochon qu'à un facettage sommaire, sans tête d'index précise.",
+                caracteristiques = listOf(
+                    "Prix d'accès très bas, format compact",
+                    "Combine plusieurs usages sur une seule machine",
+                    "Absence de tête d'index précise pour un vrai facettage",
+                    "Adaptée à la découverte, limitée pour un résultat professionnel"
+                ),
+                technique = "Le débutant expérimente les deux disciplines sur le même bâti, au prix d'une précision d'angle et d'index bien inférieure à une machine spécialisée."
+            )
+        )
     )
 
     private val en = LapidairePage(

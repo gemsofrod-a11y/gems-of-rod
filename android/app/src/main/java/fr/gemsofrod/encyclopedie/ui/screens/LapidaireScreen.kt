@@ -59,6 +59,8 @@ import fr.gemsofrod.encyclopedie.data.LapidaireDisc
 import fr.gemsofrod.encyclopedie.data.LapidaireEspeceFiche
 import fr.gemsofrod.encyclopedie.data.LapidaireIndexEntry
 import fr.gemsofrod.encyclopedie.data.LapidaireInfo
+import fr.gemsofrod.encyclopedie.data.LapidaireMachineCategorie
+import fr.gemsofrod.encyclopedie.data.LapidaireMachineFiche
 import fr.gemsofrod.encyclopedie.data.LapidaireOptiqueEntry
 import fr.gemsofrod.encyclopedie.data.LapidairePoidsCalculator
 import fr.gemsofrod.encyclopedie.data.LapidaireTip
@@ -124,19 +126,25 @@ fun LapidaireScreen(onBackClick: () -> Unit) {
             )
             if (!isSearching) {
                 LapidaireToc(
-                    entries = listOf(
-                        "machines" to page.machinesTitle,
-                        "disques" to page.disquesTitle,
-                        "index" to page.indexTitle,
-                        "angles" to page.anglesTitle,
-                        "poids" to page.poidsCalculator.title,
-                        "optique" to page.optiqueTitle,
-                        "defauts" to page.defautsTitle,
-                        "especes" to page.especesTitle,
-                        "diagrammes" to page.diagrammesTitle,
-                        "conseils" to page.tipsTitle,
-                        "conservation" to page.conservationTitle
-                    ),
+                    entries = buildList {
+                        add("machines" to page.machinesTitle)
+                        add("disques" to page.disquesTitle)
+                        // Contenu français uniquement pour l'instant (voir LapidairePage) :
+                        // l'entrée de la table des matières disparaît avec la section
+                        // plutôt que de pointer vers un titre vide dans les autres langues.
+                        if (page.machinesTypes.isNotEmpty()) {
+                            add("machinesTypes" to page.machinesTypesTitle)
+                        }
+                        add("index" to page.indexTitle)
+                        add("angles" to page.anglesTitle)
+                        add("poids" to page.poidsCalculator.title)
+                        add("optique" to page.optiqueTitle)
+                        add("defauts" to page.defautsTitle)
+                        add("especes" to page.especesTitle)
+                        add("diagrammes" to page.diagrammesTitle)
+                        add("conseils" to page.tipsTitle)
+                        add("conservation" to page.conservationTitle)
+                    },
                     onEntryClick = { key ->
                         val target = sectionOffsets[key] ?: return@LapidaireToc
                         coroutineScope.launch { scrollState.animateScrollTo(target) }
@@ -197,6 +205,32 @@ fun LapidaireScreen(onBackClick: () -> Unit) {
                             )
                         }
                         displayedDisques.forEach { DiscCard(it) }
+                    }
+                }
+
+                if (!isSearching && page.machinesTypes.isNotEmpty()) {
+                    SectionHeader(
+                        title = page.machinesTypesTitle,
+                        modifier = Modifier.onGloballyPositioned {
+                            sectionOffsets["machinesTypes"] = it.positionInParent().y.roundToInt()
+                        }
+                    )
+                    Text(
+                        text = page.machinesTypesIntro,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    page.machinesTypes.forEach {
+                        MachineFicheCard(
+                            machine = it,
+                            categorieLabel = when (it.categorie) {
+                                LapidaireMachineCategorie.FACETTAGE -> page.categorieFacettageLabel
+                                LapidaireMachineCategorie.CABOCHON -> page.categorieCabochonLabel
+                                LapidaireMachineCategorie.POLYVALENT -> page.categoriePolyvalentLabel
+                            },
+                            caracteristiquesLabel = page.caracteristiquesLabel,
+                            techniqueLabel = page.techniqueLabel
+                        )
                     }
                 }
 
@@ -688,6 +722,85 @@ private fun ConservationCard(tip: LapidaireConservationTip) {
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
+        }
+    }
+}
+
+@Composable
+private fun MachineFicheCard(
+    machine: LapidaireMachineFiche,
+    categorieLabel: String,
+    caracteristiquesLabel: String,
+    techniqueLabel: String
+) {
+    val credit = LapidaireDiagrams.creditFor(machine.photoId)
+    val painter = rememberSampledDrawablePainter(credit?.drawableName, 220.dp)
+    Card(
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            if (painter != null) {
+                Image(
+                    painter = painter,
+                    contentDescription = machine.nom,
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 4.dp)
+                )
+            }
+            Text(
+                text = machine.nom,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Text(
+                text = categorieLabel,
+                style = MaterialTheme.typography.labelLarge,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.primary
+            )
+            Text(
+                text = machine.description,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Text(
+                text = caracteristiquesLabel,
+                style = MaterialTheme.typography.labelLarge,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                machine.caracteristiques.forEach { caracteristique ->
+                    Text(
+                        text = "•  $caracteristique",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+            Text(
+                text = techniqueLabel,
+                style = MaterialTheme.typography.labelLarge,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Text(
+                text = machine.technique,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            if (credit != null) {
+                Text(
+                    text = stringResource(R.string.lapidaire_diagram_credit_format, credit.author, credit.license),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         }
     }
 }
