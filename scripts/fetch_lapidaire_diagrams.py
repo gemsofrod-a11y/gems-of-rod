@@ -87,6 +87,39 @@ DIAGRAMS = [
         ["Rough to cut diamond stages", "Diamond cutting process stages diagram", "Gemstone cutting stages"],
         ["diamond", "cutting", "stages", "rough", "cut"],
     ),
+    # Section "Les machines du métier" : une photo par type de machine
+    # (facettage et cabochonnage). Pour les machines de marque récente
+    # (index amovible, CNC, cabocheuses multi-meules...), Wikimedia Commons
+    # et Openverse n'ont le plus souvent que des photos de catalogue sous
+    # droits d'auteur, jamais librement licenciées — ces entrées resteront
+    # probablement sans photo (voir le rapport de récupération), ce qui est
+    # acceptable : l'écran masque simplement l'image et n'affiche que le
+    # texte de la fiche quand aucun crédit n'est trouvé.
+    (
+        "machine_bras_manuel",
+        ["Jamb peg faceting", "Hand held gem cutting stick dop", "Traditional gem cutting Sri Lanka hand tool"],
+        ["facet", "gem", "cutting", "stick", "hand", "jamb", "peg"],
+    ),
+    (
+        "machine_index_amovible",
+        ["Faceting machine mast quill photograph", "Gem faceting machine index head", "Lapidary faceting machine workshop"],
+        ["facet", "index", "lapidary", "machine", "quill", "mast"],
+    ),
+    (
+        "machine_cabocheuse_multi_meules",
+        ["Cabochon grinding machine wheels", "Lapidary cabbing machine photograph", "Gem grinder polisher wheels lapidary"],
+        ["cabochon", "cabbing", "lapidary", "grind", "polish", "wheel"],
+    ),
+    (
+        "machine_scie_tranche",
+        ["Lapidary trim saw photograph", "Diamond blade rock slab saw", "Gem trim saw lapidary equipment"],
+        ["saw", "lapidary", "slab", "trim", "blade", "rock"],
+    ),
+    (
+        "machine_perceuse_gemmes",
+        ["Gem drilling machine photograph", "Bead drilling machine lapidary", "Diamond core drill gemstone"],
+        ["drill", "gem", "bead", "lapidary", "core"],
+    ),
 ]
 
 ALLOWED_IMAGE_EXTENSIONS = (".jpg", ".jpeg", ".png")
