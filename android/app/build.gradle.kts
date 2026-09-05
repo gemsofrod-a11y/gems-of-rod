@@ -26,8 +26,8 @@ android {
         applicationId = "fr.gemsofrod.encyclopedie"
         minSdk = 26
         targetSdk = 36
-        versionCode = 155
-        versionName = "9.52"
+        versionCode = 156
+        versionName = "9.53"
     }
 
     signingConfigs {
@@ -48,6 +48,14 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             if (signingProp("KEYSTORE_FILE") != null) {
                 signingConfig = signingConfigs.getByName("release")
+            }
+            // Symboles de débogage du code natif (bibliothèques CameraX/Camera2
+            // du réflectomètre) : sans eux, Play Console ne peut pas produire de
+            // trace de plantage lisible pour ce code natif, seulement des
+            // adresses mémoire. Le fichier généré (native-debug-symbols.zip)
+            // doit être importé manuellement dans Play Console avec chaque AAB.
+            ndk {
+                debugSymbolLevel = "FULL"
             }
         }
     }

@@ -63,6 +63,17 @@ jobs:
           name: gems-of-rod-encyclopedie-release-aab
           path: android/app/build/outputs/bundle/release/app-release.aab
 
+      # À importer manuellement dans Play Console au moment de la création de
+      # la release (bouton dédié à côté de l'import de l'AAB), pour que les
+      # plantages du code natif (CameraX/Camera2) soient lisibles dans les
+      # rapports au lieu de simples adresses mémoire.
+      - name: Upload des symboles de débogage natifs
+        uses: actions/upload-artifact@v4
+        with:
+          name: gems-of-rod-encyclopedie-native-debug-symbols
+          path: android/app/build/outputs/native-debug-symbols/release/native-debug-symbols.zip
+          if-no-files-found: warn
+
       # Preuve directe sur l'artefact réellement produit (pas seulement sur
       # build.gradle.kts) : le sandbox de développement ne peut pas
       # télécharger les artefacts GitHub Actions (voir commentaire équivalent
