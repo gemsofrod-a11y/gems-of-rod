@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f1115" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Gems of Rod — Trading Or (XAU)</title>
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Gems&nbsp;of&nbsp;Rod <span class="brand-sub">Trading Or · XAU/USD</span></div>
+    <div class="price-ticker">
+      <span id="price-value">--</span>
+      <span id="price-source" class="badge">…</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel chart-panel">
+      <h2>Cours XAU/USD</h2>
+      <canvas id="price-chart" width="900" height="260"></canvas>
+    </section>
+
+    <nav class="account-tabs" id="account-tabs"></nav>
+
+    <section class="grid">
+      <div class="panel">
+        <h2>Compte</h2>
+        <dl class="summary" id="account-summary"></dl>
+        <div class="broker-select">
+          <label for="broker-select">Exécution des ordres</label>
+          <select id="broker-select">
+            <option value="none">Broker interne (simulation)</option>
+            <option value="oanda">OANDA — compte practice gratuit</option>
+            <option value="etoro">eToro — démo (bêta, non vérifié)</option>
+          </select>
+        </div>
+        <p class="status" id="broker-status"></p>
+      </div>
+
+      <div class="panel">
+        <h2>Passer un ordre</h2>
+        <form id="order-form">
+          <div class="row">
+            <label><input type="radio" name="side" value="buy" checked /> Acheter</label>
+            <label><input type="radio" name="side" value="sell" /> Vendre</label>
+          </div>
+          <div class="row">
+            <label for="order-mode">Saisir en</label>
+            <select id="order-mode">
+              <option value="amount">Montant (USD)</option>
+              <option value="qty">Quantité (oz)</option>
+            </select>
+          </div>
+          <div class="row">
+            <input id="order-value" type="number" step="0.0001" min="0" placeholder="ex: 500" required />
+          </div>
+          <button type="submit">Exécuter l'ordre</button>
+          <p class="error" id="order-error"></p>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h2>Bot de trading</h2>
+        <form id="bot-form">
+          <div class="row">
+            <label for="bot-strategy">Stratégie</label>
+            <select id="bot-strategy">
+              <option value="sma_crossover">Croisement de moyennes mobiles</option>
+              <option value="rsi_mean_reversion">RSI — retour à la moyenne</option>
+              <option value="news_aware_trend">Technique + actualités (recommandé)</option>
+            </select>
+          </div>
+          <div class="row" id="bot-params-base">
+            <label>Base
+              <select id="news-base">
+                <option value="sma_crossover">Croisement de moyennes</option>
+                <option value="rsi_mean_reversion">RSI</option>
+              </select>
+            </label>
+          </div>
+          <div class="row" id="bot-params-sma">
+            <label>Rapide <input id="sma-fast" type="number" value="10" min="2" /></label>
+            <label>Lente <input id="sma-slow" type="number" value="30" min="3" /></label>
+          </div>
+          <div class="row" id="bot-params-rsi" style="display:none">
+            <label>Période <input id="rsi-period" type="number" value="14" min="2" /></label>
+            <label>Survente <input id="rsi-oversold" type="number" value="30" /></label>
+            <label>Surachat <input id="rsi-overbought" type="number" value="70" /></label>
+          </div>
+          <div class="row">
+            <label>Intervalle (s) <input id="bot-interval" type="number" value="10" min="2" /></label>
+            <label>Risque par trade (%) <input id="bot-risk" type="number" value="25" min="1" max="100" /></label>
+          </div>
+          <div class="row">
+            <label>Take-profit (%) <input id="bot-tp" type="number" value="1.5" min="0.1" step="0.1" /></label>
+            <label>Stop-loss (%) <input id="bot-sl" type="number" value="0.75" min="0.1" step="0.1" /></label>
+            <label>Détention max (min) <input id="bot-hold" type="number" value="30" min="1" /></label>
+          </div>
+          <div class="row">
+            <label>Objectif de valorisation (USD, optionnel) <input id="bot-target" type="number" min="0" step="1" placeholder="ex: 1000" /></label>
+            <label>Seuil de protection (% du capital de départ) <input id="bot-floor" type="number" value="20" min="1" max="90" /></label>
+          </div>
+          <div class="row">
+            <button type="submit">Démarrer le bot</button>
+            <button type="button" id="bot-stop">Arrêter le bot</button>
+          </div>
+          <p class="status" id="bot-status"></p>
+          <p class="note">Le bot ouvre et referme autant de positions courtes que nécessaire (take-profit/stop-loss précis, détention limitée dans le temps) jusqu'à l'objectif ou le seuil de protection. Aucun résultat n'est garanti — voir le README.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Historique des transactions</h2>
+      <table id="trades-table">
+        <thead><tr><th>Date</th><th>Sens</th><th>Qté (oz)</th><th>Prix</th><th>Montant</th><th>Origine</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>Backtest</h2>
+      <form id="backtest-form">
+        <div class="row">
+          <label for="bt-strategy">Stratégie</label>
+          <select id="bt-strategy">
+            <option value="sma_crossover">Croisement de moyennes mobiles</option>
+            <option value="rsi_mean_reversion">RSI — retour à la moyenne</option>
+          </select>
+          <label>Jours simulés <input id="bt-days" type="number" value="180" min="30" max="2000" /></label>
+          <button type="submit">Lancer le backtest</button>
+        </div>
+      </form>
+      <p class="note">Backtest sur données simulées (marche aléatoire calibrée sur la volatilité de l'or), pas un historique de marché réel.</p>
+      <div id="backtest-result"></div>
+    </section>
+
+    <footer class="disclaimer">
+      Outil de suivi et de simulation personnel. Aucune connexion à un courtier réel, aucun mouvement d'argent réel :
+      le compte « Réel » ne fait que refléter, au cours du marché, l'activité que vous lui indiquez.
+      Ceci n'est pas un conseil en investissement.
+    </footer>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
