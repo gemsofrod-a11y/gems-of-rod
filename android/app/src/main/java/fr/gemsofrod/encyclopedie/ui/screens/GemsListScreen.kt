@@ -45,6 +45,7 @@ import fr.gemsofrod.encyclopedie.data.Gem
 import fr.gemsofrod.encyclopedie.data.GemImageType
 import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
+import fr.gemsofrod.encyclopedie.ui.components.premiumCardBorder
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
 
@@ -117,7 +118,9 @@ private fun GemRow(gem: Gem, onClick: () -> Unit) {
         onClick = onClick,
         shape = RoundedCornerShape(14.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .premiumCardBorder()
     ) {
         Row(
             modifier = Modifier

@@ -1,5 +1,6 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,6 +14,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -58,6 +61,7 @@ import fr.gemsofrod.encyclopedie.data.MeteoriteFamille
 import fr.gemsofrod.encyclopedie.data.MeteoriteFamilyExplainer
 import fr.gemsofrod.encyclopedie.data.MeteoritesRepository
 import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
+import fr.gemsofrod.encyclopedie.ui.components.premiumCardBorder
 import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
@@ -192,7 +196,9 @@ private fun MeteoriteRow(meteorite: Meteorite, onClick: () -> Unit) {
         onClick = onClick,
         shape = RoundedCornerShape(14.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .premiumCardBorder()
     ) {
         Row(
             modifier = Modifier
@@ -331,10 +337,14 @@ private fun ClassificationDisclaimer(title: String, body: String) {
 }
 
 /** Fiche détaillée d'une météorite individuelle. */
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun MeteoriteDetailScreen(meteoriteId: String, onBackClick: () -> Unit) {
-    val meteorite = MeteoritesRepository.byId(meteoriteId)?.localized()
+    val meteoriteIds = remember { MeteoritesRepository.all().map { it.id } }
+    val initialPage = remember(meteoriteId) { meteoriteIds.indexOf(meteoriteId).coerceAtLeast(0) }
+    val pagerState = rememberPagerState(initialPage = initialPage) { meteoriteIds.size }
+    val currentMeteoriteId = meteoriteIds.getOrNull(pagerState.currentPage) ?: meteoriteId
+    val meteorite = MeteoritesRepository.byId(currentMeteoriteId)?.localized()
 
     Scaffold(
         topBar = {
@@ -353,75 +363,89 @@ fun MeteoriteDetailScreen(meteoriteId: String, onBackClick: () -> Unit) {
         },
         containerColor = MaterialTheme.colorScheme.background
     ) { padding ->
-        if (meteorite == null) {
+        if (meteoriteIds.isEmpty()) {
             Box(modifier = Modifier.fillMaxSize().padding(padding))
             return@Scaffold
         }
 
-        val images = GemImages.creditsFor(meteorite.id)
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .verticalScroll(rememberScrollState())
-                .padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(18.dp)
-        ) {
-            if (images.isNotEmpty()) {
-                MeteoriteImageGallery(images)
+        HorizontalPager(
+            state = pagerState,
+            modifier = Modifier.fillMaxSize().padding(padding)
+        ) { page ->
+            val pageMeteorite = MeteoritesRepository.byId(meteoriteIds[page])?.localized()
+            if (pageMeteorite == null) {
+                Box(modifier = Modifier.fillMaxSize())
+            } else {
+                MeteoriteDetailBody(pageMeteorite)
             }
+        }
+    }
+}
 
-            Column {
-                Text(
-                    text = meteorite.nom,
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = MaterialTheme.colorScheme.onBackground
-                )
-                Text(
-                    text = meteorite.origine,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
+@Composable
+private fun MeteoriteDetailBody(meteorite: Meteorite) {
+    val images = GemImages.creditsFor(meteorite.id)
 
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                RareteBadge(rarete = meteorite.rarete)
-                AssistChip(onClick = {}, label = { Text(stringResource(meteorite.famille.labelRes)) })
-            }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(20.dp),
+        verticalArrangement = Arrangement.spacedBy(18.dp)
+    ) {
+        if (images.isNotEmpty()) {
+            MeteoriteImageGallery(images)
+        }
 
+        Column {
             Text(
-                text = meteorite.descriptionLongue,
-                style = MaterialTheme.typography.bodyLarge,
+                text = meteorite.nom,
+                style = MaterialTheme.typography.headlineMedium,
                 color = MaterialTheme.colorScheme.onBackground
             )
+            Text(
+                text = meteorite.origine,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
 
-            Card(
-                shape = RoundedCornerShape(16.dp),
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    FicheRow(stringResource(R.string.meteorite_fiche_origine), meteorite.origine)
-                    FicheDivider()
-                    FicheRow(stringResource(R.string.meteorite_fiche_classification), meteorite.classification)
-                    FicheDivider()
-                    FicheRow(stringResource(R.string.meteorite_fiche_composition), meteorite.compositionMinerale)
-                    FicheDivider()
-                    FicheRow(stringResource(R.string.meteorite_fiche_durete), meteorite.durete)
-                    FicheDivider()
-                    FicheRow(stringResource(R.string.meteorite_fiche_densite), meteorite.densite)
-                    FicheDivider()
-                    FicheRow(stringResource(R.string.meteorite_fiche_couleur), meteorite.couleur)
-                    FicheDivider()
-                    FicheRow(stringResource(R.string.meteorite_fiche_taille), meteorite.taillePossible)
-                    FicheDivider()
-                    FicheRow(stringResource(R.string.meteorite_fiche_qualite_gemme), meteorite.qualiteGemme)
-                    FicheDivider()
-                    FicheRow(stringResource(R.string.meteorite_fiche_interet_joaillerie), meteorite.interetJoaillerie)
-                    FicheDivider()
-                    FicheRow(stringResource(R.string.meteorite_fiche_prix), meteorite.prixApproxGramme)
-                }
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            RareteBadge(rarete = meteorite.rarete)
+            AssistChip(onClick = {}, label = { Text(stringResource(meteorite.famille.labelRes)) })
+        }
+
+        Text(
+            text = meteorite.descriptionLongue,
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onBackground
+        )
+
+        Card(
+            shape = RoundedCornerShape(16.dp),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Column(modifier = Modifier.padding(16.dp)) {
+                FicheRow(stringResource(R.string.meteorite_fiche_origine), meteorite.origine)
+                FicheDivider()
+                FicheRow(stringResource(R.string.meteorite_fiche_classification), meteorite.classification)
+                FicheDivider()
+                FicheRow(stringResource(R.string.meteorite_fiche_composition), meteorite.compositionMinerale)
+                FicheDivider()
+                FicheRow(stringResource(R.string.meteorite_fiche_durete), meteorite.durete)
+                FicheDivider()
+                FicheRow(stringResource(R.string.meteorite_fiche_densite), meteorite.densite)
+                FicheDivider()
+                FicheRow(stringResource(R.string.meteorite_fiche_couleur), meteorite.couleur)
+                FicheDivider()
+                FicheRow(stringResource(R.string.meteorite_fiche_taille), meteorite.taillePossible)
+                FicheDivider()
+                FicheRow(stringResource(R.string.meteorite_fiche_qualite_gemme), meteorite.qualiteGemme)
+                FicheDivider()
+                FicheRow(stringResource(R.string.meteorite_fiche_interet_joaillerie), meteorite.interetJoaillerie)
+                FicheDivider()
+                FicheRow(stringResource(R.string.meteorite_fiche_prix), meteorite.prixApproxGramme)
             }
         }
     }
