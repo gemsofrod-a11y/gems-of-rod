@@ -96,10 +96,45 @@ class RsiMeanReversionStrategy(Strategy):
         return "hold"
 
 
+class NewsAwareTrendStrategy(Strategy):
+    """Combine une stratégie technique de base avec le sentiment de
+    marché tiré de l'actualité récente (voir news_sentiment.py) :
+    un signal technique n'est suivi que s'il n'est pas contredit par
+    l'actualité (achat bloqué si actualité franchement baissière,
+    vente bloquée si franchement haussière)."""
+
+    name = "news_aware_trend"
+
+    def __init__(self, params: dict):
+        super().__init__(params)
+        base_name = params.get("base", "sma_crossover")
+        base_cls = STRATEGIES.get(base_name)  # défini plus bas, résolu à l'instanciation
+        if base_cls is None:
+            raise ValueError(f"Stratégie de base inconnue : {base_name}")
+        self.base = base_cls(params)
+
+    def min_history(self) -> int:
+        return self.base.min_history()
+
+    def signal(self, prices: list[float]) -> str:
+        from .news_sentiment import get_sentiment  # import tardif : évite un cycle au chargement
+
+        base_signal = self.base.signal(prices)
+        if base_signal == "hold":
+            return "hold"
+        sentiment = get_sentiment()
+        if base_signal == "buy" and sentiment.label == "bearish":
+            return "hold"
+        if base_signal == "sell" and sentiment.label == "bullish":
+            return "hold"
+        return base_signal
+
+
 STRATEGIES: dict[str, type[Strategy]] = {
     SmaCrossoverStrategy.name: SmaCrossoverStrategy,
     RsiMeanReversionStrategy.name: RsiMeanReversionStrategy,
 }
+STRATEGIES[NewsAwareTrendStrategy.name] = NewsAwareTrendStrategy
 
 
 def build_strategy(name: str, params: dict) -> Strategy:

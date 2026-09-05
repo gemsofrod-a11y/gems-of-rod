@@ -172,12 +172,18 @@ class Handler(BaseHTTPRequestHandler):
     def _post_bot_start(self):
         body = self._read_json_body()
         account_id = int(body["account_id"])
+        target_equity = body.get("target_equity")
         bot_engine.start_bot(
             account_id,
             strategy_name=body["strategy"],
             params=body.get("params", {}),
             interval_sec=int(body.get("interval_sec", 10)),
             risk_pct=float(body.get("risk_pct", 25)),
+            take_profit_pct=float(body.get("take_profit_pct", bot_engine.DEFAULT_TAKE_PROFIT_PCT)),
+            stop_loss_pct=float(body.get("stop_loss_pct", bot_engine.DEFAULT_STOP_LOSS_PCT)),
+            max_holding_sec=int(body.get("max_holding_sec", bot_engine.DEFAULT_MAX_HOLDING_SEC)),
+            target_equity=float(target_equity) if target_equity else None,
+            floor_pct=float(body.get("floor_pct", bot_engine.DEFAULT_FLOOR_PCT)),
         )
         self._send_json({"status": "started", "account_id": account_id})
 

@@ -196,24 +196,32 @@
 
   // --- Bot ---
 
-  $("bot-strategy").addEventListener("change", (e) => {
-    $("bot-params-sma").style.display = e.target.value === "sma_crossover" ? "flex" : "none";
-    $("bot-params-rsi").style.display = e.target.value === "rsi_mean_reversion" ? "flex" : "none";
-  });
+  function effectiveBaseStrategy() {
+    return $("bot-strategy").value === "news_aware_trend" ? $("news-base").value : $("bot-strategy").value;
+  }
+
+  function updateBotParamVisibility() {
+    const strategy = $("bot-strategy").value;
+    const base = effectiveBaseStrategy();
+    $("bot-params-base").style.display = strategy === "news_aware_trend" ? "flex" : "none";
+    $("bot-params-sma").style.display = base === "sma_crossover" ? "flex" : "none";
+    $("bot-params-rsi").style.display = base === "rsi_mean_reversion" ? "flex" : "none";
+  }
+
+  $("bot-strategy").addEventListener("change", updateBotParamVisibility);
+  $("news-base").addEventListener("change", updateBotParamVisibility);
+  updateBotParamVisibility();
 
   function collectBotParams() {
     const strategy = $("bot-strategy").value;
-    if (strategy === "sma_crossover") {
-      return { strategy, params: { fast: +$("sma-fast").value, slow: +$("sma-slow").value } };
+    const base = effectiveBaseStrategy();
+    const baseParams = base === "sma_crossover"
+      ? { fast: +$("sma-fast").value, slow: +$("sma-slow").value }
+      : { period: +$("rsi-period").value, oversold: +$("rsi-oversold").value, overbought: +$("rsi-overbought").value };
+    if (strategy === "news_aware_trend") {
+      return { strategy, params: { base, ...baseParams } };
     }
-    return {
-      strategy,
-      params: {
-        period: +$("rsi-period").value,
-        oversold: +$("rsi-oversold").value,
-        overbought: +$("rsi-overbought").value,
-      },
-    };
+    return { strategy, params: baseParams };
   }
 
   $("bot-form").addEventListener("submit", async (e) => {
@@ -221,6 +229,7 @@
     const acc = activeAccount();
     if (!acc) return;
     const { strategy, params } = collectBotParams();
+    const target = $("bot-target").value;
     await api("/api/bot/start", {
       method: "POST",
       body: JSON.stringify({
@@ -229,6 +238,11 @@
         params,
         interval_sec: +$("bot-interval").value,
         risk_pct: +$("bot-risk").value,
+        take_profit_pct: +$("bot-tp").value,
+        stop_loss_pct: +$("bot-sl").value,
+        max_holding_sec: +$("bot-hold").value * 60,
+        target_equity: target ? +target : null,
+        floor_pct: +$("bot-floor").value,
       }),
     });
     refreshBotStatus();

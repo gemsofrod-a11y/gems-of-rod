@@ -18,7 +18,24 @@ l'application Android « encyclopédie / stock » de Gems of Rod.
   correspondre (voir avertissement plus bas).
 - **Bot de trading automatique** avec deux stratégies d'analyse
   technique classiques (croisement de moyennes mobiles, RSI retour à
-  la moyenne), paramétrables, activables/désactivables par compte.
+  la moyenne) et une troisième qui les combine avec un **sentiment
+  d'actualité** tiré de titres de presse récents sur l'or (via Claude
+  si `ANTHROPIC_API_KEY` est configurée, sinon un lexique de
+  mots-clés) — un signal technique n'est suivi que s'il n'est pas
+  contredit par l'actualité.
+  - **Positions courtes et précises** : chaque position ouverte porte
+    un objectif de gain et un seuil de perte précis (%), ainsi qu'une
+    durée maximale de détention — la sortie ne dépend jamais d'un
+    hypothétique signal contraire qui tarderait à venir.
+  - **Mode objectif** : indiquer un objectif de valorisation (ex.
+    passer de 100 € à 1000 €) fait enchaîner au bot autant de
+    positions courtes que nécessaire, avec une taille de position
+    recalculée à chaque trade selon l'écart restant à l'objectif, et
+    un seuil de protection qui arrête tout si le compte s'érode trop.
+    **Rien ne garantit d'atteindre l'objectif** : un multiplicateur
+    aussi élevé (x10 dans cet exemple) sur un instrument peu
+    volatil comme l'or au comptant, sans effet de levier, est
+    hautement improbable en pratique — voir l'avertissement plus bas.
 - **Backtester** : rejoue une stratégie sur une série de cours
   simulée et calcule rendement, drawdown, nombre de trades, taux de
   réussite.
@@ -54,8 +71,13 @@ l'activez pas sur un compte réel avant d'avoir vérifié son
 comportement face à la documentation officielle
 (https://api-portal.etoro.com/).
 
-Aucune stratégie fournie ici ne garantit un profit. Ceci n'est pas un
-conseil en investissement.
+Aucune stratégie fournie ici ne garantit un profit, y compris le mode
+objectif : sur un compte sans effet de levier, viser un
+multiplicateur élevé (ex. x10) revient à demander au bot de prendre
+des risques croissants à mesure qu'il s'en approche sans y arriver —
+le seuil de protection (`floor_pct`) limite la casse mais ne
+transforme pas un objectif irréaliste en résultat probable. Ceci
+n'est pas un conseil en investissement.
 
 ## Démarrage
 

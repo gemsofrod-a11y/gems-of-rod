@@ -31,6 +31,10 @@ ETORO_XAU_INSTRUMENT_ID = os.environ.get("ETORO_XAU_INSTRUMENT_ID", "")
 ETORO_AUTH_HEADER = os.environ.get("ETORO_AUTH_HEADER", "Authorization")
 ETORO_AUTH_SCHEME = os.environ.get("ETORO_AUTH_SCHEME", "Bearer")
 
+# --- Sentiment d'actualité (optionnel, repli sur mots-clés sinon) ---
+ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+ANTHROPIC_MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-haiku-4-5-20251001")
+
 # --- OANDA (broker gratuit, compte practice/démo par défaut) ---
 # API v20 stable et documentée publiquement : https://developer.oanda.com/rest-live-v20/introduction/
 OANDA_API_TOKEN = os.environ.get("OANDA_API_TOKEN", "")

@@ -73,7 +73,16 @@
             <select id="bot-strategy">
               <option value="sma_crossover">Croisement de moyennes mobiles</option>
               <option value="rsi_mean_reversion">RSI — retour à la moyenne</option>
+              <option value="news_aware_trend">Technique + actualités (recommandé)</option>
             </select>
+          </div>
+          <div class="row" id="bot-params-base">
+            <label>Base
+              <select id="news-base">
+                <option value="sma_crossover">Croisement de moyennes</option>
+                <option value="rsi_mean_reversion">RSI</option>
+              </select>
+            </label>
           </div>
           <div class="row" id="bot-params-sma">
             <label>Rapide <input id="sma-fast" type="number" value="10" min="2" /></label>
@@ -89,10 +98,20 @@
             <label>Risque par trade (%) <input id="bot-risk" type="number" value="25" min="1" max="100" /></label>
           </div>
           <div class="row">
+            <label>Take-profit (%) <input id="bot-tp" type="number" value="1.5" min="0.1" step="0.1" /></label>
+            <label>Stop-loss (%) <input id="bot-sl" type="number" value="0.75" min="0.1" step="0.1" /></label>
+            <label>Détention max (min) <input id="bot-hold" type="number" value="30" min="1" /></label>
+          </div>
+          <div class="row">
+            <label>Objectif de valorisation (USD, optionnel) <input id="bot-target" type="number" min="0" step="1" placeholder="ex: 1000" /></label>
+            <label>Seuil de protection (% du capital de départ) <input id="bot-floor" type="number" value="20" min="1" max="90" /></label>
+          </div>
+          <div class="row">
             <button type="submit">Démarrer le bot</button>
             <button type="button" id="bot-stop">Arrêter le bot</button>
           </div>
           <p class="status" id="bot-status"></p>
+          <p class="note">Le bot ouvre et referme autant de positions courtes que nécessaire (take-profit/stop-loss précis, détention limitée dans le temps) jusqu'à l'objectif ou le seuil de protection. Aucun résultat n'est garanti — voir le README.</p>
         </form>
       </div>
     </section>
