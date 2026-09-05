@@ -222,7 +222,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | meteorite-hoba | ♻️ [File:Hoba meteorite, Namibia (2014).jpg](https://commons.wikimedia.org/wiki/File:Hoba_meteorite,_Namibia_(2014).jpg) | — |
 | meteorite-willamette | ♻️ [File:Willamette meteorite at Dorothy and Lewis B. Cullman Hall of the Universe.jpg](https://commons.wikimedia.org/wiki/File:Willamette_meteorite_at_Dorothy_and_Lewis_B._Cullman_Hall_of_the_Universe.jpg) | — |
 | meteorite-ensisheim | ♻️ [File:Ensisheim meteorit donnerstein 1 vss2007.jpg](https://commons.wikimedia.org/wiki/File:Ensisheim_meteorit_donnerstein_1_vss2007.jpg) | — |
-| meteorite-nwa-7034 | ♻️ [File:Black Beauty tomat.jpg](https://commons.wikimedia.org/wiki/File:Black_Beauty_tomat.jpg) | — |
+| meteorite-nwa-7034 | retirée (faux positif : photo de tomate, mot-clé "black beauty" trop générique) | — |
 | meteorite-alh-84001 | ♻️ [File:ALH 84001.jpg](https://commons.wikimedia.org/wiki/File:ALH_84001.jpg) | — |
 | meteorite-lunaire-nwa | ♻️ [File:Lunar meteorite NWA 10665, Feldspathic breccia-8937.jpg](https://commons.wikimedia.org/wiki/File:Lunar_meteorite_NWA_10665,_Feldspathic_breccia-8937.jpg) | — |
 | fossile-ammonite-madagascar | ♻️ [File:Ammonite indet from Madagascar.jpg](https://commons.wikimedia.org/wiki/File:Ammonite_indet_from_Madagascar.jpg) | ♻️ [File:Ammonite geode.jpg](https://commons.wikimedia.org/wiki/File:Ammonite_geode.jpg) |

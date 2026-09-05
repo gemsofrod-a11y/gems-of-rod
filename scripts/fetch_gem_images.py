@@ -275,7 +275,11 @@ GEMS = [
     ("meteorite-hoba", ['Hoba meteorite', 'Hoba meteorite Namibia'], ['hoba'], (BRUTE,)),
     ("meteorite-willamette", ['Willamette meteorite', 'Willamette meteorite museum'], ['willamette'], (BRUTE,)),
     ("meteorite-ensisheim", ['Ensisheim meteorite', 'Ensisheim meteorite stone'], ['ensisheim'], (BRUTE,)),
-    ("meteorite-nwa-7034", ['NWA 7034 meteorite', 'Black Beauty meteorite Mars'], ['nwa 7034', 'black beauty'], (BRUTE,)),
+    # Mot-clé "black beauty" retiré : trop générique, a matché par erreur une
+    # photo de tomate (variété "Black Beauty" — même surnom, aucun rapport),
+    # repéré et signalé par l'utilisateur. "nwa 7034" seul est assez
+    # spécifique pour ne jamais confondre avec autre chose.
+    ("meteorite-nwa-7034", ['NWA 7034 meteorite', 'Black Beauty meteorite Mars'], ['nwa 7034'], (BRUTE,)),
     ("meteorite-alh-84001", ['ALH 84001 meteorite', 'Allan Hills 84001 meteorite'], ['alh 84001', 'allan hills'], (BRUTE,)),
     ("meteorite-lunaire-nwa", ['Lunar meteorite NWA', 'Lunar meteorite fragment'], ['lunar meteorite'], (BRUTE,)),
 
