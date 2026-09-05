@@ -284,6 +284,7 @@ fun GemmologieMenuScreen(
     onPaysClick: () -> Unit,
     onComparerClick: () -> Unit,
     onCrystalSystemsClick: () -> Unit,
+    onRochesMeresClick: () -> Unit,
     onGemClick: (Gem) -> Unit,
     onBackClick: () -> Unit
 ) {
@@ -361,6 +362,11 @@ fun GemmologieMenuScreen(
                         title = stringResource(R.string.gemmologie_crystal_systems_title),
                         subtitle = stringResource(R.string.gemmologie_crystal_systems_subtitle),
                         onClick = onCrystalSystemsClick
+                    )
+                    GemmologieMenuCard(
+                        title = stringResource(R.string.gemmologie_roches_meres_title),
+                        subtitle = stringResource(R.string.gemmologie_roches_meres_subtitle),
+                        onClick = onRochesMeresClick
                     )
                 }
             } else if (results.isEmpty()) {

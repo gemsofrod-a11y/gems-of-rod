@@ -164,6 +164,8 @@
     <string name="gemmologie_comparer_subtitle">Härte, Brechungsindex, Dichte… auf einen Blick im Diagramm.</string>
     <string name="gemmologie_crystal_systems_title">Kristallsysteme</string>
     <string name="gemmologie_crystal_systems_subtitle">Die sechs Kristallsysteme mit einer vereinfachten Skizze für jedes.</string>
+    <string name="gemmologie_roches_meres_title">Muttergesteine</string>
+    <string name="gemmologie_roches_meres_subtitle">Magmatisch, metamorph, sedimentär: wo Edelsteine entstehen.</string>
     <string name="comparer_gem_a_label">Stein A</string>
     <string name="comparer_gem_b_label">Stein B</string>
     <string name="comparer_select_prompt">Wählen Sie zwei Steine, um ihre Eigenschaften zu vergleichen.</string>

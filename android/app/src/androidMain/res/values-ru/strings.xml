@@ -164,6 +164,8 @@
     <string name="gemmologie_comparer_subtitle">Твёрдость, показатель преломления, плотность… наглядно на графике.</string>
     <string name="gemmologie_crystal_systems_title">Кристаллические сингонии</string>
     <string name="gemmologie_crystal_systems_subtitle">Шесть кристаллических систем, для каждой — упрощённая схема.</string>
+    <string name="gemmologie_roches_meres_title">Материнские породы</string>
+    <string name="gemmologie_roches_meres_subtitle">Магматические, метаморфические, осадочные: где рождаются драгоценные камни.</string>
     <string name="comparer_gem_a_label">Камень A</string>
     <string name="comparer_gem_b_label">Камень B</string>
     <string name="comparer_select_prompt">Выберите два камня, чтобы сравнить их характеристики.</string>
