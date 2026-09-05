@@ -164,6 +164,8 @@
     <string name="gemmologie_comparer_subtitle">Hardheid, brekingsindex, dichtheid… in één oogopslag op een grafiek.</string>
     <string name="gemmologie_crystal_systems_title">Kristalsystemen</string>
     <string name="gemmologie_crystal_systems_subtitle">De zes kristalsystemen, elk met een vereenvoudigde schets.</string>
+    <string name="gemmologie_roches_meres_title">Moedergesteenten</string>
+    <string name="gemmologie_roches_meres_subtitle">Stollingsgesteente, metamorf, sedimentair: waar edelstenen ontstaan.</string>
     <string name="comparer_gem_a_label">Steen A</string>
     <string name="comparer_gem_b_label">Steen B</string>
     <string name="comparer_select_prompt">Kies twee stenen om hun eigenschappen te vergelijken.</string>

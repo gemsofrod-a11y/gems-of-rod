@@ -164,6 +164,8 @@
     <string name="gemmologie_comparer_subtitle">Dureté, indice de réfraction, densité… en un coup d\'œil sur un graphique.</string>
     <string name="gemmologie_crystal_systems_title">Systèmes cristallins</string>
     <string name="gemmologie_crystal_systems_subtitle">Les six systèmes cristallins et une esquisse simplifiée pour chacun.</string>
+    <string name="gemmologie_roches_meres_title">Roches mères</string>
+    <string name="gemmologie_roches_meres_subtitle">Magmatique, métamorphique, sédimentaire : où naissent les pierres précieuses.</string>
     <string name="comparer_gem_a_label">Pierre A</string>
     <string name="comparer_gem_b_label">Pierre B</string>
     <string name="comparer_select_prompt">Choisissez deux pierres pour comparer leurs caractéristiques.</string>

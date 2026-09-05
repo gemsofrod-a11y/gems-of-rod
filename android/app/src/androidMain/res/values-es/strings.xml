@@ -164,6 +164,8 @@
     <string name="gemmologie_comparer_subtitle">Dureza, índice de refracción, densidad… de un vistazo en un gráfico.</string>
     <string name="gemmologie_crystal_systems_title">Sistemas cristalinos</string>
     <string name="gemmologie_crystal_systems_subtitle">Los seis sistemas cristalinos, cada uno con un esquema simplificado.</string>
+    <string name="gemmologie_roches_meres_title">Rocas madre</string>
+    <string name="gemmologie_roches_meres_subtitle">Ígnea, metamórfica, sedimentaria: dónde nacen las piedras preciosas.</string>
     <string name="comparer_gem_a_label">Piedra A</string>
     <string name="comparer_gem_b_label">Piedra B</string>
     <string name="comparer_select_prompt">Elige dos piedras para comparar sus características.</string>

@@ -164,6 +164,8 @@
     <string name="gemmologie_comparer_subtitle">硬度、折射率、密度……一目了然的图表对比。</string>
     <string name="gemmologie_crystal_systems_title">晶系</string>
     <string name="gemmologie_crystal_systems_subtitle">六个晶系，每个都配有简化示意图。</string>
+    <string name="gemmologie_roches_meres_title">母岩</string>
+    <string name="gemmologie_roches_meres_subtitle">岩浆岩、变质岩、沉积岩：宝石诞生之地。</string>
     <string name="comparer_gem_a_label">宝石 A</string>
     <string name="comparer_gem_b_label">宝石 B</string>
     <string name="comparer_select_prompt">选择两颗宝石以比较它们的特性。</string>

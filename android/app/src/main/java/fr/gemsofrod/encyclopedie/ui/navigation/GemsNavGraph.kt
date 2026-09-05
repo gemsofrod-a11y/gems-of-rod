@@ -84,6 +84,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.ClientDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.ClientFormScreen
 import fr.gemsofrod.encyclopedie.ui.screens.ClientListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LapidaireScreen
+import fr.gemsofrod.encyclopedie.ui.screens.RochesMeresScreen
 import fr.gemsofrod.encyclopedie.ui.screens.SupplierDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.SupplierFormScreen
 import fr.gemsofrod.encyclopedie.ui.screens.SupplierListScreen
@@ -142,6 +143,7 @@ private object Routes {
     const val NUANCIER = "nuancier"
     const val DIAMOND_GRADING = "diamond_grading"
     const val CRYSTAL_SYSTEMS = "crystal_systems"
+    const val ROCHES_MERES = "roches_meres"
     const val LEGENDARY_RIDDLE = "legendary_riddle"
     const val LEGENDARY_MAP = "legendary_map"
     const val TREATMENTS = "treatments"
@@ -540,6 +542,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onPaysClick = { navController.navigate(Routes.PAYS_LIST) },
                 onComparerClick = { navController.navigate(Routes.COMPARER) },
                 onCrystalSystemsClick = { navController.navigate(Routes.CRYSTAL_SYSTEMS) },
+                onRochesMeresClick = { navController.navigate(Routes.ROCHES_MERES) },
                 onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
                 onBackClick = { navController.popBackStack() }
             )
@@ -549,6 +552,9 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         }
         composable(Routes.CRYSTAL_SYSTEMS) {
             CrystalSystemsScreen(onBackClick = { navController.popBackStack() })
+        }
+        composable(Routes.ROCHES_MERES) {
+            RochesMeresScreen(onBackClick = { navController.popBackStack() })
         }
         composable(Routes.ANALYSE) {
             AnalyseScreen(
