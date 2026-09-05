@@ -1,6 +1,7 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
 import android.content.Intent
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,6 +17,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -79,11 +82,20 @@ import androidx.compose.ui.draw.alpha
 import java.text.NumberFormat
 import java.util.Locale
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: () -> Unit) {
-    val gem = GemsRepository.byId(gemId)?.localized()
-    LaunchedEffect(gemId) { AchievementsRepository.recordGemViewed(gemId) }
+fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: (String) -> Unit) {
+    // Ordre complet du catalogue (pas seulement la liste filtrée d'où vient
+    // l'utilisateur) : balayer une fiche fait défiler l'ensemble des gemmes,
+    // pas uniquement la sous-liste de départ — voir la note dans le message
+    // de livraison de cette fonctionnalité pour le compromis retenu.
+    val gemIds = remember { GemsRepository.gems.map { it.id } }
+    val initialPage = remember(gemId) { gemIds.indexOf(gemId).coerceAtLeast(0) }
+    val pagerState = rememberPagerState(initialPage = initialPage) { gemIds.size }
+
+    val currentGemId = gemIds.getOrNull(pagerState.currentPage) ?: gemId
+    val gem = GemsRepository.byId(currentGemId)?.localized()
+    LaunchedEffect(currentGemId) { AchievementsRepository.recordGemViewed(currentGemId) }
     val context = LocalContext.current
     val shareChooserTitle = stringResource(R.string.share_chooser_title)
     val shareSubject = gem?.let { stringResource(R.string.share_subject, it.nom) }
@@ -130,166 +142,183 @@ fun GemDetailScreen(gemId: String, onBackClick: () -> Unit, onCertificateClick: 
         },
         containerColor = MaterialTheme.colorScheme.background
     ) { padding ->
-        if (gem == null) {
+        if (gemIds.isEmpty()) {
             Box(modifier = Modifier.fillMaxSize().padding(padding))
             return@Scaffold
         }
 
-        val images = GemImages.creditsFor(gem.id)
-        val wholeStoneImages = images.filter { it.type != GemImageType.INCLUSION }
-        val inclusionImages = images.filter { it.type == GemImageType.INCLUSION }
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .verticalScroll(rememberScrollState())
-                .padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(18.dp)
-        ) {
-            if (wholeStoneImages.isEmpty()) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(96.dp)
-                        .background(gem.couleur.swatch, RoundedCornerShape(16.dp))
-                )
+        HorizontalPager(
+            state = pagerState,
+            modifier = Modifier.fillMaxSize().padding(padding)
+        ) { page ->
+            val pageGem = GemsRepository.byId(gemIds[page])?.localized()
+            if (pageGem == null) {
+                Box(modifier = Modifier.fillMaxSize())
             } else {
-                GemImageGallery(wholeStoneImages)
-            }
-
-            Column {
-                Text(
-                    text = gem.nom,
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = MaterialTheme.colorScheme.onBackground
-                )
-                Text(
-                    text = gem.nomLatin,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                GemDetailBody(
+                    gem = pageGem,
+                    onCertificateClick = { onCertificateClick(pageGem.id) }
                 )
             }
+        }
+    }
+}
 
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                RareteBadge(rarete = gem.rarete)
-                AssistChip(onClick = {}, label = { Text(gem.famille) })
-            }
+@Composable
+private fun GemDetailBody(gem: Gem, onCertificateClick: () -> Unit) {
+    val images = GemImages.creditsFor(gem.id)
+    val wholeStoneImages = images.filter { it.type != GemImageType.INCLUSION }
+    val inclusionImages = images.filter { it.type == GemImageType.INCLUSION }
 
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(20.dp),
+        verticalArrangement = Arrangement.spacedBy(18.dp)
+    ) {
+        if (wholeStoneImages.isEmpty()) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(96.dp)
+                    .background(gem.couleur.swatch, RoundedCornerShape(16.dp))
+            )
+        } else {
+            GemImageGallery(wholeStoneImages)
+        }
+
+        Column {
             Text(
-                text = gem.descriptionLongue,
-                style = MaterialTheme.typography.bodyLarge,
+                text = gem.nom,
+                style = MaterialTheme.typography.headlineMedium,
                 color = MaterialTheme.colorScheme.onBackground
             )
+            Text(
+                text = gem.nomLatin,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
 
-            Card(
-                shape = RoundedCornerShape(16.dp),
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    FicheRow(stringResource(R.string.fiche_categorie), stringResource(gem.couleur.labelRes))
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            RareteBadge(rarete = gem.rarete)
+            AssistChip(onClick = {}, label = { Text(gem.famille) })
+        }
+
+        Text(
+            text = gem.descriptionLongue,
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onBackground
+        )
+
+        Card(
+            shape = RoundedCornerShape(16.dp),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Column(modifier = Modifier.padding(16.dp)) {
+                FicheRow(stringResource(R.string.fiche_categorie), stringResource(gem.couleur.labelRes))
+                FicheDivider()
+                FicheRow(stringResource(R.string.fiche_famille), gem.famille)
+                FicheDivider()
+                FicheRow(stringResource(R.string.fiche_formule_chimique), gem.formuleChimique)
+                FicheDivider()
+                FicheRow(stringResource(R.string.fiche_systeme_cristallin), gem.systemeCristallin)
+                FicheDivider()
+                FicheRow(stringResource(R.string.fiche_durete), gem.durete)
+                FicheDivider()
+                FicheRow(stringResource(R.string.fiche_indice_refraction), gem.indiceRefraction)
+                val diagnostic = GemDiagnostics.data[gem.id]
+                if (diagnostic != null) {
                     FicheDivider()
-                    FicheRow(stringResource(R.string.fiche_famille), gem.famille)
+                    FicheRow(stringResource(R.string.fiche_transparence), localizedLabel(diagnostic.transparence))
                     FicheDivider()
-                    FicheRow(stringResource(R.string.fiche_formule_chimique), gem.formuleChimique)
+                    FicheRow(stringResource(R.string.fiche_eclat), localizedLabel(diagnostic.eclat))
                     FicheDivider()
-                    FicheRow(stringResource(R.string.fiche_systeme_cristallin), gem.systemeCristallin)
+                    FicheRow(stringResource(R.string.fiche_clivage), localizedLabel(diagnostic.clivage))
                     FicheDivider()
-                    FicheRow(stringResource(R.string.fiche_durete), gem.durete)
+                    FicheRow(stringResource(R.string.fiche_densite), diagnostic.densite)
                     FicheDivider()
-                    FicheRow(stringResource(R.string.fiche_indice_refraction), gem.indiceRefraction)
-                    val diagnostic = GemDiagnostics.data[gem.id]
-                    if (diagnostic != null) {
-                        FicheDivider()
-                        FicheRow(stringResource(R.string.fiche_transparence), localizedLabel(diagnostic.transparence))
-                        FicheDivider()
-                        FicheRow(stringResource(R.string.fiche_eclat), localizedLabel(diagnostic.eclat))
-                        FicheDivider()
-                        FicheRow(stringResource(R.string.fiche_clivage), localizedLabel(diagnostic.clivage))
-                        FicheDivider()
-                        FicheRow(stringResource(R.string.fiche_densite), diagnostic.densite)
-                        FicheDivider()
-                        FicheRow(stringResource(R.string.fiche_pleochroisme), localizedLabel(diagnostic.pleochroisme))
-                        FicheDivider()
-                        FicheRow(stringResource(R.string.fiche_fluorescence), localizedLabel(diagnostic.fluorescence))
-                    }
+                    FicheRow(stringResource(R.string.fiche_pleochroisme), localizedLabel(diagnostic.pleochroisme))
                     FicheDivider()
-                    FicheRow(stringResource(R.string.fiche_prix_indicatif), gem.prixCaratEur)
+                    FicheRow(stringResource(R.string.fiche_fluorescence), localizedLabel(diagnostic.fluorescence))
                 }
+                FicheDivider()
+                FicheRow(stringResource(R.string.fiche_prix_indicatif), gem.prixCaratEur)
             }
+        }
 
-            PriceCalculatorCard(gem)
+        PriceCalculatorCard(gem)
 
-            OutlinedButton(
-                onClick = onCertificateClick,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Icon(
-                    Icons.Filled.Description,
-                    contentDescription = null,
-                    modifier = Modifier.padding(end = 8.dp)
-                )
-                Text(stringResource(R.string.create_certificate_button))
-            }
+        OutlinedButton(
+            onClick = onCertificateClick,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Icon(
+                Icons.Filled.Description,
+                contentDescription = null,
+                modifier = Modifier.padding(end = 8.dp)
+            )
+            Text(stringResource(R.string.create_certificate_button))
+        }
 
+        Column {
+            Text(
+                text = stringResource(R.string.particularites_title),
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onBackground
+            )
+            Text(
+                text = gem.particularites,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+
+        val inclusions = localizedInclusions(gem.id)
+        if (!inclusions.isNullOrBlank()) {
             Column {
                 Text(
-                    text = stringResource(R.string.particularites_title),
+                    text = stringResource(R.string.inclusions_title),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onBackground
                 )
                 Text(
-                    text = gem.particularites,
+                    text = inclusions,
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
-            }
-
-            val inclusions = localizedInclusions(gem.id)
-            if (!inclusions.isNullOrBlank()) {
-                Column {
-                    Text(
-                        text = stringResource(R.string.inclusions_title),
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.SemiBold,
-                        color = MaterialTheme.colorScheme.onBackground
-                    )
-                    Text(
-                        text = inclusions,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                    if (inclusionImages.isNotEmpty()) {
-                        Box(modifier = Modifier.padding(top = 10.dp)) {
-                            GemImageGallery(inclusionImages)
-                        }
+                if (inclusionImages.isNotEmpty()) {
+                    Box(modifier = Modifier.padding(top = 10.dp)) {
+                        GemImageGallery(inclusionImages)
                     }
                 }
             }
+        }
 
-            Column {
-                Text(
-                    text = stringResource(R.string.origins_title),
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.SemiBold,
-                    color = MaterialTheme.colorScheme.onBackground
+        Column {
+            Text(
+                text = stringResource(R.string.origins_title),
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onBackground
+            )
+            Text(
+                text = stringResource(R.string.origins_hint),
+                style = MaterialTheme.typography.bodyMedium,
+                fontStyle = FontStyle.Italic,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+            val uriHandler = LocalUriHandler.current
+            gem.origines.forEach { origine ->
+                OrigineRow(
+                    origine = origine,
+                    onClick = { uriHandler.openUri(googleMapsSearchUrl(origine)) }
                 )
-                Text(
-                    text = stringResource(R.string.origins_hint),
-                    style = MaterialTheme.typography.bodyMedium,
-                    fontStyle = FontStyle.Italic,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
-                val uriHandler = LocalUriHandler.current
-                gem.origines.forEach { origine ->
-                    OrigineRow(
-                        origine = origine,
-                        onClick = { uriHandler.openUri(googleMapsSearchUrl(origine)) }
-                    )
-                }
             }
         }
     }

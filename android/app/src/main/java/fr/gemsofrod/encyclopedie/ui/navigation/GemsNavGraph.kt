@@ -678,7 +678,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             GemDetailScreen(
                 gemId = gemId,
                 onBackClick = { navController.popBackStack() },
-                onCertificateClick = { navController.navigate(Routes.certificate(gemId)) }
+                onCertificateClick = { currentGemId -> navController.navigate(Routes.certificate(currentGemId)) }
             )
         }
         composable(Routes.FAVORITES) {

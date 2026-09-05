@@ -1,5 +1,6 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,6 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -59,6 +62,7 @@ import fr.gemsofrod.encyclopedie.data.GemImageType
 import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.data.GemRarete
 import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
+import fr.gemsofrod.encyclopedie.ui.components.premiumCardBorder
 import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
@@ -194,7 +198,9 @@ private fun FossileRow(fossile: Fossile, onClick: () -> Unit) {
         onClick = onClick,
         shape = RoundedCornerShape(14.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .premiumCardBorder()
     ) {
         Row(
             modifier = Modifier
@@ -333,11 +339,15 @@ private fun FossileClassificationDisclaimer(title: String, body: String) {
 }
 
 /** Fiche détaillée d'un fossile individuel. */
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun FossileDetailScreen(fossileId: String, onBackClick: () -> Unit) {
-    val fossile = FossilesRepository.byId(fossileId)?.localized()
-    LaunchedEffect(fossileId) { AchievementsRepository.recordFossileViewed(fossileId) }
+    val fossileIds = remember { FossilesRepository.all().map { it.id } }
+    val initialPage = remember(fossileId) { fossileIds.indexOf(fossileId).coerceAtLeast(0) }
+    val pagerState = rememberPagerState(initialPage = initialPage) { fossileIds.size }
+    val currentFossileId = fossileIds.getOrNull(pagerState.currentPage) ?: fossileId
+    val fossile = FossilesRepository.byId(currentFossileId)?.localized()
+    LaunchedEffect(currentFossileId) { AchievementsRepository.recordFossileViewed(currentFossileId) }
 
     Scaffold(
         topBar = {
@@ -356,79 +366,93 @@ fun FossileDetailScreen(fossileId: String, onBackClick: () -> Unit) {
         },
         containerColor = MaterialTheme.colorScheme.background
     ) { padding ->
-        if (fossile == null) {
+        if (fossileIds.isEmpty()) {
             Box(modifier = Modifier.fillMaxSize().padding(padding))
             return@Scaffold
         }
 
-        val images = GemImages.creditsFor(fossile.id)
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .verticalScroll(rememberScrollState())
-                .padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(18.dp)
-        ) {
-            if (images.isNotEmpty()) {
-                FossileImageGallery(images)
+        HorizontalPager(
+            state = pagerState,
+            modifier = Modifier.fillMaxSize().padding(padding)
+        ) { page ->
+            val pageFossile = FossilesRepository.byId(fossileIds[page])?.localized()
+            if (pageFossile == null) {
+                Box(modifier = Modifier.fillMaxSize())
+            } else {
+                FossileDetailBody(pageFossile)
             }
+        }
+    }
+}
 
-            Column {
-                Text(
-                    text = fossile.nom,
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = MaterialTheme.colorScheme.onBackground
-                )
-                Text(
-                    text = fossile.origine,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
+@Composable
+private fun FossileDetailBody(fossile: Fossile) {
+    val images = GemImages.creditsFor(fossile.id)
 
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                RareteBadge(rarete = fossile.rarete)
-                AssistChip(onClick = {}, label = { Text(stringResource(fossile.famille.labelRes)) })
-            }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(20.dp),
+        verticalArrangement = Arrangement.spacedBy(18.dp)
+    ) {
+        if (images.isNotEmpty()) {
+            FossileImageGallery(images)
+        }
 
+        Column {
             Text(
-                text = fossile.descriptionLongue,
-                style = MaterialTheme.typography.bodyLarge,
+                text = fossile.nom,
+                style = MaterialTheme.typography.headlineMedium,
                 color = MaterialTheme.colorScheme.onBackground
             )
+            Text(
+                text = fossile.origine,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
 
-            Card(
-                shape = RoundedCornerShape(16.dp),
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    FossileFicheRow(stringResource(R.string.fossile_fiche_origine), fossile.origine)
-                    FossileFicheDivider()
-                    FossileFicheRow(stringResource(R.string.fossile_fiche_periode), fossile.periodeGeologique)
-                    FossileFicheDivider()
-                    FossileFicheRow(stringResource(R.string.fossile_fiche_age), fossile.ageApprox)
-                    FossileFicheDivider()
-                    FossileFicheRow(stringResource(R.string.fossile_fiche_classification), fossile.classification)
-                    FossileFicheDivider()
-                    FossileFicheRow(stringResource(R.string.fossile_fiche_composition), fossile.compositionMinerale)
-                    FossileFicheDivider()
-                    FossileFicheRow(stringResource(R.string.fossile_fiche_durete), fossile.durete)
-                    FossileFicheDivider()
-                    FossileFicheRow(stringResource(R.string.fossile_fiche_densite), fossile.densite)
-                    FossileFicheDivider()
-                    FossileFicheRow(stringResource(R.string.fossile_fiche_couleur), fossile.couleur)
-                    FossileFicheDivider()
-                    FossileFicheRow(stringResource(R.string.fossile_fiche_taille), fossile.taillePossible)
-                    FossileFicheDivider()
-                    FossileFicheRow(stringResource(R.string.fossile_fiche_qualite_gemme), fossile.qualiteGemme)
-                    FossileFicheDivider()
-                    FossileFicheRow(stringResource(R.string.fossile_fiche_interet_joaillerie), fossile.interetJoaillerie)
-                    FossileFicheDivider()
-                    FossileFicheRow(stringResource(R.string.fossile_fiche_prix), fossile.prixApproxGramme)
-                }
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            RareteBadge(rarete = fossile.rarete)
+            AssistChip(onClick = {}, label = { Text(stringResource(fossile.famille.labelRes)) })
+        }
+
+        Text(
+            text = fossile.descriptionLongue,
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onBackground
+        )
+
+        Card(
+            shape = RoundedCornerShape(16.dp),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Column(modifier = Modifier.padding(16.dp)) {
+                FossileFicheRow(stringResource(R.string.fossile_fiche_origine), fossile.origine)
+                FossileFicheDivider()
+                FossileFicheRow(stringResource(R.string.fossile_fiche_periode), fossile.periodeGeologique)
+                FossileFicheDivider()
+                FossileFicheRow(stringResource(R.string.fossile_fiche_age), fossile.ageApprox)
+                FossileFicheDivider()
+                FossileFicheRow(stringResource(R.string.fossile_fiche_classification), fossile.classification)
+                FossileFicheDivider()
+                FossileFicheRow(stringResource(R.string.fossile_fiche_composition), fossile.compositionMinerale)
+                FossileFicheDivider()
+                FossileFicheRow(stringResource(R.string.fossile_fiche_durete), fossile.durete)
+                FossileFicheDivider()
+                FossileFicheRow(stringResource(R.string.fossile_fiche_densite), fossile.densite)
+                FossileFicheDivider()
+                FossileFicheRow(stringResource(R.string.fossile_fiche_couleur), fossile.couleur)
+                FossileFicheDivider()
+                FossileFicheRow(stringResource(R.string.fossile_fiche_taille), fossile.taillePossible)
+                FossileFicheDivider()
+                FossileFicheRow(stringResource(R.string.fossile_fiche_qualite_gemme), fossile.qualiteGemme)
+                FossileFicheDivider()
+                FossileFicheRow(stringResource(R.string.fossile_fiche_interet_joaillerie), fossile.interetJoaillerie)
+                FossileFicheDivider()
+                FossileFicheRow(stringResource(R.string.fossile_fiche_prix), fossile.prixApproxGramme)
             }
         }
     }

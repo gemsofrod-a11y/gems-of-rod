@@ -1,5 +1,6 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,6 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -59,6 +62,7 @@ import fr.gemsofrod.encyclopedie.data.GemImageType
 import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.data.GemRarete
 import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
+import fr.gemsofrod.encyclopedie.ui.components.premiumCardBorder
 import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
@@ -193,7 +197,9 @@ private fun CoquillageRow(coquillage: Coquillage, onClick: () -> Unit) {
         onClick = onClick,
         shape = RoundedCornerShape(14.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
+            .premiumCardBorder()
     ) {
         Row(
             modifier = Modifier
@@ -332,11 +338,15 @@ private fun CoquillageClassificationDisclaimer(title: String, body: String) {
 }
 
 /** Fiche détaillée d'un coquillage individuel. */
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun CoquillageDetailScreen(coquillageId: String, onBackClick: () -> Unit) {
-    val coquillage = CoquillagesRepository.byId(coquillageId)?.localized()
-    LaunchedEffect(coquillageId) { AchievementsRepository.recordCoquillageViewed(coquillageId) }
+    val coquillageIds = remember { CoquillagesRepository.all().map { it.id } }
+    val initialPage = remember(coquillageId) { coquillageIds.indexOf(coquillageId).coerceAtLeast(0) }
+    val pagerState = rememberPagerState(initialPage = initialPage) { coquillageIds.size }
+    val currentCoquillageId = coquillageIds.getOrNull(pagerState.currentPage) ?: coquillageId
+    val coquillage = CoquillagesRepository.byId(currentCoquillageId)?.localized()
+    LaunchedEffect(currentCoquillageId) { AchievementsRepository.recordCoquillageViewed(currentCoquillageId) }
 
     Scaffold(
         topBar = {
@@ -355,74 +365,88 @@ fun CoquillageDetailScreen(coquillageId: String, onBackClick: () -> Unit) {
         },
         containerColor = MaterialTheme.colorScheme.background
     ) { padding ->
-        if (coquillage == null) {
+        if (coquillageIds.isEmpty()) {
             Box(modifier = Modifier.fillMaxSize().padding(padding))
             return@Scaffold
         }
 
-        val images = GemImages.creditsFor(coquillage.id)
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .verticalScroll(rememberScrollState())
-                .padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(18.dp)
-        ) {
-            if (images.isNotEmpty()) {
-                CoquillageImageGallery(images)
+        HorizontalPager(
+            state = pagerState,
+            modifier = Modifier.fillMaxSize().padding(padding)
+        ) { page ->
+            val pageCoquillage = CoquillagesRepository.byId(coquillageIds[page])?.localized()
+            if (pageCoquillage == null) {
+                Box(modifier = Modifier.fillMaxSize())
+            } else {
+                CoquillageDetailBody(pageCoquillage)
             }
+        }
+    }
+}
 
-            Column {
-                Text(
-                    text = coquillage.nom,
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = MaterialTheme.colorScheme.onBackground
-                )
-                Text(
-                    text = coquillage.nomLatin,
-                    style = MaterialTheme.typography.bodyMedium,
-                    fontStyle = FontStyle.Italic,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
+@Composable
+private fun CoquillageDetailBody(coquillage: Coquillage) {
+    val images = GemImages.creditsFor(coquillage.id)
 
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                RareteBadge(rarete = coquillage.rarete)
-                AssistChip(onClick = {}, label = { Text(stringResource(coquillage.famille.labelRes)) })
-            }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(20.dp),
+        verticalArrangement = Arrangement.spacedBy(18.dp)
+    ) {
+        if (images.isNotEmpty()) {
+            CoquillageImageGallery(images)
+        }
 
+        Column {
             Text(
-                text = coquillage.descriptionLongue,
-                style = MaterialTheme.typography.bodyLarge,
+                text = coquillage.nom,
+                style = MaterialTheme.typography.headlineMedium,
                 color = MaterialTheme.colorScheme.onBackground
             )
+            Text(
+                text = coquillage.nomLatin,
+                style = MaterialTheme.typography.bodyMedium,
+                fontStyle = FontStyle.Italic,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
 
-            Card(
-                shape = RoundedCornerShape(16.dp),
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    CoquillageFicheRow(stringResource(R.string.coquillage_fiche_origine), coquillage.origine)
-                    CoquillageFicheDivider()
-                    CoquillageFicheRow(stringResource(R.string.coquillage_fiche_composition), coquillage.compositionMinerale)
-                    CoquillageFicheDivider()
-                    CoquillageFicheRow(stringResource(R.string.coquillage_fiche_durete), coquillage.durete)
-                    CoquillageFicheDivider()
-                    CoquillageFicheRow(stringResource(R.string.coquillage_fiche_densite), coquillage.densite)
-                    CoquillageFicheDivider()
-                    CoquillageFicheRow(stringResource(R.string.coquillage_fiche_couleur), coquillage.couleur)
-                    CoquillageFicheDivider()
-                    CoquillageFicheRow(stringResource(R.string.coquillage_fiche_taille), coquillage.taillePossible)
-                    CoquillageFicheDivider()
-                    CoquillageFicheRow(stringResource(R.string.coquillage_fiche_qualite_gemme), coquillage.qualiteGemme)
-                    CoquillageFicheDivider()
-                    CoquillageFicheRow(stringResource(R.string.coquillage_fiche_interet_joaillerie), coquillage.interetJoaillerie)
-                    CoquillageFicheDivider()
-                    CoquillageFicheRow(stringResource(R.string.coquillage_fiche_prix), coquillage.prixApprox)
-                }
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            RareteBadge(rarete = coquillage.rarete)
+            AssistChip(onClick = {}, label = { Text(stringResource(coquillage.famille.labelRes)) })
+        }
+
+        Text(
+            text = coquillage.descriptionLongue,
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onBackground
+        )
+
+        Card(
+            shape = RoundedCornerShape(16.dp),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Column(modifier = Modifier.padding(16.dp)) {
+                CoquillageFicheRow(stringResource(R.string.coquillage_fiche_origine), coquillage.origine)
+                CoquillageFicheDivider()
+                CoquillageFicheRow(stringResource(R.string.coquillage_fiche_composition), coquillage.compositionMinerale)
+                CoquillageFicheDivider()
+                CoquillageFicheRow(stringResource(R.string.coquillage_fiche_durete), coquillage.durete)
+                CoquillageFicheDivider()
+                CoquillageFicheRow(stringResource(R.string.coquillage_fiche_densite), coquillage.densite)
+                CoquillageFicheDivider()
+                CoquillageFicheRow(stringResource(R.string.coquillage_fiche_couleur), coquillage.couleur)
+                CoquillageFicheDivider()
+                CoquillageFicheRow(stringResource(R.string.coquillage_fiche_taille), coquillage.taillePossible)
+                CoquillageFicheDivider()
+                CoquillageFicheRow(stringResource(R.string.coquillage_fiche_qualite_gemme), coquillage.qualiteGemme)
+                CoquillageFicheDivider()
+                CoquillageFicheRow(stringResource(R.string.coquillage_fiche_interet_joaillerie), coquillage.interetJoaillerie)
+                CoquillageFicheDivider()
+                CoquillageFicheRow(stringResource(R.string.coquillage_fiche_prix), coquillage.prixApprox)
             }
         }
     }
