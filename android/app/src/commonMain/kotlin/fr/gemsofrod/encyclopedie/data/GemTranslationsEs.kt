@@ -1480,6 +1480,14 @@ object GemTranslationsEs {
             particularites = "Se calienta rápidamente al contacto con la piel y puede desarrollar una carga electrostática por fricción, al igual que el ámbar.",
             lithotherapie = "El azabache se asocia tradicionalmente con la protección contra las energías negativas y el acompañamiento en el duelo."
         ),
+        "vivianite" to GemTranslation(
+            nom = "Vivianita",
+            descriptionCourte = "Un fosfato de hierro de azul profundo, tan blando y sensible a la luz que sigue siendo un mineral de coleccionista.",
+            descriptionLongue = "La vivianita se forma por alteración de minerales ferrosos en ambientes pobres en oxígeno —turberas, arcillas, o en la superficie de huesos y dientes fósiles, donde colorea de azul verdoso algunos colmillos de mamut siberianos. Casi incolora al ser extraída, se oscurece en pocas horas de exposición a la luz hasta un azul índigo profundo, a veces casi negro, por la oxidación del hierro que contiene. Los cristales más bellos, alargados y bien formados, proceden hoy casi exclusivamente de la mina de Anloa, en Bolivia.",
+            particularites = "Extremadamente blanda y sensible a la luz y al calor, prácticamente nunca se talla en joyería: conservada al abrigo de la luz directa para preservar su color, sigue siendo una piedra de coleccionista. Su exfoliación perfecta produce láminas finas, casi flexibles al tacto.",
+            lithotherapie = "En las tradiciones de litoterapia, la vivianita se asocia al desapego y a la transformación interior —una creencia tradicional, sin fundamento científico establecido.",
+            inclusions = "El rasgo distintivo de la especie no es una inclusión sino un cambio de color: los cristales recién extraídos, casi incoloros, se oscurecen en pocas horas de exposición a la luz hasta un azul profundo por la oxidación del hierro que contienen."
+        ),
         "grenat-etoile" to GemTranslation(
             nom = "Granate estrellado",
             descriptionCourte = "Un almandino con cuatro o seis brazos luminosos, una rareza que se encuentra casi exclusivamente en Idaho.",

@@ -185,6 +185,8 @@ GEMS = [
     ("topaze-rose", ['Pink topaz faceted', 'Pink topaz', 'Pink topaz Pakistan'], ['topaz'], (BRUTE, FACETTEE)),
     ("quartz-rose", ['Rose quartz'], ['quartz'], (BRUTE, FACETTEE)),
     ("phosphosiderite", ['Phosphosiderite'], ['phosphosiderite'], (BRUTE, FACETTEE)),
+    # Jamais taillée (voir GemsRepository) : uniquement une photo de cristal brut.
+    ("vivianite", ['Vivianite crystal', 'Vivianite Bolivia', 'Vivianite mineral specimen'], ['vivianite'], (BRUTE,)),
     ("saphir-blanc", ['Colourless sapphire faceted', 'White sapphire ring', 'Corundum colorless crystal'], ['sapphire', 'corundum'], (BRUTE, FACETTEE)),
     ("topaze-blanche", ['Colorless topaz ring', 'White topaz crystal', 'Topaz colorless faceted'], ['topaz'], (BRUTE, FACETTEE)),
     ("hambergite", ['Hambergite crystal', 'Hambergite Madagascar', 'Hambergite'], ['hambergite'], (BRUTE, FACETTEE)),

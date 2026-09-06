@@ -1480,6 +1480,14 @@ object GemTranslationsNl {
             particularites = "Warmt snel op bij contact met de huid en kan door wrijving een elektrostatische lading ontwikkelen, net als barnsteen.",
             lithotherapie = "Git wordt van oudsher geassocieerd met bescherming tegen negatieve energieën en het begeleiden van rouw."
         ),
+        "vivianite" to GemTranslation(
+            nom = "Vivianiet",
+            descriptionCourte = "Een dieppaars-blauw ijzerfosfaat, zo zacht en lichtgevoelig dat het een verzamelaarsmineraal blijft.",
+            descriptionLongue = "Vivianiet ontstaat door de verwering van ijzerhoudende mineralen in zuurstofarme milieus — veengebieden, klei, of op het oppervlak van fossiele botten en tanden, waar het bijvoorbeeld sommige Siberische mammoetslagtanden blauwgroen kleurt. Vers opgegraven bijna kleurloos, verdonkert het binnen enkele uren lichtblootstelling tot een diep indigoblauw, soms bijna zwart, door oxidatie van het aanwezige ijzer. De mooiste, langgerekte en goed gevormde kristallen komen tegenwoordig bijna uitsluitend uit de mijn van Anloa in Bolivia.",
+            particularites = "Uiterst zacht en gevoelig voor licht en warmte, wordt het vrijwel nooit geslepen voor sieraden: bewaard uit direct licht om de kleur te behouden, blijft het een verzamelaarssteen. De volmaakte splijting levert dunne, bijna buigzame lamellen op.",
+            lithotherapie = "In lithotherapie-tradities wordt vivianiet geassocieerd met loslaten en innerlijke transformatie — een traditioneel geloof, zonder vastgestelde wetenschappelijke basis.",
+            inclusions = "Het onderscheidende kenmerk van deze soort is geen insluitsel maar een kleurverandering: vers blootgelegde, bijna kleurloze kristallen verdonkeren binnen enkele uren lichtblootstelling tot een diep blauw door oxidatie van het aanwezige ijzer."
+        ),
         "grenat-etoile" to GemTranslation(
             nom = "Sterrengranaat",
             descriptionCourte = "Een almandijn met vier of zes lichtstralen, een zeldzaamheid die vrijwel uitsluitend in Idaho wordt gevonden.",

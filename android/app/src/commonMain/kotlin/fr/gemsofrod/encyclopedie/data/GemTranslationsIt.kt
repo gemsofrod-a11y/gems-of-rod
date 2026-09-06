@@ -1480,6 +1480,14 @@ object GemTranslationsIt {
             particularites = "Si riscalda rapidamente a contatto con la pelle e può sviluppare una carica elettrostatica per sfregamento, come l'ambra.",
             lithotherapie = "Il giaietto è tradizionalmente associato alla protezione dalle energie negative e all'accompagnamento nel lutto."
         ),
+        "vivianite" to GemTranslation(
+            nom = "Vivianite",
+            descriptionCourte = "Un fosfato di ferro blu intenso, così tenero e sensibile alla luce da restare un minerale da collezione.",
+            descriptionLongue = "La vivianite si forma per alterazione di minerali ferrosi in ambienti poveri di ossigeno — torbiere, argille, o sulla superficie di ossa e denti fossili, dove colora di blu-verde alcune zanne di mammut siberiane. Quasi incolore appena estratta, si scurisce in poche ore di esposizione alla luce fino a un blu indaco profondo, talvolta quasi nero, per l'ossidazione del ferro che contiene. I cristalli più belli, allungati e ben formati, provengono oggi quasi esclusivamente dalla miniera di Anloa, in Bolivia.",
+            particularites = "Estremamente tenera e sensibile alla luce e al calore, non viene praticamente mai tagliata per la gioielleria: conservata al riparo dalla luce diretta per preservarne il colore, resta una pietra da collezione. La sua sfaldatura perfetta produce lamelle sottili, quasi flessibili al tatto.",
+            lithotherapie = "Nelle tradizioni della litoterapia, la vivianite è associata al lasciar andare e alla trasformazione interiore — una credenza tradizionale, priva di fondamento scientifico accertato.",
+            inclusions = "Il tratto distintivo della specie non è un'inclusione ma un cambiamento di colore: i cristalli appena estratti, quasi incolori, si scuriscono in poche ore di esposizione alla luce fino a un blu intenso per l'ossidazione del ferro che contengono."
+        ),
         "grenat-etoile" to GemTranslation(
             nom = "Granato stellato",
             descriptionCourte = "Un almandino a quattro o sei bracci luminosi, una rarità che si trova quasi esclusivamente nell'Idaho.",
