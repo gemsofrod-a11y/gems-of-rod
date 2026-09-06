@@ -120,10 +120,9 @@ data class LapidairePage(
     // Section "Les machines du métier" : panorama des types de machines
     // réellement utilisés en atelier (facettage et cabochonnage), distinct
     // de [machines] ci-dessus qui décrit les composants d'une seule machine
-    // à facettes. Champs par défaut vides pour ne pas casser les 8 pages
-    // dans les autres langues : contenu français uniquement pour l'instant
-    // (même choix que RochesMeresInfo), l'écran masque la section si la
-    // liste est vide.
+    // à facettes. Traduite dans les 9 langues de l'app ; les valeurs par
+    // défaut restent vides pour que l'écran masque la section si jamais
+    // une page venait à en manquer.
     val machinesTypesTitle: String = "",
     val machinesTypesIntro: String = "",
     val categorieFacettageLabel: String = "",
@@ -920,7 +919,146 @@ object LapidaireInfo {
             )
         ),
         disclaimerTitle = "A trade learned in the workshop",
-        disclaimerBody = "This sheet presents general reference points, not a complete manual: faceting is learned through supervised practice, with suitable equipment and safety guidelines (eye and respiratory protection, continuous lap cooling) specific to each workshop and each machine. The diagrams shown come from real, freely licensed sources (see credits); while temporarily unavailable, only the caption is shown."
+        disclaimerBody = "This sheet presents general reference points, not a complete manual: faceting is learned through supervised practice, with suitable equipment and safety guidelines (eye and respiratory protection, continuous lap cooling) specific to each workshop and each machine. The diagrams shown come from real, freely licensed sources (see credits); while temporarily unavailable, only the caption is shown.",
+        machinesTypesTitle = "Machines of the trade",
+        machinesTypesIntro = "Beyond the components of a faceting machine detailed above, here is an overview of the different types of machines actually used in the workshop, for both faceting and cabbing, with their characteristics and associated technique. Brand names are cited only as representative examples of their category, with no commercial link to Gems of Rod.",
+        categorieFacettageLabel = "Faceting",
+        categorieCabochonLabel = "Cabbing",
+        categoriePolyvalentLabel = "Versatile",
+        caracteristiquesLabel = "Characteristics",
+        techniqueLabel = "Technique",
+        machinesTypes = listOf(
+            LapidaireMachineFiche(
+                photoId = "machine_bras_manuel",
+                nom = "Hand-held jam-peg",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "The simplest and oldest faceting tool: the stone is glued to the end of a rod held by hand against the lap, with the angle set by eye or with a simple gauge. Still taught in traditional cutting schools (Sri Lanka, Thailand).",
+                caracteristiques = listOf(
+                    "No mechanical indexing part",
+                    "Virtually no cost",
+                    "Entirely dependent on the cutter's skill",
+                    "Fast working pace in experienced hands"
+                ),
+                technique = "The cutter's hand continuously adjusts the angle and pressure against the lap; facet precision comes from repetition of the motion, not from the machine."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_index_amovible",
+                nom = "Faceting machine with removable mechanical index head",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "The standard in Western workshops since the 1970s (Facetron, Ultra Tec, Poly-Metric...): an interchangeable index head sets the stone's angle and rotation to a tenth of a degree, with the arm sliding vertically to adjust cutting depth.",
+                caracteristiques = listOf(
+                    "Angle precision to a tenth of a degree",
+                    "Interchangeable index heads (facets, scallops, cavetto)",
+                    "Micrometric depth stop",
+                    "Significant investment (machine + laps)"
+                ),
+                technique = "The cutter sets the angle and index notch before each facet, then lowers the stone against the lap to the set stop: reproducibility replaces the free hand movement of the manual arm."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_index_fixe",
+                nom = "Faceting machine with fixed integrated index head",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "A more affordable version where the index head is fixed to the arm rather than interchangeable, with a number of engraved notches set at manufacture (often 64, 96, or 120 depending on the model).",
+                caracteristiques = listOf(
+                    "Entry price well below removable heads",
+                    "Limited, non-adjustable number of index notches",
+                    "Good durability for regular use",
+                    "Suited to learning and common cuts"
+                ),
+                technique = "Same principle as the removable head, but the choice of faceting patterns is limited to the index divisions engraved on the machine — enough for most classic cuts (round, oval, cushion)."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cnc",
+                nom = "Computer-controlled (CNC) faceting machine",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "A digitally controlled machine that reproduces a cutting plan (angle and index diagram) identically across a series of stones, used in industrial production or for very complex fancy cuts.",
+                caracteristiques = listOf(
+                    "Perfect reproducibility from one stone to the next",
+                    "Programmed from a digital cutting plan",
+                    "High investment, reserved for volume production",
+                    "Reduces the share of manual skill in the final result"
+                ),
+                technique = "The cutting plan is loaded into the machine's software, which automatically runs through the programmed angles and index positions; the lapidary's role shifts to setup and quality control."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cabocheuse_multi_meules",
+                nom = "In-line multi-wheel cabbing machine",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "The reference equipment for cabbing (Genie, CabKing type): 6 to 8 diamond wheels of decreasing grit followed by felt polishing wheels, aligned on a single frame with continuous water flow.",
+                caracteristiques = listOf(
+                    "6 to 8 decreasing-grit stations on the same shaft",
+                    "Continuous water flow on each wheel",
+                    "Quick move from one station to the next without changing discs",
+                    "High price but very good longevity"
+                ),
+                technique = "The cabochon is roughed out then refined by moving from one wheel to the next in decreasing grit, down to the final polishing felts — each station erases the micro-scratches left by the previous one."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cabocheuse_vevor",
+                nom = "Vevor cabbing machine (multi-wheel, entry-level)",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "A budget version of the multi-wheel cabbing machine, made in China under the Vevor brand: very common among beginners and small workshops thanks to a price well below specialized brands (Genie, CabKing).",
+                caracteristiques = listOf(
+                    "6 to 8 diamond wheels + felts on the same shaft, as on professional models",
+                    "Entry-level motor and bearings, wider mechanical tolerances",
+                    "Built-in water recovery tray",
+                    "Well below specialized brands in price, at the cost of a shorter lifespan"
+                ),
+                technique = "Same wheel-by-wheel progression as a professional cabbing machine, but with more vibration: lighter working pressure and more frequent bearing maintenance compensate for the less precise mechanics."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_meuleuse_polisseuse",
+                nom = "Combined grinder-polisher with horizontal shaft",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "A more artisanal version: one or two horizontal shafts onto which the lapidary mounts discs (wheels, felts) as needed, rather than a line of fixed stations.",
+                caracteristiques = listOf(
+                    "Interchangeable discs chosen by the lapidary",
+                    "Also used to rough out rough material before sawing",
+                    "Cheaper than a dedicated multi-wheel cabbing machine",
+                    "Requires more handling between steps"
+                ),
+                technique = "The lapidary changes the disc mounted on the shaft at each grit stage, unlike the multi-wheel cabbing machine where the stations are fixed and side by side."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_scie_tranche",
+                nom = "Trim saw",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "A small circular saw with a diamond blade, used upstream of cabbing to cut rough material into slabs of the desired thickness before shaping on the wheels.",
+                caracteristiques = listOf(
+                    "Diamond blade cooled by an oil or water bath",
+                    "Common diameter of 10 to 25 cm depending on the model",
+                    "Adjustable cutting guide for even slabs",
+                    "An essential preliminary step, not a faceting operation"
+                ),
+                technique = "The rough material is fed manually against the slowly rotating blade; the resulting slab thickness directly determines the maximum thickness of the future cabochon."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_perceuse_gemmes",
+                nom = "Gem drilling machine",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "A drill press fitted with hollow diamond bits and a water-flow system, used to drill beads and cabochons intended to be mounted as pendants or strung.",
+                caracteristiques = listOf(
+                    "Hollow diamond bits of various diameters",
+                    "Water cooling required to prevent cracking",
+                    "Adjustable rotation speed depending on the stone's hardness",
+                    "Two-sided drilling on fragile stones"
+                ),
+                technique = "Drilling is done at low speed under constant water flow, often approaching the stone from both sides to avoid the exit chipping typical of a single-pass through-drill."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_touret_combine",
+                nom = "Entry-level combined faceting/cabbing bench grinder",
+                categorie = LapidaireMachineCategorie.POLYVALENT,
+                description = "A cheap, small machine combining wheels and felts on a single shaft to try both cabbing and basic faceting, without a precise index head.",
+                caracteristiques = listOf(
+                    "Very low entry price, compact footprint",
+                    "Combines several uses in a single machine",
+                    "No precise index head for true faceting",
+                    "Suited to discovery, limited for a professional result"
+                ),
+                technique = "The beginner experiments with both disciplines on the same frame, at the cost of angle and index precision far below a specialized machine."
+            )
+        )
     )
 
     private val es = LapidairePage(
@@ -1238,7 +1376,146 @@ object LapidaireInfo {
             )
         ),
         disclaimerTitle = "Un oficio que se aprende en el taller",
-        disclaimerBody = "Esta ficha presenta referencias generales, no un manual completo: la talla de facetas se aprende mediante práctica supervisada, con material adecuado y normas de seguridad (protección ocular y respiratoria, refrigeración continua del plato) propias de cada taller y de cada máquina. Los diagramas mostrados proceden de fuentes reales y libres de derechos (véanse los créditos); en su ausencia temporal, solo se muestra la leyenda."
+        disclaimerBody = "Esta ficha presenta referencias generales, no un manual completo: la talla de facetas se aprende mediante práctica supervisada, con material adecuado y normas de seguridad (protección ocular y respiratoria, refrigeración continua del plato) propias de cada taller y de cada máquina. Los diagramas mostrados proceden de fuentes reales y libres de derechos (véanse los créditos); en su ausencia temporal, solo se muestra la leyenda.",
+        machinesTypesTitle = "Las máquinas del oficio",
+        machinesTypesIntro = "Más allá de los componentes de una máquina de tallar facetas detallados más arriba, aquí tienes un panorama de los diferentes tipos de máquinas realmente utilizadas en el taller, tanto para el facetado como para el cabujón, con sus características y la técnica asociada. Las marcas citadas lo son a título de ejemplo representativo de su categoría, sin vínculo comercial con Gems of Rod.",
+        categorieFacettageLabel = "Facetado",
+        categorieCabochonLabel = "Cabujón",
+        categoriePolyvalentLabel = "Polivalente",
+        caracteristiquesLabel = "Características",
+        techniqueLabel = "Técnica",
+        machinesTypes = listOf(
+            LapidaireMachineFiche(
+                photoId = "machine_bras_manuel",
+                nom = "Brazo manual con calibre (jam-peg)",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "La herramienta de talla más simple y antigua: la piedra se pega al extremo de una varilla sostenida a mano contra el disco, ajustando el ángulo a ojo o con un calibre simple. Todavía se enseña en las escuelas tradicionales de talla (Sri Lanka, Tailandia).",
+                caracteristiques = listOf(
+                    "Ninguna pieza mecánica de indexación",
+                    "Coste prácticamente nulo",
+                    "Depende por completo de la destreza del tallador",
+                    "Ritmo de trabajo rápido en manos expertas"
+                ),
+                technique = "La mano del tallador ajusta continuamente el ángulo y la presión contra el disco; la precisión de las facetas depende de la repetición del gesto, no de la máquina."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_index_amovible",
+                nom = "Talladora con cabezal de índice mecánico extraíble",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Estándar de los talleres occidentales desde los años 1970 (Facetron, Ultra Tec, Poly-Metric...): un cabezal de índice intercambiable ajusta el ángulo y la rotación de la piedra con precisión de una décima de grado, mientras el brazo se desliza verticalmente para ajustar la profundidad de corte.",
+                caracteristiques = listOf(
+                    "Precisión angular de una décima de grado",
+                    "Cabezales de índice intercambiables (facetas, escamas, cavetto)",
+                    "Tope de profundidad micrométrico",
+                    "Inversión significativa (máquina + discos)"
+                ),
+                technique = "El tallador ajusta el ángulo y la muesca de índice antes de cada faceta, y luego baja la piedra contra el disco hasta el tope fijado: la reproducibilidad sustituye al gesto libre del brazo manual."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_index_fixe",
+                nom = "Talladora con cabezal de índice fijo integrado",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Versión más asequible en la que el cabezal de índice está solidario al brazo en lugar de ser intercambiable, con un número de muescas grabadas fijado de fábrica (a menudo 64, 96 o 120 según el modelo).",
+                caracteristiques = listOf(
+                    "Precio de entrada muy inferior al de los cabezales extraíbles",
+                    "Número de muescas de índice limitado y no modificable",
+                    "Buena robustez para un uso regular",
+                    "Adecuada para el aprendizaje y las tallas habituales"
+                ),
+                technique = "Mismo principio que el cabezal extraíble, pero la elección de los patrones de facetado se limita a las divisiones de índice grabadas en la máquina, suficiente para la mayoría de las tallas clásicas (redonda, ovalada, cojín)."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cnc",
+                nom = "Talladora asistida por ordenador (CNC)",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Máquina controlada digitalmente que reproduce un plan de talla (diagrama de ángulos e índices) de forma idéntica en una serie de piedras, utilizada en producción industrial o para tallas de fantasía muy complejas.",
+                caracteristiques = listOf(
+                    "Reproducibilidad perfecta de una piedra a otra",
+                    "Programación a partir de un plan de talla digital",
+                    "Inversión elevada, reservada a la producción en volumen",
+                    "Reduce la parte de destreza manual en el resultado final"
+                ),
+                technique = "El plan de talla se carga en el software de la máquina, que encadena automáticamente los ángulos e índices programados; el papel del lapidario se desplaza hacia el ajuste y el control de calidad."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cabocheuse_multi_meules",
+                nom = "Cabocheadora de muelas múltiples en línea",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Equipo de referencia para el cabujón (tipo Genie, CabKing): de 6 a 8 muelas diamantadas de grano decreciente seguidas de discos de fieltro para pulir, alineadas sobre un mismo bastidor con riego continuo.",
+                caracteristiques = listOf(
+                    "De 6 a 8 puestos de grano decreciente sobre un mismo eje",
+                    "Riego continuo de cada muela",
+                    "Paso rápido de un puesto a otro sin cambiar de disco",
+                    "Precio elevado pero muy buena longevidad"
+                ),
+                technique = "El cabujón se desbasta y luego se afina pasando de una muela a otra por grano decreciente, hasta los fieltros de pulido finales: cada puesto borra las microrrayas dejadas por el anterior."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cabocheuse_vevor",
+                nom = "Cabocheadora Vevor (multi-muelas, de entrada)",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Versión económica de la cabocheadora de muelas múltiples, fabricada en China bajo la marca Vevor: muy extendida entre principiantes y pequeños talleres gracias a un precio claramente inferior al de las marcas especializadas (Genie, CabKing).",
+                caracteristiques = listOf(
+                    "De 6 a 8 muelas diamantadas + fieltros sobre un mismo eje, como en los modelos profesionales",
+                    "Motor y rodamientos de gama de entrada, tolerancias mecánicas más amplias",
+                    "Bandeja de recuperación de agua integrada",
+                    "Precio claramente inferior al de las marcas especializadas, a costa de una vida útil más corta"
+                ),
+                technique = "Mismo principio de progresión muela a muela que una cabocheadora profesional, pero con más vibraciones: una presión de trabajo más ligera y un mantenimiento más frecuente de los rodamientos compensan la mecánica menos precisa."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_meuleuse_polisseuse",
+                nom = "Esmeriladora-pulidora combinada de eje horizontal",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Versión más artesanal: uno o dos ejes horizontales en los que se montan los discos (muelas, fieltros) según la necesidad, en lugar de una línea de puestos fijos.",
+                caracteristiques = listOf(
+                    "Discos intercambiables a elección del lapidario",
+                    "También se usa para desbastar un bruto antes del corte",
+                    "Más barata que una cabocheadora de muelas múltiples dedicada",
+                    "Requiere más manipulaciones entre etapas"
+                ),
+                technique = "El lapidario cambia él mismo el disco montado en el eje en cada etapa de grano, a diferencia de la cabocheadora de muelas múltiples, donde los puestos son fijos y están yuxtapuestos."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_scie_tranche",
+                nom = "Sierra de corte (trim saw)",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Pequeña sierra circular de hoja diamantada, utilizada antes del cabujón para cortar el bruto en láminas (slabs) del grosor deseado antes de darle forma en las muelas.",
+                caracteristiques = listOf(
+                    "Hoja diamantada refrigerada por baño de aceite o agua",
+                    "Diámetro habitual de 10 a 25 cm según el modelo",
+                    "Guía de corte regulable para láminas uniformes",
+                    "Etapa previa indispensable, no es talla de facetas"
+                ),
+                technique = "El bruto se avanza manualmente contra la hoja en rotación lenta; el grosor de la lámina obtenida determina directamente el grosor máximo del futuro cabujón."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_perceuse_gemmes",
+                nom = "Taladradora de gemas",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Taladro de columna equipado con brocas diamantadas huecas y un sistema de riego, utilizado para perforar perlas y cabujones destinados a montarse en colgantes o enhebrarse.",
+                caracteristiques = listOf(
+                    "Brocas diamantadas huecas de diferentes diámetros",
+                    "Refrigeración por agua obligatoria para evitar la fisuración",
+                    "Velocidad de rotación regulable según la dureza de la piedra",
+                    "Perforación en dos tiempos (por ambas caras) en piedras frágiles"
+                ),
+                technique = "La perforación se realiza a velocidad lenta y con riego constante, a menudo atacando la piedra desde ambas caras para evitar el astillado de salida característico de una perforación pasante en un solo paso."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_touret_combine",
+                nom = "Esmeriladora combinada de facetado/cabujón de entrada",
+                categorie = LapidaireMachineCategorie.POLYVALENT,
+                description = "Pequeña máquina económica que combina muelas y fieltros sobre un mismo eje para iniciarse tanto en el cabujón como en un facetado elemental, sin cabezal de índice preciso.",
+                caracteristiques = listOf(
+                    "Precio de acceso muy bajo, formato compacto",
+                    "Combina varios usos en una sola máquina",
+                    "Ausencia de cabezal de índice preciso para un verdadero facetado",
+                    "Adecuada para el descubrimiento, limitada para un resultado profesional"
+                ),
+                technique = "El principiante experimenta ambas disciplinas sobre el mismo bastidor, a costa de una precisión angular y de índice muy inferior a la de una máquina especializada."
+            )
+        )
     )
 
     private val it = LapidairePage(
@@ -1556,7 +1833,146 @@ object LapidaireInfo {
             )
         ),
         disclaimerTitle = "Un mestiere che si impara in laboratorio",
-        disclaimerBody = "Questa scheda presenta riferimenti generali, non un manuale completo: la sfaccettatura si impara con la pratica seguita da un istruttore, con attrezzatura adeguata e norme di sicurezza (protezione degli occhi e delle vie respiratorie, raffreddamento continuo del piatto) proprie di ogni laboratorio e di ogni macchina. I diagrammi mostrati provengono da fonti reali e libere da diritti (vedi crediti); in loro assenza temporanea, viene mostrata solo la didascalia."
+        disclaimerBody = "Questa scheda presenta riferimenti generali, non un manuale completo: la sfaccettatura si impara con la pratica seguita da un istruttore, con attrezzatura adeguata e norme di sicurezza (protezione degli occhi e delle vie respiratorie, raffreddamento continuo del piatto) proprie di ogni laboratorio e di ogni macchina. I diagrammi mostrati provengono da fonti reali e libere da diritti (vedi crediti); in loro assenza temporanea, viene mostrata solo la didascalia.",
+        machinesTypesTitle = "Le macchine del mestiere",
+        machinesTypesIntro = "Oltre ai componenti di una macchina sfaccettatrice descritti sopra, ecco una panoramica dei diversi tipi di macchine realmente utilizzate in laboratorio, sia per la sfaccettatura sia per il cabochon, con le loro caratteristiche e la tecnica associata. I marchi citati lo sono a titolo di esempio rappresentativo della loro categoria, senza alcun legame commerciale con Gems of Rod.",
+        categorieFacettageLabel = "Sfaccettatura",
+        categorieCabochonLabel = "Cabochon",
+        categoriePolyvalentLabel = "Polivalente",
+        caracteristiquesLabel = "Caratteristiche",
+        techniqueLabel = "Tecnica",
+        machinesTypes = listOf(
+            LapidaireMachineFiche(
+                photoId = "machine_bras_manuel",
+                nom = "Braccio manuale a calibro (jam-peg)",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Lo strumento di sfaccettatura più semplice e antico: la pietra è incollata all'estremità di un'asta tenuta a mano contro la mola, con l'angolo regolato a occhio o con un calibro semplice. Ancora insegnato nelle scuole tradizionali di taglio (Sri Lanka, Thailandia).",
+                caracteristiques = listOf(
+                    "Nessun componente meccanico di indicizzazione",
+                    "Costo quasi nullo",
+                    "Dipende interamente dall'abilità del tagliatore",
+                    "Ritmo di lavoro rapido in mani esperte"
+                ),
+                technique = "La mano del tagliatore regola in continuo l'angolo e la pressione contro il disco; la precisione delle sfaccettature dipende dalla ripetizione del gesto, non dalla macchina."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_index_amovible",
+                nom = "Sfaccettatrice con testa d'indice meccanica amovibile",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Standard degli laboratori occidentali dagli anni '70 (Facetron, Ultra Tec, Poly-Metric...): una testa d'indice intercambiabile regola l'angolo e la rotazione della pietra al decimo di grado, con il braccio che scorre verticalmente per regolare la profondità di taglio.",
+                caracteristiques = listOf(
+                    "Precisione angolare al decimo di grado",
+                    "Teste d'indice intercambiabili (sfaccettature, scaglie, cavetto)",
+                    "Fermo di profondità micrometrico",
+                    "Investimento significativo (macchina + mole)"
+                ),
+                technique = "Il tagliatore imposta l'angolo e la tacca d'indice prima di ogni sfaccettatura, poi abbassa la pietra contro la mola fino al fermo impostato: la riproducibilità sostituisce il gesto libero del braccio manuale."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_index_fixe",
+                nom = "Sfaccettatrice con testa d'indice fissa integrata",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Versione più economica in cui la testa d'indice è solidale al braccio anziché intercambiabile, con un numero di tacche incise fissato in fabbrica (spesso 64, 96 o 120 a seconda del modello).",
+                caracteristiques = listOf(
+                    "Prezzo d'ingresso nettamente inferiore alle teste amovibili",
+                    "Numero di tacche d'indice limitato e non modificabile",
+                    "Buona robustezza per un uso regolare",
+                    "Adatta all'apprendimento e ai tagli comuni"
+                ),
+                technique = "Stesso principio della testa amovibile, ma la scelta dei motivi di sfaccettatura si limita alle divisioni d'indice incise sulla macchina — sufficiente per la maggior parte dei tagli classici (tondo, ovale, cuscino)."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cnc",
+                nom = "Sfaccettatrice a controllo numerico (CNC)",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Macchina a controllo digitale che riproduce un piano di taglio (diagramma di angoli e indici) in modo identico su una serie di pietre, utilizzata nella produzione industriale o per tagli fantasia molto complessi.",
+                caracteristiques = listOf(
+                    "Riproducibilità perfetta da una pietra all'altra",
+                    "Programmazione a partire da un piano di taglio digitale",
+                    "Investimento elevato, riservato alla produzione in volume",
+                    "Riduce la componente di abilità manuale nel risultato finale"
+                ),
+                technique = "Il piano di taglio viene caricato nel software della macchina, che esegue automaticamente gli angoli e gli indici programmati; il ruolo del lapidario si sposta verso la regolazione e il controllo qualità."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cabocheuse_multi_meules",
+                nom = "Cabochonatrice a mole multiple in linea",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Attrezzatura di riferimento per il cabochon (tipo Genie, CabKing): da 6 a 8 mole diamantate a grana decrescente seguite da dischi in feltro per la lucidatura, allineate su un unico telaio con irrigazione continua.",
+                caracteristiques = listOf(
+                    "Da 6 a 8 postazioni a grana decrescente sullo stesso albero",
+                    "Irrigazione continua di ogni mola",
+                    "Passaggio rapido da una postazione all'altra senza cambiare disco",
+                    "Prezzo elevato ma ottima longevità"
+                ),
+                technique = "Il cabochon viene sgrossato e poi rifinito passando da una mola all'altra a grana decrescente, fino ai feltri di lucidatura finali — ogni postazione elimina le micrograffiature lasciate dalla precedente."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cabocheuse_vevor",
+                nom = "Cabochonatrice Vevor (multi-mole, entry level)",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Versione economica della cabochonatrice a mole multiple, prodotta in Cina con il marchio Vevor: molto diffusa tra principianti e piccoli laboratori grazie a un prezzo nettamente inferiore ai marchi specializzati (Genie, CabKing).",
+                caracteristiques = listOf(
+                    "Da 6 a 8 mole diamantate + feltri sullo stesso albero, come nei modelli professionali",
+                    "Motore e cuscinetti entry level, tolleranze meccaniche più ampie",
+                    "Vaschetta di recupero dell'acqua integrata",
+                    "Prezzo nettamente inferiore ai marchi specializzati, a costo di una durata di vita più breve"
+                ),
+                technique = "Stesso principio di progressione mola per mola di una cabochonatrice professionale, ma con più vibrazioni: una pressione di lavoro più leggera e una manutenzione più frequente dei cuscinetti compensano la meccanica meno precisa."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_meuleuse_polisseuse",
+                nom = "Smerigliatrice-lucidatrice combinata ad albero orizzontale",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Versione più artigianale: uno o due alberi orizzontali su cui si montano da soli i dischi (mole, feltri) a seconda della necessità, invece di una linea di postazioni fisse.",
+                caracteristiques = listOf(
+                    "Dischi intercambiabili a scelta del lapidario",
+                    "Usata anche per sgrossare un grezzo prima del taglio",
+                    "Meno costosa di una cabochonatrice a mole multiple dedicata",
+                    "Richiede più manipolazioni tra le fasi"
+                ),
+                technique = "Il lapidario cambia da solo il disco montato sull'albero a ogni fase di grana, a differenza della cabochonatrice a mole multiple dove le postazioni sono fisse e affiancate."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_scie_tranche",
+                nom = "Sega da taglio (trim saw)",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Piccola sega circolare con lama diamantata, utilizzata a monte del cabochon per tagliare il grezzo in fette (slab) dello spessore desiderato prima della modellatura sulle mole.",
+                caracteristiques = listOf(
+                    "Lama diamantata raffreddata a bagno d'olio o d'acqua",
+                    "Diametro comune da 10 a 25 cm a seconda del modello",
+                    "Guida di taglio regolabile per fette regolari",
+                    "Fase preliminare indispensabile, non è taglio a sfaccettature"
+                ),
+                technique = "Il grezzo viene fatto avanzare manualmente contro la lama in rotazione lenta; lo spessore della fetta ottenuta determina direttamente lo spessore massimo del futuro cabochon."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_perceuse_gemmes",
+                nom = "Trapano per gemme",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Trapano a colonna dotato di punte diamantate cave e di un sistema di irrigazione, utilizzato per forare perle e cabochon destinati a essere montati come pendenti o infilati.",
+                caracteristiques = listOf(
+                    "Punte diamantate cave di diversi diametri",
+                    "Raffreddamento ad acqua obbligatorio per evitare la fessurazione",
+                    "Velocità di rotazione regolabile secondo la durezza della pietra",
+                    "Foratura in due fasi (dai due lati) sulle pietre fragili"
+                ),
+                technique = "La foratura avviene a bassa velocità e sotto irrigazione costante, spesso attaccando la pietra da entrambi i lati per evitare la scheggiatura di uscita tipica di una foratura passante in un solo passaggio."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_touret_combine",
+                nom = "Smerigliatrice combinata sfaccettatura/cabochon entry level",
+                categorie = LapidaireMachineCategorie.POLYVALENT,
+                description = "Piccola macchina economica che associa mole e feltri sullo stesso albero per iniziarsi sia al cabochon sia a una sfaccettatura sommaria, senza testa d'indice precisa.",
+                caracteristiques = listOf(
+                    "Prezzo d'accesso molto basso, formato compatto",
+                    "Combina più usi in un'unica macchina",
+                    "Assenza di testa d'indice precisa per una vera sfaccettatura",
+                    "Adatta alla scoperta, limitata per un risultato professionale"
+                ),
+                technique = "Il principiante sperimenta entrambe le discipline sullo stesso telaio, a costo di una precisione angolare e d'indice nettamente inferiore a quella di una macchina specializzata."
+            )
+        )
     )
 
     private val de = LapidairePage(
@@ -1874,7 +2290,146 @@ object LapidaireInfo {
             )
         ),
         disclaimerTitle = "Ein Handwerk, das man in der Werkstatt lernt",
-        disclaimerBody = "Dieses Merkblatt zeigt allgemeine Anhaltspunkte, keine vollständige Anleitung: Der Facettenschliff wird durch angeleitete Praxis erlernt, mit geeigneter Ausrüstung und Sicherheitsvorschriften (Augen- und Atemschutz, durchgehende Lap-Kühlung), die für jede Werkstatt und jede Maschine spezifisch sind. Die gezeigten Diagramme stammen aus echten, frei lizenzierten Quellen (siehe Credits); solange sie vorübergehend fehlen, wird nur die Bildunterschrift angezeigt."
+        disclaimerBody = "Dieses Merkblatt zeigt allgemeine Anhaltspunkte, keine vollständige Anleitung: Der Facettenschliff wird durch angeleitete Praxis erlernt, mit geeigneter Ausrüstung und Sicherheitsvorschriften (Augen- und Atemschutz, durchgehende Lap-Kühlung), die für jede Werkstatt und jede Maschine spezifisch sind. Die gezeigten Diagramme stammen aus echten, frei lizenzierten Quellen (siehe Credits); solange sie vorübergehend fehlen, wird nur die Bildunterschrift angezeigt.",
+        machinesTypesTitle = "Die Maschinen des Handwerks",
+        machinesTypesIntro = "Über die oben beschriebenen Komponenten einer Facettiermaschine hinaus folgt hier ein Überblick über die verschiedenen Maschinentypen, die tatsächlich in der Werkstatt verwendet werden, sowohl für den Facettenschliff als auch für den Cabochon-Schliff, mit ihren Merkmalen und der zugehörigen Technik. Die genannten Marken dienen nur als repräsentatives Beispiel ihrer Kategorie, ohne kommerzielle Verbindung zu Gems of Rod.",
+        categorieFacettageLabel = "Facettenschliff",
+        categorieCabochonLabel = "Cabochon-Schliff",
+        categoriePolyvalentLabel = "Vielseitig",
+        caracteristiquesLabel = "Merkmale",
+        techniqueLabel = "Technik",
+        machinesTypes = listOf(
+            LapidaireMachineFiche(
+                photoId = "machine_bras_manuel",
+                nom = "Handstab mit Lehre (Jam-Peg)",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Das einfachste und älteste Facettierwerkzeug: Der Stein wird an das Ende eines von Hand gegen die Schleifscheibe gehaltenen Stabs geklebt, wobei der Winkel nach Augenmaß oder mit einer einfachen Lehre eingestellt wird. Wird noch immer in traditionellen Schleifschulen (Sri Lanka, Thailand) gelehrt.",
+                caracteristiques = listOf(
+                    "Kein mechanisches Indexierungsteil",
+                    "Praktisch keine Kosten",
+                    "Hängt vollständig vom Können des Schleifers ab",
+                    "Hohes Arbeitstempo in erfahrenen Händen"
+                ),
+                technique = "Die Hand des Schleifers passt Winkel und Anpressdruck gegen die Scheibe fortlaufend an; die Präzision der Facetten beruht auf der Wiederholung der Bewegung, nicht auf der Maschine."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_index_amovible",
+                nom = "Facettiermaschine mit abnehmbarem mechanischem Indexkopf",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Standard westlicher Werkstätten seit den 1970er-Jahren (Facetron, Ultra Tec, Poly-Metric...): Ein austauschbarer Indexkopf stellt Winkel und Drehung des Steins auf ein Zehntelgrad genau ein, während der Arm vertikal gleitet, um die Schnitttiefe einzustellen.",
+                caracteristiques = listOf(
+                    "Winkelgenauigkeit auf ein Zehntelgrad",
+                    "Austauschbare Indexköpfe (Facetten, Schuppen, Cavetto)",
+                    "Mikrometrischer Tiefenanschlag",
+                    "Erhebliche Investition (Maschine + Schleifscheiben)"
+                ),
+                technique = "Der Schleifer stellt vor jeder Facette Winkel und Indexraste ein und senkt den Stein dann bis zum eingestellten Anschlag gegen die Schleifscheibe: Reproduzierbarkeit ersetzt die freie Handbewegung des manuellen Arms."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_index_fixe",
+                nom = "Facettiermaschine mit fest integriertem Indexkopf",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Erschwinglichere Version, bei der der Indexkopf fest mit dem Arm verbunden statt austauschbar ist, mit einer werkseitig festgelegten Anzahl gravierter Rasten (oft 64, 96 oder 120 je nach Modell).",
+                caracteristiques = listOf(
+                    "Einstiegspreis deutlich unter dem abnehmbarer Köpfe",
+                    "Begrenzte, nicht veränderbare Anzahl an Indexrasten",
+                    "Gute Robustheit für den regelmäßigen Einsatz",
+                    "Geeignet für das Erlernen und gängige Schliffe"
+                ),
+                technique = "Gleiches Prinzip wie beim abnehmbaren Kopf, doch die Wahl der Facettenmuster beschränkt sich auf die auf der Maschine gravierten Indexteilungen — ausreichend für die meisten klassischen Schliffe (Rund-, Oval-, Kissenschliff)."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cnc",
+                nom = "Computergesteuerte Facettiermaschine (CNC)",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Digital gesteuerte Maschine, die einen Schliffplan (Winkel- und Indexdiagramm) identisch auf eine Reihe von Steinen überträgt, eingesetzt in der industriellen Produktion oder für sehr komplexe Fantasieschliffe.",
+                caracteristiques = listOf(
+                    "Perfekte Reproduzierbarkeit von Stein zu Stein",
+                    "Programmierung anhand eines digitalen Schliffplans",
+                    "Hohe Investition, der Serienproduktion vorbehalten",
+                    "Verringert den Anteil handwerklichen Könnens am Endergebnis"
+                ),
+                technique = "Der Schliffplan wird in die Maschinensoftware geladen, die die programmierten Winkel und Indexpositionen automatisch abarbeitet; die Rolle des Lapidärs verschiebt sich hin zu Einrichtung und Qualitätskontrolle."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cabocheuse_multi_meules",
+                nom = "Mehrscheiben-Cabochonschleifmaschine (Linienbauweise)",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Referenzgerät für den Cabochon-Schliff (Typ Genie, CabKing): 6 bis 8 Diamantscheiben mit abnehmender Körnung, gefolgt von Filzscheiben zum Polieren, auf einem gemeinsamen Gestell mit durchgehender Wasserzufuhr angeordnet.",
+                caracteristiques = listOf(
+                    "6 bis 8 Stationen mit abnehmender Körnung auf derselben Welle",
+                    "Durchgehende Wasserzufuhr an jeder Scheibe",
+                    "Schneller Wechsel von einer Station zur nächsten ohne Scheibenwechsel",
+                    "Hoher Preis, aber sehr gute Langlebigkeit"
+                ),
+                technique = "Der Cabochon wird grob vorgeformt und dann durch den Wechsel von einer Scheibe zur nächsten mit abnehmender Körnung bis zu den abschließenden Polierfilzen verfeinert — jede Station entfernt die Mikrokratzer der vorherigen."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cabocheuse_vevor",
+                nom = "Vevor-Cabochonschleifmaschine (Mehrscheiben, Einstiegsklasse)",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Preisgünstige Ausführung der Mehrscheiben-Cabochonschleifmaschine, in China unter der Marke Vevor hergestellt: bei Einsteigern und kleinen Werkstätten weit verbreitet dank eines Preises deutlich unter dem spezialisierter Marken (Genie, CabKing).",
+                caracteristiques = listOf(
+                    "6 bis 8 Diamantscheiben + Filze auf derselben Welle wie bei Profimodellen",
+                    "Motor und Lager der Einstiegsklasse, größere mechanische Toleranzen",
+                    "Integrierte Wasserauffangwanne",
+                    "Deutlich günstiger als spezialisierte Marken, dafür kürzere Lebensdauer"
+                ),
+                technique = "Gleiches Prinzip der Scheibe-für-Scheibe-Progression wie bei einer professionellen Cabochonschleifmaschine, jedoch mit mehr Vibrationen: geringerer Arbeitsdruck und häufigere Lagerwartung gleichen die weniger präzise Mechanik aus."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_meuleuse_polisseuse",
+                nom = "Kombinierte Schleif-Poliermaschine mit horizontaler Welle",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Handwerklichere Version: eine oder zwei horizontale Wellen, auf die je nach Bedarf selbst Scheiben (Schleifscheiben, Filze) montiert werden, statt einer Reihe fester Stationen.",
+                caracteristiques = listOf(
+                    "Vom Lapidär frei wählbare, austauschbare Scheiben",
+                    "Auch zum Vorformen eines Rohsteins vor dem Sägen genutzt",
+                    "Günstiger als eine spezielle Mehrscheiben-Cabochonschleifmaschine",
+                    "Erfordert mehr Handgriffe zwischen den Schritten"
+                ),
+                technique = "Der Lapidär wechselt bei jedem Körnungsschritt selbst die auf der Welle montierte Scheibe, im Gegensatz zur Mehrscheibenmaschine, bei der die Stationen fest und nebeneinander angeordnet sind."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_scie_tranche",
+                nom = "Trennsäge (Trim Saw)",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Kleine Kreissäge mit Diamantblatt, die dem Cabochon-Schliff vorgelagert eingesetzt wird, um den Rohstein vor der Formgebung an den Schleifscheiben in Scheiben (Slabs) der gewünschten Dicke zu zerteilen.",
+                caracteristiques = listOf(
+                    "Diamantblatt, gekühlt durch Öl- oder Wasserbad",
+                    "Gängiger Durchmesser von 10 bis 25 cm je nach Modell",
+                    "Verstellbare Schnittführung für gleichmäßige Scheiben",
+                    "Unverzichtbarer vorbereitender Schritt, kein Facettenschliff"
+                ),
+                technique = "Der Rohstein wird von Hand gegen das langsam rotierende Blatt geführt; die Dicke der entstehenden Scheibe bestimmt direkt die maximale Dicke des künftigen Cabochons."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_perceuse_gemmes",
+                nom = "Edelsteinbohrmaschine",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Ständerbohrmaschine mit hohlen Diamantbohrern und Wasserzufuhrsystem, eingesetzt zum Bohren von Perlen und Cabochons, die als Anhänger gefasst oder aufgefädelt werden sollen.",
+                caracteristiques = listOf(
+                    "Hohle Diamantbohrer verschiedener Durchmesser",
+                    "Wasserkühlung zwingend erforderlich, um Rissbildung zu vermeiden",
+                    "Je nach Steinhärte einstellbare Drehzahl",
+                    "Zweiseitiges Bohren bei zerbrechlichen Steinen"
+                ),
+                technique = "Gebohrt wird mit niedriger Drehzahl unter ständiger Wasserzufuhr, häufig von beiden Seiten des Steins aus, um den für einen einseitigen Durchgangsbohrvorgang typischen Ausrisssplitter zu vermeiden."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_touret_combine",
+                nom = "Kombinierter Facettier-/Cabochon-Schleifbock (Einstiegsklasse)",
+                categorie = LapidaireMachineCategorie.POLYVALENT,
+                description = "Kleine, preisgünstige Maschine, die Schleifscheiben und Filze auf derselben Welle vereint, um sich sowohl im Cabochon-Schliff als auch in einfachem Facettenschliff zu versuchen, ohne präzisen Indexkopf.",
+                caracteristiques = listOf(
+                    "Sehr niedriger Einstiegspreis, kompaktes Format",
+                    "Vereint mehrere Anwendungen in einer Maschine",
+                    "Kein präziser Indexkopf für echten Facettenschliff",
+                    "Geeignet zum Ausprobieren, für ein professionelles Ergebnis begrenzt"
+                ),
+                technique = "Der Anfänger probiert beide Disziplinen auf demselben Gestell aus, allerdings mit einer Winkel- und Indexgenauigkeit, die deutlich unter der einer Spezialmaschine liegt."
+            )
+        )
     )
 
     private val pt = LapidairePage(
@@ -2192,7 +2747,146 @@ object LapidaireInfo {
             )
         ),
         disclaimerTitle = "Um ofício que se aprende na oficina",
-        disclaimerBody = "Esta ficha apresenta referências gerais, não um manual completo: a lapidação de facetas aprende-se através de prática supervisionada, com equipamento adequado e normas de segurança (proteção ocular e respiratória, arrefecimento contínuo do prato) próprias de cada oficina e de cada máquina. Os diagramas apresentados provêm de fontes reais e livres de direitos (ver créditos); na sua ausência temporária, é apresentada apenas a legenda."
+        disclaimerBody = "Esta ficha apresenta referências gerais, não um manual completo: a lapidação de facetas aprende-se através de prática supervisionada, com equipamento adequado e normas de segurança (proteção ocular e respiratória, arrefecimento contínuo do prato) próprias de cada oficina e de cada máquina. Os diagramas apresentados provêm de fontes reais e livres de direitos (ver créditos); na sua ausência temporária, é apresentada apenas a legenda.",
+        machinesTypesTitle = "As máquinas do ofício",
+        machinesTypesIntro = "Para além dos componentes de uma máquina de lapidar facetas detalhados acima, eis um panorama dos diferentes tipos de máquinas realmente utilizadas em oficina, tanto para o facetado como para o cabochão, com as suas características e a técnica associada. As marcas citadas são-no a título de exemplo representativo da sua categoria, sem qualquer ligação comercial com a Gems of Rod.",
+        categorieFacettageLabel = "Facetado",
+        categorieCabochonLabel = "Cabochão",
+        categoriePolyvalentLabel = "Polivalente",
+        caracteristiquesLabel = "Características",
+        techniqueLabel = "Técnica",
+        machinesTypes = listOf(
+            LapidaireMachineFiche(
+                photoId = "machine_bras_manuel",
+                nom = "Braço manual com calibre (jam-peg)",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "A ferramenta de lapidação mais simples e antiga: a pedra é colada na extremidade de uma haste segura à mão contra o prato, com o ângulo ajustado a olho ou com um calibre simples. Ainda ensinada nas escolas tradicionais de lapidação (Sri Lanca, Tailândia).",
+                caracteristiques = listOf(
+                    "Nenhuma peça mecânica de indexação",
+                    "Custo quase nulo",
+                    "Depende inteiramente da destreza do lapidário",
+                    "Ritmo de trabalho rápido em mãos experientes"
+                ),
+                technique = "A mão do lapidário ajusta continuamente o ângulo e a pressão contra o disco; a precisão das facetas assenta na repetição do gesto, não na máquina."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_index_amovible",
+                nom = "Faceteadora com cabeça de índice mecânica amovível",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Padrão das oficinas ocidentais desde os anos 1970 (Facetron, Ultra Tec, Poly-Metric...): uma cabeça de índice intercambiável ajusta o ângulo e a rotação da pedra à décima de grau, com o braço a deslizar verticalmente para ajustar a profundidade de corte.",
+                caracteristiques = listOf(
+                    "Precisão angular à décima de grau",
+                    "Cabeças de índice intercambiáveis (facetas, escamas, cavetto)",
+                    "Batente de profundidade micrométrico",
+                    "Investimento significativo (máquina + pratos)"
+                ),
+                technique = "O lapidário ajusta o ângulo e o entalhe de índice antes de cada faceta, depois desce a pedra contra o prato até ao batente definido: a reprodutibilidade substitui o gesto livre do braço manual."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_index_fixe",
+                nom = "Faceteadora com cabeça de índice fixa integrada",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Versão mais acessível em que a cabeça de índice é solidária com o braço em vez de intercambiável, com um número de entalhes gravados fixado de fábrica (frequentemente 64, 96 ou 120 consoante o modelo).",
+                caracteristiques = listOf(
+                    "Preço de entrada bastante inferior ao das cabeças amovíveis",
+                    "Número de entalhes de índice limitado e não modificável",
+                    "Boa robustez para uso regular",
+                    "Adequada à aprendizagem e às lapidações correntes"
+                ),
+                technique = "Mesmo princípio da cabeça amovível, mas a escolha dos padrões de facetado limita-se às divisões de índice gravadas na máquina — suficiente para a maioria das lapidações clássicas (redonda, oval, almofada)."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cnc",
+                nom = "Faceteadora assistida por computador (CNC)",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Máquina controlada digitalmente que reproduz um plano de lapidação (diagrama de ângulos e índices) de forma idêntica numa série de pedras, utilizada em produção industrial ou para lapidações de fantasia muito complexas.",
+                caracteristiques = listOf(
+                    "Reprodutibilidade perfeita de pedra para pedra",
+                    "Programação a partir de um plano de lapidação digital",
+                    "Investimento elevado, reservado à produção em volume",
+                    "Reduz a componente de destreza manual no resultado final"
+                ),
+                technique = "O plano de lapidação é carregado no software da máquina, que encadeia automaticamente os ângulos e índices programados; o papel do lapidário desloca-se para o ajuste e o controlo de qualidade."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cabocheuse_multi_meules",
+                nom = "Cabocheadora de discos múltiplos em linha",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Equipamento de referência para o cabochão (tipo Genie, CabKing): 6 a 8 discos diamantados de grão decrescente seguidos de discos de feltro para polir, alinhados sobre a mesma estrutura com rega contínua.",
+                caracteristiques = listOf(
+                    "6 a 8 postos de grão decrescente no mesmo eixo",
+                    "Rega contínua de cada disco",
+                    "Passagem rápida de um posto para outro sem trocar de disco",
+                    "Preço elevado mas muito boa longevidade"
+                ),
+                technique = "O cabochão é desbastado e depois afinado passando de um disco para outro por grão decrescente, até aos feltros de polimento finais — cada posto apaga os microrriscos deixados pelo anterior."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cabocheuse_vevor",
+                nom = "Cabocheadora Vevor (discos múltiplos, entrada de gama)",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Versão económica da cabocheadora de discos múltiplos, fabricada na China sob a marca Vevor: muito difundida entre principiantes e pequenas oficinas graças a um preço claramente inferior ao das marcas especializadas (Genie, CabKing).",
+                caracteristiques = listOf(
+                    "6 a 8 discos diamantados + feltros no mesmo eixo, como nos modelos profissionais",
+                    "Motor e rolamentos de entrada de gama, tolerâncias mecânicas mais largas",
+                    "Tabuleiro de recuperação de água integrado",
+                    "Preço claramente inferior ao das marcas especializadas, à custa de uma vida útil mais curta"
+                ),
+                technique = "Mesmo princípio de progressão disco a disco de uma cabocheadora profissional, mas com mais vibrações: uma pressão de trabalho mais leve e uma manutenção mais frequente dos rolamentos compensam a mecânica menos precisa."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_meuleuse_polisseuse",
+                nom = "Esmeriladora-polidora combinada de eixo horizontal",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Versão mais artesanal: um ou dois eixos horizontais nos quais se montam os próprios discos (discos abrasivos, feltros) consoante a necessidade, em vez de uma linha de postos fixos.",
+                caracteristiques = listOf(
+                    "Discos intercambiáveis à escolha do lapidário",
+                    "Também utilizada para desbastar um bruto antes do corte",
+                    "Mais barata do que uma cabocheadora de discos múltiplos dedicada",
+                    "Exige mais manuseamentos entre etapas"
+                ),
+                technique = "O lapidário troca ele próprio o disco montado no eixo em cada etapa de grão, ao contrário da cabocheadora de discos múltiplos, onde os postos são fixos e justapostos."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_scie_tranche",
+                nom = "Serra de corte (trim saw)",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Pequena serra circular com lâmina diamantada, utilizada a montante do cabochão para cortar o bruto em fatias (slabs) da espessura pretendida antes da moldagem nos discos.",
+                caracteristiques = listOf(
+                    "Lâmina diamantada arrefecida por banho de óleo ou água",
+                    "Diâmetro corrente de 10 a 25 cm consoante o modelo",
+                    "Guia de corte regulável para fatias regulares",
+                    "Etapa prévia indispensável, não é lapidação de facetas"
+                ),
+                technique = "O bruto é avançado manualmente contra a lâmina em rotação lenta; a espessura da fatia obtida determina diretamente a espessura máxima do futuro cabochão."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_perceuse_gemmes",
+                nom = "Perfuradora de gemas",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Berbequim de coluna equipado com brocas diamantadas ocas e um sistema de rega, utilizado para perfurar pérolas e cabochões destinados a serem montados em pendentes ou enfiados.",
+                caracteristiques = listOf(
+                    "Brocas diamantadas ocas de diferentes diâmetros",
+                    "Arrefecimento a água obrigatório para evitar a fissuração",
+                    "Velocidade de rotação regulável consoante a dureza da pedra",
+                    "Perfuração em dois tempos (pelas duas faces) em pedras frágeis"
+                ),
+                technique = "A perfuração é feita a baixa velocidade e sob rega constante, muitas vezes atacando a pedra pelas duas faces para evitar a lasca de saída característica de uma perfuração passante num único passo."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_touret_combine",
+                nom = "Esmeriladora combinada de facetado/cabochão de entrada de gama",
+                categorie = LapidaireMachineCategorie.POLYVALENT,
+                description = "Pequena máquina económica que associa discos e feltros no mesmo eixo para se iniciar tanto no cabochão como num facetado sumário, sem cabeça de índice precisa.",
+                caracteristiques = listOf(
+                    "Preço de acesso muito baixo, formato compacto",
+                    "Combina vários usos numa só máquina",
+                    "Ausência de cabeça de índice precisa para um verdadeiro facetado",
+                    "Adequada à descoberta, limitada para um resultado profissional"
+                ),
+                technique = "O principiante experimenta as duas disciplinas sobre a mesma estrutura, à custa de uma precisão angular e de índice bastante inferior à de uma máquina especializada."
+            )
+        )
     )
 
     private val ru = LapidairePage(
@@ -2510,7 +3204,146 @@ object LapidaireInfo {
             )
         ),
         disclaimerTitle = "Ремесло, которому учатся в мастерской",
-        disclaimerBody = "Эта статья приводит общие ориентиры, а не полное руководство: фасетная огранка осваивается через практику под наставничеством, с подходящим оборудованием и правилами безопасности (защита глаз и органов дыхания, непрерывное охлаждение планшайбы), специфичными для каждой мастерской и каждого станка. Показанные схемы взяты из реальных источников со свободными лицензиями (см. указания авторства); при их временном отсутствии отображается только подпись."
+        disclaimerBody = "Эта статья приводит общие ориентиры, а не полное руководство: фасетная огранка осваивается через практику под наставничеством, с подходящим оборудованием и правилами безопасности (защита глаз и органов дыхания, непрерывное охлаждение планшайбы), специфичными для каждой мастерской и каждого станка. Показанные схемы взяты из реальных источников со свободными лицензиями (см. указания авторства); при их временном отсутствии отображается только подпись.",
+        machinesTypesTitle = "Станки ремесла",
+        machinesTypesIntro = "Помимо описанных выше компонентов огранного станка, вот обзор различных типов станков, реально используемых в мастерской — как для фасетной огранки, так и для кабошонирования, — с их характеристиками и связанной техникой. Упомянутые бренды приводятся лишь как показательный пример своей категории, без коммерческой связи с Gems of Rod.",
+        categorieFacettageLabel = "Фасетная огранка",
+        categorieCabochonLabel = "Кабошонирование",
+        categoriePolyvalentLabel = "Универсальный",
+        caracteristiquesLabel = "Характеристики",
+        techniqueLabel = "Техника",
+        machinesTypes = listOf(
+            LapidaireMachineFiche(
+                photoId = "machine_bras_manuel",
+                nom = "Ручной держатель с шаблоном (джем-пег)",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Самый простой и старый инструмент огранки: камень приклеивается к концу стержня, который держат рукой у планшайбы, а угол выставляют на глаз или с помощью простого шаблона. До сих пор преподаётся в традиционных школах огранки (Шри-Ланка, Таиланд).",
+                caracteristiques = listOf(
+                    "Отсутствие механического индексирующего узла",
+                    "Практически нулевая стоимость",
+                    "Полностью зависит от мастерства огранщика",
+                    "Высокий темп работы в опытных руках"
+                ),
+                technique = "Рука огранщика непрерывно регулирует угол и нажим на планшайбу; точность граней определяется повторяемостью движения, а не станком."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_index_amovible",
+                nom = "Огранный станок со сменной механической индексной головкой",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Стандарт западных мастерских с 1970-х годов (Facetron, Ultra Tec, Poly-Metric...): сменная индексная головка задаёт угол и поворот камня с точностью до десятой доли градуса, а рычаг скользит вертикально для регулировки глубины реза.",
+                caracteristiques = listOf(
+                    "Точность угла до десятой доли градуса",
+                    "Сменные индексные головки (грани, чешуйки, каветто)",
+                    "Микрометрический упор глубины",
+                    "Значительные вложения (станок + планшайбы)"
+                ),
+                technique = "Огранщик задаёт угол и индексную позицию перед каждой гранью, затем опускает камень к планшайбе до заданного упора: воспроизводимость заменяет свободное движение руки при ручной огранке."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_index_fixe",
+                nom = "Огранный станок с фиксированной встроенной индексной головкой",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Более доступная версия, в которой индексная головка неразъёмно соединена с рычагом, а не сменная, с числом гравированных позиций, заданным при изготовлении (часто 64, 96 или 120 в зависимости от модели).",
+                caracteristiques = listOf(
+                    "Цена входа заметно ниже, чем у сменных головок",
+                    "Ограниченное и неизменяемое число индексных позиций",
+                    "Хорошая надёжность при регулярном использовании",
+                    "Подходит для обучения и распространённых огранок"
+                ),
+                technique = "Тот же принцип, что и у сменной головки, но выбор рисунков огранки ограничен индексными делениями, выгравированными на станке — этого достаточно для большинства классических огранок (круглая, овальная, «подушка»)."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cnc",
+                nom = "Огранный станок с компьютерным управлением (ЧПУ)",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Станок с цифровым управлением, который идентично воспроизводит план огранки (диаграмму углов и индексов) на серии камней; применяется в промышленном производстве или для очень сложных фантазийных огранок.",
+                caracteristiques = listOf(
+                    "Идеальная воспроизводимость от камня к камню",
+                    "Программирование на основе цифрового плана огранки",
+                    "Высокие вложения, применяется только при серийном производстве",
+                    "Снижает долю ручного мастерства в конечном результате"
+                ),
+                technique = "План огранки загружается в программное обеспечение станка, которое автоматически отрабатывает заданные углы и индексные позиции; роль огранщика смещается к настройке и контролю качества."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cabocheuse_multi_meules",
+                nom = "Многодисковый кабошонировочный станок линейного типа",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Эталонное оборудование для кабошонирования (тип Genie, CabKing): от 6 до 8 алмазных дисков с убывающей зернистостью, за которыми следуют фетровые полировальные диски, выстроенные на одной станине с непрерывной подачей воды.",
+                caracteristiques = listOf(
+                    "От 6 до 8 постов с убывающей зернистостью на одном валу",
+                    "Непрерывная подача воды к каждому диску",
+                    "Быстрый переход от одного поста к другому без смены диска",
+                    "Высокая цена, но очень хорошая долговечность"
+                ),
+                technique = "Кабошон грубо формируется, а затем доводится путём перехода от диска к диску с убывающей зернистостью вплоть до финальных полировальных фетров — каждый пост удаляет микроцарапины, оставленные предыдущим."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cabocheuse_vevor",
+                nom = "Кабошонировочный станок Vevor (многодисковый, начального уровня)",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Бюджетная версия многодискового кабошонировочного станка, производимая в Китае под маркой Vevor: очень распространена среди начинающих и небольших мастерских благодаря цене, заметно ниже специализированных брендов (Genie, CabKing).",
+                caracteristiques = listOf(
+                    "От 6 до 8 алмазных дисков + фетры на одном валу, как у профессиональных моделей",
+                    "Двигатель и подшипники начального уровня, более широкие механические допуски",
+                    "Встроенный поддон для сбора воды",
+                    "Заметно ниже по цене специализированных брендов, но за счёт меньшего срока службы"
+                ),
+                technique = "Тот же принцип последовательного перехода от диска к диску, что и у профессионального станка, но с большей вибрацией: более лёгкое рабочее давление и более частое обслуживание подшипников компенсируют менее точную механику."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_meuleuse_polisseuse",
+                nom = "Комбинированный шлифовально-полировальный станок с горизонтальным валом",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Более кустарная версия: один или два горизонтальных вала, на которые самостоятельно устанавливаются диски (планшайбы, фетры) по мере необходимости, вместо линии фиксированных постов.",
+                caracteristiques = listOf(
+                    "Сменные диски по выбору мастера",
+                    "Также используется для грубой обработки заготовки перед распиловкой",
+                    "Дешевле специализированного многодискового станка",
+                    "Требует больше манипуляций между этапами"
+                ),
+                technique = "Мастер сам меняет установленный на валу диск на каждом этапе зернистости, в отличие от многодискового станка, где посты фиксированы и расположены рядом друг с другом."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_scie_tranche",
+                nom = "Отрезной станок (trim saw)",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Небольшая циркулярная пила с алмазным диском, применяемая перед кабошонированием для распиловки заготовки на пластины (слэбы) нужной толщины перед формовкой на дисках.",
+                caracteristiques = listOf(
+                    "Алмазный диск, охлаждаемый масляной или водяной ванной",
+                    "Распространённый диаметр от 10 до 25 см в зависимости от модели",
+                    "Регулируемая направляющая для ровных пластин",
+                    "Обязательный подготовительный этап, не связанный с огранкой граней"
+                ),
+                technique = "Заготовка вручную подаётся к медленно вращающемуся диску; толщина полученной пластины напрямую определяет максимальную толщину будущего кабошона."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_perceuse_gemmes",
+                nom = "Сверлильный станок для камней",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Настольно-сверлильный станок с полыми алмазными свёрлами и системой подачи воды, применяемый для сверления бусин и кабошонов, предназначенных для крепления в подвески или нанизывания.",
+                caracteristiques = listOf(
+                    "Полые алмазные свёрла разных диаметров",
+                    "Обязательное водяное охлаждение для предотвращения растрескивания",
+                    "Регулируемая скорость вращения в зависимости от твёрдости камня",
+                    "Двустороннее сверление хрупких камней"
+                ),
+                technique = "Сверление выполняется на низкой скорости при постоянной подаче воды, часто с обеих сторон камня, чтобы избежать характерного скола на выходе при сквозном сверлении за один проход."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_touret_combine",
+                nom = "Комбинированный точильно-шлифовальный станок для огранки/кабошонирования начального уровня",
+                categorie = LapidaireMachineCategorie.POLYVALENT,
+                description = "Небольшой недорогой станок, объединяющий диски и фетры на одном валу для знакомства как с кабошонированием, так и с упрощённой фасетной огранкой, без точной индексной головки.",
+                caracteristiques = listOf(
+                    "Очень низкая цена входа, компактный формат",
+                    "Совмещает несколько применений в одном станке",
+                    "Отсутствие точной индексной головки для настоящей огранки",
+                    "Подходит для знакомства с ремеслом, ограничен для профессионального результата"
+                ),
+                technique = "Новичок пробует обе дисциплины на одной станине, жертвуя точностью угла и индекса, которая значительно уступает специализированному станку."
+            )
+        )
     )
 
     private val nl = LapidairePage(
@@ -2828,7 +3661,146 @@ object LapidaireInfo {
             )
         ),
         disclaimerTitle = "Een vak dat je in de werkplaats leert",
-        disclaimerBody = "Dit overzicht geeft algemene richtlijnen, geen volledige handleiding: facetteren wordt geleerd door begeleide praktijk, met geschikte apparatuur en veiligheidsvoorschriften (oog- en ademhalingsbescherming, continue lapkoeling) die per werkplaats en per machine verschillen. De getoonde diagrammen zijn afkomstig uit echte, vrij te gebruiken bronnen (zie credits); zolang ze tijdelijk ontbreken, wordt alleen het onderschrift getoond."
+        disclaimerBody = "Dit overzicht geeft algemene richtlijnen, geen volledige handleiding: facetteren wordt geleerd door begeleide praktijk, met geschikte apparatuur en veiligheidsvoorschriften (oog- en ademhalingsbescherming, continue lapkoeling) die per werkplaats en per machine verschillen. De getoonde diagrammen zijn afkomstig uit echte, vrij te gebruiken bronnen (zie credits); zolang ze tijdelijk ontbreken, wordt alleen het onderschrift getoond.",
+        machinesTypesTitle = "De machines van het vak",
+        machinesTypesIntro = "Naast de hierboven beschreven onderdelen van een facetteermachine volgt hier een overzicht van de verschillende soorten machines die daadwerkelijk in het atelier worden gebruikt, zowel voor het facetteren als voor het cabochonslijpen, met hun kenmerken en de bijbehorende techniek. De genoemde merken dienen enkel als representatief voorbeeld van hun categorie, zonder commerciële band met Gems of Rod.",
+        categorieFacettageLabel = "Facetteren",
+        categorieCabochonLabel = "Cabochonslijpen",
+        categoriePolyvalentLabel = "Veelzijdig",
+        caracteristiquesLabel = "Kenmerken",
+        techniqueLabel = "Techniek",
+        machinesTypes = listOf(
+            LapidaireMachineFiche(
+                photoId = "machine_bras_manuel",
+                nom = "Handstok met meter (jam-peg)",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Het eenvoudigste en oudste facetteergereedschap: de steen wordt gelijmd aan het uiteinde van een staafje dat met de hand tegen de schijf wordt gehouden, waarbij de hoek op het oog of met een eenvoudige meter wordt ingesteld. Wordt nog steeds onderwezen in traditionele slijpscholen (Sri Lanka, Thailand).",
+                caracteristiques = listOf(
+                    "Geen mechanisch indexeeronderdeel",
+                    "Nagenoeg geen kosten",
+                    "Volledig afhankelijk van de vaardigheid van de slijper",
+                    "Hoog werktempo in ervaren handen"
+                ),
+                technique = "De hand van de slijper past voortdurend de hoek en de druk tegen de schijf aan; de precisie van de facetten hangt af van de herhaling van de beweging, niet van de machine."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_index_amovible",
+                nom = "Facetteermachine met verwisselbare mechanische indexkop",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Standaard in westerse ateliers sinds de jaren 1970 (Facetron, Ultra Tec, Poly-Metric...): een verwisselbare indexkop stelt de hoek en de rotatie van de steen tot op een tiende graad nauwkeurig in, terwijl de arm verticaal schuift om de zaagdiepte aan te passen.",
+                caracteristiques = listOf(
+                    "Hoekprecisie tot op een tiende graad",
+                    "Verwisselbare indexkoppen (facetten, schubben, cavetto)",
+                    "Micrometrische diepteaanslag",
+                    "Aanzienlijke investering (machine + schijven)"
+                ),
+                technique = "De slijper stelt de hoek en de indexstand in vóór elk facet en laat de steen dan tegen de schijf zakken tot aan de ingestelde aanslag: reproduceerbaarheid vervangt de vrije handbeweging van de handstok."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_index_fixe",
+                nom = "Facetteermachine met vast geïntegreerde indexkop",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Betaalbaarder versie waarbij de indexkop vast aan de arm zit in plaats van verwisselbaar te zijn, met een bij de fabricage vastgelegd aantal gegraveerde standen (vaak 64, 96 of 120 naargelang het model).",
+                caracteristiques = listOf(
+                    "Instapprijs ruim onder die van verwisselbare koppen",
+                    "Beperkt en niet aanpasbaar aantal indexstanden",
+                    "Goede robuustheid bij regelmatig gebruik",
+                    "Geschikt voor het leerproces en veelvoorkomende slijpvormen"
+                ),
+                technique = "Hetzelfde principe als de verwisselbare kop, maar de keuze aan facetteerpatronen beperkt zich tot de op de machine gegraveerde indexverdelingen — voldoende voor de meeste klassieke slijpvormen (rond, ovaal, cushion)."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cnc",
+                nom = "Computergestuurde facetteermachine (CNC)",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "Digitaal aangestuurde machine die een slijpplan (hoek- en indexdiagram) identiek reproduceert op een reeks stenen, gebruikt in industriële productie of voor zeer complexe fantasieslijpvormen.",
+                caracteristiques = listOf(
+                    "Perfecte reproduceerbaarheid van steen tot steen",
+                    "Programmering vanuit een digitaal slijpplan",
+                    "Hoge investering, voorbehouden aan productie op grote schaal",
+                    "Vermindert het aandeel van handwerk in het eindresultaat"
+                ),
+                technique = "Het slijpplan wordt geladen in de software van de machine, die automatisch de geprogrammeerde hoeken en indexposities doorloopt; de rol van de lapidarist verschuift naar instelling en kwaliteitscontrole."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cabocheuse_multi_meules",
+                nom = "Meerschijfs cabochonslijpmachine in lijnopstelling",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Referentieapparaat voor het cabochonslijpen (type Genie, CabKing): 6 tot 8 diamantschijven met afnemende korrelgrofte, gevolgd door viltschijven om te polijsten, uitgelijnd op één frame met continue waterspoeling.",
+                caracteristiques = listOf(
+                    "6 tot 8 stations met afnemende korrelgrofte op dezelfde as",
+                    "Continue waterspoeling op elke schijf",
+                    "Snelle overgang van het ene station naar het andere zonder schijfwissel",
+                    "Hoge prijs, maar zeer goede levensduur"
+                ),
+                technique = "De cabochon wordt eerst ruw gevormd en daarna verfijnd door van schijf naar schijf te gaan met afnemende korrelgrofte, tot aan de laatste polijstvilten toe — elk station verwijdert de microkrasjes die het vorige achterliet."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cabocheuse_vevor",
+                nom = "Vevor-cabochonslijpmachine (meerschijfs, instapmodel)",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Voordelige uitvoering van de meerschijfs cabochonslijpmachine, gemaakt in China onder het merk Vevor: erg verspreid onder beginners en kleine ateliers dankzij een prijs die duidelijk lager ligt dan gespecialiseerde merken (Genie, CabKing).",
+                caracteristiques = listOf(
+                    "6 tot 8 diamantschijven + vilten op dezelfde as, zoals bij professionele modellen",
+                    "Motor en lagers van instapniveau, ruimere mechanische toleranties",
+                    "Ingebouwde wateropvangbak",
+                    "Duidelijk goedkoper dan gespecialiseerde merken, ten koste van een kortere levensduur"
+                ),
+                technique = "Zelfde principe van schijf-voor-schijf-progressie als bij een professionele cabochonslijpmachine, maar met meer trillingen: een lichtere werkdruk en een frequenter onderhoud van de lagers compenseren de minder nauwkeurige mechaniek."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_meuleuse_polisseuse",
+                nom = "Gecombineerde slijp-polijstmachine met horizontale as",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Meer ambachtelijke versie: één of twee horizontale assen waarop naar behoefte zelf schijven (slijpschijven, vilten) worden gemonteerd, in plaats van een reeks vaste stations.",
+                caracteristiques = listOf(
+                    "Verwisselbare schijven naar keuze van de lapidarist",
+                    "Ook gebruikt om een ruwe steen voor te vormen vóór het zagen",
+                    "Goedkoper dan een speciale meerschijfs cabochonslijpmachine",
+                    "Vereist meer handelingen tussen de stappen"
+                ),
+                technique = "De lapidarist verwisselt zelf de op de as gemonteerde schijf bij elke korrelstap, in tegenstelling tot de meerschijfsmachine waar de stations vast en naast elkaar staan."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_scie_tranche",
+                nom = "Zaagmachine (trim saw)",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Kleine cirkelzaag met diamantblad, gebruikt voorafgaand aan het cabochonslijpen om de ruwe steen te versnijden in plakken (slabs) van de gewenste dikte vóór het vormgeven op de schijven.",
+                caracteristiques = listOf(
+                    "Diamantblad gekoeld door een olie- of waterbad",
+                    "Gangbare diameter van 10 tot 25 cm naargelang het model",
+                    "Verstelbare zaaggeleider voor gelijkmatige plakken",
+                    "Onmisbare voorafgaande stap, geen facetteerwerk"
+                ),
+                technique = "De ruwe steen wordt handmatig tegen het langzaam draaiende blad aangevoerd; de dikte van de verkregen plak bepaalt rechtstreeks de maximale dikte van de toekomstige cabochon."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_perceuse_gemmes",
+                nom = "Edelsteenboormachine",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "Kolomboormachine uitgerust met holle diamantboortjes en een spoelsysteem, gebruikt om parels en cabochons te doorboren die bedoeld zijn om als hanger gezet of geregen te worden.",
+                caracteristiques = listOf(
+                    "Holle diamantboortjes met verschillende diameters",
+                    "Waterkoeling verplicht om scheuren te voorkomen",
+                    "Instelbare rotatiesnelheid naargelang de hardheid van de steen",
+                    "Tweezijdig boren bij kwetsbare stenen"
+                ),
+                technique = "Het boren gebeurt op lage snelheid en onder constante waterspoeling, vaak door de steen vanaf beide zijden aan te vallen om de typische uitgangsafsplintering van een enkelvoudige doorboring te vermijden."
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_touret_combine",
+                nom = "Gecombineerde slijpsteen voor facetteren/cabochonslijpen, instapmodel",
+                categorie = LapidaireMachineCategorie.POLYVALENT,
+                description = "Kleine, goedkope machine die schijven en vilten op dezelfde as combineert om zowel het cabochonslijpen als een eenvoudig facetteerwerk uit te proberen, zonder precieze indexkop.",
+                caracteristiques = listOf(
+                    "Zeer lage instapprijs, compact formaat",
+                    "Combineert meerdere toepassingen in één machine",
+                    "Geen precieze indexkop voor echt facetteerwerk",
+                    "Geschikt om te ontdekken, beperkt voor een professioneel resultaat"
+                ),
+                technique = "De beginner probeert beide disciplines uit op hetzelfde frame, ten koste van een hoek- en indexprecisie die ver onder die van een gespecialiseerde machine ligt."
+            )
+        )
     )
 
     private val zh = LapidairePage(
@@ -3146,7 +4118,146 @@ object LapidaireInfo {
             )
         ),
         disclaimerTitle = "在工坊中学习的手艺",
-        disclaimerBody = "本篇提供的是通用参考要点，而非完整操作手册：刻面切磨需要通过有指导的实践学习，配合适当设备，以及每个工坊、每台机器各自特有的安全规范（护目护呼吸装备、磨盘持续冷却）。所展示的图解均来自真实、可自由使用授权的来源（见版权说明）；在暂时缺失图片时，仅显示图注文字。"
+        disclaimerBody = "本篇提供的是通用参考要点，而非完整操作手册：刻面切磨需要通过有指导的实践学习，配合适当设备，以及每个工坊、每台机器各自特有的安全规范（护目护呼吸装备、磨盘持续冷却）。所展示的图解均来自真实、可自由使用授权的来源（见版权说明）；在暂时缺失图片时，仅显示图注文字。",
+        machinesTypesTitle = "行业机械",
+        machinesTypesIntro = "除了上文详述的切磨机部件外，以下是工坊中实际使用的各类机械概览，涵盖刻面切磨与凸圆面切磨，附带各自的特点与相关技术。所提及的品牌仅作为该类别的代表性示例，与Gems of Rod没有任何商业关系。",
+        categorieFacettageLabel = "刻面切磨",
+        categorieCabochonLabel = "凸圆面切磨",
+        categoriePolyvalentLabel = "多用途",
+        caracteristiquesLabel = "特点",
+        techniqueLabel = "技术",
+        machinesTypes = listOf(
+            LapidaireMachineFiche(
+                photoId = "machine_bras_manuel",
+                nom = "手持量规杆（jam-peg）",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "最简单也最古老的切磨工具：宝石粘在一根手持杆的末端，抵住磨盘，角度靠目测或简单量规调整。斯里兰卡、泰国等地的传统切磨学校至今仍在传授这种方法。",
+                caracteristiques = listOf(
+                    "无任何机械分度部件",
+                    "成本几乎为零",
+                    "完全依赖切磨师的手艺",
+                    "熟练工匠操作速度快"
+                ),
+                technique = "切磨师的手持续调整角度与抵住磨盘的压力；刻面的精度取决于动作的重复性，而非机器本身。"
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_index_amovible",
+                nom = "可拆卸机械分度头切磨机",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "自20世纪70年代以来西方工坊的标准设备（Facetron、Ultra Tec、Poly-Metric等）：可更换的分度头将宝石的角度和旋转精确调整到十分之一度，机臂垂直滑动以调节切割深度。",
+                caracteristiques = listOf(
+                    "角度精度达十分之一度",
+                    "分度头可更换（刻面、鳞状面、凹面）",
+                    "微米级深度限位",
+                    "投入较大（机器+磨盘）"
+                ),
+                technique = "切磨师在每个刻面之前设定角度和分度档位，再将宝石抵住磨盘下降至设定限位：可重复性取代了手持杆的自由操作。"
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_index_fixe",
+                nom = "固定式一体分度头切磨机",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "更经济的版本，分度头与机臂固定在一起而非可拆卸，出厂时即固定好刻度档位数量（视型号常为64、96或120档）。",
+                caracteristiques = listOf(
+                    "入门价格明显低于可拆卸分度头机型",
+                    "分度档位数量有限且不可更改",
+                    "日常使用坚固耐用",
+                    "适合学习和常见切磨款式"
+                ),
+                technique = "原理与可拆卸分度头相同，但刻面图案的选择局限于机器上刻好的分度档位——对大多数经典切磨款式（圆形、椭圆形、垫形）已经足够。"
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cnc",
+                nom = "电脑数控（CNC）切磨机",
+                categorie = LapidaireMachineCategorie.FACETTAGE,
+                description = "数字控制的机器，能在一系列宝石上完全一致地重现切磨方案（角度与分度图），用于工业化生产或非常复杂的花式切磨。",
+                caracteristiques = listOf(
+                    "宝石间的完美可重复性",
+                    "根据数字切磨方案编程",
+                    "投入较高，专用于批量生产",
+                    "降低了最终成果中手工技艺的比重"
+                ),
+                technique = "切磨方案被载入机器软件，软件自动依次执行编程好的角度与分度位置；切磨师的角色转向设置与质量控制。"
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cabocheuse_multi_meules",
+                nom = "直列式多磨盘凸圆面切磨机",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "凸圆面切磨的标杆设备（Genie、CabKing等型号）：6至8个粒度递减的金刚石磨盘，随后接毛毡抛光盘，排列在同一机架上并持续供水。",
+                caracteristiques = listOf(
+                    "同一轴上有6至8个粒度递减工位",
+                    "每个磨盘持续供水",
+                    "工位之间快速切换，无需更换磨盘",
+                    "价格较高，但耐用性极佳"
+                ),
+                technique = "凸圆面先粗磨，再依次经过粒度递减的磨盘细磨，直至最后的抛光毛毡——每个工位都会消除前一工位留下的细微划痕。"
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_cabocheuse_vevor",
+                nom = "Vevor凸圆面切磨机（多磨盘，入门级）",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "多磨盘凸圆面切磨机的经济版本，中国制造，品牌为Vevor：价格明显低于Genie、CabKing等专业品牌，因此在初学者和小型工坊中十分普及。",
+                caracteristiques = listOf(
+                    "同一轴上配6至8个金刚石磨盘+毛毡，与专业机型相仿",
+                    "入门级电机与轴承，机械公差更大",
+                    "内置集水盘",
+                    "价格明显低于专业品牌，但使用寿命较短"
+                ),
+                technique = "与专业凸圆面切磨机相同的逐盘递进原理，但振动更明显：较轻的操作压力和更频繁的轴承保养可弥补机械精度的不足。"
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_meuleuse_polisseuse",
+                nom = "卧轴组合式磨抛机",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "更为手工化的版本：一根或两根水平轴，可根据需要自行安装磨盘或毛毡，而非固定工位排列。",
+                caracteristiques = listOf(
+                    "磨盘可由切磨师自由更换",
+                    "也用于锯切前对原石进行粗磨",
+                    "比专用多磨盘凸圆面切磨机便宜",
+                    "各工序之间需要更多手动操作"
+                ),
+                technique = "切磨师在每个粒度阶段都要亲自更换装在轴上的磨盘，这与工位固定并排排列的多磨盘切磨机不同。"
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_scie_tranche",
+                nom = "切片锯（trim saw）",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "装有金刚石锯片的小型圆锯，用于凸圆面切磨之前，将原石切成所需厚度的薄片（slab），再上磨盘塑形。",
+                caracteristiques = listOf(
+                    "金刚石锯片以油浴或水浴冷却",
+                    "常见直径为10至25厘米，视型号而定",
+                    "可调切割导板，保证切片厚度均匀",
+                    "必不可少的前置工序，并非刻面切磨"
+                ),
+                technique = "原石手动推进，抵住缓慢旋转的锯片；所得切片的厚度直接决定了未来凸圆面的最大厚度。"
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_perceuse_gemmes",
+                nom = "宝石钻孔机",
+                categorie = LapidaireMachineCategorie.CABOCHON,
+                description = "配备空心金刚石钻头和供水系统的立式钻床，用于给准备制成吊坠或穿线的珍珠及凸圆面钻孔。",
+                caracteristiques = listOf(
+                    "不同直径的空心金刚石钻头",
+                    "必须用水冷却以避免开裂",
+                    "转速可根据宝石硬度调节",
+                    "脆性宝石采用两面分次钻孔"
+                ),
+                technique = "钻孔以低速并在持续供水下进行，常从宝石两面分别钻入，以避免单面一次性钻穿时典型的出口崩裂。"
+            ),
+            LapidaireMachineFiche(
+                photoId = "machine_touret_combine",
+                nom = "入门级刻面/凸圆面组合砂轮机",
+                categorie = LapidaireMachineCategorie.POLYVALENT,
+                description = "一台价格低廉的小型机器，在同一根轴上组合磨盘与毛毡，可同时尝试凸圆面切磨和简单的刻面切磨，但没有精确的分度头。",
+                caracteristiques = listOf(
+                    "入门价格很低，机身紧凑",
+                    "一台机器兼顾多种用途",
+                    "缺乏精确分度头，无法完成真正的刻面切磨",
+                    "适合入门体验，专业效果有限"
+                ),
+                technique = "初学者在同一机架上体验两种工艺，但角度和分度精度远不及专用机型。"
+            )
+        )
     )
 
     private val byLanguage: Map<String, LapidairePage> = mapOf(

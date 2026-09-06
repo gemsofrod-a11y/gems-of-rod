@@ -204,3 +204,17 @@ Les routines s'exécutent automatiquement selon le planning ci-dessous. Chaque r
 
 ### Fichiers de configuration des routines
 Les routines durables sont stockées dans `.claude/scheduled_tasks.json` et survivent aux redémarrages de session.
+
+---
+
+## Application Android — Encyclopédie « Gems of Rod »
+
+Contenu éditorial (fiches Info.kt : `RochesMeresInfo`, `LapidaireInfo`, `GemGlossary`, etc.) dans `android/app/src/main/java/fr/gemsofrod/encyclopedie/data/` et `android/app/src/commonMain/kotlin/fr/gemsofrod/encyclopedie/data/`.
+
+**Règle de traduction — automatique, sans qu'on ait à le redemander :** toute nouvelle section, fiche ou terme de glossaire ajouté à l'encyclopédie doit être traduit dans les **9 langues de l'app** (fr, en, es, it, de, pt, ru, nl, zh) avant d'être livré, dans la même PR que l'ajout — jamais laissé français uniquement par défaut. Exception : si une section est explicitement livrée français-only à la demande de l'utilisateur (ex. pour valider le contenu avant d'investir dans la traduction), le dire clairement et proposer la traduction dans un message séparé ensuite.
+
+Pour traduire un nouveau contenu :
+1. Repérer le bloc `private val fr = ...Page(...)` et les 8 autres blocs de langue existants dans le même fichier/objet.
+2. Ajouter le nouveau contenu au même index/position dans chacun des 8 autres blocs (l'ordre suit celui du français, pas un ré-alphabétisation par langue — voir `GemGlossary.kt`).
+3. Réutiliser la terminologie déjà employée ailleurs dans le même fichier pour cette langue (ex. comment « meule », « cabochon », « facettage » sont déjà traduits) plutôt que d'introduire une variante.
+4. Vérifier l'équilibre des parenthèses/accolades et le nombre d'entrées par langue après édition (ex. `grep -c` sur le nom de la classe de données) avant de committer.
