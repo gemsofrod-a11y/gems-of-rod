@@ -3419,6 +3419,16 @@
       "type": "BRUTE"
     }
   ],
+  "vivianite": [
+    {
+      "artist": "VikSl. My own photo ( Viktor Slyotov ) Exhibit from my own collection",
+      "license": "CC BY 3.0",
+      "resource_name": "gem_vivianite_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Vivianite_Kerch.jpg",
+      "title": "File:Vivianite Kerch.jpg",
+      "type": "BRUTE"
+    }
+  ],
   "zircon-blanc": [
     {
       "artist": "Shannon Heinle",

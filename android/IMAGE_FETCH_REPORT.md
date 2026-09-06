@@ -134,6 +134,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | topaze-rose | ♻️ [File:Uncut pink topaz - Cleveland Museum of Natural History - 2014-12-26 (21077656066).jpg](https://commons.wikimedia.org/wiki/File:Uncut_pink_topaz_-_Cleveland_Museum_of_Natural_History_-_2014-12-26_(21077656066).jpg) | ♻️ [File:Marie, Princess William of Wurttemberg wearing the Wurttemberg Pink Topaz Tiara.jpg](https://commons.wikimedia.org/wiki/File:Marie,_Princess_William_of_Wurttemberg_wearing_the_Wurttemberg_Pink_Topaz_Tiara.jpg) |
 | quartz-rose | ♻️ [File:Raw rose quartz.jpg](https://commons.wikimedia.org/wiki/File:Raw_rose_quartz.jpg) | ♻️ [File:Rose quartz-1.JPG](https://commons.wikimedia.org/wiki/File:Rose_quartz-1.JPG) |
 | phosphosiderite | ♻️ [Phosphosiderite-141096](https://commons.wikimedia.org/w/index.php?curid=14865728) | ⏸️ recherche suspendue |
+| vivianite | ✅ [File:Vivianite Kerch.jpg](https://commons.wikimedia.org/wiki/File:Vivianite_Kerch.jpg) | — |
 | saphir-blanc | ♻️ [File:Engagement ring 18K yellow gold with yellow sapphire and diamonds.jpg](https://commons.wikimedia.org/wiki/File:Engagement_ring_18K_yellow_gold_with_yellow_sapphire_and_diamonds.jpg) | ♻️ [File:River Scene Ring 2.jpg](https://commons.wikimedia.org/wiki/File:River_Scene_Ring_2.jpg) |
 | topaze-blanche | ♻️ [Topaz ring](https://www.flickr.com/photos/76523360@N03/15063028108) | ♻️ [Topaz with irradiated fragment - Smithsonian Museum of Natural History - 2012-05-17](https://www.flickr.com/photos/23165290@N00/7283942412) |
 | hambergite | ♻️ [File:Hambergite (GeoDIL number - 230).jpg](https://commons.wikimedia.org/wiki/File:Hambergite_(GeoDIL_number_-_230).jpg) | ⏸️ recherche suspendue |
@@ -263,7 +264,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | coquillage-moule-perliere-eau-douce | ♻️ [File:Margaritifera margaritifera-buiten.jpg](https://commons.wikimedia.org/wiki/File:Margaritifera_margaritifera-buiten.jpg) | — |
 | coquillage-nautile | ♻️ [File:Nautilus pompilius albino.jpg](https://commons.wikimedia.org/wiki/File:Nautilus_pompilius_albino.jpg) | ♻️ [File:Nautilus Pompilius MN 01.jpg](https://commons.wikimedia.org/wiki/File:Nautilus_Pompilius_MN_01.jpg) |
 
-**361 / 476** photos récupérées au total.
+**362 / 477** photos récupérées au total.
 
 ## Photos d'inclusions
 
