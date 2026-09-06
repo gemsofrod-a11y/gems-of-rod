@@ -1725,7 +1725,16 @@
       "type": "FACETTEE"
     }
   ],
-  "maw-sit-sit": [],
+  "maw-sit-sit": [
+    {
+      "artist": "James St. John",
+      "license": "by 2.0",
+      "resource_name": "gem_maw_sit_sit_brute",
+      "source_url": "https://www.flickr.com/photos/47445767@N05/14925755549",
+      "title": "Mawsitsit (chromian jade) (Namshamaw Deposit, Hpakan-Tawmaw Jade Tract, Late Jurassic, 147 Ma; Maw Sit Sit, near Kansi, western Kachin State, Indo-Burma Range, northern Burma) 2",
+      "type": "BRUTE"
+    }
+  ],
   "meteorite-admire": [
     {
       "artist": "Steve Jurvetson from Los Altos, USA",
