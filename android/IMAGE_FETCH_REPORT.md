@@ -222,7 +222,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | meteorite-hoba | ♻️ [File:Hoba meteorite, Namibia (2014).jpg](https://commons.wikimedia.org/wiki/File:Hoba_meteorite,_Namibia_(2014).jpg) | — |
 | meteorite-willamette | ♻️ [File:Willamette meteorite at Dorothy and Lewis B. Cullman Hall of the Universe.jpg](https://commons.wikimedia.org/wiki/File:Willamette_meteorite_at_Dorothy_and_Lewis_B._Cullman_Hall_of_the_Universe.jpg) | — |
 | meteorite-ensisheim | ♻️ [File:Ensisheim meteorit donnerstein 1 vss2007.jpg](https://commons.wikimedia.org/wiki/File:Ensisheim_meteorit_donnerstein_1_vss2007.jpg) | — |
-| meteorite-nwa-7034 | ♻️ [File:Black Beauty tomat.jpg](https://commons.wikimedia.org/wiki/File:Black_Beauty_tomat.jpg) | — |
+| meteorite-nwa-7034 | ❌ non trouvée | — |
 | meteorite-alh-84001 | ♻️ [File:ALH 84001.jpg](https://commons.wikimedia.org/wiki/File:ALH_84001.jpg) | — |
 | meteorite-lunaire-nwa | ♻️ [File:Lunar meteorite NWA 10665, Feldspathic breccia-8937.jpg](https://commons.wikimedia.org/wiki/File:Lunar_meteorite_NWA_10665,_Feldspathic_breccia-8937.jpg) | — |
 | fossile-ammonite-madagascar | ♻️ [File:Ammonite indet from Madagascar.jpg](https://commons.wikimedia.org/wiki/File:Ammonite_indet_from_Madagascar.jpg) | ♻️ [File:Ammonite geode.jpg](https://commons.wikimedia.org/wiki/File:Ammonite_geode.jpg) |
@@ -263,7 +263,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | coquillage-moule-perliere-eau-douce | ♻️ [File:Margaritifera margaritifera-buiten.jpg](https://commons.wikimedia.org/wiki/File:Margaritifera_margaritifera-buiten.jpg) | — |
 | coquillage-nautile | ♻️ [File:Nautilus pompilius albino.jpg](https://commons.wikimedia.org/wiki/File:Nautilus_pompilius_albino.jpg) | ♻️ [File:Nautilus Pompilius MN 01.jpg](https://commons.wikimedia.org/wiki/File:Nautilus_Pompilius_MN_01.jpg) |
 
-**362 / 476** photos récupérées au total.
+**361 / 476** photos récupérées au total.
 
 ## Photos d'inclusions
 
