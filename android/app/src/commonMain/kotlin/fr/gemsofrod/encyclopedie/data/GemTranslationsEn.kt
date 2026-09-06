@@ -1480,6 +1480,14 @@ object GemTranslationsEn {
             particularites = "Warms quickly against the skin and can develop an electrostatic charge through friction, like amber.",
             lithotherapie = "Jet is traditionally associated with protection against negative energy and support through the grieving process."
         ),
+        "vivianite" to GemTranslation(
+            nom = "Vivianite",
+            descriptionCourte = "A deep-blue iron phosphate, so soft and light-sensitive it remains a collector's mineral.",
+            descriptionLongue = "Vivianite forms through the alteration of iron-bearing minerals in oxygen-poor environments — peat bogs, clays, or on the surface of fossil bones and teeth, where it colors some Siberian mammoth tusks blue-green. Nearly colorless when freshly dug up, it darkens within hours of light exposure into a deep indigo blue, sometimes almost black, as the iron it contains oxidizes. The finest, well-formed elongated crystals today come almost exclusively from the Anloa mine in Bolivia.",
+            particularites = "Extremely soft and sensitive to light and heat, it is virtually never cut for jewelry: kept away from direct light to preserve its color, it remains a collector's stone. Its perfect cleavage produces thin flakes, almost flexible to the touch.",
+            lithotherapie = "In lithotherapy traditions, vivianite is associated with letting go and inner transformation — a traditional belief, without established scientific basis.",
+            inclusions = "The species' distinctive trait is not an inclusion but a color change: freshly exposed, almost colorless crystals darken within hours of light exposure to a deep blue as the iron they contain oxidizes."
+        ),
         "grenat-etoile" to GemTranslation(
             nom = "Star garnet",
             descriptionCourte = "A four- or six-rayed almandine garnet, a rarity found almost exclusively in Idaho.",

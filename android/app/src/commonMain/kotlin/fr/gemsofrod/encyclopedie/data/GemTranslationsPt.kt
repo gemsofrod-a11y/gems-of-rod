@@ -1480,6 +1480,14 @@ object GemTranslationsPt {
             particularites = "Aquece rapidamente ao contacto com a pele e pode desenvolver uma carga eletrostática por fricção, tal como o âmbar.",
             lithotherapie = "O azeviche é tradicionalmente associado à proteção contra energias negativas e ao acompanhamento do luto."
         ),
+        "vivianite" to GemTranslation(
+            nom = "Vivianite",
+            descriptionCourte = "Um fosfato de ferro de azul profundo, tão macio e sensível à luz que continua reservado aos colecionadores.",
+            descriptionLongue = "A vivianite forma-se pela alteração de minerais ferrosos em ambientes pobres em oxigénio — turfeiras, argilas, ou à superfície de ossos e dentes fósseis, onde colore de azul-esverdeado algumas presas de mamute siberianas. Quase incolor mal é extraída, escurece ao fim de poucas horas de exposição à luz até um azul índigo profundo, por vezes quase negro, devido à oxidação do ferro que contém. Os cristais mais belos, alongados e bem formados, provêm hoje quase exclusivamente da mina de Anloa, na Bolívia.",
+            particularites = "Extremamente macia e sensível à luz e ao calor, praticamente nunca é lapidada em joalharia: conservada ao abrigo da luz direta para preservar a sua cor, continua a ser uma pedra de colecionador. A sua clivagem perfeita produz lâminas finas, quase flexíveis ao toque.",
+            lithotherapie = "Nas tradições de litoterapia, a vivianite é associada ao desapego e à transformação interior — uma crença tradicional, sem fundamento científico estabelecido.",
+            inclusions = "O traço distintivo da espécie não é uma inclusão mas uma mudança de cor: os cristais recém-extraídos, quase incolores, escurecem ao fim de poucas horas de exposição à luz até um azul profundo devido à oxidação do ferro que contêm."
+        ),
         "grenat-etoile" to GemTranslation(
             nom = "Granada estrelada",
             descriptionCourte = "Uma almandina de quatro ou seis raios luminosos, uma raridade encontrada quase exclusivamente no Idaho.",

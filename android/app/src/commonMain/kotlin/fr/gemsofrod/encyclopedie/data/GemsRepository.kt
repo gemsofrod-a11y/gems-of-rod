@@ -3634,6 +3634,24 @@ object GemsRepository {
             prixCaratEur = "1 – 15 €/g (souvent vendu au gramme ou à la pièce)",
             rarete = GemRarete.PEU_COMMUNE
         ),
+        Gem(
+            id = "vivianite",
+            nom = "Vivianite",
+            nomLatin = "Phosphate de fer hydraté",
+            famille = "Vivianite",
+            couleur = GemColorCategory.BLEU,
+            descriptionCourte = "Un phosphate de fer d'un bleu profond, si tendre et sensible à la lumière qu'il reste réservé aux collectionneurs.",
+            descriptionLongue = "La vivianite se forme par altération de minéraux ferreux dans des milieux pauvres en oxygène — tourbières, argiles, ou à la surface d'ossements et de dents fossiles, où elle colore par exemple en bleu-vert certaines défenses de mammouth sibériennes. Presque incolore à peine sortie de terre, elle fonce en quelques heures d'exposition à la lumière vers un bleu indigo profond, parfois presque noir, par oxydation du fer qu'elle contient. Les plus beaux cristaux allongés et bien formés proviennent aujourd'hui presque exclusivement de la mine d'Anloa en Bolivie.",
+            formuleChimique = "Fe₃(PO₄)₂ · 8H₂O",
+            systemeCristallin = "Monoclinique",
+            durete = "1,5 - 2",
+            indiceRefraction = "1,579 – 1,675",
+            origines = listOf("Bolivie (Anloa, Potosí)", "Ukraine (péninsule de Kertch)", "Royaume-Uni (Cornouailles)"),
+            particularites = "Extrêmement tendre et sensible à la lumière et à la chaleur, elle n'est pour ainsi dire jamais taillée en joaillerie : conservée à l'abri de la lumière directe pour préserver sa couleur, elle reste une pierre de collectionneur. Son clivage parfait produit des lamelles fines, presque flexibles au toucher.",
+            lithotherapie = "Dans les traditions lithothérapiques, la vivianite est associée au lâcher-prise et à la transformation intérieure — une croyance traditionnelle, sans fondement scientifique établi.",
+            prixCaratEur = "20 – 300 €/spécimen (rarement taillée, vendue en cristaux de collection plutôt qu'au carat)",
+            rarete = GemRarete.RARE
+        ),
     )
 
     fun byColor(color: GemColorCategory): List<Gem> =

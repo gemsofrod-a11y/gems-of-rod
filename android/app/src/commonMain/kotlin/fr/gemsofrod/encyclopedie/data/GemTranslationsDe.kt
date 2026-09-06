@@ -1480,6 +1480,14 @@ object GemTranslationsDe {
             particularites = "Erwärmt sich schnell im Kontakt mit der Haut und kann sich, ähnlich wie Bernstein, durch Reibung elektrostatisch aufladen.",
             lithotherapie = "Gagat wird traditionell mit dem Schutz vor negativen Energien und dem Begleiten von Trauerprozessen assoziiert."
         ),
+        "vivianite" to GemTranslation(
+            nom = "Vivianit",
+            descriptionCourte = "Ein tiefblaues Eisenphosphat, so weich und lichtempfindlich, dass es ein reines Sammlermineral bleibt.",
+            descriptionLongue = "Vivianit entsteht durch die Verwitterung eisenhaltiger Minerale in sauerstoffarmen Milieus — Torfmooren, Tonen oder auf der Oberfläche fossiler Knochen und Zähne, wo er zum Beispiel manche sibirischen Mammutstoßzähne blaugrün färbt. Frisch geborgen fast farblos, verdunkelt er sich innerhalb weniger Stunden Lichteinwirkung zu einem tiefen Indigoblau, manchmal fast Schwarz, durch die Oxidation des enthaltenen Eisens. Die schönsten, langgestreckten und wohlgeformten Kristalle stammen heute fast ausschließlich aus der Mine von Anloa in Bolivien.",
+            particularites = "Äußerst weich und licht- sowie hitzeempfindlich, wird er praktisch nie für den Schmuck geschliffen: Vor direktem Licht geschützt aufbewahrt, um seine Farbe zu erhalten, bleibt er ein Sammlerstein. Seine vollkommene Spaltbarkeit erzeugt dünne, beinahe biegsame Lamellen.",
+            lithotherapie = "In lithotherapeutischen Traditionen wird Vivianit mit Loslassen und innerer Wandlung assoziiert — ein traditioneller Glaube ohne gesicherte wissenschaftliche Grundlage.",
+            inclusions = "Das kennzeichnende Merkmal der Art ist kein Einschluss, sondern ein Farbwechsel: frisch freigelegte, fast farblose Kristalle verdunkeln sich innerhalb weniger Stunden Lichteinwirkung zu einem tiefen Blau, während das enthaltene Eisen oxidiert."
+        ),
         "grenat-etoile" to GemTranslation(
             nom = "Sterngranat",
             descriptionCourte = "Ein Almandin mit vier oder sechs leuchtenden Strahlen, eine Rarität, die fast ausschließlich in Idaho gefunden wird.",
