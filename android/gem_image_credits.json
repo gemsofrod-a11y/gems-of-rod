@@ -886,6 +886,16 @@
       "type": "FACETTEE"
     }
   ],
+  "espadon": [
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_espadon_brute_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Rostre d'espadon — photo Coraline Minéraux",
+      "type": "BRUTE"
+    }
+  ],
   "euclase": [
     {
       "artist": "Raimond Spekking",
@@ -1137,6 +1147,14 @@
       "resource_name": "gem_fossile_oursin_brute",
       "source_url": "https://commons.wikimedia.org/wiki/File:Fossil_sea_urchin_(FindID_551527)_cropped_transparent_background.png",
       "title": "File:Fossil sea urchin (FindID 551527) cropped transparent background.png",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_fossile_oursin_brute_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Oursin fossile — photo Coraline Minéraux",
       "type": "BRUTE"
     }
   ],

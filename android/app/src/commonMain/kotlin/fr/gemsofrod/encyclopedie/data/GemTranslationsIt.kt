@@ -1488,6 +1488,13 @@ object GemTranslationsIt {
             lithotherapie = "Nelle tradizioni della litoterapia, la vivianite è associata al lasciar andare e alla trasformazione interiore — una credenza tradizionale, priva di fondamento scientifico accertato.",
             inclusions = "Il tratto distintivo della specie non è un'inclusione ma un cambiamento di colore: i cristalli appena estratti, quasi incolori, si scuriscono in poche ore di esposizione alla luce fino a un blu intenso per l'ossidazione del ferro che contengono."
         ),
+        "espadon" to GemTranslation(
+            nom = "Rostro di pesce spada",
+            descriptionCourte = "Il lungo rostro osseo del pesce spada, conservato come trofeo di pesca o curiosità naturale.",
+            descriptionLongue = "Il rostro del pesce spada (Xiphias gladius) è il prolungamento appiattito e affusolato della sua mascella superiore, che utilizza per stordire le prede in mare aperto. Composto da osso denso ricoperto da un sottile strato esterno che ricorda l'avorio, può superare il metro di lunghezza negli esemplari più grandi. Conservato intero o in sezione, resta soprattutto un trofeo di pesca e un pezzo da curiosità naturalistica, più che un materiale di gioielleria.",
+            particularites = "Non è una pietra ma un osso: il prolungamento della mascella superiore del pesce, la cui sola superficie esterna ricorda, per consistenza e colore, alcune gemme organiche come l'avorio.",
+            lithotherapie = "A differenza di altre gemme organiche più antiche, il rostro di pesce spada non ha una tradizione litoterapica consolidata; è ricercato soprattutto come trofeo di pesca o curiosità naturale."
+        ),
         "grenat-etoile" to GemTranslation(
             nom = "Granato stellato",
             descriptionCourte = "Un almandino a quattro o sei bracci luminosi, una rarità che si trova quasi esclusivamente nell'Idaho.",

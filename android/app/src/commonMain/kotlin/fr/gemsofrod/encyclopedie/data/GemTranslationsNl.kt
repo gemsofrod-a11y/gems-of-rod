@@ -1488,6 +1488,13 @@ object GemTranslationsNl {
             lithotherapie = "In lithotherapie-tradities wordt vivianiet geassocieerd met loslaten en innerlijke transformatie — een traditioneel geloof, zonder vastgestelde wetenschappelijke basis.",
             inclusions = "Het onderscheidende kenmerk van deze soort is geen insluitsel maar een kleurverandering: vers blootgelegde, bijna kleurloze kristallen verdonkeren binnen enkele uren lichtblootstelling tot een diep blauw door oxidatie van het aanwezige ijzer."
         ),
+        "espadon" to GemTranslation(
+            nom = "Zwaardvis-zwaard",
+            descriptionCourte = "Het lange benige zwaard van de zwaardvis, bewaard als vistrofee of natuurcuriosum.",
+            descriptionLongue = "Het zwaard van de zwaardvis (Xiphias gladius) is de afgeplatte, taps toelopende verlenging van zijn bovenkaak, waarmee hij op volle zee prooien verdooft. Het bestaat uit dicht bot, bedekt met een dunne buitenlaag die aan ivoor doet denken, en kan bij grote exemplaren meer dan een meter lang worden. Heel bewaard of in doorsnede, blijft het vooral een vistrofee en een stuk natuurcuriosum, eerder dan een sieradenmateriaal.",
+            particularites = "Dit is geen steen maar een bot: de verlenging van de bovenkaak van de vis, waarvan alleen het buitenoppervlak qua textuur en kleur aan sommige organische edelstenen zoals ivoor doet denken.",
+            lithotherapie = "In tegenstelling tot oudere organische edelstenen heeft het zwaardvis-zwaard geen gevestigde lithotherapie-traditie; het wordt vooral gezocht als vistrofee of natuurcuriosum."
+        ),
         "grenat-etoile" to GemTranslation(
             nom = "Sterrengranaat",
             descriptionCourte = "Een almandijn met vier of zes lichtstralen, een zeldzaamheid die vrijwel uitsluitend in Idaho wordt gevonden.",
