@@ -104,7 +104,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | grenat-grossulaire | ♻️ [File:Grossular garnet from Quebec, collected by Dr John Hunter in the 18th century, Hunterian Museum, Glasgow.jpg](https://commons.wikimedia.org/wiki/File:Grossular_garnet_from_Quebec,_collected_by_Dr_John_Hunter_in_the_18th_century,_Hunterian_Museum,_Glasgow.jpg) | ⏸️ recherche suspendue |
 | diopside | ♻️ [File:Diopside (GeoDIL number - 395).jpg](https://commons.wikimedia.org/wiki/File:Diopside_(GeoDIL_number_-_395).jpg) | ♻️ [File:Diopside 1.jpg](https://commons.wikimedia.org/wiki/File:Diopside_1.jpg) |
 | jade-nephrite | ♻️ [File:Black-nephrite-jade-bangle.jpg](https://commons.wikimedia.org/wiki/File:Black-nephrite-jade-bangle.jpg) | ♻️ [File:Amphibole - Nephrite Jade Basic calcium magnesium iron silicate Lander County Wyoming 2077.jpg](https://commons.wikimedia.org/wiki/File:Amphibole_-_Nephrite_Jade_Basic_calcium_magnesium_iron_silicate_Lander_County_Wyoming_2077.jpg) |
-| maw-sit-sit | ❌ échec téléchargement | ❌ échec téléchargement |
+| maw-sit-sit | ✅ [Mawsitsit (chromian jade) (Namshamaw Deposit, Hpakan-Tawmaw Jade Tract, Late Jurassic, 147 Ma; Maw Sit Sit, near Kansi, western Kachin State, Indo-Burma Range, northern Burma) 2](https://www.flickr.com/photos/47445767@N05/14925755549) | ❌ échec téléchargement |
 | tourmaline-chrome | ♻️ [Dravite-38386](https://commons.wikimedia.org/w/index.php?curid=10126876) | ♻️ [Faceted chrome tourmaline 5](https://www.flickr.com/photos/47445767@N05/52319972413) |
 | azurite | ♻️ [File:Azurite, Burra Mine, South Australia.jpg](https://commons.wikimedia.org/wiki/File:Azurite,_Burra_Mine,_South_Australia.jpg) | ⏸️ recherche suspendue |
 | sodalite | ⏸️ recherche suspendue | ♻️ [Sodalite en perles — photo Céc.C](https://gems-of-rod.fr) |
@@ -264,7 +264,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | coquillage-moule-perliere-eau-douce | ♻️ [File:Margaritifera margaritifera-buiten.jpg](https://commons.wikimedia.org/wiki/File:Margaritifera_margaritifera-buiten.jpg) | — |
 | coquillage-nautile | ♻️ [File:Nautilus pompilius albino.jpg](https://commons.wikimedia.org/wiki/File:Nautilus_pompilius_albino.jpg) | ♻️ [File:Nautilus Pompilius MN 01.jpg](https://commons.wikimedia.org/wiki/File:Nautilus_Pompilius_MN_01.jpg) |
 
-**362 / 477** photos récupérées au total.
+**363 / 477** photos récupérées au total.
 
 ## Photos d'inclusions
 
