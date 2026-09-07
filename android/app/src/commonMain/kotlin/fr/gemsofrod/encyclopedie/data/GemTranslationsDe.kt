@@ -1488,6 +1488,13 @@ object GemTranslationsDe {
             lithotherapie = "In lithotherapeutischen Traditionen wird Vivianit mit Loslassen und innerer Wandlung assoziiert — ein traditioneller Glaube ohne gesicherte wissenschaftliche Grundlage.",
             inclusions = "Das kennzeichnende Merkmal der Art ist kein Einschluss, sondern ein Farbwechsel: frisch freigelegte, fast farblose Kristalle verdunkeln sich innerhalb weniger Stunden Lichteinwirkung zu einem tiefen Blau, während das enthaltene Eisen oxidiert."
         ),
+        "espadon" to GemTranslation(
+            nom = "Schwertfisch-Schwert",
+            descriptionCourte = "Das lange knöcherne Schwert des Schwertfischs, als Angeltrophäe oder Naturkuriosität aufbewahrt.",
+            descriptionLongue = "Das Schwert des Schwertfischs (Xiphias gladius) ist die abgeflachte, spitz zulaufende Verlängerung seines Oberkiefers, mit der er Beute im offenen Meer betäubt. Es besteht aus dichtem Knochen, überzogen von einer dünnen, an Elfenbein erinnernden äußeren Schicht, und kann bei großen Exemplaren über einen Meter lang werden. Ob ganz erhalten oder im Querschnitt aufbewahrt, bleibt es vor allem eine Angeltrophäe und ein Stück Naturkuriosität, weniger ein Schmuckmaterial.",
+            particularites = "Kein Stein, sondern ein Knochen: die Verlängerung des Oberkiefers des Fisches, dessen Oberfläche in Struktur und Farbe an manche organischen Edelsteine wie Elfenbein erinnert.",
+            lithotherapie = "Anders als bei älteren organischen Edelsteinen gibt es für das Schwertfisch-Schwert keine etablierte lithotherapeutische Tradition; es wird vor allem als Angeltrophäe oder Naturkuriosität gesucht."
+        ),
         "grenat-etoile" to GemTranslation(
             nom = "Sterngranat",
             descriptionCourte = "Ein Almandin mit vier oder sechs leuchtenden Strahlen, eine Rarität, die fast ausschließlich in Idaho gefunden wird.",

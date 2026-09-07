@@ -1488,6 +1488,13 @@ object GemTranslationsEs {
             lithotherapie = "En las tradiciones de litoterapia, la vivianita se asocia al desapego y a la transformación interior —una creencia tradicional, sin fundamento científico establecido.",
             inclusions = "El rasgo distintivo de la especie no es una inclusión sino un cambio de color: los cristales recién extraídos, casi incoloros, se oscurecen en pocas horas de exposición a la luz hasta un azul profundo por la oxidación del hierro que contienen."
         ),
+        "espadon" to GemTranslation(
+            nom = "Rostro de pez espada",
+            descriptionCourte = "El largo rostro óseo del pez espada, conservado como trofeo de pesca o curiosidad natural.",
+            descriptionLongue = "El rostro del pez espada (Xiphias gladius) es la prolongación aplanada y afilada de su maxilar superior, que utiliza para aturdir a sus presas en alta mar. Formado por hueso denso recubierto de una fina capa externa que recuerda al marfil, puede superar el metro de longitud en los ejemplares grandes. Conservado entero o en sección, sigue siendo ante todo un trofeo de pesca y una pieza de curiosidad natural, más que un material de joyería.",
+            particularites = "No es una piedra sino un hueso: la prolongación del maxilar superior del pez, cuya única superficie que recuerda por su textura y color a ciertas gemas orgánicas, como el marfil, es la parte externa.",
+            lithotherapie = "A diferencia de otras gemas orgánicas más antiguas, el rostro de pez espada no tiene una tradición litoterapéutica establecida; se busca sobre todo como trofeo de pesca o curiosidad natural."
+        ),
         "grenat-etoile" to GemTranslation(
             nom = "Granate estrellado",
             descriptionCourte = "Un almandino con cuatro o seis brazos luminosos, una rareza que se encuentra casi exclusivamente en Idaho.",

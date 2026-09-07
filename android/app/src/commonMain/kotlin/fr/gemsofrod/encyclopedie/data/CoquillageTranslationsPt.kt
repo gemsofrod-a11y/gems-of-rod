@@ -21,6 +21,12 @@ object CoquillageTranslationsPt {
             descriptionLongue = "Nas sociedades tradicionais da Melanésia e da Polinésia, o búzio dourado era um adorno reservado a chefes e figuras de alto estatuto, usado como pendente sobre o peito como insígnia de poder — um uso social comparável ao das pedras preciosas noutras culturas. A sua cor laranja intensa e o seu brilho natural excecional fazem dele hoje um dos búzios mais procurados pelos colecionadores de conchas em todo o mundo.",
             interetJoaillerie = "Histórico: adorno de chefe, pendente cerimonial montado inteiro sem corte"
         ),
+        "coquillage-cypree-tigre" to CoquillageTranslation(
+            nom = "Búzio-tigre",
+            descriptionCourte = "Grande búzio manchado, uma das conchas mais emblemáticas e procuradas pelos coleccionadores.",
+            descriptionLongue = "Presente desde os recifes do mar Vermelho até ao Pacífico, o búzio-tigre deve o seu nome às manchas castanho-escuras que salpicam o dorso bombeado sobre um fundo creme a bege — um padrão que varia ligeiramente de um exemplar para outro, como uma impressão digital. A sua concha lisa e brilhante, uma das maiores do género Cypraea, é tradicionalmente conservada inteira em vez de cortada, apreciada tanto pelo seu desenho natural como pelo seu brilho porcelanado.",
+            interetJoaillerie = "Moderado: peça de coleção, joalharia étnica, decoração"
+        ),
         "coquillage-conque-reine" to CoquillageTranslation(
             nom = "Búzio-rainha",
             descriptionCourte = "Grande gastrópode caribenho de interior rosa vivo, matéria-prima histórica dos camafeus esculpidos.",

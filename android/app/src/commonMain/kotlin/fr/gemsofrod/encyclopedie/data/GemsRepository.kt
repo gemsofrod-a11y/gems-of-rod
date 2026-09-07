@@ -3652,6 +3652,24 @@ object GemsRepository {
             prixCaratEur = "20 – 300 €/spécimen (rarement taillée, vendue en cristaux de collection plutôt qu'au carat)",
             rarete = GemRarete.RARE
         ),
+        Gem(
+            id = "espadon",
+            nom = "Rostre d'espadon",
+            nomLatin = "Rostre osseux de Xiphias gladius (gemme organique)",
+            famille = "Rostre d'espadon (gemme organique)",
+            couleur = GemColorCategory.BRUN,
+            descriptionCourte = "Le long rostre osseux de l'espadon, conservé comme trophée de pêche ou curiosité naturelle.",
+            descriptionLongue = "Le rostre de l'espadon (Xiphias gladius) est le prolongement aplati et effilé de son os maxillaire supérieur, qu'il utilise pour étourdir ses proies en pleine mer. Fait d'os dense recouvert d'une fine couche externe évoquant l'ivoire, il peut dépasser un mètre de long chez les grands spécimens. Conservé entier ou en section, il reste avant tout un trophée de pêche et une pièce de curiosité naturelle plutôt qu'un matériau de bijouterie.",
+            formuleChimique = "Hydroxyapatite (phosphate de calcium) et collagène — tissu osseux",
+            systemeCristallin = "Non applicable (matière organique)",
+            durete = "2 - 3",
+            indiceRefraction = "Non applicable (matière organique)",
+            origines = listOf("Océan Atlantique", "Mer Méditerranée", "Océan Pacifique et Indien — présent dans la plupart des mers tempérées et tropicales"),
+            particularites = "Ce n'est pas une pierre mais un os : le prolongement du maxillaire supérieur du poisson, dont seule la partie externe rappelle par sa texture et sa couleur certaines gemmes organiques comme l'ivoire.",
+            lithotherapie = "Contrairement à d'autres gemmes organiques plus anciennes, le rostre d'espadon n'a pas de tradition lithothérapique établie ; il est avant tout recherché comme trophée de pêche ou curiosité naturelle.",
+            prixCaratEur = "20 – 150 €/pièce selon la taille (vendu entier, pas au carat)",
+            rarete = GemRarete.PEU_COMMUNE
+        ),
     )
 
     fun byColor(color: GemColorCategory): List<Gem> =

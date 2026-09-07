@@ -21,6 +21,12 @@ object CoquillageTranslationsEn {
             descriptionLongue = "In the traditional societies of Melanesia and Polynesia, the golden cowrie was an ornament reserved for chiefs and high-ranking figures, worn as a pendant on the chest as an insignia of power — a social use comparable to that of precious stones in other cultures. Its intense orange colour and exceptional natural gloss make it today one of the most sought-after cowries among shell collectors worldwide.",
             interetJoaillerie = "Historic: chief's ornament, ceremonial pendant mounted whole and unworked"
         ),
+        "coquillage-cypree-tigre" to CoquillageTranslation(
+            nom = "Tiger Cowrie",
+            descriptionCourte = "A large spotted cowrie, one of the most iconic and sought-after shells among shell collectors.",
+            descriptionLongue = "Found from the reefs of the Red Sea across to the Pacific, the tiger cowrie owes its name to the dark brown speckles that dot its domed back over a cream-to-beige ground — a pattern that varies slightly from one individual to the next, like a fingerprint. Its smooth, glossy shell, one of the largest in the genus Cypraea, is traditionally kept whole rather than cut, prized as much for its natural pattern as for its porcelain-like sheen.",
+            interetJoaillerie = "Moderate: collector's piece, ethnic jewellery, décor"
+        ),
         "coquillage-conque-reine" to CoquillageTranslation(
             nom = "Queen Conch",
             descriptionCourte = "A large Caribbean gastropod with a vivid pink interior, the historic raw material of carved cameos.",

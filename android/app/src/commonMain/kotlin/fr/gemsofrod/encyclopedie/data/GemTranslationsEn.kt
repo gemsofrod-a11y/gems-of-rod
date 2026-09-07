@@ -1488,6 +1488,13 @@ object GemTranslationsEn {
             lithotherapie = "In lithotherapy traditions, vivianite is associated with letting go and inner transformation — a traditional belief, without established scientific basis.",
             inclusions = "The species' distinctive trait is not an inclusion but a color change: freshly exposed, almost colorless crystals darken within hours of light exposure to a deep blue as the iron they contain oxidizes."
         ),
+        "espadon" to GemTranslation(
+            nom = "Swordfish bill",
+            descriptionCourte = "The long bony bill of the swordfish, kept as a fishing trophy or natural curiosity.",
+            descriptionLongue = "The swordfish's bill (Xiphias gladius) is the flattened, tapering extension of its upper jawbone, used to stun prey at sea. Made of dense bone covered with a thin outer layer reminiscent of ivory, it can exceed a metre in length in large specimens. Kept whole or as a cross-section, it remains above all a fishing trophy and a natural curiosity rather than a jewelry material.",
+            particularites = "This is not a stone but a bone: the extension of the fish's upper jaw, only the outer surface of which recalls, in texture and colour, certain organic gems such as ivory.",
+            lithotherapie = "Unlike older organic gems, the swordfish bill has no established lithotherapy tradition; it is sought above all as a fishing trophy or natural curiosity."
+        ),
         "grenat-etoile" to GemTranslation(
             nom = "Star garnet",
             descriptionCourte = "A four- or six-rayed almandine garnet, a rarity found almost exclusively in Idaho.",

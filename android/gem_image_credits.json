@@ -600,6 +600,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Lambis_crocata_2010_G1.jpg",
       "title": "File:Lambis crocata 2010 G1.jpg",
       "type": "BRUTE"
+    },
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_coquillage_lambis_brute_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "coquillage-lambis — photo Coraline Minéraux",
+      "type": "BRUTE"
     }
   ],
   "coquillage-moule-perliere-eau-douce": [
@@ -647,6 +655,14 @@
       "resource_name": "gem_coquillage_ormeau_brute",
       "source_url": "https://commons.wikimedia.org/wiki/File:Abalone.jpg",
       "title": "File:Abalone.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_coquillage_ormeau_brute_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "coquillage-ormeau — photo Coraline Minéraux",
       "type": "BRUTE"
     }
   ],
@@ -884,6 +900,16 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Epidote_crystal.jpg",
       "title": "File:Epidote crystal.jpg",
       "type": "FACETTEE"
+    }
+  ],
+  "espadon": [
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_espadon_brute_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Rostre d'espadon — photo Coraline Minéraux",
+      "type": "BRUTE"
     }
   ],
   "euclase": [
@@ -1137,6 +1163,14 @@
       "resource_name": "gem_fossile_oursin_brute",
       "source_url": "https://commons.wikimedia.org/wiki/File:Fossil_sea_urchin_(FindID_551527)_cropped_transparent_background.png",
       "title": "File:Fossil sea urchin (FindID 551527) cropped transparent background.png",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_fossile_oursin_brute_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Oursin fossile — photo Coraline Minéraux",
       "type": "BRUTE"
     }
   ],
@@ -1725,7 +1759,16 @@
       "type": "FACETTEE"
     }
   ],
-  "maw-sit-sit": [],
+  "maw-sit-sit": [
+    {
+      "artist": "James St. John",
+      "license": "by 2.0",
+      "resource_name": "gem_maw_sit_sit_brute",
+      "source_url": "https://www.flickr.com/photos/47445767@N05/14925755549",
+      "title": "Mawsitsit (chromian jade) (Namshamaw Deposit, Hpakan-Tawmaw Jade Tract, Late Jurassic, 147 Ma; Maw Sit Sit, near Kansi, western Kachin State, Indo-Burma Range, northern Burma) 2",
+      "type": "BRUTE"
+    }
+  ],
   "meteorite-admire": [
     {
       "artist": "Steve Jurvetson from Los Altos, USA",
@@ -3483,6 +3526,16 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:The_oldest_zircon_crystall_(4.276_billion_years_old)._American_Museum_of_Natural_History.jpg",
       "title": "File:The oldest zircon crystall (4.276 billion years old). American Museum of Natural History.jpg",
       "type": "FACETTEE"
+    }
+  ],
+  "coquillage-cypree-tigre": [
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_coquillage_cypree_tigre_brute_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "coquillage-cypree-tigre — photo Coraline Minéraux",
+      "type": "BRUTE"
     }
   ]
 }

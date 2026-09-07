@@ -21,6 +21,12 @@ object CoquillageTranslationsDe {
             descriptionLongue = "In den traditionellen Gesellschaften Melanesiens und Polynesiens war die goldene Kaurischnecke ein Schmuckstück, das Häuptlingen und hochrangigen Persönlichkeiten vorbehalten war und als Anhänger auf der Brust als Machtinsignie getragen wurde — eine gesellschaftliche Verwendung, vergleichbar der von Edelsteinen in anderen Kulturen. Ihre intensive orangene Farbe und ihr außergewöhnlicher natürlicher Glanz machen sie heute zu einer der begehrtesten Kaurischnecken bei Muschelsammlern weltweit.",
             interetJoaillerie = "Historisch: Häuptlingsschmuck, zeremonieller Anhänger, ganz und ungeschliffen gefasst"
         ),
+        "coquillage-cypree-tigre" to CoquillageTranslation(
+            nom = "Tiger-Kaurischnecke",
+            descriptionCourte = "Große gefleckte Kaurischnecke, eine der bekanntesten und begehrtesten Schalen bei Muschelsammlern.",
+            descriptionLongue = "Von den Riffen des Roten Meeres bis zum Pazifik verbreitet, verdankt die Tiger-Kaurischnecke ihren Namen den dunkelbraunen Flecken, die ihren gewölbten Rücken auf cremefarbenem bis beigem Grund übersäen — ein Muster, das von Exemplar zu Exemplar leicht variiert, wie ein Fingerabdruck. Ihre glatte, glänzende Schale, eine der größten der Gattung Cypraea, wird traditionell ganz und ungeschliffen aufbewahrt, geschätzt sowohl für ihre natürliche Zeichnung als auch für ihren porzellanartigen Glanz.",
+            interetJoaillerie = "Mäßig: Sammlerstück, ethnischer Schmuck, Dekoration"
+        ),
         "coquillage-conque-reine" to CoquillageTranslation(
             nom = "Große Fechterschnecke",
             descriptionCourte = "Große karibische Schnecke mit leuchtend rosa Innenseite, historisches Ausgangsmaterial für geschnittene Kameen.",

@@ -21,6 +21,12 @@ object CoquillageTranslationsZh {
             descriptionLongue = "在美拉尼西亚和波利尼西亚的传统社会中,金环宝螺是专属于酋长和高地位人物的饰品,作为权力标志佩戴于胸前——这种社会用途与其他文化中宝石的地位相当。它浓烈的橙色和极其罕见的天然光泽,使其成为如今全球贝壳收藏家最为追捧的宝螺之一。",
             interetJoaillerie = "历史用途:酋长饰品,未经切割整体镶嵌的礼仪吊坠"
         ),
+        "coquillage-cypree-tigre" to CoquillageTranslation(
+            nom = "虎斑宝螺",
+            descriptionCourte = "体型较大、带斑点的宝螺,是贝壳收藏者中最具代表性、最受追捧的品种之一。",
+            descriptionLongue = "虎斑宝螺分布于从红海礁石到太平洋的广阔海域,得名于其乳白至米黄色背壳上散布的深棕色斑点——这种斑纹如同指纹一般,因个体而略有差异。它光滑而富有光泽的贝壳,是宝螺属中体型最大的品种之一,传统上整壳保存而不作切割,其天然花纹与瓷器般的光泽同样受到珍视。",
+            interetJoaillerie = "适中:收藏品、民族饰品、装饰"
+        ),
         "coquillage-conque-reine" to CoquillageTranslation(
             nom = "女王凤凰螺",
             descriptionCourte = "加勒比海大型腹足纲动物,内壁呈鲜艳粉红色,是雕刻浮雕的历史原材料。",

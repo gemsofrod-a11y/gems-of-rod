@@ -21,6 +21,12 @@ object CoquillageTranslationsEs {
             descriptionLongue = "En las sociedades tradicionales de Melanesia y Polinesia, el cauri dorado era un adorno reservado a jefes y personajes de alto rango, llevado como colgante sobre el pecho como insignia de poder — un uso social comparable al de las piedras preciosas en otras culturas. Su intenso color anaranjado y su brillo natural excepcional la convierten hoy en una de las cauris más buscadas por los coleccionistas de conchas de todo el mundo.",
             interetJoaillerie = "Histórico: adorno de jefe, colgante ceremonial montado entero sin tallar"
         ),
+        "coquillage-cypree-tigre" to CoquillageTranslation(
+            nom = "Cauri tigre",
+            descriptionCourte = "Gran cauri moteado, una de las conchas más emblemáticas y buscadas por los coleccionistas.",
+            descriptionLongue = "Presente desde los arrecifes del mar Rojo hasta el Pacífico, el cauri tigre debe su nombre a las motas marrón oscuro que salpican su dorso abombado sobre un fondo crema a beige — un motivo que varía ligeramente de un individuo a otro, como una huella dactilar. Su concha lisa y brillante, una de las más grandes del género Cypraea, se conserva tradicionalmente entera en lugar de tallada, apreciada tanto por su dibujo natural como por su brillo porcelanado.",
+            interetJoaillerie = "Moderado: pieza de colección, joyería étnica, decoración"
+        ),
         "coquillage-conque-reine" to CoquillageTranslation(
             nom = "Caracola reina",
             descriptionCourte = "Gran gasterópodo caribeño de interior rosa vivo, materia prima histórica de los camafeos esculpidos.",
