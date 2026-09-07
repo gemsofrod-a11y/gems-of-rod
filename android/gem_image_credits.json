@@ -600,6 +600,14 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Lambis_crocata_2010_G1.jpg",
       "title": "File:Lambis crocata 2010 G1.jpg",
       "type": "BRUTE"
+    },
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_coquillage_lambis_brute_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "coquillage-lambis — photo Coraline Minéraux",
+      "type": "BRUTE"
     }
   ],
   "coquillage-moule-perliere-eau-douce": [
@@ -647,6 +655,14 @@
       "resource_name": "gem_coquillage_ormeau_brute",
       "source_url": "https://commons.wikimedia.org/wiki/File:Abalone.jpg",
       "title": "File:Abalone.jpg",
+      "type": "BRUTE"
+    },
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_coquillage_ormeau_brute_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "coquillage-ormeau — photo Coraline Minéraux",
       "type": "BRUTE"
     }
   ],
@@ -3510,6 +3526,16 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:The_oldest_zircon_crystall_(4.276_billion_years_old)._American_Museum_of_Natural_History.jpg",
       "title": "File:The oldest zircon crystall (4.276 billion years old). American Museum of Natural History.jpg",
       "type": "FACETTEE"
+    }
+  ],
+  "coquillage-cypree-tigre": [
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_coquillage_cypree_tigre_brute_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "coquillage-cypree-tigre — photo Coraline Minéraux",
+      "type": "BRUTE"
     }
   ]
 }

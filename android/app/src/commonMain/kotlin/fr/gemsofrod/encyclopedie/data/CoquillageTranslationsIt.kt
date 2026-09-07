@@ -21,6 +21,12 @@ object CoquillageTranslationsIt {
             descriptionLongue = "Nelle società tradizionali della Melanesia e della Polinesia, la ciprea dorata era un ornamento riservato ai capi e alle personalità di alto rango, portato come ciondolo sul petto quale insegna di potere — un uso sociale paragonabile a quello delle pietre preziose in altre culture. Il suo colore arancione intenso e la sua eccezionale lucentezza naturale ne fanno oggi una delle ciprea più ricercate dai collezionisti di conchiglie di tutto il mondo.",
             interetJoaillerie = "Storico: ornamento di capo, ciondolo cerimoniale montato intero senza taglio"
         ),
+        "coquillage-cypree-tigre" to CoquillageTranslation(
+            nom = "Ciprea tigre",
+            descriptionCourte = "Grande ciprea maculata, una delle conchiglie più emblematiche e ricercate dai collezionisti.",
+            descriptionLongue = "Diffusa dai reef del mar Rosso fino al Pacifico, la ciprea tigre deve il proprio nome alle macchie bruno scuro che punteggiano il dorso bombato su un fondo crema o beige — un motivo che varia leggermente da un esemplare all'altro, come un'impronta. La sua conchiglia liscia e lucente, una delle più grandi del genere Cypraea, viene tradizionalmente conservata intera anziché tagliata, apprezzata tanto per il suo disegno naturale quanto per la sua lucentezza porcellanata.",
+            interetJoaillerie = "Moderato: pezzo da collezione, gioielleria etnica, decorazione"
+        ),
         "coquillage-conque-reine" to CoquillageTranslation(
             nom = "Strombo regina",
             descriptionCourte = "Grande gasteropode caraibico dall'interno rosa vivo, materia prima storica dei cammei scolpiti.",

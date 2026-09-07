@@ -66,6 +66,24 @@ object CoquillagesRepository {
             descriptionLongue = "Dans les sociétés traditionnelles de Mélanésie et de Polynésie, la cyprée dorée était un ornement réservé aux chefs et aux personnages de haut rang, porté en pendentif sur la poitrine comme insigne de pouvoir — un usage social comparable à celui des pierres précieuses dans d'autres cultures. Sa couleur orangée intense et son brillant naturel exceptionnel en font aujourd'hui l'une des cyprées les plus recherchées des collectionneurs de coquillages du monde entier."
         ),
         Coquillage(
+            id = "coquillage-cypree-tigre",
+            nom = "Cyprée tigre",
+            nomLatin = "Cypraea tigris",
+            origine = "Indo-Pacifique tropical (mer Rouge à Polynésie)",
+            famille = CoquillageFamille.GASTROPODE,
+            compositionMinerale = "Calcite et aragonite (structure porcelanée)",
+            durete = "3",
+            densite = "2,70 – 2,75",
+            couleur = "Fond crème à beige, ponctué de taches brun foncé irrégulières",
+            taillePossible = "Non taillée — conservée entière pour son motif tacheté",
+            qualiteGemme = "Ornementale et naturaliste",
+            interetJoaillerie = "Modéré : pièce de collection, bijoux ethniques, décoration",
+            rarete = GemRarete.COURANTE,
+            prixApprox = "5 – 25 €/pièce",
+            descriptionCourte = "Grande cyprée tachetée, l'une des plus emblématiques et des plus recherchées des collectionneurs de coquillages.",
+            descriptionLongue = "Répandue des récifs de la mer Rouge jusqu'au Pacifique, la cyprée tigre doit son nom aux mouchetures brun foncé qui constellent son dos bombé sur un fond crème à beige — un motif qui varie légèrement d'un individu à l'autre, comme une empreinte. Sa coquille lisse et brillante, l'une des plus grandes du genre Cypraea, est traditionnellement conservée entière plutôt que taillée, appréciée pour son dessin naturel autant que pour son éclat porcelainé."
+        ),
+        Coquillage(
             id = "coquillage-conque-reine",
             nom = "Conque reine",
             nomLatin = "Lobatus gigas",

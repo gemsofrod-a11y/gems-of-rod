@@ -21,6 +21,12 @@ object CoquillageTranslationsNl {
             descriptionLongue = "In de traditionele samenlevingen van Melanesië en Polynesië was de gouden kauri een sieraad voorbehouden aan hoofdmannen en hooggeplaatste figuren, gedragen als hanger op de borst als machtsinsigne — een sociaal gebruik vergelijkbaar met dat van edelstenen in andere culturen. Zijn intense oranje kleur en uitzonderlijke natuurlijke glans maken het vandaag tot een van de meest gewilde kauri's onder schelpenverzamelaars wereldwijd.",
             interetJoaillerie = "Historisch: sieraad van een hoofdman, ceremoniële hanger heel gezet zonder te zijn geslepen"
         ),
+        "coquillage-cypree-tigre" to CoquillageTranslation(
+            nom = "Tijgerkauri",
+            descriptionCourte = "Grote gevlekte kauri, een van de meest herkenbare en gewilde schelpen onder schelpenverzamelaars.",
+            descriptionLongue = "Verspreid van de riffen van de Rode Zee tot in de Stille Oceaan, dankt de tijgerkauri haar naam aan de donkerbruine vlekken die haar bolle rug bezaaien op een crème- tot beigekleurige ondergrond — een patroon dat van exemplaar tot exemplaar licht varieert, als een vingerafdruk. Haar gladde, glanzende schelp, een van de grootste binnen het geslacht Cypraea, wordt traditioneel heel bewaard in plaats van geslepen, gewaardeerd om haar natuurlijke tekening én haar porseleinachtige glans.",
+            interetJoaillerie = "Matig: verzamelstuk, etnische sieraden, decoratie"
+        ),
         "coquillage-conque-reine" to CoquillageTranslation(
             nom = "Koningsslak",
             descriptionCourte = "Grote Caribische zeeslak met een felroze binnenkant, historisch grondstof voor gesneden camees.",
