@@ -108,12 +108,12 @@
           </div>
 
           <div class="row">
-            <label class="full">Montant investi par trade (USD) <input id="bot-amount" type="number" value="50" min="1" step="1" /></label>
-            <button type="button" class="tip" data-tip="Somme utilisée à chaque achat. Ex : 50 $ investis 20 fois utilisent 1000 $ au total. Plus le montant est petit, plus il faut de trades gagnants pour progresser.">ⓘ</button>
+            <label class="full">Mise de départ (USD) <input id="bot-amount" type="number" value="50" min="1" step="1" /></label>
+            <button type="button" class="tip" data-tip="Montant sorti de votre portefeuille et confié au bot. L'objectif ci-dessous porte sur CETTE mise, pas sur le reste du portefeuille. Le bot n'investit jamais plus que cette mise. Il ajuste seul la taille de chaque trade (parfois 1 $, parfois plus) selon la conviction du signal — ce n'est pas un montant fixe à chaque fois.">ⓘ</button>
           </div>
           <div class="row">
-            <label class="full">Objectif de valorisation (USD, optionnel) <input id="bot-target" type="number" min="0" step="1" placeholder="ex: 2000" /></label>
-            <button type="button" class="tip" data-tip="Le bot s'arrête tout seul dès que la valeur totale du portefeuille atteint ce montant. Laissez vide pour qu'il continue indéfiniment (jusqu'à ce que vous l'arrêtiez).">ⓘ</button>
+            <label class="full">Objectif pour cette mise (USD, optionnel) <input id="bot-target" type="number" min="0" step="1" placeholder="ex: 500" /></label>
+            <button type="button" class="tip" data-tip="Le bot s'arrête tout seul dès que la mise (cash encore réservé + position en cours) atteint ce montant — indépendamment de la valeur du reste du portefeuille. Ex : mise de 50 $, objectif 500 $ → le bot vise à multiplier par 10 les 50 $ confiés. Laissez vide pour qu'il continue indéfiniment (jusqu'à ce que vous l'arrêtiez).">ⓘ</button>
           </div>
 
           <button type="button" class="ghost" id="bot-advanced-toggle">Réglages avancés ▾</button>
@@ -121,7 +121,7 @@
             <div class="row">
               <label>Intervalle (s) <input id="bot-interval" type="number" value="10" min="2" /></label>
               <label>Seuil protection (%) <input id="bot-floor" type="number" value="20" min="1" max="90" /></label>
-              <button type="button" class="tip" data-tip="Intervalle : fréquence à laquelle le bot vérifie le cours. Seuil de protection : le bot s'arrête si le portefeuille tombe sous ce pourcentage de sa valeur de départ, pour limiter la perte.">ⓘ</button>
+              <button type="button" class="tip" data-tip="Intervalle : fréquence à laquelle le bot vérifie le cours. Seuil de protection : le bot s'arrête si la mise tombe sous ce pourcentage de sa valeur de départ, pour limiter la perte sur cette mise.">ⓘ</button>
             </div>
             <div class="row">
               <label>Take-profit (%) <input id="bot-tp" type="number" value="1.5" min="0.1" step="0.1" /></label>

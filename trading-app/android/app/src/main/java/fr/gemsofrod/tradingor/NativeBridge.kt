@@ -132,7 +132,7 @@ class NativeBridge(context: Context) {
 
     @JavascriptInterface
     fun startBot(
-        strategy: String, paramsJson: String, intervalSec: Int, investAmountUsd: Double,
+        strategy: String, paramsJson: String, intervalSec: Int, stakeUsd: Double,
         takeProfitPct: Double, stopLossPct: Double, maxHoldingMin: Int,
         targetEquity: Double, floorPct: Double,
     ): String = try {
@@ -140,7 +140,7 @@ class NativeBridge(context: Context) {
             putExtra(TradingBotService.EXTRA_STRATEGY, strategy)
             putExtra(TradingBotService.EXTRA_PARAMS_JSON, paramsJson)
             putExtra(TradingBotService.EXTRA_INTERVAL_SEC, intervalSec)
-            putExtra(TradingBotService.EXTRA_INVEST_AMOUNT, investAmountUsd)
+            putExtra(TradingBotService.EXTRA_STAKE_AMOUNT, stakeUsd)
             putExtra(TradingBotService.EXTRA_TAKE_PROFIT_PCT, takeProfitPct)
             putExtra(TradingBotService.EXTRA_STOP_LOSS_PCT, stopLossPct)
             putExtra(TradingBotService.EXTRA_MAX_HOLDING_MIN, maxHoldingMin)

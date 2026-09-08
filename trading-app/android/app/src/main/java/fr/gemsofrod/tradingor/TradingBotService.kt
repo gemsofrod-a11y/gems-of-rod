@@ -39,7 +39,7 @@ class TradingBotService : Service() {
         const val EXTRA_STRATEGY = "strategy"
         const val EXTRA_PARAMS_JSON = "params_json"
         const val EXTRA_INTERVAL_SEC = "interval_sec"
-        const val EXTRA_INVEST_AMOUNT = "invest_amount"
+        const val EXTRA_STAKE_AMOUNT = "stake_amount"
         const val EXTRA_TAKE_PROFIT_PCT = "take_profit_pct"
         const val EXTRA_STOP_LOSS_PCT = "stop_loss_pct"
         const val EXTRA_MAX_HOLDING_MIN = "max_holding_min"
@@ -80,7 +80,7 @@ class TradingBotService : Service() {
             JSONObject()
         }
         val intervalSec = intent.getIntExtra(EXTRA_INTERVAL_SEC, 10)
-        val investAmount = intent.getDoubleExtra(EXTRA_INVEST_AMOUNT, 50.0)
+        val stakeAmount = intent.getDoubleExtra(EXTRA_STAKE_AMOUNT, 50.0)
         val tp = intent.getDoubleExtra(EXTRA_TAKE_PROFIT_PCT, 1.5)
         val sl = intent.getDoubleExtra(EXTRA_STOP_LOSS_PCT, 0.75)
         val maxHoldingSec = (intent.getIntExtra(EXTRA_MAX_HOLDING_MIN, 30).coerceAtLeast(1) * 60).toLong()
@@ -93,7 +93,7 @@ class TradingBotService : Service() {
 
         bot?.stop()
         val newBot = TradingBot(
-            wallet, priceSource, strategy, params, intervalSec.coerceAtLeast(2), investAmount,
+            wallet, priceSource, strategy, params, intervalSec.coerceAtLeast(2), stakeAmount,
             tp, sl, maxHoldingSec, targetEquity, floorPct,
         ) { running, signal, error ->
             statusStore.write(running, strategy, signal, error)

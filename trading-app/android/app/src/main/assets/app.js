@@ -235,24 +235,20 @@
     errorEl.className = "status stopped";
     const { strategy, params } = collectBotParams();
     const target = $("bot-target").value;
+    const stake = +$("bot-amount").value;
 
-    // Un objectif déjà atteint (ou en dessous de la valeur actuelle) fait
-    // s'arrêter le bot instantanément, sans qu'aucun trade n'ait lieu — un
-    // piège facile (ex : 500 $ d'objectif alors qu'on a déjà 1000 $). On
-    // bloque ce cas ici plutôt que de laisser le bot s'arrêter en silence.
-    if (target) {
-      try {
-        const equity = JSON.parse(window.NativeBridge.getWallet()).equity;
-        if (+target <= equity) {
-          errorEl.textContent = `Objectif trop bas : le portefeuille vaut déjà ${fmtUsd(equity)}. Mettez un objectif supérieur, ou laissez le champ vide pour qu'il continue de progresser sans plafond.`;
-          return;
-        }
-      } catch (err) { /* si la vérification échoue, on laisse startBot() gérer */ }
+    // L'objectif porte sur la mise de départ, pas sur le portefeuille entier :
+    // un objectif déjà couvert par la mise elle-même ferait s'arrêter le bot
+    // instantanément, sans qu'aucun trade n'ait lieu. On bloque ce cas ici
+    // plutôt que de laisser le bot s'arrêter en silence.
+    if (target && +target <= stake) {
+      errorEl.textContent = `Objectif trop bas : la mise de départ est déjà de ${fmtUsd(stake)}. Mettez un objectif supérieur à la mise, ou laissez le champ vide pour qu'elle progresse sans plafond.`;
+      return;
     }
 
     try {
       const raw = window.NativeBridge.startBot(
-        strategy, JSON.stringify(params), +$("bot-interval").value, +$("bot-amount").value,
+        strategy, JSON.stringify(params), +$("bot-interval").value, stake,
         +$("bot-tp").value, +$("bot-sl").value, +$("bot-hold").value,
         target ? +target : 0, +$("bot-floor").value,
       );
