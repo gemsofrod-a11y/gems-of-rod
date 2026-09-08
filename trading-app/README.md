@@ -6,10 +6,14 @@ l'application Android « encyclopédie / stock » de Gems of Rod.
 
 ## Ce que fait l'application
 
-- **Cours XAU/USD en quasi temps réel**, via une source publique
-  gratuite, avec repli automatique sur un cours simulé (marche
-  aléatoire) si la source réelle est injoignable — l'app reste
-  utilisable hors-ligne pour tester le bot ou l'interface.
+- **Cours XAU/USD en quasi temps réel, sans compte ni courtier** :
+  deux sources publiques gratuites et sans clé d'API sont tentées
+  dans l'ordre (gold-api.com puis metals.live en secours), avec
+  repli automatique sur un cours simulé (marche aléatoire) seulement
+  si les deux sont injoignables — l'app reste alors utilisable
+  hors-ligne pour tester le bot ou l'interface. La source
+  effectivement utilisée (réelle ou simulée, et laquelle) est
+  toujours affichée à côté du cours, dans l'app.
 - **Broker interne** : deux comptes par défaut, « Compte Réel » et
   « Compte Démo », chacun avec un solde, une position en onces, un
   historique de transactions et une courbe de valorisation. L'app est

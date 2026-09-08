@@ -36,7 +36,7 @@
       const quote = await api("/api/price");
       $("price-value").textContent = fmtUsd(quote.price);
       const badge = $("price-source");
-      badge.textContent = quote.source === "live" ? "cours réel" : "simulé";
+      badge.textContent = quote.source === "live" ? `cours réel · ${quote.provider}` : "simulé (hors ligne)";
       badge.className = `badge ${quote.source}`;
     } catch (err) {
       $("price-source").textContent = "hors ligne";

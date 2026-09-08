@@ -129,7 +129,10 @@ class Handler(BaseHTTPRequestHandler):
 
     def _get_price(self):
         quote = get_quote()
-        self._send_json({"price": quote.price, "source": quote.source, "timestamp": quote.timestamp})
+        self._send_json({
+            "price": quote.price, "source": quote.source,
+            "provider": quote.provider, "timestamp": quote.timestamp,
+        })
 
     def _get_price_history(self):
         rows = store.list_price_history()
