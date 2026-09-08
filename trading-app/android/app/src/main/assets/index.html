@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <title>Trading Or</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Gems&nbsp;of&nbsp;Rod <span class="brand-sub">Trading Or · XAU/USD</span></div>
+  </header>
+
+  <main>
+    <section class="price-panel">
+      <div class="price-value" id="price-value">--</div>
+      <div class="badge" id="price-source">…</div>
+    </section>
+
+    <section class="panel">
+      <div class="timeframes" id="timeframes">
+        <button data-tf="1m" class="active">1 min</button>
+        <button data-tf="5m">5 min</button>
+        <button data-tf="15m">15 min</button>
+        <button data-tf="1h">1 h</button>
+        <button data-tf="4h">4 h</button>
+        <button data-tf="1d">1 jour</button>
+      </div>
+      <canvas id="price-chart" width="900" height="420"></canvas>
+      <p class="note" id="chart-provider"></p>
+    </section>
+
+    <footer class="disclaimer">
+      Suivi du cours de l'or en direct — aucun compte, aucun courtier, aucun ordre passé depuis cette application.
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

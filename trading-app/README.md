@@ -55,6 +55,10 @@ l'application Android « encyclopédie / stock » de Gems of Rod.
     `backend/etoro_connector.py`).
 - **Interface web responsive**, utilisable sur téléphone (mobile
   d'abord, installable en PWA « ajouter à l'écran d'accueil »).
+- **Application Android autonome (APK)** dans `android/` : cours en
+  quasi temps réel et graphique en bougies (1 min à 1 jour), sans
+  serveur à faire tourner ni compte à créer — voir la section
+  « Application Android (APK) » plus bas.
 
 ## ⚠️ Avertissement important
 
@@ -106,6 +110,33 @@ téléphone. Le site propose ensuite « Ajouter à l'écran d'accueil »
 Pour un accès depuis n'importe où (pas seulement le même Wi‑Fi), il
 faut héberger le serveur sur une machine accessible depuis internet
 (VPS, box avec redirection de port, etc.) — non fourni ici.
+
+## Application Android (APK)
+
+`android/` est un projet Android autonome et minimal (WebView + un
+petit pont réseau natif en Kotlin, `NativeBridge.kt`) : cours XAU/USD
+et graphique en bougies (1 min, 5 min, 15 min, 1 h, 4 h, 1 jour), en
+quasi temps réel, sans serveur à lancer ni compte à créer. Il ne
+comprend volontairement pas le broker interne, le bot ni le
+backtester (qui restent dans l'app web ci-dessus) — c'est la version
+« suivi du marché » à emporter sur le téléphone.
+
+Techniquement, la page (`assets/index.html` + `app.js`) est la même
+famille de code que le frontend web, mais elle interroge un pont
+Kotlin (`window.NativeBridge.getPrice()` / `getCandles()`) au lieu
+d'un serveur, pour éviter tout souci de CORS et ne dépendre d'aucun
+processus à faire tourner sur le téléphone.
+
+**Obtenir l'APK :** ce dépôt ne peut pas construire l'APK lui-même
+(il faut le SDK Android et un accès réseau complet, indisponibles
+dans l'environnement où ce projet a été écrit). Un push sur
+`trading-app/android/**` déclenche automatiquement le workflow GitHub
+Actions **« Build Trading Or APK »**, qui compile un APK de debug et
+le publie comme artefact du run (onglet *Actions* du dépôt →
+sélectionner le run → télécharger `trading-or-debug-apk`). C'est un
+APK non signé (débogage) : Android demandera d'autoriser
+l'installation depuis une source inconnue lors de l'installation
+manuelle.
 
 ### Configuration optionnelle (brokers externes)
 
