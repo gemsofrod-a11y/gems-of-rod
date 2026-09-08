@@ -12,16 +12,17 @@ import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 
 from . import bot_engine, store
 from .backtest import run_backtest
 from .broker import OrderError, account_summary
+from .candles import get_candles
 from .execution import brokers_status, place_order
 from .price_feed import get_quote
 
 FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend"
-PRICE_POLL_INTERVAL_SEC = 10
+PRICE_POLL_INTERVAL_SEC = 5  # quasi temps réel
 
 ROUTES: list[tuple[str, re.Pattern]] = []
 
@@ -87,6 +88,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self._get_price()
             if path == "/api/price/history":
                 return self._get_price_history()
+            if path == "/api/candles":
+                return self._get_candles(parsed)
             if path == "/api/accounts":
                 return self._get_accounts()
             m = re.fullmatch(r"/api/accounts/(\d+)/trades", path)
@@ -137,6 +140,15 @@ class Handler(BaseHTTPRequestHandler):
     def _get_price_history(self):
         rows = store.list_price_history()
         self._send_json([dict(r) for r in rows])
+
+    def _get_candles(self, parsed):
+        params = parse_qs(parsed.query)
+        timeframe = params.get("timeframe", ["1m"])[0]
+        limit = int(params.get("limit", ["200"])[0])
+        try:
+            self._send_json(get_candles(timeframe, limit))
+        except ValueError as exc:
+            self._send_json({"error": str(exc)}, 400)
 
     def _get_accounts(self):
         accounts = store.list_accounts()

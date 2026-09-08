@@ -4,7 +4,8 @@
   const state = {
     accounts: [],
     activeAccountId: null,
-    priceHistory: [],
+    candles: [],
+    timeframe: "1m",
   };
 
   const $ = (id) => document.getElementById(id);
@@ -43,37 +44,57 @@
     }
   }
 
-  async function refreshPriceHistory() {
+  async function refreshCandles() {
     try {
-      state.priceHistory = await api("/api/price/history");
-      drawChart();
+      const result = await api(`/api/candles?timeframe=${state.timeframe}&limit=180`);
+      state.candles = result.candles;
+      const providerLabel = { "yahoo-finance": "cours réel (Yahoo Finance)", "historique-local": "cours réel (historique local)", "simule": "données simulées" }[result.provider] || result.provider;
+      $("chart-provider").textContent = providerLabel;
+      drawCandles();
     } catch (err) {
-      /* silencieux : le graphique reste vide si l'historique n'est pas encore disponible */
+      /* silencieux : le graphique reste inchangé si l'historique n'est pas encore disponible */
     }
   }
 
-  function drawChart() {
+  $("timeframes").addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-tf]");
+    if (!btn) return;
+    state.timeframe = btn.dataset.tf;
+    document.querySelectorAll("#timeframes button").forEach((b) => b.classList.toggle("active", b === btn));
+    refreshCandles();
+  });
+
+  function drawCandles() {
     const canvas = $("price-chart");
     const ctx = canvas.getContext("2d");
     const w = canvas.width, h = canvas.height;
     ctx.clearRect(0, 0, w, h);
-    const points = state.priceHistory;
-    if (points.length < 2) return;
+    const candles = state.candles;
+    if (candles.length < 2) return;
 
-    const prices = points.map((p) => p.price);
-    const min = Math.min(...prices), max = Math.max(...prices);
-    const pad = (max - min) * 0.1 || 1;
+    const lows = candles.map((c) => c.l), highs = candles.map((c) => c.h);
+    const min = Math.min(...lows), max = Math.max(...highs);
+    const pad = (max - min) * 0.08 || 1;
     const yMin = min - pad, yMax = max + pad;
+    const yOf = (price) => h - ((price - yMin) / (yMax - yMin)) * h;
 
-    ctx.strokeStyle = "#d4af37";
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    points.forEach((p, i) => {
-      const x = (i / (points.length - 1)) * w;
-      const y = h - ((p.price - yMin) / (yMax - yMin)) * h;
-      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    const slot = w / candles.length;
+    const bodyWidth = Math.max(1, slot * 0.6);
+
+    candles.forEach((c, i) => {
+      const x = i * slot + slot / 2;
+      const up = c.c >= c.o;
+      ctx.strokeStyle = ctx.fillStyle = up ? "#3ec98b" : "#e6604f";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(x, yOf(c.h));
+      ctx.lineTo(x, yOf(c.l));
+      ctx.stroke();
+      const yOpen = yOf(c.o), yClose = yOf(c.c);
+      const top = Math.min(yOpen, yClose);
+      const height = Math.max(1, Math.abs(yClose - yOpen));
+      ctx.fillRect(x - bodyWidth / 2, top, bodyWidth, height);
     });
-    ctx.stroke();
   }
 
   // --- Comptes ---
@@ -293,14 +314,15 @@
 
   async function tick() {
     await refreshPrice();
-    await refreshPriceHistory();
     await refreshBotStatus();
   }
 
   (async function init() {
     await refreshAccounts();
     await tick();
-    setInterval(tick, 8000);
+    await refreshCandles();
+    setInterval(tick, 4000);
+    setInterval(refreshCandles, 15000);
     setInterval(refreshAccounts, 20000);
   })();
 })();

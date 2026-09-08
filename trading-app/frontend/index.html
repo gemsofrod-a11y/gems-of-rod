@@ -23,7 +23,16 @@
   <main>
     <section class="panel chart-panel">
       <h2>Cours XAU/USD</h2>
-      <canvas id="price-chart" width="900" height="260"></canvas>
+      <div class="timeframes" id="timeframes">
+        <button data-tf="1m" class="active">1 min</button>
+        <button data-tf="5m">5 min</button>
+        <button data-tf="15m">15 min</button>
+        <button data-tf="1h">1 h</button>
+        <button data-tf="4h">4 h</button>
+        <button data-tf="1d">1 jour</button>
+      </div>
+      <canvas id="price-chart" width="900" height="280"></canvas>
+      <p class="note" id="chart-provider"></p>
     </section>
 
     <nav class="account-tabs" id="account-tabs"></nav>

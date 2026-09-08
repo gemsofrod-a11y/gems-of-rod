@@ -21,7 +21,7 @@ from dataclasses import dataclass
 GOLD_API_URL = "https://api.gold-api.com/price/XAU"
 METALS_LIVE_URL = "https://api.metals.live/v1/spot/gold"
 FETCH_TIMEOUT_SEC = 5
-CACHE_TTL_SEC = 15
+CACHE_TTL_SEC = 5  # rafraîchissement quasi temps réel côté cours
 FALLBACK_STARTING_PRICE = 2400.0
 FALLBACK_DAILY_VOL = 0.01  # volatilité journalière approximative de l'or
 

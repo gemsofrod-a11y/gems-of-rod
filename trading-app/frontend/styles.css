@@ -69,6 +69,17 @@ main {
 
 .chart-panel canvas { width: 100%; height: auto; display: block; }
 
+.timeframes { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+.timeframes button {
+  min-height: 36px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: #0d0f14;
+  color: var(--muted);
+}
+.timeframes button.active { background: var(--gold); color: #1a1400; }
+
 .account-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .account-tabs button {
   flex: 1 1 auto;
