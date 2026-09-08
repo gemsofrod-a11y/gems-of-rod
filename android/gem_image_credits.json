@@ -342,6 +342,16 @@
       "type": "FACETTEE"
     }
   ],
+  "bois-de-cerf": [
+    {
+      "artist": "JonRichfield",
+      "license": "CC BY-SA 4.0",
+      "resource_name": "gem_bois_de_cerf_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Shed_antler_of_Fallow_deer_IMG_6926.jpg",
+      "title": "File:Shed antler of Fallow deer IMG 6926.jpg",
+      "type": "BRUTE"
+    }
+  ],
   "bois-fossilise": [
     {
       "artist": "“Jon Zander (Digon3)”",
@@ -552,6 +562,16 @@
       "type": "BRUTE"
     }
   ],
+  "coquillage-cone-textile": [
+    {
+      "artist": "H. Zell",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_coquillage_cone_textile_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Cylinder_textile_textile_01.jpg",
+      "title": "File:Cylinder textile textile 01.jpg",
+      "type": "BRUTE"
+    }
+  ],
   "coquillage-conque-reine": [
     {
       "artist": "Rosser1954",
@@ -569,6 +589,16 @@
       "resource_name": "gem_coquillage_cypree_doree_brute",
       "source_url": "https://commons.wikimedia.org/wiki/File:Callistocypraea_aurantium_01.jpg",
       "title": "File:Callistocypraea aurantium 01.jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "coquillage-cypree-tigre": [
+    {
+      "artist": "Coraline Minéraux",
+      "license": "© Coraline Minéraux",
+      "resource_name": "gem_coquillage_cypree_tigre_brute_coraline",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "coquillage-cypree-tigre — photo Coraline Minéraux",
       "type": "BRUTE"
     }
   ],
@@ -593,14 +623,6 @@
     }
   ],
   "coquillage-lambis": [
-    {
-      "artist": "George Chernilevsky",
-      "license": "Public domain",
-      "resource_name": "gem_coquillage_lambis_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Lambis_crocata_2010_G1.jpg",
-      "title": "File:Lambis crocata 2010 G1.jpg",
-      "type": "BRUTE"
-    },
     {
       "artist": "Coraline Minéraux",
       "license": "© Coraline Minéraux",
@@ -650,19 +672,21 @@
   ],
   "coquillage-ormeau": [
     {
-      "artist": "Auteur non renseigné",
-      "license": "CC BY-SA 3.0",
-      "resource_name": "gem_coquillage_ormeau_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Abalone.jpg",
-      "title": "File:Abalone.jpg",
-      "type": "BRUTE"
-    },
-    {
       "artist": "Coraline Minéraux",
       "license": "© Coraline Minéraux",
       "resource_name": "gem_coquillage_ormeau_brute_coraline",
       "source_url": "https://gems-of-rod.fr",
       "title": "coquillage-ormeau — photo Coraline Minéraux",
+      "type": "BRUTE"
+    }
+  ],
+  "coquillage-peigne-de-venus": [
+    {
+      "artist": "H. Zell",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_coquillage_peigne_de_venus_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Murex_pecten_001.JPG",
+      "title": "File:Murex pecten 001.JPG",
       "type": "BRUTE"
     }
   ],
@@ -703,6 +727,16 @@
       "resource_name": "gem_corail_brute",
       "source_url": "https://commons.wikimedia.org/wiki/File:Corallium_rubrum_(red_coral)_2_(15529370228).jpg",
       "title": "File:Corallium rubrum (red coral) 2 (15529370228).jpg",
+      "type": "BRUTE"
+    }
+  ],
+  "corail-noir": [
+    {
+      "artist": "NOAA Office of Ocean Exploration and Research",
+      "license": "Public domain",
+      "resource_name": "gem_corail_noir_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Crab_on_black_coral_Puerto_Rico_April_2015.png",
+      "title": "File:Crab on black coral Puerto Rico April 2015.png",
       "type": "BRUTE"
     }
   ],
@@ -862,6 +896,16 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Dumortierite_-_Blue_(2932215927).jpg",
       "title": "File:Dumortierite - Blue (2932215927).jpg",
       "type": "FACETTEE"
+    }
+  ],
+  "ecaille-de-tortue": [
+    {
+      "artist": "User:Brandon lopez007",
+      "license": "CC BY-SA 3.0",
+      "resource_name": "gem_ecaille_de_tortue_brute",
+      "source_url": "https://commons.wikimedia.org/wiki/File:La_Y_griega.jpg",
+      "title": "File:La Y griega.jpg",
+      "type": "BRUTE"
     }
   ],
   "emeraude": [
@@ -1157,14 +1201,6 @@
   ],
   "fossile-os-dinosaure-gembone": [],
   "fossile-oursin": [
-    {
-      "artist": "Lincolnshire County Council, Adam Daubney, 2013-03-21 16:38:14",
-      "license": "CC BY-SA 4.0",
-      "resource_name": "gem_fossile_oursin_brute",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Fossil_sea_urchin_(FindID_551527)_cropped_transparent_background.png",
-      "title": "File:Fossil sea urchin (FindID 551527) cropped transparent background.png",
-      "type": "BRUTE"
-    },
     {
       "artist": "Coraline Minéraux",
       "license": "© Coraline Minéraux",
@@ -3526,16 +3562,6 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:The_oldest_zircon_crystall_(4.276_billion_years_old)._American_Museum_of_Natural_History.jpg",
       "title": "File:The oldest zircon crystall (4.276 billion years old). American Museum of Natural History.jpg",
       "type": "FACETTEE"
-    }
-  ],
-  "coquillage-cypree-tigre": [
-    {
-      "artist": "Coraline Minéraux",
-      "license": "© Coraline Minéraux",
-      "resource_name": "gem_coquillage_cypree_tigre_brute_coraline",
-      "source_url": "https://gems-of-rod.fr",
-      "title": "coquillage-cypree-tigre — photo Coraline Minéraux",
-      "type": "BRUTE"
     }
   ]
 }
