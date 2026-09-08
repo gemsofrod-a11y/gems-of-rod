@@ -254,6 +254,8 @@
     <!-- Seashells -->
     <string name="home_coquillages_title">Seashells</string>
     <string name="home_coquillages_subtitle">Mother-of-pearl, cowries, conchs and nautilus: the sculpted beauty of marine mollusks.</string>
+    <string name="home_gemmes_organiques_title">Organic Gems</string>
+    <string name="home_gemmes_organiques_subtitle">Pearl, amber, coral, jet... treasures shaped by living things rather than geology.</string>
     <string name="coquillages_intro">From the pink conch cameo to the iridescent nacre of the abalone, not forgetting the cowries once used as currency on three continents: this section explores the seashells of interest to lapidaries and jewellers, alongside a few pieces valued mainly for their history or symbolism.</string>
     <string name="coquillages_classification_title">Classification</string>
     <string name="coquillages_classification_subtitle">Gastropods, bivalves, shelled cephalopod: understanding the main seashell families.</string>

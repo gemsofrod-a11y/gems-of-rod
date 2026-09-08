@@ -254,6 +254,8 @@
     <!-- 贝壳 -->
     <string name="home_coquillages_title">贝壳</string>
     <string name="home_coquillages_subtitle">珍珠母贝、宝螺、凤凰螺与鹦鹉螺：海洋软体动物雕琢而成的美。</string>
+    <string name="home_gemmes_organiques_title">有机宝石</string>
+    <string name="home_gemmes_organiques_subtitle">珍珠、琥珀、珊瑚、煤玉……由生物而非地质作用塑造而成的珍宝。</string>
     <string name="coquillages_intro">从粉红色凤凰螺浮雕到鲍鱼绚丽的珍珠层，还有曾在三大洲充当货币的宝螺——本板块介绍宝石匠与珠宝商感兴趣的贝壳，以及一些主要因历史或象征意义而受重视的藏品。</string>
     <string name="coquillages_classification_title">分类</string>
     <string name="coquillages_classification_subtitle">腹足纲、双壳纲、有壳头足纲：了解贝壳的主要家族。</string>

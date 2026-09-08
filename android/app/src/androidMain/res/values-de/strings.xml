@@ -254,6 +254,8 @@
     <!-- Muscheln & Schnecken -->
     <string name="home_coquillages_title">Muscheln &amp; Schnecken</string>
     <string name="home_coquillages_subtitle">Perlmutt, Kaurischnecken, Fechterschnecken und Nautilus: die geschnitzte Schönheit der Meeresweichtiere.</string>
+    <string name="home_gemmes_organiques_title">Organische Edelsteine</string>
+    <string name="home_gemmes_organiques_subtitle">Perle, Bernstein, Koralle, Gagat... Schätze, geformt von Lebewesen statt von der Geologie.</string>
     <string name="coquillages_intro">Von der Gemme aus rosa Fechterschnecke bis zum schillernden Perlmutt des Abalone, nicht zu vergessen die Kaurischnecken, die auf drei Kontinenten als Zahlungsmittel dienten: Dieser Bereich stellt die für Steinschleifer und Juweliere interessanten Muscheln und Schnecken vor, neben einigen Stücken, die vor allem wegen ihrer Geschichte oder Symbolik geschätzt werden.</string>
     <string name="coquillages_classification_title">Klassifikation</string>
     <string name="coquillages_classification_subtitle">Schnecken, Muscheln, Kopffüßer mit Schale: die großen Familien der Meeresschalen verstehen.</string>

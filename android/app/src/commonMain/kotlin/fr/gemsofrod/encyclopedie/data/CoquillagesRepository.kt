@@ -173,6 +173,42 @@ object CoquillagesRepository {
             descriptionCourte = "Coquillage indo-pacifique reconnaissable à ses longues digitations pointues évoquant des pattes d'araignée.",
             descriptionLongue = "Cousin plus modeste de la conque reine caribéenne, ce strombe des lagons indo-pacifiques développe le long de son ouverture une série de digitations effilées qui lui valent son surnom d'« araignée ». Sa coquille, très courante sur les marchés d'artisanat côtier, est surtout appréciée entière comme objet décoratif plutôt que comme matière première à tailler."
         ),
+        Coquillage(
+            id = "coquillage-cone-textile",
+            nom = "Cône textile",
+            nomLatin = "Conus textile",
+            origine = "Indo-Pacifique tropical (récifs coralliens)",
+            famille = CoquillageFamille.GASTROPODE,
+            compositionMinerale = "Aragonite et calcite",
+            durete = "3",
+            densite = "2,70 – 2,85",
+            couleur = "Fond crème à orangé, réseau dense de lignes brunes en mosaïque",
+            taillePossible = "Rarement taillé — conservé entier pour son motif géométrique",
+            qualiteGemme = "Ornementale et naturaliste, très prisée des collectionneurs",
+            interetJoaillerie = "Modéré : pièce de collection, décoration ; jamais montée en bijou en raison du danger de l'animal vivant",
+            rarete = GemRarete.PEU_COMMUNE,
+            prixApprox = "10 – 60 €/pièce selon taille et qualité",
+            descriptionCourte = "Un gastéropode au motif géométrique dense évoquant un tissage, l'une des espèces les plus recherchées des collectionneurs de coquillages — et l'une des plus dangereuses à l'état vivant.",
+            descriptionLongue = "Le cône textile doit son nom au réseau dense de lignes et de losanges bruns qui recouvre sa coquille conique, évoquant un tissu imprimé. Vivant, ce gastéropode chasse au moyen d'un harpon venimeux capable de paralyser sa proie et potentiellement dangereux pour l'humain, ce qui exclut toute manipulation de l'animal vivant. Sa coquille, en revanche, ramassée vide sur les plages indo-pacifiques, est l'une des plus recherchées par les collectionneurs pour la finesse et la régularité de son motif."
+        ),
+        Coquillage(
+            id = "coquillage-peigne-de-venus",
+            nom = "Peigne de Vénus",
+            nomLatin = "Murex pecten",
+            origine = "Indo-Pacifique (mers de Chine, Australie du Nord)",
+            famille = CoquillageFamille.GASTROPODE,
+            compositionMinerale = "Calcite et aragonite",
+            durete = "3",
+            densite = "2,70 – 2,80",
+            couleur = "Blanc-crème à brun clair, longues épines fines disposées en peigne",
+            taillePossible = "Non taillé — conservé entier pour sa silhouette spectaculaire",
+            qualiteGemme = "Pièce naturaliste et décorative de premier ordre",
+            interetJoaillerie = "Faible à modéré : pièce de collection et de décoration, rarement montée en bijou en raison de sa fragilité",
+            rarete = GemRarete.RARE,
+            prixApprox = "20 – 80 €/pièce selon l'intégrité des épines",
+            descriptionCourte = "Un murex hérissé d'une soixantaine d'épines fines et régulières, parmi les coquillages les plus spectaculaires au monde.",
+            descriptionLongue = "Le peigne de Vénus doit son nom aux longues épines fines et régulièrement espacées, parfois plus d'une cinquantaine, qui bordent l'ouverture de sa coquille comme les dents d'un peigne. Cette architecture délicate, unique parmi les gastéropodes marins, en fait l'un des coquillages les plus prisés des collectionneurs — et l'un des plus difficiles à conserver intacts, la moindre épine brisée réduisant fortement sa valeur."
+        ),
 
         // ---------- BIVALVES ----------
         Coquillage(

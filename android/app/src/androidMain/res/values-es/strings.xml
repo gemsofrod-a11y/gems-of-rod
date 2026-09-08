@@ -254,6 +254,8 @@
     <!-- Conchas marinas -->
     <string name="home_coquillages_title">Conchas marinas</string>
     <string name="home_coquillages_subtitle">Nácar, cauris, caracolas y nautilo: la belleza esculpida de los moluscos marinos.</string>
+    <string name="home_gemmes_organiques_title">Gemas orgánicas</string>
+    <string name="home_gemmes_organiques_subtitle">Perla, ámbar, coral, azabache... tesoros formados por seres vivos más que por la geología.</string>
     <string name="coquillages_intro">Desde el camafeo de caracola rosa hasta el nácar irisado del abulón, sin olvidar los cauris que sirvieron de moneda en tres continentes: esta sección explora las conchas marinas de interés para el lapidario y el joyero, junto con algunas piezas apreciadas sobre todo por su historia o simbolismo.</string>
     <string name="coquillages_classification_title">Clasificación</string>
     <string name="coquillages_classification_subtitle">Gasterópodos, bivalvos, cefalópodo con concha: comprender las grandes familias de conchas marinas.</string>

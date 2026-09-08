@@ -138,6 +138,7 @@ private object Routes {
     const val COQUILLAGES = "coquillages"
     const val COQUILLAGE_CLASSIFICATION = "coquillage_classification"
     const val COQUILLAGE_DETAIL = "coquillage/{coquillageId}"
+    const val GEMMES_ORGANIQUES = "gemmes_organiques"
     const val QUIZ = "quiz"
     const val ACHIEVEMENTS = "achievements"
     const val LAB_MENU = "lab_menu"
@@ -273,6 +274,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onMeteoritesClick = { navController.navigate(Routes.METEORITES) },
                 onFossilesClick = { navController.navigate(Routes.FOSSILES) },
                 onCoquillagesClick = { navController.navigate(Routes.COQUILLAGES) },
+                onGemmesOrganiquesClick = { navController.navigate(Routes.GEMMES_ORGANIQUES) },
                 onQuizClick = { navController.navigate(Routes.QUIZ) },
                 onAchievementsClick = { navController.navigate(Routes.ACHIEVEMENTS) },
                 onLabClick = { navController.navigate(Routes.LAB_MENU) },
@@ -283,6 +285,9 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         composable(Routes.GLOBAL_SEARCH) {
             GlobalSearchScreen(
                 onGemClick = { gemId -> navController.navigate(Routes.gemDetail(gemId)) },
+                onMeteoriteClick = { meteoriteId -> navController.navigate(Routes.meteoriteDetail(meteoriteId)) },
+                onFossileClick = { fossileId -> navController.navigate(Routes.fossileDetail(fossileId)) },
+                onCoquillageClick = { coquillageId -> navController.navigate(Routes.coquillageDetail(coquillageId)) },
                 onStockItemClick = { itemId -> navController.navigate(Routes.stockDetail(itemId)) },
                 onClientClick = { clientId -> navController.navigate(Routes.clientDetail(clientId)) },
                 onSupplierClick = { supplierId -> navController.navigate(Routes.supplierDetail(supplierId)) },
@@ -535,6 +540,14 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             val coquillageId = backStackEntry.arguments?.getString("coquillageId").orEmpty()
             CoquillageDetailScreen(
                 coquillageId = coquillageId,
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.GEMMES_ORGANIQUES) {
+            GemsListScreen(
+                title = stringResource(R.string.home_gemmes_organiques_title),
+                gems = GemsRepository.organiques(),
+                onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
                 onBackClick = { navController.popBackStack() }
             )
         }

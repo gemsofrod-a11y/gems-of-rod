@@ -33,23 +33,30 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.ClientRepository
+import fr.gemsofrod.encyclopedie.data.CoquillagesRepository
+import fr.gemsofrod.encyclopedie.data.FossilesRepository
 import fr.gemsofrod.encyclopedie.data.GemsRepository
+import fr.gemsofrod.encyclopedie.data.MeteoritesRepository
 import fr.gemsofrod.encyclopedie.data.StockRepository
 import fr.gemsofrod.encyclopedie.data.SupplierRepository
 import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
 import fr.gemsofrod.encyclopedie.ui.localized
 
 /**
- * Recherche unique couvrant l'encyclopédie, le stock, le carnet clients et
- * le répertoire fournisseurs — plutôt que la recherche propre à chaque
- * écran ([StockListScreen], [ClientListScreen], [SupplierListScreen]...),
- * pour retrouver rapidement une pierre ou un contact sans savoir d'avance
- * dans quelle section elle se trouve.
+ * Recherche unique couvrant tout le catalogue de l'encyclopédie (gemmes —
+ * minérales comme organiques —, météorites, fossiles, coquillages), le
+ * stock, le carnet clients et le répertoire fournisseurs — plutôt que la
+ * recherche propre à chaque écran ([StockListScreen], [ClientListScreen],
+ * [SupplierListScreen]...), pour retrouver rapidement une fiche ou un
+ * contact sans savoir d'avance dans quelle section il se trouve.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GlobalSearchScreen(
     onGemClick: (String) -> Unit,
+    onMeteoriteClick: (String) -> Unit,
+    onFossileClick: (String) -> Unit,
+    onCoquillageClick: (String) -> Unit,
     onStockItemClick: (String) -> Unit,
     onClientClick: (String) -> Unit,
     onSupplierClick: (String) -> Unit,
@@ -64,6 +71,27 @@ fun GlobalSearchScreen(
             it.nom.contains(query, ignoreCase = true) || it.famille.contains(query, ignoreCase = true)
         }
     }
+    val meteoriteResults = if (query.isBlank()) {
+        emptyList()
+    } else {
+        MeteoritesRepository.all().map { it.localized() }.filter {
+            it.nom.contains(query, ignoreCase = true) || it.classification.contains(query, ignoreCase = true)
+        }
+    }
+    val fossileResults = if (query.isBlank()) {
+        emptyList()
+    } else {
+        FossilesRepository.all().map { it.localized() }.filter {
+            it.nom.contains(query, ignoreCase = true) || it.classification.contains(query, ignoreCase = true)
+        }
+    }
+    val coquillageResults = if (query.isBlank()) {
+        emptyList()
+    } else {
+        CoquillagesRepository.all().map { it.localized() }.filter {
+            it.nom.contains(query, ignoreCase = true) || it.nomLatin.contains(query, ignoreCase = true)
+        }
+    }
     val stockResults = if (query.isBlank()) {
         emptyList()
     } else {
@@ -73,7 +101,8 @@ fun GlobalSearchScreen(
     }
     val clientResults = if (query.isBlank()) emptyList() else ClientRepository.allClients().filter { it.nom.contains(query, ignoreCase = true) }
     val supplierResults = if (query.isBlank()) emptyList() else SupplierRepository.allSuppliers().filter { it.nom.contains(query, ignoreCase = true) }
-    val hasResults = gemResults.isNotEmpty() || stockResults.isNotEmpty() || clientResults.isNotEmpty() || supplierResults.isNotEmpty()
+    val hasResults = gemResults.isNotEmpty() || meteoriteResults.isNotEmpty() || fossileResults.isNotEmpty() ||
+        coquillageResults.isNotEmpty() || stockResults.isNotEmpty() || clientResults.isNotEmpty() || supplierResults.isNotEmpty()
 
     Scaffold(
         topBar = {
@@ -127,6 +156,24 @@ fun GlobalSearchScreen(
                         SearchSectionHeader(stringResource(R.string.global_search_section_encyclopedie))
                         gemResults.forEach { gem ->
                             GlobalSearchRow(title = gem.nom, subtitle = gem.famille, onClick = { onGemClick(gem.id) })
+                        }
+                    }
+                    if (meteoriteResults.isNotEmpty()) {
+                        SearchSectionHeader(stringResource(R.string.home_meteorites_title))
+                        meteoriteResults.forEach { meteorite ->
+                            GlobalSearchRow(title = meteorite.nom, subtitle = meteorite.classification, onClick = { onMeteoriteClick(meteorite.id) })
+                        }
+                    }
+                    if (fossileResults.isNotEmpty()) {
+                        SearchSectionHeader(stringResource(R.string.home_fossiles_title))
+                        fossileResults.forEach { fossile ->
+                            GlobalSearchRow(title = fossile.nom, subtitle = fossile.classification, onClick = { onFossileClick(fossile.id) })
+                        }
+                    }
+                    if (coquillageResults.isNotEmpty()) {
+                        SearchSectionHeader(stringResource(R.string.home_coquillages_title))
+                        coquillageResults.forEach { coquillage ->
+                            GlobalSearchRow(title = coquillage.nom, subtitle = coquillage.nomLatin, onClick = { onCoquillageClick(coquillage.id) })
                         }
                     }
                     if (stockResults.isNotEmpty()) {

@@ -57,6 +57,18 @@ object CoquillageTranslationsPt {
             descriptionLongue = "Prima mais modesta do búzio-rainha caribenho, este estrombo das lagoas indo-pacíficas desenvolve ao longo da sua abertura uma série de digitações afiladas que lhe valem a alcunha de «aranha». A sua concha, muito comum nos mercados de artesanato costeiro, é sobretudo apreciada inteira como objeto decorativo em vez de matéria-prima a talhar.",
             interetJoaillerie = "Moderado: decoração, elementos pontuais de joias étnicas"
         ),
+        "coquillage-cone-textile" to CoquillageTranslation(
+            nom = "Cone-têxtil",
+            descriptionCourte = "Um gastrópode com um denso padrão geométrico que evoca um tecido, uma das espécies mais procuradas pelos coleccionadores — e uma das mais perigosas em vida.",
+            descriptionLongue = "O cone-têxtil deve o seu nome à densa rede de linhas e losangos castanhos que cobre a sua concha cónica, evocando um tecido estampado. Vivo, este gastrópode caça por meio de um arpão venenoso capaz de paralisar a presa e potencialmente perigoso para o ser humano, o que exclui qualquer manuseamento do animal vivo. A sua concha, por outro lado, recolhida vazia nas praias indo-pacíficas, é uma das mais procuradas pelos coleccionadores pela finura e regularidade do seu padrão.",
+            interetJoaillerie = "Moderado: peça de coleção, decoração; nunca montado em joalharia devido ao perigo do animal vivo"
+        ),
+        "coquillage-peigne-de-venus" to CoquillageTranslation(
+            nom = "Pente-de-vénus",
+            descriptionCourte = "Um múrice eriçado de cerca de sessenta espinhos finos e regulares, entre as conchas mais espetaculares do mundo.",
+            descriptionLongue = "O pente-de-vénus deve o seu nome aos longos espinhos finos e regularmente espaçados, por vezes mais de cinquenta, que bordejam a abertura da sua concha como os dentes de um pente. Esta arquitetura delicada, única entre os gastrópodes marinhos, faz dela uma das conchas mais apreciadas pelos coleccionadores — e uma das mais difíceis de conservar intactas, pois um único espinho partido reduz fortemente o seu valor.",
+            interetJoaillerie = "Baixo a moderado: peça de coleção e decoração, raramente montada em joalharia devido à sua fragilidade"
+        ),
         "coquillage-huitre-perliere-noire" to CoquillageTranslation(
             nom = "Ostra perlífera de lábios negros",
             descriptionCourte = "O bivalve que produz as célebres pérolas do Taiti, de madrepérola interior cinzento-antracite com reflexos coloridos.",

@@ -12,13 +12,13 @@ object GemFamilies {
     fun baseName(famille: String): String = famille.substringBefore(" (").trim()
 
     fun groups(): List<Pair<String, List<Gem>>> =
-        GemsRepository.gems
+        GemsRepository.minerals()
             .groupBy { baseName(it.famille) }
             .toSortedMap()
             .map { (name, gems) -> name to gems.sortedBy { it.nom } }
 
     fun gemsFor(familyName: String): List<Gem> =
-        GemsRepository.gems.filter { baseName(it.famille) == familyName }.sortedBy { it.nom }
+        GemsRepository.minerals().filter { baseName(it.famille) == familyName }.sortedBy { it.nom }
 }
 
 /**
@@ -61,14 +61,14 @@ object GemOrigins {
             .map { countryAliases[it.trim()] ?: it.trim() }
 
     fun groups(): List<Pair<String, List<Gem>>> =
-        GemsRepository.gems
+        GemsRepository.minerals()
             .flatMap { gem -> gem.origines.flatMap { countriesOf(it) }.distinct().map { country -> country to gem } }
             .groupBy({ it.first }, { it.second })
             .toSortedMap()
             .map { (country, gems) -> country to gems.sortedBy { it.nom } }
 
     fun gemsFor(country: String): List<Gem> =
-        GemsRepository.gems
+        GemsRepository.minerals()
             .filter { gem -> gem.origines.any { origin -> countriesOf(origin).contains(country) } }
             .sortedBy { it.nom }
 }

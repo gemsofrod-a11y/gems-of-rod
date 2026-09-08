@@ -1495,6 +1495,27 @@ object GemTranslationsIt {
             particularites = "Non è una pietra ma un osso: il prolungamento della mascella superiore del pesce, la cui sola superficie esterna ricorda, per consistenza e colore, alcune gemme organiche come l'avorio.",
             lithotherapie = "A differenza di altre gemme organiche più antiche, il rostro di pesce spada non ha una tradizione litoterapica consolidata; è ricercato soprattutto come trofeo di pesca o curiosità naturale."
         ),
+        "ecaille-de-tortue" to GemTranslation(
+            nom = "Tartarugato",
+            descriptionCourte = "Le placche cornee traslucide del carapace della tartaruga embricata, dalle venature ambrate, un materiale oggi rigorosamente protetto.",
+            descriptionLongue = "Il tartarugato proviene dalle placche cornee del carapace della tartaruga embricata (Eretmochelys imbricata), levigate per rivelare una venatura traslucida che va dal miele al bruno intenso. Apprezzato fin dall'antichità per pettini, montature di occhiali e intarsi, ha a lungo rivaleggiato con l'avorio come materiale di lusso. Essendo oggi una specie in pericolo critico, il suo commercio è vietato in tutto il mondo dal 1977: possono circolare solo pezzi antichi anteriori a questa protezione, a condizioni legali rigorose.",
+            particularites = "Specie in pericolo critico protetta dalla CITES (appendice I) dal 1977: il commercio di nuovo tartarugato è vietato in tutto il mondo; possono circolare solo pezzi antichi anteriori alla protezione, a condizioni rigorose.",
+            lithotherapie = "Il tartarugato è tradizionalmente associato alla longevità e alla protezione, mutuate dalla tartaruga stessa, simbolo di saggezza e pazienza in numerose culture."
+        ),
+        "bois-de-cerf" to GemTranslation(
+            nom = "Corno di cervo",
+            descriptionCourte = "Il palco osseo che il cervo perde e rigenera ogni anno, intagliato in manici di coltelli e oggetti rustici.",
+            descriptionLongue = "Il corno di cervo è un tessuto osseo a crescita rapida che i cervi maschi sviluppano e perdono ogni anno, a differenza delle vere corna (cheratina permanente) dei bovidi. Raccolto al suolo dopo la muta annuale, senza uccidere l'animale, viene tradizionalmente intagliato in manici di coltelli, bottoni, candelabri e oggetti di decorazione rustica, soprattutto nell'artigianato di montagna e venatorio europeo.",
+            particularites = "A differenza delle corna (cheratina permanente), il corno di cervo è un tessuto osseo caduco, perso e rigenerato ogni anno; la sua raccolta al suolo dopo la muta non comporta l'uccisione dell'animale.",
+            lithotherapie = "Il corno di cervo è associato alla rigenerazione e alla forza tranquilla, in eco alla sua ricrescita annuale e al suo uso tradizionale nell'artigianato rurale e venatorio."
+        ),
+        "corail-noir" to GemTranslation(
+            nom = "Corallo nero",
+            descriptionCourte = "Lo scheletro corneo nero di un corallo degli abissi, levigato in gioielli fin dall'antica Hawaii.",
+            descriptionLongue = "Il corallo nero forma, nell'oscurità degli abissi, colonie arborescenti il cui scheletro centrale è corneo anziché calcareo come quello del corallo rosso. Levigato, rivela un nero profondo e satinato molto ricercato in gioielleria, in particolare alle Hawaii, dove è la gemma ufficiale dello stato. La sua crescita estremamente lenta, pochi millimetri all'anno, e lo sfruttamento eccessivo passato ne hanno fatto oggi una specie protetta in numerose giurisdizioni.",
+            particularites = "A differenza del corallo rosso, di natura calcarea, lo scheletro del corallo nero è corneo, simile alla cheratina; la sua crescita molto lenta lo ha reso una specie protetta in numerose giurisdizioni.",
+            lithotherapie = "Il corallo nero è tradizionalmente associato alla protezione e al radicamento, in particolare nelle tradizioni hawaiane, dove veniva indossato come talismano protettivo da marinai e guerrieri."
+        ),
         "grenat-etoile" to GemTranslation(
             nom = "Granato stellato",
             descriptionCourte = "Un almandino a quattro o sei bracci luminosi, una rarità che si trova quasi esclusivamente nell'Idaho.",

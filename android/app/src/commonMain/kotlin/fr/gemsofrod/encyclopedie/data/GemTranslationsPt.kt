@@ -1495,6 +1495,27 @@ object GemTranslationsPt {
             particularites = "Não é uma pedra mas sim um osso: o prolongamento do maxilar superior do peixe, cuja superfície externa recorda, pela textura e cor, algumas gemas orgânicas como o marfim.",
             lithotherapie = "Ao contrário de outras gemas orgânicas mais antigas, o rostro de peixe-espada não tem uma tradição de litoterapia estabelecida; é procurado sobretudo como troféu de pesca ou curiosidade natural."
         ),
+        "ecaille-de-tortue" to GemTranslation(
+            nom = "Tartaruga (casco)",
+            descriptionCourte = "As placas córneas translúcidas da carapaça da tartaruga-de-pente, com padrões marmoreados âmbar, um material hoje estritamente protegido.",
+            descriptionLongue = "A tartaruga (casco) provém das placas córneas da carapaça da tartaruga-de-pente (Eretmochelys imbricata), polidas para revelar um padrão marmoreado translúcido que vai do mel ao castanho profundo. Apreciada desde a Antiguidade para pentes, armações de óculos e incrustações, rivalizou durante muito tempo com o marfim como material de luxo. Sendo hoje uma espécie criticamente ameaçada, o seu comércio está proibido em todo o mundo desde 1977: só circulam, sob condições legais estritas, peças antigas anteriores a esta proteção.",
+            particularites = "Espécie criticamente ameaçada protegida pela CITES (apêndice I) desde 1977: o comércio de nova tartaruga (casco) está proibido em todo o mundo; só podem circular peças antigas anteriores à proteção, sob condições.",
+            lithotherapie = "A tartaruga (casco) está tradicionalmente associada à longevidade e à proteção, tomadas emprestadas da própria tartaruga, símbolo de sabedoria e paciência em numerosas culturas."
+        ),
+        "bois-de-cerf" to GemTranslation(
+            nom = "Chifre de veado",
+            descriptionCourte = "A galhada óssea que o veado perde e regenera todos os anos, talhada em cabos de faca e objetos rústicos.",
+            descriptionLongue = "O chifre de veado é um tecido ósseo de crescimento rápido que os veados machos desenvolvem e perdem todos os anos, ao contrário dos chifres verdadeiros (queratina permanente) dos bovídeos. Recolhido do chão após a muda anual, sem que o animal seja morto, é tradicionalmente talhado em cabos de faca, botões, candelabros e objetos de decoração rústica, sobretudo no artesanato de montanha e de caça europeu.",
+            particularites = "Ao contrário dos chifres (queratina permanente), o chifre de veado é um tecido ósseo caduco, perdido e regenerado todos os anos; a sua recolha do chão após a muda não implica a morte do animal.",
+            lithotherapie = "O chifre de veado está associado à regeneração e à força tranquila, em eco ao seu recrescimento anual e ao seu uso tradicional no artesanato rural e na caça."
+        ),
+        "corail-noir" to GemTranslation(
+            nom = "Coral negro",
+            descriptionCourte = "O esqueleto córneo negro de um coral das profundezas, polido em joias desde o Havai antigo.",
+            descriptionLongue = "O coral negro forma, na escuridão das grandes profundezas, colónias arborescentes cujo esqueleto central é córneo em vez de calcário como o do coral vermelho. Polido, revela um negro profundo e acetinado muito apreciado em joalharia, sobretudo no Havai, onde é a gema oficial do estado. O seu crescimento extremamente lento, apenas alguns milímetros por ano, e a sobre-exploração passada fizeram dele hoje uma espécie protegida em numerosas jurisdições.",
+            particularites = "Ao contrário do coral vermelho, de natureza calcária, o esqueleto do coral negro é córneo, próximo da queratina; o seu crescimento muito lento fez dele uma espécie protegida em numerosas jurisdições.",
+            lithotherapie = "O coral negro está tradicionalmente associado à proteção e ao enraizamento, sobretudo nas tradições havaianas, onde era usado como talismã protetor por marinheiros e guerreiros."
+        ),
         "grenat-etoile" to GemTranslation(
             nom = "Granada estrelada",
             descriptionCourte = "Uma almandina de quatro ou seis raios luminosos, uma raridade encontrada quase exclusivamente no Idaho.",

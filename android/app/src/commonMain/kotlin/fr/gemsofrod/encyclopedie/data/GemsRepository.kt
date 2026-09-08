@@ -3670,25 +3670,97 @@ object GemsRepository {
             prixCaratEur = "20 – 150 €/pièce selon la taille (vendu entier, pas au carat)",
             rarete = GemRarete.PEU_COMMUNE
         ),
+        Gem(
+            id = "ecaille-de-tortue",
+            nom = "Écaille de tortue",
+            nomLatin = "Kératine de tortue caret (gemme organique)",
+            famille = "Écaille de tortue (gemme organique)",
+            couleur = GemColorCategory.BRUN,
+            descriptionCourte = "Les plaques cornées translucides de la carapace de tortue caret, aux motifs marbrés ambrés, un matériau aujourd'hui strictement protégé.",
+            descriptionLongue = "L'écaille de tortue provient des plaques cornées de la carapace de la tortue caret (Eretmochelys imbricata), polies pour révéler un motif marbré translucide allant du miel au brun profond. Prisée depuis l'Antiquité pour les peignes, montures de lunettes et incrustations, elle a longtemps rivalisé avec l'ivoire comme matière de luxe. L'espèce étant aujourd'hui critiquement menacée, son commerce est interdit dans le monde entier depuis 1977 : seules circulent, sous conditions légales strictes, des pièces anciennes antérieures à cette protection.",
+            formuleChimique = "Kératine (protéine fibreuse)",
+            systemeCristallin = "Non applicable (matière organique)",
+            durete = "2,5",
+            indiceRefraction = "1,55 – 1,56",
+            origines = listOf("Océans tropicaux (aire de répartition historique de la tortue caret)", "Marché aujourd'hui limité aux pièces anciennes, sous stricte réglementation CITES"),
+            particularites = "Espèce critiquement menacée protégée par la CITES (annexe I) depuis 1977 : le commerce de nouvelle écaille est interdit dans le monde entier ; seules des pièces anciennes, antérieures à la protection, peuvent circuler sous conditions.",
+            lithotherapie = "L'écaille de tortue est traditionnellement associée à la longévité et à la protection, empruntées à la tortue elle-même, symbole de sagesse et de patience dans de nombreuses cultures.",
+            prixCaratEur = "50 – 2 000 €/objet ancien selon taille et provenance (vendu à la pièce, sous conditions légales strictes)",
+            rarete = GemRarete.EXCEPTIONNELLE
+        ),
+        Gem(
+            id = "bois-de-cerf",
+            nom = "Bois de cerf",
+            nomLatin = "Bois de cervidé (gemme organique)",
+            famille = "Bois de cerf (gemme organique)",
+            couleur = GemColorCategory.BRUN,
+            descriptionCourte = "Les ramures osseuses que le cerf perd et régénère chaque année, taillées en manches de couteaux et objets rustiques.",
+            descriptionLongue = "Le bois de cerf est un tissu osseux à croissance rapide que les cervidés mâles développent puis perdent chaque année, contrairement aux cornes véritables (en kératine permanente) des bovidés. Ramassé au sol après la mue, sans mise à mort de l'animal, il est traditionnellement taillé en manches de couteaux, boutons, chandeliers et objets de décoration rustique, particulièrement dans l'artisanat de montagne et de chasse européen.",
+            formuleChimique = "Hydroxyapatite (phosphate de calcium) et collagène — tissu osseux",
+            systemeCristallin = "Non applicable (matière organique)",
+            durete = "2 - 3",
+            indiceRefraction = "Non applicable (matière organique)",
+            origines = listOf("Europe (cerf élaphe)", "Amérique du Nord (wapiti, cerf de Virginie)", "Ramassé naturellement après la mue annuelle, sans mise à mort de l'animal"),
+            particularites = "Contrairement aux cornes (kératine permanente), le bois de cerf est un tissu osseux caduc, perdu et régénéré chaque année ; sa récolte au sol après la mue n'implique aucune mise à mort de l'animal.",
+            lithotherapie = "Le bois de cerf est associé à la régénération et à la force tranquille, en écho à sa repousse annuelle et à son usage traditionnel dans l'artisanat rural et la chasse.",
+            prixCaratEur = "10 – 100 €/pièce selon la taille (vendu à la pièce, pas au carat)",
+            rarete = GemRarete.COURANTE
+        ),
+        Gem(
+            id = "corail-noir",
+            nom = "Corail noir",
+            nomLatin = "Antipatharia sp. (gemme organique)",
+            famille = "Corail noir (gemme organique)",
+            couleur = GemColorCategory.NOIR,
+            descriptionCourte = "Le squelette corné noir d'un corail des grands fonds, poli en bijoux depuis l'Antiquité hawaïenne.",
+            descriptionLongue = "Le corail noir forme, dans l'obscurité des grands fonds, des colonies arborescentes dont le squelette central est corné plutôt que calcaire comme celui du corail rouge. Poli, il révèle un noir profond et satiné très recherché en bijouterie, notamment à Hawaï où il est la gemme officielle de l'État. Sa croissance extrêmement lente, quelques millimètres par an, et la surpêche passée en ont fait une espèce aujourd'hui protégée dans de nombreuses juridictions.",
+            formuleChimique = "Protéines cornées (proches de la chitine) et traces minérales",
+            systemeCristallin = "Non applicable (matière organique)",
+            durete = "3 - 4",
+            indiceRefraction = "1,56 – 1,57",
+            origines = listOf("Hawaï (gemme officielle de l'État)", "Mer des Caraïbes", "Méditerranée (profondeurs supérieures à 40 m)"),
+            particularites = "Contrairement au corail rouge, de nature calcaire, le squelette du corail noir est corné, proche de la kératine ; sa croissance très lente en fait une espèce protégée dans de nombreuses juridictions.",
+            lithotherapie = "Le corail noir est traditionnellement associé à la protection et à l'ancrage, notamment dans les traditions hawaïennes où il était porté comme talisman protecteur par les marins et les guerriers.",
+            prixCaratEur = "20 – 150 €/pièce (bijou poli), très variable selon la taille",
+            rarete = GemRarete.RARE
+        ),
     )
 
+    /**
+     * Gemmes au sens strict de la minéralogie, à l'exclusion des gemmes
+     * organiques (perle, ambre, corail, jais...) — dérivé du champ `famille`,
+     * qui porte systématiquement la mention "(gemme organique)" pour ces
+     * dernières. C'est la liste utilisée par les écrans de classement de la
+     * Gemmologie (couleur, famille, pays, recherche du menu Gemmologie) ;
+     * [gems] et [byId] restent inchangés et couvrent tout le catalogue, car
+     * favoris, quiz, succès, widget, comparateur et lithothérapie (pierres de
+     * naissance...) référencent aussi bien les gemmes organiques que les
+     * minéraux.
+     */
+    fun minerals(): List<Gem> = gems.filterNot { it.famille.contains("organique", ignoreCase = true) }
+
+    /** Gemmes organiques du catalogue (perle, ambre, corail, jais...), présentées à part de la Gemmologie minérale. */
+    fun organiques(): List<Gem> = gems.filter { it.famille.contains("organique", ignoreCase = true) }
+
     fun byColor(color: GemColorCategory): List<Gem> =
-        gems.filter { it.couleur == color }.sortedBy { it.nom }
+        minerals().filter { it.couleur == color }.sortedBy { it.nom }
 
     fun byId(id: String): Gem? = gems.firstOrNull { it.id == id }
 
-    fun countByColor(color: GemColorCategory): Int = gems.count { it.couleur == color }
+    fun countByColor(color: GemColorCategory): Int = minerals().count { it.couleur == color }
 
     /**
      * Recherche par préfixe (insensible à la casse et aux accents) sur le nom
      * de la gemme, avec repli sur une correspondance "contient" pour couvrir
      * les noms composés (ex. "bleue" trouve "Tourmaline bleue"). Résultats
-     * triés par nom, préfixes en premier.
+     * triés par nom, préfixes en premier. Scopée aux minéraux : c'est la
+     * recherche du menu Gemmologie lui-même, distincte de la recherche
+     * globale ([GlobalSearchScreen]) qui couvre tout le catalogue.
      */
     fun search(query: String): List<Gem> {
         val needle = normalizeForSearch(query)
         if (needle.isBlank()) return emptyList()
-        return gems
+        return minerals()
             .filter { normalizeForSearch(it.nom).contains(needle) }
             .sortedWith(
                 compareByDescending<Gem> { normalizeForSearch(it.nom).startsWith(needle) }
