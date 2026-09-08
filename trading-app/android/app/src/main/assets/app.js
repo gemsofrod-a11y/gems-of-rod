@@ -166,7 +166,7 @@
     const { strategy, params } = collectBotParams();
     const target = $("bot-target").value;
     window.NativeBridge.startBot(
-      strategy, JSON.stringify(params), +$("bot-interval").value, +$("bot-risk").value,
+      strategy, JSON.stringify(params), +$("bot-interval").value, +$("bot-amount").value,
       +$("bot-tp").value, +$("bot-sl").value, +$("bot-hold").value,
       target ? +target : 0, +$("bot-floor").value,
     );

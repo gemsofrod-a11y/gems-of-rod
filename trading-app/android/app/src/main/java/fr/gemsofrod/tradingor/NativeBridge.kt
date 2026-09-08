@@ -1,6 +1,7 @@
 package fr.gemsofrod.tradingor
 
 import android.content.Context
+import android.content.Intent
 import android.webkit.JavascriptInterface
 import org.json.JSONArray
 import org.json.JSONObject
@@ -16,19 +17,18 @@ import java.util.concurrent.TimeUnit
  * un thread dédié (runOnWorker) : selon la version de WebView, ces
  * méthodes peuvent être appelées depuis le thread principal, où un
  * appel réseau bloquant planterait l'app (NetworkOnMainThreadException).
+ *
+ * Le bot lui-même tourne dans TradingBotService (service de premier
+ * plan), pas ici : il continue ainsi même app fermée. Ce pont ne fait
+ * que démarrer/arrêter ce service et lire son état partagé.
  */
 class NativeBridge(context: Context) {
 
     private val appContext = context.applicationContext
     private val priceSource = PriceSource()
     private val wallet = Wallet(appContext)
+    private val botStatus = BotStatusStore(appContext)
     private val worker = Executors.newSingleThreadExecutor()
-
-    @Volatile private var bot: TradingBot? = null
-    @Volatile private var botRunning = false
-    @Volatile private var botStrategy: String? = null
-    @Volatile private var lastSignal: String = ""
-    @Volatile private var lastError: String? = null
 
     private fun <T> runOnWorker(block: () -> T): T =
         worker.submit(Callable { block() }).get(20, TimeUnit.SECONDS)
@@ -132,33 +132,22 @@ class NativeBridge(context: Context) {
 
     @JavascriptInterface
     fun startBot(
-        strategy: String, paramsJson: String, intervalSec: Int, riskPct: Double,
+        strategy: String, paramsJson: String, intervalSec: Int, investAmountUsd: Double,
         takeProfitPct: Double, stopLossPct: Double, maxHoldingMin: Int,
         targetEquity: Double, floorPct: Double,
     ): String = try {
-        synchronized(this) {
-            bot?.stop()
-            val params = try { JSONObject(paramsJson) } catch (_: Exception) { JSONObject() }
-            val newBot = TradingBot(
-                wallet, priceSource, strategy, params,
-                intervalSec.coerceAtLeast(2), riskPct,
-                takeProfitPct.coerceAtLeast(0.05), stopLossPct.coerceAtLeast(0.05),
-                (maxHoldingMin.coerceAtLeast(1) * 60).toLong(),
-                if (targetEquity > 0) targetEquity else null,
-                floorPct,
-            ) { running, signal, error ->
-                botRunning = running
-                lastSignal = signal
-                lastError = error
-                if (!running) bot = null
-            }
-            botStrategy = strategy
-            botRunning = true
-            lastSignal = ""
-            lastError = null
-            bot = newBot
-            newBot.start()
+        val intent = Intent(appContext, TradingBotService::class.java).apply {
+            putExtra(TradingBotService.EXTRA_STRATEGY, strategy)
+            putExtra(TradingBotService.EXTRA_PARAMS_JSON, paramsJson)
+            putExtra(TradingBotService.EXTRA_INTERVAL_SEC, intervalSec)
+            putExtra(TradingBotService.EXTRA_INVEST_AMOUNT, investAmountUsd)
+            putExtra(TradingBotService.EXTRA_TAKE_PROFIT_PCT, takeProfitPct)
+            putExtra(TradingBotService.EXTRA_STOP_LOSS_PCT, stopLossPct)
+            putExtra(TradingBotService.EXTRA_MAX_HOLDING_MIN, maxHoldingMin)
+            putExtra(TradingBotService.EXTRA_TARGET_EQUITY, targetEquity)
+            putExtra(TradingBotService.EXTRA_FLOOR_PCT, floorPct)
         }
+        appContext.startForegroundService(intent)
         JSONObject().apply { put("status", "started") }.toString()
     } catch (e: Exception) {
         JSONObject().apply { put("status", "error"); put("error", e.message ?: "Erreur inconnue") }.toString()
@@ -166,11 +155,8 @@ class NativeBridge(context: Context) {
 
     @JavascriptInterface
     fun stopBot(): String = try {
-        synchronized(this) {
-            bot?.stop()
-            bot = null
-            botRunning = false
-        }
+        val intent = Intent(appContext, TradingBotService::class.java).setAction(TradingBotService.ACTION_STOP)
+        appContext.startForegroundService(intent)
         JSONObject().apply { put("status", "stopped") }.toString()
     } catch (e: Exception) {
         JSONObject().apply { put("status", "error"); put("error", e.message ?: "Erreur inconnue") }.toString()
@@ -178,12 +164,7 @@ class NativeBridge(context: Context) {
 
     @JavascriptInterface
     fun getBotStatus(): String = try {
-        JSONObject().apply {
-            put("running", botRunning)
-            put("strategy", botStrategy ?: JSONObject.NULL)
-            put("last_signal", lastSignal)
-            put("last_error", lastError ?: JSONObject.NULL)
-        }.toString()
+        botStatus.read().toString()
     } catch (_: Exception) {
         JSONObject().apply { put("running", false) }.toString()
     }

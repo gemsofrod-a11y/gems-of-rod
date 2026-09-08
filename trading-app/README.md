@@ -114,18 +114,34 @@ faut héberger le serveur sur une machine accessible depuis internet
 ## Application Android (APK)
 
 `android/` est un projet Android autonome et minimal (WebView + un
-petit pont réseau natif en Kotlin, `NativeBridge.kt`) : cours XAU/USD
-et graphique en bougies (1 min, 5 min, 15 min, 1 h, 4 h, 1 jour), en
-quasi temps réel, sans serveur à lancer ni compte à créer. Il ne
-comprend volontairement pas le broker interne, le bot ni le
-backtester (qui restent dans l'app web ci-dessus) — c'est la version
-« suivi du marché » à emporter sur le téléphone.
+pont réseau natif en Kotlin, `NativeBridge.kt`) : cours XAU/USD et
+graphique en bougies (1 min à 1 jour) en quasi temps réel, un
+portefeuille virtuel (1000 USD de départ, persisté sur l'appareil,
+aucun courtier), achat/vente manuels, et un bot de trading — sans
+serveur à lancer ni compte à créer.
+
+Le bot (`TradingBot.kt`) investit un **montant fixe en USD** à chaque
+position qu'il ouvre (au lieu d'un pourcentage du solde), avec un
+take-profit / stop-loss précis et une durée maximale de détention par
+position, et s'arrête tout seul en cas d'objectif atteint ou de seuil
+de protection franchi. Il tourne dans `TradingBotService.kt`, un
+**service Android de premier plan** (notification persistante avec
+bouton « Arrêter ») : il continue donc de fonctionner même l'app
+fermée, contrairement à un simple traitement lié à l'écran ouvert.
+
+⚠️ Android limite de plus en plus l'exécution en arrière-plan, et
+certains fabricants (Xiaomi/MIUI, Samsung, Huawei…) tuent les
+services de premier plan malgré tout pour économiser la batterie. Si
+le bot semble s'arrêter tout seul, désactiver l'optimisation de
+batterie pour l'app dans les réglages système du téléphone aide
+généralement. Ce n'est pas propre à cette app : c'est une limite
+générale de la plateforme.
 
 Techniquement, la page (`assets/index.html` + `app.js`) est la même
 famille de code que le frontend web, mais elle interroge un pont
-Kotlin (`window.NativeBridge.getPrice()` / `getCandles()`) au lieu
-d'un serveur, pour éviter tout souci de CORS et ne dépendre d'aucun
-processus à faire tourner sur le téléphone.
+Kotlin (`window.NativeBridge`) au lieu d'un serveur, pour éviter tout
+souci de CORS et ne dépendre d'aucun processus à faire tourner sur le
+téléphone.
 
 **Obtenir l'APK :** ce dépôt ne peut pas construire l'APK lui-même
 (il faut le SDK Android et un accès réseau complet, indisponibles

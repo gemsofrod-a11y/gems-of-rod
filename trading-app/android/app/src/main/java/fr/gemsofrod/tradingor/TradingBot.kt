@@ -4,17 +4,21 @@ import org.json.JSONObject
 import java.util.concurrent.atomic.AtomicBoolean
 
 /**
- * Bot orienté objectif — même comportement que
- * trading-app/backend/bot_engine.py : on lui donne un objectif de
- * valorisation et il enchaîne autant de positions courtes que
- * nécessaire jusqu'à l'atteindre, chaque position portant un
- * take-profit / stop-loss précis et une durée maximale de détention,
- * avec un seuil de protection qui l'arrête si le portefeuille
- * s'érode trop. Tourne tant que l'app reste ouverte (pas de service
- * en arrière-plan) — il s'arrête si l'app est fermée.
+ * Bot de trading : investit un montant fixe (en USD) à chaque prise
+ * de position, décidée par la stratégie choisie (achat) et refermée
+ * dès qu'un seuil précis de gain/perte ou une durée maximale de
+ * détention est atteint — jamais laissée traîner en attendant un
+ * hypothétique signal contraire. Si un objectif de valorisation est
+ * donné, le bot enchaîne autant de positions que nécessaire jusqu'à
+ * l'atteindre ; un seuil de protection l'arrête si le portefeuille
+ * s'érode trop, que l'objectif soit défini ou non.
  *
- * Aucun résultat n'est garanti, en particulier pour un objectif
- * ambitieux sans effet de levier.
+ * L'historique de prix est pré-rempli avec les bougies réelles
+ * disponibles au démarrage (au lieu de repartir de zéro), pour que
+ * la stratégie puisse produire un signal dès les premiers cycles
+ * plutôt qu'après plusieurs minutes d'attente.
+ *
+ * Aucun résultat n'est garanti.
  */
 class TradingBot(
     private val wallet: Wallet,
@@ -22,7 +26,7 @@ class TradingBot(
     private val strategyName: String,
     private val params: JSONObject,
     private val intervalSec: Int,
-    baseRiskPct: Double,
+    investAmountUsd: Double,
     private val takeProfitPct: Double,
     private val stopLossPct: Double,
     private val maxHoldingSec: Long,
@@ -30,7 +34,7 @@ class TradingBot(
     floorPct: Double,
     private val onStatus: (running: Boolean, signal: String, error: String?) -> Unit,
 ) {
-    private val baseRiskPct = baseRiskPct.coerceIn(1.0, 100.0)
+    private val investAmountUsd = investAmountUsd.coerceAtLeast(1.0)
     private val floorPct = floorPct.coerceIn(1.0, 90.0)
     private val stopFlag = AtomicBoolean(false)
     private val history = mutableListOf<Double>()
@@ -43,7 +47,7 @@ class TradingBot(
         val t = Thread {
             runCatching { loop() }.onFailure { onStatus(false, "erreur fatale", it.message) }
         }
-        t.isDaemon = true
+        t.isDaemon = false // le service de premier plan porte le cycle de vie, pas l'Activity
         thread = t
         t.start()
     }
@@ -53,6 +57,8 @@ class TradingBot(
     }
 
     private fun loop() {
+        seedHistory()
+
         val quote0 = priceSource.getQuote()
         val summary0 = wallet.summary(quote0.price)
         startEquity = summary0.getDouble("equity")
@@ -71,6 +77,17 @@ class TradingBot(
             Thread.sleep(intervalSec * 1000L)
         }
         onStatus(false, "arrêté", null)
+    }
+
+    private fun seedHistory() {
+        try {
+            val needed = Strategies.minHistory(strategyName, params)
+            val (_, candles) = priceSource.getCandles("1m", (needed + 20).coerceAtMost(200))
+            history.clear()
+            history.addAll(candles.map { it.c })
+        } catch (_: Exception) {
+            // pas grave : la stratégie se contentera de "hold" le temps d'accumuler des cours en direct
+        }
     }
 
     private fun tick() {
@@ -96,7 +113,7 @@ class TradingBot(
             if (reason != null) closePosition(reason)
         } else {
             signal = Strategies.signal(strategyName, params, history)
-            if (signal == "buy") openPosition(quote.price, summary.getDouble("cash_balance"), equity)
+            if (signal == "buy") openPosition(quote.price, summary.getDouble("cash_balance"))
         }
         onStatus(true, signal, null)
     }
@@ -113,17 +130,8 @@ class TradingBot(
         }
     }
 
-    private fun dynamicRiskPct(equity: Double): Double {
-        val target = targetEquity
-        if (target == null || target <= startEquity) return baseRiskPct
-        val progress = ((equity - startEquity) / (target - startEquity)).coerceIn(0.0, 1.0)
-        val factor = 1.6 - 0.8 * progress
-        return (baseRiskPct * factor).coerceIn(5.0, 90.0)
-    }
-
-    private fun openPosition(price: Double, cash: Double, equity: Double) {
-        val riskPct = dynamicRiskPct(equity)
-        val amount = cash * (riskPct / 100)
+    private fun openPosition(price: Double, cash: Double) {
+        val amount = minOf(investAmountUsd, cash)
         if (amount <= 1) return
         try {
             wallet.executeOrder("buy", null, amount, price, "bot", strategyName)

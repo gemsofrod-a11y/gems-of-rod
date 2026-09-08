@@ -88,7 +88,7 @@
         </div>
         <div class="row">
           <label>Intervalle (s) <input id="bot-interval" type="number" value="10" min="2" /></label>
-          <label>Risque (%) <input id="bot-risk" type="number" value="25" min="1" max="100" /></label>
+          <label>Montant investi (USD) <input id="bot-amount" type="number" value="50" min="1" step="1" /></label>
         </div>
         <div class="row">
           <label>Take-profit (%) <input id="bot-tp" type="number" value="1.5" min="0.1" step="0.1" /></label>
@@ -106,7 +106,7 @@
           <button type="button" id="bot-stop" class="ghost">Arrêter</button>
         </div>
         <p class="status" id="bot-status"></p>
-        <p class="note">Le bot tourne tant que l'app reste ouverte. Aucun résultat n'est garanti.</p>
+        <p class="note">Le bot continue de tourner même app fermée (notification persistante). Aucun résultat n'est garanti.</p>
       </form>
     </section>
 
