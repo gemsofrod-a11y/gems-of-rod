@@ -104,7 +104,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | grenat-grossulaire | ♻️ [File:Grossular garnet from Quebec, collected by Dr John Hunter in the 18th century, Hunterian Museum, Glasgow.jpg](https://commons.wikimedia.org/wiki/File:Grossular_garnet_from_Quebec,_collected_by_Dr_John_Hunter_in_the_18th_century,_Hunterian_Museum,_Glasgow.jpg) | ⏸️ recherche suspendue |
 | diopside | ♻️ [File:Diopside (GeoDIL number - 395).jpg](https://commons.wikimedia.org/wiki/File:Diopside_(GeoDIL_number_-_395).jpg) | ♻️ [File:Diopside 1.jpg](https://commons.wikimedia.org/wiki/File:Diopside_1.jpg) |
 | jade-nephrite | ♻️ [File:Black-nephrite-jade-bangle.jpg](https://commons.wikimedia.org/wiki/File:Black-nephrite-jade-bangle.jpg) | ♻️ [File:Amphibole - Nephrite Jade Basic calcium magnesium iron silicate Lander County Wyoming 2077.jpg](https://commons.wikimedia.org/wiki/File:Amphibole_-_Nephrite_Jade_Basic_calcium_magnesium_iron_silicate_Lander_County_Wyoming_2077.jpg) |
-| maw-sit-sit | ♻️ [Mawsitsit (chromian jade) (Namshamaw Deposit, Hpakan-Tawmaw Jade Tract, Late Jurassic, 147 Ma; Maw Sit Sit, near Kansi, western Kachin State, Indo-Burma Range, northern Burma) 2](https://www.flickr.com/photos/47445767@N05/14925755549) | ❌ non trouvée |
+| maw-sit-sit | ♻️ [Mawsitsit (chromian jade) (Namshamaw Deposit, Hpakan-Tawmaw Jade Tract, Late Jurassic, 147 Ma; Maw Sit Sit, near Kansi, western Kachin State, Indo-Burma Range, northern Burma) 2](https://www.flickr.com/photos/47445767@N05/14925755549) | ❌ échec téléchargement |
 | tourmaline-chrome | ♻️ [Dravite-38386](https://commons.wikimedia.org/w/index.php?curid=10126876) | ♻️ [Faceted chrome tourmaline 5](https://www.flickr.com/photos/47445767@N05/52319972413) |
 | azurite | ♻️ [File:Azurite, Burra Mine, South Australia.jpg](https://commons.wikimedia.org/wiki/File:Azurite,_Burra_Mine,_South_Australia.jpg) | ⏸️ recherche suspendue |
 | sodalite | ⏸️ recherche suspendue | ♻️ [Sodalite en perles — photo Céc.C](https://gems-of-rod.fr) |
@@ -135,9 +135,9 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | quartz-rose | ♻️ [File:Raw rose quartz.jpg](https://commons.wikimedia.org/wiki/File:Raw_rose_quartz.jpg) | ♻️ [File:Rose quartz-1.JPG](https://commons.wikimedia.org/wiki/File:Rose_quartz-1.JPG) |
 | phosphosiderite | ♻️ [Phosphosiderite-141096](https://commons.wikimedia.org/w/index.php?curid=14865728) | ⏸️ recherche suspendue |
 | vivianite | ♻️ [File:Vivianite Kerch.jpg](https://commons.wikimedia.org/wiki/File:Vivianite_Kerch.jpg) | — |
-| ecaille-de-tortue | ✅ [File:La Y griega.jpg](https://commons.wikimedia.org/wiki/File:La_Y_griega.jpg) | — |
-| bois-de-cerf | ✅ [File:Shed antler of Fallow deer IMG 6926.jpg](https://commons.wikimedia.org/wiki/File:Shed_antler_of_Fallow_deer_IMG_6926.jpg) | — |
-| corail-noir | ✅ [File:Crab on black coral Puerto Rico April 2015.png](https://commons.wikimedia.org/wiki/File:Crab_on_black_coral_Puerto_Rico_April_2015.png) | — |
+| ecaille-de-tortue | ❌ non trouvée | — |
+| bois-de-cerf | ♻️ [File:Shed antler of Fallow deer IMG 6926.jpg](https://commons.wikimedia.org/wiki/File:Shed_antler_of_Fallow_deer_IMG_6926.jpg) | — |
+| corail-noir | ♻️ [File:Crab on black coral Puerto Rico April 2015.png](https://commons.wikimedia.org/wiki/File:Crab_on_black_coral_Puerto_Rico_April_2015.png) | — |
 | saphir-blanc | ♻️ [File:Engagement ring 18K yellow gold with yellow sapphire and diamonds.jpg](https://commons.wikimedia.org/wiki/File:Engagement_ring_18K_yellow_gold_with_yellow_sapphire_and_diamonds.jpg) | ♻️ [File:River Scene Ring 2.jpg](https://commons.wikimedia.org/wiki/File:River_Scene_Ring_2.jpg) |
 | topaze-blanche | ♻️ [Topaz ring](https://www.flickr.com/photos/76523360@N03/15063028108) | ♻️ [Topaz with irradiated fragment - Smithsonian Museum of Natural History - 2012-05-17](https://www.flickr.com/photos/23165290@N00/7283942412) |
 | hambergite | ♻️ [File:Hambergite (GeoDIL number - 230).jpg](https://commons.wikimedia.org/wiki/File:Hambergite_(GeoDIL_number_-_230).jpg) | ⏸️ recherche suspendue |
@@ -152,7 +152,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | cerusite | ♻️ [File:Cerussite - Nakhlak mine, Anarak, Esfahan, Iran.jpg](https://commons.wikimedia.org/wiki/File:Cerussite_-_Nakhlak_mine,_Anarak,_Esfahan,_Iran.jpg) | ⏸️ recherche suspendue |
 | montebrasite | ♻️ [File:Amblygonite (GeoDIL number - 925).jpg](https://commons.wikimedia.org/wiki/File:Amblygonite_(GeoDIL_number_-_925).jpg) | ♻️ [File:Montebrasite.jpg](https://commons.wikimedia.org/wiki/File:Montebrasite.jpg) |
 | bois-fossilise | ♻️ [File:Polished Petrified Wood Macro.JPG](https://commons.wikimedia.org/wiki/File:Polished_Petrified_Wood_Macro.JPG) | ⏸️ recherche suspendue |
-| os-fossilise | ❌ non trouvée | ❌ échec téléchargement |
+| os-fossilise | ❌ échec téléchargement | ❌ échec téléchargement |
 | kornerupine | ♻️ [File:Kornerupine (GeoDIL number - 274).jpg](https://commons.wikimedia.org/wiki/File:Kornerupine_(GeoDIL_number_-_274).jpg) | ♻️ [Kornerupine-244946](https://commons.wikimedia.org/w/index.php?curid=15867784) |
 | hyperstene | ♻️ [File:Labradorite with hypersthene (GeoDIL number - 392).jpg](https://commons.wikimedia.org/wiki/File:Labradorite_with_hypersthene_(GeoDIL_number_-_392).jpg) | ♻️ [File:Bronzite (orthopyroxene) (GeoDIL number - 406).jpg](https://commons.wikimedia.org/wiki/File:Bronzite_(orthopyroxene)_(GeoDIL_number_-_406).jpg) |
 | paesine | ♻️ [File:Pietra paesina Val d'Arno Caillois Donation MNHN n10.jpg](https://commons.wikimedia.org/wiki/File:Pietra_paesina_Val_d'Arno_Caillois_Donation_MNHN_n10.jpg) | ⏸️ recherche suspendue |
@@ -197,7 +197,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | sanidine | ♻️ [File:Rotherkopfite crystals.png](https://commons.wikimedia.org/wiki/File:Rotherkopfite_crystals.png) | ♻️ [File:Forsterite on Sanidine - Ochtendung, Eifel, Germany.jpg](https://commons.wikimedia.org/w/index.php?curid=9819497) |
 | tremolite | ♻️ [File:Tremolite (GeoDIL number - 1701).jpg](https://commons.wikimedia.org/wiki/File:Tremolite_(GeoDIL_number_-_1701).jpg) | ♻️ [Tremolite schist (Upper Marble, Grenville Series, Mesoproterozoic, 1.15-1.30 Ga; Balmat, Adirondack Lowlands, New York State, USA)](https://www.flickr.com/photos/47445767@N05/16921690192) |
 | oeil-de-taureau | ❌ non trouvée | ♻️ [Œil de taureau poli — photo Coraline Minéraux](https://gems-of-rod.fr) |
-| unakite | ❌ non trouvée | ❌ échec téléchargement |
+| unakite | ❌ échec téléchargement | ❌ échec téléchargement |
 | oeil-de-sainte-lucie | — | ♻️ [File:Turbo petholatus Linnaeus, 1758 operculum - Wikimedia Commons (1).jpg](https://commons.wikimedia.org/wiki/File:Turbo_petholatus_Linnaeus,_1758_operculum_-_Wikimedia_Commons_(1).jpg) |
 | jais | ♻️ [File:Gagat-Holzmaden.JPG](https://commons.wikimedia.org/wiki/File:Gagat-Holzmaden.JPG) | ♻️ [File:Jet Jewellery.jpg](https://commons.wikimedia.org/wiki/File:Jet_Jewellery.jpg) |
 | grenat-etoile | ♻️ [File:Star of idaho.JPG](https://commons.wikimedia.org/wiki/File:Star_of_idaho.JPG) | ♻️ [File:Idahostargarnet.jpg](https://commons.wikimedia.org/wiki/File:Idahostargarnet.jpg) |
@@ -259,8 +259,8 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | coquillage-burgau-vert | ♻️ [File:Turbo Marmoratus Madagascar.jpg](https://commons.wikimedia.org/wiki/File:Turbo_Marmoratus_Madagascar.jpg) | — |
 | coquillage-murex-pourpre | ♻️ [File:Bolinus brandaris 01.jpg](https://commons.wikimedia.org/wiki/File:Bolinus_brandaris_01.jpg) | — |
 | coquillage-lambis | ♻️ [coquillage-lambis — photo Coraline Minéraux](https://gems-of-rod.fr) | — |
-| coquillage-cone-textile | ✅ [File:Cylinder textile textile 01.jpg](https://commons.wikimedia.org/wiki/File:Cylinder_textile_textile_01.jpg) | — |
-| coquillage-peigne-de-venus | ✅ [File:Murex pecten 001.JPG](https://commons.wikimedia.org/wiki/File:Murex_pecten_001.JPG) | — |
+| coquillage-cone-textile | ♻️ [File:Cylinder textile textile 01.jpg](https://commons.wikimedia.org/wiki/File:Cylinder_textile_textile_01.jpg) | — |
+| coquillage-peigne-de-venus | ♻️ [File:Murex pecten 001.JPG](https://commons.wikimedia.org/wiki/File:Murex_pecten_001.JPG) | — |
 | coquillage-huitre-perliere-noire | ♻️ [File:Pinctada margaritifera 001.png](https://commons.wikimedia.org/wiki/File:Pinctada_margaritifera_001.png) | — |
 | coquillage-huitre-perliere-doree | ♻️ [File:Naturalis Biodiversity Center - RMNH.MOL.318379 - Pinctada maxima (Jameson, 1901) - Pteriidae - Mollusc shell.jpeg](https://commons.wikimedia.org/wiki/File:Naturalis_Biodiversity_Center_-_RMNH.MOL.318379_-_Pinctada_maxima_(Jameson,_1901)_-_Pteriidae_-_Mollusc_shell.jpeg) | — |
 | coquillage-saint-jacques | ♻️ [File:Pecten maximus 02.jpg](https://commons.wikimedia.org/wiki/File:Pecten_maximus_02.jpg) | — |
@@ -269,7 +269,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | coquillage-moule-perliere-eau-douce | ♻️ [File:Margaritifera margaritifera-buiten.jpg](https://commons.wikimedia.org/wiki/File:Margaritifera_margaritifera-buiten.jpg) | — |
 | coquillage-nautile | ♻️ [File:Nautilus pompilius albino.jpg](https://commons.wikimedia.org/wiki/File:Nautilus_pompilius_albino.jpg) | ♻️ [File:Nautilus Pompilius MN 01.jpg](https://commons.wikimedia.org/wiki/File:Nautilus_Pompilius_MN_01.jpg) |
 
-**370 / 482** photos récupérées au total.
+**369 / 482** photos récupérées au total.
 
 ## Photos d'inclusions
 
