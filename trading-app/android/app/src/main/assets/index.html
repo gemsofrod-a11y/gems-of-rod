@@ -70,10 +70,10 @@
       </div>
 
       <div class="panel">
-        <h2>Historique <button class="tip" data-tip="Vos 30 derniers achats/ventes, manuels ou passés par le bot.">ⓘ</button></h2>
+        <h2>Historique <span class="count-pill" id="trades-count">0</span> <button class="tip" data-tip="Vos 30 derniers achats/ventes, manuels ou passés par le bot. La colonne Gain/Perte compare chaque vente à l'achat qui l'a précédée.">ⓘ</button></h2>
         <div class="table-wrap">
           <table id="trades-table">
-            <thead><tr><th>Sens</th><th>Qté</th><th>Prix</th><th>Origine</th></tr></thead>
+            <thead><tr><th>Sens</th><th>Qté</th><th>Prix</th><th>Gain/Perte</th><th>Origine</th></tr></thead>
             <tbody></tbody>
           </table>
           <p class="empty-state" id="trades-empty" hidden>Aucun trade pour l'instant. Investissez depuis l'onglet Graphique, ou laissez le bot s'en charger.</p>

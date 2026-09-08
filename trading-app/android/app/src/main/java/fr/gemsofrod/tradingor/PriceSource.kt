@@ -19,6 +19,16 @@ import kotlin.random.Random
  */
 class PriceSource {
 
+    companion object {
+        /** Chaque appel réseau bloque le thread appelant (le pont JS
+         * attend la réponse avant de rendre la main) : un cache court
+         * évite de retaper le réseau à chaque rafraîchissement de
+         * l'interface, seule vraie source de lenteur perçue. Même
+         * principe que le cache 5s du serveur de l'app web. */
+        private const val QUOTE_CACHE_MS = 5_000L
+        private const val CANDLES_CACHE_MS = 20_000L
+    }
+
     @Volatile
     var lastPrice: Double = 2400.0
         private set
@@ -36,7 +46,15 @@ class PriceSource {
         "1d" to TimeframeConfig(86400, "1d", "6mo", 1),
     )
 
+    @Volatile private var quoteCache: Quote? = null
+    @Volatile private var quoteCacheAt: Long = 0
+    private val candlesCache = mutableMapOf<String, Pair<Long, Pair<String, List<Candle>>>>()
+
+    @Synchronized
     fun getQuote(): Quote {
+        val now = System.currentTimeMillis()
+        quoteCache?.let { if (now - quoteCacheAt < QUOTE_CACHE_MS) return it }
+
         val goldApi = fetchGoldApi()
         val metalsLive = if (goldApi == null) fetchMetalsLive() else null
         val (price, provider) = when {
@@ -45,14 +63,25 @@ class PriceSource {
             else -> simulateStep() to ""
         }
         lastPrice = price
-        return Quote(price, if (provider.isNotEmpty()) "live" else "simule", provider)
+        val quote = Quote(price, if (provider.isNotEmpty()) "live" else "simule", provider)
+        quoteCache = quote
+        quoteCacheAt = now
+        return quote
     }
 
+    @Synchronized
     fun getCandles(timeframe: String, limit: Int): Pair<String, List<Candle>> {
+        val now = System.currentTimeMillis()
+        candlesCache[timeframe]?.let { (cachedAt, cached) ->
+            if (now - cachedAt < CANDLES_CACHE_MS) return cached
+        }
+
         val cfg = timeframes[timeframe] ?: timeframes.getValue("1m")
         val yahoo = fetchYahooCandles(cfg)
-        return if (yahoo != null) "yahoo-finance" to yahoo.takeLast(limit)
+        val result = if (yahoo != null) "yahoo-finance" to yahoo.takeLast(limit)
         else "simule" to syntheticCandles(cfg, limit)
+        candlesCache[timeframe] = now to result
+        return result
     }
 
     private fun fetchGoldApi(): Double? = try {

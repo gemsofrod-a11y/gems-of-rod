@@ -76,12 +76,15 @@
       badge.textContent = quote.source === "live" ? `cours réel · ${quote.provider}` : "simulé (hors ligne)";
       badge.className = `badge ${quote.source}`;
 
+      const el = $("price-change");
       if (state.candles.length) {
         const first = state.candles[0].o;
         const changePct = ((quote.price - first) / first) * 100;
-        const el = $("price-change");
         el.textContent = `${changePct >= 0 ? "+" : ""}${changePct.toFixed(2)} %`;
         el.className = `price-change ${changePct >= 0 ? "positive" : "negative"}`;
+      } else {
+        el.textContent = "—";
+        el.className = "price-change";
       }
     } catch (err) {
       $("price-source").textContent = "indisponible";
@@ -275,17 +278,42 @@
 
   function refreshTrades() {
     try {
-      const trades = JSON.parse(window.NativeBridge.getTrades(30));
+      const trades = JSON.parse(window.NativeBridge.getTrades(30)); // du plus récent au plus ancien
+      $("trades-count").textContent = trades.length;
+
+      // Reconstruit les allers-retours achat → vente en ordre chronologique
+      // pour calculer le gain/perte de chaque vente par rapport à l'achat
+      // qui l'a précédée (un seul achat ouvert à la fois, comme le bot).
+      const chronological = [...trades].reverse();
+      let openBuy = null;
+      for (const t of chronological) {
+        if (t.side === "buy") {
+          openBuy = t;
+        } else if (t.side === "sell" && openBuy) {
+          t._pnl = t.amount - openBuy.amount;
+          openBuy = null;
+        }
+      }
+
       const tbody = document.querySelector("#trades-table tbody");
       $("trades-empty").hidden = trades.length > 0;
-      tbody.innerHTML = trades.map((t) => `
+      tbody.innerHTML = trades.map((t) => {
+        let pnlCell = "—";
+        let pnlClass = "neutral";
+        if (typeof t._pnl === "number") {
+          pnlClass = t._pnl > 0 ? "positive" : t._pnl < 0 ? "negative" : "neutral";
+          pnlCell = `${t._pnl >= 0 ? "+" : ""}${fmtUsd(t._pnl)}`;
+        }
+        return `
         <tr>
           <td>${t.side === "buy" ? "Achat" : "Vente"}</td>
           <td>${t.qty_oz.toFixed(4)}</td>
           <td>${fmtUsd(t.price)}</td>
+          <td class="pnl-cell ${pnlClass}">${pnlCell}</td>
           <td>${t.source === "bot" ? "Bot" : "Manuel"}</td>
         </tr>
-      `).join("");
+      `;
+      }).join("");
     } catch (err) { /* silencieux */ }
   }
 
@@ -417,7 +445,7 @@
   (function init() {
     refreshCandles();
     tick();
-    setInterval(tick, 4000);
-    setInterval(refreshCandles, 15000);
+    setInterval(tick, 5000);
+    setInterval(refreshCandles, 20000);
   })();
 })();

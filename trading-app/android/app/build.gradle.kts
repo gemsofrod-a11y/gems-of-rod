@@ -11,8 +11,8 @@ android {
         applicationId = "fr.gemsofrod.tradingor"
         minSdk = 26
         targetSdk = 36
-        versionCode = 5
-        versionName = "1.4"
+        versionCode = 6
+        versionName = "1.5"
     }
 
     // Clé de débogage fixe (commitée, non secrète — c'est la norme pour
