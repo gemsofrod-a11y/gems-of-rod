@@ -2,7 +2,7 @@
   "use strict";
 
   const $ = (id) => document.getElementById(id);
-  const state = { timeframe: "1m", candles: [] };
+  const state = { timeframe: "1m", candles: [], crosshairIndex: null };
 
   // --- onglets ---
 
@@ -92,11 +92,15 @@
     try {
       const result = JSON.parse(window.NativeBridge.getCandles(state.timeframe, 120));
       state.candles = result.candles || [];
-      const providerLabel = { "yahoo-finance": "cours réel (Yahoo Finance)", "simule": "données simulées" }[result.provider] || result.provider;
-      $("chart-provider").textContent = providerLabel;
+      const providerLabel = { "yahoo-finance": "mouvement réel · Yahoo Finance", "simule": "⚠ mouvement simulé (pas de connexion aux vraies données)" }[result.provider] || result.provider;
+      const providerEl = $("chart-provider");
+      providerEl.textContent = providerLabel;
+      providerEl.className = `badge chart-badge ${result.provider === "yahoo-finance" ? "live" : "simule"}`;
       drawCandles();
     } catch (err) {
-      $("chart-provider").textContent = "graphique indisponible";
+      const providerEl = $("chart-provider");
+      providerEl.textContent = "graphique indisponible";
+      providerEl.className = "badge chart-badge simule";
     }
   }
 
@@ -108,25 +112,70 @@
     refreshCandles();
   });
 
-  function drawCandles() {
-    const canvas = $("price-chart");
-    const ctx = canvas.getContext("2d");
-    const w = canvas.width, h = canvas.height;
-    ctx.clearRect(0, 0, w, h);
-    const candles = state.candles;
-    if (candles.length < 2) return;
+  const CHART_MARGIN = { top: 10, right: 62, bottom: 22, left: 4 };
 
+  function chartGeometry() {
+    const canvas = $("price-chart");
+    const w = canvas.width, h = canvas.height;
+    const plotW = w - CHART_MARGIN.left - CHART_MARGIN.right;
+    const plotH = h - CHART_MARGIN.top - CHART_MARGIN.bottom;
+    const candles = state.candles;
     const lows = candles.map((c) => c.l), highs = candles.map((c) => c.h);
     const min = Math.min(...lows), max = Math.max(...highs);
     const pad = (max - min) * 0.08 || 1;
     const yMin = min - pad, yMax = max + pad;
-    const yOf = (price) => h - ((price - yMin) / (yMax - yMin)) * h;
+    const yOf = (price) => CHART_MARGIN.top + plotH - ((price - yMin) / (yMax - yMin)) * plotH;
+    const slot = plotW / candles.length;
+    const xOf = (i) => CHART_MARGIN.left + i * slot + slot / 2;
+    return { canvas, w, h, plotW, plotH, yMin, yMax, yOf, slot, xOf };
+  }
 
-    const slot = w / candles.length;
+  function fmtTime(epochSec, timeframe) {
+    const d = new Date(epochSec * 1000);
+    if (timeframe === "1d" || timeframe === "4h") {
+      return d.toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" });
+    }
+    return d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+  }
+
+  function drawCandles() {
+    const candles = state.candles;
+    const geo = chartGeometry();
+    const { canvas, w, h, yOf, xOf, slot, yMin, yMax } = geo;
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, w, h);
+    if (candles.length < 2) return;
+
+    // --- grille + échelle de prix ---
+    ctx.strokeStyle = "#2a2e38";
+    ctx.fillStyle = "#9aa2b1";
+    ctx.font = "11px sans-serif";
+    ctx.textBaseline = "middle";
+    const steps = 5;
+    for (let i = 0; i <= steps; i++) {
+      const price = yMin + ((yMax - yMin) * i) / steps;
+      const y = yOf(price);
+      ctx.beginPath();
+      ctx.lineWidth = 1;
+      ctx.moveTo(CHART_MARGIN.left, y);
+      ctx.lineTo(w - CHART_MARGIN.right, y);
+      ctx.stroke();
+      ctx.textAlign = "left";
+      ctx.fillText(price.toFixed(price >= 1000 ? 0 : 1), w - CHART_MARGIN.right + 4, y);
+    }
+
+    // --- repères de temps ---
+    ctx.textAlign = "center";
+    ctx.textBaseline = "top";
+    const timeIdx = [0, Math.floor((candles.length - 1) / 2), candles.length - 1];
+    timeIdx.forEach((i) => {
+      ctx.fillText(fmtTime(candles[i].t, state.timeframe), xOf(i), h - CHART_MARGIN.bottom + 4);
+    });
+
+    // --- bougies ---
     const bodyWidth = Math.max(1, slot * 0.6);
-
     candles.forEach((c, i) => {
-      const x = i * slot + slot / 2;
+      const x = xOf(i);
       const up = c.c >= c.o;
       ctx.strokeStyle = ctx.fillStyle = up ? "#3ec98b" : "#e6604f";
       ctx.lineWidth = 1;
@@ -139,7 +188,70 @@
       const height = Math.max(1, Math.abs(yClose - yOpen));
       ctx.fillRect(x - bodyWidth / 2, top, bodyWidth, height);
     });
+
+    if (state.crosshairIndex !== null && state.crosshairIndex !== undefined) {
+      drawCrosshair(geo, state.crosshairIndex);
+    }
   }
+
+  function drawCrosshair(geo, index) {
+    const candles = state.candles;
+    const i = Math.max(0, Math.min(candles.length - 1, index));
+    const c = candles[i];
+    if (!c) return;
+    const { canvas, w, h, yOf, xOf } = geo;
+    const ctx = canvas.getContext("2d");
+    const x = xOf(i), y = yOf(c.c);
+
+    ctx.save();
+    ctx.strokeStyle = "#d4af37";
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(x, CHART_MARGIN.top);
+    ctx.lineTo(x, h - CHART_MARGIN.bottom);
+    ctx.moveTo(CHART_MARGIN.left, y);
+    ctx.lineTo(w - CHART_MARGIN.right, y);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    const label = `${fmtUsd(c.c)}  ·  ${fmtTime(c.t, state.timeframe)}  ·  O ${c.o.toFixed(1)} H ${c.h.toFixed(1)} L ${c.l.toFixed(1)} C ${c.c.toFixed(1)}`;
+    ctx.font = "11px sans-serif";
+    const textWidth = ctx.measureText(label).width;
+    const boxX = Math.min(Math.max(x - textWidth / 2 - 6, 2), w - textWidth - 10);
+    ctx.fillStyle = "#05070a";
+    ctx.strokeStyle = "#d4af37";
+    ctx.lineWidth = 1;
+    ctx.fillRect(boxX, CHART_MARGIN.top, textWidth + 12, 20);
+    ctx.strokeRect(boxX, CHART_MARGIN.top, textWidth + 12, 20);
+    ctx.fillStyle = "#eef0f4";
+    ctx.textAlign = "left";
+    ctx.textBaseline = "middle";
+    ctx.fillText(label, boxX + 6, CHART_MARGIN.top + 10);
+    ctx.restore();
+  }
+
+  function handleChartPointer(evt) {
+    const canvas = $("price-chart");
+    const candles = state.candles;
+    if (!candles.length) return;
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const clientX = (evt.touches ? evt.touches[0].clientX : evt.clientX) - rect.left;
+    const canvasX = clientX * scaleX;
+    const geo = chartGeometry();
+    const relative = (canvasX - CHART_MARGIN.left) / geo.slot;
+    state.crosshairIndex = Math.round(relative - 0.5);
+    drawCandles();
+  }
+
+  const chartCanvas = $("price-chart");
+  let chartDragging = false;
+  chartCanvas.addEventListener("pointerdown", (e) => { chartDragging = true; handleChartPointer(e); e.preventDefault(); });
+  chartCanvas.addEventListener("pointermove", (e) => { if (chartDragging) handleChartPointer(e); });
+  chartCanvas.addEventListener("pointerup", () => { chartDragging = false; state.crosshairIndex = null; drawCandles(); });
+  chartCanvas.addEventListener("pointercancel", () => { chartDragging = false; state.crosshairIndex = null; drawCandles(); });
+  chartCanvas.addEventListener("pointerleave", () => { chartDragging = false; state.crosshairIndex = null; drawCandles(); });
 
   // --- portefeuille ---
 
