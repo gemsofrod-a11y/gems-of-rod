@@ -20,6 +20,47 @@
     $("bot-advanced-toggle").textContent = el.hidden ? "Réglages avancés ▾" : "Réglages avancés ▴";
   });
 
+  // --- bulles explicatives ---
+
+  let openTipBubble = null;
+  let openTipButton = null;
+
+  function closeTip() {
+    if (openTipBubble) openTipBubble.remove();
+    if (openTipButton) openTipButton.classList.remove("active");
+    openTipBubble = null;
+    openTipButton = null;
+  }
+
+  document.querySelectorAll("button.tip[data-tip]").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const wasOpenForThis = openTipButton === btn;
+      closeTip();
+      if (wasOpenForThis) return;
+
+      const bubble = document.createElement("div");
+      bubble.className = "tip-bubble";
+      bubble.textContent = btn.dataset.tip;
+      document.body.appendChild(bubble);
+
+      const rect = btn.getBoundingClientRect();
+      const bubbleWidth = bubble.offsetWidth;
+      let left = rect.left + rect.width / 2 - bubbleWidth / 2;
+      left = Math.max(8, Math.min(left, window.innerWidth - bubbleWidth - 8));
+      const top = rect.bottom + 8;
+      bubble.style.left = `${left}px`;
+      bubble.style.top = `${top}px`;
+
+      btn.classList.add("active");
+      openTipBubble = bubble;
+      openTipButton = btn;
+    });
+  });
+
+  document.addEventListener("click", closeTip);
+
   function fmtUsd(n) {
     return new Intl.NumberFormat("fr-FR", { style: "currency", currency: "USD" }).format(n);
   }

@@ -6,6 +6,7 @@ import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.webkit.WebSettings
 import android.webkit.WebView
 
 /**
@@ -32,6 +33,13 @@ class MainActivity : Activity() {
         webView = WebView(this).apply {
             settings.javaScriptEnabled = true
             settings.domStorageEnabled = true
+            // Le WebView met en cache les fichiers d'assets (app.js, styles.css)
+            // indépendamment des mises à jour de l'APK : sans ça, une nouvelle
+            // version installée par-dessus l'ancienne peut continuer à exécuter
+            // l'ancien code pendant un moment, ce qui donne l'impression que
+            // rien ne change d'une version à l'autre.
+            settings.cacheMode = WebSettings.LOAD_NO_CACHE
+            clearCache(true)
             addJavascriptInterface(NativeBridge(this@MainActivity), "NativeBridge")
             loadUrl("file:///android_asset/index.html")
         }
