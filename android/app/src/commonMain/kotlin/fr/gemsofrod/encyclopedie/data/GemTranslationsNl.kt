@@ -1495,6 +1495,27 @@ object GemTranslationsNl {
             particularites = "Dit is geen steen maar een bot: de verlenging van de bovenkaak van de vis, waarvan alleen het buitenoppervlak qua textuur en kleur aan sommige organische edelstenen zoals ivoor doet denken.",
             lithotherapie = "In tegenstelling tot oudere organische edelstenen heeft het zwaardvis-zwaard geen gevestigde lithotherapie-traditie; het wordt vooral gezocht als vistrofee of natuurcuriosum."
         ),
+        "ecaille-de-tortue" to GemTranslation(
+            nom = "Schildpad (schild)",
+            descriptionCourte = "De doorschijnende hoornplaten van het schild van de karetschildpad, amberkleurig gemarmerd, tegenwoordig een strikt beschermd materiaal.",
+            descriptionLongue = "Schildpad komt van de hoornachtige platen van het schild van de karetschildpad (Eretmochelys imbricata), gepolijst om een doorschijnend gemarmerd patroon te onthullen van honingkleurig tot diepbruin. Al sinds de oudheid gewaardeerd voor kammen, brilmonturen en inlegwerk, was het lange tijd een rivaal van ivoor als luxemateriaal. Omdat de soort tegenwoordig ernstig bedreigd is, is de handel erin sinds 1977 wereldwijd verboden: alleen antieke stukken van vóór deze bescherming mogen, onder strikte wettelijke voorwaarden, nog circuleren.",
+            particularites = "Ernstig bedreigde soort, sinds 1977 beschermd door CITES (bijlage I): de handel in nieuwe schildpad is wereldwijd verboden; alleen antieke stukken van vóór de bescherming mogen onder voorwaarden circuleren.",
+            lithotherapie = "Schildpad wordt van oudsher geassocieerd met lange levensduur en bescherming, ontleend aan de schildpad zelf, een symbool van wijsheid en geduld in tal van culturen."
+        ),
+        "bois-de-cerf" to GemTranslation(
+            nom = "Hertengewei",
+            descriptionCourte = "Het benige gewei dat het hert elk jaar afwerpt en opnieuw laat groeien, gesneden tot mesheften en rustieke voorwerpen.",
+            descriptionLongue = "Hertengewei is een snelgroeiend beenweefsel dat mannelijke herten elk jaar ontwikkelen en afwerpen, in tegenstelling tot de echte horens (permanent keratine) van holhoornigen. Van de grond geraapt na de jaarlijkse afworp, zonder het dier te doden, wordt het van oudsher gesneden tot mesheften, knopen, kandelaars en rustieke decoratieve voorwerpen, vooral in de Europese berg- en jachtambacht.",
+            particularites = "In tegenstelling tot horens (permanent keratine) is hertengewei een wisselend beenweefsel, dat elk jaar wordt afgeworpen en opnieuw aangroeit; het rapen ervan van de grond na de afworp vergt geen doden van het dier.",
+            lithotherapie = "Hertengewei wordt geassocieerd met vernieuwing en stille kracht, als echo van zijn jaarlijkse hergroei en zijn traditionele gebruik in het plattelandsambacht en de jacht."
+        ),
+        "corail-noir" to GemTranslation(
+            nom = "Zwart koraal",
+            descriptionCourte = "Het hoornachtige zwarte skelet van een diepzeekoraal, sinds het oude Hawaï gepolijst tot sieraden.",
+            descriptionLongue = "Zwart koraal vormt, in het duister van de grote diepten, vertakte kolonies waarvan het centrale skelet hoornachtig is in plaats van kalkachtig zoals dat van rood koraal. Gepolijst onthult het een diep, satijnzacht zwart dat zeer gewild is in de sieradenmakerij, vooral op Hawaï, waar het de officiële edelsteen van de staat is. Zijn extreem trage groei, slechts enkele millimeters per jaar, en de overexploitatie uit het verleden hebben er tegenwoordig een beschermde soort van gemaakt in tal van rechtsgebieden.",
+            particularites = "In tegenstelling tot rood koraal, dat kalkachtig is, is het skelet van zwart koraal hoornachtig, verwant aan keratine; zijn zeer trage groei heeft er een beschermde soort van gemaakt in tal van rechtsgebieden.",
+            lithotherapie = "Zwart koraal wordt van oudsher geassocieerd met bescherming en aarding, met name in Hawaiiaanse tradities waar het door zeelieden en krijgers als beschermende talisman werd gedragen."
+        ),
         "grenat-etoile" to GemTranslation(
             nom = "Sterrengranaat",
             descriptionCourte = "Een almandijn met vier of zes lichtstralen, een zeldzaamheid die vrijwel uitsluitend in Idaho wordt gevonden.",

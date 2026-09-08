@@ -57,6 +57,18 @@ object CoquillageTranslationsIt {
             descriptionLongue = "Cugino più modesto dello strombo regina caraibico, questo strombo delle lagune indo-pacifiche sviluppa lungo la sua apertura una serie di digitazioni affusolate che gli valgono il soprannome di «ragno». La sua conchiglia, molto comune nei mercati dell'artigianato costiero, è apprezzata soprattutto intera come oggetto decorativo piuttosto che come materia prima da tagliare.",
             interetJoaillerie = "Moderato: decorazione, elementi occasionali di gioielleria etnica"
         ),
+        "coquillage-cone-textile" to CoquillageTranslation(
+            nom = "Cono tessile",
+            descriptionCourte = "Un gasteropode dal fitto motivo geometrico che evoca un tessuto, una delle specie più ricercate dai collezionisti — e una delle più pericolose in vita.",
+            descriptionLongue = "Il cono tessile deve il proprio nome alla fitta rete di linee e rombi bruni che ricopre la sua conchiglia conica, evocando un tessuto stampato. Da vivo, questo gasteropode caccia mediante un arpione velenoso capace di paralizzare la preda e potenzialmente pericoloso per l'uomo, il che esclude qualsiasi manipolazione dell'animale vivo. La sua conchiglia, invece, raccolta vuota sulle spiagge indo-pacifiche, è una delle più ricercate dai collezionisti per la finezza e la regolarità del suo motivo.",
+            interetJoaillerie = "Moderato: pezzo da collezione, decorazione; mai montato in gioielleria per il pericolo rappresentato dall'animale vivo"
+        ),
+        "coquillage-peigne-de-venus" to CoquillageTranslation(
+            nom = "Pettine di Venere",
+            descriptionCourte = "Un murice irto di una sessantina di spine sottili e regolari, tra le conchiglie più spettacolari al mondo.",
+            descriptionLongue = "Il pettine di Venere deve il proprio nome alle lunghe spine sottili e regolarmente distanziate, talvolta più di cinquanta, che orlano l'apertura della sua conchiglia come i denti di un pettine. Questa architettura delicata, unica tra i gasteropodi marini, ne fa una delle conchiglie più apprezzate dai collezionisti — e una delle più difficili da conservare intatte, poiché la rottura di una sola spina ne riduce fortemente il valore.",
+            interetJoaillerie = "Da basso a moderato: pezzo da collezione e decorazione, raramente montato in gioielleria per la sua fragilità"
+        ),
         "coquillage-huitre-perliere-noire" to CoquillageTranslation(
             nom = "Ostrica perlifera labbra nere",
             descriptionCourte = "Il bivalve che produce le celebri perle di Tahiti, dalla madreperla interna grigio antracite dai riflessi colorati.",

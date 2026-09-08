@@ -57,6 +57,18 @@ object CoquillageTranslationsEn {
             descriptionLongue = "A more modest cousin of the Caribbean queen conch, this Indo-Pacific lagoon-dwelling strombid develops a series of slender projections along its outer lip, earning it its \"spider\" nickname. Its shell, very common on coastal craft markets, is mostly appreciated whole as a decorative object rather than as a raw material to be cut.",
             interetJoaillerie = "Moderate: décor, occasional elements in ethnic jewellery"
         ),
+        "coquillage-cone-textile" to CoquillageTranslation(
+            nom = "Textile Cone",
+            descriptionCourte = "A gastropod with a dense geometric pattern reminiscent of woven fabric, one of the most sought-after shells among collectors — and one of the most dangerous alive.",
+            descriptionLongue = "The textile cone owes its name to the dense network of brown lines and diamonds covering its conical shell, evoking a printed fabric. Alive, this gastropod hunts using a venomous harpoon capable of paralysing its prey and potentially dangerous to humans, which rules out any handling of the live animal. Its shell, however, collected empty on Indo-Pacific beaches, is one of the most sought-after among collectors for the fineness and regularity of its pattern.",
+            interetJoaillerie = "Moderate: collector's piece, décor; never set into jewellery due to the danger of the live animal"
+        ),
+        "coquillage-peigne-de-venus" to CoquillageTranslation(
+            nom = "Venus Comb Murex",
+            descriptionCourte = "A murex bristling with some sixty fine, regular spines, among the most spectacular shells in the world.",
+            descriptionLongue = "The Venus comb murex owes its name to the long, finely and regularly spaced spines, sometimes more than fifty, that line the opening of its shell like the teeth of a comb. This delicate architecture, unique among marine gastropods, makes it one of the most prized shells among collectors — and one of the hardest to keep intact, as a single broken spine sharply reduces its value.",
+            interetJoaillerie = "Low to moderate: collector's and decorative piece, rarely set into jewellery due to its fragility"
+        ),
         "coquillage-huitre-perliere-noire" to CoquillageTranslation(
             nom = "Black-lipped Pearl Oyster",
             descriptionCourte = "The bivalve that produces the famous Tahitian pearls, its inner nacre anthracite grey with coloured shimmers.",

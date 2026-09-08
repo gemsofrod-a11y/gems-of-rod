@@ -254,6 +254,8 @@
     <!-- Ракушки -->
     <string name="home_coquillages_title">Ракушки</string>
     <string name="home_coquillages_subtitle">Перламутр, каури, стромбусы и наутилус: скульптурная красота морских моллюсков.</string>
+    <string name="home_gemmes_organiques_title">Органические самоцветы</string>
+    <string name="home_gemmes_organiques_subtitle">Жемчуг, янтарь, коралл, гагат... сокровища, созданные живыми организмами, а не геологией.</string>
     <string name="coquillages_intro">От камеи из розовой раковины стромбуса до переливающегося перламутра морского ушка, не забывая о каури, служивших монетой на трёх континентах: этот раздел рассказывает о ракушках, интересных огранщику и ювелиру, а также о нескольких экземплярах, ценных прежде всего своей историей или символикой.</string>
     <string name="coquillages_classification_title">Классификация</string>
     <string name="coquillages_classification_subtitle">Брюхоногие, двустворчатые, головоногие с раковиной: основные семейства ракушек.</string>

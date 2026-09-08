@@ -57,6 +57,18 @@ object CoquillageTranslationsNl {
             descriptionLongue = "Als bescheidener neef van de Caribische koningsslak ontwikkelt deze strombus uit Indo-Pacifische lagunes langs zijn opening een reeks slanke uitsteeksels, wat hem zijn bijnaam \"spin\" oplevert. Zijn schelp, zeer gangbaar op ambachtsmarkten aan de kust, wordt vooral heel gewaardeerd als decoratief object, eerder dan als grondstof om te bewerken.",
             interetJoaillerie = "Matig: decoratie, incidentele elementen in etnische sieraden"
         ),
+        "coquillage-cone-textile" to CoquillageTranslation(
+            nom = "Textielkegel",
+            descriptionCourte = "Een slak met een dicht geometrisch patroon dat aan een weefsel doet denken, een van de meest gewilde soorten onder verzamelaars — en levend een van de gevaarlijkste.",
+            descriptionLongue = "De textielkegel dankt zijn naam aan het dichte netwerk van bruine lijnen en ruiten dat zijn kegelvormige schelp bedekt en aan een bedrukte stof doet denken. Levend jaagt deze slak met een giftige harpoen die zijn prooi kan verlammen en potentieel gevaarlijk is voor de mens, wat elke omgang met het levende dier uitsluit. Zijn schelp daarentegen, leeg verzameld op Indo-Pacifische stranden, behoort tot de meest gewilde bij verzamelaars vanwege de fijnheid en regelmaat van haar patroon.",
+            interetJoaillerie = "Matig: verzamelstuk, decoratie; nooit tot sieraad verwerkt vanwege het gevaar van het levende dier"
+        ),
+        "coquillage-peigne-de-venus" to CoquillageTranslation(
+            nom = "Venuskam",
+            descriptionCourte = "Een stekelhoorn met zo'n zestig fijne, regelmatige stekels, een van de meest spectaculaire schelpen ter wereld.",
+            descriptionLongue = "De Venuskam dankt zijn naam aan de lange, fijn en regelmatig geplaatste stekels, soms meer dan vijftig, die de opening van zijn schelp omzomen als de tanden van een kam. Deze delicate architectuur, uniek onder de mariene slakken, maakt hem tot een van de meest gewaardeerde schelpen bij verzamelaars — en een van de moeilijkste om intact te bewaren, want één enkele afgebroken stekel doet de waarde sterk dalen.",
+            interetJoaillerie = "Laag tot matig: verzamel- en decoratiestuk, zelden tot sieraad verwerkt vanwege zijn breekbaarheid"
+        ),
         "coquillage-huitre-perliere-noire" to CoquillageTranslation(
             nom = "Zwartlipparelmossel",
             descriptionCourte = "Het schelpdier dat de beroemde Tahiti-parels produceert, met antracietgrijs binnenparelmoer met kleurige glans.",

@@ -57,6 +57,18 @@ object CoquillageTranslationsEs {
             descriptionLongue = "Prima más modesta de la caracola reina caribeña, este estrombo de las lagunas indopacíficas desarrolla a lo largo de su abertura una serie de digitaciones afiladas que le valen su apodo de «araña». Su concha, muy común en los mercados de artesanía costera, se aprecia sobre todo entera como objeto decorativo más que como materia prima para tallar.",
             interetJoaillerie = "Moderado: decoración, elementos puntuales de joyería étnica"
         ),
+        "coquillage-cone-textile" to CoquillageTranslation(
+            nom = "Cono textil",
+            descriptionCourte = "Un gasterópodo con un denso motivo geométrico que evoca un tejido, una de las especies más buscadas por los coleccionistas — y una de las más peligrosas en vida.",
+            descriptionLongue = "El cono textil debe su nombre a la densa red de líneas y rombos marrones que cubre su concha cónica, evocando una tela estampada. Vivo, este gasterópodo caza mediante un arpón venenoso capaz de paralizar a su presa y potencialmente peligroso para el ser humano, lo que excluye cualquier manipulación del animal vivo. Su concha, en cambio, recogida vacía en las playas indopacíficas, es una de las más buscadas por los coleccionistas por la finura y regularidad de su motivo.",
+            interetJoaillerie = "Moderado: pieza de colección, decoración; nunca montada en joyería por el peligro del animal vivo"
+        ),
+        "coquillage-peigne-de-venus" to CoquillageTranslation(
+            nom = "Peine de Venus",
+            descriptionCourte = "Un múrice erizado de una sesentena de espinas finas y regulares, entre las conchas más espectaculares del mundo.",
+            descriptionLongue = "El peine de Venus debe su nombre a las largas espinas finas y regularmente espaciadas, a veces más de cincuenta, que bordean la abertura de su concha como los dientes de un peine. Esta delicada arquitectura, única entre los gasterópodos marinos, la convierte en una de las conchas más apreciadas por los coleccionistas — y una de las más difíciles de conservar intactas, ya que la más mínima espina rota reduce fuertemente su valor.",
+            interetJoaillerie = "Bajo a moderado: pieza de colección y decoración, rara vez montada en joyería por su fragilidad"
+        ),
         "coquillage-huitre-perliere-noire" to CoquillageTranslation(
             nom = "Ostra perlera de labios negros",
             descriptionCourte = "El bivalvo que produce las célebres perlas de Tahití, de nácar interior gris antracita con reflejos de colores.",

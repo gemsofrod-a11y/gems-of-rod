@@ -1495,6 +1495,27 @@ object GemTranslationsEn {
             particularites = "This is not a stone but a bone: the extension of the fish's upper jaw, only the outer surface of which recalls, in texture and colour, certain organic gems such as ivory.",
             lithotherapie = "Unlike older organic gems, the swordfish bill has no established lithotherapy tradition; it is sought above all as a fishing trophy or natural curiosity."
         ),
+        "ecaille-de-tortue" to GemTranslation(
+            nom = "Tortoiseshell",
+            descriptionCourte = "The translucent horn plates of the hawksbill turtle's shell, marbled amber and brown, a material now strictly protected.",
+            descriptionLongue = "Tortoiseshell comes from the horn-like plates of the hawksbill turtle's shell (Eretmochelys imbricata), polished to reveal a translucent marbled pattern ranging from honey to deep brown. Prized since antiquity for combs, eyeglass frames and inlay work, it long rivalled ivory as a luxury material. As the species is now critically endangered, its trade has been banned worldwide since 1977: only antique pieces predating this protection may still circulate, under strict legal conditions.",
+            particularites = "A critically endangered species protected under CITES Appendix I since 1977: trade in new tortoiseshell is banned worldwide; only antique pieces predating the protection may circulate, under strict conditions.",
+            lithotherapie = "Tortoiseshell is traditionally associated with longevity and protection, borrowed from the turtle itself, a symbol of wisdom and patience in many cultures."
+        ),
+        "bois-de-cerf" to GemTranslation(
+            nom = "Deer antler",
+            descriptionCourte = "The bony rack that deer shed and regrow every year, carved into knife handles and rustic objects.",
+            descriptionLongue = "Deer antler is a fast-growing bone tissue that male deer develop and shed each year, unlike the true horns (permanent keratin) of bovids. Collected from the ground after the annual shed, without killing the animal, it is traditionally carved into knife handles, buttons, chandeliers and rustic decorative objects, particularly in European mountain and hunting craftsmanship.",
+            particularites = "Unlike horns (permanent keratin), deer antler is a deciduous bone tissue, shed and regrown every year; collecting it from the ground after the shed involves no killing of the animal.",
+            lithotherapie = "Deer antler is associated with regeneration and quiet strength, echoing its annual regrowth and its traditional use in rural craft and hunting."
+        ),
+        "corail-noir" to GemTranslation(
+            nom = "Black coral",
+            descriptionCourte = "The horn-like black skeleton of a deep-sea coral, polished into jewellery since ancient Hawaiian times.",
+            descriptionLongue = "Black coral forms branching colonies in the darkness of the deep sea, with a central skeleton that is horn-like rather than calcareous like red coral. Polished, it reveals a deep, satiny black highly prized in jewellery, notably in Hawaii, where it is the official state gem. Its extremely slow growth, only a few millimetres a year, and past overharvesting have made it a protected species in many jurisdictions today.",
+            particularites = "Unlike red coral, which is calcareous, black coral's skeleton is horn-like, close to keratin; its very slow growth has made it a protected species in many jurisdictions.",
+            lithotherapie = "Black coral is traditionally associated with protection and grounding, notably in Hawaiian traditions where it was worn as a protective talisman by sailors and warriors."
+        ),
         "grenat-etoile" to GemTranslation(
             nom = "Star garnet",
             descriptionCourte = "A four- or six-rayed almandine garnet, a rarity found almost exclusively in Idaho.",

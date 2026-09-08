@@ -187,6 +187,9 @@ GEMS = [
     ("phosphosiderite", ['Phosphosiderite'], ['phosphosiderite'], (BRUTE, FACETTEE)),
     # Jamais taillée (voir GemsRepository) : uniquement une photo de cristal brut.
     ("vivianite", ['Vivianite crystal', 'Vivianite Bolivia', 'Vivianite mineral specimen'], ['vivianite'], (BRUTE,)),
+    ("ecaille-de-tortue", ['Tortoiseshell comb antique', 'Hawksbill tortoiseshell material'], ['tortoiseshell'], (BRUTE,)),
+    ("bois-de-cerf", ['Deer antler shed', 'Red deer antler natural', 'Stag antler knife handle'], ['antler'], (BRUTE,)),
+    ("corail-noir", ['Black coral branch', 'Antipathes black coral specimen'], ['black coral', 'antipathes'], (BRUTE,)),
     ("saphir-blanc", ['Colourless sapphire faceted', 'White sapphire ring', 'Corundum colorless crystal'], ['sapphire', 'corundum'], (BRUTE, FACETTEE)),
     ("topaze-blanche", ['Colorless topaz ring', 'White topaz crystal', 'Topaz colorless faceted'], ['topaz'], (BRUTE, FACETTEE)),
     ("hambergite", ['Hambergite crystal', 'Hambergite Madagascar', 'Hambergite'], ['hambergite'], (BRUTE, FACETTEE)),
@@ -318,6 +321,8 @@ GEMS = [
     ("coquillage-burgau-vert", ['Turbo marmoratus shell', 'Green turban shell nacre'], ['turbo marmoratus', 'green turban'], (BRUTE,)),
     ("coquillage-murex-pourpre", ['Bolinus brandaris shell', 'Murex brandaris shell'], ['bolinus brandaris', 'murex brandaris'], (BRUTE,)),
     ("coquillage-lambis", ['Lambis lambis shell', 'Spider conch shell'], ['lambis', 'spider conch'], (BRUTE,)),
+    ("coquillage-cone-textile", ['Conus textile shell', 'Textile cone shell'], ['conus textile', 'textile cone'], (BRUTE,)),
+    ("coquillage-peigne-de-venus", ['Murex pecten shell', "Venus comb murex shell"], ['murex pecten', 'venus comb'], (BRUTE,)),
     ("coquillage-huitre-perliere-noire", ['Pinctada margaritifera shell', 'Black-lipped pearl oyster shell'], ['pinctada margaritifera', 'black-lipped pearl oyster'], (BRUTE,)),
     ("coquillage-huitre-perliere-doree", ['Pinctada maxima shell', 'Gold-lipped pearl oyster shell'], ['pinctada maxima', 'gold-lipped pearl oyster'], (BRUTE,)),
     ("coquillage-saint-jacques", ['Pecten maximus shell', 'Great scallop shell'], ['pecten maximus', 'great scallop'], (BRUTE,)),

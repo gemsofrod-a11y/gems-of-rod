@@ -254,6 +254,8 @@
     <!-- Coquillages -->
     <string name="home_coquillages_title">Coquillages</string>
     <string name="home_coquillages_subtitle">Nacre, cauris, conques et nautile : la beauté sculptée des mollusques marins.</string>
+    <string name="home_gemmes_organiques_title">Gemmes organiques</string>
+    <string name="home_gemmes_organiques_subtitle">Perle, ambre, corail, jais... des trésors façonnés par le vivant plutôt que par la géologie.</string>
     <string name="coquillages_intro">Du camée en conque rose à la nacre irisée de l\'ormeau, en passant par les cauris qui ont servi de monnaie sur trois continents : cette section explore les coquillages qui intéressent le lapidaire et le joaillier, aux côtés de quelques pièces à la portée avant tout historique ou symbolique.</string>
     <string name="coquillages_classification_title">Classification</string>
     <string name="coquillages_classification_subtitle">Gastéropodes, bivalves, céphalopode à coquille : comprendre les grandes familles de coquillages.</string>

@@ -1495,6 +1495,27 @@ object GemTranslationsDe {
             particularites = "Kein Stein, sondern ein Knochen: die Verlängerung des Oberkiefers des Fisches, dessen Oberfläche in Struktur und Farbe an manche organischen Edelsteine wie Elfenbein erinnert.",
             lithotherapie = "Anders als bei älteren organischen Edelsteinen gibt es für das Schwertfisch-Schwert keine etablierte lithotherapeutische Tradition; es wird vor allem als Angeltrophäe oder Naturkuriosität gesucht."
         ),
+        "ecaille-de-tortue" to GemTranslation(
+            nom = "Schildpatt",
+            descriptionCourte = "Die durchscheinenden Hornplatten des Panzers der Echten Karettschildkröte, bernsteinfarben marmoriert, ein heute streng geschütztes Material.",
+            descriptionLongue = "Schildpatt stammt von den hornartigen Platten des Panzers der Echten Karettschildkröte (Eretmochelys imbricata), poliert, um eine durchscheinende Maserung von Honig- bis Dunkelbraun zu offenbaren. Seit der Antike für Kämme, Brillenfassungen und Einlegearbeiten geschätzt, konkurrierte es lange mit Elfenbein als Luxusmaterial. Da die Art heute vom Aussterben bedroht ist, ist ihr Handel seit 1977 weltweit verboten: Nur antike Stücke von vor diesem Schutz dürfen unter strengen rechtlichen Auflagen noch im Umlauf sein.",
+            particularites = "Vom Aussterben bedrohte Art, seit 1977 durch CITES (Anhang I) geschützt: Der Handel mit neuem Schildpatt ist weltweit verboten; nur antike Stücke von vor dem Schutz dürfen unter Auflagen im Umlauf sein.",
+            lithotherapie = "Schildpatt wird traditionell mit Langlebigkeit und Schutz assoziiert, entlehnt von der Schildkröte selbst, einem Symbol für Weisheit und Geduld in vielen Kulturen."
+        ),
+        "bois-de-cerf" to GemTranslation(
+            nom = "Hirschgeweih",
+            descriptionCourte = "Das knöcherne Geweih, das der Hirsch jedes Jahr abwirft und neu bildet, verarbeitet zu Messergriffen und rustikalen Gegenständen.",
+            descriptionLongue = "Hirschgeweih ist ein schnell wachsendes Knochengewebe, das männliche Hirsche jedes Jahr bilden und abwerfen, im Unterschied zu den echten Hörnern (dauerhaftes Keratin) der Hornträger. Vom Boden nach dem jährlichen Abwurf aufgesammelt, ohne das Tier zu töten, wird es traditionell zu Messergriffen, Knöpfen, Kronleuchtern und rustikalen Dekorationsobjekten verarbeitet, besonders im europäischen Berg- und Jagdhandwerk.",
+            particularites = "Anders als Hörner (dauerhaftes Keratin) ist Hirschgeweih ein wechselndes Knochengewebe, das jedes Jahr abgeworfen und neu gebildet wird; das Aufsammeln vom Boden nach dem Abwurf erfordert kein Töten des Tieres.",
+            lithotherapie = "Hirschgeweih wird mit Regeneration und stiller Kraft assoziiert, in Anlehnung an sein jährliches Nachwachsen und seine traditionelle Verwendung im ländlichen Handwerk und in der Jagd."
+        ),
+        "corail-noir" to GemTranslation(
+            nom = "Schwarze Koralle",
+            descriptionCourte = "Das hornige schwarze Skelett einer Tiefsee-Koralle, seit dem alten Hawaii zu Schmuck poliert.",
+            descriptionLongue = "Schwarze Koralle bildet in der Dunkelheit der Tiefsee verzweigte Kolonien, deren zentrales Skelett hornartig statt kalkig wie das der roten Koralle ist. Poliert offenbart sie ein tiefes, seidiges Schwarz, das in der Schmuckherstellung sehr geschätzt wird, besonders auf Hawaii, wo sie der offizielle Edelstein des Bundesstaates ist. Ihr extrem langsames Wachstum von nur wenigen Millimetern pro Jahr und die frühere Übernutzung haben sie heute in vielen Ländern zu einer geschützten Art gemacht.",
+            particularites = "Anders als die kalkige rote Koralle ist das Skelett der schwarzen Koralle hornig, dem Keratin ähnlich; ihr sehr langsames Wachstum hat sie in vielen Ländern zu einer geschützten Art gemacht.",
+            lithotherapie = "Schwarze Koralle wird traditionell mit Schutz und Erdung assoziiert, besonders in hawaiianischen Traditionen, wo sie von Seefahrern und Kriegern als schützender Talisman getragen wurde."
+        ),
         "grenat-etoile" to GemTranslation(
             nom = "Sterngranat",
             descriptionCourte = "Ein Almandin mit vier oder sechs leuchtenden Strahlen, eine Rarität, die fast ausschließlich in Idaho gefunden wird.",

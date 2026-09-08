@@ -57,6 +57,18 @@ object CoquillageTranslationsDe {
             descriptionLongue = "Als bescheidenere Verwandte der karibischen großen Fechterschnecke entwickelt diese Flügelschnecke aus den indopazifischen Lagunen entlang ihrer Mündung eine Reihe schlanker Auswüchse, die ihr den Spitznamen „Spinne“ eingebracht haben. Ihre Schale, sehr verbreitet auf küstennahen Kunsthandwerksmärkten, wird vor allem als dekoratives Objekt im Ganzen geschätzt und weniger als zu schneidendes Rohmaterial.",
             interetJoaillerie = "Mäßig: Dekoration, gelegentliche Elemente in ethnischem Schmuck"
         ),
+        "coquillage-cone-textile" to CoquillageTranslation(
+            nom = "Tuchkegel",
+            descriptionCourte = "Eine Schnecke mit dichtem geometrischem Muster, das an ein Gewebe erinnert, eine der begehrtesten Arten bei Sammlern — und im lebenden Zustand eine der gefährlichsten.",
+            descriptionLongue = "Der Tuchkegel verdankt seinen Namen dem dichten Netz brauner Linien und Rauten, das seine kegelförmige Schale bedeckt und an einen bedruckten Stoff erinnert. Lebend jagt diese Schnecke mit einer giftigen Harpune, die ihre Beute lähmen kann und für Menschen potenziell gefährlich ist, weshalb jede Handhabung des lebenden Tiers ausgeschlossen ist. Ihre leer an indopazifischen Stränden gesammelte Schale hingegen gehört wegen der Feinheit und Regelmäßigkeit ihres Musters zu den begehrtesten bei Sammlern.",
+            interetJoaillerie = "Mäßig: Sammlerstück, Dekoration; wegen der Gefahr durch das lebende Tier nie zu Schmuck verarbeitet"
+        ),
+        "coquillage-peigne-de-venus" to CoquillageTranslation(
+            nom = "Venuskamm",
+            descriptionCourte = "Eine Stachelschnecke mit rund sechzig feinen, regelmäßigen Stacheln, eine der spektakulärsten Muschelschalen der Welt.",
+            descriptionLongue = "Der Venuskamm verdankt seinen Namen den langen, fein und regelmäßig angeordneten Stacheln, manchmal mehr als fünfzig, die die Öffnung seiner Schale wie die Zähne eines Kamms säumen. Diese filigrane Architektur, einzigartig unter den Meeresschnecken, macht ihn zu einer der begehrtesten Schalen bei Sammlern — und zu einer der schwierigsten, unversehrt zu erhalten, da schon ein einziger abgebrochener Stachel ihren Wert stark mindert.",
+            interetJoaillerie = "Gering bis mäßig: Sammler- und Dekorationsstück, wegen seiner Zerbrechlichkeit selten zu Schmuck verarbeitet"
+        ),
         "coquillage-huitre-perliere-noire" to CoquillageTranslation(
             nom = "Schwarzlippige Perlmuschel",
             descriptionCourte = "Die Muschel, die die berühmten Tahiti-Perlen hervorbringt, mit anthrazitgrauem Innenperlmutt und farbigem Schimmer.",

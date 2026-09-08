@@ -254,6 +254,8 @@
     <!-- Conchiglie -->
     <string name="home_coquillages_title">Conchiglie</string>
     <string name="home_coquillages_subtitle">Madreperla, ciprea, conchiglie regina e nautilus: la bellezza scolpita dei molluschi marini.</string>
+    <string name="home_gemmes_organiques_title">Gemme organiche</string>
+    <string name="home_gemmes_organiques_subtitle">Perla, ambra, corallo, giaietto... tesori plasmati dagli esseri viventi più che dalla geologia.</string>
     <string name="coquillages_intro">Dal cammeo di conchiglia rosa alla madreperla iridescente dell\'abalone, senza dimenticare le ciprea usate come moneta su tre continenti: questa sezione esplora le conchiglie di interesse per il lapidario e il gioielliere, insieme ad alcuni pezzi apprezzati soprattutto per la loro storia o il loro simbolismo.</string>
     <string name="coquillages_classification_title">Classificazione</string>
     <string name="coquillages_classification_subtitle">Gasteropodi, bivalvi, cefalopode con conchiglia: comprendere le grandi famiglie di conchiglie.</string>

@@ -1495,6 +1495,27 @@ object GemTranslationsEs {
             particularites = "No es una piedra sino un hueso: la prolongación del maxilar superior del pez, cuya única superficie que recuerda por su textura y color a ciertas gemas orgánicas, como el marfil, es la parte externa.",
             lithotherapie = "A diferencia de otras gemas orgánicas más antiguas, el rostro de pez espada no tiene una tradición litoterapéutica establecida; se busca sobre todo como trofeo de pesca o curiosidad natural."
         ),
+        "ecaille-de-tortue" to GemTranslation(
+            nom = "Concha de carey",
+            descriptionCourte = "Las placas córneas translúcidas del caparazón de la tortuga carey, con motivos jaspeados ambarinos, un material hoy estrictamente protegido.",
+            descriptionLongue = "La concha de carey procede de las placas córneas del caparazón de la tortuga carey (Eretmochelys imbricata), pulidas para revelar un motivo jaspeado translúcido que va del miel al marrón profundo. Apreciada desde la Antigüedad para peines, monturas de gafas e incrustaciones, rivalizó durante mucho tiempo con el marfil como material de lujo. Al ser hoy una especie en peligro crítico, su comercio está prohibido en todo el mundo desde 1977: solo circulan, bajo estrictas condiciones legales, piezas antiguas anteriores a esta protección.",
+            particularites = "Especie en peligro crítico protegida por CITES (apéndice I) desde 1977: el comercio de nueva concha de carey está prohibido en todo el mundo; solo pueden circular piezas antiguas anteriores a la protección, bajo condiciones.",
+            lithotherapie = "La concha de carey se asocia tradicionalmente a la longevidad y la protección, tomadas de la propia tortuga, símbolo de sabiduría y paciencia en numerosas culturas."
+        ),
+        "bois-de-cerf" to GemTranslation(
+            nom = "Asta de ciervo",
+            descriptionCourte = "La cornamenta ósea que el ciervo pierde y regenera cada año, tallada en mangos de cuchillo y objetos rústicos.",
+            descriptionLongue = "El asta de ciervo es un tejido óseo de crecimiento rápido que los ciervos machos desarrollan y pierden cada año, a diferencia de los cuernos verdaderos (queratina permanente) de los bóvidos. Recogida del suelo tras la muda anual, sin necesidad de sacrificar al animal, se talla tradicionalmente en mangos de cuchillo, botones, candelabros y objetos de decoración rústica, sobre todo en la artesanía de montaña y caza europea.",
+            particularites = "A diferencia de los cuernos (queratina permanente), el asta de ciervo es un tejido óseo caduco, perdido y regenerado cada año; su recogida del suelo tras la muda no implica sacrificar al animal.",
+            lithotherapie = "El asta de ciervo se asocia a la regeneración y a la fuerza serena, en eco a su recrecimiento anual y a su uso tradicional en la artesanía rural y la caza."
+        ),
+        "corail-noir" to GemTranslation(
+            nom = "Coral negro",
+            descriptionCourte = "El esqueleto córneo negro de un coral de las profundidades, pulido en joyas desde la antigua Hawái.",
+            descriptionLongue = "El coral negro forma, en la oscuridad de las grandes profundidades, colonias arborescentes cuyo esqueleto central es córneo en lugar de calcáreo como el del coral rojo. Pulido, revela un negro profundo y satinado muy apreciado en joyería, sobre todo en Hawái, donde es la gema oficial del estado. Su crecimiento extremadamente lento, apenas unos milímetros al año, y la sobreexplotación pasada la han convertido hoy en una especie protegida en numerosas jurisdicciones.",
+            particularites = "A diferencia del coral rojo, de naturaleza calcárea, el esqueleto del coral negro es córneo, cercano a la queratina; su crecimiento muy lento lo ha convertido en una especie protegida en numerosas jurisdicciones.",
+            lithotherapie = "El coral negro se asocia tradicionalmente a la protección y al arraigo, sobre todo en las tradiciones hawaianas, donde se llevaba como talismán protector por marineros y guerreros."
+        ),
         "grenat-etoile" to GemTranslation(
             nom = "Granate estrellado",
             descriptionCourte = "Un almandino con cuatro o seis brazos luminosos, una rareza que se encuentra casi exclusivamente en Idaho.",

@@ -254,6 +254,8 @@
     <!-- Conchas marinhas -->
     <string name="home_coquillages_title">Conchas marinhas</string>
     <string name="home_coquillages_subtitle">Madrepérola, búzios, caramujos-rainha e náutilo: a beleza esculpida dos moluscos marinhos.</string>
+    <string name="home_gemmes_organiques_title">Gemas orgânicas</string>
+    <string name="home_gemmes_organiques_subtitle">Pérola, âmbar, coral, azeviche... tesouros moldados pelos seres vivos, e não pela geologia.</string>
     <string name="coquillages_intro">Do camafeu de concha rosa à madrepérola iridescente do abalone, sem esquecer os búzios que serviram de moeda em três continentes: esta seção explora as conchas marinhas de interesse para o lapidário e o joalheiro, ao lado de algumas peças valorizadas sobretudo pela sua história ou simbolismo.</string>
     <string name="coquillages_classification_title">Classificação</string>
     <string name="coquillages_classification_subtitle">Gastrópodes, bivalves, cefalópode com concha: compreender as grandes famílias de conchas marinhas.</string>

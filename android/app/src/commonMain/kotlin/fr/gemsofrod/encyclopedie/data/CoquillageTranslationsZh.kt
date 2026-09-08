@@ -57,6 +57,18 @@ object CoquillageTranslationsZh {
             descriptionLongue = "作为加勒比海女王凤凰螺较为朴素的近亲,这种生活在印度太平洋潟湖中的凤凰螺沿其壳口边缘发育出一系列纤细的指状突起,因而得名“蜘蛛螺”。其贝壳在沿海手工艺品市场上十分常见,通常整体作为装饰品受到青睐,而非用作雕刻原材料。",
             interetJoaillerie = "中等:装饰用途,偶尔用于民族首饰元素"
         ),
+        "coquillage-cone-textile" to CoquillageTranslation(
+            nom = "织锦芋螺",
+            descriptionCourte = "一种带有密集几何纹样、宛如织物图案的腹足纲贝类，是收藏者最青睐的品种之一——活体时也是最危险的品种之一。",
+            descriptionLongue = "织锦芋螺得名于覆盖其圆锥形贝壳的密集棕色线条与菱形网纹，宛如印花织物。活体状态下，这种腹足纲动物会用一根有毒的鱼叉状齿舌狩猎，足以麻痹猎物，对人类也具有潜在危险，因此绝不可徒手接触活体动物。相比之下，在印度太平洋海滩上拾获的空壳，因其纹样的精细与规律性而深受收藏者追捧。",
+            interetJoaillerie = "中等:收藏品、装饰用途；因活体动物的危险性，从不镶嵌成珠宝"
+        ),
+        "coquillage-peigne-de-venus" to CoquillageTranslation(
+            nom = "维纳斯梳骨螺",
+            descriptionCourte = "一种长有约六十根纤细规则棘刺的骨螺，是世界上最令人惊叹的贝壳之一。",
+            descriptionLongue = "维纳斯梳骨螺得名于贝壳壳口边缘排列的细长而规则的棘刺，有时超过五十根，形如梳齿。这种精致的结构在海洋腹足纲动物中独一无二，使其成为收藏者最珍视的贝壳之一——同时也是最难以完好保存的贝壳之一，哪怕折断一根棘刺，其价值也会大幅下降。",
+            interetJoaillerie = "较低至中等:收藏与装饰用途，因其易碎性极少镶嵌成珠宝"
+        ),
         "coquillage-huitre-perliere-noire" to CoquillageTranslation(
             nom = "黑蝶贝",
             descriptionCourte = "出产著名大溪地珍珠的双壳纲动物,内壁珍珠层呈炭灰色并带有彩色光泽。",
