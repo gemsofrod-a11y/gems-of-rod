@@ -4,6 +4,22 @@
   const $ = (id) => document.getElementById(id);
   const state = { timeframe: "1m", candles: [] };
 
+  // --- onglets ---
+
+  $("tabbar").addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-tab]");
+    if (!btn) return;
+    const tab = btn.dataset.tab;
+    document.querySelectorAll(".tabbar button").forEach((b) => b.classList.toggle("active", b === btn));
+    document.querySelectorAll(".tab-panel").forEach((p) => { p.hidden = p.dataset.tab !== tab; });
+  });
+
+  $("bot-advanced-toggle").addEventListener("click", () => {
+    const el = $("bot-advanced");
+    el.hidden = !el.hidden;
+    $("bot-advanced-toggle").textContent = el.hidden ? "Réglages avancés ▾" : "Réglages avancés ▴";
+  });
+
   function fmtUsd(n) {
     return new Intl.NumberFormat("fr-FR", { style: "currency", currency: "USD" }).format(n);
   }
@@ -96,6 +112,10 @@
         <dt>Valeur totale</dt><dd>${fmtUsd(w.equity)}</dd>
         <dt>Performance</dt><dd class="${pnlClass}">${w.pnl >= 0 ? "+" : ""}${w.pnl_pct.toFixed(2)} %</dd>
       `;
+      $("hero-equity").textContent = fmtUsd(w.equity);
+      const heroPnl = $("hero-pnl");
+      heroPnl.textContent = `${w.pnl >= 0 ? "+" : ""}${fmtUsd(w.pnl)} (${w.pnl >= 0 ? "+" : ""}${w.pnl_pct.toFixed(2)} %)`;
+      heroPnl.className = `hero-pnl ${pnlClass}`;
     } catch (err) { /* silencieux */ }
     refreshTrades();
   }
@@ -104,6 +124,7 @@
     try {
       const trades = JSON.parse(window.NativeBridge.getTrades(30));
       const tbody = document.querySelector("#trades-table tbody");
+      $("trades-empty").hidden = trades.length > 0;
       tbody.innerHTML = trades.map((t) => `
         <tr>
           <td>${t.side === "buy" ? "Achat" : "Vente"}</td>

@@ -24,7 +24,30 @@ html, body {
 .instrument .dot { color: var(--gold); font-size: 0.7rem; }
 .instrument .pair { font-weight: 400; color: var(--muted); font-size: 0.85rem; }
 
-main { padding: 0.75rem 1rem 2.5rem; display: flex; flex-direction: column; gap: 0.9rem; }
+main { padding: 0.75rem 1rem 5.5rem; display: flex; flex-direction: column; gap: 0.9rem; }
+.tab-panel { display: flex; flex-direction: column; gap: 0.9rem; }
+
+.tabbar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  display: flex; background: var(--panel); border-top: 1px solid var(--panel-border);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+.tabbar button {
+  flex: 1 1 0; display: flex; flex-direction: column; align-items: center; gap: 0.15rem;
+  padding: 0.6rem 0; font-size: 0.7rem; font-weight: 600; color: var(--muted);
+  background: transparent; border: none; border-radius: 0;
+}
+.tabbar button .icon { font-size: 1.25rem; line-height: 1; }
+.tabbar button.active { color: var(--gold); }
+
+.hero-balance { text-align: center; padding: 0.6rem 0 0.2rem; }
+.hero-label { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; }
+.hero-value { font-size: 2.3rem; font-weight: 700; margin-top: 0.15rem; }
+.hero-pnl { font-size: 0.95rem; font-weight: 600; margin-top: 0.2rem; }
+.hero-pnl.positive { color: var(--green); }
+.hero-pnl.negative { color: var(--red); }
+
+.empty-state { color: var(--muted); font-size: 0.85rem; text-align: center; padding: 1.2rem 0.5rem; }
 
 .price-block { text-align: center; padding: 0.4rem 0 0.2rem; }
 .price-value { font-size: 2.5rem; font-weight: 700; color: var(--text); line-height: 1.1; }
