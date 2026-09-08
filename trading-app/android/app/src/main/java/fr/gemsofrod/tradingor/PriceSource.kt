@@ -27,6 +27,11 @@ class PriceSource {
          * principe que le cache 5s du serveur de l'app web. */
         private const val QUOTE_CACHE_MS = 5_000L
         private const val CANDLES_CACHE_MS = 20_000L
+        /** Nombre de cours réels conservés en mémoire pour reconstruire de
+         * vraies bougies localement si Yahoo Finance est injoignable (ex.
+         * bloqué par un opérateur/pare-feu) — le cours ponctuel (gold-api)
+         * marche souvent même quand l'historique Yahoo échoue. */
+        private const val MAX_TICKS = 4000
     }
 
     @Volatile
@@ -49,6 +54,7 @@ class PriceSource {
     @Volatile private var quoteCache: Quote? = null
     @Volatile private var quoteCacheAt: Long = 0
     private val candlesCache = mutableMapOf<String, Pair<Long, Pair<String, List<Candle>>>>()
+    private val tickLog = ArrayDeque<Pair<Long, Double>>() // (secondes epoch, cours réel uniquement)
 
     @Synchronized
     fun getQuote(): Quote {
@@ -66,6 +72,10 @@ class PriceSource {
         val quote = Quote(price, if (provider.isNotEmpty()) "live" else "simule", provider)
         quoteCache = quote
         quoteCacheAt = now
+        if (provider.isNotEmpty()) {
+            tickLog.addLast((now / 1000) to price)
+            while (tickLog.size > MAX_TICKS) tickLog.removeFirst()
+        }
         return quote
     }
 
@@ -78,10 +88,32 @@ class PriceSource {
 
         val cfg = timeframes[timeframe] ?: timeframes.getValue("1m")
         val yahoo = fetchYahooCandles(cfg)
-        val result = if (yahoo != null) "yahoo-finance" to yahoo.takeLast(limit)
-        else "simule" to syntheticCandles(cfg, limit)
+        val result = when {
+            yahoo != null -> "yahoo-finance" to yahoo.takeLast(limit)
+            else -> aggregateFromTicks(cfg, limit)?.let { "cours-reel-local" to it }
+                ?: ("simule" to syntheticCandles(cfg, limit))
+        }
         candlesCache[timeframe] = now to result
         return result
+    }
+
+    /** Reconstruit de vraies bougies à partir des cours réels déjà
+     * récupérés (gold-api/metals-live) pendant que l'app tourne, quand
+     * Yahoo Finance est injoignable. Peu profond au départ (juste après
+     * le lancement de l'app) mais s'étoffe avec le temps, et reste du
+     * vrai mouvement de marché plutôt qu'une simulation. */
+    private fun aggregateFromTicks(cfg: TimeframeConfig, limit: Int): List<Candle>? {
+        if (tickLog.size < 5) return null
+        val buckets = linkedMapOf<Long, MutableList<Double>>()
+        for ((t, price) in tickLog) {
+            val bucketTs = (t / cfg.seconds) * cfg.seconds
+            buckets.getOrPut(bucketTs) { mutableListOf() }.add(price)
+        }
+        if (buckets.size < 3) return null
+        val candles = buckets.entries.sortedBy { it.key }.map { (ts, prices) ->
+            Candle(ts, prices.first(), prices.max(), prices.min(), prices.last())
+        }
+        return candles.takeLast(limit)
     }
 
     private fun fetchGoldApi(): Double? = try {

@@ -95,10 +95,15 @@
     try {
       const result = JSON.parse(window.NativeBridge.getCandles(state.timeframe, 120));
       state.candles = result.candles || [];
-      const providerLabel = { "yahoo-finance": "mouvement réel · Yahoo Finance", "simule": "⚠ mouvement simulé (pas de connexion aux vraies données)" }[result.provider] || result.provider;
+      const providerLabel = {
+        "yahoo-finance": "mouvement réel · Yahoo Finance",
+        "cours-reel-local": "mouvement réel · cours collectés en direct",
+        "simule": "⚠ mouvement simulé (pas de connexion aux vraies données)",
+      }[result.provider] || result.provider;
+      const isReal = result.provider === "yahoo-finance" || result.provider === "cours-reel-local";
       const providerEl = $("chart-provider");
       providerEl.textContent = providerLabel;
-      providerEl.className = `badge chart-badge ${result.provider === "yahoo-finance" ? "live" : "simule"}`;
+      providerEl.className = `badge chart-badge ${isReal ? "live" : "simule"}`;
       drawCandles();
     } catch (err) {
       const providerEl = $("chart-provider");
