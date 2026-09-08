@@ -1,10 +1,9 @@
 package fr.gemsofrod.tradingor
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.os.Bundle
 import android.webkit.WebView
-import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
 
 /**
  * Coquille WebView : l'interface (prix, bougies) vit dans
@@ -12,8 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
  * (trading-app/frontend), mais alimentée directement par NativeBridge
  * (appels réseau natifs Kotlin) plutôt que par un serveur — pas de
  * souci de CORS, pas de serveur à faire tourner sur le téléphone.
+ *
+ * Hérite de la simple android.app.Activity (pas AppCompatActivity) :
+ * pas de dépendance supplémentaire, pas d'exigence de thème
+ * Theme.AppCompat.* à respecter — juste une WebView plein écran.
  */
-class MainActivity : AppCompatActivity() {
+class MainActivity : Activity() {
 
     private lateinit var webView: WebView
 
@@ -28,14 +31,14 @@ class MainActivity : AppCompatActivity() {
             loadUrl("file:///android_asset/index.html")
         }
         setContentView(webView)
+    }
 
-        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                if (webView.canGoBack()) webView.goBack() else {
-                    isEnabled = false
-                    onBackPressedDispatcher.onBackPressed()
-                }
-            }
-        })
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        if (webView.canGoBack()) {
+            webView.goBack()
+        } else {
+            super.onBackPressed()
+        }
     }
 }

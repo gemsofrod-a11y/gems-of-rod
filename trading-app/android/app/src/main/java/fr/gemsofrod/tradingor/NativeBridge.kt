@@ -5,57 +5,87 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
+import java.util.concurrent.Callable
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.random.Random
 
 /**
- * Pont natif exposé à la page (window.NativeBridge). Les appels
- * réseau sont bloquants mais s'exécutent déjà hors du thread UI
- * (WebView appelle les méthodes @JavascriptInterface sur un thread
- * dédié), donc pas de risque de geler l'app.
+ * Pont natif exposé à la page (window.NativeBridge).
+ *
+ * Les méthodes @JavascriptInterface peuvent, selon la version de
+ * WebView, être appelées depuis le thread principal — un appel
+ * réseau bloquant là planterait l'app (NetworkOnMainThreadException).
+ * Pour l'éviter à coup sûr, tout le travail réseau est délégué à un
+ * thread dédié via runOnWorker(), quel que soit le thread appelant.
  *
  * Reprend la même logique de repli en cascade que le backend Python
  * (trading-app/backend/price_feed.py et candles.py) : source réelle
  * en premier, série simulée en dernier recours seulement, toujours
- * étiquetée comme telle.
+ * étiquetée comme telle. En cas d'erreur totalement inattendue, on
+ * renvoie quand même un JSON simulé valide plutôt que de laisser
+ * l'exception remonter jusqu'à la WebView.
  */
 class NativeBridge {
 
     private var lastPrice = 2400.0
+    private val worker = Executors.newSingleThreadExecutor()
+
+    private fun <T> runOnWorker(block: () -> T): T =
+        worker.submit(Callable { block() }).get(15, TimeUnit.SECONDS)
 
     @JavascriptInterface
-    fun getPrice(): String {
-        val goldApi = fetchGoldApi()
-        val metalsLive = if (goldApi == null) fetchMetalsLive() else null
-        val (price, provider) = when {
-            goldApi != null -> goldApi to "gold-api"
-            metalsLive != null -> metalsLive to "metals-live"
-            else -> simulateStep() to ""
+    fun getPrice(): String = try {
+        runOnWorker {
+            val goldApi = fetchGoldApi()
+            val metalsLive = if (goldApi == null) fetchMetalsLive() else null
+            val (price, provider) = when {
+                goldApi != null -> goldApi to "gold-api"
+                metalsLive != null -> metalsLive to "metals-live"
+                else -> simulateStep() to ""
+            }
+            lastPrice = price
+            JSONObject().apply {
+                put("price", price)
+                put("source", if (provider.isNotEmpty()) "live" else "simule")
+                put("provider", provider)
+                put("timestamp", System.currentTimeMillis() / 1000.0)
+            }.toString()
         }
-        lastPrice = price
-        val result = JSONObject()
-        result.put("price", price)
-        result.put("source", if (provider.isNotEmpty()) "live" else "simule")
-        result.put("provider", provider)
-        result.put("timestamp", System.currentTimeMillis() / 1000.0)
-        return result.toString()
+    } catch (_: Exception) {
+        JSONObject().apply {
+            put("price", simulateStep())
+            put("source", "simule")
+            put("provider", "")
+            put("timestamp", System.currentTimeMillis() / 1000.0)
+        }.toString()
     }
 
     @JavascriptInterface
-    fun getCandles(timeframe: String, limit: Int): String {
-        val cfg = TIMEFRAMES[timeframe] ?: TIMEFRAMES.getValue("1m")
-        val yahoo = fetchYahooCandles(cfg)
-        val result = JSONObject()
-        if (yahoo != null) {
-            result.put("provider", "yahoo-finance")
-            result.put("candles", toJsonArray(yahoo.takeLast(limit)))
-        } else {
-            result.put("provider", "simule")
-            result.put("candles", toJsonArray(syntheticCandles(cfg, limit)))
+    fun getCandles(timeframe: String, limit: Int): String = try {
+        runOnWorker {
+            val cfg = TIMEFRAMES[timeframe] ?: TIMEFRAMES.getValue("1m")
+            val yahoo = fetchYahooCandles(cfg)
+            JSONObject().apply {
+                if (yahoo != null) {
+                    put("provider", "yahoo-finance")
+                    put("candles", toJsonArray(yahoo.takeLast(limit)))
+                } else {
+                    put("provider", "simule")
+                    put("candles", toJsonArray(syntheticCandles(cfg, limit)))
+                }
+                put("timeframe", timeframe)
+            }.toString()
         }
-        result.put("timeframe", timeframe)
-        return result.toString()
+    } catch (_: Exception) {
+        val cfg = TIMEFRAMES[timeframe] ?: TIMEFRAMES.getValue("1m")
+        JSONObject().apply {
+            put("provider", "simule")
+            put("candles", toJsonArray(syntheticCandles(cfg, limit)))
+            put("timeframe", timeframe)
+        }.toString()
     }
 
     // --- cours ---
