@@ -232,8 +232,24 @@
   $("bot-form").addEventListener("submit", (e) => {
     e.preventDefault();
     const errorEl = $("bot-status");
+    errorEl.className = "status stopped";
     const { strategy, params } = collectBotParams();
     const target = $("bot-target").value;
+
+    // Un objectif déjà atteint (ou en dessous de la valeur actuelle) fait
+    // s'arrêter le bot instantanément, sans qu'aucun trade n'ait lieu — un
+    // piège facile (ex : 500 $ d'objectif alors qu'on a déjà 1000 $). On
+    // bloque ce cas ici plutôt que de laisser le bot s'arrêter en silence.
+    if (target) {
+      try {
+        const equity = JSON.parse(window.NativeBridge.getWallet()).equity;
+        if (+target <= equity) {
+          errorEl.textContent = `Objectif trop bas : le portefeuille vaut déjà ${fmtUsd(equity)}. Mettez un objectif supérieur, ou laissez le champ vide pour qu'il continue de progresser sans plafond.`;
+          return;
+        }
+      } catch (err) { /* si la vérification échoue, on laisse startBot() gérer */ }
+    }
+
     try {
       const raw = window.NativeBridge.startBot(
         strategy, JSON.stringify(params), +$("bot-interval").value, +$("bot-amount").value,
@@ -261,9 +277,24 @@
     try {
       const s = JSON.parse(window.NativeBridge.getBotStatus());
       const el = $("bot-status");
-      if (!s.running) { el.textContent = "Bot arrêté."; return; }
-      el.textContent = `Bot actif (${s.strategy}) · dernier signal : ${s.last_signal || "—"}` +
+      const stateEl = $("bot-state");
+      const stateLabel = $("bot-state-label");
+
+      if (!s.running) {
+        stateEl.classList.remove("active");
+        stateLabel.textContent = "Arrêté";
+        // s.last_signal porte la raison de l'arrêt (objectif atteint, seuil de
+        // protection, erreur…) même quand le bot n'est plus en cours d'exécution —
+        // sans ça, on ne sait jamais POURQUOI il s'est arrêté.
+        el.textContent = s.last_signal ? `Bot arrêté — ${s.last_signal}` : "Bot arrêté.";
+        el.className = "status stopped";
+        return;
+      }
+      stateEl.classList.add("active");
+      stateLabel.textContent = "Actif";
+      el.textContent = `Bot actif (${s.strategy}) · dernier signal : ${s.last_signal || "en attente du premier cycle…"}` +
         (s.last_error ? ` · erreur : ${s.last_error}` : "");
+      el.className = "status running";
     } catch (err) { /* silencieux */ }
   }
 

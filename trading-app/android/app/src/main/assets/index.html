@@ -85,6 +85,8 @@
     <section class="tab-panel" data-tab="bot" hidden>
       <div class="panel">
         <h2>Bot de trading <button class="tip" data-tip="Le bot surveille le cours et décide seul quand acheter puis revendre, selon la stratégie choisie. Il continue de tourner même si vous fermez l'app (notification persistante en bas de l'écran du téléphone).">ⓘ</button></h2>
+        <div class="bot-state" id="bot-state"><span class="dot"></span><span id="bot-state-label">Arrêté</span></div>
+        <p class="note">Appuyez sur « Démarrer » : le bot devient actif immédiatement (le badge ci-dessus passe au vert) et vérifie le cours toutes les quelques secondes. Il ne passera un ordre que lorsqu'un signal d'achat apparaît — ça peut prendre du temps, ce n'est pas un échec.</p>
         <form id="bot-form">
           <div class="row">
             <select id="bot-strategy">

@@ -25,7 +25,11 @@ html, body {
 .instrument .pair { font-weight: 400; color: var(--muted); font-size: 0.85rem; }
 
 main { padding: 0.75rem 1rem 5.5rem; display: flex; flex-direction: column; gap: 0.9rem; }
-.tab-panel { display: flex; flex-direction: column; gap: 0.9rem; }
+/* [hidden] doit rester prioritaire, sinon les 3 onglets restent tous
+   visibles en permanence, empilés, et changer d'onglet ne fait rien
+   de visible (bug réel constaté : "display: flex" seul écrasait le
+   comportement natif de l'attribut hidden). */
+.tab-panel:not([hidden]) { display: flex; flex-direction: column; gap: 0.9rem; }
 
 .tabbar {
   position: fixed; bottom: 0; left: 0; right: 0;
@@ -119,6 +123,18 @@ button:active { transform: translateY(1px); }
 
 .error { color: var(--red); font-size: 0.85rem; min-height: 1.2em; margin: 0.4rem 0 0; }
 .status { color: var(--muted); font-size: 0.85rem; margin: 0.4rem 0 0; }
+.status.running { color: var(--green); }
+.status.stopped { color: var(--muted); }
+
+.bot-state {
+  display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem;
+  font-size: 0.85rem; font-weight: 700; color: var(--muted);
+}
+.bot-state .dot {
+  width: 10px; height: 10px; border-radius: 999px; background: var(--muted);
+}
+.bot-state.active { color: var(--green); }
+.bot-state.active .dot { background: var(--green); box-shadow: 0 0 8px rgba(62,201,139,0.7); }
 
 .summary { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1rem; margin: 0 0 0.8rem; }
 .summary dt { color: var(--muted); font-size: 0.78rem; }
