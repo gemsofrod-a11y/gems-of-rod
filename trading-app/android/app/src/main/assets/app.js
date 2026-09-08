@@ -2,11 +2,14 @@
   "use strict";
 
   const $ = (id) => document.getElementById(id);
-  const state = { timeframe: "1m" };
+  const state = { timeframe: "1m", candles: [] };
 
   function fmtUsd(n) {
     return new Intl.NumberFormat("fr-FR", { style: "currency", currency: "USD" }).format(n);
   }
+  function fmtOz(n) { return `${n.toFixed(4)} oz`; }
+
+  // --- cours ---
 
   function refreshPrice() {
     try {
@@ -15,6 +18,14 @@
       const badge = $("price-source");
       badge.textContent = quote.source === "live" ? `cours réel · ${quote.provider}` : "simulé (hors ligne)";
       badge.className = `badge ${quote.source}`;
+
+      if (state.candles.length) {
+        const first = state.candles[0].o;
+        const changePct = ((quote.price - first) / first) * 100;
+        const el = $("price-change");
+        el.textContent = `${changePct >= 0 ? "+" : ""}${changePct.toFixed(2)} %`;
+        el.className = `price-change ${changePct >= 0 ? "positive" : "negative"}`;
+      }
     } catch (err) {
       $("price-source").textContent = "indisponible";
     }
@@ -23,12 +34,10 @@
   function refreshCandles() {
     try {
       const result = JSON.parse(window.NativeBridge.getCandles(state.timeframe, 120));
-      const providerLabel = {
-        "yahoo-finance": "cours réel (Yahoo Finance)",
-        "simule": "données simulées",
-      }[result.provider] || result.provider;
+      state.candles = result.candles || [];
+      const providerLabel = { "yahoo-finance": "cours réel (Yahoo Finance)", "simule": "données simulées" }[result.provider] || result.provider;
       $("chart-provider").textContent = providerLabel;
-      drawCandles(result.candles);
+      drawCandles();
     } catch (err) {
       $("chart-provider").textContent = "graphique indisponible";
     }
@@ -42,12 +51,13 @@
     refreshCandles();
   });
 
-  function drawCandles(candles) {
+  function drawCandles() {
     const canvas = $("price-chart");
     const ctx = canvas.getContext("2d");
     const w = canvas.width, h = canvas.height;
     ctx.clearRect(0, 0, w, h);
-    if (!candles || candles.length < 2) return;
+    const candles = state.candles;
+    if (candles.length < 2) return;
 
     const lows = candles.map((c) => c.l), highs = candles.map((c) => c.h);
     const min = Math.min(...lows), max = Math.max(...highs);
@@ -74,13 +84,121 @@
     });
   }
 
+  // --- portefeuille ---
+
+  function refreshWallet() {
+    try {
+      const w = JSON.parse(window.NativeBridge.getWallet());
+      const pnlClass = w.pnl >= 0 ? "positive" : "negative";
+      $("wallet-summary").innerHTML = `
+        <dt>Solde disponible</dt><dd>${fmtUsd(w.cash_balance)}</dd>
+        <dt>Position</dt><dd>${fmtOz(w.position_oz)}</dd>
+        <dt>Valeur totale</dt><dd>${fmtUsd(w.equity)}</dd>
+        <dt>Performance</dt><dd class="${pnlClass}">${w.pnl >= 0 ? "+" : ""}${w.pnl_pct.toFixed(2)} %</dd>
+      `;
+    } catch (err) { /* silencieux */ }
+    refreshTrades();
+  }
+
+  function refreshTrades() {
+    try {
+      const trades = JSON.parse(window.NativeBridge.getTrades(30));
+      const tbody = document.querySelector("#trades-table tbody");
+      tbody.innerHTML = trades.map((t) => `
+        <tr>
+          <td>${t.side === "buy" ? "Achat" : "Vente"}</td>
+          <td>${t.qty_oz.toFixed(4)}</td>
+          <td>${fmtUsd(t.price)}</td>
+          <td>${t.source === "bot" ? "Bot" : "Manuel"}</td>
+        </tr>
+      `).join("");
+    } catch (err) { /* silencieux */ }
+  }
+
+  $("cta-invest").addEventListener("click", () => {
+    const panel = $("order-panel");
+    panel.hidden = !panel.hidden;
+    if (!panel.hidden) panel.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+
+  $("order-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const errorEl = $("order-error");
+    errorEl.textContent = "";
+    const side = document.querySelector('input[name="side"]:checked').value;
+    const mode = $("order-mode").value;
+    const value = parseFloat($("order-value").value);
+    const raw = mode === "amount"
+      ? window.NativeBridge.placeOrderByAmount(side, value)
+      : window.NativeBridge.placeOrderByQty(side, value);
+    const result = JSON.parse(raw);
+    if (!result.ok) {
+      errorEl.textContent = result.error || "Erreur inconnue";
+      return;
+    }
+    $("order-value").value = "";
+    refreshWallet();
+  });
+
+  $("reset-wallet").addEventListener("click", () => {
+    if (!confirm("Réinitialiser le portefeuille à 1000 $ ? L'historique sera effacé.")) return;
+    window.NativeBridge.resetWallet();
+    refreshWallet();
+  });
+
+  // --- bot ---
+
+  $("bot-strategy").addEventListener("change", (e) => {
+    $("bot-params-sma").style.display = e.target.value === "sma_crossover" ? "flex" : "none";
+    $("bot-params-rsi").style.display = e.target.value === "rsi_mean_reversion" ? "flex" : "none";
+  });
+
+  function collectBotParams() {
+    const strategy = $("bot-strategy").value;
+    if (strategy === "sma_crossover") {
+      return { strategy, params: { fast: +$("sma-fast").value, slow: +$("sma-slow").value } };
+    }
+    return { strategy, params: { period: +$("rsi-period").value, oversold: +$("rsi-oversold").value, overbought: +$("rsi-overbought").value } };
+  }
+
+  $("bot-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const { strategy, params } = collectBotParams();
+    const target = $("bot-target").value;
+    window.NativeBridge.startBot(
+      strategy, JSON.stringify(params), +$("bot-interval").value, +$("bot-risk").value,
+      +$("bot-tp").value, +$("bot-sl").value, +$("bot-hold").value,
+      target ? +target : 0, +$("bot-floor").value,
+    );
+    refreshBotStatus();
+  });
+
+  $("bot-stop").addEventListener("click", () => {
+    window.NativeBridge.stopBot();
+    refreshBotStatus();
+  });
+
+  function refreshBotStatus() {
+    try {
+      const s = JSON.parse(window.NativeBridge.getBotStatus());
+      const el = $("bot-status");
+      if (!s.running) { el.textContent = "Bot arrêté."; return; }
+      el.textContent = `Bot actif (${s.strategy}) · dernier signal : ${s.last_signal || "—"}` +
+        (s.last_error ? ` · erreur : ${s.last_error}` : "");
+    } catch (err) { /* silencieux */ }
+  }
+
+  // --- boucle ---
+
   function tick() {
     refreshPrice();
+    refreshWallet();
+    refreshBotStatus();
   }
 
   (function init() {
-    tick();
     refreshCandles();
+    tick();
     setInterval(tick, 4000);
     setInterval(refreshCandles, 15000);
   })();

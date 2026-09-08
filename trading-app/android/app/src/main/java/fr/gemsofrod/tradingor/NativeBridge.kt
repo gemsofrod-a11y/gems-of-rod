@@ -1,64 +1,55 @@
 package fr.gemsofrod.tradingor
 
+import android.content.Context
 import android.webkit.JavascriptInterface
 import org.json.JSONArray
 import org.json.JSONObject
-import java.net.HttpURLConnection
-import java.net.URL
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
-import kotlin.math.max
-import kotlin.math.min
-import kotlin.random.Random
 
 /**
- * Pont natif exposé à la page (window.NativeBridge).
+ * Pont natif exposé à la page (window.NativeBridge) : cours, bougies,
+ * portefeuille virtuel (1000 USD de départ) et bot de trading.
  *
- * Les méthodes @JavascriptInterface peuvent, selon la version de
- * WebView, être appelées depuis le thread principal — un appel
- * réseau bloquant là planterait l'app (NetworkOnMainThreadException).
- * Pour l'éviter à coup sûr, tout le travail réseau est délégué à un
- * thread dédié via runOnWorker(), quel que soit le thread appelant.
- *
- * Reprend la même logique de repli en cascade que le backend Python
- * (trading-app/backend/price_feed.py et candles.py) : source réelle
- * en premier, série simulée en dernier recours seulement, toujours
- * étiquetée comme telle. En cas d'erreur totalement inattendue, on
- * renvoie quand même un JSON simulé valide plutôt que de laisser
- * l'exception remonter jusqu'à la WebView.
+ * Toutes les méthodes @JavascriptInterface délèguent leur travail à
+ * un thread dédié (runOnWorker) : selon la version de WebView, ces
+ * méthodes peuvent être appelées depuis le thread principal, où un
+ * appel réseau bloquant planterait l'app (NetworkOnMainThreadException).
  */
-class NativeBridge {
+class NativeBridge(context: Context) {
 
-    private var lastPrice = 2400.0
+    private val appContext = context.applicationContext
+    private val priceSource = PriceSource()
+    private val wallet = Wallet(appContext)
     private val worker = Executors.newSingleThreadExecutor()
 
+    @Volatile private var bot: TradingBot? = null
+    @Volatile private var botRunning = false
+    @Volatile private var botStrategy: String? = null
+    @Volatile private var lastSignal: String = ""
+    @Volatile private var lastError: String? = null
+
     private fun <T> runOnWorker(block: () -> T): T =
-        worker.submit(Callable { block() }).get(15, TimeUnit.SECONDS)
+        worker.submit(Callable { block() }).get(20, TimeUnit.SECONDS)
+
+    // --- cours & bougies ---
 
     @JavascriptInterface
     fun getPrice(): String = try {
         runOnWorker {
-            val goldApi = fetchGoldApi()
-            val metalsLive = if (goldApi == null) fetchMetalsLive() else null
-            val (price, provider) = when {
-                goldApi != null -> goldApi to "gold-api"
-                metalsLive != null -> metalsLive to "metals-live"
-                else -> simulateStep() to ""
-            }
-            lastPrice = price
+            val quote = priceSource.getQuote()
             JSONObject().apply {
-                put("price", price)
-                put("source", if (provider.isNotEmpty()) "live" else "simule")
-                put("provider", provider)
+                put("price", quote.price)
+                put("source", quote.source)
+                put("provider", quote.provider)
                 put("timestamp", System.currentTimeMillis() / 1000.0)
             }.toString()
         }
     } catch (_: Exception) {
         JSONObject().apply {
-            put("price", simulateStep())
-            put("source", "simule")
-            put("provider", "")
+            put("price", priceSource.lastPrice)
+            put("source", "simule"); put("provider", "")
             put("timestamp", System.currentTimeMillis() / 1000.0)
         }.toString()
     }
@@ -66,122 +57,20 @@ class NativeBridge {
     @JavascriptInterface
     fun getCandles(timeframe: String, limit: Int): String = try {
         runOnWorker {
-            val cfg = TIMEFRAMES[timeframe] ?: TIMEFRAMES.getValue("1m")
-            val yahoo = fetchYahooCandles(cfg)
+            val (provider, candles) = priceSource.getCandles(timeframe, limit)
             JSONObject().apply {
-                if (yahoo != null) {
-                    put("provider", "yahoo-finance")
-                    put("candles", toJsonArray(yahoo.takeLast(limit)))
-                } else {
-                    put("provider", "simule")
-                    put("candles", toJsonArray(syntheticCandles(cfg, limit)))
-                }
                 put("timeframe", timeframe)
+                put("provider", provider)
+                put("candles", candlesToJson(candles))
             }.toString()
         }
     } catch (_: Exception) {
-        val cfg = TIMEFRAMES[timeframe] ?: TIMEFRAMES.getValue("1m")
         JSONObject().apply {
-            put("provider", "simule")
-            put("candles", toJsonArray(syntheticCandles(cfg, limit)))
-            put("timeframe", timeframe)
+            put("timeframe", timeframe); put("provider", "simule"); put("candles", JSONArray())
         }.toString()
     }
 
-    // --- cours ---
-
-    private fun fetchGoldApi(): Double? = try {
-        val json = httpGet("https://api.gold-api.com/price/XAU")
-        JSONObject(json).optDouble("price").takeIf { it > 0 && !it.isNaN() }
-    } catch (_: Exception) {
-        null
-    }
-
-    private fun fetchMetalsLive(): Double? = try {
-        val json = httpGet("https://api.metals.live/v1/spot/gold")
-        val first = JSONArray(json).optJSONObject(0)
-        first?.optDouble("gold")?.takeIf { it > 0 && !it.isNaN() }
-    } catch (_: Exception) {
-        null
-    }
-
-    private fun simulateStep(): Double {
-        val stepVol = 0.01 / Math.sqrt(24.0 * 60 * 2) // pas d'environ 30s, calé sur la volatilité journalière de l'or
-        val shock = Random.nextGaussian(0.0, stepVol)
-        return max(1.0, lastPrice * (1 + shock))
-    }
-
-    // --- bougies ---
-
-    private data class Candle(val t: Long, val o: Double, val h: Double, val l: Double, val c: Double)
-    private data class TimeframeConfig(val seconds: Long, val yahooInterval: String, val yahooRange: String, val agg: Int)
-
-    private val TIMEFRAMES = mapOf(
-        "1m" to TimeframeConfig(60, "1m", "1d", 1),
-        "5m" to TimeframeConfig(300, "5m", "5d", 1),
-        "15m" to TimeframeConfig(900, "15m", "5d", 1),
-        "1h" to TimeframeConfig(3600, "60m", "1mo", 1),
-        "4h" to TimeframeConfig(14400, "60m", "3mo", 4),
-        "1d" to TimeframeConfig(86400, "1d", "6mo", 1),
-    )
-
-    private fun fetchYahooCandles(cfg: TimeframeConfig): List<Candle>? = try {
-        val url = "https://query1.finance.yahoo.com/v8/finance/chart/XAUUSD=X" +
-            "?interval=${cfg.yahooInterval}&range=${cfg.yahooRange}"
-        val json = httpGet(url, userAgent = "Mozilla/5.0 (gems-of-rod-trading-app)")
-        val result = JSONObject(json).getJSONObject("chart").getJSONArray("result").getJSONObject(0)
-        val timestamps = result.getJSONArray("timestamp")
-        val quote = result.getJSONObject("indicators").getJSONArray("quote").getJSONObject(0)
-        val opens = quote.getJSONArray("open")
-        val highs = quote.getJSONArray("high")
-        val lows = quote.getJSONArray("low")
-        val closes = quote.getJSONArray("close")
-
-        val raw = mutableListOf<Candle>()
-        for (i in 0 until timestamps.length()) {
-            if (opens.isNull(i) || highs.isNull(i) || lows.isNull(i) || closes.isNull(i)) continue
-            raw.add(Candle(timestamps.getLong(i), opens.getDouble(i), highs.getDouble(i), lows.getDouble(i), closes.getDouble(i)))
-        }
-        if (raw.isEmpty()) null else aggregate(raw, cfg.agg)
-    } catch (_: Exception) {
-        null
-    }
-
-    private fun aggregate(candles: List<Candle>, factor: Int): List<Candle> {
-        if (factor <= 1) return candles
-        val out = mutableListOf<Candle>()
-        var i = 0
-        while (i < candles.size) {
-            val chunk = candles.subList(i, min(i + factor, candles.size))
-            if (chunk.isNotEmpty()) {
-                out.add(Candle(
-                    t = chunk.first().t,
-                    o = chunk.first().o,
-                    h = chunk.maxOf { it.h },
-                    l = chunk.minOf { it.l },
-                    c = chunk.last().c,
-                ))
-            }
-            i += factor
-        }
-        return out
-    }
-
-    private fun syntheticCandles(cfg: TimeframeConfig, limit: Int): List<Candle> {
-        val now = System.currentTimeMillis() / 1000
-        var price = lastPrice
-        val out = mutableListOf<Candle>()
-        for (i in 0 until limit) {
-            val prev = price
-            val stepVol = 0.01 / Math.sqrt(365.0)
-            price = max(1.0, price * (1 + Random.nextGaussian(0.0, stepVol)))
-            val t = now - (limit - i) * cfg.seconds
-            out.add(Candle(t, prev, max(prev, price), min(prev, price), price))
-        }
-        return out
-    }
-
-    private fun toJsonArray(candles: List<Candle>): JSONArray {
+    private fun candlesToJson(candles: List<PriceSource.Candle>): JSONArray {
         val arr = JSONArray()
         for (c in candles) {
             arr.put(JSONObject().apply {
@@ -191,24 +80,111 @@ class NativeBridge {
         return arr
     }
 
-    // --- HTTP ---
+    // --- portefeuille ---
 
-    private fun httpGet(url: String, userAgent: String = "gems-of-rod-trading-app/1.0"): String {
-        val connection = URL(url).openConnection() as HttpURLConnection
-        connection.connectTimeout = 6000
-        connection.readTimeout = 6000
-        connection.setRequestProperty("User-Agent", userAgent)
-        connection.inputStream.use { stream ->
-            return stream.bufferedReader().readText()
-        }
+    @JavascriptInterface
+    fun getWallet(): String = try {
+        runOnWorker { wallet.summary(priceSource.getQuote().price).toString() }
+    } catch (_: Exception) {
+        wallet.summary(priceSource.lastPrice).toString()
     }
-}
 
-private fun Random.nextGaussian(mean: Double, stdDev: Double): Double {
-    // Transformation de Box-Muller : java.util.Random a nextGaussian(),
-    // mais kotlin.random.Random n'expose pas d'équivalent direct.
-    val u1 = 1.0 - this.nextDouble()
-    val u2 = this.nextDouble()
-    val z0 = kotlin.math.sqrt(-2.0 * kotlin.math.ln(u1)) * kotlin.math.cos(2.0 * Math.PI * u2)
-    return mean + z0 * stdDev
+    @JavascriptInterface
+    fun placeOrderByAmount(side: String, amountUsd: Double): String = try {
+        runOnWorker {
+            val price = priceSource.getQuote().price
+            val trade = wallet.executeOrder(side, null, amountUsd, price, "manuel", null)
+            JSONObject().apply { put("ok", true); put("trade", trade) }.toString()
+        }
+    } catch (e: Exception) {
+        JSONObject().apply { put("ok", false); put("error", e.message ?: "Erreur inconnue") }.toString()
+    }
+
+    @JavascriptInterface
+    fun placeOrderByQty(side: String, qtyOz: Double): String = try {
+        runOnWorker {
+            val price = priceSource.getQuote().price
+            val trade = wallet.executeOrder(side, qtyOz, null, price, "manuel", null)
+            JSONObject().apply { put("ok", true); put("trade", trade) }.toString()
+        }
+    } catch (e: Exception) {
+        JSONObject().apply { put("ok", false); put("error", e.message ?: "Erreur inconnue") }.toString()
+    }
+
+    @JavascriptInterface
+    fun getTrades(limit: Int): String = try {
+        runOnWorker { wallet.trades(limit).toString() }
+    } catch (_: Exception) {
+        JSONArray().toString()
+    }
+
+    @JavascriptInterface
+    fun resetWallet(): String = try {
+        runOnWorker {
+            wallet.reset()
+            JSONObject().apply { put("ok", true) }.toString()
+        }
+    } catch (e: Exception) {
+        JSONObject().apply { put("ok", false); put("error", e.message ?: "Erreur inconnue") }.toString()
+    }
+
+    // --- bot ---
+
+    @JavascriptInterface
+    fun startBot(
+        strategy: String, paramsJson: String, intervalSec: Int, riskPct: Double,
+        takeProfitPct: Double, stopLossPct: Double, maxHoldingMin: Int,
+        targetEquity: Double, floorPct: Double,
+    ): String = try {
+        synchronized(this) {
+            bot?.stop()
+            val params = try { JSONObject(paramsJson) } catch (_: Exception) { JSONObject() }
+            val newBot = TradingBot(
+                wallet, priceSource, strategy, params,
+                intervalSec.coerceAtLeast(2), riskPct,
+                takeProfitPct.coerceAtLeast(0.05), stopLossPct.coerceAtLeast(0.05),
+                (maxHoldingMin.coerceAtLeast(1) * 60).toLong(),
+                if (targetEquity > 0) targetEquity else null,
+                floorPct,
+            ) { running, signal, error ->
+                botRunning = running
+                lastSignal = signal
+                lastError = error
+                if (!running) bot = null
+            }
+            botStrategy = strategy
+            botRunning = true
+            lastSignal = ""
+            lastError = null
+            bot = newBot
+            newBot.start()
+        }
+        JSONObject().apply { put("status", "started") }.toString()
+    } catch (e: Exception) {
+        JSONObject().apply { put("status", "error"); put("error", e.message ?: "Erreur inconnue") }.toString()
+    }
+
+    @JavascriptInterface
+    fun stopBot(): String = try {
+        synchronized(this) {
+            bot?.stop()
+            bot = null
+            botRunning = false
+        }
+        JSONObject().apply { put("status", "stopped") }.toString()
+    } catch (e: Exception) {
+        JSONObject().apply { put("status", "error"); put("error", e.message ?: "Erreur inconnue") }.toString()
+    }
+
+    @JavascriptInterface
+    fun getBotStatus(): String = try {
+        JSONObject().apply {
+            put("running", botRunning)
+            put("strategy", botStrategy ?: JSONObject.NULL)
+            put("last_signal", lastSignal)
+            put("last_error", lastError ?: JSONObject.NULL)
+        }.toString()
+    } catch (_: Exception) {
+        JSONObject().apply { put("running", false) }.toString()
+    }
 }

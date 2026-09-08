@@ -27,7 +27,7 @@ class MainActivity : Activity() {
         webView = WebView(this).apply {
             settings.javaScriptEnabled = true
             settings.domStorageEnabled = true
-            addJavascriptInterface(NativeBridge(), "NativeBridge")
+            addJavascriptInterface(NativeBridge(this@MainActivity), "NativeBridge")
             loadUrl("file:///android_asset/index.html")
         }
         setContentView(webView)
