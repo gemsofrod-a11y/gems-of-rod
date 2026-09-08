@@ -187,7 +187,9 @@ GEMS = [
     ("phosphosiderite", ['Phosphosiderite'], ['phosphosiderite'], (BRUTE, FACETTEE)),
     # Jamais taillée (voir GemsRepository) : uniquement une photo de cristal brut.
     ("vivianite", ['Vivianite crystal', 'Vivianite Bolivia', 'Vivianite mineral specimen'], ['vivianite'], (BRUTE,)),
-    ("ecaille-de-tortue", ['Tortoiseshell comb antique', 'Hawksbill tortoiseshell material'], ['tortoiseshell'], (BRUTE,)),
+    # "tortoiseshell" seul déclenche trop de faux positifs (coloration de
+    # chat, autres homonymes) : mots-clés à deux mots pour rester spécifique.
+    ("ecaille-de-tortue", ['Tortoiseshell comb antique', 'Hawksbill tortoiseshell material'], ['tortoiseshell comb', 'tortoiseshell material', 'hawksbill turtle shell'], (BRUTE,)),
     ("bois-de-cerf", ['Deer antler shed', 'Red deer antler natural', 'Stag antler knife handle'], ['antler'], (BRUTE,)),
     ("corail-noir", ['Black coral branch', 'Antipathes black coral specimen'], ['black coral', 'antipathes'], (BRUTE,)),
     ("saphir-blanc", ['Colourless sapphire faceted', 'White sapphire ring', 'Corundum colorless crystal'], ['sapphire', 'corundum'], (BRUTE, FACETTEE)),

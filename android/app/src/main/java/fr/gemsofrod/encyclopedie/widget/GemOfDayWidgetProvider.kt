@@ -1,8 +1,10 @@
 package fr.gemsofrod.encyclopedie.widget
 
+import android.app.AlarmManager
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
@@ -39,6 +41,13 @@ import java.util.Locale
  * cas sont composés en un seul bitmap arrondi (mêmes coins que l'ancien
  * fond statique) car `RemoteViews` ne peut pas découper les coins d'une
  * `ImageView` selon la forme d'une vue voisine.
+ *
+ * La pierre du jour balaie tout [GemsRepository.gems] (`dayOfYear % taille`),
+ * pas une poignée de pierres fixes. Le rafraîchissement quotidien
+ * s'appuie sur une alarme explicite ([scheduleNextRefresh]) plutôt que sur
+ * `updatePeriodMillis` seul (peu fiable sur de nombreux appareils, voir sa
+ * documentation) — sans elle le widget pouvait sembler bloqué sur les
+ * mêmes quelques pierres faute de rafraîchissement régulier.
  */
 class GemOfDayWidgetProvider : AppWidgetProvider() {
 
@@ -46,6 +55,11 @@ class GemOfDayWidgetProvider : AppWidgetProvider() {
         for (appWidgetId in appWidgetIds) {
             updateWidget(context, appWidgetManager, appWidgetId)
         }
+        // Filet de sécurité : chaque fois que l'OS déclenche onUpdate (à
+        // l'ajout du widget, ou lors d'un des rares passages de son horloge
+        // interne peu fiable — voir scheduleNextRefresh), on (re)arme aussi
+        // notre propre alarme explicite.
+        scheduleNextRefresh(context)
     }
 
     override fun onAppWidgetOptionsChanged(
@@ -59,6 +73,26 @@ class GemOfDayWidgetProvider : AppWidgetProvider() {
         updateWidget(context, appWidgetManager, appWidgetId)
     }
 
+    override fun onEnabled(context: Context) {
+        scheduleNextRefresh(context)
+    }
+
+    override fun onDisabled(context: Context) {
+        // Plus aucune instance du widget sur un écran d'accueil : inutile de
+        // continuer à réveiller l'appareil chaque jour pour rien.
+        cancelScheduledRefresh(context)
+    }
+
+    override fun onReceive(context: Context, intent: Intent) {
+        super.onReceive(context, intent)
+        when (intent.action) {
+            ACTION_REFRESH, Intent.ACTION_BOOT_COMPLETED, Intent.ACTION_MY_PACKAGE_REPLACED -> {
+                refreshAllWidgets(context)
+                scheduleNextRefresh(context)
+            }
+        }
+    }
+
     companion object {
         private const val DEFAULT_WIDTH_DP = 180
         private const val DEFAULT_HEIGHT_DP = 90
@@ -66,6 +100,53 @@ class GemOfDayWidgetProvider : AppWidgetProvider() {
         private const val BORDER_WIDTH_DP = 1f
         private const val BORDER_COLOR = 0x33D6B872
         private const val SCRIM_COLOR = 0x59000000
+
+        private const val ACTION_REFRESH = "fr.gemsofrod.encyclopedie.widget.ACTION_REFRESH_GEM_OF_DAY"
+        private const val REFRESH_INTERVAL_MILLIS = 24L * 60 * 60 * 1000
+
+        private fun refreshPendingIntent(context: Context): PendingIntent {
+            val intent = Intent(context, GemOfDayWidgetProvider::class.java).apply { action = ACTION_REFRESH }
+            return PendingIntent.getBroadcast(
+                context,
+                0,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
+        }
+
+        /**
+         * Programme un rafraîchissement dans ~24h via une alarme explicite.
+         * `updatePeriodMillis` dans le manifeste widget (mécanisme natif de
+         * l'OS) n'est pas fiable, surtout au-delà de 30 minutes : de
+         * nombreux appareils le retardent, le fusionnent avec d'autres
+         * réveils ou le laissent filer plusieurs jours sous Doze/économie de
+         * batterie — d'où l'impression d'un widget « bloqué » qui ne montre
+         * qu'une poignée de pierres au lieu de tourner sur tout le
+         * catalogue. `setAndAllowWhileIdle` (imprécis mais livré même en
+         * Doze, sans permission spéciale contrairement à son équivalent
+         * exact) et une alarme qui se reprogramme elle-même à chaque
+         * déclenchement offrent un vrai changement quotidien.
+         */
+        private fun scheduleNextRefresh(context: Context) {
+            val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as? AlarmManager ?: return
+            val triggerAt = System.currentTimeMillis() + REFRESH_INTERVAL_MILLIS
+            runCatching {
+                alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAt, refreshPendingIntent(context))
+            }
+        }
+
+        private fun cancelScheduledRefresh(context: Context) {
+            val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as? AlarmManager ?: return
+            alarmManager.cancel(refreshPendingIntent(context))
+        }
+
+        private fun refreshAllWidgets(context: Context) {
+            val appWidgetManager = AppWidgetManager.getInstance(context)
+            val widgetIds = appWidgetManager.getAppWidgetIds(ComponentName(context, GemOfDayWidgetProvider::class.java))
+            for (appWidgetId in widgetIds) {
+                updateWidget(context, appWidgetManager, appWidgetId)
+            }
+        }
 
         /**
          * Plafond de sécurité en pixels pour le bitmap composé : RemoteViews

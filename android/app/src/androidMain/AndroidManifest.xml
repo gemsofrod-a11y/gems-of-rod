@@ -3,6 +3,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <!-- Reprogramme l'alarme quotidienne du widget "Gemme du jour" après un
+         redémarrage de l'appareil (les alarmes AlarmManager ne survivent
+         pas au reboot). -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <!-- Optionnelle : le catalogue reste utilisable sans caméra, seul le
          réflectomètre (Laboratoire) en dépend. -->
     <uses-feature android:name="android.hardware.camera" android:required="false" />
@@ -41,6 +45,11 @@
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="fr.gemsofrod.encyclopedie.widget.ACTION_REFRESH_GEM_OF_DAY" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
