@@ -73,11 +73,13 @@
       <form id="bot-form">
         <div class="row">
           <select id="bot-strategy">
+            <option value="adaptive">Adaptative (recommandé)</option>
             <option value="sma_crossover">Croisement de moyennes</option>
             <option value="rsi_mean_reversion">RSI</option>
           </select>
         </div>
-        <div class="row" id="bot-params-sma">
+        <p class="note" id="bot-adaptive-note">Choisit automatiquement, à partir des trades déjà passés, la stratégie qui a le mieux fonctionné récemment.</p>
+        <div class="row" id="bot-params-sma" style="display:none">
           <label>Rapide <input id="sma-fast" type="number" value="10" min="2" /></label>
           <label>Lente <input id="sma-slow" type="number" value="30" min="3" /></label>
         </div>

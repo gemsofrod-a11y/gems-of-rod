@@ -12,6 +12,7 @@ object Strategies {
     fun minHistory(name: String, params: JSONObject): Int = when (name) {
         "sma_crossover" -> params.optInt("slow", 30) + 1
         "rsi_mean_reversion" -> params.optInt("period", 14) + 1
+        "adaptive" -> 31 // couvre le plus exigeant des deux stratégies candidates par défaut
         else -> params.optInt("slow", 30) + 1
     }
 

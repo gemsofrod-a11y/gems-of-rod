@@ -15,6 +15,19 @@ android {
         versionName = "1.0"
     }
 
+    // Clé de débogage fixe (commitée, non secrète — c'est la norme pour
+    // une clé de debug) : sans ça, chaque run CI en régénère une
+    // différente et la mise à jour de l'APK échoue silencieusement tant
+    // que l'ancienne version n'a pas été complètement désinstallée.
+    signingConfigs {
+        getByName("debug") {
+            storeFile = rootProject.file("debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false

@@ -42,6 +42,11 @@ class TradingBot(
     private var entryTime: Long? = null
     private var startEquity: Double = 0.0
     private var thread: Thread? = null
+    /** Stratégie ayant réellement ouvert la position en cours — utile en
+     * mode "adaptive", où elle peut différer de strategyName d'un cycle
+     * à l'autre. Enregistrée sur chaque trade pour que AdaptiveSelector
+     * puisse évaluer les résultats de chaque stratégie séparément. */
+    private var currentSubStrategy: String = strategyName
 
     fun start() {
         val t = Thread {
@@ -112,10 +117,22 @@ class TradingBot(
             val reason = checkExit(quote.price)
             if (reason != null) closePosition(reason)
         } else {
-            signal = Strategies.signal(strategyName, params, history)
-            if (signal == "buy") openPosition(quote.price, summary.getDouble("cash_balance"))
+            val (activeStrategy, activeParams) = resolveActiveStrategy()
+            signal = Strategies.signal(activeStrategy, activeParams, history)
+            if (signal == "buy") openPosition(quote.price, summary.getDouble("cash_balance"), activeStrategy)
         }
         onStatus(true, signal, null)
+    }
+
+    /** En mode "adaptive", interroge AdaptiveSelector à chaque cycle
+     * (léger : ne relit que l'historique des trades déjà en mémoire
+     * locale via SharedPreferences) pour choisir la stratégie sous-
+     * jacente qui a le mieux fonctionné récemment. Sinon, la
+     * stratégie fixe choisie par l'utilisateur. */
+    private fun resolveActiveStrategy(): Pair<String, JSONObject> {
+        if (strategyName != "adaptive") return strategyName to params
+        val choice = AdaptiveSelector.choose(wallet.trades(200))
+        return choice.strategyName to choice.params
     }
 
     private fun checkExit(price: Double): String? {
@@ -130,13 +147,14 @@ class TradingBot(
         }
     }
 
-    private fun openPosition(price: Double, cash: Double) {
+    private fun openPosition(price: Double, cash: Double, strategyForTrade: String) {
         val amount = minOf(investAmountUsd, cash)
         if (amount <= 1) return
         try {
-            wallet.executeOrder("buy", null, amount, price, "bot", strategyName)
+            wallet.executeOrder("buy", null, amount, price, "bot", strategyForTrade)
             entryPrice = price
             entryTime = System.currentTimeMillis() / 1000
+            currentSubStrategy = strategyForTrade
         } catch (_: Wallet.OrderError) {
             // solde insuffisant : on attend le prochain signal
         }
@@ -146,7 +164,7 @@ class TradingBot(
         val position = wallet.positionOz()
         if (position <= 1e-9) return
         try {
-            wallet.executeOrder("sell", position, null, priceSource.lastPrice, "bot", strategyName)
+            wallet.executeOrder("sell", position, null, priceSource.lastPrice, "bot", currentSubStrategy)
         } catch (_: Wallet.OrderError) {
             return
         }
@@ -159,7 +177,7 @@ class TradingBot(
         val position = wallet.positionOz()
         if (position > 1e-9) {
             try {
-                wallet.executeOrder("sell", position, null, priceSource.lastPrice, "bot", strategyName)
+                wallet.executeOrder("sell", position, null, priceSource.lastPrice, "bot", currentSubStrategy)
             } catch (_: Wallet.OrderError) {
                 // ignore : on arrête quand même le bot
             }

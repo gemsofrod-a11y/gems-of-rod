@@ -151,25 +151,42 @@
   $("bot-strategy").addEventListener("change", (e) => {
     $("bot-params-sma").style.display = e.target.value === "sma_crossover" ? "flex" : "none";
     $("bot-params-rsi").style.display = e.target.value === "rsi_mean_reversion" ? "flex" : "none";
+    $("bot-adaptive-note").style.display = e.target.value === "adaptive" ? "block" : "none";
   });
+  $("bot-strategy").dispatchEvent(new Event("change"));
 
   function collectBotParams() {
     const strategy = $("bot-strategy").value;
     if (strategy === "sma_crossover") {
       return { strategy, params: { fast: +$("sma-fast").value, slow: +$("sma-slow").value } };
     }
-    return { strategy, params: { period: +$("rsi-period").value, oversold: +$("rsi-oversold").value, overbought: +$("rsi-overbought").value } };
+    if (strategy === "rsi_mean_reversion") {
+      return { strategy, params: { period: +$("rsi-period").value, oversold: +$("rsi-oversold").value, overbought: +$("rsi-overbought").value } };
+    }
+    // "adaptive" : le bot choisit lui-même, pas de paramètres à saisir ici
+    return { strategy, params: {} };
   }
 
   $("bot-form").addEventListener("submit", (e) => {
     e.preventDefault();
+    const errorEl = $("bot-status");
     const { strategy, params } = collectBotParams();
     const target = $("bot-target").value;
-    window.NativeBridge.startBot(
-      strategy, JSON.stringify(params), +$("bot-interval").value, +$("bot-amount").value,
-      +$("bot-tp").value, +$("bot-sl").value, +$("bot-hold").value,
-      target ? +target : 0, +$("bot-floor").value,
-    );
+    try {
+      const raw = window.NativeBridge.startBot(
+        strategy, JSON.stringify(params), +$("bot-interval").value, +$("bot-amount").value,
+        +$("bot-tp").value, +$("bot-sl").value, +$("bot-hold").value,
+        target ? +target : 0, +$("bot-floor").value,
+      );
+      const result = JSON.parse(raw);
+      if (result.status === "error") {
+        errorEl.textContent = `Erreur au démarrage : ${result.error}`;
+        return;
+      }
+    } catch (err) {
+      errorEl.textContent = `Erreur au démarrage : ${err.message || err}`;
+      return;
+    }
     refreshBotStatus();
   });
 
