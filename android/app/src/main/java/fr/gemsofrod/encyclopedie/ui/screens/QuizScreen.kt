@@ -34,12 +34,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.AchievementsRepository
+import fr.gemsofrod.encyclopedie.data.CoquillageFamille
+import fr.gemsofrod.encyclopedie.data.CoquillagesRepository
 import fr.gemsofrod.encyclopedie.data.FossileFamille
 import fr.gemsofrod.encyclopedie.data.FossilesRepository
 import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.data.GemGlossary
 import fr.gemsofrod.encyclopedie.data.GemRarete
 import fr.gemsofrod.encyclopedie.data.GemsRepository
+import fr.gemsofrod.encyclopedie.data.MeteoriteFamille
+import fr.gemsofrod.encyclopedie.data.MeteoritesRepository
 import fr.gemsofrod.encyclopedie.data.QuizEngine
 import fr.gemsofrod.encyclopedie.data.QuizQuestion
 import fr.gemsofrod.encyclopedie.data.QuizQuestionType
@@ -283,6 +287,14 @@ private fun questionPrompt(question: QuizQuestion): String = when (question.type
         val fossile = FossilesRepository.byId(question.fossileId.orEmpty())?.localized()
         stringResource(R.string.quiz_question_fossile_famille, fossile?.nom.orEmpty())
     }
+    QuizQuestionType.COQUILLAGE_FAMILLE -> {
+        val coquillage = CoquillagesRepository.byId(question.coquillageId.orEmpty())?.localized()
+        stringResource(R.string.quiz_question_coquillage_famille, coquillage?.nom.orEmpty())
+    }
+    QuizQuestionType.METEORITE_FAMILLE -> {
+        val meteorite = MeteoritesRepository.byId(question.meteoriteId.orEmpty())?.localized()
+        stringResource(R.string.quiz_question_meteorite_famille, meteorite?.nom.orEmpty())
+    }
 }
 
 @Composable
@@ -302,4 +314,6 @@ private fun choiceLabel(question: QuizQuestion, index: Int): String = when (ques
         GemGlossary.page(languageCode).termes[question.glossaryChoiceIndices[index]].terme
     }
     QuizQuestionType.FOSSILE_FAMILLE -> stringResource(FossileFamille.valueOf(question.choiceKeys[index]).labelRes)
+    QuizQuestionType.COQUILLAGE_FAMILLE -> stringResource(CoquillageFamille.valueOf(question.choiceKeys[index]).labelRes)
+    QuizQuestionType.METEORITE_FAMILLE -> stringResource(MeteoriteFamille.valueOf(question.choiceKeys[index]).labelRes)
 }

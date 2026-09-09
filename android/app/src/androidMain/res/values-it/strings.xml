@@ -324,6 +324,8 @@
     <string name="quiz_question_rarete">Qual è la rarità di %1$s?</string>
     <string name="quiz_question_glossaire">Quale termine corrisponde a questa definizione?</string>
     <string name="quiz_question_fossile_famille">A quale famiglia appartiene il fossile %1$s?</string>
+    <string name="quiz_question_coquillage_famille">A quale famiglia appartiene la conchiglia %1$s?</string>
+    <string name="quiz_question_meteorite_famille">A quale famiglia appartiene il meteorite %1$s?</string>
     <string name="quiz_next_button">Domanda successiva</string>
     <string name="quiz_finish_button">Vedi punteggio</string>
     <string name="quiz_score_title">Punteggio: %1$d / %2$d</string>
