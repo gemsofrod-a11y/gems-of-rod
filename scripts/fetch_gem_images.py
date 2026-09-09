@@ -1039,11 +1039,32 @@ def kotlin_escape(value: str) -> str:
     return single_line.replace("\\", "\\\\").replace("$", "\\$").replace("\"", "\\\"")
 
 
+def _looks_like_raster_image(data: bytes) -> bool:
+    """Vérifie les premiers octets plutôt que de se fier à l'extension de
+    l'URL : un fichier Wikimedia peut être servi en SVG (schéma, diagramme
+    scientifique...) malgré une URL en .jpg/.png, ce qui a déjà produit un
+    faux positif silencieux (un graphique matplotlib enregistré comme photo
+    d'une gemme). Couvre les formats attendus dans drawable-nodpi (JPEG,
+    PNG, GIF, WebP)."""
+    if data.startswith(b"\xff\xd8\xff"):
+        return True
+    if data.startswith(b"\x89PNG\r\n\x1a\n"):
+        return True
+    if data.startswith(b"GIF87a") or data.startswith(b"GIF89a"):
+        return True
+    if data[:4] == b"RIFF" and data[8:12] == b"WEBP":
+        return True
+    return False
+
+
 def download_image(url: str, dest: Path) -> None:
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     time.sleep(REQUEST_DELAY_SECONDS)
     with _urlopen_with_retry(req) as resp:
-        dest.write_bytes(resp.read())
+        data = resp.read()
+    if not _looks_like_raster_image(data):
+        raise ValueError(f"contenu non reconnu comme image matricielle (SVG/HTML probable) : {url}")
+    dest.write_bytes(data)
 
 
 def load_credits() -> dict:
