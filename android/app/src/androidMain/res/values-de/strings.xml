@@ -434,6 +434,14 @@
     <string name="treatments_detection_label">Erkennungsmerkmale</string>
     <string name="treatments_disclosure_label">Offenlegungspflicht</string>
 
+    <!-- Kaufratgeber nach Edelstein -->
+    <string name="lab_buying_guides_title">Kaufratgeber</string>
+    <string name="lab_buying_guides_subtitle">Wie Sie jeden Edel- und Schmuckstein Kriterium für Kriterium auswählen.</string>
+    <string name="buying_guides_title">Kaufratgeber</string>
+    <string name="buying_guides_origin_label">Herkunft &amp; Farbe</string>
+    <string name="buying_guides_purity_label">Reinheit &amp; gängige Behandlungen</string>
+    <string name="buying_guides_care_label">Pflege</string>
+
     <!-- Lagerverwaltung -->
     <string name="lab_stock_title">Lagerverwaltung</string>
     <string name="lab_stock_subtitle">Behalten Sie Ihre Steine im Lager, reserviert oder verkauft, im Blick.</string>

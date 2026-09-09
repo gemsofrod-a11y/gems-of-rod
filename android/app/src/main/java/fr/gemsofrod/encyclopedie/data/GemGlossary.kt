@@ -14,7 +14,7 @@ data class GemGlossaryPage(
  * Lexique gemmologique statique expliquant en langage clair le vocabulaire
  * technique employé dans les fiches d'inclusions typiques (soie, halo de
  * tension, trichites...) et dans les champs de l'outil "Analyse de pierre"
- * (biréfringence, pléochroïsme, clivage...), traduit dans les 5 langues de
+ * (biréfringence, pléochroïsme, clivage...), traduit dans les 9 langues de
  * l'app indépendamment des fiches gemmes. Les termes sont classés par ordre
  * alphabétique de leur libellé français.
  */

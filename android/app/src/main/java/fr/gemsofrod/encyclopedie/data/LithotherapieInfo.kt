@@ -15,7 +15,7 @@ data class LithoInfoPage(
 
 /**
  * Contenu éditorial statique de la section Lithothérapie (nettoyage/rechargement,
- * association de pierres), traduit dans les 5 langues de l'app indépendamment
+ * association de pierres), traduit dans les 9 langues de l'app indépendamment
  * des fiches gemmes. Le français sert de secours si une langue n'a pas
  * (encore) de traduction pour un sujet donné.
  */

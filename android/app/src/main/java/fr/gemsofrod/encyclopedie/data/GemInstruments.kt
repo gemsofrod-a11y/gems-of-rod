@@ -17,7 +17,7 @@ data class GemInstrumentsPage(
 /**
  * Contenu éditorial statique présentant les instruments d'analyse gemmologique
  * de base (réfractomètre, balance hydrostatique, dichroscope...), traduit dans
- * les 5 langues de l'app indépendamment des fiches gemmes. Complète l'outil
+ * les 9 langues de l'app indépendamment des fiches gemmes. Complète l'outil
  * "Analyse de pierre" en expliquant comment ses champs (transparence, éclat,
  * densité, pléochroïsme, fluorescence...) sont mesurés en pratique.
  */

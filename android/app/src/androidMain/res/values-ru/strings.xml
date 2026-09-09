@@ -434,6 +434,14 @@
     <string name="treatments_detection_label">Признаки обнаружения</string>
     <string name="treatments_disclosure_label">Обязанность раскрытия информации</string>
 
+    <!-- Руководства по покупке по камням -->
+    <string name="lab_buying_guides_title">Руководства по покупке</string>
+    <string name="lab_buying_guides_subtitle">Как выбрать каждый драгоценный и полудрагоценный камень — критерий за критерием.</string>
+    <string name="buying_guides_title">Руководства по покупке</string>
+    <string name="buying_guides_origin_label">Происхождение и цвет</string>
+    <string name="buying_guides_purity_label">Чистота и распространённые обработки</string>
+    <string name="buying_guides_care_label">Уход</string>
+
     <!-- Управление складом -->
     <string name="lab_stock_title">Управление складом</string>
     <string name="lab_stock_subtitle">Отслеживайте камни на складе, забронированные или проданные.</string>

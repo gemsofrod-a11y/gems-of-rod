@@ -434,6 +434,14 @@
     <string name="treatments_detection_label">Detection clues</string>
     <string name="treatments_disclosure_label">Disclosure requirement</string>
 
+    <!-- Buying guides by gemstone -->
+    <string name="lab_buying_guides_title">Buying Guides</string>
+    <string name="lab_buying_guides_subtitle">How to choose each precious and fine gemstone, criterion by criterion.</string>
+    <string name="buying_guides_title">Buying Guides</string>
+    <string name="buying_guides_origin_label">Origin &amp; colour</string>
+    <string name="buying_guides_purity_label">Clarity &amp; common treatments</string>
+    <string name="buying_guides_care_label">Care</string>
+
     <!-- Stock manager -->
     <string name="lab_stock_title">Stock Management</string>
     <string name="lab_stock_subtitle">Track your stones in stock, reserved, or sold.</string>

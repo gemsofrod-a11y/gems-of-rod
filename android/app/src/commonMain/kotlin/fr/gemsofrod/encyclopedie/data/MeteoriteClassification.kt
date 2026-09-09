@@ -16,7 +16,7 @@ data class MeteoriteClassificationPage(
 /**
  * Contenu éditorial statique présentant la classification générale des
  * météorites (sidérites, sidérolithes, aérolithes) et leurs principales
- * sous-catégories, traduit dans les 5 langues de l'app indépendamment des
+ * sous-catégories, traduit dans les 9 langues de l'app indépendamment des
  * fiches individuelles. Complète la section "Météorites" en expliquant le
  * vocabulaire utilisé sur chaque fiche (classification, composition...).
  */

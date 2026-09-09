@@ -1130,6 +1130,13 @@ object GemTranslationsPt {
             particularites = "O único mineral naturalmente e fortemente magnético, propriedade utilizada desde a Antiguidade para a navegação.",
             lithotherapie = "A magnetite é associada ao enraizamento e ao equilíbrio energético, frequentemente utilizada para recentrar o corpo e o espírito."
         ),
+        "wolframite" to GemTranslation(
+            nom = "Volframite",
+            descriptionCourte = "O principal minério de tungsténio, em cristais lamelares castanho-escuros.",
+            descriptionLongue = "A volframite forma uma série contínua entre a ferberite (rica em ferro) e a hübnerite (rica em manganês), do castanho-negro metálico ao brilho submetálico. Principal minério de tungsténio a par da scheelite, nunca é lapidada em joalharia, mas é procurada como peça de coleção, nomeadamente os cristais lamelares da mina portuguesa da Panasqueira.",
+            particularites = "Deve o seu nome ao alemão «Wolf Rahm» (espuma de lobo): os fundidores de estanho medievais acusavam-na de «devorar» o estanho como um lobo devora uma ovelha durante a fundição.",
+            lithotherapie = "A volframite não tem uma tradição estabelecida em litoterapia, mantendo-se o seu uso quase exclusivamente mineralógico e industrial."
+        ),
         "quartz-tourmaline" to GemTranslation(
             nom = "Quartzo turmalinado",
             descriptionCourte = "Agulhas de turmalina negra congeladas num quartzo límpido.",

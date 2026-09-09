@@ -1130,6 +1130,13 @@ object GemTranslationsEn {
             particularites = "The only naturally and strongly magnetic mineral, a property used since antiquity for navigation.",
             lithotherapie = "Magnetite is associated with grounding and energetic balance, often used to recenter body and mind."
         ),
+        "wolframite" to GemTranslation(
+            nom = "Wolframite",
+            descriptionCourte = "The principal ore of tungsten, in brown-black lamellar crystals.",
+            descriptionLongue = "Wolframite forms a continuous series between iron-rich ferberite and manganese-rich hübnerite, ranging from metallic brown-black to a submetallic luster. Along with scheelite, it is the main ore of tungsten; never cut for jewelry, it is sought after by collectors as specimens, notably the lamellar crystals from the Panasqueira mine in Portugal.",
+            particularites = "Its name comes from the German \"Wolf Rahm\" (wolf's froth): medieval tin smelters accused it of \"devouring\" tin the way a wolf devours a sheep during smelting.",
+            lithotherapie = "Wolframite has no established crystal-healing tradition, its use remaining almost exclusively mineralogical and industrial."
+        ),
         "quartz-tourmaline" to GemTranslation(
             nom = "Tourmalinated quartz",
             descriptionCourte = "Needles of black tourmaline frozen within a limpid quartz.",

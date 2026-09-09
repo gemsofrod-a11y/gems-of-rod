@@ -1130,6 +1130,13 @@ object GemTranslationsZh {
             particularites = "唯一天然且具强磁性的矿物，这一特性自古以来便被用于导航。",
             lithotherapie = "磁铁矿与扎根及能量平衡相关，常被用来使身心重新归于中心。"
         ),
+        "wolframite" to GemTranslation(
+            nom = "黑钨矿",
+            descriptionCourte = "钨的主要矿石,呈褐黑色片状晶体。",
+            descriptionLongue = "黑钨矿在富铁的钨锰铁矿与富锰的钨锰矿之间形成连续系列,呈现出从金属褐黑色到亚金属光泽的变化。它与白钨矿同为钨的主要矿石,从不用于珠宝切割,但作为标本备受收藏者青睐,尤其是产自葡萄牙帕纳斯凯拉矿区的片状晶体。",
+            particularites = "其名称源自德语「Wolf Rahm」(意为「狼沫」):中世纪的炼锡工人指责该矿物在熔炼过程中像狼吞食绵羊一样「吞噬」锡。",
+            lithotherapie = "黑钨矿在水晶疗法中并无既定传统,其用途几乎完全限于矿物学与工业领域。"
+        ),
         "quartz-tourmaline" to GemTranslation(
             nom = "碧玺水晶",
             descriptionCourte = "封存在澄澈石英中的黑碧玺针状晶体。",

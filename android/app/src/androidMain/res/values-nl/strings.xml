@@ -434,6 +434,14 @@
     <string name="treatments_detection_label">Detectiekenmerken</string>
     <string name="treatments_disclosure_label">Meldingsplicht</string>
 
+    <!-- Aankoopgidsen per edelsteen -->
+    <string name="lab_buying_guides_title">Aankoopgidsen</string>
+    <string name="lab_buying_guides_subtitle">Hoe u elke edelsteen en halfedelsteen kiest, criterium voor criterium.</string>
+    <string name="buying_guides_title">Aankoopgidsen</string>
+    <string name="buying_guides_origin_label">Herkomst en kleur</string>
+    <string name="buying_guides_purity_label">Zuiverheid en veelvoorkomende behandelingen</string>
+    <string name="buying_guides_care_label">Onderhoud</string>
+
     <!-- Voorraadbeheer -->
     <string name="lab_stock_title">Voorraadbeheer</string>
     <string name="lab_stock_subtitle">Houd uw stenen op voorraad, gereserveerd of verkocht bij.</string>
