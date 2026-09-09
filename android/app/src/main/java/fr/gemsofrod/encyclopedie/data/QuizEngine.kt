@@ -1,7 +1,7 @@
 package fr.gemsofrod.encyclopedie.data
 
 /** Type de question posée dans le quiz de révision gemmologique. */
-enum class QuizQuestionType { COULEUR, FAMILLE, RARETE, GLOSSAIRE, FOSSILE_FAMILLE }
+enum class QuizQuestionType { COULEUR, FAMILLE, RARETE, GLOSSAIRE, FOSSILE_FAMILLE, COQUILLAGE_FAMILLE, METEORITE_FAMILLE }
 
 /**
  * Une question du quiz. Les champs pertinents dépendent de [type] :
@@ -15,20 +15,29 @@ enum class QuizQuestionType { COULEUR, FAMILLE, RARETE, GLOSSAIRE, FOSSILE_FAMIL
  *   la définition à afficher est celle du terme à cet index.
  * - [FOSSILE_FAMILLE] : [fossileId] renseigné, [choiceKeys] contient les
  *   noms d'enum [FossileFamille.name] dont un correspond à [correctIndex].
+ * - [COQUILLAGE_FAMILLE] : [coquillageId] renseigné, [choiceKeys] contient
+ *   les noms d'enum [CoquillageFamille.name] dont un correspond à
+ *   [correctIndex] — au plus 3 choix, [CoquillageFamille] n'en comptant que
+ *   trois au total.
+ * - [METEORITE_FAMILLE] : [meteoriteId] renseigné, [choiceKeys] contient les
+ *   noms d'enum [MeteoriteFamille.name] dont un correspond à [correctIndex].
  */
 data class QuizQuestion(
     val type: QuizQuestionType,
     val correctIndex: Int,
     val gemId: String? = null,
     val fossileId: String? = null,
+    val coquillageId: String? = null,
+    val meteoriteId: String? = null,
     val choiceKeys: List<String> = emptyList(),
     val glossaryChoiceIndices: List<Int> = emptyList()
 )
 
 /**
  * Génère des quiz de révision à choix multiples à partir du catalogue de
- * gemmes (couleur, famille minérale, rareté) et du lexique gemmologique
- * (association définition <-> terme), pour un usage pédagogique léger sans
+ * gemmes (couleur, famille minérale, rareté), du lexique gemmologique
+ * (association définition <-> terme) et des familles de fossiles,
+ * coquillages et météorites, pour un usage pédagogique léger sans
  * dépendance externe. Les mauvaises réponses sont piochées aléatoirement
  * parmi les autres valeurs possibles, si bien qu'un nouveau quiz ne
  * ressemble presque jamais au précédent.
@@ -58,6 +67,26 @@ object QuizEngine {
                 type = QuizQuestionType.FOSSILE_FAMILLE,
                 fossileId = fossile.id,
                 correctIndex = choices.indexOf(fossile.famille),
+                choiceKeys = choices.map { it.name }
+            )
+        }
+        QuizQuestionType.COQUILLAGE_FAMILLE -> {
+            val coquillage = CoquillagesRepository.all().random()
+            val choices = (CoquillageFamille.entries.filter { it != coquillage.famille }.shuffled().take(3) + coquillage.famille).shuffled()
+            QuizQuestion(
+                type = QuizQuestionType.COQUILLAGE_FAMILLE,
+                coquillageId = coquillage.id,
+                correctIndex = choices.indexOf(coquillage.famille),
+                choiceKeys = choices.map { it.name }
+            )
+        }
+        QuizQuestionType.METEORITE_FAMILLE -> {
+            val meteorite = MeteoritesRepository.all().random()
+            val choices = (MeteoriteFamille.entries.filter { it != meteorite.famille }.shuffled().take(3) + meteorite.famille).shuffled()
+            QuizQuestion(
+                type = QuizQuestionType.METEORITE_FAMILLE,
+                meteoriteId = meteorite.id,
+                correctIndex = choices.indexOf(meteorite.famille),
                 choiceKeys = choices.map { it.name }
             )
         }
