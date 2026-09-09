@@ -28,8 +28,9 @@ data class Badge(
 /**
  * Liste des succès proposés par l'app, dérivés du catalogue (gemmes
  * consultées, couleurs découvertes), des favoris et du quiz gemmologique.
- * Les seuils liés au catalogue ([GemsRepository.gems] et
- * [GemColorCategory.entries]) sont calculés dynamiquement pour rester
+ * Les seuils liés au catalogue ([GemsRepository.gems], [GemColorCategory.entries],
+ * [FossilesRepository.all], [CoquillagesRepository.all], [MeteoritesRepository.all],
+ * [GemsRepository.organiques]) sont calculés dynamiquement pour rester
  * corrects si le catalogue grandit.
  */
 object Achievements {
@@ -42,6 +43,8 @@ object Achievements {
         Badge("rainbow", BadgeCategory.EXPLORATION, "🌈", threshold = GemColorCategory.entries.size) { it.colorsCoveredCount },
         Badge("fossil_collector", BadgeCategory.EXPLORATION, "🦴", threshold = FossilesRepository.all().size) { it.fossilesViewedCount },
         Badge("shell_collector", BadgeCategory.EXPLORATION, "🐚", threshold = CoquillagesRepository.all().size) { it.coquillagesViewedCount },
+        Badge("meteorite_collector", BadgeCategory.EXPLORATION, "🌠", threshold = MeteoritesRepository.all().size) { it.meteoritesViewedCount },
+        Badge("organic_collector", BadgeCategory.EXPLORATION, "🦪", threshold = GemsRepository.organiques().size) { it.organiquesViewedCount },
         Badge("first_favorite", BadgeCategory.FAVORIS, "💛", threshold = 1) { it.favoritesCount },
         Badge("fan", BadgeCategory.FAVORIS, "💖", threshold = 10) { it.favoritesCount },
         Badge("big_collector", BadgeCategory.FAVORIS, "💎", threshold = 25) { it.favoritesCount },

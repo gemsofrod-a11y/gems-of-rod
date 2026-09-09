@@ -295,6 +295,10 @@
     <string name="achievement_fossil_collector_desc">Sehen Sie sich alle %1$d Fossilien des Katalogs an.</string>
     <string name="achievement_shell_collector_title">Muschelkundler</string>
     <string name="achievement_shell_collector_desc">Sehen Sie sich alle %1$d Muscheln des Katalogs an.</string>
+    <string name="achievement_meteorite_collector_title">Meteoritenkundler</string>
+    <string name="achievement_meteorite_collector_desc">Sehen Sie sich alle %1$d Meteoriten des Katalogs an.</string>
+    <string name="achievement_organic_collector_title">Naturforscher</string>
+    <string name="achievement_organic_collector_desc">Sehen Sie sich alle %1$d organischen Edelsteine des Katalogs an.</string>
     <string name="achievement_first_favorite_title">Erster Favorit</string>
     <string name="achievement_first_favorite_desc">Fügen Sie einen Edelstein zu Ihren Favoriten hinzu.</string>
     <string name="achievement_fan_title">Fan</string>

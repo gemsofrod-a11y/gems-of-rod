@@ -295,6 +295,10 @@
     <string name="achievement_fossil_collector_desc">Просмотрите все %1$d окаменелостей каталога.</string>
     <string name="achievement_shell_collector_title">Конхиолог</string>
     <string name="achievement_shell_collector_desc">Просмотрите все %1$d ракушек каталога.</string>
+    <string name="achievement_meteorite_collector_title">Метеоритолог</string>
+    <string name="achievement_meteorite_collector_desc">Просмотрите все %1$d метеоритов каталога.</string>
+    <string name="achievement_organic_collector_title">Натуралист</string>
+    <string name="achievement_organic_collector_desc">Просмотрите все %1$d органических самоцветов каталога.</string>
     <string name="achievement_first_favorite_title">Первое избранное</string>
     <string name="achievement_first_favorite_desc">Добавьте камень в избранное.</string>
     <string name="achievement_fan_title">Увлечённый</string>

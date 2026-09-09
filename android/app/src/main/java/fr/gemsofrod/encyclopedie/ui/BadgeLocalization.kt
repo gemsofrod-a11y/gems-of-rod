@@ -8,6 +8,7 @@ import fr.gemsofrod.encyclopedie.data.CoquillagesRepository
 import fr.gemsofrod.encyclopedie.data.FossilesRepository
 import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.data.GemsRepository
+import fr.gemsofrod.encyclopedie.data.MeteoritesRepository
 
 /**
  * Résout le titre et la description d'un succès ([Badge]) dans la langue
@@ -24,6 +25,8 @@ fun localizedBadgeTitle(badge: Badge): String = when (badge.id) {
     "rainbow" -> stringResource(R.string.achievement_rainbow_title)
     "fossil_collector" -> stringResource(R.string.achievement_fossil_collector_title)
     "shell_collector" -> stringResource(R.string.achievement_shell_collector_title)
+    "meteorite_collector" -> stringResource(R.string.achievement_meteorite_collector_title)
+    "organic_collector" -> stringResource(R.string.achievement_organic_collector_title)
     "first_favorite" -> stringResource(R.string.achievement_first_favorite_title)
     "fan" -> stringResource(R.string.achievement_fan_title)
     "big_collector" -> stringResource(R.string.achievement_big_collector_title)
@@ -44,6 +47,8 @@ fun localizedBadgeDescription(badge: Badge): String = when (badge.id) {
     "rainbow" -> stringResource(R.string.achievement_rainbow_desc, GemColorCategory.entries.size)
     "fossil_collector" -> stringResource(R.string.achievement_fossil_collector_desc, FossilesRepository.all().size)
     "shell_collector" -> stringResource(R.string.achievement_shell_collector_desc, CoquillagesRepository.all().size)
+    "meteorite_collector" -> stringResource(R.string.achievement_meteorite_collector_desc, MeteoritesRepository.all().size)
+    "organic_collector" -> stringResource(R.string.achievement_organic_collector_desc, GemsRepository.organiques().size)
     "first_favorite" -> stringResource(R.string.achievement_first_favorite_desc)
     "fan" -> stringResource(R.string.achievement_fan_desc)
     "big_collector" -> stringResource(R.string.achievement_big_collector_desc)

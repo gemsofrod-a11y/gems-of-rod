@@ -295,6 +295,10 @@
     <string name="achievement_fossil_collector_desc">Consulte os %1$d fósseis do catálogo.</string>
     <string name="achievement_shell_collector_title">Conquiliologista</string>
     <string name="achievement_shell_collector_desc">Consulte as %1$d conchas marinhas do catálogo.</string>
+    <string name="achievement_meteorite_collector_title">Meteoritólogo</string>
+    <string name="achievement_meteorite_collector_desc">Consulte os %1$d meteoritos do catálogo.</string>
+    <string name="achievement_organic_collector_title">Naturalista</string>
+    <string name="achievement_organic_collector_desc">Consulte as %1$d gemas orgânicas do catálogo.</string>
     <string name="achievement_first_favorite_title">Primeiro favorito</string>
     <string name="achievement_first_favorite_desc">Adicione uma gema aos seus favoritos.</string>
     <string name="achievement_fan_title">Apaixonado</string>
