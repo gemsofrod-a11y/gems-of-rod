@@ -2,7 +2,7 @@
   "use strict";
 
   const $ = (id) => document.getElementById(id);
-  const state = { timeframe: "1m", candles: [], crosshairIndex: null };
+  const state = { timeframe: "1m", candles: [], crosshairIndex: null, livePrice: null };
 
   // --- onglets ---
 
@@ -85,6 +85,19 @@
       } else {
         el.textContent = "—";
         el.className = "price-change";
+      }
+
+      // Fait "vivre" la dernière bougie entre deux rechargements complets
+      // (toutes les 8s) : chaque cotation (toutes les 2s) étire son close/
+      // high/low avec le dernier cours, comme sur une plateforme pro où la
+      // bougie en formation bouge en continu plutôt que de rester figée.
+      state.livePrice = quote.price;
+      if (state.candles.length) {
+        const last = state.candles[state.candles.length - 1];
+        last.c = quote.price;
+        if (quote.price > last.h) last.h = quote.price;
+        if (quote.price < last.l) last.l = quote.price;
+        drawCandles();
       }
     } catch (err) {
       $("price-source").textContent = "indisponible";
@@ -172,12 +185,19 @@
       ctx.fillText(price.toFixed(price >= 1000 ? 0 : 1), w - CHART_MARGIN.right + 4, y);
     }
 
-    // --- repères de temps ---
+    // --- repères de temps (+ grille verticale associée) ---
     ctx.textAlign = "center";
     ctx.textBaseline = "top";
     const timeIdx = [0, Math.floor((candles.length - 1) / 2), candles.length - 1];
     timeIdx.forEach((i) => {
-      ctx.fillText(fmtTime(candles[i].t, state.timeframe), xOf(i), h - CHART_MARGIN.bottom + 4);
+      const x = xOf(i);
+      ctx.strokeStyle = "#1c202a";
+      ctx.beginPath();
+      ctx.moveTo(x, CHART_MARGIN.top);
+      ctx.lineTo(x, h - CHART_MARGIN.bottom);
+      ctx.stroke();
+      ctx.fillStyle = "#9aa2b1";
+      ctx.fillText(fmtTime(candles[i].t, state.timeframe), x, h - CHART_MARGIN.bottom + 4);
     });
 
     // --- bougies ---
@@ -197,9 +217,50 @@
       ctx.fillRect(x - bodyWidth / 2, top, bodyWidth, height);
     });
 
+    // --- indicateur de prix en direct : ligne pointillée + étiquette qui
+    // suivent le dernier cours reçu, pour toujours voir où en est le prix
+    // sur la courbe sans avoir à toucher l'écran (comme sur une plateforme
+    // de trading professionnelle). ---
+    if (state.livePrice !== null) {
+      drawLivePriceLine(geo, state.livePrice);
+    }
+
     if (state.crosshairIndex !== null && state.crosshairIndex !== undefined) {
       drawCrosshair(geo, state.crosshairIndex);
     }
+  }
+
+  function drawLivePriceLine(geo, price) {
+    const { canvas, w, yOf, yMin, yMax } = geo;
+    if (price < yMin || price > yMax) return;
+    const candles = state.candles;
+    const first = candles[0].o;
+    const color = price >= first ? "#3ec98b" : "#e6604f";
+    const y = yOf(price);
+    const ctx = canvas.getContext("2d");
+
+    ctx.save();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1;
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath();
+    ctx.moveTo(CHART_MARGIN.left, y);
+    ctx.lineTo(w - CHART_MARGIN.right, y);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    const label = price.toFixed(price >= 1000 ? 1 : 2);
+    ctx.font = "bold 11px sans-serif";
+    const textWidth = ctx.measureText(label).width;
+    const boxW = textWidth + 10;
+    const boxH = 16;
+    ctx.fillStyle = color;
+    ctx.fillRect(w - CHART_MARGIN.right, y - boxH / 2, boxW, boxH);
+    ctx.fillStyle = "#05070a";
+    ctx.textAlign = "left";
+    ctx.textBaseline = "middle";
+    ctx.fillText(label, w - CHART_MARGIN.right + 5, y);
+    ctx.restore();
   }
 
   function drawCrosshair(geo, index) {

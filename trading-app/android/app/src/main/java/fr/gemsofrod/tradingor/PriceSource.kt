@@ -103,13 +103,13 @@ class PriceSource {
      * le lancement de l'app) mais s'étoffe avec le temps, et reste du
      * vrai mouvement de marché plutôt qu'une simulation. */
     private fun aggregateFromTicks(cfg: TimeframeConfig, limit: Int): List<Candle>? {
-        if (tickLog.size < 5) return null
+        if (tickLog.size < 3) return null
         val buckets = linkedMapOf<Long, MutableList<Double>>()
         for ((t, price) in tickLog) {
             val bucketTs = (t / cfg.seconds) * cfg.seconds
             buckets.getOrPut(bucketTs) { mutableListOf() }.add(price)
         }
-        if (buckets.size < 3) return null
+        if (buckets.size < 2) return null
         val candles = buckets.entries.sortedBy { it.key }.map { (ts, prices) ->
             Candle(ts, prices.first(), prices.max(), prices.min(), prices.last())
         }
