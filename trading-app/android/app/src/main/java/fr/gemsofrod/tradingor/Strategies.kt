@@ -1,0 +1,95 @@
+package fr.gemsofrod.tradingor
+
+import org.json.JSONObject
+
+/**
+ * Signaux d'analyse technique pour le bot — même logique que
+ * trading-app/backend/strategies.py (croisement de moyennes mobiles,
+ * RSI retour à la moyenne). Aucune stratégie ne garantit un gain.
+ */
+object Strategies {
+
+    fun minHistory(name: String, params: JSONObject): Int = when (name) {
+        "sma_crossover" -> params.optInt("slow", 6) + 1
+        "rsi_mean_reversion" -> params.optInt("period", 5) + 1
+        "adaptive" -> 7 // couvre le plus exigeant des deux stratégies candidates par défaut
+        else -> params.optInt("slow", 6) + 1
+    }
+
+    fun signal(name: String, params: JSONObject, prices: List<Double>): String = when (name) {
+        "rsi_mean_reversion" -> rsi(prices, params.optInt("period", 5),
+            params.optDouble("oversold", 45.0), params.optDouble("overbought", 55.0))
+        else -> smaCrossover(prices, params.optInt("fast", 3), params.optInt("slow", 6))
+    }
+
+    /** Force du signal d'achat, de 0 (limite) à 1 (net) — sert à faire
+     * varier la taille de chaque trade du bot selon la conviction de
+     * l'analyse plutôt qu'un montant fixe systématique. Purement
+     * heuristique (pas de garantie statistique). */
+    fun confidence(name: String, params: JSONObject, prices: List<Double>): Double = when (name) {
+        "rsi_mean_reversion" -> rsiConfidence(prices, params.optInt("period", 5), params.optDouble("oversold", 45.0))
+        else -> smaConfidence(prices, params.optInt("fast", 3), params.optInt("slow", 6))
+    }
+
+    private fun smaConfidence(prices: List<Double>, fast: Int, slow: Int): Double {
+        if (prices.size < slow) return 0.0
+        val fastNow = prices.takeLast(fast).average()
+        val slowNow = prices.takeLast(slow).average()
+        if (slowNow == 0.0) return 0.0
+        val gapPct = (fastNow - slowNow) / slowNow
+        return (gapPct / 0.02).coerceIn(0.0, 1.0) // un écart de 2%+ = conviction maximale
+    }
+
+    private fun rsiConfidence(prices: List<Double>, period: Int, oversold: Double): Double {
+        if (prices.size < period + 1) return 0.0
+        val window = prices.takeLast(period + 1)
+        var gain = 0.0
+        var loss = 0.0
+        for (i in 1 until window.size) {
+            val delta = window[i] - window[i - 1]
+            if (delta > 0) gain += delta else loss += -delta
+        }
+        val avgGain = gain / period
+        val avgLoss = loss / period
+        val rsiValue = if (avgLoss == 0.0) 100.0 else 100 - 100 / (1 + avgGain / avgLoss)
+        if (oversold <= 0.0) return 0.0
+        return ((oversold - rsiValue) / oversold).coerceIn(0.0, 1.0)
+    }
+
+    /** Signal basé sur l'état de la tendance (rapide au-dessus/en dessous de
+     * la lente), pas seulement sur l'instant précis du croisement : ce
+     * dernier est un événement ponctuel bien trop rare pour un bot censé
+     * trader vite et souvent, y compris en mini-trades ("tac au tac"). Tant
+     * que la tendance courte reste haussière, chaque cycle où le bot est à
+     * plat redonne un signal d'achat — la sortie (take-profit/stop-loss/
+     * détention max) est gérée séparément par TradingBot.checkExit(). */
+    private fun smaCrossover(prices: List<Double>, fast: Int, slow: Int): String {
+        if (fast >= slow || prices.size < slow) return "hold"
+        val fastNow = prices.takeLast(fast).average()
+        val slowNow = prices.takeLast(slow).average()
+        return when {
+            fastNow > slowNow -> "buy"
+            fastNow < slowNow -> "sell"
+            else -> "hold"
+        }
+    }
+
+    private fun rsi(prices: List<Double>, period: Int, oversold: Double, overbought: Double): String {
+        if (prices.size < period + 1) return "hold"
+        val window = prices.takeLast(period + 1)
+        var gain = 0.0
+        var loss = 0.0
+        for (i in 1 until window.size) {
+            val delta = window[i] - window[i - 1]
+            if (delta > 0) gain += delta else loss += -delta
+        }
+        val avgGain = gain / period
+        val avgLoss = loss / period
+        val rsiValue = if (avgLoss == 0.0) 100.0 else 100 - 100 / (1 + avgGain / avgLoss)
+        return when {
+            rsiValue <= oversold -> "buy"
+            rsiValue >= overbought -> "sell"
+            else -> "hold"
+        }
+    }
+}
