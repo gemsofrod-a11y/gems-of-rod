@@ -10,16 +10,16 @@ import org.json.JSONObject
 object Strategies {
 
     fun minHistory(name: String, params: JSONObject): Int = when (name) {
-        "sma_crossover" -> params.optInt("slow", 30) + 1
-        "rsi_mean_reversion" -> params.optInt("period", 14) + 1
-        "adaptive" -> 31 // couvre le plus exigeant des deux stratégies candidates par défaut
-        else -> params.optInt("slow", 30) + 1
+        "sma_crossover" -> params.optInt("slow", 6) + 1
+        "rsi_mean_reversion" -> params.optInt("period", 5) + 1
+        "adaptive" -> 7 // couvre le plus exigeant des deux stratégies candidates par défaut
+        else -> params.optInt("slow", 6) + 1
     }
 
     fun signal(name: String, params: JSONObject, prices: List<Double>): String = when (name) {
-        "rsi_mean_reversion" -> rsi(prices, params.optInt("period", 14),
-            params.optDouble("oversold", 30.0), params.optDouble("overbought", 70.0))
-        else -> smaCrossover(prices, params.optInt("fast", 10), params.optInt("slow", 30))
+        "rsi_mean_reversion" -> rsi(prices, params.optInt("period", 5),
+            params.optDouble("oversold", 45.0), params.optDouble("overbought", 55.0))
+        else -> smaCrossover(prices, params.optInt("fast", 3), params.optInt("slow", 6))
     }
 
     /** Force du signal d'achat, de 0 (limite) à 1 (net) — sert à faire
@@ -27,8 +27,8 @@ object Strategies {
      * l'analyse plutôt qu'un montant fixe systématique. Purement
      * heuristique (pas de garantie statistique). */
     fun confidence(name: String, params: JSONObject, prices: List<Double>): Double = when (name) {
-        "rsi_mean_reversion" -> rsiConfidence(prices, params.optInt("period", 14), params.optDouble("oversold", 30.0))
-        else -> smaConfidence(prices, params.optInt("fast", 10), params.optInt("slow", 30))
+        "rsi_mean_reversion" -> rsiConfidence(prices, params.optInt("period", 5), params.optDouble("oversold", 45.0))
+        else -> smaConfidence(prices, params.optInt("fast", 3), params.optInt("slow", 6))
     }
 
     private fun smaConfidence(prices: List<Double>, fast: Int, slow: Int): Double {

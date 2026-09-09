@@ -450,7 +450,7 @@
   (function init() {
     refreshCandles();
     tick();
-    setInterval(tick, 5000);
-    setInterval(refreshCandles, 20000);
+    setInterval(tick, 2000);
+    setInterval(refreshCandles, 8000);
   })();
 })();

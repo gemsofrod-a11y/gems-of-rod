@@ -98,13 +98,13 @@
           </div>
           <p class="note" id="bot-adaptive-note">Choisit automatiquement, à partir des trades déjà passés, la stratégie qui a le mieux fonctionné récemment.</p>
           <div class="row" id="bot-params-sma" style="display:none">
-            <label>Rapide <input id="sma-fast" type="number" value="10" min="2" /></label>
-            <label>Lente <input id="sma-slow" type="number" value="30" min="3" /></label>
+            <label>Rapide <input id="sma-fast" type="number" value="3" min="2" /></label>
+            <label>Lente <input id="sma-slow" type="number" value="6" min="3" /></label>
           </div>
           <div class="row" id="bot-params-rsi" style="display:none">
-            <label>Période <input id="rsi-period" type="number" value="14" min="2" /></label>
-            <label>Survente <input id="rsi-oversold" type="number" value="30" /></label>
-            <label>Surachat <input id="rsi-overbought" type="number" value="70" /></label>
+            <label>Période <input id="rsi-period" type="number" value="5" min="2" /></label>
+            <label>Survente <input id="rsi-oversold" type="number" value="45" /></label>
+            <label>Surachat <input id="rsi-overbought" type="number" value="55" /></label>
           </div>
 
           <div class="row">
@@ -119,17 +119,17 @@
           <button type="button" class="ghost" id="bot-advanced-toggle">Réglages avancés ▾</button>
           <div id="bot-advanced" hidden>
             <div class="row">
-              <label>Intervalle (s) <input id="bot-interval" type="number" value="10" min="2" /></label>
+              <label>Intervalle (s) <input id="bot-interval" type="number" value="5" min="2" /></label>
               <label>Seuil protection (%) <input id="bot-floor" type="number" value="20" min="1" max="90" /></label>
               <button type="button" class="tip" data-tip="Intervalle : fréquence à laquelle le bot vérifie le cours. Seuil de protection : le bot s'arrête si la mise tombe sous ce pourcentage de sa valeur de départ, pour limiter la perte sur cette mise.">ⓘ</button>
             </div>
             <div class="row">
-              <label>Take-profit (%) <input id="bot-tp" type="number" value="1.5" min="0.1" step="0.1" /></label>
-              <label>Stop-loss (%) <input id="bot-sl" type="number" value="0.75" min="0.1" step="0.1" /></label>
-              <button type="button" class="tip" data-tip="Take-profit : le bot revend dès que la position gagne ce pourcentage. Stop-loss : il revend aussi dès qu'elle perd ce pourcentage, pour couper la perte court.">ⓘ</button>
+              <label>Take-profit (%) <input id="bot-tp" type="number" value="0.15" min="0.05" step="0.05" /></label>
+              <label>Stop-loss (%) <input id="bot-sl" type="number" value="0.1" min="0.05" step="0.05" /></label>
+              <button type="button" class="tip" data-tip="Take-profit : le bot revend dès que la position gagne ce pourcentage. Stop-loss : il revend aussi dès qu'elle perd ce pourcentage, pour couper la perte court. Réglages resserrés pour un rythme de trading rapide (mini-trades fréquents).">ⓘ</button>
             </div>
             <div class="row">
-              <label>Détention max (min) <input id="bot-hold" type="number" value="30" min="1" /></label>
+              <label>Détention max (min) <input id="bot-hold" type="number" value="1" min="1" /></label>
               <button type="button" class="tip" data-tip="Durée maximale pendant laquelle le bot garde une position ouverte avant de la revendre automatiquement, même sans avoir atteint le take-profit ou le stop-loss.">ⓘ</button>
             </div>
           </div>

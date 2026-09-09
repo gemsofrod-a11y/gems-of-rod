@@ -44,9 +44,9 @@ object AdaptiveSelector {
 
     private fun defaultParams(strategy: String): JSONObject = when (strategy) {
         "rsi_mean_reversion" -> JSONObject().apply {
-            put("period", 14); put("oversold", 30.0); put("overbought", 70.0)
+            put("period", 5); put("oversold", 45.0); put("overbought", 55.0)
         }
-        else -> JSONObject().apply { put("fast", 10); put("slow", 30) }
+        else -> JSONObject().apply { put("fast", 3); put("slow", 6) }
     }
 
     /** Reconstruit les allers-retours achat → vente (le bot ne détient

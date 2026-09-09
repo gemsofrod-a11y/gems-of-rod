@@ -79,11 +79,11 @@ class TradingBotService : Service() {
         } catch (_: Exception) {
             JSONObject()
         }
-        val intervalSec = intent.getIntExtra(EXTRA_INTERVAL_SEC, 10)
+        val intervalSec = intent.getIntExtra(EXTRA_INTERVAL_SEC, 5)
         val stakeAmount = intent.getDoubleExtra(EXTRA_STAKE_AMOUNT, 50.0)
-        val tp = intent.getDoubleExtra(EXTRA_TAKE_PROFIT_PCT, 1.5)
-        val sl = intent.getDoubleExtra(EXTRA_STOP_LOSS_PCT, 0.75)
-        val maxHoldingSec = (intent.getIntExtra(EXTRA_MAX_HOLDING_MIN, 30).coerceAtLeast(1) * 60).toLong()
+        val tp = intent.getDoubleExtra(EXTRA_TAKE_PROFIT_PCT, 0.15)
+        val sl = intent.getDoubleExtra(EXTRA_STOP_LOSS_PCT, 0.1)
+        val maxHoldingSec = (intent.getIntExtra(EXTRA_MAX_HOLDING_MIN, 1).coerceAtLeast(1) * 60).toLong()
         val targetEquityRaw = intent.getDoubleExtra(EXTRA_TARGET_EQUITY, 0.0)
         val targetEquity = if (targetEquityRaw > 0) targetEquityRaw else null
         val floorPct = intent.getDoubleExtra(EXTRA_FLOOR_PCT, 20.0)

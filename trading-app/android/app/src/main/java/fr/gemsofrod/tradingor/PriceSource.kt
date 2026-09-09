@@ -25,8 +25,8 @@ class PriceSource {
          * évite de retaper le réseau à chaque rafraîchissement de
          * l'interface, seule vraie source de lenteur perçue. Même
          * principe que le cache 5s du serveur de l'app web. */
-        private const val QUOTE_CACHE_MS = 5_000L
-        private const val CANDLES_CACHE_MS = 20_000L
+        private const val QUOTE_CACHE_MS = 2_000L
+        private const val CANDLES_CACHE_MS = 8_000L
         /** Nombre de cours réels conservés en mémoire pour reconstruire de
          * vraies bougies localement si Yahoo Finance est injoignable (ex.
          * bloqué par un opérateur/pare-feu) — le cours ponctuel (gold-api)
