@@ -295,6 +295,10 @@
     <string name="achievement_fossil_collector_desc">View all %1$d fossils in the catalog.</string>
     <string name="achievement_shell_collector_title">Conchologist</string>
     <string name="achievement_shell_collector_desc">View all %1$d seashells in the catalog.</string>
+    <string name="achievement_meteorite_collector_title">Meteoriticist</string>
+    <string name="achievement_meteorite_collector_desc">View all %1$d meteorites in the catalog.</string>
+    <string name="achievement_organic_collector_title">Naturalist</string>
+    <string name="achievement_organic_collector_desc">View all %1$d organic gems in the catalog.</string>
     <string name="achievement_first_favorite_title">First favorite</string>
     <string name="achievement_first_favorite_desc">Add a gem to your favorites.</string>
     <string name="achievement_fan_title">Fan</string>

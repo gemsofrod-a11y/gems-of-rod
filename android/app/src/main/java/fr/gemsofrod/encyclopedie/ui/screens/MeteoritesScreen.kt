@@ -37,6 +37,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -51,6 +52,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
+import fr.gemsofrod.encyclopedie.data.AchievementsRepository
 import fr.gemsofrod.encyclopedie.data.GemImageCredit
 import fr.gemsofrod.encyclopedie.data.GemImageType
 import fr.gemsofrod.encyclopedie.data.GemImages
@@ -345,6 +347,7 @@ fun MeteoriteDetailScreen(meteoriteId: String, onBackClick: () -> Unit) {
     val pagerState = rememberPagerState(initialPage = initialPage) { meteoriteIds.size }
     val currentMeteoriteId = meteoriteIds.getOrNull(pagerState.currentPage) ?: meteoriteId
     val meteorite = MeteoritesRepository.byId(currentMeteoriteId)?.localized()
+    LaunchedEffect(currentMeteoriteId) { AchievementsRepository.recordMeteoriteViewed(currentMeteoriteId) }
 
     Scaffold(
         topBar = {

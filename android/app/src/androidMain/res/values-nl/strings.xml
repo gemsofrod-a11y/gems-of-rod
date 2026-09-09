@@ -295,6 +295,10 @@
     <string name="achievement_fossil_collector_desc">Bekijk alle %1$d fossielen uit de catalogus.</string>
     <string name="achievement_shell_collector_title">Schelpenkenner</string>
     <string name="achievement_shell_collector_desc">Bekijk alle %1$d schelpen uit de catalogus.</string>
+    <string name="achievement_meteorite_collector_title">Meteorietenkenner</string>
+    <string name="achievement_meteorite_collector_desc">Bekijk alle %1$d meteorieten uit de catalogus.</string>
+    <string name="achievement_organic_collector_title">Naturalist</string>
+    <string name="achievement_organic_collector_desc">Bekijk alle %1$d organische edelstenen uit de catalogus.</string>
     <string name="achievement_first_favorite_title">Eerste favoriet</string>
     <string name="achievement_first_favorite_desc">Voeg een edelsteen toe aan uw favorieten.</string>
     <string name="achievement_fan_title">Liefhebber</string>

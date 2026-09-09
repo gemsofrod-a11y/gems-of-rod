@@ -12,6 +12,7 @@ private const val PREFS_NAME = "gems_of_rod_achievements"
 private const val KEY_VIEWED_GEM_IDS = "viewed_gem_ids"
 private const val KEY_VIEWED_FOSSILE_IDS = "viewed_fossile_ids"
 private const val KEY_VIEWED_COQUILLAGE_IDS = "viewed_coquillage_ids"
+private const val KEY_VIEWED_METEORITE_IDS = "viewed_meteorite_ids"
 private const val KEY_QUIZZES_COMPLETED = "quizzes_completed"
 private const val KEY_PERFECT_QUIZ_SCORE = "perfect_quiz_score"
 private const val KEY_LEGENDARY_RIDDLE_SOLVED = "legendary_riddle_solved"
@@ -30,7 +31,9 @@ data class AchievementStats(
     val hasPerfectQuizScore: Boolean,
     val hasSolvedLegendaryRiddle: Boolean,
     val fossilesViewedCount: Int,
-    val coquillagesViewedCount: Int
+    val coquillagesViewedCount: Int,
+    val meteoritesViewedCount: Int,
+    val organiquesViewedCount: Int
 )
 
 /**
@@ -44,6 +47,7 @@ object AchievementsRepository {
     private val viewedGemIds = mutableStateListOf<String>()
     private val viewedFossileIds = mutableStateListOf<String>()
     private val viewedCoquillageIds = mutableStateListOf<String>()
+    private val viewedMeteoriteIds = mutableStateListOf<String>()
     private var quizzesCompleted by mutableIntStateOf(0)
     private var hasPerfectQuizScore by mutableStateOf(false)
     private var hasSolvedLegendaryRiddle by mutableStateOf(false)
@@ -66,6 +70,7 @@ object AchievementsRepository {
         viewedGemIds.addAll(sharedPrefs.getStringSet(KEY_VIEWED_GEM_IDS, emptySet()).orEmpty())
         viewedFossileIds.addAll(sharedPrefs.getStringSet(KEY_VIEWED_FOSSILE_IDS, emptySet()).orEmpty())
         viewedCoquillageIds.addAll(sharedPrefs.getStringSet(KEY_VIEWED_COQUILLAGE_IDS, emptySet()).orEmpty())
+        viewedMeteoriteIds.addAll(sharedPrefs.getStringSet(KEY_VIEWED_METEORITE_IDS, emptySet()).orEmpty())
         quizzesCompleted = sharedPrefs.getInt(KEY_QUIZZES_COMPLETED, 0)
         hasPerfectQuizScore = sharedPrefs.getBoolean(KEY_PERFECT_QUIZ_SCORE, false)
         hasSolvedLegendaryRiddle = sharedPrefs.getBoolean(KEY_LEGENDARY_RIDDLE_SOLVED, false)
@@ -96,6 +101,14 @@ object AchievementsRepository {
         checkNewlyUnlocked(before, stats())
     }
 
+    fun recordMeteoriteViewed(meteoriteId: String) {
+        if (viewedMeteoriteIds.contains(meteoriteId)) return
+        val before = stats()
+        viewedMeteoriteIds.add(meteoriteId)
+        prefs?.edit()?.putStringSet(KEY_VIEWED_METEORITE_IDS, viewedMeteoriteIds.toSet())?.apply()
+        checkNewlyUnlocked(before, stats())
+    }
+
     fun recordQuizCompleted(score: Int, total: Int) {
         val before = stats()
         quizzesCompleted++
@@ -117,6 +130,9 @@ object AchievementsRepository {
 
     fun stats(): AchievementStats {
         val colorsCovered = viewedGemIds.mapNotNull { GemsRepository.byId(it)?.couleur }.distinct().size
+        val organiquesViewed = viewedGemIds.count { id ->
+            GemsRepository.byId(id)?.famille?.contains("organique", ignoreCase = true) == true
+        }
         return AchievementStats(
             gemsViewedCount = viewedGemIds.size,
             colorsCoveredCount = colorsCovered,
@@ -125,7 +141,9 @@ object AchievementsRepository {
             hasPerfectQuizScore = hasPerfectQuizScore,
             hasSolvedLegendaryRiddle = hasSolvedLegendaryRiddle,
             fossilesViewedCount = viewedFossileIds.size,
-            coquillagesViewedCount = viewedCoquillageIds.size
+            coquillagesViewedCount = viewedCoquillageIds.size,
+            meteoritesViewedCount = viewedMeteoriteIds.size,
+            organiquesViewedCount = organiquesViewed
         )
     }
 

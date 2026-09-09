@@ -197,7 +197,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | sanidine | ♻️ [File:Rotherkopfite crystals.png](https://commons.wikimedia.org/wiki/File:Rotherkopfite_crystals.png) | ♻️ [File:Forsterite on Sanidine - Ochtendung, Eifel, Germany.jpg](https://commons.wikimedia.org/w/index.php?curid=9819497) |
 | tremolite | ♻️ [File:Tremolite (GeoDIL number - 1701).jpg](https://commons.wikimedia.org/wiki/File:Tremolite_(GeoDIL_number_-_1701).jpg) | ♻️ [Tremolite schist (Upper Marble, Grenville Series, Mesoproterozoic, 1.15-1.30 Ga; Balmat, Adirondack Lowlands, New York State, USA)](https://www.flickr.com/photos/47445767@N05/16921690192) |
 | oeil-de-taureau | ❌ non trouvée | ♻️ [Œil de taureau poli — photo Coraline Minéraux](https://gems-of-rod.fr) |
-| unakite | ❌ non trouvée | ❌ échec téléchargement |
+| unakite | ❌ échec téléchargement | ❌ échec téléchargement |
 | oeil-de-sainte-lucie | — | ♻️ [File:Turbo petholatus Linnaeus, 1758 operculum - Wikimedia Commons (1).jpg](https://commons.wikimedia.org/wiki/File:Turbo_petholatus_Linnaeus,_1758_operculum_-_Wikimedia_Commons_(1).jpg) |
 | jais | ♻️ [File:Gagat-Holzmaden.JPG](https://commons.wikimedia.org/wiki/File:Gagat-Holzmaden.JPG) | ♻️ [File:Jet Jewellery.jpg](https://commons.wikimedia.org/wiki/File:Jet_Jewellery.jpg) |
 | grenat-etoile | ♻️ [File:Star of idaho.JPG](https://commons.wikimedia.org/wiki/File:Star_of_idaho.JPG) | ♻️ [File:Idahostargarnet.jpg](https://commons.wikimedia.org/wiki/File:Idahostargarnet.jpg) |
@@ -245,7 +245,7 @@ Deux photos par gemme quand possible : pierre brute et pierre facettée/taillée
 | fossile-fougere | ♻️ [File:Fossil fern with galls, from Late Triassic, Alborz, Iran 02.jpg](https://commons.wikimedia.org/wiki/File:Fossil_fern_with_galls,_from_Late_Triassic,_Alborz,_Iran_02.jpg) | — |
 | fossile-ambre-baltique | ♻️ [File:Baltic amber Coleoptera Anobiidae Episernus.JPG](https://commons.wikimedia.org/wiki/File:Baltic_amber_Coleoptera_Anobiidae_Episernus.JPG) | ♻️ [File:Neotype male of Electrostephanus petiolatus Brues in Baltic amber (AMNH B-JWJ-260).png](https://commons.wikimedia.org/wiki/File:Neotype_male_of_Electrostephanus_petiolatus_Brues_in_Baltic_amber_(AMNH_B-JWJ-260).png) |
 | fossile-ambre-inclusion | ♻️ [File:Amber-000-12mm.jpg](https://commons.wikimedia.org/wiki/File:Amber-000-12mm.jpg) | — |
-| fossile-copal | ❌ non trouvée | — |
+| fossile-copal | ❌ échec téléchargement | — |
 | fossile-corail-agatise | ♻️ [File:Fossil agatized coral Florida.JPG](https://commons.wikimedia.org/wiki/File:Fossil_agatized_coral_Florida.JPG) | ♻️ [File:Fossil agatized coral Florida (cropped).JPG](https://commons.wikimedia.org/wiki/File:Fossil_agatized_coral_Florida_(cropped).JPG) |
 | fossile-oursin | ♻️ [Oursin fossile — photo Coraline Minéraux](https://gems-of-rod.fr) | — |
 | fossile-crinoide | ♻️ [File:Ordovician crinoid stem fragments.jpg](https://commons.wikimedia.org/wiki/File:Ordovician_crinoid_stem_fragments.jpg) | ♻️ [File:Crushed crinoid stems from the Jurassic, Iran.jpg](https://commons.wikimedia.org/wiki/File:Crushed_crinoid_stems_from_the_Jurassic,_Iran.jpg) |
