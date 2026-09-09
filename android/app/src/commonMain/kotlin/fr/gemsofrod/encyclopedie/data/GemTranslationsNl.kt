@@ -1130,6 +1130,13 @@ object GemTranslationsNl {
             particularites = "Het enige van nature en sterk magnetische mineraal, een eigenschap die al in de oudheid werd gebruikt voor navigatie.",
             lithotherapie = "Magnetiet wordt geassocieerd met geaardheid en energetisch evenwicht, vaak gebruikt om lichaam en geest te herbronnen."
         ),
+        "wolframite" to GemTranslation(
+            nom = "Wolframiet",
+            descriptionCourte = "Het belangrijkste wolfraamerts, in bruinzwarte lamellaire kristallen.",
+            descriptionLongue = "Wolframiet vormt een continue reeks tussen het ijzerrijke ferberiet en het mangaanrijke hübneriet, van metallisch bruinzwart tot een submetallieke glans. Samen met scheeliet het belangrijkste wolfraamerts; het wordt nooit geslepen voor sieraden, maar is gewild als verzamelstuk, met name de lamellaire kristallen uit de Portugese mijn van Panasqueira.",
+            particularites = "Ontleent zijn naam aan het Duitse «Wolf Rahm» (wolvenschuim): middeleeuwse tinsmelters beschuldigden het mineraal ervan tin op te «verslinden» zoals een wolf een schaap verslindt tijdens het smelten.",
+            lithotherapie = "Wolframiet kent geen gevestigde traditie in de kristalgenezing; het gebruik blijft vrijwel uitsluitend mineralogisch en industrieel."
+        ),
         "quartz-tourmaline" to GemTranslation(
             nom = "Toermalijnkwarts",
             descriptionCourte = "Naalden van zwarte toermalijn vastgelegd in helder kwarts.",

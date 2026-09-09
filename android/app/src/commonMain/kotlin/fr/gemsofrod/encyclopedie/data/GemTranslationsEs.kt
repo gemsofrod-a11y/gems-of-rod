@@ -1130,6 +1130,13 @@ object GemTranslationsEs {
             particularites = "Único mineral naturalmente magnético de forma intensa, propiedad utilizada desde la Antigüedad para la navegación.",
             lithotherapie = "La magnetita se asocia al arraigo y al equilibrio energético, a menudo utilizada para recentrar el cuerpo y la mente."
         ),
+        "wolframite" to GemTranslation(
+            nom = "Wolframita",
+            descriptionCourte = "El principal mineral del tungsteno, en cristales laminares marrón-negruzco.",
+            descriptionLongue = "La wolframita forma una serie continua entre la ferberita (rica en hierro) y la hübnerita (rica en manganeso), de un marrón-negruzco metálico a un brillo submetálico. Principal mineral del tungsteno junto con la scheelita, nunca se talla en joyería, pero es buscada como pieza de coleccionista, en particular los cristales laminares de la mina portuguesa de Panasqueira.",
+            particularites = "Debe su nombre al alemán «Wolf Rahm» (espuma de lobo): los fundidores de estaño medievales la acusaban de «devorar» el estaño como un lobo devora una oveja durante la fundición.",
+            lithotherapie = "La wolframita no tiene una tradición establecida en litoterapia; su uso sigue siendo casi exclusivamente mineralógico e industrial."
+        ),
         "quartz-tourmaline" to GemTranslation(
             nom = "Cuarzo con turmalina (turmalinado)",
             descriptionCourte = "Agujas de turmalina negra atrapadas en un cuarzo límpido.",

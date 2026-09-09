@@ -1130,6 +1130,13 @@ object GemTranslationsDe {
             particularites = "Einziges natürlich und stark magnetisches Mineral, eine Eigenschaft, die bereits in der Antike zur Navigation genutzt wurde.",
             lithotherapie = "Magnetit wird mit Erdung und energetischem Gleichgewicht in Verbindung gebracht und häufig verwendet, um Körper und Geist neu auszurichten."
         ),
+        "wolframite" to GemTranslation(
+            nom = "Wolframit",
+            descriptionCourte = "Das wichtigste Wolframerz, in braun-schwarzen lamellaren Kristallen.",
+            descriptionLongue = "Wolframit bildet eine durchgehende Mischreihe zwischen dem eisenreichen Ferberit und dem manganreichen Hübnerit, von metallischem Braunschwarz bis zu submetallischem Glanz. Neben Scheelit das wichtigste Wolframerz, wird es nie für Schmuck geschliffen, ist aber als Sammlerstück gefragt — insbesondere die lamellaren Kristalle aus der portugiesischen Mine Panasqueira.",
+            particularites = "Der Name stammt vom deutschen «Wolf Rahm»: mittelalterliche Zinnschmelzer beschuldigten das Mineral, das Zinn beim Schmelzen wie ein Wolf ein Schaf zu «fressen».",
+            lithotherapie = "Wolframit hat keine etablierte Tradition in der Edelsteinheilkunde; seine Verwendung bleibt nahezu ausschließlich mineralogisch und industriell."
+        ),
         "quartz-tourmaline" to GemTranslation(
             nom = "Turmalinquarz",
             descriptionCourte = "Nadeln aus schwarzem Turmalin, eingeschlossen in klarem Quarz.",
