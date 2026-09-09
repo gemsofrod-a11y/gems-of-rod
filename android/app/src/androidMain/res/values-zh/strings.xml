@@ -434,6 +434,14 @@
     <string name="treatments_detection_label">检测线索</string>
     <string name="treatments_disclosure_label">披露义务</string>
 
+    <!-- 按宝石分类的购买指南 -->
+    <string name="lab_buying_guides_title">购买指南</string>
+    <string name="lab_buying_guides_subtitle">如何逐项标准挑选每一种贵重宝石与半宝石。</string>
+    <string name="buying_guides_title">购买指南</string>
+    <string name="buying_guides_origin_label">产地与颜色</string>
+    <string name="buying_guides_purity_label">净度与常见处理</string>
+    <string name="buying_guides_care_label">保养</string>
+
     <!-- 库存管理 -->
     <string name="lab_stock_title">库存管理</string>
     <string name="lab_stock_subtitle">追踪您库存中、已预订或已售出的宝石。</string>

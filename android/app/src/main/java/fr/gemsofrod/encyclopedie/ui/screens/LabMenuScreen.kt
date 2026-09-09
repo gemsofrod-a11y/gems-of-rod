@@ -10,6 +10,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Article
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.filled.MenuBook
@@ -62,6 +63,7 @@ fun LabMenuScreen(
     onNuancierClick: () -> Unit,
     onDiamondGradingClick: () -> Unit,
     onTreatmentsClick: () -> Unit,
+    onBuyingGuidesClick: () -> Unit,
     onStockClick: () -> Unit,
     onClientsClick: () -> Unit,
     onSuppliersClick: () -> Unit,
@@ -151,6 +153,12 @@ fun LabMenuScreen(
                 title = stringResource(R.string.lab_treatments_title),
                 subtitle = stringResource(R.string.lab_treatments_subtitle),
                 onClick = onTreatmentsClick
+            )
+            LabMenuCard(
+                icon = Icons.AutoMirrored.Filled.Article,
+                title = stringResource(R.string.lab_buying_guides_title),
+                subtitle = stringResource(R.string.lab_buying_guides_subtitle),
+                onClick = onBuyingGuidesClick
             )
             LabMenuCard(
                 icon = Icons.Filled.Inventory2,

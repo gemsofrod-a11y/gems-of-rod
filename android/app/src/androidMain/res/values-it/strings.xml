@@ -434,6 +434,14 @@
     <string name="treatments_detection_label">Indizi di rilevamento</string>
     <string name="treatments_disclosure_label">Obbligo di divulgazione</string>
 
+    <!-- Guide all'acquisto per pietra -->
+    <string name="lab_buying_guides_title">Guide all\'acquisto</string>
+    <string name="lab_buying_guides_subtitle">Come scegliere ogni pietra preziosa e fine, criterio per criterio.</string>
+    <string name="buying_guides_title">Guide all\'acquisto</string>
+    <string name="buying_guides_origin_label">Origine e colore</string>
+    <string name="buying_guides_purity_label">Purezza e trattamenti comuni</string>
+    <string name="buying_guides_care_label">Cura e manutenzione</string>
+
     <!-- Gestione del magazzino -->
     <string name="lab_stock_title">Gestione del magazzino</string>
     <string name="lab_stock_subtitle">Tieni traccia delle pietre in magazzino, riservate o vendute.</string>
