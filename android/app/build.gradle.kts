@@ -26,8 +26,8 @@ android {
         applicationId = "fr.gemsofrod.encyclopedie"
         minSdk = 26
         targetSdk = 36
-        versionCode = 167
-        versionName = "9.64"
+        versionCode = 168
+        versionName = "9.65"
     }
 
     signingConfigs {
@@ -142,6 +142,10 @@ kotlin {
                 implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
                 implementation("androidx.activity:activity-compose:1.9.1")
                 implementation("androidx.navigation:navigation-compose:2.7.7")
+                // Force une version récente d'androidx.fragment : une des
+                // dépendances ci-dessus (transitivement) tire encore la
+                // 1.1.0, obsolète, signalée par la Play Console.
+                implementation("androidx.fragment:fragment-ktx:1.8.4")
                 // Écran de démarrage natif (fond + icône) avant que Compose ne prenne la main.
                 implementation("androidx.core:core-splashscreen:1.0.1")
                 implementation(compose.preview)
