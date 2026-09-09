@@ -30,7 +30,8 @@
           <button data-tf="4h">4h</button>
           <button data-tf="1d">1j</button>
         </div>
-        <canvas id="price-chart" width="900" height="380"></canvas>
+        <div class="ohlc-legend" id="ohlc-legend"></div>
+        <div id="price-chart" class="chart-container"></div>
         <div class="badge chart-badge" id="chart-provider">…</div>
       </div>
 
@@ -161,6 +162,7 @@
     </button>
   </nav>
 
+  <script src="lightweight-charts.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

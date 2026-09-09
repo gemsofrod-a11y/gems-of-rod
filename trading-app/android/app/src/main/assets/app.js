@@ -2,7 +2,7 @@
   "use strict";
 
   const $ = (id) => document.getElementById(id);
-  const state = { timeframe: "1m", candles: [], crosshairIndex: null, livePrice: null };
+  const state = { timeframe: "1m", candles: [], livePrice: null };
 
   // --- onglets ---
 
@@ -68,6 +68,69 @@
 
   // --- cours ---
 
+  function fmtTime(epochSec, timeframe) {
+    const d = new Date(epochSec * 1000);
+    if (timeframe === "1d" || timeframe === "4h") {
+      return d.toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" });
+    }
+    return d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+  }
+
+  // --- graphique (TradingView Lightweight Charts, embarqué en local) :
+  // pincer-zoomer, glisser dans l'historique, croisillon fluide et échelle
+  // de prix sont tous gérés nativement par la librairie plutôt que
+  // réimplémentés à la main sur un <canvas>. ---
+  let chart = null;
+  let candleSeries = null;
+
+  function initChart() {
+    const container = $("price-chart");
+    chart = LightweightCharts.createChart(container, {
+      width: container.clientWidth,
+      height: container.clientHeight,
+      layout: { background: { color: "#0f1115" }, textColor: "#9aa2b1" },
+      grid: {
+        vertLines: { color: "#1c202a" },
+        horzLines: { color: "#1c202a" },
+      },
+      rightPriceScale: { borderColor: "#2a2e38" },
+      timeScale: { borderColor: "#2a2e38", timeVisible: true, secondsVisible: false },
+      crosshair: { mode: LightweightCharts.CrosshairMode.Normal },
+      localization: {
+        priceFormatter: (p) => p.toFixed(p >= 1000 ? 1 : 2),
+      },
+    });
+    candleSeries = chart.addCandlestickSeries({
+      upColor: "#3ec98b",
+      downColor: "#e6604f",
+      borderVisible: false,
+      wickUpColor: "#3ec98b",
+      wickDownColor: "#e6604f",
+      priceLineWidth: 1,
+    });
+    chart.subscribeCrosshairMove(updateOhlcLegend);
+    window.addEventListener("resize", () => {
+      chart.resize(container.clientWidth, container.clientHeight);
+    });
+  }
+
+  function updateOhlcLegend(param) {
+    const legend = $("ohlc-legend");
+    let bar = param && param.seriesData ? param.seriesData.get(candleSeries) : null;
+    let time = param && param.time ? param.time : null;
+    if (!bar) {
+      const last = state.candles[state.candles.length - 1];
+      bar = last ? { open: last.o, high: last.h, low: last.l, close: last.c } : null;
+      time = last ? last.t : null;
+    }
+    if (!bar) { legend.textContent = ""; return; }
+    const up = bar.close >= bar.open;
+    const closeColor = up ? "var(--green)" : "var(--red)";
+    legend.innerHTML = `${time ? fmtTime(time, state.timeframe) + " · " : ""}` +
+      `O <b>${bar.open.toFixed(1)}</b> H <b>${bar.high.toFixed(1)}</b> L <b>${bar.low.toFixed(1)}</b> ` +
+      `C <b style="color:${closeColor}">${bar.close.toFixed(1)}</b>`;
+  }
+
   function refreshPrice() {
     try {
       const quote = JSON.parse(window.NativeBridge.getPrice());
@@ -89,15 +152,18 @@
 
       // Fait "vivre" la dernière bougie entre deux rechargements complets
       // (toutes les 8s) : chaque cotation (toutes les 2s) étire son close/
-      // high/low avec le dernier cours, comme sur une plateforme pro où la
-      // bougie en formation bouge en continu plutôt que de rester figée.
+      // high/low avec le dernier cours via series.update(), le mécanisme
+      // officiel de la librairie pour les mises à jour temps réel — pas de
+      // redessin manuel, la librairie s'occupe de tout (fluide, zoomable).
       state.livePrice = quote.price;
-      if (state.candles.length) {
+      if (state.candles.length && candleSeries) {
         const last = state.candles[state.candles.length - 1];
         last.c = quote.price;
         if (quote.price > last.h) last.h = quote.price;
         if (quote.price < last.l) last.l = quote.price;
-        drawCandles();
+        candleSeries.update({ time: last.t, open: last.o, high: last.h, low: last.l, close: last.c });
+        candleSeries.applyOptions({ priceLineColor: last.c >= last.o ? "#3ec98b" : "#e6604f" });
+        updateOhlcLegend(null);
       }
     } catch (err) {
       $("price-source").textContent = "indisponible";
@@ -117,7 +183,11 @@
       const providerEl = $("chart-provider");
       providerEl.textContent = providerLabel;
       providerEl.className = `badge chart-badge ${isReal ? "live" : "simule"}`;
-      drawCandles();
+      if (candleSeries) {
+        candleSeries.setData(state.candles.map((c) => ({ time: c.t, open: c.o, high: c.h, low: c.l, close: c.c })));
+        chart.timeScale().fitContent();
+      }
+      updateOhlcLegend(null);
     } catch (err) {
       const providerEl = $("chart-provider");
       providerEl.textContent = "graphique indisponible";
@@ -132,195 +202,6 @@
     document.querySelectorAll("#timeframes button").forEach((b) => b.classList.toggle("active", b === btn));
     refreshCandles();
   });
-
-  const CHART_MARGIN = { top: 10, right: 62, bottom: 22, left: 4 };
-
-  function chartGeometry() {
-    const canvas = $("price-chart");
-    const w = canvas.width, h = canvas.height;
-    const plotW = w - CHART_MARGIN.left - CHART_MARGIN.right;
-    const plotH = h - CHART_MARGIN.top - CHART_MARGIN.bottom;
-    const candles = state.candles;
-    const lows = candles.map((c) => c.l), highs = candles.map((c) => c.h);
-    const min = Math.min(...lows), max = Math.max(...highs);
-    const pad = (max - min) * 0.08 || 1;
-    const yMin = min - pad, yMax = max + pad;
-    const yOf = (price) => CHART_MARGIN.top + plotH - ((price - yMin) / (yMax - yMin)) * plotH;
-    const slot = plotW / candles.length;
-    const xOf = (i) => CHART_MARGIN.left + i * slot + slot / 2;
-    return { canvas, w, h, plotW, plotH, yMin, yMax, yOf, slot, xOf };
-  }
-
-  function fmtTime(epochSec, timeframe) {
-    const d = new Date(epochSec * 1000);
-    if (timeframe === "1d" || timeframe === "4h") {
-      return d.toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" });
-    }
-    return d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
-  }
-
-  function drawCandles() {
-    const candles = state.candles;
-    const geo = chartGeometry();
-    const { canvas, w, h, yOf, xOf, slot, yMin, yMax } = geo;
-    const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, w, h);
-    if (candles.length < 2) return;
-
-    // --- grille + échelle de prix ---
-    ctx.strokeStyle = "#2a2e38";
-    ctx.fillStyle = "#9aa2b1";
-    ctx.font = "11px sans-serif";
-    ctx.textBaseline = "middle";
-    const steps = 5;
-    for (let i = 0; i <= steps; i++) {
-      const price = yMin + ((yMax - yMin) * i) / steps;
-      const y = yOf(price);
-      ctx.beginPath();
-      ctx.lineWidth = 1;
-      ctx.moveTo(CHART_MARGIN.left, y);
-      ctx.lineTo(w - CHART_MARGIN.right, y);
-      ctx.stroke();
-      ctx.textAlign = "left";
-      ctx.fillText(price.toFixed(price >= 1000 ? 0 : 1), w - CHART_MARGIN.right + 4, y);
-    }
-
-    // --- repères de temps (+ grille verticale associée) ---
-    ctx.textAlign = "center";
-    ctx.textBaseline = "top";
-    const timeIdx = [0, Math.floor((candles.length - 1) / 2), candles.length - 1];
-    timeIdx.forEach((i) => {
-      const x = xOf(i);
-      ctx.strokeStyle = "#1c202a";
-      ctx.beginPath();
-      ctx.moveTo(x, CHART_MARGIN.top);
-      ctx.lineTo(x, h - CHART_MARGIN.bottom);
-      ctx.stroke();
-      ctx.fillStyle = "#9aa2b1";
-      ctx.fillText(fmtTime(candles[i].t, state.timeframe), x, h - CHART_MARGIN.bottom + 4);
-    });
-
-    // --- bougies ---
-    const bodyWidth = Math.max(1, slot * 0.6);
-    candles.forEach((c, i) => {
-      const x = xOf(i);
-      const up = c.c >= c.o;
-      ctx.strokeStyle = ctx.fillStyle = up ? "#3ec98b" : "#e6604f";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(x, yOf(c.h));
-      ctx.lineTo(x, yOf(c.l));
-      ctx.stroke();
-      const yOpen = yOf(c.o), yClose = yOf(c.c);
-      const top = Math.min(yOpen, yClose);
-      const height = Math.max(1, Math.abs(yClose - yOpen));
-      ctx.fillRect(x - bodyWidth / 2, top, bodyWidth, height);
-    });
-
-    // --- indicateur de prix en direct : ligne pointillée + étiquette qui
-    // suivent le dernier cours reçu, pour toujours voir où en est le prix
-    // sur la courbe sans avoir à toucher l'écran (comme sur une plateforme
-    // de trading professionnelle). ---
-    if (state.livePrice !== null) {
-      drawLivePriceLine(geo, state.livePrice);
-    }
-
-    if (state.crosshairIndex !== null && state.crosshairIndex !== undefined) {
-      drawCrosshair(geo, state.crosshairIndex);
-    }
-  }
-
-  function drawLivePriceLine(geo, price) {
-    const { canvas, w, yOf, yMin, yMax } = geo;
-    if (price < yMin || price > yMax) return;
-    const candles = state.candles;
-    const first = candles[0].o;
-    const color = price >= first ? "#3ec98b" : "#e6604f";
-    const y = yOf(price);
-    const ctx = canvas.getContext("2d");
-
-    ctx.save();
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 1;
-    ctx.setLineDash([3, 3]);
-    ctx.beginPath();
-    ctx.moveTo(CHART_MARGIN.left, y);
-    ctx.lineTo(w - CHART_MARGIN.right, y);
-    ctx.stroke();
-    ctx.setLineDash([]);
-
-    const label = price.toFixed(price >= 1000 ? 1 : 2);
-    ctx.font = "bold 11px sans-serif";
-    const textWidth = ctx.measureText(label).width;
-    const boxW = textWidth + 10;
-    const boxH = 16;
-    ctx.fillStyle = color;
-    ctx.fillRect(w - CHART_MARGIN.right, y - boxH / 2, boxW, boxH);
-    ctx.fillStyle = "#05070a";
-    ctx.textAlign = "left";
-    ctx.textBaseline = "middle";
-    ctx.fillText(label, w - CHART_MARGIN.right + 5, y);
-    ctx.restore();
-  }
-
-  function drawCrosshair(geo, index) {
-    const candles = state.candles;
-    const i = Math.max(0, Math.min(candles.length - 1, index));
-    const c = candles[i];
-    if (!c) return;
-    const { canvas, w, h, yOf, xOf } = geo;
-    const ctx = canvas.getContext("2d");
-    const x = xOf(i), y = yOf(c.c);
-
-    ctx.save();
-    ctx.strokeStyle = "#d4af37";
-    ctx.lineWidth = 1;
-    ctx.setLineDash([4, 4]);
-    ctx.beginPath();
-    ctx.moveTo(x, CHART_MARGIN.top);
-    ctx.lineTo(x, h - CHART_MARGIN.bottom);
-    ctx.moveTo(CHART_MARGIN.left, y);
-    ctx.lineTo(w - CHART_MARGIN.right, y);
-    ctx.stroke();
-    ctx.setLineDash([]);
-
-    const label = `${fmtUsd(c.c)}  ·  ${fmtTime(c.t, state.timeframe)}  ·  O ${c.o.toFixed(1)} H ${c.h.toFixed(1)} L ${c.l.toFixed(1)} C ${c.c.toFixed(1)}`;
-    ctx.font = "11px sans-serif";
-    const textWidth = ctx.measureText(label).width;
-    const boxX = Math.min(Math.max(x - textWidth / 2 - 6, 2), w - textWidth - 10);
-    ctx.fillStyle = "#05070a";
-    ctx.strokeStyle = "#d4af37";
-    ctx.lineWidth = 1;
-    ctx.fillRect(boxX, CHART_MARGIN.top, textWidth + 12, 20);
-    ctx.strokeRect(boxX, CHART_MARGIN.top, textWidth + 12, 20);
-    ctx.fillStyle = "#eef0f4";
-    ctx.textAlign = "left";
-    ctx.textBaseline = "middle";
-    ctx.fillText(label, boxX + 6, CHART_MARGIN.top + 10);
-    ctx.restore();
-  }
-
-  function handleChartPointer(evt) {
-    const canvas = $("price-chart");
-    const candles = state.candles;
-    if (!candles.length) return;
-    const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width / rect.width;
-    const clientX = (evt.touches ? evt.touches[0].clientX : evt.clientX) - rect.left;
-    const canvasX = clientX * scaleX;
-    const geo = chartGeometry();
-    const relative = (canvasX - CHART_MARGIN.left) / geo.slot;
-    state.crosshairIndex = Math.round(relative - 0.5);
-    drawCandles();
-  }
-
-  const chartCanvas = $("price-chart");
-  let chartDragging = false;
-  chartCanvas.addEventListener("pointerdown", (e) => { chartDragging = true; handleChartPointer(e); e.preventDefault(); });
-  chartCanvas.addEventListener("pointermove", (e) => { if (chartDragging) handleChartPointer(e); });
-  chartCanvas.addEventListener("pointerup", () => { chartDragging = false; state.crosshairIndex = null; drawCandles(); });
-  chartCanvas.addEventListener("pointercancel", () => { chartDragging = false; state.crosshairIndex = null; drawCandles(); });
-  chartCanvas.addEventListener("pointerleave", () => { chartDragging = false; state.crosshairIndex = null; drawCandles(); });
 
   // --- portefeuille ---
 
@@ -509,6 +390,7 @@
   }
 
   (function init() {
+    initChart();
     refreshCandles();
     tick();
     setInterval(tick, 2000);

@@ -56,16 +56,20 @@ object Strategies {
         return ((oversold - rsiValue) / oversold).coerceIn(0.0, 1.0)
     }
 
+    /** Signal basé sur l'état de la tendance (rapide au-dessus/en dessous de
+     * la lente), pas seulement sur l'instant précis du croisement : ce
+     * dernier est un événement ponctuel bien trop rare pour un bot censé
+     * trader vite et souvent, y compris en mini-trades ("tac au tac"). Tant
+     * que la tendance courte reste haussière, chaque cycle où le bot est à
+     * plat redonne un signal d'achat — la sortie (take-profit/stop-loss/
+     * détention max) est gérée séparément par TradingBot.checkExit(). */
     private fun smaCrossover(prices: List<Double>, fast: Int, slow: Int): String {
-        if (fast >= slow || prices.size < slow + 1) return "hold"
-        val prev = prices.dropLast(1)
+        if (fast >= slow || prices.size < slow) return "hold"
         val fastNow = prices.takeLast(fast).average()
         val slowNow = prices.takeLast(slow).average()
-        val fastPrev = prev.takeLast(fast).average()
-        val slowPrev = prev.takeLast(slow).average()
         return when {
-            fastPrev <= slowPrev && fastNow > slowNow -> "buy"
-            fastPrev >= slowPrev && fastNow < slowNow -> "sell"
+            fastNow > slowNow -> "buy"
+            fastNow < slowNow -> "sell"
             else -> "hold"
         }
     }
