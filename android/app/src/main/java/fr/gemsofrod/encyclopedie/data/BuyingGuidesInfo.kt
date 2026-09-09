@@ -89,18 +89,214 @@ object BuyingGuidesInfo {
                 entretien = "Dureté 8, résistant. S'entretient comme le saphir, sans précaution particulière."
             ),
             BuyingGuideArticle(
-                pierre = "Tourmaline",
-                accroche = "La pierre aux mille couleurs, du vert « paraïba » électrique au rose et vert bicolore du « pastèque ».",
-                origineCouleur = "Brésil (Paraíba) : bleu-vert cuprifère néon, légendaire et rarissime. Mozambique et Nigeria : teintes « paraïba-like » plus accessibles. Afghanistan et Brésil : rubellite rouge-rose. Madagascar : palette multicolore. La variété paraïba domine la valorisation, suivie de la rubellite intense.",
-                puretTraitements = "Chauffage courant pour intensifier certaines teintes, traitement accepté. Clarté variable selon la variété ; des inclusions filiformes sont fréquentes et tolérées si discrètes.",
-                entretien = "Dureté 7 à 7,5, bonne robustesse générale. Pierre pyroélectrique, qui attire la poussière par électricité statique : un nettoyage doux et régulier est recommandé."
+                pierre = "Saphir jaune",
+                accroche = "Le corindon dans toutes les teintes hors rouge trouve dans le jaune l'une de ses variétés les plus lumineuses et abordables.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagascar (Ilakaka), Tanzanie (Tunduru). Jaune vif et lumineux, homogène, sans reflet verdâtre.",
+                puretTraitements = "Chauffage courant pour intensifier et uniformiser la couleur, traitement accepté et stable. Clarté généralement bonne à l'œil nu.",
+                entretien = "Dureté 9, très résistant au quotidien. Ultrasons sans risque pour une pierre non diffusée."
             ),
             BuyingGuideArticle(
-                pierre = "Saphir",
-                accroche = "Le corindon bleu par excellence, mais aussi rose, jaune ou « padparadscha » — juste derrière le diamant en dureté.",
-                origineCouleur = "Cachemire : bleu velouté légendaire, gisement quasiment épuisé, rarissime. Birmanie (Mogok) : bleu « royal », intense. Sri Lanka : bleu plus clair, grande transparence. Madagascar : principale production moderne. Bleu velouté profond, saturation forte sans excès de noir.",
-                puretTraitements = "Chauffage quasi systématique et largement accepté, améliore couleur et clarté. La diffusion (titane classique, ou béryllium, plus problématique) doit impérativement être distinguée sur le certificat. Clarté élevée généralement recherchée.",
-                entretien = "Dureté 9, juste après le diamant : très résistant au quotidien. Ultrasons sans risque, sauf sur une pierre diffusée ou remplie."
+                pierre = "Saphir vert",
+                accroche = "Un vert discret et souvent dichroïque, la couleur la plus abordable du corindon.",
+                origineCouleur = "Australie (Nouvelle-Galles du Sud), Thaïlande (Kanchanaburi), Nigeria (Mambilla). Vert franc, sans trop de gris ; le dichroïsme vert/jaune-vert selon l'angle est caractéristique de l'espèce.",
+                puretTraitements = "Chauffage courant et accepté pour homogénéiser la teinte. Clarté généralement bonne.",
+                entretien = "Dureté 9, très résistant. Ultrasons sans risque pour une pierre non diffusée."
+            ),
+            BuyingGuideArticle(
+                pierre = "Saphir bleu",
+                accroche = "Le bleu de référence de la haute joaillerie, juste derrière le diamant en dureté.",
+                origineCouleur = "Cachemire : bleu velouté légendaire, gisement quasiment épuisé, rarissime. Birmanie (Mogok) : bleu « royal » intense. Sri Lanka : bleu plus clair, grande transparence. Madagascar : principale production moderne. Bleu velouté profond, saturation forte sans excès de noir.",
+                puretTraitements = "Chauffage quasi systématique et largement accepté. La diffusion (titane classique, ou béryllium, plus problématique) doit être distinguée sur le certificat. Des inclusions de rutile en soie peuvent produire un astérisme (saphir étoilé).",
+                entretien = "Dureté 9, très résistant au quotidien. Ultrasons sans risque, sauf sur une pierre diffusée ou remplie."
+            ),
+            BuyingGuideArticle(
+                pierre = "Saphir d'Auvergne",
+                accroche = "Un corindon français à la teinte bleu-violet profonde, extrait des terrains volcaniques d'Auvergne.",
+                origineCouleur = "France (Espaly-Saint-Marcel, Haute-Loire), seule source. Bleu-violet très soutenu, typique des saphirs d'origine basaltique ; cristaux généralement petits, rarement plus d'un carat taillé.",
+                puretTraitements = "Peu ou pas chauffé, la rareté et l'origine locale primant sur l'intensification de la couleur. Petite production, à négocier pièce par pièce.",
+                entretien = "Dureté 9, très résistant. Ultrasons sans risque."
+            ),
+            BuyingGuideArticle(
+                pierre = "Saphir violet",
+                accroche = "Un violet profond, à la frontière entre le saphir bleu et le rubis.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagascar (Ilakaka), Tanzanie (Tunduru). Violet soutenu et homogène ; peut présenter un léger changement de couleur entre lumière du jour et lumière incandescente.",
+                puretTraitements = "Chauffage courant et accepté pour stabiliser la teinte. Clarté généralement bonne à l'œil nu.",
+                entretien = "Dureté 9, très résistant. Ultrasons sans risque pour une pierre non diffusée."
+            ),
+            BuyingGuideArticle(
+                pierre = "Saphir rose",
+                accroche = "À la frontière entre rubis et saphir, dont la limite officielle reste débattue selon les laboratoires.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagascar (Ilakaka), Tanzanie (Tunduru). Rose vif et soutenu ; au-delà d'un certain seuil de saturation, la pierre est reclassée rubis par certains laboratoires.",
+                puretTraitements = "Chauffage courant et accepté. Vérifier la classification (saphir rose ou rubis) sur le certificat, la valeur pouvant varier fortement.",
+                entretien = "Dureté 9, très résistant. Ultrasons sans risque pour une pierre non diffusée."
+            ),
+            BuyingGuideArticle(
+                pierre = "Saphir blanc",
+                accroche = "Le corindon sans trace colorante, alternative discrète et abordable au diamant.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagascar (Ilakaka), Australie (Nouvelle-Galles du Sud). Incolore et limpide ; dispersion inférieure à celle du diamant, mais dureté quasi égale.",
+                puretTraitements = "Rarement traité, sa transparence naturelle étant déjà son principal atout. Clarté élevée recherchée.",
+                entretien = "Dureté 9, excellente résistance à l'usure quotidienne. Ultrasons sans risque."
+            ),
+            BuyingGuideArticle(
+                pierre = "Saphir étoilé",
+                accroche = "Une étoile lumineuse à six branches, révélée par une taille en cabochon, souvent dans un saphir bleu ou noir.",
+                origineCouleur = "Sri Lanka (Ratnapura), Birmanie (Mogok), Thaïlande (Kanchanaburi, variété noire). L'astérisme le plus recherché présente six branches parfaitement droites, centrées sur le dôme du cabochon.",
+                puretTraitements = "Rarement chauffé, un traitement thermique risquant d'altérer les inclusions de rutile responsables de l'astérisme. La netteté et le centrage de l'étoile priment sur la transparence.",
+                entretien = "Dureté 9, très résistant. Nettoyage doux recommandé pour préserver le poli du dôme."
+            ),
+            BuyingGuideArticle(
+                pierre = "Saphir teal",
+                accroche = "Un corindon bicolore où bleu et jaune se combinent en une teinte bleu-vert singulière, très prisée des connaisseurs.",
+                origineCouleur = "États-Unis (Montana, Rock Creek), Australie (Nouvelle-Galles du Sud), Madagascar (Ilakaka). La bicoloration bleu-jaune, visible en zones distinctes à l'état brut, se fond en un bleu-vert homogène une fois la pierre taillée et orientée.",
+                puretTraitements = "Souvent non chauffé, la nuance naturelle étant elle-même recherchée par les collectionneurs. Le talent du tailleur, qui oriente la pierre pour équilibrer les deux couleurs, est déterminant.",
+                entretien = "Dureté 9, très résistant. Ultrasons sans risque pour une pierre non diffusée."
+            ),
+            BuyingGuideArticle(
+                pierre = "Tourmaline rubellite",
+                accroche = "Un rouge intense dû au manganèse, la variété la plus proche du rubis parmi les tourmalines.",
+                origineCouleur = "Brésil (mine de Cruzeiro, Minas Gerais), Nigeria (Oyo), Mozambique (Alto Ligonha), Afghanistan (vallée de Paprok). Rouge à rouge-rose intense et homogène ; pléochroïsme marqué, cristaux prismatiques striés caractéristiques.",
+                puretTraitements = "Chauffage occasionnel pour atténuer les tons bruns, traitement accepté. Clarté variable ; inclusions filiformes fréquentes et tolérées si discrètes.",
+                entretien = "Dureté 7 à 7,5, bonne robustesse générale. Pierre pyroélectrique attirant la poussière par électricité statique : nettoyage doux recommandé."
+            ),
+            BuyingGuideArticle(
+                pierre = "Tourmaline jaune",
+                accroche = "Un jaune canari lumineux, naturel sans traitement — la plus rare des couleurs de tourmaline.",
+                origineCouleur = "Malawi (Zomba), Brésil (Minas Gerais), Nigeria (Oyo). Jaune vif et lumineux, sans intervention nécessaire contrairement à de nombreuses teintes commerciales de la tourmaline.",
+                puretTraitements = "Généralement non traitée, sa couleur naturelle étant déjà recherchée. Clarté souvent bonne.",
+                entretien = "Dureté 7 à 7,5. Pierre pyroélectrique : nettoyage doux et régulier recommandé."
+            ),
+            BuyingGuideArticle(
+                pierre = "Tourmaline chrome",
+                accroche = "Un vert profond et saturé dû au chrome et au vanadium, distinct du vert « classique » de la tourmaline.",
+                origineCouleur = "Kenya (Taita-Taveta), Tanzanie (Umba). Vert intense proche de l'émeraude ; dichroïsme marqué, l'orientation de la table étant déterminante pour révéler la teinte la plus saturée.",
+                puretTraitements = "Rarement traitée, la couleur due au chrome et au vanadium étant naturellement intense. Clarté généralement bonne.",
+                entretien = "Dureté 7 à 7,5. Pierre pyroélectrique : nettoyage doux recommandé."
+            ),
+            BuyingGuideArticle(
+                pierre = "Tourmaline verte (Verdelite)",
+                accroche = "Un vert coloré par le fer ou le chrome, la couleur la plus classique et répandue de la tourmaline.",
+                origineCouleur = "Brésil (Minas Gerais), Mozambique (Alto Ligonha), Nigeria (Oyo). Vert franc à vert sombre ; forte biréfringence, les tailleurs orientant la pierre pour optimiser la couleur.",
+                puretTraitements = "Chauffage occasionnel accepté pour éclaircir les teintes trop sombres. Clarté variable selon l'origine.",
+                entretien = "Dureté 7 à 7,5. Pierre pyroélectrique : nettoyage doux et régulier recommandé."
+            ),
+            BuyingGuideArticle(
+                pierre = "Tourmaline bleue (indigolite)",
+                accroche = "Un bleu profond, distinct du bleu-vert cuivré de la Paraíba, sans intervention du cuivre.",
+                origineCouleur = "Brésil (Minas Gerais), Namibie (Erongo), Afghanistan (Nouristan). Bleu sombre à bleu-gris, généralement plus foncé que la Paraíba.",
+                puretTraitements = "Chauffage occasionnel pour éclaircir un ton trop sombre, traitement accepté. Clarté variable.",
+                entretien = "Dureté 7 à 7,5. Pierre pyroélectrique : nettoyage doux recommandé."
+            ),
+            BuyingGuideArticle(
+                pierre = "Tourmaline rose",
+                accroche = "Une teinte tendre due au manganèse, à l'origine des tourmalines bicolores les plus recherchées.",
+                origineCouleur = "Brésil (mine de Cruzeiro, Minas Gerais), Afghanistan (Paprok), Mozambique (Alto Ligonha). Rose clair à rose soutenu ; cristaux souvent zonés, à l'origine des variétés bicolores comme la pastèque.",
+                puretTraitements = "Rarement traitée. Clarté généralement bonne à l'œil nu.",
+                entretien = "Dureté 7 à 7,5. Pierre pyroélectrique : nettoyage doux recommandé."
+            ),
+            BuyingGuideArticle(
+                pierre = "Tourmaline noire (Schorl)",
+                accroche = "La variété de tourmaline la plus commune, appréciée en bijouterie sobre comme en lithothérapie.",
+                origineCouleur = "Brésil (Minas Gerais), Namibie (Erongo), Madagascar (Antsirabe). Noir opaque à sub-transparent ; cristaux prismatiques souvent striés, parfois de grande taille.",
+                puretTraitements = "Jamais traitée, sa couleur et son abondance ne justifiant aucune intervention. Prix très accessible.",
+                entretien = "Dureté 7 à 7,5, robuste. Entretien simple, sans précaution particulière."
+            ),
+            BuyingGuideArticle(
+                pierre = "Tourmaline pastèque",
+                accroche = "Un cœur rose cerné de vert, comme une tranche de fruit — l'une des tourmalines bicolores les plus spectaculaires.",
+                origineCouleur = "Brésil (Minas Gerais), États-Unis (mine Dunton, Maine). Zonation nette rose au centre, verte en périphérie ; taillée le plus souvent en tranches transversales pour révéler l'effet « pastèque ».",
+                puretTraitements = "Rarement traitée, la zonation naturelle étant l'attrait principal de la pierre. Clarté variable selon la zone.",
+                entretien = "Dureté 7 à 7,5. Nettoyage doux recommandé, en particulier pour les tranches fines."
+            ),
+            BuyingGuideArticle(
+                pierre = "Tourmaline Paraïba",
+                accroche = "Un bleu-vert « néon » électrique, unique dans le règne minéral — la tourmaline la plus recherchée et la plus onéreuse.",
+                origineCouleur = "São José da Batalha (Paraíba, Brésil), source historique quasi épuisée. Mozambique (Mavuco) et Nigeria (Edeko) : sources modernes plus accessibles. Couleur « néon » due au cuivre, jamais observée dans les autres tourmalines.",
+                puretTraitements = "Un certificat précisant l'origine (Brésil vs Afrique) est essentiel, l'écart de valeur étant considérable. Clarté et intensité de la couleur cuivrée priment sur tout autre critère.",
+                entretien = "Dureté 7 à 7,5. Pierre pyroélectrique : nettoyage doux recommandé, à protéger comme toute pierre de très haute valeur."
+            ),
+            BuyingGuideArticle(
+                pierre = "Grenat pyrope",
+                accroche = "Le grenat rouge sang classique, sans dilution rhodolite — la variété la plus pure de la famille pyrope.",
+                origineCouleur = "République tchèque (Bohême, région de Podsedice), Afrique du Sud (mine de Kao, kimberlites), Tanzanie (Umba). Rouge sang profond et homogène, sans nuance violacée notable.",
+                puretTraitements = "Jamais traité, comme l'ensemble de la famille des grenats. Contrairement à la rhodolite, le pyrope pur ne contient pas de fer en proportion significative.",
+                entretien = "Dureté 7 à 7,5. Aucun soin particulier au-delà des précautions usuelles pour toute pierre de joaillerie."
+            ),
+            BuyingGuideArticle(
+                pierre = "Grenat almandin / pyrope",
+                accroche = "Un grenat rouge profond, jamais traité — le plus courant et le plus abordable de la famille.",
+                origineCouleur = "Inde (Rajmahal Hills, Jharkhand), Sri Lanka (Ratnapura), République tchèque (Podsedice, Bohême), Tanzanie (vallée de l'Umba). Rouge sombre à rouge-brun, parfois légèrement violacé.",
+                puretTraitements = "Jamais traité thermiquement ou chimiquement. Aucun clivage, forte réfraction et bon éclat.",
+                entretien = "Dureté 7 à 7,5, bonne robustesse générale. Aucun soin particulier."
+            ),
+            BuyingGuideArticle(
+                pierre = "Grenat rhodolite",
+                accroche = "Un rouge-violacé « framboise » à l'excellente transparence, parmi les grenats les plus élégants.",
+                origineCouleur = "Tanzanie (vallée de l'Umba), Sri Lanka (Ratnapura), Inde (Orissa). Rouge-violacé lumineux et homogène.",
+                puretTraitements = "Jamais traitée. Excellente transparence naturelle, rarement incluse à l'œil nu.",
+                entretien = "Dureté 7 à 7,5. Aucun soin particulier."
+            ),
+            BuyingGuideArticle(
+                pierre = "Grenat étoilé",
+                accroche = "Un almandin à quatre ou six branches lumineuses, une rareté trouvée quasi uniquement dans l'Idaho.",
+                origineCouleur = "États-Unis (Idaho, seul gisement mondial d'astérisme à quatre branches), Inde (Odisha). Rouge sombre ; l'astérisme à quatre branches est unique au monde, celui à six branches, plus rare encore, provient des mêmes gisements.",
+                puretTraitements = "Jamais traité. La netteté et le centrage de l'étoile priment sur la transparence du fond.",
+                entretien = "Dureté 7 à 7,5. Nettoyage doux recommandé pour préserver le poli du dôme."
+            ),
+            BuyingGuideArticle(
+                pierre = "Grenat malaya",
+                accroche = "Un rose-orangé chaleureux né du mélange de deux grenats, sans aucun traitement.",
+                origineCouleur = "Tanzanie (Umba), Kenya (Taita-Taveta), Madagascar (Anjanabonoina). Rose-orangé à orangé chaud, teinte unique parmi les grenats.",
+                puretTraitements = "Aucun traitement n'est nécessaire ni pratiqué : couleur 100 % naturelle, l'un des grands arguments de vente de cette variété.",
+                entretien = "Dureté 7 à 7,5. Aucun soin particulier."
+            ),
+            BuyingGuideArticle(
+                pierre = "Grenat spessartite",
+                accroche = "Un orange « mandarine » éclatant, parmi les couleurs les plus lumineuses du règne minéral.",
+                origineCouleur = "Namibie (région du Kunene), Nigeria (État du Nasarawa), Madagascar (Fianarantsoa). Orange vif et saturé, parfois tirant vers le rouge-orangé.",
+                puretTraitements = "Couleur naturelle, jamais traitée thermiquement. Clarté généralement bonne à excellente.",
+                entretien = "Dureté 7 à 7,5. Aucun soin particulier."
+            ),
+            BuyingGuideArticle(
+                pierre = "Grenat grossulaire",
+                accroche = "Le grenat vert à jaune-vert, cousin peu coloré de la tsavorite et de l'hessonite — la famille la plus diversifiée en couleurs.",
+                origineCouleur = "Mali (Sandaré), Kenya (Voi), Canada (Québec, Jeffrey Mine). Du incolore au vert profond, en passant par le jaune-vert et le brun-orangé de l'hessonite.",
+                puretTraitements = "Jamais traité. Clarté variable selon la teinte et le gisement.",
+                entretien = "Dureté 7 à 7,5. Aucun soin particulier."
+            ),
+            BuyingGuideArticle(
+                pierre = "Grenat rhodolite violacé",
+                accroche = "Une teinte pourpre changeant selon l'éclairage, variante violette de la rhodolite classique.",
+                origineCouleur = "Tanzanie (vallée de l'Umba), Mozambique (Cuamba). Pourpre à violet soutenu, la nuance dominante variant selon la source lumineuse.",
+                puretTraitements = "Couleur stable, jamais traitée. Clarté généralement bonne.",
+                entretien = "Dureté 7 à 7,5. Aucun soin particulier."
+            ),
+            BuyingGuideArticle(
+                pierre = "Grenat à changement de couleur",
+                accroche = "Vert bleuté de jour, rouge-violet le soir — un rival méconnu de l'alexandrite, à un prix bien plus accessible.",
+                origineCouleur = "Tanzanie (Umba, Tunduru), Madagascar (Bekily). Le vanadium, plutôt que le chrome, est responsable du changement de couleur dans ce grenat, contrairement à l'alexandrite.",
+                puretTraitements = "Jamais traité. La force du changement de couleur prime sur la teinte elle-même, comme pour l'alexandrite.",
+                entretien = "Dureté 7 à 7,5. Aucun soin particulier."
+            ),
+            BuyingGuideArticle(
+                pierre = "Topaze bleue",
+                accroche = "Le bleu profond obtenu par irradiation puis chauffe d'une topaze incolore — la couleur la plus commercialisée de l'espèce.",
+                origineCouleur = "Brésil (Minas Gerais) et Nigeria fournissent la matière première incolore, irradiée puis chauffée pour développer un bleu allant du ciel au « London Blue » profond.",
+                puretTraitements = "Couleur quasi systématiquement obtenue par irradiation puis traitement thermique, stable et permanente — divulgation obligatoire, largement acceptée par le marché du fait de son prix accessible.",
+                entretien = "Dureté 8, mais un clivage parfait dans un sens la rend fragile aux chocs. Éviter les variations thermiques brutales et proscrire les ultrasons."
+            ),
+            BuyingGuideArticle(
+                pierre = "Topaze rose",
+                accroche = "Le rose naturel le plus rare de la topaze, historiquement extrait au Pakistan.",
+                origineCouleur = "Pakistan (Katlang, Mardan), Russie (Oural, historique). Rose délicat à soutenu ; le rose naturel non traité est rare, à distinguer de la topaze rose obtenue par chauffage de pierres brunes.",
+                puretTraitements = "Vérifier sur le certificat si la teinte est naturelle ou obtenue par traitement thermique de matière brune, l'écart de valeur étant important. Clarté naturellement élevée.",
+                entretien = "Dureté 8, clivage parfait dans un sens : éviter les chocs et les variations thermiques brutales, proscrire les ultrasons."
+            ),
+            BuyingGuideArticle(
+                pierre = "Topaze blanche",
+                accroche = "La topaze dans sa forme la plus pure et la plus courante, incolore et limpide — une alternative économique au diamant.",
+                origineCouleur = "Brésil (Minas Gerais, Ouro Preto), Nigeria (Jos Plateau), Pakistan (Katlang). Incolore et parfaitement limpide ; c'est aussi la matière première la plus abondante pour la production de topaze bleue traitée.",
+                puretTraitements = "Généralement non traitée elle-même. Clarté très élevée recherchée, sa transparence étant son principal atout.",
+                entretien = "Dureté 8, clivage parfait dans un sens : éviter les chocs et proscrire les ultrasons."
             )
         )
     )
@@ -172,18 +368,214 @@ object BuyingGuidesInfo {
                 entretien = "Hardness 8, durable. Care for it as you would sapphire, with no special precautions."
             ),
             BuyingGuideArticle(
-                pierre = "Tourmaline",
-                accroche = "The stone of a thousand colours, from electric \"Paraíba\" green-blue to bicolour pink-and-green \"watermelon\".",
-                origineCouleur = "Brazil (Paraíba): legendary, extremely rare neon copper-bearing blue-green. Mozambique and Nigeria: more accessible \"Paraíba-like\" hues. Afghanistan and Brazil: red-pink rubellite. Madagascar: a multicoloured palette. The Paraíba variety commands the highest value, followed by intense rubellite.",
-                puretTraitements = "Heat treatment to intensify certain hues is common and accepted. Clarity varies by variety; fine needle-like inclusions are frequent and tolerated when discreet.",
-                entretien = "Hardness 7 to 7.5, generally sturdy. A pyroelectric stone that attracts dust through static electricity: gentle, regular cleaning is recommended."
+                pierre = "Yellow sapphire",
+                accroche = "Corundum comes in every hue but red, and yellow gives it one of its brightest and most affordable varieties.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagascar (Ilakaka), Tanzania (Tunduru). A vivid, luminous yellow, even in tone and free of any greenish cast, is most prized.",
+                puretTraitements = "Heat treatment is common to intensify and even out the colour, a stable and accepted treatment. Clarity is generally good to the naked eye.",
+                entretien = "Hardness 9, very resistant to daily wear. Ultrasonic cleaning is safe on a stone that has not been diffused."
             ),
             BuyingGuideArticle(
-                pierre = "Sapphire",
-                accroche = "The quintessential blue corundum, but also found in pink, yellow, or \"padparadscha\" — second only to diamond in hardness.",
+                pierre = "Green sapphire",
+                accroche = "A quiet, often dichroic green — the most affordable colour in the corundum family.",
+                origineCouleur = "Australia (New South Wales), Thailand (Kanchanaburi), Nigeria (Mambilla). A true green without too much grey; dichroism between green and yellow-green depending on the angle is characteristic of the species.",
+                puretTraitements = "Heat treatment to even out the hue is common and accepted. Clarity is generally good.",
+                entretien = "Hardness 9, very resistant. Ultrasonic cleaning is safe on a stone that has not been diffused."
+            ),
+            BuyingGuideArticle(
+                pierre = "Blue sapphire",
+                accroche = "The benchmark blue of fine jewellery, second only to diamond in hardness.",
                 origineCouleur = "Kashmir: legendary velvety blue, an almost exhausted, extremely rare deposit. Myanmar (Mogok): intense \"royal\" blue. Sri Lanka: lighter blue with great transparency. Madagascar: the leading modern production. A deep velvety blue with strong saturation, without excess black, is most prized.",
-                puretTraitements = "Heat treatment is near-universal and widely accepted, improving colour and clarity. Diffusion (classic titanium, or the more problematic beryllium) must always be distinguished on the certificate. High clarity is generally sought after.",
-                entretien = "Hardness 9, just below diamond: very resistant to daily wear. Ultrasonic cleaning is safe, except on a diffused or filled stone."
+                puretTraitements = "Heat treatment is near-universal and widely accepted. Diffusion (classic titanium, or the more problematic beryllium) must be distinguished on the certificate. Rutile silk inclusions can produce asterism (star sapphire).",
+                entretien = "Hardness 9, very resistant to daily wear. Ultrasonic cleaning is safe, except on a diffused or filled stone."
+            ),
+            BuyingGuideArticle(
+                pierre = "Auvergne sapphire",
+                accroche = "A French corundum in a deep blue-violet hue, mined from the volcanic terrain of Auvergne.",
+                origineCouleur = "France (Espaly-Saint-Marcel, Haute-Loire), the only source. A very deep blue-violet typical of basalt-derived sapphires; crystals are generally small, rarely yielding more than a carat once cut.",
+                puretTraitements = "Little or no heat treatment, as rarity and local origin matter more than intensifying the colour. Production is small, negotiated stone by stone.",
+                entretien = "Hardness 9, very resistant. Ultrasonic cleaning is safe."
+            ),
+            BuyingGuideArticle(
+                pierre = "Violet sapphire",
+                accroche = "A deep violet, standing at the frontier between blue sapphire and ruby.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagascar (Ilakaka), Tanzania (Tunduru). A deep, even violet; may show a slight colour change between daylight and incandescent light.",
+                puretTraitements = "Heat treatment to stabilise the hue is common and accepted. Clarity is generally good to the naked eye.",
+                entretien = "Hardness 9, very resistant. Ultrasonic cleaning is safe on a stone that has not been diffused."
+            ),
+            BuyingGuideArticle(
+                pierre = "Pink sapphire",
+                accroche = "At the frontier between ruby and sapphire, where the official boundary is still debated between laboratories.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagascar (Ilakaka), Tanzania (Tunduru). A vivid, deep pink; beyond a certain saturation threshold, some laboratories reclassify the stone as ruby.",
+                puretTraitements = "Heat treatment is common and accepted. Check the classification (pink sapphire or ruby) on the certificate, as value can vary considerably.",
+                entretien = "Hardness 9, very resistant. Ultrasonic cleaning is safe on a stone that has not been diffused."
+            ),
+            BuyingGuideArticle(
+                pierre = "White sapphire",
+                accroche = "Corundum with no trace of colour, a discreet and affordable alternative to diamond.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagascar (Ilakaka), Australia (New South Wales). Colourless and clear; dispersion is lower than diamond's, but hardness is nearly equal.",
+                puretTraitements = "Rarely treated, its natural transparency already being its main asset. High clarity is sought after.",
+                entretien = "Hardness 9, excellent resistance to daily wear. Ultrasonic cleaning is safe."
+            ),
+            BuyingGuideArticle(
+                pierre = "Star sapphire",
+                accroche = "A luminous six-rayed star, revealed by a cabochon cut, often in a blue or black sapphire.",
+                origineCouleur = "Sri Lanka (Ratnapura), Myanmar (Mogok), Thailand (Kanchanaburi, for the black variety). The most sought-after asterism shows six perfectly straight rays, centred on the dome of the cabochon.",
+                puretTraitements = "Rarely heat-treated, since heating risks altering the rutile inclusions responsible for the asterism. The sharpness and centring of the star matter more than transparency.",
+                entretien = "Hardness 9, very resistant. Gentle cleaning is recommended to preserve the polish of the dome."
+            ),
+            BuyingGuideArticle(
+                pierre = "Teal sapphire",
+                accroche = "A bicolour corundum where blue and yellow combine into a singular blue-green hue, highly prized by connoisseurs.",
+                origineCouleur = "United States (Montana, Rock Creek), Australia (New South Wales), Madagascar (Ilakaka). The blue-yellow bicolouration, visible as distinct zones in the rough, blends into an even blue-green once the stone is cut and oriented.",
+                puretTraitements = "Often untreated, as the natural nuance is itself sought after by collectors. The cutter's skill in orienting the stone to balance the two colours is decisive.",
+                entretien = "Hardness 9, very resistant. Ultrasonic cleaning is safe on a stone that has not been diffused."
+            ),
+            BuyingGuideArticle(
+                pierre = "Rubellite tourmaline",
+                accroche = "An intense red caused by manganese, the tourmaline variety closest to ruby.",
+                origineCouleur = "Brazil (Cruzeiro mine, Minas Gerais), Nigeria (Oyo), Mozambique (Alto Ligonha), Afghanistan (Paprok valley). An intense, even red to red-pink; marked pleochroism, with characteristic striated prismatic crystals.",
+                puretTraitements = "Occasional heat treatment to tone down brownish casts, an accepted treatment. Clarity varies; fine needle-like inclusions are frequent and tolerated when discreet.",
+                entretien = "Hardness 7 to 7.5, generally sturdy. A pyroelectric stone that attracts dust through static electricity: gentle cleaning is recommended."
+            ),
+            BuyingGuideArticle(
+                pierre = "Yellow tourmaline",
+                accroche = "A luminous canary yellow, natural and untreated — the rarest of tourmaline's colours.",
+                origineCouleur = "Malawi (Zomba), Brazil (Minas Gerais), Nigeria (Oyo). A vivid, luminous yellow that needs no intervention, unlike many of tourmaline's commercial hues.",
+                puretTraitements = "Generally untreated, its natural colour already being sought after. Clarity is often good.",
+                entretien = "Hardness 7 to 7.5. A pyroelectric stone: gentle, regular cleaning is recommended."
+            ),
+            BuyingGuideArticle(
+                pierre = "Chrome tourmaline",
+                accroche = "A deep, saturated green caused by chromium and vanadium, distinct from tourmaline's \"classic\" green.",
+                origineCouleur = "Kenya (Taita-Taveta), Tanzania (Umba). An intense green close to emerald's; marked dichroism, with table orientation decisive in revealing the most saturated hue.",
+                puretTraitements = "Rarely treated, as the colour caused by chromium and vanadium is naturally intense. Clarity is generally good.",
+                entretien = "Hardness 7 to 7.5. A pyroelectric stone: gentle cleaning is recommended."
+            ),
+            BuyingGuideArticle(
+                pierre = "Green tourmaline (Verdelite)",
+                accroche = "A green coloured by iron or chromium, the most classic and widespread of tourmaline's colours.",
+                origineCouleur = "Brazil (Minas Gerais), Mozambique (Alto Ligonha), Nigeria (Oyo). A true to dark green; strong birefringence, with cutters orienting the stone to optimise the colour.",
+                puretTraitements = "Occasional heat treatment is accepted to lighten overly dark tones. Clarity varies by origin.",
+                entretien = "Hardness 7 to 7.5. A pyroelectric stone: gentle, regular cleaning is recommended."
+            ),
+            BuyingGuideArticle(
+                pierre = "Blue tourmaline (indicolite)",
+                accroche = "A deep blue, distinct from Paraíba's copper-driven blue-green, with no copper involved.",
+                origineCouleur = "Brazil (Minas Gerais), Namibia (Erongo), Afghanistan (Nuristan). Dark blue to blue-grey, generally darker than Paraíba.",
+                puretTraitements = "Occasional heat treatment to lighten an overly dark tone, an accepted treatment. Clarity varies.",
+                entretien = "Hardness 7 to 7.5. A pyroelectric stone: gentle cleaning is recommended."
+            ),
+            BuyingGuideArticle(
+                pierre = "Pink tourmaline",
+                accroche = "A soft hue caused by manganese, at the origin of tourmaline's most sought-after bicolour stones.",
+                origineCouleur = "Brazil (Cruzeiro mine, Minas Gerais), Afghanistan (Paprok), Mozambique (Alto Ligonha). Light to deep pink; crystals are often zoned, giving rise to bicolour varieties such as watermelon tourmaline.",
+                puretTraitements = "Rarely treated. Clarity is generally good to the naked eye.",
+                entretien = "Hardness 7 to 7.5. A pyroelectric stone: gentle cleaning is recommended."
+            ),
+            BuyingGuideArticle(
+                pierre = "Black tourmaline (Schorl)",
+                accroche = "Tourmaline's most common variety, valued in understated jewellery as much as in crystal healing.",
+                origineCouleur = "Brazil (Minas Gerais), Namibia (Erongo), Madagascar (Antsirabe). Opaque to sub-transparent black; prismatic crystals, often striated, sometimes of large size.",
+                puretTraitements = "Never treated, as its colour and abundance justify no intervention. Very affordable.",
+                entretien = "Hardness 7 to 7.5, sturdy. Simple care, with no special precautions."
+            ),
+            BuyingGuideArticle(
+                pierre = "Watermelon tourmaline",
+                accroche = "A pink heart ringed with green, like a slice of fruit — one of the most spectacular bicolour tourmalines.",
+                origineCouleur = "Brazil (Minas Gerais), United States (Dunton mine, Maine). Sharp zoning, pink at the centre and green at the periphery; most often cut into cross-sections to reveal the \"watermelon\" effect.",
+                puretTraitements = "Rarely treated, as the natural zoning is the stone's main appeal. Clarity varies by zone.",
+                entretien = "Hardness 7 to 7.5. Gentle cleaning is recommended, particularly for thin slices."
+            ),
+            BuyingGuideArticle(
+                pierre = "Paraíba tourmaline",
+                accroche = "An electric \"neon\" blue-green, unique in the mineral kingdom — the most sought-after and most expensive of tourmalines.",
+                origineCouleur = "São José da Batalha (Paraíba, Brazil), the historic, nearly exhausted source. Mozambique (Mavuco) and Nigeria (Edeko): more accessible modern sources. The \"neon\" colour is caused by copper, never observed in other tourmalines.",
+                puretTraitements = "A certificate specifying origin (Brazil vs Africa) is essential, as the value gap is considerable. Clarity and the intensity of the copper-driven colour matter more than any other criterion.",
+                entretien = "Hardness 7 to 7.5. A pyroelectric stone: gentle cleaning is recommended, and it should be protected like any stone of very high value."
+            ),
+            BuyingGuideArticle(
+                pierre = "Pyrope garnet",
+                accroche = "The classic blood-red garnet, undiluted by rhodolite — the purest variety in the pyrope family.",
+                origineCouleur = "Czech Republic (Bohemia, Podsedice region), South Africa (Kao mine, kimberlites), Tanzania (Umba). A deep, even blood-red, with no notable violet cast.",
+                puretTraitements = "Never treated, like the entire garnet family. Unlike rhodolite, pure pyrope contains no significant proportion of iron.",
+                entretien = "Hardness 7 to 7.5. No special care beyond the usual precautions for any jewellery stone."
+            ),
+            BuyingGuideArticle(
+                pierre = "Almandine / pyrope garnet",
+                accroche = "A deep red garnet, never treated — the most common and most affordable in the family.",
+                origineCouleur = "India (Rajmahal Hills, Jharkhand), Sri Lanka (Ratnapura), Czech Republic (Podsedice), Tanzania (Umba valley). Dark red to red-brown, sometimes slightly violet.",
+                puretTraitements = "Never treated, thermally or chemically. No cleavage, strong refraction, and good luster.",
+                entretien = "Hardness 7 to 7.5, generally sturdy. No special care needed."
+            ),
+            BuyingGuideArticle(
+                pierre = "Rhodolite garnet",
+                accroche = "A \"raspberry\" red-violet with excellent transparency, among the most elegant of garnets.",
+                origineCouleur = "Tanzania (Umba valley), Sri Lanka (Ratnapura), India (Orissa). A luminous, even red-violet.",
+                puretTraitements = "Never treated. Excellent natural transparency, rarely eye-visibly included.",
+                entretien = "Hardness 7 to 7.5. No special care needed."
+            ),
+            BuyingGuideArticle(
+                pierre = "Star garnet",
+                accroche = "An almandine with four or six luminous rays, a rarity found almost exclusively in Idaho.",
+                origineCouleur = "United States (Idaho, the world's only deposit of four-rayed asterism), India (Odisha). Dark red; the four-rayed asterism is unique in the world, and the even rarer six-rayed asterism comes from the same deposits.",
+                puretTraitements = "Never treated. The sharpness and centring of the star matter more than the transparency of the body colour.",
+                entretien = "Hardness 7 to 7.5. Gentle cleaning is recommended to preserve the polish of the dome."
+            ),
+            BuyingGuideArticle(
+                pierre = "Malaya garnet",
+                accroche = "A warm pink-orange born of a blend of two garnet species, entirely untreated.",
+                origineCouleur = "Tanzania (Umba), Kenya (Taita-Taveta), Madagascar (Anjanabonoina). Pink-orange to warm orange, a hue unique among garnets.",
+                puretTraitements = "No treatment is needed or practised: a 100% natural colour, one of this variety's great selling points.",
+                entretien = "Hardness 7 to 7.5. No special care needed."
+            ),
+            BuyingGuideArticle(
+                pierre = "Spessartite garnet",
+                accroche = "A brilliant \"mandarin\" orange, among the most luminous colours in the mineral kingdom.",
+                origineCouleur = "Namibia (Kunene region), Nigeria (Nasarawa State), Madagascar (Fianarantsoa). Vivid, saturated orange, sometimes leaning toward red-orange.",
+                puretTraitements = "A natural colour, never heat-treated. Clarity is generally good to excellent.",
+                entretien = "Hardness 7 to 7.5. No special care needed."
+            ),
+            BuyingGuideArticle(
+                pierre = "Grossular garnet",
+                accroche = "The green to yellow-green garnet, a pale cousin of tsavorite and hessonite — the most colour-diverse family of garnets.",
+                origineCouleur = "Mali (Sandaré), Kenya (Voi), Canada (Quebec, Jeffrey Mine). From colourless to deep green, passing through yellow-green and the brown-orange of hessonite.",
+                puretTraitements = "Never treated. Clarity varies by hue and deposit.",
+                entretien = "Hardness 7 to 7.5. No special care needed."
+            ),
+            BuyingGuideArticle(
+                pierre = "Purple rhodolite garnet",
+                accroche = "A purple hue that shifts with lighting, a violet variant of classic rhodolite.",
+                origineCouleur = "Tanzania (Umba valley), Mozambique (Cuamba). Purple to deep violet, with the dominant nuance shifting depending on the light source.",
+                puretTraitements = "A stable colour, never treated. Clarity is generally good.",
+                entretien = "Hardness 7 to 7.5. No special care needed."
+            ),
+            BuyingGuideArticle(
+                pierre = "Color-change garnet",
+                accroche = "Bluish green by day, red-violet by night — an underrated rival to alexandrite, at a far more accessible price.",
+                origineCouleur = "Tanzania (Umba, Tunduru), Madagascar (Bekily). Vanadium, rather than chromium, is responsible for the colour change in this garnet, unlike in alexandrite.",
+                puretTraitements = "Never treated. As with alexandrite, the strength of the colour change matters more than the hue itself.",
+                entretien = "Hardness 7 to 7.5. No special care needed."
+            ),
+            BuyingGuideArticle(
+                pierre = "Blue topaz",
+                accroche = "The deep blue obtained by irradiating and then heating a colourless topaz — the species' most commercially sold colour.",
+                origineCouleur = "Brazil (Minas Gerais) and Nigeria supply the colourless rough, which is irradiated and then heated to develop a blue ranging from sky blue to deep \"London Blue\".",
+                puretTraitements = "The colour is almost always achieved through irradiation followed by heat treatment, stable and permanent — disclosure is mandatory, and the treatment is widely accepted by the market given the stone's accessible price.",
+                entretien = "Hardness 8, but a perfect single-direction cleavage makes it fragile under impact. Avoid sudden temperature changes and never use an ultrasonic cleaner."
+            ),
+            BuyingGuideArticle(
+                pierre = "Pink topaz",
+                accroche = "Topaz's rarest natural pink, historically mined in Pakistan.",
+                origineCouleur = "Pakistan (Katlang, Mardan), Russia (the Urals, historic). Delicate to deep pink; untreated natural pink is rare, and should be distinguished from pink topaz obtained by heating brown stones.",
+                puretTraitements = "Check the certificate to see whether the hue is natural or obtained by heat-treating brown material, as the value gap is significant. Naturally high clarity.",
+                entretien = "Hardness 8, with a perfect single-direction cleavage: avoid impacts and sudden temperature changes, and never use an ultrasonic cleaner."
+            ),
+            BuyingGuideArticle(
+                pierre = "White topaz",
+                accroche = "Topaz in its purest and most common form, colourless and clear — an economical alternative to diamond.",
+                origineCouleur = "Brazil (Minas Gerais, Ouro Preto), Nigeria (Jos Plateau), Pakistan (Katlang). Colourless and perfectly clear; it is also the most abundant raw material for producing treated blue topaz.",
+                puretTraitements = "Generally untreated in itself. Very high clarity is sought after, its transparency being its main asset.",
+                entretien = "Hardness 8, with a perfect single-direction cleavage: avoid impacts and never use an ultrasonic cleaner."
             )
         )
     )
@@ -255,18 +647,214 @@ object BuyingGuidesInfo {
                 entretien = "Dureza 8, resistente. Se cuida como el zafiro, sin precauciones particulares."
             ),
             BuyingGuideArticle(
-                pierre = "Turmalina",
-                accroche = "La piedra de las mil colores, desde el verde «paraíba» eléctrico hasta el bicolor rosa y verde «sandía».",
-                origineCouleur = "Brasil (Paraíba): azul-verde cuprífero neón, legendario y rarísimo. Mozambique y Nigeria: tonos «tipo paraíba» más accesibles. Afganistán y Brasil: rubelita roja-rosa. Madagascar: paleta multicolor. La variedad paraíba encabeza la valoración, seguida de la rubelita intensa.",
-                puretTraitements = "El calentamiento para intensificar ciertos tonos es habitual y aceptado. La claridad varía según la variedad; las inclusiones filiformes son frecuentes y se toleran si son discretas.",
-                entretien = "Dureza de 7 a 7,5, buena robustez general. Piedra piroeléctrica que atrae el polvo por electricidad estática: se recomienda una limpieza suave y regular."
+                pierre = "Zafiro amarillo",
+                accroche = "El corindón, en todas las tonalidades salvo el rojo, encuentra en el amarillo una de sus variedades más luminosas y accesibles.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagascar (Ilakaka), Tanzania (Tunduru). Amarillo vivo y luminoso, homogéneo, sin reflejo verdoso.",
+                puretTraitements = "El calentamiento es habitual para intensificar y uniformar el color, un tratamiento aceptado y estable. Claridad generalmente buena a simple vista.",
+                entretien = "Dureza 9, muy resistente al uso diario. Los ultrasonidos son seguros en una piedra no difundida."
             ),
             BuyingGuideArticle(
-                pierre = "Zafiro",
-                accroche = "El corindón azul por excelencia, pero también rosa, amarillo o «padparadscha» — justo por detrás del diamante en dureza.",
-                origineCouleur = "Cachemira: azul aterciopelado legendario, yacimiento casi agotado, rarísimo. Birmania (Mogok): azul «real», intenso. Sri Lanka: azul más claro, gran transparencia. Madagascar: principal producción moderna. Se busca un azul aterciopelado profundo, con fuerte saturación sin exceso de negro.",
-                puretTraitements = "El calentamiento es casi sistemático y ampliamente aceptado, mejora el color y la claridad. La difusión (titanio clásico, o berilio, más problemática) debe distinguirse obligatoriamente en el certificado. Se busca generalmente una claridad elevada.",
-                entretien = "Dureza 9, justo por detrás del diamante: muy resistente al uso diario. Los ultrasonidos son seguros, salvo en una piedra difundida o rellena."
+                pierre = "Zafiro verde",
+                accroche = "Un verde discreto y a menudo dicroico, el color más accesible del corindón.",
+                origineCouleur = "Australia (Nueva Gales del Sur), Tailandia (Kanchanaburi), Nigeria (Mambilla). Verde franco, sin exceso de gris; el dicroísmo verde/amarillo-verde según el ángulo es característico de la especie.",
+                puretTraitements = "El calentamiento es habitual y aceptado para homogeneizar el tono. Claridad generalmente buena.",
+                entretien = "Dureza 9, muy resistente. Los ultrasonidos son seguros en una piedra no difundida."
+            ),
+            BuyingGuideArticle(
+                pierre = "Zafiro azul",
+                accroche = "El azul de referencia de la alta joyería, justo por detrás del diamante en dureza.",
+                origineCouleur = "Cachemira: azul aterciopelado legendario, yacimiento casi agotado, rarísimo. Birmania (Mogok): azul «royal» intenso. Sri Lanka: azul más claro, gran transparencia. Madagascar: principal producción moderna. Azul aterciopelado profundo, con fuerte saturación sin exceso de negro.",
+                puretTraitements = "El calentamiento es casi sistemático y ampliamente aceptado. La difusión (titanio clásico, o berilio, más problemática) debe distinguirse en el certificado. Las inclusiones de rutilo en seda pueden producir un asterismo (zafiro estrella).",
+                entretien = "Dureza 9, muy resistente al uso diario. Los ultrasonidos son seguros, salvo en una piedra difundida o rellena."
+            ),
+            BuyingGuideArticle(
+                pierre = "Zafiro de Auvernia",
+                accroche = "Un corindón francés de tono azul-violeta profundo, extraído de los terrenos volcánicos de Auvernia.",
+                origineCouleur = "Francia (Espaly-Saint-Marcel, Alto Loira), fuente única. Azul-violeta muy intenso, típico de los zafiros de origen basáltico; cristales generalmente pequeños, raramente superan el quilate una vez tallados.",
+                puretTraitements = "Poco o nada calentado, ya que la rareza y el origen local priman sobre la intensificación del color. Producción escasa, a negociar pieza por pieza.",
+                entretien = "Dureza 9, muy resistente. Los ultrasonidos son seguros."
+            ),
+            BuyingGuideArticle(
+                pierre = "Zafiro violeta",
+                accroche = "Un violeta profundo, en la frontera entre el zafiro azul y el rubí.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagascar (Ilakaka), Tanzania (Tunduru). Violeta intenso y homogéneo; puede presentar un ligero cambio de color entre la luz diurna y la luz incandescente.",
+                puretTraitements = "El calentamiento es habitual y aceptado para estabilizar el tono. Claridad generalmente buena a simple vista.",
+                entretien = "Dureza 9, muy resistente. Los ultrasonidos son seguros en una piedra no difundida."
+            ),
+            BuyingGuideArticle(
+                pierre = "Zafiro rosa",
+                accroche = "En la frontera entre rubí y zafiro, cuyo límite oficial sigue siendo objeto de debate entre laboratorios.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagascar (Ilakaka), Tanzania (Tunduru). Rosa vivo e intenso; más allá de cierto umbral de saturación, algunos laboratorios reclasifican la piedra como rubí.",
+                puretTraitements = "El calentamiento es habitual y aceptado. Conviene verificar la clasificación (zafiro rosa o rubí) en el certificado, ya que el valor puede variar considerablemente.",
+                entretien = "Dureza 9, muy resistente. Los ultrasonidos son seguros en una piedra no difundida."
+            ),
+            BuyingGuideArticle(
+                pierre = "Zafiro blanco",
+                accroche = "El corindón sin rastro colorante, una alternativa discreta y accesible al diamante.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagascar (Ilakaka), Australia (Nueva Gales del Sur). Incoloro y límpido; dispersión inferior a la del diamante, pero dureza casi igual.",
+                puretTraitements = "Raramente tratado, ya que su transparencia natural es de por sí su principal atractivo. Se busca una claridad elevada.",
+                entretien = "Dureza 9, excelente resistencia al desgaste diario. Los ultrasonidos son seguros."
+            ),
+            BuyingGuideArticle(
+                pierre = "Zafiro estrella",
+                accroche = "Una estrella luminosa de seis puntas, revelada por una talla en cabujón, a menudo en un zafiro azul o negro.",
+                origineCouleur = "Sri Lanka (Ratnapura), Birmania (Mogok), Tailandia (Kanchanaburi, variedad negra). El asterismo más buscado presenta seis puntas perfectamente rectas, centradas sobre la cúpula del cabujón.",
+                puretTraitements = "Raramente calentado, ya que un tratamiento térmico podría alterar las inclusiones de rutilo responsables del asterismo. La nitidez y el centrado de la estrella priman sobre la transparencia.",
+                entretien = "Dureza 9, muy resistente. Se recomienda una limpieza suave para preservar el pulido de la cúpula."
+            ),
+            BuyingGuideArticle(
+                pierre = "Zafiro teal",
+                accroche = "Un corindón bicolor en el que el azul y el amarillo se combinan en un tono azul-verde singular, muy apreciado por los conocedores.",
+                origineCouleur = "Estados Unidos (Montana, Rock Creek), Australia (Nueva Gales del Sur), Madagascar (Ilakaka). La bicoloración azul-amarillo, visible en zonas distintas en bruto, se funde en un azul-verde homogéneo una vez tallada y orientada la piedra.",
+                puretTraitements = "A menudo sin calentar, ya que el matiz natural es en sí mismo lo que buscan los coleccionistas. El talento del tallista, que orienta la piedra para equilibrar los dos colores, resulta determinante.",
+                entretien = "Dureza 9, muy resistente. Los ultrasonidos son seguros en una piedra no difundida."
+            ),
+            BuyingGuideArticle(
+                pierre = "Turmalina rubelita",
+                accroche = "Un rojo intenso debido al manganeso, la variedad más próxima al rubí entre las turmalinas.",
+                origineCouleur = "Brasil (mina de Cruzeiro, Minas Gerais), Nigeria (Oyo), Mozambique (Alto Ligonha), Afganistán (valle de Paprok). Rojo a rojo-rosa intenso y homogéneo; pleocroísmo marcado, cristales prismáticos estriados característicos.",
+                puretTraitements = "El calentamiento ocasional para atenuar los tonos pardos es un tratamiento aceptado. Claridad variable; las inclusiones filiformes son frecuentes y se toleran si son discretas.",
+                entretien = "Dureza de 7 a 7,5, buena robustez general. Piedra piroeléctrica que atrae el polvo por electricidad estática: se recomienda una limpieza suave."
+            ),
+            BuyingGuideArticle(
+                pierre = "Turmalina amarilla",
+                accroche = "Un amarillo canario luminoso, natural y sin tratamiento — el más raro de los colores de la turmalina.",
+                origineCouleur = "Malaui (Zomba), Brasil (Minas Gerais), Nigeria (Oyo). Amarillo vivo y luminoso, sin necesidad de intervención, a diferencia de numerosos tonos comerciales de la turmalina.",
+                puretTraitements = "Generalmente sin tratar, ya que su color natural es de por sí buscado. Claridad a menudo buena.",
+                entretien = "Dureza de 7 a 7,5. Piedra piroeléctrica: se recomienda una limpieza suave y regular."
+            ),
+            BuyingGuideArticle(
+                pierre = "Turmalina de cromo",
+                accroche = "Un verde profundo y saturado debido al cromo y al vanadio, distinto del verde «clásico» de la turmalina.",
+                origineCouleur = "Kenia (Taita-Taveta), Tanzania (Umba). Verde intenso próximo al de la esmeralda; dicroísmo marcado, siendo determinante la orientación de la tabla para revelar el tono más saturado.",
+                puretTraitements = "Raramente tratada, ya que el color debido al cromo y al vanadio es naturalmente intenso. Claridad generalmente buena.",
+                entretien = "Dureza de 7 a 7,5. Piedra piroeléctrica: se recomienda una limpieza suave."
+            ),
+            BuyingGuideArticle(
+                pierre = "Turmalina verde (Verdelita)",
+                accroche = "Un verde coloreado por el hierro o el cromo, el color más clásico y extendido de la turmalina.",
+                origineCouleur = "Brasil (Minas Gerais), Mozambique (Alto Ligonha), Nigeria (Oyo). Verde franco a verde oscuro; fuerte birrefringencia, por lo que los tallistas orientan la piedra para optimizar el color.",
+                puretTraitements = "El calentamiento ocasional para aclarar los tonos demasiado oscuros es un tratamiento aceptado. Claridad variable según el origen.",
+                entretien = "Dureza de 7 a 7,5. Piedra piroeléctrica: se recomienda una limpieza suave y regular."
+            ),
+            BuyingGuideArticle(
+                pierre = "Turmalina azul (indicolita)",
+                accroche = "Un azul profundo, distinto del azul-verde cuprífero de la Paraíba, sin intervención del cobre.",
+                origineCouleur = "Brasil (Minas Gerais), Namibia (Erongo), Afganistán (Nuristán). Azul oscuro a azul-grisáceo, generalmente más oscuro que la Paraíba.",
+                puretTraitements = "El calentamiento ocasional para aclarar un tono demasiado oscuro es un tratamiento aceptado. Claridad variable.",
+                entretien = "Dureza de 7 a 7,5. Piedra piroeléctrica: se recomienda una limpieza suave."
+            ),
+            BuyingGuideArticle(
+                pierre = "Turmalina rosa",
+                accroche = "Un tono suave debido al manganeso, en el origen de las turmalinas bicolores más buscadas.",
+                origineCouleur = "Brasil (mina de Cruzeiro, Minas Gerais), Afganistán (Paprok), Mozambique (Alto Ligonha). Rosa claro a rosa intenso; cristales a menudo zonados, en el origen de variedades bicolores como la sandía.",
+                puretTraitements = "Raramente tratada. Claridad generalmente buena a simple vista.",
+                entretien = "Dureza de 7 a 7,5. Piedra piroeléctrica: se recomienda una limpieza suave."
+            ),
+            BuyingGuideArticle(
+                pierre = "Turmalina negra (Chorlo)",
+                accroche = "La variedad de turmalina más común, apreciada tanto en joyería sobria como en litoterapia.",
+                origineCouleur = "Brasil (Minas Gerais), Namibia (Erongo), Madagascar (Antsirabe). Negro opaco a subtransparente; cristales prismáticos a menudo estriados, a veces de gran tamaño.",
+                puretTraitements = "Nunca tratada, ya que su color y su abundancia no justifican ninguna intervención. Precio muy accesible.",
+                entretien = "Dureza de 7 a 7,5, robusta. Cuidado sencillo, sin precauciones particulares."
+            ),
+            BuyingGuideArticle(
+                pierre = "Turmalina sandía",
+                accroche = "Un corazón rosa rodeado de verde, como una rodaja de fruta — una de las turmalinas bicolores más espectaculares.",
+                origineCouleur = "Brasil (Minas Gerais), Estados Unidos (mina Dunton, Maine). Zonación nítida, rosa en el centro y verde en la periferia; se talla la mayoría de las veces en lonchas transversales para revelar el efecto «sandía».",
+                puretTraitements = "Raramente tratada, ya que la zonación natural es el principal atractivo de la piedra. Claridad variable según la zona.",
+                entretien = "Dureza de 7 a 7,5. Se recomienda una limpieza suave, en particular para las lonchas finas."
+            ),
+            BuyingGuideArticle(
+                pierre = "Turmalina Paraíba",
+                accroche = "Un azul-verde «neón» eléctrico, único en el reino mineral — la turmalina más buscada y más costosa.",
+                origineCouleur = "São José da Batalha (Paraíba, Brasil), fuente histórica casi agotada. Mozambique (Mavuco) y Nigeria (Edeko): fuentes modernas más accesibles. Color «neón» debido al cobre, nunca observado en las demás turmalinas.",
+                puretTraitements = "Un certificado que precise el origen (Brasil o África) es esencial, dado que la diferencia de valor es considerable. La claridad y la intensidad del color cuprífero priman sobre cualquier otro criterio.",
+                entretien = "Dureza de 7 a 7,5. Piedra piroeléctrica: se recomienda una limpieza suave, y protegerla como cualquier piedra de muy alto valor."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granate piropo",
+                accroche = "El granate rojo sangre clásico, sin dilución rodolita — la variedad más pura de la familia piropo.",
+                origineCouleur = "República Checa (Bohemia, región de Podsedice), Sudáfrica (mina de Kao, kimberlitas), Tanzania (Umba). Rojo sangre profundo y homogéneo, sin matiz violáceo notable.",
+                puretTraitements = "Nunca tratado, como el conjunto de la familia de los granates. A diferencia de la rodolita, el piropo puro no contiene hierro en proporción significativa.",
+                entretien = "Dureza de 7 a 7,5. Sin cuidados particulares, más allá de las precauciones habituales para cualquier piedra de joyería."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granate almandino / piropo",
+                accroche = "Un granate rojo profundo, nunca tratado — el más corriente y accesible de la familia.",
+                origineCouleur = "India (colinas de Rajmahal, Jharkhand), Sri Lanka (Ratnapura), República Checa (Podsedice), Tanzania (valle del Umba). Rojo oscuro a rojo-marrón, a veces ligeramente violáceo.",
+                puretTraitements = "Nunca tratado térmica ni químicamente. Sin clivaje, fuerte refracción y buen brillo.",
+                entretien = "Dureza de 7 a 7,5, buena robustez general. Sin cuidados particulares."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granate rodolita",
+                accroche = "Un rojo-violáceo «frambuesa» de excelente transparencia, entre los granates más elegantes.",
+                origineCouleur = "Tanzania (valle del Umba), Sri Lanka (Ratnapura), India (Orissa). Rojo-violáceo luminoso y homogéneo.",
+                puretTraitements = "Nunca tratada. Excelente transparencia natural, raramente incluida a simple vista.",
+                entretien = "Dureza de 7 a 7,5. Sin cuidados particulares."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granate estrellado",
+                accroche = "Un almandino de cuatro o seis puntas luminosas, una rareza que se encuentra casi exclusivamente en Idaho.",
+                origineCouleur = "Estados Unidos (Idaho, único yacimiento mundial de asterismo de cuatro puntas), India (Odisha). Rojo oscuro; el asterismo de cuatro puntas es único en el mundo, y el de seis puntas, aún más raro, procede de los mismos yacimientos.",
+                puretTraitements = "Nunca tratado. La nitidez y el centrado de la estrella priman sobre la transparencia del fondo.",
+                entretien = "Dureza de 7 a 7,5. Se recomienda una limpieza suave para preservar el pulido de la cúpula."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granate malaya",
+                accroche = "Un rosa-anaranjado cálido, nacido de la mezcla de dos granates, sin tratamiento alguno.",
+                origineCouleur = "Tanzania (Umba), Kenia (Taita-Taveta), Madagascar (Anjanabonoina). Rosa-anaranjado a anaranjado cálido, tono único entre los granates.",
+                puretTraitements = "No es necesario ni se practica ningún tratamiento: color 100 % natural, uno de los grandes argumentos de venta de esta variedad.",
+                entretien = "Dureza de 7 a 7,5. Sin cuidados particulares."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granate espesartita",
+                accroche = "Un naranja «mandarina» resplandeciente, entre los colores más luminosos del reino mineral.",
+                origineCouleur = "Namibia (región de Kunene), Nigeria (estado de Nasarawa), Madagascar (Fianarantsoa). Naranja vivo y saturado, a veces tirando a rojo-anaranjado.",
+                puretTraitements = "Color natural, nunca tratado térmicamente. Claridad generalmente buena a excelente.",
+                entretien = "Dureza de 7 a 7,5. Sin cuidados particulares."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granate grosularia",
+                accroche = "El granate verde a amarillo-verde, primo poco coloreado de la tsavorita y la hesonita — la familia con mayor diversidad de colores.",
+                origineCouleur = "Malí (Sandaré), Kenia (Voi), Canadá (Quebec, mina Jeffrey). Desde el incoloro hasta el verde profundo, pasando por el amarillo-verde y el marrón-anaranjado de la hesonita.",
+                puretTraitements = "Nunca tratado. Claridad variable según el tono y el yacimiento.",
+                entretien = "Dureza de 7 a 7,5. Sin cuidados particulares."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granate rodolita violáceo",
+                accroche = "Un tono púrpura que cambia según la iluminación, variante violácea de la rodolita clásica.",
+                origineCouleur = "Tanzania (valle del Umba), Mozambique (Cuamba). Púrpura a violeta intenso, con el matiz dominante variando según la fuente luminosa.",
+                puretTraitements = "Color estable, nunca tratado. Claridad generalmente buena.",
+                entretien = "Dureza de 7 a 7,5. Sin cuidados particulares."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granate de cambio de color",
+                accroche = "Verde azulado de día, rojo-violeta por la noche — un rival poco conocido de la alejandrita, a un precio mucho más accesible.",
+                origineCouleur = "Tanzania (Umba, Tunduru), Madagascar (Bekily). El vanadio, más que el cromo, es el responsable del cambio de color en este granate, a diferencia de la alejandrita.",
+                puretTraitements = "Nunca tratado. La intensidad del cambio de color prevalece sobre el propio matiz, igual que en la alejandrita.",
+                entretien = "Dureza de 7 a 7,5. Sin cuidados particulares."
+            ),
+            BuyingGuideArticle(
+                pierre = "Topacio azul",
+                accroche = "El azul profundo obtenido por irradiación y posterior calentamiento de un topacio incoloro — el color más comercializado de la especie.",
+                origineCouleur = "Brasil (Minas Gerais) y Nigeria suministran la materia prima incolora, que se irradia y luego se calienta para desarrollar un azul que va del celeste al «London Blue» profundo.",
+                puretTraitements = "Color obtenido casi sistemáticamente por irradiación y posterior tratamiento térmico, estable y permanente — divulgación obligatoria, ampliamente aceptada por el mercado dado su precio accesible.",
+                entretien = "Dureza 8, pero un clivaje perfecto en una dirección lo hace frágil ante los golpes. Evitar cambios bruscos de temperatura y prohibir los ultrasonidos."
+            ),
+            BuyingGuideArticle(
+                pierre = "Topacio rosa",
+                accroche = "El rosa natural más raro del topacio, extraído históricamente en Pakistán.",
+                origineCouleur = "Pakistán (Katlang, Mardan), Rusia (Urales, histórico). Rosa delicado a intenso; el rosa natural sin tratar es raro, y debe distinguirse del topacio rosa obtenido por calentamiento de piedras marrones.",
+                puretTraitements = "Conviene verificar en el certificado si el tono es natural u obtenido por tratamiento térmico de material marrón, ya que la diferencia de valor es importante. Claridad naturalmente elevada.",
+                entretien = "Dureza 8, clivaje perfecto en una dirección: evitar los golpes y los cambios bruscos de temperatura, prohibir los ultrasonidos."
+            ),
+            BuyingGuideArticle(
+                pierre = "Topacio blanco",
+                accroche = "El topacio en su forma más pura y corriente, incoloro y límpido — una alternativa económica al diamante.",
+                origineCouleur = "Brasil (Minas Gerais, Ouro Preto), Nigeria (meseta de Jos), Pakistán (Katlang). Incoloro y perfectamente límpido; es también la materia prima más abundante para la producción de topacio azul tratado.",
+                puretTraitements = "Generalmente sin tratar en sí mismo. Se busca una claridad muy elevada, ya que su transparencia es su principal atractivo.",
+                entretien = "Dureza 8, clivaje perfecto en una dirección: evitar los golpes y prohibir los ultrasonidos."
             )
         )
     )
@@ -338,18 +926,214 @@ object BuyingGuidesInfo {
                 entretien = "Durezza 8, resistente. Si cura come lo zaffiro, senza precauzioni particolari."
             ),
             BuyingGuideArticle(
-                pierre = "Tormalina",
-                accroche = "La pietra dai mille colori, dal verde «paraíba» elettrico al bicolore rosa e verde «anguria».",
-                origineCouleur = "Brasile (Paraíba): blu-verde cuprifero neon, leggendario e rarissimo. Mozambico e Nigeria: tonalità «tipo paraíba» più accessibili. Afghanistan e Brasile: rubellite rosso-rosa. Madagascar: tavolozza multicolore. La varietà paraíba guida la valutazione, seguita dalla rubellite intensa.",
-                puretTraitements = "Il riscaldamento per intensificare alcune tonalità è comune e accettato. La chiarezza varia secondo la varietà; le inclusioni filiformi sono frequenti e tollerate se discrete.",
-                entretien = "Durezza 7-7,5, buona robustezza generale. Pietra piroelettrica che attira la polvere per elettricità statica: si consiglia una pulizia delicata e regolare."
+                pierre = "Zaffiro giallo",
+                accroche = "Il corindone, in tutte le tonalità tranne il rosso, trova nel giallo una delle sue varietà più luminose e accessibili.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagascar (Ilakaka), Tanzania (Tunduru). Giallo vivo e luminoso, omogeneo, senza riflessi verdastri.",
+                puretTraitements = "Il riscaldamento è comune per intensificare e uniformare il colore, trattamento accettato e stabile. Chiarezza generalmente buona a occhio nudo.",
+                entretien = "Durezza 9, molto resistente all'uso quotidiano. Gli ultrasuoni sono sicuri per una pietra non diffusa."
             ),
             BuyingGuideArticle(
-                pierre = "Zaffiro",
-                accroche = "Il corindone blu per eccellenza, ma anche rosa, giallo o «padparadscha» — subito dopo il diamante in durezza.",
-                origineCouleur = "Kashmir: blu vellutato leggendario, giacimento quasi esaurito, rarissimo. Birmania (Mogok): blu «royal», intenso. Sri Lanka: blu più chiaro, grande trasparenza. Madagascar: principale produzione moderna. Si ricerca un blu vellutato profondo, con forte saturazione senza eccesso di nero.",
-                puretTraitements = "Il riscaldamento è quasi sistematico e ampiamente accettato, migliora colore e chiarezza. La diffusione (titanio classico, o berillio, più problematica) deve essere obbligatoriamente distinta sul certificato. Si ricerca generalmente una chiarezza elevata.",
-                entretien = "Durezza 9, subito dopo il diamante: molto resistente all'uso quotidiano. Gli ultrasuoni sono sicuri, tranne su una pietra diffusa o riempita."
+                pierre = "Zaffiro verde",
+                accroche = "Un verde discreto e spesso dicroico, la tonalità più accessibile del corindone.",
+                origineCouleur = "Australia (Nuovo Galles del Sud), Thailandia (Kanchanaburi), Nigeria (Mambilla). Verde deciso, senza troppo grigio; il dicroismo verde/giallo-verde a seconda dell'angolo è caratteristico della specie.",
+                puretTraitements = "Il riscaldamento è comune e accettato per omogeneizzare la tonalità. Chiarezza generalmente buona.",
+                entretien = "Durezza 9, molto resistente. Gli ultrasuoni sono sicuri per una pietra non diffusa."
+            ),
+            BuyingGuideArticle(
+                pierre = "Zaffiro blu",
+                accroche = "Il blu di riferimento dell'alta gioielleria, subito dopo il diamante in durezza.",
+                origineCouleur = "Kashmir: blu vellutato leggendario, giacimento quasi esaurito, rarissimo. Birmania (Mogok): blu «royal» intenso. Sri Lanka: blu più chiaro, grande trasparenza. Madagascar: principale produzione moderna. Blu vellutato profondo, forte saturazione senza eccesso di nero.",
+                puretTraitements = "Il riscaldamento è quasi sistematico e ampiamente accettato. La diffusione (titanio classico, o berillio, più problematica) deve essere distinta sul certificato. Inclusioni di rutilo «seta» possono produrre un asterismo (zaffiro stellato).",
+                entretien = "Durezza 9, molto resistente all'uso quotidiano. Gli ultrasuoni sono sicuri, tranne su una pietra diffusa o riempita."
+            ),
+            BuyingGuideArticle(
+                pierre = "Zaffiro d'Alvernia",
+                accroche = "Un corindone francese dalla tonalità blu-violetto profonda, estratto dai terreni vulcanici dell'Alvernia.",
+                origineCouleur = "Francia (Espaly-Saint-Marcel, Haute-Loire), unica fonte. Blu-violetto molto intenso, tipico degli zaffiri di origine basaltica; cristalli generalmente piccoli, raramente oltre un carato tagliato.",
+                puretTraitements = "Poco o per nulla riscaldato, poiché la rarità e l'origine locale prevalgono sull'intensificazione del colore. Produzione limitata, da negoziare pietra per pietra.",
+                entretien = "Durezza 9, molto resistente. Gli ultrasuoni sono sicuri."
+            ),
+            BuyingGuideArticle(
+                pierre = "Zaffiro viola",
+                accroche = "Un viola profondo, al confine tra lo zaffiro blu e il rubino.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagascar (Ilakaka), Tanzania (Tunduru). Viola intenso e omogeneo; può presentare un lieve cambiamento di colore tra luce diurna e luce incandescente.",
+                puretTraitements = "Il riscaldamento è comune e accettato per stabilizzare la tonalità. Chiarezza generalmente buona a occhio nudo.",
+                entretien = "Durezza 9, molto resistente. Gli ultrasuoni sono sicuri per una pietra non diffusa."
+            ),
+            BuyingGuideArticle(
+                pierre = "Zaffiro rosa",
+                accroche = "Al confine tra rubino e zaffiro, un limite ufficiale ancora dibattuto a seconda dei laboratori.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagascar (Ilakaka), Tanzania (Tunduru). Rosa vivo e intenso; oltre una certa soglia di saturazione, alcuni laboratori riclassificano la pietra come rubino.",
+                puretTraitements = "Il riscaldamento è comune e accettato. Verificare la classificazione (zaffiro rosa o rubino) sul certificato, poiché il valore può variare notevolmente.",
+                entretien = "Durezza 9, molto resistente. Gli ultrasuoni sono sicuri per una pietra non diffusa."
+            ),
+            BuyingGuideArticle(
+                pierre = "Zaffiro bianco",
+                accroche = "Il corindone privo di traccia colorante, un'alternativa discreta e accessibile al diamante.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagascar (Ilakaka), Australia (Nuovo Galles del Sud). Incolore e limpido; dispersione inferiore a quella del diamante, ma durezza quasi pari.",
+                puretTraitements = "Raramente trattato, poiché la sua trasparenza naturale è già il suo principale punto di forza. Si ricerca una chiarezza elevata.",
+                entretien = "Durezza 9, eccellente resistenza all'uso quotidiano. Gli ultrasuoni sono sicuri."
+            ),
+            BuyingGuideArticle(
+                pierre = "Zaffiro stellato",
+                accroche = "Una stella luminosa a sei raggi, rivelata da un taglio a cabochon, spesso in uno zaffiro blu o nero.",
+                origineCouleur = "Sri Lanka (Ratnapura), Birmania (Mogok), Thailandia (Kanchanaburi, varietà nera). L'asterismo più ricercato presenta sei raggi perfettamente diritti, centrati sulla cupola del cabochon.",
+                puretTraitements = "Raramente riscaldato, poiché un trattamento termico rischierebbe di alterare le inclusioni di rutilo responsabili dell'asterismo. La nitidezza e la centratura della stella prevalgono sulla trasparenza.",
+                entretien = "Durezza 9, molto resistente. Si consiglia una pulizia delicata per preservare la lucidatura della cupola."
+            ),
+            BuyingGuideArticle(
+                pierre = "Zaffiro teal",
+                accroche = "Un corindone bicolore in cui blu e giallo si combinano in una tonalità blu-verde singolare, molto apprezzata dagli intenditori.",
+                origineCouleur = "Stati Uniti (Montana, Rock Creek), Australia (Nuovo Galles del Sud), Madagascar (Ilakaka). La bicolorazione blu-giallo, visibile in zone distinte allo stato grezzo, si fonde in un blu-verde omogeneo una volta che la pietra è tagliata e orientata.",
+                puretTraitements = "Spesso non riscaldato, poiché la sfumatura naturale è essa stessa ricercata dai collezionisti. Il talento del tagliatore, che orienta la pietra per bilanciare i due colori, è determinante.",
+                entretien = "Durezza 9, molto resistente. Gli ultrasuoni sono sicuri per una pietra non diffusa."
+            ),
+            BuyingGuideArticle(
+                pierre = "Tormalina rubellite",
+                accroche = "Un rosso intenso dovuto al manganese, la varietà di tormalina più vicina al rubino.",
+                origineCouleur = "Brasile (miniera di Cruzeiro, Minas Gerais), Nigeria (Oyo), Mozambico (Alto Ligonha), Afghanistan (valle di Paprok). Rosso a rosso-rosa intenso e omogeneo; pleocroismo marcato, cristalli prismatici striati caratteristici.",
+                puretTraitements = "Riscaldamento occasionale per attenuare i toni bruni, trattamento accettato. Chiarezza variabile; inclusioni filiformi frequenti e tollerate se discrete.",
+                entretien = "Durezza 7-7,5, buona robustezza generale. Pietra piroelettrica che attira la polvere per elettricità statica: si consiglia una pulizia delicata."
+            ),
+            BuyingGuideArticle(
+                pierre = "Tormalina gialla",
+                accroche = "Un giallo canarino luminoso, naturale e senza trattamento — la più rara tra le tonalità di tormalina.",
+                origineCouleur = "Malawi (Zomba), Brasile (Minas Gerais), Nigeria (Oyo). Giallo vivo e luminoso, senza necessità di intervento a differenza di molte tonalità commerciali della tormalina.",
+                puretTraitements = "Generalmente non trattata, poiché il suo colore naturale è già ricercato di per sé. Chiarezza spesso buona.",
+                entretien = "Durezza 7-7,5. Pietra piroelettrica: si consiglia una pulizia delicata e regolare."
+            ),
+            BuyingGuideArticle(
+                pierre = "Tormalina cromifera",
+                accroche = "Un verde profondo e saturo dovuto al cromo e al vanadio, distinto dal verde «classico» della tormalina.",
+                origineCouleur = "Kenya (Taita-Taveta), Tanzania (Umba). Verde intenso prossimo allo smeraldo; dicroismo marcato, l'orientamento della tavola è determinante per rivelare la tonalità più satura.",
+                puretTraitements = "Raramente trattata, poiché il colore dovuto al cromo e al vanadio è naturalmente intenso. Chiarezza generalmente buona.",
+                entretien = "Durezza 7-7,5. Pietra piroelettrica: si consiglia una pulizia delicata."
+            ),
+            BuyingGuideArticle(
+                pierre = "Tormalina verde (Verdelite)",
+                accroche = "Un verde colorato dal ferro o dal cromo, la tonalità più classica e diffusa della tormalina.",
+                origineCouleur = "Brasile (Minas Gerais), Mozambico (Alto Ligonha), Nigeria (Oyo). Verde deciso a verde scuro; forte birifrangenza, i tagliatori orientano la pietra per ottimizzare il colore.",
+                puretTraitements = "Riscaldamento occasionale accettato per schiarire le tonalità troppo scure. Chiarezza variabile a seconda dell'origine.",
+                entretien = "Durezza 7-7,5. Pietra piroelettrica: si consiglia una pulizia delicata e regolare."
+            ),
+            BuyingGuideArticle(
+                pierre = "Tormalina blu (indicolite)",
+                accroche = "Un blu profondo, distinto dal blu-verde cuprifero della Paraíba, senza l'intervento del rame.",
+                origineCouleur = "Brasile (Minas Gerais), Namibia (Erongo), Afghanistan (Nuristan). Blu scuro a blu-grigio, generalmente più scuro della Paraíba.",
+                puretTraitements = "Riscaldamento occasionale per schiarire un tono troppo scuro, trattamento accettato. Chiarezza variabile.",
+                entretien = "Durezza 7-7,5. Pietra piroelettrica: si consiglia una pulizia delicata."
+            ),
+            BuyingGuideArticle(
+                pierre = "Tormalina rosa",
+                accroche = "Una tonalità delicata dovuta al manganese, all'origine delle tormaline bicolori più ricercate.",
+                origineCouleur = "Brasile (miniera di Cruzeiro, Minas Gerais), Afghanistan (Paprok), Mozambico (Alto Ligonha). Rosa chiaro a rosa intenso; cristalli spesso zonati, all'origine delle varietà bicolori come l'anguria.",
+                puretTraitements = "Raramente trattata. Chiarezza generalmente buona a occhio nudo.",
+                entretien = "Durezza 7-7,5. Pietra piroelettrica: si consiglia una pulizia delicata."
+            ),
+            BuyingGuideArticle(
+                pierre = "Tormalina nera (Schorl)",
+                accroche = "La varietà di tormalina più comune, apprezzata tanto nella gioielleria sobria quanto nella litoterapia.",
+                origineCouleur = "Brasile (Minas Gerais), Namibia (Erongo), Madagascar (Antsirabe). Nero opaco a sub-trasparente; cristalli prismatici spesso striati, talvolta di grandi dimensioni.",
+                puretTraitements = "Mai trattata, poiché il suo colore e la sua abbondanza non giustificano alcun intervento. Prezzo molto accessibile.",
+                entretien = "Durezza 7-7,5, robusta. Cura semplice, senza precauzioni particolari."
+            ),
+            BuyingGuideArticle(
+                pierre = "Tormalina anguria",
+                accroche = "Un cuore rosa cinto di verde, come una fetta di frutto — una delle tormaline bicolori più spettacolari.",
+                origineCouleur = "Brasile (Minas Gerais), Stati Uniti (miniera di Dunton, Maine). Zonatura netta, rosa al centro e verde in periferia; tagliata il più delle volte in fette trasversali per rivelare l'effetto «anguria».",
+                puretTraitements = "Raramente trattata, poiché la zonatura naturale è il principale attrattivo della pietra. Chiarezza variabile a seconda della zona.",
+                entretien = "Durezza 7-7,5. Si consiglia una pulizia delicata, in particolare per le fette sottili."
+            ),
+            BuyingGuideArticle(
+                pierre = "Tormalina Paraíba",
+                accroche = "Un blu-verde «neon» elettrico, unico nel regno minerale — la tormalina più ricercata e più costosa.",
+                origineCouleur = "São José da Batalha (Paraíba, Brasile), fonte storica quasi esaurita. Mozambico (Mavuco) e Nigeria (Edeko): fonti moderne più accessibili. Colore «neon» dovuto al rame, mai osservato nelle altre tormaline.",
+                puretTraitements = "Un certificato che precisi l'origine (Brasile o Africa) è essenziale, poiché lo scarto di valore è considerevole. Chiarezza e intensità del colore cuprifero prevalgono su qualsiasi altro criterio.",
+                entretien = "Durezza 7-7,5. Pietra piroelettrica: si consiglia una pulizia delicata, da proteggere come qualsiasi pietra di altissimo valore."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granato piropo",
+                accroche = "Il classico granato rosso sangue, senza la diluizione della rodolite — la varietà più pura della famiglia piropo.",
+                origineCouleur = "Repubblica Ceca (Boemia, regione di Podsedice), Sudafrica (miniera di Kao, kimberliti), Tanzania (Umba). Rosso sangue profondo e omogeneo, senza sfumatura violacea significativa.",
+                puretTraitements = "Mai trattato, come l'intera famiglia dei granati. A differenza della rodolite, il piropo puro non contiene ferro in proporzione significativa.",
+                entretien = "Durezza 7-7,5. Nessuna cura particolare, oltre alle normali precauzioni per qualsiasi pietra di gioielleria."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granato almandino / piropo",
+                accroche = "Un granato rosso profondo, mai trattato — il più comune e il più accessibile della famiglia.",
+                origineCouleur = "India (Rajmahal Hills, Jharkhand), Sri Lanka (Ratnapura), Repubblica Ceca (Podsedice), Tanzania (valle dell'Umba). Rosso scuro a rosso-bruno, talvolta leggermente violaceo.",
+                puretTraitements = "Mai trattato termicamente o chimicamente. Nessuna sfaldatura, forte rifrazione e buona lucentezza.",
+                entretien = "Durezza 7-7,5, buona robustezza generale. Nessuna cura particolare."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granato rodolite",
+                accroche = "Un rosso-violaceo «lampone» dall'eccellente trasparenza, tra i granati più eleganti.",
+                origineCouleur = "Tanzania (valle dell'Umba), Sri Lanka (Ratnapura), India (Orissa). Rosso-violaceo luminoso e omogeneo.",
+                puretTraitements = "Mai trattata. Eccellente trasparenza naturale, raramente inclusa a occhio nudo.",
+                entretien = "Durezza 7-7,5. Nessuna cura particolare."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granato stellato",
+                accroche = "Un almandino a quattro o sei raggi luminosi, una rarità che si trova quasi esclusivamente in Idaho.",
+                origineCouleur = "Stati Uniti (Idaho, unico giacimento al mondo di asterismo a quattro raggi), India (Odisha). Rosso scuro; l'asterismo a quattro raggi è unico al mondo, quello a sei raggi, ancora più raro, proviene dagli stessi giacimenti.",
+                puretTraitements = "Mai trattato. La nitidezza e la centratura della stella prevalgono sulla trasparenza del fondo.",
+                entretien = "Durezza 7-7,5. Si consiglia una pulizia delicata per preservare la lucidatura della cupola."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granato malaya",
+                accroche = "Un rosa-arancio caldo nato dalla combinazione di due granati, senza alcun trattamento.",
+                origineCouleur = "Tanzania (Umba), Kenya (Taita-Taveta), Madagascar (Anjanabonoina). Rosa-arancio ad arancio caldo, tonalità unica tra i granati.",
+                puretTraitements = "Nessun trattamento è necessario né praticato: colore al 100% naturale, uno dei grandi punti di forza di questa varietà.",
+                entretien = "Durezza 7-7,5. Nessuna cura particolare."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granato spessartite",
+                accroche = "Un arancio «mandarino» brillante, tra i colori più luminosi del regno minerale.",
+                origineCouleur = "Namibia (regione del Kunene), Nigeria (Stato del Nasarawa), Madagascar (Fianarantsoa). Arancio vivo e saturo, talvolta tendente al rosso-arancio.",
+                puretTraitements = "Colore naturale, mai trattato termicamente. Chiarezza generalmente buona o eccellente.",
+                entretien = "Durezza 7-7,5. Nessuna cura particolare."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granato grossularia",
+                accroche = "Il granato dal verde al giallo-verde, cugino poco colorato della tsavorite e dell'essonite — la famiglia più diversificata nei colori.",
+                origineCouleur = "Mali (Sandaré), Kenya (Voi), Canada (Québec, Jeffrey Mine). Dall'incolore al verde profondo, passando per il giallo-verde e il bruno-arancio dell'essonite.",
+                puretTraitements = "Mai trattato. Chiarezza variabile a seconda della tonalità e del giacimento.",
+                entretien = "Durezza 7-7,5. Nessuna cura particolare."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granato rodolite violaceo",
+                accroche = "Una tonalità porpora che muta a seconda dell'illuminazione, variante violacea della classica rodolite.",
+                origineCouleur = "Tanzania (valle dell'Umba), Mozambico (Cuamba). Porpora a violetto intenso, con la sfumatura dominante che varia a seconda della fonte luminosa.",
+                puretTraitements = "Colore stabile, mai trattato. Chiarezza generalmente buona.",
+                entretien = "Durezza 7-7,5. Nessuna cura particolare."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granato a cambiamento di colore",
+                accroche = "Verde bluastro di giorno, rosso-violetto la sera — un rivale poco conosciuto dell'alessandrite, a un prezzo molto più accessibile.",
+                origineCouleur = "Tanzania (Umba, Tunduru), Madagascar (Bekily). È il vanadio, piuttosto che il cromo, a essere responsabile del cambiamento di colore in questo granato, a differenza dell'alessandrite.",
+                puretTraitements = "Mai trattato. L'intensità del cambiamento di colore prevale sulla tonalità stessa, come per l'alessandrite.",
+                entretien = "Durezza 7-7,5. Nessuna cura particolare."
+            ),
+            BuyingGuideArticle(
+                pierre = "Topazio blu",
+                accroche = "Il blu profondo ottenuto per irradiazione e successivo riscaldamento di un topazio incolore — la tonalità più commercializzata della specie.",
+                origineCouleur = "Brasile (Minas Gerais) e Nigeria forniscono la materia prima incolore, irradiata e poi riscaldata per sviluppare un blu che va dal celeste al profondo «London Blue».",
+                puretTraitements = "Colore ottenuto quasi sistematicamente per irradiazione e successivo trattamento termico, stabile e permanente — divulgazione obbligatoria, ampiamente accettata dal mercato per via del suo prezzo accessibile.",
+                entretien = "Durezza 8, ma una sfaldatura perfetta in una direzione lo rende fragile agli urti. Evitare sbalzi termici improvvisi e vietare gli ultrasuoni."
+            ),
+            BuyingGuideArticle(
+                pierre = "Topazio rosa",
+                accroche = "Il rosa naturale più raro del topazio, storicamente estratto in Pakistan.",
+                origineCouleur = "Pakistan (Katlang, Mardan), Russia (Urali, storico). Rosa delicato a intenso; il rosa naturale non trattato è raro, da distinguere dal topazio rosa ottenuto per riscaldamento di pietre brune.",
+                puretTraitements = "Verificare sul certificato se la tonalità è naturale o ottenuta per trattamento termico di materia bruna, poiché lo scarto di valore è importante. Chiarezza naturalmente elevata.",
+                entretien = "Durezza 8, sfaldatura perfetta in una direzione: evitare urti e sbalzi termici improvvisi, vietare gli ultrasuoni."
+            ),
+            BuyingGuideArticle(
+                pierre = "Topazio bianco",
+                accroche = "Il topazio nella sua forma più pura e più comune, incolore e limpido — un'alternativa economica al diamante.",
+                origineCouleur = "Brasile (Minas Gerais, Ouro Preto), Nigeria (Jos Plateau), Pakistan (Katlang). Incolore e perfettamente limpido; è anche la materia prima più abbondante per la produzione di topazio blu trattato.",
+                puretTraitements = "Generalmente non trattato di per sé. Si ricerca una chiarezza molto elevata, poiché la sua trasparenza è il suo principale punto di forza.",
+                entretien = "Durezza 8, sfaldatura perfetta in una direzione: evitare urti e vietare gli ultrasuoni."
             )
         )
     )
@@ -421,18 +1205,214 @@ object BuyingGuidesInfo {
                 entretien = "Härte 8, widerstandsfähig. Pflege wie beim Saphir, keine besonderen Vorsichtsmaßnahmen nötig."
             ),
             BuyingGuideArticle(
-                pierre = "Turmalin",
-                accroche = "Der Stein der tausend Farben, vom elektrischen «Paraíba»-Grünblau bis zum zweifarbigen rosa-grünen «Wassermelonen»-Turmalin.",
-                origineCouleur = "Brasilien (Paraíba): legendäres, äußerst seltenes kupferhaltiges Neon-Grünblau. Mosambik und Nigeria: erschwinglichere «Paraíba-ähnliche» Töne. Afghanistan und Brasilien: rot-rosa Rubellit. Madagaskar: bunte Farbpalette. Die Paraíba-Varietät führt die Wertskala an, gefolgt vom intensiven Rubellit.",
-                puretTraitements = "Erhitzen zur Intensivierung bestimmter Farbtöne ist üblich und akzeptiert. Die Reinheit variiert je nach Varietät; feine nadelförmige Einschlüsse sind häufig und werden toleriert, wenn sie dezent sind.",
-                entretien = "Härte 7 bis 7,5, insgesamt robust. Ein pyroelektrischer Stein, der durch statische Elektrizität Staub anzieht: eine sanfte, regelmäßige Reinigung wird empfohlen."
+                pierre = "Gelber Saphir",
+                accroche = "Der Korund in all seinen Farben außer Rot findet im Gelb eine seiner leuchtendsten und erschwinglichsten Varietäten.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagaskar (Ilakaka), Tansania (Tunduru). Kräftiges, leuchtendes Gelb, gleichmäßig, ohne grünlichen Schimmer.",
+                puretTraitements = "Erhitzen ist gängig, um die Farbe zu intensivieren und zu vereinheitlichen — eine akzeptierte und stabile Behandlung. Reinheit meist gut mit bloßem Auge.",
+                entretien = "Härte 9, sehr widerstandsfähig im Alltag. Ultraschallreinigung ist bei einem nicht diffundierten Stein unbedenklich."
             ),
             BuyingGuideArticle(
-                pierre = "Saphir",
-                accroche = "Der blaue Korund schlechthin, aber auch in Rosa, Gelb oder als «Padparadscha» — gleich nach dem Diamanten die härteste Varietät.",
-                origineCouleur = "Kaschmir: legendäres samtiges Blau, nahezu erschöpfte, äußerst seltene Lagerstätte. Myanmar (Mogok): intensives «Royal»-Blau. Sri Lanka: helleres Blau mit großer Transparenz. Madagaskar: die wichtigste moderne Förderung. Gesucht ist ein tiefes samtiges Blau mit starker Sättigung, ohne zu viel Schwarzanteil.",
-                puretTraitements = "Erhitzen ist nahezu die Regel und wird weithin akzeptiert, verbessert Farbe und Reinheit. Diffusion (klassisch mit Titan, oder problematischer mit Beryllium) muss zwingend auf dem Zertifikat unterschieden werden. In der Regel wird hohe Reinheit gesucht.",
-                entretien = "Härte 9, gleich nach dem Diamanten: sehr widerstandsfähig im Alltag. Ultraschallreinigung ist unbedenklich, außer bei einem diffundierten oder verfüllten Stein."
+                pierre = "Grüner Saphir",
+                accroche = "Ein dezentes, oft dichroitisches Grün — die erschwinglichste Farbe des Korunds.",
+                origineCouleur = "Australien (New South Wales), Thailand (Kanchanaburi), Nigeria (Mambilla). Kräftiges Grün ohne zu viel Grauanteil; der je nach Blickwinkel wechselnde Dichroismus Grün/Gelbgrün ist charakteristisch für die Art.",
+                puretTraitements = "Erhitzen ist gängig und akzeptiert, um den Farbton zu vereinheitlichen. Reinheit meist gut.",
+                entretien = "Härte 9, sehr widerstandsfähig. Ultraschallreinigung ist bei einem nicht diffundierten Stein unbedenklich."
+            ),
+            BuyingGuideArticle(
+                pierre = "Blauer Saphir",
+                accroche = "Das Referenzblau der Haute Joaillerie, in der Härte gleich nach dem Diamanten.",
+                origineCouleur = "Kaschmir: legendäres samtiges Blau, eine nahezu erschöpfte, äußerst seltene Lagerstätte. Myanmar (Mogok): intensives «Royal»-Blau. Sri Lanka: helleres Blau, große Transparenz. Madagaskar: wichtigste moderne Förderung. Tiefes samtiges Blau mit starker Sättigung, ohne zu viel Schwarzanteil.",
+                puretTraitements = "Erhitzen ist nahezu die Regel und wird weithin akzeptiert. Diffusion (klassisch mit Titan, oder problematischer mit Beryllium) muss auf dem Zertifikat unterschieden werden. Seiden-Einschlüsse aus Rutil können einen Asterismus (Sternsaphir) hervorrufen.",
+                entretien = "Härte 9, sehr widerstandsfähig im Alltag. Ultraschallreinigung ist unbedenklich, außer bei einem diffundierten oder verfüllten Stein."
+            ),
+            BuyingGuideArticle(
+                pierre = "Auvergne-Saphir",
+                accroche = "Ein französischer Korund mit tiefer blauvioletter Farbe, gefördert aus den vulkanischen Böden der Auvergne.",
+                origineCouleur = "Frankreich (Espaly-Saint-Marcel, Haute-Loire), einzige Quelle. Sehr kräftiges Blauviolett, typisch für Saphire basaltischen Ursprungs; die Kristalle sind meist klein, geschliffen selten über einem Karat.",
+                puretTraitements = "Kaum oder gar nicht erhitzt, denn Seltenheit und regionale Herkunft zählen hier mehr als die Farbintensivierung. Geringe Fördermenge, Stück für Stück zu verhandeln.",
+                entretien = "Härte 9, sehr widerstandsfähig. Ultraschallreinigung unbedenklich."
+            ),
+            BuyingGuideArticle(
+                pierre = "Violetter Saphir",
+                accroche = "Ein tiefes Violett, an der Grenze zwischen blauem Saphir und Rubin.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagaskar (Ilakaka), Tansania (Tunduru). Kräftiges, gleichmäßiges Violett; kann zwischen Tageslicht und Glühlicht einen leichten Farbwechsel zeigen.",
+                puretTraitements = "Erhitzen ist gängig und akzeptiert, um den Farbton zu stabilisieren. Reinheit meist gut mit bloßem Auge.",
+                entretien = "Härte 9, sehr widerstandsfähig. Ultraschallreinigung ist bei einem nicht diffundierten Stein unbedenklich."
+            ),
+            BuyingGuideArticle(
+                pierre = "Rosa Saphir",
+                accroche = "An der Grenze zwischen Rubin und Saphir, deren offizielle Trennlinie je nach Labor umstritten bleibt.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagaskar (Ilakaka), Tansania (Tunduru). Kräftiges, sattes Rosa; ab einem bestimmten Sättigungsgrad stufen manche Labore den Stein als Rubin um.",
+                puretTraitements = "Erhitzen ist gängig und akzeptiert. Die Einstufung (rosa Saphir oder Rubin) sollte auf dem Zertifikat geprüft werden, da der Wert stark schwanken kann.",
+                entretien = "Härte 9, sehr widerstandsfähig. Ultraschallreinigung ist bei einem nicht diffundierten Stein unbedenklich."
+            ),
+            BuyingGuideArticle(
+                pierre = "Weißer Saphir",
+                accroche = "Der Korund ohne jede farbgebende Spur — eine dezente und erschwingliche Alternative zum Diamanten.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagaskar (Ilakaka), Australien (New South Wales). Farblos und klar; die Dispersion ist geringer als beim Diamanten, die Härte jedoch fast gleich.",
+                puretTraitements = "Selten behandelt, da seine natürliche Transparenz bereits sein wichtigster Vorzug ist. Hohe Reinheit ist gefragt.",
+                entretien = "Härte 9, ausgezeichnete Widerstandsfähigkeit gegen alltägliche Abnutzung. Ultraschallreinigung unbedenklich."
+            ),
+            BuyingGuideArticle(
+                pierre = "Sternsaphir",
+                accroche = "Ein leuchtender sechsstrahliger Stern, der durch einen Cabochonschliff sichtbar wird, meist in einem blauen oder schwarzen Saphir.",
+                origineCouleur = "Sri Lanka (Ratnapura), Myanmar (Mogok), Thailand (Kanchanaburi, schwarze Varietät). Der begehrteste Asterismus zeigt sechs vollkommen gerade Strahlen, zentriert auf der Wölbung des Cabochons.",
+                puretTraitements = "Selten erhitzt, da eine Wärmebehandlung die für den Asterismus verantwortlichen Rutil-Einschlüsse beeinträchtigen könnte. Schärfe und Zentrierung des Sterns zählen mehr als die Transparenz.",
+                entretien = "Härte 9, sehr widerstandsfähig. Eine sanfte Reinigung wird empfohlen, um die Politur der Wölbung zu erhalten."
+            ),
+            BuyingGuideArticle(
+                pierre = "Teal-Saphir",
+                accroche = "Ein zweifarbiger Korund, bei dem Blau und Gelb sich zu einem einzigartigen Blaugrün verbinden — bei Kennern sehr geschätzt.",
+                origineCouleur = "USA (Montana, Rock Creek), Australien (New South Wales), Madagaskar (Ilakaka). Die im Rohzustand in getrennten Zonen sichtbare Zweifarbigkeit Blau-Gelb verschmilzt nach dem Schliff und der richtigen Ausrichtung zu einem gleichmäßigen Blaugrün.",
+                puretTraitements = "Oft nicht erhitzt, da gerade die natürliche Nuance bei Sammlern gefragt ist. Entscheidend ist das Können des Schleifers, der den Stein ausrichtet, um beide Farben auszubalancieren.",
+                entretien = "Härte 9, sehr widerstandsfähig. Ultraschallreinigung ist bei einem nicht diffundierten Stein unbedenklich."
+            ),
+            BuyingGuideArticle(
+                pierre = "Rubellit-Turmalin",
+                accroche = "Ein durch Mangan verursachtes intensives Rot — die dem Rubin am nächsten kommende Varietät unter den Turmalinen.",
+                origineCouleur = "Brasilien (Mine Cruzeiro, Minas Gerais), Nigeria (Oyo), Mosambik (Alto Ligonha), Afghanistan (Paprok-Tal). Intensives, gleichmäßiges Rot bis Rotrosa; ausgeprägter Pleochroismus, charakteristisch gestreifte prismatische Kristalle.",
+                puretTraitements = "Gelegentliches Erhitzen, um bräunliche Töne abzuschwächen — eine akzeptierte Behandlung. Reinheit variabel; feine nadelförmige Einschlüsse sind häufig und werden toleriert, wenn sie dezent sind.",
+                entretien = "Härte 7 bis 7,5, insgesamt robust. Ein pyroelektrischer Stein, der durch statische Elektrizität Staub anzieht: eine sanfte Reinigung wird empfohlen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Gelber Turmalin",
+                accroche = "Ein leuchtendes Kanariengelb, natürlich und unbehandelt — die seltenste aller Turmalinfarben.",
+                origineCouleur = "Malawi (Zomba), Brasilien (Minas Gerais), Nigeria (Oyo). Kräftiges, leuchtendes Gelb, das im Gegensatz zu vielen handelsüblichen Turmalinfarben keinerlei Eingriff benötigt.",
+                puretTraitements = "In der Regel unbehandelt, da seine natürliche Farbe bereits gefragt ist. Reinheit oft gut.",
+                entretien = "Härte 7 bis 7,5. Ein pyroelektrischer Stein: eine sanfte, regelmäßige Reinigung wird empfohlen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Chromturmalin",
+                accroche = "Ein tiefes, gesättigtes Grün durch Chrom und Vanadium — verschieden vom «klassischen» Grün des Turmalins.",
+                origineCouleur = "Kenia (Taita-Taveta), Tansania (Umba). Intensives, dem Smaragd nahekommendes Grün; ausgeprägter Dichroismus, wobei die Ausrichtung der Tafel entscheidend ist, um den gesättigtsten Farbton hervorzubringen.",
+                puretTraitements = "Selten behandelt, da die durch Chrom und Vanadium verursachte Farbe von Natur aus intensiv ist. Reinheit meist gut.",
+                entretien = "Härte 7 bis 7,5. Ein pyroelektrischer Stein: eine sanfte Reinigung wird empfohlen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Grüner Turmalin (Verdelith)",
+                accroche = "Ein durch Eisen oder Chrom gefärbtes Grün — die klassischste und verbreitetste Farbe des Turmalins.",
+                origineCouleur = "Brasilien (Minas Gerais), Mosambik (Alto Ligonha), Nigeria (Oyo). Kräftiges bis dunkles Grün; starke Doppelbrechung, weshalb Schleifer den Stein ausrichten, um die Farbe zu optimieren.",
+                puretTraitements = "Gelegentliches, akzeptiertes Erhitzen, um zu dunkle Töne aufzuhellen. Reinheit je nach Herkunft unterschiedlich.",
+                entretien = "Härte 7 bis 7,5. Ein pyroelektrischer Stein: eine sanfte, regelmäßige Reinigung wird empfohlen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Blauer Turmalin (Indigolith)",
+                accroche = "Ein tiefes Blau, das sich ohne Kupferbeteiligung vom kupferhaltigen Blaugrün der Paraíba unterscheidet.",
+                origineCouleur = "Brasilien (Minas Gerais), Namibia (Erongo), Afghanistan (Nuristan). Dunkles Blau bis Blaugrau, meist dunkler als bei der Paraíba.",
+                puretTraitements = "Gelegentliches Erhitzen, um einen zu dunklen Ton aufzuhellen — eine akzeptierte Behandlung. Reinheit unterschiedlich.",
+                entretien = "Härte 7 bis 7,5. Ein pyroelektrischer Stein: eine sanfte Reinigung wird empfohlen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Rosa Turmalin",
+                accroche = "Ein zarter, durch Mangan verursachter Farbton — Ursprung der begehrtesten zweifarbigen Turmaline.",
+                origineCouleur = "Brasilien (Mine Cruzeiro, Minas Gerais), Afghanistan (Paprok), Mosambik (Alto Ligonha). Helles bis kräftiges Rosa; die Kristalle sind oft zoniert und Ursprung zweifarbiger Varietäten wie der Wassermelonenturmalin.",
+                puretTraitements = "Selten behandelt. Reinheit meist gut mit bloßem Auge.",
+                entretien = "Härte 7 bis 7,5. Ein pyroelektrischer Stein: eine sanfte Reinigung wird empfohlen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Schwarzer Turmalin (Schörl)",
+                accroche = "Die häufigste Turmalinvarietät, geschätzt sowohl für schlichten Schmuck als auch in der Lithotherapie.",
+                origineCouleur = "Brasilien (Minas Gerais), Namibia (Erongo), Madagaskar (Antsirabe). Opakes bis leicht durchscheinendes Schwarz; oft gestreifte prismatische Kristalle, mitunter von beachtlicher Größe.",
+                puretTraitements = "Niemals behandelt, da Farbe und Häufigkeit keinerlei Eingriff rechtfertigen. Sehr erschwinglicher Preis.",
+                entretien = "Härte 7 bis 7,5, robust. Einfache Pflege, ohne besondere Vorsichtsmaßnahmen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Wassermelonenturmalin",
+                accroche = "Ein rosafarbener Kern, umgeben von Grün, wie eine Fruchtscheibe — einer der spektakulärsten zweifarbigen Turmaline.",
+                origineCouleur = "Brasilien (Minas Gerais), USA (Mine Dunton, Maine). Klare Zonierung, rosa im Zentrum, grün am Rand; meist in Querscheiben geschliffen, um den «Wassermelonen»-Effekt sichtbar zu machen.",
+                puretTraitements = "Selten behandelt, da die natürliche Zonierung den Hauptreiz des Steins ausmacht. Reinheit je nach Zone unterschiedlich.",
+                entretien = "Härte 7 bis 7,5. Eine sanfte Reinigung wird empfohlen, besonders bei dünnen Scheiben."
+            ),
+            BuyingGuideArticle(
+                pierre = "Paraíba-Turmalin",
+                accroche = "Ein elektrisches «Neon»-Blaugrün, einzigartig im Mineralreich — der begehrteste und teuerste aller Turmaline.",
+                origineCouleur = "São José da Batalha (Paraíba, Brasilien), die historische, nahezu erschöpfte Quelle. Mosambik (Mavuco) und Nigeria (Edeko): erschwinglichere moderne Quellen. Die «Neon»-Farbe wird durch Kupfer verursacht und ist bei keiner anderen Turmalinart zu beobachten.",
+                puretTraitements = "Ein Zertifikat, das die Herkunft (Brasilien oder Afrika) angibt, ist unerlässlich, da der Wertunterschied beträchtlich ist. Reinheit und Intensität der kupferbedingten Farbe zählen mehr als jedes andere Kriterium.",
+                entretien = "Härte 7 bis 7,5. Ein pyroelektrischer Stein: eine sanfte Reinigung wird empfohlen, zu schützen wie jeder Stein von sehr hohem Wert."
+            ),
+            BuyingGuideArticle(
+                pierre = "Pyrop-Granat",
+                accroche = "Der klassische blutrote Granat, ohne rhodolithische Beimischung — die reinste Varietät der Pyrop-Familie.",
+                origineCouleur = "Tschechien (Böhmen, Region Podsedice), Südafrika (Kao-Mine, Kimberlite), Tansania (Umba). Tiefes, gleichmäßiges Blutrot, ohne nennenswerten violetten Unterton.",
+                puretTraitements = "Wie die gesamte Granatfamilie niemals behandelt. Im Gegensatz zum Rhodolith enthält der reine Pyrop keinen nennenswerten Eisenanteil.",
+                entretien = "Härte 7 bis 7,5. Keine besondere Pflege nötig, über die üblichen Vorsichtsmaßnahmen für jeden Schmuckstein hinaus."
+            ),
+            BuyingGuideArticle(
+                pierre = "Almandin-/Pyrop-Granat",
+                accroche = "Ein tiefroter, niemals behandelter Granat — der häufigste und erschwinglichste der Familie.",
+                origineCouleur = "Indien (Rajmahal Hills, Jharkhand), Sri Lanka (Ratnapura), Tschechien (Podsedice), Tansania (Umba-Tal). Dunkles Rot bis Rotbraun, gelegentlich leicht violett.",
+                puretTraitements = "Weder thermisch noch chemisch behandelt. Keine Spaltbarkeit, starke Lichtbrechung und guter Glanz.",
+                entretien = "Härte 7 bis 7,5, insgesamt robust. Keine besondere Pflege nötig."
+            ),
+            BuyingGuideArticle(
+                pierre = "Rhodolith-Granat",
+                accroche = "Ein himbeerfarbenes Rotviolett mit ausgezeichneter Transparenz — einer der elegantesten Granate.",
+                origineCouleur = "Tansania (Umba-Tal), Sri Lanka (Ratnapura), Indien (Orissa). Leuchtendes, gleichmäßiges Rotviolett.",
+                puretTraitements = "Niemals behandelt. Ausgezeichnete natürliche Transparenz, selten mit bloßem Auge eingeschlossen.",
+                entretien = "Härte 7 bis 7,5. Keine besondere Pflege nötig."
+            ),
+            BuyingGuideArticle(
+                pierre = "Sterngranat",
+                accroche = "Ein Almandin mit vier oder sechs leuchtenden Strahlen — eine Rarität, die fast ausschließlich in Idaho gefunden wird.",
+                origineCouleur = "USA (Idaho, weltweit einzige Lagerstätte für vierstrahligen Asterismus), Indien (Odisha). Dunkles Rot; der vierstrahlige Asterismus ist weltweit einzigartig, der noch seltenere sechsstrahlige stammt aus denselben Lagerstätten.",
+                puretTraitements = "Niemals behandelt. Schärfe und Zentrierung des Sterns zählen mehr als die Transparenz des Untergrunds.",
+                entretien = "Härte 7 bis 7,5. Eine sanfte Reinigung wird empfohlen, um die Politur der Wölbung zu erhalten."
+            ),
+            BuyingGuideArticle(
+                pierre = "Malaya-Granat",
+                accroche = "Ein warmes Rosaorange, entstanden aus der Mischung zweier Granatarten, völlig unbehandelt.",
+                origineCouleur = "Tansania (Umba), Kenia (Taita-Taveta), Madagaskar (Anjanabonoina). Rosaorange bis warmes Orange — ein unter den Granaten einzigartiger Farbton.",
+                puretTraitements = "Keine Behandlung ist nötig oder üblich: zu 100 % natürliche Farbe — eines der großen Verkaufsargumente dieser Varietät.",
+                entretien = "Härte 7 bis 7,5. Keine besondere Pflege nötig."
+            ),
+            BuyingGuideArticle(
+                pierre = "Spessartin-Granat",
+                accroche = "Ein leuchtendes «Mandarin»-Orange — eine der strahlendsten Farben im Mineralreich.",
+                origineCouleur = "Namibia (Region Kunene), Nigeria (Bundesstaat Nasarawa), Madagaskar (Fianarantsoa). Kräftiges, gesättigtes Orange, das mitunter ins Rotorange spielt.",
+                puretTraitements = "Natürliche Farbe, niemals thermisch behandelt. Reinheit meist gut bis ausgezeichnet.",
+                entretien = "Härte 7 bis 7,5. Keine besondere Pflege nötig."
+            ),
+            BuyingGuideArticle(
+                pierre = "Grossular-Granat",
+                accroche = "Der grüne bis gelbgrüne Granat, ein wenig gefärbter Verwandter von Tsavorit und Hessonit — die farblich vielfältigste Familie.",
+                origineCouleur = "Mali (Sandaré), Kenia (Voi), Kanada (Québec, Jeffrey Mine). Von farblos bis tiefgrün, über Gelbgrün bis zum Orangebraun des Hessonits.",
+                puretTraitements = "Niemals behandelt. Reinheit je nach Farbton und Lagerstätte unterschiedlich.",
+                entretien = "Härte 7 bis 7,5. Keine besondere Pflege nötig."
+            ),
+            BuyingGuideArticle(
+                pierre = "Violetter Rhodolith-Granat",
+                accroche = "Ein purpurner Farbton, der je nach Beleuchtung wechselt — eine violette Variante des klassischen Rhodoliths.",
+                origineCouleur = "Tansania (Umba-Tal), Mosambik (Cuamba). Purpur bis kräftiges Violett, wobei der dominierende Farbton je nach Lichtquelle variiert.",
+                puretTraitements = "Stabile Farbe, niemals behandelt. Reinheit meist gut.",
+                entretien = "Härte 7 bis 7,5. Keine besondere Pflege nötig."
+            ),
+            BuyingGuideArticle(
+                pierre = "Farbwechsel-Granat",
+                accroche = "Bei Tag bläulich grün, am Abend rotviolett — ein wenig bekannter Rivale des Alexandrits, zu einem weit erschwinglicheren Preis.",
+                origineCouleur = "Tansania (Umba, Tunduru), Madagaskar (Bekily). Anders als beim Alexandrit ist bei diesem Granat nicht Chrom, sondern Vanadium für den Farbwechsel verantwortlich.",
+                puretTraitements = "Niemals behandelt. Wie beim Alexandrit zählt die Stärke des Farbwechsels mehr als der Farbton selbst.",
+                entretien = "Härte 7 bis 7,5. Keine besondere Pflege nötig."
+            ),
+            BuyingGuideArticle(
+                pierre = "Blauer Topas",
+                accroche = "Das tiefe Blau, das durch Bestrahlung und anschließendes Erhitzen eines farblosen Topases entsteht — die meistvermarktete Farbe dieser Art.",
+                origineCouleur = "Brasilien (Minas Gerais) und Nigeria liefern das farblose Rohmaterial, das bestrahlt und anschließend erhitzt wird, um ein Blau von Himmelblau bis zum tiefen «London Blue» zu entwickeln.",
+                puretTraitements = "Die Farbe entsteht nahezu immer durch Bestrahlung und anschließende Wärmebehandlung, stabil und dauerhaft — die Offenlegung ist Pflicht, wird vom Markt aber dank des erschwinglichen Preises weithin akzeptiert.",
+                entretien = "Härte 8, doch eine perfekte Spaltbarkeit in eine Richtung macht ihn stoßempfindlich. Plötzliche Temperaturwechsel vermeiden, Ultraschallreiniger meiden."
+            ),
+            BuyingGuideArticle(
+                pierre = "Rosa Topas",
+                accroche = "Das seltenste natürliche Rosa des Topases, historisch in Pakistan gefördert.",
+                origineCouleur = "Pakistan (Katlang, Mardan), Russland (Ural, historisch). Zartes bis kräftiges Rosa; das natürliche, unbehandelte Rosa ist selten und vom durch Erhitzen brauner Steine erzeugten rosa Topas zu unterscheiden.",
+                puretTraitements = "Auf dem Zertifikat prüfen, ob der Farbton natürlich ist oder durch Wärmebehandlung von braunem Material erzielt wurde, da der Wertunterschied erheblich ist. Von Natur aus hohe Reinheit.",
+                entretien = "Härte 8, perfekte Spaltbarkeit in eine Richtung: Stöße und plötzliche Temperaturwechsel vermeiden, Ultraschallreiniger meiden."
+            ),
+            BuyingGuideArticle(
+                pierre = "Weißer Topas",
+                accroche = "Der Topas in seiner reinsten und häufigsten Form, farblos und klar — eine preiswerte Alternative zum Diamanten.",
+                origineCouleur = "Brasilien (Minas Gerais, Ouro Preto), Nigeria (Jos-Plateau), Pakistan (Katlang). Farblos und vollkommen klar; er ist zugleich das häufigste Rohmaterial für die Produktion von behandeltem blauem Topas.",
+                puretTraitements = "In der Regel selbst unbehandelt. Sehr hohe Reinheit ist gefragt, da seine Transparenz sein wichtigster Vorzug ist.",
+                entretien = "Härte 8, perfekte Spaltbarkeit in eine Richtung: Stöße vermeiden und Ultraschallreiniger meiden."
             )
         )
     )
@@ -504,18 +1484,214 @@ object BuyingGuidesInfo {
                 entretien = "Dureza 8, resistente. Cuida-se como a safira, sem precauções especiais."
             ),
             BuyingGuideArticle(
-                pierre = "Turmalina",
-                accroche = "A pedra de mil cores, do verde «paraíba» elétrico ao bicolor rosa e verde «melancia».",
-                origineCouleur = "Brasil (Paraíba): azul-esverdeado cuprífero néon, lendário e raríssimo. Moçambique e Nigéria: tons «tipo paraíba» mais acessíveis. Afeganistão e Brasil: rubelite vermelho-rosa. Madagáscar: paleta multicolor. A variedade paraíba lidera a valorização, seguida da rubelite intensa.",
-                puretTraitements = "O aquecimento para intensificar certos tons é comum e aceite. A pureza varia consoante a variedade; inclusões filiformes são frequentes e toleradas se discretas.",
-                entretien = "Dureza de 7 a 7,5, boa robustez geral. Pedra piroelétrica que atrai poeira por eletricidade estática: recomenda-se uma limpeza suave e regular."
+                pierre = "Safira amarela",
+                accroche = "O corindo em todas as tonalidades exceto o vermelho encontra no amarelo uma das suas variedades mais luminosas e acessíveis.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagáscar (Ilakaka), Tanzânia (Tunduru). Amarelo vivo e luminoso, homogéneo, sem reflexo esverdeado.",
+                puretTraitements = "Aquecimento comum para intensificar e uniformizar a cor, tratamento aceite e estável. Pureza geralmente boa a olho nu.",
+                entretien = "Dureza 9, muito resistente ao uso diário. Ultrassons sem risco numa pedra não difundida."
             ),
             BuyingGuideArticle(
-                pierre = "Safira",
-                accroche = "O corindo azul por excelência, mas também rosa, amarelo ou «padparadscha» — logo atrás do diamante em dureza.",
-                origineCouleur = "Caxemira: azul aveludado lendário, jazida quase esgotada, raríssima. Birmânia (Mogok): azul «royal», intenso. Sri Lanka: azul mais claro, grande transparência. Madagáscar: principal produção moderna. Procura-se um azul aveludado profundo, com forte saturação sem excesso de negro.",
-                puretTraitements = "O aquecimento é quase sistemático e amplamente aceite, melhora a cor e a pureza. A difusão (titânio clássico, ou berílio, mais problemática) deve ser obrigatoriamente distinguida no certificado. Procura-se geralmente uma pureza elevada.",
-                entretien = "Dureza 9, logo atrás do diamante: muito resistente ao uso diário. Os ultrassons são seguros, exceto numa pedra difundida ou preenchida."
+                pierre = "Safira verde",
+                accroche = "Um verde discreto e frequentemente dicroico, a cor mais acessível do corindo.",
+                origineCouleur = "Austrália (Nova Gales do Sul), Tailândia (Kanchanaburi), Nigéria (Mambilla). Verde franco, sem excesso de cinzento; o dicroísmo verde/amarelo-esverdeado consoante o ângulo é característico da espécie.",
+                puretTraitements = "Aquecimento comum e aceite para homogeneizar o tom. Pureza geralmente boa.",
+                entretien = "Dureza 9, muito resistente. Ultrassons sem risco numa pedra não difundida."
+            ),
+            BuyingGuideArticle(
+                pierre = "Safira azul",
+                accroche = "O azul de referência da alta joalharia, logo atrás do diamante em dureza.",
+                origineCouleur = "Caxemira: azul aveludado lendário, jazida quase esgotada, raríssima. Birmânia (Mogok): azul «royal» intenso. Sri Lanka: azul mais claro, grande transparência. Madagáscar: principal produção moderna. Azul aveludado profundo, forte saturação sem excesso de negro.",
+                puretTraitements = "Aquecimento quase sistemático e amplamente aceite. A difusão (titânio clássico, ou berílio, mais problemática) deve ser distinguida no certificado. Inclusões de rutilo em seda podem produzir um asterismo (safira estrelada).",
+                entretien = "Dureza 9, muito resistente ao uso diário. Ultrassons sem risco, exceto numa pedra difundida ou preenchida."
+            ),
+            BuyingGuideArticle(
+                pierre = "Safira de Auvérnia",
+                accroche = "Um corindo francês de tom azul-violeta profundo, extraído dos terrenos vulcânicos de Auvérnia.",
+                origineCouleur = "França (Espaly-Saint-Marcel, Haute-Loire), única fonte. Azul-violeta muito intenso, típico das safiras de origem basáltica; cristais geralmente pequenos, raramente com mais de um quilate lapidado.",
+                puretTraitements = "Pouco ou nada aquecida, a raridade e a origem local prevalecendo sobre a intensificação da cor. Pequena produção, a negociar peça por peça.",
+                entretien = "Dureza 9, muito resistente. Ultrassons sem risco."
+            ),
+            BuyingGuideArticle(
+                pierre = "Safira violeta",
+                accroche = "Um violeta profundo, na fronteira entre a safira azul e o rubi.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagáscar (Ilakaka), Tanzânia (Tunduru). Violeta intenso e homogéneo; pode apresentar uma ligeira mudança de cor entre a luz do dia e a luz incandescente.",
+                puretTraitements = "Aquecimento comum e aceite para estabilizar o tom. Pureza geralmente boa a olho nu.",
+                entretien = "Dureza 9, muito resistente. Ultrassons sem risco numa pedra não difundida."
+            ),
+            BuyingGuideArticle(
+                pierre = "Safira rosa",
+                accroche = "Na fronteira entre rubi e safira, cujo limite oficial continua a ser debatido consoante os laboratórios.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagáscar (Ilakaka), Tanzânia (Tunduru). Rosa vivo e intenso; para além de um determinado limiar de saturação, a pedra é reclassificada como rubi por alguns laboratórios.",
+                puretTraitements = "Aquecimento comum e aceite. Verificar a classificação (safira rosa ou rubi) no certificado, uma vez que o valor pode variar fortemente.",
+                entretien = "Dureza 9, muito resistente. Ultrassons sem risco numa pedra não difundida."
+            ),
+            BuyingGuideArticle(
+                pierre = "Safira branca",
+                accroche = "O corindo sem qualquer vestígio corante, alternativa discreta e acessível ao diamante.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagáscar (Ilakaka), Austrália (Nova Gales do Sul). Incolor e límpida; dispersão inferior à do diamante, mas dureza quase igual.",
+                puretTraitements = "Raramente tratada, sendo a sua transparência natural já o seu principal trunfo. Procura-se uma pureza elevada.",
+                entretien = "Dureza 9, excelente resistência ao desgaste diário. Ultrassons sem risco."
+            ),
+            BuyingGuideArticle(
+                pierre = "Safira estrelada",
+                accroche = "Uma estrela luminosa de seis pontas, revelada por uma lapidação em cabochão, frequentemente numa safira azul ou negra.",
+                origineCouleur = "Sri Lanka (Ratnapura), Birmânia (Mogok), Tailândia (Kanchanaburi, variedade negra). O asterismo mais procurado apresenta seis pontas perfeitamente retas, centradas na cúpula do cabochão.",
+                puretTraitements = "Raramente aquecida, um tratamento térmico correndo o risco de alterar as inclusões de rutilo responsáveis pelo asterismo. A nitidez e a centragem da estrela prevalecem sobre a transparência.",
+                entretien = "Dureza 9, muito resistente. Recomenda-se uma limpeza suave para preservar o polimento da cúpula."
+            ),
+            BuyingGuideArticle(
+                pierre = "Safira teal",
+                accroche = "Um corindo bicolor em que azul e amarelo se combinam num tom azul-esverdeado singular, muito apreciado pelos conhecedores.",
+                origineCouleur = "Estados Unidos (Montana, Rock Creek), Austrália (Nova Gales do Sul), Madagáscar (Ilakaka). A bicoloração azul-amarelo, visível em zonas distintas em bruto, funde-se num azul-esverdeado homogéneo depois de a pedra ser lapidada e orientada.",
+                puretTraitements = "Frequentemente não aquecida, sendo o próprio matiz natural procurado pelos colecionadores. O talento do lapidador, que orienta a pedra para equilibrar as duas cores, é determinante.",
+                entretien = "Dureza 9, muito resistente. Ultrassons sem risco numa pedra não difundida."
+            ),
+            BuyingGuideArticle(
+                pierre = "Turmalina rubelite",
+                accroche = "Um vermelho intenso devido ao manganês, a variedade de turmalina mais próxima do rubi.",
+                origineCouleur = "Brasil (mina do Cruzeiro, Minas Gerais), Nigéria (Oyo), Moçambique (Alto Ligonha), Afeganistão (vale de Paprok). Vermelho a vermelho-rosado intenso e homogéneo; pleocroísmo marcado, cristais prismáticos estriados característicos.",
+                puretTraitements = "Aquecimento ocasional para atenuar os tons acastanhados, tratamento aceite. Pureza variável; inclusões filiformes frequentes e toleradas se discretas.",
+                entretien = "Dureza de 7 a 7,5, boa robustez geral. Pedra piroelétrica que atrai a poeira por eletricidade estática: recomenda-se uma limpeza suave."
+            ),
+            BuyingGuideArticle(
+                pierre = "Turmalina amarela",
+                accroche = "Um amarelo canário luminoso, natural e sem tratamento — a mais rara das cores da turmalina.",
+                origineCouleur = "Maláui (Zomba), Brasil (Minas Gerais), Nigéria (Oyo). Amarelo vivo e luminoso, sem necessidade de intervenção ao contrário de muitos tons comerciais da turmalina.",
+                puretTraitements = "Geralmente não tratada, sendo a sua cor natural já procurada. Pureza frequentemente boa.",
+                entretien = "Dureza de 7 a 7,5. Pedra piroelétrica: recomenda-se uma limpeza suave e regular."
+            ),
+            BuyingGuideArticle(
+                pierre = "Turmalina crómica",
+                accroche = "Um verde profundo e saturado devido ao crómio e ao vanádio, distinto do verde «clássico» da turmalina.",
+                origineCouleur = "Quénia (Taita-Taveta), Tanzânia (Umba). Verde intenso próximo da esmeralda; dicroísmo marcado, a orientação da mesa sendo determinante para revelar o tom mais saturado.",
+                puretTraitements = "Raramente tratada, sendo a cor devida ao crómio e ao vanádio naturalmente intensa. Pureza geralmente boa.",
+                entretien = "Dureza de 7 a 7,5. Pedra piroelétrica: recomenda-se uma limpeza suave."
+            ),
+            BuyingGuideArticle(
+                pierre = "Turmalina verde (Verdelite)",
+                accroche = "Um verde colorido pelo ferro ou pelo crómio, a cor mais clássica e difundida da turmalina.",
+                origineCouleur = "Brasil (Minas Gerais), Moçambique (Alto Ligonha), Nigéria (Oyo). Verde franco a verde escuro; forte birrefringência, os lapidadores orientando a pedra para otimizar a cor.",
+                puretTraitements = "Aquecimento ocasional aceite para clarear os tons demasiado escuros. Pureza variável consoante a origem.",
+                entretien = "Dureza de 7 a 7,5. Pedra piroelétrica: recomenda-se uma limpeza suave e regular."
+            ),
+            BuyingGuideArticle(
+                pierre = "Turmalina azul (indicolite)",
+                accroche = "Um azul profundo, distinto do azul-esverdeado cuprífero da Paraíba, sem qualquer intervenção do cobre.",
+                origineCouleur = "Brasil (Minas Gerais), Namíbia (Erongo), Afeganistão (Nurestão). Azul escuro a azul-acinzentado, geralmente mais escuro do que a Paraíba.",
+                puretTraitements = "Aquecimento ocasional para clarear um tom demasiado escuro, tratamento aceite. Pureza variável.",
+                entretien = "Dureza de 7 a 7,5. Pedra piroelétrica: recomenda-se uma limpeza suave."
+            ),
+            BuyingGuideArticle(
+                pierre = "Turmalina rosa",
+                accroche = "Um tom suave devido ao manganês, na origem das turmalinas bicolores mais procuradas.",
+                origineCouleur = "Brasil (mina do Cruzeiro, Minas Gerais), Afeganistão (Paprok), Moçambique (Alto Ligonha). Rosa claro a rosa intenso; cristais frequentemente zonados, na origem de variedades bicolores como a melancia.",
+                puretTraitements = "Raramente tratada. Pureza geralmente boa a olho nu.",
+                entretien = "Dureza de 7 a 7,5. Pedra piroelétrica: recomenda-se uma limpeza suave."
+            ),
+            BuyingGuideArticle(
+                pierre = "Turmalina negra (Xorlo)",
+                accroche = "A variedade de turmalina mais comum, apreciada tanto na joalharia sóbria como na litoterapia.",
+                origineCouleur = "Brasil (Minas Gerais), Namíbia (Erongo), Madagáscar (Antsirabe). Negro opaco a subtransparente; cristais prismáticos frequentemente estriados, por vezes de grande dimensão.",
+                puretTraitements = "Nunca tratada, a sua cor e abundância não justificando qualquer intervenção. Preço muito acessível.",
+                entretien = "Dureza de 7 a 7,5, robusta. Cuidado simples, sem precauções especiais."
+            ),
+            BuyingGuideArticle(
+                pierre = "Turmalina melancia",
+                accroche = "Um coração rosa rodeado de verde, como uma fatia de fruta — uma das turmalinas bicolores mais espetaculares.",
+                origineCouleur = "Brasil (Minas Gerais), Estados Unidos (mina Dunton, Maine). Zonagem nítida, rosa no centro e verde na periferia; lapidada sobretudo em fatias transversais para revelar o efeito «melancia».",
+                puretTraitements = "Raramente tratada, sendo a zonagem natural o principal atrativo da pedra. Pureza variável consoante a zona.",
+                entretien = "Dureza de 7 a 7,5. Recomenda-se uma limpeza suave, em particular para as fatias finas."
+            ),
+            BuyingGuideArticle(
+                pierre = "Turmalina Paraíba",
+                accroche = "Um azul-esverdeado «néon» elétrico, único no reino mineral — a turmalina mais procurada e mais dispendiosa.",
+                origineCouleur = "São José da Batalha (Paraíba, Brasil), fonte histórica quase esgotada. Moçambique (Mavuco) e Nigéria (Edeko): fontes modernas mais acessíveis. Cor «néon» devida ao cobre, nunca observada nas restantes turmalinas.",
+                puretTraitements = "Um certificado que precise a origem (Brasil vs. África) é essencial, sendo a diferença de valor considerável. A pureza e a intensidade da cor cuprífera prevalecem sobre qualquer outro critério.",
+                entretien = "Dureza de 7 a 7,5. Pedra piroelétrica: recomenda-se uma limpeza suave, a proteger como qualquer pedra de valor muito elevado."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granada piropo",
+                accroche = "A granada vermelho-sangue clássica, sem diluição rodolita — a variedade mais pura da família piropo.",
+                origineCouleur = "República Checa (Boémia, região de Podsedice), África do Sul (mina de Kao, kimberlitos), Tanzânia (Umba). Vermelho-sangue profundo e homogéneo, sem tonalidade violácea notável.",
+                puretTraitements = "Nunca tratada, tal como toda a família das granadas. Ao contrário da rodolita, o piropo puro não contém ferro em proporção significativa.",
+                entretien = "Dureza de 7 a 7,5. Nenhum cuidado especial para além das precauções habituais para qualquer pedra de joalharia."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granada almandina / piropo",
+                accroche = "Uma granada vermelho profundo, nunca tratada — a mais comum e mais acessível da família.",
+                origineCouleur = "Índia (Colinas de Rajmahal, Jharkhand), Sri Lanka (Ratnapura), República Checa (Podsedice), Tanzânia (vale do Umba). Vermelho escuro a vermelho-acastanhado, por vezes ligeiramente violáceo.",
+                puretTraitements = "Nunca tratada térmica ou quimicamente. Sem clivagem, forte refração e bom brilho.",
+                entretien = "Dureza de 7 a 7,5, boa robustez geral. Nenhum cuidado especial."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granada rodolita",
+                accroche = "Um vermelho-violáceo «framboesa» de excelente transparência, entre as granadas mais elegantes.",
+                origineCouleur = "Tanzânia (vale do Umba), Sri Lanka (Ratnapura), Índia (Orissa). Vermelho-violáceo luminoso e homogéneo.",
+                puretTraitements = "Nunca tratada. Excelente transparência natural, raramente incluída a olho nu.",
+                entretien = "Dureza de 7 a 7,5. Nenhum cuidado especial."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granada estrelada",
+                accroche = "Uma almandina de quatro ou seis pontas luminosas, uma raridade encontrada quase exclusivamente no Idaho.",
+                origineCouleur = "Estados Unidos (Idaho, única jazida mundial de asterismo a quatro pontas), Índia (Odisha). Vermelho escuro; o asterismo de quatro pontas é único no mundo, o de seis pontas, ainda mais raro, provém das mesmas jazidas.",
+                puretTraitements = "Nunca tratada. A nitidez e a centragem da estrela prevalecem sobre a transparência do fundo.",
+                entretien = "Dureza de 7 a 7,5. Recomenda-se uma limpeza suave para preservar o polimento da cúpula."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granada malaia",
+                accroche = "Um rosa-alaranjado caloroso nascido da mistura de duas granadas, sem qualquer tratamento.",
+                origineCouleur = "Tanzânia (Umba), Quénia (Taita-Taveta), Madagáscar (Anjanabonoina). Rosa-alaranjado a alaranjado quente, tom único entre as granadas.",
+                puretTraitements = "Nenhum tratamento é necessário nem praticado: cor 100% natural, um dos grandes argumentos de venda desta variedade.",
+                entretien = "Dureza de 7 a 7,5. Nenhum cuidado especial."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granada espessartite",
+                accroche = "Um laranja «mandarina» radiante, entre as cores mais luminosas do reino mineral.",
+                origineCouleur = "Namíbia (região do Cunene), Nigéria (Estado de Nasarawa), Madagáscar (Fianarantsoa). Laranja vivo e saturado, por vezes tendendo para o vermelho-alaranjado.",
+                puretTraitements = "Cor natural, nunca tratada termicamente. Pureza geralmente boa a excelente.",
+                entretien = "Dureza de 7 a 7,5. Nenhum cuidado especial."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granada grossulária",
+                accroche = "A granada verde a amarelo-esverdeado, prima pouco colorida da tsavorite e da hessonite — a família mais diversificada em cores.",
+                origineCouleur = "Mali (Sandaré), Quénia (Voi), Canadá (Quebeque, Mina Jeffrey). De incolor a verde profundo, passando pelo amarelo-esverdeado e o castanho-alaranjado da hessonite.",
+                puretTraitements = "Nunca tratada. Pureza variável consoante o tom e a jazida.",
+                entretien = "Dureza de 7 a 7,5. Nenhum cuidado especial."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granada rodolita violácea",
+                accroche = "Um tom púrpura que muda consoante a iluminação, variante violeta da rodolita clássica.",
+                origineCouleur = "Tanzânia (vale do Umba), Moçambique (Cuamba). Púrpura a violeta intenso, o matiz dominante variando consoante a fonte de luz.",
+                puretTraitements = "Cor estável, nunca tratada. Pureza geralmente boa.",
+                entretien = "Dureza de 7 a 7,5. Nenhum cuidado especial."
+            ),
+            BuyingGuideArticle(
+                pierre = "Granada com mudança de cor",
+                accroche = "Verde-azulado de dia, vermelho-violeta à noite — um rival pouco conhecido da alexandrita, a um preço bem mais acessível.",
+                origineCouleur = "Tanzânia (Umba, Tunduru), Madagáscar (Bekily). O vanádio, e não o crómio, é responsável pela mudança de cor nesta granada, ao contrário da alexandrita.",
+                puretTraitements = "Nunca tratada. A intensidade da mudança de cor prevalece sobre o próprio tom, tal como na alexandrita.",
+                entretien = "Dureza de 7 a 7,5. Nenhum cuidado especial."
+            ),
+            BuyingGuideArticle(
+                pierre = "Topázio azul",
+                accroche = "O azul profundo obtido por irradiação seguida de aquecimento de um topázio incolor — a cor mais comercializada da espécie.",
+                origineCouleur = "Brasil (Minas Gerais) e Nigéria fornecem a matéria-prima incolor, irradiada e depois aquecida para desenvolver um azul que vai do céu ao «London Blue» profundo.",
+                puretTraitements = "Cor quase sistematicamente obtida por irradiação seguida de tratamento térmico, estável e permanente — divulgação obrigatória, amplamente aceite pelo mercado devido ao seu preço acessível.",
+                entretien = "Dureza 8, mas uma clivagem perfeita numa direção torna-o frágil a impactos. Evitar variações térmicas bruscas e proibir os ultrassons."
+            ),
+            BuyingGuideArticle(
+                pierre = "Topázio rosa",
+                accroche = "O rosa natural mais raro do topázio, historicamente extraído no Paquistão.",
+                origineCouleur = "Paquistão (Katlang, Mardan), Rússia (Urais, histórico). Rosa delicado a intenso; o rosa natural não tratado é raro, a distinguir do topázio rosa obtido por aquecimento de pedras castanhas.",
+                puretTraitements = "Verificar no certificado se o tom é natural ou obtido por tratamento térmico de matéria castanha, sendo a diferença de valor importante. Pureza naturalmente elevada.",
+                entretien = "Dureza 8, clivagem perfeita numa direção: evitar impactos e variações térmicas bruscas, proibir os ultrassons."
+            ),
+            BuyingGuideArticle(
+                pierre = "Topázio branco",
+                accroche = "O topázio na sua forma mais pura e mais comum, incolor e límpido — uma alternativa económica ao diamante.",
+                origineCouleur = "Brasil (Minas Gerais, Ouro Preto), Nigéria (Planalto de Jos), Paquistão (Katlang). Incolor e perfeitamente límpido; é também a matéria-prima mais abundante para a produção de topázio azul tratado.",
+                puretTraitements = "Geralmente não tratado ele próprio. Procura-se uma pureza muito elevada, sendo a sua transparência o seu principal trunfo.",
+                entretien = "Dureza 8, clivagem perfeita numa direção: evitar impactos e proibir os ultrassons."
             )
         )
     )
@@ -587,18 +1763,214 @@ object BuyingGuidesInfo {
                 entretien = "Твёрдость 8, устойчив. Уход как за сапфиром, без особых предосторожностей."
             ),
             BuyingGuideArticle(
-                pierre = "Турмалин",
-                accroche = "Камень тысячи цветов — от электрически-зелёного «параиба» до двухцветного розово-зелёного «арбузного» турмалина.",
-                origineCouleur = "Бразилия (Параиба): легендарный, чрезвычайно редкий медьсодержащий неоново-сине-зелёный цвет. Мозамбик и Нигерия: более доступные оттенки «в стиле параиба». Афганистан и Бразилия: красно-розовый рубеллит. Мадагаскар: многоцветная палитра. Разновидность параиба лидирует по стоимости, за ней следует насыщенный рубеллит.",
-                puretTraitements = "Термообработка для усиления некоторых оттенков распространена и принята рынком. Чистота варьируется в зависимости от разновидности; тонкие игольчатые включения часты и допустимы, если незаметны.",
-                entretien = "Твёрдость 7–7,5, в целом прочен. Пироэлектрический камень, притягивающий пыль статическим электричеством: рекомендуется бережная регулярная чистка."
+                pierre = "Сапфир жёлтый",
+                accroche = "Корунд во всех оттенках, кроме красного, обретает в жёлтом одну из самых светлых и доступных своих разновидностей.",
+                origineCouleur = "Шри-Ланка (Ратнапура), Мадагаскар (Илакака), Танзания (Тундуру). Ярко-жёлтый, светлый и однородный цвет, без зеленоватого отлива.",
+                puretTraitements = "Термообработка распространена для усиления и выравнивания цвета — принятая и стабильная обработка. Чистота обычно хороша невооружённым глазом.",
+                entretien = "Твёрдость 9, очень устойчив к повседневному износу. Ультразвуковая чистка безопасна для камня без диффузии."
             ),
             BuyingGuideArticle(
-                pierre = "Сапфир",
-                accroche = "Синий корунд по преимуществу, но также розовый, жёлтый или «падпараджа» — по твёрдости уступает только алмазу.",
+                pierre = "Сапфир зелёный",
+                accroche = "Сдержанный, часто дихроичный зелёный цвет — самая доступная окраска корунда.",
+                origineCouleur = "Австралия (Новый Южный Уэльс), Таиланд (Канчанабури), Нигерия (Мамбилла). Чистый зелёный цвет без избытка серого; дихроизм зелёный/жёлто-зелёный в зависимости от угла характерен для этого вида.",
+                puretTraitements = "Термообработка распространена и принята для выравнивания оттенка. Чистота обычно хороша.",
+                entretien = "Твёрдость 9, очень устойчив. Ультразвуковая чистка безопасна для камня без диффузии."
+            ),
+            BuyingGuideArticle(
+                pierre = "Сапфир синий",
+                accroche = "Эталонный синий цвет высокой ювелирной моды — по твёрдости уступает только алмазу.",
                 origineCouleur = "Кашмир: легендарный бархатистый синий цвет, почти исчерпанное, чрезвычайно редкое месторождение. Мьянма (Могок): интенсивный «королевский» синий. Шри-Ланка: более светлый синий, высокая прозрачность. Мадагаскар: основная современная добыча. Ценится глубокий бархатистый синий с высокой насыщенностью без избытка чёрного.",
-                puretTraitements = "Термообработка почти повсеместна и широко принята, улучшает цвет и чистоту. Диффузия (классическая титановая или более проблематичная бериллиевая) должна обязательно указываться отдельно в сертификате. Обычно ценится высокая чистота.",
-                entretien = "Твёрдость 9, сразу после алмаза: очень устойчив к повседневному износу. Ультразвуковая чистка безопасна, кроме камней с диффузией или заполнением."
+                puretTraitements = "Термообработка почти повсеместна и широко принята. Диффузия (классическая титановая или более проблематичная бериллиевая) должна быть указана отдельно в сертификате. Шёлковистые включения рутила могут вызывать астеризм (звёздчатый сапфир).",
+                entretien = "Твёрдость 9, очень устойчив к повседневному износу. Ультразвуковая чистка безопасна, кроме камней с диффузией или заполнением."
+            ),
+            BuyingGuideArticle(
+                pierre = "Сапфир из Оверни",
+                accroche = "Французский корунд глубокого сине-фиолетового оттенка, добываемый в вулканических породах Оверни.",
+                origineCouleur = "Франция (Эспали-Сен-Марсель, департамент Верхняя Луара) — единственный источник. Насыщенный сине-фиолетовый цвет, типичный для сапфиров базальтового происхождения; кристаллы обычно небольшие, огранённые камни редко превышают один карат.",
+                puretTraitements = "Мало или совсем не подвергается термообработке — редкость и местное происхождение важнее усиления цвета. Добыча невелика, камни оговариваются поштучно.",
+                entretien = "Твёрдость 9, очень устойчив. Ультразвуковая чистка безопасна."
+            ),
+            BuyingGuideArticle(
+                pierre = "Сапфир фиолетовый",
+                accroche = "Глубокий фиолетовый цвет — на границе между синим сапфиром и рубином.",
+                origineCouleur = "Шри-Ланка (Ратнапура), Мадагаскар (Илакака), Танзания (Тундуру). Насыщенный однородный фиолетовый цвет; может демонстрировать лёгкую смену оттенка между дневным светом и лампами накаливания.",
+                puretTraitements = "Термообработка распространена и принята для стабилизации оттенка. Чистота обычно хороша невооружённым глазом.",
+                entretien = "Твёрдость 9, очень устойчив. Ультразвуковая чистка безопасна для камня без диффузии."
+            ),
+            BuyingGuideArticle(
+                pierre = "Сапфир розовый",
+                accroche = "На границе между рубином и сапфиром — официальная граница между ними остаётся предметом споров между лабораториями.",
+                origineCouleur = "Шри-Ланка (Ратнапура), Мадагаскар (Илакака), Танзания (Тундуру). Яркий насыщенный розовый цвет; при превышении определённого порога насыщенности некоторые лаборатории переклассифицируют камень в рубин.",
+                puretTraitements = "Термообработка распространена и принята. Классификацию (розовый сапфир или рубин) следует проверять по сертификату, поскольку стоимость может сильно различаться.",
+                entretien = "Твёрдость 9, очень устойчив. Ультразвуковая чистка безопасна для камня без диффузии."
+            ),
+            BuyingGuideArticle(
+                pierre = "Сапфир белый",
+                accroche = "Корунд без следов окрашивающих элементов — сдержанная и доступная альтернатива алмазу.",
+                origineCouleur = "Шри-Ланка (Ратнапура), Мадагаскар (Илакака), Австралия (Новый Южный Уэльс). Бесцветный и прозрачный; дисперсия ниже, чем у алмаза, но твёрдость почти такая же.",
+                puretTraitements = "Редко обрабатывается, поскольку его природная прозрачность уже является главным достоинством. Ценится высокая чистота.",
+                entretien = "Твёрдость 9, отличная устойчивость к повседневному износу. Ультразвуковая чистка безопасна."
+            ),
+            BuyingGuideArticle(
+                pierre = "Сапфир звёздчатый",
+                accroche = "Светящаяся шестилучевая звезда, проявляющаяся при огранке кабошоном, чаще всего в синем или чёрном сапфире.",
+                origineCouleur = "Шри-Ланка (Ратнапура), Мьянма (Могок), Таиланд (Канчанабури, чёрная разновидность). Наиболее ценится астеризм с шестью идеально прямыми лучами, центрированными на куполе кабошона.",
+                puretTraitements = "Редко подвергается термообработке, поскольку она может повредить включения рутила, ответственные за астеризм. Чёткость и центрирование звезды важнее прозрачности.",
+                entretien = "Твёрдость 9, очень устойчив. Рекомендуется бережная чистка для сохранения полировки купола."
+            ),
+            BuyingGuideArticle(
+                pierre = "Сапфир тил",
+                accroche = "Двухцветный корунд, в котором синий и жёлтый сочетаются в своеобразный сине-зелёный оттенок, высоко ценимый знатоками.",
+                origineCouleur = "США (Монтана, Рок-Крик), Австралия (Новый Южный Уэльс), Мадагаскар (Илакака). Сине-жёлтая двухцветность, заметная отдельными зонами в необработанном камне, сливается в однородный сине-зелёный оттенок после огранки и правильной ориентации камня.",
+                puretTraitements = "Часто не подвергается термообработке, поскольку сам природный оттенок ценится коллекционерами. Решающую роль играет мастерство огранщика, ориентирующего камень для баланса двух цветов.",
+                entretien = "Твёрдость 9, очень устойчив. Ультразвуковая чистка безопасна для камня без диффузии."
+            ),
+            BuyingGuideArticle(
+                pierre = "Турмалин рубеллит",
+                accroche = "Насыщенный красный цвет, обязанный марганцу, — разновидность турмалина, ближе всего стоящая к рубину.",
+                origineCouleur = "Бразилия (рудник Крузейру, штат Минас-Жерайс), Нигерия (Ойо), Мозамбик (Алту-Лигонья), Афганистан (долина Папрок). Интенсивный и однородный красный до красно-розового цвет; выраженный плеохроизм, характерные штриховатые призматические кристаллы.",
+                puretTraitements = "Иногда подвергается термообработке для смягчения коричневатых тонов — принятая обработка. Чистота варьируется; игольчатые включения часты и допустимы, если незаметны.",
+                entretien = "Твёрдость 7–7,5, в целом хорошая прочность. Пироэлектрический камень, притягивающий пыль статическим электричеством: рекомендуется бережная чистка."
+            ),
+            BuyingGuideArticle(
+                pierre = "Турмалин жёлтый",
+                accroche = "Светлый канареечно-жёлтый цвет, природный, без обработки, — самая редкая окраска турмалина.",
+                origineCouleur = "Малави (Зомба), Бразилия (штат Минас-Жерайс), Нигерия (Ойо). Яркий светлый жёлтый цвет, не требующий вмешательства, в отличие от многих коммерческих оттенков турмалина.",
+                puretTraitements = "Обычно не обрабатывается, поскольку природный цвет уже востребован. Чистота часто хороша.",
+                entretien = "Твёрдость 7–7,5. Пироэлектрический камень: рекомендуется бережная регулярная чистка."
+            ),
+            BuyingGuideArticle(
+                pierre = "Турмалин хромистый",
+                accroche = "Глубокий насыщенный зелёный цвет, обязанный хрому и ванадию, — отличается от «классического» зелёного турмалина.",
+                origineCouleur = "Кения (Тайта-Тавета), Танзания (Умба). Насыщенный зелёный цвет, близкий к изумрудному; выраженный дихроизм, ориентация площадки имеет решающее значение для раскрытия наиболее насыщенного оттенка.",
+                puretTraitements = "Редко обрабатывается, поскольку цвет, обязанный хрому и ванадию, от природы интенсивен. Чистота обычно хороша.",
+                entretien = "Твёрдость 7–7,5. Пироэлектрический камень: рекомендуется бережная чистка."
+            ),
+            BuyingGuideArticle(
+                pierre = "Турмалин зелёный (верделит)",
+                accroche = "Зелёный цвет, обусловленный железом или хромом, — самая классическая и распространённая окраска турмалина.",
+                origineCouleur = "Бразилия (штат Минас-Жерайс), Мозамбик (Алту-Лигонья), Нигерия (Ойо). От чистого до тёмно-зелёного цвета; сильное двупреломление — огранщики ориентируют камень для оптимизации цвета.",
+                puretTraitements = "Иногда допускается термообработка для осветления слишком тёмных оттенков. Чистота варьируется в зависимости от происхождения.",
+                entretien = "Твёрдость 7–7,5. Пироэлектрический камень: рекомендуется бережная регулярная чистка."
+            ),
+            BuyingGuideArticle(
+                pierre = "Турмалин синий (индиголит)",
+                accroche = "Глубокий синий цвет, отличный от медьсодержащего сине-зелёного параиба, — без участия меди.",
+                origineCouleur = "Бразилия (штат Минас-Жерайс), Намибия (Эронго), Афганистан (Нуристан). От тёмно-синего до сине-серого цвета, обычно темнее, чем у параиба.",
+                puretTraitements = "Иногда подвергается термообработке для осветления слишком тёмного тона — принятая обработка. Чистота варьируется.",
+                entretien = "Твёрдость 7–7,5. Пироэлектрический камень: рекомендуется бережная чистка."
+            ),
+            BuyingGuideArticle(
+                pierre = "Турмалин розовый",
+                accroche = "Нежный оттенок, обязанный марганцу, лежащий в основе самых востребованных двухцветных турмалинов.",
+                origineCouleur = "Бразилия (рудник Крузейру, штат Минас-Жерайс), Афганистан (Папрок), Мозамбик (Алту-Лигонья). От светло- до насыщенно-розового цвета; кристаллы часто зональны, что лежит в основе двухцветных разновидностей, таких как «арбузный» турмалин.",
+                puretTraitements = "Редко обрабатывается. Чистота обычно хороша невооружённым глазом.",
+                entretien = "Твёрдость 7–7,5. Пироэлектрический камень: рекомендуется бережная чистка."
+            ),
+            BuyingGuideArticle(
+                pierre = "Турмалин чёрный (шерл)",
+                accroche = "Самая распространённая разновидность турмалина, ценимая как в сдержанной ювелирке, так и в литотерапии.",
+                origineCouleur = "Бразилия (штат Минас-Жерайс), Намибия (Эронго), Мадагаскар (Антсирабе). От непрозрачного до полупрозрачного чёрного цвета; призматические кристаллы часто со штриховкой, иногда крупные.",
+                puretTraitements = "Никогда не обрабатывается — его цвет и распространённость не требуют никакого вмешательства. Очень доступная цена.",
+                entretien = "Твёрдость 7–7,5, прочен. Уход простой, без особых предосторожностей."
+            ),
+            BuyingGuideArticle(
+                pierre = "Турмалин арбузный",
+                accroche = "Розовая сердцевина, окружённая зелёным, — словно ломтик фрукта, одна из самых эффектных двухцветных разновидностей турмалина.",
+                origineCouleur = "Бразилия (штат Минас-Жерайс), США (рудник Дантон, штат Мэн). Чёткая зональность: розовый цвет в центре, зелёный по краям; чаще всего гранится поперечными срезами, чтобы раскрыть «арбузный» эффект.",
+                puretTraitements = "Редко обрабатывается — природная зональность и есть главное достоинство камня. Чистота варьируется в зависимости от зоны.",
+                entretien = "Твёрдость 7–7,5. Рекомендуется бережная чистка, особенно для тонких срезов."
+            ),
+            BuyingGuideArticle(
+                pierre = "Турмалин парайба",
+                accroche = "Электрический «неоновый» сине-зелёный цвет, уникальный в минеральном царстве, — самый востребованный и дорогой из турмалинов.",
+                origineCouleur = "Сан-Жозе-да-Баталья (штат Параиба, Бразилия) — исторический, почти исчерпанный источник. Мозамбик (Мавуко) и Нигерия (Эдеко): более доступные современные источники. «Неоновый» цвет, обязанный меди, никогда не встречается у других турмалинов.",
+                puretTraitements = "Сертификат с указанием происхождения (Бразилия или Африка) обязателен, поскольку разница в стоимости весьма значительна. Чистота и интенсивность медного цвета важнее любого другого критерия.",
+                entretien = "Твёрдость 7–7,5. Пироэлектрический камень: рекомендуется бережная чистка, беречь как любой камень очень высокой стоимости."
+            ),
+            BuyingGuideArticle(
+                pierre = "Гранат пироп",
+                accroche = "Классический гранат кроваво-красного цвета, без родолитового разбавления, — самая чистая разновидность семейства пиропов.",
+                origineCouleur = "Чехия (Богемия, район Подседице), ЮАР (кимберлитовый рудник Као), Танзания (Умба). Глубокий однородный кроваво-красный цвет, без заметного фиолетового оттенка.",
+                puretTraitements = "Никогда не обрабатывается, как и всё семейство гранатов. В отличие от родолита, чистый пироп не содержит значительной доли железа.",
+                entretien = "Твёрдость 7–7,5. Особого ухода не требует, помимо обычных мер предосторожности для любого ювелирного камня."
+            ),
+            BuyingGuideArticle(
+                pierre = "Гранат альмандин / пироп",
+                accroche = "Гранат глубокого красного цвета, никогда не обрабатывается, — самый распространённый и доступный представитель семейства.",
+                origineCouleur = "Индия (холмы Раджмахал, штат Джаркханд), Шри-Ланка (Ратнапура), Чехия (Подседице), Танзания (долина Умба). От тёмно-красного до красно-коричневого цвета, иногда с лёгким фиолетовым оттенком.",
+                puretTraitements = "Никогда не подвергается термической или химической обработке. Спайность отсутствует, сильное преломление и хороший блеск.",
+                entretien = "Твёрдость 7–7,5, в целом хорошая прочность. Особого ухода не требует."
+            ),
+            BuyingGuideArticle(
+                pierre = "Гранат родолит",
+                accroche = "«Малиновый» красно-фиолетовый цвет отличной прозрачности — один из самых элегантных гранатов.",
+                origineCouleur = "Танзания (долина Умба), Шри-Ланка (Ратнапура), Индия (Орисса). Яркий однородный красно-фиолетовый цвет.",
+                puretTraitements = "Никогда не обрабатывается. Отличная природная прозрачность, редко содержит видимые невооружённым глазом включения.",
+                entretien = "Твёрдость 7–7,5. Особого ухода не требует."
+            ),
+            BuyingGuideArticle(
+                pierre = "Гранат звёздчатый",
+                accroche = "Альмандин с четырьмя или шестью светящимися лучами — редкость, встречающаяся почти исключительно в Айдахо.",
+                origineCouleur = "США (Айдахо — единственное в мире месторождение с четырёхлучевым астеризмом), Индия (Одиша). Тёмно-красный цвет; четырёхлучевой астеризм уникален в мире, ещё более редкий шестилучевой происходит из тех же месторождений.",
+                puretTraitements = "Никогда не обрабатывается. Чёткость и центрирование звезды важнее прозрачности фона.",
+                entretien = "Твёрдость 7–7,5. Рекомендуется бережная чистка для сохранения полировки купола."
+            ),
+            BuyingGuideArticle(
+                pierre = "Гранат малайя",
+                accroche = "Тёплый розово-оранжевый цвет, рождённый смешением двух гранатов, — без какой-либо обработки.",
+                origineCouleur = "Танзания (Умба), Кения (Тайта-Тавета), Мадагаскар (Анджанабонуина). От розово-оранжевого до тёплого оранжевого цвета — уникальный оттенок среди гранатов.",
+                puretTraitements = "Никакая обработка не требуется и не применяется: цвет на 100% природный — один из главных аргументов в пользу этой разновидности.",
+                entretien = "Твёрдость 7–7,5. Особого ухода не требует."
+            ),
+            BuyingGuideArticle(
+                pierre = "Гранат спессартин",
+                accroche = "Яркий «мандариновый» оранжевый цвет — один из самых светлых в минеральном царстве.",
+                origineCouleur = "Намибия (регион Кунене), Нигерия (штат Насарава), Мадагаскар (Фианаранцуа). Яркий насыщенный оранжевый цвет, иногда с уклоном в красно-оранжевый.",
+                puretTraitements = "Природный цвет, никогда не подвергается термообработке. Чистота обычно от хорошей до отличной.",
+                entretien = "Твёрдость 7–7,5. Особого ухода не требует."
+            ),
+            BuyingGuideArticle(
+                pierre = "Гранат гроссуляр",
+                accroche = "Гранат от зелёного до жёлто-зелёного цвета, слабо окрашенный родственник цаворита и гессонита, — самое разнообразное по окраске семейство.",
+                origineCouleur = "Мали (Сандаре), Кения (Вои), Канада (провинция Квебек, рудник Джеффри). От бесцветного до глубокого зелёного цвета, через жёлто-зелёный и коричнево-оранжевый гессонита.",
+                puretTraitements = "Никогда не обрабатывается. Чистота варьируется в зависимости от оттенка и месторождения.",
+                entretien = "Твёрдость 7–7,5. Особого ухода не требует."
+            ),
+            BuyingGuideArticle(
+                pierre = "Гранат родолит фиолетовый",
+                accroche = "Пурпурный оттенок, меняющийся в зависимости от освещения, — фиолетовый вариант классического родолита.",
+                origineCouleur = "Танзания (долина Умба), Мозамбик (Куамба). От пурпурного до насыщенного фиолетового цвета — преобладающий оттенок меняется в зависимости от источника света.",
+                puretTraitements = "Цвет стабилен, никогда не обрабатывается. Чистота обычно хороша.",
+                entretien = "Твёрдость 7–7,5. Особого ухода не требует."
+            ),
+            BuyingGuideArticle(
+                pierre = "Гранат с эффектом смены цвета",
+                accroche = "Синевато-зелёный днём, красно-фиолетовый вечером — малоизвестный соперник александрита по значительно более доступной цене.",
+                origineCouleur = "Танзания (Умба, Тундуру), Мадагаскар (Бекили). В отличие от александрита, за смену цвета в этом гранате отвечает не хром, а ванадий.",
+                puretTraitements = "Никогда не обрабатывается. Как и в случае с александритом, сила смены цвета важнее самого оттенка.",
+                entretien = "Твёрдость 7–7,5. Особого ухода не требует."
+            ),
+            BuyingGuideArticle(
+                pierre = "Топаз голубой",
+                accroche = "Глубокий голубой цвет, полученный облучением, а затем нагревом бесцветного топаза, — самая коммерчески распространённая окраска этого вида.",
+                origineCouleur = "Бразилия (штат Минас-Жерайс) и Нигерия поставляют бесцветное сырьё, которое облучают, а затем нагревают для получения голубого цвета — от небесно-голубого до глубокого «London Blue».",
+                puretTraitements = "Цвет почти всегда получен облучением с последующей термообработкой, стабилен и постоянен — раскрытие обязательно, обработка широко принята рынком благодаря доступной цене камня.",
+                entretien = "Твёрдость 8, но идеальная спайность в одном направлении делает его хрупким к ударам. Избегать резких перепадов температуры, не использовать ультразвуковую чистку."
+            ),
+            BuyingGuideArticle(
+                pierre = "Топаз розовый",
+                accroche = "Самый редкий природный розовый цвет топаза, исторически добывавшийся в Пакистане.",
+                origineCouleur = "Пакистан (Катланг, Мардан), Россия (Урал, историческое месторождение). От нежного до насыщенного розового цвета; природный необработанный розовый редок, его следует отличать от розового топаза, полученного нагревом коричневых камней.",
+                puretTraitements = "Следует проверять по сертификату, природный ли это оттенок или полученный термообработкой коричневого материала, поскольку разница в стоимости значительна. Природная высокая чистота.",
+                entretien = "Твёрдость 8, идеальная спайность в одном направлении: избегать ударов и резких перепадов температуры, не использовать ультразвуковую чистку."
+            ),
+            BuyingGuideArticle(
+                pierre = "Топаз белый",
+                accroche = "Топаз в самой чистой и распространённой форме — бесцветный и прозрачный, экономичная альтернатива алмазу.",
+                origineCouleur = "Бразилия (штат Минас-Жерайс, Ору-Прету), Нигерия (плато Джос), Пакистан (Катланг). Бесцветный и совершенно прозрачный; это также самое распространённое сырьё для производства обработанного голубого топаза.",
+                puretTraitements = "Сам по себе обычно не обрабатывается. Ценится очень высокая чистота, поскольку прозрачность — его главное достоинство.",
+                entretien = "Твёрдость 8, идеальная спайность в одном направлении: избегать ударов, не использовать ультразвуковую чистку."
             )
         )
     )
@@ -670,18 +2042,214 @@ object BuyingGuidesInfo {
                 entretien = "Hardheid 8, bestendig. Verzorging zoals bij saffier, zonder bijzondere voorzorgen."
             ),
             BuyingGuideArticle(
-                pierre = "Toermalijn",
-                accroche = "De steen met duizend kleuren, van het elektrische «paraíba»-groenblauw tot de tweekleurige roze-groene «watermeloen»-toermalijn.",
-                origineCouleur = "Brazilië (Paraíba): legendarisch, uiterst zeldzaam koperhoudend neon-groenblauw. Mozambique en Nigeria: toegankelijkere «paraíba-achtige» tinten. Afghanistan en Brazilië: rood-roze rubelliet. Madagaskar: veelkleurig palet. De paraíba-variëteit voert de waardering aan, gevolgd door intense rubelliet.",
-                puretTraitements = "Verhitten om bepaalde tinten te versterken is gebruikelijk en aanvaard. De zuiverheid varieert per variëteit; fijne, draadvormige insluitsels komen vaak voor en worden getolereerd indien discreet.",
-                entretien = "Hardheid 7 tot 7,5, over het algemeen stevig. Een pyro-elektrische steen die stof aantrekt door statische elektriciteit: een zachte, regelmatige reiniging wordt aanbevolen."
+                pierre = "Gele saffier",
+                accroche = "Korund in elke tint behalve rood vindt in geel een van zijn meest stralende en toegankelijke variëteiten.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagaskar (Ilakaka), Tanzania (Tunduru). Levendig en stralend geel, egaal, zonder groenachtige zweem.",
+                puretTraitements = "Verhitten is gebruikelijk om de kleur te intensiveren en gelijkmatiger te maken, een aanvaarde en stabiele behandeling. Zuiverheid over het algemeen goed met het blote oog.",
+                entretien = "Hardheid 9, zeer bestand tegen dagelijks gebruik. Ultrasone reiniging is veilig voor een niet-gediffundeerde steen."
             ),
             BuyingGuideArticle(
-                pierre = "Saffier",
-                accroche = "Het blauwe corundum bij uitstek, maar ook roze, geel of «padparadscha» — na diamant de hardste edelsteen.",
-                origineCouleur = "Kasjmir: legendarisch fluweelachtig blauw, een bijna uitgeputte, uiterst zeldzame vindplaats. Myanmar (Mogok): intens «royal» blauw. Sri Lanka: lichter blauw, grote transparantie. Madagaskar: de belangrijkste moderne productie. Gezocht wordt een diep fluweelachtig blauw met sterke verzadiging, zonder te veel zwart.",
-                puretTraitements = "Verhitten is vrijwel de norm en algemeen aanvaard, verbetert kleur en zuiverheid. Diffusie (klassiek met titaan, of problematischer met beryllium) moet altijd apart op het certificaat worden vermeld. Meestal wordt hoge zuiverheid gezocht.",
-                entretien = "Hardheid 9, net na diamant: zeer bestand tegen dagelijks gebruik. Ultrasone reiniging is veilig, behalve bij een gediffundeerde of opgevulde steen."
+                pierre = "Groene saffier",
+                accroche = "Een ingetogen en vaak dichroïsch groen, de meest toegankelijke kleur van het korund.",
+                origineCouleur = "Australië (Nieuw-Zuid-Wales), Thailand (Kanchanaburi), Nigeria (Mambilla). Zuiver groen, zonder te veel grijs; het dichroïsme groen/geelgroen naargelang de hoek is kenmerkend voor de soort.",
+                puretTraitements = "Verhitten is gebruikelijk en aanvaard om de tint gelijkmatiger te maken. Zuiverheid over het algemeen goed.",
+                entretien = "Hardheid 9, zeer bestendig. Ultrasone reiniging is veilig voor een niet-gediffundeerde steen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Blauwe saffier",
+                accroche = "Het referentieblauw van de haute joaillerie, na diamant de hardste edelsteen.",
+                origineCouleur = "Kasjmir: legendarisch fluweelachtig blauw, een vrijwel uitgeputte, uiterst zeldzame vindplaats. Myanmar (Mogok): intens «royal» blauw. Sri Lanka: lichter blauw, grote transparantie. Madagaskar: de belangrijkste moderne productie. Diep fluweelachtig blauw, sterke verzadiging zonder overmatig zwart.",
+                puretTraitements = "Verhitten is vrijwel systematisch en algemeen aanvaard. Diffusie (klassiek met titaan, of problematischer met beryllium) moet apart op het certificaat worden vermeld. Zijdeachtige rutiel-insluitsels kunnen een asterisme (sterrensaffier) veroorzaken.",
+                entretien = "Hardheid 9, zeer bestand tegen dagelijks gebruik. Ultrasone reiniging is veilig, behalve bij een gediffundeerde of opgevulde steen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Saffier van Auvergne",
+                accroche = "Een Frans korund met een diepe blauwpaarse tint, gewonnen uit de vulkanische bodem van Auvergne.",
+                origineCouleur = "Frankrijk (Espaly-Saint-Marcel, Haute-Loire), de enige bron. Zeer intens blauwpaars, kenmerkend voor saffieren van basaltische oorsprong; over het algemeen kleine kristallen, zelden meer dan één karaat geslepen.",
+                puretTraitements = "Weinig of niet verhit, aangezien de zeldzaamheid en de lokale herkomst zwaarder wegen dan het intensiveren van de kleur. Kleine productie, per stuk te onderhandelen.",
+                entretien = "Hardheid 9, zeer bestendig. Ultrasone reiniging is veilig."
+            ),
+            BuyingGuideArticle(
+                pierre = "Paarse saffier",
+                accroche = "Een diep paars, op de grens tussen blauwe saffier en robijn.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagaskar (Ilakaka), Tanzania (Tunduru). Intens en egaal paars; kan een lichte kleurverandering vertonen tussen daglicht en gloeilicht.",
+                puretTraitements = "Verhitten is gebruikelijk en aanvaard om de tint te stabiliseren. Zuiverheid over het algemeen goed met het blote oog.",
+                entretien = "Hardheid 9, zeer bestendig. Ultrasone reiniging is veilig voor een niet-gediffundeerde steen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Roze saffier",
+                accroche = "Op de grens tussen robijn en saffier, waarvan de officiële grens per laboratorium nog steeds ter discussie staat.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagaskar (Ilakaka), Tanzania (Tunduru). Levendig en intens roze; boven een bepaalde verzadigingsdrempel wordt de steen door sommige laboratoria als robijn geherclassificeerd.",
+                puretTraitements = "Verhitten is gebruikelijk en aanvaard. Controleer de classificatie (roze saffier of robijn) op het certificaat, aangezien de waarde sterk kan verschillen.",
+                entretien = "Hardheid 9, zeer bestendig. Ultrasone reiniging is veilig voor een niet-gediffundeerde steen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Witte saffier",
+                accroche = "Het korund zonder kleurgevend spoor, een ingetogen en toegankelijk alternatief voor diamant.",
+                origineCouleur = "Sri Lanka (Ratnapura), Madagaskar (Ilakaka), Australië (Nieuw-Zuid-Wales). Kleurloos en helder; dispersie lager dan die van diamant, maar vrijwel gelijke hardheid.",
+                puretTraitements = "Zelden behandeld, aangezien de natuurlijke transparantie al de belangrijkste troef is. Hoge zuiverheid is gewild.",
+                entretien = "Hardheid 9, uitstekend bestand tegen dagelijkse slijtage. Ultrasone reiniging is veilig."
+            ),
+            BuyingGuideArticle(
+                pierre = "Sterrensaffier",
+                accroche = "Een stralende ster met zes stralen, zichtbaar gemaakt door een cabochonslijpvorm, meestal in een blauwe of zwarte saffier.",
+                origineCouleur = "Sri Lanka (Ratnapura), Myanmar (Mogok), Thailand (Kanchanaburi, zwarte variëteit). Het meest gewilde asterisme toont zes volkomen rechte stralen, gecentreerd op de koepel van de cabochon.",
+                puretTraitements = "Zelden verhit, aangezien een thermische behandeling de rutiel-insluitsels die het asterisme veroorzaken kan aantasten. De scherpte en centrering van de ster wegen zwaarder dan de transparantie.",
+                entretien = "Hardheid 9, zeer bestendig. Zachte reiniging aanbevolen om het polijstwerk van de koepel te behouden."
+            ),
+            BuyingGuideArticle(
+                pierre = "Teal-saffier",
+                accroche = "Een tweekleurig korund waarin blauw en geel samensmelten tot een unieke blauwgroene tint, zeer gewild bij kenners.",
+                origineCouleur = "Verenigde Staten (Montana, Rock Creek), Australië (Nieuw-Zuid-Wales), Madagaskar (Ilakaka). De blauw-gele tweekleurigheid, in de ruwe steen zichtbaar in afzonderlijke zones, versmelt tot een egaal blauwgroen zodra de steen geslepen en georiënteerd is.",
+                puretTraitements = "Vaak onverhit, aangezien de natuurlijke nuance juist door verzamelaars wordt gezocht. Het vakmanschap van de slijper, die de steen oriënteert om beide kleuren in balans te brengen, is doorslaggevend.",
+                entretien = "Hardheid 9, zeer bestendig. Ultrasone reiniging is veilig voor een niet-gediffundeerde steen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Rubelliet toermalijn",
+                accroche = "Een intens rood dankzij mangaan, de variëteit die het dichtst bij robijn komt onder de toermalijnen.",
+                origineCouleur = "Brazilië (Cruzeiro-mijn, Minas Gerais), Nigeria (Oyo), Mozambique (Alto Ligonha), Afghanistan (Paprok-vallei). Intens en egaal rood tot roodroze; uitgesproken pleochroïsme, kenmerkende gestreepte prismatische kristallen.",
+                puretTraitements = "Af en toe verhit om bruine ondertonen te verzachten, een aanvaarde behandeling. Wisselende zuiverheid; fijne, draadvormige insluitsels komen vaak voor en worden getolereerd indien discreet.",
+                entretien = "Hardheid 7 tot 7,5, over het algemeen stevig. Een pyro-elektrische steen die stof aantrekt door statische elektriciteit: zachte reiniging aanbevolen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Gele toermalijn",
+                accroche = "Een stralend kanariegeel, natuurlijk en onbehandeld — de zeldzaamste kleur binnen de toermalijnen.",
+                origineCouleur = "Malawi (Zomba), Brazilië (Minas Gerais), Nigeria (Oyo). Levendig en stralend geel, zonder dat ingrijpen nodig is, in tegenstelling tot veel commerciële tinten van toermalijn.",
+                puretTraitements = "Meestal onbehandeld, aangezien de natuurlijke kleur al gewild is. Zuiverheid vaak goed.",
+                entretien = "Hardheid 7 tot 7,5. Een pyro-elektrische steen: zachte en regelmatige reiniging aanbevolen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Chroomtoermalijn",
+                accroche = "Een diep en verzadigd groen dankzij chroom en vanadium, te onderscheiden van het «klassieke» groen van toermalijn.",
+                origineCouleur = "Kenia (Taita-Taveta), Tanzania (Umba). Intens groen dat dicht bij smaragd komt; uitgesproken dichroïsme, waarbij de oriëntatie van de tafel bepalend is om de meest verzadigde tint te tonen.",
+                puretTraitements = "Zelden behandeld, aangezien de kleur door chroom en vanadium van nature al intens is. Zuiverheid over het algemeen goed.",
+                entretien = "Hardheid 7 tot 7,5. Een pyro-elektrische steen: zachte reiniging aanbevolen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Groene toermalijn (verdeliet)",
+                accroche = "Een groen dat zijn kleur dankt aan ijzer of chroom, de meest klassieke en verbreide kleur van toermalijn.",
+                origineCouleur = "Brazilië (Minas Gerais), Mozambique (Alto Ligonha), Nigeria (Oyo). Zuiver tot donker groen; sterke dubbele breking, waarbij slijpers de steen oriënteren om de kleur te optimaliseren.",
+                puretTraitements = "Af en toe verhit, een aanvaarde behandeling om te donkere tinten lichter te maken. Zuiverheid wisselt naargelang de herkomst.",
+                entretien = "Hardheid 7 tot 7,5. Een pyro-elektrische steen: zachte en regelmatige reiniging aanbevolen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Blauwe toermalijn (indigoliet)",
+                accroche = "Een diep blauw, te onderscheiden van het kopergedreven blauwgroen van Paraíba, zonder tussenkomst van koper.",
+                origineCouleur = "Brazilië (Minas Gerais), Namibië (Erongo), Afghanistan (Nuristan). Donkerblauw tot blauwgrijs, over het algemeen donkerder dan Paraíba.",
+                puretTraitements = "Af en toe verhit om een te donkere tint lichter te maken, een aanvaarde behandeling. Wisselende zuiverheid.",
+                entretien = "Hardheid 7 tot 7,5. Een pyro-elektrische steen: zachte reiniging aanbevolen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Roze toermalijn",
+                accroche = "Een tedere tint dankzij mangaan, aan de oorsprong van de meest gewilde tweekleurige toermalijnen.",
+                origineCouleur = "Brazilië (Cruzeiro-mijn, Minas Gerais), Afghanistan (Paprok), Mozambique (Alto Ligonha). Lichtroze tot intens roze; vaak gezoneerde kristallen, aan de oorsprong van tweekleurige variëteiten zoals de watermeloentoermalijn.",
+                puretTraitements = "Zelden behandeld. Zuiverheid over het algemeen goed met het blote oog.",
+                entretien = "Hardheid 7 tot 7,5. Een pyro-elektrische steen: zachte reiniging aanbevolen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Zwarte toermalijn (schörl)",
+                accroche = "De meest voorkomende toermalijnvariëteit, gewaardeerd in sobere sieraden zoals in lithotherapie.",
+                origineCouleur = "Brazilië (Minas Gerais), Namibië (Erongo), Madagaskar (Antsirabe). Ondoorzichtig tot subtransparant zwart; vaak gestreepte prismatische kristallen, soms van aanzienlijke omvang.",
+                puretTraitements = "Nooit behandeld, aangezien de kleur en de overvloed geen enkel ingrijpen rechtvaardigen. Zeer toegankelijke prijs.",
+                entretien = "Hardheid 7 tot 7,5, stevig. Eenvoudig onderhoud, zonder bijzondere voorzorgen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Watermeloentoermalijn",
+                accroche = "Een roze hart omgeven door groen, als een plakje fruit — een van de meest spectaculaire tweekleurige toermalijnen.",
+                origineCouleur = "Brazilië (Minas Gerais), Verenigde Staten (Dunton-mijn, Maine). Duidelijke zonering, roze in het midden en groen aan de rand; meestal geslepen in dwarse plakjes om het «watermeloen»-effect te tonen.",
+                puretTraitements = "Zelden behandeld, aangezien de natuurlijke zonering de belangrijkste aantrekkingskracht van de steen is. Zuiverheid wisselt per zone.",
+                entretien = "Hardheid 7 tot 7,5. Zachte reiniging aanbevolen, met name voor de dunne plakjes."
+            ),
+            BuyingGuideArticle(
+                pierre = "Paraíba-toermalijn",
+                accroche = "Een elektrisch «neon» blauwgroen, uniek in het mineralenrijk — de meest gewilde en kostbaarste toermalijn.",
+                origineCouleur = "São José da Batalha (Paraíba, Brazilië), een vrijwel uitgeputte historische bron. Mozambique (Mavuco) en Nigeria (Edeko): toegankelijkere moderne bronnen. «Neon»-kleur dankzij koper, nooit waargenomen bij andere toermalijnen.",
+                puretTraitements = "Een certificaat dat de herkomst (Brazilië versus Afrika) vermeldt is essentieel, aangezien het waardeverschil aanzienlijk is. Zuiverheid en intensiteit van de koperkleur wegen zwaarder dan elk ander criterium.",
+                entretien = "Hardheid 7 tot 7,5. Een pyro-elektrische steen: zachte reiniging aanbevolen, te beschermen zoals elke steen van zeer hoge waarde."
+            ),
+            BuyingGuideArticle(
+                pierre = "Pyroopgranaat",
+                accroche = "Het klassieke bloedrode granaat, zonder de verdunning van rhodoliet — de zuiverste variëteit binnen de pyroopfamilie.",
+                origineCouleur = "Tsjechië (Bohemen, streek van Podsedice), Zuid-Afrika (Kao-mijn, kimberlieten), Tanzania (Umba). Diep en egaal bloedrood, zonder noemenswaardige paarse ondertoon.",
+                puretTraitements = "Nooit behandeld, zoals de gehele granaatfamilie. In tegenstelling tot rhodoliet bevat zuiver pyroop geen significant aandeel ijzer.",
+                entretien = "Hardheid 7 tot 7,5. Geen bijzondere verzorging nodig, buiten de gebruikelijke voorzorgen voor elke sieraadsteen."
+            ),
+            BuyingGuideArticle(
+                pierre = "Almandijn-/pyroopgranaat",
+                accroche = "Een dieprood granaat, nooit behandeld — het meest voorkomende en toegankelijke lid van de familie.",
+                origineCouleur = "India (Rajmahal Hills, Jharkhand), Sri Lanka (Ratnapura), Tsjechië (Podsedice), Tanzania (Umba-vallei). Donkerrood tot roodbruin, soms licht paarsig.",
+                puretTraitements = "Nooit thermisch of chemisch behandeld. Geen splijting, sterke breking en goede glans.",
+                entretien = "Hardheid 7 tot 7,5, over het algemeen stevig. Geen bijzondere verzorging nodig."
+            ),
+            BuyingGuideArticle(
+                pierre = "Rhodolietgranaat",
+                accroche = "Een «framboos»-rood met paarse ondertoon en een uitstekende transparantie, een van de meest elegante granaten.",
+                origineCouleur = "Tanzania (Umba-vallei), Sri Lanka (Ratnapura), India (Orissa). Levendig en egaal roodpaars.",
+                puretTraitements = "Nooit behandeld. Uitstekende natuurlijke transparantie, zelden met het blote oog insluitsels zichtbaar.",
+                entretien = "Hardheid 7 tot 7,5. Geen bijzondere verzorging nodig."
+            ),
+            BuyingGuideArticle(
+                pierre = "Sterrengranaat",
+                accroche = "Een almandijn met vier of zes stralende punten, een zeldzaamheid die vrijwel uitsluitend in Idaho wordt gevonden.",
+                origineCouleur = "Verenigde Staten (Idaho, de enige vindplaats ter wereld met vierstralig asterisme), India (Odisha). Donkerrood; het vierstralige asterisme is wereldwijd uniek, het nog zeldzamere zesstralige asterisme komt uit dezelfde vindplaatsen.",
+                puretTraitements = "Nooit behandeld. De scherpte en centrering van de ster wegen zwaarder dan de transparantie van de ondergrond.",
+                entretien = "Hardheid 7 tot 7,5. Zachte reiniging aanbevolen om het polijstwerk van de koepel te behouden."
+            ),
+            BuyingGuideArticle(
+                pierre = "Malayagranaat",
+                accroche = "Een warm roze-oranje, ontstaan uit de menging van twee granaten, zonder enige behandeling.",
+                origineCouleur = "Tanzania (Umba), Kenia (Taita-Taveta), Madagaskar (Anjanabonoina). Roze-oranje tot warm oranje, een unieke tint onder de granaten.",
+                puretTraitements = "Geen enkele behandeling is nodig of gebruikelijk: 100% natuurlijke kleur, een van de grote verkoopargumenten van deze variëteit.",
+                entretien = "Hardheid 7 tot 7,5. Geen bijzondere verzorging nodig."
+            ),
+            BuyingGuideArticle(
+                pierre = "Spessartietgranaat",
+                accroche = "Een stralend «mandarijn»-oranje, een van de meest levendige kleuren uit het mineralenrijk.",
+                origineCouleur = "Namibië (Kunene-regio), Nigeria (staat Nasarawa), Madagaskar (Fianarantsoa). Levendig en verzadigd oranje, soms neigend naar roodoranje.",
+                puretTraitements = "Natuurlijke kleur, nooit thermisch behandeld. Zuiverheid over het algemeen goed tot uitstekend.",
+                entretien = "Hardheid 7 tot 7,5. Geen bijzondere verzorging nodig."
+            ),
+            BuyingGuideArticle(
+                pierre = "Grossulaargranaat",
+                accroche = "Het groene tot geelgroene granaat, een minder gekleurde neef van tsavoriet en hessoniet — de kleurrijkste familie binnen de granaten.",
+                origineCouleur = "Mali (Sandaré), Kenia (Voi), Canada (Québec, Jeffrey Mine). Van kleurloos tot diep groen, via geelgroen en het bruinoranje van hessoniet.",
+                puretTraitements = "Nooit behandeld. Zuiverheid varieert naargelang de tint en de vindplaats.",
+                entretien = "Hardheid 7 tot 7,5. Geen bijzondere verzorging nodig."
+            ),
+            BuyingGuideArticle(
+                pierre = "Paarse rhodolietgranaat",
+                accroche = "Een purperen tint die verandert naargelang de verlichting, een paarse variant van de klassieke rhodoliet.",
+                origineCouleur = "Tanzania (Umba-vallei), Mozambique (Cuamba). Purper tot intens paars, waarbij de dominante nuance verschilt naargelang de lichtbron.",
+                puretTraitements = "Stabiele kleur, nooit behandeld. Zuiverheid over het algemeen goed.",
+                entretien = "Hardheid 7 tot 7,5. Geen bijzondere verzorging nodig."
+            ),
+            BuyingGuideArticle(
+                pierre = "Kleurveranderende granaat",
+                accroche = "Blauwgroen bij daglicht, roodpaars 's avonds — een miskende rivaal van alexandriet, tegen een veel toegankelijkere prijs.",
+                origineCouleur = "Tanzania (Umba, Tunduru), Madagaskar (Bekily). In tegenstelling tot alexandriet is hier vanadium, en niet chroom, verantwoordelijk voor de kleurverandering van dit granaat.",
+                puretTraitements = "Nooit behandeld. De sterkte van de kleurverandering weegt zwaarder dan de tint zelf, net als bij alexandriet.",
+                entretien = "Hardheid 7 tot 7,5. Geen bijzondere verzorging nodig."
+            ),
+            BuyingGuideArticle(
+                pierre = "Blauwe topaas",
+                accroche = "Het diepe blauw verkregen door bestraling gevolgd door verhitting van een kleurloze topaas — de meest verhandelde kleur binnen deze soort.",
+                origineCouleur = "Brazilië (Minas Gerais) en Nigeria leveren de kleurloze grondstof, die bestraald en vervolgens verhit wordt om een blauw te ontwikkelen dat varieert van hemelsblauw tot diep «London Blue».",
+                puretTraitements = "De kleur wordt vrijwel systematisch verkregen door bestraling gevolgd door een thermische behandeling, stabiel en permanent — vermelding is verplicht, en de behandeling wordt door de markt breed aanvaard vanwege de toegankelijke prijs.",
+                entretien = "Hardheid 8, maar een perfecte splijting in één richting maakt hem breekbaar bij stoten. Vermijd plotselinge temperatuurschommelingen en gebruik geen ultrasoonreiniger."
+            ),
+            BuyingGuideArticle(
+                pierre = "Roze topaas",
+                accroche = "Het zeldzaamste natuurlijke roze van de topaas, van oudsher gewonnen in Pakistan.",
+                origineCouleur = "Pakistan (Katlang, Mardan), Rusland (Oeral, historisch). Delicaat tot intens roze; het onbehandelde natuurlijke roze is zeldzaam en te onderscheiden van roze topaas verkregen door verhitting van bruine stenen.",
+                puretTraitements = "Controleer op het certificaat of de tint natuurlijk is of verkregen door thermische behandeling van bruin materiaal, aangezien het waardeverschil aanzienlijk is. Van nature hoge zuiverheid.",
+                entretien = "Hardheid 8, perfecte splijting in één richting: vermijd stoten en plotselinge temperatuurschommelingen, gebruik geen ultrasoonreiniger."
+            ),
+            BuyingGuideArticle(
+                pierre = "Witte topaas",
+                accroche = "Topaas in zijn zuiverste en meest voorkomende vorm, kleurloos en helder — een betaalbaar alternatief voor diamant.",
+                origineCouleur = "Brazilië (Minas Gerais, Ouro Preto), Nigeria (Jos Plateau), Pakistan (Katlang). Kleurloos en volmaakt helder; tevens de meest voorkomende grondstof voor de productie van behandelde blauwe topaas.",
+                puretTraitements = "Doorgaans zelf niet behandeld. Zeer hoge zuiverheid is gewild, aangezien de transparantie de belangrijkste troef is.",
+                entretien = "Hardheid 8, perfecte splijting in één richting: vermijd stoten en gebruik geen ultrasoonreiniger."
             )
         )
     )
@@ -753,18 +2321,214 @@ object BuyingGuidesInfo {
                 entretien = "硬度8,耐用。保养方式与蓝宝石相同,无需特殊防护。"
             ),
             BuyingGuideArticle(
-                pierre = "碧玺",
-                accroche = "拥有千种颜色的宝石,从电光般的「帕拉伊巴」蓝绿色到双色的粉绿「西瓜」碧玺。",
-                origineCouleur = "巴西(帕拉伊巴):传奇且极为稀有的含铜霓虹蓝绿色。莫桑比克与尼日利亚:价格更亲民的「类帕拉伊巴」色调。阿富汗与巴西:红粉色的红碧玺。马达加斯加:色彩缤纷。帕拉伊巴品种价值最高,其次是浓艳的红碧玺。",
-                puretTraitements = "加热以增强某些色调的处理常见且被接受。净度因品种而异;细针状内含物常见,若不明显则可接受。",
-                entretien = "硬度7至7.5,整体较为坚固。碧玺具有热电性,会因静电吸附灰尘:建议定期轻柔清洁。"
+                pierre = "黄色蓝宝石",
+                accroche = "除红色以外的所有色调之中,黄色蓝宝石是刚玉家族中最明亮、也最平易近人的品种之一。",
+                origineCouleur = "斯里兰卡(拉特纳普勒)、马达加斯加(伊拉卡卡)、坦桑尼亚(通杜鲁)。理想颜色为鲜艳明亮、色调均匀的黄色,不带绿色反光。",
+                puretTraitements = "加热处理常见,用以强化并均匀色彩,该处理稳定且被市场接受。净度通常肉眼可见良好。",
+                entretien = "硬度9,日常佩戴非常耐用。对未经扩散处理的宝石而言,超声波清洗安全无虞。"
+            ),
+            BuyingGuideArticle(
+                pierre = "绿色蓝宝石",
+                accroche = "低调内敛、常具二色性的绿色,是刚玉家族中价格最亲民的色彩。",
+                origineCouleur = "澳大利亚(新南威尔士)、泰国(坎查那武里)、尼日利亚(曼比拉高原)。理想颜色为纯正的绿色,不带过多灰色调;依观察角度呈现绿色与黄绿色之间明显的二色性,是这一品种的特征。",
+                puretTraitements = "加热处理常见且被接受,用以均匀色调。净度通常良好。",
+                entretien = "硬度9,非常耐用。对未经扩散处理的宝石而言,超声波清洗安全无虞。"
             ),
             BuyingGuideArticle(
                 pierre = "蓝宝石",
-                accroche = "典型的蓝色刚玉,但也有粉色、黄色或「帕帕拉恰」色——硬度仅次于钻石。",
+                accroche = "高级珠宝中标杆性的蓝色,硬度仅次于钻石。",
                 origineCouleur = "克什米尔:传奇的天鹅绒蓝,产地几近枯竭,极为稀有。缅甸(抹谷):浓郁的「皇家蓝」。斯里兰卡:蓝色较浅,透明度极高。马达加斯加:当今主要产地。理想颜色为浓郁的天鹅绒蓝,饱和度高且不过分发黑。",
-                puretTraitements = "加热处理几乎是常态且被广泛接受,可改善颜色与净度。扩散处理(传统的钛扩散,或问题较多的铍扩散)必须在证书上明确区分。通常追求高净度。",
-                entretien = "硬度9,仅次于钻石:日常佩戴非常耐用。超声波清洗通常安全,除非宝石经过扩散或充填处理。"
+                puretTraitements = "加热处理几乎是常态,且被广泛接受。扩散处理(传统的钛扩散,或问题较多的铍扩散)必须在证书上明确区分。金红石丝状包裹体有时会产生星光效应(星光蓝宝石)。",
+                entretien = "硬度9,日常佩戴非常耐用。超声波清洗通常安全,除非宝石经过扩散或充填处理。"
+            ),
+            BuyingGuideArticle(
+                pierre = "奥弗涅蓝宝石",
+                accroche = "产自法国奥弗涅火山地带的深蓝紫色刚玉。",
+                origineCouleur = "法国(上卢瓦尔省埃斯帕利圣马塞尔),唯一产地。理想颜色为极为浓烈的蓝紫色,是玄武岩成因蓝宝石的典型特征;晶体通常细小,切割后很少超过一克拉。",
+                puretTraitements = "极少或从不经加热处理,其稀有性与本土产地价值胜过色彩的强化。产量稀少,须逐颗议价。",
+                entretien = "硬度9,非常耐用。超声波清洗安全无虞。"
+            ),
+            BuyingGuideArticle(
+                pierre = "紫色蓝宝石",
+                accroche = "深邃的紫色,正处于蓝宝石与红宝石之间的边界地带。",
+                origineCouleur = "斯里兰卡(拉特纳普勒)、马达加斯加(伊拉卡卡)、坦桑尼亚(通杜鲁)。理想颜色为浓郁均匀的紫色;部分宝石在日光与白炽灯光下会呈现轻微的变色效应。",
+                puretTraitements = "加热处理常见且被接受,用以稳定色调。净度通常肉眼可见良好。",
+                entretien = "硬度9,非常耐用。对未经扩散处理的宝石而言,超声波清洗安全无虞。"
+            ),
+            BuyingGuideArticle(
+                pierre = "粉色蓝宝石",
+                accroche = "介于红宝石与蓝宝石之间的边界地带,其官方分界线在各宝石学实验室之间仍存争议。",
+                origineCouleur = "斯里兰卡(拉特纳普勒)、马达加斯加(伊拉卡卡)、坦桑尼亚(通杜鲁)。理想颜色为鲜艳浓郁的粉色;一旦超过某种饱和度,部分实验室会将宝石重新归类为红宝石。",
+                puretTraitements = "加热处理常见且被接受。应在证书上核实其分类(粉色蓝宝石或红宝石),因其价值可能因此产生巨大差异。",
+                entretien = "硬度9,非常耐用。对未经扩散处理的宝石而言,超声波清洗安全无虞。"
+            ),
+            BuyingGuideArticle(
+                pierre = "白色蓝宝石",
+                accroche = "不含致色元素的刚玉,是钻石低调而平易近人的替代品。",
+                origineCouleur = "斯里兰卡(拉特纳普勒)、马达加斯加(伊拉卡卡)、澳大利亚(新南威尔士)。理想状态为无色而清澈透亮;色散低于钻石,但硬度几乎相当。",
+                puretTraitements = "极少经过处理,其天然的透明度本身便是主要卖点。追求高净度。",
+                entretien = "硬度9,对日常磨损有极佳的抵抗力。超声波清洗安全无虞。"
+            ),
+            BuyingGuideArticle(
+                pierre = "星光蓝宝石",
+                accroche = "一颗明亮的六射星光,经凸圆面切割而呈现,常见于蓝色或黑色蓝宝石之中。",
+                origineCouleur = "斯里兰卡(拉特纳普勒)、缅甸(抹谷)、泰国(坎查那武里,黑色品种)。最受追捧的星光效应呈现出六道完全笔直、以凸圆面顶点为中心的星芒。",
+                puretTraitements = "极少经加热处理,因热处理可能破坏造成星光效应的金红石包裹体。星芒的清晰度与居中程度比透明度更为重要。",
+                entretien = "硬度9,非常耐用。建议轻柔清洁,以保护凸圆面顶部的抛光效果。"
+            ),
+            BuyingGuideArticle(
+                pierre = "青色蓝宝石",
+                accroche = "一种双色刚玉,蓝色与黄色交融成独特的蓝绿色调,深受行家珍视。",
+                origineCouleur = "美国(蒙大拿州洛克克里克)、澳大利亚(新南威尔士)、马达加斯加(伊拉卡卡)。原石中清晰可见的蓝黄双色区域,经切割及方向调整后会融合成均匀的蓝绿色调。",
+                puretTraitements = "常未经加热处理,其天然色调本身便是收藏家追求的对象。切割师的技艺(调整方向以平衡两种颜色)对最终呈现至关重要。",
+                entretien = "硬度9,非常耐用。对未经扩散处理的宝石而言,超声波清洗安全无虞。"
+            ),
+            BuyingGuideArticle(
+                pierre = "红碧玺",
+                accroche = "因锰元素而呈现的浓烈红色,是碧玺家族中最接近红宝石的品种。",
+                origineCouleur = "巴西(米纳斯吉拉斯州克鲁泽罗矿)、尼日利亚(奥约)、莫桑比克(阿尔托利贡哈)、阿富汗(帕普罗克河谷)。理想颜色为浓郁均匀的红色至红粉色;多色性明显,具该品种特有的条纹状柱状晶体。",
+                puretTraitements = "偶尔经加热处理以减弱棕色调,该处理被接受。净度因宝石而异;细针状内含物常见,若不明显则可接受。",
+                entretien = "硬度7至7.5,整体较为坚固。碧玺具有热电性,会因静电吸附灰尘:建议轻柔清洁。"
+            ),
+            BuyingGuideArticle(
+                pierre = "黄碧玺",
+                accroche = "明亮的金丝雀黄,天然无需处理——碧玺家族中最稀有的色彩。",
+                origineCouleur = "马拉维(松巴)、巴西(米纳斯吉拉斯州)、尼日利亚(奥约)。理想颜色为鲜艳明亮的黄色,不同于许多商业化处理的碧玺色调,无需任何人工干预。",
+                puretTraitements = "通常未经处理,其天然色彩本身便备受追捧。净度通常良好。",
+                entretien = "硬度7至7.5。碧玺具有热电性:建议定期轻柔清洁。"
+            ),
+            BuyingGuideArticle(
+                pierre = "铬碧玺",
+                accroche = "因铬和钒而呈现的深邃饱和绿色,有别于碧玺「经典」的绿色。",
+                origineCouleur = "肯尼亚(泰塔-塔韦塔)、坦桑尼亚(翁巴)。理想颜色为接近祖母绿的浓烈绿色;二色性明显,台面方向的选取对呈现最饱和的色调至关重要。",
+                puretTraitements = "极少经过处理,由铬与钒致色的绿色本身已足够浓烈。净度通常良好。",
+                entretien = "硬度7至7.5。碧玺具有热电性:建议轻柔清洁。"
+            ),
+            BuyingGuideArticle(
+                pierre = "绿碧玺",
+                accroche = "由铁或铬致色的绿色,是碧玺家族中最经典、也最常见的色彩。",
+                origineCouleur = "巴西(米纳斯吉拉斯州)、莫桑比克(阿尔托利贡哈)、尼日利亚(奥约)。理想颜色为纯正绿色至深绿色;双折射较强,切割师会调整原石方向以优化色彩表现。",
+                puretTraitements = "偶尔经加热处理以使过深的色调变浅,该处理被接受。净度因产地而异。",
+                entretien = "硬度7至7.5。碧玺具有热电性:建议定期轻柔清洁。"
+            ),
+            BuyingGuideArticle(
+                pierre = "蓝碧玺（靛蓝碧玺）",
+                accroche = "深邃的蓝色,不含铜元素,有别于帕拉伊巴碧玺铜绿蓝色调。",
+                origineCouleur = "巴西(米纳斯吉拉斯州)、纳米比亚(埃龙戈)、阿富汗(努里斯坦)。理想颜色为深蓝至蓝灰色,通常比帕拉伊巴碧玺更为深邃。",
+                puretTraitements = "偶尔经加热处理以使过深的色调变浅,该处理被接受。净度因宝石而异。",
+                entretien = "硬度7至7.5。碧玺具有热电性:建议轻柔清洁。"
+            ),
+            BuyingGuideArticle(
+                pierre = "粉碧玺",
+                accroche = "锰元素造就的柔美色调,是最受追捧的双色碧玺的成因之一。",
+                origineCouleur = "巴西(米纳斯吉拉斯州克鲁泽罗矿)、阿富汗(帕普罗克)、莫桑比克(阿尔托利贡哈)。理想颜色为浅粉至浓郁的粉色;晶体常呈色带分区,正是西瓜碧玺等双色品种的成因。",
+                puretTraitements = "极少经过处理。净度通常肉眼可见良好。",
+                entretien = "硬度7至7.5。碧玺具有热电性:建议轻柔清洁。"
+            ),
+            BuyingGuideArticle(
+                pierre = "黑碧玺（黑电气石）",
+                accroche = "碧玺家族中最常见的品种,在简约珠宝与水晶疗法中皆备受青睐。",
+                origineCouleur = "巴西(米纳斯吉拉斯州)、纳米比亚(埃龙戈)、马达加斯加(安齐拉贝)。理想颜色为不透明至半透明的乌黑色;柱状晶体常带有条纹,有时体积硕大。",
+                puretTraitements = "从不经过处理,其色彩与丰富的储量无需任何人工干预。价格十分亲民。",
+                entretien = "硬度7至7.5,质地坚固。保养简单,无需特殊防护。"
+            ),
+            BuyingGuideArticle(
+                pierre = "西瓜碧玺",
+                accroche = "粉色心芯环绕绿色边缘,宛如一片水果切面——最为惊艳的双色碧玺之一。",
+                origineCouleur = "巴西(米纳斯吉拉斯州)、美国(缅因州邓顿矿)。呈现粉色核心环绕绿色外层的清晰分区;多切割成横截薄片,以呈现「西瓜」效果。",
+                puretTraitements = "极少经过处理,其天然的色带分区正是这种宝石的主要魅力所在。净度依区域而异。",
+                entretien = "硬度7至7.5。建议轻柔清洁,薄片切割的宝石尤需注意。"
+            ),
+            BuyingGuideArticle(
+                pierre = "帕拉伊巴碧玺",
+                accroche = "电光般的「霓虹」蓝绿色,在矿物界独一无二——碧玺家族中最受追捧、也最昂贵的品种。",
+                origineCouleur = "巴西帕拉伊巴州圣若泽达巴塔利亚:历史性产地,如今几近枯竭。莫桑比克(马武科)与尼日利亚(埃德科):价格更为亲民的现代产地。这种由铜元素造就的「霓虹」色彩,从未在其他碧玺品种中出现。",
+                puretTraitements = "一份注明产地(巴西还是非洲)的证书至关重要,因二者价值差距悬殊。净度与含铜蓝绿色的浓烈程度,比其他任何标准都更为关键。",
+                entretien = "硬度7至7.5。碧玺具有热电性:建议轻柔清洁,并如同所有高价值宝石一样加以妥善保护。"
+            ),
+            BuyingGuideArticle(
+                pierre = "镁铝榴石",
+                accroche = "经典的血红色石榴石,未经玫瑰石榴石稀释——镁铝榴石家族中最为纯正的品种。",
+                origineCouleur = "捷克(波希米亚波德塞迪采地区)、南非(金伯利岩考矿)、坦桑尼亚(翁巴)。理想颜色为浓郁均匀的血红色,不带明显的紫色调。",
+                puretTraitements = "如整个石榴石家族一样,从不经过处理。与玫瑰石榴石不同,纯净的镁铝榴石不含明显比例的铁。",
+                entretien = "硬度7至7.5。无需特殊保养,遵循一般宝石首饰的常规注意事项即可。"
+            ),
+            BuyingGuideArticle(
+                pierre = "铁铝榴石／镁铝榴石",
+                accroche = "深红色的石榴石,从不经过处理——石榴石家族中最常见、也最平易近人的品种。",
+                origineCouleur = "印度(贾坎德邦拉杰默哈尔丘陵)、斯里兰卡(拉特纳普勒)、捷克(波德塞迪采)、坦桑尼亚(翁巴河谷)。理想颜色为深红色至红棕色,偶带轻微紫色调。",
+                puretTraitements = "从未经过热处理或化学处理。无解理,折射率高,光泽良好。",
+                entretien = "硬度7至7.5,整体较为坚固。无需特殊保养。"
+            ),
+            BuyingGuideArticle(
+                pierre = "玫瑰石榴石",
+                accroche = "「覆盆子」般的红紫色,透明度极佳,是石榴石家族中最为优雅的品种之一。",
+                origineCouleur = "坦桑尼亚(翁巴河谷)、斯里兰卡(拉特纳普勒)、印度(奥里萨邦)。理想颜色为明亮均匀的红紫色。",
+                puretTraitements = "从不经过处理。天然透明度极佳,肉眼可见内含物的情形十分罕见。",
+                entretien = "硬度7至7.5。无需特殊保养。"
+            ),
+            BuyingGuideArticle(
+                pierre = "星光石榴石",
+                accroche = "呈现四射或六射光芒的铁铝榴石,几乎仅产于美国爱达荷州的珍稀品种。",
+                origineCouleur = "美国(爱达荷州,全世界唯一的四射星光石榴石产地)、印度(奥里萨邦)。理想颜色为深红色;四射星光效应举世无双,更为罕见的六射星光同样产自这些矿床。",
+                puretTraitements = "从不经过处理。星芒的清晰度与居中程度比底色的透明度更为重要。",
+                entretien = "硬度7至7.5。建议轻柔清洁,以保护凸圆面顶部的抛光效果。"
+            ),
+            BuyingGuideArticle(
+                pierre = "马拉亚石榴石",
+                accroche = "由两种石榴石混合而成的温暖粉橙色,不经任何处理。",
+                origineCouleur = "坦桑尼亚(翁巴)、肯尼亚(泰塔-塔韦塔)、马达加斯加(安贾纳博诺伊纳)。理想颜色为粉橙色至温暖的橙色,是石榴石家族中独一无二的色调。",
+                puretTraitements = "无需也不进行任何处理:色彩100%天然,是这一品种最大的卖点之一。",
+                entretien = "硬度7至7.5。无需特殊保养。"
+            ),
+            BuyingGuideArticle(
+                pierre = "锰铝榴石",
+                accroche = "鲜艳夺目的「橘子」橙色,是矿物界中最为明亮的色彩之一。",
+                origineCouleur = "纳米比亚(库内内地区)、尼日利亚(纳萨拉瓦州)、马达加斯加(菲亚纳兰楚阿)。理想颜色为鲜艳饱和的橙色,有时略带红橙色调。",
+                puretTraitements = "天然色彩,从未经过热处理。净度通常良好至极佳。",
+                entretien = "硬度7至7.5。无需特殊保养。"
+            ),
+            BuyingGuideArticle(
+                pierre = "钙铝榴石",
+                accroche = "绿色至黄绿色的石榴石,是沙弗莱石与桂榴石色彩较浅的近亲——色彩最为多样的石榴石家族。",
+                origineCouleur = "马里(桑达雷)、肯尼亚(沃伊)、加拿大(魁北克省杰弗里矿)。色彩范围从无色到浓烈的深绿色,乃至黄绿色与桂榴石特有的棕橙色。",
+                puretTraitements = "从不经过处理。净度因色调及产地而异。",
+                entretien = "硬度7至7.5。无需特殊保养。"
+            ),
+            BuyingGuideArticle(
+                pierre = "紫色玫瑰石榴石",
+                accroche = "随光照变化的紫红色调,是经典玫瑰石榴石的紫色变种。",
+                origineCouleur = "坦桑尼亚(翁巴河谷)、莫桑比克(库安巴)。理想颜色为紫红色至浓郁的紫色,主导色调依光源不同而变化。",
+                puretTraitements = "色彩稳定,从不经过处理。净度通常良好。",
+                entretien = "硬度7至7.5。无需特殊保养。"
+            ),
+            BuyingGuideArticle(
+                pierre = "变色石榴石",
+                accroche = "日光下呈蓝绿色,夜晚灯光下则变为紫红色——变石鲜为人知的对手,价格却亲民得多。",
+                origineCouleur = "坦桑尼亚(翁巴、通杜鲁)、马达加斯加(贝基利)。与变石不同,造就这种石榴石变色效应的是钒元素,而非铬元素。",
+                puretTraitements = "从不经过处理。如同变石一样,变色效应的强烈程度比色调本身更为重要。",
+                entretien = "硬度7至7.5。无需特殊保养。"
+            ),
+            BuyingGuideArticle(
+                pierre = "蓝色托帕石",
+                accroche = "经辐照后再加热无色托帕石而获得的深邃蓝色——这一品种中商业化程度最高的色彩。",
+                origineCouleur = "巴西(米纳斯吉拉斯州)与尼日利亚提供无色原料,经辐照后再加热处理,可呈现从天空蓝到深邃的「伦敦蓝」之间的各种蓝色调。",
+                puretTraitements = "颜色几乎总是通过辐照后再加热处理获得,稳定且持久——必须披露,因价格亲民而被市场广泛接受。",
+                entretien = "硬度8,但单方向的完美解理使其易受撞击损坏。应避免剧烈温差变化,切勿使用超声波清洗。"
+            ),
+            BuyingGuideArticle(
+                pierre = "粉色托帕石",
+                accroche = "托帕石中最为稀有的天然粉色,历史上开采自巴基斯坦。",
+                origineCouleur = "巴基斯坦(马尔丹卡特朗)、俄罗斯(乌拉尔,历史产地)。理想颜色为细腻至浓郁的粉色;未经处理的天然粉色十分罕见,须与通过加热棕色宝石获得的粉色托帕石加以区分。",
+                puretTraitements = "应在证书上核实其色调是天然还是经棕色原料加热处理而成,因二者价值差距明显。天然净度较高。",
+                entretien = "硬度8,单方向具完美解理:应避免碰撞及剧烈温差变化,切勿使用超声波清洗。"
+            ),
+            BuyingGuideArticle(
+                pierre = "白色托帕石",
+                accroche = "托帕石最为纯净、最常见的形态,无色而清澈透亮——钻石经济实惠的替代品。",
+                origineCouleur = "巴西(米纳斯吉拉斯州欧鲁普雷图)、尼日利亚(乔斯高原)、巴基斯坦(卡特朗)。理想状态为无色且完全清澈透亮;它也是生产经处理蓝色托帕石最主要的原材料。",
+                puretTraitements = "本身通常未经处理。追求极高的净度,其透明度正是主要卖点。",
+                entretien = "硬度8,单方向具完美解理:应避免碰撞,切勿使用超声波清洗。"
             )
         )
     )
