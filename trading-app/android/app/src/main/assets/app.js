@@ -82,6 +82,11 @@
   // réimplémentés à la main sur un <canvas>. ---
   let chart = null;
   let candleSeries = null;
+  // Ne recadre la vue (fitContent) qu'au premier chargement et lors d'un
+  // changement de période — jamais lors des rafraîchissements
+  // automatiques (toutes les 8s), sinon la vue "saute" en permanence et
+  // annule tout pincer-zoomer/glissé fait par l'utilisateur.
+  let shouldFitContent = true;
 
   function initChart() {
     const container = $("price-chart");
@@ -185,7 +190,10 @@
       providerEl.className = `badge chart-badge ${isReal ? "live" : "simule"}`;
       if (candleSeries) {
         candleSeries.setData(state.candles.map((c) => ({ time: c.t, open: c.o, high: c.h, low: c.l, close: c.c })));
-        chart.timeScale().fitContent();
+        if (shouldFitContent) {
+          chart.timeScale().fitContent();
+          shouldFitContent = false;
+        }
       }
       updateOhlcLegend(null);
     } catch (err) {
@@ -200,6 +208,7 @@
     if (!btn) return;
     state.timeframe = btn.dataset.tf;
     document.querySelectorAll("#timeframes button").forEach((b) => b.classList.toggle("active", b === btn));
+    shouldFitContent = true;
     refreshCandles();
   });
 
