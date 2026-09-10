@@ -6,6 +6,7 @@
     <string name="cd_clear">清除</string>
 
     <!-- 首页 -->
+    <string name="home_shop_title">在线商店</string>
     <string name="home_gemmologie_title">宝石学</string>
     <string name="home_gemmologie_subtitle">按颜色分类的完整目录：技术卡片、价格、产地。</string>
     <string name="home_lapidaire_title">宝石切磨</string>

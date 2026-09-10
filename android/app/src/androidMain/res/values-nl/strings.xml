@@ -6,6 +6,7 @@
     <string name="cd_clear">Wissen</string>
 
     <!-- Home -->
+    <string name="home_shop_title">Online winkel</string>
     <string name="home_gemmologie_title">Gemmologie</string>
     <string name="home_gemmologie_subtitle">De volledige catalogus per kleur: technische fiches, prijzen, herkomst.</string>
     <string name="home_lapidaire_title">Lapidair</string>

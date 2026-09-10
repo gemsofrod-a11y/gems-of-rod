@@ -1,5 +1,7 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -30,6 +32,7 @@ import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Storefront
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -94,6 +97,12 @@ fun HomeScreen(
             TopAppBar(
                 title = { Text("Gems of Rod") },
                 actions = {
+                    IconButton(onClick = {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://gemsofrod.com/"))
+                        context.startActivity(intent)
+                    }) {
+                        Icon(Icons.Filled.Storefront, contentDescription = stringResource(R.string.home_shop_title))
+                    }
                     LanguageButton(flagEmoji = currentLanguage.flagEmoji, onClick = onLanguageClick)
                     IconButton(onClick = onSearchClick) {
                         Icon(Icons.Filled.Search, contentDescription = stringResource(R.string.global_search_title))

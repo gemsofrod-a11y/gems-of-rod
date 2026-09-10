@@ -6,6 +6,7 @@
     <string name="cd_clear">Очистить</string>
 
     <!-- Главная -->
+    <string name="home_shop_title">Интернет-магазин</string>
     <string name="home_gemmologie_title">Геммология</string>
     <string name="home_gemmologie_subtitle">Полный каталог по цвету: технические карточки, цены, происхождение.</string>
     <string name="home_lapidaire_title">Огранка</string>
