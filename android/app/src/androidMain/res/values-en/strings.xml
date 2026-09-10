@@ -6,6 +6,7 @@
     <string name="cd_clear">Clear</string>
 
     <!-- Home -->
+    <string name="home_shop_title">Online shop</string>
     <string name="home_gemmologie_title">Gemology</string>
     <string name="home_gemmologie_subtitle">The full catalog by color: technical sheets, prices, origins.</string>
     <string name="home_lapidaire_title">Lapidary</string>

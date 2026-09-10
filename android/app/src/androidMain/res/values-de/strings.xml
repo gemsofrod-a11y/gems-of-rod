@@ -6,6 +6,7 @@
     <string name="cd_clear">Löschen</string>
 
     <!-- Startseite -->
+    <string name="home_shop_title">Online-Shop</string>
     <string name="home_gemmologie_title">Gemmologie</string>
     <string name="home_gemmologie_subtitle">Der vollständige Katalog nach Farbe: technische Datenblätter, Preise, Herkunft.</string>
     <string name="home_lapidaire_title">Lapidar</string>
