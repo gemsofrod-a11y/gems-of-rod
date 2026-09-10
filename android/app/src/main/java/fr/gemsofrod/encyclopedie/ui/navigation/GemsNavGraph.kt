@@ -94,6 +94,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.SupplierFormScreen
 import fr.gemsofrod.encyclopedie.ui.screens.SupplierListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.TreatmentsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.BuyingGuidesScreen
+import fr.gemsofrod.encyclopedie.ui.screens.MineralFormationScreen
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import kotlinx.coroutines.delay
 import java.net.URLDecoder
@@ -162,6 +163,7 @@ private object Routes {
     const val LEGENDARY_MAP = "legendary_map"
     const val TREATMENTS = "treatments"
     const val BUYING_GUIDES = "buying_guides"
+    const val MINERAL_FORMATION = "mineral_formation"
     const val LAPIDAIRE = "lapidaire"
     const val STOCK_LIST = "stock_list"
     const val STOCK_NEW = "stock_new"
@@ -319,6 +321,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onDiamondGradingClick = { navController.navigate(Routes.DIAMOND_GRADING) },
                 onTreatmentsClick = { navController.navigate(Routes.TREATMENTS) },
                 onBuyingGuidesClick = { navController.navigate(Routes.BUYING_GUIDES) },
+                onMineralFormationClick = { navController.navigate(Routes.MINERAL_FORMATION) },
                 onStockClick = { navController.navigate(Routes.STOCK_LIST) },
                 onClientsClick = { navController.navigate(Routes.CLIENT_LIST) },
                 onSuppliersClick = { navController.navigate(Routes.SUPPLIER_LIST) },
@@ -331,6 +334,9 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         }
         composable(Routes.BUYING_GUIDES) {
             BuyingGuidesScreen(onBackClick = { navController.popBackStack() })
+        }
+        composable(Routes.MINERAL_FORMATION) {
+            MineralFormationScreen(onBackClick = { navController.popBackStack() })
         }
         composable(Routes.LAPIDAIRE) {
             LapidaireScreen(onBackClick = { navController.popBackStack() })

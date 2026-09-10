@@ -184,6 +184,17 @@
     <string name="coquillage_comparer_subtitle">Härte, Dichte, Seltenheit… auf einen Blick im Diagramm.</string>
     <string name="meteorite_comparer_title">Zwei Meteoriten vergleichen</string>
     <string name="meteorite_comparer_subtitle">Härte, Dichte, Seltenheit… auf einen Blick im Diagramm.</string>
+    <string name="mineral_formation_title">Mineralbildung</string>
+    <string name="mineral_formation_intro">Vier Steine, vier geologische Geschichten. Ein Lehrvideo pro Stein, ausgewählt für seine fachliche Genauigkeit — hier direkt ansehen.</string>
+    <string name="mineral_formation_diamant_title">Der Diamant</string>
+    <string name="mineral_formation_diamant_desc">Reiner Kohlenstoff kristallisiert unter extremem Druck und extremer Hitze, etwa 150 km unter der Oberfläche, bevor er durch uralte Vulkanausbrüche (Kimberlite) an die Oberfläche gelangt.</string>
+    <string name="mineral_formation_emeraude_title">Der Smaragd</string>
+    <string name="mineral_formation_emeraude_desc">Berylliumreiche hydrothermale Lösungen treffen auf chrom- oder vanadiumhaltiges Gestein und lassen ein Grün entstehen, das kein anderer Stein erreicht.</string>
+    <string name="mineral_formation_saphir_rubis_title">Saphir und Rubin</string>
+    <string name="mineral_formation_saphir_rubis_desc">Ein und dieselbe Mineralart, Korund: Das Rot des Rubins stammt von Chrom, die übrigen Farbtöne des Saphirs von Eisen und Titan, tief in metamorphem Gestein kristallisiert.</string>
+    <string name="mineral_formation_video_credit">Quelle: %1$s</string>
+    <string name="mineral_formation_disclaimer">Videos Dritter, gehostet auf YouTube, ausgewählt für ihre fachliche Genauigkeit. Gems of Rod ist nicht deren Urheber.</string>
+    <string name="mineral_formation_fallback_note">Video auf Englisch: Für diesen Stein ist in Ihrer Sprache keine Version verfügbar.</string>
     <string name="analyse_intro">Gib die Eigenschaften ein, die du kennst oder beobachtest. Ein einziges Kriterium genügt für den Start; je mehr du angibst, desto genauer wird das Ergebnis.</string>
     <string name="analyse_instruments_card_title">Die Werkzeuge des Gemmologen</string>
     <string name="analyse_instruments_card_subtitle">Entdecken Sie die Instrumente zur Analyse eines Steins.</string>
@@ -447,6 +458,8 @@
     <!-- Kaufratgeber nach Edelstein -->
     <string name="lab_buying_guides_title">Kaufratgeber</string>
     <string name="lab_buying_guides_subtitle">Wie Sie jeden Edel- und Schmuckstein Kriterium für Kriterium auswählen.</string>
+    <string name="lab_mineral_formation_title">Mineralbildung</string>
+    <string name="lab_mineral_formation_subtitle">Wie Diamant, Smaragd, Saphir und Rubin entstehen.</string>
     <string name="buying_guides_title">Kaufratgeber</string>
     <string name="buying_guides_origin_label">Herkunft &amp; Farbe</string>
     <string name="buying_guides_purity_label">Reinheit &amp; gängige Behandlungen</string>

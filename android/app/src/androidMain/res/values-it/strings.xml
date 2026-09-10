@@ -184,6 +184,17 @@
     <string name="coquillage_comparer_subtitle">Durezza, densità, rarità… a colpo d\'occhio su un grafico.</string>
     <string name="meteorite_comparer_title">Confronta due meteoriti</string>
     <string name="meteorite_comparer_subtitle">Durezza, densità, rarità… a colpo d\'occhio su un grafico.</string>
+    <string name="mineral_formation_title">Formazione dei minerali</string>
+    <string name="mineral_formation_intro">Quattro pietre, quattro storie geologiche. Un video didattico per pietra, scelto per il suo rigore — guardalo direttamente qui.</string>
+    <string name="mineral_formation_diamant_title">Il diamante</string>
+    <string name="mineral_formation_diamant_desc">Il carbonio puro cristallizza sotto pressione e calore estremi, a circa 150 km sotto la superficie, prima di risalire grazie ad antiche eruzioni vulcaniche (kimberliti).</string>
+    <string name="mineral_formation_emeraude_title">Lo smeraldo</string>
+    <string name="mineral_formation_emeraude_desc">Fluidi idrotermali ricchi di berillio incontrano rocce cariche di cromo o vanadio, dando origine a un verde intenso che nessun\'altra pietra eguaglia.</string>
+    <string name="mineral_formation_saphir_rubis_title">Lo zaffiro e il rubino</string>
+    <string name="mineral_formation_saphir_rubis_desc">Un\'unica specie minerale, il corindone: il rosso del rubino deriva dal cromo, le altre tonalità dello zaffiro da ferro e titanio, cristallizzati in profondità in rocce metamorfiche.</string>
+    <string name="mineral_formation_video_credit">Fonte: %1$s</string>
+    <string name="mineral_formation_disclaimer">Video di terze parti ospitati su YouTube, scelti per il loro rigore scientifico. Gems of Rod non ne è l\'autore.</string>
+    <string name="mineral_formation_fallback_note">Video mostrato in inglese: nessuna versione disponibile nella tua lingua per questa pietra.</string>
     <string name="analyse_intro">Indica le caratteristiche che conosci o osservi. Un solo criterio è sufficiente per iniziare; più ne indichi, più preciso sarà il risultato.</string>
     <string name="analyse_instruments_card_title">Gli strumenti del gemmologo</string>
     <string name="analyse_instruments_card_subtitle">Scoprite gli strumenti utilizzati per analizzare una pietra.</string>
@@ -447,6 +458,8 @@
     <!-- Guide all'acquisto per pietra -->
     <string name="lab_buying_guides_title">Guide all\'acquisto</string>
     <string name="lab_buying_guides_subtitle">Come scegliere ogni pietra preziosa e fine, criterio per criterio.</string>
+    <string name="lab_mineral_formation_title">Formazione dei minerali</string>
+    <string name="lab_mineral_formation_subtitle">Come si formano diamante, smeraldo, zaffiro e rubino.</string>
     <string name="buying_guides_title">Guide all\'acquisto</string>
     <string name="buying_guides_origin_label">Origine e colore</string>
     <string name="buying_guides_purity_label">Purezza e trattamenti comuni</string>
