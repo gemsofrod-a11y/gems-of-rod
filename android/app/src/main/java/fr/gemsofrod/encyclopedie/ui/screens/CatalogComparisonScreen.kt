@@ -67,6 +67,7 @@ private data class ComparableItem(
     val rarete: GemRarete
 )
 
+@Composable
 private fun itemsFor(category: CatalogComparisonCategory): List<ComparableItem> = when (category) {
     CatalogComparisonCategory.FOSSILE -> FossilesRepository.all().map { it.localized() }
         .map { ComparableItem(it.id, it.nom, it.durete, it.densite, it.rarete) }
@@ -90,7 +91,7 @@ fun CatalogComparisonScreen(
     category: CatalogComparisonCategory,
     onBackClick: () -> Unit
 ) {
-    val items = remember(category) { itemsFor(category).sortedBy { it.nom } }
+    val items = itemsFor(category).sortedBy { it.nom }
 
     var itemA by remember { mutableStateOf<ComparableItem?>(null) }
     var itemB by remember { mutableStateOf<ComparableItem?>(null) }
