@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,6 +22,11 @@ import androidx.compose.ui.viewinterop.AndroidView
  * WebView au format 16:9. La lecture démarre au geste de l'utilisateur
  * (pas d'autoplay), pour ne pas déclencher de trafic de données à
  * l'ouverture de l'écran.
+ *
+ * L'iframe est chargée via une page HTML minimale avec `loadDataWithBaseURL`
+ * en fixant l'origine à https://www.youtube.com : charger l'URL d'embed
+ * directement (`loadUrl`) fait échouer le lecteur avec l'erreur YouTube 153
+ * (origine non reconnue), car la WebView n'a alors aucune origine web valide.
  */
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
@@ -39,6 +45,7 @@ fun YouTubeEmbedPlayer(youtubeId: String, modifier: Modifier = Modifier) {
                 settings.javaScriptEnabled = true
                 settings.domStorageEnabled = true
                 settings.mediaPlaybackRequiresUserGesture = true
+                webViewClient = WebViewClient()
                 webChromeClient = WebChromeClient()
                 setBackgroundColor(android.graphics.Color.BLACK)
             }
@@ -46,7 +53,16 @@ fun YouTubeEmbedPlayer(youtubeId: String, modifier: Modifier = Modifier) {
         update = { webView ->
             if (webView.tag != youtubeId) {
                 webView.tag = youtubeId
-                webView.loadUrl("https://www.youtube.com/embed/$youtubeId?rel=0&modestbranding=1&playsinline=1")
+                val html = """
+                    <html><body style="margin:0;padding:0;background:#000;">
+                    <iframe width="100%" height="100%"
+                        src="https://www.youtube.com/embed/$youtubeId?rel=0&modestbranding=1&playsinline=1"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                    </body></html>
+                """.trimIndent()
+                webView.loadDataWithBaseURL("https://www.youtube.com", html, "text/html", "utf-8", null)
             }
         }
     )
