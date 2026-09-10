@@ -1,6 +1,23 @@
 package fr.gemsofrod.encyclopedie.data
 
 /**
+ * Moyenne des nombres décimaux (virgule française) trouvés dans le texte
+ * avant toute parenthèse explicative, ex. "2,5 - 3,5 (7 en gangue de
+ * quartz)" → moyenne de 2,5 et 3,5, en ignorant le "7" entre parenthèses.
+ * Partagé par [GemComparison] et [CatalogComparison], qui extraient tous
+ * deux des grandeurs numériques (dureté, densité...) depuis des champs
+ * texte au même format dans l'ensemble du catalogue.
+ */
+internal fun parseNumericAverage(text: String): Double? {
+    val relevant = text.substringBefore('(').trim()
+    val numbers = Regex("""\d+(?:,\d+)?""")
+        .findAll(relevant)
+        .map { it.value.replace(',', '.').toDouble() }
+        .toList()
+    return if (numbers.isEmpty()) null else numbers.average()
+}
+
+/**
  * Valeurs numériques brutes extraites des fiches [Gem]/[GemDiagnostic] pour
  * une gemme donnée, utilisées par l'outil de comparaison (graphique radar).
  * `null` signifie que la donnée est absente ou n'a pas pu être interprétée
@@ -40,21 +57,6 @@ object GemComparison {
             fluorescenceValue = diagnostic?.let { parseIntensity(it.fluorescence) },
             pleochroismeValue = diagnostic?.let { parseIntensity(it.pleochroisme) }
         )
-    }
-
-    /**
-     * Moyenne des nombres décimaux (virgule française) trouvés dans le
-     * texte avant toute parenthèse explicative, ex. "2,5 - 3,5 (7 en gangue
-     * de quartz)" → moyenne de 2,5 et 3,5, en ignorant le "7" entre
-     * parenthèses.
-     */
-    private fun parseNumericAverage(text: String): Double? {
-        val relevant = text.substringBefore('(').trim()
-        val numbers = Regex("""\d+(?:,\d+)?""")
-            .findAll(relevant)
-            .map { it.value.replace(',', '.').toDouble() }
-            .toList()
-        return if (numbers.isEmpty()) null else numbers.average()
     }
 
     /**

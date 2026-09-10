@@ -83,6 +83,7 @@
     <string name="fiche_eclat">Lucentezza</string>
     <string name="fiche_clivage">Sfaldatura</string>
     <string name="fiche_densite">Densità</string>
+    <string name="fiche_rarete">Rarità</string>
     <string name="fiche_pleochroisme">Pleocroismo</string>
     <string name="fiche_fluorescence">Fluorescenza UV</string>
     <string name="fiche_prix_indicatif">Prezzo indicativo</string>
@@ -176,6 +177,13 @@
     <string name="comparer_axis_fluorescence_short">Fluo.</string>
     <string name="comparer_axis_pleochroisme_short">Pleo.</string>
     <string name="comparer_details_title">Dettaglio delle caratteristiche</string>
+    <string name="comparer_axis_rarete_short">Rarità</string>
+    <string name="fossile_comparer_title">Confronta due fossili</string>
+    <string name="fossile_comparer_subtitle">Durezza, densità, rarità… a colpo d\'occhio su un grafico.</string>
+    <string name="coquillage_comparer_title">Confronta due conchiglie</string>
+    <string name="coquillage_comparer_subtitle">Durezza, densità, rarità… a colpo d\'occhio su un grafico.</string>
+    <string name="meteorite_comparer_title">Confronta due meteoriti</string>
+    <string name="meteorite_comparer_subtitle">Durezza, densità, rarità… a colpo d\'occhio su un grafico.</string>
     <string name="analyse_intro">Indica le caratteristiche che conosci o osservi. Un solo criterio è sufficiente per iniziare; più ne indichi, più preciso sarà il risultato.</string>
     <string name="analyse_instruments_card_title">Gli strumenti del gemmologo</string>
     <string name="analyse_instruments_card_subtitle">Scoprite gli strumenti utilizzati per analizzare una pietra.</string>

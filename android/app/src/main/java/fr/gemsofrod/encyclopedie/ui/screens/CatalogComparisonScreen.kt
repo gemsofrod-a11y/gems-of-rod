@@ -45,41 +45,70 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
-import fr.gemsofrod.encyclopedie.data.Gem
-import fr.gemsofrod.encyclopedie.data.GemComparison
-import fr.gemsofrod.encyclopedie.data.GemDiagnostics
-import fr.gemsofrod.encyclopedie.data.GemsRepository
+import fr.gemsofrod.encyclopedie.data.CatalogComparison
+import fr.gemsofrod.encyclopedie.data.CoquillagesRepository
+import fr.gemsofrod.encyclopedie.data.FossilesRepository
+import fr.gemsofrod.encyclopedie.data.GemRarete
+import fr.gemsofrod.encyclopedie.data.MeteoritesRepository
 import fr.gemsofrod.encyclopedie.ui.components.ComparisonDetailRow
 import fr.gemsofrod.encyclopedie.ui.components.ComparisonRadarChart
 import fr.gemsofrod.encyclopedie.ui.localized
-import fr.gemsofrod.encyclopedie.ui.localizedLabel
+import fr.gemsofrod.encyclopedie.ui.labelRes
+
+/** Catégorie du catalogue (hors gemmes) comparable sur le graphique radar. */
+enum class CatalogComparisonCategory { FOSSILE, COQUILLAGE, METEORITE }
+
+/** Fiche réduite aux champs communs aux 3 catégories comparables (dureté, densité, rareté). */
+private data class ComparableItem(
+    val id: String,
+    val nom: String,
+    val durete: String,
+    val densite: String,
+    val rarete: GemRarete
+)
+
+@Composable
+private fun itemsFor(category: CatalogComparisonCategory): List<ComparableItem> = when (category) {
+    CatalogComparisonCategory.FOSSILE -> FossilesRepository.all().map { it.localized() }
+        .map { ComparableItem(it.id, it.nom, it.durete, it.densite, it.rarete) }
+    CatalogComparisonCategory.COQUILLAGE -> CoquillagesRepository.all().map { it.localized() }
+        .map { ComparableItem(it.id, it.nom, it.durete, it.densite, it.rarete) }
+    CatalogComparisonCategory.METEORITE -> MeteoritesRepository.all().map { it.localized() }
+        .map { ComparableItem(it.id, it.nom, it.durete, it.densite, it.rarete) }
+}
 
 /**
- * Compare deux gemmes du catalogue sur un graphique radar (dureté, indice
- * de réfraction, densité, fluorescence, pléochroïsme), à partir des mêmes
- * données que la fiche gemmologique détaillée. Voir [GemComparison] pour
- * l'extraction des valeurs numériques depuis les champs texte.
+ * Compare deux fossiles, deux coquillages ou deux météorites (selon
+ * [category]) sur un graphique radar à 3 axes (dureté, densité, rareté) —
+ * les seules grandeurs communes à ces catégories dans ce catalogue,
+ * contrairement aux gemmes qui ont aussi des propriétés optiques mesurées
+ * (voir [GemComparisonScreen]). Même patron d'écran, réutilise
+ * [ComparisonRadarChart] et [ComparisonDetailRow].
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun GemComparisonScreen(
-    onBackClick: () -> Unit,
-    initialGemAId: String? = null,
-    initialGemBId: String? = null
+fun CatalogComparisonScreen(
+    category: CatalogComparisonCategory,
+    onBackClick: () -> Unit
 ) {
-    val allGems = remember { GemsRepository.gems }
-    val localizedGems = allGems.map { it.localized() }.sortedBy { it.nom }
+    val items = itemsFor(category).sortedBy { it.nom }
 
-    var gemA by remember { mutableStateOf(initialGemAId?.let { id -> localizedGems.find { it.id == id } }) }
-    var gemB by remember { mutableStateOf(initialGemBId?.let { id -> localizedGems.find { it.id == id } }) }
+    var itemA by remember { mutableStateOf<ComparableItem?>(null) }
+    var itemB by remember { mutableStateOf<ComparableItem?>(null) }
 
     val accentA = MaterialTheme.colorScheme.primary
     val accentB = MaterialTheme.colorScheme.tertiary
 
+    val screenTitle = when (category) {
+        CatalogComparisonCategory.FOSSILE -> stringResource(R.string.fossile_comparer_title)
+        CatalogComparisonCategory.COQUILLAGE -> stringResource(R.string.coquillage_comparer_title)
+        CatalogComparisonCategory.METEORITE -> stringResource(R.string.meteorite_comparer_title)
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.gemmologie_comparer_title)) },
+                title = { Text(screenTitle) },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
@@ -101,45 +130,43 @@ fun GemComparisonScreen(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            GemPickerField(
+            ComparableItemPickerField(
                 label = stringResource(R.string.comparer_gem_a_label),
-                gems = localizedGems,
-                excluding = gemB,
-                selected = gemA,
+                items = items,
+                excluding = itemB,
+                selected = itemA,
                 accentColor = accentA,
-                onSelected = { gemA = it }
+                onSelected = { itemA = it }
             )
-            GemPickerField(
+            ComparableItemPickerField(
                 label = stringResource(R.string.comparer_gem_b_label),
-                gems = localizedGems,
-                excluding = gemA,
-                selected = gemB,
+                items = items,
+                excluding = itemA,
+                selected = itemB,
                 accentColor = accentB,
-                onSelected = { gemB = it }
+                onSelected = { itemB = it }
             )
 
-            val currentA = gemA
-            val currentB = gemB
+            val currentA = itemA
+            val currentB = itemB
             if (currentA != null && currentB != null) {
-                val profileA = remember(currentA.id) { GemComparison.profile(currentA) }
-                val profileB = remember(currentB.id) { GemComparison.profile(currentB) }
+                val profileA = remember(currentA.id) { CatalogComparison.profile(currentA.durete, currentA.densite, currentA.rarete) }
+                val profileB = remember(currentB.id) { CatalogComparison.profile(currentB.durete, currentB.densite, currentB.rarete) }
                 val axisLabels = listOf(
                     stringResource(R.string.comparer_axis_durete_short),
-                    stringResource(R.string.comparer_axis_indice_short),
                     stringResource(R.string.comparer_axis_densite_short),
-                    stringResource(R.string.comparer_axis_fluorescence_short),
-                    stringResource(R.string.comparer_axis_pleochroisme_short)
+                    stringResource(R.string.comparer_axis_rarete_short)
                 )
                 ComparisonRadarChart(
                     axisLabels = axisLabels,
-                    valuesA = listOf(profileA.dureteNorm, profileA.indiceNorm, profileA.densiteNorm, profileA.fluorescenceNorm, profileA.pleochroismeNorm),
-                    valuesB = listOf(profileB.dureteNorm, profileB.indiceNorm, profileB.densiteNorm, profileB.fluorescenceNorm, profileB.pleochroismeNorm),
+                    valuesA = listOf(profileA.dureteNorm, profileA.densiteNorm, profileA.rareteNorm),
+                    valuesB = listOf(profileB.dureteNorm, profileB.densiteNorm, profileB.rareteNorm),
                     nameA = currentA.nom,
                     nameB = currentB.nom,
                     accentA = accentA,
                     accentB = accentB
                 )
-                ComparisonDetailsCard(gemA = currentA, gemB = currentB, accentA = accentA, accentB = accentB)
+                ComparisonDetailsCard(itemA = currentA, itemB = currentB, accentA = accentA, accentB = accentB)
             } else {
                 Text(
                     text = stringResource(R.string.comparer_select_prompt),
@@ -153,19 +180,19 @@ fun GemComparisonScreen(
 }
 
 @Composable
-private fun GemPickerField(
+private fun ComparableItemPickerField(
     label: String,
-    gems: List<Gem>,
-    excluding: Gem?,
-    selected: Gem?,
+    items: List<ComparableItem>,
+    excluding: ComparableItem?,
+    selected: ComparableItem?,
     accentColor: Color,
-    onSelected: (Gem?) -> Unit
+    onSelected: (ComparableItem?) -> Unit
 ) {
     var query by remember { mutableStateOf("") }
     val results = if (query.isBlank()) {
         emptyList()
     } else {
-        gems.filter { it.id != excluding?.id && it.nom.contains(query, ignoreCase = true) }.take(6)
+        items.filter { it.id != excluding?.id && it.nom.contains(query, ignoreCase = true) }.take(6)
     }
 
     Column {
@@ -211,7 +238,7 @@ private fun GemPickerField(
                 value = query,
                 onValueChange = { query = it },
                 modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text(stringResource(R.string.search_gems_placeholder)) },
+                placeholder = { Text(stringResource(R.string.catalog_search_placeholder)) },
                 singleLine = true,
                 leadingIcon = { Icon(Icons.Filled.Search, contentDescription = null) },
                 shape = RoundedCornerShape(14.dp),
@@ -227,16 +254,16 @@ private fun GemPickerField(
                         .padding(top = 4.dp),
                     verticalArrangement = Arrangement.spacedBy(2.dp)
                 ) {
-                    results.forEach { gem ->
+                    results.forEach { item ->
                         Text(
-                            text = gem.nom,
+                            text = item.nom,
                             style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.onSurface,
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .clip(RoundedCornerShape(10.dp))
                                 .clickable {
-                                    onSelected(gem)
+                                    onSelected(item)
                                     query = ""
                                 }
                                 .padding(vertical = 10.dp, horizontal = 12.dp)
@@ -249,11 +276,7 @@ private fun GemPickerField(
 }
 
 @Composable
-private fun ComparisonDetailsCard(gemA: Gem, gemB: Gem, accentA: Color, accentB: Color) {
-    val diagnosticA = GemDiagnostics.data[gemA.id]
-    val diagnosticB = GemDiagnostics.data[gemB.id]
-    val placeholder = "—"
-
+private fun ComparisonDetailsCard(itemA: ComparableItem, itemB: ComparableItem, accentA: Color, accentB: Color) {
     Card(
         shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
@@ -269,36 +292,22 @@ private fun ComparisonDetailsCard(gemA: Gem, gemB: Gem, accentA: Color, accentB:
             )
             ComparisonDetailRow(
                 label = stringResource(R.string.fiche_durete),
-                valueA = gemA.durete,
-                valueB = gemB.durete,
-                accentA = accentA,
-                accentB = accentB
-            )
-            ComparisonDetailRow(
-                label = stringResource(R.string.fiche_indice_refraction),
-                valueA = gemA.indiceRefraction,
-                valueB = gemB.indiceRefraction,
+                valueA = itemA.durete,
+                valueB = itemB.durete,
                 accentA = accentA,
                 accentB = accentB
             )
             ComparisonDetailRow(
                 label = stringResource(R.string.fiche_densite),
-                valueA = diagnosticA?.densite ?: placeholder,
-                valueB = diagnosticB?.densite ?: placeholder,
+                valueA = itemA.densite,
+                valueB = itemB.densite,
                 accentA = accentA,
                 accentB = accentB
             )
             ComparisonDetailRow(
-                label = stringResource(R.string.fiche_fluorescence),
-                valueA = diagnosticA?.let { localizedLabel(it.fluorescence) } ?: placeholder,
-                valueB = diagnosticB?.let { localizedLabel(it.fluorescence) } ?: placeholder,
-                accentA = accentA,
-                accentB = accentB
-            )
-            ComparisonDetailRow(
-                label = stringResource(R.string.fiche_pleochroisme),
-                valueA = diagnosticA?.let { localizedLabel(it.pleochroisme) } ?: placeholder,
-                valueB = diagnosticB?.let { localizedLabel(it.pleochroisme) } ?: placeholder,
+                label = stringResource(R.string.fiche_rarete),
+                valueA = stringResource(itemA.rarete.labelRes),
+                valueB = stringResource(itemB.rarete.labelRes),
                 accentA = accentA,
                 accentB = accentB
             )

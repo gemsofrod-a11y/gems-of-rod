@@ -83,6 +83,7 @@
     <string name="fiche_eclat">Блеск</string>
     <string name="fiche_clivage">Спайность</string>
     <string name="fiche_densite">Плотность</string>
+    <string name="fiche_rarete">Редкость</string>
     <string name="fiche_pleochroisme">Плеохроизм</string>
     <string name="fiche_fluorescence">УФ-флуоресценция</string>
     <string name="fiche_prix_indicatif">Ориентировочная цена</string>
@@ -176,6 +177,13 @@
     <string name="comparer_axis_fluorescence_short">Флюор.</string>
     <string name="comparer_axis_pleochroisme_short">Плеохр.</string>
     <string name="comparer_details_title">Детали характеристик</string>
+    <string name="comparer_axis_rarete_short">Редкость</string>
+    <string name="fossile_comparer_title">Сравнить две окаменелости</string>
+    <string name="fossile_comparer_subtitle">Твёрдость, плотность, редкость… одним взглядом на графике.</string>
+    <string name="coquillage_comparer_title">Сравнить две раковины</string>
+    <string name="coquillage_comparer_subtitle">Твёрдость, плотность, редкость… одним взглядом на графике.</string>
+    <string name="meteorite_comparer_title">Сравнить два метеорита</string>
+    <string name="meteorite_comparer_subtitle">Твёрдость, плотность, редкость… одним взглядом на графике.</string>
     <string name="analyse_intro">Укажите известные или наблюдаемые характеристики. Достаточно одного критерия для начала; чем больше вы укажете, тем точнее будет результат.</string>
     <string name="analyse_instruments_card_title">Инструменты геммолога</string>
     <string name="analyse_instruments_card_subtitle">Узнайте об инструментах, используемых для анализа камня.</string>

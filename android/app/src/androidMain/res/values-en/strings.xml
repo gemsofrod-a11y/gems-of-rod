@@ -83,6 +83,7 @@
     <string name="fiche_eclat">Luster</string>
     <string name="fiche_clivage">Cleavage</string>
     <string name="fiche_densite">Specific gravity</string>
+    <string name="fiche_rarete">Rarity</string>
     <string name="fiche_pleochroisme">Pleochroism</string>
     <string name="fiche_fluorescence">UV fluorescence</string>
     <string name="fiche_prix_indicatif">Indicative price</string>
@@ -176,6 +177,13 @@
     <string name="comparer_axis_fluorescence_short">Fluo.</string>
     <string name="comparer_axis_pleochroisme_short">Pleo.</string>
     <string name="comparer_details_title">Characteristic details</string>
+    <string name="comparer_axis_rarete_short">Rarity</string>
+    <string name="fossile_comparer_title">Compare two fossils</string>
+    <string name="fossile_comparer_subtitle">Hardness, density, rarity… at a glance on a chart.</string>
+    <string name="coquillage_comparer_title">Compare two seashells</string>
+    <string name="coquillage_comparer_subtitle">Hardness, density, rarity… at a glance on a chart.</string>
+    <string name="meteorite_comparer_title">Compare two meteorites</string>
+    <string name="meteorite_comparer_subtitle">Hardness, density, rarity… at a glance on a chart.</string>
     <string name="analyse_intro">Enter the characteristics you know or observe. A single criterion is enough to get started; the more you provide, the more precise the results.</string>
     <string name="analyse_instruments_card_title">The gemologist\'s tools</string>
     <string name="analyse_instruments_card_subtitle">Discover the instruments used to analyse a stone.</string>

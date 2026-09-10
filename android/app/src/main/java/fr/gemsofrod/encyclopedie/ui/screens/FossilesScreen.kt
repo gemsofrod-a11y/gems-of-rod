@@ -80,6 +80,7 @@ import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
 @Composable
 fun FossilesMenuScreen(
     onClassificationClick: () -> Unit,
+    onComparerClick: () -> Unit,
     onFossileClick: (Fossile) -> Unit,
     onBackClick: () -> Unit
 ) {
@@ -123,6 +124,7 @@ fun FossilesMenuScreen(
                         color = MaterialTheme.colorScheme.onBackground
                     )
                     FossilesClassificationCard(onClick = onClassificationClick)
+                    FossilesComparisonCard(onClick = onComparerClick)
                 }
 
                 FossileFamille.entries.forEach { famille ->
@@ -181,6 +183,43 @@ private fun FossilesClassificationCard(onClick: () -> Unit) {
                 )
                 Text(
                     text = stringResource(R.string.fossiles_classification_subtitle),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            Icon(
+                Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+    }
+}
+
+@Composable
+private fun FossilesComparisonCard(onClick: () -> Unit) {
+    Card(
+        onClick = onClick,
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(14.dp)
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(R.string.fossile_comparer_title),
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = stringResource(R.string.fossile_comparer_subtitle),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

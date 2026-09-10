@@ -83,6 +83,7 @@
     <string name="fiche_eclat">光泽</string>
     <string name="fiche_clivage">解理</string>
     <string name="fiche_densite">密度</string>
+    <string name="fiche_rarete">稀有度</string>
     <string name="fiche_pleochroisme">多色性</string>
     <string name="fiche_fluorescence">紫外荧光</string>
     <string name="fiche_prix_indicatif">参考价格</string>
@@ -176,6 +177,13 @@
     <string name="comparer_axis_fluorescence_short">荧光</string>
     <string name="comparer_axis_pleochroisme_short">多色性</string>
     <string name="comparer_details_title">特性详情</string>
+    <string name="comparer_axis_rarete_short">稀有度</string>
+    <string name="fossile_comparer_title">比较两个化石</string>
+    <string name="fossile_comparer_subtitle">硬度、密度、稀有度……图表一目了然。</string>
+    <string name="coquillage_comparer_title">比较两个贝壳</string>
+    <string name="coquillage_comparer_subtitle">硬度、密度、稀有度……图表一目了然。</string>
+    <string name="meteorite_comparer_title">比较两个陨石</string>
+    <string name="meteorite_comparer_subtitle">硬度、密度、稀有度……图表一目了然。</string>
     <string name="analyse_intro">请填写您已知或观察到的特征。只需一项条件即可开始；填写的信息越多，结果越精确。</string>
     <string name="analyse_instruments_card_title">宝石学家的工具</string>
     <string name="analyse_instruments_card_subtitle">了解用于分析宝石的各种仪器。</string>

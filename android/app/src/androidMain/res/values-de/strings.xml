@@ -83,6 +83,7 @@
     <string name="fiche_eclat">Glanz</string>
     <string name="fiche_clivage">Spaltbarkeit</string>
     <string name="fiche_densite">Dichte</string>
+    <string name="fiche_rarete">Seltenheit</string>
     <string name="fiche_pleochroisme">Pleochroismus</string>
     <string name="fiche_fluorescence">UV-Fluoreszenz</string>
     <string name="fiche_prix_indicatif">Richtpreis</string>
@@ -176,6 +177,13 @@
     <string name="comparer_axis_fluorescence_short">Fluo.</string>
     <string name="comparer_axis_pleochroisme_short">Pleo.</string>
     <string name="comparer_details_title">Details der Eigenschaften</string>
+    <string name="comparer_axis_rarete_short">Seltenheit</string>
+    <string name="fossile_comparer_title">Zwei Fossilien vergleichen</string>
+    <string name="fossile_comparer_subtitle">Härte, Dichte, Seltenheit… auf einen Blick im Diagramm.</string>
+    <string name="coquillage_comparer_title">Zwei Muscheln vergleichen</string>
+    <string name="coquillage_comparer_subtitle">Härte, Dichte, Seltenheit… auf einen Blick im Diagramm.</string>
+    <string name="meteorite_comparer_title">Zwei Meteoriten vergleichen</string>
+    <string name="meteorite_comparer_subtitle">Härte, Dichte, Seltenheit… auf einen Blick im Diagramm.</string>
     <string name="analyse_intro">Gib die Eigenschaften ein, die du kennst oder beobachtest. Ein einziges Kriterium genügt für den Start; je mehr du angibst, desto genauer wird das Ergebnis.</string>
     <string name="analyse_instruments_card_title">Die Werkzeuge des Gemmologen</string>
     <string name="analyse_instruments_card_subtitle">Entdecken Sie die Instrumente zur Analyse eines Steins.</string>
