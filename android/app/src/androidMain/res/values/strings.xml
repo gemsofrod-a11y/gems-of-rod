@@ -83,6 +83,7 @@
     <string name="fiche_eclat">Éclat</string>
     <string name="fiche_clivage">Clivage</string>
     <string name="fiche_densite">Densité</string>
+    <string name="fiche_rarete">Rareté</string>
     <string name="fiche_pleochroisme">Pléochroïsme</string>
     <string name="fiche_fluorescence">Fluorescence UV</string>
     <string name="fiche_prix_indicatif">Prix indicatif</string>
@@ -176,6 +177,13 @@
     <string name="comparer_axis_fluorescence_short">Fluo.</string>
     <string name="comparer_axis_pleochroisme_short">Pléo.</string>
     <string name="comparer_details_title">Détail des caractéristiques</string>
+    <string name="comparer_axis_rarete_short">Rareté</string>
+    <string name="fossile_comparer_title">Comparer deux fossiles</string>
+    <string name="fossile_comparer_subtitle">Dureté, densité, rareté… en un coup d\'œil sur un graphique.</string>
+    <string name="coquillage_comparer_title">Comparer deux coquillages</string>
+    <string name="coquillage_comparer_subtitle">Dureté, densité, rareté… en un coup d\'œil sur un graphique.</string>
+    <string name="meteorite_comparer_title">Comparer deux météorites</string>
+    <string name="meteorite_comparer_subtitle">Dureté, densité, rareté… en un coup d\'œil sur un graphique.</string>
     <string name="analyse_intro">Renseignez les caractéristiques que vous connaissez ou observez. Un seul critère suffit pour démarrer ; plus vous en indiquez, plus le résultat sera précis.</string>
     <string name="analyse_instruments_card_title">Les outils du gemmologue</string>
     <string name="analyse_instruments_card_subtitle">Découvrez les instruments utilisés pour analyser une pierre.</string>

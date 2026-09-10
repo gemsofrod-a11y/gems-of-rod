@@ -38,6 +38,8 @@ import fr.gemsofrod.encyclopedie.ui.screens.CertificateScreen
 import fr.gemsofrod.encyclopedie.ui.screens.ColorListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.FamillesListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.FavoritesScreen
+import fr.gemsofrod.encyclopedie.ui.screens.CatalogComparisonCategory
+import fr.gemsofrod.encyclopedie.ui.screens.CatalogComparisonScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemComparisonScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemmologieMenuScreen
@@ -132,12 +134,15 @@ private object Routes {
     const val LANGUAGE = "language"
     const val METEORITES = "meteorites"
     const val METEORITE_CLASSIFICATION = "meteorite_classification"
+    const val METEORITE_COMPARISON = "meteorite_comparison"
     const val METEORITE_DETAIL = "meteorite/{meteoriteId}"
     const val FOSSILES = "fossiles"
     const val FOSSILE_CLASSIFICATION = "fossile_classification"
+    const val FOSSILE_COMPARISON = "fossile_comparison"
     const val FOSSILE_DETAIL = "fossile/{fossileId}"
     const val COQUILLAGES = "coquillages"
     const val COQUILLAGE_CLASSIFICATION = "coquillage_classification"
+    const val COQUILLAGE_COMPARISON = "coquillage_comparison"
     const val COQUILLAGE_DETAIL = "coquillage/{coquillageId}"
     const val GEMMES_ORGANIQUES = "gemmes_organiques"
     const val QUIZ = "quiz"
@@ -501,12 +506,19 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         composable(Routes.METEORITES) {
             MeteoritesMenuScreen(
                 onClassificationClick = { navController.navigate(Routes.METEORITE_CLASSIFICATION) },
+                onComparerClick = { navController.navigate(Routes.METEORITE_COMPARISON) },
                 onMeteoriteClick = { meteorite -> navController.navigate(Routes.meteoriteDetail(meteorite.id)) },
                 onBackClick = { navController.popBackStack() }
             )
         }
         composable(Routes.METEORITE_CLASSIFICATION) {
             MeteoriteClassificationScreen(onBackClick = { navController.popBackStack() })
+        }
+        composable(Routes.METEORITE_COMPARISON) {
+            CatalogComparisonScreen(
+                category = CatalogComparisonCategory.METEORITE,
+                onBackClick = { navController.popBackStack() }
+            )
         }
         composable(Routes.METEORITE_DETAIL) { backStackEntry ->
             val meteoriteId = backStackEntry.arguments?.getString("meteoriteId").orEmpty()
@@ -518,12 +530,19 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         composable(Routes.FOSSILES) {
             FossilesMenuScreen(
                 onClassificationClick = { navController.navigate(Routes.FOSSILE_CLASSIFICATION) },
+                onComparerClick = { navController.navigate(Routes.FOSSILE_COMPARISON) },
                 onFossileClick = { fossile -> navController.navigate(Routes.fossileDetail(fossile.id)) },
                 onBackClick = { navController.popBackStack() }
             )
         }
         composable(Routes.FOSSILE_CLASSIFICATION) {
             FossileClassificationScreen(onBackClick = { navController.popBackStack() })
+        }
+        composable(Routes.FOSSILE_COMPARISON) {
+            CatalogComparisonScreen(
+                category = CatalogComparisonCategory.FOSSILE,
+                onBackClick = { navController.popBackStack() }
+            )
         }
         composable(Routes.FOSSILE_DETAIL) { backStackEntry ->
             val fossileId = backStackEntry.arguments?.getString("fossileId").orEmpty()
@@ -535,12 +554,19 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         composable(Routes.COQUILLAGES) {
             CoquillagesMenuScreen(
                 onClassificationClick = { navController.navigate(Routes.COQUILLAGE_CLASSIFICATION) },
+                onComparerClick = { navController.navigate(Routes.COQUILLAGE_COMPARISON) },
                 onCoquillageClick = { coquillage -> navController.navigate(Routes.coquillageDetail(coquillage.id)) },
                 onBackClick = { navController.popBackStack() }
             )
         }
         composable(Routes.COQUILLAGE_CLASSIFICATION) {
             CoquillageClassificationScreen(onBackClick = { navController.popBackStack() })
+        }
+        composable(Routes.COQUILLAGE_COMPARISON) {
+            CatalogComparisonScreen(
+                category = CatalogComparisonCategory.COQUILLAGE,
+                onBackClick = { navController.popBackStack() }
+            )
         }
         composable(Routes.COQUILLAGE_DETAIL) { backStackEntry ->
             val coquillageId = backStackEntry.arguments?.getString("coquillageId").orEmpty()

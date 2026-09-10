@@ -79,6 +79,7 @@ import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
 @Composable
 fun CoquillagesMenuScreen(
     onClassificationClick: () -> Unit,
+    onComparerClick: () -> Unit,
     onCoquillageClick: (Coquillage) -> Unit,
     onBackClick: () -> Unit
 ) {
@@ -122,6 +123,7 @@ fun CoquillagesMenuScreen(
                         color = MaterialTheme.colorScheme.onBackground
                     )
                     CoquillagesClassificationCard(onClick = onClassificationClick)
+                    CoquillagesComparisonCard(onClick = onComparerClick)
                 }
 
                 CoquillageFamille.entries.forEach { famille ->
@@ -180,6 +182,43 @@ private fun CoquillagesClassificationCard(onClick: () -> Unit) {
                 )
                 Text(
                     text = stringResource(R.string.coquillages_classification_subtitle),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            Icon(
+                Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
+    }
+}
+
+@Composable
+private fun CoquillagesComparisonCard(onClick: () -> Unit) {
+    Card(
+        onClick = onClick,
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(14.dp)
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(R.string.coquillage_comparer_title),
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    text = stringResource(R.string.coquillage_comparer_subtitle),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

@@ -83,6 +83,7 @@
     <string name="fiche_eclat">Glans</string>
     <string name="fiche_clivage">Splijting</string>
     <string name="fiche_densite">Dichtheid</string>
+    <string name="fiche_rarete">Zeldzaamheid</string>
     <string name="fiche_pleochroisme">Pleochroïsme</string>
     <string name="fiche_fluorescence">UV-fluorescentie</string>
     <string name="fiche_prix_indicatif">Richtprijs</string>
@@ -176,6 +177,13 @@
     <string name="comparer_axis_fluorescence_short">Fluor.</string>
     <string name="comparer_axis_pleochroisme_short">Pleo.</string>
     <string name="comparer_details_title">Details van de eigenschappen</string>
+    <string name="comparer_axis_rarete_short">Zeldzaamheid</string>
+    <string name="fossile_comparer_title">Vergelijk twee fossielen</string>
+    <string name="fossile_comparer_subtitle">Hardheid, dichtheid, zeldzaamheid… in één oogopslag in een grafiek.</string>
+    <string name="coquillage_comparer_title">Vergelijk twee schelpen</string>
+    <string name="coquillage_comparer_subtitle">Hardheid, dichtheid, zeldzaamheid… in één oogopslag in een grafiek.</string>
+    <string name="meteorite_comparer_title">Vergelijk twee meteorieten</string>
+    <string name="meteorite_comparer_subtitle">Hardheid, dichtheid, zeldzaamheid… in één oogopslag in een grafiek.</string>
     <string name="analyse_intro">Geef de kenmerken op die u kent of waarneemt. Eén criterium volstaat om te beginnen; hoe meer u opgeeft, hoe nauwkeuriger het resultaat.</string>
     <string name="analyse_instruments_card_title">De gereedschappen van de gemmoloog</string>
     <string name="analyse_instruments_card_subtitle">Ontdek de instrumenten die worden gebruikt om een steen te analyseren.</string>
