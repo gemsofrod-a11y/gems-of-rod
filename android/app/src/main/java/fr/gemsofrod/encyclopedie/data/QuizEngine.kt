@@ -1,7 +1,7 @@
 package fr.gemsofrod.encyclopedie.data
 
 /** Type de question posée dans le quiz de révision gemmologique. */
-enum class QuizQuestionType { COULEUR, FAMILLE, RARETE, GLOSSAIRE, FOSSILE_FAMILLE, COQUILLAGE_FAMILLE, METEORITE_FAMILLE }
+enum class QuizQuestionType { COULEUR, FAMILLE, RARETE, GLOSSAIRE, FOSSILE_FAMILLE, COQUILLAGE_FAMILLE, METEORITE_FAMILLE, ORGANIQUE_FAMILLE }
 
 /**
  * Une question du quiz. Les champs pertinents dépendent de [type] :
@@ -21,6 +21,10 @@ enum class QuizQuestionType { COULEUR, FAMILLE, RARETE, GLOSSAIRE, FOSSILE_FAMIL
  *   trois au total.
  * - [METEORITE_FAMILLE] : [meteoriteId] renseigné, [choiceKeys] contient les
  *   noms d'enum [MeteoriteFamille.name] dont un correspond à [correctIndex].
+ * - [ORGANIQUE_FAMILLE] : [gemId] renseigné (une gemme organique de
+ *   [GemsRepository.organiques]), [choiceKeys] contient des noms de famille
+ *   en français (clé canonique de [LabelLocalization]), restreints aux
+ *   gemmes organiques.
  */
 data class QuizQuestion(
     val type: QuizQuestionType,
@@ -48,16 +52,18 @@ object QuizEngine {
     fun generateQuiz(): List<QuizQuestion> {
         val gems = GemsRepository.gems
         val allFamilies = gems.map { GemFamilies.baseName(it.famille) }.distinct()
+        val allOrganiqueFamilies = GemsRepository.organiques().map { GemFamilies.baseName(it.famille) }.distinct()
         val glossaryTermCount = GemGlossary.page("fr").termes.size
         val types = QuizQuestionType.entries
 
-        return (0 until QUESTION_COUNT).map { generateQuestion(types.random(), gems, allFamilies, glossaryTermCount) }
+        return (0 until QUESTION_COUNT).map { generateQuestion(types.random(), gems, allFamilies, allOrganiqueFamilies, glossaryTermCount) }
     }
 
     private fun generateQuestion(
         type: QuizQuestionType,
         gems: List<Gem>,
         allFamilies: List<String>,
+        allOrganiqueFamilies: List<String>,
         glossaryTermCount: Int
     ): QuizQuestion = when (type) {
         QuizQuestionType.FOSSILE_FAMILLE -> {
@@ -107,6 +113,17 @@ object QuizEngine {
             QuizQuestion(
                 type = QuizQuestionType.FAMILLE,
                 gemId = gem.id,
+                correctIndex = choices.indexOf(correctFamille),
+                choiceKeys = choices
+            )
+        }
+        QuizQuestionType.ORGANIQUE_FAMILLE -> {
+            val organique = GemsRepository.organiques().random()
+            val correctFamille = GemFamilies.baseName(organique.famille)
+            val choices = (allOrganiqueFamilies.filter { it != correctFamille }.shuffled().take(3) + correctFamille).shuffled()
+            QuizQuestion(
+                type = QuizQuestionType.ORGANIQUE_FAMILLE,
+                gemId = organique.id,
                 correctIndex = choices.indexOf(correctFamille),
                 choiceKeys = choices
             )

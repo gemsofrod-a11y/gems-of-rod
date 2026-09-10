@@ -295,6 +295,10 @@ private fun questionPrompt(question: QuizQuestion): String = when (question.type
         val meteorite = MeteoritesRepository.byId(question.meteoriteId.orEmpty())?.localized()
         stringResource(R.string.quiz_question_meteorite_famille, meteorite?.nom.orEmpty())
     }
+    QuizQuestionType.ORGANIQUE_FAMILLE -> {
+        val gem = GemsRepository.byId(question.gemId.orEmpty())?.localized()
+        stringResource(R.string.quiz_question_organique_famille, gem?.nom.orEmpty())
+    }
 }
 
 @Composable
@@ -316,4 +320,5 @@ private fun choiceLabel(question: QuizQuestion, index: Int): String = when (ques
     QuizQuestionType.FOSSILE_FAMILLE -> stringResource(FossileFamille.valueOf(question.choiceKeys[index]).labelRes)
     QuizQuestionType.COQUILLAGE_FAMILLE -> stringResource(CoquillageFamille.valueOf(question.choiceKeys[index]).labelRes)
     QuizQuestionType.METEORITE_FAMILLE -> stringResource(MeteoriteFamille.valueOf(question.choiceKeys[index]).labelRes)
+    QuizQuestionType.ORGANIQUE_FAMILLE -> localizedLabel(question.choiceKeys[index])
 }

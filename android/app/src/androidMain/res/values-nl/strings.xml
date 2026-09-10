@@ -327,6 +327,7 @@
     <string name="quiz_question_fossile_famille">Tot welke familie behoort het fossiel %1$s?</string>
     <string name="quiz_question_coquillage_famille">Tot welke familie behoort de schelp %1$s?</string>
     <string name="quiz_question_meteorite_famille">Tot welke familie behoort de meteoriet %1$s?</string>
+    <string name="quiz_question_organique_famille">Tot welke familie behoort het organisch edelgesteente %1$s?</string>
     <string name="quiz_next_button">Volgende vraag</string>
     <string name="quiz_finish_button">Score bekijken</string>
     <string name="quiz_score_title">Score: %1$d / %2$d</string>

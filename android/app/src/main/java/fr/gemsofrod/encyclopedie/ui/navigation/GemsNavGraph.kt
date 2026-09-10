@@ -722,6 +722,9 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         composable(Routes.FAVORITES) {
             FavoritesScreen(
                 onGemClick = { gem -> navController.navigate(Routes.gemDetail(gem.id)) },
+                onFossileClick = { fossileId -> navController.navigate(Routes.fossileDetail(fossileId)) },
+                onCoquillageClick = { coquillageId -> navController.navigate(Routes.coquillageDetail(coquillageId)) },
+                onMeteoriteClick = { meteoriteId -> navController.navigate(Routes.meteoriteDetail(meteoriteId)) },
                 onBackClick = { navController.popBackStack() }
             )
         }

@@ -327,6 +327,7 @@
     <string name="quiz_question_fossile_famille">化石 %1$s 属于哪个类别？</string>
     <string name="quiz_question_coquillage_famille">贝壳 %1$s 属于哪个类别？</string>
     <string name="quiz_question_meteorite_famille">陨石 %1$s 属于哪个类别？</string>
+    <string name="quiz_question_organique_famille">有机宝石 %1$s 属于哪一类？</string>
     <string name="quiz_next_button">下一题</string>
     <string name="quiz_finish_button">查看得分</string>
     <string name="quiz_score_title">得分：%1$d / %2$d</string>

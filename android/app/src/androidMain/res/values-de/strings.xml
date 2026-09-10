@@ -327,6 +327,7 @@
     <string name="quiz_question_fossile_famille">Zu welcher Familie gehört das Fossil %1$s?</string>
     <string name="quiz_question_coquillage_famille">Zu welcher Familie gehört die Muschel %1$s?</string>
     <string name="quiz_question_meteorite_famille">Zu welcher Familie gehört der Meteorit %1$s?</string>
+    <string name="quiz_question_organique_famille">Zu welcher Familie gehört der organische Schmuckstein %1$s?</string>
     <string name="quiz_next_button">Nächste Frage</string>
     <string name="quiz_finish_button">Ergebnis ansehen</string>
     <string name="quiz_score_title">Ergebnis: %1$d / %2$d</string>
