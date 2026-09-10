@@ -52,6 +52,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.AchievementsRepository
+import fr.gemsofrod.encyclopedie.data.FavoriteCategory
 import fr.gemsofrod.encyclopedie.data.Fossile
 import fr.gemsofrod.encyclopedie.data.FossileClassificationInfo
 import fr.gemsofrod.encyclopedie.data.FossileFamille
@@ -62,6 +63,7 @@ import fr.gemsofrod.encyclopedie.data.GemImageType
 import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.data.GemRarete
 import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
+import fr.gemsofrod.encyclopedie.ui.components.FavoriteToggleButton
 import fr.gemsofrod.encyclopedie.ui.components.premiumCardBorder
 import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
@@ -357,6 +359,13 @@ fun FossileDetailScreen(fossileId: String, onBackClick: () -> Unit) {
                     IconButton(onClick = onBackClick) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
                     }
+                },
+                actions = {
+                    FavoriteToggleButton(
+                        gemId = currentFossileId,
+                        category = FavoriteCategory.FOSSILE,
+                        inactiveTint = MaterialTheme.colorScheme.onBackground
+                    )
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.background,

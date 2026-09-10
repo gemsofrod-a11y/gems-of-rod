@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
+import fr.gemsofrod.encyclopedie.data.FavoriteCategory
 import fr.gemsofrod.encyclopedie.data.FavoritesRepository
 import kotlinx.coroutines.launch
 
@@ -27,16 +28,17 @@ import kotlinx.coroutines.launch
  * Bouton cœur d'ajout/retrait des favoris, avec un léger rebond à
  * l'activation (pas au chargement de l'écran — l'animation ne se déclenche
  * que sur l'action de l'utilisateur). Centralisé ici pour un rendu
- * identique sur toutes les fiches gemme (détail, lithothérapie…).
+ * identique sur toutes les fiches (gemme, fossile, coquillage, météorite…).
  */
 @Composable
 fun FavoriteToggleButton(
     gemId: String,
     modifier: Modifier = Modifier,
+    category: FavoriteCategory = FavoriteCategory.GEM,
     activeTint: Color = MaterialTheme.colorScheme.primary,
     inactiveTint: Color = MaterialTheme.colorScheme.onSurfaceVariant
 ) {
-    val isFavorite = FavoritesRepository.isFavorite(gemId)
+    val isFavorite = FavoritesRepository.isFavorite(gemId, category)
     val scale = remember { Animatable(1f) }
     val scope = rememberCoroutineScope()
     val addLabel = stringResource(R.string.cd_add_favorite)
@@ -44,7 +46,7 @@ fun FavoriteToggleButton(
 
     IconButton(
         onClick = {
-            FavoritesRepository.toggle(gemId)
+            FavoritesRepository.toggle(gemId, category)
             scope.launch {
                 scale.snapTo(1f)
                 scale.animateTo(1.35f, animationSpec = tween(100))

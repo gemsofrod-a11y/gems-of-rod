@@ -53,11 +53,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.AchievementsRepository
+import fr.gemsofrod.encyclopedie.data.FavoriteCategory
 import fr.gemsofrod.encyclopedie.data.GemImageCredit
 import fr.gemsofrod.encyclopedie.data.GemImageType
 import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.data.GemRarete
 import fr.gemsofrod.encyclopedie.data.Meteorite
+import fr.gemsofrod.encyclopedie.ui.components.FavoriteToggleButton
 import fr.gemsofrod.encyclopedie.data.MeteoriteClassificationInfo
 import fr.gemsofrod.encyclopedie.data.MeteoriteFamille
 import fr.gemsofrod.encyclopedie.data.MeteoriteFamilyExplainer
@@ -357,6 +359,13 @@ fun MeteoriteDetailScreen(meteoriteId: String, onBackClick: () -> Unit) {
                     IconButton(onClick = onBackClick) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
                     }
+                },
+                actions = {
+                    FavoriteToggleButton(
+                        gemId = currentMeteoriteId,
+                        category = FavoriteCategory.METEORITE,
+                        inactiveTint = MaterialTheme.colorScheme.onBackground
+                    )
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.background,

@@ -327,6 +327,7 @@
     <string name="quiz_question_fossile_famille">A que família pertence o fóssil %1$s?</string>
     <string name="quiz_question_coquillage_famille">A que família pertence a concha %1$s?</string>
     <string name="quiz_question_meteorite_famille">A que família pertence o meteorito %1$s?</string>
+    <string name="quiz_question_organique_famille">A que família pertence a gema orgânica %1$s?</string>
     <string name="quiz_next_button">Próxima pergunta</string>
     <string name="quiz_finish_button">Ver pontuação</string>
     <string name="quiz_score_title">Pontuação: %1$d / %2$d</string>

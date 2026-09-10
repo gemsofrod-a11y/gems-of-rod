@@ -41,6 +41,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -49,12 +50,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import fr.gemsofrod.encyclopedie.R
+import fr.gemsofrod.encyclopedie.data.CoquillagesRepository
+import fr.gemsofrod.encyclopedie.data.FavoriteCategory
 import fr.gemsofrod.encyclopedie.data.FavoritesPdfGenerator
 import fr.gemsofrod.encyclopedie.data.FavoritesRepository
+import fr.gemsofrod.encyclopedie.data.FossilesRepository
 import fr.gemsofrod.encyclopedie.data.Gem
 import fr.gemsofrod.encyclopedie.data.GemImageType
 import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.data.GemsRepository
+import fr.gemsofrod.encyclopedie.data.MeteoritesRepository
 import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
 import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
@@ -63,14 +68,38 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+/** Une ligne de la liste unifiée des favoris, toutes catégories confondues. */
+private data class FavoriteEntry(
+    val id: String,
+    val title: String,
+    val subtitle: String,
+    val swatchColor: Color? = null,
+    val onClick: () -> Unit
+)
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FavoritesScreen(
     onGemClick: (Gem) -> Unit,
+    onFossileClick: (String) -> Unit,
+    onCoquillageClick: (String) -> Unit,
+    onMeteoriteClick: (String) -> Unit,
     onBackClick: () -> Unit
 ) {
-    val gems = FavoritesRepository.favoriteIds().mapNotNull { GemsRepository.byId(it) }
+    val gems = FavoritesRepository.favoriteIds(FavoriteCategory.GEM).mapNotNull { GemsRepository.byId(it) }
     val localizedGems = gems.map { it.localized() }
+    val fossileLabel = stringResource(R.string.home_fossiles_title)
+    val coquillageLabel = stringResource(R.string.home_coquillages_title)
+    val meteoriteLabel = stringResource(R.string.home_meteorites_title)
+    val entries = localizedGems.map { gem ->
+        FavoriteEntry(gem.id, gem.nom, stringResource(gem.couleur.labelRes), gem.couleur.swatch) { onGemClick(gem) }
+    } + FavoritesRepository.favoriteIds(FavoriteCategory.FOSSILE).mapNotNull { FossilesRepository.byId(it) }.map { it.localized() }.map { fossile ->
+        FavoriteEntry(fossile.id, fossile.nom, fossileLabel) { onFossileClick(fossile.id) }
+    } + FavoritesRepository.favoriteIds(FavoriteCategory.COQUILLAGE).mapNotNull { CoquillagesRepository.byId(it) }.map { it.localized() }.map { coquillage ->
+        FavoriteEntry(coquillage.id, coquillage.nom, coquillageLabel) { onCoquillageClick(coquillage.id) }
+    } + FavoritesRepository.favoriteIds(FavoriteCategory.METEORITE).mapNotNull { MeteoritesRepository.byId(it) }.map { it.localized() }.map { meteorite ->
+        FavoriteEntry(meteorite.id, meteorite.nom, meteoriteLabel) { onMeteoriteClick(meteorite.id) }
+    }
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     var isExporting by remember { mutableStateOf(false) }
@@ -125,7 +154,7 @@ fun FavoritesScreen(
         },
         containerColor = MaterialTheme.colorScheme.background
     ) { padding ->
-        if (gems.isEmpty()) {
+        if (entries.isEmpty()) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -160,7 +189,7 @@ fun FavoritesScreen(
             }
         } else {
             var query by remember { mutableStateOf("") }
-            val displayedGems = if (query.isBlank()) gems else gems.filter { it.localized().nom.contains(query, ignoreCase = true) }
+            val displayedEntries = if (query.isBlank()) entries else entries.filter { it.title.contains(query, ignoreCase = true) }
 
             Column(modifier = Modifier.fillMaxSize().padding(padding)) {
                 CatalogSearchField(
@@ -168,7 +197,7 @@ fun FavoritesScreen(
                     onQueryChange = { query = it },
                     placeholder = stringResource(R.string.catalog_search_placeholder)
                 )
-                if (query.isNotBlank() && displayedGems.isEmpty()) {
+                if (query.isNotBlank() && displayedEntries.isEmpty()) {
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
                         Text(
                             text = stringResource(R.string.catalog_search_no_results, query),
@@ -183,8 +212,8 @@ fun FavoritesScreen(
                         verticalArrangement = Arrangement.spacedBy(10.dp),
                         modifier = Modifier.fillMaxSize()
                     ) {
-                        items(displayedGems, key = { it.id }) { gem ->
-                            FavoriteRow(gem = gem, onClick = { onGemClick(gem) })
+                        items(displayedEntries, key = { it.id }) { entry ->
+                            FavoriteRow(entry = entry)
                         }
                     }
                 }
@@ -194,10 +223,9 @@ fun FavoritesScreen(
 }
 
 @Composable
-private fun FavoriteRow(gem: Gem, onClick: () -> Unit) {
-    val localizedGem = gem.localized()
+private fun FavoriteRow(entry: FavoriteEntry) {
     Card(
-        onClick = onClick,
+        onClick = entry.onClick,
         shape = RoundedCornerShape(14.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         modifier = Modifier.fillMaxWidth()
@@ -209,14 +237,14 @@ private fun FavoriteRow(gem: Gem, onClick: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(14.dp)
         ) {
-            val thumbnailCredit = GemImages.creditsFor(gem.id).let { credits ->
+            val thumbnailCredit = GemImages.creditsFor(entry.id).let { credits ->
                 credits.firstOrNull { it.type == GemImageType.FACETTEE } ?: credits.firstOrNull()
             }
             val imagePainter = rememberSampledDrawablePainter(thumbnailCredit?.drawableName, 48.dp)
             if (imagePainter != null) {
                 Image(
                     painter = imagePainter,
-                    contentDescription = localizedGem.nom,
+                    contentDescription = entry.title,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .size(48.dp)
@@ -226,18 +254,18 @@ private fun FavoriteRow(gem: Gem, onClick: () -> Unit) {
                 Box(
                     modifier = Modifier
                         .size(40.dp)
-                        .background(gem.couleur.swatch, CircleShape)
+                        .background(entry.swatchColor ?: MaterialTheme.colorScheme.surfaceVariant, CircleShape)
                 )
             }
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = localizedGem.nom,
+                    text = entry.title,
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = stringResource(gem.couleur.labelRes),
+                    text = entry.subtitle,
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

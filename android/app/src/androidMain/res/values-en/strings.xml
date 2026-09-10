@@ -327,6 +327,7 @@
     <string name="quiz_question_fossile_famille">Which family does the fossil %1$s belong to?</string>
     <string name="quiz_question_coquillage_famille">Which family does the seashell %1$s belong to?</string>
     <string name="quiz_question_meteorite_famille">Which family does the meteorite %1$s belong to?</string>
+    <string name="quiz_question_organique_famille">Which family does the organic gem %1$s belong to?</string>
     <string name="quiz_next_button">Next question</string>
     <string name="quiz_finish_button">See score</string>
     <string name="quiz_score_title">Score: %1$d / %2$d</string>
