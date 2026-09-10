@@ -184,6 +184,17 @@
     <string name="coquillage_comparer_subtitle">硬度、密度、稀有度……图表一目了然。</string>
     <string name="meteorite_comparer_title">比较两个陨石</string>
     <string name="meteorite_comparer_subtitle">硬度、密度、稀有度……图表一目了然。</string>
+    <string name="mineral_formation_title">矿物的形成</string>
+    <string name="mineral_formation_intro">四种宝石，四段地质故事。每种宝石配有一段精心挑选、内容严谨的科普视频——可直接在此观看。</string>
+    <string name="mineral_formation_diamant_title">钻石</string>
+    <string name="mineral_formation_diamant_desc">纯碳在地下约150公里处，经受极端的压力与高温结晶而成，随后被古老的火山喷发（金伯利岩）带到地表。</string>
+    <string name="mineral_formation_emeraude_title">祖母绿</string>
+    <string name="mineral_formation_emeraude_desc">富含铍的热液与含铬或钒的岩石相遇，孕育出其他任何宝石都无法比拟的浓郁绿色。</string>
+    <string name="mineral_formation_saphir_rubis_title">蓝宝石与红宝石</string>
+    <string name="mineral_formation_saphir_rubis_desc">同属刚玉这一种矿物：红宝石的红色来自铬，蓝宝石的其他色调则来自铁和钛，二者都在地下深处的变质岩中结晶而成。</string>
+    <string name="mineral_formation_video_credit">来源：%1$s</string>
+    <string name="mineral_formation_disclaimer">视频为第三方内容，托管于YouTube，因其科学严谨性而被选用。Gems of Rod并非视频作者。</string>
+    <string name="mineral_formation_fallback_note">视频以英语显示：暂无该宝石的中文版本。</string>
     <string name="analyse_intro">请填写您已知或观察到的特征。只需一项条件即可开始；填写的信息越多，结果越精确。</string>
     <string name="analyse_instruments_card_title">宝石学家的工具</string>
     <string name="analyse_instruments_card_subtitle">了解用于分析宝石的各种仪器。</string>
@@ -447,6 +458,8 @@
     <!-- 按宝石分类的购买指南 -->
     <string name="lab_buying_guides_title">购买指南</string>
     <string name="lab_buying_guides_subtitle">如何逐项标准挑选每一种贵重宝石与半宝石。</string>
+    <string name="lab_mineral_formation_title">矿物的形成</string>
+    <string name="lab_mineral_formation_subtitle">钻石、祖母绿、蓝宝石和红宝石是如何形成的。</string>
     <string name="buying_guides_title">购买指南</string>
     <string name="buying_guides_origin_label">产地与颜色</string>
     <string name="buying_guides_purity_label">净度与常见处理</string>

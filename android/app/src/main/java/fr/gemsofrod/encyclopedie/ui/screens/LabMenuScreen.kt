@@ -21,6 +21,7 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Inventory2
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.LocalShipping
+import androidx.compose.material.icons.filled.OndemandVideo
 import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material.icons.filled.People
 import androidx.compose.material.icons.filled.Public
@@ -64,6 +65,7 @@ fun LabMenuScreen(
     onDiamondGradingClick: () -> Unit,
     onTreatmentsClick: () -> Unit,
     onBuyingGuidesClick: () -> Unit,
+    onMineralFormationClick: () -> Unit,
     onStockClick: () -> Unit,
     onClientsClick: () -> Unit,
     onSuppliersClick: () -> Unit,
@@ -159,6 +161,12 @@ fun LabMenuScreen(
                 title = stringResource(R.string.lab_buying_guides_title),
                 subtitle = stringResource(R.string.lab_buying_guides_subtitle),
                 onClick = onBuyingGuidesClick
+            )
+            LabMenuCard(
+                icon = Icons.Filled.OndemandVideo,
+                title = stringResource(R.string.lab_mineral_formation_title),
+                subtitle = stringResource(R.string.lab_mineral_formation_subtitle),
+                onClick = onMineralFormationClick
             )
             LabMenuCard(
                 icon = Icons.Filled.Inventory2,

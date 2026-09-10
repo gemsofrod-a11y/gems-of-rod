@@ -184,6 +184,17 @@
     <string name="coquillage_comparer_subtitle">Dureté, densité, rareté… en un coup d\'œil sur un graphique.</string>
     <string name="meteorite_comparer_title">Comparer deux météorites</string>
     <string name="meteorite_comparer_subtitle">Dureté, densité, rareté… en un coup d\'œil sur un graphique.</string>
+    <string name="mineral_formation_title">Formation des minéraux</string>
+    <string name="mineral_formation_intro">Quatre pierres, quatre histoires géologiques. Une vidéo pédagogique par pierre, sélectionnée pour son sérieux — visionnez-la directement ici.</string>
+    <string name="mineral_formation_diamant_title">Le diamant</string>
+    <string name="mineral_formation_diamant_desc">Le carbone pur cristallise sous une pression et une chaleur extrêmes, à environ 150 km sous la surface, avant d\'être remonté par d\'anciennes éruptions volcaniques (kimberlites).</string>
+    <string name="mineral_formation_emeraude_title">L\'émeraude</string>
+    <string name="mineral_formation_emeraude_desc">Des fluides hydrothermaux riches en béryllium rencontrent des roches chargées en chrome ou en vanadium, donnant naissance à ce vert intense qu\'aucune autre pierre n\'égale.</string>
+    <string name="mineral_formation_saphir_rubis_title">Le saphir et le rubis</string>
+    <string name="mineral_formation_saphir_rubis_desc">Une seule et même espèce minérale, le corindon : le rouge du rubis vient du chrome, les autres teintes du saphir du fer et du titane, cristallisés en profondeur dans des roches métamorphiques.</string>
+    <string name="mineral_formation_video_credit">Source : %1$s</string>
+    <string name="mineral_formation_disclaimer">Vidéos tierces hébergées sur YouTube, sélectionnées pour leur sérieux scientifique. Gems of Rod n\'en est pas l\'auteur.</string>
+    <string name="mineral_formation_fallback_note">Vidéo affichée en anglais : aucune version n\'est disponible dans votre langue pour cette pierre.</string>
     <string name="analyse_intro">Renseignez les caractéristiques que vous connaissez ou observez. Un seul critère suffit pour démarrer ; plus vous en indiquez, plus le résultat sera précis.</string>
     <string name="analyse_instruments_card_title">Les outils du gemmologue</string>
     <string name="analyse_instruments_card_subtitle">Découvrez les instruments utilisés pour analyser une pierre.</string>
@@ -447,6 +458,8 @@
     <!-- Guides d'achat par pierre -->
     <string name="lab_buying_guides_title">Guides d\'achat</string>
     <string name="lab_buying_guides_subtitle">Comment choisir chaque pierre précieuse et fine, critère par critère.</string>
+    <string name="lab_mineral_formation_title">Formation des minéraux</string>
+    <string name="lab_mineral_formation_subtitle">Comment se forment diamant, émeraude, saphir et rubis.</string>
     <string name="buying_guides_title">Guides d\'achat</string>
     <string name="buying_guides_origin_label">Origine &amp; couleur</string>
     <string name="buying_guides_purity_label">Pureté &amp; traitements courants</string>

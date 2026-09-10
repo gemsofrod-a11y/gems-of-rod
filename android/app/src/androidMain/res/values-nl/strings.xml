@@ -184,6 +184,17 @@
     <string name="coquillage_comparer_subtitle">Hardheid, dichtheid, zeldzaamheid… in één oogopslag in een grafiek.</string>
     <string name="meteorite_comparer_title">Vergelijk twee meteorieten</string>
     <string name="meteorite_comparer_subtitle">Hardheid, dichtheid, zeldzaamheid… in één oogopslag in een grafiek.</string>
+    <string name="mineral_formation_title">Vorming van mineralen</string>
+    <string name="mineral_formation_intro">Vier stenen, vier geologische verhalen. Eén educatieve video per steen, gekozen om haar wetenschappelijke nauwkeurigheid — bekijk ze direct hier.</string>
+    <string name="mineral_formation_diamant_title">De diamant</string>
+    <string name="mineral_formation_diamant_desc">Puur koolstof kristalliseert onder extreme druk en hitte, zo\'n 150 km onder het oppervlak, voordat het door oeroude vulkanische uitbarstingen (kimberlieten) naar boven wordt gebracht.</string>
+    <string name="mineral_formation_emeraude_title">De smaragd</string>
+    <string name="mineral_formation_emeraude_desc">Berylliumrijke hydrothermale vloeistoffen ontmoeten gesteente met chroom of vanadium, waardoor een groen ontstaat dat geen enkele andere steen evenaart.</string>
+    <string name="mineral_formation_saphir_rubis_title">Saffier en robijn</string>
+    <string name="mineral_formation_saphir_rubis_desc">Eén en dezelfde mineraalsoort, korund: het rood van de robijn komt van chroom, de overige tinten van de saffier van ijzer en titaan, diep in metamorf gesteente gekristalliseerd.</string>
+    <string name="mineral_formation_video_credit">Bron: %1$s</string>
+    <string name="mineral_formation_disclaimer">Video\'s van derden, gehost op YouTube, gekozen om hun wetenschappelijke nauwkeurigheid. Gems of Rod is niet de maker ervan.</string>
+    <string name="mineral_formation_fallback_note">Video getoond in het Engels: er is geen versie beschikbaar in uw taal voor deze steen.</string>
     <string name="analyse_intro">Geef de kenmerken op die u kent of waarneemt. Eén criterium volstaat om te beginnen; hoe meer u opgeeft, hoe nauwkeuriger het resultaat.</string>
     <string name="analyse_instruments_card_title">De gereedschappen van de gemmoloog</string>
     <string name="analyse_instruments_card_subtitle">Ontdek de instrumenten die worden gebruikt om een steen te analyseren.</string>
@@ -447,6 +458,8 @@
     <!-- Aankoopgidsen per edelsteen -->
     <string name="lab_buying_guides_title">Aankoopgidsen</string>
     <string name="lab_buying_guides_subtitle">Hoe u elke edelsteen en halfedelsteen kiest, criterium voor criterium.</string>
+    <string name="lab_mineral_formation_title">Vorming van mineralen</string>
+    <string name="lab_mineral_formation_subtitle">Hoe diamant, smaragd, saffier en robijn ontstaan.</string>
     <string name="buying_guides_title">Aankoopgidsen</string>
     <string name="buying_guides_origin_label">Herkomst en kleur</string>
     <string name="buying_guides_purity_label">Zuiverheid en veelvoorkomende behandelingen</string>

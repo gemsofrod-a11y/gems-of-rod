@@ -184,6 +184,17 @@
     <string name="coquillage_comparer_subtitle">Твёрдость, плотность, редкость… одним взглядом на графике.</string>
     <string name="meteorite_comparer_title">Сравнить два метеорита</string>
     <string name="meteorite_comparer_subtitle">Твёрдость, плотность, редкость… одним взглядом на графике.</string>
+    <string name="mineral_formation_title">Образование минералов</string>
+    <string name="mineral_formation_intro">Четыре камня, четыре геологические истории. По одному познавательному видео на камень, отобранному за научную точность, — смотрите прямо здесь.</string>
+    <string name="mineral_formation_diamant_title">Алмаз</string>
+    <string name="mineral_formation_diamant_desc">Чистый углерод кристаллизуется под воздействием колоссального давления и температуры на глубине около 150 км, прежде чем подняться к поверхности во время древних вулканических извержений (кимберлитов).</string>
+    <string name="mineral_formation_emeraude_title">Изумруд</string>
+    <string name="mineral_formation_emeraude_desc">Гидротермальные растворы, богатые бериллием, встречаются с породами, содержащими хром или ванадий, порождая насыщенный зелёный цвет, которому нет равных среди других камней.</string>
+    <string name="mineral_formation_saphir_rubis_title">Сапфир и рубин</string>
+    <string name="mineral_formation_saphir_rubis_desc">Один и тот же минерал — корунд: красный цвет рубина обусловлен хромом, а прочие оттенки сапфира — железом и титаном, кристаллизовавшимися в толще метаморфических пород.</string>
+    <string name="mineral_formation_video_credit">Источник: %1$s</string>
+    <string name="mineral_formation_disclaimer">Видео сторонних авторов, размещённые на YouTube и отобранные за научную точность. Gems of Rod не является их автором.</string>
+    <string name="mineral_formation_fallback_note">Видео показано на английском языке: версии на вашем языке для этого камня нет.</string>
     <string name="analyse_intro">Укажите известные или наблюдаемые характеристики. Достаточно одного критерия для начала; чем больше вы укажете, тем точнее будет результат.</string>
     <string name="analyse_instruments_card_title">Инструменты геммолога</string>
     <string name="analyse_instruments_card_subtitle">Узнайте об инструментах, используемых для анализа камня.</string>
@@ -447,6 +458,8 @@
     <!-- Руководства по покупке по камням -->
     <string name="lab_buying_guides_title">Руководства по покупке</string>
     <string name="lab_buying_guides_subtitle">Как выбрать каждый драгоценный и полудрагоценный камень — критерий за критерием.</string>
+    <string name="lab_mineral_formation_title">Образование минералов</string>
+    <string name="lab_mineral_formation_subtitle">Как образуются алмаз, изумруд, сапфир и рубин.</string>
     <string name="buying_guides_title">Руководства по покупке</string>
     <string name="buying_guides_origin_label">Происхождение и цвет</string>
     <string name="buying_guides_purity_label">Чистота и распространённые обработки</string>

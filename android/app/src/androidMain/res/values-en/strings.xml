@@ -184,6 +184,17 @@
     <string name="coquillage_comparer_subtitle">Hardness, density, rarity… at a glance on a chart.</string>
     <string name="meteorite_comparer_title">Compare two meteorites</string>
     <string name="meteorite_comparer_subtitle">Hardness, density, rarity… at a glance on a chart.</string>
+    <string name="mineral_formation_title">Mineral formation</string>
+    <string name="mineral_formation_intro">Four stones, four geological stories. One educational video per stone, chosen for its accuracy — watch it right here.</string>
+    <string name="mineral_formation_diamant_title">Diamond</string>
+    <string name="mineral_formation_diamant_desc">Pure carbon crystallizes under extreme pressure and heat, about 150 km below the surface, before being carried up by ancient volcanic eruptions (kimberlites).</string>
+    <string name="mineral_formation_emeraude_title">Emerald</string>
+    <string name="mineral_formation_emeraude_desc">Beryllium-rich hydrothermal fluids meet chromium- or vanadium-bearing rocks, giving rise to a green unmatched by any other gemstone.</string>
+    <string name="mineral_formation_saphir_rubis_title">Sapphire and ruby</string>
+    <string name="mineral_formation_saphir_rubis_desc">One and the same mineral species, corundum: ruby\'s red comes from chromium, sapphire\'s other hues from iron and titanium, crystallized deep within metamorphic rock.</string>
+    <string name="mineral_formation_video_credit">Source: %1$s</string>
+    <string name="mineral_formation_disclaimer">Third-party videos hosted on YouTube, chosen for their scientific accuracy. Gems of Rod is not their author.</string>
+    <string name="mineral_formation_fallback_note">English video shown: no version is available in your language for this stone.</string>
     <string name="analyse_intro">Enter the characteristics you know or observe. A single criterion is enough to get started; the more you provide, the more precise the results.</string>
     <string name="analyse_instruments_card_title">The gemologist\'s tools</string>
     <string name="analyse_instruments_card_subtitle">Discover the instruments used to analyse a stone.</string>
@@ -447,6 +458,8 @@
     <!-- Buying guides by gemstone -->
     <string name="lab_buying_guides_title">Buying Guides</string>
     <string name="lab_buying_guides_subtitle">How to choose each precious and fine gemstone, criterion by criterion.</string>
+    <string name="lab_mineral_formation_title">Mineral formation</string>
+    <string name="lab_mineral_formation_subtitle">How diamond, emerald, sapphire and ruby form.</string>
     <string name="buying_guides_title">Buying Guides</string>
     <string name="buying_guides_origin_label">Origin &amp; colour</string>
     <string name="buying_guides_purity_label">Clarity &amp; common treatments</string>
