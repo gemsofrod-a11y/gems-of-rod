@@ -37,6 +37,11 @@ import androidx.compose.ui.viewinterop.AndroidView
  *   bascule vers [onUnavailable] pour afficher notre propre carte de
  *   repli, cohérente avec le reste de l'appli, plutôt que celle de
  *   YouTube.
+ *
+ * Certaines restrictions (région, âge, vidéo privée…) ne déclenchent pas
+ * toujours `onError` et laissent le lecteur silencieusement vide (rectangle
+ * noir figé) : un minuteur JS déclenche le même repli si ni `onReady` ni
+ * `onError` ne se sont produits après quelques secondes.
  */
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
@@ -84,6 +89,14 @@ fun YouTubeEmbedPlayer(
                     <script src="https://www.youtube.com/iframe_api"></script>
                     <script>
                         var player;
+                        var settled = false;
+                        function reportUnavailable() {
+                            if (!settled) {
+                                settled = true;
+                                GemsOfRodPlayerBridge.onPlayerError();
+                            }
+                        }
+                        var readyTimeout = setTimeout(reportUnavailable, 7000);
                         function onYouTubeIframeAPIReady() {
                             player = new YT.Player('player', {
                                 width: '100%',
@@ -91,7 +104,8 @@ fun YouTubeEmbedPlayer(
                                 videoId: '$youtubeId',
                                 playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
                                 events: {
-                                    'onError': function(e) { GemsOfRodPlayerBridge.onPlayerError(); }
+                                    'onReady': function(e) { settled = true; clearTimeout(readyTimeout); },
+                                    'onError': function(e) { clearTimeout(readyTimeout); reportUnavailable(); }
                                 }
                             });
                         }
