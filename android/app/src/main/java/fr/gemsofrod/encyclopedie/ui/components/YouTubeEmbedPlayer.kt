@@ -2,14 +2,15 @@ package fr.gemsofrod.encyclopedie.ui.components
 
 import android.annotation.SuppressLint
 import android.view.ViewGroup
+import android.webkit.JavascriptInterface
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -18,19 +19,34 @@ import androidx.compose.ui.viewinterop.AndroidView
 
 /**
  * Lecteur vidéo intégré à l'application, sans quitter l'écran ni ouvrir
- * l'app YouTube : charge le lecteur officiel YouTube (iframe embed) dans une
- * WebView au format 16:9. La lecture démarre au geste de l'utilisateur
- * (pas d'autoplay), pour ne pas déclencher de trafic de données à
- * l'ouverture de l'écran.
+ * l'app YouTube : charge le lecteur officiel YouTube (IFrame Player API)
+ * dans une WebView au format 16:9. La lecture démarre au geste de
+ * l'utilisateur (pas d'autoplay), pour ne pas déclencher de trafic de
+ * données à l'ouverture de l'écran.
  *
- * L'iframe est chargée via une page HTML minimale avec `loadDataWithBaseURL`
- * en fixant l'origine à https://www.youtube.com : charger l'URL d'embed
- * directement (`loadUrl`) fait échouer le lecteur avec l'erreur YouTube 153
- * (origine non reconnue), car la WebView n'a alors aucune origine web valide.
+ * Utilise l'API JS officielle (`iframe_api`), et pas une simple balise
+ * `<iframe src="…/embed/…">`, pour deux raisons :
+ * - `loadDataWithBaseURL` avec une origine à https://www.youtube.com est
+ *   nécessaire dans les deux cas (sinon erreur YouTube 153, origine non
+ *   reconnue par une WebView chargée sans page hôte) ;
+ * - l'API expose un évènement `onError` que la balise `<iframe>` seule
+ *   n'expose pas : certaines vidéos tierces ont l'intégration désactivée
+ *   par leur auteur, et YouTube affiche alors sa propre carte de repli
+ *   (fond blanc, bouton « Ouvrir l'app ») au lieu de jouer la vidéo — un
+ *   rendu qui détonne dans notre thème sombre. En écoutant `onError`, on
+ *   bascule vers [onUnavailable] pour afficher notre propre carte de
+ *   repli, cohérente avec le reste de l'appli, plutôt que celle de
+ *   YouTube.
  */
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
-fun YouTubeEmbedPlayer(youtubeId: String, modifier: Modifier = Modifier) {
+fun YouTubeEmbedPlayer(
+    youtubeId: String,
+    onUnavailable: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val currentOnUnavailable = rememberUpdatedState(onUnavailable)
+
     AndroidView(
         modifier = modifier
             .aspectRatio(16f / 9f)
@@ -48,6 +64,15 @@ fun YouTubeEmbedPlayer(youtubeId: String, modifier: Modifier = Modifier) {
                 webViewClient = WebViewClient()
                 webChromeClient = WebChromeClient()
                 setBackgroundColor(android.graphics.Color.BLACK)
+                addJavascriptInterface(
+                    object {
+                        @JavascriptInterface
+                        fun onPlayerError() {
+                            post { currentOnUnavailable.value() }
+                        }
+                    },
+                    "GemsOfRodPlayerBridge"
+                )
             }
         },
         update = { webView ->
@@ -55,11 +80,22 @@ fun YouTubeEmbedPlayer(youtubeId: String, modifier: Modifier = Modifier) {
                 webView.tag = youtubeId
                 val html = """
                     <html><body style="margin:0;padding:0;background:#000;">
-                    <iframe width="100%" height="100%"
-                        src="https://www.youtube.com/embed/$youtubeId?rel=0&modestbranding=1&playsinline=1"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
+                    <div id="player" style="width:100%;height:100%;"></div>
+                    <script src="https://www.youtube.com/iframe_api"></script>
+                    <script>
+                        var player;
+                        function onYouTubeIframeAPIReady() {
+                            player = new YT.Player('player', {
+                                width: '100%',
+                                height: '100%',
+                                videoId: '$youtubeId',
+                                playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
+                                events: {
+                                    'onError': function(e) { GemsOfRodPlayerBridge.onPlayerError(); }
+                                }
+                            });
+                        }
+                    </script>
                     </body></html>
                 """.trimIndent()
                 webView.loadDataWithBaseURL("https://www.youtube.com", html, "text/html", "utf-8", null)

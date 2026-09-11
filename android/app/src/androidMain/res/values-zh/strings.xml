@@ -195,6 +195,8 @@
     <string name="mineral_formation_video_credit">来源：%1$s</string>
     <string name="mineral_formation_disclaimer">视频为第三方内容，托管于YouTube，因其科学严谨性而被选用。Gems of Rod并非视频作者。</string>
     <string name="mineral_formation_fallback_note">视频以英语显示：暂无该宝石的中文版本。</string>
+    <string name="mineral_formation_video_unavailable">该视频无法在内置播放器中观看。</string>
+    <string name="mineral_formation_watch_on_youtube">在YouTube上观看</string>
     <string name="analyse_intro">请填写您已知或观察到的特征。只需一项条件即可开始；填写的信息越多，结果越精确。</string>
     <string name="analyse_instruments_card_title">宝石学家的工具</string>
     <string name="analyse_instruments_card_subtitle">了解用于分析宝石的各种仪器。</string>

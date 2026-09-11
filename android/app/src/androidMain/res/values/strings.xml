@@ -195,6 +195,8 @@
     <string name="mineral_formation_video_credit">Source : %1$s</string>
     <string name="mineral_formation_disclaimer">Vidéos tierces hébergées sur YouTube, sélectionnées pour leur sérieux scientifique. Gems of Rod n\'en est pas l\'auteur.</string>
     <string name="mineral_formation_fallback_note">Vidéo affichée en anglais : aucune version n\'est disponible dans votre langue pour cette pierre.</string>
+    <string name="mineral_formation_video_unavailable">Vidéo indisponible dans le lecteur intégré.</string>
+    <string name="mineral_formation_watch_on_youtube">Regarder sur YouTube</string>
     <string name="analyse_intro">Renseignez les caractéristiques que vous connaissez ou observez. Un seul critère suffit pour démarrer ; plus vous en indiquez, plus le résultat sera précis.</string>
     <string name="analyse_instruments_card_title">Les outils du gemmologue</string>
     <string name="analyse_instruments_card_subtitle">Découvrez les instruments utilisés pour analyser une pierre.</string>
