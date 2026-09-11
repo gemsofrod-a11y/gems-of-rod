@@ -17,7 +17,7 @@ enum class MineralFormationStone { DIAMANT, EMERAUDE, SAPHIR_RUBIS }
  */
 object MineralFormationVideos {
     private val diamant = mapOf(
-        "fr" to MineralFormationVideo("FdenHlJmzPw", "Comment c'est fait : Le Diamant"),
+        "fr" to MineralFormationVideo("uRqB2636rNQ", "L'origine des pierres précieuses : le diamant"),
         "en" to MineralFormationVideo("AF2eYuAKsao", "Where Do Diamonds Come From?: Crash Course Geology #8"),
         "es" to MineralFormationVideo("sNLyrvj1KEw", "Cómo se forman los diamantes en la Tierra"),
         "it" to MineralFormationVideo("uOjAaKSN5QI", "Fabrizio Nestola: «Ecco dove si formano i diamanti»"),

@@ -1,5 +1,7 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
+import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.background
@@ -15,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.OpenInNew
 import androidx.compose.material.icons.filled.OndemandVideo
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -25,6 +28,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -45,6 +49,29 @@ import fr.gemsofrod.encyclopedie.R
 import fr.gemsofrod.encyclopedie.data.MineralFormationStone
 import fr.gemsofrod.encyclopedie.data.MineralFormationVideos
 import fr.gemsofrod.encyclopedie.ui.components.YouTubeEmbedPlayer
+
+/**
+ * Ouvre la vidéo dans l'app YouTube si elle est installée, sinon dans le
+ * navigateur. Essaie d'abord le schéma `vnd.youtube:` (ouverture directe
+ * dans l'app), puis retombe sur l'URL web ; n'importe quel échec de
+ * résolution est absorbé plutôt que de faire planter l'appli — un identifiant
+ * de vidéo supprimée ou invalide ne doit jamais provoquer de crash.
+ */
+private fun openYoutubeExternally(context: Context, youtubeId: String) {
+    try {
+        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:$youtubeId")))
+        return
+    } catch (_: ActivityNotFoundException) {
+        // Pas d'app YouTube installée : on retombe sur le navigateur.
+    } catch (_: Exception) {
+        // Ignore toute autre erreur de résolution et retombe aussi sur le navigateur.
+    }
+    try {
+        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=$youtubeId")))
+    } catch (_: Exception) {
+        // Aucune app ne peut ouvrir de lien web : rien de plus à faire côté appli.
+    }
+}
 
 /**
  * Une vidéo pédagogique par pierre (diamant, émeraude, saphir & rubis),
@@ -123,6 +150,7 @@ private fun MineralFormationCard(
     title: String,
     description: String
 ) {
+    val context = LocalContext.current
     val video = MineralFormationVideos.video(stone, languageCode)
     val isFallback = !MineralFormationVideos.hasNativeVideo(stone, languageCode)
     var playbackUnavailable by rememberSaveable(video.youtubeId) { mutableStateOf(false) }
@@ -164,6 +192,19 @@ private fun MineralFormationCard(
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
+            if (!playbackUnavailable) {
+                TextButton(
+                    onClick = { openYoutubeExternally(context, video.youtubeId) },
+                    modifier = Modifier.padding(0.dp)
+                ) {
+                    Icon(
+                        Icons.AutoMirrored.Filled.OpenInNew,
+                        contentDescription = null,
+                        modifier = Modifier.padding(end = 6.dp)
+                    )
+                    Text(stringResource(R.string.mineral_formation_watch_on_youtube))
+                }
+            }
             if (isFallback) {
                 Text(
                     text = stringResource(R.string.mineral_formation_fallback_note),
@@ -208,10 +249,7 @@ private fun VideoUnavailableFallback(youtubeId: String, modifier: Modifier = Mod
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 textAlign = TextAlign.Center
             )
-            Button(onClick = {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=$youtubeId"))
-                context.startActivity(intent)
-            }) {
+            Button(onClick = { openYoutubeExternally(context, youtubeId) }) {
                 Text(stringResource(R.string.mineral_formation_watch_on_youtube))
             }
         }
