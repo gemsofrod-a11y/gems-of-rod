@@ -24,6 +24,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -502,8 +503,17 @@ private fun LithotherapieRow(gem: Gem, onClick: () -> Unit) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LithotherapieDetailScreen(gemId: String, onBackClick: () -> Unit) {
+fun LithotherapieDetailScreen(
+    gemId: String,
+    onBackClick: () -> Unit,
+    onCategoryClick: (String) -> Unit = {}
+) {
     val gem = GemsRepository.byId(gemId)?.localized()
+    // Les catégories se déduisent du texte français canonique (voir Bienfaits),
+    // pas du texte localisé : on filtre sur la fiche non traduite.
+    val categories = remember(gemId) {
+        Bienfaits.labels.filter { label -> Bienfaits.gemsFor(label).any { it.id == gemId } }
+    }
 
     Scaffold(
         topBar = {
@@ -586,6 +596,25 @@ fun LithotherapieDetailScreen(gemId: String, onBackClick: () -> Unit) {
                         style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.onSurface
                     )
+                }
+            }
+
+            if (categories.isNotEmpty()) {
+                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    Text(
+                        text = stringResource(R.string.litho_categories_title),
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
+                    LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        items(categories) { label ->
+                            AssistChip(
+                                onClick = { onCategoryClick(label) },
+                                label = { Text(localizedLabel(label)) }
+                            )
+                        }
+                    }
                 }
             }
 

@@ -124,6 +124,7 @@
     <string name="litho_mois_subtitle">De geboortestenen, één per maand.</string>
     <string name="litho_no_gems">Voorlopig geen edelstenen in deze categorie.</string>
     <string name="litho_virtues_title">Eigenschappen in de lithotherapie</string>
+    <string name="litho_categories_title">Gerelateerde eigenschappen</string>
     <string name="litho_disclaimer">Deze informatie is gebaseerd op traditionele overtuigingen en gebruiken. Ze vormt geen medisch advies en geen therapeutische bewering, en vervangt geen raadpleging van een zorgprofessional.</string>
     <string name="litho_nettoyage_title">Reiniging &amp; opladen</string>
     <string name="litho_nettoyage_subtitle">De traditionele praktijken om uw stenen te zuiveren en te herladen.</string>

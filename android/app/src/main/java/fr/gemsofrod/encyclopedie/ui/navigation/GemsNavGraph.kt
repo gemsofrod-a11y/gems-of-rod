@@ -64,6 +64,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieGemsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieInfoScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieLabelListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieMenuScreen
+import fr.gemsofrod.encyclopedie.ui.screens.LithotherapieSchemes
 import fr.gemsofrod.encyclopedie.ui.screens.FossileClassificationScreen
 import fr.gemsofrod.encyclopedie.ui.screens.FossileDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.FossilesMenuScreen
@@ -771,7 +772,10 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
             val gemId = backStackEntry.arguments?.getString("gemId").orEmpty()
             LithotherapieDetailScreen(
                 gemId = gemId,
-                onBackClick = { navController.popBackStack() }
+                onBackClick = { navController.popBackStack() },
+                onCategoryClick = { label ->
+                    navController.navigate(Routes.lithotherapieGems(LithotherapieSchemes.BIENFAIT, label))
+                }
             )
         }
     }
