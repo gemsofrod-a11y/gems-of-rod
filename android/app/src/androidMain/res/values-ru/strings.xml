@@ -124,6 +124,7 @@
     <string name="litho_mois_subtitle">Камни по месяцу рождения, по одному на месяц.</string>
     <string name="litho_no_gems">Пока нет камней в этой категории.</string>
     <string name="litho_virtues_title">Свойства в литотерапии</string>
+    <string name="litho_categories_title">Связанные свойства</string>
     <string name="litho_disclaimer">Эта информация основана на традиционных верованиях и практиках. Она не является медицинским заключением или терапевтическим утверждением и не заменяет консультацию специалиста здравоохранения.</string>
     <string name="litho_nettoyage_title">Очищение и подзарядка</string>
     <string name="litho_nettoyage_subtitle">Традиционные практики очищения и восстановления энергии ваших камней.</string>

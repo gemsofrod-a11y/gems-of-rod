@@ -117,7 +117,12 @@ object Bienfaits {
         "Créativité & Communication" to listOf("créativité", "communication", "expression"),
         "Spiritualité & Intuition" to listOf("spiritualité", "intuition", "méditation", "éveil", "conscience", "sagesse"),
         "Équilibre & Harmonie" to listOf("équilibre", "harmonie"),
-        "Ancrage" to listOf("ancrage", "stabilité")
+        "Ancrage" to listOf("ancrage", "stabilité"),
+        "Protection contre le mauvais œil" to listOf("mauvais œil", "mauvais oeil"),
+        "Énergies négatives" to listOf("énergies négatives", "energies negatives", "ondes négatives"),
+        "Bouclier psychique" to listOf("bouclier psychique", "protection psychique"),
+        "Protection des voyages" to listOf("voyageurs", "protège durant les voyages", "protège les voyages"),
+        "Protection du foyer" to listOf("protège le foyer", "protège la maison", "protège le domicile")
     )
 
     val labels: List<String> = CATEGORIES.map { it.first }
