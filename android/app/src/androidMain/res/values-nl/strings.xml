@@ -195,6 +195,8 @@
     <string name="mineral_formation_video_credit">Bron: %1$s</string>
     <string name="mineral_formation_disclaimer">Video\'s van derden, gehost op YouTube, gekozen om hun wetenschappelijke nauwkeurigheid. Gems of Rod is niet de maker ervan.</string>
     <string name="mineral_formation_fallback_note">Video getoond in het Engels: er is geen versie beschikbaar in uw taal voor deze steen.</string>
+    <string name="mineral_formation_video_unavailable">Video niet beschikbaar in de ingebouwde speler.</string>
+    <string name="mineral_formation_watch_on_youtube">Bekijken op YouTube</string>
     <string name="analyse_intro">Geef de kenmerken op die u kent of waarneemt. Eén criterium volstaat om te beginnen; hoe meer u opgeeft, hoe nauwkeuriger het resultaat.</string>
     <string name="analyse_instruments_card_title">De gereedschappen van de gemmoloog</string>
     <string name="analyse_instruments_card_subtitle">Ontdek de instrumenten die worden gebruikt om een steen te analyseren.</string>
