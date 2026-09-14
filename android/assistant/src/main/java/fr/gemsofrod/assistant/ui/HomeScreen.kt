@@ -1,3 +1,5 @@
+@file:OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+
 package fr.gemsofrod.assistant.ui
 
 import androidx.compose.foundation.clickable
@@ -8,10 +10,10 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Inbox
 import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.BadgedBox
@@ -95,7 +97,11 @@ fun HomeScreen(
                     }
                 }
                 Box(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)) {
-                    ExtendedFloatingActionButton(onClick = onOpenPending, text = { Text("Voir les emails en attente") })
+                    ExtendedFloatingActionButton(
+                        onClick = onOpenPending,
+                        icon = { Icon(Icons.Filled.Inbox, contentDescription = null) },
+                        text = { Text("Voir les emails en attente") },
+                    )
                 }
             }
 

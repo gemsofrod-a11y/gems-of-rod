@@ -1,3 +1,5 @@
+@file:OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+
 package fr.gemsofrod.assistant.ui
 
 import androidx.compose.foundation.layout.Arrangement
