@@ -104,7 +104,7 @@ object GemTranslationsDe {
             descriptionLongue = "Benannt nach der Blume, ist der Hyazinth die orange bis rotbraune Varietät des Zirkons, die bereits seit der Antike bekannt und geschliffen wird. Seine hohe Lichtbrechung verleiht ihm bei gleicher Größe einen dem Diamanten vergleichbaren Glanz.",
             particularites = "Hohe Doppelbrechung, die eine mit bloßem Auge sichtbare Kantenverdopplung der Tafel verursacht.",
             inclusions = "Ausgeprägte Doppelbrechung, die zu einer deutlichen Kantenverdopplung im Inneren führt; metamikte Zonen und Spannungsrisse häufig.",
-            lithotherapie = "Der Hyazinth-Zirkon wird traditionell mit Erfolg und Selbstvertrauen bei neuen Unternehmungen in Verbindung gebracht."
+            lithotherapie = "Der Hyazinth-Zirkon wird traditionell mit Erfolg und Selbstvertrauen bei neuen Unternehmungen in Verbindung gebracht und soll laut mittelalterlichen Lapidaren Reisende schützen."
         ),
         "zircon-dore" to GemTranslation(
             nom = "Goldener Zirkon",
@@ -144,7 +144,7 @@ object GemTranslationsDe {
             descriptionLongue = "Als eisen- und manganreiche Varietät des Grossular-Granats zeigt Hessonit eine warme orangefarbene, an Zimtsirup erinnernde Farbe mit einem inneren Schillereffekt (dem sogenannten „Treacle-Effekt“), der auf seine charakteristischen Einschlüsse zurückzuführen ist.",
             particularites = "Typisch öliges bis honigartiges Erscheinungsbild aufgrund innerer Einschlüsse.",
             inclusions = "Oft trübes, „gekochtes\" inneres Erscheinungsbild durch diffuse feine Fibrillen und akzessorische Kristalle, typisch für den Granat aus Sri Lanka.",
-            lithotherapie = "Hessonit wird traditionell getragen, um das Selbstvertrauen zu stärken und vor übermäßiger Selbstkritik zu schützen."
+            lithotherapie = "Hessonit wird traditionell getragen, um das Selbstvertrauen zu stärken und vor übermäßiger Selbstkritik zu schützen, sowie – der vedischen indischen Tradition nach – vor negativen Energien."
         ),
         "opale-de-feu" to GemTranslation(
             nom = "Feueropal",
@@ -168,14 +168,14 @@ object GemTranslationsDe {
             descriptionLongue = "Karneol verdankt seinen orange bis roten Farbton Eisenoxiden. Im alten Ägypten in Skarabäen und Amuletten gefasst, bleibt er bis heute ein erschwinglicher und in der Schmuckherstellung sowie für Gemmen (Intaglien) vielfach verwendeter Stein.",
             particularites = "Wird häufig erhitzt, um den orangefarbenen Ton aus braunem Ausgangsmaterial zu intensivieren.",
             inclusions = "Färbung durch fein verteilte Eisenoxide in der mikrokristallinen Struktur; wenige einzeln sichtbare Einschlüsse.",
-            lithotherapie = "Als Stein der Tatkraft schlechthin soll Karneol Mut, Motivation und körperliche Vitalität anregen."
+            lithotherapie = "Als Stein der Tatkraft schlechthin soll Karneol Mut, Motivation und körperliche Vitalität anregen; im alten Ägypten und in der arabischen Welt wurde er zudem als Amulett zum Schutz vor dem bösen Blick getragen."
         ),
         "pyrite" to GemTranslation(
             nom = "Pyrit",
             descriptionCourte = "Das „Narrengold“ mit metallisch goldenem Glanz.",
             descriptionLongue = "Pyrit bildet kubische oder oktaedrische Kristalle in einem intensiven, messinggelben Metallglanz und wurde von unerfahrenen Goldsuchern lange mit echtem Gold verwechselt. Bereits in der viktorianischen Ära wurde er facettiert in der Schmuckherstellung verwendet (im Handel als „Marcasite“ bezeichnet).",
             particularites = "Oxidiert und kann bei langfristiger Feuchtigkeitseinwirkung zerfallen („Pyritkrankheit“).",
-            lithotherapie = "Pyrit gilt als Stein des Schutzes und des Überflusses und wird verwendet, um Selbstvertrauen und Tatkraft zu stärken."
+            lithotherapie = "Pyrit gilt als Stein des Schutzes vor negativen Energien und des Überflusses und wird verwendet, um Selbstvertrauen und Tatkraft zu stärken."
         ),
         "scheelite" to GemTranslation(
             nom = "Scheelit",
@@ -246,7 +246,7 @@ object GemTranslationsDe {
             descriptionCourte = "Goldenes Schillern in einem beweglichen Lichtband.",
             descriptionLongue = "Das Tigerauge verdankt sein goldenes Schillern Krokydolith-Fasern (einer Asbestvarietät), die zu Quarz pseudomorphosiert wurden. Als Cabochon geschliffen, zeigt es ein bewegliches Lichtband, das sich mit dem einfallenden Licht verschiebt.",
             particularites = "Wird stets als Cabochon geschliffen, um das Schillern (Katzenaugeneffekt) sichtbar zu machen.",
-            lithotherapie = "Als Stein des Schutzes und des Selbstvertrauens wird das Tigerauge häufig genutzt, um Entschlossenheit zu stärken und sich vor negativen Einflüssen zu schützen."
+            lithotherapie = "Als Stein des Schutzes vor dem bösen Blick und des Selbstvertrauens wird das Tigerauge häufig genutzt, um Entschlossenheit zu stärken und sich vor negativen Einflüssen zu schützen."
         ),
         "scapolite" to GemTranslation(
             nom = "Skapolith",
@@ -338,7 +338,7 @@ object GemTranslationsDe {
             descriptionCourte = "Die historische Jade aus China und Neuseeland, zu unterscheiden von Jadeit.",
             descriptionLongue = "Vor der Entdeckung des birmanischen Jadeits im 18. Jahrhundert bestand alle im kaiserlichen China, in Neuseeland (Māori-Pounamu) und im präkolumbischen Amerika bearbeitete Jade aus Nephrit – einem Amphibol mit mikroskopisch feiner Faserverfilzung, die ihm außergewöhnliche Zähigkeit verleiht.",
             particularites = "Die filzartige Faserstruktur macht ihn trotz einer etwas geringeren Härte stoßfester als Jadeit.",
-            lithotherapie = "Als Stein der Weisheit und Harmonie seit dem chinesischen Altertum soll Nephrit-Jade Gelassenheit, Schutz und Langlebigkeit bringen."
+            lithotherapie = "Als Stein der Weisheit und Harmonie seit dem chinesischen Altertum soll Nephrit-Jade Gelassenheit, Schutz und Langlebigkeit bringen und wurde Reisenden traditionell als schützendes Amulett geschenkt."
         ),
         "maw-sit-sit" to GemTranslation(
             nom = "Maw-Sit-Sit",
@@ -392,7 +392,7 @@ object GemTranslationsDe {
             descriptionCourte = "Der heilige Stein der chinesischen Kultur.",
             descriptionLongue = "Jadeit bildet ein mikrokristallines Aggregat von außergewöhnlicher Zähigkeit, wodurch er sich vom Nephrit unterscheidet, dem anderen als „Jade“ bezeichneten Mineral. In China als „Stein des Himmels“ verehrt, symbolisiert er Reinheit und Tugend.",
             particularites = "Trotz mäßiger Härte extrem zäh; die „kaiserliche“ Qualität mit durchscheinendem Grün ist äußerst selten.",
-            lithotherapie = "Jadeit-Jade soll Glück und Schutz bringen und zugleich die Harmonie in Beziehungen sowie die innere Gelassenheit fördern."
+            lithotherapie = "Jadeit-Jade soll Glück und Schutz bringen, insbesondere für Reisende, und fördert zugleich die Harmonie in Beziehungen sowie die innere Gelassenheit."
         ),
         "tourmaline-verte" to GemTranslation(
             nom = "Grüner Turmalin (Verdelith)",
@@ -547,7 +547,7 @@ object GemTranslationsDe {
             descriptionLongue = "Blauer Zirkon, die meistgehandelte Farbe dieser Art, wird fast ausschließlich durch Hitzebehandlung von braunem kambodschanischem Zirkon gewonnen. Sein diamantartiger Glanz und seine starke Dispersion machen ihn zu einer geschätzten und erschwinglichen Alternative zum blauen Saphir.",
             particularites = "Nahezu systematische und stabile Hitzebehandlung; starke Dispersion, nahe an der des Diamanten.",
             inclusions = "Meist Ergebnis einer Wärmebehandlung; charakteristische Kantenverdopplung im Inneren und mitunter feine Spannungsrisse.",
-            lithotherapie = "Blauer Zirkon soll geistige Ruhe und Klarheit bringen, eine Unterstützung für Phasen wichtiger Überlegungen."
+            lithotherapie = "Blauer Zirkon soll geistige Ruhe und Klarheit bringen, eine Unterstützung für Phasen wichtiger Überlegungen; traditionell galt er zudem als schützender Stein für Reisende."
         ),
         "hemimorphite" to GemTranslation(
             nom = "Hemimorphit",
@@ -610,7 +610,7 @@ object GemTranslationsDe {
             descriptionLongue = "Sein Name, abgeleitet vom lateinischen „aqua marina“, weist auf seine hellblaue bis blaugrüne Farbe hin, die an Meerwasser erinnert. Der blaue Beryll zeichnet sich durch seine große Reinheit mit nur sehr wenigen mit bloßem Auge sichtbaren Einschlüssen aus.",
             particularites = "Wird häufig erhitzt, um den Grünanteil abzuschwächen und das Blau zu intensivieren.",
             inclusions = "Meist rein; Hohlkanäle parallel zur c-Achse, seltene Flüssigkeitseinschlüsse und akzessorische Kristalle.",
-            lithotherapie = "Als Stein der Seefahrer wird Aquamarin traditionell mit Gelassenheit, Mut und ruhiger Kommunikation assoziiert, insbesondere auf Reisen."
+            lithotherapie = "Als Stein der Seefahrer wird Aquamarin traditionell mit Gelassenheit, Mut und ruhiger Kommunikation assoziiert, insbesondere auf Reisen; er soll Reisende schützen, vor allem auf See."
         ),
         "tanzanite" to GemTranslation(
             nom = "Tansanit",
@@ -625,14 +625,14 @@ object GemTranslationsDe {
             descriptionCourte = "Tiefes, goldgesprenkeltes Blau, seit der Antike verwendet.",
             descriptionLongue = "Lapislazuli ist ein Gestein, das hauptsächlich aus Lazurit besteht, verbunden mit Pyrit (goldene Einschlüsse) und Calcit (weiße Adern). Bereits im alten Ägypten verwendet und zum Pigment „Ultramarinblau“ vermahlen, ziert er seit Jahrtausenden Schmuck und Kunstobjekte.",
             particularites = "Gleichmäßig verteilte goldene Pyrit-Einschlüsse gelten als Qualitätsmerkmal.",
-            lithotherapie = "Als Stein der Weisheit und Wahrheit seit dem alten Ägypten soll Lapislazuli das Selbstvertrauen und die Klarheit des Urteilsvermögens stärken."
+            lithotherapie = "Als Stein der Weisheit und Wahrheit seit dem alten Ägypten soll Lapislazuli das Selbstvertrauen und die Klarheit des Urteilsvermögens stärken sowie – als Erbe seiner Verwendung in ägyptischen Amuletten – psychischen Schutz bieten."
         ),
         "turquoise" to GemTranslation(
             nom = "Türkis",
             descriptionCourte = "Emblematisches Blaugrün, geadert von Matrixgestein.",
             descriptionLongue = "Seit dem alten Ägypten verwendet und für zahlreiche indianische Kulturen heilig, verdankt der Türkis sein Blau dem Kupfer. Da er porös und weich ist, wird er häufig durch Harzimprägnierung stabilisiert, um der Beanspruchung in der Schmuckherstellung standzuhalten.",
             particularites = "Charakteristisches geädertes Matrixgestein; porös und empfindlich gegenüber Kosmetika und Chemikalien.",
-            lithotherapie = "Als Schutzstein seit Jahrtausenden soll Türkis Gelassenheit, aufrichtige Kommunikation und Schutz auf Reisen fördern."
+            lithotherapie = "Als Schutzstein seit Jahrtausenden soll Türkis Gelassenheit, aufrichtige Kommunikation und den Schutz von Reisenden fördern und gilt zugleich als traditioneller Talisman gegen den bösen Blick."
         ),
         "spinelle-bleu" to GemTranslation(
             nom = "Blauer Spinell",
@@ -733,7 +733,7 @@ object GemTranslationsDe {
             descriptionLongue = "Amethyst verdankt seine violette Farbe Spuren von Eisen in Verbindung mit natürlicher Bestrahlung. Obwohl reichlich vorhanden und erschwinglich, wurde er jahrhundertelang von Adel und Klerus getragen, als Symbol für Nüchternheit und Spiritualität.",
             particularites = "Kann bei längerer Sonnenlichteinwirkung ausbleichen.",
             inclusions = "Chevronförmige Farbzonierung (Brasilianer Zwillingsgesetz), Schleier feiner Flüssigkeitseinschlüsse, mitunter Wachstumsphantomkristalle.",
-            lithotherapie = "Amethyst zählt in der Lithotherapie zu den bekanntesten Steinen zur Linderung von Stress, zur Förderung eines ruhigen Schlafs sowie zur Unterstützung von Meditation und Spiritualität."
+            lithotherapie = "Amethyst zählt in der Lithotherapie zu den bekanntesten Steinen zur Linderung von Stress, zur Förderung eines ruhigen Schlafs sowie zur Unterstützung von Meditation und Spiritualität; am Eingang eines Raumes platziert, soll er das Zuhause vor negativen Energien schützen."
         ),
         "spinelle-violet" to GemTranslation(
             nom = "Violetter Spinell",
@@ -1083,7 +1083,7 @@ object GemTranslationsDe {
             descriptionLongue = "Rauchquarz verdankt seinen braunen Farbton Farbzentren, die durch die natürliche Radioaktivität des umgebenden Gesteins entstehen und auf Aluminiumspuren einwirken. Er ist reichlich vorhanden und erschwinglich und wird häufig erhitzt, um in Citrin umgewandelt zu werden.",
             particularites = "Kann durch Erhitzen gelb werden (Citrin) oder bei längerer Lichteinwirkung verblassen.",
             inclusions = "Schleier feiner Flüssigkeitseinschlüsse und gelegentliche Negativkristalle, vergleichbar mit Bergkristall.",
-            lithotherapie = "Rauchquarz ist bekannt für seine starken erdenden Eigenschaften, die helfen sollen, Stress und Alltagsspannungen aufzunehmen."
+            lithotherapie = "Rauchquarz ist bekannt für seine starken erdenden Eigenschaften, die helfen sollen, Stress, Alltagsspannungen und negative Energien aufzunehmen."
         ),
         "andalousite" to GemTranslation(
             nom = "Andalusit",
@@ -1143,7 +1143,7 @@ object GemTranslationsDe {
             descriptionLongue = "Turmalinquarz schließt Nadeln aus schwarzem Turmalin (Schörl) in einem ansonsten klaren Quarzkristall ein und erzeugt so ein auffälliges grafisches Muster, das sowohl in der Lithotherapie als auch im zeitgenössischen Schmuckdesign sehr geschätzt wird.",
             particularites = "Die Turmalinnadeln bleiben mit bloßem Auge sichtbar und erzeugen bei jedem Stein ein einzigartiges grafisches Muster.",
             inclusions = "Schwarze Turmalinnadeln (Schörl), verflochten in klarem Quarz.",
-            lithotherapie = "Turmalinquarz verbindet die schützenden Eigenschaften des schwarzen Turmalins mit der verstärkenden Klarheit des Bergkristalls."
+            lithotherapie = "Turmalinquarz verbindet die schützenden Eigenschaften des schwarzen Turmalins, der als psychischer Schutzschild gegen negative Energien gilt, mit der verstärkenden Klarheit des Bergkristalls."
         ),
         "onyx" to GemTranslation(
             nom = "Onyx",
@@ -1171,7 +1171,7 @@ object GemTranslationsDe {
             descriptionCourte = "Natürliches Glas mit scharfkantigem Bruch.",
             descriptionLongue = "Obsidian entsteht durch die schnelle Abkühlung kieselsäurereicher Lava und ist ein amorphes vulkanisches Glas. Sein extrem scharfer muscheliger Bruch machte ihn bereits in der Vorgeschichte zu einem bevorzugten Werkzeugmaterial, insbesondere für Pfeilspitzen und Klingen.",
             particularites = "Manche Varietäten zeigen ein goldenes oder irisierendes Schillern (Regenbogenobsidian).",
-            lithotherapie = "Obsidian gilt als kraftvoller Schutzstein, der zugleich verborgene Wahrheiten offenbaren und eine tiefgreifende innere Transformation begünstigen soll."
+            lithotherapie = "Obsidian gilt als kraftvoller Schutzstein, der wie ein echter psychischer Schutzschild wirkt, während er zugleich verborgene Wahrheiten offenbaren und eine tiefgreifende innere Transformation begünstigen soll."
         ),
         "rubis-etoile" to GemTranslation(
             nom = "Sternrubin",
@@ -1233,7 +1233,7 @@ object GemTranslationsDe {
             descriptionCourte = "Die berühmteste farbige konzentrische Bänderung des Quarzes.",
             descriptionLongue = "Achat ist ein Chalcedon mit konzentrischen oder parallelen Bändern in verschiedenen Farben, die durch aufeinanderfolgende Kieselsäureablagerungen in vulkanischen Hohlräumen entstehen. Seine zahllosen Varietäten (Moos-, Dendriten-, Landschafts-, Augenachat...) machen ihn zu einem der weltweit meistgesammelten Schmucksteine.",
             particularites = "Die Bänderung wird häufig durch Färbung hervorgehoben, eine alte und am Markt weithin akzeptierte Praxis.",
-            lithotherapie = "Achat wird traditionell mit emotionalem Gleichgewicht, Stabilität und einem sanften alltäglichen Schutz in Verbindung gebracht."
+            lithotherapie = "Achat wird traditionell mit emotionalem Gleichgewicht, Stabilität und einem sanften alltäglichen Schutz in Verbindung gebracht und seit der Antike als Amulett gegen den bösen Blick getragen."
         ),
         "jaspe" to GemTranslation(
             nom = "Jaspis",
@@ -1320,7 +1320,7 @@ object GemTranslationsDe {
             descriptionLongue = "Labradorit zeigt ein optisches Phänomen namens Labradoreszenz: blaugrüne, manchmal goldene oder violette Glanzlichter erscheinen und verschwinden je nach Betrachtungswinkel, verursacht durch innere Lamellen, die das Licht beugen.",
             particularites = "Die Ausrichtung des Schliffs ist entscheidend, um die Labradoreszenz zu offenbaren.",
             inclusions = "Entmischungslamellen, verantwortlich für den schillernden Glanz (Labradoreszenz), mitunter begleitet von feinen Ilmenit- oder Magnetit-Einschlüssen.",
-            lithotherapie = "Labradorit soll einen starken energetischen Schutz bieten und gleichzeitig Intuition und die Magie des Alltags anregen."
+            lithotherapie = "Labradorit soll einen starken energetischen Schutz bieten und wie ein echter psychischer Schutzschild gegen negative Energien wirken, während er gleichzeitig Intuition und die Magie des Alltags anregt."
         ),
         "pierre-de-lune" to GemTranslation(
             nom = "Mondstein",
@@ -1328,7 +1328,7 @@ object GemTranslationsDe {
             descriptionLongue = "Mondstein verdankt seinen Namen dem schwebenden bläulichen Schimmer, der Adulareszenz, verursacht durch das mikroskopisch feine Verwachsen zweier Feldspäte, die das Licht beugen. Die besten kräftig blauen Qualitäten stammen aus Sri Lanka.",
             particularites = "Optimale Adulareszenz, wenn der Stein senkrecht zu den inneren Lamellen als Cabochon geschliffen wird.",
             inclusions = "Albit-Orthoklas-Entmischungslamellen, verantwortlich für die Adulareszenz, jenen bläulichen Schimmer, der unter der Oberfläche zu schweben scheint.",
-            lithotherapie = "Mondstein wird traditionell mit Intuition, Sensibilität und Neuanfängen in Verbindung gebracht, verknüpft mit den Mondzyklen."
+            lithotherapie = "Mondstein wird traditionell mit Intuition, Sensibilität und Neuanfängen in Verbindung gebracht, verknüpft mit den Mondzyklen, und soll Reisende schützen, insbesondere bei Nacht."
         ),
         "pierre-de-soleil" to GemTranslation(
             nom = "Sonnenstein",
@@ -1358,7 +1358,7 @@ object GemTranslationsDe {
             descriptionCourte = "Das kalkige Skelett eines Meerestiers, seit der Antike ein kostbares Blutrot.",
             descriptionLongue = "Die kostbare rote Koralle ist das verzweigte Kalkskelett eines kleinen, koloniebildenden Meerestiers (Corallium rubrum), das seit der Antike im Mittelmeer geerntet wird. Ihre Übernutzung hat sie heute zu einem streng regulierten organischen Edelstein gemacht.",
             particularites = "Streng regulierte Ernte (CITES für bestimmte Arten) aufgrund der historischen Übernutzung der Riffe.",
-            lithotherapie = "Rote Koralle wird traditionell als Schutz getragen, insbesondere für Kinder, und mit Vitalität und familiärer Energie in Verbindung gebracht."
+            lithotherapie = "Rote Koralle wird traditionell als Schutz vor dem bösen Blick getragen, insbesondere für Kinder, und mit Vitalität und familiärer Energie in Verbindung gebracht."
         ),
         "perle-conque" to GemTranslation(
             nom = "Conch-Perle (Lambi)",
@@ -1373,7 +1373,7 @@ object GemTranslationsDe {
             descriptionLongue = "Bernstein ist über Millionen von Jahren fossilisiertes Harz von Nadel- oder Laubbäumen. Seine charakteristische Leichtigkeit und seine mitunter spektakulären Einschlüsse (Insekten, Pflanzen) machten ihn bereits in der Vorgeschichte zu einem kostbaren Material, insbesondere entlang der baltischen „Bernsteinstraße\".",
             particularites = "Schwimmt in Salzwasser; kann sehr begehrte fossile Einschlüsse (Insekten, Pflanzen) enthalten.",
             inclusions = "Kann spektakuläre fossile Einschlüsse enthalten — Insekten, Pflanzenreste, Luftblasen —, echte Fenster in längst vergangene Ökosysteme, besonders geschätzt von der Baltischen Bernsteinstraße.",
-            lithotherapie = "Bernstein gilt seit der Antike als beruhigend und schützend und soll Wärme sowie emotionalen Trost spenden."
+            lithotherapie = "Bernstein gilt seit der Antike als beruhigend und schützend; er wurde vor allem als Amulett getragen, um Kinder vor dem bösen Blick zu schützen, und soll Wärme sowie emotionalen Trost spenden."
         ),
         "perle" to GemTranslation(
             nom = "Zuchtperle",
@@ -1426,7 +1426,7 @@ object GemTranslationsDe {
             descriptionCourte = "Die schillernde blaugraue, nicht oxidierte Variante des Tigerauges.",
             descriptionLongue = "Das Falkenauge hat denselben Ursprung wie das Tigerauge: eine Pseudomorphose von Quarz nach Krokydolith (Blauasbest), dessen parallele Fasern einen seidigen Schimmer erzeugen. Im Gegensatz zum goldenen Tigerauge behält es den ursprünglichen blaugrauen bis blaugrünen Farbton bei, da hier keine Eisenoxidation stattgefunden hat.",
             particularites = "Ein und derselbe Rohblock kann örtlich sowohl blaugraue Zonen (Falkenauge) als auch goldene Zonen (Tigerauge) aufweisen, je nach Grad der Eisenoxidation.",
-            lithotherapie = "Das Falkenauge wird traditionell mit Hellsicht, innerer Klarheit und der Fähigkeit assoziiert, in komplexen Situationen Abstand zu gewinnen."
+            lithotherapie = "Das Falkenauge wird traditionell mit Hellsicht, innerer Klarheit und der Fähigkeit assoziiert, in komplexen Situationen Abstand zu gewinnen; wie das Tigerauge soll dieser Augenstein vor dem bösen Blick schützen."
         ),
         "howlite" to GemTranslation(
             nom = "Howlith",
@@ -1464,7 +1464,7 @@ object GemTranslationsDe {
             descriptionCourte = "Erhitztes Tigerauge, dessen Eisenoxidation in ein tiefes Rotbraun übergeht.",
             descriptionLongue = "Das Stierauge entsteht durch kontrolliertes Erhitzen von goldenem Tigerauge, eine Behandlung, die die Eisenoxidation verstärkt und den Farbton von Gelbbraun zu einem tiefen, kräftigen Rotbraun verändert, während der charakteristische seidige Schimmer der Faserstruktur erhalten bleibt.",
             particularites = "Die thermische Behandlung, die diesen rotbraunen Farbton erzeugt, ist im Handel üblich und weithin akzeptiert, sofern sie offengelegt wird.",
-            lithotherapie = "Das Stierauge wird mit Kraft, Erdung und Entschlossenheit assoziiert, in symbolischer Fortführung des Tigerauges."
+            lithotherapie = "Das Stierauge wird mit Kraft, Erdung, Entschlossenheit und Schutz vor dem bösen Blick assoziiert, in symbolischer Fortführung des Tigerauges."
         ),
         "unakite" to GemTranslation(
             nom = "Unakit",

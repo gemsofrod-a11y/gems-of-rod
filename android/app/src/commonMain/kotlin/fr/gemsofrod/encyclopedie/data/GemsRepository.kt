@@ -262,7 +262,7 @@ object GemsRepository {
             indiceRefraction = "1,925 – 1,984",
             origines = listOf("Sri Lanka (Ratnapura)", "Cambodge (Ratanakiri)", "Tanzanie (Tunduru)"),
             particularites = "Biréfringence élevée provoquant un dédoublement visible des arêtes de la table à l'œil nu.",
-            lithotherapie = "Le zircon hyacinthe est traditionnellement associé à la réussite et à la confiance en soi dans les entreprises nouvelles.",
+            lithotherapie = "Le zircon hyacinthe est traditionnellement associé à la réussite et à la confiance en soi dans les entreprises nouvelles, et réputé protéger les voyageurs selon les lapidaires médiévaux.",
             prixCaratEur = "50 – 300 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -352,7 +352,7 @@ object GemsRepository {
             indiceRefraction = "1,742 – 1,748",
             origines = listOf("Sri Lanka (Ratnapura)", "Inde (Karnataka)", "Canada (mine Jeffrey, Québec)"),
             particularites = "Aspect huileux à mielleux typique dû aux inclusions internes.",
-            lithotherapie = "L'hessonite est traditionnellement porté pour renforcer la confiance en soi et se protéger de l'autocritique excessive.",
+            lithotherapie = "L'hessonite est traditionnellement porté pour renforcer la confiance en soi et se protéger de l'autocritique excessive, ainsi que des énergies négatives selon la tradition védique indienne.",
             prixCaratEur = "20 – 150 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -406,7 +406,7 @@ object GemsRepository {
             indiceRefraction = "1,530 – 1,539",
             origines = listOf("Inde (Rajpipla, Gujarat)", "Brésil (Rio Grande do Sul)", "Uruguay (Artigas)"),
             particularites = "Souvent chauffée pour intensifier la teinte orangée à partir de matière brune.",
-            lithotherapie = "Pierre d'action par excellence, la cornaline est réputée stimuler le courage, la motivation et la vitalité physique.",
+            lithotherapie = "Pierre d'action par excellence, la cornaline est réputée stimuler le courage, la motivation et la vitalité physique ; elle était aussi portée en amulette contre le mauvais œil dans l'Égypte antique et le monde arabe.",
             prixCaratEur = "1 – 10 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -426,7 +426,7 @@ object GemsRepository {
             indiceRefraction = "opaque (métallique, non applicable)",
             origines = listOf("Espagne (Navajún, La Rioja)", "Pérou (Huanzala)", "États-Unis (Illinois)"),
             particularites = "S'oxyde et peut se déliter (« maladie de la pyrite ») si exposée à l'humidité sur le long terme.",
-            lithotherapie = "Considérée comme une pierre de protection et d'abondance, la pyrite est utilisée pour renforcer la confiance en soi et l'esprit d'initiative.",
+            lithotherapie = "Considérée comme une pierre de protection contre les énergies négatives et d'abondance, la pyrite est utilisée pour renforcer la confiance en soi et l'esprit d'initiative.",
             prixCaratEur = "1 – 20 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -606,7 +606,7 @@ object GemsRepository {
             indiceRefraction = "1,544 – 1,553",
             origines = listOf("Afrique du Sud (Prieska, Cap-Nord)", "Australie (Australie-Occidentale)", "Inde (Karnataka)"),
             particularites = "Toujours taillé en cabochon pour révéler la chatoyance (effet œil-de-chat).",
-            lithotherapie = "Pierre de protection et de confiance, l'œil de tigre est très utilisé pour renforcer la détermination et se prémunir des influences négatives.",
+            lithotherapie = "Pierre de protection contre le mauvais œil et de confiance, l'œil de tigre est très utilisé pour renforcer la détermination et se prémunir des influences négatives.",
             prixCaratEur = "1 – 5 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -806,7 +806,7 @@ object GemsRepository {
             indiceRefraction = "1,600 – 1,641",
             origines = listOf("Nouvelle-Zélande (rivière Arahura, pounamu)", "Canada (Colombie-Britannique)", "Chine (Xinjiang, fleuve Yarkand)"),
             particularites = "Structure en fibres feutrées la rendant plus résistante aux chocs que la jadéite, malgré une dureté légèrement inférieure.",
-            lithotherapie = "Pierre de sagesse et d'harmonie depuis l'Antiquité chinoise, le jade néphrite est réputé apporter sérénité, protection et longévité.",
+            lithotherapie = "Pierre de sagesse et d'harmonie depuis l'Antiquité chinoise, le jade néphrite est réputé apporter sérénité, protection et longévité, et était traditionnellement offert aux voyageurs comme amulette protectrice.",
             prixCaratEur = "1 – 50 €/ct (pièces historiques bien plus)",
             rarete = GemRarete.COURANTE
         ),
@@ -932,7 +932,7 @@ object GemsRepository {
             indiceRefraction = "1,640 – 1,667",
             origines = listOf("Birmanie (Hpakant, Kachin)", "Guatemala (vallée du Motagua)"),
             particularites = "Extrêmement tenace malgré une dureté modérée ; qualité « impériale » d'un vert translucide très rare.",
-            lithotherapie = "Le jade jadéite est réputé porter chance et protection, tout en favorisant l'harmonie dans les relations et la sérénité intérieure.",
+            lithotherapie = "Le jade jadéite est réputé porter chance et protection, notamment pour les voyageurs, tout en favorisant l'harmonie dans les relations et la sérénité intérieure.",
             prixCaratEur = "50 – 10 000+ €/ct (très variable, jade impérial hors norme)",
             rarete = GemRarete.RARE
         ),
@@ -1384,7 +1384,7 @@ object GemsRepository {
             indiceRefraction = "1,925 – 1,984",
             origines = listOf("Cambodge (Ratanakiri)", "Sri Lanka (Ratnapura)", "Australie (Nouvelle-Galles du Sud)"),
             particularites = "Traitement thermique quasi systématique et stable ; forte dispersion proche de celle du diamant.",
-            lithotherapie = "Le zircon bleu est réputé apporter calme mental et clarté, un soutien pour les périodes de réflexion importante.",
+            lithotherapie = "Le zircon bleu est réputé apporter calme mental et clarté, un soutien pour les périodes de réflexion importante ; il était aussi traditionnellement considéré comme une pierre protectrice pour les voyageurs.",
             prixCaratEur = "50 – 300 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -1528,7 +1528,7 @@ object GemsRepository {
             indiceRefraction = "1,577 – 1,583",
             origines = listOf("Brésil (mine de Pedra Azul, Minas Gerais)", "Madagascar (Ambatondrazaka)", "Nigeria (plateau de Jos)", "Zambie (Lundazi)"),
             particularites = "Souvent chauffée pour atténuer la composante verte et intensifier le bleu.",
-            lithotherapie = "Pierre des marins, l'aigue-marine est traditionnellement associée à la sérénité, au courage et à une communication apaisée, en particulier lors des voyages.",
+            lithotherapie = "Pierre des marins, l'aigue-marine est traditionnellement associée à la sérénité, au courage et à une communication apaisée, en particulier lors des voyages ; elle est réputée protéger les voyageurs, notamment en mer.",
             prixCaratEur = "50 – 1 000 €/ct",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -1564,7 +1564,7 @@ object GemsRepository {
             indiceRefraction = "1,50 (lazurite, valeur moyenne)",
             origines = listOf("Afghanistan (Badakhshan, mines de Sar-e-Sang)", "Chili (mine Flor de los Andes, Ovalle)"),
             particularites = "Les inclusions dorées de pyrite, réparties uniformément, sont un gage de qualité.",
-            lithotherapie = "Pierre de sagesse et de vérité depuis l'Égypte antique, le lapis-lazuli est réputé renforcer la confiance en soi et la clarté de jugement.",
+            lithotherapie = "Pierre de sagesse et de vérité depuis l'Égypte antique, le lapis-lazuli est réputé renforcer la confiance en soi et la clarté de jugement, ainsi qu'offrir une protection psychique héritée de son usage dans les amulettes égyptiennes.",
             prixCaratEur = "1 – 20 €/ct (souvent vendu au gramme ou à la pièce)",
             rarete = GemRarete.COURANTE
         ),
@@ -1582,7 +1582,7 @@ object GemsRepository {
             indiceRefraction = "1,610 – 1,650",
             origines = listOf("Iran (mine de Neyshabur)", "États-Unis (mine Sleeping Beauty, Arizona)", "Mexique (Sonora)"),
             particularites = "Matrice veinée caractéristique ; poreuse, sensible aux cosmétiques et produits chimiques.",
-            lithotherapie = "Pierre de protection depuis des millénaires, la turquoise est réputée favoriser la sérénité, la communication sincère et la protection lors des voyages.",
+            lithotherapie = "Pierre de protection depuis des millénaires, la turquoise est réputée favoriser la sérénité, la communication sincère et la protection des voyageurs, tout en étant un talisman traditionnel contre le mauvais œil.",
             prixCaratEur = "5 – 100 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -1727,7 +1727,7 @@ object GemsRepository {
             indiceRefraction = "1,544 – 1,553",
             origines = listOf("Afrique du Sud (Cap-Nord)", "Namibie", "Australie occidentale"),
             particularites = "Le même bloc de matière brute peut présenter localement des zones bleu-gris (œil de faucon) et dorées (œil de tigre) selon le degré d'oxydation du fer.",
-            lithotherapie = "L'œil de faucon est traditionnellement associé à la clairvoyance, à la vision intérieure et à la prise de recul face aux situations complexes.",
+            lithotherapie = "L'œil de faucon est traditionnellement associé à la clairvoyance, à la vision intérieure et à la prise de recul face aux situations complexes ; à l'image de l'œil de tigre, cette pierre-œil est réputée protéger contre le mauvais œil.",
             prixCaratEur = "0,20 – 2 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -1872,7 +1872,7 @@ object GemsRepository {
             indiceRefraction = "1,544 – 1,553",
             origines = listOf("Brésil (Rio Grande do Sul)", "Uruguay (Artigas)", "Zambie (mine de Kariba, Kalomo)", "Madagascar (Ambatondrazaka)"),
             particularites = "Peut se décolorer sous exposition prolongée à la lumière du soleil.",
-            lithotherapie = "L'améthyste est l'une des pierres les plus réputées en lithothérapie pour apaiser le stress, favoriser un sommeil serein et soutenir la méditation et la spiritualité.",
+            lithotherapie = "L'améthyste est l'une des pierres les plus réputées en lithothérapie pour apaiser le stress, favoriser un sommeil serein et soutenir la méditation et la spiritualité ; placée à l'entrée d'une pièce, elle protège le foyer des énergies négatives.",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2778,7 +2778,7 @@ object GemsRepository {
             indiceRefraction = "1,544 – 1,553",
             origines = listOf("Écosse (Cairngorm)", "Brésil (Minas Gerais)", "Suisse (massif du Mont-Blanc)"),
             particularites = "Peut être chauffé pour virer au jaune (citrine) ou pâlir sous exposition prolongée à la lumière.",
-            lithotherapie = "Le quartz fumé est réputé pour ses vertus d'ancrage puissantes, aidant à absorber le stress et les tensions du quotidien.",
+            lithotherapie = "Le quartz fumé est réputé pour ses vertus d'ancrage puissantes, aidant à absorber le stress, les tensions du quotidien et les énergies négatives.",
             prixCaratEur = "2 – 15 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2869,7 +2869,7 @@ object GemsRepository {
             indiceRefraction = "1,544 – 1,553",
             origines = listOf("Afrique du Sud (Cap-Nord, matière brute chauffée)"),
             particularites = "Le traitement thermique qui produit cette teinte rouge-brun est courant et largement accepté dans le commerce, à condition d'être divulgué.",
-            lithotherapie = "L'œil de taureau est associé à la force, à l'ancrage et à la détermination, dans la continuité symbolique de l'œil de tigre.",
+            lithotherapie = "L'œil de taureau est associé à la force, à l'ancrage, à la détermination et à une protection contre le mauvais œil, dans la continuité symbolique de l'œil de tigre.",
             prixCaratEur = "0,20 – 2 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -2942,7 +2942,7 @@ object GemsRepository {
             indiceRefraction = "1,544 – 1,553",
             origines = listOf("Brésil (Minas Gerais)", "Madagascar (Antsirabe)"),
             particularites = "Les aiguilles de tourmaline restent visibles à l'œil nu, créant un motif graphique unique à chaque pierre.",
-            lithotherapie = "Le quartz tourmaliné associe les vertus protectrices de la tourmaline noire à la clarté amplificatrice du cristal de roche.",
+            lithotherapie = "Le quartz tourmaliné associe les vertus protectrices de la tourmaline noire, réputée former un bouclier psychique contre les énergies négatives, à la clarté amplificatrice du cristal de roche.",
             prixCaratEur = "5 – 40 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -3014,7 +3014,7 @@ object GemsRepository {
             indiceRefraction = "1,480 – 1,510",
             origines = listOf("Mexique (Sierra de Pachuca)", "Islande (Hrafntinnusker)", "Arménie (mont Artanish)"),
             particularites = "Certaines variétés présentent un chatoiement doré ou irisé (obsidienne arc-en-ciel).",
-            lithotherapie = "L'obsidienne est réputée offrir une protection puissante tout en révélant les vérités cachées, favorisant une transformation intérieure profonde.",
+            lithotherapie = "L'obsidienne est réputée offrir une protection puissante, agissant comme un véritable bouclier psychique, tout en révélant les vérités cachées et favorisant une transformation intérieure profonde.",
             prixCaratEur = "1 – 5 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -3160,7 +3160,7 @@ object GemsRepository {
             indiceRefraction = "1,530 – 1,539",
             origines = listOf("Brésil (Rio Grande do Sul)", "Uruguay (Artigas)", "Madagascar"),
             particularites = "Le rubanement est souvent rehaussé par teinture, une pratique ancienne et largement acceptée du marché.",
-            lithotherapie = "L'agate est traditionnellement associée à l'équilibre émotionnel, à la stabilité et à une protection douce au quotidien.",
+            lithotherapie = "L'agate est traditionnellement associée à l'équilibre émotionnel, à la stabilité et à une protection douce au quotidien, portée depuis l'Antiquité comme amulette contre le mauvais œil.",
             prixCaratEur = "1 – 15 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -3358,7 +3358,7 @@ object GemsRepository {
             indiceRefraction = "1,560 – 1,568",
             origines = listOf("Canada (Paul Island, Labrador)", "Madagascar (Toliara)", "Finlande (Ylämaa, spectrolite)"),
             particularites = "L'orientation de la taille est déterminante pour révéler la labradorescence.",
-            lithotherapie = "La labradorite est réputée offrir une forte protection énergétique tout en stimulant l'intuition et la magie du quotidien.",
+            lithotherapie = "La labradorite est réputée offrir une forte protection énergétique, agissant comme un véritable bouclier psychique contre les énergies négatives, tout en stimulant l'intuition et la magie du quotidien.",
             prixCaratEur = "5 – 50 €/ct",
             rarete = GemRarete.COURANTE
         ),
@@ -3376,7 +3376,7 @@ object GemsRepository {
             indiceRefraction = "1,518 – 1,526",
             origines = listOf("Sri Lanka (Meetiyagoda)", "Inde (Karnataka)", "Madagascar (Toliara)"),
             particularites = "Adularescence optimale lorsque la pierre est taillée en cabochon perpendiculairement aux lamelles internes.",
-            lithotherapie = "La pierre de lune est traditionnellement associée à l'intuition, à la sensibilité et aux nouveaux départs, en lien avec les cycles lunaires.",
+            lithotherapie = "La pierre de lune est traditionnellement associée à l'intuition, à la sensibilité et aux nouveaux départs, en lien avec les cycles lunaires, et réputée protéger les voyageurs, notamment de nuit.",
             prixCaratEur = "10 – 200 €/ct (bleu vif jusqu'à 1 000+)",
             rarete = GemRarete.PEU_COMMUNE
         ),
@@ -3540,7 +3540,7 @@ object GemsRepository {
             indiceRefraction = "1,486 – 1,658",
             origines = listOf("Italie (Torre del Greco, historique)", "Sardaigne (Alghero)", "Japon (Kōchi, corail des grandes profondeurs)"),
             particularites = "Récolte strictement réglementée (CITES pour certaines espèces) en raison de la surexploitation historique des récifs.",
-            lithotherapie = "Le corail rouge est traditionnellement porté comme protection, en particulier pour les enfants, et associé à la vitalité et à l'énergie familiale.",
+            lithotherapie = "Le corail rouge est traditionnellement porté comme protection contre le mauvais œil, en particulier pour les enfants, et associé à la vitalité et à l'énergie familiale.",
             prixCaratEur = "5 – 200 €/g (vendu au gramme ou à la pièce)",
             rarete = GemRarete.RARE
         ),
@@ -3576,7 +3576,7 @@ object GemsRepository {
             indiceRefraction = "1,539 – 1,545",
             origines = listOf("Mer Baltique (Kaliningrad)", "République dominicaine (Santiago)", "Birmanie (Mogok, ambre birman)"),
             particularites = "Flotte dans l'eau salée ; peut contenir des inclusions fossiles (insectes, végétaux) très recherchées.",
-            lithotherapie = "L'ambre est réputé depuis l'Antiquité pour ses vertus apaisantes et protectrices, apportant chaleur et réconfort émotionnel.",
+            lithotherapie = "L'ambre est réputé depuis l'Antiquité pour ses vertus apaisantes et protectrices, notamment porté en amulette pour protéger les enfants du mauvais œil, apportant chaleur et réconfort émotionnel.",
             prixCaratEur = "1 – 50 €/g (souvent vendu au gramme, pas au carat)",
             rarete = GemRarete.COURANTE
         ),

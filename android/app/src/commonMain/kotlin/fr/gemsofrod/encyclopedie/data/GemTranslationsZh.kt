@@ -104,7 +104,7 @@ object GemTranslationsZh {
             descriptionLongue = "得名于花卉，风信子锆石是锆石中橙色至红棕色的变种，自古以来便为人所知并被切割使用。其高折射率赋予其在同等尺寸下堪比钻石的光泽。",
             particularites = "高双折射率使台面刻面边缘出现肉眼可见的重影现象。",
             inclusions = "明显的双折射造成内部刻面棱线清晰重影；变生（非晶质化）区域及张力裂纹常见。",
-            lithotherapie = "风信子锆石传统上与新事业中的成功和自信相关联。"
+            lithotherapie = "风信子锆石传统上与新事业中的成功和自信相关联，据中世纪宝石工匠所言，它还被认为具有守护旅人的旅途守护功效。"
         ),
         "zircon-dore" to GemTranslation(
             nom = "金色锆石",
@@ -144,7 +144,7 @@ object GemTranslationsZh {
             descriptionLongue = "桂榴石是富含铁和锰的钙铝榴石变种，呈现出令人联想到肉桂糖浆的温暖橙色，因其特有的包裹体而产生内部糖浆般的闪烁效应。",
             particularites = "因内部包裹体而呈现典型的油润至蜜糖般的外观。",
             inclusions = "内部常因细微弥散的纤维和副矿物晶体而呈现浑浊的“炖煮”般外观，是斯里兰卡石榴石的典型特征。",
-            lithotherapie = "桂榴石传统上被佩戴以增强自信、抵御过度的自我批评。"
+            lithotherapie = "桂榴石传统上被佩戴以增强自信、抵御过度的自我批评，据印度吠陀传统所言，它还能提供负能量防护。"
         ),
         "opale-de-feu" to GemTranslation(
             nom = "火蛋白石",
@@ -168,14 +168,14 @@ object GemTranslationsZh {
             descriptionLongue = "红玉髓的橙红色来自氧化铁。古埃及人将其镶嵌于圣甲虫护身符与饰物中，如今它仍是珠宝业与浮雕镶嵌中广泛使用的平价宝石。",
             particularites = "常经加热处理以从棕色原料中强化其橙色调。",
             inclusions = "呈色源于微晶结构中细密分散的氧化铁；肉眼可见的单独包裹体较少。",
-            lithotherapie = "红玉髓堪称行动之石的典范，据信能激发勇气、动力与身体活力。"
+            lithotherapie = "红玉髓堪称行动之石的典范，据信能激发勇气、动力与身体活力；在古埃及及阿拉伯世界，人们也将其制成护身符佩戴，以实现辟邪护身。"
         ),
         "pyrite" to GemTranslation(
             nom = "黄铁矿",
             descriptionCourte = "带有金属般金色光泽的“愚人金”。",
             descriptionLongue = "黄铁矿形成立方体或八面体晶体，呈现出浓烈的金属黄铜色光泽，长期被缺乏经验的淘金者误认为黄金。自维多利亚时代起便被切割用于珠宝，商业上称为“白铁矿”。",
             particularites = "长期暴露于潮湿环境中会氧化并可能碎裂（“黄铁矿病”）。",
-            lithotherapie = "黄铁矿被视为保护与丰盛之石，用以增强自信心与进取精神。"
+            lithotherapie = "黄铁矿被视为兼具负能量防护与招财聚宝功效的宝石，常用以增强自信心与进取精神。"
         ),
         "scheelite" to GemTranslation(
             nom = "白钨矿",
@@ -246,7 +246,7 @@ object GemTranslationsZh {
             descriptionCourte = "移动光带中的金色猫眼效应。",
             descriptionLongue = "虎眼石的金色猫眼效应来自被石英假晶交代的青石棉（一种石棉变种）纤维。切割成凸圆面后，会呈现一条随光线移动的明亮光带。",
             particularites = "始终切割成凸圆面以呈现猫眼效应（丝绢光泽移动效果）。",
-            lithotherapie = "虎眼石是保护与自信之石，广泛用于增强意志力、抵御负面影响。"
+            lithotherapie = "虎眼石兼具辟邪护身与增强自信的功效，被广泛用于坚定意志、抵御负面影响，提供负能量防护。"
         ),
         "scapolite" to GemTranslation(
             nom = "方柱石",
@@ -338,7 +338,7 @@ object GemTranslationsZh {
             descriptionCourte = "中国与新西兰历史悠久的玉料，有别于硬玉。",
             descriptionLongue = "在18世纪缅甸硬玉被发现之前，中国宫廷、新西兰（毛利人的“庞纳姆”）以及前哥伦布时期美洲所加工的玉料全都是软玉——一种由微观纤维交织而成的角闪石，赋予其非凡的韧性。",
             particularites = "毡状纤维结构使其比硬玉更能抵御冲击，尽管硬度略低于硬玉。",
-            lithotherapie = "自中国古代起便是智慧与和谐之石，软玉据信能带来宁静、保护与长寿。"
+            lithotherapie = "自中国古代起便是智慧与和谐之石，软玉据信能带来宁静、保护与长寿，传统上也常作为护身符赠予旅人，实现旅途守护。"
         ),
         "maw-sit-sit" to GemTranslation(
             nom = "莫西沙玉",
@@ -392,7 +392,7 @@ object GemTranslationsZh {
             descriptionCourte = "中华文化中的神圣之石。",
             descriptionLongue = "硬玉形成韧性极高的微晶集合体，这一点使其区别于同样被称为“玉”的软玉。它在中国被尊为“天石”，象征纯洁与美德。",
             particularites = "尽管硬度中等，韧性却极为出众；“帝王绿”是极为罕见的半透明绿色顶级品质。",
-            lithotherapie = "硬玉翡翠据信能带来好运与保护，同时促进关系和谐及内心的宁静。"
+            lithotherapie = "硬玉翡翠据信能带来好运与保护，尤其能为旅人提供旅途守护，同时促进关系和谐及内心的宁静。"
         ),
         "tourmaline-verte" to GemTranslation(
             nom = "绿碧玺",
@@ -547,7 +547,7 @@ object GemTranslationsZh {
             descriptionLongue = "蓝锆石是该品种中商业流通最广的色彩，几乎总是通过加热柬埔寨棕色锆石而获得。其金刚光泽及强烈色散使其成为蓝色蓝宝石备受青睐、价格亲民的替代品。",
             particularites = "热处理几乎是普遍且稳定的做法；色散强烈，接近钻石。",
             inclusions = "通常由热处理产生；内部刻面棱线的重影是其特征，有时可见细微的张力裂纹。",
-            lithotherapie = "蓝锆石据信能带来心智的平静与清明，是重要反思时期的有力支持。"
+            lithotherapie = "蓝锆石据信能带来心智的平静与清明，是重要反思时期的有力支持；传统上它也被视为能为旅人提供旅途守护的护身石。"
         ),
         "hemimorphite" to GemTranslation(
             nom = "异极矿",
@@ -610,7 +610,7 @@ object GemTranslationsZh {
             descriptionLongue = "其名称源自拉丁文“aqua marina”，意指其令人联想到海水的浅蓝至蓝绿色调。蓝色绿柱石以极高的净度著称，肉眼可见的包裹体极少。",
             particularites = "常经加热处理以减弱绿色成分、强化蓝色。",
             inclusions = "通常十分洁净；平行于c轴的空心管道包裹体，罕见的液态包裹体及副矿物晶体。",
-            lithotherapie = "作为水手之石，海蓝宝石传统上与宁静、勇气及平和的沟通相关，尤其是在旅途中。"
+            lithotherapie = "作为水手之石，海蓝宝石传统上与宁静、勇气及平和的沟通相关，尤其是在旅途中；它也被认为能为旅人提供旅途守护，尤其是在海上。"
         ),
         "tanzanite" to GemTranslation(
             nom = "坦桑石",
@@ -625,14 +625,14 @@ object GemTranslationsZh {
             descriptionCourte = "缀满金色斑点的深蓝色，自古以来便被使用。",
             descriptionLongue = "青金石是一种主要由青金石矿构成的岩石，伴有黄铁矿（金色包裹体）及方解石（白色脉纹）。古埃及时期便被使用，磨成粉末即为“群青”颜料，数千年来一直装点着珠宝与艺术品。",
             particularites = "分布均匀的金色黄铁矿包裹体是品质的凭证。",
-            lithotherapie = "自古埃及时代起便是智慧与真理之石，青金石据信能增强自信与判断力的清晰。"
+            lithotherapie = "自古埃及时代起便是智慧与真理之石，青金石据信能增强自信与判断力的清晰，并承袭古埃及护身符的传统，提供心灵防护。"
         ),
         "turquoise" to GemTranslation(
             nom = "绿松石",
             descriptionCourte = "标志性的蓝绿色，带有脉石纹理。",
             descriptionLongue = "绿松石自古埃及时代起便被使用，也是众多美洲原住民文化中的神圣之石，其蓝色源自铜元素。质地多孔柔软，常通过树脂浸渍稳定处理，以承受珠宝佩戴的使用。",
             particularites = "特有的脉石纹理；质地多孔，对化妆品及化学品较为敏感。",
-            lithotherapie = "作为数千年来的护身之石，绿松石据信能促进宁静、真诚沟通，并在旅途中提供保护。"
+            lithotherapie = "作为数千年来的护身之石，绿松石据信能促进宁静、真诚沟通，并为旅人提供旅途守护，同时也是传统上用于辟邪护身的护身符。"
         ),
         "spinelle-bleu" to GemTranslation(
             nom = "蓝尖晶石",
@@ -733,7 +733,7 @@ object GemTranslationsZh {
             descriptionLongue = "紫水晶的紫色源自微量铁元素与天然辐照的共同作用。它虽然储量丰富、价格亲民，却在数百年间被贵族与教士佩戴，象征着克己与灵性。",
             particularites = "长期暴露于阳光下可能褪色。",
             inclusions = "人字形（巴西式双晶）色彩分区、细微液态包裹体形成的薄纱状包裹体，有时可见生长幻影晶体。",
-            lithotherapie = "紫水晶是水晶疗法中最负盛名的宝石之一，据信能舒缓压力，促进安稳的睡眠，支持冥想与灵性修行。"
+            lithotherapie = "紫水晶是水晶疗法中最负盛名的宝石之一，据信能舒缓压力，促进安稳的睡眠，支持冥想与灵性修行；将其置于房间入口处，还能为家宅提供负能量防护，实现家宅守护。"
         ),
         "spinelle-violet" to GemTranslation(
             nom = "紫色尖晶石",
@@ -1083,7 +1083,7 @@ object GemTranslationsZh {
             descriptionLongue = "烟晶的棕色源自围岩天然放射性作用于微量铝元素而形成的色心。它储量丰富、价格亲民，常被加热处理转变为黄水晶。",
             particularites = "可经加热处理转变为黄色（黄水晶），或在长期光照下褪色。",
             inclusions = "细微液态包裹体形成的薄纱状包裹体，偶见负晶，与水晶相似。",
-            lithotherapie = "烟晶以其强大的扎根功效而著称，有助于吸收日常的压力与紧张情绪。"
+            lithotherapie = "烟晶以其强大的扎根功效而著称，有助于吸收日常的压力与紧张情绪，并提供负能量防护。"
         ),
         "andalousite" to GemTranslation(
             nom = "红柱石",
@@ -1143,7 +1143,7 @@ object GemTranslationsZh {
             descriptionLongue = "碧玺水晶将黑碧玺（黑电气石）的针状晶体封存在原本澄澈的石英晶体之中，形成引人注目的图案，深受水晶疗法及当代珠宝设计的青睐。",
             particularites = "碧玺针状晶体肉眼可见，为每一颗宝石营造出独一无二的图案。",
             inclusions = "黑色碧玺（黑电气石）针状晶体交错嵌于澄澈石英之中。",
-            lithotherapie = "碧玺水晶结合了黑碧玺的保护特性与水晶放大清明的能力。"
+            lithotherapie = "碧玺水晶结合了黑碧玺的保护特性——据信能形成抵御负能量的心灵防护屏障——与水晶放大清明的能力。"
         ),
         "onyx" to GemTranslation(
             nom = "缟玛瑙",
@@ -1171,7 +1171,7 @@ object GemTranslationsZh {
             descriptionCourte = "断口锋利的天然玻璃。",
             descriptionLongue = "黑曜石由富含二氧化硅的熔岩快速冷却形成，是一种非晶质火山玻璃。其极为锋利的贝壳状断口使其自史前时代起便成为制作工具的首选材料，尤其用于箭头与刀刃。",
             particularites = "部分品种呈现出金色或彩虹般的闪光效果（彩虹黑曜石）。",
-            lithotherapie = "黑曜石据信能提供强大的保护，同时揭示隐藏的真相，促进深层的内在转变。"
+            lithotherapie = "黑曜石据信能提供强大的保护，如同真正的心灵防护屏障，同时揭示隐藏的真相，促进深层的内在转变。"
         ),
         "rubis-etoile" to GemTranslation(
             nom = "星光红宝石",
@@ -1233,7 +1233,7 @@ object GemTranslationsZh {
             descriptionCourte = "石英最具标志性的彩色同心条带。",
             descriptionLongue = "玛瑙是一种玉髓，呈现出色彩各异的同心或平行条带，由火山岩腔中二氧化硅的连续沉积形成。其无数变种（苔藓玛瑙、树枝状玛瑙、风景玛瑙、眼状玛瑙等）使其成为全球收藏最广泛的装饰石材之一。",
             particularites = "条带往往通过染色加以强化，这是一种古老且广为市场接受的做法。",
-            lithotherapie = "玛瑙传统上与情感平衡、稳定及日常温和的保护相关联。"
+            lithotherapie = "玛瑙传统上与情感平衡、稳定及日常温和的保护相关联，自古以来便被佩戴作为辟邪护身的护身符。"
         ),
         "jaspe" to GemTranslation(
             nom = "碧玉",
@@ -1320,7 +1320,7 @@ object GemTranslationsZh {
             descriptionLongue = "拉长石呈现出一种名为“拉长石效应”的光学现象：蓝绿色、有时是金色或紫色的光晕会随观察角度出现或消失，这是由内部纹层对光线的衍射所致。",
             particularites = "切割方向的选择对呈现拉长石效应至关重要。",
             inclusions = "造就其虹彩般光晕（拉长石效应）的出溶纹层，有时伴有细微的钛铁矿或磁铁矿包裹体。",
-            lithotherapie = "拉长石据信能提供强大的能量保护，同时激发直觉及日常生活中的灵性魔力。"
+            lithotherapie = "拉长石据信能提供强大的能量保护，如同抵御负能量的真正心灵防护屏障，同时激发直觉及日常生活中的灵性魔力。"
         ),
         "pierre-de-lune" to GemTranslation(
             nom = "月光石",
@@ -1328,7 +1328,7 @@ object GemTranslationsZh {
             descriptionLongue = "月光石之名源自其漂浮般的蓝色光晕，即“月光效应”，由两种长石在微观尺度上交生而衍射光线所致。品质最上乘的蓝色月光石产自斯里兰卡。",
             particularites = "当宝石垂直于内部纹层切割成凸圆面时，月光效应最为理想。",
             inclusions = "钠长石与正长石的出溶纹层，是造就月光效应的成因——这种蓝色光晕仿佛漂浮在表面之下。",
-            lithotherapie = "月光石传统上与直觉、敏感及新的开始相关联，并与月相周期紧密相连。"
+            lithotherapie = "月光石传统上与直觉、敏感及新的开始相关联，并与月相周期紧密相连，也被认为能为旅人提供旅途守护，尤其是在夜间。"
         ),
         "pierre-de-soleil" to GemTranslation(
             nom = "太阳石",
@@ -1358,7 +1358,7 @@ object GemTranslationsZh {
             descriptionCourte = "海洋生物的钙质骨骼，自古以来珍贵的血红色。",
             descriptionLongue = "珍贵的红珊瑚是一种群居小型海洋生物（红珊瑚）分枝状的钙质骨骼，自古以来一直在地中海地区被采集。因过度捕捞，如今它已成为受到严格监管的有机宝石。",
             particularites = "由于历史上珊瑚礁遭到过度开采，采集受到严格监管（部分物种受《濒危物种公约》限制）。",
-            lithotherapie = "红珊瑚传统上被佩戴作为护身符，尤其用于儿童，并与活力及家庭能量相关联。"
+            lithotherapie = "红珊瑚传统上被佩戴作为辟邪护身的护身符，尤其用于儿童，并与活力及家庭能量相关联。"
         ),
         "perle-conque" to GemTranslation(
             nom = "凤凰螺珍珠",
@@ -1373,7 +1373,7 @@ object GemTranslationsZh {
             descriptionLongue = "琥珀是针叶树或开花树木的树脂经历数百万年石化而成。其特有的轻盈质地及有时极为壮观的包裹体（昆虫、植物）使其自史前时代起便成为珍贵材料，尤以波罗的海“琥珀之路”沿线最为著名。",
             particularites = "可漂浮于盐水之中；可能含有备受追捧的化石包裹体（昆虫、植物）。",
             inclusions = "可能蕴含极为壮观的化石包裹体——昆虫、植物、气泡——是窥探远古生态系统的真实窗口，尤以波罗的海产地最受追捧。",
-            lithotherapie = "自古以来，琥珀便以其舒缓与保护功效著称，为人带来温暖及情感上的慰藉。"
+            lithotherapie = "自古以来，琥珀便以其舒缓与保护功效著称，常被制成护身符佩戴，为儿童提供辟邪护身，同时带来温暖及情感上的慰藉。"
         ),
         "perle" to GemTranslation(
             nom = "养殖珍珠",
@@ -1426,7 +1426,7 @@ object GemTranslationsZh {
             descriptionCourte = "虎眼石未经氧化的蓝灰色猫眼变种。",
             descriptionLongue = "鹰眼石与虎眼石同源：都是石英交代青石棉（一种蓝色石棉）所形成的假晶，其平行纤维产生丝绢般的猫眼效应。与金色虎眼石不同，由于铁元素未经氧化，它保留了原本的蓝灰至蓝绿色调。",
             particularites = "同一块原石可能因铁氧化程度不同，局部呈现蓝灰色区域（鹰眼石）与金色区域（虎眼石）。",
-            lithotherapie = "鹰眼石传统上与洞察力、内在视野及面对复杂局势时的冷静判断相关联。"
+            lithotherapie = "鹰眼石传统上与洞察力、内在视野及面对复杂局势时的冷静判断相关联；与虎眼石一样，这种“眼石”也被认为具有辟邪护身的功效。"
         ),
         "howlite" to GemTranslation(
             nom = "白纹石",
@@ -1464,7 +1464,7 @@ object GemTranslationsZh {
             descriptionCourte = "经加热处理的虎眼石，铁元素氧化后转为深邃的红棕色。",
             descriptionLongue = "牛眼石是通过对金色虎眼石进行受控加热处理而获得的，这一处理加剧了铁元素的氧化，使色调从黄棕色转变为浓郁深邃的红棕色，同时保留了纤维结构特有的丝绢猫眼光泽。",
             particularites = "产生这种红棕色调的加热处理十分常见，只要如实披露，在商业上被广泛接受。",
-            lithotherapie = "牛眼石与力量、扎根及坚定的意志相关，延续了虎眼石的象征意义。"
+            lithotherapie = "牛眼石与力量、扎根及坚定的意志相关，延续了虎眼石的象征意义，同样具有辟邪护身的功效。"
         ),
         "unakite" to GemTranslation(
             nom = "绿帘花岗石",
