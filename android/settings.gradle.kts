@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "GemsOfRodEncyclopedie"
 include(":app")
+include(":assistant")

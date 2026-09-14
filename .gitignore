@@ -6,3 +6,9 @@ __pycache__/
 venv/
 data/logs/
 .claude/settings.local.json
+
+# Assistant vocal Gmail (backend/) — secrets et données locales, jamais commités
+backend/credentials.json
+backend/token.json
+backend/var/
+backend/.env

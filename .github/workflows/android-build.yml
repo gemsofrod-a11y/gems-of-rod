@@ -33,11 +33,17 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Build debug APK
-        run: ./gradlew assembleDebug --no-daemon
+      - name: Build debug APKs (encyclopédie + assistant vocal)
+        run: ./gradlew :app:assembleDebug :assistant:assembleDebug --no-daemon
 
-      - name: Upload APK
+      - name: Upload APK encyclopédie
         uses: actions/upload-artifact@v4
         with:
           name: gems-of-rod-encyclopedie-debug-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Upload APK assistant vocal
+        uses: actions/upload-artifact@v4
+        with:
+          name: gems-of-rod-assistant-debug-apk
+          path: android/assistant/build/outputs/apk/debug/assistant-debug.apk
