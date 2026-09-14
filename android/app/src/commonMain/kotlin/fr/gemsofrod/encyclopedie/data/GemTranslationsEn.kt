@@ -104,7 +104,7 @@ object GemTranslationsEn {
             descriptionLongue = "Named after the flower, hyacinth is the orange to red-brown variety of zircon, known and cut since antiquity. Its high refractive index gives it a brilliance comparable to that of diamond at equal size.",
             particularites = "High birefringence causing a visible doubling of the facet edges of the table, visible to the naked eye.",
             inclusions = "Marked birefringence causing clear doubling of internal facet edges; metamict zones and tension fractures are frequent.",
-            lithotherapie = "Hyacinth zircon is traditionally associated with success and self-confidence in new ventures."
+            lithotherapie = "Hyacinth zircon is traditionally associated with success and self-confidence in new ventures, and was believed by medieval lapidaries to protect travelers."
         ),
         "zircon-dore" to GemTranslation(
             nom = "Golden zircon",
@@ -144,7 +144,7 @@ object GemTranslationsEn {
             descriptionLongue = "A grossular garnet variety rich in iron and manganese, hessonite displays a warm orange color reminiscent of cinnamon syrup, with an internal shimmer effect (\"treacle effect\") due to its characteristic inclusions.",
             particularites = "A typical oily to honey-like appearance caused by internal inclusions.",
             inclusions = "Often a cloudy, \"stewed\" internal appearance caused by diffuse fine fibrils and accessory crystals, typical of Sri Lankan garnet.",
-            lithotherapie = "Hessonite is traditionally worn to strengthen self-confidence and guard against excessive self-criticism."
+            lithotherapie = "Hessonite is traditionally worn to strengthen self-confidence and guard against excessive self-criticism, as well as negative energies according to Indian Vedic tradition."
         ),
         "opale-de-feu" to GemTranslation(
             nom = "Fire opal",
@@ -168,14 +168,14 @@ object GemTranslationsEn {
             descriptionLongue = "Carnelian owes its orange to red hue to iron oxides. Set into scarabs and amulets in ancient Egypt, it remains today an accessible stone widely used in jewelry and for intaglios.",
             particularites = "Often heated to intensify the orange hue from brown material.",
             inclusions = "Coloration from finely dispersed iron oxides within the microcrystalline structure; few individually visible inclusions.",
-            lithotherapie = "The quintessential stone of action, carnelian is said to stimulate courage, motivation, and physical vitality."
+            lithotherapie = "The quintessential stone of action, carnelian is said to stimulate courage, motivation, and physical vitality; it was also worn as an amulet against the evil eye in ancient Egypt and the Arab world."
         ),
         "pyrite" to GemTranslation(
             nom = "Pyrite",
             descriptionCourte = "\"Fool's gold\" with metallic golden glints.",
             descriptionLongue = "Pyrite forms cubic or octahedral crystals of an intense metallic brass-yellow, long mistaken for gold by inexperienced prospectors. Used in faceted jewelry since the Victorian era (sold commercially as \"marcasite\").",
             particularites = "Oxidizes and can crumble (\"pyrite disease\") if exposed to humidity over the long term.",
-            lithotherapie = "Considered a stone of protection and abundance, pyrite is used to strengthen self-confidence and initiative."
+            lithotherapie = "Considered a stone of protection against negative energies and of abundance, pyrite is used to strengthen self-confidence and initiative."
         ),
         "scheelite" to GemTranslation(
             nom = "Scheelite",
@@ -246,7 +246,7 @@ object GemTranslationsEn {
             descriptionCourte = "Golden chatoyancy in a moving band.",
             descriptionLongue = "Tiger's eye owes its golden chatoyancy to fibers of crocidolite (an asbestos variety) pseudomorphed into quartz. Cut as a cabochon, it reveals a luminous band that moves with the light.",
             particularites = "Always cut as a cabochon to reveal the chatoyancy (cat's-eye effect).",
-            lithotherapie = "A stone of protection and confidence, tiger's eye is widely used to strengthen determination and guard against negative influences."
+            lithotherapie = "A stone of protection against the evil eye and of confidence, tiger's eye is widely used to strengthen determination and guard against negative influences."
         ),
         "scapolite" to GemTranslation(
             nom = "Scapolite",
@@ -338,7 +338,7 @@ object GemTranslationsEn {
             descriptionCourte = "The historic jade of China and New Zealand, distinct from jadeite.",
             descriptionLongue = "Before the discovery of Burmese jadeite in the 18th century, all the jade worked in imperial China, New Zealand (Maori pounamu), and pre-Columbian America was nephrite — an amphibole interwoven in microscopic fibers giving it exceptional toughness.",
             particularites = "A felted fiber structure making it more impact-resistant than jadeite, despite a slightly lower hardness.",
-            lithotherapie = "A stone of wisdom and harmony since ancient China, nephrite jade is said to bring serenity, protection, and longevity."
+            lithotherapie = "A stone of wisdom and harmony since ancient China, nephrite jade is said to bring serenity, protection, and longevity, and was traditionally given to travelers as a protective amulet."
         ),
         "maw-sit-sit" to GemTranslation(
             nom = "Maw-sit-sit",
@@ -392,7 +392,7 @@ object GemTranslationsEn {
             descriptionCourte = "The sacred stone of Chinese culture.",
             descriptionLongue = "Jadeite forms a microcrystalline aggregate of exceptional toughness, which distinguishes it from nephrite, the other mineral called \"jade.\" Revered in China as the \"stone of heaven,\" it symbolizes purity and virtue.",
             particularites = "Extremely tough despite moderate hardness; \"imperial\" quality, a very rare translucent green.",
-            lithotherapie = "Jadeite jade is believed to bring luck and protection, while fostering harmony in relationships and inner serenity."
+            lithotherapie = "Jadeite jade is believed to bring luck and protection, especially for travelers, while fostering harmony in relationships and inner serenity."
         ),
         "tourmaline-verte" to GemTranslation(
             nom = "Green tourmaline (Verdelite)",
@@ -547,7 +547,7 @@ object GemTranslationsEn {
             descriptionLongue = "Blue zircon, the most commercially traded color of the species, is almost always obtained by heat-treating brown Cambodian zircon. Its adamantine luster and strong dispersion make it a prized and affordable alternative to blue sapphire.",
             particularites = "Heat treatment is nearly universal and stable; strong dispersion close to that of diamond.",
             inclusions = "Usually the result of heat treatment; characteristic doubling of internal facet edges and sometimes fine tension fractures.",
-            lithotherapie = "Blue zircon is believed to bring mental calm and clarity, a support during periods of important reflection."
+            lithotherapie = "Blue zircon is believed to bring mental calm and clarity, a support during periods of important reflection; it was also traditionally regarded as a protective stone for travelers."
         ),
         "hemimorphite" to GemTranslation(
             nom = "Hemimorphite",
@@ -610,7 +610,7 @@ object GemTranslationsEn {
             descriptionLongue = "Its name, from the Latin \"aqua marina,\" evokes its pale blue to blue-green color reminiscent of seawater. Blue beryl stands out for its great clarity, with very few inclusions visible to the naked eye.",
             particularites = "Often heated to reduce the green component and intensify the blue.",
             inclusions = "Generally clean; hollow tubes parallel to the c-axis, rare liquid inclusions and accessory crystals.",
-            lithotherapie = "A stone of sailors, aquamarine is traditionally associated with serenity, courage, and peaceful communication, particularly during travel."
+            lithotherapie = "A stone of sailors, aquamarine is traditionally associated with serenity, courage, and peaceful communication, particularly during travel; it is believed to protect travelers, especially at sea."
         ),
         "tanzanite" to GemTranslation(
             nom = "Tanzanite",
@@ -625,14 +625,14 @@ object GemTranslationsEn {
             descriptionCourte = "Deep blue studded with gold, used since antiquity.",
             descriptionLongue = "Lapis lazuli is a rock composed mainly of lazurite, along with pyrite (golden inclusions) and calcite (white veins). Used in ancient Egypt and ground into the pigment \"ultramarine blue,\" it has adorned jewelry and works of art for millennia.",
             particularites = "Evenly distributed golden pyrite inclusions are a mark of quality.",
-            lithotherapie = "A stone of wisdom and truth since ancient Egypt, lapis lazuli is believed to strengthen self-confidence and clarity of judgment."
+            lithotherapie = "A stone of wisdom and truth since ancient Egypt, lapis lazuli is believed to strengthen self-confidence and clarity of judgment, and to offer a psychic shield inherited from its use in Egyptian amulets."
         ),
         "turquoise" to GemTranslation(
             nom = "Turquoise",
             descriptionCourte = "The emblematic blue-green, veined with matrix.",
             descriptionLongue = "Used since ancient Egypt and sacred to many Native American cultures, turquoise owes its blue to copper. Porous and soft, it is often stabilized by resin impregnation to withstand use in jewelry.",
             particularites = "Characteristic veined matrix; porous and sensitive to cosmetics and chemicals.",
-            lithotherapie = "A protective stone for millennia, turquoise is believed to promote serenity, sincere communication, and protection during travel."
+            lithotherapie = "A protective stone for millennia, turquoise is believed to promote serenity, sincere communication, and protection for travelers, while serving as a traditional talisman against the evil eye."
         ),
         "spinelle-bleu" to GemTranslation(
             nom = "Blue spinel",
@@ -733,7 +733,7 @@ object GemTranslationsEn {
             descriptionLongue = "Amethyst owes its violet colour to traces of iron combined with natural irradiation. Abundant and accessible, it was nonetheless worn for centuries by nobility and clergy as a symbol of sobriety and spirituality.",
             particularites = "Can fade under prolonged exposure to sunlight.",
             inclusions = "Chevron color zoning (Brazil-law twinning), veils of fine liquid inclusions, sometimes growth phantom crystals.",
-            lithotherapie = "Amethyst is one of the most renowned stones in lithotherapy for soothing stress, promoting peaceful sleep and supporting meditation and spirituality."
+            lithotherapie = "Amethyst is one of the most renowned stones in lithotherapy for soothing stress, promoting peaceful sleep and supporting meditation and spirituality; placed at the entrance of a room, it is said to protect the home from negative energies."
         ),
         "spinelle-violet" to GemTranslation(
             nom = "Purple spinel",
@@ -1083,7 +1083,7 @@ object GemTranslationsEn {
             descriptionLongue = "Smoky quartz owes its brown color to color centers induced by the natural radioactivity of the surrounding rock acting on trace aluminum. Abundant and affordable, it is often heated to be turned into citrine.",
             particularites = "Can be heated to turn yellow (citrine) or fade under prolonged exposure to light.",
             inclusions = "Veils of fine liquid inclusions and occasional negative crystals, comparable to rock crystal.",
-            lithotherapie = "Smoky quartz is renowned for its powerful grounding virtues, helping to absorb everyday stress and tension."
+            lithotherapie = "Smoky quartz is renowned for its powerful grounding virtues, helping to absorb stress, everyday tension, and negative energies."
         ),
         "andalousite" to GemTranslation(
             nom = "Andalusite",
@@ -1143,7 +1143,7 @@ object GemTranslationsEn {
             descriptionLongue = "Tourmalinated quartz traps needles of black tourmaline (schorl) within an otherwise limpid quartz crystal, creating a striking graphic pattern much prized both in lithotherapy and in contemporary jewelry.",
             particularites = "The tourmaline needles remain visible to the naked eye, creating a graphic pattern unique to each stone.",
             inclusions = "Black tourmaline (schorl) needles entangled within clear quartz.",
-            lithotherapie = "Tourmalinated quartz combines the protective virtues of black tourmaline with the amplifying clarity of rock crystal."
+            lithotherapie = "Tourmalinated quartz combines the protective virtues of black tourmaline, believed to form a psychic shield against negative energies, with the amplifying clarity of rock crystal."
         ),
         "onyx" to GemTranslation(
             nom = "Onyx",
@@ -1171,7 +1171,7 @@ object GemTranslationsEn {
             descriptionCourte = "Natural glass with a razor-sharp fracture.",
             descriptionLongue = "Formed by the rapid cooling of silica-rich lava, obsidian is an amorphous volcanic glass. Its extremely sharp conchoidal fracture made it a tool of choice as early as prehistoric times, notably for arrowheads and blades.",
             particularites = "Some varieties display a golden or iridescent sheen (rainbow obsidian).",
-            lithotherapie = "Obsidian is said to offer powerful protection while revealing hidden truths, fostering deep inner transformation."
+            lithotherapie = "Obsidian is said to offer powerful protection, acting as a true psychic shield, while revealing hidden truths and fostering deep inner transformation."
         ),
         "rubis-etoile" to GemTranslation(
             nom = "Star ruby",
@@ -1233,7 +1233,7 @@ object GemTranslationsEn {
             descriptionCourte = "Quartz's most iconic colorful, concentric banding.",
             descriptionLongue = "Agate is a chalcedony displaying concentric or parallel bands in varied colors, formed by successive deposits of silica within volcanic cavities. Its countless varieties (moss, dendritic, landscape, eye...) make it one of the most widely collected ornamental stones in the world.",
             particularites = "The banding is often enhanced by dyeing, an old and widely accepted market practice.",
-            lithotherapie = "Agate is traditionally associated with emotional balance, stability, and gentle everyday protection."
+            lithotherapie = "Agate is traditionally associated with emotional balance, stability, and gentle everyday protection, worn since antiquity as an amulet against the evil eye."
         ),
         "jaspe" to GemTranslation(
             nom = "Jasper",
@@ -1320,7 +1320,7 @@ object GemTranslationsEn {
             descriptionLongue = "Labradorite displays an optical phenomenon called labradorescence: blue-green flashes, sometimes golden or purplish, appear and disappear depending on the viewing angle, caused by internal lamellae that diffract light.",
             particularites = "Cutting orientation is critical to revealing the labradorescence.",
             inclusions = "Exsolution lamellae responsible for its iridescent shimmer (labradorescence), sometimes accompanied by fine ilmenite or magnetite inclusions.",
-            lithotherapie = "Labradorite is said to offer strong energetic protection while stimulating intuition and everyday magic."
+            lithotherapie = "Labradorite is said to offer strong energetic protection, acting as a true psychic shield against negative energies, while stimulating intuition and everyday magic."
         ),
         "pierre-de-lune" to GemTranslation(
             nom = "Moonstone",
@@ -1328,7 +1328,7 @@ object GemTranslationsEn {
             descriptionLongue = "Moonstone owes its name to its floating bluish glow, adularescence, caused by the microscopic intergrowth of two feldspars that diffract light. The finest vivid blue qualities come from Sri Lanka.",
             particularites = "Optimal adularescence when the stone is cut as a cabochon perpendicular to the internal lamellae.",
             inclusions = "Albite-orthoclase exsolution lamellae responsible for adularescence, that bluish glow that seems to float beneath the surface.",
-            lithotherapie = "Moonstone is traditionally associated with intuition, sensitivity, and new beginnings, in connection with lunar cycles."
+            lithotherapie = "Moonstone is traditionally associated with intuition, sensitivity, and new beginnings, in connection with lunar cycles, and is said to protect travelers, especially at night."
         ),
         "pierre-de-soleil" to GemTranslation(
             nom = "Sunstone",
@@ -1358,7 +1358,7 @@ object GemTranslationsEn {
             descriptionCourte = "The calcareous skeleton of a marine animal, a precious blood-red since antiquity.",
             descriptionLongue = "Precious red coral is the branching calcareous skeleton of a small colonial marine animal (Corallium rubrum), harvested in the Mediterranean since antiquity. Its overexploitation has made it a strictly regulated organic gem today.",
             particularites = "Harvesting is strictly regulated (CITES for certain species) due to the historical overexploitation of the reefs.",
-            lithotherapie = "Red coral is traditionally worn for protection, especially for children, and is associated with vitality and family energy."
+            lithotherapie = "Red coral is traditionally worn as protection against the evil eye, especially for children, and is associated with vitality and family energy."
         ),
         "perle-conque" to GemTranslation(
             nom = "Conch pearl",
@@ -1373,7 +1373,7 @@ object GemTranslationsEn {
             descriptionLongue = "Amber is the resin of conifers or flowering trees fossilized over millions of years. Its characteristic lightness and sometimes spectacular inclusions (insects, plant matter) have made it a precious material since prehistoric times, notably along the Baltic \"amber road.\"",
             particularites = "Floats in salt water; can contain fossil inclusions (insects, plant matter) that are highly sought after.",
             inclusions = "May contain spectacular fossil inclusions — insects, plant matter, air bubbles — genuine windows into ancient ecosystems, especially prized from the Baltic route.",
-            lithotherapie = "Amber has been renowned since antiquity for its soothing and protective virtues, bringing warmth and emotional comfort."
+            lithotherapie = "Amber has been renowned since antiquity for its soothing and protective virtues, notably worn as an amulet to protect children from the evil eye, bringing warmth and emotional comfort."
         ),
         "perle" to GemTranslation(
             nom = "Cultured pearl",
@@ -1426,7 +1426,7 @@ object GemTranslationsEn {
             descriptionCourte = "The chatoyant blue-gray variant of tiger's eye, unoxidized.",
             descriptionLongue = "Hawk's eye shares its origin with tiger's eye: a pseudomorph of quartz after crocidolite (blue asbestos), whose parallel fibers produce a silky chatoyancy. Unlike golden tiger's eye, it retains its original blue-gray to blue-green hue, since its iron has not oxidized.",
             particularites = "The same block of rough material can show, locally, both blue-gray zones (hawk's eye) and golden zones (tiger's eye), depending on the degree of iron oxidation.",
-            lithotherapie = "Hawk's eye is traditionally associated with clairvoyance, inner vision, and gaining perspective on complex situations."
+            lithotherapie = "Hawk's eye is traditionally associated with clairvoyance, inner vision, and gaining perspective on complex situations; like tiger's eye, this eye-stone is believed to protect against the evil eye."
         ),
         "howlite" to GemTranslation(
             nom = "Howlite",
@@ -1464,7 +1464,7 @@ object GemTranslationsEn {
             descriptionCourte = "Heated tiger's eye, whose iron oxidation turns it a deep reddish brown.",
             descriptionLongue = "Bull's eye is obtained by controlled heating of golden tiger's eye, a treatment that intensifies iron oxidation and shifts the color from yellow-brown to a deep, rich reddish brown, while preserving the characteristic silky chatoyancy of the fibrous structure.",
             particularites = "The heat treatment that produces this reddish-brown hue is common and widely accepted in the trade, provided it is disclosed.",
-            lithotherapie = "Bull's eye is associated with strength, grounding, and determination, carrying forward the symbolic meaning of tiger's eye."
+            lithotherapie = "Bull's eye is associated with strength, grounding, determination, and protection against the evil eye, carrying forward the symbolic meaning of tiger's eye."
         ),
         "unakite" to GemTranslation(
             nom = "Unakite",

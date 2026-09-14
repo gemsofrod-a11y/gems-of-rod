@@ -104,7 +104,7 @@ object GemTranslationsNl {
             descriptionLongue = "Genoemd naar de bloem, is hyacint de oranje tot roodbruine variëteit van zirkoon, sinds de oudheid bekend en geslepen. Zijn hoge brekingsindex geeft hem bij gelijke grootte een schittering die vergelijkbaar is met die van diamant.",
             particularites = "Hoge dubbele breking die met het blote oog een zichtbare verdubbeling van de facetranden van de tafel veroorzaakt.",
             inclusions = "Uitgesproken dubbele breking die een duidelijke verdubbeling van de interne facetranden veroorzaakt; metamicte zones en spanningsbreuken komen vaak voor.",
-            lithotherapie = "Hyacint zirkoon wordt van oudsher geassocieerd met succes en zelfvertrouwen bij nieuwe ondernemingen."
+            lithotherapie = "Hyacint zirkoon wordt van oudsher geassocieerd met succes en zelfvertrouwen bij nieuwe ondernemingen, en zou volgens middeleeuwse lapidaristen reizigers beschermen."
         ),
         "zircon-dore" to GemTranslation(
             nom = "Gouden zirkoon",
@@ -144,7 +144,7 @@ object GemTranslationsNl {
             descriptionLongue = "Een variëteit van grossulaargranaat, rijk aan ijzer en mangaan, vertoont hessoniet een warme oranje kleur die aan kaneelstroop doet denken, met een intern glinstereffect (\"treacle effect\") door zijn karakteristieke insluitsels.",
             particularites = "Een typisch olieachtig tot honingachtig uiterlijk, veroorzaakt door interne insluitsels.",
             inclusions = "Vaak een troebel, \"gestoofd\" intern uiterlijk veroorzaakt door diffuse fijne vezeltjes en bijkomende kristallen, typisch voor Sri Lankaanse granaat.",
-            lithotherapie = "Hessoniet wordt van oudsher gedragen om het zelfvertrouwen te versterken en zich te wapenen tegen overmatige zelfkritiek."
+            lithotherapie = "Hessoniet wordt van oudsher gedragen om het zelfvertrouwen te versterken en zich te wapenen tegen overmatige zelfkritiek, en volgens de Indiase Vedische traditie ook tegen negatieve energieën."
         ),
         "opale-de-feu" to GemTranslation(
             nom = "Vuuropaal",
@@ -168,14 +168,14 @@ object GemTranslationsNl {
             descriptionLongue = "Carneool dankt zijn oranje tot rode tint aan ijzeroxiden. Gezet in scarabeeën en amuletten in het oude Egypte, blijft het vandaag een toegankelijke steen die veel wordt gebruikt in de juwelierskunst en voor intaglio's.",
             particularites = "Vaak verhit om de oranje tint vanuit bruin materiaal te versterken.",
             inclusions = "Kleuring afkomstig van fijn verspreide ijzeroxiden in de microkristallijne structuur; weinig afzonderlijk zichtbare insluitsels.",
-            lithotherapie = "De steen van actie bij uitstek; carneool zou moed, motivatie en fysieke vitaliteit stimuleren."
+            lithotherapie = "De steen van actie bij uitstek; carneool zou moed, motivatie en fysieke vitaliteit stimuleren, en werd in het oude Egypte en de Arabische wereld ook als amulet tegen het boze oog gedragen."
         ),
         "pyrite" to GemTranslation(
             nom = "Pyriet",
             descriptionCourte = "\"Dwazengoud\" met metaalachtige gouden glans.",
             descriptionLongue = "Pyriet vormt kubische of octaëdrische kristallen van een intens metaalachtig messinggeel, lange tijd door onervaren goudzoekers voor goud aangezien. Al sinds het victoriaanse tijdperk gebruikt in geslepen juwelen (commercieel verkocht als \"marcasiet\").",
             particularites = "Oxideert en kan afbrokkelen (\"pyrietziekte\") bij langdurige blootstelling aan vocht.",
-            lithotherapie = "Beschouwd als een steen van bescherming en overvloed; pyriet wordt gebruikt om zelfvertrouwen en initiatief te versterken."
+            lithotherapie = "Beschouwd als een steen van bescherming tegen negatieve energieën en van overvloed, wordt pyriet gebruikt om zelfvertrouwen en initiatief te versterken."
         ),
         "scheelite" to GemTranslation(
             nom = "Scheeliet",
@@ -246,7 +246,7 @@ object GemTranslationsNl {
             descriptionCourte = "Gouden chatoyance in een bewegende band.",
             descriptionLongue = "Tijgeroog dankt zijn gouden chatoyance aan vezels van crocidoliet (een asbestvariëteit) die zijn omgezet in kwarts (pseudomorfose). Geslepen als cabochon onthult het een stralende band die met het licht meebeweegt.",
             particularites = "Altijd geslepen als cabochon om de chatoyance (kattenoogeffect) te tonen.",
-            lithotherapie = "Een steen van bescherming en zelfvertrouwen; tijgeroog wordt veel gebruikt om vastberadenheid te versterken en zich te wapenen tegen negatieve invloeden."
+            lithotherapie = "Een steen van bescherming tegen het boze oog en van zelfvertrouwen, tijgeroog wordt veel gebruikt om vastberadenheid te versterken en zich te wapenen tegen negatieve invloeden."
         ),
         "scapolite" to GemTranslation(
             nom = "Scapoliet",
@@ -338,7 +338,7 @@ object GemTranslationsNl {
             descriptionCourte = "De historische jade van China en Nieuw-Zeeland, te onderscheiden van jadeïet.",
             descriptionLongue = "Vóór de ontdekking van Birmese jadeïet in de 18e eeuw was alle jade bewerkt in het keizerlijke China, Nieuw-Zeeland (Maori-pounamu) en precolumbiaans Amerika nefriet — een amfibool met microscopisch verweven vezels die het een uitzonderlijke taaiheid geven.",
             particularites = "Een gevilte vezelstructuur die het schokbestendiger maakt dan jadeïet, ondanks een iets lagere hardheid.",
-            lithotherapie = "Een steen van wijsheid en harmonie sinds het oude China; nefrietjade zou sereniteit, bescherming en een lang leven brengen."
+            lithotherapie = "Een steen van wijsheid en harmonie sinds het oude China; nefrietjade zou sereniteit, bescherming en een lang leven brengen, en werd van oudsher aan reizigers geschonken als beschermende amulet."
         ),
         "maw-sit-sit" to GemTranslation(
             nom = "Maw-sit-sit",
@@ -392,7 +392,7 @@ object GemTranslationsNl {
             descriptionCourte = "De heilige steen van de Chinese cultuur.",
             descriptionLongue = "Jadeïet vormt een microkristallijn aggregaat van uitzonderlijke taaiheid, wat het onderscheidt van nefriet, het andere mineraal dat \"jade\" wordt genoemd. Vereerd in China als \"steen van de hemel\", symboliseert het puurheid en deugd.",
             particularites = "Uiterst taai ondanks een matige hardheid; \"keizerlijke\" kwaliteit, een zeer zeldzaam doorschijnend groen.",
-            lithotherapie = "Jade-jadeïet zou geluk en bescherming brengen, en tegelijk harmonie in relaties en innerlijke sereniteit bevorderen."
+            lithotherapie = "Jade-jadeïet zou geluk en bescherming brengen, met name voor reizigers, en tegelijk harmonie in relaties en innerlijke sereniteit bevorderen."
         ),
         "tourmaline-verte" to GemTranslation(
             nom = "Groene toermalijn (verdeliet)",
@@ -547,7 +547,7 @@ object GemTranslationsNl {
             descriptionLongue = "Blauwe zirkoon, de meest verhandelde kleur van de soort, wordt vrijwel systematisch verkregen door een thermische behandeling van Cambodjaanse bruine zirkoon. Zijn diamantachtige glans en sterke dispersie maken er een gewaardeerd en betaalbaar alternatief voor blauwe saffier van.",
             particularites = "Vrijwel systematische en stabiele hittebehandeling; sterke dispersie die dicht bij die van diamant ligt.",
             inclusions = "Doorgaans het gevolg van een hittebehandeling; karakteristieke verdubbeling van de interne facetranden en soms fijne spanningsbreuken.",
-            lithotherapie = "Blauwe zirkoon zou mentale rust en helderheid brengen, een steun tijdens periodes van belangrijke reflectie."
+            lithotherapie = "Blauwe zirkoon zou mentale rust en helderheid brengen, een steun tijdens periodes van belangrijke reflectie; hij werd van oudsher ook beschouwd als een beschermsteen voor reizigers."
         ),
         "hemimorphite" to GemTranslation(
             nom = "Hemimorfiet",
@@ -610,7 +610,7 @@ object GemTranslationsNl {
             descriptionLongue = "Zijn naam, afkomstig van het Latijnse \"aqua marina\", roept zijn bleekblauwe tot blauwgroene kleur op die aan zeewater doet denken. Blauwe beryl onderscheidt zich door zijn grote zuiverheid, met zeer weinig met het blote oog zichtbare insluitsels.",
             particularites = "Vaak verhit om de groene component te verzachten en het blauw te versterken.",
             inclusions = "Over het algemeen zuiver; insluitsels van holle buisjes evenwijdig aan de c-as, zeldzame vloeistofinsluitsels en bijkomende kristallen.",
-            lithotherapie = "De steen van zeelieden; aquamarijn wordt van oudsher geassocieerd met sereniteit, moed en een kalme communicatie, vooral tijdens reizen."
+            lithotherapie = "De steen van zeelieden; aquamarijn wordt van oudsher geassocieerd met sereniteit, moed en een kalme communicatie, vooral tijdens reizen, en zou reizigers beschermen, met name op zee."
         ),
         "tanzanite" to GemTranslation(
             nom = "Tanzaniet",
@@ -625,14 +625,14 @@ object GemTranslationsNl {
             descriptionCourte = "Diepblauw bezaaid met goud, gebruikt sinds de oudheid.",
             descriptionLongue = "Lapis lazuli is een gesteente dat voornamelijk uit lazuriet bestaat, samen met pyriet (gouden insluitsels) en calciet (witte aders). Al in het oude Egypte gebruikt en fijngemalen tot het pigment \"ultramarijnblauw\", tooit het al millennia sieraden en kunstvoorwerpen.",
             particularites = "De gouden pyrietinsluitsels, gelijkmatig verdeeld, zijn een teken van kwaliteit.",
-            lithotherapie = "Een steen van wijsheid en waarheid sinds het oude Egypte; lapis lazuli zou het zelfvertrouwen en de helderheid van oordeel versterken."
+            lithotherapie = "Een steen van wijsheid en waarheid sinds het oude Egypte; lapis lazuli zou het zelfvertrouwen en de helderheid van oordeel versterken, en biedt een psychische bescherming die voortkomt uit het gebruik ervan in Egyptische amuletten."
         ),
         "turquoise" to GemTranslation(
             nom = "Turkoois",
             descriptionCourte = "Iconisch blauwgroen, geaderd met matrix.",
             descriptionLongue = "Al gebruikt sinds het oude Egypte en heilig voor talrijke Indiaanse culturen, dankt turkoois zijn blauw aan koper. Poreus en zacht, wordt het vaak gestabiliseerd door impregnatie met hars om bestand te zijn tegen gebruik in juwelen.",
             particularites = "Karakteristieke geaderde matrix; poreus, gevoelig voor cosmetica en chemische producten.",
-            lithotherapie = "Al millennia een beschermsteen; turkoois zou sereniteit, oprechte communicatie en bescherming tijdens reizen bevorderen."
+            lithotherapie = "Al millennia een beschermsteen; turkoois zou sereniteit, oprechte communicatie en bescherming van reizigers bevorderen, en geldt tevens als een traditioneel talisman tegen het boze oog."
         ),
         "spinelle-bleu" to GemTranslation(
             nom = "Blauwe spinel",
@@ -733,7 +733,7 @@ object GemTranslationsNl {
             descriptionLongue = "Amethist dankt zijn paarse kleur aan sporen ijzer gecombineerd met natuurlijke bestraling. Overvloedig en toegankelijk, werd het niettemin eeuwenlang gedragen door adel en geestelijkheid, als symbool van soberheid en spiritualiteit.",
             particularites = "Kan verkleuren bij langdurige blootstelling aan zonlicht.",
             inclusions = "Kleurzonering in chevrons (Braziliaanse tweelingvorming), sluiers van fijne vloeistofinsluitsels, soms spookachtige groeikristallen.",
-            lithotherapie = "Amethist is een van de bekendste stenen in de lithotherapie om stress te verzachten, een vredige slaap te bevorderen en meditatie en spiritualiteit te ondersteunen."
+            lithotherapie = "Amethist is een van de bekendste stenen in de lithotherapie om stress te verzachten, een vredige slaap te bevorderen en meditatie en spiritualiteit te ondersteunen; bij de ingang van een kamer geplaatst, beschermt ze het huis tegen negatieve energieën."
         ),
         "spinelle-violet" to GemTranslation(
             nom = "Paarse spinel",
@@ -1083,7 +1083,7 @@ object GemTranslationsNl {
             descriptionLongue = "Rokerige kwarts dankt zijn bruine tint aan gekleurde centra veroorzaakt door de natuurlijke radioactiviteit van het omringende gesteente, die inwerkt op sporen aluminium. Overvloedig en betaalbaar, wordt het vaak verhit om in citrien te veranderen.",
             particularites = "Kan verhit worden om geel te worden (citrien) of vervagen bij langdurige blootstelling aan licht.",
             inclusions = "Sluiers van fijne vloeistofinsluitsels en incidentele negatieve kristallen, vergelijkbaar met bergkristal.",
-            lithotherapie = "Rokerige kwarts staat bekend om zijn krachtige geaardheidswerking, en zou helpen stress en dagelijkse spanningen te absorberen."
+            lithotherapie = "Rokerige kwarts staat bekend om zijn krachtige geaardheidswerking, en zou helpen stress, dagelijkse spanningen en negatieve energieën te absorberen."
         ),
         "andalousite" to GemTranslation(
             nom = "Andalusiet",
@@ -1143,7 +1143,7 @@ object GemTranslationsNl {
             descriptionLongue = "Toermalijnkwarts vangt naalden van zwarte toermalijn (schörl) in een verder helder kwartskristal, wat een opvallend grafisch patroon creëert dat zeer gewild is in zowel de lithotherapie als de hedendaagse juwelierskunst.",
             particularites = "De toermalijnnaalden blijven met het blote oog zichtbaar en creëren een grafisch patroon dat bij elke steen uniek is.",
             inclusions = "Zwarte naalden van toermalijn (schörl) verstrengeld in een helder kwarts.",
-            lithotherapie = "Toermalijnkwarts combineert de beschermende krachten van zwarte toermalijn met de versterkende helderheid van bergkristal."
+            lithotherapie = "Toermalijnkwarts combineert de beschermende krachten van zwarte toermalijn, die een psychisch schild tegen negatieve energieën zou vormen, met de versterkende helderheid van bergkristal."
         ),
         "onyx" to GemTranslation(
             nom = "Onyx",
@@ -1171,7 +1171,7 @@ object GemTranslationsNl {
             descriptionCourte = "Natuurlijk glas met een scherpe breuk.",
             descriptionLongue = "Gevormd door de snelle afkoeling van silicarijke lava, is obsidiaan een amorf vulkanisch glas. De uiterst scherpe schelpvormige breuk maakte er al sinds de prehistorie een gereedschap van eerste keuze van, met name voor pijlpunten en messen.",
             particularites = "Sommige variëteiten vertonen een gouden of iriserende chatoyance (regenboogobsidiaan).",
-            lithotherapie = "Obsidiaan zou een krachtige bescherming bieden en tegelijk verborgen waarheden onthullen, en een diepe innerlijke transformatie bevorderen."
+            lithotherapie = "Obsidiaan zou een krachtige bescherming bieden, als een waar psychisch schild, en tegelijk verborgen waarheden onthullen en een diepe innerlijke transformatie bevorderen."
         ),
         "rubis-etoile" to GemTranslation(
             nom = "Sterrenrobijn",
@@ -1233,7 +1233,7 @@ object GemTranslationsNl {
             descriptionCourte = "De meest iconische gekleurde concentrische banding van kwarts.",
             descriptionLongue = "Agaat is een calcedoon met concentrische of evenwijdige banden in uiteenlopende kleuren, gevormd door opeenvolgende afzettingen van silica in vulkanische holtes. De talloze variëteiten (mos-, dendriet-, landschaps-, oogagaat...) maken er een van de meest verzamelde sierstenen ter wereld van.",
             particularites = "De banding wordt vaak versterkt door verven, een oude en algemeen aanvaarde marktpraktijk.",
-            lithotherapie = "Agaat wordt van oudsher geassocieerd met emotioneel evenwicht, stabiliteit en een zachte dagelijkse bescherming."
+            lithotherapie = "Agaat wordt van oudsher geassocieerd met emotioneel evenwicht, stabiliteit en een zachte dagelijkse bescherming, en werd al sinds de oudheid als amulet tegen het boze oog gedragen."
         ),
         "jaspe" to GemTranslation(
             nom = "Jaspis",
@@ -1320,7 +1320,7 @@ object GemTranslationsNl {
             descriptionLongue = "Labradoriet vertoont een optisch verschijnsel genaamd labradorescentie: blauwgroene, soms gouden of paarsachtige glinsteringen verschijnen en verdwijnen naargelang de kijkhoek, veroorzaakt door interne lamellen die het licht buigen.",
             particularites = "De oriëntatie bij het slijpen is bepalend om de labradorescentie te tonen.",
             inclusions = "Ontmengingslamellen die de geïriseerde chatoyance (labradorescentie) veroorzaken, soms samen met fijne insluitsels van ilmeniet of magnetiet.",
-            lithotherapie = "Labradoriet zou een sterke energetische bescherming bieden en tegelijk de intuïtie en de dagelijkse magie stimuleren."
+            lithotherapie = "Labradoriet zou een sterke energetische bescherming bieden, als een waar psychisch schild tegen negatieve energieën, en tegelijk de intuïtie en de dagelijkse magie stimuleren."
         ),
         "pierre-de-lune" to GemTranslation(
             nom = "Maansteen",
@@ -1328,7 +1328,7 @@ object GemTranslationsNl {
             descriptionLongue = "Maansteen dankt zijn naam aan zijn zwevende blauwachtige gloed, de adularescentie, veroorzaakt door de vergroeiing van twee veldspaten op microscopische schaal die het licht buigen. De beste kwaliteiten met levendig blauw komen uit Sri Lanka.",
             particularites = "Optimale adularescentie wanneer de steen als cabochon geslepen wordt loodrecht op de interne lamellen.",
             inclusions = "Albiet-orthoklaas-ontmengingslamellen aan de oorsprong van de adularescentie, die blauwachtige gloed die onder het oppervlak lijkt te zweven.",
-            lithotherapie = "Maansteen wordt van oudsher geassocieerd met intuïtie, gevoeligheid en nieuwe beginnen, in verband met de maancycli."
+            lithotherapie = "Maansteen wordt van oudsher geassocieerd met intuïtie, gevoeligheid en nieuwe beginnen, in verband met de maancycli, en zou reizigers beschermen, met name 's nachts."
         ),
         "pierre-de-soleil" to GemTranslation(
             nom = "Zonnesteen",
@@ -1358,7 +1358,7 @@ object GemTranslationsNl {
             descriptionCourte = "Het kalkskelet van een zeedier, kostbaar bloedrood sinds de oudheid.",
             descriptionLongue = "Kostbaar rood koraal is het vertakte kalkskelet van een klein koloniaal zeedier (Corallium rubrum), al sinds de oudheid geoogst in de Middellandse Zee. De overexploitatie ervan heeft er tegenwoordig een strikt gereguleerde organische edelsteen van gemaakt.",
             particularites = "Strikt gereguleerde oogst (CITES voor bepaalde soorten) wegens de historische overexploitatie van de riffen.",
-            lithotherapie = "Rood koraal wordt van oudsher als bescherming gedragen, met name voor kinderen, en geassocieerd met vitaliteit en familie-energie."
+            lithotherapie = "Rood koraal wordt van oudsher gedragen als bescherming tegen het boze oog, met name voor kinderen, en geassocieerd met vitaliteit en familie-energie."
         ),
         "perle-conque" to GemTranslation(
             nom = "Schelpparel (Lambi)",
@@ -1373,7 +1373,7 @@ object GemTranslationsNl {
             descriptionLongue = "Barnsteen is hars van naaldbomen of bloeiende bomen, over miljoenen jaren versteend. De karakteristieke lichtheid en de soms spectaculaire insluitsels (insecten, planten) maakten er al sinds de prehistorie een kostbaar materiaal van, met name langs de Baltische \"barnsteenroute\".",
             particularites = "Drijft op zout water; kan fossiele insluitsels (insecten, planten) bevatten die zeer gewild zijn.",
             inclusions = "Kan spectaculaire fossiele insluitsels bevatten — insecten, planten, luchtbelletjes — ware vensters op oude ecosystemen, bijzonder gewild langs de Baltische route.",
-            lithotherapie = "Barnsteen staat sinds de oudheid bekend om zijn kalmerende en beschermende krachten, en brengt warmte en emotioneel troost."
+            lithotherapie = "Barnsteen staat sinds de oudheid bekend om zijn kalmerende en beschermende krachten, en werd onder meer als amulet gedragen om kinderen tegen het boze oog te beschermen, wat warmte en emotioneel troost brengt."
         ),
         "perle" to GemTranslation(
             nom = "Kweekparel",
@@ -1426,7 +1426,7 @@ object GemTranslationsNl {
             descriptionCourte = "De blauwgrijze, chatoyante variant van tijgeroog, niet-geoxideerd.",
             descriptionLongue = "Havikenoog deelt zijn oorsprong met tijgeroog: een pseudomorfose van kwarts na crocidoliet (blauw asbest), waarvan de evenwijdige vezels een zijdeachtige glinstering opleveren. In tegenstelling tot het gouden tijgeroog behoudt het de oorspronkelijke blauwgrijze tot blauwgroene tint, bij gebrek aan oxidatie van het ijzer.",
             particularites = "Hetzelfde blok ruw materiaal kan plaatselijk blauwgrijze zones (havikenoog) en gouden zones (tijgeroog) vertonen, naargelang de mate van ijzeroxidatie.",
-            lithotherapie = "Havikenoog wordt van oudsher geassocieerd met helderziendheid, innerlijk zicht en het nemen van afstand bij complexe situaties."
+            lithotherapie = "Havikenoog wordt van oudsher geassocieerd met helderziendheid, innerlijk zicht en het nemen van afstand bij complexe situaties; net als tijgeroog zou deze oogsteen beschermen tegen het boze oog."
         ),
         "howlite" to GemTranslation(
             nom = "Howliet",
@@ -1464,7 +1464,7 @@ object GemTranslationsNl {
             descriptionCourte = "Verhit tijgeroog, waarvan de ijzeroxidatie naar diep roodbruin verschuift.",
             descriptionLongue = "Stierenoog wordt verkregen door gecontroleerde verhitting van goudkleurig tijgeroog, een behandeling die de ijzeroxidatie versterkt en de tint van geelbruin naar een diep, uitgesproken roodbruin doet verschuiven, terwijl de karakteristieke zijdeachtige chatoyance van de vezelstructuur behouden blijft.",
             particularites = "De thermische behandeling die deze roodbruine tint oplevert, is gangbaar en algemeen aanvaard in de handel, mits vermeld.",
-            lithotherapie = "Stierenoog wordt geassocieerd met kracht, geaardheid en vastberadenheid, in symbolische voortzetting van tijgeroog."
+            lithotherapie = "Stierenoog wordt geassocieerd met kracht, geaardheid, vastberadenheid en bescherming tegen het boze oog, in symbolische voortzetting van tijgeroog."
         ),
         "unakite" to GemTranslation(
             nom = "Unakiet",

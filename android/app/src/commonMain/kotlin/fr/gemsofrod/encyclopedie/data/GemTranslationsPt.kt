@@ -104,7 +104,7 @@ object GemTranslationsPt {
             descriptionLongue = "Nomeado a partir da flor, o jacinto é a variedade laranja a vermelho-acastanhada do zircão, conhecida e talhada desde a Antiguidade. O seu elevado índice de refração confere-lhe um brilho comparável ao do diamante em tamanho igual.",
             particularites = "Birrefringência elevada, provocando um duplicado visível a olho nu das arestas facetadas da mesa.",
             inclusions = "Birrefringência marcada, causando um nítido duplicado das arestas internas; zonas metamíticas e fissuras de tensão são frequentes.",
-            lithotherapie = "O zircão jacinto é tradicionalmente associado ao sucesso e à confiança em si mesmo em novos empreendimentos."
+            lithotherapie = "O zircão jacinto é tradicionalmente associado ao sucesso e à confiança em si mesmo em novos empreendimentos, sendo também reputado por proteger os viajantes, segundo os lapidários medievais."
         ),
         "zircon-dore" to GemTranslation(
             nom = "Zircão dourado",
@@ -144,7 +144,7 @@ object GemTranslationsPt {
             descriptionLongue = "Variedade de granada grossulária rica em ferro e manganês, a hessonita apresenta uma cor laranja quente evocativa de xarope de canela, com um efeito de cintilação interna («efeito melaço») devido às suas inclusões características.",
             particularites = "Um aspeto oleoso a amelado típico, causado pelas inclusões internas.",
             inclusions = "Frequentemente um aspeto interno turvo e «cozido», causado por finas fibrilas difusas e cristais acessórios, típico da granada do Sri Lanca.",
-            lithotherapie = "A hessonita é tradicionalmente usada para reforçar a confiança em si mesmo e proteger contra a autocrítica excessiva."
+            lithotherapie = "A hessonita é tradicionalmente usada para reforçar a confiança em si mesmo e proteger contra a autocrítica excessiva, bem como contra as energias negativas, segundo a tradição védica indiana."
         ),
         "opale-de-feu" to GemTranslation(
             nom = "Opala de fogo",
@@ -168,14 +168,14 @@ object GemTranslationsPt {
             descriptionLongue = "A cornalina deve a sua tonalidade laranja a vermelha a óxidos de ferro. Engastada em escaravelhos e amuletos no Egito antigo, continua hoje a ser uma pedra acessível muito usada em joalharia e para entalhes.",
             particularites = "Frequentemente aquecida para intensificar a tonalidade laranja a partir de material castanho.",
             inclusions = "Coloração resultante de óxidos de ferro finamente dispersos na estrutura microcristalina; poucas inclusões individualmente visíveis.",
-            lithotherapie = "A pedra de ação por excelência, a cornalina é reputada por estimular a coragem, a motivação e a vitalidade física."
+            lithotherapie = "Pedra de ação por excelência, a cornalina é reputada por estimular a coragem, a motivação e a vitalidade física; era também usada como amuleto contra o mau-olhado no Egito antigo e no mundo árabe."
         ),
         "pyrite" to GemTranslation(
             nom = "Pirite",
             descriptionCourte = "O «ouro dos tolos» com reflexos metálicos dourados.",
             descriptionLongue = "A pirite forma cristais cúbicos ou octaédricos de um amarelo-latão metálico intenso, longamente confundida com o ouro por prospetores inexperientes. Utilizada em joalharia facetada desde a era vitoriana (vendida comercialmente como «marcassite»).",
             particularites = "Oxida e pode desagregar-se («doença da pirite») se exposta à humidade a longo prazo.",
-            lithotherapie = "Considerada uma pedra de proteção e abundância, a pirite é utilizada para reforçar a confiança em si mesmo e o espírito de iniciativa."
+            lithotherapie = "Considerada uma pedra de proteção contra as energias negativas e de abundância, a pirite é utilizada para reforçar a confiança em si mesmo e o espírito de iniciativa."
         ),
         "scheelite" to GemTranslation(
             nom = "Scheelite",
@@ -246,7 +246,7 @@ object GemTranslationsPt {
             descriptionCourte = "Chatoyance dourada numa banda móvel.",
             descriptionLongue = "O olho-de-tigre deve a sua chatoyance dourada a fibras de crocidolite (uma variedade de amianto) pseudomorfoseadas em quartzo. Talhado em cabochão, revela uma banda luminosa móvel que se desloca com a luz.",
             particularites = "Sempre talhado em cabochão para revelar a chatoyance (efeito olho-de-gato).",
-            lithotherapie = "Pedra de proteção e confiança, o olho-de-tigre é muito utilizado para reforçar a determinação e proteger de influências negativas."
+            lithotherapie = "Pedra de proteção contra o mau-olhado e de confiança, o olho-de-tigre é muito utilizado para reforçar a determinação e se prevenir de influências negativas."
         ),
         "scapolite" to GemTranslation(
             nom = "Escapolite",
@@ -338,7 +338,7 @@ object GemTranslationsPt {
             descriptionCourte = "O jade histórico da China e da Nova Zelândia, distinto da jadeíte.",
             descriptionLongue = "Antes da descoberta da jadeíte birmanesa no século XVIII, todo o jade trabalhado na China imperial, na Nova Zelândia (pounamu maori) e na América pré-colombiana era nefrita — uma anfíbola entrelaçada em fibras microscópicas que lhe confere uma tenacidade excecional.",
             particularites = "Uma estrutura de fibras feltradas que a torna mais resistente a choques do que a jadeíte, apesar de uma dureza ligeiramente inferior.",
-            lithotherapie = "Pedra de sabedoria e harmonia desde a antiga China, o jade nefrita é reputado por trazer serenidade, proteção e longevidade."
+            lithotherapie = "Pedra de sabedoria e harmonia desde a antiga China, o jade nefrita é reputado por trazer serenidade, proteção e longevidade, sendo tradicionalmente oferecido aos viajantes como amuleto protetor."
         ),
         "maw-sit-sit" to GemTranslation(
             nom = "Maw-sit-sit",
@@ -392,7 +392,7 @@ object GemTranslationsPt {
             descriptionCourte = "A pedra sagrada da cultura chinesa.",
             descriptionLongue = "A jadeíte forma um agregado microcristalino de tenacidade excecional, o que a distingue da nefrita, o outro mineral chamado «jade». Venerada na China como «pedra do céu», simboliza a pureza e a virtude.",
             particularites = "Extremamente tenaz apesar de uma dureza moderada; a qualidade «imperial», um verde translúcido muito raro.",
-            lithotherapie = "O jade jadeíte é reputado por trazer sorte e proteção, favorecendo simultaneamente a harmonia nas relações e a serenidade interior."
+            lithotherapie = "O jade jadeíte é reputado por trazer sorte e proteção, nomeadamente para os viajantes, favorecendo simultaneamente a harmonia nas relações e a serenidade interior."
         ),
         "tourmaline-verte" to GemTranslation(
             nom = "Turmalina verde (Verdelite)",
@@ -547,7 +547,7 @@ object GemTranslationsPt {
             descriptionLongue = "O zircão azul, a cor mais comercializada da espécie, é quase sempre obtido por tratamento térmico de zircão castanho cambojano. O seu brilho adamantino e a sua forte dispersão fazem dele uma alternativa apreciada e acessível à safira azul.",
             particularites = "O tratamento térmico é quase universal e estável; forte dispersão próxima da do diamante.",
             inclusions = "Geralmente resultante de tratamento térmico; duplicado característico das arestas internas e, por vezes, finas fissuras de tensão.",
-            lithotherapie = "O zircão azul é reputado por trazer calma mental e clareza, um apoio para os períodos de reflexão importante."
+            lithotherapie = "O zircão azul é reputado por trazer calma mental e clareza, um apoio para os períodos de reflexão importante; era também tradicionalmente considerado uma pedra protetora para os viajantes."
         ),
         "hemimorphite" to GemTranslation(
             nom = "Hemimorfite",
@@ -610,7 +610,7 @@ object GemTranslationsPt {
             descriptionLongue = "O seu nome, do latim «aqua marina», evoca a sua cor azul pálido a azul-esverdeada, lembrando a água do mar. O berilo azul distingue-se pela sua grande pureza, com muito poucas inclusões visíveis a olho nu.",
             particularites = "Frequentemente aquecida para atenuar a componente verde e intensificar o azul.",
             inclusions = "Geralmente limpa; tubos ocos paralelos ao eixo c, raras inclusões líquidas e cristais acessórios.",
-            lithotherapie = "Pedra dos marinheiros, a água-marinha é tradicionalmente associada à serenidade, à coragem e a uma comunicação apaziguada, sobretudo em viagem."
+            lithotherapie = "Pedra dos marinheiros, a água-marinha é tradicionalmente associada à serenidade, à coragem e a uma comunicação apaziguada, sobretudo em viagem; é reputada por proteger os viajantes, nomeadamente no mar."
         ),
         "tanzanite" to GemTranslation(
             nom = "Tanzanite",
@@ -625,14 +625,14 @@ object GemTranslationsPt {
             descriptionCourte = "Azul profundo salpicado de ouro, utilizado desde a Antiguidade.",
             descriptionLongue = "O lápis-lazúli é uma rocha composta sobretudo por lazurite, associada a pirite (inclusões douradas) e a calcite (veios brancos). Utilizado no Egito antigo e moído para o pigmento «azul-ultramar», adorna joias e objetos de arte há milénios.",
             particularites = "As inclusões douradas de pirite, uniformemente distribuídas, são uma garantia de qualidade.",
-            lithotherapie = "Pedra de sabedoria e verdade desde o Egito antigo, o lápis-lazúli é reputado por reforçar a confiança em si mesmo e a clareza de julgamento."
+            lithotherapie = "Pedra de sabedoria e verdade desde o Egito antigo, o lápis-lazúli é reputado por reforçar a confiança em si mesmo e a clareza de julgamento, bem como por oferecer uma proteção psíquica herdada do seu uso nos amuletos egípcios."
         ),
         "turquoise" to GemTranslation(
             nom = "Turquesa",
             descriptionCourte = "Azul-esverdeado emblemático, veado de matriz.",
             descriptionLongue = "Utilizada desde o Egito antigo e sagrada para numerosas culturas ameríndias, a turquesa deve o seu azul ao cobre. Porosa e macia, é frequentemente estabilizada por impregnação de resina, para resistir ao uso em joalharia.",
             particularites = "Matriz veada característica; porosa, sensível a cosméticos e produtos químicos.",
-            lithotherapie = "Pedra de proteção há milénios, a turquesa é reputada por favorecer a serenidade, a comunicação sincera e a proteção durante as viagens."
+            lithotherapie = "Pedra de proteção há milénios, a turquesa é reputada por favorecer a serenidade, a comunicação sincera e a proteção dos viajantes, sendo também um talismã tradicional contra o mau-olhado."
         ),
         "spinelle-bleu" to GemTranslation(
             nom = "Espinela azul",
@@ -733,7 +733,7 @@ object GemTranslationsPt {
             descriptionLongue = "A ametista deve a sua cor violeta a vestígios de ferro combinados com irradiação natural. Abundante e acessível, foi ainda assim usada pela nobreza e pelo clero durante séculos, símbolo de sobriedade e espiritualidade.",
             particularites = "Pode desbotar sob exposição prolongada à luz solar.",
             inclusions = "Zonamento de cor em chevron (maclas do Brasil), véus de finas inclusões líquidas, por vezes cristais fantasma de crescimento.",
-            lithotherapie = "A ametista é uma das pedras mais reputadas em litoterapia para acalmar o stress, favorecer um sono sereno e apoiar a meditação e a espiritualidade."
+            lithotherapie = "A ametista é uma das pedras mais reputadas em litoterapia para acalmar o stress, favorecer um sono sereno e apoiar a meditação e a espiritualidade; colocada à entrada de uma divisão, protege o lar das energias negativas."
         ),
         "spinelle-violet" to GemTranslation(
             nom = "Espinela violeta",
@@ -1083,7 +1083,7 @@ object GemTranslationsPt {
             descriptionLongue = "O quartzo fumado deve a sua cor castanha a centros de cor induzidos pela radioatividade natural da rocha encaixante, atuando sobre vestígios de alumínio. Abundante e acessível, é frequentemente aquecido para ser transformado em citrino.",
             particularites = "Pode ser aquecido para virar amarelo (citrino) ou desbotar sob exposição prolongada à luz.",
             inclusions = "Véus de finas inclusões líquidas e ocasionais cristais negativos, comparável ao cristal de rocha.",
-            lithotherapie = "O quartzo fumado é reputado pelas suas poderosas virtudes de enraizamento, ajudando a absorver o stress e as tensões do quotidiano."
+            lithotherapie = "O quartzo fumado é reputado pelas suas poderosas virtudes de enraizamento, ajudando a absorver o stress, as tensões do quotidiano e as energias negativas."
         ),
         "andalousite" to GemTranslation(
             nom = "Andaluzita",
@@ -1143,7 +1143,7 @@ object GemTranslationsPt {
             descriptionLongue = "O quartzo turmalinado aprisiona agulhas de turmalina negra (xorlo) num cristal de quartzo por outro lado límpido, criando um motivo gráfico impressionante muito apreciado tanto em litoterapia como em joalharia contemporânea.",
             particularites = "As agulhas de turmalina permanecem visíveis a olho nu, criando um motivo gráfico único em cada pedra.",
             inclusions = "Agulhas de turmalina negra (xorlo) entrelaçadas num quartzo límpido.",
-            lithotherapie = "O quartzo turmalinado associa as virtudes protetoras da turmalina negra à clareza amplificadora do cristal de rocha."
+            lithotherapie = "O quartzo turmalinado associa as virtudes protetoras da turmalina negra, reputada por formar um escudo psíquico contra as energias negativas, à clareza amplificadora do cristal de rocha."
         ),
         "onyx" to GemTranslation(
             nom = "Ónix",
@@ -1171,7 +1171,7 @@ object GemTranslationsPt {
             descriptionCourte = "Vidro natural de fratura extremamente afiada.",
             descriptionLongue = "Formada pelo arrefecimento rápido de lava rica em sílica, a obsidiana é um vidro vulcânico amorfo. A sua fratura conchoidal extremamente afiada fez dela uma ferramenta de eleição desde a Pré-História, nomeadamente para pontas de flecha e lâminas.",
             particularites = "Algumas variedades apresentam um brilho dourado ou iridescente (obsidiana arco-íris).",
-            lithotherapie = "A obsidiana é reputada por oferecer uma proteção poderosa, revelando ao mesmo tempo verdades ocultas, favorecendo uma transformação interior profunda."
+            lithotherapie = "A obsidiana é reputada por oferecer uma proteção poderosa, agindo como um verdadeiro escudo psíquico, revelando ao mesmo tempo verdades ocultas e favorecendo uma transformação interior profunda."
         ),
         "rubis-etoile" to GemTranslation(
             nom = "Rubi estrelado",
@@ -1233,7 +1233,7 @@ object GemTranslationsPt {
             descriptionCourte = "O bandado concêntrico colorido mais emblemático do quartzo.",
             descriptionLongue = "A ágata é uma calcedónia que apresenta bandas concêntricas ou paralelas de cores variadas, formadas por depósitos sucessivos de sílica em cavidades vulcânicas. As suas inúmeras variedades (musgo, dendrítica, paisagem, olho...) fazem dela uma das pedras ornamentais mais coleccionadas do mundo.",
             particularites = "O bandado é frequentemente realçado por tinturagem, uma prática antiga e amplamente aceite pelo mercado.",
-            lithotherapie = "A ágata é tradicionalmente associada ao equilíbrio emocional, à estabilidade e a uma proteção suave no quotidiano."
+            lithotherapie = "A ágata é tradicionalmente associada ao equilíbrio emocional, à estabilidade e a uma proteção suave no quotidiano, sendo usada desde a Antiguidade como amuleto contra o mau-olhado."
         ),
         "jaspe" to GemTranslation(
             nom = "Jaspe",
@@ -1320,7 +1320,7 @@ object GemTranslationsPt {
             descriptionLongue = "A labradorite apresenta um fenómeno ótico chamado labradorescência: reflexos azul-esverdeados, por vezes dourados ou violáceos, surgem e desaparecem consoante o ângulo de observação, devidos a lamelas internas que difratam a luz.",
             particularites = "A orientação da talha é determinante para revelar a labradorescência.",
             inclusions = "Lamelas de exsolução responsáveis pelo seu brilho iridescente (labradorescência), por vezes acompanhadas de finas inclusões de ilmenite ou magnetite.",
-            lithotherapie = "A labradorite é reputada por oferecer uma forte proteção energética, estimulando simultaneamente a intuição e a magia do quotidiano."
+            lithotherapie = "A labradorite é reputada por oferecer uma forte proteção energética, agindo como um verdadeiro escudo psíquico contra as energias negativas, estimulando simultaneamente a intuição e a magia do quotidiano."
         ),
         "pierre-de-lune" to GemTranslation(
             nom = "Pedra da lua",
@@ -1328,7 +1328,7 @@ object GemTranslationsPt {
             descriptionLongue = "A pedra da lua deve o seu nome ao seu brilho azulado flutuante, a adularescência, causada pelo intercrescimento de dois feldspatos à escala microscópica, que difratam a luz. As melhores qualidades de azul vivo provêm do Sri Lanca.",
             particularites = "Adularescência ótima quando a pedra é talhada em cabochão perpendicularmente às lamelas internas.",
             inclusions = "Lamelas de exsolução albite-ortóclase responsáveis pela adularescência, esse brilho azulado que parece flutuar sob a superfície.",
-            lithotherapie = "A pedra da lua é tradicionalmente associada à intuição, à sensibilidade e a novos começos, em ligação com os ciclos lunares."
+            lithotherapie = "A pedra da lua é tradicionalmente associada à intuição, à sensibilidade e a novos começos, em ligação com os ciclos lunares, sendo também reputada por proteger os viajantes, nomeadamente à noite."
         ),
         "pierre-de-soleil" to GemTranslation(
             nom = "Pedra do sol",
@@ -1358,7 +1358,7 @@ object GemTranslationsPt {
             descriptionCourte = "O esqueleto calcário de um animal marinho, vermelho-sangue precioso desde a Antiguidade.",
             descriptionLongue = "O coral vermelho precioso é o esqueleto calcário ramificado de um pequeno animal marinho colonial (Corallium rubrum), colhido no Mediterrâneo desde a Antiguidade. A sua sobre-exploração fez dele uma gema orgânica hoje estritamente regulamentada.",
             particularites = "A colheita é estritamente regulamentada (CITES para certas espécies) devido à sobre-exploração histórica dos recifes.",
-            lithotherapie = "O coral vermelho é tradicionalmente usado como proteção, sobretudo para crianças, e associado à vitalidade e à energia familiar."
+            lithotherapie = "O coral vermelho é tradicionalmente usado como proteção contra o mau-olhado, em particular para as crianças, e associado à vitalidade e à energia familiar."
         ),
         "perle-conque" to GemTranslation(
             nom = "Pérola de búzio (Lambi)",
@@ -1373,7 +1373,7 @@ object GemTranslationsPt {
             descriptionLongue = "O âmbar é resina de coníferas ou de árvores com flor fossilizada ao longo de milhões de anos. A sua leveza característica e as suas inclusões por vezes espetaculares (insetos, matéria vegetal) fizeram dele um material precioso desde a Pré-História, nomeadamente ao longo da «rota do âmbar» báltica.",
             particularites = "Flutua em água salgada; pode conter inclusões fósseis (insetos, matéria vegetal) muito procuradas.",
             inclusions = "Pode conter inclusões fósseis espetaculares — insetos, matéria vegetal, bolhas de ar —, verdadeiras janelas sobre ecossistemas antigos, particularmente apreciadas na rota báltica.",
-            lithotherapie = "O âmbar é reputado desde a Antiguidade pelas suas virtudes apaziguadoras e protetoras, trazendo calor e conforto emocional."
+            lithotherapie = "O âmbar é reputado desde a Antiguidade pelas suas virtudes apaziguadoras e protetoras, sendo nomeadamente usado em amuleto para proteger as crianças do mau-olhado, trazendo calor e conforto emocional."
         ),
         "perle" to GemTranslation(
             nom = "Pérola de cultura",
@@ -1426,7 +1426,7 @@ object GemTranslationsPt {
             descriptionCourte = "A variante azul-acinzentada chatoyant do olho-de-tigre, não oxidada.",
             descriptionLongue = "O olho-de-falcão partilha a origem do olho-de-tigre: uma pseudomorfose de quartzo após crocidolite (amianto azul), cujas fibras paralelas produzem uma chatoyance sedosa. Ao contrário do olho-de-tigre dourado, conserva a tonalidade azul-acinzentada a azul-esverdeada original, por falta de oxidação do ferro.",
             particularites = "O mesmo bloco de material bruto pode apresentar, localmente, tanto zonas azul-acinzentadas (olho-de-falcão) como zonas douradas (olho-de-tigre), consoante o grau de oxidação do ferro.",
-            lithotherapie = "O olho-de-falcão é tradicionalmente associado à clarividência, à visão interior e à capacidade de tomar distância perante situações complexas."
+            lithotherapie = "O olho-de-falcão é tradicionalmente associado à clarividência, à visão interior e à capacidade de tomar distância perante situações complexas; à semelhança do olho-de-tigre, esta pedra-olho é reputada por proteger contra o mau-olhado."
         ),
         "howlite" to GemTranslation(
             nom = "Howlite",
@@ -1464,7 +1464,7 @@ object GemTranslationsPt {
             descriptionCourte = "O olho-de-tigre aquecido, cuja oxidação do ferro se torna castanho-avermelhada profunda.",
             descriptionLongue = "O olho-de-boi é obtido por aquecimento controlado do olho-de-tigre dourado, um tratamento que intensifica a oxidação do ferro e faz a cor virar do amarelo-castanho para um castanho-avermelhado profundo e intenso, preservando a chatoyance sedosa característica da estrutura fibrosa.",
             particularites = "O tratamento térmico que produz esta tonalidade castanho-avermelhada é comum e amplamente aceite no comércio, desde que divulgado.",
-            lithotherapie = "O olho-de-boi é associado à força, ao enraizamento e à determinação, na continuidade simbólica do olho-de-tigre."
+            lithotherapie = "O olho-de-boi é associado à força, ao enraizamento, à determinação e a uma proteção contra o mau-olhado, na continuidade simbólica do olho-de-tigre."
         ),
         "unakite" to GemTranslation(
             nom = "Unakite",
