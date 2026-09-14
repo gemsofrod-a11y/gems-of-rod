@@ -17,6 +17,7 @@ import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.Biotech
 import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.Diamond
+import androidx.compose.material.icons.filled.DonutLarge
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Inventory2
 import androidx.compose.material.icons.filled.Info
@@ -70,6 +71,7 @@ fun LabMenuScreen(
     onClientsClick: () -> Unit,
     onSuppliersClick: () -> Unit,
     onLegendaryClick: () -> Unit,
+    onRingConfiguratorClick: () -> Unit,
     onBackClick: () -> Unit
 ) {
     Scaffold(
@@ -185,6 +187,12 @@ fun LabMenuScreen(
                 title = stringResource(R.string.lab_suppliers_title),
                 subtitle = stringResource(R.string.lab_suppliers_subtitle),
                 onClick = onSuppliersClick
+            )
+            LabMenuCard(
+                icon = Icons.Filled.DonutLarge,
+                title = stringResource(R.string.lab_ring_configurator_title),
+                subtitle = stringResource(R.string.lab_ring_configurator_subtitle),
+                onClick = onRingConfiguratorClick
             )
             LabMenuCard(
                 icon = Icons.Filled.Public,

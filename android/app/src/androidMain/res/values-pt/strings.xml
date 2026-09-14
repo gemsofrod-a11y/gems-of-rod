@@ -664,4 +664,79 @@
     <string name="lapidaire_espece_orientation_label">Orientação: %1$s</string>
     <string name="lapidaire_espece_fragilite_label">Fragilidade: %1$s</string>
     <string name="lapidaire_espece_polissage_label">Polimento: %1$s</string>
+
+    <!-- Compositor de anéis -->
+    <string name="lab_ring_configurator_title">Compositor de anéis</string>
+    <string name="lab_ring_configurator_subtitle">Componha um anel e obtenha uma estimativa de preço indicativa.</string>
+    <string name="ring_configurator_intro">Escolha a pedra central, o pavê e o metal: a pré-visualização e a estimativa de preço atualizam-se em tempo real. Uma ferramenta de composição, não um orçamento definitivo.</string>
+    <string name="ring_preset_solitaire">Solitário</string>
+    <string name="ring_preset_trilogie">Trilogia</string>
+    <string name="ring_preset_pave">Pavê completo</string>
+    <string name="ring_section_metal_title">Peça e metal</string>
+    <string name="ring_section_central_title">Pedra central</string>
+    <string name="ring_section_cote_title">Pedras laterais</string>
+    <string name="ring_section_price_title">Estimativa</string>
+    <string name="ring_field_metal_label">Metal da montagem</string>
+    <string name="ring_field_weight_label">Peso do metal</string>
+    <string name="ring_field_species_label">Espécie</string>
+    <string name="ring_field_cut_label">Lapidação</string>
+    <string name="ring_field_sertissage_label">Engaste</string>
+    <string name="ring_field_diameter_label">Diâmetro (mm)</string>
+    <string name="ring_field_length_label">Comprimento (mm)</string>
+    <string name="ring_field_width_label">Largura (mm)</string>
+    <string name="ring_field_orientation_label">Orientação</string>
+    <string name="ring_field_nombre_label">Número por lado</string>
+    <string name="ring_field_espacement_label">Espaçamento</string>
+    <string name="ring_field_orientation_offset_label">Orientação</string>
+    <string name="ring_price_disclaimer">Faixa indicativa (metal, lapidação e qualidade das pedras) — não substitui um orçamento personalizado.</string>
+    <string name="ring_summary_solo">%1$s lapidação %2$s (engaste %3$s) em %4$s, solitário, sem pavê.</string>
+    <string name="ring_summary_with_cote">%1$s lapidação %2$s (engaste %3$s) em %4$s, pavê com %5$d %6$s (lapidação %7$s, engaste %8$s).</string>
+
+    <!-- Compositor de anéis — metais -->
+    <string name="ring_metal_or_jaune">Ouro amarelo 18k</string>
+    <string name="ring_metal_or_blanc">Ouro branco 18k</string>
+    <string name="ring_metal_or_rose">Ouro rosa 18k</string>
+    <string name="ring_metal_platine">Platina</string>
+
+    <!-- Compositor de anéis — espécies -->
+    <string name="ring_species_diamant">Diamante</string>
+    <string name="ring_species_rubis">Rubi</string>
+    <string name="ring_species_emeraude">Esmeralda</string>
+    <string name="ring_species_saphir">Safira</string>
+    <string name="ring_species_alexandrite">Alexandrita</string>
+    <string name="ring_species_tanzanite">Tanzanita</string>
+    <string name="ring_species_spinelle">Espinélio</string>
+    <string name="ring_species_tourmaline">Turmalina rosa</string>
+    <string name="ring_species_topaze">Topázio imperial</string>
+    <string name="ring_species_grenat">Granada demantoide</string>
+    <string name="ring_species_kunzite">Kunzita</string>
+    <string name="ring_species_morganite">Morganita</string>
+
+    <!-- Compositor de anéis — lapidações -->
+    <string name="ring_cut_ronde">Redonda</string>
+    <string name="ring_cut_ovale">Oval</string>
+    <string name="ring_cut_poire">Pera</string>
+    <string name="ring_cut_marquise">Marquise</string>
+    <string name="ring_cut_briolette">Briolette</string>
+    <string name="ring_cut_asscher">Asscher</string>
+    <string name="ring_cut_baguette">Baguette</string>
+    <string name="ring_cut_princesse">Princesa</string>
+    <string name="ring_cut_coussin">Almofada</string>
+    <string name="ring_cut_kite">Kite</string>
+    <string name="ring_cut_coeur">Coração</string>
+    <string name="ring_cut_trillion">Trillion</string>
+    <string name="ring_cut_emeraude">Lapidação esmeralda</string>
+    <string name="ring_cut_radiant">Radiante</string>
+
+    <!-- Compositor de anéis — engastes -->
+    <string name="ring_sertissage_griffes">Garras</string>
+    <string name="ring_sertissage_clos">Engaste fechado</string>
+    <string name="ring_sertissage_demiclos">Meio engaste fechado</string>
+    <string name="ring_sertissage_pave">Pavê</string>
+    <string name="ring_sertissage_rail">Canal</string>
+    <string name="ring_sertissage_ras">Rente</string>
+    <string name="ring_sertissage_brightcut">Bright-cut</string>
+    <string name="ring_sertissage_barrette">Barra</string>
+    <string name="ring_sertissage_cluster">Cacho</string>
+    <string name="ring_sertissage_grain">Grão</string>
 </resources>

@@ -664,4 +664,79 @@
     <string name="lapidaire_espece_orientation_label">Orientierung: %1$s</string>
     <string name="lapidaire_espece_fragilite_label">Zerbrechlichkeit: %1$s</string>
     <string name="lapidaire_espece_polissage_label">Polieren: %1$s</string>
+
+    <!-- Ringkonfigurator -->
+    <string name="lab_ring_configurator_title">Ringkonfigurator</string>
+    <string name="lab_ring_configurator_subtitle">Einen Ring zusammenstellen und eine indikative Preisschätzung erhalten.</string>
+    <string name="ring_configurator_intro">Wählen Sie den Mittelstein, die Pavé-Fassung und das Metall: Vorschau und Preisschätzung aktualisieren sich live. Ein Gestaltungswerkzeug, kein verbindliches Angebot.</string>
+    <string name="ring_preset_solitaire">Solitär</string>
+    <string name="ring_preset_trilogie">Trilogie</string>
+    <string name="ring_preset_pave">Vollpavé</string>
+    <string name="ring_section_metal_title">Stück und Metall</string>
+    <string name="ring_section_central_title">Mittelstein</string>
+    <string name="ring_section_cote_title">Nebensteine</string>
+    <string name="ring_section_price_title">Schätzung</string>
+    <string name="ring_field_metal_label">Fassungsmetall</string>
+    <string name="ring_field_weight_label">Metallgewicht</string>
+    <string name="ring_field_species_label">Art</string>
+    <string name="ring_field_cut_label">Schliff</string>
+    <string name="ring_field_sertissage_label">Fassung</string>
+    <string name="ring_field_diameter_label">Durchmesser (mm)</string>
+    <string name="ring_field_length_label">Länge (mm)</string>
+    <string name="ring_field_width_label">Breite (mm)</string>
+    <string name="ring_field_orientation_label">Ausrichtung</string>
+    <string name="ring_field_nombre_label">Anzahl pro Seite</string>
+    <string name="ring_field_espacement_label">Abstand</string>
+    <string name="ring_field_orientation_offset_label">Ausrichtung</string>
+    <string name="ring_price_disclaimer">Richtwertspanne (Metall, Schliff und Steinqualität) — ersetzt kein persönliches Angebot.</string>
+    <string name="ring_summary_solo">%1$s im %2$s-Schliff (%3$s-Fassung) in %4$s, Solitär, ohne Pavé.</string>
+    <string name="ring_summary_with_cote">%1$s im %2$s-Schliff (%3$s-Fassung) in %4$s, pavégefasst mit %5$d %6$s (%7$s-Schliff, %8$s-Fassung).</string>
+
+    <!-- Ringkonfigurator — Metalle -->
+    <string name="ring_metal_or_jaune">Gelbgold 18kt</string>
+    <string name="ring_metal_or_blanc">Weißgold 18kt</string>
+    <string name="ring_metal_or_rose">Roségold 18kt</string>
+    <string name="ring_metal_platine">Platin</string>
+
+    <!-- Ringkonfigurator — Arten -->
+    <string name="ring_species_diamant">Diamant</string>
+    <string name="ring_species_rubis">Rubin</string>
+    <string name="ring_species_emeraude">Smaragd</string>
+    <string name="ring_species_saphir">Saphir</string>
+    <string name="ring_species_alexandrite">Alexandrit</string>
+    <string name="ring_species_tanzanite">Tansanit</string>
+    <string name="ring_species_spinelle">Spinell</string>
+    <string name="ring_species_tourmaline">Rosa Turmalin</string>
+    <string name="ring_species_topaze">Imperial-Topas</string>
+    <string name="ring_species_grenat">Demantoid-Granat</string>
+    <string name="ring_species_kunzite">Kunzit</string>
+    <string name="ring_species_morganite">Morganit</string>
+
+    <!-- Ringkonfigurator — Schliffe -->
+    <string name="ring_cut_ronde">Rund</string>
+    <string name="ring_cut_ovale">Oval</string>
+    <string name="ring_cut_poire">Birne</string>
+    <string name="ring_cut_marquise">Marquise</string>
+    <string name="ring_cut_briolette">Briolette</string>
+    <string name="ring_cut_asscher">Asscher</string>
+    <string name="ring_cut_baguette">Baguette</string>
+    <string name="ring_cut_princesse">Prinzess</string>
+    <string name="ring_cut_coussin">Kissen</string>
+    <string name="ring_cut_kite">Kite</string>
+    <string name="ring_cut_coeur">Herz</string>
+    <string name="ring_cut_trillion">Trillion</string>
+    <string name="ring_cut_emeraude">Smaragdschliff</string>
+    <string name="ring_cut_radiant">Radiant</string>
+
+    <!-- Ringkonfigurator — Fassungen -->
+    <string name="ring_sertissage_griffes">Krappenfassung</string>
+    <string name="ring_sertissage_clos">Zargenfassung</string>
+    <string name="ring_sertissage_demiclos">Halbzarge</string>
+    <string name="ring_sertissage_pave">Pavé</string>
+    <string name="ring_sertissage_rail">Kanalfassung</string>
+    <string name="ring_sertissage_ras">Bündig gefasst</string>
+    <string name="ring_sertissage_brightcut">Bright-Cut</string>
+    <string name="ring_sertissage_barrette">Steg</string>
+    <string name="ring_sertissage_cluster">Cluster</string>
+    <string name="ring_sertissage_grain">Körnchen</string>
 </resources>

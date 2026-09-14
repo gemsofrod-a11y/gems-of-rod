@@ -664,4 +664,79 @@
     <string name="lapidaire_espece_orientation_label">Orientation : %1$s</string>
     <string name="lapidaire_espece_fragilite_label">Fragilité : %1$s</string>
     <string name="lapidaire_espece_polissage_label">Polissage : %1$s</string>
+
+    <!-- Compositeur de bague -->
+    <string name="lab_ring_configurator_title">Compositeur de bague</string>
+    <string name="lab_ring_configurator_subtitle">Composer une bague et obtenir une estimation de prix indicative.</string>
+    <string name="ring_configurator_intro">Choisissez la pierre centrale, le pavage et le métal : l\'aperçu et l\'estimation de prix se mettent à jour en direct. Un outil de composition, pas un devis définitif.</string>
+    <string name="ring_preset_solitaire">Solitaire</string>
+    <string name="ring_preset_trilogie">Trilogie</string>
+    <string name="ring_preset_pave">Pavé complet</string>
+    <string name="ring_section_metal_title">Pièce et métal</string>
+    <string name="ring_section_central_title">Pierre centrale</string>
+    <string name="ring_section_cote_title">Pierres annexes</string>
+    <string name="ring_section_price_title">Estimation</string>
+    <string name="ring_field_metal_label">Monture</string>
+    <string name="ring_field_weight_label">Poids du métal</string>
+    <string name="ring_field_species_label">Espèce</string>
+    <string name="ring_field_cut_label">Taille</string>
+    <string name="ring_field_sertissage_label">Sertissage</string>
+    <string name="ring_field_diameter_label">Diamètre (mm)</string>
+    <string name="ring_field_length_label">Longueur (mm)</string>
+    <string name="ring_field_width_label">Largeur (mm)</string>
+    <string name="ring_field_orientation_label">Orientation</string>
+    <string name="ring_field_nombre_label">Nombre par côté</string>
+    <string name="ring_field_espacement_label">Espacement</string>
+    <string name="ring_field_orientation_offset_label">Orientation</string>
+    <string name="ring_price_disclaimer">Fourchette à titre indicatif (métal, taille et qualité des pierres) — ne remplace pas un devis personnalisé.</string>
+    <string name="ring_summary_solo">%1$s taille %2$s (serti %3$s) en monture %4$s, solitaire, sans pavage.</string>
+    <string name="ring_summary_with_cote">%1$s taille %2$s (serti %3$s) en monture %4$s, pavée de %5$d %6$s (taille %7$s, serti %8$s).</string>
+
+    <!-- Compositeur de bague — métaux -->
+    <string name="ring_metal_or_jaune">Or jaune 18ct</string>
+    <string name="ring_metal_or_blanc">Or blanc 18ct</string>
+    <string name="ring_metal_or_rose">Or rose 18ct</string>
+    <string name="ring_metal_platine">Platine</string>
+
+    <!-- Compositeur de bague — espèces -->
+    <string name="ring_species_diamant">Diamant</string>
+    <string name="ring_species_rubis">Rubis</string>
+    <string name="ring_species_emeraude">Émeraude</string>
+    <string name="ring_species_saphir">Saphir</string>
+    <string name="ring_species_alexandrite">Alexandrite</string>
+    <string name="ring_species_tanzanite">Tanzanite</string>
+    <string name="ring_species_spinelle">Spinelle</string>
+    <string name="ring_species_tourmaline">Tourmaline rose</string>
+    <string name="ring_species_topaze">Topaze impériale</string>
+    <string name="ring_species_grenat">Grenat démantoïde</string>
+    <string name="ring_species_kunzite">Kunzite</string>
+    <string name="ring_species_morganite">Morganite</string>
+
+    <!-- Compositeur de bague — tailles -->
+    <string name="ring_cut_ronde">Ronde</string>
+    <string name="ring_cut_ovale">Ovale</string>
+    <string name="ring_cut_poire">Poire</string>
+    <string name="ring_cut_marquise">Marquise</string>
+    <string name="ring_cut_briolette">Briolette</string>
+    <string name="ring_cut_asscher">Asscher</string>
+    <string name="ring_cut_baguette">Baguette</string>
+    <string name="ring_cut_princesse">Princesse</string>
+    <string name="ring_cut_coussin">Coussin</string>
+    <string name="ring_cut_kite">Kite</string>
+    <string name="ring_cut_coeur">Cœur</string>
+    <string name="ring_cut_trillion">Trillion</string>
+    <string name="ring_cut_emeraude">Émeraude</string>
+    <string name="ring_cut_radiant">Radiant</string>
+
+    <!-- Compositeur de bague — sertissages -->
+    <string name="ring_sertissage_griffes">Griffes</string>
+    <string name="ring_sertissage_clos">Clos</string>
+    <string name="ring_sertissage_demiclos">Demi-clos</string>
+    <string name="ring_sertissage_pave">Pavé</string>
+    <string name="ring_sertissage_rail">Rail (chenal)</string>
+    <string name="ring_sertissage_ras">Ras (affleurant)</string>
+    <string name="ring_sertissage_brightcut">Bright-cut</string>
+    <string name="ring_sertissage_barrette">Barrette</string>
+    <string name="ring_sertissage_cluster">Grappe</string>
+    <string name="ring_sertissage_grain">Grain</string>
 </resources>

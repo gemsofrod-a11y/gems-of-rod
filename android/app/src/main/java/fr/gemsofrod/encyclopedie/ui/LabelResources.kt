@@ -6,6 +6,10 @@ import fr.gemsofrod.encyclopedie.data.FossileFamille
 import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.data.GemRarete
 import fr.gemsofrod.encyclopedie.data.MeteoriteFamille
+import fr.gemsofrod.encyclopedie.data.RingCutShape
+import fr.gemsofrod.encyclopedie.data.RingGemSpecies
+import fr.gemsofrod.encyclopedie.data.RingMetal
+import fr.gemsofrod.encyclopedie.data.RingSertissage
 
 /**
  * Résout la ressource de chaîne localisée Android correspondant à
@@ -49,6 +53,50 @@ fun resolveLabelStringRes(labelKey: String): Int = when (labelKey) {
     "coquillage_famille_bivalve" -> R.string.coquillage_famille_bivalve
     "coquillage_famille_cephalopode" -> R.string.coquillage_famille_cephalopode
 
+    "ring_metal_or_jaune" -> R.string.ring_metal_or_jaune
+    "ring_metal_or_blanc" -> R.string.ring_metal_or_blanc
+    "ring_metal_or_rose" -> R.string.ring_metal_or_rose
+    "ring_metal_platine" -> R.string.ring_metal_platine
+
+    "ring_species_diamant" -> R.string.ring_species_diamant
+    "ring_species_rubis" -> R.string.ring_species_rubis
+    "ring_species_emeraude" -> R.string.ring_species_emeraude
+    "ring_species_saphir" -> R.string.ring_species_saphir
+    "ring_species_alexandrite" -> R.string.ring_species_alexandrite
+    "ring_species_tanzanite" -> R.string.ring_species_tanzanite
+    "ring_species_spinelle" -> R.string.ring_species_spinelle
+    "ring_species_tourmaline" -> R.string.ring_species_tourmaline
+    "ring_species_topaze" -> R.string.ring_species_topaze
+    "ring_species_grenat" -> R.string.ring_species_grenat
+    "ring_species_kunzite" -> R.string.ring_species_kunzite
+    "ring_species_morganite" -> R.string.ring_species_morganite
+
+    "ring_cut_ronde" -> R.string.ring_cut_ronde
+    "ring_cut_ovale" -> R.string.ring_cut_ovale
+    "ring_cut_poire" -> R.string.ring_cut_poire
+    "ring_cut_marquise" -> R.string.ring_cut_marquise
+    "ring_cut_briolette" -> R.string.ring_cut_briolette
+    "ring_cut_asscher" -> R.string.ring_cut_asscher
+    "ring_cut_baguette" -> R.string.ring_cut_baguette
+    "ring_cut_princesse" -> R.string.ring_cut_princesse
+    "ring_cut_coussin" -> R.string.ring_cut_coussin
+    "ring_cut_kite" -> R.string.ring_cut_kite
+    "ring_cut_coeur" -> R.string.ring_cut_coeur
+    "ring_cut_trillion" -> R.string.ring_cut_trillion
+    "ring_cut_emeraude" -> R.string.ring_cut_emeraude
+    "ring_cut_radiant" -> R.string.ring_cut_radiant
+
+    "ring_sertissage_griffes" -> R.string.ring_sertissage_griffes
+    "ring_sertissage_clos" -> R.string.ring_sertissage_clos
+    "ring_sertissage_demiclos" -> R.string.ring_sertissage_demiclos
+    "ring_sertissage_pave" -> R.string.ring_sertissage_pave
+    "ring_sertissage_rail" -> R.string.ring_sertissage_rail
+    "ring_sertissage_ras" -> R.string.ring_sertissage_ras
+    "ring_sertissage_brightcut" -> R.string.ring_sertissage_brightcut
+    "ring_sertissage_barrette" -> R.string.ring_sertissage_barrette
+    "ring_sertissage_cluster" -> R.string.ring_sertissage_cluster
+    "ring_sertissage_grain" -> R.string.ring_sertissage_grain
+
     else -> error("Clé de libellé inconnue : $labelKey")
 }
 
@@ -57,3 +105,7 @@ val GemColorCategory.labelRes: Int get() = resolveLabelStringRes(labelKey)
 val MeteoriteFamille.labelRes: Int get() = resolveLabelStringRes(labelKey)
 val FossileFamille.labelRes: Int get() = resolveLabelStringRes(labelKey)
 val CoquillageFamille.labelRes: Int get() = resolveLabelStringRes(labelKey)
+val RingMetal.labelRes: Int get() = resolveLabelStringRes(labelKey)
+val RingGemSpecies.labelRes: Int get() = resolveLabelStringRes(labelKey)
+val RingCutShape.labelRes: Int get() = resolveLabelStringRes(labelKey)
+val RingSertissage.labelRes: Int get() = resolveLabelStringRes(labelKey)

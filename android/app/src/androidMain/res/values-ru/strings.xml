@@ -664,4 +664,79 @@
     <string name="lapidaire_espece_orientation_label">Ориентация: %1$s</string>
     <string name="lapidaire_espece_fragilite_label">Хрупкость: %1$s</string>
     <string name="lapidaire_espece_polissage_label">Полировка: %1$s</string>
+
+    <!-- Конструктор колец -->
+    <string name="lab_ring_configurator_title">Конструктор колец</string>
+    <string name="lab_ring_configurator_subtitle">Составьте кольцо и получите ориентировочную оценку стоимости.</string>
+    <string name="ring_configurator_intro">Выберите центральный камень, дорожку камней и металл: превью и оценка стоимости обновляются вживую. Инструмент для составления дизайна, а не окончательная смета.</string>
+    <string name="ring_preset_solitaire">Солитер</string>
+    <string name="ring_preset_trilogie">Трилогия</string>
+    <string name="ring_preset_pave">Полная дорожка</string>
+    <string name="ring_section_metal_title">Изделие и металл</string>
+    <string name="ring_section_central_title">Центральный камень</string>
+    <string name="ring_section_cote_title">Боковые камни</string>
+    <string name="ring_section_price_title">Оценка</string>
+    <string name="ring_field_metal_label">Металл оправы</string>
+    <string name="ring_field_weight_label">Вес металла</string>
+    <string name="ring_field_species_label">Вид камня</string>
+    <string name="ring_field_cut_label">Огранка</string>
+    <string name="ring_field_sertissage_label">Закрепка</string>
+    <string name="ring_field_diameter_label">Диаметр (мм)</string>
+    <string name="ring_field_length_label">Длина (мм)</string>
+    <string name="ring_field_width_label">Ширина (мм)</string>
+    <string name="ring_field_orientation_label">Ориентация</string>
+    <string name="ring_field_nombre_label">Количество с каждой стороны</string>
+    <string name="ring_field_espacement_label">Расстояние</string>
+    <string name="ring_field_orientation_offset_label">Ориентация</string>
+    <string name="ring_price_disclaimer">Ориентировочный диапазон (металл, огранка и качество камней) — не заменяет индивидуальную смету.</string>
+    <string name="ring_summary_solo">%1$s огранки %2$s (закрепка %3$s) в оправе %4$s, солитер, без дорожки камней.</string>
+    <string name="ring_summary_with_cote">%1$s огранки %2$s (закрепка %3$s) в оправе %4$s, с дорожкой из %5$d %6$s (огранка %7$s, закрепка %8$s).</string>
+
+    <!-- Конструктор колец — металлы -->
+    <string name="ring_metal_or_jaune">Жёлтое золото 750</string>
+    <string name="ring_metal_or_blanc">Белое золото 750</string>
+    <string name="ring_metal_or_rose">Розовое золото 750</string>
+    <string name="ring_metal_platine">Платина</string>
+
+    <!-- Конструктор колец — виды камней -->
+    <string name="ring_species_diamant">Бриллиант</string>
+    <string name="ring_species_rubis">Рубин</string>
+    <string name="ring_species_emeraude">Изумруд</string>
+    <string name="ring_species_saphir">Сапфир</string>
+    <string name="ring_species_alexandrite">Александрит</string>
+    <string name="ring_species_tanzanite">Танзанит</string>
+    <string name="ring_species_spinelle">Шпинель</string>
+    <string name="ring_species_tourmaline">Розовый турмалин</string>
+    <string name="ring_species_topaze">Империал-топаз</string>
+    <string name="ring_species_grenat">Деманто́идный гранат</string>
+    <string name="ring_species_kunzite">Кунцит</string>
+    <string name="ring_species_morganite">Морганит</string>
+
+    <!-- Конструктор колец — огранки -->
+    <string name="ring_cut_ronde">Круглая</string>
+    <string name="ring_cut_ovale">Овальная</string>
+    <string name="ring_cut_poire">Груша</string>
+    <string name="ring_cut_marquise">Маркиз</string>
+    <string name="ring_cut_briolette">Бриолет</string>
+    <string name="ring_cut_asscher">Ашер</string>
+    <string name="ring_cut_baguette">Багет</string>
+    <string name="ring_cut_princesse">Принцесса</string>
+    <string name="ring_cut_coussin">Кушон</string>
+    <string name="ring_cut_kite">Кайт</string>
+    <string name="ring_cut_coeur">Сердце</string>
+    <string name="ring_cut_trillion">Триллион</string>
+    <string name="ring_cut_emeraude">Изумрудная огранка</string>
+    <string name="ring_cut_radiant">Радиант</string>
+
+    <!-- Конструктор колец — закрепки -->
+    <string name="ring_sertissage_griffes">Крапановая</string>
+    <string name="ring_sertissage_clos">Глухая</string>
+    <string name="ring_sertissage_demiclos">Полуглухая</string>
+    <string name="ring_sertissage_pave">Дорожка (паве)</string>
+    <string name="ring_sertissage_rail">Канальная</string>
+    <string name="ring_sertissage_ras">Врезная</string>
+    <string name="ring_sertissage_brightcut">Bright-cut</string>
+    <string name="ring_sertissage_barrette">Штабик</string>
+    <string name="ring_sertissage_cluster">Кластер</string>
+    <string name="ring_sertissage_grain">Корнер</string>
 </resources>

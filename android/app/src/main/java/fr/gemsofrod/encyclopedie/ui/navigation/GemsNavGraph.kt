@@ -96,6 +96,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.SupplierListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.TreatmentsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.BuyingGuidesScreen
 import fr.gemsofrod.encyclopedie.ui.screens.MineralFormationScreen
+import fr.gemsofrod.encyclopedie.ui.screens.RingConfiguratorScreen
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import kotlinx.coroutines.delay
 import java.net.URLDecoder
@@ -180,6 +181,7 @@ private object Routes {
     const val SUPPLIER_NEW = "supplier_new"
     const val SUPPLIER_EDIT = "supplier_edit/{supplierId}"
     const val SUPPLIER_DETAIL = "supplier_detail/{supplierId}"
+    const val RING_CONFIGURATOR = "ring_configurator"
     const val GLOBAL_SEARCH = "global_search"
 
     fun gemsList(colorName: String) = "gems/$colorName"
@@ -327,8 +329,12 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onClientsClick = { navController.navigate(Routes.CLIENT_LIST) },
                 onSuppliersClick = { navController.navigate(Routes.SUPPLIER_LIST) },
                 onLegendaryClick = { navController.navigate(Routes.LEGENDARY_RIDDLE) },
+                onRingConfiguratorClick = { navController.navigate(Routes.RING_CONFIGURATOR) },
                 onBackClick = { navController.popBackStack() }
             )
+        }
+        composable(Routes.RING_CONFIGURATOR) {
+            RingConfiguratorScreen(onBackClick = { navController.popBackStack() })
         }
         composable(Routes.TREATMENTS) {
             TreatmentsScreen(onBackClick = { navController.popBackStack() })
