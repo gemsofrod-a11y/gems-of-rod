@@ -212,6 +212,146 @@ object AssociationTranslationsPt {
             descriptionCourte = "Duas pedras azul pálido tradicionalmente associadas à ligação espiritual.",
             descriptionLongue = "A angelite, anidrite azul pálido cujo nome evoca a leveza, está associada à cianite, formando um par tradicionalmente procurado nas práticas meditativas centradas na comunicação interior e na ligação espiritual.",
             conseilUtilisation = "Segurá-las juntas nas mãos durante uma meditação silenciosa ou uma prática contemplativa."
+        ),
+        "tourmaline-noire-obsidienne" to AssociationTranslation(
+            titre = "Turmalina negra e Obsidiana",
+            intention = "Escudo energético reforçado",
+            descriptionCourte = "As duas pedras negras mais reputadas em proteção, combinadas para um escudo reforçado.",
+            descriptionLongue = "A turmalina negra, reputada por formar um escudo psíquico contra as energias negativas, está associada à obsidiana, pedra vulcânica igualmente reputada pelo seu poder protetor. Juntas, formam a combinação mais procurada na litoterapia para se proteger de influências negativas.",
+            conseilUtilisation = "Usar as duas pedras em pulseira ou guardá-las juntas à entrada de casa, sobretudo em períodos considerados difíceis."
+        ),
+        "oeil-de-tigre-oeil-de-faucon" to AssociationTranslation(
+            titre = "Olho-de-tigre e Olho-de-falcão",
+            intention = "Visão clara e proteção",
+            descriptionCourte = "Duas variedades da mesma pedra, reunidas para a proteção e a clarividência.",
+            descriptionLongue = "O olho-de-tigre, pedra de proteção contra o mau-olhado e de confiança em si mesmo, está associado ao olho-de-falcão, a sua variedade azul-acinzentada ligada à clarividência e ao distanciamento. Este par é tradicionalmente procurado para avançar com proteção e discernimento ao mesmo tempo.",
+            conseilUtilisation = "Usá-las juntas em pulseira num período que exija ao mesmo tempo prudência e lucidez, por exemplo antes de uma decisão importante."
+        ),
+        "turquoise-oeil-de-taureau" to AssociationTranslation(
+            titre = "Turquesa e Olho-de-boi",
+            intention = "Proteção contra o mau-olhado",
+            descriptionCourte = "Uma associação antiga, especificamente procurada para se proteger do mau-olhado.",
+            descriptionLongue = "A turquesa, pedra de proteção há milénios, está associada ao olho-de-boi, cujo próprio nome evoca a vigilância protetora. Este par é tradicionalmente usado em amuleto para se proteger do mau-olhado e das influências invejosas.",
+            conseilUtilisation = "Usar as duas pedras em pendente visível, na continuidade da tradição do amuleto protetor."
+        ),
+        "ambre-turquoise" to AssociationTranslation(
+            titre = "Âmbar e Turquesa",
+            intention = "Proteção das crianças e das viagens",
+            descriptionCourte = "Dois amuletos tradicionais, um para as crianças, o outro para os viajantes.",
+            descriptionLongue = "O âmbar, usado em amuleto desde a Antiguidade para proteger as crianças do mau-olhado, está associado à turquesa, pedra de proteção dos viajantes. Juntas, acompanham tradicionalmente os períodos de deslocação em família.",
+            conseilUtilisation = "Colocá-las juntas na bagagem ou usá-las em colar antes de uma viagem, nomeadamente em família."
+        ),
+        "labradorite-tourmaline-noire" to AssociationTranslation(
+            titre = "Labradorite e Turmalina negra",
+            intention = "Duplo escudo psíquico",
+            descriptionCourte = "Duas pedras de escudo psíquico, uma para a aura, a outra contra as energias negativas.",
+            descriptionLongue = "A labradorite, reputada por oferecer uma forte proteção energética e agir como escudo psíquico, está associada à turmalina negra, que forma também um escudo contra as energias negativas. Este par é tradicionalmente procurado em períodos de grande sensibilidade energética.",
+            conseilUtilisation = "Usá-las juntas em dias ou ambientes percecionados como energeticamente carregados."
+        ),
+        "lapis-lazuli-turquoise" to AssociationTranslation(
+            titre = "Lápis-lazúli e Turquesa",
+            intention = "Sabedoria e proteção",
+            descriptionCourte = "Uma associação herdada do Egito antigo, entre sabedoria e proteção.",
+            descriptionLongue = "O lápis-lazúli, pedra de sabedoria e de verdade desde o Egito antigo, está associado à turquesa, pedra de proteção igualmente ancestral, ambas presentes nas joias egípcias tradicionais. Este par tem fama de sustentar o discernimento ao mesmo tempo que protege quem o usa.",
+            conseilUtilisation = "Usá-las juntas em colar, na continuidade da tradição das joias protetoras da Antiguidade."
+        ),
+        "quartz-fume-hematite" to AssociationTranslation(
+            titre = "Quartzo fumado e Hematite",
+            intention = "Enraizamento e purificação energética",
+            descriptionCourte = "Duas pedras de enraizamento, reputadas por absorver o stress e as energias negativas.",
+            descriptionLongue = "O quartzo fumado, reputado pelas suas virtudes de enraizamento e pela sua capacidade de absorver o stress e as energias negativas, está associado à hematite, pedra de enraizamento e de força interior. Este par é tradicionalmente procurado para recentrar após um período agitado.",
+            conseilUtilisation = "Segurá-las nas mãos alguns minutos ao final do dia, ou usá-las em pulseira em períodos de maior stress."
+        ),
+        "citrine-pyrite" to AssociationTranslation(
+            titre = "Citrino e Pirite",
+            intention = "Abundância protegida",
+            descriptionCourte = "Duas pedras solares, associadas ao sucesso material e à sua proteção.",
+            descriptionLongue = "O citrino, pedra solar ligada ao sucesso e à abundância, está associado à pirite, pedra de proteção contra as energias negativas e de abundância. Este par é tradicionalmente procurado para sustentar um projeto profissional protegendo-o simultaneamente de influências contrárias.",
+            conseilUtilisation = "Guardá-las juntas na secretária ou no espaço de trabalho, sobretudo no lançamento de um novo projeto."
+        ),
+        "amethyste-labradorite" to AssociationTranslation(
+            titre = "Ametista e Labradorite",
+            intention = "Proteção do sono e do espírito",
+            descriptionCourte = "Uma associação reputada por um sono tranquilo e protegido.",
+            descriptionLongue = "A ametista, reputada por acalmar o stress e favorecer um sono sereno, está associada à labradorite, pedra de proteção energética. Este par é tradicionalmente colocado perto da cama para sustentar um descanso tranquilo e protegido.",
+            conseilUtilisation = "Colocá-las na mesa de cabeceira ou debaixo da almofada, segundo o uso tradicional recomendado para a ametista."
+        ),
+        "agate-jaspe" to AssociationTranslation(
+            titre = "Ágata e Jaspe",
+            intention = "Equilíbrio e proteção suave",
+            descriptionCourte = "Duas calcedónias associadas à estabilidade e a uma proteção do dia a dia.",
+            descriptionLongue = "A ágata, associada ao equilíbrio emocional e a uma proteção suave usada desde a Antiguidade, é combinada com o jaspe, pedra de estabilidade e de enraizamento. Este par de calcedónias é tradicionalmente procurado para um uso quotidiano discreto.",
+            conseilUtilisation = "Usá-las em pulseira no dia a dia, sem ser necessária uma ocasião particular."
+        ),
+        "malachite-turquoise" to AssociationTranslation(
+            titre = "Malaquite e Turquesa",
+            intention = "Proteção do lar e das viagens",
+            descriptionCourte = "Duas pedras verdes e azuis tradicionalmente protetoras, uma do lar, a outra em deslocação.",
+            descriptionLongue = "A malaquite, pedra tradicionalmente protetora, nomeadamente para as crianças e o lar, está associada à turquesa, pedra de proteção dos viajantes. Este par acompanha tradicionalmente tanto a casa como as deslocações.",
+            conseilUtilisation = "Guardar a malaquite em casa e levar a turquesa em viagem, ou usar as duas juntas antes de uma mudança de casa."
+        ),
+        "oeil-de-tigre-hematite" to AssociationTranslation(
+            titre = "Olho-de-tigre e Hematite",
+            intention = "Determinação enraizada",
+            descriptionCourte = "Uma associação para avançar com determinação sem perder o enraizamento.",
+            descriptionLongue = "O olho-de-tigre, pedra de determinação e de proteção, está associado à hematite, pedra de enraizamento e de força interior. Este par é tradicionalmente procurado para atravessar um período difícil sem perder pé.",
+            conseilUtilisation = "Usá-las em pulseira em períodos que exijam ao mesmo tempo vontade e estabilidade, por exemplo uma mudança profissional."
+        ),
+        "cornaline-hessonite" to AssociationTranslation(
+            titre = "Cornalina e Hessonita",
+            intention = "Vitalidade e confiança",
+            descriptionCourte = "Duas pedras alaranjadas, associadas à ação e à confiança em si mesmo.",
+            descriptionLongue = "A cornalina, pedra de ação reputada por estimular a coragem e a vitalidade, está associada à hessonita, tradicionalmente usada para reforçar a confiança em si mesmo e proteger das energias negativas. Este par é tradicionalmente procurado antes de tomar uma iniciativa.",
+            conseilUtilisation = "Usá-las em pulseira no lançamento de um projeto ou numa intervenção pública que exija segurança em si mesmo."
+        ),
+        "aigue-marine-turquoise" to AssociationTranslation(
+            titre = "Água-marinha e Turquesa",
+            intention = "Proteção dos marinheiros e viajantes",
+            descriptionCourte = "Duas pedras historicamente associadas à proteção no mar e em viagem.",
+            descriptionLongue = "A água-marinha, pedra dos marinheiros por excelência, está associada à turquesa, pedra de proteção dos viajantes. Juntas, formam um par tradicionalmente procurado antes de qualquer partida, no mar como em terra.",
+            conseilUtilisation = "Levá-las juntas em viagem, em joia ou simplesmente numa bagagem de mão."
+        ),
+        "obsidienne-grenat-almandin" to AssociationTranslation(
+            titre = "Obsidiana e Granada almandina",
+            intention = "Força e proteção",
+            descriptionCourte = "Uma associação intensa, entre proteção profunda e força interior.",
+            descriptionLongue = "A obsidiana, reputada por oferecer uma proteção poderosa ao revelar as verdades ocultas, está associada à granada almandina, pedra de enraizamento e de força interior. Este par é tradicionalmente reservado aos períodos que exigem ao mesmo tempo lucidez e resistência.",
+            conseilUtilisation = "Meditar com as duas antes de enfrentar um período considerado difícil, em consonância com o uso tradicional das pedras escuras e intensas."
+        ),
+        "onyx-tourmaline-noire" to AssociationTranslation(
+            titre = "Ónix e Turmalina negra",
+            intention = "Duplo enraizamento protetor",
+            descriptionCourte = "Duas pedras negras reunidas para um enraizamento profundo e protetor.",
+            descriptionLongue = "O ónix, pedra de força e de estabilidade, está associado à turmalina negra, pedra de proteção contra as energias negativas. Este par sombrio é tradicionalmente procurado para um enraizamento profundo em período de instabilidade.",
+            conseilUtilisation = "Usá-las juntas em pulseira em períodos de mudança ou de incerteza marcada."
+        ),
+        "jade-nephrite-jade-jadeite" to AssociationTranslation(
+            titre = "Jade nefrita e Jade jadeíte",
+            intention = "Sabedoria e proteção ancestral",
+            descriptionCourte = "Os dois minerais reunidos sob o nome de jade, associados desde sempre à proteção.",
+            descriptionLongue = "O jade nefrita, pedra de sabedoria e de proteção desde a China antiga, está associado ao jade jadeíte, a sua variedade mais rara igualmente reputada por trazer sorte e proteção, nomeadamente aos viajantes. Reunir os dois jades prolonga uma tradição milenar de proteção partilhada.",
+            conseilUtilisation = "Usá-las juntas em pulseira ou em pendente, na continuidade da tradição chinesa do jade usado ao longo da vida."
+        ),
+        "rubis-grenat-almandin" to AssociationTranslation(
+            titre = "Rubi e Granada almandina",
+            intention = "Coragem e vitalidade",
+            descriptionCourte = "Duas pedras vermelhas, associadas à coragem e à força vital.",
+            descriptionLongue = "O rubi, pedra de paixão e de coragem tradicionalmente associada à proteção contra as energias negativas, está associado à granada almandina, pedra de força vital e de resistência. Este par é tradicionalmente procurado para enfrentar os desafios com coragem.",
+            conseilUtilisation = "Usá-las em joia num período que exija coragem, por exemplo antes de uma provação importante."
+        ),
+        "quartz-tourmaline-cristal-de-roche" to AssociationTranslation(
+            titre = "Quartzo turmalinado e Cristal de rocha",
+            intention = "Amplificação protetora",
+            descriptionCourte = "O quartzo protetor combinado com o quartzo amplificador, para reforçar o efeito de ambos.",
+            descriptionLongue = "O quartzo turmalinado, que associa as virtudes protetoras da turmalina negra à clareza do cristal de rocha, está associado ao cristal de rocha puro, tradicionalmente reputado por amplificar as propriedades das pedras que o acompanham. Este par é procurado para reforçar o efeito protetor do quartzo turmalinado.",
+            conseilUtilisation = "Guardar o cristal de rocha perto do quartzo turmalinado, por exemplo na mesma bolsa ou no mesmo expositor."
+        ),
+        "jais-hematite" to AssociationTranslation(
+            titre = "Azeviche e Hematite",
+            intention = "Luto e enraizamento protetor",
+            descriptionCourte = "Duas pedras escuras tradicionalmente usadas em períodos de luto e de provação.",
+            descriptionLongue = "O azeviche, usado em amuleto de luto e de proteção há séculos, está associado à hematite, pedra de enraizamento e de força interior. Este par é tradicionalmente procurado para atravessar os períodos de provação com estabilidade.",
+            conseilUtilisation = "Usá-las em joia sóbria em períodos de luto ou de provação, em consonância com o uso tradicional do azeviche."
         )
     )
 }

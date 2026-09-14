@@ -212,6 +212,146 @@ object AssociationTranslationsIt {
             descriptionCourte = "Due pietre blu pallido tradizionalmente associate alla connessione spirituale.",
             descriptionLongue = "L'angelite, anidrite blu pallido il cui nome evoca la leggerezza, è associata alla cianite per formare una coppia tradizionalmente ricercata nelle pratiche meditative incentrate sulla comunicazione interiore e la connessione spirituale.",
             conseilUtilisation = "Tenerle insieme in mano durante una meditazione silenziosa o una pratica contemplativa."
+        ),
+        "tourmaline-noire-obsidienne" to AssociationTranslation(
+            titre = "Tormalina nera ed Ossidiana",
+            intention = "Scudo energetico rafforzato",
+            descriptionCourte = "Le due pietre nere più rinomate per la protezione, combinate per uno scudo rafforzato.",
+            descriptionLongue = "La tormalina nera, rinomata per formare uno scudo psichico contro le energie negative, è associata all'ossidiana, pietra vulcanica altrettanto rinomata per il suo potere protettivo. Insieme, formano la combinazione più ricercata in litoterapia per proteggersi dalle influenze negative.",
+            conseilUtilisation = "Indossare entrambe le pietre come bracciale o tenerle insieme all'ingresso di casa, in particolare nei periodi percepiti come impegnativi."
+        ),
+        "oeil-de-tigre-oeil-de-faucon" to AssociationTranslation(
+            titre = "Occhio di tigre ed Occhio di falco",
+            intention = "Visione chiara e protezione",
+            descriptionCourte = "Due varietà della stessa pietra, riunite per la protezione e la chiaroveggenza.",
+            descriptionLongue = "L'occhio di tigre, pietra di protezione contro il malocchio e di fiducia in se stessi, è associato all'occhio di falco, sua varietà blu-grigia legata alla chiaroveggenza e al distacco necessario per prendere le distanze. Questa coppia è tradizionalmente ricercata per avanzare con protezione e discernimento allo stesso tempo.",
+            conseilUtilisation = "Indossarle insieme come bracciale in un periodo che richiede al tempo stesso prudenza e lucidità, ad esempio prima di una decisione importante."
+        ),
+        "turquoise-oeil-de-taureau" to AssociationTranslation(
+            titre = "Turchese ed Occhio di toro",
+            intention = "Protezione dal malocchio",
+            descriptionCourte = "Un'associazione antica, ricercata in particolare per proteggersi dal malocchio.",
+            descriptionLongue = "Il turchese, pietra di protezione da millenni, è associato all'occhio di toro, il cui stesso nome evoca la vigilanza protettrice. Questa coppia è tradizionalmente indossata come amuleto per proteggersi dal malocchio e dalle influenze invidiose.",
+            conseilUtilisation = "Indossare entrambe le pietre come ciondolo visibile, nella continuità della tradizione dell'amuleto protettivo."
+        ),
+        "ambre-turquoise" to AssociationTranslation(
+            titre = "Ambra e Turchese",
+            intention = "Protezione dei bambini e dei viaggi",
+            descriptionCourte = "Due amuleti tradizionali, uno per i bambini, l'altro per i viaggiatori.",
+            descriptionLongue = "L'ambra, indossata come amuleto fin dall'Antichità per proteggere i bambini dal malocchio, è associata al turchese, pietra di protezione dei viaggiatori. Insieme, accompagnano tradizionalmente i periodi di spostamento in famiglia.",
+            conseilUtilisation = "Metterle insieme in una valigia o indossarle come collana prima di un viaggio, in particolare in famiglia."
+        ),
+        "labradorite-tourmaline-noire" to AssociationTranslation(
+            titre = "Labradorite e Tormalina nera",
+            intention = "Doppio scudo psichico",
+            descriptionCourte = "Due pietre-scudo psichico, una per l'aura, l'altra contro le energie negative.",
+            descriptionLongue = "La labradorite, rinomata per offrire una forte protezione energetica e agire come uno scudo psichico, è associata alla tormalina nera, che forma anch'essa uno scudo contro le energie negative. Questa coppia è tradizionalmente ricercata nei periodi di grande sensibilità energetica.",
+            conseilUtilisation = "Indossarle insieme nelle giornate o negli ambienti percepiti come energeticamente carichi."
+        ),
+        "lapis-lazuli-turquoise" to AssociationTranslation(
+            titre = "Lapislazzuli e Turchese",
+            intention = "Saggezza e protezione",
+            descriptionCourte = "Un'associazione ereditata dall'antico Egitto, tra saggezza e protezione.",
+            descriptionLongue = "Il lapislazzuli, pietra di saggezza e verità fin dall'antico Egitto, è associato al turchese, pietra di protezione altrettanto antica, entrambe presenti nei monili egizi tradizionali. Questa coppia ha fama di sostenere un giudizio chiaro proteggendo al contempo chi la indossa.",
+            conseilUtilisation = "Indossarle insieme come collana, nella continuità della tradizione dei monili protettivi antichi."
+        ),
+        "quartz-fume-hematite" to AssociationTranslation(
+            titre = "Quarzo affumicato ed Ematite",
+            intention = "Radicamento e purificazione energetica",
+            descriptionCourte = "Due pietre di radicamento, rinomate per assorbire lo stress e le energie negative.",
+            descriptionLongue = "Il quarzo affumicato, rinomato per le sue virtù di radicamento e la sua capacità di assorbire lo stress e le energie negative, è associato all'ematite, pietra di radicamento e forza interiore. Questa coppia è tradizionalmente ricercata per ritrovare il proprio centro dopo un periodo agitato.",
+            conseilUtilisation = "Tenerle in mano per qualche minuto a fine giornata, oppure indossarle come bracciale nei periodi stressanti."
+        ),
+        "citrine-pyrite" to AssociationTranslation(
+            titre = "Citrino e Pirite",
+            intention = "Abbondanza protetta",
+            descriptionCourte = "Due pietre solari, associate al successo materiale e alla sua protezione.",
+            descriptionLongue = "Il citrino, pietra solare legata al successo e all'abbondanza, è associato alla pirite, pietra di protezione dalle energie negative e di abbondanza. Questa coppia è tradizionalmente ricercata per sostenere un progetto professionale proteggendolo al contempo dalle influenze contrarie.",
+            conseilUtilisation = "Tenerle insieme sulla scrivania o nello spazio di lavoro, in particolare al lancio di un nuovo progetto."
+        ),
+        "amethyste-labradorite" to AssociationTranslation(
+            titre = "Ametista e Labradorite",
+            intention = "Protezione del sonno e della mente",
+            descriptionCourte = "Un'associazione rinomata per un sonno tranquillo e protetto.",
+            descriptionLongue = "L'ametista, rinomata per calmare lo stress e favorire un sonno sereno, è associata alla labradorite, pietra di protezione energetica. Questa coppia è tradizionalmente posta vicino al letto per sostenere un riposo tranquillo e protetto.",
+            conseilUtilisation = "Posizionarle sul comodino o sotto il cuscino, secondo l'uso tradizionale raccomandato per l'ametista."
+        ),
+        "agate-jaspe" to AssociationTranslation(
+            titre = "Agata e Diaspro",
+            intention = "Equilibrio e protezione delicata",
+            descriptionCourte = "Due calcedonie associate alla stabilità e a una protezione quotidiana.",
+            descriptionLongue = "L'agata, associata all'equilibrio emotivo e a una protezione delicata indossata fin dall'Antichità, è combinata al diaspro, pietra di stabilità e radicamento. Questa coppia di calcedonie è tradizionalmente ricercata per un uso quotidiano discreto.",
+            conseilUtilisation = "Indossarle come bracciale ogni giorno, senza che sia necessaria un'occasione particolare."
+        ),
+        "malachite-turquoise" to AssociationTranslation(
+            titre = "Malachite e Turchese",
+            intention = "Protezione della casa e dei viaggi",
+            descriptionCourte = "Due pietre verdi e blu tradizionalmente protettive, una per la casa, l'altra negli spostamenti.",
+            descriptionLongue = "La malachite, pietra tradizionalmente protettiva, in particolare per i bambini e la casa, è associata al turchese, pietra di protezione dei viaggiatori. Questa coppia accompagna tradizionalmente sia la casa sia gli spostamenti.",
+            conseilUtilisation = "Tenere la malachite in casa e portare con sé il turchese in viaggio, oppure indossarle entrambe prima di un trasloco."
+        ),
+        "oeil-de-tigre-hematite" to AssociationTranslation(
+            titre = "Occhio di tigre ed Ematite",
+            intention = "Determinazione radicata",
+            descriptionCourte = "Un'associazione per avanzare con determinazione restando ben radicati.",
+            descriptionLongue = "L'occhio di tigre, pietra di determinazione e protezione, è associato all'ematite, pietra di radicamento e forza interiore. Questa coppia è tradizionalmente ricercata per attraversare un periodo difficile senza perdere l'equilibrio.",
+            conseilUtilisation = "Indossarle come bracciale nei periodi che richiedono al tempo stesso volontà e stabilità, ad esempio un cambiamento professionale."
+        ),
+        "cornaline-hessonite" to AssociationTranslation(
+            titre = "Corniola ed Essonite",
+            intention = "Vitalità e fiducia",
+            descriptionCourte = "Due pietre arancioni, associate all'azione e alla fiducia in se stessi.",
+            descriptionLongue = "La corniola, pietra d'azione rinomata per stimolare il coraggio e la vitalità, è associata all'essonite, tradizionalmente indossata per rafforzare la fiducia in se stessi e proteggersi dalle energie negative. Questa coppia è tradizionalmente ricercata prima di prendere un'iniziativa.",
+            conseilUtilisation = "Indossarle come bracciale al lancio di un progetto o prima di un intervento pubblico che richiede sicurezza."
+        ),
+        "aigue-marine-turquoise" to AssociationTranslation(
+            titre = "Acquamarina e Turchese",
+            intention = "Protezione dei marinai e dei viaggiatori",
+            descriptionCourte = "Due pietre storicamente associate alla protezione in mare e in viaggio.",
+            descriptionLongue = "L'acquamarina, pietra dei marinai per eccellenza, è associata al turchese, pietra di protezione dei viaggiatori. Insieme, formano una coppia tradizionalmente ricercata prima di ogni partenza, in mare come sulla terraferma.",
+            conseilUtilisation = "Portarle con sé in viaggio, come gioiello o semplicemente in un bagaglio a mano."
+        ),
+        "obsidienne-grenat-almandin" to AssociationTranslation(
+            titre = "Ossidiana e Granato almandino",
+            intention = "Forza e protezione",
+            descriptionCourte = "Un'associazione intensa, tra protezione profonda e forza interiore.",
+            descriptionLongue = "L'ossidiana, rinomata per offrire una protezione potente rivelando le verità nascoste, è associata al granato almandino, pietra di radicamento e forza interiore. Questa coppia è tradizionalmente riservata ai periodi che richiedono al tempo stesso lucidità e resistenza.",
+            conseilUtilisation = "Meditare con esse insieme prima di affrontare un periodo percepito come impegnativo, in accordo con l'uso tradizionale delle pietre scure e intense."
+        ),
+        "onyx-tourmaline-noire" to AssociationTranslation(
+            titre = "Onice e Tormalina nera",
+            intention = "Doppio radicamento protettivo",
+            descriptionCourte = "Due pietre nere riunite per un radicamento profondo e protettivo.",
+            descriptionLongue = "L'onice, pietra di forza e stabilità, è associata alla tormalina nera, pietra di protezione dalle energie negative. Questa coppia scura è tradizionalmente ricercata per un radicamento profondo nei periodi di instabilità.",
+            conseilUtilisation = "Indossarle insieme come bracciale nei periodi di cambiamento o di forte incertezza."
+        ),
+        "jade-nephrite-jade-jadeite" to AssociationTranslation(
+            titre = "Giada nefrite e Giada giadeite",
+            intention = "Saggezza e protezione ancestrale",
+            descriptionCourte = "I due minerali riuniti sotto il nome di giada, associati da sempre alla protezione.",
+            descriptionLongue = "La giada nefrite, pietra di saggezza e protezione fin dall'antichità cinese, è associata alla giada giadeite, sua varietà più rara altrettanto rinomata per portare fortuna e protezione, in particolare ai viaggiatori. Riunire le due giade prolunga una tradizione millenaria di protezione condivisa.",
+            conseilUtilisation = "Indossarle insieme come bracciale o ciondolo, nella continuità della tradizione cinese della giada indossata per tutta la vita."
+        ),
+        "rubis-grenat-almandin" to AssociationTranslation(
+            titre = "Rubino e Granato almandino",
+            intention = "Coraggio e vitalità",
+            descriptionCourte = "Due pietre rosse, associate al coraggio e alla forza vitale.",
+            descriptionLongue = "Il rubino, pietra di passione e coraggio tradizionalmente associata alla protezione dalle energie negative, è associato al granato almandino, pietra di forza vitale e resistenza. Questa coppia è tradizionalmente ricercata per affrontare le sfide con coraggio.",
+            conseilUtilisation = "Indossarle come gioiello in un periodo che richiede coraggio, ad esempio prima di una prova importante."
+        ),
+        "quartz-tourmaline-cristal-de-roche" to AssociationTranslation(
+            titre = "Quarzo tormalinato e Cristallo di rocca",
+            intention = "Amplificazione protettiva",
+            descriptionCourte = "Il quarzo protettivo combinato al quarzo amplificatore, per rafforzare l'effetto di entrambi.",
+            descriptionLongue = "Il quarzo tormalinato, che unisce le virtù protettive della tormalina nera alla trasparenza del cristallo di rocca, è associato al cristallo di rocca puro, tradizionalmente rinomato per amplificare le proprietà delle pietre che lo accompagnano. Questa coppia è ricercata per rafforzare l'effetto protettivo del quarzo tormalinato.",
+            conseilUtilisation = "Tenere il cristallo di rocca vicino al quarzo tormalinato, ad esempio nella stessa sacchetta o sullo stesso espositore."
+        ),
+        "jais-hematite" to AssociationTranslation(
+            titre = "Giaietto ed Ematite",
+            intention = "Lutto e radicamento protettivo",
+            descriptionCourte = "Due pietre scure tradizionalmente indossate nei periodi di lutto e di prova.",
+            descriptionLongue = "Il giaietto, indossato come amuleto di lutto e protezione da secoli, è associato all'ematite, pietra di radicamento e forza interiore. Questa coppia è tradizionalmente ricercata per attraversare i periodi di prova con stabilità.",
+            conseilUtilisation = "Indossarle come gioiello sobrio nei periodi di lutto o di prova, in accordo con l'uso tradizionale del giaietto."
         )
     )
 }

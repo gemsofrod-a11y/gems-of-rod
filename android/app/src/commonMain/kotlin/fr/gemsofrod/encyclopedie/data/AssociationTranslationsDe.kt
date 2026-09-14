@@ -212,6 +212,146 @@ object AssociationTranslationsDe {
             descriptionCourte = "Zwei blassblaue Steine, die traditionell mit spiritueller Verbindung assoziiert werden.",
             descriptionLongue = "Angelit, ein blassblauer Anhydrit, dessen Name an Leichtigkeit erinnert, wird mit Kyanit assoziiert, um ein Paar zu bilden, das traditionell in meditativen Praktiken gesucht wird, die sich auf innere Kommunikation und spirituelle Verbindung konzentrieren.",
             conseilUtilisation = "Sie gemeinsam während einer stillen Meditation oder einer kontemplativen Praxis in den Händen halten."
+        ),
+        "tourmaline-noire-obsidienne" to AssociationTranslation(
+            titre = "Schwarzer Turmalin & Obsidian",
+            intention = "Verstärkter energetischer Schutzschild",
+            descriptionCourte = "Die beiden bekanntesten schwarzen Steine für Schutz, kombiniert für einen verstärkten Schutzschild.",
+            descriptionLongue = "Schwarzer Turmalin, dem nachgesagt wird, einen psychischen Schutzschild gegen negative Energien zu bilden, wird mit Obsidian assoziiert, einem vulkanischen Stein, der ebenso für seine schützende Kraft bekannt ist. Zusammen bilden sie die in der Kristallheilkunde am meisten gesuchte Kombination, um sich vor negativen Einflüssen zu bewahren.",
+            conseilUtilisation = "Beide Steine als Armband tragen oder gemeinsam am Hauseingang aufbewahren, insbesondere in als belastend empfundenen Zeiten."
+        ),
+        "oeil-de-tigre-oeil-de-faucon" to AssociationTranslation(
+            titre = "Tigerauge & Falkenauge",
+            intention = "Klare Sicht und Schutz",
+            descriptionCourte = "Zwei Varietäten desselben Steins, vereint für Schutz und Hellsicht.",
+            descriptionLongue = "Tigerauge, ein Stein des Schutzes vor dem bösen Blick und des Selbstvertrauens, wird mit Falkenauge assoziiert, seiner blaugrauen Varietät, die mit Hellsicht und innerer Distanz verbunden ist. Dieses Paar wird traditionell gesucht, um mit Schutz und Urteilsvermögen zugleich voranzuschreiten.",
+            conseilUtilisation = "Beide Steine als Armband tragen, in Zeiten, die sowohl Vorsicht als auch Klarheit erfordern, etwa vor einer wichtigen Entscheidung."
+        ),
+        "turquoise-oeil-de-taureau" to AssociationTranslation(
+            titre = "Türkis & Stierauge",
+            intention = "Schutz vor dem bösen Blick",
+            descriptionCourte = "Eine alte Verbindung, gezielt zum Schutz vor dem bösen Blick gesucht.",
+            descriptionLongue = "Türkis, seit Jahrtausenden ein Schutzstein, wird mit Stierauge assoziiert, dessen Name selbst an wachsamen Schutz erinnert. Dieses Paar wird traditionell als Amulett getragen, um sich vor dem bösen Blick und neidischen Einflüssen zu schützen.",
+            conseilUtilisation = "Beide Steine als sichtbaren Anhänger tragen, in der Tradition des schützenden Amuletts."
+        ),
+        "ambre-turquoise" to AssociationTranslation(
+            titre = "Bernstein & Türkis",
+            intention = "Schutz von Kindern und Reisenden",
+            descriptionCourte = "Zwei traditionelle Amulette, eines für Kinder, das andere für Reisende.",
+            descriptionLongue = "Bernstein, seit der Antike als Amulett getragen, um Kinder vor dem bösen Blick zu schützen, wird mit Türkis assoziiert, dem Schutzstein der Reisenden. Zusammen begleiten sie traditionell Zeiten familiärer Reisen.",
+            conseilUtilisation = "Beide Steine gemeinsam ins Gepäck legen oder vor einer Reise, insbesondere mit der Familie, als Kette tragen."
+        ),
+        "labradorite-tourmaline-noire" to AssociationTranslation(
+            titre = "Labradorit & Schwarzer Turmalin",
+            intention = "Doppelter psychischer Schutzschild",
+            descriptionCourte = "Zwei Steine des psychischen Schutzschilds, der eine für die Aura, der andere gegen negative Energien.",
+            descriptionLongue = "Labradorit, dem nachgesagt wird, starken energetischen Schutz zu bieten und wie ein psychischer Schutzschild zu wirken, wird mit schwarzem Turmalin assoziiert, der ebenfalls einen Schutzschild gegen negative Energien bildet. Dieses Paar wird traditionell in Zeiten erhöhter energetischer Empfindlichkeit gesucht.",
+            conseilUtilisation = "Beide Steine gemeinsam tragen an Tagen oder in Umgebungen, die als energetisch belastet empfunden werden."
+        ),
+        "lapis-lazuli-turquoise" to AssociationTranslation(
+            titre = "Lapislazuli & Türkis",
+            intention = "Weisheit und Schutz",
+            descriptionCourte = "Eine aus dem alten Ägypten überlieferte Verbindung, zwischen Weisheit und Schutz.",
+            descriptionLongue = "Lapislazuli, seit dem alten Ägypten ein Stein der Weisheit und Wahrheit, wird mit Türkis assoziiert, einem ebenso alten Schutzstein; beide waren fester Bestandteil des traditionellen ägyptischen Schmucks. Diesem Paar wird nachgesagt, klares Urteilsvermögen zu unterstützen und zugleich seinen Träger zu schützen.",
+            conseilUtilisation = "Beide Steine gemeinsam als Kette tragen, in der Tradition der antiken schützenden Schmuckstücke."
+        ),
+        "quartz-fume-hematite" to AssociationTranslation(
+            titre = "Rauchquarz & Hämatit",
+            intention = "Erdung und energetische Reinigung",
+            descriptionCourte = "Zwei Erdungssteine, denen nachgesagt wird, Stress und negative Energien aufzunehmen.",
+            descriptionLongue = "Rauchquarz, geschätzt für seine erdenden Eigenschaften und seine Fähigkeit, Stress und negative Energien aufzunehmen, wird mit Hämatit assoziiert, einem Stein der Erdung und der inneren Kraft. Dieses Paar wird traditionell gesucht, um sich nach einer unruhigen Zeit wieder zu zentrieren.",
+            conseilUtilisation = "Einige Minuten am Tagesende in der Hand halten, oder als Armband in stressigen Phasen tragen."
+        ),
+        "citrine-pyrite" to AssociationTranslation(
+            titre = "Citrin & Pyrit",
+            intention = "Geschützte Fülle",
+            descriptionCourte = "Zwei Sonnensteine, verbunden mit materiellem Erfolg und dessen Schutz.",
+            descriptionLongue = "Citrin, ein Sonnenstein, der mit Erfolg und Fülle verbunden ist, wird mit Pyrit assoziiert, einem Stein des Schutzes vor negativen Energien und des Wohlstands. Dieses Paar wird traditionell gesucht, um ein berufliches Projekt zu unterstützen und es zugleich vor gegenteiligen Einflüssen zu schützen.",
+            conseilUtilisation = "Beide Steine gemeinsam auf dem Schreibtisch oder im Arbeitsbereich aufbewahren, insbesondere beim Start eines neuen Projekts."
+        ),
+        "amethyste-labradorite" to AssociationTranslation(
+            titre = "Amethyst & Labradorit",
+            intention = "Schutz von Schlaf und Geist",
+            descriptionCourte = "Eine Verbindung, der ein friedlicher, geschützter Schlaf nachgesagt wird.",
+            descriptionLongue = "Amethyst, dem nachgesagt wird, Stress zu lindern und einen erholsamen Schlaf zu fördern, wird mit Labradorit assoziiert, einem Stein des energetischen Schutzes. Dieses Paar wird traditionell in Bettnähe platziert, um einen ruhigen und geschützten Schlaf zu unterstützen.",
+            conseilUtilisation = "Auf dem Nachttisch aufbewahren, oder unter das Kopfkissen legen, entsprechend der traditionellen Verwendung des Amethysts."
+        ),
+        "agate-jaspe" to AssociationTranslation(
+            titre = "Achat & Jaspis",
+            intention = "Gleichgewicht und sanfter Schutz",
+            descriptionCourte = "Zwei Chalcedone, verbunden mit Stabilität und alltäglichem Schutz.",
+            descriptionLongue = "Achat, verbunden mit emotionalem Gleichgewicht und einem seit der Antike getragenen sanften Schutz, wird mit Jaspis kombiniert, einem Stein der Stabilität und Erdung. Dieses Paar aus Chalcedonen wird traditionell für den diskreten täglichen Gebrauch gesucht.",
+            conseilUtilisation = "Als Armband im Alltag tragen, ohne besonderen Anlass."
+        ),
+        "malachite-turquoise" to AssociationTranslation(
+            titre = "Malachit & Türkis",
+            intention = "Schutz von Zuhause und Reisen",
+            descriptionCourte = "Zwei grüne und blaue traditionell schützende Steine, der eine für das Zuhause, der andere unterwegs.",
+            descriptionLongue = "Malachit, ein traditionell schützender Stein, insbesondere für Kinder und das Zuhause, wird mit Türkis assoziiert, dem Schutzstein der Reisenden. Dieses Paar begleitet traditionell sowohl das Zuhause als auch Reisen.",
+            conseilUtilisation = "Den Malachit zu Hause aufbewahren und den Türkis auf Reisen mitnehmen, oder beide gemeinsam vor einem Umzug tragen."
+        ),
+        "oeil-de-tigre-hematite" to AssociationTranslation(
+            titre = "Tigerauge & Hämatit",
+            intention = "Geerdete Entschlossenheit",
+            descriptionCourte = "Eine Verbindung, um mit Entschlossenheit voranzugehen und dabei geerdet zu bleiben.",
+            descriptionLongue = "Tigerauge, ein Stein der Entschlossenheit und des Schutzes, wird mit Hämatit assoziiert, einem Stein der Erdung und der inneren Kraft. Dieses Paar wird traditionell gesucht, um eine schwierige Zeit zu durchstehen, ohne den Boden unter den Füßen zu verlieren.",
+            conseilUtilisation = "Als Armband tragen in Phasen, die sowohl Willenskraft als auch Stabilität erfordern, etwa bei einem beruflichen Wechsel."
+        ),
+        "cornaline-hessonite" to AssociationTranslation(
+            titre = "Karneol & Hessonit",
+            intention = "Vitalität und Selbstvertrauen",
+            descriptionCourte = "Zwei orangefarbene Steine, verbunden mit Tatkraft und Selbstvertrauen.",
+            descriptionLongue = "Karneol, ein Stein der Tatkraft, dem nachgesagt wird, Mut und Vitalität anzuregen, wird mit Hessonit assoziiert, der traditionell getragen wird, um das Selbstvertrauen zu stärken und vor negativen Energien zu schützen. Dieses Paar wird traditionell vor dem Ergreifen einer Initiative gesucht.",
+            conseilUtilisation = "Als Armband tragen beim Start eines Projekts oder einem Auftritt, der Selbstsicherheit erfordert."
+        ),
+        "aigue-marine-turquoise" to AssociationTranslation(
+            titre = "Aquamarin & Türkis",
+            intention = "Schutz von Seefahrern und Reisenden",
+            descriptionCourte = "Zwei Steine, die historisch mit Schutz auf See und auf Reisen verbunden sind.",
+            descriptionLongue = "Aquamarin, der Stein der Seefahrer schlechthin, wird mit Türkis assoziiert, dem Schutzstein der Reisenden. Zusammen bilden sie ein Paar, das traditionell vor jedem Aufbruch gesucht wird, auf See wie an Land.",
+            conseilUtilisation = "Beide Steine gemeinsam auf Reisen mitnehmen, als Schmuckstück oder einfach im Handgepäck."
+        ),
+        "obsidienne-grenat-almandin" to AssociationTranslation(
+            titre = "Obsidian & Almandin-Granat",
+            intention = "Kraft und Schutz",
+            descriptionCourte = "Eine intensive Verbindung zwischen tiefem Schutz und innerer Kraft.",
+            descriptionLongue = "Obsidian, dem nachgesagt wird, kraftvollen Schutz zu bieten und verborgene Wahrheiten zu offenbaren, wird mit Almandin-Granat assoziiert, einem Stein der Erdung und der inneren Kraft. Dieses Paar bleibt traditionell Phasen vorbehalten, die sowohl Klarheit als auch Ausdauer erfordern.",
+            conseilUtilisation = "Gemeinsam damit meditieren, bevor man eine als belastend empfundene Zeit angeht, im Einklang mit der traditionellen Verwendung dunkler und intensiver Steine."
+        ),
+        "onyx-tourmaline-noire" to AssociationTranslation(
+            titre = "Onyx & Schwarzer Turmalin",
+            intention = "Doppelte schützende Erdung",
+            descriptionCourte = "Zwei schwarze Steine, vereint für eine tiefe und schützende Erdung.",
+            descriptionLongue = "Onyx, ein Stein der Kraft und Stabilität, wird mit schwarzem Turmalin assoziiert, einem Stein des Schutzes vor negativen Energien. Dieses dunkle Paar wird traditionell für eine tiefe Erdung in Zeiten ausgeprägter Instabilität gesucht.",
+            conseilUtilisation = "Beide Steine gemeinsam als Armband tragen in Phasen des Wandels oder ausgeprägter Unsicherheit."
+        ),
+        "jade-nephrite-jade-jadeite" to AssociationTranslation(
+            titre = "Nephrit-Jade & Jade (Jadeit)",
+            intention = "Weisheit und uralter Schutz",
+            descriptionCourte = "Die beiden unter dem Namen Jade vereinten Minerale, seit jeher mit Schutz verbunden.",
+            descriptionLongue = "Nephrit-Jade, seit dem antiken China ein Stein der Weisheit und des Schutzes, wird mit Jade (Jadeit) assoziiert, seiner selteneren Varietät, der ebenso nachgesagt wird, Glück und Schutz zu bringen, insbesondere für Reisende. Die Vereinigung beider Jade-Arten führt eine jahrtausendealte Tradition geteilten Schutzes fort.",
+            conseilUtilisation = "Beide Steine gemeinsam als Armband oder Anhänger tragen, in der Tradition der chinesischen Jade, die ein Leben lang getragen wird."
+        ),
+        "rubis-grenat-almandin" to AssociationTranslation(
+            titre = "Rubin & Almandin-Granat",
+            intention = "Mut und Vitalität",
+            descriptionCourte = "Zwei rote Steine, verbunden mit Mut und Lebenskraft.",
+            descriptionLongue = "Rubin, ein Stein der Leidenschaft und des Mutes, der traditionell mit Schutz vor negativen Energien verbunden ist, wird mit Almandin-Granat assoziiert, einem Stein der Lebenskraft und Ausdauer. Dieses Paar wird traditionell gesucht, um Herausforderungen mit Mut zu begegnen.",
+            conseilUtilisation = "Als Schmuckstück tragen in einer Phase, die Mut erfordert, etwa vor einer wichtigen Prüfung."
+        ),
+        "quartz-tourmaline-cristal-de-roche" to AssociationTranslation(
+            titre = "Turmalinquarz & Bergkristall",
+            intention = "Verstärkter Schutz",
+            descriptionCourte = "Der schützende Quarz kombiniert mit dem verstärkenden Quarz, um die Wirkung beider zu erhöhen.",
+            descriptionLongue = "Turmalinquarz, der die schützenden Eigenschaften des schwarzen Turmalins mit der Klarheit des Bergkristalls verbindet, wird mit reinem Bergkristall assoziiert, dem traditionell nachgesagt wird, die Eigenschaften der ihn begleitenden Steine zu verstärken. Dieses Paar wird gesucht, um die schützende Wirkung des Turmalinquarzes zu verstärken.",
+            conseilUtilisation = "Den Bergkristall in der Nähe des Turmalinquarzes aufbewahren, etwa in derselben Tasche oder auf demselben Schmuckständer."
+        ),
+        "jais-hematite" to AssociationTranslation(
+            titre = "Gagat & Hämatit",
+            intention = "Trauer und schützende Erdung",
+            descriptionCourte = "Zwei dunkle Steine, traditionell in Zeiten der Trauer und Prüfung getragen.",
+            descriptionLongue = "Gagat, seit Jahrhunderten als Trauer- und Schutzamulett getragen, wird mit Hämatit assoziiert, einem Stein der Erdung und der inneren Kraft. Dieses Paar wird traditionell gesucht, um schwierige Zeiten mit Stabilität zu durchstehen.",
+            conseilUtilisation = "Als schlichten Schmuck in Zeiten der Trauer oder Prüfung tragen, im Einklang mit der traditionellen Verwendung des Gagats."
         )
     )
 }

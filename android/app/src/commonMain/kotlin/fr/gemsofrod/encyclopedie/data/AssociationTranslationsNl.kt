@@ -212,6 +212,146 @@ object AssociationTranslationsNl {
             descriptionCourte = "Twee lichtblauwe stenen die van oudsher met spirituele verbinding worden geassocieerd.",
             descriptionLongue = "Angeliet, een lichtblauw anhydriet waarvan de naam lichtheid oproept, wordt geassocieerd met cyaniet en vormt zo een paar dat van oudsher wordt gezocht in meditatieve praktijken gericht op innerlijke communicatie en spirituele verbinding.",
             conseilUtilisation = "Houd ze samen in de handen tijdens een stille meditatie of een contemplatieve praktijk."
+        ),
+        "tourmaline-noire-obsidienne" to AssociationTranslation(
+            titre = "Zwarte toermalijn & Obsidiaan",
+            intention = "Versterkt energetisch schild",
+            descriptionCourte = "De twee zwarte stenen met de grootste faam op het gebied van bescherming, gecombineerd voor een versterkt schild.",
+            descriptionLongue = "Zwarte toermalijn, met de faam een psychisch schild te vormen tegen negatieve energieën, wordt geassocieerd met obsidiaan, een vulkanisch gesteente dat evenzeer bekendstaat om zijn beschermende kracht. Samen vormen ze de meest gezochte combinatie in de lithotherapie om zich te wapenen tegen negatieve invloeden.",
+            conseilUtilisation = "Draag beide stenen als armband of bewaar ze samen bij de voordeur van uw woning, vooral in periodes die als beproevend worden ervaren."
+        ),
+        "oeil-de-tigre-oeil-de-faucon" to AssociationTranslation(
+            titre = "Tijgeroog & Havikenoog",
+            intention = "Helder zicht en bescherming",
+            descriptionCourte = "Twee variëteiten van dezelfde steen, samengebracht voor bescherming en helderziendheid.",
+            descriptionLongue = "Tijgeroog, een steen van bescherming tegen het boze oog en zelfvertrouwen, wordt geassocieerd met havikenoog, zijn blauwgrijze variëteit verbonden met helderziendheid en het nemen van afstand. Dit paar wordt van oudsher gezocht om vooruit te gaan met zowel bescherming als onderscheidingsvermogen.",
+            conseilUtilisation = "Draag ze samen als armband in een periode die zowel voorzichtigheid als helderheid vraagt, bijvoorbeeld vóór een belangrijke beslissing."
+        ),
+        "turquoise-oeil-de-taureau" to AssociationTranslation(
+            titre = "Turkoois & Stierenoog",
+            intention = "Bescherming tegen het boze oog",
+            descriptionCourte = "Een oude combinatie, specifiek gezocht om zich te wapenen tegen het boze oog.",
+            descriptionLongue = "Turkoois, al millennia een beschermsteen, wordt geassocieerd met stierenoog, waarvan de naam zelf de beschermende waakzaamheid oproept. Dit paar wordt van oudsher als amulet gedragen om zich te beschermen tegen het boze oog en afgunstige invloeden.",
+            conseilUtilisation = "Draag beide stenen als zichtbare hanger, in de traditie van de beschermende amulet."
+        ),
+        "ambre-turquoise" to AssociationTranslation(
+            titre = "Barnsteen & Turkoois",
+            intention = "Bescherming van kinderen en reizigers",
+            descriptionCourte = "Twee traditionele amuletten, de ene voor kinderen, de andere voor reizigers.",
+            descriptionLongue = "Barnsteen, sinds de oudheid als amulet gedragen om kinderen te beschermen tegen het boze oog, wordt geassocieerd met turkoois, de beschermsteen van reizigers. Samen begeleiden ze van oudsher periodes van verplaatsing met het gezin.",
+            conseilUtilisation = "Stop beide stenen samen in een bagagestuk of draag ze als ketting vóór een reis, met name met het gezin."
+        ),
+        "labradorite-tourmaline-noire" to AssociationTranslation(
+            titre = "Labradoriet & Zwarte toermalijn",
+            intention = "Dubbel psychisch schild",
+            descriptionCourte = "Twee stenen met een psychisch schild, de ene voor de aura, de andere tegen negatieve energieën.",
+            descriptionLongue = "Labradoriet, met de faam een sterke energetische bescherming te bieden en als psychisch schild te werken, wordt geassocieerd met zwarte toermalijn, die eveneens een schild vormt tegen negatieve energieën. Dit paar wordt van oudsher gezocht in periodes van grote energetische gevoeligheid.",
+            conseilUtilisation = "Draag ze samen tijdens dagen of in omgevingen die als energetisch belast worden ervaren."
+        ),
+        "lapis-lazuli-turquoise" to AssociationTranslation(
+            titre = "Lapis lazuli & Turkoois",
+            intention = "Wijsheid en bescherming",
+            descriptionCourte = "Een combinatie die teruggaat tot het oude Egypte, tussen wijsheid en bescherming.",
+            descriptionLongue = "Lapis lazuli, sinds het oude Egypte een steen van wijsheid en waarheid, wordt geassocieerd met turkoois, een even oude beschermsteen, beide aanwezig in de traditionele Egyptische sieraden. Dit paar staat erom bekend een helder oordeel te ondersteunen en tegelijk degene die het draagt te beschermen.",
+            conseilUtilisation = "Draag ze samen als ketting, in de continuïteit van de traditie van de beschermende sieraden uit de oudheid."
+        ),
+        "quartz-fume-hematite" to AssociationTranslation(
+            titre = "Rokerige kwarts & Hematiet",
+            intention = "Aarding en energetische zuivering",
+            descriptionCourte = "Twee aardingsstenen, met de faam stress en negatieve energieën te absorberen.",
+            descriptionLongue = "Rokerige kwarts, bekend om zijn aardende eigenschappen en zijn vermogen om stress en negatieve energieën te absorberen, wordt geassocieerd met hematiet, een steen van aarding en innerlijke kracht. Dit paar wordt van oudsher gezocht om zich te herpakken na een onrustige periode.",
+            conseilUtilisation = "Houd ze enkele minuten in de hand aan het einde van de dag, of draag ze als armband in stressvolle periodes."
+        ),
+        "citrine-pyrite" to AssociationTranslation(
+            titre = "Citrien & Pyriet",
+            intention = "Beschermde overvloed",
+            descriptionCourte = "Twee zonnestenen, geassocieerd met materieel succes en de bescherming ervan.",
+            descriptionLongue = "Citrien, een zonnesteen verbonden met succes en overvloed, wordt geassocieerd met pyriet, een steen van bescherming tegen negatieve energieën en van overvloed. Dit paar wordt van oudsher gezocht om een professioneel project te ondersteunen en het tegelijk te beschermen tegen tegenwerkende invloeden.",
+            conseilUtilisation = "Bewaar ze samen op uw bureau of werkplek, vooral bij de lancering van een nieuw project."
+        ),
+        "amethyste-labradorite" to AssociationTranslation(
+            titre = "Amethist & Labradoriet",
+            intention = "Bescherming van slaap en geest",
+            descriptionCourte = "Een combinatie bekend om een rustige en beschermde slaap.",
+            descriptionLongue = "Amethist, bekend om het kalmeren van stress en het bevorderen van een serene slaap, wordt geassocieerd met labradoriet, een steen van energetische bescherming. Dit paar wordt van oudsher bij het bed geplaatst om een rustige en beschermde slaap te ondersteunen.",
+            conseilUtilisation = "Plaats ze op het nachtkastje of onder het kussen, volgens het traditionele gebruik dat voor amethist wordt aanbevolen."
+        ),
+        "agate-jaspe" to AssociationTranslation(
+            titre = "Agaat & Jaspis",
+            intention = "Evenwicht en zachte bescherming",
+            descriptionCourte = "Twee chalcedonen geassocieerd met stabiliteit en dagelijkse bescherming.",
+            descriptionLongue = "Agaat, geassocieerd met emotioneel evenwicht en een zachte bescherming die al sinds de oudheid wordt gedragen, wordt gecombineerd met jaspis, een steen van stabiliteit en aarding. Dit paar chalcedonen wordt van oudsher gezocht voor een discreet dagelijks gebruik.",
+            conseilUtilisation = "Draag ze dagelijks als armband, zonder dat daar een bijzondere gelegenheid voor nodig is."
+        ),
+        "malachite-turquoise" to AssociationTranslation(
+            titre = "Malachiet & Turkoois",
+            intention = "Bescherming van huis en reizen",
+            descriptionCourte = "Twee groene en blauwe stenen die van oudsher beschermend worden geacht, de ene voor het huis, de andere onderweg.",
+            descriptionLongue = "Malachiet, van oudsher een beschermsteen, met name voor kinderen en het huis, wordt geassocieerd met turkoois, de beschermsteen van reizigers. Dit paar begeleidt van oudsher zowel het huis als de verplaatsingen.",
+            conseilUtilisation = "Bewaar de malachiet thuis en neem de turkoois mee op reis, of draag beide samen vóór een verhuizing."
+        ),
+        "oeil-de-tigre-hematite" to AssociationTranslation(
+            titre = "Tijgeroog & Hematiet",
+            intention = "Geaarde vastberadenheid",
+            descriptionCourte = "Een combinatie om met vastberadenheid vooruit te gaan en tegelijk geaard te blijven.",
+            descriptionLongue = "Tijgeroog, een steen van vastberadenheid en bescherming, wordt geassocieerd met hematiet, een steen van aarding en innerlijke kracht. Dit paar wordt van oudsher gezocht om een moeilijke periode door te komen zonder de grond onder de voeten te verliezen.",
+            conseilUtilisation = "Draag ze als armband in periodes die zowel wilskracht als stabiliteit vragen, bijvoorbeeld bij een professionele verandering."
+        ),
+        "cornaline-hessonite" to AssociationTranslation(
+            titre = "Carneool & Hessoniet",
+            intention = "Vitaliteit en zelfvertrouwen",
+            descriptionCourte = "Twee oranje stenen, geassocieerd met actie en zelfvertrouwen.",
+            descriptionLongue = "Carneool, een actiesteen die de faam heeft moed en vitaliteit te stimuleren, wordt geassocieerd met hessoniet, van oudsher gedragen om het zelfvertrouwen te versterken en zich te beschermen tegen negatieve energieën. Dit paar wordt van oudsher gezocht vóór het nemen van initiatief.",
+            conseilUtilisation = "Draag ze als armband bij de lancering van een project of een optreden waarbij zelfverzekerdheid vereist is."
+        ),
+        "aigue-marine-turquoise" to AssociationTranslation(
+            titre = "Aquamarijn & Turkoois",
+            intention = "Bescherming van zeelieden en reizigers",
+            descriptionCourte = "Twee stenen die van oudsher worden geassocieerd met bescherming op zee en op reis.",
+            descriptionLongue = "Aquamarijn, bij uitstek de steen van de zeelieden, wordt geassocieerd met turkoois, de beschermsteen van reizigers. Samen vormen ze een paar dat van oudsher wordt gezocht vóór elk vertrek, zowel op zee als op het land.",
+            conseilUtilisation = "Neem ze samen mee op reis, als sieraad of gewoon in een handbagage."
+        ),
+        "obsidienne-grenat-almandin" to AssociationTranslation(
+            titre = "Obsidiaan & Almandijngranaat",
+            intention = "Kracht en bescherming",
+            descriptionCourte = "Een intense combinatie, tussen diepgaande bescherming en innerlijke kracht.",
+            descriptionLongue = "Obsidiaan, met de faam krachtige bescherming te bieden door verborgen waarheden aan het licht te brengen, wordt geassocieerd met almandijngranaat, een steen van aarding en innerlijke kracht. Dit paar wordt van oudsher gereserveerd voor periodes die zowel helderheid als doorzettingsvermogen vragen.",
+            conseilUtilisation = "Mediteer er samen mee voordat u een als beproevend ervaren periode aangaat, in overeenstemming met het traditionele gebruik van donkere, intense stenen."
+        ),
+        "onyx-tourmaline-noire" to AssociationTranslation(
+            titre = "Onyx & Zwarte toermalijn",
+            intention = "Dubbele beschermende aarding",
+            descriptionCourte = "Twee zwarte stenen samengebracht voor een diepe, beschermende aarding.",
+            descriptionLongue = "Onyx, een steen van kracht en stabiliteit, wordt geassocieerd met zwarte toermalijn, een steen van bescherming tegen negatieve energieën. Dit donkere paar wordt van oudsher gezocht voor een diepe aarding in periodes van uitgesproken instabiliteit.",
+            conseilUtilisation = "Draag ze samen als armband in periodes van verandering of duidelijke onzekerheid."
+        ),
+        "jade-nephrite-jade-jadeite" to AssociationTranslation(
+            titre = "Nefrietjade & Jade (jadeïet)",
+            intention = "Wijsheid en voorouderlijke bescherming",
+            descriptionCourte = "De twee mineralen die samen jade worden genoemd, van oudsher geassocieerd met bescherming.",
+            descriptionLongue = "Nefrietjade, sinds de Chinese oudheid een steen van wijsheid en bescherming, wordt geassocieerd met jade (jadeïet), zijn zeldzamere variëteit die eveneens bekendstaat om geluk en bescherming te brengen, met name aan reizigers. Het samenbrengen van beide jades zet een millennialange traditie van gedeelde bescherming voort.",
+            conseilUtilisation = "Draag ze samen als armband of hanger, in de continuïteit van de Chinese traditie van jade dat levenslang wordt gedragen."
+        ),
+        "rubis-grenat-almandin" to AssociationTranslation(
+            titre = "Robijn & Almandijngranaat",
+            intention = "Moed en vitaliteit",
+            descriptionCourte = "Twee rode stenen, geassocieerd met moed en levenskracht.",
+            descriptionLongue = "Robijn, een steen van passie en moed die van oudsher wordt geassocieerd met bescherming tegen negatieve energieën, wordt geassocieerd met almandijngranaat, een steen van levenskracht en uithoudingsvermogen. Dit paar wordt van oudsher gezocht om uitdagingen met moed tegemoet te treden.",
+            conseilUtilisation = "Draag ze als sieraad in een periode die moed vraagt, bijvoorbeeld vóór een belangrijke beproeving."
+        ),
+        "quartz-tourmaline-cristal-de-roche" to AssociationTranslation(
+            titre = "Toermalijnkwarts & Bergkristal",
+            intention = "Beschermende versterking",
+            descriptionCourte = "De beschermende kwarts gecombineerd met de versterkende kwarts, om het effect van beide te vergroten.",
+            descriptionLongue = "Toermalijnkwarts, dat de beschermende eigenschappen van zwarte toermalijn combineert met de helderheid van bergkristal, wordt geassocieerd met zuiver bergkristal, van oudsher bekend om de eigenschappen van de stenen die het vergezellen te versterken. Dit paar wordt gezocht om het beschermende effect van de toermalijnkwarts te versterken.",
+            conseilUtilisation = "Bewaar het bergkristal dicht bij de toermalijnkwarts, bijvoorbeeld in dezelfde zak of op hetzelfde uitstalstuk."
+        ),
+        "jais-hematite" to AssociationTranslation(
+            titre = "Git & Hematiet",
+            intention = "Rouw en beschermende aarding",
+            descriptionCourte = "Twee donkere stenen die van oudsher worden gedragen in periodes van rouw en beproeving.",
+            descriptionLongue = "Git, al eeuwenlang gedragen als amulet voor rouw en bescherming, wordt geassocieerd met hematiet, een steen van aarding en innerlijke kracht. Dit paar wordt van oudsher gezocht om periodes van beproeving met stabiliteit door te komen.",
+            conseilUtilisation = "Draag ze als sober sieraad in periodes van rouw of beproeving, in overeenstemming met het traditionele gebruik van git."
         )
     )
 }

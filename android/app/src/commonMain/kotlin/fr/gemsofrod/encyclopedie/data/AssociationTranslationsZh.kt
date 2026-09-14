@@ -212,6 +212,146 @@ object AssociationTranslationsZh {
             descriptionCourte = "两种传统上与精神连接相关的浅蓝色宝石。",
             descriptionLongue = "天使石是一种浅蓝色硬石膏，其名称令人联想到轻盈之感，与蓝晶石相搭配，组成传统上在专注于内在沟通与精神连接的冥想练习中被寻求的一对宝石。",
             conseilUtilisation = "在静默冥想或沉思练习中，将它们一同握在手中。"
+        ),
+        "tourmaline-noire-obsidienne" to AssociationTranslation(
+            titre = "黑碧玺与黑曜石",
+            intention = "强化的能量屏障",
+            descriptionCourte = "两种在防护方面最负盛名的黑色宝石，组合成更强大的能量屏障。",
+            descriptionLongue = "黑碧玺素有形成心灵防护屏障、抵御负能量的美誉，与同样以强大防护力著称的火山宝石——黑曜石相搭配。两者结合，是水晶疗法中最受追捧、用以抵御负面影响的组合。",
+            conseilUtilisation = "将两种宝石作为手链佩戴，或将它们一同放置在家门口，尤其是在被认为艰难的时期。"
+        ),
+        "oeil-de-tigre-oeil-de-faucon" to AssociationTranslation(
+            titre = "虎眼石与鹰眼石",
+            intention = "清晰的视野与保护",
+            descriptionCourte = "同一种宝石的两个品种，共同用于保护与洞察力。",
+            descriptionLongue = "虎眼石是抵御邪眼、增强自信的护身石，与它的蓝灰色品种——鹰眼石相搭配，鹰眼石与洞察力及退一步看待事物相关。这一组合传统上被用来在前行时兼具保护与明辨力。",
+            conseilUtilisation = "在需要兼顾谨慎与清醒的时期——例如做出重要决定之前——将它们一同佩戴为手链。"
+        ),
+        "turquoise-oeil-de-taureau" to AssociationTranslation(
+            titre = "绿松石与牛眼石",
+            intention = "抵御邪眼",
+            descriptionCourte = "一种古老的组合，专门用于抵御邪眼。",
+            descriptionLongue = "绿松石是数千年来的护身石，与牛眼石相搭配——牛眼石的名字本身便令人联想到守护的警觉。这一组合传统上被作为护身符佩戴，以抵御邪眼与嫉妒的影响。",
+            conseilUtilisation = "将两种宝石佩戴为显眼的吊坠，延续护身符的传统用法。"
+        ),
+        "ambre-turquoise" to AssociationTranslation(
+            titre = "琥珀与绿松石",
+            intention = "儿童与旅行的守护",
+            descriptionCourte = "两种传统护身符，一种守护儿童，另一种守护旅行者。",
+            descriptionLongue = "琥珀自古以来便被作为护身符佩戴，以保护儿童免受邪眼侵扰，与绿松石相搭配——绿松石是守护旅行者的宝石。两者结合，传统上会陪伴举家出行的时期。",
+            conseilUtilisation = "将它们一同放入行李，或在旅行前佩戴为项链，尤其是全家出行时。"
+        ),
+        "labradorite-tourmaline-noire" to AssociationTranslation(
+            titre = "拉长石与黑碧玺",
+            intention = "双重心灵防护屏障",
+            descriptionCourte = "两种心灵防护屏障之石，一种守护光环，另一种抵御负能量。",
+            descriptionLongue = "拉长石素有提供强大能量保护、如同心灵防护屏障般的美誉，与同样能抵御负能量、形成防护屏障的黑碧玺相搭配。这一组合传统上在能量特别敏感的时期被寻求。",
+            conseilUtilisation = "在被认为能量沉重的日子或环境中，将它们一同佩戴。"
+        ),
+        "lapis-lazuli-turquoise" to AssociationTranslation(
+            titre = "青金石与绿松石",
+            intention = "智慧与保护",
+            descriptionCourte = "传承自古埃及的组合，兼具智慧与保护之意。",
+            descriptionLongue = "青金石自古埃及时代起便是智慧与真理之石，与同样古老的护身石——绿松石相搭配，两者皆常见于古埃及的传统饰品之中。这一组合素有在守护佩戴者的同时支持清晰判断力的美誉。",
+            conseilUtilisation = "将它们一同佩戴为项链，延续古代护身饰品的传统。"
+        ),
+        "quartz-fume-hematite" to AssociationTranslation(
+            titre = "烟晶与赤铁矿",
+            intention = "接地与能量净化",
+            descriptionCourte = "两种接地之石，素有吸收压力与负能量的美誉。",
+            descriptionLongue = "烟晶素有接地功效及吸收压力与负能量的美誉，与同为接地与内在力量之石的赤铁矿相搭配。这一组合传统上在经历动荡时期之后，用以重新找回内心的平静。",
+            conseilUtilisation = "在一天结束时将它们握在手中几分钟，或在压力较大的时期将其佩戴为手链。"
+        ),
+        "citrine-pyrite" to AssociationTranslation(
+            titre = "黄水晶与黄铁矿",
+            intention = "受到保护的丰盛",
+            descriptionCourte = "两种太阳石，与物质上的成功及其守护相关。",
+            descriptionLongue = "黄水晶是与成功和丰盛相关的太阳石，与黄铁矿相搭配——黄铁矿既能抵御负能量，又与丰盛相关。这一组合传统上被用来支持职业项目，同时使其免受不利影响。",
+            conseilUtilisation = "将它们一同放置在办公桌或工作空间中，尤其是在启动新项目之时。"
+        ),
+        "amethyste-labradorite" to AssociationTranslation(
+            titre = "紫水晶与拉长石",
+            intention = "睡眠与心灵的守护",
+            descriptionCourte = "素有带来安稳且受到守护的睡眠之美誉的组合。",
+            descriptionLongue = "紫水晶素有舒缓压力、促进安稳睡眠的美誉，与具有能量保护作用的拉长石相搭配。这一组合传统上被放置在床边，以助力安稳而受保护的休息。",
+            conseilUtilisation = "按照紫水晶的传统用法，将它们放在床头柜上或枕头下。"
+        ),
+        "agate-jaspe" to AssociationTranslation(
+            titre = "玛瑙与碧玉",
+            intention = "平衡与温和的守护",
+            descriptionCourte = "两种与稳定和日常守护相关的玉髓类宝石。",
+            descriptionLongue = "玛瑙自古以来便与情绪平衡及温和的守护相关，与象征稳定和接地的碧玉相搭配。这一对玉髓类宝石传统上适合低调的日常佩戴。",
+            conseilUtilisation = "将它们作为手链日常佩戴，无需特别的场合。"
+        ),
+        "malachite-turquoise" to AssociationTranslation(
+            titre = "孔雀石与绿松石",
+            intention = "家宅与旅行的守护",
+            descriptionCourte = "两种传统的守护之石，一绿一蓝，一者守护家宅，一者守护旅途。",
+            descriptionLongue = "孔雀石传统上是守护之石，尤其用于保护儿童与家宅，与守护旅行者的绿松石相搭配。这一组合传统上既陪伴居家生活，也陪伴出行。",
+            conseilUtilisation = "将孔雀石留在家中，将绿松石随身带去旅行，或在搬家前将两者一同佩戴。"
+        ),
+        "oeil-de-tigre-hematite" to AssociationTranslation(
+            titre = "虎眼石与赤铁矿",
+            intention = "脚踏实地的决心",
+            descriptionCourte = "一种在保持接地的同时坚定前行的组合。",
+            descriptionLongue = "虎眼石是决心与守护之石，与接地及内在力量之石——赤铁矿相搭配。这一组合传统上被用来在不失去立足点的情况下度过困难时期。",
+            conseilUtilisation = "在既需要意志力又需要稳定性的时期——例如职业变动时——将它们佩戴为手链。"
+        ),
+        "cornaline-hessonite" to AssociationTranslation(
+            titre = "红玉髓与桂榴石",
+            intention = "活力与自信",
+            descriptionCourte = "两种橙色宝石，与行动力和自信相关。",
+            descriptionLongue = "红玉髓是行动之石，素有激发勇气与活力的美誉，与桂榴石相搭配——桂榴石传统上被佩戴以增强自信并抵御负能量。这一组合传统上在采取主动行动之前被寻求。",
+            conseilUtilisation = "在启动项目或需要自信发言时，将它们佩戴为手链。"
+        ),
+        "aigue-marine-turquoise" to AssociationTranslation(
+            titre = "海蓝宝石与绿松石",
+            intention = "水手与旅行者的守护",
+            descriptionCourte = "两种历史上与海上及旅途守护相关的宝石。",
+            descriptionLongue = "海蓝宝石堪称水手的专属宝石，与守护旅行者的绿松石相搭配。两者结合，传统上在任何出发之前被寻求，无论是海上还是陆上的旅程。",
+            conseilUtilisation = "将它们一同带上旅途，作为首饰佩戴，或简单地放入随身行李中。"
+        ),
+        "obsidienne-grenat-almandin" to AssociationTranslation(
+            titre = "黑曜石与铁铝榴石",
+            intention = "力量与守护",
+            descriptionCourte = "一种强烈的组合，兼具深层守护与内在力量。",
+            descriptionLongue = "黑曜石素有揭示隐藏真相、提供强大守护的美誉，与接地及内在力量之石——铁铝榴石相搭配。这一组合传统上专为同时需要清醒与耐力的时期而保留。",
+            conseilUtilisation = "按照深色浓烈宝石的传统用法，在进入被认为艰难的时期之前，与它们一同冥想。"
+        ),
+        "onyx-tourmaline-noire" to AssociationTranslation(
+            titre = "缟玛瑙与黑碧玺",
+            intention = "双重守护接地",
+            descriptionCourte = "两种黑色宝石结合，带来深层而具守护性的接地感。",
+            descriptionLongue = "缟玛瑙是力量与稳定之石，与抵御负能量的守护之石——黑碧玺相搭配。这一对深色组合传统上在动荡时期被用来寻求深层的接地感。",
+            conseilUtilisation = "在变动或明显不确定的时期，将它们一同佩戴为手链。"
+        ),
+        "jade-nephrite-jade-jadeite" to AssociationTranslation(
+            titre = "软玉与翡翠（硬玉）",
+            intention = "智慧与祖传的守护",
+            descriptionCourte = "两种同被称为「玉」的矿物，自古以来便与守护相关。",
+            descriptionLongue = "软玉自中国古代起便是智慧与守护之石，与更为稀有的翡翠（硬玉）相搭配——翡翠同样素有带来好运与守护的美誉，尤其是对旅行者而言。将两种玉石结合在一起，延续了数千年来共同守护的传统。",
+            conseilUtilisation = "将它们一同佩戴为手链或吊坠，延续中国「终生佩玉」的传统。"
+        ),
+        "rubis-grenat-almandin" to AssociationTranslation(
+            titre = "红宝石与铁铝榴石",
+            intention = "勇气与活力",
+            descriptionCourte = "两种红色宝石，与勇气和生命力相关。",
+            descriptionLongue = "红宝石是热情与勇气之石，传统上也与抵御负能量的守护相关，与象征生命力和耐力的铁铝榴石相搭配。这一组合传统上被用来以勇气面对挑战。",
+            conseilUtilisation = "在需要勇气的时期——例如面临重要考验之前——将它们佩戴为首饰。"
+        ),
+        "quartz-tourmaline-cristal-de-roche" to AssociationTranslation(
+            titre = "碧玺水晶与水晶（石英晶体）",
+            intention = "守护效果的增幅",
+            descriptionCourte = "具有守护力的石英与具有放大功效的石英相结合，增强彼此的效果。",
+            descriptionLongue = "碧玺水晶结合了黑碧玺的守护特性与水晶的清澈通透，与纯净的水晶相搭配——水晶传统上素有放大与其相伴宝石特性的美誉。这一组合被用来增强碧玺水晶的守护效果。",
+            conseilUtilisation = "将水晶放置在碧玺水晶附近，例如放入同一个小袋或同一个展示座中。"
+        ),
+        "jais-hematite" to AssociationTranslation(
+            titre = "煤玉与赤铁矿",
+            intention = "哀伤抚慰与守护性接地",
+            descriptionCourte = "两种传统上在哀伤与考验时期佩戴的深色宝石。",
+            descriptionLongue = "煤玉数百年来一直被作为哀悼与守护的护身符佩戴，与接地及内在力量之石——赤铁矿相搭配。这一组合传统上被用来以稳定的状态度过考验时期。",
+            conseilUtilisation = "按照煤玉的传统用法，在哀伤或考验时期佩戴素雅的首饰。"
         )
     )
 }
