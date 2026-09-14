@@ -33,7 +33,12 @@ jobs:
           java-version: "17"
 
       - name: Set up Android SDK
+        # Voir android-build.yml : le paquet legacy "tools" (défaut de
+        # l'action) n'existe plus dans le dépôt Google et fait échouer
+        # sdkmanager. Seul platform-tools est nécessaire ici.
         uses: android-actions/setup-android@v3
+        with:
+          packages: "platform-tools"
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
