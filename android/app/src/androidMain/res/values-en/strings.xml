@@ -538,6 +538,7 @@
     <string name="stock_import_button">Import CSV</string>
     <string name="stock_import_result_title">Import complete</string>
     <string name="stock_import_count_format">%1$d stone(s) imported</string>
+    <string name="stock_import_updated_format">%1$d existing item(s) updated</string>
     <string name="stock_import_skipped_format">%1$d row(s) skipped</string>
     <string name="stock_import_empty_error">No valid data found in this file.</string>
     <string name="stock_import_ok_button">OK</string>

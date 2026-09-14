@@ -538,6 +538,7 @@
     <string name="stock_import_button">CSV importeren</string>
     <string name="stock_import_result_title">Import voltooid</string>
     <string name="stock_import_count_format">%1$d steen/stenen geïmporteerd</string>
+    <string name="stock_import_updated_format">%1$d al aanwezige fiche(s) bijgewerkt</string>
     <string name="stock_import_skipped_format">%1$d regel(s) overgeslagen</string>
     <string name="stock_import_empty_error">Geen geldige gegevens gevonden in dit bestand.</string>
     <string name="stock_import_ok_button">OK</string>

@@ -212,6 +212,146 @@ object AssociationTranslationsEn {
             descriptionCourte = "Two pale blue stones traditionally associated with spiritual connection.",
             descriptionLongue = "Angelite, a pale blue anhydrite whose name evokes lightness, is associated with kyanite to form a pairing traditionally sought in meditative practices focused on inner communication and spiritual connection.",
             conseilUtilisation = "Hold them together in your hands during a silent meditation or a contemplative practice."
+        ),
+        "tourmaline-noire-obsidienne" to AssociationTranslation(
+            titre = "Black Tourmaline & Obsidian",
+            intention = "Reinforced energetic shield",
+            descriptionCourte = "The two most reputed black stones for protection, combined for a reinforced shield.",
+            descriptionLongue = "Black tourmaline, reputed to form a psychic shield against negative energies, is associated with obsidian, a volcanic stone equally renowned for its protective power. Together they form the combination most sought after in crystal healing to guard against negative influences.",
+            conseilUtilisation = "Wear both stones as a bracelet or keep them together at the entrance of your home, especially during periods perceived as trying."
+        ),
+        "oeil-de-tigre-oeil-de-faucon" to AssociationTranslation(
+            titre = "Tiger's Eye & Hawk's Eye",
+            intention = "Clear vision and protection",
+            descriptionCourte = "Two varieties of the same stone, brought together for protection and clairvoyance.",
+            descriptionLongue = "Tiger's eye, a stone of protection against the evil eye and self-confidence, is associated with hawk's eye, its blue-grey variety linked to clairvoyance and gaining perspective. This pairing is traditionally sought to move forward with both protection and discernment.",
+            conseilUtilisation = "Wear them together as a bracelet during a period that calls for both caution and clarity, for example before an important decision."
+        ),
+        "turquoise-oeil-de-taureau" to AssociationTranslation(
+            titre = "Turquoise & Bull's Eye",
+            intention = "Protection against the evil eye",
+            descriptionCourte = "An ancient pairing, specifically sought to guard against the evil eye.",
+            descriptionLongue = "Turquoise, a stone of protection for millennia, is associated with bull's eye, whose very name evokes protective vigilance. This pairing is traditionally worn as an amulet to guard against the evil eye and envious influences.",
+            conseilUtilisation = "Wear both stones as a visible pendant, in keeping with the tradition of the protective amulet."
+        ),
+        "ambre-turquoise" to AssociationTranslation(
+            titre = "Amber & Turquoise",
+            intention = "Protection for children and travellers",
+            descriptionCourte = "Two traditional amulets, one for children, the other for travellers.",
+            descriptionLongue = "Amber, worn as an amulet since antiquity to protect children from the evil eye, is associated with turquoise, a stone of protection for travellers. Together they traditionally accompany periods of family travel.",
+            conseilUtilisation = "Slip them together into a bag or wear them as a necklace before a trip, especially with family."
+        ),
+        "labradorite-tourmaline-noire" to AssociationTranslation(
+            titre = "Labradorite & Black Tourmaline",
+            intention = "Double psychic shield",
+            descriptionCourte = "Two psychic-shield stones, one for the aura, the other against negative energies.",
+            descriptionLongue = "Labradorite, reputed to offer strong energetic protection and act as a psychic shield, is associated with black tourmaline, which likewise forms a shield against negative energies. This pairing is traditionally sought during periods of heightened energetic sensitivity.",
+            conseilUtilisation = "Wear them together on days or in environments perceived as energetically charged."
+        ),
+        "lapis-lazuli-turquoise" to AssociationTranslation(
+            titre = "Lapis Lazuli & Turquoise",
+            intention = "Wisdom and protection",
+            descriptionCourte = "A pairing inherited from ancient Egypt, between wisdom and protection.",
+            descriptionLongue = "Lapis lazuli, a stone of wisdom and truth since ancient Egypt, is associated with turquoise, an equally ancient protective stone, both present in traditional Egyptian jewellery. This pairing is reputed to support clear judgment while protecting the wearer.",
+            conseilUtilisation = "Wear them together as a necklace, in keeping with the tradition of ancient protective jewellery."
+        ),
+        "quartz-fume-hematite" to AssociationTranslation(
+            titre = "Smoky Quartz & Hematite",
+            intention = "Grounding and energetic purification",
+            descriptionCourte = "Two grounding stones, reputed to absorb stress and negative energies.",
+            descriptionLongue = "Smoky quartz, reputed for its grounding properties and its capacity to absorb stress and negative energies, is associated with hematite, a stone of grounding and inner strength. This pairing is traditionally sought to recentre oneself after a turbulent period.",
+            conseilUtilisation = "Hold them in your hands for a few minutes at the end of the day, or wear them as a bracelet during stressful periods."
+        ),
+        "citrine-pyrite" to AssociationTranslation(
+            titre = "Citrine & Pyrite",
+            intention = "Protected abundance",
+            descriptionCourte = "Two solar stones, associated with material success and its protection.",
+            descriptionLongue = "Citrine, a solar stone linked to success and abundance, is associated with pyrite, a stone of protection against negative energies and abundance. This pairing is traditionally sought to support a professional project while protecting it from adverse influences.",
+            conseilUtilisation = "Keep them together on your desk or in your workspace, especially at the launch of a new project."
+        ),
+        "amethyste-labradorite" to AssociationTranslation(
+            titre = "Amethyst & Labradorite",
+            intention = "Protection of sleep and the mind",
+            descriptionCourte = "A pairing reputed for peaceful, protected sleep.",
+            descriptionLongue = "Amethyst, reputed to soothe stress and foster serene sleep, is associated with labradorite, a stone of energetic protection. This pairing is traditionally placed near the bed to support peaceful, protected rest.",
+            conseilUtilisation = "Place them on the nightstand or under the pillow, following the traditional use recommended for amethyst."
+        ),
+        "agate-jaspe" to AssociationTranslation(
+            titre = "Agate & Jasper",
+            intention = "Balance and gentle protection",
+            descriptionCourte = "Two chalcedonies associated with stability and everyday protection.",
+            descriptionLongue = "Agate, associated with emotional balance and a gentle protection worn since antiquity, is combined with jasper, a stone of stability and grounding. This pairing of chalcedonies is traditionally sought for discreet, everyday use.",
+            conseilUtilisation = "Wear them as a bracelet every day, with no particular occasion required."
+        ),
+        "malachite-turquoise" to AssociationTranslation(
+            titre = "Malachite & Turquoise",
+            intention = "Protection of home and travels",
+            descriptionCourte = "Two green and blue stones traditionally protective, one of the home, the other while travelling.",
+            descriptionLongue = "Malachite, a traditionally protective stone, particularly for children and the home, is associated with turquoise, a stone of protection for travellers. This pairing traditionally accompanies both the home and periods of travel.",
+            conseilUtilisation = "Keep the malachite at home and take the turquoise with you when travelling, or wear both together before a house move."
+        ),
+        "oeil-de-tigre-hematite" to AssociationTranslation(
+            titre = "Tiger's Eye & Hematite",
+            intention = "Grounded determination",
+            descriptionCourte = "A pairing to move forward with determination while staying grounded.",
+            descriptionLongue = "Tiger's eye, a stone of determination and protection, is associated with hematite, a stone of grounding and inner strength. This pairing is traditionally sought to get through a difficult period without losing one's footing.",
+            conseilUtilisation = "Wear them as a bracelet during periods that call for both willpower and stability, such as a career change."
+        ),
+        "cornaline-hessonite" to AssociationTranslation(
+            titre = "Carnelian & Hessonite",
+            intention = "Vitality and confidence",
+            descriptionCourte = "Two orange-toned stones, associated with action and self-confidence.",
+            descriptionLongue = "Carnelian, a stone of action reputed to stimulate courage and vitality, is associated with hessonite, traditionally worn to strengthen self-confidence and guard against negative energies. This pairing is traditionally sought before taking the initiative.",
+            conseilUtilisation = "Wear them as a bracelet when launching a project or before speaking up in a way that calls for assurance."
+        ),
+        "aigue-marine-turquoise" to AssociationTranslation(
+            titre = "Aquamarine & Turquoise",
+            intention = "Protection for sailors and travellers",
+            descriptionCourte = "Two stones historically associated with protection at sea and while travelling.",
+            descriptionLongue = "Aquamarine, the sailors' stone par excellence, is associated with turquoise, a stone of protection for travellers. Together they form a pairing traditionally sought before any departure, by sea as on land.",
+            conseilUtilisation = "Take them with you when travelling, as jewellery or simply tucked into a hand luggage bag."
+        ),
+        "obsidienne-grenat-almandin" to AssociationTranslation(
+            titre = "Obsidian & Almandine Garnet",
+            intention = "Strength and protection",
+            descriptionCourte = "An intense pairing, between deep protection and inner strength.",
+            descriptionLongue = "Obsidian, reputed to offer powerful protection by revealing hidden truths, is associated with almandine garnet, a stone of grounding and inner strength. This pairing is traditionally reserved for periods that call for both clarity and endurance.",
+            conseilUtilisation = "Meditate with them together before facing a period perceived as trying, in keeping with the traditional use of dark, intense stones."
+        ),
+        "onyx-tourmaline-noire" to AssociationTranslation(
+            titre = "Onyx & Black Tourmaline",
+            intention = "Double protective grounding",
+            descriptionCourte = "Two black stones brought together for deep, protective grounding.",
+            descriptionLongue = "Onyx, a stone of strength and stability, is associated with black tourmaline, a stone of protection against negative energies. This dark pairing is traditionally sought for deep grounding during periods of marked instability.",
+            conseilUtilisation = "Wear them together as a bracelet during periods of change or pronounced uncertainty."
+        ),
+        "jade-nephrite-jade-jadeite" to AssociationTranslation(
+            titre = "Nephrite Jade & Jadeite Jade",
+            intention = "Wisdom and ancestral protection",
+            descriptionCourte = "The two minerals united under the name jade, associated with protection since time immemorial.",
+            descriptionLongue = "Nephrite jade, a stone of wisdom and protection since ancient China, is associated with jadeite jade, its rarer variety equally reputed to bring luck and protection, particularly for travellers. Bringing the two jades together carries forward a millennia-old tradition of shared protection.",
+            conseilUtilisation = "Wear them together as a bracelet or pendant, in keeping with the Chinese tradition of jade worn for life."
+        ),
+        "rubis-grenat-almandin" to AssociationTranslation(
+            titre = "Ruby & Almandine Garnet",
+            intention = "Courage and vitality",
+            descriptionCourte = "Two red stones, associated with courage and vital force.",
+            descriptionLongue = "Ruby, a stone of passion and courage traditionally associated with protection against negative energies, is associated with almandine garnet, a stone of vital force and endurance. This pairing is traditionally sought to face challenges with courage.",
+            conseilUtilisation = "Wear them as jewellery during a period that calls for courage, for example before an important trial."
+        ),
+        "quartz-tourmaline-cristal-de-roche" to AssociationTranslation(
+            titre = "Tourmalinated Quartz & Rock Crystal",
+            intention = "Protective amplification",
+            descriptionCourte = "Protective quartz combined with amplifying quartz, to reinforce the effect of both.",
+            descriptionLongue = "Tourmalinated quartz, which combines the protective properties of black tourmaline with the clarity of rock crystal, is associated with pure rock crystal, traditionally reputed to amplify the properties of the stones around it. This pairing is sought to reinforce the protective effect of tourmalinated quartz.",
+            conseilUtilisation = "Keep the rock crystal close to the tourmalinated quartz, for example in the same pouch or on the same display stand."
+        ),
+        "jais-hematite" to AssociationTranslation(
+            titre = "Jet & Hematite",
+            intention = "Mourning and protective grounding",
+            descriptionCourte = "Two dark stones traditionally worn during periods of mourning and hardship.",
+            descriptionLongue = "Jet, worn as a mourning and protective amulet for centuries, is associated with hematite, a stone of grounding and inner strength. This pairing is traditionally sought to get through difficult periods with stability.",
+            conseilUtilisation = "Wear them as understated jewellery during periods of mourning or hardship, in keeping with the traditional use of jet."
         )
     )
 }

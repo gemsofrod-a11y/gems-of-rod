@@ -277,6 +277,186 @@ object AssociationsRepository {
             descriptionCourte = "Deux pierres bleu pâle traditionnellement associées à la connexion spirituelle.",
             descriptionLongue = "L'angélite, anhydrite bleu pâle dont le nom évoque la légèreté, est associée à la cyanite pour former une paire traditionnellement recherchée dans les pratiques méditatives axées sur la communication intérieure et la connexion spirituelle.",
             conseilUtilisation = "Les tenir ensemble en main lors d'une méditation silencieuse ou d'une pratique contemplative."
+        ),
+        Association(
+            id = "tourmaline-noire-obsidienne",
+            gemIds = listOf("tourmaline-noire", "obsidienne"),
+            titre = "Tourmaline noire & Obsidienne",
+            intention = "Bouclier énergétique renforcé",
+            descriptionCourte = "Les deux pierres noires les plus réputées en protection, combinées pour un bouclier renforcé.",
+            descriptionLongue = "La tourmaline noire, réputée former un bouclier psychique contre les énergies négatives, est associée à l'obsidienne, pierre volcanique tout aussi réputée pour sa puissance protectrice. Ensemble, elles forment la combinaison la plus recherchée en lithothérapie pour se prémunir des influences négatives.",
+            conseilUtilisation = "Porter les deux pierres en bracelet ou les garder ensemble à l'entrée du domicile, notamment lors de périodes perçues comme éprouvantes."
+        ),
+        Association(
+            id = "oeil-de-tigre-oeil-de-faucon",
+            gemIds = listOf("oeil-de-tigre", "oeil-de-faucon"),
+            titre = "Œil de tigre & Œil de faucon",
+            intention = "Vision claire et protection",
+            descriptionCourte = "Deux variétés de la même pierre, réunies pour la protection et la clairvoyance.",
+            descriptionLongue = "L'œil de tigre, pierre de protection contre le mauvais œil et de confiance en soi, est associé à l'œil de faucon, sa variété bleu-gris liée à la clairvoyance et à la prise de recul. Cette paire est traditionnellement recherchée pour avancer avec à la fois protection et discernement.",
+            conseilUtilisation = "Les porter ensemble en bracelet lors d'une période demandant à la fois prudence et lucidité, par exemple avant une décision importante."
+        ),
+        Association(
+            id = "turquoise-oeil-de-taureau",
+            gemIds = listOf("turquoise", "oeil-de-taureau"),
+            titre = "Turquoise & Œil de taureau",
+            intention = "Protection contre le mauvais œil",
+            descriptionCourte = "Une association ancienne, spécifiquement recherchée pour se prémunir du mauvais œil.",
+            descriptionLongue = "La turquoise, pierre de protection depuis des millénaires, est associée à l'œil de taureau, dont le nom même évoque la vigilance protectrice. Cette paire est traditionnellement portée en amulette pour se prémunir du mauvais œil et des influences envieuses.",
+            conseilUtilisation = "Porter les deux pierres en pendentif visible, dans la continuité de la tradition de l'amulette protectrice."
+        ),
+        Association(
+            id = "ambre-turquoise",
+            gemIds = listOf("ambre", "turquoise"),
+            titre = "Ambre & Turquoise",
+            intention = "Protection des enfants et des voyages",
+            descriptionCourte = "Deux amulettes traditionnelles, l'une pour les enfants, l'autre pour les voyageurs.",
+            descriptionLongue = "L'ambre, porté en amulette depuis l'Antiquité pour protéger les enfants du mauvais œil, est associé à la turquoise, pierre de protection des voyageurs. Ensemble, elles accompagnent traditionnellement les périodes de déplacement en famille.",
+            conseilUtilisation = "Les glisser ensemble dans un bagage ou les porter en collier avant un voyage, notamment en famille."
+        ),
+        Association(
+            id = "labradorite-tourmaline-noire",
+            gemIds = listOf("labradorite", "tourmaline-noire"),
+            titre = "Labradorite & Tourmaline noire",
+            intention = "Double bouclier psychique",
+            descriptionCourte = "Deux pierres de bouclier psychique, l'une pour l'aura, l'autre contre les énergies négatives.",
+            descriptionLongue = "La labradorite, réputée offrir une forte protection énergétique et agir comme un bouclier psychique, est associée à la tourmaline noire, qui forme elle aussi un bouclier contre les énergies négatives. Cette paire est traditionnellement recherchée en période de grande sensibilité énergétique.",
+            conseilUtilisation = "Les porter ensemble lors de journées ou d'environnements perçus comme énergétiquement chargés."
+        ),
+        Association(
+            id = "lapis-lazuli-turquoise",
+            gemIds = listOf("lapis-lazuli", "turquoise"),
+            titre = "Lapis-lazuli & Turquoise",
+            intention = "Sagesse et protection",
+            descriptionCourte = "Une association héritée de l'Égypte antique, entre sagesse et protection.",
+            descriptionLongue = "Le lapis-lazuli, pierre de sagesse et de vérité depuis l'Égypte antique, est associé à la turquoise, pierre de protection tout aussi ancienne, toutes deux présentes dans les parures égyptiennes traditionnelles. Cette paire est réputée soutenir le jugement clair tout en protégeant celui qui la porte.",
+            conseilUtilisation = "Les porter ensemble en collier, dans la continuité de la tradition des parures protectrices antiques."
+        ),
+        Association(
+            id = "quartz-fume-hematite",
+            gemIds = listOf("quartz-fume", "hematite"),
+            titre = "Quartz fumé & Hématite",
+            intention = "Ancrage et purification énergétique",
+            descriptionCourte = "Deux pierres d'ancrage, réputées absorber le stress et les énergies négatives.",
+            descriptionLongue = "Le quartz fumé, réputé pour ses vertus d'ancrage et sa capacité à absorber le stress et les énergies négatives, est associé à l'hématite, pierre d'ancrage et de force intérieure. Cette paire est traditionnellement recherchée pour se recentrer après une période agitée.",
+            conseilUtilisation = "Les tenir en main quelques minutes en fin de journée, ou les porter en bracelet lors de périodes stressantes."
+        ),
+        Association(
+            id = "citrine-pyrite",
+            gemIds = listOf("citrine", "pyrite"),
+            titre = "Citrine & Pyrite",
+            intention = "Abondance protégée",
+            descriptionCourte = "Deux pierres solaires, associées à la réussite matérielle et à sa protection.",
+            descriptionLongue = "La citrine, pierre solaire liée à la réussite et à l'abondance, est associée à la pyrite, pierre de protection contre les énergies négatives et d'abondance. Cette paire est traditionnellement recherchée pour soutenir un projet professionnel tout en le protégeant des influences contraires.",
+            conseilUtilisation = "Les garder ensemble sur son bureau ou dans son espace de travail, notamment au lancement d'un nouveau projet."
+        ),
+        Association(
+            id = "amethyste-labradorite",
+            gemIds = listOf("amethyste", "labradorite"),
+            titre = "Améthyste & Labradorite",
+            intention = "Protection du sommeil et de l'esprit",
+            descriptionCourte = "Une association réputée pour un sommeil paisible et protégé.",
+            descriptionLongue = "L'améthyste, réputée apaiser le stress et favoriser un sommeil serein, est associée à la labradorite, pierre de protection énergétique. Cette paire est traditionnellement placée près du lit pour soutenir un repos paisible et protégé.",
+            conseilUtilisation = "Les poser sur la table de nuit ou sous l'oreiller, selon l'usage traditionnel recommandé pour l'améthyste."
+        ),
+        Association(
+            id = "agate-jaspe",
+            gemIds = listOf("agate", "jaspe"),
+            titre = "Agate & Jaspe",
+            intention = "Équilibre et protection douce",
+            descriptionCourte = "Deux calcédoines associées à la stabilité et à une protection au quotidien.",
+            descriptionLongue = "L'agate, associée à l'équilibre émotionnel et à une protection douce portée depuis l'Antiquité, est combinée au jaspe, pierre de stabilité et d'ancrage. Cette paire de calcédoines est traditionnellement recherchée pour un usage quotidien discret.",
+            conseilUtilisation = "Les porter en bracelet au quotidien, sans occasion particulière requise."
+        ),
+        Association(
+            id = "malachite-turquoise",
+            gemIds = listOf("malachite", "turquoise"),
+            titre = "Malachite & Turquoise",
+            intention = "Protection du foyer et des voyages",
+            descriptionCourte = "Deux pierres vertes et bleues traditionnellement protectrices, l'une du foyer, l'autre en déplacement.",
+            descriptionLongue = "La malachite, pierre traditionnellement protectrice, notamment pour les enfants et le foyer, est associée à la turquoise, pierre de protection des voyageurs. Cette paire accompagne traditionnellement aussi bien la maison que les déplacements.",
+            conseilUtilisation = "Garder la malachite à la maison et emporter la turquoise en voyage, ou porter les deux ensemble avant un déménagement."
+        ),
+        Association(
+            id = "oeil-de-tigre-hematite",
+            gemIds = listOf("oeil-de-tigre", "hematite"),
+            titre = "Œil de tigre & Hématite",
+            intention = "Détermination ancrée",
+            descriptionCourte = "Une association pour avancer avec détermination tout en restant ancré.",
+            descriptionLongue = "L'œil de tigre, pierre de détermination et de protection, est associé à l'hématite, pierre d'ancrage et de force intérieure. Cette paire est traditionnellement recherchée pour traverser une période difficile sans perdre pied.",
+            conseilUtilisation = "Les porter en bracelet lors de périodes demandant à la fois volonté et stabilité, par exemple un changement professionnel."
+        ),
+        Association(
+            id = "cornaline-hessonite",
+            gemIds = listOf("cornaline", "hessonite"),
+            titre = "Cornaline & Hessonite",
+            intention = "Vitalité et confiance",
+            descriptionCourte = "Deux pierres orangées, associées à l'action et à la confiance en soi.",
+            descriptionLongue = "La cornaline, pierre d'action réputée stimuler le courage et la vitalité, est associée à l'hessonite, traditionnellement portée pour renforcer la confiance en soi et se protéger des énergies négatives. Cette paire est traditionnellement recherchée avant une prise d'initiative.",
+            conseilUtilisation = "Les porter en bracelet lors du lancement d'un projet ou d'une prise de parole demandant de l'assurance."
+        ),
+        Association(
+            id = "aigue-marine-turquoise",
+            gemIds = listOf("aigue-marine", "turquoise"),
+            titre = "Aigue-marine & Turquoise",
+            intention = "Protection des marins et voyageurs",
+            descriptionCourte = "Deux pierres historiquement associées à la protection en mer et en voyage.",
+            descriptionLongue = "L'aigue-marine, pierre des marins par excellence, est associée à la turquoise, pierre de protection des voyageurs. Ensemble, elles forment une paire traditionnellement recherchée avant tout départ, en mer comme sur terre.",
+            conseilUtilisation = "Les emporter ensemble en voyage, en bijou ou simplement dans un bagage à main."
+        ),
+        Association(
+            id = "obsidienne-grenat-almandin",
+            gemIds = listOf("obsidienne", "grenat-almandin"),
+            titre = "Obsidienne & Grenat almandin",
+            intention = "Force et protection",
+            descriptionCourte = "Une association intense, entre protection profonde et force intérieure.",
+            descriptionLongue = "L'obsidienne, réputée offrir une protection puissante en révélant les vérités cachées, est associée au grenat almandin, pierre d'ancrage et de force intérieure. Cette paire est traditionnellement réservée aux périodes qui demandent à la fois lucidité et endurance.",
+            conseilUtilisation = "Les méditer ensemble avant d'aborder une période perçue comme éprouvante, en accord avec l'usage traditionnel des pierres sombres et intenses."
+        ),
+        Association(
+            id = "onyx-tourmaline-noire",
+            gemIds = listOf("onyx", "tourmaline-noire"),
+            titre = "Onyx & Tourmaline noire",
+            intention = "Double ancrage protecteur",
+            descriptionCourte = "Deux pierres noires réunies pour un ancrage profond et protecteur.",
+            descriptionLongue = "L'onyx, pierre de force et de stabilité, est associé à la tourmaline noire, pierre de protection contre les énergies négatives. Cette paire sombre est traditionnellement recherchée pour un ancrage profond en période d'instabilité.",
+            conseilUtilisation = "Les porter ensemble en bracelet lors de périodes de changement ou d'incertitude marquée."
+        ),
+        Association(
+            id = "jade-nephrite-jade-jadeite",
+            gemIds = listOf("jade-nephrite", "jade-jadeite"),
+            titre = "Jade néphrite & Jade jadéite",
+            intention = "Sagesse et protection ancestrale",
+            descriptionCourte = "Les deux minéraux réunis sous le nom de jade, associés depuis toujours à la protection.",
+            descriptionLongue = "Le jade néphrite, pierre de sagesse et de protection depuis l'Antiquité chinoise, est associé au jade jadéite, sa variété plus rare tout aussi réputée porter chance et protection, notamment pour les voyageurs. Réunir les deux jades prolonge une tradition millénaire de protection partagée.",
+            conseilUtilisation = "Les porter ensemble en bracelet ou en pendentif, dans la continuité de la tradition chinoise du jade porté à vie."
+        ),
+        Association(
+            id = "rubis-grenat-almandin",
+            gemIds = listOf("rubis", "grenat-almandin"),
+            titre = "Rubis & Grenat almandin",
+            intention = "Courage et vitalité",
+            descriptionCourte = "Deux pierres rouges, associées au courage et à la force vitale.",
+            descriptionLongue = "Le rubis, pierre de passion et de courage traditionnellement associée à la protection contre les énergies négatives, est associé au grenat almandin, pierre de force vitale et d'endurance. Cette paire est traditionnellement recherchée pour affronter les défis avec courage.",
+            conseilUtilisation = "Les porter en bijou lors d'une période demandant du courage, par exemple avant une épreuve importante."
+        ),
+        Association(
+            id = "quartz-tourmaline-cristal-de-roche",
+            gemIds = listOf("quartz-tourmaline", "cristal-de-roche"),
+            titre = "Quartz tourmaliné & Cristal de roche",
+            intention = "Amplification protectrice",
+            descriptionCourte = "Le quartz protecteur combiné au quartz amplificateur, pour renforcer l'effet des deux.",
+            descriptionLongue = "Le quartz tourmaliné, qui associe les vertus protectrices de la tourmaline noire à la clarté du cristal de roche, est associé au cristal de roche pur, traditionnellement réputé amplifier les propriétés des pierres qui l'accompagnent. Cette paire est recherchée pour renforcer l'effet protecteur du quartz tourmaliné.",
+            conseilUtilisation = "Garder le cristal de roche à proximité du quartz tourmaliné, par exemple dans une même pochette ou un même présentoir."
+        ),
+        Association(
+            id = "jais-hematite",
+            gemIds = listOf("jais", "hematite"),
+            titre = "Jais & Hématite",
+            intention = "Deuil et ancrage protecteur",
+            descriptionCourte = "Deux pierres sombres traditionnellement portées dans les périodes de deuil et d'épreuve.",
+            descriptionLongue = "Le jais, porté en amulette de deuil et de protection depuis des siècles, est associé à l'hématite, pierre d'ancrage et de force intérieure. Cette paire est traditionnellement recherchée pour traverser les périodes d'épreuve avec stabilité.",
+            conseilUtilisation = "Les porter en bijou sobre lors des périodes de deuil ou d'épreuve, en accord avec l'usage traditionnel du jais."
         )
     )
 

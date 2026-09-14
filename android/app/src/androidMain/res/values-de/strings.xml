@@ -538,6 +538,7 @@
     <string name="stock_import_button">CSV importieren</string>
     <string name="stock_import_result_title">Import abgeschlossen</string>
     <string name="stock_import_count_format">%1$d Stein(e) importiert</string>
+    <string name="stock_import_updated_format">%1$d bereits vorhandene(r) Eintrag/Einträge aktualisiert</string>
     <string name="stock_import_skipped_format">%1$d Zeile(n) übersprungen</string>
     <string name="stock_import_empty_error">Keine gültigen Daten in dieser Datei gefunden.</string>
     <string name="stock_import_ok_button">OK</string>

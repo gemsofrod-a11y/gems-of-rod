@@ -267,10 +267,13 @@ fun StockListScreen(
             title = { Text(stringResource(R.string.stock_import_result_title)) },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                    if (result.imported == 0 && result.skipped == 0) {
+                    if (result.imported == 0 && result.updated == 0 && result.skipped == 0) {
                         Text(stringResource(R.string.stock_import_empty_error))
                     } else {
                         Text(stringResource(R.string.stock_import_count_format, result.imported))
+                        if (result.updated > 0) {
+                            Text(stringResource(R.string.stock_import_updated_format, result.updated))
+                        }
                         if (result.skipped > 0) {
                             Text(stringResource(R.string.stock_import_skipped_format, result.skipped))
                         }
