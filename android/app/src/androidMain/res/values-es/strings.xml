@@ -664,4 +664,79 @@
     <string name="lapidaire_espece_orientation_label">Orientación: %1$s</string>
     <string name="lapidaire_espece_fragilite_label">Fragilidad: %1$s</string>
     <string name="lapidaire_espece_polissage_label">Pulido: %1$s</string>
+
+    <!-- Compositor de anillos -->
+    <string name="lab_ring_configurator_title">Compositor de anillos</string>
+    <string name="lab_ring_configurator_subtitle">Componga un anillo y obtenga una estimación de precio indicativa.</string>
+    <string name="ring_configurator_intro">Elija la piedra central, el pavé y el metal: la vista previa y la estimación de precio se actualizan en directo. Una herramienta de diseño, no un presupuesto definitivo.</string>
+    <string name="ring_preset_solitaire">Solitario</string>
+    <string name="ring_preset_trilogie">Trilogía</string>
+    <string name="ring_preset_pave">Pavé completo</string>
+    <string name="ring_section_metal_title">Pieza y metal</string>
+    <string name="ring_section_central_title">Piedra central</string>
+    <string name="ring_section_cote_title">Piedras laterales</string>
+    <string name="ring_section_price_title">Estimación</string>
+    <string name="ring_field_metal_label">Montura</string>
+    <string name="ring_field_weight_label">Peso del metal</string>
+    <string name="ring_field_species_label">Especie</string>
+    <string name="ring_field_cut_label">Talla</string>
+    <string name="ring_field_sertissage_label">Engaste</string>
+    <string name="ring_field_diameter_label">Diámetro (mm)</string>
+    <string name="ring_field_length_label">Longitud (mm)</string>
+    <string name="ring_field_width_label">Anchura (mm)</string>
+    <string name="ring_field_orientation_label">Orientación</string>
+    <string name="ring_field_nombre_label">Número por lado</string>
+    <string name="ring_field_espacement_label">Espaciado</string>
+    <string name="ring_field_orientation_offset_label">Orientación</string>
+    <string name="ring_price_disclaimer">Horquilla indicativa (metal, talla y calidad de las piedras) — no sustituye un presupuesto personalizado.</string>
+    <string name="ring_summary_solo">%1$s talla %2$s (engaste %3$s) en %4$s, solitario, sin pavé.</string>
+    <string name="ring_summary_with_cote">%1$s talla %2$s (engaste %3$s) en %4$s, pavé de %5$d %6$s (talla %7$s, engaste %8$s).</string>
+
+    <!-- Compositor de anillos — metales -->
+    <string name="ring_metal_or_jaune">Oro amarillo 18ct</string>
+    <string name="ring_metal_or_blanc">Oro blanco 18ct</string>
+    <string name="ring_metal_or_rose">Oro rosa 18ct</string>
+    <string name="ring_metal_platine">Platino</string>
+
+    <!-- Compositor de anillos — especies -->
+    <string name="ring_species_diamant">Diamante</string>
+    <string name="ring_species_rubis">Rubí</string>
+    <string name="ring_species_emeraude">Esmeralda</string>
+    <string name="ring_species_saphir">Zafiro</string>
+    <string name="ring_species_alexandrite">Alejandrita</string>
+    <string name="ring_species_tanzanite">Tanzanita</string>
+    <string name="ring_species_spinelle">Espinela</string>
+    <string name="ring_species_tourmaline">Turmalina rosa</string>
+    <string name="ring_species_topaze">Topacio imperial</string>
+    <string name="ring_species_grenat">Granate demantoide</string>
+    <string name="ring_species_kunzite">Kunzita</string>
+    <string name="ring_species_morganite">Morganita</string>
+
+    <!-- Compositor de anillos — tallas -->
+    <string name="ring_cut_ronde">Redonda</string>
+    <string name="ring_cut_ovale">Ovalada</string>
+    <string name="ring_cut_poire">Pera</string>
+    <string name="ring_cut_marquise">Marquesa</string>
+    <string name="ring_cut_briolette">Briolette</string>
+    <string name="ring_cut_asscher">Asscher</string>
+    <string name="ring_cut_baguette">Baguette</string>
+    <string name="ring_cut_princesse">Princesa</string>
+    <string name="ring_cut_coussin">Cojín</string>
+    <string name="ring_cut_kite">Kite</string>
+    <string name="ring_cut_coeur">Corazón</string>
+    <string name="ring_cut_trillion">Trillion</string>
+    <string name="ring_cut_emeraude">Talla esmeralda</string>
+    <string name="ring_cut_radiant">Radiante</string>
+
+    <!-- Compositor de anillos — engastes -->
+    <string name="ring_sertissage_griffes">Garras</string>
+    <string name="ring_sertissage_clos">Chatón cerrado</string>
+    <string name="ring_sertissage_demiclos">Medio chatón</string>
+    <string name="ring_sertissage_pave">Pavé</string>
+    <string name="ring_sertissage_rail">Carril</string>
+    <string name="ring_sertissage_ras">A ras</string>
+    <string name="ring_sertissage_brightcut">Bright-cut</string>
+    <string name="ring_sertissage_barrette">Barrita</string>
+    <string name="ring_sertissage_cluster">Racimo</string>
+    <string name="ring_sertissage_grain">Grano</string>
 </resources>

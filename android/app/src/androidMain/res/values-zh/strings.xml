@@ -664,4 +664,79 @@
     <string name="lapidaire_espece_orientation_label">定向：%1$s</string>
     <string name="lapidaire_espece_fragilite_label">脆性：%1$s</string>
     <string name="lapidaire_espece_polissage_label">抛光：%1$s</string>
+
+    <!-- 戒指设计工具 -->
+    <string name="lab_ring_configurator_title">戒指设计工具</string>
+    <string name="lab_ring_configurator_subtitle">设计一枚戒指并获得参考价格估算。</string>
+    <string name="ring_configurator_intro">选择主石、密镶排列与金属：预览和价格估算即时更新。这是一个设计工具，并非最终报价。</string>
+    <string name="ring_preset_solitaire">单钻款</string>
+    <string name="ring_preset_trilogie">三石款</string>
+    <string name="ring_preset_pave">满镶款</string>
+    <string name="ring_section_metal_title">款式与金属</string>
+    <string name="ring_section_central_title">主石</string>
+    <string name="ring_section_cote_title">副石</string>
+    <string name="ring_section_price_title">估算</string>
+    <string name="ring_field_metal_label">镶嵌金属</string>
+    <string name="ring_field_weight_label">金属重量</string>
+    <string name="ring_field_species_label">宝石种类</string>
+    <string name="ring_field_cut_label">切工</string>
+    <string name="ring_field_sertissage_label">镶嵌方式</string>
+    <string name="ring_field_diameter_label">直径（毫米）</string>
+    <string name="ring_field_length_label">长度（毫米）</string>
+    <string name="ring_field_width_label">宽度（毫米）</string>
+    <string name="ring_field_orientation_label">朝向</string>
+    <string name="ring_field_nombre_label">每侧数量</string>
+    <string name="ring_field_espacement_label">间距</string>
+    <string name="ring_field_orientation_offset_label">朝向</string>
+    <string name="ring_price_disclaimer">参考价格区间（取决于金属、切工与宝石品质）——不能替代个性化报价。</string>
+    <string name="ring_summary_solo">%1$s %2$s形切工（%3$s镶嵌）%4$s，单钻款，无副石。</string>
+    <string name="ring_summary_with_cote">%1$s %2$s形切工（%3$s镶嵌）%4$s，两侧共镶 %5$d 颗%6$s（%7$s形切工，%8$s镶嵌）。</string>
+
+    <!-- 戒指设计工具 — 金属 -->
+    <string name="ring_metal_or_jaune">18K黄金</string>
+    <string name="ring_metal_or_blanc">18K白金</string>
+    <string name="ring_metal_or_rose">18K玫瑰金</string>
+    <string name="ring_metal_platine">铂金</string>
+
+    <!-- 戒指设计工具 — 宝石种类 -->
+    <string name="ring_species_diamant">钻石</string>
+    <string name="ring_species_rubis">红宝石</string>
+    <string name="ring_species_emeraude">祖母绿</string>
+    <string name="ring_species_saphir">蓝宝石</string>
+    <string name="ring_species_alexandrite">变石</string>
+    <string name="ring_species_tanzanite">坦桑石</string>
+    <string name="ring_species_spinelle">尖晶石</string>
+    <string name="ring_species_tourmaline">粉红碧玺</string>
+    <string name="ring_species_topaze">帝王托帕石</string>
+    <string name="ring_species_grenat">翠榴石</string>
+    <string name="ring_species_kunzite">紫锂辉石</string>
+    <string name="ring_species_morganite">摩根石</string>
+
+    <!-- 戒指设计工具 — 切工 -->
+    <string name="ring_cut_ronde">圆形</string>
+    <string name="ring_cut_ovale">椭圆形</string>
+    <string name="ring_cut_poire">梨形</string>
+    <string name="ring_cut_marquise">马眼形</string>
+    <string name="ring_cut_briolette">水滴多面形</string>
+    <string name="ring_cut_asscher">阿斯切尔形</string>
+    <string name="ring_cut_baguette">长方阶梯形</string>
+    <string name="ring_cut_princesse">公主方形</string>
+    <string name="ring_cut_coussin">垫形</string>
+    <string name="ring_cut_kite">风筝形</string>
+    <string name="ring_cut_coeur">心形</string>
+    <string name="ring_cut_trillion">三角形</string>
+    <string name="ring_cut_emeraude">祖母绿形</string>
+    <string name="ring_cut_radiant">雷地恩形</string>
+
+    <!-- 戒指设计工具 — 镶嵌方式 -->
+    <string name="ring_sertissage_griffes">爪镶</string>
+    <string name="ring_sertissage_clos">包镶</string>
+    <string name="ring_sertissage_demiclos">半包镶</string>
+    <string name="ring_sertissage_pave">密镶</string>
+    <string name="ring_sertissage_rail">夹镶</string>
+    <string name="ring_sertissage_ras">平镶</string>
+    <string name="ring_sertissage_brightcut">明亮切边镶</string>
+    <string name="ring_sertissage_barrette">条镶</string>
+    <string name="ring_sertissage_cluster">簇镶</string>
+    <string name="ring_sertissage_grain">珠镶</string>
 </resources>
