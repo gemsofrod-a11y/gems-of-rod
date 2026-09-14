@@ -538,6 +538,7 @@
     <string name="stock_import_button">Importa CSV</string>
     <string name="stock_import_result_title">Importazione completata</string>
     <string name="stock_import_count_format">%1$d pietra/e importata/e</string>
+    <string name="stock_import_updated_format">%1$d scheda/e già in stock aggiornata/e</string>
     <string name="stock_import_skipped_format">%1$d riga/righe ignorata/e</string>
     <string name="stock_import_empty_error">Nessun dato valido trovato in questo file.</string>
     <string name="stock_import_ok_button">OK</string>

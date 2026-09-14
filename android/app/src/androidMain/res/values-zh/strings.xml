@@ -538,6 +538,7 @@
     <string name="stock_import_button">导入 CSV</string>
     <string name="stock_import_result_title">导入完成</string>
     <string name="stock_import_count_format">已导入 %1$d 颗宝石</string>
+    <string name="stock_import_updated_format">已更新 %1$d 条已有库存</string>
     <string name="stock_import_skipped_format">已跳过 %1$d 行</string>
     <string name="stock_import_empty_error">此文件中未找到有效数据。</string>
     <string name="stock_import_ok_button">好</string>
