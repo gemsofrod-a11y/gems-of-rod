@@ -350,6 +350,8 @@
     <string name="quiz_question_coquillage_famille">A quale famiglia appartiene la conchiglia %1$s?</string>
     <string name="quiz_question_meteorite_famille">A quale famiglia appartiene il meteorite %1$s?</string>
     <string name="quiz_question_organique_famille">A quale famiglia appartiene la gemma organica %1$s?</string>
+    <string name="quiz_question_ring_cut">Qual è questo taglio di pietra?</string>
+    <string name="quiz_question_ring_sertissage">Qual è questo tipo di incastonatura?</string>
     <string name="quiz_next_button">Domanda successiva</string>
     <string name="quiz_finish_button">Vedi punteggio</string>
     <string name="quiz_score_title">Punteggio: %1$d / %2$d</string>
@@ -739,4 +741,10 @@
     <string name="ring_sertissage_barrette">Barretta</string>
     <string name="ring_sertissage_cluster">Cluster</string>
     <string name="ring_sertissage_grain">Grano</string>
+
+    <!-- Tema di visualizzazione -->
+    <string name="theme_title">Tema di visualizzazione</string>
+    <string name="theme_mode_systeme">Sistema</string>
+    <string name="theme_mode_clair">Chiaro</string>
+    <string name="theme_mode_sombre">Scuro</string>
 </resources>

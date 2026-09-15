@@ -10,6 +10,7 @@ import fr.gemsofrod.encyclopedie.data.RingCutShape
 import fr.gemsofrod.encyclopedie.data.RingGemSpecies
 import fr.gemsofrod.encyclopedie.data.RingMetal
 import fr.gemsofrod.encyclopedie.data.RingSertissage
+import fr.gemsofrod.encyclopedie.data.ThemeMode
 
 /**
  * Résout la ressource de chaîne localisée Android correspondant à
@@ -97,6 +98,10 @@ fun resolveLabelStringRes(labelKey: String): Int = when (labelKey) {
     "ring_sertissage_cluster" -> R.string.ring_sertissage_cluster
     "ring_sertissage_grain" -> R.string.ring_sertissage_grain
 
+    "theme_mode_systeme" -> R.string.theme_mode_systeme
+    "theme_mode_clair" -> R.string.theme_mode_clair
+    "theme_mode_sombre" -> R.string.theme_mode_sombre
+
     else -> error("Clé de libellé inconnue : $labelKey")
 }
 
@@ -109,3 +114,4 @@ val RingMetal.labelRes: Int get() = resolveLabelStringRes(labelKey)
 val RingGemSpecies.labelRes: Int get() = resolveLabelStringRes(labelKey)
 val RingCutShape.labelRes: Int get() = resolveLabelStringRes(labelKey)
 val RingSertissage.labelRes: Int get() = resolveLabelStringRes(labelKey)
+val ThemeMode.labelRes: Int get() = resolveLabelStringRes(labelKey)

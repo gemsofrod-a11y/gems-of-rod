@@ -23,7 +23,7 @@ object StockPhotoStorage {
     fun savePhoto(context: Context, bitmap: Bitmap): String {
         val fileName = "stock_${System.currentTimeMillis()}.jpg"
         FileOutputStream(photoFile(context, fileName)).use { out ->
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 85, out)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 92, out)
         }
         return fileName
     }

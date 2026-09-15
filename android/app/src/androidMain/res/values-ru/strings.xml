@@ -350,6 +350,8 @@
     <string name="quiz_question_coquillage_famille">К какому семейству относится ракушка %1$s?</string>
     <string name="quiz_question_meteorite_famille">К какому семейству относится метеорит %1$s?</string>
     <string name="quiz_question_organique_famille">К какому семейству относится органический самоцвет %1$s?</string>
+    <string name="quiz_question_ring_cut">Какая это огранка камня?</string>
+    <string name="quiz_question_ring_sertissage">Какой это тип закрепки?</string>
     <string name="quiz_next_button">Следующий вопрос</string>
     <string name="quiz_finish_button">Посмотреть результат</string>
     <string name="quiz_score_title">Результат: %1$d / %2$d</string>
@@ -739,4 +741,10 @@
     <string name="ring_sertissage_barrette">Штабик</string>
     <string name="ring_sertissage_cluster">Кластер</string>
     <string name="ring_sertissage_grain">Корнер</string>
+
+    <!-- Тема оформления -->
+    <string name="theme_title">Тема оформления</string>
+    <string name="theme_mode_systeme">Системная</string>
+    <string name="theme_mode_clair">Светлая</string>
+    <string name="theme_mode_sombre">Тёмная</string>
 </resources>

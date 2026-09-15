@@ -1,7 +1,7 @@
 package fr.gemsofrod.encyclopedie.data
 
 /** Type de question posée dans le quiz de révision gemmologique. */
-enum class QuizQuestionType { COULEUR, FAMILLE, RARETE, GLOSSAIRE, FOSSILE_FAMILLE, COQUILLAGE_FAMILLE, METEORITE_FAMILLE, ORGANIQUE_FAMILLE }
+enum class QuizQuestionType { COULEUR, FAMILLE, RARETE, GLOSSAIRE, FOSSILE_FAMILLE, COQUILLAGE_FAMILLE, METEORITE_FAMILLE, ORGANIQUE_FAMILLE, RING_CUT, RING_SERTISSAGE }
 
 /**
  * Une question du quiz. Les champs pertinents dépendent de [type] :
@@ -25,6 +25,13 @@ enum class QuizQuestionType { COULEUR, FAMILLE, RARETE, GLOSSAIRE, FOSSILE_FAMIL
  *   [GemsRepository.organiques]), [choiceKeys] contient des noms de famille
  *   en français (clé canonique de [LabelLocalization]), restreints aux
  *   gemmes organiques.
+ * - [RING_CUT] : [choiceKeys] contient les noms d'enum [RingCutShape.name],
+ *   dont un correspond à [correctIndex] — la taille à illustrer est celle à
+ *   cet index (pas de champ dédié : la question porte sur la forme elle-même,
+ *   pas sur une fiche produit).
+ * - [RING_SERTISSAGE] : [choiceKeys] contient les noms d'enum
+ *   [RingSertissage.name], dont un correspond à [correctIndex] — même
+ *   principe que [RING_CUT], appliqué au sertissage à illustrer.
  */
 data class QuizQuestion(
     val type: QuizQuestionType,
@@ -145,6 +152,24 @@ object QuizEngine {
                 type = QuizQuestionType.GLOSSAIRE,
                 correctIndex = choices.indexOf(correctTermIndex),
                 glossaryChoiceIndices = choices
+            )
+        }
+        QuizQuestionType.RING_CUT -> {
+            val shape = RingCutShape.entries.random()
+            val choices = (RingCutShape.entries.filter { it != shape }.shuffled().take(3) + shape).shuffled()
+            QuizQuestion(
+                type = QuizQuestionType.RING_CUT,
+                correctIndex = choices.indexOf(shape),
+                choiceKeys = choices.map { it.name }
+            )
+        }
+        QuizQuestionType.RING_SERTISSAGE -> {
+            val sertissage = RingSertissage.entries.random()
+            val choices = (RingSertissage.entries.filter { it != sertissage }.shuffled().take(3) + sertissage).shuffled()
+            QuizQuestion(
+                type = QuizQuestionType.RING_SERTISSAGE,
+                correctIndex = choices.indexOf(sertissage),
+                choiceKeys = choices.map { it.name }
             )
         }
     }
