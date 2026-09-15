@@ -218,3 +218,36 @@ Pour traduire un nouveau contenu :
 2. Ajouter le nouveau contenu au même index/position dans chacun des 8 autres blocs (l'ordre suit celui du français, pas un ré-alphabétisation par langue — voir `GemGlossary.kt`).
 3. Réutiliser la terminologie déjà employée ailleurs dans le même fichier pour cette langue (ex. comment « meule », « cabochon », « facettage » sont déjà traduits) plutôt que d'introduire une variante.
 4. Vérifier l'équilibre des parenthèses/accolades et le nombre d'entrées par langue après édition (ex. `grep -c` sur le nom de la classe de données) avant de committer.
+
+---
+
+## Assistant vocal Gmail (usage personnel de Sébastien)
+
+Application distincte de l'agent Python et de l'app encyclopédie : un service
+qui lit, classe et agit sur `gemsofrod@gmail.com`, piloté à la voix depuis le
+téléphone. Deux parties, indépendantes du reste du dépôt :
+
+- `backend/` — service FastAPI avec sa propre connexion Gmail (OAuth, scope
+  `gmail.modify`) et des appels à l'API Anthropic pour classer les emails et
+  répondre aux commandes vocales. Voir `backend/README.md` pour
+  l'installation, l'autorisation OAuth et les endpoints.
+- `android/assistant` — module Android séparé (pas publié sur le Play Store),
+  application Kotlin/Compose distincte de `android/app` (l'encyclopédie).
+  Voix uniquement via les moteurs gratuits du téléphone (reconnaissance
+  vocale Android + `TextToSpeech`), pas de service cloud payant. Voir
+  `android/assistant/README.md`.
+
+Autonomie de l'assistant (ne pas assouplir sans demande explicite de
+Sébastien) :
+- Tri, classement, archivage : automatique.
+- Réponses courtes et récurrentes (accusé de réception, disponibilité,
+  question déjà couverte par les infos connues de la maison) d'un contact
+  non-VIP : réponse générée dans le ton de la maison et **envoyée
+  automatiquement**.
+- Tout le reste (prix, négociation, client VIP, réclamation, ambigu) :
+  réponse seulement *proposée*, jamais envoyée sans validation vocale ou
+  manuelle de Sébastien.
+
+Le pipeline de release Play Store (`android-release.yml`) est scopé à
+`:app` uniquement — `:assistant` n'y participe jamais, même si les deux
+modules cohabitent dans `android/`.

@@ -32,7 +32,12 @@ jobs:
           java-version: "17"
 
       - name: Set up Android SDK
+        # Voir android-build.yml : le paquet legacy "tools" (défaut de
+        # l'action) n'existe plus dans le dépôt Google et fait échouer
+        # sdkmanager. Seul platform-tools est nécessaire ici.
         uses: android-actions/setup-android@v3
+        with:
+          packages: "platform-tools"
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
@@ -43,12 +48,15 @@ jobs:
         run: echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > gems-of-rod-upload.jks
 
       - name: Build App Bundle signé (release)
+        # Scopé à :app : le module :assistant (assistant vocal Gmail, usage
+        # personnel) n'est pas publié sur le Play Store et n'a pas de config
+        # de signature — il ne doit jamais entrer dans ce pipeline de release.
         env:
           KEYSTORE_FILE: gems-of-rod-upload.jks
           STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-        run: ./gradlew bundleRelease --no-daemon
+        run: ./gradlew :app:bundleRelease --no-daemon
 
       - name: Nettoie le keystore du runner
         if: always()
