@@ -7,21 +7,27 @@ boîte `gemsofrod@gmail.com`, piloté depuis l'app Android `android/assistant`.
 
 - **Triage automatique** (`app/triage.py`, lancé en boucle par
   `scripts/run_triage_loop.py`) : chaque nouvel email est classé par Claude en
-  4 catégories et traité selon l'autonomie choisie :
+  5 catégories et traité selon l'autonomie choisie :
   - `ignore` → marqué lu ou spam, rien d'autre.
-  - `auto_triage` → étiqueté et archivé (newsletters, confirmations
-    automatiques), aucune réponse.
+  - `auto_delete` → **newsletters et publicités** : désabonnement tenté via
+    l'en-tête Gmail `List-Unsubscribe` (best-effort — certains expéditeurs
+    exigent une confirmation manuelle) puis **suppression** (corbeille,
+    récupérable 30 jours comme dans Gmail).
+  - `auto_triage` → notifications légitimes qui ne sont pas des
+    newsletters/pubs (confirmations de commande, accusés administratifs) :
+    étiquetées et archivées, jamais supprimées, aucune réponse.
   - `auto_reply` → réponse courte générée dans le ton Gems of Rod et
     **envoyée automatiquement** (accusés de réception, disponibilités,
     questions simples et récurrentes d'un contact non-VIP).
-  - `needs_confirmation` → tout ce qui touche à un prix, une négociation, un
-    client VIP ou reste ambigu. Une réponse est *proposée* mais **jamais
-    envoyée** sans validation dans l'app (à la voix ou via les boutons de
-    l'écran « En attente »).
+  - `needs_confirmation` → tout ce qui touche à un prix (y compris une
+    demande de devis), une prise de rendez-vous, une négociation, un client
+    VIP ou reste ambigu. Une réponse est *proposée* mais **jamais envoyée**
+    sans validation dans l'app (à la voix ou via les boutons de l'écran
+    « En attente »).
 - **Commandes vocales** (`app/voice_agent.py`) : l'app envoie le texte transcrit
   par la reconnaissance vocale du téléphone, l'agent Claude peut chercher,
-  lire, étiqueter, archiver ou répondre à un email, ou vous présenter les
-  emails en attente pour que vous décidiez à voix haute.
+  lire, étiqueter, archiver, supprimer/désabonner ou répondre à un email, ou
+  vous présenter les emails en attente pour que vous décidiez à voix haute.
 
 Toute action (automatique ou vocale) est journalisée dans `var/assistant.db`
 (SQLite) et dans `data/logs/voice_assistant.log` côté dépôt.
@@ -53,7 +59,9 @@ cp .env.example .env   # puis renseignez ANTHROPIC_API_KEY et ASSISTANT_API_TOKE
    automatiquement ensuite.
 
 Scope demandé : `gmail.modify` uniquement (lecture, envoi, étiquettes,
-archivage — pas de suppression définitive possible).
+archivage, corbeille — jamais de suppression définitive/irréversible : un
+message mis à la corbeille par l'assistant reste récupérable 30 jours,
+comme dans l'interface Gmail).
 
 ## Lancer le service
 
