@@ -83,6 +83,30 @@ TOOLS: list[dict] = [
         },
     },
     {
+        "name": "trash_email",
+        "description": "Met un email à la corbeille (récupérable 30 jours, comme dans "
+                       "Gmail). À utiliser pour supprimer une newsletter, une publicité, "
+                       "ou tout email que Sébastien demande explicitement de supprimer.",
+        "input_schema": {
+            "type": "object",
+            "properties": {"message_id": {"type": "string"}},
+            "required": ["message_id"],
+        },
+    },
+    {
+        "name": "unsubscribe_email",
+        "description": "Tente de se désabonner de l'expéditeur d'un email (newsletter) via "
+                       "son en-tête List-Unsubscribe. Best-effort : certains expéditeurs "
+                       "exigent une confirmation manuelle que ce n'est pas possible de "
+                       "franchir automatiquement, le résultat le précise. À combiner avec "
+                       "trash_email si Sébastien veut aussi supprimer l'email.",
+        "input_schema": {
+            "type": "object",
+            "properties": {"message_id": {"type": "string"}},
+            "required": ["message_id"],
+        },
+    },
+    {
         "name": "list_pending_confirmations",
         "description": "Liste les emails complexes en attente d'une décision de Sébastien "
                        "(négociation, VIP, réclamation, ambigu), avec la réponse suggérée.",
@@ -120,14 +144,16 @@ depuis son téléphone et tes réponses sont lues à voix haute : réponds en fr
 phrases courtes et naturelles, sans markdown, sans listes à puces.
 
 Règles d'autonomie :
-- Tâches simples (chercher, lire, classer, étiqueter, archiver un email, ou envoyer une \
-réponse quand Sébastien te donne une instruction claire et explicite) : agis directement.
-- Pour tout email complexe (négociation, prix, client VIP, réclamation, sujet sensible), ne \
-décide jamais seul : utilise list_pending_confirmations pour les lui présenter et \
-resolve_pending seulement après qu'il a donné sa décision à voix haute.
+- Tâches simples (chercher, lire, classer, étiqueter, archiver un email, supprimer/désabonner \
+une newsletter ou une publicité, ou envoyer une réponse quand Sébastien te donne une \
+instruction claire et explicite) : agis directement.
+- Pour tout ce qui touche à un prix ou une demande de devis, une prise de rendez-vous, un \
+client VIP, une réclamation ou un sujet sensible, ne décide jamais seul : utilise \
+list_pending_confirmations pour les lui présenter et resolve_pending seulement après qu'il a \
+donné sa décision à voix haute.
 - Si une demande est ambiguë, pose une question courte avant d'agir plutôt que de deviner.
 - Confirme toujours brièvement ce que tu viens de faire (« C'est fait, j'ai archivé le mail \
-de... »).
+de... », « Désabonné et supprimé. »).
 """
 
 
@@ -162,6 +188,14 @@ def _dispatch(name: str, tool_input: dict) -> str:
             gmail_client.mark_spam(tool_input["message_id"])
             db.log_action(tool_input["message_id"], "voice_spam", "")
             return "Email marqué comme spam."
+        if name == "trash_email":
+            gmail_client.trash_message(tool_input["message_id"])
+            db.log_action(tool_input["message_id"], "voice_trash", "")
+            return "Email mis à la corbeille."
+        if name == "unsubscribe_email":
+            result = gmail_client.unsubscribe(tool_input["message_id"])
+            db.log_action(tool_input["message_id"], "voice_unsubscribe", result.get("detail", ""))
+            return str(result)
         if name == "list_pending_confirmations":
             return str(db.list_pending())
         if name == "resolve_pending":

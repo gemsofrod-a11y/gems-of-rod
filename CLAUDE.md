@@ -238,15 +238,23 @@ téléphone. Deux parties, indépendantes du reste du dépôt :
   `android/assistant/README.md`.
 
 Autonomie de l'assistant (ne pas assouplir sans demande explicite de
-Sébastien) :
-- Tri, classement, archivage : automatique.
+Sébastien — dernière extension demandée le 15/09/2026, voir historique) :
+- Newsletters et publicités : **désabonnement automatique** (via l'en-tête
+  Gmail `List-Unsubscribe`, best-effort — certains expéditeurs exigent une
+  confirmation manuelle que l'automatisation ne peut pas franchir) puis
+  **suppression** (corbeille, récupérable 30 jours comme dans Gmail — jamais
+  un simple archivage pour ces emails-là).
+- Notifications légitimes d'un service réellement utilisé (confirmation de
+  commande, accusé administratif) qui ne sont pas des newsletters/pubs :
+  tri, étiquetage, archivage automatique — jamais supprimées.
 - Réponses courtes et récurrentes (accusé de réception, disponibilité,
   question déjà couverte par les infos connues de la maison) d'un contact
   non-VIP : réponse générée dans le ton de la maison et **envoyée
   automatiquement**.
-- Tout le reste (prix, négociation, client VIP, réclamation, ambigu) :
-  réponse seulement *proposée*, jamais envoyée sans validation vocale ou
-  manuelle de Sébastien.
+- Tout le reste — **y compris une demande de devis et une prise de
+  rendez-vous** — plus le prix, la négociation, un client VIP, une
+  réclamation, ou tout email ambigu : réponse seulement *proposée*, jamais
+  envoyée sans validation vocale ou manuelle de Sébastien.
 
 Le pipeline de release Play Store (`android-release.yml`) est scopé à
 `:app` uniquement — `:assistant` n'y participe jamais, même si les deux

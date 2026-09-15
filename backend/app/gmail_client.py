@@ -1,12 +1,17 @@
 """Client Gmail : authentification OAuth (voir scripts/gmail_oauth_setup.py) et
-actions (lecture, réponse, archivage, étiquetage, spam) via l'API Gmail officielle.
+actions (lecture, réponse, archivage, étiquetage, spam, corbeille, désabonnement)
+via l'API Gmail officielle.
 
 Scope unique utilisé : gmail.modify (lecture, envoi, gestion des libellés,
-archivage/corbeille — pas de suppression définitive possible avec ce scope).
+archivage/corbeille — pas de suppression définitive/irréversible possible avec
+ce scope : un message mis à la corbeille reste récupérable 30 jours, comme
+dans l'interface Gmail).
 """
 import base64
+import re
 from email.mime.text import MIMEText
 
+import requests
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
@@ -71,6 +76,8 @@ def parse_message(raw: dict) -> dict:
         "snippet": raw.get("snippet", ""),
         "body_text": _extract_body_text(raw.get("payload", {})),
         "labels": raw.get("labelIds", []),
+        "list_unsubscribe": _header(headers, "List-Unsubscribe"),
+        "list_unsubscribe_post": _header(headers, "List-Unsubscribe-Post"),
     }
 
 
@@ -145,6 +152,80 @@ def mark_spam(message_id: str) -> None:
     get_service().users().messages().modify(
         userId="me", id=message_id, body={"addLabelIds": ["SPAM"], "removeLabelIds": ["INBOX"]}
     ).execute()
+
+
+def trash_message(message_id: str) -> None:
+    get_service().users().messages().trash(userId="me", id=message_id).execute()
+
+
+_LIST_UNSUB_ENTRY = re.compile(r"<([^>]+)>")
+
+
+def _parse_list_unsubscribe(header_value: str) -> list[str]:
+    return _LIST_UNSUB_ENTRY.findall(header_value or "")
+
+
+def unsubscribe(message_id: str) -> dict:
+    """Tente de se désabonner d'un email via son en-tête List-Unsubscribe
+    (RFC 8058 : POST one-click quand disponible, sinon GET, sinon mailto:).
+    Best-effort : de nombreux expéditeurs exigent une confirmation manuelle
+    que cette méthode ne peut pas franchir ; le résultat le signale.
+    """
+    original = get_message(message_id)
+    candidates = _parse_list_unsubscribe(original.get("list_unsubscribe", ""))
+    if not candidates:
+        return {"attempted": False, "method": "none", "detail": "Aucun en-tête List-Unsubscribe."}
+
+    https_links = [c for c in candidates if c.lower().startswith(("http://", "https://"))]
+    mailto_links = [c for c in candidates if c.lower().startswith("mailto:")]
+    one_click = "one-click" in original.get("list_unsubscribe_post", "").lower()
+
+    if https_links and one_click:
+        url = https_links[0]
+        try:
+            resp = requests.post(
+                url,
+                data={"List-Unsubscribe": "One-Click"},
+                timeout=10,
+            )
+            return {
+                "attempted": True,
+                "method": "one-click",
+                "success": resp.ok,
+                "detail": f"POST {url} -> {resp.status_code}",
+            }
+        except requests.RequestException as e:
+            return {"attempted": True, "method": "one-click", "success": False, "detail": str(e)}
+
+    if https_links:
+        url = https_links[0]
+        try:
+            resp = requests.get(url, timeout=10)
+            return {
+                "attempted": True,
+                "method": "get",
+                "success": resp.ok,
+                "detail": f"GET {url} -> {resp.status_code} (peut nécessiter une confirmation manuelle)",
+            }
+        except requests.RequestException as e:
+            return {"attempted": True, "method": "get", "success": False, "detail": str(e)}
+
+    if mailto_links:
+        mailto = mailto_links[0][len("mailto:"):]
+        to_addr, _, query = mailto.partition("?")
+        subject = "unsubscribe"
+        for part in query.split("&"):
+            key, _, value = part.partition("=")
+            if key.lower() == "subject" and value:
+                subject = requests.utils.unquote(value)
+        msg = MIMEText("", _charset="utf-8")
+        msg["To"] = to_addr
+        msg["Subject"] = subject
+        raw = base64.urlsafe_b64encode(msg.as_bytes()).decode("utf-8")
+        get_service().users().messages().send(userId="me", body={"raw": raw}).execute()
+        return {"attempted": True, "method": "mailto", "success": True, "detail": f"Email envoyé à {to_addr}"}
+
+    return {"attempted": False, "method": "none", "detail": "Aucune méthode de désabonnement exploitable."}
 
 
 def _build_reply_mime(original: dict, body_text: str) -> dict:
