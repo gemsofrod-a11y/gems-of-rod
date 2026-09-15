@@ -47,6 +47,10 @@ import fr.gemsofrod.encyclopedie.data.MeteoritesRepository
 import fr.gemsofrod.encyclopedie.data.QuizEngine
 import fr.gemsofrod.encyclopedie.data.QuizQuestion
 import fr.gemsofrod.encyclopedie.data.QuizQuestionType
+import fr.gemsofrod.encyclopedie.data.RingCutShape
+import fr.gemsofrod.encyclopedie.data.RingSertissage
+import fr.gemsofrod.encyclopedie.ui.components.RingCutPreview
+import fr.gemsofrod.encyclopedie.ui.components.RingSertissagePreview
 import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
@@ -177,6 +181,26 @@ private fun QuizQuestionContent(
             )
         }
     }
+    if (question.type == QuizQuestionType.RING_CUT) {
+        val shape = RingCutShape.valueOf(question.choiceKeys[question.correctIndex])
+        Card(
+            shape = RoundedCornerShape(14.dp),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            RingCutPreview(shape = shape, modifier = Modifier.padding(16.dp))
+        }
+    }
+    if (question.type == QuizQuestionType.RING_SERTISSAGE) {
+        val sertissage = RingSertissage.valueOf(question.choiceKeys[question.correctIndex])
+        Card(
+            shape = RoundedCornerShape(14.dp),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            RingSertissagePreview(sertissage = sertissage, modifier = Modifier.padding(16.dp))
+        }
+    }
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         val choiceCount = if (question.type == QuizQuestionType.GLOSSAIRE) {
             question.glossaryChoiceIndices.size
@@ -299,6 +323,8 @@ private fun questionPrompt(question: QuizQuestion): String = when (question.type
         val gem = GemsRepository.byId(question.gemId.orEmpty())?.localized()
         stringResource(R.string.quiz_question_organique_famille, gem?.nom.orEmpty())
     }
+    QuizQuestionType.RING_CUT -> stringResource(R.string.quiz_question_ring_cut)
+    QuizQuestionType.RING_SERTISSAGE -> stringResource(R.string.quiz_question_ring_sertissage)
 }
 
 @Composable
@@ -321,4 +347,6 @@ private fun choiceLabel(question: QuizQuestion, index: Int): String = when (ques
     QuizQuestionType.COQUILLAGE_FAMILLE -> stringResource(CoquillageFamille.valueOf(question.choiceKeys[index]).labelRes)
     QuizQuestionType.METEORITE_FAMILLE -> stringResource(MeteoriteFamille.valueOf(question.choiceKeys[index]).labelRes)
     QuizQuestionType.ORGANIQUE_FAMILLE -> localizedLabel(question.choiceKeys[index])
+    QuizQuestionType.RING_CUT -> stringResource(RingCutShape.valueOf(question.choiceKeys[index]).labelRes)
+    QuizQuestionType.RING_SERTISSAGE -> stringResource(RingSertissage.valueOf(question.choiceKeys[index]).labelRes)
 }

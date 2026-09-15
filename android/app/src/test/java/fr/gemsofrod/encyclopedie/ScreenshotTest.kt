@@ -73,6 +73,7 @@ class ScreenshotTest {
             onFamillesClick = {},
             onLithotherapieClick = {},
             onLanguageClick = {},
+            onThemeClick = {},
             onFavoritesClick = {},
             onMeteoritesClick = {},
             onFossilesClick = {},

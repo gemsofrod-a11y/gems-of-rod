@@ -3,6 +3,7 @@ package fr.gemsofrod.encyclopedie.ui.components
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -16,6 +17,7 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import fr.gemsofrod.encyclopedie.data.RingConfiguration
+import fr.gemsofrod.encyclopedie.data.RingCutShape
 import fr.gemsofrod.encyclopedie.data.RingSertissage
 import kotlin.math.cos
 import kotlin.math.min
@@ -89,6 +91,50 @@ fun RingIllustrationCanvas(config: RingConfiguration, modifier: Modifier = Modif
                 }
             }
         }
+    }
+}
+
+/**
+ * Aperçu isolé d'une seule taille de pierre, sans jonc ni sertissage —
+ * utilisé par le quiz pour illustrer « Quelle est cette taille de
+ * pierre ? ». Même fonction de dessin ([drawStoneShape]) que la pierre
+ * centrale du configurateur, sur un fond neutre.
+ */
+@Composable
+fun RingCutPreview(shape: RingCutShape, modifier: Modifier = Modifier) {
+    val stoneColor = MaterialTheme.colorScheme.primary
+    Canvas(modifier = modifier.fillMaxWidth().aspectRatio(1.4f)) {
+        val widthPx = size.width * 0.5f
+        val heightPx = size.height * 0.62f
+        val rect = Rect(
+            size.width / 2f - widthPx / 2f,
+            size.height / 2f - heightPx / 2f,
+            size.width / 2f + widthPx / 2f,
+            size.height / 2f + heightPx / 2f
+        )
+        drawStoneShape(shape, rect, SolidColor(stoneColor), rotationDeg = 0f)
+    }
+}
+
+/**
+ * Aperçu isolé d'un type de sertissage sur une taille ronde fixe (pour
+ * ne pas ajouter une variable de forme à la question) — utilisé par le
+ * quiz pour illustrer « Quel est ce type de sertissage ? ».
+ */
+@Composable
+fun RingSertissagePreview(sertissage: RingSertissage, modifier: Modifier = Modifier) {
+    val stoneColor = MaterialTheme.colorScheme.primary
+    val metalColor = MaterialTheme.colorScheme.onSurfaceVariant
+    Canvas(modifier = modifier.fillMaxWidth().aspectRatio(1.4f)) {
+        val widthPx = size.width * 0.4f
+        val rect = Rect(
+            size.width / 2f - widthPx / 2f,
+            size.height / 2f - widthPx / 2f,
+            size.width / 2f + widthPx / 2f,
+            size.height / 2f + widthPx / 2f
+        )
+        drawStoneShape(RingCutShape.RONDE, rect, SolidColor(stoneColor), rotationDeg = 0f)
+        drawSertissage(sertissage, rect, metalColor)
     }
 }
 

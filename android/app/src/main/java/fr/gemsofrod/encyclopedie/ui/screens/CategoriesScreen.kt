@@ -28,6 +28,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Brightness6
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.Favorite
@@ -78,6 +79,7 @@ fun HomeScreen(
     onFamillesClick: () -> Unit,
     onLithotherapieClick: () -> Unit,
     onLanguageClick: () -> Unit,
+    onThemeClick: () -> Unit,
     onFavoritesClick: () -> Unit,
     onMeteoritesClick: () -> Unit,
     onFossilesClick: () -> Unit,
@@ -104,6 +106,9 @@ fun HomeScreen(
                         Icon(Icons.Filled.Storefront, contentDescription = stringResource(R.string.home_shop_title))
                     }
                     LanguageButton(flagEmoji = currentLanguage.flagEmoji, onClick = onLanguageClick)
+                    IconButton(onClick = onThemeClick) {
+                        Icon(Icons.Filled.Brightness6, contentDescription = stringResource(R.string.theme_title))
+                    }
                     IconButton(onClick = onSearchClick) {
                         Icon(Icons.Filled.Search, contentDescription = stringResource(R.string.global_search_title))
                     }

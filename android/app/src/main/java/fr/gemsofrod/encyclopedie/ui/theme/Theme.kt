@@ -6,6 +6,8 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import fr.gemsofrod.encyclopedie.data.ThemeMode
+import fr.gemsofrod.encyclopedie.data.ThemeRepository
 
 private val GorDarkColors = darkColorScheme(
     primary = GorGold,
@@ -39,9 +41,13 @@ private val GorLightColors = lightColorScheme(
 
 @Composable
 fun GemsEncyclopedieTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
+    val darkTheme = when (ThemeRepository.mode) {
+        ThemeMode.SYSTEME -> isSystemInDarkTheme()
+        ThemeMode.CLAIR -> false
+        ThemeMode.SOMBRE -> true
+    }
     val colors = if (darkTheme) GorDarkColors else GorLightColors
     MaterialTheme(
         colorScheme = colors,

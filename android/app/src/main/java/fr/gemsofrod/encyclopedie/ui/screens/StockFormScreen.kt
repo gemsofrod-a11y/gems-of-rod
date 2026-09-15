@@ -422,7 +422,7 @@ private fun StockField(
     )
 }
 
-private const val MAX_STOCK_PHOTO_DIMENSION = 1600
+private const val MAX_STOCK_PHOTO_DIMENSION = 2400
 
 /** Décode et sous-échantillonne la photo choisie, corrige l'orientation EXIF — même logique que le certificat. */
 private fun decodeSampledStockPhoto(context: Context, uri: Uri): Bitmap? {

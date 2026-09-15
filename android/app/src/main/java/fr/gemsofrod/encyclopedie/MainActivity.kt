@@ -20,6 +20,7 @@ import fr.gemsofrod.encyclopedie.data.LanguageRepository
 import fr.gemsofrod.encyclopedie.data.ReflectivityCalibrationRepository
 import fr.gemsofrod.encyclopedie.data.StockRepository
 import fr.gemsofrod.encyclopedie.data.SupplierRepository
+import fr.gemsofrod.encyclopedie.data.ThemeRepository
 import fr.gemsofrod.encyclopedie.ui.navigation.GemsNavGraph
 import fr.gemsofrod.encyclopedie.ui.theme.GemsEncyclopedieTheme
 import fr.gemsofrod.encyclopedie.widget.GemOfDayWidgetProvider
@@ -38,6 +39,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
+        ThemeRepository.init(this)
         FavoritesRepository.init(this)
         AchievementsRepository.init(this)
         LabNotebookRepository.init(this)

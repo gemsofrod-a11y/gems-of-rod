@@ -93,6 +93,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.RochesMeresScreen
 import fr.gemsofrod.encyclopedie.ui.screens.SupplierDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.SupplierFormScreen
 import fr.gemsofrod.encyclopedie.ui.screens.SupplierListScreen
+import fr.gemsofrod.encyclopedie.ui.screens.ThemeScreen
 import fr.gemsofrod.encyclopedie.ui.screens.TreatmentsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.BuyingGuidesScreen
 import fr.gemsofrod.encyclopedie.ui.screens.MineralFormationScreen
@@ -135,6 +136,7 @@ private object Routes {
     const val ASSOCIATIONS_LIST = "associations_list"
     const val ASSOCIATION_DETAIL = "association/{associationId}"
     const val LANGUAGE = "language"
+    const val THEME = "theme"
     const val METEORITES = "meteorites"
     const val METEORITE_CLASSIFICATION = "meteorite_classification"
     const val METEORITE_COMPARISON = "meteorite_comparison"
@@ -282,6 +284,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onFamillesClick = { navController.navigate(Routes.FAMILLES_LIST) },
                 onLithotherapieClick = { navController.navigate(Routes.LITHOTHERAPIE_MENU) },
                 onLanguageClick = { navController.navigate(Routes.LANGUAGE) },
+                onThemeClick = { navController.navigate(Routes.THEME) },
                 onFavoritesClick = { navController.navigate(Routes.FAVORITES) },
                 onMeteoritesClick = { navController.navigate(Routes.METEORITES) },
                 onFossilesClick = { navController.navigate(Routes.FOSSILES) },
@@ -601,6 +604,9 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onBackClick = { navController.popBackStack() },
                 onLanguageSelected = { navController.popBackStack(Routes.HOME, false) }
             )
+        }
+        composable(Routes.THEME) {
+            ThemeScreen(onBackClick = { navController.popBackStack() })
         }
         composable(Routes.CATEGORIES) {
             GemmologieMenuScreen(
