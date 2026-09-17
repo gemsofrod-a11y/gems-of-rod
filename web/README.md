@@ -80,10 +80,9 @@ faire partie de la **sauvegarde régulière** du serveur (voir ci-dessous).
 Cette application a un état qui doit persister sur disque : la base SQLite
 (`prisma/dev.db`) et les photos (`data/uploads/`). Deux options :
 
-1. **Recommandé pour démarrer : un serveur avec disque persistant**
-   (VPS, Docker sur Railway/Render/Fly.io, etc.), en gardant SQLite. Simple,
-   pas de service tiers à payer. Sauvegardez régulièrement `prisma/dev.db`
-   et `data/uploads/`.
+1. **Recommandé pour démarrer : un VPS avec Docker** (voir ci-dessous), en
+   gardant SQLite. Simple, pas de service tiers à payer. Sauvegardez
+   régulièrement le volume Docker `app-data` (base + photos).
 2. **Plateforme serverless (Vercel, Netlify...)** : le système de fichiers
    n'y est pas persistant entre les requêtes. Il faut alors :
    - passer `DATABASE_URL` sur une base Postgres managée (Neon, Supabase,
@@ -91,6 +90,56 @@ Cette application a un état qui doit persister sur disque : la base SQLite
      `"postgresql"` dans `prisma/schema.prisma` ;
    - envoyer les photos vers un stockage objet (S3, Cloudinary...) au lieu
      de `data/uploads/`, en adaptant `src/lib/uploads.ts`.
+
+### VPS avec Docker (recommandé)
+
+Un `Dockerfile`, `docker-compose.yml` et `Caddyfile` sont fournis à la
+racine du dépôt. Caddy sert de reverse proxy et obtient automatiquement un
+certificat HTTPS (Let's Encrypt) pour votre domaine.
+
+1. **Créer un serveur.** Par exemple chez [Hetzner Cloud](https://www.hetzner.com/cloud/)
+   (~4-5 €/mois, image Ubuntu 24.04 — le plus petit plan CX22 suffit
+   largement) ou une alternative française comme [OVH](https://www.ovhcloud.com/fr/vps/).
+   Une fois créé, notez son adresse IP.
+2. **Pointer le domaine.** Dans la zone DNS de `gemsofrod.com` (ou
+   `gems-of-rod.fr`), créez un enregistrement `A` (et un pour `www`) vers
+   l'adresse IP du serveur.
+3. **Installer Docker** sur le serveur (en SSH) :
+   ```bash
+   curl -fsSL https://get.docker.com | sh
+   ```
+4. **Récupérer le code** sur le serveur :
+   ```bash
+   git clone <url-du-dépôt> gems-of-rod
+   cd gems-of-rod
+   ```
+5. **Configurer l'environnement** :
+   ```bash
+   cp .env.production.example .env
+   nano .env   # renseigner DOMAIN, DATABASE_URL, AUTH_SECRET (openssl rand -base64 32), etc.
+   ```
+6. **Démarrer** :
+   ```bash
+   docker compose up -d --build
+   ```
+   Caddy obtient le certificat HTTPS automatiquement dès que le DNS pointe
+   correctement vers le serveur (ports 80/443 ouverts).
+7. **Créer le premier compte admin + importer le catalogue** (une seule fois) :
+   ```bash
+   docker compose exec web npm run db:seed
+   ```
+
+Pour mettre à jour après un nouveau `git pull` :
+
+```bash
+git pull
+docker compose up -d --build
+```
+
+Les migrations (`prisma migrate deploy`) s'appliquent automatiquement à
+chaque démarrage du conteneur. La base SQLite et les photos vivent dans le
+volume Docker `app-data`, qui survit aux reconstructions de l'image —
+pensez à le sauvegarder régulièrement (`docker run --rm -v gems-of-rod_app-data:/data -v $(pwd):/backup alpine tar czf /backup/backup.tar.gz /data`).
 
 ### Netlify
 

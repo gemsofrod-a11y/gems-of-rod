@@ -1,0 +1,35 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      # Persistance de la base SQLite et des photos uploadées entre les
+      # redéploiements. Ne monte que web/data/ (pas prisma/), pour que les
+      # futures migrations ajoutées au code soient bien prises dans l'image
+      # à chaque déploiement.
+      - app-data:/app/web/data
+    expose:
+      - "3000"
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    environment:
+      - DOMAIN=${DOMAIN}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      - web
+
+volumes:
+  app-data:
+  caddy-data:
+  caddy-config:
