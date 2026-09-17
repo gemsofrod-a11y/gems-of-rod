@@ -2,8 +2,6 @@
 **/.next
 **/.git
 web/data/uploads
-web/prisma/dev.db
-web/prisma/dev.db-journal
 web/.env
 web/.env.local
 android

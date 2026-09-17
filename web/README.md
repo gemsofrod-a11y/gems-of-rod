@@ -38,11 +38,20 @@ Deux rôles :
 
 ## Démarrage local
 
+Nécessite une base Postgres. Le plus simple : démarrer uniquement le
+service Postgres du `docker-compose.yml` à la racine du dépôt (pas besoin
+de lancer toute l'app dans Docker pour développer) :
+
 ```bash
+# Depuis la racine du dépôt, une fois :
+cp .env.production.example .env   # POSTGRES_PASSWORD peut rester "change-me" en local
+docker compose up -d postgres
+
+# Depuis web/ :
 npm install
-cp .env.example .env.local
-npx prisma migrate dev   # crée prisma/dev.db (SQLite) et applique le schéma
-npm run db:seed          # crée le premier compte admin + importe le catalogue existant
+cp .env.example .env.local        # DATABASE_URL y pointe déjà vers ce Postgres local
+npx prisma migrate dev            # applique le schéma
+npm run db:seed                   # crée le premier compte admin + importe le catalogue existant
 npm run dev
 ```
 
@@ -61,8 +70,8 @@ fichier JSON.
 
 Voir `.env.example`. En particulier :
 
-- `DATABASE_URL` — SQLite en local (`file:./dev.db`). En production, une
-  base Postgres est recommandée (voir « Déploiement »).
+- `DATABASE_URL` — connexion Postgres (locale via Docker en développement,
+  ou managée/VPS en production — voir « Déploiement »).
 - `AUTH_SECRET` — secret de session, à générer avec `openssl rand -base64 32`.
 
 ## Photos produits & articles
@@ -77,19 +86,21 @@ faire partie de la **sauvegarde régulière** du serveur (voir ci-dessous).
 
 ## Déploiement
 
-Cette application a un état qui doit persister sur disque : la base SQLite
-(`prisma/dev.db`) et les photos (`data/uploads/`). Deux options :
+La base de données (Postgres) est accessible en réseau, donc n'importe
+quel hébergeur convient de ce côté. Il reste un état sur disque à
+préserver : les photos uploadées (`data/uploads/`). Deux options :
 
-1. **Recommandé pour démarrer : un VPS avec Docker** (voir ci-dessous), en
-   gardant SQLite. Simple, pas de service tiers à payer. Sauvegardez
-   régulièrement le volume Docker `app-data` (base + photos).
+1. **Recommandé pour démarrer : un VPS avec Docker** (voir ci-dessous),
+   avec Postgres en conteneur à côté de l'app. Simple, pas de service tiers
+   à payer. Sauvegardez régulièrement les volumes Docker `postgres-data` et
+   `uploads-data`.
 2. **Plateforme serverless (Vercel, Netlify...)** : le système de fichiers
-   n'y est pas persistant entre les requêtes. Il faut alors :
-   - passer `DATABASE_URL` sur une base Postgres managée (Neon, Supabase,
-     Railway...) — changez simplement `provider = "sqlite"` en
-     `"postgresql"` dans `prisma/schema.prisma` ;
-   - envoyer les photos vers un stockage objet (S3, Cloudinary...) au lieu
-     de `data/uploads/`, en adaptant `src/lib/uploads.ts`.
+   n'y est pas persistant entre les requêtes, donc `data/uploads/` ne peut
+   pas y vivre. Il faut envoyer les photos vers un stockage objet (S3,
+   Cloudinary...) à la place, en adaptant `src/lib/uploads.ts` — la base de
+   données Postgres, elle, fonctionne déjà nativement sur ces plateformes
+   (pointez `DATABASE_URL` vers une base managée : Neon, Supabase,
+   Railway...).
 
 ### VPS avec Docker (recommandé)
 
@@ -137,9 +148,15 @@ docker compose up -d --build
 ```
 
 Les migrations (`prisma migrate deploy`) s'appliquent automatiquement à
-chaque démarrage du conteneur. La base SQLite et les photos vivent dans le
-volume Docker `app-data`, qui survit aux reconstructions de l'image —
-pensez à le sauvegarder régulièrement (`docker run --rm -v gems-of-rod_app-data:/data -v $(pwd):/backup alpine tar czf /backup/backup.tar.gz /data`).
+chaque démarrage du conteneur. Postgres et les photos vivent dans les
+volumes Docker `postgres-data` et `uploads-data`, qui survivent aux
+reconstructions de l'image — pensez à les sauvegarder régulièrement, par
+exemple :
+
+```bash
+docker compose exec postgres pg_dump -U gemsofrod gemsofrod > backup-$(date +%F).sql
+docker run --rm -v gems-of-rod_uploads-data:/data -v $(pwd):/backup alpine tar czf /backup/photos-$(date +%F).tar.gz /data
+```
 
 ### Netlify
 
@@ -149,17 +166,16 @@ connecter le dépôt sur Netlify (branche à déployer) et de définir dans les
 réglages du site (Site configuration → Environment variables) :
 
 - `AUTH_SECRET`
-- `DATABASE_URL`
+- `DATABASE_URL` (une base Postgres managée : Neon, Supabase...)
 - `SEED_ADMIN_EMAIL`, `SEED_ADMIN_PASSWORD` (si vous voulez ré-exécuter le seed)
 
-**Important :** tel quel (SQLite + photos sur disque), un déploiement
-Netlify fonctionne pour visualiser la vitrine, mais **les ajouts faits
-depuis l'admin (nouveau produit, photo, article) ne seront pas fiables** :
-les fonctions serverless de Netlify n'ont pas de disque persistant, donc
-rien n'est garanti de survivre à la requête suivante. Pour un admin
-pleinement fonctionnel sur Netlify, suivez le point 2 ci-dessus (Postgres +
-stockage objet) avant de l'utiliser en production. Pour un aperçu de
-la vitrine ou une démo, ce n'est pas nécessaire.
+**Important :** avec `DATABASE_URL` sur une vraie base Postgres, le
+catalogue, les articles et les demandes de devis fonctionnent normalement
+sur Netlify. Seules les **photos uploadées depuis l'admin** ne persisteront
+pas de façon fiable (fonctions serverless sans disque persistant) tant que
+`src/lib/uploads.ts` n'envoie pas vers un stockage objet (S3, Cloudinary...)
+— pour une simple vitrine sans gestion de photos depuis Netlify, ce n'est
+pas bloquant.
 
 Dans tous les cas :
 

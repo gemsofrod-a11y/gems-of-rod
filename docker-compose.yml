@@ -1,16 +1,30 @@
 services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-gemsofrod}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:?définir POSTGRES_PASSWORD dans .env}
+      - POSTGRES_DB=${POSTGRES_DB:-gemsofrod}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    # Exposé sur l'hôte uniquement pour le développement local (se connecter
+    # depuis "npm run dev" avec DATABASE_URL=postgresql://...@localhost:5432/...).
+    # Peut être retiré en production si le port n'est pas nécessaire côté hôte.
+    ports:
+      - "5432:5432"
+
   web:
     build:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
     env_file: .env
+    depends_on:
+      - postgres
     volumes:
-      # Persistance de la base SQLite et des photos uploadées entre les
-      # redéploiements. Ne monte que web/data/ (pas prisma/), pour que les
-      # futures migrations ajoutées au code soient bien prises dans l'image
-      # à chaque déploiement.
-      - app-data:/app/web/data
+      # Persistance des photos uploadées entre les redéploiements.
+      - uploads-data:/app/web/data/uploads
     expose:
       - "3000"
 
@@ -30,6 +44,7 @@ services:
       - web
 
 volumes:
-  app-data:
+  postgres-data:
+  uploads-data:
   caddy-data:
   caddy-config:

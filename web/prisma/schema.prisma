@@ -1,14 +1,14 @@
 // Schéma de données — boutique Gems of Rod
-// SQLite en développement (zero-config). Pour la production, changer
-// `provider` en "postgresql" et pointer DATABASE_URL vers une base Postgres
-// (voir README.md, section "Déploiement").
+// Postgres partout (développement local, VPS via Docker Compose, ou une
+// base managée type Neon/Supabase) — voir web/README.md, section
+// "Déploiement".
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 

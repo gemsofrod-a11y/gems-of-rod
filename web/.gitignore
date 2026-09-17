@@ -37,10 +37,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-# base de données locale (dev)
-/prisma/dev.db
-/prisma/dev.db-journal
-
 # photos de produits/articles envoyées depuis l'admin
 /data/uploads
 
