@@ -17,6 +17,8 @@ import fr.gemsofrod.encyclopedie.data.ClientRepository
 import fr.gemsofrod.encyclopedie.data.FavoritesRepository
 import fr.gemsofrod.encyclopedie.data.LabNotebookRepository
 import fr.gemsofrod.encyclopedie.data.LanguageRepository
+import fr.gemsofrod.encyclopedie.data.LearningPathRepository
+import fr.gemsofrod.encyclopedie.data.QuizStatsRepository
 import fr.gemsofrod.encyclopedie.data.ReflectivityCalibrationRepository
 import fr.gemsofrod.encyclopedie.data.StockRepository
 import fr.gemsofrod.encyclopedie.data.SupplierRepository
@@ -41,6 +43,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         ThemeRepository.init(this)
         FavoritesRepository.init(this)
+        QuizStatsRepository.init(this)
+        LearningPathRepository.init(this)
         AchievementsRepository.init(this)
         LabNotebookRepository.init(this)
         ReflectivityCalibrationRepository.init(this)

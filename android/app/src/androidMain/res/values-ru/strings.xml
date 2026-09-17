@@ -21,6 +21,8 @@
     <string name="home_meteorites_subtitle">Небесное железо, палласиты и камни, упавшие с неба: материя за пределами Земли.</string>
     <string name="home_quiz_title">Геммологическая викторина</string>
     <string name="home_quiz_subtitle">Проверьте свои знания: цвета, семейства, редкость и терминология.</string>
+    <string name="home_learning_path_title">Обучающий маршрут</string>
+    <string name="home_learning_path_subtitle">Пошаговое погружение в основы геммологии.</string>
     <string name="home_lab_title">Лаборатория</string>
     <string name="home_lab_subtitle">Определите камень как настоящий геммолог, шаг за шагом.</string>
 
@@ -352,6 +354,8 @@
     <string name="quiz_question_organique_famille">К какому семейству относится органический самоцвет %1$s?</string>
     <string name="quiz_question_ring_cut">Какая это огранка камня?</string>
     <string name="quiz_question_ring_sertissage">Какой это тип закрепки?</string>
+    <string name="quiz_targeted_button">Повторить слабые места</string>
+    <string name="quiz_targeted_subtitle">В приоритете вопросы, где вы чаще всего ошибались.</string>
     <string name="quiz_next_button">Следующий вопрос</string>
     <string name="quiz_finish_button">Посмотреть результат</string>
     <string name="quiz_score_title">Результат: %1$d / %2$d</string>
@@ -747,4 +751,20 @@
     <string name="theme_mode_systeme">Системная</string>
     <string name="theme_mode_clair">Светлая</string>
     <string name="theme_mode_sombre">Тёмная</string>
+
+    <!-- Обучающий маршрут -->
+    <string name="learning_path_title">Обучающий маршрут</string>
+    <string name="learning_path_progress_format">Пройдено этапов: %1$d/%2$d</string>
+    <string name="learning_path_step_vocabulaire_title">Словарь терминов</string>
+    <string name="learning_path_step_vocabulaire_subtitle">Изучите основные термины геммолога и огранщика.</string>
+    <string name="learning_path_step_familles_title">Цвета и минеральные семейства</string>
+    <string name="learning_path_step_familles_subtitle">Узнайте основные семейства и их характерные цвета.</string>
+    <string name="learning_path_step_cristaux_title">Кристаллические системы</string>
+    <string name="learning_path_step_cristaux_subtitle">Поймите, как внутренняя структура формирует каждый камень.</string>
+    <string name="learning_path_step_achat_title">Как правильно купить камень</string>
+    <string name="learning_path_step_achat_subtitle">Что проверить перед покупкой: сертификаты, облагораживание, цену.</string>
+    <string name="learning_path_step_lithotherapie_title">Литотерапия</string>
+    <string name="learning_path_step_lithotherapie_subtitle">Традиционные свойства и применение, связанные с каждым камнем.</string>
+    <string name="learning_path_step_quiz_title">Проверьте свои знания</string>
+    <string name="learning_path_step_quiz_subtitle">Викторина, чтобы проверить, что вы усвоили.</string>
 </resources>

@@ -54,6 +54,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.LabNotebookDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LabNotebookFormScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LabNotebookScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LanguageScreen
+import fr.gemsofrod.encyclopedie.ui.screens.LearningPathScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LegendaryMapScreen
 import fr.gemsofrod.encyclopedie.ui.screens.LegendaryRiddleScreen
 import fr.gemsofrod.encyclopedie.ui.screens.AssociationDetailScreen
@@ -137,6 +138,7 @@ private object Routes {
     const val ASSOCIATION_DETAIL = "association/{associationId}"
     const val LANGUAGE = "language"
     const val THEME = "theme"
+    const val LEARNING_PATH = "learning_path"
     const val METEORITES = "meteorites"
     const val METEORITE_CLASSIFICATION = "meteorite_classification"
     const val METEORITE_COMPARISON = "meteorite_comparison"
@@ -285,6 +287,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onLithotherapieClick = { navController.navigate(Routes.LITHOTHERAPIE_MENU) },
                 onLanguageClick = { navController.navigate(Routes.LANGUAGE) },
                 onThemeClick = { navController.navigate(Routes.THEME) },
+                onLearningPathClick = { navController.navigate(Routes.LEARNING_PATH) },
                 onFavoritesClick = { navController.navigate(Routes.FAVORITES) },
                 onMeteoritesClick = { navController.navigate(Routes.METEORITES) },
                 onFossilesClick = { navController.navigate(Routes.FOSSILES) },
@@ -607,6 +610,17 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         }
         composable(Routes.THEME) {
             ThemeScreen(onBackClick = { navController.popBackStack() })
+        }
+        composable(Routes.LEARNING_PATH) {
+            LearningPathScreen(
+                onBackClick = { navController.popBackStack() },
+                onVocabulaireClick = { navController.navigate(Routes.GLOSSAIRE) },
+                onFamillesClick = { navController.navigate(Routes.FAMILLES_LIST) },
+                onCristauxClick = { navController.navigate(Routes.CRYSTAL_SYSTEMS) },
+                onAchatClick = { navController.navigate(Routes.BUYING_GUIDES) },
+                onLithotherapieClick = { navController.navigate(Routes.LITHOTHERAPIE_MENU) },
+                onQuizClick = { navController.navigate(Routes.QUIZ) }
+            )
         }
         composable(Routes.CATEGORIES) {
             GemmologieMenuScreen(

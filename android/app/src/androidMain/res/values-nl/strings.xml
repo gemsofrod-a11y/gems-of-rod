@@ -21,6 +21,8 @@
     <string name="home_meteorites_subtitle">Hemels ijzer, pallasieten en stenen die uit de lucht vielen: materie van voorbij de Aarde.</string>
     <string name="home_quiz_title">Gemmologiequiz</string>
     <string name="home_quiz_subtitle">Test uw kennis: kleuren, families, zeldzaamheid en vaktermen.</string>
+    <string name="home_learning_path_title">Leertraject</string>
+    <string name="home_learning_path_subtitle">Een begeleide, stapsgewijze introductie tot de basis van de gemmologie.</string>
     <string name="home_lab_title">Laboratorium</string>
     <string name="home_lab_subtitle">Identificeer een steen zoals een echte gemmoloog, stap voor stap.</string>
 
@@ -352,6 +354,8 @@
     <string name="quiz_question_organique_famille">Tot welke familie behoort het organisch edelgesteente %1$s?</string>
     <string name="quiz_question_ring_cut">Wat is deze slijpvorm?</string>
     <string name="quiz_question_ring_sertissage">Wat is dit type zetting?</string>
+    <string name="quiz_targeted_button">Mijn zwakke punten herhalen</string>
+    <string name="quiz_targeted_subtitle">Geeft voorrang aan de vragen waarbij u de meeste fouten maakte.</string>
     <string name="quiz_next_button">Volgende vraag</string>
     <string name="quiz_finish_button">Score bekijken</string>
     <string name="quiz_score_title">Score: %1$d / %2$d</string>
@@ -747,4 +751,20 @@
     <string name="theme_mode_systeme">Systeem</string>
     <string name="theme_mode_clair">Licht</string>
     <string name="theme_mode_sombre">Donker</string>
+
+    <!-- Leertraject -->
+    <string name="learning_path_title">Leertraject</string>
+    <string name="learning_path_progress_format">%1$d/%2$d stappen voltooid</string>
+    <string name="learning_path_step_vocabulaire_title">De woordenschat</string>
+    <string name="learning_path_step_vocabulaire_subtitle">Leer de essentiële termen van de gemmoloog en de steensnijder.</string>
+    <string name="learning_path_step_familles_title">Kleuren en mineraalfamilies</string>
+    <string name="learning_path_step_familles_subtitle">Herken de grote families en hun kenmerkende kleuren.</string>
+    <string name="learning_path_step_cristaux_title">De kristalsystemen</string>
+    <string name="learning_path_step_cristaux_subtitle">Begrijp hoe de interne structuur elke steen vormt.</string>
+    <string name="learning_path_step_achat_title">Een steen verstandig kopen</string>
+    <string name="learning_path_step_achat_subtitle">Waar u op moet letten vóór aankoop: certificaten, behandelingen, prijs.</string>
+    <string name="learning_path_step_lithotherapie_title">Lithotherapie</string>
+    <string name="learning_path_step_lithotherapie_subtitle">De traditionele deugden en toepassingen van elke steen.</string>
+    <string name="learning_path_step_quiz_title">Test uw kennis</string>
+    <string name="learning_path_step_quiz_subtitle">Een quiz om te controleren wat u heeft onthouden.</string>
 </resources>

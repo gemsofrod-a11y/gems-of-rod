@@ -80,6 +80,7 @@ class ScreenshotTest {
             onCoquillagesClick = {},
             onGemmesOrganiquesClick = {},
             onQuizClick = {},
+            onLearningPathClick = {},
             onAchievementsClick = {},
             onLabClick = {},
             onLapidaireClick = {},
