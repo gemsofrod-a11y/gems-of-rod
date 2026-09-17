@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  --background: #faf8f4;
+  --surface: #ffffff;
+  --foreground: #16181d;
+  --muted: #6b6a68;
+  --border: #e6e2da;
+  --brand-teal: #2bb3c9;
+  --brand-indigo: #3a2f8c;
+  --brand-gradient: linear-gradient(135deg, var(--brand-teal), var(--brand-indigo));
+  --gold: #a9822f;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-brand-teal: var(--brand-teal);
+  --color-brand-indigo: var(--brand-indigo);
+  --color-gold: var(--gold);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+.brand-gradient-text {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 2px;
+  background: var(--foreground);
+  color: var(--surface);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: opacity 0.15s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.85;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.6rem;
+  border-radius: 2px;
+  border: 1px solid var(--foreground);
+  color: var(--foreground);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--foreground);
+  color: var(--surface);
+}
