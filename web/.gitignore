@@ -37,9 +37,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-# photos de produits/articles envoyées depuis l'admin
-/data/uploads
-
 # typescript
 *.tsbuildinfo
 next-env.d.ts

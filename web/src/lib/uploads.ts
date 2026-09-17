@@ -1,34 +1,47 @@
-import { mkdir } from "node:fs/promises";
-import path from "node:path";
+import { v2 as cloudinary } from "cloudinary";
 import sharp from "sharp";
 
-// Deliberately outside `public/`: Next.js only serves files that existed in
-// `public/` at build/start time, so runtime uploads (photos added from the
-// admin, including phone camera captures) live here instead and are served
-// through the /uploads route handler (src/app/uploads/[...path]/route.ts).
-export const UPLOADS_ROOT = path.join(process.cwd(), "data", "uploads");
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 /**
  * Persists an uploaded image (from a form, including a phone camera capture)
- * to data/uploads/<subdir>/, resized/compressed so multi-MB camera photos
- * stay reasonable. Returns the public URL path to store on the record.
+ * to Cloudinary, resized/compressed so multi-MB camera photos stay
+ * reasonable. Returns the public HTTPS URL to store on the record.
+ *
+ * Cloudinary (rather than local disk) is required because the app runs on
+ * serverless platforms (Netlify) with no persistent, writable filesystem.
  */
 export async function saveUploadedImage(
   file: File,
   subdir: string
 ): Promise<string> {
   const bytes = Buffer.from(await file.arrayBuffer());
-  const dir = path.join(UPLOADS_ROOT, subdir);
-  await mkdir(dir, { recursive: true });
 
-  const filename = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.jpg`;
-  const destination = path.join(dir, filename);
-
-  await sharp(bytes)
+  const optimized = await sharp(bytes)
     .rotate() // respects EXIF orientation from phone cameras
     .resize(1800, 1800, { fit: "inside", withoutEnlargement: true })
     .jpeg({ quality: 82 })
-    .toFile(destination);
+    .toBuffer();
 
-  return `/uploads/${subdir}/${filename}`;
+  const result = await new Promise<{ secure_url: string }>(
+    (resolve, reject) => {
+      const stream = cloudinary.uploader.upload_stream(
+        { folder: `gems-of-rod/${subdir}`, resource_type: "image" },
+        (error, uploadResult) => {
+          if (error || !uploadResult) {
+            reject(error ?? new Error("Échec de l'envoi vers Cloudinary"));
+          } else {
+            resolve(uploadResult);
+          }
+        }
+      );
+      stream.end(optimized);
+    }
+  );
+
+  return result.secure_url;
 }

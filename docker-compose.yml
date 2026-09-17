@@ -22,9 +22,6 @@ services:
     env_file: .env
     depends_on:
       - postgres
-    volumes:
-      # Persistance des photos uploadées entre les redéploiements.
-      - uploads-data:/app/web/data/uploads
     expose:
       - "3000"
 
@@ -45,6 +42,5 @@ services:
 
 volumes:
   postgres-data:
-  uploads-data:
   caddy-data:
   caddy-config:

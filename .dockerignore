@@ -1,7 +1,6 @@
 **/node_modules
 **/.next
 **/.git
-web/data/uploads
 web/.env
 web/.env.local
 android

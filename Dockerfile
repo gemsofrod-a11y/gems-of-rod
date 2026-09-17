@@ -30,4 +30,4 @@ COPY --from=builder /app/web ./
 COPY --from=builder /app/agent /app/agent
 
 EXPOSE 3000
-CMD ["sh", "-c", "mkdir -p data/uploads && npx prisma migrate deploy && npm run start"]
+CMD ["sh", "-c", "npx prisma migrate deploy && npm run start"]
