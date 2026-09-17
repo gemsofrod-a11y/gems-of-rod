@@ -7,6 +7,9 @@
   # build n'est pas encore pris en charge par @netlify/plugin-nextjs (le
   # plugin attend les fichiers de trace générés par Webpack).
   command = "next build --webpack"
+  # Doit être différent du dossier de base : sans ce réglage, Netlify le
+  # fait pointer sur "web" lui-même et le plugin refuse de démarrer.
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "22"
