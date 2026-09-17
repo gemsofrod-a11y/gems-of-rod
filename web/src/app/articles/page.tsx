@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   description: "Articles gemmologiques et actualités de Gems of Rod.",
 };
 
+// Always read live from the database (a newly published article must
+// appear immediately, and no database is reachable at build time on
+// platforms like Netlify).
+export const dynamic = "force-dynamic";
+
 export default async function ArticlesPage() {
   const articles = await prisma.article.findMany({
     where: { statut: "PUBLIE" },

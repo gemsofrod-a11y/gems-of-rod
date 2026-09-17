@@ -2,6 +2,10 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { ProductCard } from "@/components/ProductCard";
 
+// Always read live from the database (new products must appear immediately,
+// and no database is reachable at build time on platforms like Netlify).
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const featured = await prisma.product.findMany({
     where: { statut: "DISPONIBLE" },
