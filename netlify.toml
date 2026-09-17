@@ -3,10 +3,13 @@
 # (DATABASE_URL, AUTH_SECRET, SEED_ADMIN_EMAIL, SEED_ADMIN_PASSWORD).
 [build]
   base = "web"
-  # --webpack : Next.js 16 utilise Turbopack par défaut, dont le format de
-  # build n'est pas encore pris en charge par @netlify/plugin-nextjs (le
-  # plugin attend les fichiers de trace générés par Webpack).
-  command = "next build --webpack"
+  # 1. Applique les migrations Prisma sur la base (DATABASE_URL).
+  # 2. Exécute le seed (idempotent : upsert sur l'admin et le catalogue,
+  #    donc sans risque de doublon à chaque déploiement).
+  # 3. --webpack : Next.js 16 utilise Turbopack par défaut, dont le format
+  #    de build n'est pas encore pris en charge par @netlify/plugin-nextjs
+  #    (le plugin attend les fichiers de trace générés par Webpack).
+  command = "npx prisma migrate deploy && npx tsx prisma/seed.ts && next build --webpack"
   # Doit être différent du dossier de base : sans ce réglage, Netlify le
   # fait pointer sur "web" lui-même et le plugin refuse de démarrer.
   publish = ".next"
