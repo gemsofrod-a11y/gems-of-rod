@@ -3,8 +3,10 @@
 # (DATABASE_URL, AUTH_SECRET, SEED_ADMIN_EMAIL, SEED_ADMIN_PASSWORD).
 [build]
   base = "web"
-  command = "npm run build"
-  publish = ".next"
+  # --webpack : Next.js 16 utilise Turbopack par défaut, dont le format de
+  # build n'est pas encore pris en charge par @netlify/plugin-nextjs (le
+  # plugin attend les fichiers de trace générés par Webpack).
+  command = "next build --webpack"
 
 [build.environment]
   NODE_VERSION = "22"
