@@ -21,6 +21,8 @@
     <string name="home_meteorites_subtitle">Fer céleste, pallasites et pierres tombées du ciel : une matière au-delà de la Terre.</string>
     <string name="home_quiz_title">Quiz gemmologique</string>
     <string name="home_quiz_subtitle">Testez vos connaissances : couleurs, familles, rareté et vocabulaire.</string>
+    <string name="home_learning_path_title">Parcours d\'apprentissage</string>
+    <string name="home_learning_path_subtitle">Une progression guidée à travers les bases de la gemmologie, étape par étape.</string>
     <string name="home_lab_title">Laboratoire</string>
     <string name="home_lab_subtitle">Identifiez une pierre comme un vrai gemmologue, étape par étape.</string>
 
@@ -352,6 +354,8 @@
     <string name="quiz_question_organique_famille">À quelle famille appartient la gemme organique %1$s ?</string>
     <string name="quiz_question_ring_cut">Quelle est cette taille de pierre ?</string>
     <string name="quiz_question_ring_sertissage">Quel est ce type de sertissage ?</string>
+    <string name="quiz_targeted_button">Réviser mes points faibles</string>
+    <string name="quiz_targeted_subtitle">Priorité aux questions où vous vous êtes le plus trompé récemment.</string>
     <string name="quiz_next_button">Question suivante</string>
     <string name="quiz_finish_button">Voir le score</string>
     <string name="quiz_score_title">Score : %1$d / %2$d</string>
@@ -747,4 +751,20 @@
     <string name="theme_mode_systeme">Système</string>
     <string name="theme_mode_clair">Clair</string>
     <string name="theme_mode_sombre">Sombre</string>
+
+    <!-- Parcours d'apprentissage -->
+    <string name="learning_path_title">Parcours d\'apprentissage</string>
+    <string name="learning_path_progress_format">%1$d/%2$d étapes terminées</string>
+    <string name="learning_path_step_vocabulaire_title">Le vocabulaire</string>
+    <string name="learning_path_step_vocabulaire_subtitle">Apprenez les termes essentiels du gemmologue et du lapidaire.</string>
+    <string name="learning_path_step_familles_title">Couleurs et familles minérales</string>
+    <string name="learning_path_step_familles_subtitle">Repérez les grandes familles et leurs couleurs caractéristiques.</string>
+    <string name="learning_path_step_cristaux_title">Les systèmes cristallins</string>
+    <string name="learning_path_step_cristaux_subtitle">Comprenez comment la structure interne façonne chaque pierre.</string>
+    <string name="learning_path_step_achat_title">Bien acheter une pierre</string>
+    <string name="learning_path_step_achat_subtitle">Les critères à vérifier avant un achat : certificats, traitements, prix.</string>
+    <string name="learning_path_step_lithotherapie_title">La lithothérapie</string>
+    <string name="learning_path_step_lithotherapie_subtitle">Les vertus et usages traditionnels associés à chaque pierre.</string>
+    <string name="learning_path_step_quiz_title">Testez vos connaissances</string>
+    <string name="learning_path_step_quiz_subtitle">Un quiz pour vérifier ce que vous avez retenu.</string>
 </resources>

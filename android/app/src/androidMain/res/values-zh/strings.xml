@@ -21,6 +21,8 @@
     <string name="home_meteorites_subtitle">天铁、橄榄陨铁与坠落自天空的岩石：一种超越地球的物质。</string>
     <string name="home_quiz_title">宝石学问答</string>
     <string name="home_quiz_subtitle">测试您的知识：颜色、族别、稀有度与专业词汇。</string>
+    <string name="home_learning_path_title">学习路径</string>
+    <string name="home_learning_path_subtitle">循序渐进，引导您了解宝石学的基础知识。</string>
     <string name="home_lab_title">实验室</string>
     <string name="home_lab_subtitle">像真正的宝石学家一样，逐步鉴定一块宝石。</string>
 
@@ -352,6 +354,8 @@
     <string name="quiz_question_organique_famille">有机宝石 %1$s 属于哪一类？</string>
     <string name="quiz_question_ring_cut">这是哪种宝石切工？</string>
     <string name="quiz_question_ring_sertissage">这是哪种镶嵌方式？</string>
+    <string name="quiz_targeted_button">复习薄弱环节</string>
+    <string name="quiz_targeted_subtitle">优先出现您最常答错的题目类型。</string>
     <string name="quiz_next_button">下一题</string>
     <string name="quiz_finish_button">查看得分</string>
     <string name="quiz_score_title">得分：%1$d / %2$d</string>
@@ -747,4 +751,20 @@
     <string name="theme_mode_systeme">跟随系统</string>
     <string name="theme_mode_clair">浅色</string>
     <string name="theme_mode_sombre">深色</string>
+
+    <!-- 学习路径 -->
+    <string name="learning_path_title">学习路径</string>
+    <string name="learning_path_progress_format">已完成 %1$d/%2$d 个步骤</string>
+    <string name="learning_path_step_vocabulaire_title">专业词汇</string>
+    <string name="learning_path_step_vocabulaire_subtitle">学习宝石学家和琢型师常用的基本术语。</string>
+    <string name="learning_path_step_familles_title">颜色与矿物族</string>
+    <string name="learning_path_step_familles_subtitle">认识主要矿物族及其特征颜色。</string>
+    <string name="learning_path_step_cristaux_title">晶系</string>
+    <string name="learning_path_step_cristaux_subtitle">了解内部结构如何塑造每一块宝石。</string>
+    <string name="learning_path_step_achat_title">如何明智地购买宝石</string>
+    <string name="learning_path_step_achat_subtitle">购买前需核实的要点：证书、优化处理、价格。</string>
+    <string name="learning_path_step_lithotherapie_title">晶石疗法</string>
+    <string name="learning_path_step_lithotherapie_subtitle">与每种宝石相关的传统功效与用途。</string>
+    <string name="learning_path_step_quiz_title">测试您的知识</string>
+    <string name="learning_path_step_quiz_subtitle">通过小测验检验您的学习成果。</string>
 </resources>

@@ -17,6 +17,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -47,6 +48,7 @@ import fr.gemsofrod.encyclopedie.data.MeteoritesRepository
 import fr.gemsofrod.encyclopedie.data.QuizEngine
 import fr.gemsofrod.encyclopedie.data.QuizQuestion
 import fr.gemsofrod.encyclopedie.data.QuizQuestionType
+import fr.gemsofrod.encyclopedie.data.QuizStatsRepository
 import fr.gemsofrod.encyclopedie.data.RingCutShape
 import fr.gemsofrod.encyclopedie.data.RingSertissage
 import fr.gemsofrod.encyclopedie.ui.components.RingCutPreview
@@ -70,8 +72,10 @@ fun QuizScreen(onBackClick: () -> Unit) {
     var score by remember { mutableIntStateOf(0) }
     var selectedChoice by remember { mutableStateOf<Int?>(null) }
 
-    fun startQuiz() {
-        quiz = QuizEngine.generateQuiz()
+    fun startQuiz(targeted: Boolean = false) {
+        quiz = QuizEngine.generateQuiz(
+            if (targeted) QuizStatsRepository.targetedTypePool() else QuizQuestionType.entries
+        )
         currentIndex = 0
         score = 0
         selectedChoice = null
@@ -104,7 +108,11 @@ fun QuizScreen(onBackClick: () -> Unit) {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             when {
-                currentQuiz == null -> QuizIntro(onStartClick = { startQuiz() })
+                currentQuiz == null -> QuizIntro(
+                    onStartClick = { startQuiz() },
+                    showTargeted = QuizStatsRepository.hasHistory(),
+                    onTargetedClick = { startQuiz(targeted = true) }
+                )
                 currentIndex >= currentQuiz.size -> QuizResult(
                     score = score,
                     total = currentQuiz.size,
@@ -118,7 +126,9 @@ fun QuizScreen(onBackClick: () -> Unit) {
                     onChoiceSelected = { choiceIndex ->
                         if (selectedChoice == null) {
                             selectedChoice = choiceIndex
-                            if (choiceIndex == currentQuiz[currentIndex].correctIndex) score++
+                            val correct = choiceIndex == currentQuiz[currentIndex].correctIndex
+                            if (correct) score++
+                            QuizStatsRepository.recordAnswer(currentQuiz[currentIndex].type, correct)
                         }
                     },
                     onNextClick = {
@@ -136,7 +146,7 @@ fun QuizScreen(onBackClick: () -> Unit) {
 }
 
 @Composable
-private fun QuizIntro(onStartClick: () -> Unit) {
+private fun QuizIntro(onStartClick: () -> Unit, showTargeted: Boolean, onTargetedClick: () -> Unit) {
     Text(
         text = stringResource(R.string.quiz_intro, QuizEngine.QUESTION_COUNT),
         style = MaterialTheme.typography.bodyLarge,
@@ -144,6 +154,16 @@ private fun QuizIntro(onStartClick: () -> Unit) {
     )
     Button(onClick = onStartClick, modifier = Modifier.fillMaxWidth()) {
         Text(stringResource(R.string.quiz_start_button))
+    }
+    if (showTargeted) {
+        OutlinedButton(onClick = onTargetedClick, modifier = Modifier.fillMaxWidth()) {
+            Text(stringResource(R.string.quiz_targeted_button))
+        }
+        Text(
+            text = stringResource(R.string.quiz_targeted_subtitle),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
     }
 }
 

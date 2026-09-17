@@ -56,14 +56,20 @@ data class QuizQuestion(
 object QuizEngine {
     const val QUESTION_COUNT = 10
 
-    fun generateQuiz(): List<QuizQuestion> {
+    /**
+     * [typePool] fournit les types possibles pour chaque tirage — chaque
+     * occurrence a une chance égale d'être piochée, donc un type répété
+     * plusieurs fois (voir [QuizStatsRepository.targetedTypePool]) revient
+     * proportionnellement plus souvent. Par défaut, un type de chaque
+     * équivaut au tirage uniforme d'origine.
+     */
+    fun generateQuiz(typePool: List<QuizQuestionType> = QuizQuestionType.entries): List<QuizQuestion> {
         val gems = GemsRepository.gems
         val allFamilies = gems.map { GemFamilies.baseName(it.famille) }.distinct()
         val allOrganiqueFamilies = GemsRepository.organiques().map { GemFamilies.baseName(it.famille) }.distinct()
         val glossaryTermCount = GemGlossary.page("fr").termes.size
-        val types = QuizQuestionType.entries
 
-        return (0 until QUESTION_COUNT).map { generateQuestion(types.random(), gems, allFamilies, allOrganiqueFamilies, glossaryTermCount) }
+        return (0 until QUESTION_COUNT).map { generateQuestion(typePool.random(), gems, allFamilies, allOrganiqueFamilies, glossaryTermCount) }
     }
 
     private fun generateQuestion(

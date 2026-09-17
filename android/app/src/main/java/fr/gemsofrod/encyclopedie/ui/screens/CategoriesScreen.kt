@@ -86,6 +86,7 @@ fun HomeScreen(
     onCoquillagesClick: () -> Unit,
     onGemmesOrganiquesClick: () -> Unit,
     onQuizClick: () -> Unit,
+    onLearningPathClick: () -> Unit,
     onAchievementsClick: () -> Unit,
     onLabClick: () -> Unit,
     onLapidaireClick: () -> Unit,
@@ -194,6 +195,12 @@ fun HomeScreen(
                 subtitle = stringResource(R.string.home_quiz_subtitle),
                 onClick = onQuizClick,
                 backgroundDrawable = "gem_opale_de_feu"
+            )
+            HomeSectionCard(
+                title = stringResource(R.string.home_learning_path_title),
+                subtitle = stringResource(R.string.home_learning_path_subtitle),
+                onClick = onLearningPathClick,
+                backgroundDrawable = "gem_aigue_marine_facette"
             )
         }
     }
