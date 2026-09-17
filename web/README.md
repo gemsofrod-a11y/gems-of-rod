@@ -84,13 +84,33 @@ Cette application a un état qui doit persister sur disque : la base SQLite
    (VPS, Docker sur Railway/Render/Fly.io, etc.), en gardant SQLite. Simple,
    pas de service tiers à payer. Sauvegardez régulièrement `prisma/dev.db`
    et `data/uploads/`.
-2. **Plateforme serverless (ex. Vercel)** : le système de fichiers n'y est
-   pas persistant. Il faut alors :
+2. **Plateforme serverless (Vercel, Netlify...)** : le système de fichiers
+   n'y est pas persistant entre les requêtes. Il faut alors :
    - passer `DATABASE_URL` sur une base Postgres managée (Neon, Supabase,
      Railway...) — changez simplement `provider = "sqlite"` en
      `"postgresql"` dans `prisma/schema.prisma` ;
    - envoyer les photos vers un stockage objet (S3, Cloudinary...) au lieu
      de `data/uploads/`, en adaptant `src/lib/uploads.ts`.
+
+### Netlify
+
+Un `netlify.toml` (à la racine du dépôt) est déjà configuré pour construire
+`web/` avec le plugin officiel `@netlify/plugin-nextjs`. Il suffit de
+connecter le dépôt sur Netlify (branche à déployer) et de définir dans les
+réglages du site (Site configuration → Environment variables) :
+
+- `AUTH_SECRET`
+- `DATABASE_URL`
+- `SEED_ADMIN_EMAIL`, `SEED_ADMIN_PASSWORD` (si vous voulez ré-exécuter le seed)
+
+**Important :** tel quel (SQLite + photos sur disque), un déploiement
+Netlify fonctionne pour visualiser la vitrine, mais **les ajouts faits
+depuis l'admin (nouveau produit, photo, article) ne seront pas fiables** :
+les fonctions serverless de Netlify n'ont pas de disque persistant, donc
+rien n'est garanti de survivre à la requête suivante. Pour un admin
+pleinement fonctionnel sur Netlify, suivez le point 2 ci-dessus (Postgres +
+stockage objet) avant de l'utiliser en production. Pour un aperçu de
+la vitrine ou une démo, ce n'est pas nécessaire.
 
 Dans tous les cas :
 

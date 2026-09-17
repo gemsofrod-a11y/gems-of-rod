@@ -1,0 +1,13 @@
+# Déploie l'application web (web/) — voir web/README.md pour le détail des
+# variables d'environnement à définir dans les réglages du site Netlify
+# (DATABASE_URL, AUTH_SECRET, SEED_ADMIN_EMAIL, SEED_ADMIN_PASSWORD).
+[build]
+  base = "web"
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
