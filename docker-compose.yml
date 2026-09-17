@@ -1,0 +1,46 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-gemsofrod}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:?définir POSTGRES_PASSWORD dans .env}
+      - POSTGRES_DB=${POSTGRES_DB:-gemsofrod}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    # Exposé sur l'hôte uniquement pour le développement local (se connecter
+    # depuis "npm run dev" avec DATABASE_URL=postgresql://...@localhost:5432/...).
+    # Peut être retiré en production si le port n'est pas nécessaire côté hôte.
+    ports:
+      - "5432:5432"
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    depends_on:
+      - postgres
+    expose:
+      - "3000"
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    environment:
+      - DOMAIN=${DOMAIN}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      - web
+
+volumes:
+  postgres-data:
+  caddy-data:
+  caddy-config:

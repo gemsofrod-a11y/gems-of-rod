@@ -1,0 +1,10 @@
+**/node_modules
+**/.next
+**/.git
+web/.env
+web/.env.local
+android
+backend
+docs
+scripts
+*.md

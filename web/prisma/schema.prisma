@@ -1,0 +1,140 @@
+// Schéma de données — boutique Gems of Rod
+// Postgres partout (développement local, VPS via Docker Compose, ou une
+// base managée type Neon/Supabase) — voir web/README.md, section
+// "Déploiement".
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  EDITEUR
+}
+
+enum Categorie {
+  PIERRE_PRECIEUSE
+  PIERRE_FINE
+  METAL_PRECIEUX
+  BIJOU
+}
+
+enum StatutProduit {
+  DISPONIBLE
+  RESERVE
+  VENDU
+}
+
+enum StatutArticle {
+  BROUILLON
+  PUBLIE
+}
+
+enum StatutDevis {
+  NOUVEAU
+  EN_COURS
+  TRAITE
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(EDITEUR)
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  articles       Article[]
+  auditLogs      AuditLog[]
+  productsAdded  Product[]  @relation("ProductCreatedBy")
+  productsEdited Product[]  @relation("ProductUpdatedBy")
+}
+
+model Product {
+  id                String        @id @default(cuid())
+  sku               String        @unique
+  slug              String        @unique
+  nom               String
+  categorie         Categorie
+  descriptionCourte String
+  descriptionLongue String
+  prixEur           Int
+  poidsCarats       Float?
+  poidsGrammes      Float?
+  origine           String?
+  couleur           String?
+  purete            String?
+  traitement        String?
+  certification     String?
+  numeroCertificat  String?
+  poincon           String?
+  tags              String        @default("")
+  statut            StatutProduit @default(DISPONIBLE)
+  dateAjout         DateTime      @default(now())
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+
+  createdById String?
+  createdBy   User?   @relation("ProductCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+  updatedById String?
+  updatedBy   User?   @relation("ProductUpdatedBy", fields: [updatedById], references: [id], onDelete: SetNull)
+
+  images   ProductImage[]
+  inquiries Inquiry[]
+}
+
+model ProductImage {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url       String
+  position  Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model Article {
+  id          String        @id @default(cuid())
+  slug        String        @unique
+  titre       String
+  extrait     String
+  contenu     String
+  coverImageUrl String?
+  statut      StatutArticle @default(BROUILLON)
+  publishedAt DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  authorId String?
+  author   User?   @relation(fields: [authorId], references: [id], onDelete: SetNull)
+}
+
+model Inquiry {
+  id        String      @id @default(cuid())
+  nom       String
+  email     String
+  telephone String?
+  message   String
+  statut    StatutDevis @default(NOUVEAU)
+  createdAt DateTime    @default(now())
+
+  productId String?
+  product   Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action     String
+  entityType String
+  entityId   String
+  details    String?
+  createdAt  DateTime @default(now())
+}
