@@ -76,8 +76,6 @@ import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
 @Composable
 fun HomeScreen(
     onGemmologieClick: () -> Unit,
-    onFamillesClick: () -> Unit,
-    onLithotherapieClick: () -> Unit,
     onLanguageClick: () -> Unit,
     onThemeClick: () -> Unit,
     onFavoritesClick: () -> Unit,
@@ -85,7 +83,6 @@ fun HomeScreen(
     onFossilesClick: () -> Unit,
     onCoquillagesClick: () -> Unit,
     onGemmesOrganiquesClick: () -> Unit,
-    onQuizClick: () -> Unit,
     onLearningPathClick: () -> Unit,
     onAchievementsClick: () -> Unit,
     onLabClick: () -> Unit,
@@ -155,18 +152,6 @@ fun HomeScreen(
                 backgroundDrawable = "gem_quartz_rutile_inclusion"
             )
             HomeSectionCard(
-                title = stringResource(R.string.home_familles_title),
-                subtitle = stringResource(R.string.home_familles_subtitle),
-                onClick = onFamillesClick,
-                backgroundDrawable = "gem_citrine"
-            )
-            HomeSectionCard(
-                title = stringResource(R.string.home_lithotherapie_title),
-                subtitle = stringResource(R.string.home_lithotherapie_subtitle),
-                onClick = onLithotherapieClick,
-                backgroundDrawable = "gem_amethyste_brute"
-            )
-            HomeSectionCard(
                 title = stringResource(R.string.home_meteorites_title),
                 subtitle = stringResource(R.string.home_meteorites_subtitle),
                 onClick = onMeteoritesClick,
@@ -189,12 +174,6 @@ fun HomeScreen(
                 subtitle = stringResource(R.string.home_gemmes_organiques_subtitle),
                 onClick = onGemmesOrganiquesClick,
                 backgroundDrawable = "gem_perle_facette"
-            )
-            HomeSectionCard(
-                title = stringResource(R.string.home_quiz_title),
-                subtitle = stringResource(R.string.home_quiz_subtitle),
-                onClick = onQuizClick,
-                backgroundDrawable = "gem_opale_de_feu"
             )
             HomeSectionCard(
                 title = stringResource(R.string.home_learning_path_title),
@@ -311,7 +290,6 @@ fun GemmologieMenuScreen(
     onCouleurClick: () -> Unit,
     onPaysClick: () -> Unit,
     onComparerClick: () -> Unit,
-    onCrystalSystemsClick: () -> Unit,
     onRochesMeresClick: () -> Unit,
     onGemClick: (Gem) -> Unit,
     onBackClick: () -> Unit
@@ -385,11 +363,6 @@ fun GemmologieMenuScreen(
                         title = stringResource(R.string.gemmologie_comparer_title),
                         subtitle = stringResource(R.string.gemmologie_comparer_subtitle),
                         onClick = onComparerClick
-                    )
-                    GemmologieMenuCard(
-                        title = stringResource(R.string.gemmologie_crystal_systems_title),
-                        subtitle = stringResource(R.string.gemmologie_crystal_systems_subtitle),
-                        onClick = onCrystalSystemsClick
                     )
                     GemmologieMenuCard(
                         title = stringResource(R.string.gemmologie_roches_meres_title),

@@ -10,10 +10,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.Article
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.Biotech
 import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material.icons.filled.Diamond
@@ -60,12 +58,10 @@ fun LabMenuScreen(
     onGuidedAnalysisClick: () -> Unit,
     onNotebookClick: () -> Unit,
     onInstrumentsClick: () -> Unit,
-    onGlossaireClick: () -> Unit,
     onReflectivityMeterClick: () -> Unit,
     onNuancierClick: () -> Unit,
     onDiamondGradingClick: () -> Unit,
     onTreatmentsClick: () -> Unit,
-    onBuyingGuidesClick: () -> Unit,
     onMineralFormationClick: () -> Unit,
     onStockClick: () -> Unit,
     onClientsClick: () -> Unit,
@@ -129,12 +125,6 @@ fun LabMenuScreen(
                 onClick = onInstrumentsClick
             )
             LabMenuCard(
-                icon = Icons.AutoMirrored.Filled.MenuBook,
-                title = stringResource(R.string.glossaire_title),
-                subtitle = stringResource(R.string.analyse_glossaire_card_subtitle),
-                onClick = onGlossaireClick
-            )
-            LabMenuCard(
                 icon = Icons.Filled.CameraAlt,
                 title = stringResource(R.string.lab_reflectivity_title),
                 subtitle = stringResource(R.string.lab_reflectivity_subtitle),
@@ -157,12 +147,6 @@ fun LabMenuScreen(
                 title = stringResource(R.string.lab_treatments_title),
                 subtitle = stringResource(R.string.lab_treatments_subtitle),
                 onClick = onTreatmentsClick
-            )
-            LabMenuCard(
-                icon = Icons.AutoMirrored.Filled.Article,
-                title = stringResource(R.string.lab_buying_guides_title),
-                subtitle = stringResource(R.string.lab_buying_guides_subtitle),
-                onClick = onBuyingGuidesClick
             )
             LabMenuCard(
                 icon = Icons.Filled.OndemandVideo,

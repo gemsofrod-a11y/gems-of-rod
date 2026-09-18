@@ -53,12 +53,18 @@ private fun plainRectPath(): Path = Path().apply {
     addRect(Rect(-1f, -1f, 1f, 1f))
 }
 
+/**
+ * Navette pointue aux deux extrémités, large en son centre — une seule
+ * silhouette continue (contour "en œil"), pas deux lobes accolés : chaque
+ * côté (droit puis gauche) relie directement la pointe du haut à la
+ * pointe du bas en passant par le point le plus large (±1, 0).
+ */
 private fun marquisePath(): Path = Path().apply {
     moveTo(0f, -1f)
-    quadraticBezierTo(1f, -0.15f, 0f, 0f)
-    quadraticBezierTo(1f, 0.15f, 0f, 1f)
-    quadraticBezierTo(-1f, 0.15f, 0f, 0f)
-    quadraticBezierTo(-1f, -0.15f, 0f, -1f)
+    cubicTo(0.55f, -1f, 1f, -0.45f, 1f, 0f)
+    cubicTo(1f, 0.45f, 0.55f, 1f, 0f, 1f)
+    cubicTo(-0.55f, 1f, -1f, 0.45f, -1f, 0f)
+    cubicTo(-1f, -0.45f, -0.55f, -1f, 0f, -1f)
     close()
 }
 
