@@ -194,22 +194,47 @@
     text-align: center;
   }
   .email-chip {
-    display: inline-block;
-    border: 1px solid #3a331f;
-    background: #1c1811;
-    border-radius: 8px;
-    padding: 6px 12px;
-    margin-top: 6px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 100%;
+    border: 1px solid #3d3320;
+    border-left: 3px solid var(--gold);
+    background: linear-gradient(135deg, #241f17, #191510);
+    border-radius: 10px;
+    padding: 9px 14px;
+    margin-top: 8px;
     font-size: 13px;
     color: var(--text);
     font-weight: 600;
+    box-shadow: 0 2px 10px rgba(0,0,0,.35);
+    overflow: visible;
   }
-  @keyframes disintegrate {
-    0%   { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
-    55%  { opacity: 0.7; transform: scale(1.05) translateY(-2px); filter: blur(1px); }
-    100% { opacity: 0; transform: scale(0.8) translateY(6px); filter: blur(6px); }
+  .email-chip .subject { overflow-wrap: anywhere; }
+
+  @keyframes evaporate-card {
+    0%   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0) brightness(1); }
+    35%  { filter: blur(.5px) brightness(1.7); }
+    100% { opacity: 0; transform: translateY(-20px) scale(.92); filter: blur(9px) brightness(2.2); }
   }
-  .email-chip.deleting { animation: disintegrate 850ms ease-in forwards; }
+  .email-chip.evaporate {
+    animation: evaporate-card 1000ms cubic-bezier(.4,0,.2,1) forwards;
+    pointer-events: none;
+  }
+  .spark {
+    position: absolute;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 6px 1px var(--gold);
+    pointer-events: none;
+    animation: spark-rise 850ms ease-out forwards;
+  }
+  @keyframes spark-rise {
+    0%   { opacity: 1; transform: translate(0, 0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--dx), -36px) scale(.3); }
+  }
 
   .primary-btn {
     width: 100%;
@@ -427,16 +452,37 @@ function actionLabel(action) {
   return idx === -1 ? action : action.slice(idx + 1).trim();
 }
 
-function playDisintegrate(chip, delay = 700) {
+// Effet "évaporation" : le titre de l'email s'illumine puis se dissout en
+// particules de lumière qui s'élèvent, pour confirmer visuellement une
+// suppression.
+function evaporateChip(chip, delay = 700) {
   setTimeout(() => {
-    chip.classList.add('deleting');
-    setTimeout(() => chip.remove(), 900);
+    const w = chip.offsetWidth, h = chip.offsetHeight;
+    for (let i = 0; i < 10; i++) {
+      const spark = document.createElement('span');
+      spark.className = 'spark';
+      spark.style.left = (Math.random() * w) + 'px';
+      spark.style.top = (Math.random() * h) + 'px';
+      spark.style.setProperty('--dx', (Math.random() * 44 - 22) + 'px');
+      spark.style.animationDelay = (Math.random() * 200) + 'ms';
+      chip.appendChild(spark);
+    }
+    chip.classList.add('evaporate');
+    setTimeout(() => chip.remove(), 1050);
   }, delay);
+}
+
+function makeEmailChip(subject) {
+  const chip = document.createElement('div');
+  chip.className = 'email-chip';
+  chip.innerHTML = '📧 <span class="subject"></span>';
+  chip.querySelector('.subject').textContent = subject;
+  return chip;
 }
 
 // Les suppressions demandées en conversation ("supprime cet email") ont un
 // format reconnaissable (trash_email: ... « Titre ») : on les affiche comme
-// une petite fiche email qui se désintègre, plutôt qu'une ligne de texte.
+// une fiche email qui s'évapore, plutôt qu'une ligne de texte.
 function handleActionResults(actions) {
   if (!actions || !actions.length) return;
   const log = document.getElementById('log');
@@ -444,12 +490,10 @@ function handleActionResults(actions) {
   actions.forEach(a => {
     const m = a.match(/^trash_email:.*«\s*(.+?)\s*»/);
     if (m) {
-      const chip = document.createElement('div');
-      chip.className = 'email-chip';
-      chip.textContent = '📧 ' + m[1];
+      const chip = makeEmailChip(m[1]);
       log.appendChild(chip);
       chip.scrollIntoView({ behavior: 'smooth', block: 'end' });
-      playDisintegrate(chip);
+      evaporateChip(chip);
     } else {
       plain.push(actionLabel(a));
     }
@@ -622,14 +666,15 @@ function renderActionNotification(a) {
   const log = document.getElementById('log');
   const notif = document.createElement('div');
   notif.className = 'notif';
-  notif.innerHTML = `${info.icon} ${info.text}` +
-    (a.detail ? `<div class="email-chip">📧 ${escapeHtml(a.detail)}</div>` : '');
+  notif.textContent = `${info.icon} ${info.text}`;
+  let chip = null;
+  if (a.detail) {
+    chip = makeEmailChip(a.detail);
+    notif.appendChild(chip);
+  }
   log.appendChild(notif);
   notif.scrollIntoView({ behavior: 'smooth', block: 'end' });
-  if (a.action_type === 'auto_delete') {
-    const chip = notif.querySelector('.email-chip');
-    if (chip) playDisintegrate(chip, 1200);
-  }
+  if (a.action_type === 'auto_delete' && chip) evaporateChip(chip, 1200);
 }
 
 // Ne remonte que les actions survenues depuis l'ouverture de la page (pas tout
