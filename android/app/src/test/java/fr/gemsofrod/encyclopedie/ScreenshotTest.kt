@@ -70,8 +70,6 @@ class ScreenshotTest {
     fun home() = capture("01_accueil") {
         HomeScreen(
             onGemmologieClick = {},
-            onFamillesClick = {},
-            onLithotherapieClick = {},
             onLanguageClick = {},
             onThemeClick = {},
             onFavoritesClick = {},
@@ -79,7 +77,6 @@ class ScreenshotTest {
             onFossilesClick = {},
             onCoquillagesClick = {},
             onGemmesOrganiquesClick = {},
-            onQuizClick = {},
             onLearningPathClick = {},
             onAchievementsClick = {},
             onLabClick = {},
