@@ -243,9 +243,16 @@ def _safe_slice_from(history: list[dict], start_hint: int) -> list[dict]:
     return history[idx:] if idx < len(history) else []
 
 
+_CONTEXT_WINDOW = 20  # messages envoyés à Claude à chaque tour (coût/contexte)
+
+
 def handle_turn(text: str, session_id: str = "default") -> dict:
-    history = _safe_slice_from(db.load_conversation(session_id), 0)
-    history.append({"role": "user", "content": text})
+    # L'historique complet est conservé pour toujours en base (rien n'est
+    # jamais oublié pour Sébastien) ; seule une fenêtre récente est envoyée
+    # au modèle à chaque tour, pour ne pas faire exploser le coût/contexte.
+    full_history = db.load_conversation(session_id)
+    full_history.append({"role": "user", "content": text})
+    context = _safe_slice_from(full_history, len(full_history) - _CONTEXT_WINDOW)
 
     client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
     actions: list[str] = []
@@ -256,13 +263,15 @@ def handle_turn(text: str, session_id: str = "default") -> dict:
             max_tokens=1024,
             system=_SYSTEM_PROMPT,
             tools=TOOLS,
-            messages=history,
+            messages=context,
         )
-        history.append({"role": "assistant", "content": [b.model_dump() for b in resp.content]})
+        assistant_entry = {"role": "assistant", "content": [b.model_dump() for b in resp.content]}
+        full_history.append(assistant_entry)
+        context.append(assistant_entry)
 
         if resp.stop_reason != "tool_use":
             reply = "".join(b.text for b in resp.content if b.type == "text").strip()
-            db.save_conversation(session_id, _safe_slice_from(history, len(history) - 20))
+            db.save_conversation(session_id, full_history)
             return {"reply": reply, "actions": actions}
 
         tool_results = []
@@ -276,9 +285,11 @@ def handle_turn(text: str, session_id: str = "default") -> dict:
                 "tool_use_id": block.id,
                 "content": result,
             })
-        history.append({"role": "user", "content": tool_results})
+        tool_entry = {"role": "user", "content": tool_results}
+        full_history.append(tool_entry)
+        context.append(tool_entry)
 
-    db.save_conversation(session_id, _safe_slice_from(history, len(history) - 20))
+    db.save_conversation(session_id, full_history)
     return {"reply": "Je n'ai pas réussi à terminer cette action, peux-tu reformuler ?",
             "actions": actions}
 
