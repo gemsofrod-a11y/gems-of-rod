@@ -1,8 +1,17 @@
 import json
 import os
+import socket
 from pathlib import Path
 
 from dotenv import load_dotenv
+
+# Un appel réseau (Gmail, Anthropic) sans timeout explicite peut rester bloqué
+# indéfiniment sur un aléa réseau — observé en production : un déploiement
+# Render a mis 15 minutes à démarrer puis a expiré, sans la moindre erreur ni
+# ligne de log, signe d'un blocage bas niveau plutôt que d'un plantage. Cette
+# limite globale garantit qu'aucun appel bloquant du process ne peut plus
+# jamais dépasser 30 secondes.
+socket.setdefaulttimeout(30)
 
 BASE_DIR = Path(__file__).parent.parent
 REPO_ROOT = BASE_DIR.parent
