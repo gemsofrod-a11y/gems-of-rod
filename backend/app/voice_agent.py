@@ -189,9 +189,11 @@ def _dispatch(name: str, tool_input: dict) -> str:
             db.log_action(tool_input["message_id"], "voice_spam", "")
             return "Email marqué comme spam."
         if name == "trash_email":
+            email = gmail_client.get_message(tool_input["message_id"])
+            subject = email.get("subject") or "(sans objet)"
             gmail_client.trash_message(tool_input["message_id"])
-            db.log_action(tool_input["message_id"], "voice_trash", "")
-            return "Email mis à la corbeille."
+            db.log_action(tool_input["message_id"], "voice_trash", subject)
+            return f"Email « {subject} » mis à la corbeille."
         if name == "unsubscribe_email":
             result = gmail_client.unsubscribe(tool_input["message_id"])
             db.log_action(tool_input["message_id"], "voice_unsubscribe", result.get("detail", ""))

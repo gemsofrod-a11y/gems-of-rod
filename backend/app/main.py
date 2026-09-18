@@ -91,6 +91,11 @@ def digest_today() -> dict:
     return db.count_today_actions()
 
 
+@app.get("/api/actions/recent", dependencies=[Depends(require_token)])
+def actions_recent(since: str = "") -> list[dict]:
+    return db.list_actions_since(since)
+
+
 # Client web (voix depuis le téléphone, voir backend/static/) : monté en
 # dernier pour ne jamais intercepter les routes /api/* déclarées ci-dessus.
 _STATIC_DIR = Path(__file__).parent.parent / "static"

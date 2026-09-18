@@ -173,6 +173,20 @@ def clear_conversation(session_id: str) -> None:
         conn.execute("DELETE FROM conversation_state WHERE session_id = ?", (session_id,))
 
 
+def list_actions_since(since_iso: str) -> list[dict]:
+    with get_conn() as conn:
+        if since_iso:
+            rows = conn.execute(
+                "SELECT * FROM action_log WHERE created_at > ? ORDER BY created_at ASC",
+                (since_iso,),
+            ).fetchall()
+        else:
+            rows = list(reversed(conn.execute(
+                "SELECT * FROM action_log ORDER BY created_at DESC LIMIT 20"
+            ).fetchall()))
+        return [dict(r) for r in rows]
+
+
 def count_today_actions() -> dict:
     today = datetime.now(timezone.utc).date().isoformat()
     with get_conn() as conn:

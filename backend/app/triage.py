@@ -45,7 +45,7 @@ def _process_one(message_id: str) -> str:
         unsub_result = gmail_client.unsubscribe(message_id)
         gmail_client.trash_message(message_id)
         db.log_action(message_id, "auto_unsubscribe", unsub_result.get("detail", ""))
-        db.log_action(message_id, "auto_delete", decision.get("reasoning", ""))
+        db.log_action(message_id, "auto_delete", email.get("subject") or "(sans objet)")
 
     elif category == "auto_triage":
         if decision.get("suggested_label"):

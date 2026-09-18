@@ -161,10 +161,56 @@
   .btn-reject { background: #3a352a; color: var(--text); }
   .empty { color: var(--text-dim); text-align: center; margin-top: 40px; font-size: 14px; }
 
-  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
-  .stat { background: var(--card); border-radius: 12px; padding: 14px; text-align: center; }
-  .stat .n { font-size: 26px; font-weight: 700; color: var(--gold); }
-  .stat .label { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  .digest-banner {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 2px 0 12px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #2a251d;
+  }
+  .digest-chip {
+    flex-shrink: 0;
+    background: var(--card);
+    border-radius: 20px;
+    padding: 7px 13px;
+    font-size: 12px;
+    color: var(--text-dim);
+    white-space: nowrap;
+    border: none;
+  }
+  .digest-chip b { color: var(--gold); font-size: 13px; }
+  .digest-chip.btn { background: var(--gold); color: #1a1610; font-weight: 600; }
+
+  .notif {
+    max-width: 92%;
+    margin: 10px auto;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: #1c1811;
+    border: 1px dashed #3a331f;
+    font-size: 13px;
+    color: var(--text-dim);
+    text-align: center;
+  }
+  .email-chip {
+    display: inline-block;
+    border: 1px solid #3a331f;
+    background: #1c1811;
+    border-radius: 8px;
+    padding: 6px 12px;
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 600;
+  }
+  @keyframes disintegrate {
+    0%   { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+    55%  { opacity: 0.7; transform: scale(1.05) translateY(-2px); filter: blur(1px); }
+    100% { opacity: 0; transform: scale(0.8) translateY(6px); filter: blur(6px); }
+  }
+  .email-chip.deleting { animation: disintegrate 850ms ease-in forwards; }
+
   .primary-btn {
     width: 100%;
     padding: 14px;
@@ -222,6 +268,7 @@
 
 <main>
   <section id="tab-vocal" class="tab active">
+    <div id="digestBanner" class="digest-banner"></div>
     <div id="log"></div>
   </section>
 
@@ -229,10 +276,8 @@
     <div id="pendingList"></div>
   </section>
 
-  <section id="tab-digest" class="tab">
-    <div id="digestStats" class="stat-grid"></div>
-    <button class="primary-btn" onclick="runTriageNow()">Lancer un tri maintenant</button>
-    <p id="digestMsg" style="color:var(--text-dim); font-size:13px; margin-top:10px;"></p>
+  <section id="tab-historique" class="tab">
+    <div id="historyLog"></div>
   </section>
 </main>
 
@@ -245,7 +290,7 @@
 <nav>
   <button id="navVocal" class="active" onclick="showTab('vocal')">🎙️ Vocal</button>
   <button id="navPending" onclick="showTab('pending')">📋 En attente</button>
-  <button id="navDigest" onclick="showTab('digest')">📊 Résumé</button>
+  <button id="navHistorique" onclick="showTab('historique')">🕒 Historique</button>
 </nav>
 
 <script>
@@ -288,16 +333,16 @@ async function api(path, options = {}) {
 
 // --- Navigation ---
 function showTab(name) {
-  ['vocal', 'pending', 'digest'].forEach(t => {
+  ['vocal', 'pending', 'historique'].forEach(t => {
     document.getElementById('tab-' + t).classList.toggle('active', t === name);
     document.getElementById('nav' + t.charAt(0).toUpperCase() + t.slice(1)).classList.toggle('active', t === name);
   });
   document.getElementById('micRow').style.display = name === 'vocal' ? 'flex' : 'none';
   if (name === 'pending') loadPending();
-  if (name === 'digest') loadDigest();
+  if (name === 'historique') loadHistoryTab();
 }
 
-// --- Vocal ---
+// --- Vocal (fil en direct : conversation + notifications d'actions auto) ---
 function addBubble(text, who, scroll = true) {
   const log = document.getElementById('log');
   const b = document.createElement('div');
@@ -307,14 +352,24 @@ function addBubble(text, who, scroll = true) {
   if (scroll) b.scrollIntoView({ behavior: 'smooth', block: 'end' });
 }
 
-async function loadHistory() {
+// L'écran principal ne charge plus tout l'historique : il ne montre que ce
+// qui se passe à partir de maintenant (conversation + notifications en
+// direct). L'historique complet reste consultable dans l'onglet dédié.
+async function loadHistoryTab() {
+  const container = document.getElementById('historyLog');
+  container.innerHTML = '<p class="empty">Chargement...</p>';
   try {
     const items = await api('/api/voice/history');
-    items.forEach(m => addBubble(m.text, m.role, false));
-    const log = document.getElementById('log');
-    if (log.lastElementChild) log.lastElementChild.scrollIntoView({ block: 'end' });
+    if (!items.length) { container.innerHTML = '<p class="empty">Pas encore d\'historique.</p>'; return; }
+    container.innerHTML = '';
+    items.forEach(m => {
+      const b = document.createElement('div');
+      b.className = 'bubble ' + m.role;
+      b.textContent = m.text;
+      container.appendChild(b);
+    });
   } catch (e) {
-    // pas grave si l'historique ne charge pas, on repart d'une page vide
+    container.innerHTML = '<p class="empty">Erreur de chargement.</p>';
   }
 }
 
@@ -340,10 +395,29 @@ function warmUpSpeech() {
 }
 document.addEventListener('pointerdown', warmUpSpeech, { once: true });
 
+// Les voix "locales" embarquées dans Android sont saccadées/robotiques ;
+// les voix "Google" (moteur réseau, meilleure qualité) sonnent bien plus
+// naturelles quand elles sont disponibles sur l'appareil.
+let _frenchVoice = null;
+function pickFrenchVoice() {
+  if (!('speechSynthesis' in window)) return null;
+  const voices = speechSynthesis.getVoices();
+  const fr = voices.filter(v => v.lang && v.lang.toLowerCase().startsWith('fr'));
+  if (!fr.length) return null;
+  return fr.find(v => /google/i.test(v.name)) || fr.find(v => !v.localService) || fr[0];
+}
+if ('speechSynthesis' in window) {
+  _frenchVoice = pickFrenchVoice();
+  speechSynthesis.onvoiceschanged = () => { _frenchVoice = pickFrenchVoice(); };
+}
+
 function speak(text) {
   if (!('speechSynthesis' in window)) return;
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'fr-FR';
+  if (_frenchVoice) u.voice = _frenchVoice;
+  u.rate = 1;
+  u.pitch = 1;
   speechSynthesis.cancel();
   speechSynthesis.speak(u);
 }
@@ -353,14 +427,40 @@ function actionLabel(action) {
   return idx === -1 ? action : action.slice(idx + 1).trim();
 }
 
-function addActionsNote(actions) {
+function playDisintegrate(chip, delay = 700) {
+  setTimeout(() => {
+    chip.classList.add('deleting');
+    setTimeout(() => chip.remove(), 900);
+  }, delay);
+}
+
+// Les suppressions demandées en conversation ("supprime cet email") ont un
+// format reconnaissable (trash_email: ... « Titre ») : on les affiche comme
+// une petite fiche email qui se désintègre, plutôt qu'une ligne de texte.
+function handleActionResults(actions) {
   if (!actions || !actions.length) return;
   const log = document.getElementById('log');
-  const note = document.createElement('div');
-  note.className = 'actions-note';
-  note.textContent = '✓ ' + actions.map(actionLabel).join(' · ');
-  log.appendChild(note);
-  note.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  const plain = [];
+  actions.forEach(a => {
+    const m = a.match(/^trash_email:.*«\s*(.+?)\s*»/);
+    if (m) {
+      const chip = document.createElement('div');
+      chip.className = 'email-chip';
+      chip.textContent = '📧 ' + m[1];
+      log.appendChild(chip);
+      chip.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      playDisintegrate(chip);
+    } else {
+      plain.push(actionLabel(a));
+    }
+  });
+  if (plain.length) {
+    const note = document.createElement('div');
+    note.className = 'actions-note';
+    note.textContent = '✓ ' + plain.join(' · ');
+    log.appendChild(note);
+    note.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  }
 }
 
 async function sendMessage(text, { skipUserBubble = false } = {}) {
@@ -368,7 +468,7 @@ async function sendMessage(text, { skipUserBubble = false } = {}) {
   try {
     const data = await api('/api/voice', { method: 'POST', body: JSON.stringify({ text }) });
     addBubble(data.reply, 'assistant');
-    addActionsNote(data.actions);
+    handleActionResults(data.actions);
     speak(data.reply);
   } catch (e) {
     addBubble('Erreur : ' + e.message, 'assistant');
@@ -480,39 +580,69 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
-// --- Digest ---
-async function loadDigest() {
-  const box = document.getElementById('digestStats');
-  box.innerHTML = '<p class="empty">Chargement...</p>';
+// --- Bannière résumé (compacte, en haut de l'écran Vocal) ---
+async function loadDigestBanner() {
+  const box = document.getElementById('digestBanner');
   try {
     const data = await api('/api/digest/today');
     const actions = data.actions || {};
     const labels = {
-      auto_delete: 'Newsletters supprimées',
-      auto_triage: 'Notifications classées',
-      auto_reply: 'Réponses envoyées',
-      queued_for_confirmation: 'Mis en attente',
+      auto_delete: '🗑️ Supprimées',
+      auto_triage: '📂 Classées',
+      auto_reply: '💬 Répondues',
     };
-    let html = `<div class="stat"><div class="n">${data.pending}</div><div class="label">En attente</div></div>`;
+    let html = `<div class="digest-chip"><b>${data.pending}</b> en attente</div>`;
     for (const [key, label] of Object.entries(labels)) {
-      html += `<div class="stat"><div class="n">${actions[key] || 0}</div><div class="label">${label}</div></div>`;
+      html += `<div class="digest-chip">${label} <b>${actions[key] || 0}</b></div>`;
     }
+    html += `<button class="digest-chip btn" onclick="runTriageNow()">🔄 Tri maintenant</button>`;
     box.innerHTML = html;
   } catch (e) {
-    box.innerHTML = '<p class="empty">Erreur de chargement.</p>';
+    box.innerHTML = '';
   }
 }
 
 async function runTriageNow() {
-  const msg = document.getElementById('digestMsg');
-  msg.textContent = 'Tri en cours...';
   try {
-    const summary = await api('/api/triage/run', { method: 'POST' });
-    msg.textContent = 'Terminé : ' + JSON.stringify(summary);
-    loadDigest();
-  } catch (e) {
-    msg.textContent = 'Erreur : ' + e.message;
+    await api('/api/triage/run', { method: 'POST' });
+    loadDigestBanner();
+  } catch (e) { /* la bannière ne se mettra simplement pas à jour */ }
+}
+
+// --- Notifications en direct (actions automatiques) ---
+const _actionLabels = {
+  auto_delete: { icon: '🗑️', text: 'Newsletter supprimée automatiquement' },
+  auto_triage: { icon: '📂', text: 'Email classé automatiquement' },
+  auto_reply: { icon: '💬', text: 'Réponse envoyée automatiquement' },
+};
+
+function renderActionNotification(a) {
+  const info = _actionLabels[a.action_type];
+  if (!info) return; // actions techniques (auto_unsubscribe, auto_ignore...) : pas de bruit inutile
+  const log = document.getElementById('log');
+  const notif = document.createElement('div');
+  notif.className = 'notif';
+  notif.innerHTML = `${info.icon} ${info.text}` +
+    (a.detail ? `<div class="email-chip">📧 ${escapeHtml(a.detail)}</div>` : '');
+  log.appendChild(notif);
+  notif.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  if (a.action_type === 'auto_delete') {
+    const chip = notif.querySelector('.email-chip');
+    if (chip) playDisintegrate(chip, 1200);
   }
+}
+
+// Ne remonte que les actions survenues depuis l'ouverture de la page (pas tout
+// l'historique passé, qui reste dans l'onglet Historique).
+let _lastActionTs = new Date().toISOString();
+async function pollActions() {
+  try {
+    const items = await api('/api/actions/recent?since=' + encodeURIComponent(_lastActionTs));
+    if (items.length) {
+      _lastActionTs = items[items.length - 1].created_at;
+      items.forEach(renderActionNotification);
+    }
+  } catch (e) { /* on retentera au prochain cycle */ }
 }
 
 // --- Init ---
@@ -522,7 +652,10 @@ function init() {
     return;
   }
   document.getElementById('gate').classList.add('hidden');
-  loadHistory();
+  loadDigestBanner();
+  pollActions();
+  setInterval(pollActions, 25000);
+  setInterval(loadDigestBanner, 60000);
 }
 
 init();
