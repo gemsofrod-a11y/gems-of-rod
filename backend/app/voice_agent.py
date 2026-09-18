@@ -228,8 +228,23 @@ def resolve_pending_action(pending_id: str, decision: str, edited_reply: str | N
     return "Réponse envoyée."
 
 
+def _safe_slice_from(history: list[dict], start_hint: int) -> list[dict]:
+    """Coupe l'historique à partir d'un vrai message texte de Sébastien (jamais
+    au milieu d'un enchaînement tool_use/tool_result) : l'API Anthropic rejette
+    toute conversation qui commence par un tool_result orphelin. Sert à la fois
+    à tronquer proprement (à la sauvegarde) et à réparer un historique déjà
+    corrompu par une ancienne troncature naïve (au chargement).
+    """
+    idx = max(0, start_hint)
+    while idx < len(history) and not (
+        history[idx].get("role") == "user" and isinstance(history[idx].get("content"), str)
+    ):
+        idx += 1
+    return history[idx:] if idx < len(history) else []
+
+
 def handle_turn(text: str, session_id: str = "default") -> dict:
-    history = db.load_conversation(session_id)
+    history = _safe_slice_from(db.load_conversation(session_id), 0)
     history.append({"role": "user", "content": text})
 
     client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
@@ -247,7 +262,7 @@ def handle_turn(text: str, session_id: str = "default") -> dict:
 
         if resp.stop_reason != "tool_use":
             reply = "".join(b.text for b in resp.content if b.type == "text").strip()
-            db.save_conversation(session_id, history[-20:])
+            db.save_conversation(session_id, _safe_slice_from(history, len(history) - 20))
             return {"reply": reply, "actions": actions}
 
         tool_results = []
@@ -263,7 +278,7 @@ def handle_turn(text: str, session_id: str = "default") -> dict:
             })
         history.append({"role": "user", "content": tool_results})
 
-    db.save_conversation(session_id, history[-20:])
+    db.save_conversation(session_id, _safe_slice_from(history, len(history) - 20))
     return {"reply": "Je n'ai pas réussi à terminer cette action, peux-tu reformuler ?",
             "actions": actions}
 
