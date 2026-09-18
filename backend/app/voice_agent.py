@@ -228,11 +228,8 @@ def resolve_pending_action(pending_id: str, decision: str, edited_reply: str | N
     return "Réponse envoyée."
 
 
-_sessions: dict[str, list[dict]] = {}
-
-
 def handle_turn(text: str, session_id: str = "default") -> dict:
-    history = _sessions.setdefault(session_id, [])
+    history = db.load_conversation(session_id)
     history.append({"role": "user", "content": text})
 
     client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
@@ -246,11 +243,11 @@ def handle_turn(text: str, session_id: str = "default") -> dict:
             tools=TOOLS,
             messages=history,
         )
-        history.append({"role": "assistant", "content": resp.content})
+        history.append({"role": "assistant", "content": [b.model_dump() for b in resp.content]})
 
         if resp.stop_reason != "tool_use":
             reply = "".join(b.text for b in resp.content if b.type == "text").strip()
-            history[:] = history[-20:]
+            db.save_conversation(session_id, history[-20:])
             return {"reply": reply, "actions": actions}
 
         tool_results = []
@@ -266,6 +263,29 @@ def handle_turn(text: str, session_id: str = "default") -> dict:
             })
         history.append({"role": "user", "content": tool_results})
 
-    history[:] = history[-20:]
+    db.save_conversation(session_id, history[-20:])
     return {"reply": "Je n'ai pas réussi à terminer cette action, peux-tu reformuler ?",
             "actions": actions}
+
+
+def get_display_history(session_id: str = "default") -> list[dict]:
+    """Historique simplifié (texte uniquement) pour l'affichage dans le client
+    web : ne montre que les messages de Sébastien et les réponses finales de
+    l'assistant, pas les appels d'outils intermédiaires.
+    """
+    display = []
+    for msg in db.load_conversation(session_id):
+        role, content = msg.get("role"), msg.get("content")
+        if role == "user" and isinstance(content, str):
+            display.append({"role": "user", "text": content})
+        elif role == "assistant" and isinstance(content, list):
+            text = "".join(
+                b.get("text", "") for b in content if isinstance(b, dict) and b.get("type") == "text"
+            ).strip()
+            if text:
+                display.append({"role": "assistant", "text": text})
+    return display
+
+
+def reset_conversation(session_id: str = "default") -> None:
+    db.clear_conversation(session_id)

@@ -1,3 +1,4 @@
+import json
 import sqlite3
 import uuid
 from contextlib import contextmanager
@@ -10,6 +11,12 @@ CREATE TABLE IF NOT EXISTS processed_messages (
     message_id TEXT PRIMARY KEY,
     category TEXT NOT NULL,
     processed_at TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS conversation_state (
+    session_id TEXT PRIMARY KEY,
+    history_json TEXT NOT NULL,
+    updated_at TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS pending_actions (
@@ -140,6 +147,30 @@ def resolve_pending(pending_id: str, status: str) -> None:
             "UPDATE pending_actions SET status = ?, resolved_at = ? WHERE id = ?",
             (status, _now(), pending_id),
         )
+
+
+def load_conversation(session_id: str) -> list:
+    with get_conn() as conn:
+        row = conn.execute(
+            "SELECT history_json FROM conversation_state WHERE session_id = ?", (session_id,)
+        ).fetchone()
+        return json.loads(row["history_json"]) if row else []
+
+
+def save_conversation(session_id: str, history: list) -> None:
+    with get_conn() as conn:
+        conn.execute(
+            "INSERT INTO conversation_state (session_id, history_json, updated_at) "
+            "VALUES (?, ?, ?) "
+            "ON CONFLICT(session_id) DO UPDATE SET "
+            "history_json = excluded.history_json, updated_at = excluded.updated_at",
+            (session_id, json.dumps(history), _now()),
+        )
+
+
+def clear_conversation(session_id: str) -> None:
+    with get_conn() as conn:
+        conn.execute("DELETE FROM conversation_state WHERE session_id = ?", (session_id,))
 
 
 def count_today_actions() -> dict:
