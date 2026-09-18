@@ -256,6 +256,13 @@ def _context_from_history(full_history: list[dict], window: int) -> list[dict]:
     return clean[-window:]
 
 
+# Outils de simple lecture : leur résultat peut être un dump brut volumineux
+# (ex. search_emails renvoie la liste complète des métadonnées) et n'a rien
+# d'une "action effectuée" à confirmer — Claude en tient déjà compte dans sa
+# réponse en langage naturel, inutile de le réafficher tel quel au client web.
+_READONLY_TOOLS = {"search_emails", "get_email", "list_pending_confirmations", "get_today_digest"}
+
+
 def handle_turn(text: str, session_id: str = "default") -> dict:
     # L'historique complet est conservé pour toujours en base (rien n'est
     # jamais oublié pour Sébastien) ; seul un résumé texte des derniers
@@ -290,7 +297,8 @@ def handle_turn(text: str, session_id: str = "default") -> dict:
             if block.type != "tool_use":
                 continue
             result = _dispatch(block.name, block.input)
-            actions.append(f"{block.name}: {result}")
+            if block.name not in _READONLY_TOOLS:
+                actions.append(f"{block.name}: {result}")
             tool_results.append({
                 "type": "tool_result",
                 "tool_use_id": block.id,
