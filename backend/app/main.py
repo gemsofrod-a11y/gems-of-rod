@@ -1,4 +1,9 @@
+import threading
+import time
+from pathlib import Path
+
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from app import config, db, triage, voice_agent
@@ -6,10 +11,25 @@ from app.auth import require_token
 
 app = FastAPI(title="Gems of Rod — Assistant vocal Gmail")
 
+_triage_thread_started = False
+
+
+def _triage_loop() -> None:
+    while True:
+        try:
+            triage.run_triage_cycle()
+        except Exception as e:  # ne jamais laisser mourir la boucle de fond
+            print(f"Erreur cycle de triage : {e}")
+        time.sleep(config.TRIAGE_INTERVAL_SECONDS)
+
 
 @app.on_event("startup")
 def _startup() -> None:
+    global _triage_thread_started
     db.init_db()
+    if config.TRIAGE_AUTOSTART and not _triage_thread_started:
+        threading.Thread(target=_triage_loop, daemon=True).start()
+        _triage_thread_started = True
 
 
 @app.get("/api/health")
@@ -58,3 +78,10 @@ def run_triage() -> dict:
 @app.get("/api/digest/today", dependencies=[Depends(require_token)])
 def digest_today() -> dict:
     return db.count_today_actions()
+
+
+# Client web (voix depuis le téléphone, voir backend/static/) : monté en
+# dernier pour ne jamais intercepter les routes /api/* déclarées ci-dessus.
+_STATIC_DIR = Path(__file__).parent.parent / "static"
+if _STATIC_DIR.exists():
+    app.mount("/", StaticFiles(directory=_STATIC_DIR, html=True), name="static")

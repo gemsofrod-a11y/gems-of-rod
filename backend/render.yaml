@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: gems-of-rod-assistant
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ASSISTANT_API_TOKEN
+        sync: false
+      - key: GOOGLE_CREDENTIALS_JSON
+        sync: false
+      - key: GOOGLE_TOKEN_JSON
+        sync: false
+      - key: USER_EMAIL
+        value: gemsofrod@gmail.com
+      - key: ASSISTANT_MODEL
+        value: claude-opus-4-8
+      - key: TRIAGE_INTERVAL_SECONDS
+        value: "300"
+      - key: TRIAGE_QUERY
+        value: "in:inbox is:unread"
+      - key: TRIAGE_MAX_RESULTS
+        value: "20"
