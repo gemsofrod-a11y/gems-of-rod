@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#151310">
+<title>Gems of Rod — Assistant</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%8E%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #151310;
+    --card: #201c17;
+    --gold: #c9a227;
+    --gold-dim: #8a7220;
+    --text: #f1ece0;
+    --text-dim: #a89f8d;
+    --danger: #b5453a;
+    --ok: #4a7a52;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    padding: 16px 16px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  header h1 {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: .02em;
+    margin: 0;
+    color: var(--gold);
+  }
+  header button {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-size: 20px;
+    padding: 4px 8px;
+  }
+  main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 16px 90px;
+  }
+  nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    display: flex;
+    background: #100e0b;
+    border-top: 1px solid #2a251d;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  nav button {
+    flex: 1;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    padding: 12px 4px;
+    font-size: 13px;
+  }
+  nav button.active { color: var(--gold); }
+  .tab { display: none; }
+  .tab.active { display: block; }
+
+  .bubble {
+    max-width: 85%;
+    margin: 6px 0;
+    padding: 10px 14px;
+    border-radius: 14px;
+    line-height: 1.4;
+    font-size: 15px;
+  }
+  .bubble.user { margin-left: auto; background: var(--gold-dim); color: #fff; }
+  .bubble.assistant { background: var(--card); color: var(--text); }
+
+  .mic-row {
+    position: fixed;
+    bottom: 64px; left: 0; right: 0;
+    display: flex;
+    gap: 8px;
+    padding: 10px 16px;
+    background: linear-gradient(to top, var(--bg) 60%, transparent);
+  }
+  .mic-row input[type=text] {
+    flex: 1;
+    background: var(--card);
+    border: 1px solid #332c20;
+    color: var(--text);
+    padding: 12px 14px;
+    border-radius: 20px;
+    font-size: 15px;
+  }
+  #micBtn, #sendBtn {
+    border: none;
+    border-radius: 50%;
+    width: 46px; height: 46px;
+    font-size: 20px;
+    background: var(--gold);
+    color: #1a1610;
+    flex-shrink: 0;
+  }
+  #micBtn.listening { background: var(--danger); color: #fff; }
+  #sendBtn { border-radius: 20px; width: auto; padding: 0 16px; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid #2a251d;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+  .card .meta { font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
+  .card .subject { font-weight: 600; margin-bottom: 4px; }
+  .card .reasoning { font-size: 13px; color: var(--text-dim); margin: 8px 0; font-style: italic; }
+  .card textarea {
+    width: 100%;
+    min-height: 90px;
+    background: #16130f;
+    color: var(--text);
+    border: 1px solid #332c20;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    margin-bottom: 8px;
+  }
+  .card .actions { display: flex; gap: 8px; }
+  .card .actions button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .btn-approve { background: var(--ok); color: #fff; }
+  .btn-reject { background: #3a352a; color: var(--text); }
+  .empty { color: var(--text-dim); text-align: center; margin-top: 40px; font-size: 14px; }
+
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+  .stat { background: var(--card); border-radius: 12px; padding: 14px; text-align: center; }
+  .stat .n { font-size: 26px; font-weight: 700; color: var(--gold); }
+  .stat .label { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  .primary-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--gold);
+    color: #1a1610;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  #gate {
+    position: fixed; inset: 0;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px;
+    gap: 12px;
+    z-index: 50;
+  }
+  #gate h2 { color: var(--gold); margin: 0 0 4px; }
+  #gate p { color: var(--text-dim); font-size: 14px; line-height: 1.5; }
+  #gate input {
+    background: var(--card);
+    border: 1px solid #332c20;
+    color: var(--text);
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 15px;
+  }
+  #gate .err { color: var(--danger); font-size: 13px; min-height: 18px; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<div id="gate" class="hidden">
+  <h2>Gems of Rod</h2>
+  <p>Collez le jeton de l'assistant (<code>ASSISTANT_API_TOKEN</code>, celui défini
+  dans les variables d'environnement du serveur) pour vous connecter depuis ce
+  téléphone. Il reste enregistré uniquement sur cet appareil.</p>
+  <input id="tokenInput" type="password" placeholder="Jeton d'accès" autocomplete="off">
+  <button class="primary-btn" onclick="saveToken()">Se connecter</button>
+  <div class="err" id="gateErr"></div>
+</div>
+
+<header>
+  <h1>💎 Gems of Rod</h1>
+  <button onclick="resetToken()" title="Changer de jeton">⚙️</button>
+</header>
+
+<main>
+  <section id="tab-vocal" class="tab active">
+    <div id="log"></div>
+  </section>
+
+  <section id="tab-pending" class="tab">
+    <div id="pendingList"></div>
+  </section>
+
+  <section id="tab-digest" class="tab">
+    <div id="digestStats" class="stat-grid"></div>
+    <button class="primary-btn" onclick="runTriageNow()">Lancer un tri maintenant</button>
+    <p id="digestMsg" style="color:var(--text-dim); font-size:13px; margin-top:10px;"></p>
+  </section>
+</main>
+
+<div class="mic-row" id="micRow">
+  <button id="micBtn" onclick="toggleMic()">🎤</button>
+  <input id="textInput" type="text" placeholder="Écrire une commande..." onkeydown="if(event.key==='Enter') sendText()">
+  <button id="sendBtn" onclick="sendText()">Envoyer</button>
+</div>
+
+<nav>
+  <button id="navVocal" class="active" onclick="showTab('vocal')">🎙️ Vocal</button>
+  <button id="navPending" onclick="showTab('pending')">📋 En attente</button>
+  <button id="navDigest" onclick="showTab('digest')">📊 Résumé</button>
+</nav>
+
+<script>
+let TOKEN = localStorage.getItem('gor_token') || '';
+
+function saveToken() {
+  const v = document.getElementById('tokenInput').value.trim();
+  if (!v) { document.getElementById('gateErr').textContent = 'Jeton requis.'; return; }
+  TOKEN = v;
+  localStorage.setItem('gor_token', v);
+  document.getElementById('gate').classList.add('hidden');
+  init();
+}
+
+function resetToken() {
+  if (confirm('Se déconnecter de ce téléphone ?')) {
+    localStorage.removeItem('gor_token');
+    location.reload();
+  }
+}
+
+async function api(path, options = {}) {
+  const res = await fetch(path, {
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + TOKEN,
+      ...(options.headers || {}),
+    },
+  });
+  if (res.status === 401) {
+    localStorage.removeItem('gor_token');
+    location.reload();
+    throw new Error('unauthorized');
+  }
+  if (!res.ok) throw new Error(await res.text());
+  return res.json();
+}
+
+// --- Navigation ---
+function showTab(name) {
+  ['vocal', 'pending', 'digest'].forEach(t => {
+    document.getElementById('tab-' + t).classList.toggle('active', t === name);
+    document.getElementById('nav' + t.charAt(0).toUpperCase() + t.slice(1)).classList.toggle('active', t === name);
+  });
+  document.getElementById('micRow').style.display = name === 'vocal' ? 'flex' : 'none';
+  if (name === 'pending') loadPending();
+  if (name === 'digest') loadDigest();
+}
+
+// --- Vocal ---
+function addBubble(text, who) {
+  const log = document.getElementById('log');
+  const b = document.createElement('div');
+  b.className = 'bubble ' + who;
+  b.textContent = text;
+  log.appendChild(b);
+  b.scrollIntoView({ behavior: 'smooth', block: 'end' });
+}
+
+function speak(text) {
+  if (!('speechSynthesis' in window)) return;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'fr-FR';
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
+}
+
+async function sendText() {
+  const input = document.getElementById('textInput');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  addBubble(text, 'user');
+  try {
+    const data = await api('/api/voice', { method: 'POST', body: JSON.stringify({ text }) });
+    addBubble(data.reply, 'assistant');
+    speak(data.reply);
+  } catch (e) {
+    addBubble('Erreur : ' + e.message, 'assistant');
+  }
+}
+
+let recognition = null;
+let listening = false;
+
+function toggleMic() {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) { alert("La reconnaissance vocale n'est pas disponible dans ce navigateur. Utilisez le champ texte."); return; }
+  if (listening) { recognition.stop(); return; }
+  recognition = new SR();
+  recognition.lang = 'fr-FR';
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+  recognition.onstart = () => { listening = true; document.getElementById('micBtn').classList.add('listening'); };
+  recognition.onend = () => { listening = false; document.getElementById('micBtn').classList.remove('listening'); };
+  recognition.onerror = () => { listening = false; document.getElementById('micBtn').classList.remove('listening'); };
+  recognition.onresult = (event) => {
+    const text = event.results[0][0].transcript;
+    document.getElementById('textInput').value = text;
+    sendText();
+  };
+  recognition.start();
+}
+
+// --- Pending ---
+async function loadPending() {
+  const list = document.getElementById('pendingList');
+  list.innerHTML = '<p class="empty">Chargement...</p>';
+  try {
+    const items = await api('/api/pending');
+    if (!items.length) { list.innerHTML = '<p class="empty">Aucun email en attente 🎉</p>'; return; }
+    list.innerHTML = '';
+    items.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="meta">${escapeHtml(p.from_addr || '')} · ${escapeHtml(p.category || '')}</div>
+        <div class="subject">${escapeHtml(p.subject || '(sans objet)')}</div>
+        <div class="reasoning">${escapeHtml(p.reasoning || '')}</div>
+        <textarea id="reply-${p.id}">${escapeHtml(p.suggested_reply || '')}</textarea>
+        <div class="actions">
+          <button class="btn-approve" onclick="resolvePending('${p.id}', 'approve')">Envoyer</button>
+          <button class="btn-reject" onclick="resolvePending('${p.id}', 'reject')">Ignorer</button>
+        </div>
+      `;
+      list.appendChild(card);
+    });
+  } catch (e) {
+    list.innerHTML = '<p class="empty">Erreur de chargement.</p>';
+  }
+}
+
+async function resolvePending(id, decision) {
+  const body = decision === 'approve'
+    ? { edited_reply: document.getElementById('reply-' + id).value }
+    : {};
+  await api(`/api/pending/${id}/${decision}`, { method: 'POST', body: JSON.stringify(body) });
+  loadPending();
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// --- Digest ---
+async function loadDigest() {
+  const box = document.getElementById('digestStats');
+  box.innerHTML = '<p class="empty">Chargement...</p>';
+  try {
+    const data = await api('/api/digest/today');
+    const actions = data.actions || {};
+    const labels = {
+      auto_delete: 'Newsletters supprimées',
+      auto_triage: 'Notifications classées',
+      auto_reply: 'Réponses envoyées',
+      queued_for_confirmation: 'Mis en attente',
+    };
+    let html = `<div class="stat"><div class="n">${data.pending}</div><div class="label">En attente</div></div>`;
+    for (const [key, label] of Object.entries(labels)) {
+      html += `<div class="stat"><div class="n">${actions[key] || 0}</div><div class="label">${label}</div></div>`;
+    }
+    box.innerHTML = html;
+  } catch (e) {
+    box.innerHTML = '<p class="empty">Erreur de chargement.</p>';
+  }
+}
+
+async function runTriageNow() {
+  const msg = document.getElementById('digestMsg');
+  msg.textContent = 'Tri en cours...';
+  try {
+    const summary = await api('/api/triage/run', { method: 'POST' });
+    msg.textContent = 'Terminé : ' + JSON.stringify(summary);
+    loadDigest();
+  } catch (e) {
+    msg.textContent = 'Erreur : ' + e.message;
+  }
+}
+
+// --- Init ---
+function init() {
+  if (!TOKEN) {
+    document.getElementById('gate').classList.remove('hidden');
+    return;
+  }
+  document.getElementById('gate').classList.add('hidden');
+}
+
+init();
+</script>
+</body>
+</html>

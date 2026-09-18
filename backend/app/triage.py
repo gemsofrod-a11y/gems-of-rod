@@ -8,8 +8,8 @@ from app import classifier, config, db, gmail_client
 
 def run_triage_cycle() -> dict:
     db.init_db()
-    summary = {"auto_triage": 0, "auto_reply": 0, "needs_confirmation": 0, "ignore": 0,
-               "skipped_already_processed": 0, "errors": []}
+    summary = {"auto_delete": 0, "auto_triage": 0, "auto_reply": 0, "needs_confirmation": 0,
+               "ignore": 0, "skipped_already_processed": 0, "errors": []}
 
     try:
         messages = gmail_client.search_messages(config.TRIAGE_QUERY, config.TRIAGE_MAX_RESULTS)
@@ -40,6 +40,12 @@ def _process_one(message_id: str) -> str:
     if category == "ignore":
         gmail_client.mark_spam(message_id) if _looks_like_spam(email) else gmail_client.mark_read(message_id)
         db.log_action(message_id, "auto_ignore", decision.get("reasoning", ""))
+
+    elif category == "auto_delete":
+        unsub_result = gmail_client.unsubscribe(message_id)
+        gmail_client.trash_message(message_id)
+        db.log_action(message_id, "auto_unsubscribe", unsub_result.get("detail", ""))
+        db.log_action(message_id, "auto_delete", decision.get("reasoning", ""))
 
     elif category == "auto_triage":
         if decision.get("suggested_label"):
