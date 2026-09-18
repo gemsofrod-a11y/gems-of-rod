@@ -88,6 +88,7 @@
   }
   .bubble.user { margin-left: auto; background: var(--gold-dim); color: #fff; }
   .bubble.assistant { background: var(--card); color: var(--text); }
+  .bubble.listening { opacity: 0.6; font-style: italic; }
 
   .mic-row {
     position: fixed;
@@ -251,6 +252,7 @@ function saveToken() {
   TOKEN = v;
   localStorage.setItem('gor_token', v);
   document.getElementById('gate').classList.add('hidden');
+  warmUpSpeech();
   init();
 }
 
@@ -317,6 +319,22 @@ async function newConversation() {
   document.getElementById('log').innerHTML = '';
 }
 
+// Le tout premier appel à speechSynthesis.speak() sur la page met souvent
+// 1 à 2 secondes à démarrer le moteur vocal du téléphone. On le "préchauffe"
+// en silence dès le premier geste de l'utilisateur pour que la première
+// vraie réponse soit lue instantanément.
+let _speechWarmed = false;
+function warmUpSpeech() {
+  if (_speechWarmed || !('speechSynthesis' in window)) return;
+  _speechWarmed = true;
+  try {
+    const u = new SpeechSynthesisUtterance(' ');
+    u.volume = 0;
+    speechSynthesis.speak(u);
+  } catch (e) { /* tant pis, la voix se réveillera au premier vrai message */ }
+}
+document.addEventListener('pointerdown', warmUpSpeech, { once: true });
+
 function speak(text) {
   if (!('speechSynthesis' in window)) return;
   const u = new SpeechSynthesisUtterance(text);
@@ -325,12 +343,8 @@ function speak(text) {
   speechSynthesis.speak(u);
 }
 
-async function sendText() {
-  const input = document.getElementById('textInput');
-  const text = input.value.trim();
-  if (!text) return;
-  input.value = '';
-  addBubble(text, 'user');
+async function sendMessage(text, { skipUserBubble = false } = {}) {
+  if (!skipUserBubble) addBubble(text, 'user');
   try {
     const data = await api('/api/voice', { method: 'POST', body: JSON.stringify({ text }) });
     addBubble(data.reply, 'assistant');
@@ -340,24 +354,67 @@ async function sendText() {
   }
 }
 
+async function sendText() {
+  const input = document.getElementById('textInput');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  await sendMessage(text);
+}
+
 let recognition = null;
 let listening = false;
+let liveBubble = null;
 
 function toggleMic() {
+  warmUpSpeech();
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SR) { alert("La reconnaissance vocale n'est pas disponible dans ce navigateur. Utilisez le champ texte."); return; }
   if (listening) { recognition.stop(); return; }
   recognition = new SR();
   recognition.lang = 'fr-FR';
-  recognition.interimResults = false;
+  recognition.interimResults = true;
   recognition.maxAlternatives = 1;
-  recognition.onstart = () => { listening = true; document.getElementById('micBtn').classList.add('listening'); };
-  recognition.onend = () => { listening = false; document.getElementById('micBtn').classList.remove('listening'); };
-  recognition.onerror = () => { listening = false; document.getElementById('micBtn').classList.remove('listening'); };
+
+  recognition.onstart = () => {
+    listening = true;
+    document.getElementById('micBtn').classList.add('listening');
+    liveBubble = document.createElement('div');
+    liveBubble.className = 'bubble user listening';
+    liveBubble.textContent = '…';
+    document.getElementById('log').appendChild(liveBubble);
+    liveBubble.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  };
+  recognition.onend = () => {
+    listening = false;
+    document.getElementById('micBtn').classList.remove('listening');
+    if (liveBubble && !liveBubble.dataset.sent) liveBubble.remove();
+    liveBubble = null;
+  };
+  recognition.onerror = () => {
+    listening = false;
+    document.getElementById('micBtn').classList.remove('listening');
+    if (liveBubble) { liveBubble.remove(); liveBubble = null; }
+  };
   recognition.onresult = (event) => {
-    const text = event.results[0][0].transcript;
-    document.getElementById('textInput').value = text;
-    sendText();
+    let transcript = '';
+    let isFinal = false;
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      transcript += event.results[i][0].transcript;
+      if (event.results[i].isFinal) isFinal = true;
+    }
+    if (!liveBubble) return;
+    liveBubble.textContent = transcript || '…';
+    liveBubble.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    if (isFinal && transcript.trim()) {
+      liveBubble.dataset.sent = '1';
+      liveBubble.classList.remove('listening');
+      const finalText = transcript.trim();
+      const sentBubble = liveBubble;
+      liveBubble = null;
+      sentBubble.textContent = finalText;
+      sendMessage(finalText, { skipUserBubble: true });
+    }
   };
   recognition.start();
 }
