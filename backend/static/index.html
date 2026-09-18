@@ -89,6 +89,11 @@
   .bubble.user { margin-left: auto; background: var(--gold-dim); color: #fff; }
   .bubble.assistant { background: var(--card); color: var(--text); }
   .bubble.listening { opacity: 0.6; font-style: italic; }
+  .actions-note {
+    font-size: 12px;
+    color: var(--ok);
+    margin: -4px 0 10px 4px;
+  }
 
   .mic-row {
     position: fixed;
@@ -343,11 +348,27 @@ function speak(text) {
   speechSynthesis.speak(u);
 }
 
+function actionLabel(action) {
+  const idx = action.indexOf(':');
+  return idx === -1 ? action : action.slice(idx + 1).trim();
+}
+
+function addActionsNote(actions) {
+  if (!actions || !actions.length) return;
+  const log = document.getElementById('log');
+  const note = document.createElement('div');
+  note.className = 'actions-note';
+  note.textContent = '✓ ' + actions.map(actionLabel).join(' · ');
+  log.appendChild(note);
+  note.scrollIntoView({ behavior: 'smooth', block: 'end' });
+}
+
 async function sendMessage(text, { skipUserBubble = false } = {}) {
   if (!skipUserBubble) addBubble(text, 'user');
   try {
     const data = await api('/api/voice', { method: 'POST', body: JSON.stringify({ text }) });
     addBubble(data.reply, 'assistant');
+    addActionsNote(data.actions);
     speak(data.reply);
   } catch (e) {
     addBubble('Erreur : ' + e.message, 'assistant');
