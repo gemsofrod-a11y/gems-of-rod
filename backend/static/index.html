@@ -208,7 +208,10 @@
 
 <header>
   <h1>💎 Gems of Rod</h1>
-  <button onclick="resetToken()" title="Changer de jeton">⚙️</button>
+  <div>
+    <button onclick="newConversation()" title="Nouvelle conversation">🗑️</button>
+    <button onclick="resetToken()" title="Changer de jeton">⚙️</button>
+  </div>
 </header>
 
 <main>
@@ -288,13 +291,30 @@ function showTab(name) {
 }
 
 // --- Vocal ---
-function addBubble(text, who) {
+function addBubble(text, who, scroll = true) {
   const log = document.getElementById('log');
   const b = document.createElement('div');
   b.className = 'bubble ' + who;
   b.textContent = text;
   log.appendChild(b);
-  b.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  if (scroll) b.scrollIntoView({ behavior: 'smooth', block: 'end' });
+}
+
+async function loadHistory() {
+  try {
+    const items = await api('/api/voice/history');
+    items.forEach(m => addBubble(m.text, m.role, false));
+    const log = document.getElementById('log');
+    if (log.lastElementChild) log.lastElementChild.scrollIntoView({ block: 'end' });
+  } catch (e) {
+    // pas grave si l'historique ne charge pas, on repart d'une page vide
+  }
+}
+
+async function newConversation() {
+  if (!confirm('Effacer cette conversation et repartir de zéro ?')) return;
+  await api('/api/voice/reset', { method: 'POST' });
+  document.getElementById('log').innerHTML = '';
 }
 
 function speak(text) {
@@ -424,6 +444,7 @@ function init() {
     return;
   }
   document.getElementById('gate').classList.add('hidden');
+  loadHistory();
 }
 
 init();

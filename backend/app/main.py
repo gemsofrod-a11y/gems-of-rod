@@ -49,6 +49,17 @@ def voice(req: VoiceRequest) -> dict:
     return voice_agent.handle_turn(req.text, req.session_id)
 
 
+@app.get("/api/voice/history", dependencies=[Depends(require_token)])
+def voice_history(session_id: str = "default") -> list[dict]:
+    return voice_agent.get_display_history(session_id)
+
+
+@app.post("/api/voice/reset", dependencies=[Depends(require_token)])
+def voice_reset(session_id: str = "default") -> dict:
+    voice_agent.reset_conversation(session_id)
+    return {"message": "Conversation réinitialisée."}
+
+
 @app.get("/api/pending", dependencies=[Depends(require_token)])
 def pending() -> list[dict]:
     return db.list_pending()
