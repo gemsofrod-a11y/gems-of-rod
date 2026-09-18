@@ -228,31 +228,40 @@ def resolve_pending_action(pending_id: str, decision: str, edited_reply: str | N
     return "Réponse envoyée."
 
 
-def _safe_slice_from(history: list[dict], start_hint: int) -> list[dict]:
-    """Coupe l'historique à partir d'un vrai message texte de Sébastien (jamais
-    au milieu d'un enchaînement tool_use/tool_result) : l'API Anthropic rejette
-    toute conversation qui commence par un tool_result orphelin. Sert à la fois
-    à tronquer proprement (à la sauvegarde) et à réparer un historique déjà
-    corrompu par une ancienne troncature naïve (au chargement).
+_CONTEXT_WINDOW = 20  # échanges texte envoyés à Claude à chaque tour (coût/contexte)
+
+
+def _context_from_history(full_history: list[dict], window: int) -> list[dict]:
+    """Reconstruit un contexte propre pour l'API à partir de l'historique
+    persistant : uniquement les échanges texte (jamais les blocs
+    tool_use/tool_result des tours précédents — un tool_use ne peut être
+    "rejoué" en toute sécurité que dans le tour où il a été créé ; les
+    relire depuis la base après coup a causé des 400 Anthropic à répétition,
+    l'API exigeant un appariement strict tool_use/tool_result). Ceux du tour
+    EN COURS sont ajoutés à part, par handle_turn lui-même.
     """
-    idx = max(0, start_hint)
-    while idx < len(history) and not (
-        history[idx].get("role") == "user" and isinstance(history[idx].get("content"), str)
-    ):
-        idx += 1
-    return history[idx:] if idx < len(history) else []
-
-
-_CONTEXT_WINDOW = 20  # messages envoyés à Claude à chaque tour (coût/contexte)
+    clean = []
+    for msg in full_history:
+        role, content = msg.get("role"), msg.get("content")
+        if role == "user" and isinstance(content, str):
+            clean.append({"role": "user", "content": content})
+        elif role == "assistant" and isinstance(content, list):
+            text = "".join(
+                b.get("text", "") for b in content if isinstance(b, dict) and b.get("type") == "text"
+            ).strip()
+            if text:
+                clean.append({"role": "assistant", "content": text})
+    return clean[-window:]
 
 
 def handle_turn(text: str, session_id: str = "default") -> dict:
     # L'historique complet est conservé pour toujours en base (rien n'est
-    # jamais oublié pour Sébastien) ; seule une fenêtre récente est envoyée
-    # au modèle à chaque tour, pour ne pas faire exploser le coût/contexte.
+    # jamais oublié pour Sébastien) ; seul un résumé texte des derniers
+    # échanges est envoyé au modèle à chaque tour, pour ne pas faire
+    # exploser le coût/contexte.
     full_history = db.load_conversation(session_id)
     full_history.append({"role": "user", "content": text})
-    context = _safe_slice_from(full_history, len(full_history) - _CONTEXT_WINDOW)
+    context = _context_from_history(full_history, _CONTEXT_WINDOW)
 
     client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
     actions: list[str] = []
