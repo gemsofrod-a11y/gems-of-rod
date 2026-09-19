@@ -115,6 +115,7 @@
     font-size: 15px;
   }
   #micBtn, #sendBtn {
+    position: relative;
     border: none;
     border-radius: 50%;
     width: 46px; height: 46px;
@@ -124,6 +125,20 @@
     flex-shrink: 0;
   }
   #micBtn.listening { background: var(--danger); color: #fff; }
+  #micBtn.listening::before,
+  #micBtn.listening::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 2px solid rgba(181,69,58,.65);
+    animation: mic-pulse 1.6s ease-out infinite;
+  }
+  #micBtn.listening::after { animation-delay: .8s; }
+  @keyframes mic-pulse {
+    0%   { transform: scale(1); opacity: .8; }
+    100% { transform: scale(1.8); opacity: 0; }
+  }
   #sendBtn { border-radius: 20px; width: auto; padding: 0 16px; }
 
   .card {
@@ -183,6 +198,10 @@
   .digest-chip.btn { background: var(--gold); color: #1a1610; font-weight: 600; }
 
   .notif {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
     max-width: 92%;
     margin: 10px auto;
     padding: 10px 14px;
@@ -212,28 +231,60 @@
     overflow: visible;
   }
   .email-chip .subject { overflow-wrap: anywhere; }
-
+  .email-chip::after {
+    content: '';
+    position: absolute;
+    left: -1px; right: -1px; top: 0; height: 45%;
+    background: linear-gradient(to bottom, transparent, rgba(110,220,255,.65), transparent);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .ring {
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 100%; height: 100%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(110,220,255,.85);
+    border-radius: 10px;
+    pointer-events: none;
+    animation: jarvis-ring 900ms ease-out forwards;
+  }
+  @keyframes jarvis-ring {
+    0%   { transform: translate(-50%, -50%) scale(.6); opacity: .9; }
+    100% { transform: translate(-50%, -50%) scale(1.9); opacity: 0; }
+  }
+  @keyframes jarvis-scan {
+    0%, 8%   { transform: translateY(-120%); opacity: 0; }
+    18%      { opacity: 1; }
+    88%      { opacity: 1; }
+    100%     { transform: translateY(320%); opacity: 0; }
+  }
   @keyframes evaporate-card {
-    0%   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0) brightness(1); }
-    35%  { filter: blur(.5px) brightness(1.7); }
-    100% { opacity: 0; transform: translateY(-20px) scale(.92); filter: blur(9px) brightness(2.2); }
+    0%   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0) brightness(1) saturate(1); border-color: #3d3320; }
+    30%  { filter: blur(0) brightness(1.6) saturate(1.5); border-color: rgba(110,220,255,.7); }
+    100% { opacity: 0; transform: translateY(-16px) scale(.9); filter: blur(9px) brightness(2.3) saturate(1.8); border-color: rgba(110,220,255,0); }
   }
   .email-chip.evaporate {
-    animation: evaporate-card 1000ms cubic-bezier(.4,0,.2,1) forwards;
+    animation: evaporate-card 950ms cubic-bezier(.4,0,.2,1) forwards;
     pointer-events: none;
+    box-shadow: 0 0 24px rgba(110,220,255,.4), 0 2px 10px rgba(0,0,0,.35);
+  }
+  .email-chip.evaporate::after {
+    opacity: 1;
+    animation: jarvis-scan 900ms linear forwards;
   }
   .spark {
     position: absolute;
     width: 4px; height: 4px;
     border-radius: 50%;
-    background: var(--gold);
-    box-shadow: 0 0 6px 1px var(--gold);
+    background: #7fdcff;
+    box-shadow: 0 0 8px 2px #7fdcff;
     pointer-events: none;
-    animation: spark-rise 850ms ease-out forwards;
+    animation: spark-rise 800ms ease-out forwards;
   }
   @keyframes spark-rise {
     0%   { opacity: 1; transform: translate(0, 0) scale(1); }
-    100% { opacity: 0; transform: translate(var(--dx), -36px) scale(.3); }
+    100% { opacity: 0; transform: translate(var(--dx), -38px) scale(.3); }
   }
 
   .primary-btn {
@@ -457,18 +508,21 @@ function actionLabel(action) {
 // suppression.
 function evaporateChip(chip, delay = 700) {
   setTimeout(() => {
+    const ring = document.createElement('span');
+    ring.className = 'ring';
+    chip.appendChild(ring);
     const w = chip.offsetWidth, h = chip.offsetHeight;
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 12; i++) {
       const spark = document.createElement('span');
       spark.className = 'spark';
       spark.style.left = (Math.random() * w) + 'px';
       spark.style.top = (Math.random() * h) + 'px';
-      spark.style.setProperty('--dx', (Math.random() * 44 - 22) + 'px');
+      spark.style.setProperty('--dx', (Math.random() * 50 - 25) + 'px');
       spark.style.animationDelay = (Math.random() * 200) + 'ms';
       chip.appendChild(spark);
     }
     chip.classList.add('evaporate');
-    setTimeout(() => chip.remove(), 1050);
+    setTimeout(() => chip.remove(), 1000);
   }, delay);
 }
 
