@@ -6,7 +6,7 @@ from fastapi import Depends, FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from app import config, db, triage, voice_agent
+from app import config, db, gmail_client, triage, voice_agent
 from app.auth import require_token
 
 app = FastAPI(title="Gems of Rod — Assistant vocal Gmail")
@@ -79,6 +79,17 @@ def approve(pending_id: str, req: ResolveRequest) -> dict:
 def reject(pending_id: str) -> dict:
     result = voice_agent.resolve_pending_action(pending_id, "reject", None)
     return {"message": result}
+
+
+@app.post("/api/drafts/{draft_id}/send", dependencies=[Depends(require_token)])
+def send_draft(draft_id: str) -> dict:
+    """Envoie un brouillon déjà créé par create_draft, après relecture dans
+    l'app (voir renderReplyCard côté client : le brouillon est montré en
+    train de "s'écrire" pour que Sébastien puisse décider de l'envoyer sans
+    avoir à ouvrir Gmail)."""
+    sent_id = gmail_client.send_draft(draft_id)
+    db.log_action(None, "voice_send_draft", draft_id)
+    return {"message": "Réponse envoyée.", "sent_id": sent_id}
 
 
 @app.post("/api/triage/run", dependencies=[Depends(require_token)])

@@ -434,6 +434,85 @@
     100% { opacity: 0; transform: translate(var(--dx), -38px) scale(.3); }
   }
 
+  /* Archivage : geste doux et non destructif (contrairement à l'évaporation
+     réservée à la suppression) — la fiche glisse et s'estompe, comme rangée. */
+  @keyframes chip-archive {
+    0%   { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(26px) scale(.85); opacity: 0; }
+  }
+  .email-chip.archiving {
+    animation: chip-archive .7s ease-in forwards;
+    pointer-events: none;
+  }
+
+  /* Fiche de réponse : le corps du mail rédigé par l'assistant s'écrit à
+     l'écran (effet machine à écrire) pour que Sébastien puisse le relire
+     sans quitter l'app, avant de décider de l'envoyer ou de le laisser en
+     brouillon. */
+  .reply-card {
+    border: 1px solid #3d3320;
+    border-left: 3px solid #7fdcff;
+    background: linear-gradient(135deg, #1c1912, #14110d);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin: 10px 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,.35);
+    animation: card-rise .4s cubic-bezier(.22,1,.36,1) backwards;
+  }
+  .reply-card .reply-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .reply-card .reply-subject { font-weight: 600; color: var(--text); }
+  .reply-card .reply-body {
+    font-size: 14px;
+    line-height: 1.45;
+    white-space: pre-wrap;
+    min-height: 1.2em;
+  }
+  .reply-card .caret {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: #7fdcff;
+    margin-left: 1px;
+    vertical-align: text-bottom;
+    box-shadow: 0 0 6px 1px rgba(110,220,255,.8);
+    animation: caret-blink .8s step-end infinite;
+  }
+  @keyframes caret-blink {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0; }
+  }
+  .reply-card .reply-status {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--ok);
+    opacity: 0;
+    animation: boot-fade .4s ease forwards;
+  }
+  .reply-card .reply-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    opacity: 0;
+    animation: boot-fade .4s ease forwards;
+  }
+  .reply-card .reply-actions button {
+    flex: 1;
+    padding: 9px;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .reply-card .btn-send-now { background: var(--gold); color: #1a1610; }
+  .reply-card .btn-keep-draft { background: #3a352a; color: var(--text); }
+
   /* Carrousel 3D : quand plusieurs emails sont traités d'un coup, elles se
      présentent une par une avec de la profondeur, puis se désintègrent,
      avant de laisser la place au fil de discussion normal. */
@@ -756,6 +835,15 @@ function evaporateChip(chip, delay = 700) {
   }, delay);
 }
 
+// Effet "archivage" : geste doux (glisse + s'estompe), pour bien le
+// distinguer visuellement de la désintégration réservée à la suppression.
+function archiveChip(chip, delay = 700) {
+  setTimeout(() => {
+    chip.classList.add('archiving');
+    setTimeout(() => chip.remove(), 700);
+  }, delay);
+}
+
 function makeEmailChip(subject) {
   const chip = document.createElement('div');
   chip.className = 'email-chip';
@@ -764,20 +852,32 @@ function makeEmailChip(subject) {
   return chip;
 }
 
-// Les suppressions demandées en conversation ("supprime cet email") ont un
-// format reconnaissable (trash_email: ... « Titre ») : on les affiche comme
-// une fiche email qui s'évapore, plutôt qu'une ligne de texte.
+// Les suppressions/archivages demandés en conversation ("supprime cet
+// email", "archive celui-ci") ont un format reconnaissable (trash_email: ...
+// « Titre », archive_email: ... « Titre ») : on les affiche comme une fiche
+// email qui s'évapore (suppression) ou glisse hors champ en douceur
+// (archivage), plutôt qu'une ligne de texte. Les réponses (send_reply /
+// create_draft) sont déjà présentées à part par renderReplyCard (voir
+// data.drafts), donc ignorées ici pour ne pas les afficher en double.
 function handleActionResults(actions) {
   if (!actions || !actions.length) return;
   const log = document.getElementById('log');
   const plain = [];
   actions.forEach(a => {
-    const m = a.match(/^trash_email:.*«\s*(.+?)\s*»/);
-    if (m) {
-      const chip = makeEmailChip(m[1]);
+    const trashed = a.match(/^trash_email:.*«\s*(.+?)\s*»/);
+    const archived = a.match(/^archive_email:.*«\s*(.+?)\s*»/);
+    if (trashed) {
+      const chip = makeEmailChip(trashed[1]);
       log.appendChild(chip);
       chip.scrollIntoView({ behavior: 'smooth', block: 'end' });
       evaporateChip(chip);
+    } else if (archived) {
+      const chip = makeEmailChip(archived[1]);
+      log.appendChild(chip);
+      chip.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      archiveChip(chip);
+    } else if (a.startsWith('send_reply:') || a.startsWith('create_draft:')) {
+      // déjà affiché par renderReplyCard.
     } else {
       plain.push(actionLabel(a));
     }
@@ -811,6 +911,7 @@ async function sendMessage(text, { skipUserBubble = false } = {}) {
     addBubble(data.reply, 'assistant');
     if (data.emails && data.emails.length) renderAnnounceCarousel(dedupeEmails(data.emails));
     handleActionResults(data.actions);
+    if (data.drafts && data.drafts.length) data.drafts.forEach(renderReplyCard);
     speak(data.reply);
   } catch (e) {
     thinking.remove();
@@ -1060,6 +1161,87 @@ function renderAnnounceCarousel(emails) {
     setTimeout(showNext, 1700);
   }
   showNext();
+}
+
+// Quand l'assistant rédige une réponse (brouillon ou envoi direct sur
+// instruction explicite), on la montre "s'écrire" à l'écran plutôt que de
+// simplement annoncer l'action par une ligne de texte : Sébastien peut ainsi
+// relire le contenu exact sans ouvrir Gmail. Un envoi direct se termine par
+// une simple confirmation ; un brouillon propose de l'envoyer maintenant ou
+// de le laisser tel quel — dans tous les cas, il existe déjà comme brouillon
+// réel dans Gmail avant d'être éventuellement envoyé (voir gmail_client.send_reply).
+function renderReplyCard(draft) {
+  const log = document.getElementById('log');
+  const card = document.createElement('div');
+  card.className = 'reply-card';
+  card.innerHTML = `
+    <div class="reply-head">✍️ Réponse à <span class="reply-subject"></span></div>
+    <div class="reply-body"><span class="caret"></span></div>
+  `;
+  card.querySelector('.reply-subject').textContent = draft.subject || '(sans objet)';
+  log.appendChild(card);
+  card.scrollIntoView({ behavior: 'smooth', block: 'end' });
+
+  const bodyEl = card.querySelector('.reply-body');
+  const caret = card.querySelector('.caret');
+  const text = draft.body_text || '';
+  // Rythme d'écriture adaptatif : rapide pour ne pas lasser sur un texte
+  // long, mais assez lent pour rester lisible sur une réponse courte.
+  const stepMs = text.length > 220 ? 6 : text.length > 90 ? 12 : 20;
+  let i = 0;
+  function typeNext() {
+    if (i >= text.length) {
+      caret.remove();
+      finishReplyCard(card, draft);
+      return;
+    }
+    i++;
+    bodyEl.textContent = text.slice(0, i);
+    bodyEl.appendChild(caret);
+    if (i % 4 === 0) card.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    setTimeout(typeNext, stepMs);
+  }
+  typeNext();
+}
+
+function finishReplyCard(card, draft) {
+  if (draft.sent) {
+    const status = document.createElement('div');
+    status.className = 'reply-status';
+    status.textContent = '✓ Envoyé';
+    card.appendChild(status);
+    return;
+  }
+  const actionsRow = document.createElement('div');
+  actionsRow.className = 'reply-actions';
+  actionsRow.innerHTML = `
+    <button class="btn-send-now">Envoyer maintenant</button>
+    <button class="btn-keep-draft">Laisser en brouillon</button>
+  `;
+  card.appendChild(actionsRow);
+  actionsRow.querySelector('.btn-send-now').onclick = async (ev) => {
+    const btn = ev.currentTarget;
+    btn.disabled = true;
+    btn.textContent = 'Envoi...';
+    try {
+      await api(`/api/drafts/${draft.draft_id}/send`, { method: 'POST', body: JSON.stringify({}) });
+      actionsRow.remove();
+      const status = document.createElement('div');
+      status.className = 'reply-status';
+      status.textContent = '✓ Envoyé';
+      card.appendChild(status);
+    } catch (e) {
+      btn.disabled = false;
+      btn.textContent = 'Réessayer';
+    }
+  };
+  actionsRow.querySelector('.btn-keep-draft').onclick = () => {
+    actionsRow.remove();
+    const status = document.createElement('div');
+    status.className = 'reply-status';
+    status.textContent = '📝 Enregistré en brouillon';
+    card.appendChild(status);
+  };
 }
 
 // Ne remonte que les actions survenues depuis l'ouverture de la page (pas tout

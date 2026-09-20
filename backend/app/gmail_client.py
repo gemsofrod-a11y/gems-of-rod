@@ -244,9 +244,16 @@ def _build_reply_mime(original: dict, body_text: str) -> dict:
 
 
 def send_reply(message_id: str, body_text: str) -> str:
+    """Envoie une réponse — toujours en créant d'abord le brouillon Gmail puis
+    en l'envoyant (jamais un envoi direct sans brouillon, voir CLAUDE.md :
+    « Jamais envoyer d'email sans sauvegarder le brouillon d'abord »). Le
+    brouillon disparaît de la boîte de brouillons une fois envoyé, exactement
+    comme si Sébastien avait cliqué "Envoyer" sur ce brouillon lui-même.
+    """
     original = get_message(message_id)
     body = _build_reply_mime(original, body_text)
-    sent = get_service().users().messages().send(userId="me", body=body).execute()
+    draft = get_service().users().drafts().create(userId="me", body={"message": body}).execute()
+    sent = get_service().users().drafts().send(userId="me", body={"id": draft["id"]}).execute()
     return sent["id"]
 
 
@@ -255,3 +262,10 @@ def create_draft_reply(message_id: str, body_text: str) -> str:
     body = _build_reply_mime(original, body_text)
     draft = get_service().users().drafts().create(userId="me", body={"message": body}).execute()
     return draft["id"]
+
+
+def send_draft(draft_id: str) -> str:
+    """Envoie un brouillon déjà créé (ex. après relecture dans l'app, quand
+    Sébastien décide d'envoyer un brouillon proposé par create_draft)."""
+    sent = get_service().users().drafts().send(userId="me", body={"id": draft_id}).execute()
+    return sent["id"]
