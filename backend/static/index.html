@@ -11,6 +11,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Gems of Rod">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #151310;
@@ -24,6 +26,8 @@
     --nav-h: 56px;
     --mic-h: 66px;
     --safe-b: env(safe-area-inset-bottom, 0px);
+    --font-hud: "Rajdhani", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "Share Tech Mono", ui-monospace, monospace;
   }
   * { box-sizing: border-box; }
   html, body { height: 100%; }
@@ -37,14 +41,34 @@
     background-repeat: no-repeat;
     animation: bg-drift 28s ease-in-out infinite alternate;
     color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: var(--font-hud);
+    font-weight: 500;
     display: flex;
     flex-direction: column;
+    position: relative;
   }
   @keyframes bg-drift {
     0%   { background-position: 10% 10%, 90% 90%; }
     100% { background-position: 55% 35%, 45% 65%; }
   }
+  /* Grille hexagonale + scanlines, très subtile sous le contenu — chrome HUD
+     inspiré d'une maquette de tableau de bord IA fournie par l'utilisateur. */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .5;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(110,220,255,.025) 0 1px, transparent 1px 3px),
+      linear-gradient(rgba(110,220,255,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(110,220,255,.035) 1px, transparent 1px);
+    background-size: 100% 3px, 44px 44px, 44px 44px;
+  }
+  .corner { position: fixed; width: 22px; height: 22px; pointer-events: none; z-index: 1; opacity: .5; }
+  .corner::before { content: ''; position: absolute; inset: 0; border: 1px solid var(--gold); }
+  .corner.tl { top: 8px; left: 8px; } .corner.tl::before { border-right: 0; border-bottom: 0; }
+  .corner.tr { top: 8px; right: 8px; } .corner.tr::before { border-left: 0; border-bottom: 0; }
+  .corner.bl { bottom: calc(var(--nav-h) + var(--safe-b) + 8px); left: 8px; } .corner.bl::before { border-right: 0; border-top: 0; }
+  .corner.br { bottom: calc(var(--nav-h) + var(--safe-b) + 8px); right: 8px; } .corner.br::before { border-left: 0; border-top: 0; }
+  header, main, .mic-row, nav, #gate { position: relative; z-index: 1; }
   header {
     padding: 14px 16px 10px;
     display: flex;
@@ -87,6 +111,7 @@
     animation: think-pulse 2.4s ease-in-out infinite;
   }
   .clock {
+    font-family: var(--font-mono);
     font-size: 12px;
     color: var(--text-dim);
     letter-spacing: .03em;
@@ -290,56 +315,13 @@
   .btn-reject { background: #3a352a; color: var(--text); }
   .empty { color: var(--text-dim); text-align: center; margin-top: 40px; font-size: 14px; }
 
+  /* Orbe : dessiné en direct sur un canvas (anneau segmenté, graduations,
+     cœur, onde), plutôt qu'un dégradé CSS statique — façon "réacteur arc",
+     inspiré d'une maquette de tableau de bord IA fournie par l'utilisateur.
+     Voir drawOrb() : couleur et énergie pilotées par l'état (idle/listening/
+     thinking/speaking), avec réactivité au micro pendant l'écoute. */
   .orb-wrap { display: flex; justify-content: center; padding: 8px 0 10px; }
-  .orb {
-    position: relative;
-    width: 78px; height: 78px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #fff6d8, var(--gold) 42%, #7a5e10 76%, #241c0d 100%);
-    box-shadow: 0 0 22px 6px rgba(201,162,39,.45), 0 0 56px 14px rgba(201,162,39,.15), inset 0 0 18px rgba(0,0,0,.4);
-    animation: orb-breathe 4s ease-in-out infinite;
-    transition: background 0.5s ease, box-shadow 0.5s ease;
-  }
-  .orb::before {
-    content: '';
-    position: absolute; inset: 15%;
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,.35);
-    animation: orb-spin 9s linear infinite;
-  }
-  .orb::after {
-    content: '';
-    position: absolute; inset: -7px;
-    border-radius: 50%;
-    border: 1px solid rgba(201,162,39,.3);
-  }
-  @keyframes orb-breathe {
-    0%, 100% { transform: scale(1); }
-    50%      { transform: scale(1.07); }
-  }
-  @keyframes orb-spin {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-  }
-  .orb.listening {
-    animation: orb-breathe 1.1s ease-in-out infinite;
-    background: radial-gradient(circle at 35% 30%, #eafcff, #7fdcff 42%, #12586e 76%, #0a2530 100%);
-    box-shadow: 0 0 26px 8px rgba(110,220,255,.55), 0 0 70px 18px rgba(110,220,255,.22), inset 0 0 18px rgba(0,0,0,.4);
-  }
-  .orb.listening::after { border-color: rgba(110,220,255,.45); }
-  .orb.thinking {
-    animation: orb-breathe .55s ease-in-out infinite;
-  }
-  .orb.thinking::before { animation-duration: 1.2s; }
-  .orb.speaking {
-    animation: orb-speak .45s ease-in-out infinite;
-    background: radial-gradient(circle at 35% 30%, #fffaf0, var(--gold) 40%, #8a6d18 76%, #2a2010 100%);
-    box-shadow: 0 0 30px 9px rgba(201,162,39,.55), 0 0 74px 20px rgba(110,220,255,.2), inset 0 0 18px rgba(0,0,0,.4);
-  }
-  @keyframes orb-speak {
-    0%, 100% { transform: scale(1); }
-    50%      { transform: scale(1.12); }
-  }
+  .orb { width: 116px; height: 116px; display: block; }
 
   /* Tableau de bord de l'écran Vocal : panneaux de statistiques réelles
      (boîte de réception, session) à côté du cœur de l'assistant, inspiré
@@ -388,7 +370,7 @@
     color: var(--text-dim);
     padding: 3px 0;
   }
-  .stat-row b { color: #bfeeff; font-size: 14px; font-weight: 700; }
+  .stat-row b { color: #bfeeff; font-size: 14px; font-weight: 700; font-family: var(--font-mono); }
   .panel-btn {
     width: 100%;
     margin-top: 8px;
@@ -402,6 +384,7 @@
   }
   .orb-status {
     text-align: center;
+    font-family: var(--font-mono);
     font-size: 11px;
     letter-spacing: .12em;
     text-transform: uppercase;
@@ -696,6 +679,9 @@
 </head>
 <body>
 
+<div class="corner tl"></div><div class="corner tr"></div>
+<div class="corner bl"></div><div class="corner br"></div>
+
 <div id="gate" class="hidden">
   <h2>Gems of Rod</h2>
   <p>Collez le jeton de l'assistant (<code>ASSISTANT_API_TOKEN</code>, celui défini
@@ -736,7 +722,7 @@
     </aside>
 
     <div class="core-panel">
-      <div class="orb-wrap"><div class="orb" id="orb"></div></div>
+      <div class="orb-wrap"><canvas class="orb" id="orb"></canvas></div>
       <div class="orb-status" id="orbStatus">En veille</div>
       <div class="conversation-head">
         <span>Conversation</span>
@@ -822,19 +808,158 @@ function showTab(name) {
   if (name === 'historique') loadHistoryTab();
 }
 
-// --- Cœur de l'assistant (orbe) : reflète son état en temps réel ---
+// --- Cœur de l'assistant (orbe) : rendu en direct sur un canvas (anneau
+// segmenté, graduations, cœur, onde) plutôt qu'un dégradé CSS statique,
+// façon "réacteur arc". La couleur et l'énergie de l'animation suivent
+// l'état (idle/listening/thinking/speaking) ; pendant l'écoute, l'énergie
+// vient du niveau réel du micro (voir _startOrbMic), sinon d'un pouls
+// synthétique. Reste indépendant de la connexion (tourne dès le chargement,
+// comme le reste du chrome HUD).
 const _orbStatusLabels = {
   idle: 'En veille',
   listening: 'Écoute en cours…',
   thinking: 'Réflexion…',
   speaking: 'Je réponds…',
 };
+let _orbState = 'idle';
 function setOrb(state) {
-  const orb = document.getElementById('orb');
-  if (orb) orb.className = 'orb' + (state ? ' ' + state : '');
+  _orbState = state || 'idle';
   const label = document.getElementById('orbStatus');
-  if (label) label.textContent = _orbStatusLabels[state] || _orbStatusLabels.idle;
+  if (label) label.textContent = _orbStatusLabels[_orbState] || _orbStatusLabels.idle;
 }
+
+const _orbCanvas = document.getElementById('orb');
+const _orbCtx = _orbCanvas.getContext('2d');
+function sizeOrbCanvas() {
+  const rect = _orbCanvas.getBoundingClientRect();
+  _orbCanvas.width = rect.width * devicePixelRatio;
+  _orbCanvas.height = rect.height * devicePixelRatio;
+}
+window.addEventListener('resize', sizeOrbCanvas);
+sizeOrbCanvas();
+
+let _orbAnalyser = null;
+let _orbAudioCtx = null;
+let _orbMicStream = null;
+
+// SpeechRecognition ne donne pas accès au flux audio brut : on ouvre un
+// deuxième accès micro (même permission, déjà accordée) seulement pour
+// mesurer le niveau sonore et faire réagir l'orbe en direct pendant
+// l'écoute. Si ça échoue (refus, navigateur), l'orbe retombe sur un pouls
+// synthétique — jamais bloquant pour la reconnaissance vocale elle-même.
+async function _startOrbMic() {
+  try {
+    _orbMicStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    _orbAudioCtx = _orbAudioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    if (_orbAudioCtx.state === 'suspended') await _orbAudioCtx.resume();
+    _orbAnalyser = _orbAudioCtx.createAnalyser();
+    _orbAnalyser.fftSize = 256;
+    _orbAudioCtx.createMediaStreamSource(_orbMicStream).connect(_orbAnalyser);
+  } catch (e) {
+    _orbAnalyser = null;
+  }
+}
+function _stopOrbMic() {
+  if (_orbMicStream) { _orbMicStream.getTracks().forEach(t => t.stop()); _orbMicStream = null; }
+  _orbAnalyser = null;
+}
+function _orbMicLevel() {
+  if (!_orbAnalyser) return null;
+  const buf = new Uint8Array(_orbAnalyser.frequencyBinCount);
+  _orbAnalyser.getByteFrequencyData(buf);
+  let s = 0; for (const v of buf) s += v;
+  return s / buf.length / 255;
+}
+
+// Cyan = système/IA à l'écoute ou en réflexion ; or = identité de marque au
+// repos et pendant la réponse — on garde les deux teintes déjà établies
+// ailleurs dans l'interface plutôt que le monochrome de la référence.
+const _ORB_RGB = {
+  idle: '201,162,39',
+  listening: '110,220,255',
+  thinking: '110,220,255',
+  speaking: '201,162,39',
+};
+
+let _orbT = 0;
+function drawOrb() {
+  requestAnimationFrame(drawOrb);
+  _orbT += 0.016;
+  const w = _orbCanvas.width, h = _orbCanvas.height;
+  if (!w || !h) return;
+  const cx = w / 2, cy = h / 2, dpr = devicePixelRatio || 1;
+  _orbCtx.clearRect(0, 0, w, h);
+
+  const RGB = _ORB_RGB[_orbState] || _ORB_RGB.idle;
+  let energy;
+  if (_orbState === 'listening') {
+    const lvl = _orbMicLevel();
+    energy = lvl !== null ? lvl : 0.15 + 0.1 * Math.sin(_orbT * 4);
+  } else if (_orbState === 'thinking') {
+    energy = 0.28 + 0.22 * Math.abs(Math.sin(_orbT * 5));
+  } else if (_orbState === 'speaking') {
+    energy = _pendingUtterances > 0 ? 0.25 + 0.3 * Math.abs(Math.sin(_orbT * 7)) : 0.1;
+  } else {
+    energy = 0.05 + 0.06 * Math.sin(_orbT * 1.4);
+  }
+
+  const base = Math.min(w, h) * 0.30;
+  const R = base * (1 + 0.16 * energy);
+
+  // halo
+  let g = _orbCtx.createRadialGradient(cx, cy, R * 0.2, cx, cy, R * 2.4);
+  g.addColorStop(0, `rgba(${RGB},${0.18 + energy * 0.32})`);
+  g.addColorStop(1, 'transparent');
+  _orbCtx.fillStyle = g;
+  _orbCtx.beginPath(); _orbCtx.arc(cx, cy, R * 2.4, 0, Math.PI * 2); _orbCtx.fill();
+
+  // anneau segmenté tournant
+  const segs = 10;
+  _orbCtx.save(); _orbCtx.translate(cx, cy); _orbCtx.rotate(_orbT * 0.22);
+  for (let i = 0; i < segs; i++) {
+    const a0 = (i / segs) * Math.PI * 2, a1 = a0 + (Math.PI * 2 / segs) * 0.6;
+    _orbCtx.strokeStyle = `rgba(${RGB},${0.5 + 0.35 * Math.sin(_orbT * 3 + i)})`;
+    _orbCtx.lineWidth = 3.5 * dpr;
+    _orbCtx.beginPath(); _orbCtx.arc(0, 0, R * 1.5, a0, a1); _orbCtx.stroke();
+  }
+  _orbCtx.restore();
+
+  // graduations
+  _orbCtx.save(); _orbCtx.translate(cx, cy); _orbCtx.rotate(-_orbT * 0.08);
+  for (let i = 0; i < 48; i++) {
+    const a = (i / 48) * Math.PI * 2, big = i % 4 === 0;
+    _orbCtx.strokeStyle = `rgba(${RGB},${big ? 0.7 : 0.28})`;
+    _orbCtx.lineWidth = (big ? 1.6 : 0.9) * dpr;
+    const r0 = R * 1.72, r1 = R * (big ? 1.82 : 1.78);
+    _orbCtx.beginPath();
+    _orbCtx.moveTo(r0 * Math.cos(a), r0 * Math.sin(a));
+    _orbCtx.lineTo(r1 * Math.cos(a), r1 * Math.sin(a));
+    _orbCtx.stroke();
+  }
+  _orbCtx.restore();
+
+  // cœur
+  g = _orbCtx.createRadialGradient(cx, cy, R * 0.05, cx, cy, R);
+  g.addColorStop(0, 'rgba(255,252,240,.98)');
+  g.addColorStop(0.45, `rgba(${RGB},${0.9 + energy * 0.1})`);
+  g.addColorStop(1, 'rgba(20,16,8,.95)');
+  _orbCtx.fillStyle = g;
+  _orbCtx.beginPath(); _orbCtx.arc(cx, cy, R * 0.9, 0, Math.PI * 2); _orbCtx.fill();
+
+  // onde active
+  if (energy > 0.05) {
+    _orbCtx.strokeStyle = `rgba(255,255,255,${0.25 + energy * 0.4})`;
+    _orbCtx.lineWidth = 1.2 * dpr;
+    _orbCtx.beginPath();
+    for (let a = 0; a <= Math.PI * 2; a += 0.08) {
+      const rr = R * (1 + 0.06 * energy * Math.sin(a * 8 + _orbT * 6));
+      const x = cx + rr * Math.cos(a), y = cy + rr * Math.sin(a);
+      a === 0 ? _orbCtx.moveTo(x, y) : _orbCtx.lineTo(x, y);
+    }
+    _orbCtx.closePath(); _orbCtx.stroke();
+  }
+}
+drawOrb();
 
 // --- Horloge d'en-tête et panneau Session (durée de connexion + nombre
 // d'échanges) : calculés côté client, rien à interroger côté serveur.
@@ -1183,6 +1308,7 @@ function toggleMic() {
     listening = true;
     document.getElementById('micBtn').classList.add('listening');
     setOrb('listening');
+    _startOrbMic();
     liveBubble = document.createElement('div');
     liveBubble.className = 'bubble user listening';
     liveBubble.textContent = '…';
@@ -1192,6 +1318,7 @@ function toggleMic() {
   recognition.onend = () => {
     listening = false;
     document.getElementById('micBtn').classList.remove('listening');
+    _stopOrbMic();
     // Si liveBubble est déjà null, la phrase a été envoyée : sendMessage
     // pilote déjà l'orbe (réflexion), ne pas l'écraser en le remettant à idle.
     if (liveBubble) { liveBubble.remove(); liveBubble = null; setOrb('idle'); }
@@ -1199,6 +1326,7 @@ function toggleMic() {
   recognition.onerror = () => {
     listening = false;
     document.getElementById('micBtn').classList.remove('listening');
+    _stopOrbMic();
     if (liveBubble) { liveBubble.remove(); liveBubble = null; setOrb('idle'); }
   };
   recognition.onresult = (event) => {
