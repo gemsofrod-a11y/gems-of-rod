@@ -1,0 +1,11 @@
+{
+  "name": "Gems of Rod — Assistant",
+  "short_name": "Gems of Rod",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#151310",
+  "theme_color": "#151310",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
