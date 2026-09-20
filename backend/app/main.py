@@ -5,11 +5,31 @@ from pathlib import Path
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
+from starlette.middleware.base import BaseHTTPMiddleware
 
 from app import config, db, gmail_client, triage, voice_agent
 from app.auth import require_token
 
 app = FastAPI(title="Gems of Rod — Assistant vocal Gmail")
+
+
+class _NoCacheStaticMiddleware(BaseHTTPMiddleware):
+    """Le client web (index.html) est réinstallé sur le téléphone comme une
+    app (icône "Ajouter à l'écran d'accueil") : sans cet en-tête, mobile
+    Safari/Chrome peuvent continuer à servir une version en cache pendant
+    longtemps après un déploiement, donnant l'impression qu'un changement
+    livré n'est jamais arrivé. On force donc le navigateur à toujours
+    revalider le fichier statique auprès du serveur.
+    """
+
+    async def dispatch(self, request, call_next):
+        response = await call_next(request)
+        if not request.url.path.startswith("/api/"):
+            response.headers["Cache-Control"] = "no-store, must-revalidate"
+        return response
+
+
+app.add_middleware(_NoCacheStaticMiddleware)
 
 _triage_thread_started = False
 
