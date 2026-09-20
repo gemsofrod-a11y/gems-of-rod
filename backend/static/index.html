@@ -488,6 +488,12 @@
     opacity: 1;
     animation: jarvis-scan 900ms linear forwards;
   }
+  /* Sortie douce (pas une suppression) : utilisée quand le carrousel se
+     contente d'annoncer des emails, sans les supprimer. */
+  .carousel-card.exit {
+    opacity: 0;
+    transform: translateY(10px) scale(.95);
+  }
 
   .primary-btn {
     width: 100%;
@@ -803,6 +809,7 @@ async function sendMessage(text, { skipUserBubble = false } = {}) {
     const data = await api('/api/voice', { method: 'POST', body: JSON.stringify({ text }) });
     thinking.remove();
     addBubble(data.reply, 'assistant');
+    if (data.emails && data.emails.length) renderAnnounceCarousel(dedupeEmails(data.emails));
     handleActionResults(data.actions);
     speak(data.reply);
   } catch (e) {
@@ -999,6 +1006,58 @@ function renderDeleteCarousel(items) {
     i++;
     setTimeout(() => evaporateChip(card, 0), 1200);
     setTimeout(showNext, 2100);
+  }
+  showNext();
+}
+
+function dedupeEmails(emails) {
+  const seen = new Set();
+  const out = [];
+  for (const e of emails) {
+    if (!e || seen.has(e.message_id)) continue;
+    seen.add(e.message_id);
+    out.push(e);
+    if (out.length >= 6) break;
+  }
+  return out;
+}
+
+// Quand l'assistant consulte/annonce des emails (recherche, lecture), on les
+// présente brièvement dans le même carrousel — sans les supprimer, elles
+// glissent juste hors champ une fois montrées — puis on revient entièrement
+// au fil de discussion normal. La suppression, elle, redéclenche le
+// carrousel séparément (renderDeleteCarousel / handleActionResults) au
+// moment où l'action est confirmée.
+function renderAnnounceCarousel(emails) {
+  if (!emails.length) return;
+  const log = document.getElementById('log');
+  const label = document.createElement('div');
+  label.className = 'carousel-label';
+  label.textContent = `📬 ${emails.length} email${emails.length > 1 ? 's' : ''}`;
+  log.appendChild(label);
+  const stage = document.createElement('div');
+  stage.className = 'carousel-stage';
+  log.appendChild(stage);
+  stage.scrollIntoView({ behavior: 'smooth', block: 'end' });
+
+  let i = 0;
+  function showNext() {
+    if (i >= emails.length) {
+      setTimeout(() => { label.remove(); stage.remove(); }, 250);
+      return;
+    }
+    const card = document.createElement('div');
+    card.className = 'carousel-card';
+    card.textContent = '📧 ' + emails[i].subject;
+    stage.appendChild(card);
+    requestAnimationFrame(() => card.classList.add('active'));
+    i++;
+    setTimeout(() => {
+      card.classList.remove('active');
+      card.classList.add('exit');
+      setTimeout(() => card.remove(), 400);
+    }, 1300);
+    setTimeout(showNext, 1700);
   }
   showNext();
 }
