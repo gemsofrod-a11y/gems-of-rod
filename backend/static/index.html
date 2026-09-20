@@ -383,7 +383,22 @@
     text-transform: uppercase;
     color: #7fdcff;
     text-shadow: 0 0 8px rgba(110,220,255,.5);
-    margin: 2px 0 14px;
+    margin: 2px 0 10px;
+  }
+  .wake-toggle {
+    display: block;
+    margin: 0 auto 14px;
+    background: none;
+    border: 1px solid #233450;
+    color: var(--text-dim);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 11px;
+  }
+  .wake-toggle.active {
+    border-color: rgba(110,220,255,.5);
+    color: #cdeeff;
+    background: rgba(110,220,255,.08);
   }
   .conversation-head {
     display: flex;
@@ -714,6 +729,9 @@
     <div class="core-panel">
       <div class="orb-wrap"><canvas class="orb" id="orb"></canvas></div>
       <div class="orb-status" id="orbStatus">En veille</div>
+      <button class="wake-toggle" id="wakeToggle" onclick="setWakeEnabled(!wakeEnabled)">
+        👂 Mot de réveil : désactivé
+      </button>
       <div class="conversation-head">
         <span>Conversation</span>
         <div>
@@ -1048,8 +1066,13 @@ function queueUtterance(sentence) {
   if (_frenchVoice) u.voice = _frenchVoice;
   u.rate = 0.97;
   u.pitch = 1;
-  const done = () => { _pendingUtterances = Math.max(0, _pendingUtterances - 1); if (_pendingUtterances === 0) setOrb('idle'); };
-  u.onstart = () => setOrb('speaking');
+  const done = () => {
+    _pendingUtterances = Math.max(0, _pendingUtterances - 1);
+    if (_pendingUtterances === 0) { setOrb('idle'); if (wakeEnabled) startWakeListening(); }
+  };
+  // On coupe l'écoute du mot de réveil pendant que Saphir parle, sinon elle
+  // s'entendrait elle-même et pourrait se redéclencher toute seule.
+  u.onstart = () => { setOrb('speaking'); stopWakeListening(); };
   u.onend = done;
   u.onerror = done;
   speechSynthesis.speak(u);
@@ -1182,6 +1205,7 @@ async function sendMessage(text, { skipUserBubble = false } = {}) {
   _exchangeCount++;
   if (!skipUserBubble) addBubble(text, 'user');
   stopSpeaking();
+  stopWakeListening();
   const thinking = showThinking();
   let bubble = null;
   let fullText = '';
@@ -1234,10 +1258,14 @@ async function sendMessage(text, { skipUserBubble = false } = {}) {
     if (finalData.emails && finalData.emails.length) renderAnnounceCarousel(dedupeEmails(finalData.emails));
     handleActionResults(finalData.actions);
     if (finalData.drafts && finalData.drafts.length) finalData.drafts.forEach(renderReplyCard);
+    // Rien à lire à voix haute (réponse vide) : le hook de fin de lecture ne
+    // se déclenchera pas, on relance donc l'écoute du mot de réveil ici.
+    if (_pendingUtterances === 0 && wakeEnabled) startWakeListening();
   } catch (e) {
     if (thinking.isConnected) thinking.remove();
     setOrb('idle');
     addBubble('Erreur : ' + e.message, 'assistant');
+    if (wakeEnabled) startWakeListening();
   }
 }
 
@@ -1253,15 +1281,96 @@ let recognition = null;
 let listening = false;
 let liveBubble = null;
 
+// --- Mot de réveil ("Salut" / "Salut Saphir") : écoute passive optionnelle.
+// Contrainte réelle des navigateurs mobiles : ça ne marche que pendant que
+// l'app est ouverte à l'écran (pas d'écoute en vraie tâche de fond, écran
+// éteint ou app fermée) — ce n'est pas un assistant "toujours à l'écoute"
+// façon enceinte connectée. Une seule reconnaissance vocale à la fois, et
+// jamais en parallèle du mode manuel (bouton micro) ni pendant que Saphir
+// parle, pour éviter tout conflit avec le micro (voir le bug corrigé
+// précédemment : deux accès micro simultanés peuvent le couper entièrement).
+const WAKE_PATTERN = /\bsalut\b\s*(?:saphir\b)?[,.]?\s*/i;
+let wakeEnabled = localStorage.getItem('gor_wake_enabled') === '1';
+let wakeRecognition = null;
+let wakeActive = false;
+// Distingue un arrêt volontaire (on prend le relais nous-même, ex. pour
+// traiter la commande détectée) d'une fin naturelle de la reconnaissance
+// (le navigateur la coupe après un moment) : seule la seconde doit se
+// redémarrer automatiquement, sinon on récrée une reconnaissance en trop
+// pendant qu'une commande est déjà en cours de traitement.
+let wakeStoppedByUs = false;
+
+function setWakeEnabled(on) {
+  wakeEnabled = on;
+  localStorage.setItem('gor_wake_enabled', on ? '1' : '0');
+  updateWakeToggleUI();
+  if (on) startWakeListening(); else stopWakeListening();
+}
+
+function updateWakeToggleUI() {
+  const btn = document.getElementById('wakeToggle');
+  if (!btn) return;
+  btn.classList.toggle('active', wakeEnabled);
+  btn.textContent = wakeEnabled ? '👂 Mot de réveil : activé (dis « Salut »)' : '👂 Mot de réveil : désactivé';
+}
+
+function startWakeListening() {
+  if (!wakeEnabled || wakeActive || listening || _pendingUtterances > 0) return;
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) return;
+  wakeRecognition = new SR();
+  wakeRecognition.lang = 'fr-FR';
+  wakeRecognition.continuous = true;
+  wakeRecognition.interimResults = false;
+  wakeActive = true;
+  wakeRecognition.onresult = (event) => {
+    const last = event.results[event.results.length - 1];
+    const transcript = (last[0].transcript || '').trim();
+    const match = transcript.match(WAKE_PATTERN);
+    if (!match) return;
+    const rest = transcript.slice(match.index + match[0].length).trim();
+    stopWakeListening();
+    if (rest) {
+      sendMessage(rest);
+    } else {
+      toggleMic();
+    }
+  };
+  wakeRecognition.onend = () => {
+    wakeActive = false;
+    const stoppedByUs = wakeStoppedByUs;
+    wakeStoppedByUs = false;
+    // Chrome coupe une reconnaissance continue au bout d'un moment : on la
+    // redémarre tant que le mode reste activé et que rien d'autre n'utilise
+    // le micro. Mais si c'est nous qui venons de l'arrêter (mot de réveil
+    // détecté, relais vers sendMessage/toggleMic), pas de redémarrage ici —
+    // ce sont les points de reprise dédiés (fin de lecture, etc.) qui s'en
+    // chargent, sinon on recrée une reconnaissance en trop en pleine commande.
+    if (!stoppedByUs && wakeEnabled && !listening && _pendingUtterances === 0) {
+      setTimeout(startWakeListening, 300);
+    }
+  };
+  wakeRecognition.onerror = () => { wakeActive = false; wakeStoppedByUs = false; };
+  try { wakeRecognition.start(); } catch (e) { wakeActive = false; }
+}
+
+function stopWakeListening() {
+  wakeStoppedByUs = true;
+  if (wakeRecognition) { try { wakeRecognition.stop(); } catch (e) { /* déjà arrêtée */ } }
+  wakeActive = false;
+}
+
 function toggleMic() {
   warmUpSpeech();
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SR) { alert("La reconnaissance vocale n'est pas disponible dans ce navigateur. Utilisez le champ texte."); return; }
   if (listening) { recognition.stop(); return; }
+  stopWakeListening();
   recognition = new SR();
   recognition.lang = 'fr-FR';
   recognition.interimResults = true;
   recognition.maxAlternatives = 1;
+  let sentThisSession = false;
 
   recognition.onstart = () => {
     listening = true;
@@ -1279,11 +1388,16 @@ function toggleMic() {
     // Si liveBubble est déjà null, la phrase a été envoyée : sendMessage
     // pilote déjà l'orbe (réflexion), ne pas l'écraser en le remettant à idle.
     if (liveBubble) { liveBubble.remove(); liveBubble = null; setOrb('idle'); }
+    // Rien envoyé (annulation manuelle, silence) : on peut resurveiller le
+    // mot de réveil tout de suite. Si un message part, c'est la fin de la
+    // lecture à voix haute de la réponse qui s'en charge (voir queueUtterance).
+    if (!sentThisSession && wakeEnabled) startWakeListening();
   };
   recognition.onerror = () => {
     listening = false;
     document.getElementById('micBtn').classList.remove('listening');
     if (liveBubble) { liveBubble.remove(); liveBubble = null; setOrb('idle'); }
+    if (!sentThisSession && wakeEnabled) startWakeListening();
   };
   recognition.onresult = (event) => {
     let transcript = '';
@@ -1301,6 +1415,7 @@ function toggleMic() {
       const finalText = transcript.trim();
       const sentBubble = liveBubble;
       liveBubble = null;
+      sentThisSession = true;
       sentBubble.textContent = finalText;
       sendMessage(finalText, { skipUserBubble: true });
     }
@@ -1599,6 +1714,8 @@ function init() {
   pollActions();
   setInterval(pollActions, 25000);
   setInterval(loadDigestBanner, 60000);
+  updateWakeToggleUI();
+  if (wakeEnabled) startWakeListening();
 }
 
 init();
