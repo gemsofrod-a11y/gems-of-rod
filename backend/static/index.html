@@ -1068,7 +1068,10 @@ function queueUtterance(sentence) {
   u.pitch = 1;
   const done = () => {
     _pendingUtterances = Math.max(0, _pendingUtterances - 1);
-    if (_pendingUtterances === 0) { setOrb('idle'); if (wakeEnabled) startWakeListening(); }
+    // Petit délai avant de redemander le micro : sur certains téléphones,
+    // le relancer immédiatement après la fin de la synthèse vocale échoue
+    // (le sous-système audio n'a pas fini de se libérer).
+    if (_pendingUtterances === 0) { setOrb('idle'); if (wakeEnabled) setTimeout(startWakeListening, 400); }
   };
   // On coupe l'écoute du mot de réveil pendant que Saphir parle, sinon elle
   // s'entendrait elle-même et pourrait se redéclencher toute seule.
@@ -1260,12 +1263,12 @@ async function sendMessage(text, { skipUserBubble = false } = {}) {
     if (finalData.drafts && finalData.drafts.length) finalData.drafts.forEach(renderReplyCard);
     // Rien à lire à voix haute (réponse vide) : le hook de fin de lecture ne
     // se déclenchera pas, on relance donc l'écoute du mot de réveil ici.
-    if (_pendingUtterances === 0 && wakeEnabled) startWakeListening();
+    if (_pendingUtterances === 0 && wakeEnabled) setTimeout(startWakeListening, 400);
   } catch (e) {
     if (thinking.isConnected) thinking.remove();
     setOrb('idle');
     addBubble('Erreur : ' + e.message, 'assistant');
-    if (wakeEnabled) startWakeListening();
+    if (wakeEnabled) setTimeout(startWakeListening, 400);
   }
 }
 
@@ -1350,8 +1353,33 @@ function startWakeListening() {
       setTimeout(startWakeListening, 300);
     }
   };
-  wakeRecognition.onerror = () => { wakeActive = false; wakeStoppedByUs = false; };
-  try { wakeRecognition.start(); } catch (e) { wakeActive = false; }
+  // En écoute continue sur mobile, un simple silence déclenche très souvent
+  // "no-speech" via onerror (pas onend) : sans relance ici, le mot de réveil
+  // s'éteignait tout seul dès la première pause — c'était le bug "ne marche
+  // qu'une fois". On relance donc aussi après une erreur, sauf si le micro a
+  // été explicitement refusé (retenter ne ferait que reproduire l'échec).
+  wakeRecognition.onerror = (event) => {
+    wakeActive = false;
+    const stoppedByUs = wakeStoppedByUs;
+    wakeStoppedByUs = false;
+    if (stoppedByUs) return;
+    const err = event && event.error;
+    if (err === 'not-allowed' || err === 'service-not-allowed') {
+      setWakeEnabled(false);
+      return;
+    }
+    if (wakeEnabled && !listening && _pendingUtterances === 0) {
+      setTimeout(startWakeListening, 500);
+    }
+  };
+  try {
+    wakeRecognition.start();
+  } catch (e) {
+    wakeActive = false;
+    if (wakeEnabled && !listening && _pendingUtterances === 0) {
+      setTimeout(startWakeListening, 800);
+    }
+  }
 }
 
 function stopWakeListening() {
@@ -1391,13 +1419,13 @@ function toggleMic() {
     // Rien envoyé (annulation manuelle, silence) : on peut resurveiller le
     // mot de réveil tout de suite. Si un message part, c'est la fin de la
     // lecture à voix haute de la réponse qui s'en charge (voir queueUtterance).
-    if (!sentThisSession && wakeEnabled) startWakeListening();
+    if (!sentThisSession && wakeEnabled) setTimeout(startWakeListening, 300);
   };
   recognition.onerror = () => {
     listening = false;
     document.getElementById('micBtn').classList.remove('listening');
     if (liveBubble) { liveBubble.remove(); liveBubble = null; setOrb('idle'); }
-    if (!sentThisSession && wakeEnabled) startWakeListening();
+    if (!sentThisSession && wakeEnabled) setTimeout(startWakeListening, 300);
   };
   recognition.onresult = (event) => {
     let transcript = '';
