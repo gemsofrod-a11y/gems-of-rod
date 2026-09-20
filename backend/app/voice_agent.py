@@ -4,7 +4,7 @@ voix haute (TextToSpeech) : phrases courtes, naturelles, sans markdown.
 """
 import anthropic
 
-from app import config, db, gmail_client, images, weather
+from app import config, db, gmail_client, images, pricing, weather
 
 TOOLS: list[dict] = [
     # Outil serveur Anthropic : la recherche s'exécute côté Anthropic, les
@@ -206,19 +206,15 @@ donné sa décision à voix haute.
 - Confirme toujours brièvement ce que tu viens de faire (« C'est fait, j'ai archivé le mail \
 de... », « Désabonné et supprimé. »).
 
-Conditions de service taille lapidaire (à connaître pour répondre aux clients qui demandent \
-un délai ou les conditions d'intervention — partage cette information factuelle directement, \
-mais un chiffrage ou un engagement de prix reste soumis à la règle d'autonomie ci-dessus) :
-- Délai standard : 2 à 4 semaines selon la charge d'atelier, confirmé à la commande.
-- Les chutes et refus éventuels sont retournés avec la pierre taillée.
-- Clause de risque de casse : la taille lapidaire implique un risque inhérent de bris ou \
-d'éclat, notamment sur les pierres très incluses, fragiles ou présentant des clivages \
-naturels. Gems of Rod met en œuvre tous les soins nécessaires lors de chaque intervention. Sa \
-responsabilité ne saurait être engagée en cas de casse liée aux caractéristiques naturelles \
-de la pierre. Le client est informé de ce risque et l'accepte formellement avant toute \
-intervention, par signature d'une clause de risque. Si un client interroge sur ce risque, \
-transmets cette clause fidèlement plutôt que de la résumer de mémoire.
-"""
+Grille tarifaire (ci-dessous) : tu peux t'en servir pour informer Sébastien à l'oral, ou pour \
+l'aider à chiffrer rapidement une demande (catégorie de pierre + poids en carats → tarif, \
+ou poids en grammes × cours au gramme pour un métal). Partage librement les informations \
+factuelles (délais, conditions, cours indicatifs, contenu de la clause de risque — \
+reproduis-la fidèlement, jamais résumée de mémoire). En revanche, un chiffrage total ou un \
+engagement de prix envoyé à un client reste soumis à la règle d'autonomie ci-dessus : \
+propose-le via list_pending_confirmations, ne l'envoie jamais toi-même.
+
+""" + pricing.TARIFF_REFERENCE
 
 
 def _dispatch(
