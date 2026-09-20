@@ -25,7 +25,7 @@ import json
 
 import anthropic
 
-from app import config
+from app import config, pricing
 
 _CATEGORIES = ["ignore", "auto_delete", "auto_triage", "auto_reply", "needs_confirmation"]
 
@@ -72,13 +72,19 @@ courte, dans le ton de la maison, prête à être envoyée telle quelle.
 devis), une négociation, une prise de rendez-vous, un client VIP, une réclamation, un sujet \
 juridique/financier, ou tout email ambigu ou dont tu n'es pas sûr. Rédige une proposition de \
 réponse mais elle ne sera jamais envoyée sans validation humaine — Sébastien veut être \
-consulté avant toute décision sur ces sujets-là.
+consulté avant toute décision sur ces sujets-là. Pour une demande de devis, utilise la grille \
+tarifaire ci-dessous pour proposer un chiffrage indicatif précis dans suggested_reply (au lieu \
+de rester vague ou de renvoyer le client à un futur devis) — présente-le clairement comme une \
+proposition à valider par Sébastien, jamais comme un prix ferme déjà engagé.
 
 En cas de doute entre "auto_delete" et "auto_triage" pour un email automatisé, choisis \
 "auto_triage" (on ne supprime que ce qui ressemble clairement à une newsletter ou une pub).
 
 Contexte de marque :
 {brand}
+
+Grille tarifaire de référence (pour chiffrer une demande de devis) :
+{tariffs}
 
 Réponds UNIQUEMENT avec un objet JSON valide, sans texte autour, au format exact :
 {{"category": "ignore|auto_delete|auto_triage|auto_reply|needs_confirmation", \
@@ -98,7 +104,7 @@ def classify_email(email: dict) -> dict:
     resp = _client().messages.create(
         model=config.ASSISTANT_MODEL,
         max_tokens=1024,
-        system=_SYSTEM_PROMPT.format(brand=_brand_context()),
+        system=_SYSTEM_PROMPT.format(brand=_brand_context(), tariffs=pricing.TARIFF_REFERENCE),
         messages=[{"role": "user", "content": prompt}],
     )
     text = "".join(block.text for block in resp.content if block.type == "text").strip()

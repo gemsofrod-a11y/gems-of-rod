@@ -260,30 +260,24 @@ Le pipeline de release Play Store (`android-release.yml`) est scopé à
 `:app` uniquement — `:assistant` n'y participe jamais, même si les deux
 modules cohabitent dans `android/`.
 
-### Conditions de service taille lapidaire (mémorisées par Saphir)
+### Grille tarifaire complète (mémorisée par Saphir)
 
-Texte de référence donné par Sébastien le 20/09/2026, à reproduire tel quel
-(la clause de risque est une formulation contractuelle, pas à paraphraser).
-Vit dans `_SYSTEM_PROMPT` de `backend/app/voice_agent.py` — modifier les deux
-en même temps si ça change.
+Grille complète (taille lapidaire par catégorie de pierre et poids, tailles
+spéciales, prestations annexes, sertissage, cours des métaux précieux)
+fournie par Sébastien le 20/09/2026, remplaçant le texte de conditions de
+service plus court utilisé jusque-là. Vit dans un seul endroit,
+`pricing.TARIFF_REFERENCE` (`backend/app/pricing.py`), importé à la fois par
+`voice_agent._SYSTEM_PROMPT` (réponses à l'oral) et `classifier._SYSTEM_PROMPT`
+(chiffrage indicatif dans les brouillons de réponse aux demandes de devis
+entrantes) — modifier uniquement ce fichier si les tarifs changent, les deux
+prompts se mettent à jour automatiquement. La clause de risque de casse est
+une formulation contractuelle à reproduire fidèlement, jamais à paraphraser.
 
-> Délai standard : 2 à 4 semaines selon la charge d'atelier, confirmé à la
-> commande.
->
-> Les chutes et refus éventuels sont retournés avec la pierre taillée.
->
-> **Clause de risque de casse** — La taille lapidaire implique un risque
-> inhérent de bris ou d'éclat, notamment sur les pierres très incluses,
-> fragiles ou présentant des clivages naturels. Gems of Rod met en œuvre tous
-> les soins nécessaires lors de chaque intervention. Sa responsabilité ne
-> saurait être engagée en cas de casse liée aux caractéristiques naturelles
-> de la pierre. Le client est informé de ce risque et l'accepte formellement
-> avant toute intervention, par signature d'une clause de risque.
-
-Ceci reste de l'information factuelle que Saphir peut partager directement
-(délai, politique des chutes, existence et contenu de la clause) — un
-chiffrage ou un engagement de prix chiffré reste soumis à la règle
-d'autonomie ci-dessus (jamais décidé seul).
+Ceci reste de l'information et un chiffrage *indicatif* que Saphir peut
+partager ou proposer directement (à l'oral, ou dans un `suggested_reply` de
+triage) — un chiffrage final ou un engagement de prix envoyé à un client
+reste soumis à la règle d'autonomie ci-dessus (jamais décidé ou envoyé seule,
+toujours via `list_pending_confirmations`/validation de Sébastien).
 
 ### Pistes d'évolution envisagées (non prioritaires)
 
@@ -297,10 +291,8 @@ de Sébastien sur la suite ; aucune n'est indispensable à l'usage actuel,
 - **Carnet de contacts** : base des clients importants, fournisseurs et
   partenaires, pour reconnaître un expéditeur sensible sans que Sébastien
   ait à le repréciser à chaque fois, et ajuster le ton en conséquence.
-- **Accès à la grille tarifaire et aux références produits** : au-delà des
-  conditions de service ci-dessus, une vraie grille de prix permettrait de
-  préparer un premier chiffrage à valider, plutôt que de partir d'une page
-  blanche — le chiffrage final resterait soumis à validation.
+- ~~Accès à la grille tarifaire~~ : fait le 20/09/2026, voir la section
+  "Grille tarifaire complète" ci-dessus.
 - **Mémoire des préférences de rédaction** : formules habituelles, signature,
   ton différent pour un client fidèle vs un prospect, pour des brouillons
   plus proches du style de Sébastien.
