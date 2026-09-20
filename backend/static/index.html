@@ -46,10 +46,12 @@
     100% { background-position: 55% 35%, 45% 65%; }
   }
   header {
-    padding: 16px 16px 8px;
+    padding: 14px 16px 10px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    gap: 6px 16px;
     position: relative;
   }
   header::after {
@@ -57,15 +59,25 @@
     position: absolute; left: 16px; right: 16px; bottom: 0; height: 1px;
     background: linear-gradient(90deg, transparent, rgba(201,162,39,.55), rgba(110,220,255,.55), transparent);
   }
+  .header-left { display: flex; align-items: center; gap: 10px; }
   header h1 {
     font-size: 17px;
     font-weight: 600;
     letter-spacing: .02em;
     margin: 0;
     color: var(--gold);
+  }
+  .status-pill {
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: 6px;
+    background: rgba(110,220,255,.08);
+    border: 1px solid rgba(110,220,255,.25);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 11px;
+    color: #cdeeff;
+    letter-spacing: .02em;
   }
   .status-dot {
     width: 7px; height: 7px;
@@ -73,6 +85,12 @@
     background: #7fdcff;
     box-shadow: 0 0 6px 2px rgba(110,220,255,.7);
     animation: think-pulse 2.4s ease-in-out infinite;
+  }
+  .clock {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: .03em;
+    font-variant-numeric: tabular-nums;
   }
   header button {
     background: none;
@@ -230,7 +248,7 @@
     0%   { transform: scale(1); opacity: .8; }
     100% { transform: scale(1.8); opacity: 0; }
   }
-  #sendBtn { border-radius: 20px; width: auto; padding: 0 16px; }
+  #sendBtn { border-radius: 20px; width: auto; padding: 0 14px; font-size: 14px; font-weight: 600; }
 
   .card {
     background: var(--card);
@@ -323,26 +341,93 @@
     50%      { transform: scale(1.12); }
   }
 
-  .digest-banner {
+  /* Tableau de bord de l'écran Vocal : panneaux de statistiques réelles
+     (boîte de réception, session) à côté du cœur de l'assistant, inspiré
+     d'un poste de contrôle IA. Empilé sur téléphone (usage principal),
+     réorganisé en vraie barre latérale à partir d'un écran large. */
+  .tab.active.dashboard {
     display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding: 2px 0 12px;
-    margin-bottom: 6px;
-    border-bottom: 1px solid #2a251d;
+    flex-direction: column;
+    gap: 14px;
   }
-  .digest-chip {
-    flex-shrink: 0;
+  @media (min-width: 900px) {
+    .tab.active.dashboard {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      align-items: start;
+      gap: 24px;
+    }
+  }
+  .side-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  @media (min-width: 900px) {
+    .side-panels { grid-template-columns: 1fr; }
+  }
+  .panel-card {
     background: var(--card);
-    border-radius: 20px;
-    padding: 7px 13px;
+    border: 1px solid #2a251d;
+    border-top: 2px solid rgba(110,220,255,.45);
+    border-radius: 12px;
+    padding: 12px 14px;
+    animation: card-rise .4s cubic-bezier(.22,1,.36,1) backwards;
+  }
+  .panel-title {
     font-size: 12px;
     color: var(--text-dim);
-    white-space: nowrap;
-    border: none;
+    letter-spacing: .02em;
+    margin-bottom: 8px;
   }
-  .digest-chip b { color: var(--gold); font-size: 13px; }
-  .digest-chip.btn { background: var(--gold); color: #1a1610; font-weight: 600; }
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 12px;
+    color: var(--text-dim);
+    padding: 3px 0;
+  }
+  .stat-row b { color: #bfeeff; font-size: 14px; font-weight: 700; }
+  .panel-btn {
+    width: 100%;
+    margin-top: 8px;
+    padding: 8px;
+    background: rgba(110,220,255,.1);
+    border: 1px solid rgba(110,220,255,.3);
+    color: #cdeeff;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .orb-status {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #7fdcff;
+    text-shadow: 0 0 8px rgba(110,220,255,.5);
+    margin: 2px 0 14px;
+  }
+  .conversation-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #2a251d;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .conversation-head div { display: flex; gap: 6px; }
+  .ghost-btn {
+    background: none;
+    border: 1px solid #332c20;
+    color: var(--text-dim);
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 12px;
+  }
 
   .notif {
     display: flex;
@@ -622,18 +707,46 @@
 </div>
 
 <header>
-  <h1>💎 Gems of Rod <span class="status-dot"></span></h1>
-  <div>
-    <button onclick="newConversation()" title="Nouvelle conversation">🗑️</button>
+  <div class="header-left">
+    <h1>💎 Gems of Rod</h1>
+    <div class="status-pill"><span class="status-dot"></span>En ligne</div>
+  </div>
+  <div class="clock" id="clock">--:--:--</div>
+  <div class="header-actions">
     <button onclick="resetToken()" title="Changer de jeton">⚙️</button>
   </div>
 </header>
 
 <main>
-  <section id="tab-vocal" class="tab active">
-    <div class="orb-wrap"><div class="orb" id="orb"></div></div>
-    <div id="digestBanner" class="digest-banner"></div>
-    <div id="log"></div>
+  <section id="tab-vocal" class="tab active dashboard">
+    <aside class="side-panels">
+      <div class="panel-card">
+        <div class="panel-title">📥 Boîte de réception</div>
+        <div class="stat-row"><span>En attente</span><b id="statPending">–</b></div>
+        <div class="stat-row"><span>Classées</span><b id="statTriage">–</b></div>
+        <div class="stat-row"><span>Répondues</span><b id="statReply">–</b></div>
+        <div class="stat-row"><span>Supprimées</span><b id="statDelete">–</b></div>
+        <button class="panel-btn" onclick="runTriageNow()">🔄 Tri maintenant</button>
+      </div>
+      <div class="panel-card">
+        <div class="panel-title">🕐 Session</div>
+        <div class="stat-row"><span>Connecté depuis</span><b id="statUptime">00:00:00</b></div>
+        <div class="stat-row"><span>Échanges</span><b id="statExchanges">0</b></div>
+      </div>
+    </aside>
+
+    <div class="core-panel">
+      <div class="orb-wrap"><div class="orb" id="orb"></div></div>
+      <div class="orb-status" id="orbStatus">En veille</div>
+      <div class="conversation-head">
+        <span>Conversation</span>
+        <div>
+          <button class="ghost-btn" onclick="newConversation()">Effacer</button>
+          <button class="ghost-btn" onclick="exportConversation()">Exporter</button>
+        </div>
+      </div>
+      <div id="log"></div>
+    </div>
   </section>
 
   <section id="tab-pending" class="tab">
@@ -710,10 +823,61 @@ function showTab(name) {
 }
 
 // --- Cœur de l'assistant (orbe) : reflète son état en temps réel ---
+const _orbStatusLabels = {
+  idle: 'En veille',
+  listening: 'Écoute en cours…',
+  thinking: 'Réflexion…',
+  speaking: 'Je réponds…',
+};
 function setOrb(state) {
   const orb = document.getElementById('orb');
-  if (!orb) return;
-  orb.className = 'orb' + (state ? ' ' + state : '');
+  if (orb) orb.className = 'orb' + (state ? ' ' + state : '');
+  const label = document.getElementById('orbStatus');
+  if (label) label.textContent = _orbStatusLabels[state] || _orbStatusLabels.idle;
+}
+
+// --- Horloge d'en-tête et panneau Session (durée de connexion + nombre
+// d'échanges) : calculés côté client, rien à interroger côté serveur.
+function tickClock() {
+  const el = document.getElementById('clock');
+  if (!el) return;
+  const now = new Date();
+  const time = now.toLocaleTimeString('fr-FR');
+  const date = now.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+  el.textContent = `${time} · ${date}`;
+}
+
+function setText(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value;
+}
+
+const _sessionStart = Date.now();
+let _exchangeCount = 0;
+function tickSessionPanel() {
+  const secs = Math.floor((Date.now() - _sessionStart) / 1000);
+  const h = String(Math.floor(secs / 3600)).padStart(2, '0');
+  const m = String(Math.floor((secs % 3600) / 60)).padStart(2, '0');
+  const s = String(secs % 60).padStart(2, '0');
+  setText('statUptime', `${h}:${m}:${s}`);
+  setText('statExchanges', _exchangeCount);
+}
+
+// Exporte la conversation affichée (bulles visibles à l'écran) en fichier
+// texte téléchargeable, pour en garder une trace hors de l'app.
+function exportConversation() {
+  const bubbles = document.querySelectorAll('#log .bubble');
+  if (!bubbles.length) { alert('Rien à exporter pour le moment.'); return; }
+  const lines = Array.from(bubbles).map(b => {
+    const who = b.classList.contains('user') ? 'Sébastien' : 'Assistant';
+    return `${who} : ${b.textContent}`;
+  });
+  const blob = new Blob([lines.join('\n\n')], { type: 'text/plain;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `conversation-gems-of-rod-${new Date().toISOString().slice(0, 10)}.txt`;
+  a.click();
+  URL.revokeObjectURL(a.href);
 }
 
 // --- Vocal (fil en direct : conversation + notifications d'actions auto) ---
@@ -931,6 +1095,7 @@ function showThinking() {
 // avec la forme complète (actions/emails/drafts). On affiche et on parle
 // le texte au fil de l'eau plutôt que d'attendre la fin de la réponse.
 async function sendMessage(text, { skipUserBubble = false } = {}) {
+  _exchangeCount++;
   if (!skipUserBubble) addBubble(text, 'user');
   stopSpeaking();
   const thinking = showThinking();
@@ -1100,26 +1265,16 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
-// --- Bannière résumé (compacte, en haut de l'écran Vocal) ---
+// --- Panneau "Boîte de réception" (barre latérale de l'écran Vocal) ---
 async function loadDigestBanner() {
-  const box = document.getElementById('digestBanner');
   try {
     const data = await api('/api/digest/today');
     const actions = data.actions || {};
-    const labels = {
-      auto_delete: '🗑️ Supprimées',
-      auto_triage: '📂 Classées',
-      auto_reply: '💬 Répondues',
-    };
-    let html = `<div class="digest-chip"><b>${data.pending}</b> en attente</div>`;
-    for (const [key, label] of Object.entries(labels)) {
-      html += `<div class="digest-chip">${label} <b>${actions[key] || 0}</b></div>`;
-    }
-    html += `<button class="digest-chip btn" onclick="runTriageNow()">🔄 Tri maintenant</button>`;
-    box.innerHTML = html;
-  } catch (e) {
-    box.innerHTML = '';
-  }
+    setText('statPending', data.pending);
+    setText('statTriage', actions.auto_triage || 0);
+    setText('statReply', actions.auto_reply || 0);
+    setText('statDelete', actions.auto_delete || 0);
+  } catch (e) { /* le panneau garde ses dernières valeurs connues */ }
 }
 
 async function runTriageNow() {
@@ -1351,6 +1506,11 @@ function init() {
   }
   document.getElementById('gate').classList.add('hidden');
   showBootLine();
+  setOrb('idle');
+  tickClock();
+  setInterval(tickClock, 1000);
+  tickSessionPanel();
+  setInterval(tickSessionPanel, 1000);
   loadDigestBanner();
   pollActions();
   setInterval(pollActions, 25000);
