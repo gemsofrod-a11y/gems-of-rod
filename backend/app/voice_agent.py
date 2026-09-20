@@ -4,7 +4,7 @@ voix haute (TextToSpeech) : phrases courtes, naturelles, sans markdown.
 """
 import anthropic
 
-from app import config, db, gmail_client, weather
+from app import config, db, gmail_client, images, weather
 
 TOOLS: list[dict] = [
     # Outil serveur Anthropic : la recherche s'exécute côté Anthropic, les
@@ -23,6 +23,23 @@ TOOLS: list[dict] = [
                              "description": "Nom du lieu, ex: 'Paris', 'Lyon, France'."},
             },
             "required": ["location"],
+        },
+    },
+    {
+        "name": "search_images",
+        "description": "Cherche des images libres de droits (licence Creative Commons) sur un "
+                       "sujet donné et les affiche dans l'app. Utilise ceci quand Sébastien "
+                       "demande une photo, une image ou un visuel de quelque chose (ex. \"montre-"
+                       "moi une photo de saphir brut\"). Ne génère pas d'image : cherche des "
+                       "photos déjà existantes.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "query": {"type": "string", "description": "Sujet de l'image recherchée."},
+                "count": {"type": "integer", "default": 3,
+                          "description": "Nombre d'images à montrer (1 à 6)."},
+            },
+            "required": ["query"],
         },
     },
     {
@@ -166,8 +183,10 @@ naturelles, sans markdown, sans listes à puces.
 Tu ne te limites pas à Gmail : tu es aussi un assistant généraliste. Pour la météo, utilise \
 get_weather. Pour l'actualité, les infos récentes, ou toute question de culture générale dont \
 tu n'es pas certain, utilise web_search plutôt que de répondre de mémoire — n'invente jamais \
-un chiffre ou un fait qui pourrait avoir changé. Résume toujours la réponse en une ou deux \
-phrases parlées, jamais une liste de résultats bruts.
+un chiffre ou un fait qui pourrait avoir changé. Pour une photo ou un visuel, utilise \
+search_images : elle cherche des images déjà existantes, elle ne génère rien — dis-le si \
+Sébastien demande une image "générée" ou "inventée", ce n'est pas encore possible. Résume \
+toujours la réponse en une ou deux phrases parlées, jamais une liste de résultats bruts.
 
 Personnalité : inspire-toi de J.A.R.V.I.S., l'assistant de confiance calme, précis et \
 discrètement spirituel. Pas de familiarité excessive ni d'exclamations : une élégance sobre, \
@@ -207,10 +226,13 @@ def _dispatch(
     tool_input: dict,
     referenced_emails: list[dict],
     draft_replies: list[dict],
+    found_images: list[dict],
 ) -> str:
     """referenced_emails est enrichi en effet de bord quand un outil de
     lecture consulte des emails, pour que le client web puisse les présenter
     dans son carrousel visuel au moment précis où l'assistant les annonce.
+    found_images est enrichi de la même façon par search_images, pour que le
+    client web affiche les images trouvées.
     draft_replies est enrichi de la même façon quand une réponse est rédigée
     (brouillon ou envoi), pour que le client web puisse l'afficher en train
     de "s'écrire" à l'écran sans que Sébastien ait besoin d'ouvrir Gmail.
@@ -295,6 +317,12 @@ def _dispatch(
             return str(db.count_today_actions())
         if name == "get_weather":
             return str(weather.get_weather(tool_input["location"]))
+        if name == "search_images":
+            results = images.search_images(
+                tool_input["query"], tool_input.get("count", 3)
+            )
+            found_images.extend(r for r in results if "url" in r)
+            return str(results)
         return f"Outil inconnu : {name}"
     except Exception as e:
         return f"Erreur lors de l'exécution de {name} : {e}"
@@ -348,7 +376,7 @@ def _context_from_history(full_history: list[dict], window: int) -> list[dict]:
 # d'une "action effectuée" à confirmer — Claude en tient déjà compte dans sa
 # réponse en langage naturel, inutile de le réafficher tel quel au client web.
 _READONLY_TOOLS = {"search_emails", "get_email", "list_pending_confirmations", "get_today_digest",
-                    "get_weather"}
+                    "get_weather", "search_images"}
 
 
 def handle_turn_stream(text: str, session_id: str = "default"):
@@ -361,7 +389,7 @@ def handle_turn_stream(text: str, session_id: str = "default"):
     tous les appels d'outils (recherche/lecture Gmail) qui le précèdent —
     pour une lecture beaucoup plus fluide et immédiate.
     Le dernier évènement cédé est toujours {"type": "done", ...} avec la
-    même forme que l'ancien dict de retour (reply/actions/emails/drafts),
+    même forme que l'ancien dict de retour (reply/actions/emails/drafts/media),
     pour que le reste de l'interface (carrousel, fiches de réponse, etc.)
     continue de fonctionner à l'identique.
     """
@@ -373,6 +401,7 @@ def handle_turn_stream(text: str, session_id: str = "default"):
     actions: list[str] = []
     referenced_emails: list[dict] = []
     draft_replies: list[dict] = []
+    found_images: list[dict] = []
 
     for _ in range(6):
         with client.messages.stream(
@@ -394,14 +423,14 @@ def handle_turn_stream(text: str, session_id: str = "default"):
             reply = "".join(b.text for b in resp.content if b.type == "text").strip()
             db.save_conversation(session_id, full_history)
             yield {"type": "done", "reply": reply, "actions": actions,
-                   "emails": referenced_emails, "drafts": draft_replies}
+                   "emails": referenced_emails, "drafts": draft_replies, "media": found_images}
             return
 
         tool_results = []
         for block in resp.content:
             if block.type != "tool_use":
                 continue
-            result = _dispatch(block.name, block.input, referenced_emails, draft_replies)
+            result = _dispatch(block.name, block.input, referenced_emails, draft_replies, found_images)
             if block.name not in _READONLY_TOOLS:
                 actions.append(f"{block.name}: {result}")
             tool_results.append({
@@ -416,7 +445,8 @@ def handle_turn_stream(text: str, session_id: str = "default"):
     db.save_conversation(session_id, full_history)
     yield {"type": "done",
            "reply": "Je n'ai pas réussi à terminer cette action, peux-tu reformuler ?",
-           "actions": actions, "emails": referenced_emails, "drafts": draft_replies}
+           "actions": actions, "emails": referenced_emails, "drafts": draft_replies,
+           "media": found_images}
 
 
 def get_display_history(session_id: str = "default") -> list[dict]:
