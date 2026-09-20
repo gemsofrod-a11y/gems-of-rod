@@ -163,15 +163,27 @@ de... », « Désabonné et supprimé. »).
 """
 
 
-def _dispatch(name: str, tool_input: dict) -> str:
+def _dispatch(name: str, tool_input: dict, referenced_emails: list[dict]) -> str:
+    """referenced_emails est enrichi en effet de bord quand un outil de
+    lecture consulte des emails, pour que le client web puisse les présenter
+    dans son carrousel visuel au moment précis où l'assistant les annonce.
+    """
     try:
         if name == "search_emails":
             results = gmail_client.search_messages(
                 tool_input["query"], tool_input.get("max_results", 10)
             )
+            referenced_emails.extend(
+                {"message_id": r["id"], "subject": r.get("subject") or "(sans objet)"}
+                for r in results
+            )
             return str(results)
         if name == "get_email":
-            return str(gmail_client.get_message(tool_input["message_id"]))
+            email = gmail_client.get_message(tool_input["message_id"])
+            referenced_emails.append(
+                {"message_id": email["id"], "subject": email.get("subject") or "(sans objet)"}
+            )
+            return str(email)
         if name == "send_reply":
             sent_id = gmail_client.send_reply(tool_input["message_id"], tool_input["body_text"])
             db.log_action(tool_input["message_id"], "voice_send_reply", tool_input["body_text"])
@@ -280,6 +292,7 @@ def handle_turn(text: str, session_id: str = "default") -> dict:
 
     client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
     actions: list[str] = []
+    referenced_emails: list[dict] = []
 
     for _ in range(6):
         resp = client.messages.create(
@@ -296,13 +309,13 @@ def handle_turn(text: str, session_id: str = "default") -> dict:
         if resp.stop_reason != "tool_use":
             reply = "".join(b.text for b in resp.content if b.type == "text").strip()
             db.save_conversation(session_id, full_history)
-            return {"reply": reply, "actions": actions}
+            return {"reply": reply, "actions": actions, "emails": referenced_emails}
 
         tool_results = []
         for block in resp.content:
             if block.type != "tool_use":
                 continue
-            result = _dispatch(block.name, block.input)
+            result = _dispatch(block.name, block.input, referenced_emails)
             if block.name not in _READONLY_TOOLS:
                 actions.append(f"{block.name}: {result}")
             tool_results.append({
@@ -316,7 +329,7 @@ def handle_turn(text: str, session_id: str = "default") -> dict:
 
     db.save_conversation(session_id, full_history)
     return {"reply": "Je n'ai pas réussi à terminer cette action, peux-tu reformuler ?",
-            "actions": actions}
+            "actions": actions, "emails": referenced_emails}
 
 
 def get_display_history(session_id: str = "default") -> list[dict]:
