@@ -19,30 +19,47 @@ _WMO_DESCRIPTIONS = {
 
 
 def get_weather(location: str) -> dict:
-    geo = requests.get(
-        "https://geocoding-api.open-meteo.com/v1/search",
-        params={"name": location, "count": 1, "language": "fr"},
-        timeout=10,
-    ).json()
+    # Toute panne réseau/API est convertie ici en {"error": ...} propre plutôt
+    # que de laisser une exception requests brute remonter jusqu'au dispatch
+    # de l'agent (message générique et peu naturel à relire à voix haute).
+    try:
+        geo_resp = requests.get(
+            "https://geocoding-api.open-meteo.com/v1/search",
+            params={"name": location, "count": 1, "language": "fr"},
+            timeout=10,
+        )
+        geo_resp.raise_for_status()
+        geo = geo_resp.json()
+    except requests.exceptions.RequestException:
+        return {"error": "Service de géolocalisation météo indisponible pour le moment."}
+
     results = geo.get("results")
     if not results:
         return {"error": f"Lieu introuvable : « {location} »."}
     place = results[0]
-    lat, lon = place["latitude"], place["longitude"]
+    lat, lon = place.get("latitude"), place.get("longitude")
+    if lat is None or lon is None:
+        return {"error": f"Coordonnées introuvables pour « {location} »."}
     name = place.get("name", location)
     country = place.get("country", "")
 
-    forecast = requests.get(
-        "https://api.open-meteo.com/v1/forecast",
-        params={
-            "latitude": lat,
-            "longitude": lon,
-            "current": "temperature_2m,apparent_temperature,weather_code,"
-                       "wind_speed_10m,relative_humidity_2m",
-            "timezone": "auto",
-        },
-        timeout=10,
-    ).json()
+    try:
+        forecast_resp = requests.get(
+            "https://api.open-meteo.com/v1/forecast",
+            params={
+                "latitude": lat,
+                "longitude": lon,
+                "current": "temperature_2m,apparent_temperature,weather_code,"
+                           "wind_speed_10m,relative_humidity_2m",
+                "timezone": "auto",
+            },
+            timeout=10,
+        )
+        forecast_resp.raise_for_status()
+        forecast = forecast_resp.json()
+    except requests.exceptions.RequestException:
+        return {"error": "Service météo indisponible pour le moment."}
+
     current = forecast.get("current", {})
     code = current.get("weather_code")
     return {
