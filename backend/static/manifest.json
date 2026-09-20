@@ -3,8 +3,8 @@
   "short_name": "Gems of Rod",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#151310",
-  "theme_color": "#151310",
+  "background_color": "#0a0e18",
+  "theme_color": "#0a0e18",
   "icons": [
     { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
   ]
