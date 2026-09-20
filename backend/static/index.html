@@ -62,13 +62,6 @@
       linear-gradient(90deg, rgba(110,220,255,.035) 1px, transparent 1px);
     background-size: 100% 3px, 44px 44px, 44px 44px;
   }
-  .corner { position: fixed; width: 22px; height: 22px; pointer-events: none; z-index: 1; opacity: .5; }
-  .corner::before { content: ''; position: absolute; inset: 0; border: 1px solid var(--accent); }
-  .corner.tl { top: 8px; left: 8px; } .corner.tl::before { border-right: 0; border-bottom: 0; }
-  .corner.tr { top: 8px; right: 8px; } .corner.tr::before { border-left: 0; border-bottom: 0; }
-  .corner.bl { bottom: calc(var(--nav-h) + var(--safe-b) + 8px); left: 8px; } .corner.bl::before { border-right: 0; border-top: 0; }
-  .corner.br { bottom: calc(var(--nav-h) + var(--safe-b) + 8px); right: 8px; } .corner.br::before { border-left: 0; border-top: 0; }
-  header, main, .mic-row, nav, #gate { position: relative; z-index: 1; }
   header {
     padding: 14px 16px 10px;
     display: flex;
@@ -679,9 +672,6 @@
 </head>
 <body>
 
-<div class="corner tl"></div><div class="corner tr"></div>
-<div class="corner bl"></div><div class="corner br"></div>
-
 <div id="gate" class="hidden">
   <h2>Gems of Rod</h2>
   <p>Collez le jeton de l'assistant (<code>ASSISTANT_API_TOKEN</code>, celui défini
@@ -811,10 +801,13 @@ function showTab(name) {
 // --- Cœur de l'assistant (orbe) : rendu en direct sur un canvas (anneau
 // segmenté, graduations, cœur, onde) plutôt qu'un dégradé CSS statique,
 // façon "réacteur arc". La couleur et l'énergie de l'animation suivent
-// l'état (idle/listening/thinking/speaking) ; pendant l'écoute, l'énergie
-// vient du niveau réel du micro (voir _startOrbMic), sinon d'un pouls
-// synthétique. Reste indépendant de la connexion (tourne dès le chargement,
-// comme le reste du chrome HUD).
+// l'état (idle/listening/thinking/speaking) via un pouls synthétique.
+// Reste indépendant de la connexion (tourne dès le chargement, comme le
+// reste du chrome HUD).
+// Note : une version précédente ouvrait un second accès micro pendant
+// l'écoute pour faire réagir l'orbe au niveau sonore réel. Ça entrait en
+// conflit avec la reconnaissance vocale sur certains téléphones (plus de
+// micro du tout) — retiré, l'orbe utilise uniquement un pouls synthétique.
 const _orbStatusLabels = {
   idle: 'En veille',
   listening: 'Écoute en cours…',
@@ -838,39 +831,6 @@ function sizeOrbCanvas() {
 window.addEventListener('resize', sizeOrbCanvas);
 sizeOrbCanvas();
 
-let _orbAnalyser = null;
-let _orbAudioCtx = null;
-let _orbMicStream = null;
-
-// SpeechRecognition ne donne pas accès au flux audio brut : on ouvre un
-// deuxième accès micro (même permission, déjà accordée) seulement pour
-// mesurer le niveau sonore et faire réagir l'orbe en direct pendant
-// l'écoute. Si ça échoue (refus, navigateur), l'orbe retombe sur un pouls
-// synthétique — jamais bloquant pour la reconnaissance vocale elle-même.
-async function _startOrbMic() {
-  try {
-    _orbMicStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    _orbAudioCtx = _orbAudioCtx || new (window.AudioContext || window.webkitAudioContext)();
-    if (_orbAudioCtx.state === 'suspended') await _orbAudioCtx.resume();
-    _orbAnalyser = _orbAudioCtx.createAnalyser();
-    _orbAnalyser.fftSize = 256;
-    _orbAudioCtx.createMediaStreamSource(_orbMicStream).connect(_orbAnalyser);
-  } catch (e) {
-    _orbAnalyser = null;
-  }
-}
-function _stopOrbMic() {
-  if (_orbMicStream) { _orbMicStream.getTracks().forEach(t => t.stop()); _orbMicStream = null; }
-  _orbAnalyser = null;
-}
-function _orbMicLevel() {
-  if (!_orbAnalyser) return null;
-  const buf = new Uint8Array(_orbAnalyser.frequencyBinCount);
-  _orbAnalyser.getByteFrequencyData(buf);
-  let s = 0; for (const v of buf) s += v;
-  return s / buf.length / 255;
-}
-
 // Bleu électrique (accent principal) au repos et pendant la réponse ; cyan
 // (système/IA) pendant l'écoute et la réflexion — deux nuances de bleu pour
 // distinguer les états sans revenir au monochrome de la référence.
@@ -893,8 +853,7 @@ function drawOrb() {
   const RGB = _ORB_RGB[_orbState] || _ORB_RGB.idle;
   let energy;
   if (_orbState === 'listening') {
-    const lvl = _orbMicLevel();
-    energy = lvl !== null ? lvl : 0.15 + 0.1 * Math.sin(_orbT * 4);
+    energy = 0.15 + 0.1 * Math.sin(_orbT * 4);
   } else if (_orbState === 'thinking') {
     energy = 0.28 + 0.22 * Math.abs(Math.sin(_orbT * 5));
   } else if (_orbState === 'speaking') {
@@ -1308,7 +1267,6 @@ function toggleMic() {
     listening = true;
     document.getElementById('micBtn').classList.add('listening');
     setOrb('listening');
-    _startOrbMic();
     liveBubble = document.createElement('div');
     liveBubble.className = 'bubble user listening';
     liveBubble.textContent = '…';
@@ -1318,7 +1276,6 @@ function toggleMic() {
   recognition.onend = () => {
     listening = false;
     document.getElementById('micBtn').classList.remove('listening');
-    _stopOrbMic();
     // Si liveBubble est déjà null, la phrase a été envoyée : sendMessage
     // pilote déjà l'orbe (réflexion), ne pas l'écraser en le remettant à idle.
     if (liveBubble) { liveBubble.remove(); liveBubble = null; setOrb('idle'); }
@@ -1326,7 +1283,6 @@ function toggleMic() {
   recognition.onerror = () => {
     listening = false;
     document.getElementById('micBtn').classList.remove('listening');
-    _stopOrbMic();
     if (liveBubble) { liveBubble.remove(); liveBubble = null; setOrb('idle'); }
   };
   recognition.onresult = (event) => {
