@@ -4,9 +4,27 @@ voix haute (TextToSpeech) : phrases courtes, naturelles, sans markdown.
 """
 import anthropic
 
-from app import config, db, gmail_client
+from app import config, db, gmail_client, weather
 
 TOOLS: list[dict] = [
+    # Outil serveur Anthropic : la recherche s'exécute côté Anthropic, les
+    # résultats reviennent déjà intégrés dans la même réponse — aucun
+    # dispatch de notre côté n'est nécessaire (voir handle_turn_stream).
+    {"type": "web_search_20260209", "name": "web_search", "max_uses": 3},
+    {
+        "name": "get_weather",
+        "description": "Donne la météo actuelle (température, conditions, humidité, vent) "
+                       "pour un lieu donné. À utiliser pour toute question sur le temps qu'il "
+                       "fait, où que ce soit dans le monde.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "location": {"type": "string",
+                             "description": "Nom du lieu, ex: 'Paris', 'Lyon, France'."},
+            },
+            "required": ["location"],
+        },
+    },
     {
         "name": "search_emails",
         "description": "Recherche des emails dans la boîte Gmail (syntaxe de recherche Gmail : "
@@ -143,6 +161,12 @@ _SYSTEM_PROMPT = """Tu es l'assistant vocal personnel de Sébastien, fondateur d
 depuis son téléphone et tes réponses sont lues à voix haute : réponds en français, avec des \
 phrases courtes et naturelles, sans markdown, sans listes à puces.
 
+Tu ne te limites pas à Gmail : tu es aussi un assistant généraliste. Pour la météo, utilise \
+get_weather. Pour l'actualité, les infos récentes, ou toute question de culture générale dont \
+tu n'es pas certain, utilise web_search plutôt que de répondre de mémoire — n'invente jamais \
+un chiffre ou un fait qui pourrait avoir changé. Résume toujours la réponse en une ou deux \
+phrases parlées, jamais une liste de résultats bruts.
+
 Personnalité : inspire-toi de J.A.R.V.I.S., l'assistant de confiance calme, précis et \
 discrètement spirituel. Pas de familiarité excessive ni d'exclamations : une élégance sobre, \
 une pointe d'humour fin de temps en temps, jamais au détriment de la clarté. Vouvoie \
@@ -254,6 +278,8 @@ def _dispatch(
             )
         if name == "get_today_digest":
             return str(db.count_today_actions())
+        if name == "get_weather":
+            return str(weather.get_weather(tool_input["location"]))
         return f"Outil inconnu : {name}"
     except Exception as e:
         return f"Erreur lors de l'exécution de {name} : {e}"
@@ -306,7 +332,8 @@ def _context_from_history(full_history: list[dict], window: int) -> list[dict]:
 # (ex. search_emails renvoie la liste complète des métadonnées) et n'a rien
 # d'une "action effectuée" à confirmer — Claude en tient déjà compte dans sa
 # réponse en langage naturel, inutile de le réafficher tel quel au client web.
-_READONLY_TOOLS = {"search_emails", "get_email", "list_pending_confirmations", "get_today_digest"}
+_READONLY_TOOLS = {"search_emails", "get_email", "list_pending_confirmations", "get_today_digest",
+                    "get_weather"}
 
 
 def handle_turn_stream(text: str, session_id: str = "default"):
