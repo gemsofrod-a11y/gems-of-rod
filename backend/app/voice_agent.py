@@ -309,11 +309,20 @@ def _context_from_history(full_history: list[dict], window: int) -> list[dict]:
 _READONLY_TOOLS = {"search_emails", "get_email", "list_pending_confirmations", "get_today_digest"}
 
 
-def handle_turn(text: str, session_id: str = "default") -> dict:
-    # L'historique complet est conservé pour toujours en base (rien n'est
-    # jamais oublié pour Sébastien) ; seul un résumé texte des derniers
-    # échanges est envoyé au modèle à chaque tour, pour ne pas faire
-    # exploser le coût/contexte.
+def handle_turn_stream(text: str, session_id: str = "default"):
+    """Générateur équivalent à l'ancien handle_turn (même boucle d'outils,
+    même persistance), mais qui utilise l'API de streaming d'Anthropic et
+    cède le texte de la réponse au fil de sa génération (évènements
+    {"type": "text_delta", "text": ...}), plutôt que d'attendre la réponse
+    complète. Le client web peut ainsi commencer à parler dès la première
+    phrase générée au lieu d'attendre la fin du tour — et surtout la fin de
+    tous les appels d'outils (recherche/lecture Gmail) qui le précèdent —
+    pour une lecture beaucoup plus fluide et immédiate.
+    Le dernier évènement cédé est toujours {"type": "done", ...} avec la
+    même forme que l'ancien dict de retour (reply/actions/emails/drafts),
+    pour que le reste de l'interface (carrousel, fiches de réponse, etc.)
+    continue de fonctionner à l'identique.
+    """
     full_history = db.load_conversation(session_id)
     full_history.append({"role": "user", "content": text})
     context = _context_from_history(full_history, _CONTEXT_WINDOW)
@@ -324,13 +333,17 @@ def handle_turn(text: str, session_id: str = "default") -> dict:
     draft_replies: list[dict] = []
 
     for _ in range(6):
-        resp = client.messages.create(
+        with client.messages.stream(
             model=config.ASSISTANT_MODEL,
             max_tokens=1024,
             system=_SYSTEM_PROMPT,
             tools=TOOLS,
             messages=context,
-        )
+        ) as stream:
+            for delta in stream.text_stream:
+                yield {"type": "text_delta", "text": delta}
+            resp = stream.get_final_message()
+
         assistant_entry = {"role": "assistant", "content": [b.model_dump() for b in resp.content]}
         full_history.append(assistant_entry)
         context.append(assistant_entry)
@@ -338,8 +351,9 @@ def handle_turn(text: str, session_id: str = "default") -> dict:
         if resp.stop_reason != "tool_use":
             reply = "".join(b.text for b in resp.content if b.type == "text").strip()
             db.save_conversation(session_id, full_history)
-            return {"reply": reply, "actions": actions, "emails": referenced_emails,
-                    "drafts": draft_replies}
+            yield {"type": "done", "reply": reply, "actions": actions,
+                   "emails": referenced_emails, "drafts": draft_replies}
+            return
 
         tool_results = []
         for block in resp.content:
@@ -358,8 +372,9 @@ def handle_turn(text: str, session_id: str = "default") -> dict:
         context.append(tool_entry)
 
     db.save_conversation(session_id, full_history)
-    return {"reply": "Je n'ai pas réussi à terminer cette action, peux-tu reformuler ?",
-            "actions": actions, "emails": referenced_emails, "drafts": draft_replies}
+    yield {"type": "done",
+           "reply": "Je n'ai pas réussi à terminer cette action, peux-tu reformuler ?",
+           "actions": actions, "emails": referenced_emails, "drafts": draft_replies}
 
 
 def get_display_history(session_id: str = "default") -> list[dict]:

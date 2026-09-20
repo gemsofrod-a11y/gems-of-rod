@@ -785,26 +785,50 @@ if ('speechSynthesis' in window) {
   speechSynthesis.onvoiceschanged = () => { _frenchVoice = pickFrenchVoice(); };
 }
 
-// Une seule très longue utterance sonne monocorde et s'emballe sur la fin.
-// Découper phrase par phrase (le navigateur les enchaîne avec une micro-pause
-// naturelle entre chacune) donne une lecture bien plus posée et humaine.
-function speak(text) {
-  if (!('speechSynthesis' in window) || !text) { setOrb('idle'); return; }
-  speechSynthesis.cancel();
-  const sentences = (text.match(/[^.!?]+[.!?]*/g) || [text]).map(s => s.trim()).filter(Boolean);
-  if (!sentences.length) { setOrb('idle'); return; }
-  let remaining = sentences.length;
-  sentences.forEach((sentence, idx) => {
-    const u = new SpeechSynthesisUtterance(sentence);
-    u.lang = 'fr-FR';
-    if (_frenchVoice) u.voice = _frenchVoice;
-    u.rate = 0.97;
-    u.pitch = 1;
-    if (idx === 0) u.onstart = () => setOrb('speaking');
-    u.onend = () => { remaining--; if (remaining <= 0) setOrb('idle'); };
-    u.onerror = () => { remaining--; if (remaining <= 0) setOrb('idle'); };
-    speechSynthesis.speak(u);
-  });
+// La réponse arrive désormais en flux (SSE) plutôt que d'un bloc : on parle
+// phrase par phrase au fur et à mesure qu'elles se complètent dans le texte
+// reçu, plutôt que d'attendre la réponse entière avant de commencer à lire.
+// Bien plus fluide, surtout quand la réponse suit des appels d'outils
+// (recherche/lecture Gmail) qui prennent déjà plusieurs secondes.
+let _pendingUtterances = 0;
+function queueUtterance(sentence) {
+  sentence = sentence.trim();
+  if (!sentence || !('speechSynthesis' in window)) return;
+  _pendingUtterances++;
+  const u = new SpeechSynthesisUtterance(sentence);
+  u.lang = 'fr-FR';
+  if (_frenchVoice) u.voice = _frenchVoice;
+  u.rate = 0.97;
+  u.pitch = 1;
+  const done = () => { _pendingUtterances = Math.max(0, _pendingUtterances - 1); if (_pendingUtterances === 0) setOrb('idle'); };
+  u.onstart = () => setOrb('speaking');
+  u.onend = done;
+  u.onerror = done;
+  speechSynthesis.speak(u);
+}
+
+// Coupe toute lecture en cours (nouvelle question posée par-dessus) et
+// repart de zéro pour le décompte des utterances en attente.
+function stopSpeaking() {
+  if ('speechSynthesis' in window) speechSynthesis.cancel();
+  _pendingUtterances = 0;
+}
+
+// Reçoit le texte complet reçu jusqu'ici et l'index déjà lu à voix haute ;
+// parle toute nouvelle phrase complète apparue depuis, et renvoie le nouvel
+// index. Avec flush=true (fin du flux), lit aussi le reste même sans
+// ponctuation finale.
+function speakIncremental(fullText, fromIndex, flush = false) {
+  const remainder = fullText.slice(fromIndex);
+  const matches = remainder.match(/[^.!?]+[.!?]+/g) || [];
+  let consumed = 0;
+  matches.forEach(s => { queueUtterance(s); consumed += s.length; });
+  if (flush) {
+    const tail = remainder.slice(consumed);
+    if (tail.trim()) queueUtterance(tail);
+    consumed = remainder.length;
+  }
+  return fromIndex + consumed;
 }
 
 function actionLabel(action) {
@@ -902,19 +926,67 @@ function showThinking() {
   return el;
 }
 
+// /api/voice répond en flux SSE (voir voice_agent.handle_turn_stream) :
+// des évènements text_delta pendant la génération, puis un évènement done
+// avec la forme complète (actions/emails/drafts). On affiche et on parle
+// le texte au fil de l'eau plutôt que d'attendre la fin de la réponse.
 async function sendMessage(text, { skipUserBubble = false } = {}) {
   if (!skipUserBubble) addBubble(text, 'user');
+  stopSpeaking();
   const thinking = showThinking();
+  let bubble = null;
+  let fullText = '';
+  let spokenUpTo = 0;
+
   try {
-    const data = await api('/api/voice', { method: 'POST', body: JSON.stringify({ text }) });
-    thinking.remove();
-    addBubble(data.reply, 'assistant');
-    if (data.emails && data.emails.length) renderAnnounceCarousel(dedupeEmails(data.emails));
-    handleActionResults(data.actions);
-    if (data.drafts && data.drafts.length) data.drafts.forEach(renderReplyCard);
-    speak(data.reply);
+    const res = await fetch('/api/voice', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
+      body: JSON.stringify({ text }),
+    });
+    if (res.status === 401) { localStorage.removeItem('gor_token'); location.reload(); return; }
+    if (!res.ok || !res.body) throw new Error(await res.text());
+
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let buf = '';
+    let finalData = null;
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += decoder.decode(value, { stream: true });
+      let sep;
+      while ((sep = buf.indexOf('\n\n')) !== -1) {
+        const rawEvent = buf.slice(0, sep);
+        buf = buf.slice(sep + 2);
+        if (!rawEvent.startsWith('data:')) continue;
+        const evt = JSON.parse(rawEvent.slice(5).trim());
+        if (evt.type === 'text_delta') {
+          if (thinking.isConnected) thinking.remove();
+          if (!bubble) {
+            bubble = document.createElement('div');
+            bubble.className = 'bubble assistant';
+            document.getElementById('log').appendChild(bubble);
+          }
+          fullText += evt.text;
+          bubble.textContent = fullText;
+          bubble.scrollIntoView({ behavior: 'smooth', block: 'end' });
+          spokenUpTo = speakIncremental(fullText, spokenUpTo);
+        } else if (evt.type === 'done') {
+          finalData = evt;
+        }
+      }
+    }
+    if (thinking.isConnected) thinking.remove();
+    if (!finalData) throw new Error('Réponse incomplète.');
+    if (!bubble) addBubble(finalData.reply || '(pas de réponse)', 'assistant');
+    speakIncremental(finalData.reply || fullText, spokenUpTo, true);
+    if (finalData.emails && finalData.emails.length) renderAnnounceCarousel(dedupeEmails(finalData.emails));
+    handleActionResults(finalData.actions);
+    if (finalData.drafts && finalData.drafts.length) finalData.drafts.forEach(renderReplyCard);
   } catch (e) {
-    thinking.remove();
+    if (thinking.isConnected) thinking.remove();
     setOrb('idle');
     addBubble('Erreur : ' + e.message, 'assistant');
   }

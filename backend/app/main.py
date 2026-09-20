@@ -1,8 +1,10 @@
+import json
 import threading
 import time
 from pathlib import Path
 
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi.responses import StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from starlette.middleware.base import BaseHTTPMiddleware
@@ -63,10 +65,21 @@ class VoiceRequest(BaseModel):
 
 
 @app.post("/api/voice", dependencies=[Depends(require_token)])
-def voice(req: VoiceRequest) -> dict:
+def voice(req: VoiceRequest) -> StreamingResponse:
+    """Répond en streaming (Server-Sent Events) : des évènements
+    {"type": "text_delta", ...} au fil de la génération de la réponse, puis
+    un dernier {"type": "done", ...} avec la forme complète attendue par le
+    reste de l'interface (actions/emails/drafts). Voir
+    voice_agent.handle_turn_stream : permet au client de commencer à parler
+    dès la première phrase plutôt que d'attendre la réponse entière."""
     if not req.text.strip():
         raise HTTPException(400, "Texte vide.")
-    return voice_agent.handle_turn(req.text, req.session_id)
+
+    def event_stream():
+        for chunk in voice_agent.handle_turn_stream(req.text, req.session_id):
+            yield f"data: {json.dumps(chunk)}\n\n"
+
+    return StreamingResponse(event_stream(), media_type="text/event-stream")
 
 
 @app.get("/api/voice/history", dependencies=[Depends(require_token)])
