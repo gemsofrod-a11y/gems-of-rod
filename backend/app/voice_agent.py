@@ -243,7 +243,10 @@ Pour lire une pièce jointe PDF (devis fournisseur, fiche technique...), utilise
 read_pdf_attachment : le texte t'est donné pour que tu comprennes son contenu, et le document \
 s'affiche à l'écran pour que Sébastien le lise en même temps que toi. Si un chiffre du PDF est \
 illisible ou ambigu (mauvaise extraction, document scanné), dis-le clairement au lieu de \
-deviner un montant.
+deviner un montant. Important : ne dis jamais "je l'affiche à l'écran" ou "c'est fait" avant \
+d'avoir réellement appelé get_email puis read_pdf_attachment et reçu leur résultat — si l'un des \
+deux renvoie une erreur, dis-le clairement à Sébastien (par exemple le fichier est introuvable) \
+au lieu de prétendre avoir réussi.
 
 Quand Sébastien te demande de transformer un devis fournisseur (lu via read_pdf_attachment) \
 en devis pour un client, ne rédige jamais sans avoir d'abord retrouvé et fait confirmer la \
@@ -370,6 +373,9 @@ def _dispatch(
             found_images.extend(r for r in results if "url" in r)
             return str(results)
         if name == "read_pdf_attachment":
+            print(f"[read_pdf_attachment] appel : message_id={tool_input.get('message_id')!r} "
+                  f"attachment_id={tool_input.get('attachment_id')!r} "
+                  f"filename={tool_input.get('filename')!r}")
             data = gmail_client.get_attachment_bytes(
                 tool_input["message_id"], tool_input["attachment_id"]
             )
@@ -379,6 +385,8 @@ def _dispatch(
                 "attachment_id": tool_input["attachment_id"],
                 "filename": tool_input.get("filename") or "document.pdf",
             })
+            print(f"[read_pdf_attachment] OK : {len(data)} octets récupérés, "
+                  f"{len(text)} caractères extraits.")
             return text
         return f"Outil inconnu : {name}"
     except Exception as e:
