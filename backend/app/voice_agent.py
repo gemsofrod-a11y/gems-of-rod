@@ -4,7 +4,7 @@ voix haute (TextToSpeech) : phrases courtes, naturelles, sans markdown.
 """
 import anthropic
 
-from app import config, db, gmail_client, images, pricing, weather
+from app import config, db, gmail_client, images, pdf_reader, pricing, weather
 
 TOOLS: list[dict] = [
     # Outil serveur Anthropic : la recherche s'exécute côté Anthropic, les
@@ -57,11 +57,31 @@ TOOLS: list[dict] = [
     },
     {
         "name": "get_email",
-        "description": "Récupère le contenu complet d'un email (corps du message inclus).",
+        "description": "Récupère le contenu complet d'un email (corps du message inclus), "
+                       "avec la liste de ses pièces jointes éventuelles (nom, type, "
+                       "attachment_id) — utilise read_pdf_attachment pour en ouvrir une.",
         "input_schema": {
             "type": "object",
             "properties": {"message_id": {"type": "string"}},
             "required": ["message_id"],
+        },
+    },
+    {
+        "name": "read_pdf_attachment",
+        "description": "Ouvre une pièce jointe PDF d'un email (ex. un devis fournisseur, une "
+                       "fiche technique, un certificat) : en extrait le texte pour que tu "
+                       "puisses le lire et en discuter, et l'affiche à l'écran du téléphone "
+                       "pour que Sébastien puisse le lire lui aussi en parallèle. Utilise "
+                       "get_email d'abord pour connaître l'attachment_id d'une pièce jointe.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "message_id": {"type": "string"},
+                "attachment_id": {"type": "string"},
+                "filename": {"type": "string",
+                             "description": "Nom du fichier (pour l'affichage à l'écran)."},
+            },
+            "required": ["message_id", "attachment_id"],
         },
     },
     {
@@ -211,8 +231,19 @@ l'aider à chiffrer rapidement une demande (catégorie de pierre + poids en cara
 ou poids en grammes × cours au gramme pour un métal). Partage librement les informations \
 factuelles (délais, conditions, cours indicatifs, contenu de la clause de risque — \
 reproduis-la fidèlement, jamais résumée de mémoire). En revanche, un chiffrage total ou un \
-engagement de prix envoyé à un client reste soumis à la règle d'autonomie ci-dessus : \
-propose-le via list_pending_confirmations, ne l'envoie jamais toi-même.
+engagement de prix envoyé à un client reste soumis à la règle d'autonomie ci-dessus : pour \
+un email déjà en attente, propose-le via list_pending_confirmations ; pour toute autre \
+demande de devis (par exemple Sébastien te demande de reprendre un devis reçu d'un \
+fournisseur en pièce jointe pour le refaire à son nom, avec sa propre grille et ses \
+marges), rédige-le avec create_draft — jamais avec send_reply, même si la demande te \
+paraît explicite : un prix engagé se relit toujours avant de partir, dans le brouillon \
+affiché à l'écran ou directement dans Gmail.
+
+Pour lire une pièce jointe PDF (devis fournisseur, fiche technique...), utilise \
+read_pdf_attachment : le texte t'est donné pour que tu comprennes son contenu, et le document \
+s'affiche à l'écran pour que Sébastien le lise en même temps que toi. Si un chiffre du PDF est \
+illisible ou ambigu (mauvaise extraction, document scanné), dis-le clairement au lieu de \
+deviner un montant.
 
 """ + pricing.TARIFF_REFERENCE
 
@@ -223,6 +254,7 @@ def _dispatch(
     referenced_emails: list[dict],
     draft_replies: list[dict],
     found_images: list[dict],
+    shown_documents: list[dict],
 ) -> str:
     """referenced_emails est enrichi en effet de bord quand un outil de
     lecture consulte des emails, pour que le client web puisse les présenter
@@ -232,6 +264,9 @@ def _dispatch(
     draft_replies est enrichi de la même façon quand une réponse est rédigée
     (brouillon ou envoi), pour que le client web puisse l'afficher en train
     de "s'écrire" à l'écran sans que Sébastien ait besoin d'ouvrir Gmail.
+    shown_documents est enrichi par read_pdf_attachment, pour que le client
+    web affiche le PDF original (voir /api/attachment) pendant que Saphir en
+    discute avec Sébastien.
     """
     try:
         if name == "search_emails":
@@ -319,6 +354,17 @@ def _dispatch(
             )
             found_images.extend(r for r in results if "url" in r)
             return str(results)
+        if name == "read_pdf_attachment":
+            data = gmail_client.get_attachment_bytes(
+                tool_input["message_id"], tool_input["attachment_id"]
+            )
+            text = pdf_reader.extract_text(data)
+            shown_documents.append({
+                "message_id": tool_input["message_id"],
+                "attachment_id": tool_input["attachment_id"],
+                "filename": tool_input.get("filename") or "document.pdf",
+            })
+            return text
         return f"Outil inconnu : {name}"
     except Exception as e:
         return f"Erreur lors de l'exécution de {name} : {e}"
@@ -372,7 +418,7 @@ def _context_from_history(full_history: list[dict], window: int) -> list[dict]:
 # d'une "action effectuée" à confirmer — Claude en tient déjà compte dans sa
 # réponse en langage naturel, inutile de le réafficher tel quel au client web.
 _READONLY_TOOLS = {"search_emails", "get_email", "list_pending_confirmations", "get_today_digest",
-                    "get_weather", "search_images"}
+                    "get_weather", "search_images", "read_pdf_attachment"}
 
 
 def handle_turn_stream(text: str, session_id: str = "default"):
@@ -398,6 +444,7 @@ def handle_turn_stream(text: str, session_id: str = "default"):
     referenced_emails: list[dict] = []
     draft_replies: list[dict] = []
     found_images: list[dict] = []
+    shown_documents: list[dict] = []
 
     for _ in range(6):
         with client.messages.stream(
@@ -419,14 +466,16 @@ def handle_turn_stream(text: str, session_id: str = "default"):
             reply = "".join(b.text for b in resp.content if b.type == "text").strip()
             db.save_conversation(session_id, full_history)
             yield {"type": "done", "reply": reply, "actions": actions,
-                   "emails": referenced_emails, "drafts": draft_replies, "media": found_images}
+                   "emails": referenced_emails, "drafts": draft_replies, "media": found_images,
+                   "documents": shown_documents}
             return
 
         tool_results = []
         for block in resp.content:
             if block.type != "tool_use":
                 continue
-            result = _dispatch(block.name, block.input, referenced_emails, draft_replies, found_images)
+            result = _dispatch(block.name, block.input, referenced_emails, draft_replies,
+                                found_images, shown_documents)
             if block.name not in _READONLY_TOOLS:
                 actions.append(f"{block.name}: {result}")
             tool_results.append({
@@ -442,7 +491,7 @@ def handle_turn_stream(text: str, session_id: str = "default"):
     yield {"type": "done",
            "reply": "Je n'ai pas réussi à terminer cette action, peux-tu reformuler ?",
            "actions": actions, "emails": referenced_emails, "drafts": draft_replies,
-           "media": found_images}
+           "media": found_images, "documents": shown_documents}
 
 
 def get_display_history(session_id: str = "default") -> list[dict]:

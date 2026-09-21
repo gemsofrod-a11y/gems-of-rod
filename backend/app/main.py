@@ -4,7 +4,7 @@ import time
 from pathlib import Path
 
 from fastapi import Depends, FastAPI, HTTPException
-from fastapi.responses import StreamingResponse
+from fastapi.responses import Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from starlette.middleware.base import BaseHTTPMiddleware
@@ -138,6 +138,22 @@ def digest_today() -> dict:
 @app.get("/api/actions/recent", dependencies=[Depends(require_token)])
 def actions_recent(since: str = "") -> list[dict]:
     return db.list_actions_since(since)
+
+
+@app.get("/api/attachment/{message_id}/{attachment_id}", dependencies=[Depends(require_token)])
+def get_attachment(message_id: str, attachment_id: str, filename: str = "document.pdf") -> Response:
+    """Sert le contenu brut d'une pièce jointe Gmail (PDF), pour affichage
+    dans le fil de discussion du client web (voir voice_agent.read_pdf_attachment
+    et index.html/renderDocumentCard). Le client récupère ces octets avec le
+    même jeton Bearer que les autres appels /api/*, puis les affiche via une
+    URL blob locale — le jeton ne transite donc jamais dans l'URL elle-même."""
+    data = gmail_client.get_attachment_bytes(message_id, attachment_id)
+    safe_filename = "".join(c for c in filename if c not in '"\r\n') or "document.pdf"
+    return Response(
+        content=data,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f'inline; filename="{safe_filename}"'},
+    )
 
 
 # Client web (voix depuis le téléphone, voir backend/static/) : monté en
