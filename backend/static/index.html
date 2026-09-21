@@ -640,27 +640,48 @@
   .doc-card .doc-head {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     font-size: 13px;
     font-weight: 600;
     color: var(--text);
     margin-bottom: 8px;
   }
-  .doc-frame-wrap {
+  .doc-card .doc-filename {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .doc-open-link {
+    flex-shrink: 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid var(--accent-dim);
+    border-radius: 999px;
+  }
+  .doc-open-link-disabled {
+    pointer-events: none;
+    opacity: .4;
+  }
+  .doc-pages {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     border-radius: 8px;
     overflow: hidden;
     background: #0a1220;
   }
-  .doc-frame {
+  .doc-page {
     display: block;
     width: 100%;
-    height: 60vh;
-    max-height: 480px;
-    border: none;
+    height: auto;
     background: #fff;
   }
-  .doc-loading, .doc-error {
-    padding: 28px 12px;
+  .doc-loading, .doc-error, .doc-more {
+    padding: 20px 12px;
     text-align: center;
     font-size: 13px;
     color: var(--text-dim);
@@ -842,8 +863,19 @@
   <button id="navHistorique" onclick="showTab('historique')">🕒 Historique</button>
 </nav>
 
+<!-- Rendu des pièces jointes PDF (voir renderDocumentCard) : un <iframe>/
+     <embed> pointant vers un PDF ne s'affiche pas de façon fiable sur les
+     navigateurs mobiles (Android Chrome, notamment, n'a pas de visionneuse
+     PDF native intégrée aux iframes, contrairement à Chrome desktop) — on
+     rend donc chaque page en <canvas> via PDF.js, qui fonctionne partout. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
 let TOKEN = localStorage.getItem('gor_token') || '';
+
+if (window.pdfjsLib) {
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+}
 
 function saveToken() {
   const v = document.getElementById('tokenInput').value.trim();
@@ -1768,33 +1800,69 @@ function renderImageResults(media) {
 // Quand Saphir ouvre une pièce jointe PDF (read_pdf_attachment), on l'affiche
 // directement dans le fil de discussion pour que Sébastien puisse la lire en
 // même temps qu'il en discute avec elle — sans avoir à ouvrir Gmail. Le PDF
-// est récupéré avec le même jeton que les autres appels /api/*, puis affiché
-// via une URL blob locale (le jeton ne transite donc jamais dans le src de
-// l'iframe).
-function renderDocumentCard(doc) {
+// est récupéré avec le même jeton que les autres appels /api/*, puis rendu
+// page par page en <canvas> via PDF.js : un <iframe> pointant vers un blob
+// PDF ne s'affichait rien sur mobile (pas de visionneuse PDF native dans les
+// iframes sur Android Chrome, contrairement à Chrome desktop) — le bug
+// signalé par Sébastien le 21/09/2026. Un lien "Ouvrir" (URL blob, jamais le
+// jeton) reste toujours disponible en secours, y compris si PDF.js échoue.
+async function renderDocumentCard(doc) {
   const log = document.getElementById('log');
   const card = document.createElement('div');
   card.className = 'doc-card';
   card.innerHTML = `
-    <div class="doc-head">📄 <span class="doc-filename"></span></div>
-    <div class="doc-frame-wrap"><div class="doc-loading">Ouverture du document…</div></div>
+    <div class="doc-head">
+      📄 <span class="doc-filename"></span>
+      <a class="doc-open-link doc-open-link-disabled" target="_blank" rel="noopener noreferrer">Ouvrir</a>
+    </div>
+    <div class="doc-pages"><div class="doc-loading">Ouverture du document…</div></div>
   `;
   card.querySelector('.doc-filename').textContent = doc.filename || 'document.pdf';
+  const openLink = card.querySelector('.doc-open-link');
+  const pagesEl = card.querySelector('.doc-pages');
   log.appendChild(card);
   card.scrollIntoView({ behavior: 'smooth', block: 'end' });
 
   const url = `/api/attachment/${encodeURIComponent(doc.message_id)}/${encodeURIComponent(doc.attachment_id)}`;
-  fetch(url, { headers: { 'Authorization': 'Bearer ' + TOKEN } })
-    .then(res => { if (!res.ok) throw new Error(); return res.blob(); })
-    .then(blob => {
-      const objectUrl = URL.createObjectURL(blob);
-      card.querySelector('.doc-frame-wrap').innerHTML =
-        `<iframe src="${objectUrl}" class="doc-frame"></iframe>`;
-    })
-    .catch(() => {
-      card.querySelector('.doc-frame-wrap').innerHTML =
-        '<div class="doc-error">Impossible d\'afficher ce document.</div>';
-    });
+  let blob;
+  try {
+    const res = await fetch(url, { headers: { 'Authorization': 'Bearer ' + TOKEN } });
+    if (!res.ok) throw new Error('fetch failed');
+    blob = await res.blob();
+  } catch (e) {
+    pagesEl.innerHTML = '<div class="doc-error">Impossible de récupérer ce document.</div>';
+    return;
+  }
+
+  openLink.href = URL.createObjectURL(blob);
+  openLink.classList.remove('doc-open-link-disabled');
+
+  try {
+    if (!window.pdfjsLib) throw new Error('pdfjsLib indisponible');
+    const buffer = await blob.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
+    pagesEl.innerHTML = '';
+    const maxPages = Math.min(pdf.numPages, 12);
+    for (let i = 1; i <= maxPages; i++) {
+      const page = await pdf.getPage(i);
+      const viewport = page.getViewport({ scale: 1.4 });
+      const canvas = document.createElement('canvas');
+      canvas.className = 'doc-page';
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+      pagesEl.appendChild(canvas);
+      card.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+    if (pdf.numPages > maxPages) {
+      const more = document.createElement('div');
+      more.className = 'doc-more';
+      more.textContent = `+ ${pdf.numPages - maxPages} page(s) supplémentaire(s) — utilise "Ouvrir" pour tout voir.`;
+      pagesEl.appendChild(more);
+    }
+  } catch (e) {
+    pagesEl.innerHTML = '<div class="doc-error">Aperçu indisponible — utilise "Ouvrir" pour le voir.</div>';
+  }
 }
 
 function renderDocuments(docs) {
