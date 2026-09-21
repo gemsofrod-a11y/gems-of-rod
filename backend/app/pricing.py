@@ -7,7 +7,17 @@ répondre à l'oral) — évite d'avoir deux copies à resynchroniser à chaque
 mise à jour de tarifs. Si la grille change, modifier uniquement ce fichier.
 """
 
-TARIFF_REFERENCE = """\
+# Marge appliquée par Saphir sur un coût fournisseur (ex. un devis de taille
+# lapidaire reçu en PDF) pour calculer le prix proposé au client — voir
+# voice_agent._SYSTEM_PROMPT, workflow "devis fournisseur → devis client"
+# ajouté le 21/09/2026 à la demande de Sébastien.
+SUPPLIER_MARGIN_PERCENT = 30
+
+# Durée de validité affichée sur tout devis client (le cours des métaux
+# précieux varie) — même origine que SUPPLIER_MARGIN_PERCENT ci-dessus.
+QUOTE_VALIDITY_DAYS = 15
+
+TARIFF_REFERENCE = f"""\
 GEMS OF ROD — GRILLE TARIFAIRE (taille de pierres, sertissage, métaux précieux)
 
 Forfaits HT par pièce (taux horaire cible 55-60 €/h). TVA non applicable —
@@ -72,6 +82,12 @@ CONDITIONS GÉNÉRALES :
   - Délai standard : 2 à 4 semaines selon la charge d'atelier, confirmé à
     la commande.
   - Les chutes et refus éventuels sont retournés avec la pierre taillée.
+  - Un acompte de 30 % est demandé à la commande pour toute prestation
+    supérieure à 100 € ; son versement par le client vaut validation et
+    confirmation ferme de la commande.
+  - Validité du devis : {QUOTE_VALIDITY_DAYS} jours à compter de sa date d'émission —
+    au-delà, le cours des métaux précieux ayant pu varier, un nouveau
+    chiffrage est nécessaire avant commande.
 
 CLAUSE DE RISQUE DE CASSE (formulation contractuelle, à reproduire fidèlement,
 jamais à paraphraser ou résumer de mémoire) :

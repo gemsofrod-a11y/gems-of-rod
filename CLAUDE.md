@@ -300,6 +300,40 @@ règle d'autonomie que toute demande de devis : elle rédige la réponse avec
 envoi, même si sa demande orale semblait explicite — un prix engagé se
 relit toujours avant de partir.
 
+### Devis fournisseur → devis client, avec marge (mémorisé par Saphir)
+
+Fonctionnalité ajoutée le 21/09/2026, précisant le cas d'usage ci-dessus : un
+devis fournisseur reçu en PDF correspond généralement à une demande de devis
+qu'un client a faite à Sébastien au préalable. Décisions prises avec
+Sébastien pour ce workflow (voir `voice_agent._SYSTEM_PROMPT` et
+`pricing.SUPPLIER_MARGIN_PERCENT` / `pricing.QUOTE_VALIDITY_DAYS`) :
+
+- **Mise en lien** : recherche automatique + confirmation. Saphir cherche
+  avec `search_emails` l'email client dont la demande correspond
+  probablement (type de pierre, poids, période), le lit avec `get_email`,
+  puis annonce son meilleur candidat à Sébastien à l'oral et attend sa
+  confirmation avant de continuer — jamais de lien assumé sans validation.
+  S'il n'y a pas de candidat plausible, elle demande directement à
+  Sébastien à quel email ça correspond.
+- **Marge** : pourcentage fixe sur le coût fournisseur —
+  `pricing.SUPPLIER_MARGIN_PERCENT` (30 % actuellement). Prix client = coût
+  fournisseur du PDF majoré de ce pourcentage. Ne pas confondre avec la
+  grille tarifaire elle-même (utilisée quand il n'y a pas de coût
+  fournisseur à majorer, ex. une demande directe d'un client).
+- **Acompte = validation de commande** : tout devis client (grille tarifaire
+  ou calcul avec marge) doit explicitement mentionner que l'acompte de 30 %
+  est requis à la commande et que son versement par le client vaut
+  validation et confirmation ferme de cette commande — formulé dans
+  `pricing.TARIFF_REFERENCE` (section Conditions générales) et rappelé
+  explicitement dans le prompt système.
+- **Durée de validité** : chaque devis doit mentionner sa validité de
+  `pricing.QUOTE_VALIDITY_DAYS` jours (15 actuellement) à compter de son
+  émission, le cours des métaux précieux pouvant varier entre-temps.
+
+Ce workflow reste entièrement porté par les outils déjà existants
+(`search_emails`, `get_email`, `read_pdf_attachment`, `create_draft`) et le
+prompt système — aucun nouvel outil backend n'a été nécessaire.
+
 ### Pistes d'évolution envisagées (non prioritaires)
 
 Idées avancées par Saphir elle-même le 20/09/2026 en réponse à une question
