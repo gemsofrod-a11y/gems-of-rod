@@ -279,6 +279,27 @@ triage) — un chiffrage final ou un engagement de prix envoyé à un client
 reste soumis à la règle d'autonomie ci-dessus (jamais décidé ou envoyé seule,
 toujours via `list_pending_confirmations`/validation de Sébastien).
 
+### Lecture des pièces jointes PDF (mémorisée par Saphir)
+
+Fonctionnalité ajoutée le 21/09/2026 à la demande de Sébastien : Saphir peut
+ouvrir une pièce jointe PDF d'un email (ex. un devis reçu d'un fournisseur,
+une fiche technique) via l'outil `read_pdf_attachment`
+(`backend/app/voice_agent.py`, extraction de texte dans
+`backend/app/pdf_reader.py`). Le PDF original est en même temps affiché tel
+quel dans le fil de discussion du client web (`backend/static/index.html`,
+`renderDocumentCard` — servi par `GET /api/attachment/{message_id}/{attachment_id}`
+dans `main.py`), pour que Sébastien le lise lui-même en parallèle, y compris
+quand l'extraction de texte échoue (document scanné, PDF abîmé).
+
+Cas d'usage typique : un fournisseur envoie un devis en PDF, Sébastien
+demande à Saphir de le lire puis de « refaire un devis à son nom avec ses
+tarifs et ses marges ». Saphir peut lire le PDF et proposer un chiffrage en
+s'appuyant sur la grille tarifaire ci-dessus, mais reste soumise à la même
+règle d'autonomie que toute demande de devis : elle rédige la réponse avec
+`create_draft` (jamais `send_reply`) pour que Sébastien la relise avant
+envoi, même si sa demande orale semblait explicite — un prix engagé se
+relit toujours avant de partir.
+
 ### Pistes d'évolution envisagées (non prioritaires)
 
 Idées avancées par Saphir elle-même le 20/09/2026 en réponse à une question

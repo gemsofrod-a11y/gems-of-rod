@@ -624,6 +624,48 @@
   .reply-card .btn-send-now { background: var(--accent); color: #071522; }
   .reply-card .btn-keep-draft { background: #243450; color: var(--text); }
 
+  /* Pièce jointe PDF ouverte par Saphir (ex. devis fournisseur) : affichée
+     directement dans le fil de discussion pour que Sébastien la lise sans
+     ouvrir Gmail. */
+  .doc-card {
+    border: 1px solid #2a4468;
+    border-left: 3px solid #7fdcff;
+    background: linear-gradient(135deg, #101a2c, #0a1220);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin: 10px 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,.35);
+    animation: card-rise .4s cubic-bezier(.22,1,.36,1) backwards;
+  }
+  .doc-card .doc-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .doc-frame-wrap {
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0a1220;
+  }
+  .doc-frame {
+    display: block;
+    width: 100%;
+    height: 60vh;
+    max-height: 480px;
+    border: none;
+    background: #fff;
+  }
+  .doc-loading, .doc-error {
+    padding: 28px 12px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
   /* Carrousel 3D : quand plusieurs emails sont traités d'un coup, elles se
      présentent une par une avec de la profondeur, puis se désintègrent,
      avant de laisser la place au fil de discussion normal. */
@@ -1337,6 +1379,7 @@ async function sendMessage(text, { skipUserBubble = false } = {}) {
     handleActionResults(finalData.actions);
     if (finalData.drafts && finalData.drafts.length) finalData.drafts.forEach(renderReplyCard);
     if (finalData.media && finalData.media.length) renderImageResults(finalData.media);
+    if (finalData.documents && finalData.documents.length) renderDocuments(finalData.documents);
     // Rien à lire à voix haute (réponse vide) : le hook de fin de lecture ne
     // se déclenchera pas, on relance donc l'écoute du mot de réveil ici.
     if (_pendingUtterances === 0 && wakeEnabled) setTimeout(startWakeListening, 400);
@@ -1720,6 +1763,43 @@ function renderImageResults(media) {
   if (!wrap.children.length) return;
   log.appendChild(wrap);
   wrap.scrollIntoView({ behavior: 'smooth', block: 'end' });
+}
+
+// Quand Saphir ouvre une pièce jointe PDF (read_pdf_attachment), on l'affiche
+// directement dans le fil de discussion pour que Sébastien puisse la lire en
+// même temps qu'il en discute avec elle — sans avoir à ouvrir Gmail. Le PDF
+// est récupéré avec le même jeton que les autres appels /api/*, puis affiché
+// via une URL blob locale (le jeton ne transite donc jamais dans le src de
+// l'iframe).
+function renderDocumentCard(doc) {
+  const log = document.getElementById('log');
+  const card = document.createElement('div');
+  card.className = 'doc-card';
+  card.innerHTML = `
+    <div class="doc-head">📄 <span class="doc-filename"></span></div>
+    <div class="doc-frame-wrap"><div class="doc-loading">Ouverture du document…</div></div>
+  `;
+  card.querySelector('.doc-filename').textContent = doc.filename || 'document.pdf';
+  log.appendChild(card);
+  card.scrollIntoView({ behavior: 'smooth', block: 'end' });
+
+  const url = `/api/attachment/${encodeURIComponent(doc.message_id)}/${encodeURIComponent(doc.attachment_id)}`;
+  fetch(url, { headers: { 'Authorization': 'Bearer ' + TOKEN } })
+    .then(res => { if (!res.ok) throw new Error(); return res.blob(); })
+    .then(blob => {
+      const objectUrl = URL.createObjectURL(blob);
+      card.querySelector('.doc-frame-wrap').innerHTML =
+        `<iframe src="${objectUrl}" class="doc-frame"></iframe>`;
+    })
+    .catch(() => {
+      card.querySelector('.doc-frame-wrap').innerHTML =
+        '<div class="doc-error">Impossible d\'afficher ce document.</div>';
+    });
+}
+
+function renderDocuments(docs) {
+  if (!docs || !docs.length) return;
+  docs.forEach(renderDocumentCard);
 }
 
 // Quand l'assistant rédige une réponse (brouillon ou envoi direct sur

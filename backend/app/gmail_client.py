@@ -63,8 +63,24 @@ def _extract_body_text(payload: dict) -> str:
     return ""
 
 
+def _walk_attachments(payload: dict, out: list[dict]) -> None:
+    filename = payload.get("filename")
+    body = payload.get("body", {}) or {}
+    if filename and body.get("attachmentId"):
+        out.append({
+            "attachment_id": body["attachmentId"],
+            "filename": filename,
+            "mime_type": payload.get("mimeType", ""),
+            "size": body.get("size", 0),
+        })
+    for part in payload.get("parts", []) or []:
+        _walk_attachments(part, out)
+
+
 def parse_message(raw: dict) -> dict:
     headers = raw.get("payload", {}).get("headers", [])
+    attachments: list[dict] = []
+    _walk_attachments(raw.get("payload", {}), attachments)
     return {
         "id": raw["id"],
         "thread_id": raw.get("threadId"),
@@ -78,6 +94,7 @@ def parse_message(raw: dict) -> dict:
         "labels": raw.get("labelIds", []),
         "list_unsubscribe": _header(headers, "List-Unsubscribe"),
         "list_unsubscribe_post": _header(headers, "List-Unsubscribe-Post"),
+        "attachments": attachments,
     }
 
 
@@ -110,6 +127,18 @@ def get_message(message_id: str) -> dict:
     service = get_service()
     raw = service.users().messages().get(userId="me", id=message_id, format="full").execute()
     return parse_message(raw)
+
+
+def get_attachment_bytes(message_id: str, attachment_id: str) -> bytes:
+    """Récupère le contenu binaire d'une pièce jointe (ex. un PDF de devis
+    fournisseur) — voir voice_agent.read_pdf_attachment et l'endpoint
+    /api/attachment de main.py qui sert ces mêmes octets au client web pour
+    affichage."""
+    service = get_service()
+    resp = service.users().messages().attachments().get(
+        userId="me", messageId=message_id, id=attachment_id
+    ).execute()
+    return base64.urlsafe_b64decode(resp["data"])
 
 
 def _get_or_create_label(name: str) -> str:
