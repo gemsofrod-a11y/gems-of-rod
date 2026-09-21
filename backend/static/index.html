@@ -1071,15 +1071,18 @@ function warmUpSpeech() {
 document.addEventListener('pointerdown', warmUpSpeech, { once: true });
 
 // Les voix "locales" embarquées dans Android sont saccadées/robotiques ;
-// les voix "Google" (moteur réseau, meilleure qualité) sonnent bien plus
-// naturelles quand elles sont disponibles sur l'appareil.
+// les voix réseau (Google, ou tout moteur nommé Wavenet/Neural/Enhanced)
+// sonnent bien plus naturelles quand elles sont disponibles sur l'appareil.
 let _frenchVoice = null;
 function pickFrenchVoice() {
   if (!('speechSynthesis' in window)) return null;
   const voices = speechSynthesis.getVoices();
   const fr = voices.filter(v => v.lang && v.lang.toLowerCase().startsWith('fr'));
   if (!fr.length) return null;
-  return fr.find(v => /google/i.test(v.name)) || fr.find(v => !v.localService) || fr[0];
+  return fr.find(v => /google/i.test(v.name))
+    || fr.find(v => /wavenet|neural|natural|enhanced|premium/i.test(v.name))
+    || fr.find(v => !v.localService)
+    || fr[0];
 }
 if ('speechSynthesis' in window) {
   _frenchVoice = pickFrenchVoice();
@@ -1123,15 +1126,52 @@ function stopSpeaking() {
   _pendingUtterances = 0;
 }
 
+// Une civilité/abréviation suivie d'un point ("M.", "Mme.", "Dr.", "etc.")
+// ne doit jamais être traitée comme une fin de phrase : ça créerait une
+// pause vocale absurde en plein milieu d'un titre.
+const _ABBREV_RE = /\b(?:m|mme|mlle|dr|st|ste|etc)\.$/i;
+
+// Chaque redémarrage du moteur de synthèse vocale entre deux utterances
+// crée une micro-coupure audible ("effet saccadé"). On regroupe donc les
+// phrases par blocs d'au moins _MIN_CHUNK_CHARS caractères avant de les
+// lire — sauf la toute première du tour, lue seule et sans délai pour ne
+// pas retarder le début de la réponse perçue par Sébastien.
+const _MIN_CHUNK_CHARS = 70;
+
 // Reçoit le texte complet reçu jusqu'ici et l'index déjà lu à voix haute ;
-// parle toute nouvelle phrase complète apparue depuis, et renvoie le nouvel
-// index. Avec flush=true (fin du flux), lit aussi le reste même sans
+// parle tout nouveau bloc de phrases complètes apparu depuis, et renvoie le
+// nouvel index. Avec flush=true (fin du flux), lit aussi le reste même sans
 // ponctuation finale.
 function speakIncremental(fullText, fromIndex, flush = false) {
   const remainder = fullText.slice(fromIndex);
-  const matches = remainder.match(/[^.!?]+[.!?]+/g) || [];
+  const rawMatches = remainder.match(/[^.!?]+[.!?]+(?=\s|$)/g) || [];
+
+  const sentences = [];
+  rawMatches.forEach(s => {
+    const prev = sentences[sentences.length - 1];
+    if (prev && _ABBREV_RE.test(prev.trimEnd())) {
+      sentences[sentences.length - 1] = prev + s;
+    } else {
+      sentences.push(s);
+    }
+  });
+  // Le dernier fragment se termine peut-être par une abréviation dont on ne
+  // connaît pas encore la suite : on la lira au prochain appel (ou telle
+  // quelle en fin de flux).
+  if (!flush && sentences.length && _ABBREV_RE.test(sentences[sentences.length - 1].trimEnd())) {
+    sentences.pop();
+  }
+
+  const chunks = [];
+  let buffer = '';
+  sentences.forEach((s, i) => {
+    if (fromIndex === 0 && i === 0) { chunks.push(s); return; }
+    buffer += s;
+    if (buffer.length >= _MIN_CHUNK_CHARS) { chunks.push(buffer); buffer = ''; }
+  });
+
   let consumed = 0;
-  matches.forEach(s => { queueUtterance(s); consumed += s.length; });
+  chunks.forEach(s => { queueUtterance(s); consumed += s.length; });
   if (flush) {
     const tail = remainder.slice(consumed);
     if (tail.trim()) queueUtterance(tail);
