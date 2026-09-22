@@ -44,7 +44,12 @@ class AssistantViewModel(application: Application) : AndroidViewModel(applicatio
         application, tokenStore, AppConfig.GOOGLE_OAUTH_CLIENT_ID, AppConfig.GOOGLE_OAUTH_REDIRECT_URI,
     )
     private val gmailClient = GmailClient(authManager)
-    private val saphirAgent = SaphirAgent(application, gmailClient, localStore) { tokenStore.anthropicApiKey }
+    private val saphirAgent = SaphirAgent(
+        context = application,
+        gmailClient = gmailClient,
+        localStore = localStore,
+        apiKeyProvider = { tokenStore.anthropicApiKey },
+    )
 
     private val sessionId = UUID.randomUUID().toString()
 
