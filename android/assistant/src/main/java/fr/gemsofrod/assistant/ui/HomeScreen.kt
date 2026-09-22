@@ -75,7 +75,7 @@ fun HomeScreen(
                 Card(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Text(
-                            "Configurez d'abord l'adresse de votre serveur assistant dans Réglages.",
+                            "Connectez-vous à Google et renseignez votre clé API Anthropic dans Réglages.",
                             style = MaterialTheme.typography.bodyMedium,
                         )
                     }

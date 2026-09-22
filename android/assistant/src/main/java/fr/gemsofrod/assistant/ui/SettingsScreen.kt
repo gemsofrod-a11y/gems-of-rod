@@ -8,8 +8,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -24,13 +27,14 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun SettingsScreen(
-    currentBaseUrl: String,
-    currentApiToken: String,
+    isSignedIn: Boolean,
+    currentApiKey: String,
+    onSignIn: () -> Unit,
+    onSignOut: () -> Unit,
+    onSaveApiKey: (apiKey: String) -> Unit,
     onBack: () -> Unit,
-    onSave: (baseUrl: String, apiToken: String) -> Unit,
 ) {
-    var baseUrl by remember(currentBaseUrl) { mutableStateOf(currentBaseUrl) }
-    var apiToken by remember(currentApiToken) { mutableStateOf(currentApiToken) }
+    var apiKey by remember(currentApiKey) { mutableStateOf(currentApiKey) }
 
     Scaffold(
         topBar = {
@@ -45,23 +49,35 @@ fun SettingsScreen(
         },
     ) { padding ->
         Column(modifier = Modifier.padding(padding).padding(16.dp)) {
-            Text("Adresse du serveur assistant (backend/), par ex. https://mon-serveur.exemple.com")
+            Text("Compte Gmail", style = MaterialTheme.typography.titleMedium)
+            Text(
+                if (isSignedIn) "Connecté à gemsofrod@gmail.com." else "Pas encore connecté.",
+                style = MaterialTheme.typography.bodyMedium,
+                modifier = Modifier.padding(top = 4.dp, bottom = 12.dp),
+            )
+            if (isSignedIn) {
+                OutlinedButton(onClick = onSignOut) { Text("Se déconnecter") }
+            } else {
+                Button(onClick = onSignIn) { Text("Se connecter avec Google") }
+            }
+
+            HorizontalDivider(modifier = Modifier.padding(vertical = 20.dp))
+
+            Text("Clé API Anthropic", style = MaterialTheme.typography.titleMedium)
+            Text(
+                "Nécessaire pour que Saphir fonctionne (conversation, tri automatique des " +
+                    "emails, devis). Trouvable sur console.anthropic.com.",
+                style = MaterialTheme.typography.bodyMedium,
+                modifier = Modifier.padding(top = 4.dp, bottom = 8.dp),
+            )
             OutlinedTextField(
-                value = baseUrl,
-                onValueChange = { baseUrl = it },
-                label = { Text("URL du serveur") },
-                modifier = Modifier.fillMaxWidth().padding(top = 8.dp, bottom = 16.dp),
+                value = apiKey,
+                onValueChange = { apiKey = it },
+                label = { Text("Clé API Anthropic") },
+                modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
                 singleLine = true,
             )
-            Text("Jeton d'accès (ASSISTANT_API_TOKEN configuré côté serveur)")
-            OutlinedTextField(
-                value = apiToken,
-                onValueChange = { apiToken = it },
-                label = { Text("Jeton d'accès") },
-                modifier = Modifier.fillMaxWidth().padding(top = 8.dp, bottom = 16.dp),
-                singleLine = true,
-            )
-            Button(onClick = { onSave(baseUrl, apiToken) }) {
+            Button(onClick = { onSaveApiKey(apiKey) }) {
                 Text("Enregistrer")
             }
         }

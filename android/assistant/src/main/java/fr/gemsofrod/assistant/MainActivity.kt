@@ -2,6 +2,7 @@ package fr.gemsofrod.assistant
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.widget.Toast
@@ -72,6 +73,24 @@ private fun AssistantApp(viewModel: AssistantViewModel) {
         ActivityResultContracts.RequestPermission()
     ) { granted -> hasRecordPermission = granted }
 
+    // Notifications (email en attente trouvé par le tri automatique) —
+    // permission requise à partir d'Android 13.
+    val notificationPermissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { /* rien à faire, best-effort */ }
+    LaunchedEffect(Unit) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) !=
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
+    }
+
+    val signInLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result -> viewModel.handleSignInResult(result.data) }
+
     val speechLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
@@ -126,13 +145,12 @@ private fun AssistantApp(viewModel: AssistantViewModel) {
         }
         composable("settings") {
             SettingsScreen(
-                currentBaseUrl = state.baseUrl,
-                currentApiToken = state.apiToken,
+                isSignedIn = state.isSignedIn,
+                currentApiKey = state.anthropicApiKey,
+                onSignIn = { signInLauncher.launch(viewModel.buildSignInIntent()) },
+                onSignOut = { viewModel.signOut() },
+                onSaveApiKey = { key -> viewModel.saveApiKey(key) },
                 onBack = { navController.popBackStack() },
-                onSave = { url, token ->
-                    viewModel.saveSettings(url, token)
-                    navController.popBackStack()
-                },
             )
         }
     }

@@ -234,8 +234,19 @@ téléphone. Deux parties, indépendantes du reste du dépôt :
 - `android/assistant` — module Android séparé (pas publié sur le Play Store),
   application Kotlin/Compose distincte de `android/app` (l'encyclopédie).
   Voix uniquement via les moteurs gratuits du téléphone (reconnaissance
-  vocale Android + `TextToSpeech`), pas de service cloud payant. Voir
-  `android/assistant/README.md`.
+  vocale Android + `TextToSpeech`), pas de service cloud payant pour la
+  voix elle-même. Depuis le 22/09/2026 (demande explicite de Sébastien :
+  app autonome sans serveur, connexion Gmail demandée directement par
+  l'app), ce module **ne dépend plus de `backend/`** — toute la logique
+  qui y vivait (Gmail, Saphir, tri automatique, grille tarifaire) a été
+  portée en Kotlin à l'intérieur du module lui-même ; seul l'appel à
+  l'API Anthropic reste un service payant à l'usage. Voir
+  `android/assistant/README.md` pour la configuration OAuth requise et un
+  avertissement important : ce portage n'a pas pu être compilé ni testé
+  avant livraison (SDK Android indisponible dans l'environnement où il a
+  été écrit) — une première compilation dans Android Studio est le
+  prochain pas nécessaire, `backend/` reste inchangé et fonctionnel
+  pendant ce temps si besoin.
 
 Autonomie de l'assistant (ne pas assouplir sans demande explicite de
 Sébastien — dernière extension demandée le 15/09/2026, voir historique) :
