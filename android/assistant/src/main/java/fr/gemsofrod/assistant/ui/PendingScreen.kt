@@ -29,11 +29,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import fr.gemsofrod.assistant.network.PendingItem
+import fr.gemsofrod.assistant.data.PendingAction
 
 @Composable
 fun PendingScreen(
-    pendingItems: List<PendingItem>,
+    pendingItems: List<PendingAction>,
     onBack: () -> Unit,
     onApprove: (id: String, editedReply: String?) -> Unit,
     onReject: (id: String) -> Unit,
@@ -70,20 +70,20 @@ fun PendingScreen(
 
 @Composable
 private fun PendingCard(
-    item: PendingItem,
+    item: PendingAction,
     onApprove: (id: String, editedReply: String?) -> Unit,
     onReject: (id: String) -> Unit,
 ) {
-    var replyText by remember(item.id) { mutableStateOf(item.suggested_reply ?: "") }
+    var replyText by remember(item.id) { mutableStateOf(item.suggestedReply ?: "") }
 
     Card(modifier = Modifier.fillMaxWidth()) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(item.subject.ifBlank { "(sans objet)" }, style = MaterialTheme.typography.titleMedium)
-            Text(item.from_addr, style = MaterialTheme.typography.bodySmall)
+            Text(item.fromAddr, style = MaterialTheme.typography.bodySmall)
             Text(item.snippet, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.padding(top = 4.dp))
             HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp))
             Text("Pourquoi c'est en attente : ${item.reasoning}", style = MaterialTheme.typography.bodySmall)
-            if (item.suggested_reply != null) {
+            if (item.suggestedReply != null) {
                 OutlinedTextField(
                     value = replyText,
                     onValueChange = { replyText = it },
