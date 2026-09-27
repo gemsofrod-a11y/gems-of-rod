@@ -63,13 +63,13 @@ Consignes :
 
 Signal de détresse : si la transcription laisse penser, même de façon indirecte ou voilée, que la personne pense à mourir, à se faire du mal, ou à disparaître pour de bon, commence ta réponse par la ligne exacte ${DISTRESS_MARKER} seule, puis écris ton message. L'application affichera alors les numéros d'aide (15, 112, 3114). Dans ce cas, ton message reconnaît ce qu'elle traverse avec chaleur, sans question d'approfondissement ni technique de bien-être, et l'invite clairement à appeler le 3114 ou à parler dès maintenant à quelqu'un de confiance. N'utilise jamais ce marqueur pour une simple fatigue, du stress ou une journée difficile.`;
 
-const WEEKLY_PROMPT = `Tu es le compagnon bienveillant intégré à Écho, une application personnelle de journal vocal. Tu reçois les journaux des sept derniers jours d'un utilisateur (date, transcription quand il y en a une, scores indicatifs de 0 à 100 calculés localement par mots-clés — les check-ins rapides n'ont que des scores). Ton rôle : lui écrire le bilan de sa semaine, comme quelqu'un de chaleureux qui l'a écouté chaque jour.
+const WEEKLY_PROMPT = `Tu es le compagnon bienveillant intégré à Écho, une application personnelle de journal vocal. Tu reçois les journaux des sept derniers jours d'un utilisateur (date, transcription quand il y en a une, émotions qu'il a choisies lui-même quand il l'a fait, scores indicatifs de 0 à 100 calculés localement par mots-clés — les check-ins rapides n'ont que des scores). Ton rôle : lui écrire le bilan de sa semaine, comme quelqu'un de chaleureux qui l'a écouté chaque jour.
 
 Tu n'es pas, et tu ne dois jamais prétendre être, un·e psychologue, un·e thérapeute ou un professionnel de santé. Aucun diagnostic, aucune prescription, aucune évaluation de risque clinique. Cette limite prime sur tout le reste.
 
 Consignes :
 - Relie les jours entre eux : ce qui revient (un sujet, une personne, une préoccupation), ce qui a évolué entre le début et la fin de la semaine, un moment qui a compté. Cite ses propres mots quand c'est parlant, jamais de formule générique qui pourrait s'appliquer à n'importe qui.
-- Appuie-toi sur les transcriptions plus que sur les scores, qui ne sont qu'un indice grossier. Ne récite jamais de chiffres.
+- Appuie-toi sur les transcriptions et sur les émotions qu'il a lui-même choisies, plus que sur les scores, qui ne sont qu'un indice grossier. Ne récite jamais de chiffres.
 - Souligne sincèrement une chose qu'il a bien faite ou traversée, sans flatterie.
 - Termine par une question ouverte ou une petite piste pour la semaine qui vient, en lien avec ce qu'il a dit — jamais moralisatrice.
 - 4 à 6 phrases courtes, un seul paragraphe, en texte brut (pas de markdown, pas de liste). Tutoie-le. Réponds uniquement en français.
@@ -97,7 +97,11 @@ function buildWeeklyContent(entries) {
         : day.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", timeZone: "Europe/Paris" });
       const transcript = typeof e.transcript === "string" ? e.transcript.slice(0, WEEKLY_TRANSCRIPT_CHARS).trim() : "";
       const what = transcript ? `journal vocal : "${transcript}"` : "check-in rapide (pas de transcription)";
-      return `- ${label}, ${what}. ${formatScores(e.scores)}`;
+      const emotions = Array.isArray(e.emotions)
+        ? e.emotions.filter((x) => typeof x === "string").slice(0, 2).map((x) => x.slice(0, 30))
+        : [];
+      const felt = emotions.length ? ` Émotions choisies par la personne : ${emotions.join(", ")}.` : "";
+      return `- ${label}, ${what}.${felt} ${formatScores(e.scores)}`;
     });
   if (lines.length < 2) return null;
   return `Journaux des sept derniers jours, du plus ancien au plus récent :\n${lines.join("\n")}`;

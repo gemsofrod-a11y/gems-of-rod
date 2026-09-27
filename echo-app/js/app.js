@@ -179,6 +179,11 @@
     lockSettingDesc: document.getElementById("lock-setting-desc"),
     btnCheckin: document.getElementById("btn-checkin"),
     checkinOverlay: document.getElementById("checkin-overlay"),
+    checkinEmotions: document.getElementById("checkin-emotions"),
+    emotionCard: document.getElementById("emotion-card"),
+    emotionPicker: document.getElementById("emotion-picker"),
+    emotionsTrendCard: document.getElementById("emotions-trend-card"),
+    emotionsTrendList: document.getElementById("emotions-trend-list"),
     checkinEnergy: document.getElementById("checkin-energy"),
     checkinEnergyValue: document.getElementById("checkin-energy-value"),
     checkinStress: document.getElementById("checkin-stress"),
@@ -215,6 +220,7 @@
   let meterRafId = null;
   const WEEKLY_RECAP_KEY = "echo_weekly_recap_v1";
   let weeklyRecapRequestId = 0;
+  let checkinEmotions = [];
 
   function navigate(view) {
     els.views.forEach((v) => v.classList.toggle("view-active", v.id === `view-${view}`));
@@ -479,6 +485,15 @@
 
     const isCrisis = Analysis.detectCrisisSignal(entry.transcript);
     els.crisisCard.hidden = !isCrisis;
+    // En cas de signal de crise, on garde l'attention sur la carte d'aide
+    // plutôt que de proposer un choix d'émotions.
+    els.emotionCard.hidden = isCrisis;
+    if (!isCrisis) {
+      Emotions.renderPicker(els.emotionPicker, entry.emotions, (ids) => {
+        const updated = Storage.updateEntry(entry.id, { emotions: ids });
+        CloudSync.pushEntry(updated);
+      });
+    }
     // Petit effet de clôture satisfaisant — jamais en cas de signal de
     // crise, où ce serait déplacé, et jamais si l'utilisateur préfère
     // réduire les animations.
@@ -579,6 +594,7 @@
     // suggestions génériques, comme pour une détection locale.
     if (distress) {
       els.crisisCard.hidden = false;
+      els.emotionCard.hidden = true;
       const suggestionsBlock = els.summaryContent.querySelector(".suggestions-block");
       if (suggestionsBlock) suggestionsBlock.remove();
     }
@@ -685,7 +701,11 @@
 
     const query = els.historySearch.value.trim().toLocaleLowerCase("fr-FR");
     const entries = query
-      ? allEntries.filter((e) => (e.transcript || "").toLocaleLowerCase("fr-FR").includes(query))
+      ? allEntries.filter((e) =>
+          [e.transcript || "", ...Emotions.labels(e.emotions)].some((t) =>
+            t.toLocaleLowerCase("fr-FR").includes(query)
+          )
+        )
       : allEntries;
 
     if (!entries.length) {
@@ -704,9 +724,19 @@
         const companionHtml = e.companionResponse
           ? `<div class="history-companion"><span class="history-companion-label">Ton compagnon</span>${escapeHtml(e.companionResponse)}</div>`
           : "";
+        const emotionIds = Emotions.sanitize(e.emotions);
+        const emotionsHtml = emotionIds.length
+          ? `<div class="history-emotions">${emotionIds
+              .map((id) => {
+                const emo = Emotions.get(id);
+                return `<span class="emotion-tag emotion-chip-${emo.tone}">${emo.emoji} ${escapeHtml(emo.label)}</span>`;
+              })
+              .join("")}</div>`
+          : "";
         return `
           <div class="history-item">
             <div class="history-date">${dateLabel}</div>
+            ${emotionsHtml}
             <div class="history-excerpt">${escapeHtml(excerpt)}</div>
             ${companionHtml}
           </div>`;
@@ -740,6 +770,19 @@
       els.keywordsCard.hidden = false;
     } else {
       els.keywordsCard.hidden = true;
+    }
+
+    const emotionFreq = Emotions.frequencies(entries, 30).slice(0, 6);
+    if (emotionFreq.length) {
+      els.emotionsTrendList.innerHTML = emotionFreq
+        .map(
+          (emo) =>
+            `<span class="keyword-chip emotion-chip-${emo.tone}">${emo.emoji} ${escapeHtml(emo.label)}<span class="keyword-chip-count">×${emo.count}</span></span>`
+        )
+        .join("");
+      els.emotionsTrendCard.hidden = false;
+    } else {
+      els.emotionsTrendCard.hidden = true;
     }
 
     Charts.drawTimeline(els.chartTimeline, entries);
@@ -801,6 +844,11 @@
       const keywords = Analysis.recurringKeywords(entries, 10);
       if (keywords.length) {
         html += `<h2>Mots-clés qui reviennent</h2><p>${escapeHtml(keywords.map((k) => `${k.word} (${k.count})`).join(", "))}</p>`;
+      }
+
+      const emotionFreq = Emotions.frequencies(entries, 30);
+      if (emotionFreq.length) {
+        html += `<h2>Émotions choisies — 30 derniers jours</h2><p>${escapeHtml(emotionFreq.map((e) => `${e.label} (${e.count})`).join(", "))}</p>`;
       }
     }
 
@@ -865,7 +913,9 @@
       els.weeklyRecapCard.hidden = true;
       return;
     }
-    const signature = week.map((e) => `${e.id}:${e.transcript ? e.transcript.length : 0}`).join("|");
+    const signature = week
+      .map((e) => `${e.id}:${e.transcript ? e.transcript.length : 0}:${Emotions.sanitize(e.emotions).join("+")}`)
+      .join("|");
     const cached = readWeeklyRecapCache();
     if (cached && cached.signature === signature && typeof cached.message === "string") {
       showWeeklyRecap(cached);
@@ -907,6 +957,10 @@
     els.checkinEnergyValue.textContent = "50";
     els.checkinStress.value = 50;
     els.checkinStressValue.textContent = "50";
+    checkinEmotions = [];
+    Emotions.renderPicker(els.checkinEmotions, [], (ids) => {
+      checkinEmotions = ids;
+    });
     els.checkinOverlay.hidden = false;
   });
   els.checkinCancel.addEventListener("click", () => {
@@ -923,6 +977,7 @@
       wordCount: 0,
       type: "checkin",
       scores: { energy, stress, fatigue: 50, mood: 50, keywords: [], hasSignal: true, wpm: 0 },
+      emotions: Emotions.sanitize(checkinEmotions),
     };
     Storage.saveEntry(entry);
     CloudSync.pushEntry(entry);

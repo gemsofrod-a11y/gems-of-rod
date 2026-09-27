@@ -28,6 +28,15 @@ tendances émotionnelles (énergie, stress, fatigue, humeur) dans le temps.
   IA est actif, il sert de second filet : s'il perçoit une détresse que la
   liste locale n'a pas captée (formulation indirecte), il le signale et la
   même carte s'affiche.
+- **Émotions précises** : après chaque journal vocal (et dans le check-in
+  rapide), choix facultatif d'une ou deux émotions parmi 12 (joie, fierté,
+  gratitude, sérénité, soulagement, motivation ; anxiété, tristesse,
+  colère, frustration, solitude, découragement — voir `js/emotions.js`).
+  Toujours choisies par l'utilisateur, jamais déduites. Affichées dans
+  l'Historique (et trouvables par la recherche), fréquences sur 30 jours
+  dans Tendances et dans le bilan imprimable, transmises au bilan de la
+  semaine du compagnon. Le choix n'est pas proposé en cas de signal de
+  crise, pour laisser toute la place à la carte d'aide.
 - **Bilan de la semaine par le compagnon** : dans Tendances, le bouton
   « Générer mon résumé de la semaine » affiche le résumé local puis, si le
   compagnon est configuré, un bilan qui relie les journaux des 7 derniers

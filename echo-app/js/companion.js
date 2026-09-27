@@ -20,7 +20,12 @@ const Companion = (() => {
   // Bilan de la semaine : les transcriptions sont tronquées côté serveur,
   // on n'envoie que ce dont il a besoin (date, texte, scores).
   function getWeeklyRecap(entries) {
-    const slim = entries.map((e) => ({ date: e.date, transcript: e.transcript || "", scores: e.scores }));
+    const slim = entries.map((e) => ({
+      date: e.date,
+      transcript: e.transcript || "",
+      scores: e.scores,
+      emotions: Emotions.labels(e.emotions),
+    }));
     return post({ mode: "weekly", entries: slim }, 25000);
   }
 

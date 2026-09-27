@@ -1,4 +1,4 @@
-const CACHE_NAME = "echo-cache-v21";
+const CACHE_NAME = "echo-cache-v22";
 const ASSETS = [
   "./",
   "./index.html",
@@ -13,6 +13,7 @@ const ASSETS = [
   "./js/prosody.js",
   "./js/charts.js",
   "./js/companion.js",
+  "./js/emotions.js",
   "./js/onboarding.js",
   "./js/firebase-config.js",
   "./js/auth.js",

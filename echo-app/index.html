@@ -51,6 +51,10 @@
       <label for="checkin-stress">Stress : <span id="checkin-stress-value">50</span></label>
       <input type="range" id="checkin-stress" min="0" max="100" value="50">
     </div>
+    <div class="checkin-field">
+      <div class="checkin-label">Émotion du moment (facultatif)</div>
+      <div id="checkin-emotions" class="emotion-picker emotion-picker-compact"></div>
+    </div>
     <div class="checkin-actions">
       <button id="checkin-cancel" class="btn-secondary">Annuler</button>
       <button id="checkin-save" class="btn-primary">Enregistrer</button>
@@ -109,6 +113,11 @@
       <div class="crisis-title">Tu n'es pas seul·e</div>
       <p>Ce que tu viens de dire me préoccupe. Si tu es en danger immédiat, appelle le <strong>15</strong> (SAMU) ou le <strong>112</strong> (urgences européennes). Le <strong>3114</strong>, numéro national de prévention du suicide, est gratuit, confidentiel et disponible 24h/24 — quelqu'un peut t'écouter maintenant.</p>
     </div>
+    <div id="emotion-card" class="emotion-card" hidden>
+      <div class="emotion-title">Qu'est-ce que tu ressens le plus ?</div>
+      <p class="emotion-subtitle">Une ou deux émotions, si tu veux.</p>
+      <div id="emotion-picker" class="emotion-picker"></div>
+    </div>
     <div id="summary-content" class="summary-card"></div>
     <div id="waveform-card" class="waveform-card" hidden>
       <div class="waveform-title">Ta voix aujourd'hui</div>
@@ -161,6 +170,11 @@
     <div id="keywords-card" class="keywords-card" hidden>
       <div class="keywords-title">Mots-clés qui reviennent</div>
       <div id="keywords-list" class="keywords-list"></div>
+    </div>
+
+    <div id="emotions-trend-card" class="keywords-card" hidden>
+      <div class="keywords-title">Tes émotions — 30 derniers jours</div>
+      <div id="emotions-trend-list" class="keywords-list"></div>
     </div>
 
     <h3 class="chart-title">
@@ -378,6 +392,7 @@
 <script src="js/prosody.js"></script>
 <script src="js/charts.js"></script>
 <script src="js/companion.js"></script>
+<script src="js/emotions.js"></script>
 <script src="js/onboarding.js"></script>
 <!-- Compte & synchro cloud (optionnels) : SDK Firebase "compat" via CDN,
      pas de dépendance npm, pas d'étape de build — reste inerte tant que
