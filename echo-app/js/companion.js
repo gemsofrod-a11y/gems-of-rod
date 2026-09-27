@@ -13,14 +13,25 @@ const Companion = (() => {
   // une vraie protection par utilisateur.
   const CLIENT_SECRET = "echo-app-2026";
 
-  async function getResponse({ transcript, scores, recentSummary }) {
+  function getResponse({ transcript, scores, recentSummary }) {
+    return post({ transcript, scores, recentSummary }, 15000);
+  }
+
+  // Bilan de la semaine : les transcriptions sont tronquées côté serveur,
+  // on n'envoie que ce dont il a besoin (date, texte, scores).
+  function getWeeklyRecap(entries) {
+    const slim = entries.map((e) => ({ date: e.date, transcript: e.transcript || "", scores: e.scores }));
+    return post({ mode: "weekly", entries: slim }, 25000);
+  }
+
+  async function post(body, timeoutMs) {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 15000);
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
     try {
       const res = await fetch(ENDPOINT, {
         method: "POST",
         headers: { "content-type": "application/json", "x-echo-client": CLIENT_SECRET },
-        body: JSON.stringify({ transcript, scores, recentSummary }),
+        body: JSON.stringify(body),
         signal: controller.signal,
       });
       if (!res.ok) return null;
@@ -34,5 +45,5 @@ const Companion = (() => {
     }
   }
 
-  return { getResponse };
+  return { getResponse, getWeeklyRecap };
 })();

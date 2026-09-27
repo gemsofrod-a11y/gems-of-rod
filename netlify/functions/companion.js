@@ -63,6 +63,46 @@ Consignes :
 
 Signal de détresse : si la transcription laisse penser, même de façon indirecte ou voilée, que la personne pense à mourir, à se faire du mal, ou à disparaître pour de bon, commence ta réponse par la ligne exacte ${DISTRESS_MARKER} seule, puis écris ton message. L'application affichera alors les numéros d'aide (15, 112, 3114). Dans ce cas, ton message reconnaît ce qu'elle traverse avec chaleur, sans question d'approfondissement ni technique de bien-être, et l'invite clairement à appeler le 3114 ou à parler dès maintenant à quelqu'un de confiance. N'utilise jamais ce marqueur pour une simple fatigue, du stress ou une journée difficile.`;
 
+const WEEKLY_PROMPT = `Tu es le compagnon bienveillant intégré à Écho, une application personnelle de journal vocal. Tu reçois les journaux des sept derniers jours d'un utilisateur (date, transcription quand il y en a une, scores indicatifs de 0 à 100 calculés localement par mots-clés — les check-ins rapides n'ont que des scores). Ton rôle : lui écrire le bilan de sa semaine, comme quelqu'un de chaleureux qui l'a écouté chaque jour.
+
+Tu n'es pas, et tu ne dois jamais prétendre être, un·e psychologue, un·e thérapeute ou un professionnel de santé. Aucun diagnostic, aucune prescription, aucune évaluation de risque clinique. Cette limite prime sur tout le reste.
+
+Consignes :
+- Relie les jours entre eux : ce qui revient (un sujet, une personne, une préoccupation), ce qui a évolué entre le début et la fin de la semaine, un moment qui a compté. Cite ses propres mots quand c'est parlant, jamais de formule générique qui pourrait s'appliquer à n'importe qui.
+- Appuie-toi sur les transcriptions plus que sur les scores, qui ne sont qu'un indice grossier. Ne récite jamais de chiffres.
+- Souligne sincèrement une chose qu'il a bien faite ou traversée, sans flatterie.
+- Termine par une question ouverte ou une petite piste pour la semaine qui vient, en lien avec ce qu'il a dit — jamais moralisatrice.
+- 4 à 6 phrases courtes, un seul paragraphe, en texte brut (pas de markdown, pas de liste). Tutoie-le. Réponds uniquement en français.
+- Si la semaine semble particulièrement difficile, invite avec douceur à en parler à un proche ou un professionnel, sans dramatiser.
+
+Signal de détresse : si l'un des journaux laisse penser, même de façon indirecte ou voilée, que la personne pense à mourir, à se faire du mal, ou à disparaître pour de bon, commence ta réponse par la ligne exacte ${DISTRESS_MARKER} seule, puis écris ton message. L'application affichera alors les numéros d'aide (15, 112, 3114). Dans ce cas, ne fais pas de bilan : reconnais avec chaleur ce qu'elle traverse et invite-la clairement à appeler le 3114 ou à parler dès maintenant à quelqu'un de confiance. N'utilise jamais ce marqueur pour une simple fatigue, du stress ou une semaine difficile.`;
+
+const WEEKLY_MAX_ENTRIES = 10;
+const WEEKLY_TRANSCRIPT_CHARS = 600;
+
+function formatScores(scores) {
+  const s = scores && typeof scores === "object" ? scores : {};
+  return `Scores locaux (0-100) : énergie ${s.energy ?? "?"}, stress ${s.stress ?? "?"}, fatigue ${s.fatigue ?? "?"}, humeur ${s.mood ?? "?"}.`;
+}
+
+function buildWeeklyContent(entries) {
+  if (!Array.isArray(entries)) return null;
+  const lines = entries
+    .filter((e) => e && typeof e === "object" && typeof e.date === "string")
+    .slice(-WEEKLY_MAX_ENTRIES)
+    .map((e) => {
+      const day = new Date(e.date);
+      const label = isNaN(day)
+        ? "date inconnue"
+        : day.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", timeZone: "Europe/Paris" });
+      const transcript = typeof e.transcript === "string" ? e.transcript.slice(0, WEEKLY_TRANSCRIPT_CHARS).trim() : "";
+      const what = transcript ? `journal vocal : "${transcript}"` : "check-in rapide (pas de transcription)";
+      return `- ${label}, ${what}. ${formatScores(e.scores)}`;
+    });
+  if (lines.length < 2) return null;
+  return `Journaux des sept derniers jours, du plus ancien au plus récent :\n${lines.join("\n")}`;
+}
+
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
@@ -96,19 +136,31 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: JSON.stringify({ error: "JSON invalide." }) };
   }
 
-  const transcript = typeof payload.transcript === "string" ? payload.transcript.slice(0, 2000) : "";
-  const scores = payload.scores && typeof payload.scores === "object" ? payload.scores : {};
-  const recentSummary = typeof payload.recentSummary === "string" ? payload.recentSummary.slice(0, 500) : "";
+  let system, userContent, maxTokens;
+  if (payload.mode === "weekly") {
+    userContent = buildWeeklyContent(payload.entries);
+    if (!userContent) {
+      return { statusCode: 400, body: JSON.stringify({ error: "Pas assez de journaux cette semaine." }) };
+    }
+    system = WEEKLY_PROMPT;
+    maxTokens = 800;
+  } else {
+    const transcript = typeof payload.transcript === "string" ? payload.transcript.slice(0, 2000) : "";
+    const scores = payload.scores && typeof payload.scores === "object" ? payload.scores : {};
+    const recentSummary = typeof payload.recentSummary === "string" ? payload.recentSummary.slice(0, 500) : "";
 
-  if (!transcript.trim()) {
-    return { statusCode: 400, body: JSON.stringify({ error: "Transcription manquante." }) };
+    if (!transcript.trim()) {
+      return { statusCode: 400, body: JSON.stringify({ error: "Transcription manquante." }) };
+    }
+
+    userContent = [
+      `Transcription du journal vocal : "${transcript}"`,
+      formatScores(scores),
+      recentSummary ? `Contexte récent : ${recentSummary}` : null,
+    ].filter(Boolean).join("\n");
+    system = SYSTEM_PROMPT;
+    maxTokens = 400;
   }
-
-  const userContent = [
-    `Transcription du journal vocal : "${transcript}"`,
-    `Scores locaux (0-100) : énergie ${scores.energy ?? "?"}, stress ${scores.stress ?? "?"}, fatigue ${scores.fatigue ?? "?"}, humeur ${scores.mood ?? "?"}.`,
-    recentSummary ? `Contexte récent : ${recentSummary}` : null,
-  ].filter(Boolean).join("\n");
 
   try {
     const apiRes = await fetch(ANTHROPIC_API_URL, {
@@ -120,9 +172,9 @@ exports.handler = async (event) => {
       },
       body: JSON.stringify({
         model: "claude-opus-5",
-        max_tokens: 400,
+        max_tokens: maxTokens,
         output_config: { effort: "medium" },
-        system: SYSTEM_PROMPT,
+        system,
         messages: [{ role: "user", content: userContent }],
       }),
     });

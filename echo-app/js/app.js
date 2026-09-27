@@ -163,6 +163,10 @@
     printReport: document.getElementById("print-report"),
     btnWeeklySummary: document.getElementById("btn-weekly-summary"),
     weeklySummary: document.getElementById("weekly-summary"),
+    weeklyRecapCard: document.getElementById("weekly-recap-card"),
+    weeklyRecapCrisis: document.getElementById("weekly-recap-crisis"),
+    weeklyRecapText: document.getElementById("weekly-recap-text"),
+    btnWeeklyRecapSpeak: document.getElementById("btn-weekly-recap-speak"),
     btnScaleInfo: document.getElementById("btn-scale-info"),
     scaleInfo: document.getElementById("scale-info"),
     btnExport: document.getElementById("btn-export"),
@@ -209,6 +213,8 @@
   let meterAudioCtx = null;
   let meterAnalyser = null;
   let meterRafId = null;
+  const WEEKLY_RECAP_KEY = "echo_weekly_recap_v1";
+  let weeklyRecapRequestId = 0;
 
   function navigate(view) {
     els.views.forEach((v) => v.classList.toggle("view-active", v.id === `view-${view}`));
@@ -586,22 +592,23 @@
     return "speechSynthesis" in window;
   }
 
-  function toggleCompanionSpeech() {
+  function toggleSpeech(textEl, btn) {
     if (!isTTSSupported()) return;
     if (speechSynthesis.speaking) {
       speechSynthesis.cancel();
-      els.btnCompanionSpeak.classList.remove("speak-btn-active");
+      btn.classList.remove("speak-btn-active");
       return;
     }
-    const utterance = new SpeechSynthesisUtterance(els.companionText.textContent);
+    const utterance = new SpeechSynthesisUtterance(textEl.textContent);
     utterance.lang = "fr-FR";
-    utterance.onend = () => els.btnCompanionSpeak.classList.remove("speak-btn-active");
-    utterance.onerror = () => els.btnCompanionSpeak.classList.remove("speak-btn-active");
-    els.btnCompanionSpeak.classList.add("speak-btn-active");
+    utterance.onend = () => btn.classList.remove("speak-btn-active");
+    utterance.onerror = () => btn.classList.remove("speak-btn-active");
+    btn.classList.add("speak-btn-active");
     speechSynthesis.speak(utterance);
   }
 
-  els.btnCompanionSpeak.addEventListener("click", toggleCompanionSpeech);
+  els.btnCompanionSpeak.addEventListener("click", () => toggleSpeech(els.companionText, els.btnCompanionSpeak));
+  els.btnWeeklyRecapSpeak.addEventListener("click", () => toggleSpeech(els.weeklyRecapText, els.btnWeeklyRecapSpeak));
 
   // Analyse locale de la piste audio (pauses, pics de volume) : ça prend un
   // instant (décodage audio), donc ça se fait en arrière-plan après avoir
@@ -714,6 +721,8 @@
     els.weeklySummary.hidden = true;
     els.weeklySummary.textContent = "";
     els.btnWeeklySummary.disabled = entries.length < 3;
+    weeklyRecapRequestId++;
+    els.weeklyRecapCard.hidden = true;
 
     if (!entries.length) {
       els.insights.innerHTML = `<p class="insights-empty">Enregistre-toi quelques jours pour voir apparaître tes tendances ici.</p>`;
@@ -819,7 +828,68 @@
     const summary = Analysis.generateWeeklySummary(entries);
     els.weeklySummary.textContent = summary || "Enregistre-toi encore quelques jours pour débloquer ton résumé de la semaine.";
     els.weeklySummary.hidden = false;
+    requestWeeklyRecap(entries);
   });
+
+  // Bilan de la semaine par le compagnon : les journaux des 7 derniers
+  // jours, reliés entre eux par l'IA. Gardé en cache tant que ces journaux
+  // ne changent pas, pour ne pas refaire un appel payant à chaque clic.
+
+  function recentWeekEntries(entries) {
+    const since = Date.now() - 7 * 24 * 60 * 60 * 1000;
+    return entries
+      .filter((e) => new Date(e.date).getTime() >= since)
+      .sort((a, b) => new Date(a.date) - new Date(b.date));
+  }
+
+  function readWeeklyRecapCache() {
+    try {
+      return JSON.parse(localStorage.getItem(WEEKLY_RECAP_KEY) || "null");
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function showWeeklyRecap({ message, distress }) {
+    els.weeklyRecapCrisis.hidden = !distress;
+    els.weeklyRecapText.textContent = message;
+    els.btnWeeklyRecapSpeak.hidden = !isTTSSupported();
+    els.btnWeeklyRecapSpeak.classList.remove("speak-btn-active");
+    els.weeklyRecapCard.hidden = false;
+  }
+
+  async function requestWeeklyRecap(entries) {
+    const requestId = ++weeklyRecapRequestId;
+    const week = recentWeekEntries(entries);
+    if (week.length < 2) {
+      els.weeklyRecapCard.hidden = true;
+      return;
+    }
+    const signature = week.map((e) => `${e.id}:${e.transcript ? e.transcript.length : 0}`).join("|");
+    const cached = readWeeklyRecapCache();
+    if (cached && cached.signature === signature && typeof cached.message === "string") {
+      showWeeklyRecap(cached);
+      return;
+    }
+
+    els.weeklyRecapCrisis.hidden = true;
+    els.btnWeeklyRecapSpeak.hidden = true;
+    els.weeklyRecapText.innerHTML = `<span class="companion-loading">Ton compagnon relit ta semaine…</span>`;
+    els.weeklyRecapCard.hidden = false;
+
+    const result = await Companion.getWeeklyRecap(week);
+    if (requestId !== weeklyRecapRequestId) return;
+    if (!result) {
+      // Pas de compagnon configuré ou réseau indisponible : le résumé local
+      // ci-dessus reste affiché, on retire simplement la carte.
+      els.weeklyRecapCard.hidden = true;
+      return;
+    }
+    try {
+      localStorage.setItem(WEEKLY_RECAP_KEY, JSON.stringify({ signature, ...result }));
+    } catch (e) {}
+    showWeeklyRecap(result);
+  }
 
   // Check-in rapide : deux curseurs (énergie, stress) reportés directement
   // par l'utilisateur, sans passer par la voix. Contrairement à un journal
@@ -905,6 +975,7 @@
     if (confirm("Effacer définitivement tous tes enregistrements ?")) {
       Storage.clearAll();
       AudioStore.clearAll();
+      localStorage.removeItem(WEEKLY_RECAP_KEY);
       CloudSync.deleteAllRemote();
       renderHistory();
       renderTrends();

@@ -28,6 +28,13 @@ tendances émotionnelles (énergie, stress, fatigue, humeur) dans le temps.
   IA est actif, il sert de second filet : s'il perçoit une détresse que la
   liste locale n'a pas captée (formulation indirecte), il le signale et la
   même carte s'affiche.
+- **Bilan de la semaine par le compagnon** : dans Tendances, le bouton
+  « Générer mon résumé de la semaine » affiche le résumé local puis, si le
+  compagnon est configuré, un bilan qui relie les journaux des 7 derniers
+  jours (sujets qui reviennent, évolution, une piste pour la semaine
+  suivante). Mis en cache tant que les journaux de la semaine ne changent
+  pas, pour ne pas refaire d'appel payant à chaque clic. Le même signal de
+  détresse s'y applique : la carte d'urgence s'affiche dans le bilan.
 - **Import de sauvegarde** : fusionne avec les journaux déjà présents
   (par id) au lieu de les remplacer — importer une ancienne sauvegarde ne
   fait jamais perdre les entrées plus récentes.
