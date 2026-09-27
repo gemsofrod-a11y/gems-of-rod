@@ -59,6 +59,10 @@
       <div class="checkin-label">Émotion du moment (facultatif)</div>
       <div id="checkin-emotions" class="emotion-picker emotion-picker-compact"></div>
     </div>
+    <div class="checkin-field">
+      <label for="checkin-gratitude" class="checkin-label">Une chose qui s'est bien passée (facultatif)</label>
+      <input id="checkin-gratitude" class="gratitude-input checkin-gratitude" type="text" maxlength="200" autocomplete="off" placeholder="Même petite…">
+    </div>
     <div class="checkin-actions">
       <button id="checkin-cancel" class="btn-secondary">Annuler</button>
       <button id="checkin-save" class="btn-primary">Enregistrer</button>
@@ -121,6 +125,11 @@
       <div class="emotion-title">Qu'est-ce que tu ressens le plus ?</div>
       <p class="emotion-subtitle">Une ou deux émotions, si tu veux.</p>
       <div id="emotion-picker" class="emotion-picker"></div>
+    </div>
+    <div id="summary-sleep-card" class="emotion-card" hidden>
+      <div class="emotion-title">😴 Combien as-tu dormi cette nuit ?</div>
+      <p class="emotion-subtitle">Facultatif — touche à nouveau pour retirer.</p>
+      <div id="summary-sleep" class="sleep-picker" role="group" aria-label="Heures de sommeil"></div>
     </div>
     <div id="gratitude-card" class="emotion-card gratitude-card" hidden>
       <label for="gratitude-input" class="emotion-title">🙏 Une chose qui s'est bien passée aujourd'hui ?</label>

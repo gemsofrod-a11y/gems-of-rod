@@ -182,6 +182,9 @@
     checkinEmotions: document.getElementById("checkin-emotions"),
     checkinSleep: document.getElementById("checkin-sleep"),
     gratitudeCard: document.getElementById("gratitude-card"),
+    summarySleepCard: document.getElementById("summary-sleep-card"),
+    summarySleep: document.getElementById("summary-sleep"),
+    checkinGratitude: document.getElementById("checkin-gratitude"),
     gratitudeInput: document.getElementById("gratitude-input"),
     gratitudeSave: document.getElementById("gratitude-save"),
     gratitudeStatus: document.getElementById("gratitude-status"),
@@ -234,7 +237,7 @@
   let weeklyRecapRequestId = 0;
   let checkinEmotions = [];
   let checkinSleepHours = null;
-  let gratitudeEntryId = null;
+  let summaryEntryId = null;
   const GRATITUDE_MAX_CHARS = 200;
 
   function navigate(view) {
@@ -254,9 +257,9 @@
   // l'entrée du jour (entry.gratitude). Vider le champ puis "Garder" la
   // retire du carnet.
   function saveGratitude() {
-    if (!gratitudeEntryId) return;
+    if (!summaryEntryId) return;
     const text = els.gratitudeInput.value.trim().slice(0, GRATITUDE_MAX_CHARS);
-    const updated = Storage.updateEntry(gratitudeEntryId, { gratitude: text || undefined });
+    const updated = Storage.updateEntry(summaryEntryId, { gratitude: text || undefined });
     if (!updated) return;
     CloudSync.pushEntry(updated);
     els.gratitudeStatus.textContent = text ? "Gardé dans ton carnet de gratitude." : "Retiré de ton carnet.";
@@ -563,8 +566,10 @@
         CloudSync.pushEntry(updated);
       });
     }
+    els.summarySleepCard.hidden = isCrisis;
+    summaryEntryId = entry.id;
+    renderSleepPicker(els.summarySleep, Number.isFinite(entry.sleepHours) ? entry.sleepHours : null);
     els.gratitudeCard.hidden = isCrisis;
-    gratitudeEntryId = entry.id;
     els.gratitudeInput.value = entry.gratitude || "";
     els.gratitudeStatus.textContent = "";
     // Petit effet de clôture satisfaisant — jamais en cas de signal de
@@ -669,6 +674,7 @@
       els.crisisCard.hidden = false;
       els.emotionCard.hidden = true;
       els.gratitudeCard.hidden = true;
+      els.summarySleepCard.hidden = true;
       const suggestionsBlock = els.summaryContent.querySelector(".suggestions-block");
       if (suggestionsBlock) suggestionsBlock.remove();
     }
@@ -814,6 +820,7 @@
             <div class="history-date">${dateLabel}</div>
             ${emotionsHtml}
             <div class="history-excerpt">${escapeHtml(excerpt)}</div>
+            ${e.type !== "checkin" && Number.isFinite(e.sleepHours) ? `<div class="history-gratitude">😴 Sommeil : ${Analysis.sleepLabel(e.sleepHours)}</div>` : ""}
             ${e.gratitude ? `<div class="history-gratitude">🙏 ${escapeHtml(e.gratitude)}</div>` : ""}
             ${companionHtml}
           </div>`;
@@ -1056,27 +1063,46 @@
       checkinEmotions = ids;
     });
     checkinSleepHours = null;
-    renderSleepPicker();
+    renderSleepPicker(els.checkinSleep, null);
+    els.checkinGratitude.value = "";
     els.checkinOverlay.hidden = false;
   });
   // Heures de sommeil : facultatif, aucune valeur par défaut enregistrée —
   // un second tap sur la même durée la désélectionne.
   const SLEEP_OPTIONS = [4, 5, 6, 7, 8, 9, 10];
 
-  function renderSleepPicker() {
-    els.checkinSleep.innerHTML = SLEEP_OPTIONS.map((h) => {
+  function renderSleepPicker(container, selectedHours) {
+    container.innerHTML = SLEEP_OPTIONS.map((h) => {
       const short = h === 4 ? "≤4 h" : h === 10 ? "10 h+" : `${h} h`;
-      const on = h === checkinSleepHours;
+      const on = h === selectedHours;
       return `<button type="button" class="sleep-chip${on ? " sleep-chip-selected" : ""}" data-hours="${h}" aria-pressed="${on}" aria-label="${Analysis.sleepLabel(h)}">${short}</button>`;
     }).join("");
   }
 
-  els.checkinSleep.addEventListener("click", (e) => {
-    const btn = e.target.closest(".sleep-chip");
-    if (!btn) return;
+  // Renvoie la nouvelle valeur (null si on retouche la durée déjà choisie).
+  function toggledSleepHours(event, current) {
+    const btn = event.target.closest(".sleep-chip");
+    if (!btn) return undefined;
     const h = Number(btn.dataset.hours);
-    checkinSleepHours = checkinSleepHours === h ? null : h;
-    renderSleepPicker();
+    return current === h ? null : h;
+  }
+
+  els.checkinSleep.addEventListener("click", (e) => {
+    const next = toggledSleepHours(e, checkinSleepHours);
+    if (next === undefined) return;
+    checkinSleepHours = next;
+    renderSleepPicker(els.checkinSleep, checkinSleepHours);
+  });
+
+  els.summarySleep.addEventListener("click", (e) => {
+    if (!summaryEntryId) return;
+    const current = (Storage.getEntries().find((x) => x.id === summaryEntryId) || {}).sleepHours ?? null;
+    const next = toggledSleepHours(e, current);
+    if (next === undefined) return;
+    const updated = Storage.updateEntry(summaryEntryId, { sleepHours: next === null ? undefined : next });
+    if (!updated) return;
+    CloudSync.pushEntry(updated);
+    renderSleepPicker(els.summarySleep, next);
   });
 
   els.checkinCancel.addEventListener("click", () => {
@@ -1096,6 +1122,8 @@
       emotions: Emotions.sanitize(checkinEmotions),
     };
     if (checkinSleepHours !== null) entry.sleepHours = checkinSleepHours;
+    const gratitude = els.checkinGratitude.value.trim().slice(0, GRATITUDE_MAX_CHARS);
+    if (gratitude) entry.gratitude = gratitude;
     Storage.saveEntry(entry);
     CloudSync.pushEntry(entry);
     checkReminder();

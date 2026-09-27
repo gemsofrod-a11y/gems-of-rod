@@ -413,8 +413,9 @@ const Analysis = (() => {
     return sentences.join(" ");
   }
 
-  // Sommeil déclaré dans le check-in rapide (entry.sleepHours, entier de 4
-  // à 10 — 4 = "4 h ou moins", 10 = "10 h ou plus"). La comparaison
+  // Sommeil déclaré, dans le check-in ou après un journal vocal
+  // (entry.sleepHours, entier de 4 à 10 — 4 = "4 h ou moins",
+  // 10 = "10 h ou plus"). La comparaison
   // énergie/stress ne porte que sur les check-ins, seuls à mesurer ces
   // valeurs directement, et n'est formulée qu'avec assez de données de
   // chaque côté et un écart net — sinon on se contente de la moyenne.
@@ -424,18 +425,27 @@ const Analysis = (() => {
 
   function sleepStats(entries, sinceDays) {
     const since = Date.now() - sinceDays * 24 * 60 * 60 * 1000;
-    const withSleep = entries.filter(
-      (e) => Number.isFinite(e.sleepHours) && e.scores && new Date(e.date).getTime() >= since
-    );
+    const withSleep = entries
+      .filter((e) => Number.isFinite(e.sleepHours) && e.scores && new Date(e.date).getTime() >= since)
+      .sort((a, b) => new Date(a.date) - new Date(b.date));
     if (!withSleep.length) return null;
 
-    const avg = average(withSleep.map((e) => e.sleepHours));
+    // Une seule nuit par jour : si le sommeil est noté à la fois dans un
+    // journal vocal et dans un check-in le même jour, on garde le plus récent.
+    const byDay = new Map();
+    for (const e of withSleep) byDay.set(new Date(e.date).toDateString(), e);
+    const nights = [...byDay.values()];
+
+    const avg = average(nights.map((e) => e.sleepHours));
     const sentences = [
-      `${withSleep.length} nuit${withSleep.length > 1 ? "s" : ""} notée${withSleep.length > 1 ? "s" : ""}, ${formatHours(avg)} en moyenne.`,
+      `${nights.length} nuit${nights.length > 1 ? "s" : ""} notée${nights.length > 1 ? "s" : ""}, ${formatHours(avg)} en moyenne.`,
     ];
 
-    const good = withSleep.filter((e) => e.sleepHours >= GOOD_NIGHT_HOURS);
-    const short = withSleep.filter((e) => e.sleepHours < GOOD_NIGHT_HOURS);
+    // Énergie et stress des journaux vocaux sont déduits de mots-clés :
+    // seuls les check-ins les mesurent directement.
+    const checkins = withSleep.filter((e) => e.type === "checkin");
+    const good = checkins.filter((e) => e.sleepHours >= GOOD_NIGHT_HOURS);
+    const short = checkins.filter((e) => e.sleepHours < GOOD_NIGHT_HOURS);
     if (good.length >= SLEEP_MIN_PER_GROUP && short.length >= SLEEP_MIN_PER_GROUP) {
       const energyGood = Math.round(average(good.map((e) => e.scores.energy)));
       const energyShort = Math.round(average(short.map((e) => e.scores.energy)));
@@ -456,7 +466,7 @@ const Analysis = (() => {
       }
     } else {
       sentences.push(
-        `Note ton sommeil encore quelques fois (au moins ${SLEEP_MIN_PER_GROUP} nuits de ${GOOD_NIGHT_HOURS} h ou plus, et ${SLEEP_MIN_PER_GROUP} plus courtes) pour voir son lien avec ton énergie.`
+        `Note ton sommeil dans quelques check-ins rapides de plus (au moins ${SLEEP_MIN_PER_GROUP} après une nuit de ${GOOD_NIGHT_HOURS} h ou plus, et ${SLEEP_MIN_PER_GROUP} après une nuit plus courte) pour voir son lien avec ton énergie.`
       );
     }
     return { count: withSleep.length, avg, text: sentences.join(" ") };

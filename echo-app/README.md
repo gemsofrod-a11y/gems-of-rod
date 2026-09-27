@@ -37,8 +37,8 @@ tendances émotionnelles (énergie, stress, fatigue, humeur) dans le temps.
   dans Tendances et dans le bilan imprimable, transmises au bilan de la
   semaine du compagnon. Le choix n'est pas proposé en cas de signal de
   crise, pour laisser toute la place à la carte d'aide.
-- **Gratitude** : après un journal vocal, champ facultatif « Une chose qui
-  s'est bien passée aujourd'hui ? » (200 caractères max, gardé sur l'entrée
+- **Gratitude** : après un journal vocal et dans le check-in, champ
+  facultatif « Une chose qui s'est bien passée ? » (200 caractères max, gardé sur l'entrée
   du jour, vider le champ la retire). Carnet de gratitude repliable en haut
   de l'Historique, avec « Un souvenir au hasard » pour les jours plus
   difficiles. Trouvable par la recherche, repris dans le bilan imprimable
@@ -67,12 +67,17 @@ tendances émotionnelles (énergie, stress, fatigue, humeur) dans le temps.
   visible seulement sur l'écran de résumé du jour même.
 - **Check-in rapide** : deux curseurs (énergie, stress) sans passer par la
   voix, pour un point ponctuel entre deux journaux complets, avec en option
-  les heures de sommeil de la nuit passée (de « 4 h ou moins » à « 10 h ou
-  plus », aucune valeur enregistrée si rien n'est choisi) et une ou deux
-  émotions. Dans Tendances, une carte « Ton sommeil » donne la moyenne sur
-  30 jours et, dès 3 nuits de 7 h ou plus et 3 plus courtes, compare
-  l'énergie et le stress notés selon la durée de la nuit (seulement si
-  l'écart est net, au moins 10 points).
+  les heures de sommeil, une ou deux émotions et une chose qui s'est bien
+  passée.
+- **Sommeil** : heures de la nuit passée (de « 4 h ou moins » à « 10 h ou
+  plus »), en option dans le check-in et sur l'écran de résumé d'un journal
+  vocal ; aucune valeur enregistrée si rien n'est choisi. Dans Tendances,
+  une carte « Ton sommeil » donne la moyenne sur 30 jours (une nuit par jour,
+  la plus récente si notée deux fois) et, dès 3 check-ins après une nuit de
+  7 h ou plus et 3 après une nuit plus courte, compare l'énergie et le
+  stress notés — uniquement sur les check-ins, où ces valeurs sont mesurées
+  directement plutôt que déduites de mots-clés, et seulement si l'écart est
+  net (au moins 10 points).
 - **Rappel quotidien (optionnel)** : bannière dans l'app (+ notification
   best-effort) si rien n'a encore été journalisé après l'heure choisie —
   honnêtement limité : sans backend d'envoi push, aucun navigateur ne
