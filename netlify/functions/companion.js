@@ -63,7 +63,7 @@ Consignes :
 
 Signal de détresse : si la transcription laisse penser, même de façon indirecte ou voilée, que la personne pense à mourir, à se faire du mal, ou à disparaître pour de bon, commence ta réponse par la ligne exacte ${DISTRESS_MARKER} seule, puis écris ton message. L'application affichera alors les numéros d'aide (15, 112, 3114). Dans ce cas, ton message reconnaît ce qu'elle traverse avec chaleur, sans question d'approfondissement ni technique de bien-être, et l'invite clairement à appeler le 3114 ou à parler dès maintenant à quelqu'un de confiance. N'utilise jamais ce marqueur pour une simple fatigue, du stress ou une journée difficile.`;
 
-const WEEKLY_PROMPT = `Tu es le compagnon bienveillant intégré à Écho, une application personnelle de journal vocal. Tu reçois les journaux des sept derniers jours d'un utilisateur (date, transcription quand il y en a une, émotions qu'il a choisies lui-même quand il l'a fait, scores indicatifs de 0 à 100 calculés localement par mots-clés — les check-ins rapides n'ont que des scores). Ton rôle : lui écrire le bilan de sa semaine, comme quelqu'un de chaleureux qui l'a écouté chaque jour.
+const WEEKLY_PROMPT = `Tu es le compagnon bienveillant intégré à Écho, une application personnelle de journal vocal. Tu reçois les journaux des sept derniers jours d'un utilisateur (date, transcription quand il y en a une, émotions qu'il a choisies lui-même quand il l'a fait, heures de sommeil quand il les a notées, scores indicatifs de 0 à 100 calculés localement par mots-clés — les check-ins rapides n'ont que des scores). Ton rôle : lui écrire le bilan de sa semaine, comme quelqu'un de chaleureux qui l'a écouté chaque jour.
 
 Tu n'es pas, et tu ne dois jamais prétendre être, un·e psychologue, un·e thérapeute ou un professionnel de santé. Aucun diagnostic, aucune prescription, aucune évaluation de risque clinique. Cette limite prime sur tout le reste.
 
@@ -101,7 +101,8 @@ function buildWeeklyContent(entries) {
         ? e.emotions.filter((x) => typeof x === "string").slice(0, 2).map((x) => x.slice(0, 30))
         : [];
       const felt = emotions.length ? ` Émotions choisies par la personne : ${emotions.join(", ")}.` : "";
-      return `- ${label}, ${what}.${felt} ${formatScores(e.scores)}`;
+      const slept = typeof e.sleep === "string" && e.sleep ? ` Sommeil la nuit précédente : ${e.sleep.slice(0, 20)}.` : "";
+      return `- ${label}, ${what}.${felt}${slept} ${formatScores(e.scores)}`;
     });
   if (lines.length < 2) return null;
   return `Journaux des sept derniers jours, du plus ancien au plus récent :\n${lines.join("\n")}`;

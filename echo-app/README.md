@@ -59,7 +59,13 @@ tendances émotionnelles (énergie, stress, fatigue, humeur) dans le temps.
   l'Historique, pour un vrai suivi dans le temps plutôt qu'une réponse
   visible seulement sur l'écran de résumé du jour même.
 - **Check-in rapide** : deux curseurs (énergie, stress) sans passer par la
-  voix, pour un point ponctuel entre deux journaux complets.
+  voix, pour un point ponctuel entre deux journaux complets, avec en option
+  les heures de sommeil de la nuit passée (de « 4 h ou moins » à « 10 h ou
+  plus », aucune valeur enregistrée si rien n'est choisi) et une ou deux
+  émotions. Dans Tendances, une carte « Ton sommeil » donne la moyenne sur
+  30 jours et, dès 3 nuits de 7 h ou plus et 3 plus courtes, compare
+  l'énergie et le stress notés selon la durée de la nuit (seulement si
+  l'écart est net, au moins 10 points).
 - **Rappel quotidien (optionnel)** : bannière dans l'app (+ notification
   best-effort) si rien n'a encore été journalisé après l'heure choisie —
   honnêtement limité : sans backend d'envoi push, aucun navigateur ne

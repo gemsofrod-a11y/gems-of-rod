@@ -413,6 +413,68 @@ const Analysis = (() => {
     return sentences.join(" ");
   }
 
+  // Sommeil déclaré dans le check-in rapide (entry.sleepHours, entier de 4
+  // à 10 — 4 = "4 h ou moins", 10 = "10 h ou plus"). La comparaison
+  // énergie/stress ne porte que sur les check-ins, seuls à mesurer ces
+  // valeurs directement, et n'est formulée qu'avec assez de données de
+  // chaque côté et un écart net — sinon on se contente de la moyenne.
+  const GOOD_NIGHT_HOURS = 7;
+  const SLEEP_MIN_PER_GROUP = 3;
+  const SLEEP_MIN_GAP = 10;
+
+  function sleepStats(entries, sinceDays) {
+    const since = Date.now() - sinceDays * 24 * 60 * 60 * 1000;
+    const withSleep = entries.filter(
+      (e) => Number.isFinite(e.sleepHours) && e.scores && new Date(e.date).getTime() >= since
+    );
+    if (!withSleep.length) return null;
+
+    const avg = average(withSleep.map((e) => e.sleepHours));
+    const sentences = [
+      `${withSleep.length} nuit${withSleep.length > 1 ? "s" : ""} notée${withSleep.length > 1 ? "s" : ""}, ${formatHours(avg)} en moyenne.`,
+    ];
+
+    const good = withSleep.filter((e) => e.sleepHours >= GOOD_NIGHT_HOURS);
+    const short = withSleep.filter((e) => e.sleepHours < GOOD_NIGHT_HOURS);
+    if (good.length >= SLEEP_MIN_PER_GROUP && short.length >= SLEEP_MIN_PER_GROUP) {
+      const energyGood = Math.round(average(good.map((e) => e.scores.energy)));
+      const energyShort = Math.round(average(short.map((e) => e.scores.energy)));
+      const stressGood = Math.round(average(good.map((e) => e.scores.stress)));
+      const stressShort = Math.round(average(short.map((e) => e.scores.stress)));
+      if (Math.abs(energyGood - energyShort) >= SLEEP_MIN_GAP) {
+        sentences.push(
+          `Après ${GOOD_NIGHT_HOURS} h ou plus, ton énergie notée était en moyenne de ${energyGood}, contre ${energyShort} après une nuit plus courte.`
+        );
+      }
+      if (Math.abs(stressGood - stressShort) >= SLEEP_MIN_GAP) {
+        sentences.push(
+          `Ton stress noté : ${stressGood} après une bonne nuit, ${stressShort} après une nuit plus courte.`
+        );
+      }
+      if (sentences.length === 1) {
+        sentences.push("Pas d'écart net d'énergie ou de stress selon la durée de ta nuit, pour l'instant.");
+      }
+    } else {
+      sentences.push(
+        `Note ton sommeil encore quelques fois (au moins ${SLEEP_MIN_PER_GROUP} nuits de ${GOOD_NIGHT_HOURS} h ou plus, et ${SLEEP_MIN_PER_GROUP} plus courtes) pour voir son lien avec ton énergie.`
+      );
+    }
+    return { count: withSleep.length, avg, text: sentences.join(" ") };
+  }
+
+  function formatHours(h) {
+    const whole = Math.floor(h);
+    const minutes = Math.round((h - whole) * 60);
+    if (minutes === 60) return `${whole + 1} h`;
+    return minutes ? `${whole} h ${String(minutes).padStart(2, "0")}` : `${whole} h`;
+  }
+
+  function sleepLabel(hours) {
+    if (hours <= 4) return "4 h ou moins";
+    if (hours >= 10) return "10 h ou plus";
+    return `${hours} h`;
+  }
+
   // Filet de sécurité local : quelques tournures explicites de détresse
   // aiguë. Volontairement restreint (peu de faux positifs) et volontairement
   // 100% local — ce signal doit rester fiable même sans réseau ni API.
@@ -441,6 +503,8 @@ const Analysis = (() => {
     generateWeeklySummary,
     getSuggestions,
     detectCrisisSignal,
+    sleepStats,
+    sleepLabel,
     recurringKeywords,
     monthlyAverages,
     bestMonth,

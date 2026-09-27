@@ -42,7 +42,7 @@
 <div id="checkin-overlay" class="checkin-overlay" hidden>
   <div class="checkin-card">
     <div class="checkin-title">Check-in rapide</div>
-    <p class="checkin-subtitle">Deux curseurs, pas de voix — utile entre deux journaux complets.</p>
+    <p class="checkin-subtitle">Quelques secondes, sans la voix — utile entre deux journaux complets.</p>
     <div class="checkin-field">
       <label for="checkin-energy">Énergie : <span id="checkin-energy-value">50</span></label>
       <input type="range" id="checkin-energy" min="0" max="100" value="50">
@@ -50,6 +50,10 @@
     <div class="checkin-field">
       <label for="checkin-stress">Stress : <span id="checkin-stress-value">50</span></label>
       <input type="range" id="checkin-stress" min="0" max="100" value="50">
+    </div>
+    <div class="checkin-field">
+      <div class="checkin-label">Sommeil la nuit dernière (facultatif)</div>
+      <div id="checkin-sleep" class="sleep-picker" role="group" aria-label="Heures de sommeil"></div>
     </div>
     <div class="checkin-field">
       <div class="checkin-label">Émotion du moment (facultatif)</div>
@@ -170,6 +174,11 @@
     <div id="keywords-card" class="keywords-card" hidden>
       <div class="keywords-title">Mots-clés qui reviennent</div>
       <div id="keywords-list" class="keywords-list"></div>
+    </div>
+
+    <div id="sleep-trend-card" class="keywords-card" hidden>
+      <div class="keywords-title">Ton sommeil — 30 derniers jours</div>
+      <div id="sleep-trend-text" class="sleep-trend-text"></div>
     </div>
 
     <div id="emotions-trend-card" class="keywords-card" hidden>

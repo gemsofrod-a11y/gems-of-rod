@@ -180,6 +180,9 @@
     btnCheckin: document.getElementById("btn-checkin"),
     checkinOverlay: document.getElementById("checkin-overlay"),
     checkinEmotions: document.getElementById("checkin-emotions"),
+    checkinSleep: document.getElementById("checkin-sleep"),
+    sleepTrendCard: document.getElementById("sleep-trend-card"),
+    sleepTrendText: document.getElementById("sleep-trend-text"),
     emotionCard: document.getElementById("emotion-card"),
     emotionPicker: document.getElementById("emotion-picker"),
     emotionsTrendCard: document.getElementById("emotions-trend-card"),
@@ -221,6 +224,7 @@
   const WEEKLY_RECAP_KEY = "echo_weekly_recap_v1";
   let weeklyRecapRequestId = 0;
   let checkinEmotions = [];
+  let checkinSleepHours = null;
 
   function navigate(view) {
     els.views.forEach((v) => v.classList.toggle("view-active", v.id === `view-${view}`));
@@ -719,7 +723,8 @@
         const dateLabel = d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" });
         const excerpt =
           e.type === "checkin"
-            ? `Check-in rapide — énergie ${e.scores.energy}, stress ${e.scores.stress}`
+            ? `Check-in rapide — énergie ${e.scores.energy}, stress ${e.scores.stress}` +
+              (typeof e.sleepHours === "number" ? `, sommeil ${Analysis.sleepLabel(e.sleepHours)}` : "")
             : truncate(e.transcript, 140);
         const companionHtml = e.companionResponse
           ? `<div class="history-companion"><span class="history-companion-label">Ton compagnon</span>${escapeHtml(e.companionResponse)}</div>`
@@ -771,6 +776,10 @@
     } else {
       els.keywordsCard.hidden = true;
     }
+
+    const sleep = Analysis.sleepStats(entries, 30);
+    els.sleepTrendCard.hidden = !sleep;
+    if (sleep) els.sleepTrendText.textContent = sleep.text;
 
     const emotionFreq = Emotions.frequencies(entries, 30).slice(0, 6);
     if (emotionFreq.length) {
@@ -846,6 +855,11 @@
         html += `<h2>Mots-clés qui reviennent</h2><p>${escapeHtml(keywords.map((k) => `${k.word} (${k.count})`).join(", "))}</p>`;
       }
 
+      const sleep = Analysis.sleepStats(entries, 30);
+      if (sleep) {
+        html += `<h2>Sommeil — 30 derniers jours</h2><p>${escapeHtml(sleep.text)}</p>`;
+      }
+
       const emotionFreq = Emotions.frequencies(entries, 30);
       if (emotionFreq.length) {
         html += `<h2>Émotions choisies — 30 derniers jours</h2><p>${escapeHtml(emotionFreq.map((e) => `${e.label} (${e.count})`).join(", "))}</p>`;
@@ -914,7 +928,7 @@
       return;
     }
     const signature = week
-      .map((e) => `${e.id}:${e.transcript ? e.transcript.length : 0}:${Emotions.sanitize(e.emotions).join("+")}`)
+      .map((e) => `${e.id}:${e.transcript ? e.transcript.length : 0}:${Emotions.sanitize(e.emotions).join("+")}:${e.sleepHours ?? ""}`)
       .join("|");
     const cached = readWeeklyRecapCache();
     if (cached && cached.signature === signature && typeof cached.message === "string") {
@@ -961,8 +975,30 @@
     Emotions.renderPicker(els.checkinEmotions, [], (ids) => {
       checkinEmotions = ids;
     });
+    checkinSleepHours = null;
+    renderSleepPicker();
     els.checkinOverlay.hidden = false;
   });
+  // Heures de sommeil : facultatif, aucune valeur par défaut enregistrée —
+  // un second tap sur la même durée la désélectionne.
+  const SLEEP_OPTIONS = [4, 5, 6, 7, 8, 9, 10];
+
+  function renderSleepPicker() {
+    els.checkinSleep.innerHTML = SLEEP_OPTIONS.map((h) => {
+      const short = h === 4 ? "≤4 h" : h === 10 ? "10 h+" : `${h} h`;
+      const on = h === checkinSleepHours;
+      return `<button type="button" class="sleep-chip${on ? " sleep-chip-selected" : ""}" data-hours="${h}" aria-pressed="${on}" aria-label="${Analysis.sleepLabel(h)}">${short}</button>`;
+    }).join("");
+  }
+
+  els.checkinSleep.addEventListener("click", (e) => {
+    const btn = e.target.closest(".sleep-chip");
+    if (!btn) return;
+    const h = Number(btn.dataset.hours);
+    checkinSleepHours = checkinSleepHours === h ? null : h;
+    renderSleepPicker();
+  });
+
   els.checkinCancel.addEventListener("click", () => {
     els.checkinOverlay.hidden = true;
   });
@@ -979,6 +1015,7 @@
       scores: { energy, stress, fatigue: 50, mood: 50, keywords: [], hasSignal: true, wpm: 0 },
       emotions: Emotions.sanitize(checkinEmotions),
     };
+    if (checkinSleepHours !== null) entry.sleepHours = checkinSleepHours;
     Storage.saveEntry(entry);
     CloudSync.pushEntry(entry);
     checkReminder();
