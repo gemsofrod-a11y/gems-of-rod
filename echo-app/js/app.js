@@ -550,12 +550,13 @@
   }
 
   async function requestCompanionResponse(entry, sessionId) {
-    const message = await Companion.getResponse({
+    const result = await Companion.getResponse({
       transcript: entry.transcript,
       scores: entry.scores,
       recentSummary: buildRecentSummary(entry),
     });
-    if (!message) return;
+    if (!result) return;
+    const { message, distress } = result;
     // Conservée sur l'entrée pour apparaître dans l'historique — sans ça,
     // la réponse du compagnon disparaissait dès qu'on quittait l'écran de
     // résumé, aucun moyen d'y revenir pour suivre l'accompagnement dans
@@ -567,6 +568,14 @@
     // correspond plus à l'entrée actuellement affichée) — mais elle reste
     // bien sauvegardée ci-dessus pour l'historique.
     if (sessionId !== summarySessionId) return;
+    // Le compagnon a perçu une détresse que la liste locale de phrases n'a
+    // pas captée : on affiche la même carte d'urgence et on retire les
+    // suggestions génériques, comme pour une détection locale.
+    if (distress) {
+      els.crisisCard.hidden = false;
+      const suggestionsBlock = els.summaryContent.querySelector(".suggestions-block");
+      if (suggestionsBlock) suggestionsBlock.remove();
+    }
     els.companionText.textContent = message;
     els.companionCard.hidden = false;
     els.btnCompanionSpeak.hidden = !isTTSSupported();
@@ -878,8 +887,12 @@
     if (!file) return;
     try {
       const text = await file.text();
-      Storage.importJSON(text);
-      alert("Import réussi.");
+      const { added, skipped } = Storage.importJSON(text);
+      added.forEach((entry) => CloudSync.pushEntry(entry));
+      alert(
+        `Import réussi : ${added.length} journal(aux) ajouté(s)` +
+          (skipped ? `, ${skipped} déjà présent(s) ou invalide(s) ignoré(s).` : ".")
+      );
       renderHistory();
       renderTrends();
     } catch (err) {

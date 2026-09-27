@@ -24,7 +24,13 @@ tendances émotionnelles (énergie, stress, fatigue, humeur) dans le temps.
   consignes de style.
 - **Filet de sécurité** : une carte avec des numéros d'urgence (15, 112,
   3114) s'affiche systématiquement — sans dépendre du réseau — si des mots
-  de détresse aiguë sont détectés dans la transcription.
+  de détresse aiguë sont détectés dans la transcription. Quand le compagnon
+  IA est actif, il sert de second filet : s'il perçoit une détresse que la
+  liste locale n'a pas captée (formulation indirecte), il le signale et la
+  même carte s'affiche.
+- **Import de sauvegarde** : fusionne avec les journaux déjà présents
+  (par id) au lieu de les remplacer — importer une ancienne sauvegarde ne
+  fait jamais perdre les entrées plus récentes.
 - **Verrouillage par code (optionnel)** : code à 4 chiffres, hashé
   (SHA-256, Web Crypto), jamais stocké en clair. "Code oublié ?" efface
   toutes les données locales plutôt que de laisser quiconque contourner le

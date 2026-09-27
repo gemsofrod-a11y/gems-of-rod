@@ -25,7 +25,8 @@ const Companion = (() => {
       });
       if (!res.ok) return null;
       const data = await res.json();
-      return typeof data.message === "string" ? data.message : null;
+      if (typeof data.message !== "string") return null;
+      return { message: data.message, distress: data.distress === true };
     } catch (e) {
       return null;
     } finally {

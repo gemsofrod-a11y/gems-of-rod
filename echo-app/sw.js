@@ -1,4 +1,4 @@
-const CACHE_NAME = "echo-cache-v19";
+const CACHE_NAME = "echo-cache-v20";
 const ASSETS = [
   "./",
   "./index.html",

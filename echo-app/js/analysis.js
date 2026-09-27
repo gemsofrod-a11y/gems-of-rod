@@ -420,10 +420,18 @@ const Analysis = (() => {
     "envie de mourir", "je veux mourir", "en finir avec tout", "en finir avec ma vie",
     "me suicider", "plus envie de vivre", "ne plus vivre", "me faire du mal",
     "me tuer", "en finir avec la vie",
+    "mettre fin a mes jours", "mettre fin a ma vie", "me foutre en l'air",
+    "n'en peux plus de vivre", "marre de vivre", "plus la force de vivre",
+    "envie de disparaitre", "je voudrais disparaitre", "je veux disparaitre",
+    "personne ne remarquerait si je", "mieux sans moi", "je suis un fardeau",
+    "la vie ne vaut pas la peine", "ca ne sert a rien de vivre",
+    "me scarifier", "me mutiler", "me couper les veines",
   ];
 
   function detectCrisisSignal(transcript) {
-    const normalized = stripAccents((transcript || "").toLowerCase());
+    const normalized = stripAccents((transcript || "").toLowerCase())
+      .replace(/[’‘`]/g, "'")
+      .replace(/\s+/g, " ");
     return CRISIS_PHRASES.some((p) => normalized.includes(stripAccents(p)));
   }
 

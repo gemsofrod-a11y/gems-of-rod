@@ -41,12 +41,29 @@ const Storage = (() => {
     return JSON.stringify({ version: 1, exportedAt: new Date().toISOString(), entries: getEntries() }, null, 2);
   }
 
+  // Fusionne par id plutôt que de remplacer : importer une sauvegarde plus
+  // ancienne ne doit jamais effacer les journaux enregistrés depuis. En cas
+  // d'id déjà présent, la version locale est conservée.
   function importJSON(text) {
     const parsed = JSON.parse(text);
-    const entries = Array.isArray(parsed) ? parsed : parsed.entries;
-    if (!Array.isArray(entries)) throw new Error("Format de fichier invalide");
-    localStorage.setItem(KEY, JSON.stringify(entries));
-    return entries;
+    const imported = Array.isArray(parsed) ? parsed : parsed && parsed.entries;
+    if (!Array.isArray(imported)) throw new Error("Format de fichier invalide");
+    const list = getEntries();
+    const knownIds = new Set(list.map((e) => e.id));
+    const added = [];
+    let skipped = 0;
+    for (const e of imported) {
+      if (!e || typeof e.id !== "string" || !e.date || isNaN(new Date(e.date)) || knownIds.has(e.id)) {
+        skipped++;
+        continue;
+      }
+      knownIds.add(e.id);
+      list.push(e);
+      added.push(e);
+    }
+    list.sort((a, b) => new Date(a.date) - new Date(b.date));
+    localStorage.setItem(KEY, JSON.stringify(list));
+    return { added, skipped };
   }
 
   return { getEntries, saveEntry, updateEntry, clearAll, exportJSON, importJSON };

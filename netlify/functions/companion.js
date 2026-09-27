@@ -36,6 +36,8 @@ const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 20;
 let requestTimestamps = [];
 
+const DISTRESS_MARKER = "[[DETRESSE]]";
+
 function isRateLimited() {
   const now = Date.now();
   requestTimestamps = requestTimestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
@@ -57,7 +59,9 @@ Consignes :
 - N'utilise jamais de jargon clinique, ne pose jamais de diagnostic, ne minimise jamais ce que la personne ressent.
 - Si le ressenti semble particulièrement difficile ou intense, invite avec douceur à en parler à un proche ou un professionnel — sans dramatiser, sans être alarmiste, et sans que ça sonne comme une esquive.
 - Tutoie l'utilisateur. Écris comme quelqu'un de chaleureux qui le/la connaît dans la durée, pas comme un assistant générique.
-- Réponds uniquement en français, en texte brut (pas de markdown, pas de listes).`;
+- Réponds uniquement en français, en texte brut (pas de markdown, pas de listes).
+
+Signal de détresse : si la transcription laisse penser, même de façon indirecte ou voilée, que la personne pense à mourir, à se faire du mal, ou à disparaître pour de bon, commence ta réponse par la ligne exacte ${DISTRESS_MARKER} seule, puis écris ton message. L'application affichera alors les numéros d'aide (15, 112, 3114). Dans ce cas, ton message reconnaît ce qu'elle traverse avec chaleur, sans question d'approfondissement ni technique de bien-être, et l'invite clairement à appeler le 3114 ou à parler dès maintenant à quelqu'un de confiance. N'utilise jamais ce marqueur pour une simple fatigue, du stress ou une journée difficile.`;
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
@@ -134,7 +138,9 @@ exports.handler = async (event) => {
     }
 
     const textBlock = (data.content || []).find((b) => b.type === "text");
-    const message = textBlock ? textBlock.text.trim() : "";
+    let message = textBlock ? textBlock.text.trim() : "";
+    const distress = message.includes(DISTRESS_MARKER);
+    message = message.split(DISTRESS_MARKER).join("").trim();
 
     if (!message) {
       return { statusCode: 502, body: JSON.stringify({ error: "Réponse vide." }) };
@@ -143,7 +149,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 200,
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ message, distress }),
     };
   } catch (err) {
     return {
