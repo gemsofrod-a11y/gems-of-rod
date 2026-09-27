@@ -2,6 +2,8 @@
 Sébastien depuis l'app téléphone. Le texte renvoyé est destiné à être lu à
 voix haute (TextToSpeech) : phrases courtes, naturelles, sans markdown.
 """
+import traceback
+
 import anthropic
 
 from app import config, db, gmail_client, images, pdf_reader, pricing, weather
@@ -469,46 +471,62 @@ def handle_turn_stream(text: str, session_id: str = "default"):
     found_images: list[dict] = []
     shown_documents: list[dict] = []
 
-    for _ in range(6):
-        with client.messages.stream(
-            model=config.ASSISTANT_MODEL,
-            max_tokens=1024,
-            system=_SYSTEM_PROMPT,
-            tools=TOOLS,
-            messages=context,
-        ) as stream:
-            for delta in stream.text_stream:
-                yield {"type": "text_delta", "text": delta}
-            resp = stream.get_final_message()
+    try:
+        for _ in range(6):
+            with client.messages.stream(
+                model=config.ASSISTANT_MODEL,
+                max_tokens=1024,
+                system=_SYSTEM_PROMPT,
+                tools=TOOLS,
+                messages=context,
+            ) as stream:
+                for delta in stream.text_stream:
+                    yield {"type": "text_delta", "text": delta}
+                resp = stream.get_final_message()
 
-        assistant_entry = {"role": "assistant", "content": [b.model_dump() for b in resp.content]}
-        full_history.append(assistant_entry)
-        context.append(assistant_entry)
+            assistant_entry = {"role": "assistant", "content": [b.model_dump() for b in resp.content]}
+            full_history.append(assistant_entry)
+            context.append(assistant_entry)
 
-        if resp.stop_reason != "tool_use":
-            reply = "".join(b.text for b in resp.content if b.type == "text").strip()
-            db.save_conversation(session_id, full_history)
-            yield {"type": "done", "reply": reply, "actions": actions,
-                   "emails": referenced_emails, "drafts": draft_replies, "media": found_images,
-                   "documents": shown_documents}
-            return
+            if resp.stop_reason != "tool_use":
+                reply = "".join(b.text for b in resp.content if b.type == "text").strip()
+                db.save_conversation(session_id, full_history)
+                yield {"type": "done", "reply": reply, "actions": actions,
+                       "emails": referenced_emails, "drafts": draft_replies, "media": found_images,
+                       "documents": shown_documents}
+                return
 
-        tool_results = []
-        for block in resp.content:
-            if block.type != "tool_use":
-                continue
-            result = _dispatch(block.name, block.input, referenced_emails, draft_replies,
-                                found_images, shown_documents)
-            if block.name not in _READONLY_TOOLS:
-                actions.append(f"{block.name}: {result}")
-            tool_results.append({
-                "type": "tool_result",
-                "tool_use_id": block.id,
-                "content": result,
-            })
-        tool_entry = {"role": "user", "content": tool_results}
-        full_history.append(tool_entry)
-        context.append(tool_entry)
+            tool_results = []
+            for block in resp.content:
+                if block.type != "tool_use":
+                    continue
+                result = _dispatch(block.name, block.input, referenced_emails, draft_replies,
+                                    found_images, shown_documents)
+                if block.name not in _READONLY_TOOLS:
+                    actions.append(f"{block.name}: {result}")
+                tool_results.append({
+                    "type": "tool_result",
+                    "tool_use_id": block.id,
+                    "content": result,
+                })
+            tool_entry = {"role": "user", "content": tool_results}
+            full_history.append(tool_entry)
+            context.append(tool_entry)
+    except Exception:
+        # Une erreur ici (API Anthropic en panne/rate-limitée, réseau, etc.)
+        # ne doit jamais laisser le flux SSE se couper net : le client verrait
+        # une erreur "Réponse incomplète" sans aucune indication de la cause
+        # réelle. On logue la trace complète côté serveur (seul endroit où
+        # elle est visible) et on cède quand même un évènement "done" propre.
+        print("[handle_turn_stream] erreur pendant la génération de la réponse :")
+        traceback.print_exc()
+        db.save_conversation(session_id, full_history)
+        yield {"type": "done",
+               "reply": "Désolée, une erreur technique m'empêche de répondre pour l'instant. "
+                        "Réessaie dans un instant.",
+               "actions": actions, "emails": referenced_emails, "drafts": draft_replies,
+               "media": found_images, "documents": shown_documents}
+        return
 
     db.save_conversation(session_id, full_history)
     yield {"type": "done",
