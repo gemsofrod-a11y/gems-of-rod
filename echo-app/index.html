@@ -122,6 +122,15 @@
       <p class="emotion-subtitle">Une ou deux émotions, si tu veux.</p>
       <div id="emotion-picker" class="emotion-picker"></div>
     </div>
+    <div id="gratitude-card" class="emotion-card gratitude-card" hidden>
+      <label for="gratitude-input" class="emotion-title">🙏 Une chose qui s'est bien passée aujourd'hui ?</label>
+      <p class="emotion-subtitle">Même petite. Facultatif — elle ira dans ton carnet de gratitude.</p>
+      <div class="gratitude-row">
+        <input id="gratitude-input" class="gratitude-input" type="text" maxlength="200" autocomplete="off" placeholder="Un café au soleil, un message d'un ami…">
+        <button id="gratitude-save" type="button" class="btn-primary gratitude-save">Garder</button>
+      </div>
+      <div id="gratitude-status" class="gratitude-status" aria-live="polite"></div>
+    </div>
     <div id="summary-content" class="summary-card"></div>
     <div id="waveform-card" class="waveform-card" hidden>
       <div class="waveform-title">Ta voix aujourd'hui</div>
@@ -146,6 +155,12 @@
   <section id="view-history" class="view">
     <h2>Historique</h2>
     <div id="history-heatmap" class="history-heatmap"></div>
+    <details id="gratitude-journal" class="gratitude-journal" hidden>
+      <summary>🙏 Ton carnet de gratitude <span id="gratitude-count" class="gratitude-count"></span></summary>
+      <button id="gratitude-random" type="button" class="btn-secondary gratitude-random">Un souvenir au hasard</button>
+      <div id="gratitude-random-note" class="gratitude-random-note" hidden></div>
+      <ul id="gratitude-list" class="gratitude-list"></ul>
+    </details>
     <input id="history-search" type="search" class="history-search" placeholder="Rechercher dans tes journaux...">
     <div id="history-list" class="history-list"></div>
   </section>

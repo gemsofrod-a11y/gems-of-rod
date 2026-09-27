@@ -181,6 +181,15 @@
     checkinOverlay: document.getElementById("checkin-overlay"),
     checkinEmotions: document.getElementById("checkin-emotions"),
     checkinSleep: document.getElementById("checkin-sleep"),
+    gratitudeCard: document.getElementById("gratitude-card"),
+    gratitudeInput: document.getElementById("gratitude-input"),
+    gratitudeSave: document.getElementById("gratitude-save"),
+    gratitudeStatus: document.getElementById("gratitude-status"),
+    gratitudeJournal: document.getElementById("gratitude-journal"),
+    gratitudeCount: document.getElementById("gratitude-count"),
+    gratitudeList: document.getElementById("gratitude-list"),
+    gratitudeRandom: document.getElementById("gratitude-random"),
+    gratitudeRandomNote: document.getElementById("gratitude-random-note"),
     sleepTrendCard: document.getElementById("sleep-trend-card"),
     sleepTrendText: document.getElementById("sleep-trend-text"),
     emotionCard: document.getElementById("emotion-card"),
@@ -225,6 +234,8 @@
   let weeklyRecapRequestId = 0;
   let checkinEmotions = [];
   let checkinSleepHours = null;
+  let gratitudeEntryId = null;
+  const GRATITUDE_MAX_CHARS = 200;
 
   function navigate(view) {
     els.views.forEach((v) => v.classList.toggle("view-active", v.id === `view-${view}`));
@@ -238,6 +249,60 @@
   });
 
   els.historySearch.addEventListener("input", () => renderHistory());
+
+  // Gratitude : une phrase facultative sur l'écran de résumé, gardée sur
+  // l'entrée du jour (entry.gratitude). Vider le champ puis "Garder" la
+  // retire du carnet.
+  function saveGratitude() {
+    if (!gratitudeEntryId) return;
+    const text = els.gratitudeInput.value.trim().slice(0, GRATITUDE_MAX_CHARS);
+    const updated = Storage.updateEntry(gratitudeEntryId, { gratitude: text || undefined });
+    if (!updated) return;
+    CloudSync.pushEntry(updated);
+    els.gratitudeStatus.textContent = text ? "Gardé dans ton carnet de gratitude." : "Retiré de ton carnet.";
+  }
+
+  els.gratitudeSave.addEventListener("click", saveGratitude);
+  els.gratitudeInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      saveGratitude();
+      els.gratitudeInput.blur();
+    }
+  });
+  els.gratitudeInput.addEventListener("input", () => {
+    els.gratitudeStatus.textContent = "";
+  });
+
+  function gratitudeNotes(entries) {
+    return entries
+      .filter((e) => typeof e.gratitude === "string" && e.gratitude.trim())
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+  }
+
+  function shortDate(iso) {
+    return new Date(iso).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+  }
+
+  function renderGratitudeJournal(allEntries) {
+    const notes = gratitudeNotes(allEntries);
+    els.gratitudeJournal.hidden = !notes.length;
+    els.gratitudeRandomNote.hidden = true;
+    if (!notes.length) return;
+    els.gratitudeCount.textContent = `(${notes.length})`;
+    els.gratitudeRandom.hidden = notes.length < 2;
+    els.gratitudeList.innerHTML = notes
+      .map((e) => `<li><span class="gratitude-date">${shortDate(e.date)}</span>${escapeHtml(e.gratitude)}</li>`)
+      .join("");
+  }
+
+  els.gratitudeRandom.addEventListener("click", () => {
+    const notes = gratitudeNotes(Storage.getEntries());
+    if (!notes.length) return;
+    const pick = notes[Math.floor(Math.random() * notes.length)];
+    els.gratitudeRandomNote.textContent = `« ${pick.gratitude} » — ${shortDate(pick.date)}`;
+    els.gratitudeRandomNote.hidden = false;
+  });
 
   function formatTimer(ms) {
     const totalSec = Math.floor(ms / 1000);
@@ -498,6 +563,10 @@
         CloudSync.pushEntry(updated);
       });
     }
+    els.gratitudeCard.hidden = isCrisis;
+    gratitudeEntryId = entry.id;
+    els.gratitudeInput.value = entry.gratitude || "";
+    els.gratitudeStatus.textContent = "";
     // Petit effet de clôture satisfaisant — jamais en cas de signal de
     // crise, où ce serait déplacé, et jamais si l'utilisateur préfère
     // réduire les animations.
@@ -599,6 +668,7 @@
     if (distress) {
       els.crisisCard.hidden = false;
       els.emotionCard.hidden = true;
+      els.gratitudeCard.hidden = true;
       const suggestionsBlock = els.summaryContent.querySelector(".suggestions-block");
       if (suggestionsBlock) suggestionsBlock.remove();
     }
@@ -698,6 +768,7 @@
   function renderHistory() {
     const allEntries = [...Storage.getEntries()].sort((a, b) => new Date(b.date) - new Date(a.date));
     renderHeatmap(allEntries);
+    renderGratitudeJournal(allEntries);
     if (!allEntries.length) {
       els.historyList.innerHTML = `<p class="history-empty">Aucun enregistrement pour l'instant. Va dans l'onglet "Parler" pour commencer.</p>`;
       return;
@@ -706,7 +777,7 @@
     const query = els.historySearch.value.trim().toLocaleLowerCase("fr-FR");
     const entries = query
       ? allEntries.filter((e) =>
-          [e.transcript || "", ...Emotions.labels(e.emotions)].some((t) =>
+          [e.transcript || "", e.gratitude || "", ...Emotions.labels(e.emotions)].some((t) =>
             t.toLocaleLowerCase("fr-FR").includes(query)
           )
         )
@@ -743,6 +814,7 @@
             <div class="history-date">${dateLabel}</div>
             ${emotionsHtml}
             <div class="history-excerpt">${escapeHtml(excerpt)}</div>
+            ${e.gratitude ? `<div class="history-gratitude">🙏 ${escapeHtml(e.gratitude)}</div>` : ""}
             ${companionHtml}
           </div>`;
       })
@@ -860,6 +932,14 @@
         html += `<h2>Sommeil — 30 derniers jours</h2><p>${escapeHtml(sleep.text)}</p>`;
       }
 
+      const since = Date.now() - 30 * 24 * 60 * 60 * 1000;
+      const gratitude = gratitudeNotes(entries).filter((e) => new Date(e.date).getTime() >= since);
+      if (gratitude.length) {
+        html += `<h2>Ce qui s'est bien passé — 30 derniers jours</h2><ul>${gratitude
+          .map((e) => `<li>${shortDate(e.date)} : ${escapeHtml(e.gratitude)}</li>`)
+          .join("")}</ul>`;
+      }
+
       const emotionFreq = Emotions.frequencies(entries, 30);
       if (emotionFreq.length) {
         html += `<h2>Émotions choisies — 30 derniers jours</h2><p>${escapeHtml(emotionFreq.map((e) => `${e.label} (${e.count})`).join(", "))}</p>`;
@@ -928,7 +1008,7 @@
       return;
     }
     const signature = week
-      .map((e) => `${e.id}:${e.transcript ? e.transcript.length : 0}:${Emotions.sanitize(e.emotions).join("+")}:${e.sleepHours ?? ""}`)
+      .map((e) => `${e.id}:${e.transcript ? e.transcript.length : 0}:${Emotions.sanitize(e.emotions).join("+")}:${e.sleepHours ?? ""}:${(e.gratitude || "").length}`)
       .join("|");
     const cached = readWeeklyRecapCache();
     if (cached && cached.signature === signature && typeof cached.message === "string") {

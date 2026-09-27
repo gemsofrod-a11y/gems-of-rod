@@ -37,6 +37,13 @@ tendances émotionnelles (énergie, stress, fatigue, humeur) dans le temps.
   dans Tendances et dans le bilan imprimable, transmises au bilan de la
   semaine du compagnon. Le choix n'est pas proposé en cas de signal de
   crise, pour laisser toute la place à la carte d'aide.
+- **Gratitude** : après un journal vocal, champ facultatif « Une chose qui
+  s'est bien passée aujourd'hui ? » (200 caractères max, gardé sur l'entrée
+  du jour, vider le champ la retire). Carnet de gratitude repliable en haut
+  de l'Historique, avec « Un souvenir au hasard » pour les jours plus
+  difficiles. Trouvable par la recherche, repris dans le bilan imprimable
+  (30 derniers jours) et dans le bilan de la semaine du compagnon. Pas
+  proposé en cas de signal de crise.
 - **Bilan de la semaine par le compagnon** : dans Tendances, le bouton
   « Générer mon résumé de la semaine » affiche le résumé local puis, si le
   compagnon est configuré, un bilan qui relie les journaux des 7 derniers

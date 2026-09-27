@@ -26,6 +26,7 @@ const Companion = (() => {
       scores: e.scores,
       emotions: Emotions.labels(e.emotions),
       sleep: typeof e.sleepHours === "number" ? Analysis.sleepLabel(e.sleepHours) : null,
+      gratitude: e.gratitude || "",
     }));
     return post({ mode: "weekly", entries: slim }, 25000);
   }
