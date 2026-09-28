@@ -554,9 +554,10 @@ function guessMapping(rows, headerIdx) {
 }
 
 function buildTransactions(rows, headerIdx, map, invert) {
-  const out = []; let skipped = 0;
+  const out = [], plans = []; let skipped = 0;
   for (const r of rows.slice(headerIdx + 1)) {
     const date = parseDate(r[map.date]);
+    const pm = /abonnement\s+(standard|plus|premium|metal|ultra)\b/i.exec(r[map.label] || "");
     let amt = NaN;
     if (map.amount != null) amt = parseAmount(r[map.amount]);
     if (isNaN(amt) && (map.debit != null || map.credit != null)) {
@@ -569,6 +570,7 @@ function buildTransactions(rows, headerIdx, map, invert) {
       const st = low(r[map.state]);
       if (/revert|renvoy|declin|failed|annul|refus|pending|en attente|en cours/.test(st)) { skipped++; continue; }
     }
+    if (pm && date && !isNaN(amt)) plans.push({ plan: pm[1].toLowerCase(), date: date.getTime(), amount: Math.abs(amt) });
     if (!date || isNaN(amt) || amt === 0) { skipped++; continue; }
     if (invert) amt = -amt;
     const label = [r[map.label], map.detail != null ? r[map.detail] : ""].filter(Boolean).join(" · ") || "(sans libellé)";
@@ -583,7 +585,7 @@ function buildTransactions(rows, headerIdx, map, invert) {
     if (!isNaN(fee) && fee !== 0) out.push({ date: date.getTime(), amount: -Math.round(Math.abs(fee) * 100) / 100, label: "Frais · " + label, type: "", bankcat: "", acct: out[out.length - 1].acct, forceCat: "frais" });
   }
   out.sort((a, b) => b.date - a.date);
-  return { tx: out, skipped };
+  return { tx: out, skipped, plans };
 }
 
 /* ============================== Lecture PDF ============================== */
@@ -786,7 +788,7 @@ async function loadPdf(buf, name) {
   const note = guessed ? `Colonnes Débit / Crédit non trouvées pour ${guessed} opération${guessed > 1 ? "s" : ""} : leur sens (dépense ou entrée) a été deviné d'après le libellé. Vérifiez dans l'onglet Opérations.` : (!headerSeen ? "Relevé PDF lu sans en-tête de colonnes : vérifiez quelques montants dans l'onglet Opérations." : "");
   const meta = pdfMeta(res.lines, name);
   if (meta.acct) { state.metas[name] = { ...meta, at: Date.now() }; store.set("metas", state.metas); }
-  Object.assign(state, { rows, headerIdx: 0, map: { date: 0, label: 1, amount: 2 }, file: name, fileAcct: meta.acct, sample: false, invert: false, showAll: false, openCat: null, catFilter: "", pdfNote: note, infoNote: "", histBefore: store.get("history", []) });
+  Object.assign(state, { rows, headerIdx: 0, map: { date: 0, label: 1, amount: 2 }, file: name, fileAcct: meta.acct, fileBank: /REVOLUT/.test(norm(res.lines.slice(0, 60).map(L => L.text).join(" "))) ? "revolut" : "", sample: false, invert: false, showAll: false, openCat: null, catFilter: "", pdfNote: note, infoNote: "", histBefore: store.get("history", []) });
   applyMapping();
 }
 
@@ -907,7 +909,7 @@ async function loadExcel(buf, name) {
     if (!best || score > best.score) best = { ...sh, h, map, score };
   }
   if (!best) return setStatus("Ce fichier Excel ne contient pas de tableau d'opérations lisible.", "crit");
-  Object.assign(state, { rows: best.rows, headerIdx: best.h, map: best.map, file: name, sample: false, invert: false, showAll: false, openCat: null, catFilter: "", pdfNote: "",
+  Object.assign(state, { rows: best.rows, headerIdx: best.h, map: best.map, file: name, fileBank: "", sample: false, invert: false, showAll: false, openCat: null, catFilter: "", pdfNote: "",
     infoNote: sheets.length > 1 ? `Feuille utilisée : « ${esc(best.name)} ».` : "",
     fileAcct: /savings|epargne|épargne|livret/i.test(name) ? "epargne" : "", histBefore: store.get("history", []) });
   applyMapping();
@@ -1037,7 +1039,7 @@ function buildAdvice(r, txs, lvl) {
   const monthly = id => (r.byCat[id] ? r.byCat[id].total / mo : 0);
   const inc = r.income / mo, spend = r.spend / mo;
   const covered = new Set();
-  const add = (tone, title, text, saving, cat, pin) => { if (cat && saving > 0) covered.add(cat); A.push({ tone, title, text, pin: !!pin, saving: Math.max(0, Math.round(saving || 0)) }); };
+  const add = (tone, title, text, saving, cat, pin, src) => { if (cat && saving > 0) covered.add(cat); A.push({ tone, title, text, src: src || "", pin: !!pin, saving: Math.max(0, Math.round(saving || 0)) }); };
   savingsAdvice(r, add);
   if (r.onlySavings) return A;
 
@@ -1107,7 +1109,9 @@ function buildAdvice(r, txs, lvl) {
   const unk = r.byCat.autre ? r.byCat.autre.total : 0;
   if (r.spend > 0 && unk / r.spend > 0.1) add("info", "Des opérations restent à classer", `${eur.format(unk)} de dépenses n'ont pas été reconnues automatiquement. Classez-les dans l'onglet Opérations : l'appli retiendra le commerçant pour les prochains relevés.`, 0);
 
+  // Mois complets seulement : un mois en cours ferait croire à une baisse.
   const months = Object.keys(r.byMonth).sort();
+  if (months.length && r.to.getDate() < new Date(r.to.getFullYear(), r.to.getMonth() + 1, 0).getDate() - 2) months.pop();
   if (months.length >= 3) {
     const last = months[months.length - 1], prev = months.slice(0, -1);
     const avgSup = prev.reduce((a, k) => a + r.byMonth[k].sup, 0) / prev.length;
@@ -1115,6 +1119,7 @@ function buildAdvice(r, txs, lvl) {
     if (avgSup > 0 && lastSup < avgSup * 0.85) add("good", "Le superflu recule", `En ${monthLabel(last)}, vos dépenses superflues (${eur.format(lastSup)}) sont inférieures de ${pct(1 - lastSup / avgSup)} à la moyenne des mois précédents. Continuez.`, 0);
   }
 
+  revolutAdvice(r, txs, add);
   const order = { crit: 0, warn: 1, info: 2, good: 3 };
   return A.sort((a, b) => b.pin - a.pin || order[a.tone] - order[b.tone] || b.saving - a.saving);
 }
@@ -1141,6 +1146,64 @@ function savingsAdvice(r, add) {
     add("info", "Ce que votre épargne peut rapporter", `Au taux de ${fmtPct(m.rate)} brut par an indiqué sur le relevé, ${eur.format(base)} laissés un an entier rapportent environ ${eur2.format(gross)} brut${net != null ? `, soit ${eur2.format(net)} net après le prélèvement de ${fmtPct(m.pfu)} mentionné par la banque` : " avant impôts"}. Chaque tranche de 100 € laissée un an ajoute environ ${eur2.format(m.rate)} brut.`, 0);
   }
   if (s.interest > 0 && m.taxWithheld === 0) add("info", "Intérêts versés sans impôt retenu", `Le relevé indique 0,00 € d'impôt et de prélèvements sociaux retenus sur ${eur2.format(s.interest)} d'intérêts. Vérifiez comment ces intérêts doivent apparaître dans votre déclaration de revenus.`, 0);
+}
+
+// Offres Revolut France relevées au 9 juillet 2026 (prix mensuels, retraits gratuits par mois glissant).
+// À mettre à jour si Revolut change ses tarifs : les conseils le rappellent au lecteur.
+const REVOLUT_DATE = "9 juillet 2026";
+const REVOLUT_PLANS = {
+  standard: { name: "Standard", price: 0, atm: 200 },
+  plus: { name: "Plus", price: 3.99, atm: 200 },
+  premium: { name: "Premium", price: 10.99, atm: 400 },
+  metal: { name: "Metal", price: 18.99, atm: 800 },
+  ultra: { name: "Ultra", price: 60, atm: 2000 }
+};
+function revolutAdvice(r, txs, add) {
+  const isRev = txs.some(t => t.bank === "revolut") || !!state.metas._revolut;
+  if (!isRev || r.onlySavings) return;
+  const A = (tone, title, text, saving, cat) => add(tone, title, text, saving, cat, false, "Revolut");
+  const note = `Offres Revolut France au ${REVOLUT_DATE} : vérifiez dans l'appli avant de changer.`;
+
+  // Retraits : mois le plus chargé de la période
+  const atm = {};
+  for (const t of txs) if (t.cat === "especes" && t.amount < 0) {
+    const k = monthKey(new Date(t.date)); const m = atm[k] || (atm[k] = { sum: 0, n: 0 }); m.sum -= t.amount; m.n++;
+  }
+  const months = Object.values(atm), maxSum = Math.max(0, ...months.map(m => m.sum)), maxN = Math.max(0, ...months.map(m => m.n));
+  const fits = p => maxSum <= REVOLUT_PLANS[p].atm && (p !== "standard" || maxN <= 5);
+  const cheapest = ["standard", "plus", "premium", "metal", "ultra"].find(fits) || "ultra";
+
+  const cur = state.metas._revolut, plan = cur && REVOLUT_PLANS[cur.plan];
+  const planFees = txs.filter(t => /ABONNEMENT (STANDARD|PLUS|PREMIUM|METAL|ULTRA)/.test(norm(t.label)) && t.amount < 0);
+  const paidYear = -planFees.reduce((a, t) => a + t.amount, 0) / r.months * 12;
+  if (plan && cur.plan !== "standard") {
+    const alt = REVOLUT_PLANS[cheapest];
+    const altCost = alt.price * 12;
+    const fullCost = plan.price * 12;
+    const atmTxt = months.length ? `Vos retraits d'espèces sur la période : au plus ${eur.format(maxSum)} et ${maxN} retrait${maxN > 1 ? "s" : ""} dans un même mois, ce que couvre déjà le forfait ${alt.name} (${alt.atm} € de retraits gratuits par mois${cheapest === "standard" ? ", 5 retraits au plus" : ""}).` : "Aucun retrait d'espèces sur la période.";
+    if (cur.amount === 0) {
+      A("info", `Forfait ${plan.name} actuellement gratuit`, `Votre dernier relevé indique 0,00 € pour l'abonnement ${plan.name} : il ne vous est pas facturé en ce moment. Au tarif affiché, il coûterait ${eur2.format(plan.price)} par mois, soit ${eur.format(fullCost)} par an. ${atmTxt} Le compte d'épargne rapporte 2,25 % quel que soit le forfait, sauf Ultra. Vérifiez dans l'appli jusqu'à quand dure cette gratuité : quand elle prendra fin, passer en ${alt.name} éviterait environ ${eur.format(fullCost - altCost)} par an. ${note}`, 0);
+    } else {
+      const yearly = paidYear || cur.amount * 12;
+      if (yearly > altCost + 1) A("warn", `Forfait ${plan.name} : ${eur.format(yearly)} par an`, `${atmTxt} Le compte d'épargne rapporte 2,25 % quel que soit le forfait, sauf Ultra. Si vous n'utilisez pas les assurances ni les autres services inclus dans ${plan.name}, passer en ${alt.name} économiserait environ ${eur.format(yearly - altCost)} par an. ${note}`, 0);
+    }
+  }
+
+  // Frais de retrait payés
+  const atmFeeSum = -txs.filter(t => t.forceCat === "frais" && /RETRAIT|ESPECES|DAB|ATM/.test(norm(t.label))).reduce((a, t) => a + t.amount, 0);
+  if (atmFeeSum > 0) A("warn", "Frais de retrait d'espèces", `${eur2.format(atmFeeSum)} de frais de retrait sur la période. Revolut facture 2 % (1 € minimum) au-delà des retraits gratuits de votre forfait (200 € par mois en Standard et Plus, 400 € en Premium, 800 € en Metal). Retirer une seule fois un montant plus élevé, ou payer par carte, évite ces frais. ${note}`, 0);
+
+  // Arrondis vers un coffre
+  const card = txs.filter(t => t.amount < 0 && /CARTE|CARD/.test(norm(t.type)) && !CAT[t.cat].kind);
+  const round = card.reduce((a, t) => a + (Math.ceil(-t.amount - 1e-9) + t.amount), 0);
+  if (card.length >= 20 && round > 0) A("good", "Épargner avec les arrondis Revolut", `Avec les arrondis, chaque paiement par carte est arrondi à l'euro supérieur et la différence part dans un coffre d'épargne. Sur vos ${card.length} paiements par carte de la période, cela aurait mis de côté ${eur.format(round)}, soit environ ${eur.format(round / r.months * 12)} par an, sans y penser. À activer dans l'appli, sur un coffre ou le compte d'épargne à 2,25 %.`, 0);
+
+  // Virement programmé vers un coffre
+  const inc = r.income / r.months, spend = r.spend / r.months;
+  if (inc > 0 && (inc - spend) / inc < 0.1) A("info", "Virement programmé vers un coffre", `Revolut permet de programmer un virement automatique vers un coffre ou le compte d'épargne le jour où arrive votre revenu. Même 20 € par mois font 240 € par an, rémunérés à 2,25 %, avant que l'argent ne soit dépensé.`, 0);
+
+  // Blocage des jeux d'argent
+  if (r.byCat.jeux && r.byCat.jeux.total > 0) A("info", "Blocage des jeux d'argent", `Revolut peut refuser automatiquement les paiements vers les casinos, paris sportifs et loteries (Profil > Sécurité > Blocage des jeux d'argent). Pour le désactiver, il faut attendre 48 heures, ce qui aide à tenir un plafond. Vous y avez consacré ${eur.format(r.byCat.jeux.total / r.months)} par mois sur la période.`, 0);
 }
 
 /* ============================== État ============================== */
@@ -1180,7 +1243,7 @@ function loadText(text, name, isSample) {
   if (rows.length < 2) { setStatus("Ce fichier ne contient pas de lignes lisibles. Vérifiez qu'il s'agit bien d'un export CSV de vos opérations.", "crit"); return; }
   const headerIdx = findHeaderRow(rows);
   const map = guessMapping(rows, headerIdx);
-  Object.assign(state, { rows, headerIdx, map, file: name, sample: !!isSample, invert: false, showAll: false, openCat: null, catFilter: "", pdfNote: "", infoNote: "",
+  Object.assign(state, { rows, headerIdx, map, file: name, fileBank: "", sample: !!isSample, invert: false, showAll: false, openCat: null, catFilter: "", pdfNote: "", infoNote: "",
     fileAcct: /savings|epargne|épargne|livret/i.test(name) ? "epargne" : "", histBefore: isSample ? [] : store.get("history", []) });
   applyMapping();
 }
@@ -1194,8 +1257,15 @@ function applyMapping() {
     setStatus("Je n'ai pas reconnu toutes les colonnes. Indiquez ci-dessous laquelle contient la date, le libellé et le montant, puis appuyez sur Appliquer.", "warn");
     return;
   }
-  const { tx, skipped } = buildTransactions(rows, headerIdx, map, invert);
-  tx.forEach(t => { if (!t.acct) t.acct = state.fileAcct || ""; });
+  const { tx, skipped, plans } = buildTransactions(rows, headerIdx, map, invert);
+  const head = headerIdx >= 0 ? rows[headerIdx].map(low).join("|") : "";
+  const bank = state.fileBank || (/revolut|account.statement/i.test(state.file || "") || (/produit|product/.test(head) && /etat|state/.test(head)) ? "revolut" : "");
+  tx.forEach(t => { if (!t.acct) t.acct = state.fileAcct || ""; if (bank) t.bank = bank; });
+  if (plans.length && !state.sample) {
+    const last = plans.reduce((a, b) => (b.date > a.date ? b : a));
+    const prev = state.metas._revolut;
+    if (!prev || last.date >= prev.date) { state.metas._revolut = { ...last, at: Date.now() }; store.set("metas", state.metas); }
+  }
   if (!tx.length) { setStatus("Aucune opération valide trouvée avec ces colonnes. Corrigez la correspondance ci-dessous.", "crit"); $("#mapping").open = true; if (!state.histBefore.length) { state.tx = []; recompute(); } return; }
   const merged = mergeHistory(state.histBefore, tx);
   state.tx = merged.tx;
@@ -1504,11 +1574,18 @@ function vConseils(r) {
   const tot = r.advice.reduce((a, x) => a + x.saving, 0);
   const icon = { crit: "!", warn: "!", info: "i", good: "✓" };
   const tag = { crit: "Urgent", warn: "À réduire", info: "À vérifier", good: "Bien" };
+  const card = a => `<article class="advice ${a.tone}"><span class="ic" aria-hidden="true">${icon[a.tone]}</span><div class="body"><div class="head"><h3>${esc(a.title)}</h3><span class="chip ${a.tone}">${a.saving > 0 ? "≈ " + eur.format(a.saving) + " / an" : tag[a.tone]}</span></div><p>${a.text}</p></div></article>`;
+  const main = r.advice.filter(a => !a.src), bank = r.advice.filter(a => a.src === "Revolut");
   return `<section class="panel">
     <div class="saving-total"><div><span class="eyebrow">Estimation</span><h2>Vos pistes d'économie</h2></div>${tot > 0 ? `<span class="v">${eur.format(tot)}<span class="small muted" style="font-family:var(--body);font-weight:500"> / an</span></span>` : ""}</div>
     <p class="small muted">Chaque montant est calculé sur votre rythme de dépense actuel, avec l'hypothèse indiquée dans le conseil. Le total ne compte chaque dépense qu'une fois. Les conseils changent quand vous reclassez une dépense.</p>
-    <div class="advice-list">${r.advice.map(a => `<article class="advice ${a.tone}"><span class="ic" aria-hidden="true">${icon[a.tone]}</span><div class="body"><div class="head"><h3>${esc(a.title)}</h3><span class="chip ${a.tone}">${a.saving > 0 ? "≈ " + eur.format(a.saving) + " / an" : tag[a.tone]}</span></div><p>${a.text}</p></div></article>`).join("") || `<p class="muted">Rien à signaler sur ce relevé.</p>`}</div>
-  </section>`;
+    <div class="advice-list">${main.map(card).join("") || `<p class="muted">Rien à signaler sur ce relevé.</p>`}</div>
+  </section>
+  ${bank.length ? `<section class="panel" aria-labelledby="h-rev">
+    <div><span class="eyebrow">Votre banque</span><h2 id="h-rev">Ce que Revolut peut faire pour vous</h2></div>
+    <p class="small muted">Des fonctions et offres Revolut adaptées à ce que montre votre relevé. Tarifs Revolut France au ${REVOLUT_DATE} : ils peuvent changer, vérifiez dans l'appli.</p>
+    <div class="advice-list">${bank.map(card).join("")}</div>
+  </section>` : ""}`;
 }
 
 function vDepenses(r) {

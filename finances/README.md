@@ -49,6 +49,12 @@ téléchargé une fois puis gardé en cache par le service worker.
   Sert à classer d'un coup des commerces locaux sans les écrire dans le code.
 - Catégorie « Activité pro » : dépenses exclues de l'analyse perso, montant
   affiché à part dans la Synthèse.
+- Conseils Revolut (section « Ce que Revolut peut faire pour vous »), quand le
+  relevé vient de Revolut : forfait payé ou gratuit comparé aux retraits
+  réellement faits, frais de retrait, arrondis vers un coffre (montant calculé
+  sur les paiements par carte), virement programmé, blocage des jeux
+  d'argent. Tarifs dans `REVOLUT_PLANS` (relevés au 9 juillet 2026) : à mettre
+  à jour si Revolut les change.
 - Historique cumulé : chaque relevé importé (CSV ou PDF) s'ajoute aux
   précédents. Une opération déjà connue (même date, montant, libellé et
   compte) n'est pas recomptée : réimporter un relevé mis à jour n'ajoute que
