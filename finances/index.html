@@ -955,8 +955,11 @@ function classify(txs, overrides) {
   for (const t of txs) {
     t.key = merchantKey(t.label);
     // Sur un compte d'épargne, tout est dépôt ou retrait d'épargne, sauf les intérêts versés.
+    // Le profil est toujours consulté : même quand vous avez choisi la catégorie d'un nom,
+    // une ligne de « Mon budget » qui le reconnaît doit être comptée (revenu déclaré, charge fixe).
     t.pf = null;
-    t.cat = overrides[t.key + (t.amount > 0 ? "|+" : "|-")] || overrides[t.key] || (state.profile && profileCategory(t, state.profile)) || t.forceCat || (t.acct === "epargne" ? (t.amount > 0 && /\b(INTERETS?|INTEREST)\b/.test(norm(t.label)) ? "interets" : "epargne") : ruleCategory(t));
+    const pfCat = state.profile ? profileCategory(t, state.profile) : null;
+    t.cat = overrides[t.key + (t.amount > 0 ? "|+" : "|-")] || overrides[t.key] || pfCat || t.forceCat || (t.acct === "epargne" ? (t.amount > 0 && /\b(INTERETS?|INTEREST)\b/.test(norm(t.label)) ? "interets" : "epargne") : ruleCategory(t));
     // Un montant positif dans une catégorie de dépense = remboursement : il vient en déduction.
   }
 }
@@ -992,9 +995,11 @@ const monthName = k => { const [y, m] = k.split("-"); return new Date(+y, +m - 1
 function applyProfile(res, txs, lvl) {
   const P = state.profile; if (!res.from) return;
   const months = monthRange(res.from, res.to);
-  // Montant trouvé dans le relevé, par ligne et par mois : le montant saisi à la main complète jusqu'à ce total.
-  const per = {}; for (const t of txs) if (t.pf) { const k = monthKey(new Date(t.date)); const m = per[t.pf] || (per[t.pf] = {}); m[k] = (m[k] || 0) + Math.abs(t.amount); }
-  const gap = (id, k, target) => Math.max(0, target - ((per[id] || {})[k] || 0));
+  // Le montant saisi est une moyenne mensuelle : on complète la moyenne trouvée dans le relevé sur la
+  // période, pas chaque mois séparément (un salaire versé le 30 ou le 1er tombe parfois deux fois dans
+  // un même mois et zéro fois dans le suivant). Le complément est réparti à parts égales sur les mois.
+  const tot = {}; for (const t of txs) if (t.pf) tot[t.pf] = (tot[t.pf] || 0) + Math.abs(t.amount);
+  const gap = (id, k, target) => Math.max(0, target * res.months - (tot[id] || 0)) / months.length;
   const det = {}; for (const t of txs) if (t.pf) det[t.pf] = (det[t.pf] || 0) + Math.abs(t.amount);
   res.pf = { detected: det, manual: {} };
   const month = k => res.byMonth[k] || (res.byMonth[k] = { ess: 0, uti: 0, sup: 0, income: 0, savings: 0 });
@@ -1007,7 +1012,11 @@ function applyProfile(res, txs, lvl) {
   const note = (id, v) => { res.pf.manual[id] = (res.pf.manual[id] || 0) + v; };
   for (const s of P.incomes) if (s.manual > 0) for (const k of months) { const v = gap(s.id, k, s.manual); if (v) { month(k).income += v; res.income += v; note(s.id, v); } }
   for (const c of P.charges) if (c.manual > 0) for (const k of months) { const v = gap(c.id, k, c.manual); if (v) { addSpend(c.cat || "foyer", k, v); note(c.id, v); } }
-  for (const c of P.credits) if (c.monthly > 0) for (const k of months) if (!c.end || k <= c.end) { const v = gap(c.id, k, c.monthly); if (v) { addSpend("credit", k, v); note(c.id, v); } }
+  for (const c of P.credits) if (c.monthly > 0) {
+    const active = months.filter(k => !c.end || k <= c.end);
+    const extra = Math.max(0, c.monthly * active.length - (tot[c.id] || 0)) / (active.length || 1);
+    for (const k of active) if (extra) { addSpend("credit", k, extra); note(c.id, extra); }
+  }
 }
 
 // Taux et plafonds officiels au 1er août 2026 (Livret A, LDDS, LEP) et fiscalité 2026.
@@ -1079,7 +1088,7 @@ function vProfil(r) {
   </section>`;
   const plan = placementPlan(r);
   const icon = { crit: "!", warn: "!", info: "i", good: "✓" };
-  return `${section("incomes", "Revenus", "Vos sources de revenus. Si elles apparaissent dans le relevé, l'appli les additionne automatiquement. Si une partie arrive sur une autre banque, indiquez le montant réel par mois : l'appli ajoute la différence avec ce qu'elle trouve dans le relevé.", "Ajouter un revenu")}
+  return `${section("incomes", "Revenus", "Vos sources de revenus. Si elles apparaissent dans le relevé, l'appli les additionne automatiquement. Si une partie arrive sur une autre banque, indiquez le montant réel par mois : l'appli ajoute la différence entre ce montant et la moyenne qu'elle trouve dans le relevé. Laissez vide si tout arrive sur ce compte.", "Ajouter un revenu")}
   ${section("charges", "Charges fixes", "Les sorties les plus importantes : loyer, électricité, nourriture… Indiquez le nom qui apparaît dans le relevé (bénéficiaire du virement), et le montant réel par mois s'il est payé en partie ou en totalité ailleurs.", "Ajouter une charge")}
   ${section("credits", "Crédits", "Chaque crédit en cours, avec sa mensualité et la date de sa dernière échéance : l'appli calcule ce qu'il reste à payer et l'argent libéré ensuite.", "Ajouter un crédit")}
   <section class="panel" aria-labelledby="h-plan">
