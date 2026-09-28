@@ -387,7 +387,11 @@ complet) lus par un lecteur intégré, sans bibliothèque externe. Les commerces
 locaux de Sébastien se classent par un fichier `.json` de classement qu'il
 importe dans l'appli (jamais dans le code : le dépôt est public). Conseils propres à Revolut (banque de
 Sébastien) : tarifs dans `REVOLUT_PLANS` (`finances/index.html`), relevés au
-9 juillet 2026, à actualiser si Revolut change ses offres. Ne jamais versionner ni publier un
+9 juillet 2026, à actualiser si Revolut change ses offres. Onglet « Mon
+budget » (revenus, charges fixes, crédits avec date de fin, plan de
+placements) : le profil réel de Sébastien (employeur, bénéficiaires) vit
+dans son navigateur et dans son fichier de classement, jamais dans le code ;
+taux des livrets dans `RATES` (au 1er août 2026). Ne jamais versionner ni publier un
 relevé réel de Sébastien (nom, adresse, opérations) : tester avec des PDF
 fabriqués. Voir
 `finances/README.md`.
