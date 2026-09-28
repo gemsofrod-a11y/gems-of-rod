@@ -95,6 +95,7 @@
 .pf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
 .pf-grid label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); }
 .pf-grid input, .pf-grid select { font: 14px var(--body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; min-width: 0; }
+.now-box { padding: 12px 14px; border-radius: 10px; font-size: 14px; line-height: 1.5; color: var(--ink-2); background: color-mix(in srgb, var(--warn) 10%, var(--surface)); border: 1px solid color-mix(in srgb, var(--warn) 35%, var(--line)); }
 .pf-foot { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .btn.small { padding: 6px 10px; font-size: 12px; }
 .period-box { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 14px; color: var(--ink-2); margin-top: -8px; }
@@ -955,8 +956,11 @@ function classify(txs, overrides) {
   for (const t of txs) {
     t.key = merchantKey(t.label);
     // Sur un compte d'épargne, tout est dépôt ou retrait d'épargne, sauf les intérêts versés.
+    // Le profil est toujours consulté : même quand vous avez choisi la catégorie d'un nom,
+    // une ligne de « Mon budget » qui le reconnaît doit être comptée (revenu déclaré, charge fixe).
     t.pf = null;
-    t.cat = overrides[t.key + (t.amount > 0 ? "|+" : "|-")] || overrides[t.key] || (state.profile && profileCategory(t, state.profile)) || t.forceCat || (t.acct === "epargne" ? (t.amount > 0 && /\b(INTERETS?|INTEREST)\b/.test(norm(t.label)) ? "interets" : "epargne") : ruleCategory(t));
+    const pfCat = state.profile ? profileCategory(t, state.profile) : null;
+    t.cat = overrides[t.key + (t.amount > 0 ? "|+" : "|-")] || overrides[t.key] || pfCat || t.forceCat || (t.acct === "epargne" ? (t.amount > 0 && /\b(INTERETS?|INTEREST)\b/.test(norm(t.label)) ? "interets" : "epargne") : ruleCategory(t));
     // Un montant positif dans une catégorie de dépense = remboursement : il vient en déduction.
   }
 }
@@ -992,11 +996,16 @@ const monthName = k => { const [y, m] = k.split("-"); return new Date(+y, +m - 1
 function applyProfile(res, txs, lvl) {
   const P = state.profile; if (!res.from) return;
   const months = monthRange(res.from, res.to);
-  // Montant trouvé dans le relevé, par ligne et par mois : le montant saisi à la main complète jusqu'à ce total.
-  const per = {}; for (const t of txs) if (t.pf) { const k = monthKey(new Date(t.date)); const m = per[t.pf] || (per[t.pf] = {}); m[k] = (m[k] || 0) + Math.abs(t.amount); }
-  const gap = (id, k, target) => Math.max(0, target - ((per[id] || {})[k] || 0));
-  const det = {}; for (const t of txs) if (t.pf) det[t.pf] = (det[t.pf] || 0) + Math.abs(t.amount);
-  res.pf = { detected: det, manual: {} };
+  // Le montant saisi est une moyenne mensuelle : on complète la moyenne trouvée dans le relevé sur la
+  // période, pas chaque mois séparément (un salaire versé le 30 ou le 1er tombe parfois deux fois dans
+  // un même mois et zéro fois dans le suivant). Le complément est réparti à parts égales sur les mois.
+  const tot = {}; for (const t of txs) if (t.pf) tot[t.pf] = (tot[t.pf] || 0) + Math.abs(t.amount);
+  const det = {}, last = {}, byM = {};
+  for (const t of txs) if (t.pf) {
+    det[t.pf] = (det[t.pf] || 0) + Math.abs(t.amount); last[t.pf] = Math.max(last[t.pf] || 0, t.date);
+    const m = byM[t.pf] || (byM[t.pf] = {}), k = monthKey(new Date(t.date)); m[k] = (m[k] || 0) + Math.abs(t.amount);
+  }
+  res.pf = { detected: det, manual: {}, last, byMonth: byM };
   const month = k => res.byMonth[k] || (res.byMonth[k] = { ess: 0, uti: 0, sup: 0, income: 0, savings: 0 });
   const addSpend = (cat, k, v) => {
     const C = res.byCat[cat] || (res.byCat[cat] = { id: cat, total: 0, count: 0, tx: [], merchants: {}, level: lvl(cat) });
@@ -1005,9 +1014,42 @@ function applyProfile(res, txs, lvl) {
     const l = lvl(cat); res.lv[l] += v; month(k)[l] += v; res.spend += v;
   };
   const note = (id, v) => { res.pf.manual[id] = (res.pf.manual[id] || 0) + v; };
-  for (const s of P.incomes) if (s.manual > 0) for (const k of months) { const v = gap(s.id, k, s.manual); if (v) { month(k).income += v; res.income += v; note(s.id, v); } }
-  for (const c of P.charges) if (c.manual > 0) for (const k of months) { const v = gap(c.id, k, c.manual); if (v) { addSpend(c.cat || "foyer", k, v); note(c.id, v); } }
-  for (const c of P.credits) if (c.monthly > 0) for (const k of months) if (!c.end || k <= c.end) { const v = gap(c.id, k, c.monthly); if (v) { addSpend("credit", k, v); note(c.id, v); } }
+  // Une ligne avec « Dernier mois » n'est complétée par le montant saisi que jusqu'à ce mois-là.
+  const fill = (x, onMonth) => {
+    const active = months.filter(k => !x.end || k <= x.end); if (!active.length) return;
+    const extra = Math.max(0, x.manual * res.months * active.length / months.length - (tot[x.id] || 0)) / active.length;
+    if (extra) for (const k of active) { onMonth(k, extra); note(x.id, extra); }
+  };
+  for (const s of P.incomes) if (s.manual > 0) fill(s, (k, v) => { month(k).income += v; res.income += v; });
+  for (const c of P.charges) if (c.manual > 0) fill(c, (k, v) => addSpend(c.cat || "foyer", k, v));
+  for (const c of P.credits) if (c.monthly > 0) {
+    const active = months.filter(k => !c.end || k <= c.end);
+    const extra = Math.max(0, c.monthly * res.months * active.length / months.length - (tot[c.id] || 0)) / (active.length || 1);
+    for (const k of active) if (extra) { addSpend("credit", k, extra); note(c.id, extra); }
+  }
+  res.now = currentBudget(res);
+}
+
+// Budget d'aujourd'hui : la moyenne de la période, moins les revenus, charges et crédits terminés
+// (une aide qui n'est plus versée ne doit plus compter dans le reste à vivre ni dans le plan d'épargne).
+const isEnded = x => !!x.end && x.end < monthKey(new Date());
+// Mois type d'un revenu : le montant saisi, sinon la médiane (fonction commune plus haut) des mois où il est arrivé. Un salaire
+// versé en avance ou en retard (deux fois un mois, zéro le suivant) fausse la moyenne, pas la médiane.
+function currentBudget(res) {
+  const P = state.profile, mo = res.months, pf = res.pf || { detected: {}, manual: {}, byMonth: {} };
+  const avg = x => ((pf.detected[x.id] || 0) + (pf.manual[x.id] || 0)) / mo;
+  const endedIn = P.incomes.filter(isEnded).map(x => ({ x, v: avg(x) })).filter(e => e.v > 0);
+  const endedOut = [...P.charges, ...P.credits].filter(isEnded).map(x => ({ x, v: avg(x) })).filter(e => e.v > 0);
+  const typical = [];
+  for (const x of P.incomes) {
+    if (isEnded(x)) continue;
+    const vals = Object.values((pf.byMonth || {})[x.id] || {});
+    const t = x.manual > 0 ? x.manual : vals.length >= 3 ? median(vals) : 0;
+    if (t > 0 && Math.abs(t - avg(x)) > Math.max(20, 0.03 * t)) typical.push({ x, v: t, avg: avg(x) });
+  }
+  const inc = res.income / mo - endedIn.reduce((a, e) => a + e.v, 0) + typical.reduce((a, e) => a + e.v - e.avg, 0);
+  const spend = res.spend / mo - endedOut.reduce((a, e) => a + e.v, 0);
+  return { inc: Math.max(0, inc), spend: Math.max(0, spend), endedIn, endedOut, typical, changed: endedIn.length + endedOut.length + typical.length > 0 };
 }
 
 // Taux et plafonds officiels au 1er août 2026 (Livret A, LDDS, LEP) et fiscalité 2026.
@@ -1016,7 +1058,8 @@ const RATES = { livretA: 1.7, ldds: 1.7, lep: 2.5, plafondA: 22950, plafondLdds:
 
 function placementPlan(r) {
   const P = state.profile, mo = r.months;
-  const inc = r.income / mo, spend = r.spend / mo, surplus = inc - spend, ess = r.lv.ess / mo;
+  const N = r.now || { inc: r.income / mo, spend: r.spend / mo };
+  const inc = N.inc, spend = N.spend, surplus = inc - spend, ess = r.lv.ess / mo;
   const out = [];
   const step = (tone, title, html) => out.push({ tone, title, html });
   const cushionLow = Math.round(ess * 3 / 100) * 100, cushionHigh = Math.round(ess * 6 / 100) * 100;
@@ -1032,7 +1075,7 @@ function placementPlan(r) {
   }
   if (inc <= 0) { step("warn", "Revenus inconnus", "Indiquez vos revenus dans la section Revenus ci-dessus (ou importez le relevé où ils arrivent) pour obtenir un plan."); return { out, surplus, ess, cushionLow, cushionHigh }; }
   if (surplus <= 0) {
-    step("crit", "D'abord dégager un surplus", `Sur la période, vos dépenses (${eur.format(spend)} par mois) atteignent ou dépassent vos revenus (${eur.format(inc)}). Avant tout placement, l'objectif est de réduire les postes superflus : voir l'onglet Conseils. Placer de l'argent dont on aura besoin le mois suivant expose à des frais de découvert plus élevés que n'importe quel rendement.`);
+    step("crit", "D'abord dégager un surplus", `${r.now && r.now.changed ? "Pour un mois type aujourd'hui" : "Sur la période"}, vos dépenses (${eur.format(spend)} par mois) atteignent ou dépassent vos revenus (${eur.format(inc)}). Avant tout placement, l'objectif est de réduire les postes superflus : voir l'onglet Conseils. Placer de l'argent dont on aura besoin le mois suivant expose à des frais de découvert plus élevés que n'importe quel rendement.`);
     return { out, surplus, ess, cushionLow, cushionHigh };
   }
   // 1. Épargne de précaution
@@ -1056,6 +1099,11 @@ function vProfil(r) {
   const P = state.profile, mo = r.months || 1;
   const det = (r.pf && r.pf.detected) || {}, man = (r.pf && r.pf.manual) || {};
   const catOpts = sel => CATS.filter(c => !c.kind && c.id !== "autre").map(c => `<option value="${c.id}"${c.id === sel ? " selected" : ""}>${c.name}</option>`).join("");
+  const last = (r.pf && r.pf.last) || {};
+  const stale = x => !x.end && last[x.id] && r.to - last[x.id] > 40 * 864e5;
+  const endChip = (sec, x, i) => x.end
+    ? (isEnded(x) ? `<span class="chip info">Terminé : dernier mois ${monthName(x.end)}, n'est plus compté dans le budget d'aujourd'hui</span>` : `<span class="chip info">Se termine après ${monthName(x.end)}</span>`)
+    : stale(x) ? `<span class="chip warn">! Plus vu depuis le ${new Date(last[x.id]).toLocaleDateString("fr-FR")}</span><button class="btn small" type="button" data-pf-end="${sec}|${i}|${monthKey(new Date(last[x.id]))}">C'est terminé</button>` : "";
   const status = x => det[x.id] ? `<span class="chip good">✓ Trouvé dans le relevé : ${eur.format(det[x.id] / mo)} / mois</span>` : (x.match ? `<span class="chip warn">! Pas trouvé dans le relevé</span>` : "");
   const input = (sec, i, f, v, ph, type = "text", extra = "") => `<input id="pf-${sec}-${i}-${f}" data-pf="${sec}|${i}|${f}" type="${type}" value="${v == null ? "" : esc(v)}" placeholder="${ph}"${extra}>`;
   const row = (sec, x, i) => `<div class="pf-row">
@@ -1065,10 +1113,11 @@ function vProfil(r) {
         ${sec === "credits"
           ? `<label for="pf-${sec}-${i}-monthly">Mensualité (€)${input(sec, i, "monthly", x.monthly, "0", "number", ' inputmode="decimal" min="0" step="1"')}</label>
              <label for="pf-${sec}-${i}-end">Dernière échéance${input(sec, i, "end", x.end, "", "month")}</label>`
-          : `<label for="pf-${sec}-${i}-manual">Montant réel par mois (€)${input(sec, i, "manual", x.manual, "si différent du relevé", "number", ' inputmode="decimal" min="0" step="1"')}</label>`}
+          : `<label for="pf-${sec}-${i}-manual">Montant réel par mois (€)${input(sec, i, "manual", x.manual, "si différent du relevé", "number", ' inputmode="decimal" min="0" step="1"')}</label>
+             <label for="pf-${sec}-${i}-end">${sec === "incomes" ? "Dernier mois perçu" : "Dernier mois payé"}${input(sec, i, "end", x.end, "", "month")}</label>`}
         ${sec === "charges" ? `<label for="pf-${sec}-${i}-cat">Catégorie<select id="pf-${sec}-${i}-cat" data-pf="${sec}|${i}|cat">${catOpts(x.cat || "foyer")}</select></label>` : ""}
       </div>
-      <div class="pf-foot">${status(x)}${man[x.id] ? `<span class="chip info">+ ${eur.format(man[x.id] / mo)} / mois ajoutés d'après votre montant</span>` : ""}<button class="btn ghost small" type="button" data-pf-del="${sec}|${i}">Supprimer</button></div>
+      <div class="pf-foot">${status(x)}${endChip(sec, x, i)}${man[x.id] ? `<span class="chip info">+ ${eur.format(man[x.id] / mo)} / mois ajoutés d'après votre montant</span>` : ""}<button class="btn ghost small" type="button" data-pf-del="${sec}|${i}">Supprimer</button></div>
     </div>`;
   const section = (sec, title, hint, addTxt) => `<section class="panel" aria-labelledby="h-pf-${sec}">
     <div><span class="eyebrow">Mon budget</span><h2 id="h-pf-${sec}">${title}</h2></div>
@@ -1079,14 +1128,14 @@ function vProfil(r) {
   </section>`;
   const plan = placementPlan(r);
   const icon = { crit: "!", warn: "!", info: "i", good: "✓" };
-  return `${section("incomes", "Revenus", "Vos sources de revenus. Si elles apparaissent dans le relevé, l'appli les additionne automatiquement. Si une partie arrive sur une autre banque, indiquez le montant réel par mois : l'appli ajoute la différence avec ce qu'elle trouve dans le relevé.", "Ajouter un revenu")}
+  return `${section("incomes", "Revenus", "Vos sources de revenus. Si elles apparaissent dans le relevé, l'appli les additionne automatiquement. Si un revenu s'arrête (fin d'une aide, d'un contrat), indiquez le dernier mois perçu : il reste dans l'historique mais ne compte plus dans le budget d'aujourd'hui ni dans le plan de placements. Si une partie arrive sur une autre banque, indiquez le montant réel par mois : l'appli ajoute la différence entre ce montant et la moyenne qu'elle trouve dans le relevé. Laissez vide si tout arrive sur ce compte.", "Ajouter un revenu")}
   ${section("charges", "Charges fixes", "Les sorties les plus importantes : loyer, électricité, nourriture… Indiquez le nom qui apparaît dans le relevé (bénéficiaire du virement), et le montant réel par mois s'il est payé en partie ou en totalité ailleurs.", "Ajouter une charge")}
   ${section("credits", "Crédits", "Chaque crédit en cours, avec sa mensualité et la date de sa dernière échéance : l'appli calcule ce qu'il reste à payer et l'argent libéré ensuite.", "Ajouter un crédit")}
   <section class="panel" aria-labelledby="h-plan">
     <div><span class="eyebrow">Placements</span><h2 id="h-plan">Où placer votre argent</h2></div>
     <div class="kpis">
-      <div class="kpi"><span class="v">${eur.format(r.income / mo)}</span><span class="l">Revenus par mois</span></div>
-      <div class="kpi"><span class="v">${eur.format(r.spend / mo)}</span><span class="l">Dépenses par mois</span></div>
+      <div class="kpi"><span class="v">${eur.format(r.now ? r.now.inc : r.income / mo)}</span><span class="l">Revenus par mois${r.now && r.now.changed ? " (mois type)" : ""}</span></div>
+      <div class="kpi"><span class="v">${eur.format(r.now ? r.now.spend : r.spend / mo)}</span><span class="l">Dépenses par mois${r.now && r.now.changed ? " (mois type)" : ""}</span></div>
       <div class="kpi"><span class="v" style="color:${plan.surplus < 0 ? "var(--crit)" : "var(--ink)"}">${plan.surplus < 0 ? "−" : ""}${eur.format(Math.abs(plan.surplus))}</span><span class="l">Surplus mensuel</span></div>
       <div class="kpi"><label class="l" for="pf-savings">Épargne disponible aujourd'hui (€)</label><input id="pf-savings" type="number" inputmode="decimal" min="0" step="10" value="${P.savingsNow == null ? "" : P.savingsNow}" placeholder="0" style="font:600 16px var(--body);max-width:140px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)"></div>
     </div>
@@ -1184,15 +1233,17 @@ function detectRecurring(txs) {
 function buildAdvice(r, txs, lvl) {
   const A = [], mo = r.months;
   const monthly = id => (r.byCat[id] ? r.byCat[id].total / mo : 0);
-  const inc = r.income / mo, spend = r.spend / mo;
+  const N = r.now || { inc: r.income / mo, spend: r.spend / mo, changed: false };
+  const inc = N.inc, spend = N.spend, per = N.changed ? "Pour un mois type aujourd'hui" : "Sur la période";
   const covered = new Set();
   const add = (tone, title, text, saving, cat, pin, src) => { if (cat && saving > 0) covered.add(cat); A.push({ tone, title, text, src: src || "", pin: !!pin, saving: Math.max(0, Math.round(saving || 0)) }); };
   savingsAdvice(r, add);
   if (r.onlySavings) return A;
+  for (const { x, v } of N.endedIn || []) add("info", `${x.label || "Revenu"} : dernier versement en ${monthName(x.end)}`, `Ce revenu apportait en moyenne ${eur.format(v)} par mois sur la période. Sans lui, vos revenus sont d'environ <b>${eur.format(inc)}</b> par mois pour ${eur.format(spend)} de dépenses, soit ${inc - spend < 0 ? `un manque de <b>${eur.format(spend - inc)}</b>` : `un reste de <b>${eur.format(inc - spend)}</b>`} par mois. Les conseils ci-dessous et le plan de « Mon budget » tiennent compte de ce changement. Si la fin n'était pas prévue, vérifiez sur votre espace en ligne s'il manque un justificatif ou une déclaration trimestrielle : un droit suspendu peut parfois être rétabli.`, 0, null, true);
 
   if (inc > 0) {
     const rate = (inc - spend) / inc;
-    if (rate < 0) add("crit", "Vous dépensez plus que vous ne gagnez", `Sur la période, vos dépenses dépassent vos revenus de ${eur.format(spend - inc)} par mois. Commencez par les postes « Superflu » ci-dessous : ce sont les plus faciles à réduire sans toucher à l'essentiel.`, 0, null, true);
+    if (rate < 0) add("crit", "Vous dépensez plus que vous ne gagnez", `${per}, vos dépenses dépassent vos revenus de ${eur.format(spend - inc)} par mois. Commencez par les postes « Superflu » ci-dessous : ce sont les plus faciles à réduire sans toucher à l'essentiel.`, 0, null, true);
     else if (rate < 0.1) add("warn", "Votre marge est faible", `Il vous reste environ ${pct(rate)} de vos revenus en fin de mois (${eur.format(inc - spend)}). Viser 10 à 20 % permet d'absorber un imprévu sans découvert.`, 0, null, true);
     else if (rate >= 0.2) add("good", "Bonne capacité d'épargne", `Il vous reste environ ${pct(rate)} de vos revenus chaque mois (${eur.format(inc - spend)}). Si ce n'est pas déjà fait, programmez un virement automatique vers un livret le jour de la paie.`, 0, null, true);
     const envies = (r.lv.uti + r.lv.sup) / mo;
@@ -1346,7 +1397,7 @@ function revolutAdvice(r, txs, add) {
   if (card.length >= 20 && round > 0) A("good", "Épargner avec les arrondis Revolut", `Avec les arrondis, chaque paiement par carte est arrondi à l'euro supérieur et la différence part dans un coffre d'épargne. Sur vos ${card.length} paiements par carte de la période, cela aurait mis de côté ${eur.format(round)}, soit environ ${eur.format(round / r.months * 12)} par an, sans y penser. À activer dans l'appli, sur un coffre ou le compte d'épargne à 2,25 %.`, 0);
 
   // Virement programmé vers un coffre
-  const inc = r.income / r.months, spend = r.spend / r.months;
+  const inc = r.now ? r.now.inc : r.income / r.months, spend = r.now ? r.now.spend : r.spend / r.months;
   if (inc > 0 && (inc - spend) / inc < 0.1) A("info", "Virement programmé vers un coffre", `Revolut permet de programmer un virement automatique vers un coffre ou le compte d'épargne le jour où arrive votre revenu. Même 20 € par mois font 240 € par an, rémunérés à 2,25 %, avant que l'argent ne soit dépensé.`, 0);
 
   // Blocage des jeux d'argent
@@ -1609,6 +1660,18 @@ function askPanel() {
   </section>`;
 }
 
+// Encadré « Un mois type aujourd'hui » : ce qui change par rapport à la moyenne de la période.
+function nowBox(r) {
+  const N = r.now; if (!N || !N.changed) return "";
+  const why = [
+    ...N.endedIn.map(e => `${esc(e.x.label || "un revenu")} n'est plus versé (−${eur.format(e.v)})`),
+    ...N.endedOut.map(e => `${esc(e.x.label || "une charge")} est terminé (−${eur.format(e.v)} de dépenses)`),
+    ...N.typical.map(e => `${esc(e.x.label || "un revenu")} compté pour un mois normal, ${eur.format(e.v)}${e.v > e.avg ? " (des versements décalés d'un mois à l'autre font baisser la moyenne)" : ""}`)
+  ];
+  const left = N.inc - N.spend;
+  return `<div class="now-box" role="note"><b>Un mois type aujourd'hui</b> : revenus <b class="num">${eur.format(N.inc)}</b>, dépenses <b class="num">${eur.format(N.spend)}</b>, reste <b class="num" style="color:${left < 0 ? "var(--crit)" : "var(--ink)"}">${left < 0 ? "−" : ""}${eur.format(Math.abs(left))}</b> par mois. Ce qui change par rapport à la moyenne ci-dessus : ${why.join(" ; ")}. Les conseils et le plan de placements partent de ces chiffres.</div>`;
+}
+
 function vSynthese(r) {
   if (r.onlySavings) return savingsPanel(r, true);
   const ask = askPanel();
@@ -1631,6 +1694,7 @@ function vSynthese(r) {
       <div class="kpi"><span class="v" style="color:${left < 0 ? "var(--crit)" : "var(--ink)"}">${left < 0 ? "−" : ""}${eur.format(Math.abs(left))}</span><span class="l">Reste en fin de mois</span></div>
       <div class="kpi"><span class="v">${eur.format(r.savings / mo)}</span><span class="l">Mis de côté (virements épargne)</span></div>
     </div>
+    ${nowBox(r)}
     ${r.otherIn ? `<p class="small muted">Autres entrées d'argent, non comptées comme revenus (réglage dans « Mon budget ») : <b class="num">${eur.format(r.otherIn / mo)}</b> par mois.</p>` : ""}
     ${r.pro ? `<p class="small muted">Dépenses classées « Activité pro », hors analyse : <b class="num">${eur.format(r.pro / mo)}</b> par mois.</p>` : ""}
     <div class="split" role="img" aria-label="Répartition des dépenses : essentiel ${pct(r.lv.ess / lvTot)}, utile ${pct(r.lv.uti / lvTot)}, superflu ${pct(r.lv.sup / lvTot)}">
@@ -1854,7 +1918,9 @@ view.addEventListener("click", e => {
   if (o) { if (state.tab !== "depenses") state.tab = "depenses"; state.openCat = state.openCat === o.dataset.open ? null : o.dataset.open; render(); }
   if (e.target.id === "show-all") { state.showAll = true; render(); }
   const add = e.target.closest("[data-pf-add]");
-  if (add) { const sec = add.dataset.pfAdd; state.profile[sec].push(sec === "charges" ? { id: newId(), label: "", match: "", manual: null, cat: "foyer" } : sec === "credits" ? { id: newId(), label: "", match: "", monthly: null, end: "" } : { id: newId(), label: "", match: "", manual: null }); saveProfile(); const y = window.scrollY; recompute(); window.scrollTo({ top: y }); return; }
+  if (add) { const sec = add.dataset.pfAdd; state.profile[sec].push(sec === "charges" ? { id: newId(), label: "", match: "", manual: null, end: "", cat: "foyer" } : sec === "credits" ? { id: newId(), label: "", match: "", monthly: null, end: "" } : { id: newId(), label: "", match: "", manual: null, end: "" }); saveProfile(); const y = window.scrollY; recompute(); window.scrollTo({ top: y }); return; }
+  const endB = e.target.closest("[data-pf-end]");
+  if (endB) { const [sec, i, k] = endB.dataset.pfEnd.split("|"); state.profile[sec][+i].end = k; saveProfile(); const y = window.scrollY; recompute(); window.scrollTo({ top: y }); return; }
   const del = e.target.closest("[data-pf-del]");
   if (del) { const [sec, i] = del.dataset.pfDel.split("|"); state.profile[sec].splice(+i, 1); saveProfile(); const y = window.scrollY; recompute(); window.scrollTo({ top: y }); return; }
   const ask = e.target.closest("[data-ask]");

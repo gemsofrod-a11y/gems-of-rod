@@ -58,8 +58,16 @@ téléchargé une fois puis gardé en cache par le service worker.
 - Onglet « Mon budget » : revenus, charges fixes et crédits saisis par
   l'utilisateur. Chaque ligne a un « nom dans le relevé » (reconnu
   automatiquement, puis cumulé) et/ou un « montant réel par mois » : l'appli
-  ajoute chaque mois la différence avec ce qu'elle trouve dans le relevé
-  (salaire versé en partie ailleurs, loyer payé depuis une autre banque).
+  ajoute la différence entre ce montant et la moyenne qu'elle trouve dans le
+  relevé (salaire versé en partie ailleurs, loyer payé depuis une autre
+  banque). Un nom classé par le fichier de classement reste reconnu par le
+  profil. Revenus et charges ont un « dernier mois » : une aide qui s'arrête
+  (ex. la CAF) reste dans l'historique mais ne compte plus dans « un mois type
+  aujourd'hui » (Synthèse), les conseils ni le plan de placements. Une ligne
+  qui n'apparaît plus depuis plus de 40 jours est signalée, avec un bouton
+  « C'est terminé ». Le mois type compte chaque revenu encore actif pour sa
+  médiane mensuelle (un salaire versé en avance ou en retard fausse la
+  moyenne, pas la médiane).
   Crédits : mensualité et dernière échéance, avec reste à payer et argent
   libéré ensuite. Option « seules ces sources comptent comme revenus ».
   Plan « Où placer votre argent » : épargne de précaution (3 à 6 mois de
