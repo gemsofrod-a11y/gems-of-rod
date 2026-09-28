@@ -32,6 +32,13 @@ téléchargé une fois puis gardé en cache par le service worker.
   modifiable. Les virements d'épargne et entre comptes sont exclus des dépenses.
 - Reclassement d'une opération : tous les paiements du même commerçant suivent,
   et la correction est mémorisée dans le navigateur.
+- Budgets mensuels par catégorie (onglet Budgets) : plafond en € par mois,
+  barre de progression et alertes à 80 %, en cas de dépassement, et quand le
+  rythme du mois en cours mène à un dépassement (projection de fin de mois).
+  Pastille du nombre d'alertes sur l'onglet et encart en tête de la Synthèse.
+  « Proposer des budgets » part de la moyenne mensuelle (−20 % pour le
+  superflu). Choix du mois à examiner. Les alertes sont affichées dans l'appli,
+  pas en notification du téléphone (il faudrait un serveur).
 - Synthèse mensuelle, règle 50/30/20, graphique mois par mois, détection des
   abonnements et prélèvements récurrents.
 - Conseils : livraison de repas, restaurants, streaming en doublon, frais

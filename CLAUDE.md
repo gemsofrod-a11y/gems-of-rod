@@ -377,5 +377,7 @@ automatique des colonnes), compte perso uniquement. Ne pas y ajouter d'appel
 réseau portant sur les opérations sans demande explicite. Relevés PDF
 acceptés depuis le 28/09/2026 (demande de Sébastien) : lus dans la page par
 pdf.js (seule bibliothèque externe, chargée depuis cdnjs et mise en cache
-pour le hors-ligne — elle ne reçoit aucune donnée). Voir
+pour le hors-ligne — elle ne reçoit aucune donnée). Budgets mensuels par
+catégorie avec alertes ajoutés le 28/09/2026 (alertes dans l'appli
+uniquement, budgets gardés dans le navigateur). Voir
 `finances/README.md`.
