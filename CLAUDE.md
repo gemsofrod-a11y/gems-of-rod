@@ -383,7 +383,9 @@ uniquement, budgets gardés dans le navigateur). Même jour, à partir d'un rele
 d'épargne Revolut fourni par Sébastien : historique cumulé sans doublon (un
 relevé retéléchargé met l'appli à jour directement), relevés de compte
 d'épargne, partage Android vers l'appli. Fichiers Excel `.xlsx` (export Revolut
-complet) lus par un lecteur intégré, sans bibliothèque externe. Ne jamais versionner ni publier un
+complet) lus par un lecteur intégré, sans bibliothèque externe. Les commerces
+locaux de Sébastien se classent par un fichier `.json` de classement qu'il
+importe dans l'appli (jamais dans le code : le dépôt est public). Ne jamais versionner ni publier un
 relevé réel de Sébastien (nom, adresse, opérations) : tester avec des PDF
 fabriqués. Voir
 `finances/README.md`.

@@ -42,6 +42,13 @@ téléchargé une fois puis gardé en cache par le service worker.
   peut pas deviner (soi-même depuis une autre banque, salaire, proche), une
   question posée une fois ; la réponse vaut pour ce nom et ce sens (entrée ou
   sortie), y compris dans les prochains relevés.
+- Fichier de classement (`.json`, importé par le même bouton) :
+  `{"type": "budget-clair-classement", "overrides": {"NOM COMMERCANT": "categorie"}}`.
+  Il complète les choix de l'utilisateur sans jamais les remplacer ; un nom
+  suivi de `|+` ou `|-` ne vaut que pour les entrées ou les sorties d'argent.
+  Sert à classer d'un coup des commerces locaux sans les écrire dans le code.
+- Catégorie « Activité pro » : dépenses exclues de l'analyse perso, montant
+  affiché à part dans la Synthèse.
 - Historique cumulé : chaque relevé importé (CSV ou PDF) s'ajoute aux
   précédents. Une opération déjà connue (même date, montant, libellé et
   compte) n'est pas recomptée : réimporter un relevé mis à jour n'ajoute que

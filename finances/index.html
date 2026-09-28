@@ -260,7 +260,7 @@ footer { font-size: 12px; color: var(--muted); display: flex; flex-direction: co
     <p class="small muted" id="share-hint" hidden>Appli installée sur Android : dans l'appli de votre banque, touchez « Partager » sur le relevé puis choisissez Budget Clair. Il s'importe directement.</p>
     <div class="import-row">
       <label class="btn primary" for="file">Choisir un relevé (Excel, CSV ou PDF)</label>
-      <input id="file" type="file" accept=".csv,.txt,.pdf,.xlsx,.xlsm,text/csv,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel">
+      <input id="file" type="file" accept=".csv,.txt,.pdf,.xlsx,.xlsm,.json,application/json,text/csv,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel">
       <button class="btn ghost" id="load-sample" type="button">Voir l'exemple</button>
     </div>
     <div id="status" class="banner" role="status"></div>
@@ -318,34 +318,35 @@ const CATS = [
   { id: "pret", name: "Prêt reçu", kind: "internal", onlyPositive: true, re: /\b(LOAN|PERSONAL LOAN|PRET PERSONNEL|DEBLOCAGE (DU )?PRET|DEBLOCAGE CREDIT)\b/ },
   { id: "interne", name: "Virements entre mes comptes", kind: "internal", re: /\b(TOP ?UP|RECHARGE (REVOLUT|LYDIA)|VIR(EMENT)? (INTERNE|DE COMPTE A COMPTE|ENTRE MES COMPTES)|MOVE TO POCKET|FROM POCKET|EXCHANGE(D)? TO|CHANGE DE DEVISE)\b/ },
   { id: "interets", name: "Intérêts d'épargne", kind: "income", onlyPositive: true, re: /\b(INTERETS? (NETS? |BRUTS? )?(VERSES?|CREDITEURS?|ACQUIS)|INTEREST (PAID|EARNED)|INTERETS? (DU |DE )?LIVRET)\b/ },
-  { id: "epargne", name: "Épargne", kind: "savings", re: /\b(LIVRET|LDDS|LDD|LEP|PEL|CEL|EPARGNE|ASSURANCE VIE|PEA|TO SAVINGS|FROM SAVINGS|SAVINGS VAULT|VAULT|COFFRE|TRADE REPUBLIC|BOURSE DIRECT|DEGIRO|YOMONI|NALO|LINXEA|POCKET|POCKETS|COMPTE D EPARGNE|REVOLUT FRANCE SUCCURSALE|DIGITAL ASSETS|ROBO PORTFOLIO|CRYPTO|BITPANDA|COINBASE|BINANCE|KRAKEN)\b/ },
+  { id: "epargne", name: "Épargne", kind: "savings", re: /\b(LIVRET|LDDS|LDD|LEP|PEL|CEL|EPARGNE|ASSURANCE VIE|PEA|TO SAVINGS|FROM SAVINGS|SAVINGS VAULT|VAULT|COFFRE|TRADE REPUBLIC|BOURSE DIRECT|DEGIRO|YOMONI|NALO|LINXEA|POCKET|POCKETS|COMPTE D EPARGNE|REVOLUT FRANCE SUCCURSALE|DIGITAL ASSETS|ROBO PORTFOLIO|CRYPTO|BITPANDA|COINBASE|BINANCE|KRAKEN|KUCOIN|ETORO|AVATRADE)\b/ },
   { id: "revenus", name: "Revenus", kind: "income", onlyPositive: true, re: /\b(SALAIRE|PAIE|PAYE|REMUNERATION|CAF|ALLOCATION|POLE EMPLOI|FRANCE TRAVAIL|CPAM|AMELI|CARSAT|RETRAITE|PENSION|AGIRC|PRIME|INDEMNITE|DGFIP REMB|REMBOURSEMENT IMPOT)\b/ },
-  { id: "credit", name: "Remboursement de crédit", level: "ess", onlyNegative: true, re: /\b(LOAN PAYMENT|LOAN REPAYMENT|REPAYMENT|CREDIT CONSO|COFIDIS|CETELEM|SOFINCO|FLOA|ONEY|YOUNITED|FRANFINANCE|KLARNA|ALMA)\b/ },
+  { id: "credit", name: "Remboursement de crédit", level: "ess", onlyNegative: true, re: /\b(LOAN PAYMENT|LOAN REPAYMENT|REPAYMENT|CREDIT CONSO|COFIDIS|CETELEM|SOFINCO|FLOA|ONEY|YOUNITED|FRANFINANCE|KLARNA|ALMA|PAIEMENT EN 4X|PAIEMENT EN 3X)\b/ },
   { id: "logement", name: "Logement", level: "ess", re: /\b(LOYER|FONCIA|NEXITY|CITYA|SYNDIC|ORPI|CENTURY 21|LAFORET|HABITAT|OPH|HLM|ECHEANCE PRET|PRET IMMO|CREDIT IMMO|REMBOURSEMENT PRET)\b/ },
   { id: "energie", name: "Énergie & eau", level: "ess", re: /\b(EDF|ENGIE|TOTAL ?ENERGIES (ELEC|GAZ|CLIENTS|ELECTRICITE)|EKWATEUR|ENI GAS|OHM ENERGIE|MINT ENERGIE|PLANETE OUI|ENERCOOP|VATTENFALL|GRDF|VEOLIA|SUEZ|SAUR|EAU DE)\b/ },
   { id: "impots", name: "Impôts & taxes", level: "ess", re: /\b(IMPOT|IMPOTS|DGFIP|TRESOR PUBLIC|FINANCES PUBLIQUES|TAXE|ANTAI|AMENDE)\b/ },
   { id: "assurances", name: "Assurances & mutuelle", level: "ess", re: /\b(ASSURANCE|ASSURANCES|MAIF|MACIF|MATMUT|AXA|ALLIANZ|GMF|MMA|GROUPAMA|MAAF|MUTUELLE|HARMONIE|MGEN|ALAN|LUKO|GENERALI|APRIL|SWISSLIFE|LEOCARE|DIRECT ASSURANCE|OLIVIER ASSURANCE|AG2R|MALAKOFF)\b/ },
-  { id: "sante", name: "Santé", level: "ess", re: /\b(PHARMA|PHARMACIE|DOCTOLIB|MEDECIN|DOCTEUR|DR|DENTISTE|DENTAIRE|KINE|OSTEO|OPTIC|OPTIQUE|OPTICIEN|KRYS|AFFLELOU|LABO|LABORATOIRE|HOPITAL|CLINIQUE|RADIOLOGIE|ORTHO)\b/ },
+  { id: "sante", name: "Santé", level: "ess", re: /\b(PHARMA|PHARMACIE|DOCTOLIB|MEDECIN|DOCTEUR|DR|DENTISTE|DENTAIRE|KINE|OSTEO|OPTIC|OPTIQUE|OPTICIEN|KRYS|AFFLELOU|LABO|LABORATOIRE|HOPITAL|CLINIQUE|RADIOLOGIE|ORTHO|APOTHEKE)\b/ },
   { id: "education", name: "Enfants & éducation", level: "ess", re: /\b(ECOLE|CANTINE|CRECHE|NOUNOU|PAJEMPLOI|PERISCOLAIRE|UNIVERSITE|COLLEGE|LYCEE|CENTRE DE LOISIRS)\b/ },
   { id: "livraison", name: "Livraison de repas", level: "sup", re: /\b(UBER ?EATS|DELIVEROO|JUST ?EAT|FRICHTI|GLOVO|STUART FOOD|LIEFERANDO|TAKEAWAY|WOLT)\b/ },
-  { id: "restaurants", name: "Restaurants & cafés", level: "sup", re: /\b(RESTAU|RESTAURANT|BRASSERIE|BISTRO|BISTROT|CAFE|BAR|PIZZA|PIZZERIA|SUSHI|BURGER|MCDO|MC DONALD|MCDONALD|MCDONALDS|BURGER KING|KFC|QUICK|SUBWAY|STARBUCKS|FIVE GUYS|TACOS|O TACOS|DOMINOS|KEBAB|CREPERIE|FLUNCH|BUFFALO GRILL|HIPPOPOTAMUS|COURTEPAILLE|DEL ARTE|BRIOCHE DOREE|COLUMBUS|PAUL|POKE|TRAITEUR|IMBISS|DONER|DOENER|GASTSTATTE|BURGERME)\b/ },
-  { id: "courses", name: "Courses alimentaires", level: "ess", re: /\b(CARREFOUR|LECLERC|AUCHAN|INTERMARCHE|LIDL|ALDI|MONOPRIX|FRANPRIX|CASINO|SUPER U|HYPER U|U EXPRESS|SYSTEME U|NETTO|LEADER PRICE|GRAND FRAIS|PICARD|BIOCOOP|NATURALIA|CORA|MATCH|SPAR|G20|PROXI|COLRUYT|LA VIE CLAIRE|BOULANGERIE|BOULANGER PATISSIER|BOUCHERIE|PRIMEUR|FROMAGERIE|MARCHE|EPICERIE|AMAZON FRESH|REWE|EDEKA|PENNY|KAUFLAND|NORMA|NETTO MARKEN|DM DROGERIE|ROSSMANN|MARIE BLACHERE|BIO C BON|SUPERMARCHE|SUPERMARKT|INTERSPAR|GLOBUS|BACKEREI|BAECKEREI|BACKHAUS|MIGROS|COOP)\b/ },
-  { id: "transport", name: "Transport & voiture", level: "ess", re: /\b(SNCF|OUIGO|TGV|TER|RATP|NAVIGO|TCL|TISSEO|RTM|TAN|STAR|BLABLACAR|UBER|BOLT|HEETCH|G7|TAXI|FREE NOW|TOTAL|TOTALENERGIES|ESSO|SHELL|BP|AVIA|STATION|CARBURANT|PEAGE|AUTOROUTE|VINCI|SANEF|APRR|PARKING|INDIGO|SAEMES|LIME|DOTT|TIER|NORAUTO|FEU VERT|SPEEDY|MIDAS|CONTROLE TECHNIQUE|GARAGE|TANKSTELLE|ARAL|JET|AGIP|Q8|OMV|DEUTSCHE BAHN|DB BAHN|FLIXBUS|PARKHAUS)\b/ },
-  { id: "telecom", name: "Téléphone & internet", level: "ess", re: /\b(ORANGE(?! BLEUE)|SOSH|SFR|RED BY SFR|BOUYGUES|B YOU|FREE MOBILE|FREE TELECOM|FREEBOX|LA POSTE MOBILE|PRIXTEL|CORIOLIS|SYMA|NRJ MOBILE|LEBARA|LYCAMOBILE)\b/ },
-  { id: "jeuxvideo", name: "Jeux vidéo & achats in-app", level: "sup", re: /\b(TIKTOK|STEAM|STEAM MACHINE|STEAMPOWERED|XBOX|MICROSOFT XBOX|PLAYSTATION|PSN|NINTENDO|EPIC GAMES|ROBLOX|SUPERCELL|GOOGLE PLAY|RIOT|RIOT GAMES|BLIZZARD|UBISOFT|EA COM|ELECTRONIC ARTS|INSTANT GAMING|G2A|ENEBA|KING COM|MOONACTIVE)\b/ },
-  { id: "abonnements", name: "Abonnements numériques", level: "sup", re: /\b(NETFLIX|SPOTIFY|DEEZER|DISNEY|DISNEY PLUS|PRIME VIDEO|AMAZON PRIME|CANAL|CANALPLUS|MYCANAL|APPLE COM BILL|APPLE COM|ITUNES|YOUTUBE|YOUTUBE PREMIUM|HBO|MAX COM|PARAMOUNT|CRUNCHYROLL|DAZN|BEIN|MOLOTOV|OCS|AUDIBLE|KINDLE|ICLOUD|DROPBOX|CHATGPT|OPENAI|MICROSOFT|PATREON|TIDAL|QOBUZ|ADOBE|NORDVPN|TINDER|MEETIC|BUMBLE)\b/ },
-  { id: "sport", name: "Sport & bien-être", level: "uti", re: /\b(BASIC FIT|FITNESS PARK|KEEP COOL|ON AIR|NEONESS|L ORANGE BLEUE|SALLE DE SPORT|PISCINE|CLUB|YOGA|COIFFEUR|COIFFURE|BARBIER|INSTITUT|SPA)\b/ },
+  { id: "restaurants", name: "Restaurants & cafés", level: "sup", re: /\b(RESTAU|RESTAURANT|BRASSERIE|BISTRO|BISTROT|CAFE|BAR|PIZZA|PIZZERIA|SUSHI|BURGER|MCDO|MC DONALD|MCDONALD|MCDONALDS|BURGER KING|KFC|QUICK|SUBWAY|STARBUCKS|FIVE GUYS|TACOS|O TACOS|DOMINOS|KEBAB|CREPERIE|FLUNCH|BUFFALO GRILL|HIPPOPOTAMUS|COURTEPAILLE|DEL ARTE|BRIOCHE DOREE|COLUMBUS|PAUL|POKE|TRAITEUR|IMBISS|DONER|DOENER|GASTSTATTE|BURGERME|NEWREST|NEW REST|SELECTA|SODEXO|GRILL|FRISCHGRILL|TRATTORIA|PUB|EISCAFE|GASTRO|THAI|STREET FOOD|KEBABH)\b/ },
+  { id: "courses", name: "Courses alimentaires", level: "ess", re: /\b(CARREFOUR|LECLERC|AUCHAN|INTERMARCHE|LIDL|ALDI|MONOPRIX|FRANPRIX|CASINO|SUPER U|HYPER U|U EXPRESS|SYSTEME U|NETTO|LEADER PRICE|GRAND FRAIS|PICARD|BIOCOOP|NATURALIA|CORA|MATCH|SPAR|G20|PROXI|COLRUYT|LA VIE CLAIRE|BOULANGERIE|BOULANGER PATISSIER|BOUCHERIE|PRIMEUR|FROMAGERIE|MARCHE|EPICERIE|AMAZON FRESH|REWE|EDEKA|PENNY|KAUFLAND|NORMA|NETTO MARKEN|DM DROGERIE|ROSSMANN|MARIE BLACHERE|BIO C BON|SUPERMARCHE|SUPERMARKT|INTERSPAR|GLOBUS|BACKEREI|BAECKEREI|BACKHAUS|MIGROS|COOP|DELHAIZE|NAHKAUF|MAGASIN U|KAFFEKAPSLEN|TOO GOOD TO GO|LINDT|ASIA MARKT|CREMERIE|HUITRES)\b/ },
+  { id: "transport", name: "Transport & voiture", level: "ess", re: /\b(SNCF|OUIGO|TGV|TER|RATP|NAVIGO|TCL|TISSEO|RTM|TAN|STAR|BLABLACAR|UBER|BOLT|HEETCH|G7|TAXI|FREE NOW|TOTAL|TOTALENERGIES|ESSO|SHELL|BP|AVIA|STATION|CARBURANT|PEAGE|AUTOROUTE|VINCI|SANEF|APRR|PARKING|INDIGO|SAEMES|LIME|DOTT|TIER|NORAUTO|FEU VERT|SPEEDY|MIDAS|CONTROLE TECHNIQUE|GARAGE|TANKSTELLE|ARAL|JET|AGIP|Q8|OMV|DEUTSCHE BAHN|DB BAHN|FLIXBUS|PARKHAUS|ENI|GULF|ORLEN|EASYPARK|AUTO BILAN|LAVAGE AUTO|CFL|TRANSPORTS BORDEAUX|BACS DE GIRONDE|AEROPORT|STATIONNEMENT)\b/ },
+  { id: "telecom", name: "Téléphone & internet", level: "ess", re: /\b(ORANGE(?! BLEUE)|SOSH|SFR|RED BY SFR|BOUYGUES|B YOU|FREE MOBILE|FREE TELECOM|FREEBOX|LA POSTE MOBILE|PRIXTEL|CORIOLIS|SYMA|NRJ MOBILE|LEBARA|LYCAMOBILE|O2)\b/ },
+  { id: "jeuxvideo", name: "Jeux vidéo & achats in-app", level: "sup", re: /\b(TIKTOK|STEAM|STEAM MACHINE|STEAMPOWERED|XBOX|MICROSOFT XBOX|PLAYSTATION|PSN|NINTENDO|EPIC GAMES|ROBLOX|SUPERCELL|GOOGLE PLAY|RIOT|RIOT GAMES|BLIZZARD|UBISOFT|EA COM|ELECTRONIC ARTS|INSTANT GAMING|G2A|ENEBA|KING COM|MOONACTIVE|BYTEDANCE)\b/ },
+  { id: "abonnements", name: "Abonnements numériques", level: "sup", re: /\b(NETFLIX|SPOTIFY|DEEZER|DISNEY|DISNEY PLUS|PRIME VIDEO|AMAZON PRIME|CANAL|CANALPLUS|MYCANAL|APPLE COM BILL|APPLE COM|ITUNES|YOUTUBE|YOUTUBE PREMIUM|HBO|MAX COM|PARAMOUNT|CRUNCHYROLL|DAZN|BEIN|MOLOTOV|OCS|AUDIBLE|KINDLE|ICLOUD|DROPBOX|CHATGPT|OPENAI|MICROSOFT|PATREON|TIDAL|QOBUZ|ADOBE|NORDVPN|TINDER|MEETIC|BUMBLE|ANTHROPIC|CLAUDE AI|PADDLE|CANVA)\b/ },
+  { id: "sport", name: "Sport & bien-être", level: "uti", re: /\b(BASIC FIT|FITNESS PARK|KEEP COOL|ON AIR|NEONESS|L ORANGE BLEUE|SALLE DE SPORT|PISCINE|CLUB|YOGA|COIFFEUR|COIFFURE|BARBIER|INSTITUT|SPA|PLANITY|BARBER)\b/ },
   { id: "maison", name: "Maison & bricolage", level: "uti", re: /\b(IKEA|LEROY MERLIN|CASTORAMA|BRICO|BRICOMARCHE|BRICORAMA|MR BRICOLAGE|CONFORAMA|BUT|MAISONS DU MONDE|DARTY|BOULANGER|BHV|TRUFFAUT|JARDILAND)\b/ },
   { id: "animaux", name: "Animaux", level: "uti", re: /\b(VETERINAIRE|VETO|ANIMALERIE|ZOOPLUS|MAXI ZOO|MEDOR)\b/ },
   { id: "jeux", name: "Jeux d'argent", level: "sup", re: /\b(FDJ|FRANCAISE DES JEUX|PMU|BETCLIC|WINAMAX|UNIBET|PARIONS|ZEBET|PARIONSSPORT|CASINO BARRIERE|POKERSTARS)\b/ },
-  { id: "tabac", name: "Tabac", level: "sup", re: /\b(TABAC|BUREAU DE TABAC|CIGARETTE|VAPE|VAPOTEUSE|CIGARETTE ELECTRONIQUE|LE PETIT VAPOTEUR|VAPOS|VAPO|VAPOTE|VAPOSHOP|TABAK)\b/ },
-  { id: "loisirs", name: "Loisirs & sorties", level: "sup", re: /\b(CINEMA|UGC|PATHE|GAUMONT|MK2|CGR|KINEPOLIS|TICKETMASTER|FNAC SPECTACLES|BILLETREDUC|DIGITICK|SHOTGUN|THEATRE|CONCERT|MUSEE|BOWLING|ESCAPE|KARTING|LASER|DISNEYLAND|PARC ASTERIX|DISCOTHEQUE|CLUBBING)\b/ },
+  { id: "tabac", name: "Tabac", level: "sup", re: /\b(TABAC|BUREAU DE TABAC|CIGARETTE|VAPE|VAPOTEUSE|CIGARETTE ELECTRONIQUE|LE PETIT VAPOTEUR|VAPOS|VAPO|VAPOTE|VAPOSHOP|TABAK|DAMPF|VAPOSTORE|SWEETECIG|OHVAPOTEUR|SHISHA|TOBACCO|LEGMOD47|VAPOREXMACHINA)\b/ },
+  { id: "loisirs", name: "Loisirs & sorties", level: "sup", re: /\b(CINEMA|UGC|PATHE|GAUMONT|MK2|CGR|KINEPOLIS|TICKETMASTER|FNAC SPECTACLES|BILLETREDUC|DIGITICK|SHOTGUN|THEATRE|CONCERT|MUSEE|BOWLING|ESCAPE|KARTING|LASER|DISNEYLAND|PARC ASTERIX|DISCOTHEQUE|CLUBBING|WEEZEVENT|TICKETINGCINE|CENTRE NAUTIQUE|AIRSOFT)\b/ },
   { id: "voyages", name: "Voyages & vacances", level: "sup", re: /\b(AIRBNB|BOOKING|HOTEL|IBIS|ACCOR|NOVOTEL|EXPEDIA|RYANAIR|EASYJET|AIR FRANCE|TRANSAVIA|VOLOTEA|VUELING|LASTMINUTE|OPODO|ABRITEL|CLUB MED|PIERRE ET VACANCES|CAMPING)\b/ },
-  { id: "shopping", name: "Shopping & achats en ligne", level: "sup", re: /\b(AMAZON|AMZN|CDISCOUNT|FNAC|ZARA|H M|PRIMARK|KIABI|UNIQLO|DECATHLON|ACTION|GIFI|SEPHORA|NOCIBE|MARIONNAUD|YVES ROCHER|ZALANDO|SHEIN|TEMU|ALIEXPRESS|VINTED|LEBONCOIN|ETSY|EBAY|WISH|APPLE STORE|LA REDOUTE|CELIO|JULES|BERSHKA|PULL BEAR|MANGO|GALERIES LAFAYETTE|PRINTEMPS|NIKE|ADIDAS|FOOT LOCKER|COURIR|MICROMANIA|CULTURA|LA HALLE|BOUYGUES STORE)\b/ },
+  { id: "shopping", name: "Shopping & achats en ligne", level: "sup", re: /\b(AMAZON|AMZN|CDISCOUNT|FNAC|ZARA|H M|PRIMARK|KIABI|UNIQLO|DECATHLON|ACTION|GIFI|SEPHORA|NOCIBE|MARIONNAUD|YVES ROCHER|ZALANDO|SHEIN|TEMU|ALIEXPRESS|VINTED|LEBONCOIN|ETSY|EBAY|WISH|APPLE STORE|LA REDOUTE|CELIO|JULES|BERSHKA|PULL BEAR|MANGO|GALERIES LAFAYETTE|PRINTEMPS|NIKE|ADIDAS|FOOT LOCKER|COURIR|MICROMANIA|CULTURA|LA HALLE|BOUYGUES STORE|MEDIAMARKT|MEDIA MARKT|SATURN|DEICHMANN|KIK|THALIA|HEMA|WOOLWORTH|ARMAND THIERY|SPORT 2000|DISTRICENTER|ALIPAY|AROMA ZONE|RELAY|HAPPYCASH|CASH CONVERTERS)\b/ },
   { id: "frais", name: "Frais bancaires", level: "sup", re: /\b(FRAIS|COMMISSION|COMMISSIONS|COTISATION CARTE|COTIS CARTE|AGIOS|INTERETS DEBITEURS|FRAIS TENUE|INCIDENT|OPPOSITION|REJET PRLV|FEE|FEES)\b/ },
   { id: "especes", name: "Retraits d'espèces", level: "uti", re: /\b(RETRAIT|RETRAIT DAB|DAB|ATM|CASH WITHDRAWAL|WITHDRAWAL)\b/ },
-  { id: "dons", name: "Dons & cadeaux", level: "uti", re: /\b(DON|DONS|FONDATION|CROIX ROUGE|RESTOS DU COEUR|UNICEF|MEDECINS SANS FRONTIERES|SECOURS|HELLOASSO|CADEAU)\b/ },
+  { id: "dons", name: "Dons & cadeaux", level: "uti", re: /\b(DON|DONS|FONDATION|CROIX ROUGE|RESTOS DU COEUR|UNICEF|MEDECINS SANS FRONTIERES|SECOURS|HELLOASSO|CADEAU|LEETCHI|SAPEURS POMPIERS)\b/ },
   { id: "virements", name: "Virements à des proches", level: "uti", onlyNegative: true, re: /^(VIR|VIREMENT|VIR SEPA|VIREMENT SEPA|VIR INST|TRANSFER|PAIEMENT LYDIA|LYDIA|PAYPAL|PAYLIB|WERO)\b/ },
+  { id: "pro", name: "Activité pro (hors budget perso)", kind: "pro", re: null },
   { id: "autre", name: "À classer", level: "uti", re: null },
   { id: "entrees", name: "Autres entrées d'argent", kind: "income", re: null }
 ];
@@ -975,6 +976,7 @@ function analyse(txs, levels) {
     const mk = new Date(t.date); const k = mk.getFullYear() + "-" + String(mk.getMonth() + 1).padStart(2, "0");
     const M = res.byMonth[k] || (res.byMonth[k] = { ess: 0, uti: 0, sup: 0, income: 0, savings: 0 });
     if (c.kind === "internal") continue;
+    if (c.kind === "pro") { res.pro = (res.pro || 0) - t.amount; continue; }
     if (c.kind === "savings") {
       let v;
       if (t.acct === "epargne") {
@@ -1411,6 +1413,7 @@ function vSynthese(r) {
       <div class="kpi"><span class="v" style="color:${left < 0 ? "var(--crit)" : "var(--ink)"}">${left < 0 ? "−" : ""}${eur.format(Math.abs(left))}</span><span class="l">Reste en fin de mois</span></div>
       <div class="kpi"><span class="v">${eur.format(r.savings / mo)}</span><span class="l">Mis de côté (virements épargne)</span></div>
     </div>
+    ${r.pro ? `<p class="small muted">Dépenses classées « Activité pro », hors analyse : <b class="num">${eur.format(r.pro / mo)}</b> par mois.</p>` : ""}
     <div class="split" role="img" aria-label="Répartition des dépenses : essentiel ${pct(r.lv.ess / lvTot)}, utile ${pct(r.lv.uti / lvTot)}, superflu ${pct(r.lv.sup / lvTot)}">
       ${["ess", "uti", "sup"].map(l => r.lv[l] > 0 ? `<span style="width:${r.lv[l] / lvTot * 100}%;background:var(--${l})"></span>` : "").join("")}
     </div>
@@ -1561,12 +1564,30 @@ function vOperations() {
 }
 
 /* ============================== Événements ============================== */
+// Fichier de classement : { "type": "budget-clair-classement", "overrides": { "NOM COMMERCANT": "categorie" } }.
+// Il complète vos choix sans jamais remplacer une catégorie que vous avez déjà choisie.
+function loadClassement(text, name) {
+  let data;
+  try { data = JSON.parse(text); } catch (e) { return setStatus("Ce fichier n'est pas un fichier de classement valide.", "crit"); }
+  const ov = data && data.type === "budget-clair-classement" && data.overrides;
+  if (!ov || typeof ov !== "object") return setStatus("Ce fichier n'est pas un fichier de classement Budget Clair.", "crit");
+  let added = 0, kept = 0;
+  for (const [k, cat] of Object.entries(ov)) {
+    if (!CAT[cat] || typeof k !== "string") continue;
+    if (state.overrides[k]) { kept++; continue; }
+    state.overrides[k] = cat; added++;
+  }
+  store.set("overrides", state.overrides);
+  setStatus(`<b>${esc(name)}</b> : ${added} commerçant${added > 1 ? "s" : ""} classé${added > 1 ? "s" : ""}${kept ? `, ${kept} déjà classé${kept > 1 ? "s" : ""} par vous (inchangé${kept > 1 ? "s" : ""})` : ""}.`);
+  recompute();
+}
 function handleFile(f) {
   const rd = new FileReader();
   const isPdf = /\.pdf$/i.test(f.name) || f.type === "application/pdf";
   rd.onload = () => {
     const head = new Uint8Array(rd.result.slice(0, 8));
     const magic = String.fromCharCode(...head.slice(0, 5));
+    if (/\.json$/i.test(f.name) || f.type === "application/json") return loadClassement(decode(rd.result), f.name);
     if (isPdf || magic === "%PDF-") loadPdf(rd.result, f.name);
     else if (magic.startsWith("PK\x03\x04") || /\.(xlsx|xlsm)$/i.test(f.name)) loadExcel(rd.result, f.name);
     else if (head[0] === 0xd0 && head[1] === 0xcf && head[2] === 0x11 && head[3] === 0xe0) setStatus("Ce fichier est au format Excel ancien (.xls). Ouvrez-le dans Excel ou Google Sheets et enregistrez-le en .xlsx ou en CSV, puis importez-le à nouveau.", "crit");
