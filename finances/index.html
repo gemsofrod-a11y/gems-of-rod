@@ -1,0 +1,1218 @@
+<!doctype html><!--pwa-->
+<html lang="fr"><!--pwa-->
+<head><!--pwa-->
+<meta charset="utf-8"><!--pwa-->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><!--pwa-->
+<meta name="theme-color" content="#1d3f8f"><!--pwa-->
+<link rel="manifest" href="manifest.webmanifest"><!--pwa-->
+<link rel="icon" href="icon.svg" type="image/svg+xml"><!--pwa-->
+<link rel="apple-touch-icon" href="icon.svg"><!--pwa-->
+<title>Budget Clair</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --surface-2: #eef1f6;
+  --ink: #131a26;
+  --ink-2: #465063;
+  --muted: #6a7386;
+  --line: #dde2ea;
+  --accent: #1d3f8f;
+  --accent-ink: #ffffff;
+  --accent-soft: #e3eafa;
+  --ess: #2a78d6;
+  --uti: #1baf7a;
+  --sup: #eb6834;
+  --good: #0a7d0a;
+  --warn: #a86a00;
+  --crit: #c23333;
+  --good-bg: #e6f4e6;
+  --warn-bg: #fdf1d8;
+  --crit-bg: #fbe5e5;
+  --info-bg: #e6eefb;
+  --shadow: 0 1px 2px rgba(19, 26, 38, .06), 0 4px 16px rgba(19, 26, 38, .05);
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body: "Instrument Sans", "Segoe UI", Roboto, system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #101318;
+    --surface: #191d24;
+    --surface-2: #222730;
+    --ink: #f1f3f7;
+    --ink-2: #c4cad5;
+    --muted: #9aa2b2;
+    --line: #2d333d;
+    --accent: #8fb0ff;
+    --accent-ink: #0d1420;
+    --accent-soft: #1f2a42;
+    --ess: #3987e5;
+    --uti: #199e70;
+    --sup: #d95926;
+    --good: #4cc44c;
+    --warn: #f0b33a;
+    --crit: #ef7676;
+    --good-bg: #16261a;
+    --warn-bg: #2b2412;
+    --crit-bg: #2e1919;
+    --info-bg: #182338;
+    --shadow: none;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #101318;
+  --surface: #191d24;
+  --surface-2: #222730;
+  --ink: #f1f3f7;
+  --ink-2: #c4cad5;
+  --muted: #9aa2b2;
+  --line: #2d333d;
+  --accent: #8fb0ff;
+  --accent-ink: #0d1420;
+  --accent-soft: #1f2a42;
+  --ess: #3987e5;
+  --uti: #199e70;
+  --sup: #d95926;
+  --good: #4cc44c;
+  --warn: #f0b33a;
+  --crit: #ef7676;
+  --good-bg: #16261a;
+  --warn-bg: #2b2412;
+  --crit-bg: #2e1919;
+  --info-bg: #182338;
+  --shadow: none;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.5 var(--body);
+  padding-inline: 16px;
+  padding-block: 0 48px;
+  -webkit-text-size-adjust: 100%;
+}
+.wrap { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+h1 { font-size: 28px; font-weight: 700; }
+h2 { font-size: 20px; font-weight: 700; }
+h3 { font-size: 16px; font-weight: 600; font-family: var(--body); }
+p { margin: 0; }
+.num { font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+
+header.top { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-top: 24px; }
+header.top .brand { display: flex; flex-direction: column; gap: 2px; }
+.lock { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--good); background: var(--good-bg); padding: 4px 10px; border-radius: 999px; font-weight: 500; }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 14px; }
+
+.import { display: flex; flex-direction: column; gap: 12px; }
+.import-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.btn { appearance: none; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 600 14px/1 var(--body); padding: 11px 16px; border-radius: 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.ghost { background: transparent; }
+.btn:focus-visible, select:focus-visible, input:focus-visible, summary:focus-visible, .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+input[type=file] { display: none; }
+.banner { font-size: 13px; padding: 10px 12px; border-radius: 10px; background: var(--info-bg); color: var(--ink); }
+.banner.warn { background: var(--warn-bg); }
+.banner.crit { background: var(--crit-bg); }
+
+details.mapping summary { cursor: pointer; font-weight: 600; font-size: 14px; }
+.map-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 12px; }
+.map-grid label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
+select, input[type=search] { font: 14px var(--body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; max-width: 100%; }
+.check { display: flex; gap: 8px; align-items: center; font-size: 14px; }
+
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 8px; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+nav.tabs::-webkit-scrollbar { display: none; }
+.tab { flex: 0 0 auto; appearance: none; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); font: 600 14px/1 var(--body); padding: 10px 14px; border-radius: 999px; cursor: pointer; }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+.kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (min-width: 620px) { .kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.kpi { display: flex; flex-direction: column; gap: 2px; }
+.kpi .v { font-family: var(--display); font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.kpi .l { font-size: 13px; color: var(--muted); }
+
+.split { display: flex; height: 18px; border-radius: 6px; overflow: hidden; gap: 2px; background: var(--surface); }
+.split span { display: block; height: 100%; }
+.split span:first-child { border-radius: 6px 0 0 6px; }
+.split span:last-child { border-radius: 0 6px 6px 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--ink-2); }
+.legend i, .dot { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.rule-rows { display: flex; flex-direction: column; gap: 10px; }
+.rule-row { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: baseline; }
+.rule-row .track { grid-column: 1 / -1; height: 8px; background: var(--surface-2); border-radius: 4px; position: relative; overflow: visible; }
+.rule-row .fill { height: 100%; border-radius: 4px; }
+.rule-row .target { position: absolute; top: -3px; width: 2px; height: 14px; background: var(--ink); }
+
+.chip { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.chip.good { background: var(--good-bg); color: var(--good); }
+.chip.warn { background: var(--warn-bg); color: var(--warn); }
+.chip.crit { background: var(--crit-bg); color: var(--crit); }
+.chip.info { background: var(--info-bg); color: var(--accent); }
+
+.chart-box { position: relative; }
+.chart-box svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart-box svg text { fill: var(--muted); font: 11px var(--body); font-variant-numeric: tabular-nums; }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); font-size: 12px; line-height: 1.45; padding: 8px 10px; border-radius: 8px; white-space: nowrap; transform: translate(-50%, -100%); z-index: 3; }
+.tip b { font-weight: 600; }
+
+.advice-list { display: flex; flex-direction: column; gap: 12px; }
+.advice { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; padding: 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+.advice .ic { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; font-weight: 700; font-size: 15px; }
+.advice.crit .ic { background: var(--crit-bg); color: var(--crit); }
+.advice.warn .ic { background: var(--warn-bg); color: var(--warn); }
+.advice.good .ic { background: var(--good-bg); color: var(--good); }
+.advice.info .ic { background: var(--info-bg); color: var(--accent); }
+.advice .body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.advice .head { display: flex; gap: 8px; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; }
+.advice p { color: var(--ink-2); font-size: 14px; }
+.saving-total { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.saving-total .v { font-family: var(--display); font-size: 30px; font-weight: 700; color: var(--good); font-variant-numeric: tabular-nums; }
+
+.cat-list { display: flex; flex-direction: column; }
+.cat { border-top: 1px solid var(--line); padding-block: 12px; display: flex; flex-direction: column; gap: 8px; }
+.cat:first-child { border-top: 0; }
+.cat-head { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; align-items: baseline; cursor: pointer; }
+.cat-head .name { font-weight: 600; }
+.cat-head .amt { font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+.cat-head .sub { font-size: 13px; color: var(--muted); }
+.bar { height: 8px; border-radius: 0 4px 4px 0; min-width: 2px; }
+.cat-tools { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+.lvl-seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.lvl-seg button { appearance: none; border: 0; background: var(--surface); color: var(--ink-2); font: 600 12px var(--body); padding: 6px 10px; cursor: pointer; }
+.lvl-seg button + button { border-left: 1px solid var(--line); }
+.lvl-seg button[aria-pressed="true"][data-l="ess"] { background: var(--ess); color: #fff; }
+.lvl-seg button[aria-pressed="true"][data-l="uti"] { background: var(--uti); color: #fff; }
+.lvl-seg button[aria-pressed="true"][data-l="sup"] { background: var(--sup); color: #fff; }
+
+.tx-list { display: flex; flex-direction: column; }
+.tx { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding-block: 10px; border-top: 1px solid var(--line); }
+.tx:first-child { border-top: 0; }
+.tx .lbl { font-size: 14px; overflow-wrap: anywhere; }
+.tx .amt { font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.tx .amt.pos { color: var(--good); }
+.tx .meta { grid-column: 1 / -1; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+.tx .meta select { font-size: 12px; padding: 4px 6px; }
+.toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.toolbar input[type=search] { flex: 1 1 180px; }
+
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; font-variant-numeric: tabular-nums; }
+th, td { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+th { color: var(--muted); font-weight: 600; }
+
+.empty { padding: 24px 8px; text-align: center; color: var(--muted); }
+footer { font-size: 12px; color: var(--muted); display: flex; flex-direction: column; gap: 8px; }
+.confirm { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+@media (prefers-reduced-motion: no-preference) { .bar, .fill, .split span { transition: width .3s ease; } }
+</style>
+</head><!--pwa-->
+<body><!--pwa-->
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <span class="eyebrow">Analyse de relevé bancaire</span>
+      <h1>Budget Clair</h1>
+    </div>
+    <span class="lock" title="Aucune donnée ne quitte cet appareil">&#128274; 100&nbsp;% local</span>
+  </header>
+
+  <section class="panel import" aria-labelledby="import-title">
+    <h2 id="import-title">Importer un relevé</h2>
+    <p class="small muted">Choisissez l'export CSV de vos opérations ou le relevé de compte PDF téléchargé depuis l'appli ou le site de votre banque. Le fichier est lu uniquement par ce téléphone&nbsp;: rien n'est envoyé sur Internet.</p>
+    <div class="import-row">
+      <label class="btn primary" for="file">Choisir un relevé (CSV ou PDF)</label>
+      <input id="file" type="file" accept=".csv,.txt,.pdf,text/csv,text/plain,application/pdf">
+      <button class="btn ghost" id="load-sample" type="button">Voir l'exemple</button>
+    </div>
+    <div id="status" class="banner" role="status"></div>
+    <details class="mapping" id="mapping" hidden>
+      <summary>Colonnes détectées &mdash; corriger si besoin</summary>
+      <div class="map-grid" id="map-grid"></div>
+      <div class="import-row" style="margin-top:12px">
+        <label class="check"><input type="checkbox" id="invert"> Les dépenses sont en positif dans mon fichier</label>
+        <button class="btn" id="apply-map" type="button">Appliquer</button>
+      </div>
+    </details>
+  </section>
+
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button class="tab" role="tab" id="tab-synthese" data-tab="synthese" aria-selected="true">Synthèse</button>
+    <button class="tab" role="tab" id="tab-conseils" data-tab="conseils" aria-selected="false">Conseils</button>
+    <button class="tab" role="tab" id="tab-depenses" data-tab="depenses" aria-selected="false">Dépenses</button>
+    <button class="tab" role="tab" id="tab-abos" data-tab="abos" aria-selected="false">Abonnements</button>
+    <button class="tab" role="tab" id="tab-operations" data-tab="operations" aria-selected="false">Opérations</button>
+  </nav>
+
+  <main id="view"></main>
+
+  <footer>
+    <p>Les conseils sont des estimations calculées à partir de votre relevé et de règles simples. Ils ne remplacent pas l'avis d'un conseiller financier.</p>
+    <p>Vos corrections de catégories et votre dernier relevé sont gardés dans ce navigateur uniquement.</p>
+    <div class="confirm" id="wipe-box">
+      <button class="btn ghost" id="wipe" type="button">Effacer mes données de cet appareil</button>
+    </div>
+  </footer>
+</div>
+
+<script>
+"use strict";
+/* ============================== Référentiel ============================== */
+const LEVELS = {
+  ess: { label: "Essentiel", desc: "besoins de base" },
+  uti: { label: "Utile", desc: "confort raisonnable" },
+  sup: { label: "Superflu", desc: "envies à surveiller" }
+};
+
+// Les règles s'appliquent au libellé normalisé : MAJUSCULES, sans accents, ponctuation remplacée par des espaces.
+const CATS = [
+  { id: "interne", name: "Virements entre mes comptes", kind: "internal", re: /\b(TOP ?UP|RECHARGE (REVOLUT|LYDIA)|VIR(EMENT)? (INTERNE|DE COMPTE A COMPTE|ENTRE MES COMPTES)|MOVE TO POCKET|FROM POCKET|EXCHANGE(D)? TO|CHANGE DE DEVISE)\b/ },
+  { id: "epargne", name: "Épargne", kind: "savings", re: /\b(LIVRET|LDDS|LDD|LEP|PEL|CEL|EPARGNE|ASSURANCE VIE|PEA|TO SAVINGS|FROM SAVINGS|SAVINGS VAULT|VAULT|COFFRE|TRADE REPUBLIC|BOURSE DIRECT|DEGIRO|YOMONI|NALO|LINXEA)\b/ },
+  { id: "revenus", name: "Revenus", kind: "income", onlyPositive: true, re: /\b(SALAIRE|PAIE|PAYE|REMUNERATION|CAF|ALLOCATION|POLE EMPLOI|FRANCE TRAVAIL|CPAM|AMELI|CARSAT|RETRAITE|PENSION|AGIRC|PRIME|INDEMNITE|DGFIP REMB|REMBOURSEMENT IMPOT)\b/ },
+  { id: "logement", name: "Logement", level: "ess", re: /\b(LOYER|FONCIA|NEXITY|CITYA|SYNDIC|ORPI|CENTURY 21|LAFORET|HABITAT|OPH|HLM|ECHEANCE PRET|PRET IMMO|CREDIT IMMO|REMBOURSEMENT PRET)\b/ },
+  { id: "energie", name: "Énergie & eau", level: "ess", re: /\b(EDF|ENGIE|TOTAL ?ENERGIES (ELEC|GAZ|CLIENTS|ELECTRICITE)|EKWATEUR|ENI GAS|OHM ENERGIE|MINT ENERGIE|PLANETE OUI|ENERCOOP|VATTENFALL|GRDF|VEOLIA|SUEZ|SAUR|EAU DE)\b/ },
+  { id: "impots", name: "Impôts & taxes", level: "ess", re: /\b(IMPOT|IMPOTS|DGFIP|TRESOR PUBLIC|FINANCES PUBLIQUES|TAXE|ANTAI|AMENDE)\b/ },
+  { id: "assurances", name: "Assurances & mutuelle", level: "ess", re: /\b(ASSURANCE|ASSURANCES|MAIF|MACIF|MATMUT|AXA|ALLIANZ|GMF|MMA|GROUPAMA|MAAF|MUTUELLE|HARMONIE|MGEN|ALAN|LUKO|GENERALI|APRIL|SWISSLIFE|LEOCARE|DIRECT ASSURANCE|OLIVIER ASSURANCE|AG2R|MALAKOFF)\b/ },
+  { id: "sante", name: "Santé", level: "ess", re: /\b(PHARMA|PHARMACIE|DOCTOLIB|MEDECIN|DOCTEUR|DR|DENTISTE|DENTAIRE|KINE|OSTEO|OPTIC|OPTIQUE|OPTICIEN|KRYS|AFFLELOU|LABO|LABORATOIRE|HOPITAL|CLINIQUE|RADIOLOGIE|ORTHO)\b/ },
+  { id: "education", name: "Enfants & éducation", level: "ess", re: /\b(ECOLE|CANTINE|CRECHE|NOUNOU|PAJEMPLOI|PERISCOLAIRE|UNIVERSITE|COLLEGE|LYCEE|CENTRE DE LOISIRS)\b/ },
+  { id: "livraison", name: "Livraison de repas", level: "sup", re: /\b(UBER ?EATS|DELIVEROO|JUST ?EAT|FRICHTI|GLOVO|STUART FOOD)\b/ },
+  { id: "restaurants", name: "Restaurants & cafés", level: "sup", re: /\b(RESTAU|RESTAURANT|BRASSERIE|BISTRO|BISTROT|CAFE|BAR|PIZZA|PIZZERIA|SUSHI|BURGER|MCDO|MC DONALD|MCDONALD|MCDONALDS|BURGER KING|KFC|QUICK|SUBWAY|STARBUCKS|FIVE GUYS|TACOS|O TACOS|DOMINOS|KEBAB|CREPERIE|FLUNCH|BUFFALO GRILL|HIPPOPOTAMUS|COURTEPAILLE|DEL ARTE|BRIOCHE DOREE|COLUMBUS|PAUL|POKE|TRAITEUR)\b/ },
+  { id: "courses", name: "Courses alimentaires", level: "ess", re: /\b(CARREFOUR|LECLERC|AUCHAN|INTERMARCHE|LIDL|ALDI|MONOPRIX|FRANPRIX|CASINO|SUPER U|HYPER U|U EXPRESS|SYSTEME U|NETTO|LEADER PRICE|GRAND FRAIS|PICARD|BIOCOOP|NATURALIA|CORA|MATCH|SPAR|G20|PROXI|COLRUYT|LA VIE CLAIRE|BOULANGERIE|BOULANGER PATISSIER|BOUCHERIE|PRIMEUR|FROMAGERIE|MARCHE|EPICERIE|AMAZON FRESH)\b/ },
+  { id: "transport", name: "Transport & voiture", level: "ess", re: /\b(SNCF|OUIGO|TGV|TER|RATP|NAVIGO|TCL|TISSEO|RTM|TAN|STAR|BLABLACAR|UBER|BOLT|HEETCH|G7|TAXI|FREE NOW|TOTAL|TOTALENERGIES|ESSO|SHELL|BP|AVIA|STATION|CARBURANT|PEAGE|AUTOROUTE|VINCI|SANEF|APRR|PARKING|INDIGO|SAEMES|LIME|DOTT|TIER|NORAUTO|FEU VERT|SPEEDY|MIDAS|CONTROLE TECHNIQUE|GARAGE)\b/ },
+  { id: "telecom", name: "Téléphone & internet", level: "ess", re: /\b(ORANGE(?! BLEUE)|SOSH|SFR|RED BY SFR|BOUYGUES|B YOU|FREE MOBILE|FREE TELECOM|FREEBOX|LA POSTE MOBILE|PRIXTEL|CORIOLIS|SYMA|NRJ MOBILE|LEBARA|LYCAMOBILE)\b/ },
+  { id: "abonnements", name: "Abonnements numériques", level: "sup", re: /\b(NETFLIX|SPOTIFY|DEEZER|DISNEY|DISNEY PLUS|PRIME VIDEO|AMAZON PRIME|CANAL|CANALPLUS|MYCANAL|APPLE COM BILL|APPLE COM|ITUNES|GOOGLE PLAY|YOUTUBE|YOUTUBE PREMIUM|HBO|MAX COM|PARAMOUNT|CRUNCHYROLL|DAZN|BEIN|MOLOTOV|OCS|AUDIBLE|KINDLE|ICLOUD|DROPBOX|CHATGPT|OPENAI|MICROSOFT|XBOX|PLAYSTATION|NINTENDO|STEAM|TWITCH|PATREON|TIDAL|QOBUZ|ADOBE|NORDVPN|TINDER|MEETIC|BUMBLE)\b/ },
+  { id: "sport", name: "Sport & bien-être", level: "uti", re: /\b(BASIC FIT|FITNESS PARK|KEEP COOL|ON AIR|NEONESS|L ORANGE BLEUE|SALLE DE SPORT|PISCINE|CLUB|YOGA|COIFFEUR|COIFFURE|BARBIER|INSTITUT|SPA)\b/ },
+  { id: "maison", name: "Maison & bricolage", level: "uti", re: /\b(IKEA|LEROY MERLIN|CASTORAMA|BRICO|BRICOMARCHE|BRICORAMA|MR BRICOLAGE|CONFORAMA|BUT|MAISONS DU MONDE|DARTY|BOULANGER|BHV|TRUFFAUT|JARDILAND)\b/ },
+  { id: "animaux", name: "Animaux", level: "uti", re: /\b(VETERINAIRE|VETO|ANIMALERIE|ZOOPLUS|MAXI ZOO|MEDOR)\b/ },
+  { id: "jeux", name: "Jeux d'argent", level: "sup", re: /\b(FDJ|FRANCAISE DES JEUX|PMU|BETCLIC|WINAMAX|UNIBET|PARIONS|ZEBET|PARIONSSPORT|CASINO BARRIERE|POKERSTARS)\b/ },
+  { id: "tabac", name: "Tabac", level: "sup", re: /\b(TABAC|BUREAU DE TABAC|CIGARETTE|VAPE|VAPOTEUSE|CIGARETTE ELECTRONIQUE|LE PETIT VAPOTEUR)\b/ },
+  { id: "loisirs", name: "Loisirs & sorties", level: "sup", re: /\b(CINEMA|UGC|PATHE|GAUMONT|MK2|CGR|KINEPOLIS|TICKETMASTER|FNAC SPECTACLES|BILLETREDUC|DIGITICK|SHOTGUN|THEATRE|CONCERT|MUSEE|BOWLING|ESCAPE|KARTING|LASER|DISNEYLAND|PARC ASTERIX|DISCOTHEQUE|CLUBBING)\b/ },
+  { id: "voyages", name: "Voyages & vacances", level: "sup", re: /\b(AIRBNB|BOOKING|HOTEL|IBIS|ACCOR|NOVOTEL|EXPEDIA|RYANAIR|EASYJET|AIR FRANCE|TRANSAVIA|VOLOTEA|VUELING|LASTMINUTE|OPODO|ABRITEL|CLUB MED|PIERRE ET VACANCES|CAMPING)\b/ },
+  { id: "shopping", name: "Shopping & achats en ligne", level: "sup", re: /\b(AMAZON|AMZN|CDISCOUNT|FNAC|ZARA|H M|PRIMARK|KIABI|UNIQLO|DECATHLON|ACTION|GIFI|SEPHORA|NOCIBE|MARIONNAUD|YVES ROCHER|ZALANDO|SHEIN|TEMU|ALIEXPRESS|VINTED|LEBONCOIN|ETSY|EBAY|WISH|APPLE STORE|LA REDOUTE|CELIO|JULES|BERSHKA|PULL BEAR|MANGO|GALERIES LAFAYETTE|PRINTEMPS|NIKE|ADIDAS|FOOT LOCKER|COURIR|MICROMANIA|CULTURA|LA HALLE|BOUYGUES STORE)\b/ },
+  { id: "frais", name: "Frais bancaires", level: "sup", re: /\b(FRAIS|COMMISSION|COMMISSIONS|COTISATION CARTE|COTIS CARTE|AGIOS|INTERETS DEBITEURS|FRAIS TENUE|INCIDENT|OPPOSITION|REJET PRLV|FEE|FEES)\b/ },
+  { id: "especes", name: "Retraits d'espèces", level: "uti", re: /\b(RETRAIT|RETRAIT DAB|DAB|ATM|CASH WITHDRAWAL|WITHDRAWAL)\b/ },
+  { id: "dons", name: "Dons & cadeaux", level: "uti", re: /\b(DON|DONS|FONDATION|CROIX ROUGE|RESTOS DU COEUR|UNICEF|MEDECINS SANS FRONTIERES|SECOURS|HELLOASSO|CADEAU)\b/ },
+  { id: "virements", name: "Virements à des proches", level: "uti", onlyNegative: true, re: /^(VIR|VIREMENT|VIR SEPA|VIREMENT SEPA|VIR INST|TRANSFER|PAIEMENT LYDIA|LYDIA|PAYPAL|PAYLIB|WERO)\b/ },
+  { id: "autre", name: "À classer", level: "uti", re: null },
+  { id: "entrees", name: "Autres entrées d'argent", kind: "income", re: null }
+];
+const CAT = Object.fromEntries(CATS.map(c => [c.id, c]));
+const STREAMING = /\b(NETFLIX|DISNEY|PRIME VIDEO|AMAZON PRIME|CANAL|MYCANAL|HBO|MAX COM|PARAMOUNT|CRUNCHYROLL|DAZN|BEIN|MOLOTOV|OCS|APPLE TV|SPOTIFY|DEEZER|YOUTUBE|TIDAL|QOBUZ)\b/;
+const MUSIC = /\b(SPOTIFY|DEEZER|TIDAL|QOBUZ|YOUTUBE MUSIC|APPLE MUSIC)\b/;
+
+// Catégories fournies par certaines banques (Boursorama, N26, Revolut…) : utilisées quand le libellé ne suffit pas.
+const BANK_CAT_MAP = [
+  [/aliment|supermarch|groceries|courses/, "courses"],
+  [/restau|bar|cafe|fast|food|eating/, "restaurants"],
+  [/carbur|transport|voiture|auto|parking|peage|travel/, "transport"],
+  [/loyer|logement|housing|rent|immobil/, "logement"],
+  [/energie|electric|gaz|eau|utilities/, "energie"],
+  [/sante|pharma|medec|health/, "sante"],
+  [/assuranc|insurance|mutuel/, "assurances"],
+  [/telecom|telephon|internet|mobile/, "telecom"],
+  [/abonnement|multimedia|streaming|subscription|media/, "abonnements"],
+  [/loisir|sortie|spectacle|culture|entertainment|leisure/, "loisirs"],
+  [/voyage|hotel|vacance|holiday/, "voyages"],
+  [/shopping|vetement|habillement|achats|clothing|high tech/, "shopping"],
+  [/frais bancaire|bank fee|commission/, "frais"],
+  [/retrait|cash|especes|atm/, "especes"],
+  [/impot|taxe|tax/, "impots"],
+  [/epargne|savings|placement/, "epargne"],
+  [/salaire|revenu|income|salary/, "revenus"],
+  [/sport|bien-etre|beaute|coiff/, "sport"],
+  [/maison|bricolage|ameublement|home/, "maison"],
+  [/animaux|pets/, "animaux"],
+  [/enfant|scolar|education/, "education"],
+  [/tabac/, "tabac"],
+  [/jeux d.argent|paris|gambling/, "jeux"]
+];
+
+/* ============================== Utilitaires ============================== */
+const $ = s => document.querySelector(s);
+const eur = new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+const eur2 = new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR", minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const pct = v => (isFinite(v) ? Math.round(v * 100) : 0) + " %";
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const norm = s => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase().replace(/[^A-Z0-9]+/g, " ").trim();
+const low = s => norm(s).toLowerCase();
+const MONTHS = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+const monthLabel = k => { const [y, m] = k.split("-"); return MONTHS[+m - 1] + " " + y.slice(2); };
+const dayFmt = d => d.toLocaleDateString("fr-FR", { day: "2-digit", month: "short" });
+const median = a => { if (!a.length) return 0; const s = [...a].sort((x, y) => x - y), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+
+const store = {
+  get(k, d) { try { const v = localStorage.getItem("budgetclair." + k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem("budgetclair." + k, JSON.stringify(v)); } catch (e) { /* stockage indisponible : l'appli marche quand même */ } },
+  clear() { try { Object.keys(localStorage).filter(k => k.startsWith("budgetclair.")).forEach(k => localStorage.removeItem(k)); } catch (e) {} }
+};
+
+/* ============================== Lecture CSV ============================== */
+function decode(buf) {
+  let bytes = new Uint8Array(buf);
+  try { return new TextDecoder("utf-8", { fatal: true }).decode(bytes).replace(/^﻿/, ""); }
+  catch (e) { return new TextDecoder("windows-1252").decode(bytes); }
+}
+
+function parseCSV(text, delim) {
+  const rows = []; let row = [], cell = "", q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) {
+      if (c === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else q = false; }
+      else cell += c;
+    } else if (c === '"') q = true;
+    else if (c === delim) { row.push(cell); cell = ""; }
+    else if (c === "\n" || c === "\r") {
+      if (c === "\r" && text[i + 1] === "\n") i++;
+      row.push(cell); rows.push(row); row = []; cell = "";
+    } else cell += c;
+  }
+  if (cell !== "" || row.length) { row.push(cell); rows.push(row); }
+  return rows.map(r => r.map(x => x.trim())).filter(r => r.some(x => x !== ""));
+}
+
+function detectDelimiter(text) {
+  const sample = text.split(/\r?\n/).slice(0, 30).join("\n");
+  let best = ";", bestScore = -1;
+  for (const d of [";", ",", "\t", "|"]) {
+    const rows = parseCSV(sample, d);
+    const counts = rows.map(r => r.length).filter(n => n > 1);
+    if (!counts.length) continue;
+    const freq = {}; counts.forEach(n => freq[n] = (freq[n] || 0) + 1);
+    const [mode, hits] = Object.entries(freq).sort((a, b) => b[1] - a[1])[0];
+    const score = hits * Math.min(+mode, 12);
+    if (score > bestScore) { bestScore = score; best = d; }
+  }
+  return best;
+}
+
+function parseAmount(v) {
+  if (v == null) return NaN;
+  let s = String(v).replace(/[\s  ]/g, "").replace(/\u2212/g, "-").replace(/€|EUR|eur|\$|£/g, "");
+  if (!s) return NaN;
+  let neg = false;
+  if (/^\(.*\)$/.test(s)) { neg = true; s = s.slice(1, -1); }
+  if (/-$/.test(s)) { neg = true; s = s.slice(0, -1); }
+  if (/^\+/.test(s)) s = s.slice(1);
+  const lc = s.lastIndexOf(","), ld = s.lastIndexOf(".");
+  if (lc > -1 && ld > -1) s = lc > ld ? s.replace(/\./g, "").replace(",", ".") : s.replace(/,/g, "");
+  else if (lc > -1) s = s.replace(",", ".");
+  if (!/^-?\d+(\.\d+)?$/.test(s)) return NaN;
+  const n = parseFloat(s);
+  return neg ? -Math.abs(n) : n;
+}
+
+function parseDate(v) {
+  const s = String(v || "").trim();
+  let m = s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);
+  if (m) return mk(+m[1], +m[2], +m[3]);
+  m = s.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2,4})/);
+  if (m) { let y = +m[3]; if (y < 100) y += 2000; return mk(y, +m[2], +m[1]); }
+  return null;
+  function mk(y, mo, d) {
+    if (mo < 1 || mo > 12 || d < 1 || d > 31 || y < 1990 || y > 2100) return null;
+    return new Date(y, mo - 1, d, 12);
+  }
+}
+
+const FIELDS = [
+  { key: "date", label: "Date", need: true },
+  { key: "label", label: "Libellé", need: true },
+  { key: "detail", label: "Libellé complémentaire" },
+  { key: "amount", label: "Montant (signé)" },
+  { key: "debit", label: "Débit" },
+  { key: "credit", label: "Crédit" },
+  { key: "bankcat", label: "Catégorie de la banque" },
+  { key: "type", label: "Type d'opération" },
+  { key: "state", label: "État" }
+];
+const HEAD_RULES = {
+  date: [/date (d )?op|date operation|started date|booking date|transaction date|date comptable|date de l operation|dateop/, /^date$|^date |date$/],
+  label: [/^libelle$|^libelle operation|label|description|payee|beneficiaire|intitule|marchand|merchant|counterparty|^nom|wording|libelle/],
+  detail: [/payment reference|reference|comment|memo|complementaire|detail|motif/],
+  amount: [/montant|amount|somme|^valeur$|value eur|amount eur/],
+  debit: [/debit|sortie|withdrawn|paid out/],
+  credit: [/credit|entree|paid in|deposit/],
+  bankcat: [/categor/],
+  type: [/^type$|type d|nature|transaction type|operation type/],
+  state: [/^state$|^statut$|^etat$|status/]
+};
+const HEAD_EXCLUDE = /balance|solde|valeur date|date valeur|dateval|value date|fee|frais|currency|devise|account|compte|parent/;
+
+function findHeaderRow(rows) {
+  let best = -1, bestScore = 1;
+  for (let i = 0; i < Math.min(rows.length, 25); i++) {
+    const cells = rows[i].map(low);
+    let score = 0;
+    for (const k of ["date", "label", "amount", "debit", "credit"]) if (cells.some(c => HEAD_RULES[k].some(r => r.test(c)))) score++;
+    if (cells.some(c => parseDate(c) || !isNaN(parseAmount(c)))) score -= 2;
+    if (score > bestScore) { bestScore = score; best = i; }
+  }
+  return best;
+}
+
+function guessMapping(rows, headerIdx) {
+  const header = headerIdx >= 0 ? rows[headerIdx].map(low) : [];
+  const data = rows.slice(headerIdx + 1);
+  const ncol = Math.max(...rows.map(r => r.length));
+  const map = {}; const used = new Set();
+  const take = (k, allowExcluded) => {
+    for (const r of HEAD_RULES[k]) {
+      for (let c = 0; c < header.length; c++) {
+        if (used.has(c) && k !== "bankcat") continue;
+        const h = header[c];
+        if (!allowExcluded && HEAD_EXCLUDE.test(h) && !(k === "date" && /op/.test(h))) continue;
+        if (r.test(h)) { map[k] = c; used.add(c); return; }
+      }
+    }
+  };
+  if (header.length) {
+    take("date"); take("amount"); take("debit"); take("credit"); take("bankcat"); take("type"); take("state"); take("label"); take("detail");
+    if (map.bankcat == null) take("bankcat", true);
+  }
+  // Complément par les données si l'en-tête ne suffit pas
+  const stats = [];
+  for (let c = 0; c < ncol; c++) {
+    const vals = data.slice(0, 200).map(r => r[c] || "").filter(Boolean);
+    const n = vals.length || 1;
+    stats.push({
+      c, filled: vals.length / Math.max(1, Math.min(200, data.length)),
+      date: vals.filter(v => parseDate(v)).length / n,
+      num: vals.filter(v => !isNaN(parseAmount(v))).length / n,
+      neg: vals.filter(v => parseAmount(v) < 0).length / n,
+      len: vals.reduce((a, v) => a + v.length, 0) / n
+    });
+  }
+  const free = s => !Object.values(map).includes(s.c);
+  if (map.date == null) { const s = stats.filter(free).filter(s => s.date > .8).sort((a, b) => b.date - a.date)[0]; if (s) map.date = s.c; }
+  if (map.amount == null && map.debit == null) {
+    const s = stats.filter(free).filter(s => s.num > .8 && s.neg > 0).sort((a, b) => b.filled - a.filled)[0];
+    if (s) map.amount = s.c;
+  }
+  if (map.label == null) { const s = stats.filter(free).filter(s => s.date < .5 && s.num < .5).sort((a, b) => b.len - a.len)[0]; if (s) map.label = s.c; }
+  return map;
+}
+
+function buildTransactions(rows, headerIdx, map, invert) {
+  const out = []; let skipped = 0;
+  for (const r of rows.slice(headerIdx + 1)) {
+    const date = parseDate(r[map.date]);
+    let amt = NaN;
+    if (map.amount != null) amt = parseAmount(r[map.amount]);
+    if (isNaN(amt) && (map.debit != null || map.credit != null)) {
+      const d = map.debit != null ? parseAmount(r[map.debit]) : NaN;
+      const c = map.credit != null ? parseAmount(r[map.credit]) : NaN;
+      if (!isNaN(d) && d !== 0) amt = -Math.abs(d);
+      else if (!isNaN(c) && c !== 0) amt = Math.abs(c);
+    }
+    if (map.state != null) {
+      const st = low(r[map.state]);
+      if (/revert|declin|failed|annul|refus|pending|en attente/.test(st)) { skipped++; continue; }
+    }
+    if (!date || isNaN(amt) || amt === 0) { skipped++; continue; }
+    if (invert) amt = -amt;
+    const label = [r[map.label], map.detail != null ? r[map.detail] : ""].filter(Boolean).join(" · ") || "(sans libellé)";
+    out.push({
+      date: date.getTime(), amount: Math.round(amt * 100) / 100, label,
+      type: map.type != null ? (r[map.type] || "") : "",
+      bankcat: map.bankcat != null ? (r[map.bankcat] || "") : ""
+    });
+  }
+  out.sort((a, b) => b.date - a.date);
+  return { tx: out, skipped };
+}
+
+/* ============================== Lecture PDF ============================== */
+// pdf.js est téléchargé une seule fois depuis cdnjs, puis gardé en cache pour le hors-ligne.
+// Le PDF lui-même est lu dans la page : son contenu ne part nulle part.
+const PDFJS = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
+let pdfReady = null;
+function loadScript(src) {
+  return new Promise((ok, ko) => {
+    const el = document.createElement("script");
+    el.src = src; el.crossOrigin = "anonymous"; el.onload = ok; el.onerror = () => ko(new Error("script"));
+    document.head.appendChild(el);
+  });
+}
+function loadPdfJs() {
+  // Le « worker » est chargé comme un script ordinaire : pdf.js l'exécute alors dans la page,
+  // ce qui évite un Worker d'une autre origine (refusé par les navigateurs) et marche hors-ligne.
+  if (!pdfReady) pdfReady = loadScript(PDFJS + "pdf.worker.min.js")
+    .then(() => loadScript(PDFJS + "pdf.min.js"))
+    .then(() => { window.pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS + "pdf.worker.min.js"; return window.pdfjsLib; })
+    .catch(e => { pdfReady = null; throw e; });
+  return pdfReady;
+}
+
+const AMT_RE = /^[-+−]?\s?(?:€|EUR|\$|£)?\s?\d{1,3}(?:[\s  .]\d{3})*[,.]\d{2}\s?(?:€|EUR)?\s?[-+]?$|^[-+−]?\s?(?:€|EUR|\$|£)?\s?\d+[,.]\d{2}\s?(?:€|EUR)?$/;
+const AMT_TAIL = /^(.*\S)\s+([-+−]?(?:€|\$|£)?\d{1,3}(?:[\s  .]\d{3})*,\d{2}|[-+−]?(?:€|\$|£)?\d+[.,]\d{2})\s?(?:€|EUR)?$/;
+const SHORT_DATE = /^\d{1,2}[\/.\-]\d{1,2}(?:[\/.\-]\d{2,4})?$/;
+const MONTH_NAMES = { JAN: 1, JANV: 1, JANVIER: 1, JANUARY: 1, FEV: 2, FEVR: 2, FEVRIER: 2, FEB: 2, FEBRUARY: 2, MAR: 3, MARS: 3, MARCH: 3, AVR: 4, AVRIL: 4, APR: 4, APRIL: 4, MAI: 5, MAY: 5, JUIN: 6, JUN: 6, JUNE: 6, JUIL: 7, JUILLET: 7, JUL: 7, JULY: 7, AOU: 8, AOUT: 8, AUG: 8, AUGUST: 8, SEP: 9, SEPT: 9, SEPTEMBRE: 9, SEPTEMBER: 9, OCT: 10, OCTOBRE: 10, OCTOBER: 10, NOV: 11, NOVEMBRE: 11, NOVEMBER: 11, DEC: 12, DECEMBRE: 12, DECEMBER: 12 };
+const PDF_SKIP = /^(SOLDE|ANCIEN SOLDE|NOUVEAU SOLDE|TOTAL|TOTAUX|SOUS TOTAL|REPORT|BALANCE|OPENING|CLOSING|MONTANT|DATE)\b/;
+
+// Date en tête de ligne : « 03/08 », « 03/08/2026 », « 3 août 2026 », « 3 Aug 2026 ».
+function leadingDate(text) {
+  let m = text.match(/^(\d{1,2})[\/.\-](\d{1,2})(?:[\/.\-](\d{2,4}))?(?=\s|$)/);
+  if (m) return { d: +m[1], m: +m[2], y: m[3] ? (+m[3] < 100 ? +m[3] + 2000 : +m[3]) : null, len: m[0].length };
+  m = text.match(/^(\d{1,2})\s+([A-Za-zÀ-ÿ]{3,9})\.?(?:\s+(\d{4}))?(?=\s|$)/);
+  if (m) { const mo = MONTH_NAMES[norm(m[2])]; if (mo) return { d: +m[1], m: mo, y: m[3] ? +m[3] : null, len: m[0].length }; }
+  return null;
+}
+
+async function pdfToLines(buf) {
+  const lib = await loadPdfJs();
+  const doc = await lib.getDocument({ data: new Uint8Array(buf), isEvalSupported: false }).promise;
+  const out = []; let chars = 0;
+  for (let p = 1; p <= doc.numPages; p++) {
+    const page = await doc.getPage(p);
+    const tc = await page.getTextContent();
+    const items = tc.items.filter(i => i.str && i.str.trim()).map(i => ({ s: i.str, x: i.transform[4], y: i.transform[5], w: i.width, h: Math.abs(i.transform[3]) || 8 }));
+    items.forEach(i => chars += i.s.length);
+    items.sort((a, b) => b.y - a.y || a.x - b.x);
+    const lines = [];
+    for (const it of items) {
+      const L = lines.slice(-3).find(l => Math.abs(l.y - it.y) <= Math.max(2, it.h * 0.4));
+      if (L) L.items.push(it); else lines.push({ y: it.y, page: p, items: [it] });
+    }
+    for (const L of lines) {
+      L.items.sort((a, b) => a.x - b.x);
+      const toks = [];
+      for (const it of L.items) {
+        const prev = toks[toks.length - 1];
+        const gap = prev ? it.x - prev.r : Infinity;
+        if (prev && gap < it.h * 0.25) { prev.s += it.s; prev.r = it.x + it.w; }
+        else if (prev && gap < it.h * 0.7 && /^[-+−]?\d{1,3}$/.test(prev.s.trim()) && /^\d{3}([.,]\d{2})?/.test(it.s.trim())) { prev.s += " " + it.s; prev.r = it.x + it.w; }
+        else toks.push({ s: it.s, x: it.x, r: it.x + it.w });
+      }
+      // Un bloc « libellé … 23,40 » dans un seul morceau de texte : on sépare le montant.
+      const split = [];
+      for (const t of toks) {
+        const s = t.s.trim(), m = s.match(AMT_TAIL);
+        if (m && !AMT_RE.test(s)) {
+          const cut = t.x + (t.r - t.x) * (m[1].length / s.length);
+          split.push({ s: m[1], x: t.x, r: cut }, { s: m[2], x: cut, r: t.r });
+        } else split.push({ s, x: t.x, r: t.r });
+      }
+      L.toks = split.filter(t => t.s);
+      L.text = L.toks.map(t => t.s).join(" ").replace(/\s+/g, " ").trim();
+      out.push(L);
+    }
+  }
+  return { lines: out, chars };
+}
+
+function pdfLinesToRows(lines) {
+  // Date de fin du relevé : la date complète la plus récente du document (sert à dater « 03/08 »).
+  let ref = null;
+  for (const L of lines) for (const m of L.text.matchAll(/\b(\d{1,2})[\/.](\d{1,2})[\/.](\d{4})\b|\b(\d{1,2})\s+([A-Za-zÀ-ÿ]{3,9})\.?\s+(\d{4})\b/g)) {
+    const mo = m[1] ? +m[2] : MONTH_NAMES[norm(m[5])];
+    if (!mo || mo > 12) continue;
+    const d = m[1] ? new Date(+m[3], mo - 1, +m[1]) : new Date(+m[6], mo - 1, +m[4]);
+    if (!isNaN(d) && d.getFullYear() > 1990 && d.getFullYear() < 2100 && (!ref || d > ref)) ref = d;
+  }
+  if (!ref) ref = new Date();
+  const rows = [["Date", "Libellé", "Montant"]];
+  let cols = null, guessed = 0, prevTx = null, headerSeen = false;
+  const colOf = (t, c) => Math.min(Math.abs((t.x + t.r) / 2 - c.c), Math.abs(t.r - c.r));
+  for (const L of lines) {
+    const lt = L.toks.map(t => low(t.s));
+    const deb = L.toks.find((t, i) => /^(debit|debits|montant debit|sorties?|money out|paid out|retraits?|depenses?)\b/.test(lt[i]));
+    const cre = L.toks.find((t, i) => /^(credit|credits|montant credit|entrees?|money in|paid in|versements?|recettes?)\b/.test(lt[i]));
+    if (deb && cre) {
+      const bal = L.toks.find((t, i) => /^(solde|balance)\b/.test(lt[i]));
+      cols = { deb: { c: (deb.x + deb.r) / 2, r: deb.r }, cre: { c: (cre.x + cre.r) / 2, r: cre.r }, bal: bal ? { c: (bal.x + bal.r) / 2, r: bal.r } : null };
+      headerSeen = true; prevTx = null; continue;
+    }
+    const dt = leadingDate(L.text);
+    const amts = L.toks.filter((t, i) => i > 0 && AMT_RE.test(t.s));
+    if (!dt || !amts.length) {
+      // Libellé sur deux lignes : la ligne suivante, sans date ni montant, complète le précédent.
+      if (prevTx && !dt && !amts.length && L.page === prevTx.page && L.text.length < 70 && !PDF_SKIP.test(norm(L.text)) && prevTx.extra < 1) { prevTx.row[1] += " " + L.text; prevTx.extra++; }
+      else prevTx = null;
+      continue;
+    }
+    let label = L.text.slice(dt.len).trim();
+    for (const a of amts) label = label.replace(a.s, " ");
+    label = label.split(" ").filter(w => !SHORT_DATE.test(w)).join(" ").replace(/\s+/g, " ").replace(/^[-–:·\s]+|[-–:·\s]+$/g, "").trim();
+    if (!label || PDF_SKIP.test(norm(label))) { prevTx = null; continue; }
+    let pick = null, sign = 0;
+    if (cols) {
+      let best = Infinity;
+      for (const a of amts) for (const k of ["deb", "cre", "bal"]) {
+        if (!cols[k]) continue;
+        const d = colOf(a, cols[k]);
+        if (d < best) { best = d; pick = a; sign = k === "deb" ? -1 : k === "cre" ? 1 : 0; }
+      }
+      if (sign === 0) { // le plus proche est le solde : prendre l'autre montant de la ligne
+        const others = amts.filter(a => a !== pick);
+        if (others.length) { pick = others[0]; sign = colOf(pick, cols.deb) <= colOf(pick, cols.cre) ? -1 : 1; } else pick = null;
+      }
+    } else {
+      pick = amts.length >= 2 ? amts[amts.length - 2] : amts[0];
+    }
+    if (!pick) { prevTx = null; continue; }
+    const v = parseAmount(pick.s);
+    if (isNaN(v) || v === 0) { prevTx = null; continue; }
+    if (/^[-−]|-$/.test(pick.s.trim())) sign = -1;
+    else if (/^\+/.test(pick.s.trim())) sign = 1;
+    if (!sign) { guessed++; sign = /\b(VIR(EMENT)? (RECU|DE|EN VOTRE FAVEUR)|SALAIRE|REMBOURSEMENT|REMB|AVOIR|CAF|CPAM|VERSEMENT|DEPOT|REFUND)\b/.test(norm(label)) ? 1 : -1; }
+    let y = dt.y;
+    if (!y) { y = ref.getFullYear(); if (dt.m > ref.getMonth() + 1) y--; }
+    const iso = `${y}-${String(dt.m).padStart(2, "0")}-${String(dt.d).padStart(2, "0")}`;
+    const row = [iso, label, (sign * Math.abs(v)).toFixed(2)];
+    rows.push(row); prevTx = { row, page: L.page, extra: 0 };
+  }
+  return { rows, headerSeen, guessed };
+}
+
+async function loadPdf(buf, name) {
+  setStatus("Lecture du PDF…");
+  let res;
+  try { res = await pdfToLines(buf); }
+  catch (e) {
+    if (e && e.name === "PasswordException") return setStatus("Ce PDF est protégé par un mot de passe. Téléchargez une version sans mot de passe depuis votre banque, ou utilisez l'export CSV.", "crit");
+    if (e && e.message === "script") return setStatus("Le lecteur de PDF n'a pas pu être téléchargé. Ouvrez l'appli une première fois avec une connexion Internet : il reste ensuite disponible hors-ligne. Les fichiers CSV marchent sans connexion.", "crit");
+    return setStatus("Ce fichier PDF n'a pas pu être ouvert. Vérifiez qu'il n'est pas abîmé, ou utilisez l'export CSV de votre banque.", "crit");
+  }
+  if (res.chars < 40) return setStatus("Ce PDF ne contient pas de texte : c'est probablement un document scanné. Téléchargez le relevé directement depuis l'appli de la banque, ou utilisez l'export CSV.", "crit");
+  const { rows, headerSeen, guessed } = pdfLinesToRows(res.lines);
+  if (rows.length < 2) return setStatus("Je n'ai pas trouvé de tableau d'opérations dans ce PDF (lignes qui commencent par une date et contiennent un montant). L'export CSV de votre banque sera plus fiable.", "crit");
+  const note = guessed ? `Colonnes Débit / Crédit non trouvées pour ${guessed} opération${guessed > 1 ? "s" : ""} : leur sens (dépense ou entrée) a été deviné d'après le libellé. Vérifiez dans l'onglet Opérations.` : (!headerSeen ? "Relevé PDF lu sans en-tête de colonnes : vérifiez quelques montants dans l'onglet Opérations." : "");
+  Object.assign(state, { rows, headerIdx: 0, map: { date: 0, label: 1, amount: 2 }, file: name, sample: false, invert: false, showAll: false, openCat: null, catFilter: "", pdfNote: note });
+  applyMapping();
+}
+
+/* ============================== Classement ============================== */
+const PREFIX = /^(CB|CARTE|CARTE X?\w*|PAIEMENT PAR CARTE|PAIEMENT CB|ACHAT CB|PAIEMENT|ACHAT|FACTURE CARTE|PRLV SEPA|PRLV|PRELEVEMENT SEPA|PRELEVEMENT|PRELEVEMENT EUROPEEN|VIR SEPA|VIREMENT SEPA|VIR INST|VIR|VIREMENT|VIREMENT EN VOTRE FAVEUR|AVOIR|RETRAIT DAB|DU|DE|EMIS|RECU)\s+/;
+function merchantKey(label) {
+  let s = norm(label), prev;
+  do { prev = s; s = s.replace(PREFIX, ""); } while (s !== prev);
+  const words = s.split(" ").filter(w => !/\d/.test(w) && w.length > 1 && !/^(SAS|SARL|SA|FR|FRANCE|PARIS|LYON|MARSEILLE|WWW|COM|HTTPS)$/.test(w));
+  return words.slice(0, 2).join(" ") || norm(label).slice(0, 20);
+}
+
+function ruleCategory(t) {
+  const text = norm(t.type + " " + t.label);
+  const pos = t.amount > 0;
+  for (const c of CATS) {
+    if (!c.re) continue;
+    if (c.onlyPositive && !pos) continue;
+    if (c.id === "revenus" && !pos) continue;
+    if (c.onlyNegative && pos) continue;
+    if (c.re.test(text)) return c.id;
+  }
+  if (t.bankcat) {
+    const b = low(t.bankcat);
+    for (const [re, id] of BANK_CAT_MAP) if (re.test(b)) { if (id === "revenus" && !pos) continue; return id; }
+  }
+  return pos ? "entrees" : "autre";
+}
+
+function classify(txs, overrides) {
+  for (const t of txs) {
+    t.key = merchantKey(t.label);
+    t.cat = overrides[t.key] || ruleCategory(t);
+    // Un montant positif dans une catégorie de dépense = remboursement : il vient en déduction.
+  }
+}
+
+/* ============================== Analyse ============================== */
+function analyse(txs, levels) {
+  const lvl = id => levels[id] || CAT[id].level;
+  const res = { byCat: {}, byMonth: {}, income: 0, spend: 0, savings: 0, lv: { ess: 0, uti: 0, sup: 0 } };
+  if (!txs.length) return res;
+  const min = Math.min(...txs.map(t => t.date)), max = Math.max(...txs.map(t => t.date));
+  res.days = Math.round((max - min) / 864e5) + 1;
+  res.months = Math.max(res.days / 30.44, 0.25);
+  res.from = new Date(min); res.to = new Date(max);
+  for (const t of txs) {
+    const c = CAT[t.cat] || CAT.autre;
+    const mk = new Date(t.date); const k = mk.getFullYear() + "-" + String(mk.getMonth() + 1).padStart(2, "0");
+    const M = res.byMonth[k] || (res.byMonth[k] = { ess: 0, uti: 0, sup: 0, income: 0, savings: 0 });
+    if (c.kind === "internal") continue;
+    if (c.kind === "savings") { res.savings -= t.amount; M.savings -= t.amount; continue; }
+    if (c.kind === "income") { res.income += t.amount; M.income += t.amount; continue; }
+    const spent = -t.amount; // remboursement = dépense négative
+    const C = res.byCat[t.cat] || (res.byCat[t.cat] = { id: t.cat, total: 0, count: 0, tx: [], merchants: {} });
+    C.total += spent; if (spent > 0) C.count++; C.tx.push(t);
+    C.merchants[t.key] = (C.merchants[t.key] || 0) + spent;
+    const l = lvl(t.cat); res.lv[l] += spent; M[l] += spent; res.spend += spent;
+  }
+  for (const C of Object.values(res.byCat)) { C.level = lvl(C.id); C.monthly = C.total / res.months; }
+  res.recurring = detectRecurring(txs);
+  res.advice = buildAdvice(res, txs, lvl);
+  return res;
+}
+
+function detectRecurring(txs) {
+  const groups = {};
+  for (const t of txs) {
+    const c = CAT[t.cat];
+    if (t.amount >= 0 || !c || c.kind || ["courses", "restaurants", "transport", "especes", "shopping", "livraison", "autre"].includes(t.cat) && !/PRLV|PRELEVEMENT/.test(norm(t.label))) continue;
+    (groups[t.key] || (groups[t.key] = [])).push(t);
+  }
+  const out = [];
+  for (const [key, list] of Object.entries(groups)) {
+    if (list.length < 2) continue;
+    list.sort((a, b) => a.date - b.date);
+    const months = new Set(list.map(t => new Date(t.date).getFullYear() * 12 + new Date(t.date).getMonth()));
+    const gaps = list.slice(1).map((t, i) => (t.date - list[i].date) / 864e5);
+    const g = median(gaps);
+    const amts = list.map(t => -t.amount);
+    const m = median(amts);
+    const spread = Math.max(...amts) / Math.max(0.01, Math.min(...amts));
+    let period = null;
+    if (g >= 25 && g <= 35 && months.size >= 2) period = "mensuel";
+    else if (g >= 5 && g <= 9 && list.length >= 3) period = "hebdo";
+    else if (g >= 80 && g <= 100) period = "trimestriel";
+    else if (g >= 350 && g <= 380) period = "annuel";
+    if (!period || spread > 1.35) continue;
+    const perMonth = m * 30.44 / g;
+    out.push({ key, cat: list[0].cat, label: list[list.length - 1].label, amount: m, period, perMonth, perYear: perMonth * 12, count: list.length, last: list[list.length - 1].date });
+  }
+  return out.sort((a, b) => b.perYear - a.perYear);
+}
+
+function buildAdvice(r, txs, lvl) {
+  const A = [], mo = r.months;
+  const monthly = id => (r.byCat[id] ? r.byCat[id].total / mo : 0);
+  const inc = r.income / mo, spend = r.spend / mo;
+  const covered = new Set();
+  const add = (tone, title, text, saving, cat, pin) => { if (cat && saving > 0) covered.add(cat); A.push({ tone, title, text, pin: !!pin, saving: Math.max(0, Math.round(saving || 0)) }); };
+
+  if (inc > 0) {
+    const rate = (inc - spend) / inc;
+    if (rate < 0) add("crit", "Vous dépensez plus que vous ne gagnez", `Sur la période, vos dépenses dépassent vos revenus de ${eur.format(spend - inc)} par mois. Commencez par les postes « Superflu » ci-dessous : ce sont les plus faciles à réduire sans toucher à l'essentiel.`, 0, null, true);
+    else if (rate < 0.1) add("warn", "Votre marge est faible", `Il vous reste environ ${pct(rate)} de vos revenus en fin de mois (${eur.format(inc - spend)}). Viser 10 à 20 % permet d'absorber un imprévu sans découvert.`, 0, null, true);
+    else if (rate >= 0.2) add("good", "Bonne capacité d'épargne", `Il vous reste environ ${pct(rate)} de vos revenus chaque mois (${eur.format(inc - spend)}). Si ce n'est pas déjà fait, programmez un virement automatique vers un livret le jour de la paie.`, 0, null, true);
+    const envies = (r.lv.uti + r.lv.sup) / mo;
+    if (envies / inc > 0.3) add("warn", "Les envies dépassent 30 % de vos revenus", `La règle 50/30/20 conseille de garder les dépenses non essentielles sous 30 % des revenus. Vous êtes à ${pct(envies / inc)}. Revenir à 30 % libérerait ${eur.format(envies - 0.3 * inc)} par mois : les pistes ci-dessous y contribuent.`, 0, null, true);
+    if (r.lv.ess / mo / inc > 0.6) add("info", "Vos charges essentielles sont lourdes", `L'essentiel représente ${pct(r.lv.ess / mo / inc)} de vos revenus (cible : 50 %). Les postes renégociables sont les assurances, l'énergie et le forfait téléphone.`, 0);
+  } else {
+    add("info", "Aucun revenu détecté", "Le relevé ne contient pas d'entrée d'argent reconnue. Les comparaisons avec vos revenus sont désactivées. Si votre salaire arrive sur un autre compte, importez plutôt ce compte-là.", 0);
+  }
+
+  const liv = monthly("livraison");
+  if (liv > 25) add("warn", "Livraison de repas", `${eur.format(liv)} par mois en livraison (${r.byCat.livraison.count} commandes sur la période). Les frais de service et de livraison ajoutent souvent 20 à 30 % au prix. Cuisiner une commande sur deux économiserait environ ${eur.format(liv / 2)} par mois.`, liv / 2 * 12, "livraison");
+  const rest = monthly("restaurants");
+  if (rest > 80) add("warn", "Restaurants et cafés", `${eur.format(rest)} par mois, soit ${r.byCat.restaurants.count} passages sur la période. Préparer son déjeuner deux jours par semaine réduit ce poste d'environ 30 %.`, rest * 0.3 * 12, "restaurants");
+
+  const subs = r.recurring.filter(s => s.cat === "abonnements");
+  const streams = subs.filter(s => STREAMING.test(norm(s.label)) && !MUSIC.test(norm(s.label)));
+  const musics = subs.filter(s => MUSIC.test(norm(s.label)));
+  if (streams.length >= 2) {
+    const sorted = [...streams].sort((a, b) => b.perMonth - a.perMonth);
+    const save = sorted.slice(1).reduce((a, s) => a + s.perMonth, 0);
+    add("warn", `${streams.length} services de streaming vidéo`, `${sorted.map(s => s.key.toLowerCase()).join(", ")} : ${eur2.format(streams.reduce((a, s) => a + s.perMonth, 0))} par mois. En gardant un seul service à la fois et en alternant selon les séries du moment, vous économisez environ ${eur2.format(save)} par mois.`, save * 12, "abonnements");
+  }
+  if (musics.length >= 2) {
+    const sorted = [...musics].sort((a, b) => b.perMonth - a.perMonth);
+    const save = sorted.slice(1).reduce((a, s) => a + s.perMonth, 0);
+    add("warn", "Plusieurs abonnements musicaux", `${sorted.map(s => s.key.toLowerCase()).join(" et ")} font doublon. En garder un seul : ${eur2.format(save)} par mois économisés.`, save * 12);
+  }
+  if (subs.length) {
+    const tot = subs.reduce((a, s) => a + s.perYear, 0);
+    add("info", "Faites le tri dans vos abonnements", `${subs.length} abonnement${subs.length > 1 ? "s" : ""} numérique${subs.length > 1 ? "s" : ""} détecté${subs.length > 1 ? "s" : ""}, soit ${eur.format(tot)} par an. Pour chacun, demandez-vous si vous l'avez utilisé le mois dernier. Voir l'onglet Abonnements.`, 0);
+  }
+
+  const frais = r.byCat.frais ? r.byCat.frais.total : 0;
+  if (frais > 0) add("warn", "Frais bancaires évitables", `${eur2.format(frais)} de frais sur la période (${eur.format(frais / mo * 12)} par an au rythme actuel). Vérifiez les conditions de gratuité de votre carte (paiement minimum par mois, offre choisie) et les commissions d'intervention liées aux découverts. Un courrier à la banque suffit parfois à obtenir un remboursement.`, frais / mo * 12);
+
+  const jeux = monthly("jeux");
+  if (jeux > 0) add("warn", "Jeux d'argent", `${eur.format(jeux)} par mois en jeux et paris. Fixer un plafond mensuel dans l'appli de jeu aide à garder le contrôle. En cas de besoin, Joueurs Info Service répond au 09 74 75 13 13 (appel non surtaxé).`, jeux * 12, "jeux");
+  const tabac = monthly("tabac");
+  if (tabac > 0) add("info", "Tabac", `${eur.format(tabac)} par mois, soit ${eur.format(tabac * 12)} par an. Tabac Info Service (39 89) propose un accompagnement gratuit à l'arrêt, et les substituts nicotiniques sont remboursés par l'Assurance maladie.`, tabac * 12 * 0.5, "tabac");
+
+  const shop = monthly("shopping");
+  if (shop > 120) add("warn", "Shopping et achats en ligne", `${eur.format(shop)} par mois. Essayez la règle des 48 heures : mettez l'article au panier et attendez deux jours avant de valider. Une partie des achats d'impulsion disparaît d'elle-même, souvent un quart.`, shop * 0.25 * 12, "shopping");
+
+  const small = txs.filter(t => t.amount < 0 && t.amount > -15 && lvl(t.cat) === "sup" && !CAT[t.cat].kind && !covered.has(t.cat));
+  const smallPerMonth = small.length / mo;
+  if (smallPerMonth >= 10) {
+    const tot = -small.reduce((a, t) => a + t.amount, 0) / mo;
+    add("info", "Les petites dépenses s'additionnent", `${Math.round(smallPerMonth)} achats de moins de 15 € par mois classés « Superflu » (hors postes déjà cités), pour ${eur.format(tot)} au total. Pris un par un ils semblent anodins ; en diviser le nombre par deux représente ${eur.format(tot * 6)} par an.`, tot * 6);
+  }
+
+  const tel = monthly("telecom");
+  if (tel > 45) add("info", "Forfaits téléphone et internet", `${eur.format(tel)} par mois. Des forfaits mobiles sans engagement existent autour de 10 € et une box internet autour de 25 €. Comparez avant la fin d'une promotion : les prix remontent souvent après 12 mois.`, Math.max(0, tel - 35) * 12);
+  const ass = monthly("assurances");
+  if (ass > 150) add("info", "Assurances et mutuelle", `${eur.format(ass)} par mois. Après un an de contrat, les assurances auto, habitation et la complémentaire santé se résilient à tout moment : faites jouer la concurrence une fois par an.`, ass * 0.1 * 12);
+
+  const cash = r.byCat.especes ? r.byCat.especes.total : 0;
+  if (r.spend > 0 && cash / r.spend > 0.12) add("info", "Beaucoup de retraits d'espèces", `${pct(cash / r.spend)} de vos dépenses passent en espèces (${eur.format(cash / mo)} par mois). Ces montants échappent à l'analyse : notez à quoi ils servent pendant un mois pour voir s'ils cachent des dépenses superflues.`, 0);
+
+  const unk = r.byCat.autre ? r.byCat.autre.total : 0;
+  if (r.spend > 0 && unk / r.spend > 0.1) add("info", "Des opérations restent à classer", `${eur.format(unk)} de dépenses n'ont pas été reconnues automatiquement. Classez-les dans l'onglet Opérations : l'appli retiendra le commerçant pour les prochains relevés.`, 0);
+
+  const months = Object.keys(r.byMonth).sort();
+  if (months.length >= 3) {
+    const last = months[months.length - 1], prev = months.slice(0, -1);
+    const avgSup = prev.reduce((a, k) => a + r.byMonth[k].sup, 0) / prev.length;
+    const lastSup = r.byMonth[last].sup;
+    if (avgSup > 0 && lastSup < avgSup * 0.85) add("good", "Le superflu recule", `En ${monthLabel(last)}, vos dépenses superflues (${eur.format(lastSup)}) sont inférieures de ${pct(1 - lastSup / avgSup)} à la moyenne des mois précédents. Continuez.`, 0);
+  }
+
+  const order = { crit: 0, warn: 1, info: 2, good: 3 };
+  return A.sort((a, b) => b.pin - a.pin || order[a.tone] - order[b.tone] || b.saving - a.saving);
+}
+
+/* ============================== État ============================== */
+const state = {
+  tab: store.get("tab", "synthese"),
+  overrides: store.get("overrides", {}),
+  levels: store.get("levels", {}),
+  tx: [], file: null, sample: false, rows: null, headerIdx: -1, map: {}, invert: false,
+  search: "", showAll: false, openCat: null, catFilter: "", res: null
+};
+
+function recompute() {
+  classify(state.tx, state.overrides);
+  state.res = analyse(state.tx, state.levels);
+  render();
+}
+
+function setStatus(html, cls) { const s = $("#status"); s.className = "banner" + (cls ? " " + cls : ""); s.innerHTML = html; }
+
+function loadText(text, name, isSample) {
+  const delim = detectDelimiter(text);
+  const rows = parseCSV(text, delim);
+  if (rows.length < 2) { setStatus("Ce fichier ne contient pas de lignes lisibles. Vérifiez qu'il s'agit bien d'un export CSV de vos opérations.", "crit"); return; }
+  const headerIdx = findHeaderRow(rows);
+  const map = guessMapping(rows, headerIdx);
+  Object.assign(state, { rows, headerIdx, map, file: name, sample: !!isSample, invert: false, showAll: false, openCat: null, catFilter: "", pdfNote: "" });
+  applyMapping();
+}
+
+function applyMapping() {
+  const { rows, headerIdx, map, invert } = state;
+  renderMapping();
+  if (map.date == null || map.label == null || (map.amount == null && map.debit == null && map.credit == null)) {
+    state.tx = []; recompute();
+    $("#mapping").hidden = false; $("#mapping").open = true;
+    setStatus("Je n'ai pas reconnu toutes les colonnes. Indiquez ci-dessous laquelle contient la date, le libellé et le montant, puis appuyez sur Appliquer.", "warn");
+    return;
+  }
+  const { tx, skipped } = buildTransactions(rows, headerIdx, map, invert);
+  state.tx = tx;
+  if (!tx.length) { setStatus("Aucune opération valide trouvée avec ces colonnes. Corrigez la correspondance ci-dessous.", "crit"); $("#mapping").open = true; recompute(); return; }
+  const negs = tx.filter(t => t.amount < 0).length;
+  if (negs / tx.length < 0.2 && !invert && map.amount != null) {
+    setStatus(`Presque toutes les opérations sont positives. Si vos dépenses apparaissent sans signe moins, cochez « Les dépenses sont en positif » ci-dessous.`, "warn");
+    $("#mapping").open = true;
+  } else if (state.sample) {
+    setStatus("<b>Exemple fictif</b> : trois mois de relevé inventés pour montrer l'appli. Importez votre propre fichier pour voir vos chiffres.");
+  } else {
+    setStatus(`<b>${esc(state.file)}</b> : ${tx.length} opérations du ${new Date(Math.min(...tx.map(t => t.date))).toLocaleDateString("fr-FR")} au ${new Date(Math.max(...tx.map(t => t.date))).toLocaleDateString("fr-FR")}${skipped ? `, ${skipped} ligne${skipped > 1 ? "s" : ""} ignorée${skipped > 1 ? "s" : ""}` : ""}.${state.pdfNote ? "<br>" + state.pdfNote : ""}`, state.pdfNote ? "warn" : "");
+  }
+  $("#mapping").hidden = false;
+  if (!state.sample) store.set("last", { tx, file: state.file });
+  recompute();
+}
+
+function renderMapping() {
+  const { rows, headerIdx, map } = state;
+  const header = headerIdx >= 0 ? rows[headerIdx] : rows[0].map((_, i) => "Colonne " + (i + 1));
+  const sample = rows[headerIdx + 1] || [];
+  const opts = sel => `<option value="">—</option>` + header.map((h, i) => `<option value="${i}"${sel === i ? " selected" : ""}>${esc(h || "Colonne " + (i + 1))}${sample[i] ? " · " + esc(sample[i].slice(0, 18)) : ""}</option>`).join("");
+  $("#map-grid").innerHTML = FIELDS.map(f => `<label for="map-${f.key}">${f.label}${f.need ? " *" : ""}<select id="map-${f.key}" data-k="${f.key}">${opts(map[f.key])}</select></label>`).join("");
+  $("#invert").checked = !!state.invert;
+}
+
+/* ============================== Rendu ============================== */
+const view = $("#view");
+function render() {
+  document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === state.tab)));
+  if (!state.tx.length) { view.innerHTML = `<div class="panel empty">Importez un relevé CSV ou PDF pour commencer, ou appuyez sur « Voir l'exemple ».</div>`; return; }
+  const r = state.res;
+  view.innerHTML = ({ synthese: vSynthese, conseils: vConseils, depenses: vDepenses, abos: vAbos, operations: vOperations })[state.tab](r);
+  if (state.tab === "synthese") drawMonthly(r);
+}
+
+function lvBadge(l) { return `<span class="chip" style="background:color-mix(in srgb, var(--${l}) 16%, transparent);color:var(--ink)"><i class="dot" style="background:var(--${l});margin:0"></i>${LEVELS[l].label}</span>`; }
+
+function vSynthese(r) {
+  const mo = r.months, inc = r.income / mo, sp = r.spend / mo, left = inc - sp;
+  const rate = inc > 0 ? left / inc : NaN;
+  const totalSaving = r.advice.reduce((a, x) => a + x.saving, 0);
+  const lvTot = r.lv.ess + r.lv.uti + r.lv.sup || 1;
+  const envies = (r.lv.uti + r.lv.sup) / mo;
+  const rows = inc > 0 ? [
+    ["Besoins (essentiel)", r.lv.ess / mo / inc, 0.5, "ess", "≤ 50 %", v => v <= 0.5],
+    ["Envies (utile + superflu)", envies / inc, 0.3, "sup", "≤ 30 %", v => v <= 0.3],
+    ["Reste pour épargner", Math.max(0, rate), 0.2, "uti", "≥ 20 %", v => v >= 0.2]
+  ] : [];
+  return `
+  <section class="panel" aria-labelledby="h-syn">
+    <div><span class="eyebrow">Moyenne par mois · ${r.days} jours analysés</span><h2 id="h-syn">Où va votre argent</h2></div>
+    <div class="kpis">
+      <div class="kpi"><span class="v">${eur.format(inc)}</span><span class="l">Revenus</span></div>
+      <div class="kpi"><span class="v">${eur.format(sp)}</span><span class="l">Dépenses</span></div>
+      <div class="kpi"><span class="v" style="color:${left < 0 ? "var(--crit)" : "var(--ink)"}">${left < 0 ? "−" : ""}${eur.format(Math.abs(left))}</span><span class="l">Reste en fin de mois</span></div>
+      <div class="kpi"><span class="v">${eur.format(r.savings / mo)}</span><span class="l">Mis de côté (virements épargne)</span></div>
+    </div>
+    <div class="split" role="img" aria-label="Répartition des dépenses : essentiel ${pct(r.lv.ess / lvTot)}, utile ${pct(r.lv.uti / lvTot)}, superflu ${pct(r.lv.sup / lvTot)}">
+      ${["ess", "uti", "sup"].map(l => r.lv[l] > 0 ? `<span style="width:${r.lv[l] / lvTot * 100}%;background:var(--${l})"></span>` : "").join("")}
+    </div>
+    <div class="legend">
+      ${["ess", "uti", "sup"].map(l => `<span><i style="background:var(--${l})"></i>${LEVELS[l].label} <b class="num">${eur.format(r.lv[l] / mo)}</b> <span class="muted num">(${pct(r.lv[l] / lvTot)})</span></span>`).join("")}
+    </div>
+  </section>
+
+  ${totalSaving > 0 ? `<section class="panel"><div class="saving-total"><div><span class="eyebrow">Économies possibles</span><h3>Si vous suivez les conseils</h3></div><span class="v">${eur.format(totalSaving)}<span class="small muted" style="font-family:var(--body);font-weight:500"> / an</span></span></div><button class="btn" type="button" data-goto="conseils">Voir les ${r.advice.filter(a => a.saving > 0).length} pistes d'économie</button></section>` : ""}
+
+  ${rows.length ? `<section class="panel" aria-labelledby="h-rule">
+    <div><span class="eyebrow">Repère</span><h2 id="h-rule">La règle 50 / 30 / 20</h2></div>
+    <p class="small muted">Un repère courant : la moitié des revenus pour les besoins, 30 % au plus pour les envies, 20 % au moins mis de côté. Le trait noir marque la cible.</p>
+    <div class="rule-rows">
+      ${rows.map(([name, v, target, col, tl, ok]) => `<div class="rule-row">
+        <span>${name}</span><span class="num"><b>${pct(v)}</b> <span class="chip ${ok(v) ? "good" : "warn"}">${ok(v) ? "✓ dans la cible" : "! cible " + tl}</span></span>
+        <div class="track"><div class="fill" style="width:${Math.min(100, v * 100)}%;background:var(--${col})"></div><span class="target" style="left:calc(${target * 100}% - 1px)"></span></div>
+      </div>`).join("")}
+    </div>
+  </section>` : ""}
+
+  <section class="panel" aria-labelledby="h-mo">
+    <div><span class="eyebrow">Mois par mois</span><h2 id="h-mo">Dépenses et revenus</h2></div>
+    <div class="legend">${["ess", "uti", "sup"].map(l => `<span><i style="background:var(--${l})"></i>${LEVELS[l].label}</span>`).join("")}<span><i style="background:var(--ink);height:3px;vertical-align:3px"></i>Revenus</span></div>
+    <div class="chart-box" id="monthly"></div>
+    <details><summary class="small">Voir en tableau</summary>
+      <div class="table-wrap"><table><thead><tr><th>Mois</th><th>Revenus</th><th>Essentiel</th><th>Utile</th><th>Superflu</th><th>Épargne</th></tr></thead><tbody>
+      ${Object.keys(r.byMonth).sort().map(k => { const m = r.byMonth[k]; return `<tr><td>${monthLabel(k)}</td><td>${eur.format(m.income)}</td><td>${eur.format(m.ess)}</td><td>${eur.format(m.uti)}</td><td>${eur.format(m.sup)}</td><td>${eur.format(m.savings)}</td></tr>`; }).join("")}
+      </tbody></table></div>
+    </details>
+  </section>
+
+  <section class="panel" aria-labelledby="h-top">
+    <div><span class="eyebrow">À regarder en premier</span><h2 id="h-top">Vos plus gros postes superflus</h2></div>
+    ${topSup(r)}
+  </section>`;
+}
+
+function topSup(r) {
+  const list = Object.values(r.byCat).filter(c => c.level === "sup" && c.total > 0).sort((a, b) => b.total - a.total).slice(0, 5);
+  if (!list.length) return `<p class="muted">Aucune dépense classée superflue. Bravo, ou vérifiez le classement dans l'onglet Dépenses.</p>`;
+  const max = list[0].monthly;
+  return `<div class="cat-list">${list.map(c => `<div class="cat"><div class="cat-head" data-open="${c.id}"><span class="name">${CAT[c.id].name}</span><span class="amt">${eur.format(c.monthly)}<span class="muted small"> / mois</span></span><span class="sub">${c.count} opération${c.count > 1 ? "s" : ""} · ${eur.format(c.monthly * 12)} par an</span></div><div class="bar" style="width:${c.monthly / max * 100}%;background:var(--sup)"></div></div>`).join("")}</div>`;
+}
+
+function drawMonthly(r) {
+  const box = $("#monthly"); if (!box) return;
+  const keys = Object.keys(r.byMonth).sort();
+  const W = Math.max(300, box.clientWidth), H = 220, padL = 44, padR = 8, padT = 12, padB = 26;
+  const maxV = Math.max(1, ...keys.map(k => { const m = r.byMonth[k]; return Math.max(m.ess + m.uti + m.sup, m.income); }));
+  const step = niceStep(maxV / 4), top = Math.ceil(maxV / step) * step;
+  const y = v => padT + (H - padT - padB) * (1 - v / top);
+  const slot = (W - padL - padR) / keys.length, bw = Math.min(44, slot * 0.6);
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Dépenses par mois empilées par niveau, avec les revenus">`;
+  for (let v = 0; v <= top + 1e-6; v += step) s += `<line x1="${padL}" x2="${W - padR}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/><text x="${padL - 6}" y="${y(v) + 4}" text-anchor="end">${v >= 1000 ? (v / 1000).toLocaleString("fr-FR") + " k€" : v + " €"}</text>`;
+  keys.forEach((k, i) => {
+    const m = r.byMonth[k], cx = padL + slot * i + slot / 2, x = cx - bw / 2;
+    let acc = 0; const segs = ["ess", "uti", "sup"].filter(l => m[l] > 0);
+    segs.forEach((l, j) => {
+      const y1 = y(acc), y2 = y(acc + m[l]); acc += m[l];
+      const h = Math.max(0, y1 - y2 - (j < segs.length - 1 ? 2 : 0));
+      const isTop = j === segs.length - 1;
+      s += isTop && h > 4 ? `<path d="M${x},${y1} v${-(h - 4)} q0,-4 4,-4 h${bw - 8} q4,0 4,4 v${h - 4} z" fill="var(--${l})"/>` : `<rect x="${x}" y="${y1 - h}" width="${bw}" height="${h}" fill="var(--${l})"/>`;
+    });
+    if (m.income > 0) s += `<line x1="${cx - bw / 2 - 5}" x2="${cx + bw / 2 + 5}" y1="${y(m.income)}" y2="${y(m.income)}" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>`;
+    s += `<text x="${cx}" y="${H - 8}" text-anchor="middle">${monthLabel(k)}</text>`;
+    s += `<rect x="${padL + slot * i}" y="${padT}" width="${slot}" height="${H - padT - padB}" fill="transparent" data-m="${k}" style="cursor:pointer"/>`;
+  });
+  s += `<line x1="${padL}" x2="${W - padR}" y1="${y(0)}" y2="${y(0)}" stroke="var(--muted)" stroke-width="1"/></svg><div class="tip" hidden></div>`;
+  box.innerHTML = s;
+  const tip = box.querySelector(".tip");
+  const show = e => {
+    const k = e.target.dataset && e.target.dataset.m; if (!k) { tip.hidden = true; return; }
+    const m = r.byMonth[k], i = keys.indexOf(k);
+    tip.innerHTML = `<b>${monthLabel(k)}</b><br>Revenus ${eur.format(m.income)}<br>Essentiel ${eur.format(m.ess)}<br>Utile ${eur.format(m.uti)}<br>Superflu ${eur.format(m.sup)}`;
+    tip.hidden = false;
+    const sx = box.clientWidth / W;
+    let left = (padL + slot * i + slot / 2) * sx;
+    left = Math.min(Math.max(left, 70), box.clientWidth - 70);
+    tip.style.left = left + "px"; tip.style.top = (y(Math.max(m.ess + m.uti + m.sup, m.income)) * sx - 8) + "px";
+  };
+  box.onpointermove = show; box.onpointerdown = show; box.onpointerleave = () => tip.hidden = true;
+}
+function niceStep(x) { const p = Math.pow(10, Math.floor(Math.log10(x))); const f = x / p; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p; }
+
+function vConseils(r) {
+  const tot = r.advice.reduce((a, x) => a + x.saving, 0);
+  const icon = { crit: "!", warn: "!", info: "i", good: "✓" };
+  const tag = { crit: "Urgent", warn: "À réduire", info: "À vérifier", good: "Bien" };
+  return `<section class="panel">
+    <div class="saving-total"><div><span class="eyebrow">Estimation</span><h2>Vos pistes d'économie</h2></div>${tot > 0 ? `<span class="v">${eur.format(tot)}<span class="small muted" style="font-family:var(--body);font-weight:500"> / an</span></span>` : ""}</div>
+    <p class="small muted">Chaque montant est calculé sur votre rythme de dépense actuel, avec l'hypothèse indiquée dans le conseil. Le total ne compte chaque dépense qu'une fois. Les conseils changent quand vous reclassez une dépense.</p>
+    <div class="advice-list">${r.advice.map(a => `<article class="advice ${a.tone}"><span class="ic" aria-hidden="true">${icon[a.tone]}</span><div class="body"><div class="head"><h3>${esc(a.title)}</h3><span class="chip ${a.tone}">${a.saving > 0 ? "≈ " + eur.format(a.saving) + " / an" : tag[a.tone]}</span></div><p>${a.text}</p></div></article>`).join("") || `<p class="muted">Rien à signaler sur ce relevé.</p>`}</div>
+  </section>`;
+}
+
+function vDepenses(r) {
+  const list = Object.values(r.byCat).filter(c => c.total > 0).sort((a, b) => b.total - a.total);
+  const max = list.length ? list[0].monthly : 1;
+  return `<section class="panel">
+    <div><span class="eyebrow">Par catégorie · moyenne par mois</span><h2>Utile ou superflu&nbsp;?</h2></div>
+    <p class="small muted">Chaque catégorie a un niveau par défaut. Changez-le si ça ne correspond pas à votre situation : un abonnement sport peut être essentiel pour vous. Touchez une catégorie pour voir ses opérations.</p>
+    <div class="legend">${["ess", "uti", "sup"].map(l => `<span><i style="background:var(--${l})"></i>${LEVELS[l].label} : ${LEVELS[l].desc}</span>`).join("")}</div>
+    <div class="cat-list">${list.map(c => {
+      const merchants = Object.entries(c.merchants).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([k]) => k.toLowerCase()).join(", ");
+      const open = state.openCat === c.id;
+      return `<div class="cat">
+        <div class="cat-head" data-open="${c.id}" role="button" tabindex="0" aria-expanded="${open}"><span class="name">${CAT[c.id].name}</span><span class="amt">${eur.format(c.monthly)}</span><span class="sub">${c.count} op. · ${esc(merchants)}</span><span class="sub num" style="text-align:right">${pct(c.total / r.spend)}</span></div>
+        <div class="bar" style="width:${Math.max(0, c.monthly / max * 100)}%;background:var(--${c.level})"></div>
+        <div class="cat-tools">Niveau <span class="lvl-seg" role="group" aria-label="Niveau de ${esc(CAT[c.id].name)}">${["ess", "uti", "sup"].map(l => `<button type="button" data-l="${l}" data-cat="${c.id}" aria-pressed="${c.level === l}">${LEVELS[l].label}</button>`).join("")}</span></div>
+        ${open ? `<div class="tx-list">${c.tx.slice(0, 60).map(txRow).join("")}</div>` : ""}
+      </div>`;
+    }).join("")}</div>
+  </section>`;
+}
+
+function vAbos(r) {
+  const rec = r.recurring;
+  const tot = rec.reduce((a, s) => a + s.perMonth, 0);
+  return `<section class="panel">
+    <div class="saving-total"><div><span class="eyebrow">Paiements qui reviennent</span><h2>Abonnements et prélèvements</h2></div><span class="v" style="color:var(--ink)">${eur.format(tot)}<span class="small muted" style="font-family:var(--body);font-weight:500"> / mois</span></span></div>
+    <p class="small muted">Détectés automatiquement : même commerçant, montant proche, à intervalle régulier. Il faut au moins deux mois de relevé pour les repérer.</p>
+    ${rec.length ? `<div class="tx-list">${rec.map(s => `<div class="tx"><span class="lbl"><b>${esc(s.key.toLowerCase())}</b></span><span class="amt">${eur2.format(s.perMonth)}<span class="muted small"> / mois</span></span><span class="meta">${lvBadge(state.levels[s.cat] || CAT[s.cat].level)}<span>${CAT[s.cat].name}</span><span>· ${s.period}, ${s.count} fois</span><span>· ${eur.format(s.perYear)} par an</span></span></div>`).join("")}</div>` : `<p class="muted">Aucun paiement récurrent trouvé. Importez au moins deux mois d'opérations.</p>`}
+  </section>`;
+}
+
+function txRow(t) {
+  const c = CAT[t.cat] || CAT.autre;
+  const opts = CATS.map(x => `<option value="${x.id}"${x.id === t.cat ? " selected" : ""}>${x.name}</option>`).join("");
+  return `<div class="tx"><span class="lbl">${esc(t.label)}</span><span class="amt${t.amount > 0 ? " pos" : ""}">${t.amount > 0 ? "+" : "−"}${eur2.format(Math.abs(t.amount))}</span>
+    <span class="meta"><span class="num">${dayFmt(new Date(t.date))}</span>${c.kind ? "" : lvBadge(state.levels[t.cat] || c.level)}<select aria-label="Catégorie" data-key="${esc(t.key)}">${opts}</select></span></div>`;
+}
+
+function vOperations() {
+  const q = norm(state.search);
+  let list = state.tx.filter(t => (!q || norm(t.label).includes(q)) && (!state.catFilter || t.cat === state.catFilter));
+  const n = list.length; if (!state.showAll) list = list.slice(0, 150);
+  const used = [...new Set(state.tx.map(t => t.cat))].map(id => CAT[id]).sort((a, b) => a.name.localeCompare(b.name, "fr"));
+  return `<section class="panel">
+    <div><span class="eyebrow">${n} opération${n > 1 ? "s" : ""}</span><h2>Toutes les opérations</h2></div>
+    <p class="small muted">Si une opération est mal classée, changez sa catégorie : toutes les opérations du même commerçant suivent, et l'appli s'en souvient pour vos prochains relevés.</p>
+    <div class="toolbar"><input type="search" id="search" placeholder="Rechercher un libellé" value="${esc(state.search)}" aria-label="Rechercher"><select id="cat-filter" aria-label="Filtrer par catégorie"><option value="">Toutes catégories</option>${used.map(c => `<option value="${c.id}"${state.catFilter === c.id ? " selected" : ""}>${c.name}</option>`).join("")}</select></div>
+    <div class="tx-list">${list.map(txRow).join("") || `<p class="muted">Aucune opération ne correspond.</p>`}</div>
+    ${!state.showAll && n > 150 ? `<button class="btn" type="button" id="show-all">Afficher les ${n - 150} suivantes</button>` : ""}
+  </section>`;
+}
+
+/* ============================== Événements ============================== */
+$("#file").addEventListener("change", e => {
+  const f = e.target.files[0]; if (!f) return;
+  const rd = new FileReader();
+  const isPdf = /\.pdf$/i.test(f.name) || f.type === "application/pdf";
+  rd.onload = () => {
+    const head = new Uint8Array(rd.result.slice(0, 5));
+    if (isPdf || String.fromCharCode(...head) === "%PDF-") loadPdf(rd.result, f.name);
+    else loadText(decode(rd.result), f.name, false);
+  };
+  rd.onerror = () => setStatus("Impossible de lire ce fichier. Réessayez ou exportez-le à nouveau depuis votre banque.", "crit");
+  rd.readAsArrayBuffer(f);
+  e.target.value = "";
+});
+$("#load-sample").addEventListener("click", () => loadText(sampleCSV(), "exemple.csv", true));
+$("#apply-map").addEventListener("click", () => {
+  document.querySelectorAll("#map-grid select").forEach(s => { state.map[s.dataset.k] = s.value === "" ? undefined : +s.value; });
+  state.invert = $("#invert").checked;
+  applyMapping();
+});
+document.querySelectorAll(".tab").forEach(b => b.addEventListener("click", () => { state.tab = b.dataset.tab; store.set("tab", state.tab); render(); }));
+view.addEventListener("click", e => {
+  const g = e.target.closest("[data-goto]"); if (g) { state.tab = g.dataset.goto; render(); window.scrollTo({ top: $("nav.tabs").offsetTop - 8 }); return; }
+  const lb = e.target.closest(".lvl-seg button");
+  if (lb) { state.levels[lb.dataset.cat] = lb.dataset.l; store.set("levels", state.levels); recompute(); return; }
+  const o = e.target.closest("[data-open]");
+  if (o) { if (state.tab !== "depenses") state.tab = "depenses"; state.openCat = state.openCat === o.dataset.open ? null : o.dataset.open; render(); }
+  if (e.target.id === "show-all") { state.showAll = true; render(); }
+});
+view.addEventListener("keydown", e => { if ((e.key === "Enter" || e.key === " ") && e.target.matches("[data-open]")) { e.preventDefault(); e.target.click(); } });
+view.addEventListener("change", e => {
+  const s = e.target;
+  if (s.dataset.key) { state.overrides[s.dataset.key] = s.value; store.set("overrides", state.overrides); recompute(); }
+  if (s.id === "cat-filter") { state.catFilter = s.value; render(); }
+});
+view.addEventListener("input", e => {
+  if (e.target.id === "search") {
+    state.search = e.target.value; const pos = e.target.selectionStart; render();
+    const i = $("#search"); i.focus(); try { i.setSelectionRange(pos, pos); } catch (x) {}
+  }
+});
+let rz; window.addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => state.tab === "synthese" && state.res && drawMonthly(state.res), 150); });
+$("#wipe").addEventListener("click", () => {
+  $("#wipe-box").innerHTML = `<span class="small">Effacer le dernier relevé et vos corrections de catégories&nbsp;?</span><button class="btn" id="wipe-yes" type="button" style="color:var(--crit)">Oui, effacer</button><button class="btn ghost" id="wipe-no" type="button">Annuler</button>`;
+});
+$("#wipe-box").addEventListener("click", e => {
+  if (e.target.id === "wipe-yes") { store.clear(); state.overrides = {}; state.levels = {}; loadText(sampleCSV(), "exemple.csv", true); resetWipe(); }
+  if (e.target.id === "wipe-no") resetWipe();
+});
+function resetWipe() { $("#wipe-box").innerHTML = `<button class="btn ghost" id="wipe" type="button">Effacer mes données de cet appareil</button>`; $("#wipe").addEventListener("click", () => $("#wipe-box").innerHTML = `<span class="small">Effacer le dernier relevé et vos corrections de catégories&nbsp;?</span><button class="btn" id="wipe-yes" type="button" style="color:var(--crit)">Oui, effacer</button><button class="btn ghost" id="wipe-no" type="button">Annuler</button>`); }
+
+/* ============================== Exemple fictif ============================== */
+function sampleCSV() {
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const lines = ["dateOp;dateVal;label;category;categoryParent;supplierFound;amount;comment;accountNum;accountLabel;accountbalance"];
+  const f = (d, label, amt) => lines.push(`${d.toISOString().slice(0, 10)};${d.toISOString().slice(0, 10)};"${label}";;;;${amt.toFixed(2).replace(".", ",")};;;;`);
+  for (const [y, m] of [[2026, 5], [2026, 6], [2026, 7]]) {
+    const D = d => new Date(Date.UTC(y, m, d, 12));
+    f(D(1), "VIR SEPA SALAIRE ENTREPRISE DUPONT", 2450);
+    f(D(3), "PRLV SEPA FONCIA LOYER", -850);
+    f(D(5), "PRLV SEPA EDF CLIENTS PARTICULIERS", -68.4);
+    f(D(6), "PRLV SEPA FREE MOBILE", -19.99);
+    f(D(6), "PRLV SEPA FREE TELECOM FREEBOX", -39.99);
+    f(D(7), "PRLV SEPA MAIF ASSURANCE HABITATION", -42.1);
+    f(D(8), "PRLV SEPA HARMONIE MUTUELLE", -38.5);
+    f(D(9), "CB NETFLIX.COM", -13.49);
+    f(D(11), "CB SPOTIFY P1234", -11.12);
+    f(D(14), "CB DISNEY PLUS", -11.99);
+    f(D(15), "PRLV SEPA BASIC FIT", -29.99);
+    f(D(2), "VIR PERMANENT LIVRET A", -150);
+    f(D(28), "FRAIS TENUE DE COMPTE", -2);
+    if (m === 6) f(D(19), "COMMISSION INTERVENTION", -8);
+    for (let w = 0; w < 4; w++) f(D(4 + w * 7), "CB CARREFOUR MARKET 12" + w, -(55 + rnd() * 40));
+    for (let i = 0; i < 3; i++) f(D(10 + i * 6), "CB LIDL 04" + i, -(18 + rnd() * 15));
+    for (let i = 0; i < 5 + (m === 7 ? -2 : 0); i++) f(D(3 + i * 5), i % 2 ? "CB DELIVEROO PARIS" : "CB UBER EATS HELP.UBER.COM", -(19 + rnd() * 14));
+    for (let i = 0; i < 6; i++) f(D(2 + i * 4), ["CB MCDONALDS", "CB STARBUCKS", "CB BRASSERIE DU COIN", "CB PAUL GARE"][i % 4], -(6 + rnd() * 18));
+    for (let i = 0; i < 8; i++) f(D(1 + i * 3), "CB TABAC LE CELTIC", -(2.5 + rnd() * 9));
+    f(D(12), "CB TOTALENERGIES STATION", -(55 + rnd() * 10));
+    f(D(16), "CB SNCF CONNECT", -(35 + rnd() * 30));
+    f(D(18), "CB AMAZON PAYMENTS", -(30 + rnd() * 60));
+    f(D(21), "CB ZARA FRANCE", -(40 + rnd() * 40));
+    f(D(22), "CB SEPHORA", -(20 + rnd() * 25));
+    f(D(13), "CB PHARMACIE DU MARCHE", -(8 + rnd() * 15));
+    f(D(20), "CB UGC CINE CITE", -11.9);
+    f(D(24), "CB FDJ", -10);
+    f(D(17), "RETRAIT DAB 17/0" + (m + 1), -40);
+    if (m === 6) f(D(25), "VIR INST LYDIA CAMILLE", -35);
+    if (m === 7) f(D(9), "CB AIRBNB * HM4XK2", -310);
+    if (m === 5) f(D(26), "REMBOURSEMENT CPAM", 23.5);
+  }
+  return lines.join("\n");
+}
+
+/* ============================== Démarrage ============================== */
+(function boot() {
+  const last = store.get("last", null);
+  if (last && Array.isArray(last.tx) && last.tx.length) {
+    state.tx = last.tx; state.file = last.file;
+    setStatus(`Dernier relevé importé : <b>${esc(last.file)}</b> (${last.tx.length} opérations). Choisissez un fichier pour le remplacer.`);
+    recompute();
+  } else loadText(sampleCSV(), "exemple.csv", true);
+  try {
+    if ("serviceWorker" in navigator && location.protocol === "https:" && window.top === window.self && document.querySelector('link[rel="manifest"]')) navigator.serviceWorker.register("sw.js").catch(() => {});
+  } catch (e) {}
+})();
+</script>
+</body><!--pwa-->
+</html><!--pwa-->
