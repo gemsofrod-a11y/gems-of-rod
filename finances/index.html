@@ -89,6 +89,12 @@
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
+.period-box { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 14px; color: var(--ink-2); margin-top: -8px; }
+.ask-list { display: flex; flex-direction: column; }
+.ask { display: flex; flex-direction: column; gap: 8px; padding-block: 12px; border-top: 1px solid var(--line); }
+.ask:first-child { border-top: 0; }
+.ask-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.ask-btns .btn { padding: 8px 12px; font-size: 13px; }
 html, body { margin: 0; }
 body {
   background: var(--bg);
@@ -250,11 +256,11 @@ footer { font-size: 12px; color: var(--muted); display: flex; flex-direction: co
 
   <section class="panel import" aria-labelledby="import-title">
     <h2 id="import-title">Importer un relevé</h2>
-    <p class="small muted">Choisissez l'export CSV de vos opérations ou le relevé PDF téléchargé depuis l'appli de votre banque (compte courant ou épargne). Chaque nouveau relevé met à jour l'historique : seules les nouvelles opérations sont ajoutées. Le fichier est lu uniquement par ce téléphone&nbsp;: rien n'est envoyé sur Internet.</p>
+    <p class="small muted">Choisissez le relevé téléchargé depuis l'appli de votre banque : fichier Excel, CSV ou PDF, compte courant ou épargne. Chaque nouveau relevé met à jour l'historique : seules les nouvelles opérations sont ajoutées. Le fichier est lu uniquement par ce téléphone&nbsp;: rien n'est envoyé sur Internet.</p>
     <p class="small muted" id="share-hint" hidden>Appli installée sur Android : dans l'appli de votre banque, touchez « Partager » sur le relevé puis choisissez Budget Clair. Il s'importe directement.</p>
     <div class="import-row">
-      <label class="btn primary" for="file">Choisir un relevé (CSV ou PDF)</label>
-      <input id="file" type="file" accept=".csv,.txt,.pdf,text/csv,text/plain,application/pdf">
+      <label class="btn primary" for="file">Choisir un relevé (Excel, CSV ou PDF)</label>
+      <input id="file" type="file" accept=".csv,.txt,.pdf,.xlsx,.xlsm,text/csv,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel">
       <button class="btn ghost" id="load-sample" type="button">Voir l'exemple</button>
     </div>
     <div id="status" class="banner" role="status"></div>
@@ -276,6 +282,16 @@ footer { font-size: 12px; color: var(--muted); display: flex; flex-direction: co
     <button class="tab" role="tab" id="tab-abos" data-tab="abos" aria-selected="false">Abonnements</button>
     <button class="tab" role="tab" id="tab-operations" data-tab="operations" aria-selected="false">Opérations</button>
   </nav>
+
+  <div class="period-box" id="period-box" hidden>
+    <label for="period">Période analysée</label>
+    <select id="period">
+      <option value="3">3 derniers mois</option>
+      <option value="6">6 derniers mois</option>
+      <option value="12">12 derniers mois</option>
+      <option value="all">Tout l'historique</option>
+    </select>
+  </div>
 
   <main id="view"></main>
 
@@ -299,27 +315,30 @@ const LEVELS = {
 
 // Les règles s'appliquent au libellé normalisé : MAJUSCULES, sans accents, ponctuation remplacée par des espaces.
 const CATS = [
+  { id: "pret", name: "Prêt reçu", kind: "internal", onlyPositive: true, re: /\b(LOAN|PERSONAL LOAN|PRET PERSONNEL|DEBLOCAGE (DU )?PRET|DEBLOCAGE CREDIT)\b/ },
   { id: "interne", name: "Virements entre mes comptes", kind: "internal", re: /\b(TOP ?UP|RECHARGE (REVOLUT|LYDIA)|VIR(EMENT)? (INTERNE|DE COMPTE A COMPTE|ENTRE MES COMPTES)|MOVE TO POCKET|FROM POCKET|EXCHANGE(D)? TO|CHANGE DE DEVISE)\b/ },
   { id: "interets", name: "Intérêts d'épargne", kind: "income", onlyPositive: true, re: /\b(INTERETS? (NETS? |BRUTS? )?(VERSES?|CREDITEURS?|ACQUIS)|INTEREST (PAID|EARNED)|INTERETS? (DU |DE )?LIVRET)\b/ },
-  { id: "epargne", name: "Épargne", kind: "savings", re: /\b(LIVRET|LDDS|LDD|LEP|PEL|CEL|EPARGNE|ASSURANCE VIE|PEA|TO SAVINGS|FROM SAVINGS|SAVINGS VAULT|VAULT|COFFRE|TRADE REPUBLIC|BOURSE DIRECT|DEGIRO|YOMONI|NALO|LINXEA)\b/ },
+  { id: "epargne", name: "Épargne", kind: "savings", re: /\b(LIVRET|LDDS|LDD|LEP|PEL|CEL|EPARGNE|ASSURANCE VIE|PEA|TO SAVINGS|FROM SAVINGS|SAVINGS VAULT|VAULT|COFFRE|TRADE REPUBLIC|BOURSE DIRECT|DEGIRO|YOMONI|NALO|LINXEA|POCKET|POCKETS|COMPTE D EPARGNE|REVOLUT FRANCE SUCCURSALE|DIGITAL ASSETS|ROBO PORTFOLIO|CRYPTO|BITPANDA|COINBASE|BINANCE|KRAKEN)\b/ },
   { id: "revenus", name: "Revenus", kind: "income", onlyPositive: true, re: /\b(SALAIRE|PAIE|PAYE|REMUNERATION|CAF|ALLOCATION|POLE EMPLOI|FRANCE TRAVAIL|CPAM|AMELI|CARSAT|RETRAITE|PENSION|AGIRC|PRIME|INDEMNITE|DGFIP REMB|REMBOURSEMENT IMPOT)\b/ },
+  { id: "credit", name: "Remboursement de crédit", level: "ess", onlyNegative: true, re: /\b(LOAN PAYMENT|LOAN REPAYMENT|REPAYMENT|CREDIT CONSO|COFIDIS|CETELEM|SOFINCO|FLOA|ONEY|YOUNITED|FRANFINANCE|KLARNA|ALMA)\b/ },
   { id: "logement", name: "Logement", level: "ess", re: /\b(LOYER|FONCIA|NEXITY|CITYA|SYNDIC|ORPI|CENTURY 21|LAFORET|HABITAT|OPH|HLM|ECHEANCE PRET|PRET IMMO|CREDIT IMMO|REMBOURSEMENT PRET)\b/ },
   { id: "energie", name: "Énergie & eau", level: "ess", re: /\b(EDF|ENGIE|TOTAL ?ENERGIES (ELEC|GAZ|CLIENTS|ELECTRICITE)|EKWATEUR|ENI GAS|OHM ENERGIE|MINT ENERGIE|PLANETE OUI|ENERCOOP|VATTENFALL|GRDF|VEOLIA|SUEZ|SAUR|EAU DE)\b/ },
   { id: "impots", name: "Impôts & taxes", level: "ess", re: /\b(IMPOT|IMPOTS|DGFIP|TRESOR PUBLIC|FINANCES PUBLIQUES|TAXE|ANTAI|AMENDE)\b/ },
   { id: "assurances", name: "Assurances & mutuelle", level: "ess", re: /\b(ASSURANCE|ASSURANCES|MAIF|MACIF|MATMUT|AXA|ALLIANZ|GMF|MMA|GROUPAMA|MAAF|MUTUELLE|HARMONIE|MGEN|ALAN|LUKO|GENERALI|APRIL|SWISSLIFE|LEOCARE|DIRECT ASSURANCE|OLIVIER ASSURANCE|AG2R|MALAKOFF)\b/ },
   { id: "sante", name: "Santé", level: "ess", re: /\b(PHARMA|PHARMACIE|DOCTOLIB|MEDECIN|DOCTEUR|DR|DENTISTE|DENTAIRE|KINE|OSTEO|OPTIC|OPTIQUE|OPTICIEN|KRYS|AFFLELOU|LABO|LABORATOIRE|HOPITAL|CLINIQUE|RADIOLOGIE|ORTHO)\b/ },
   { id: "education", name: "Enfants & éducation", level: "ess", re: /\b(ECOLE|CANTINE|CRECHE|NOUNOU|PAJEMPLOI|PERISCOLAIRE|UNIVERSITE|COLLEGE|LYCEE|CENTRE DE LOISIRS)\b/ },
-  { id: "livraison", name: "Livraison de repas", level: "sup", re: /\b(UBER ?EATS|DELIVEROO|JUST ?EAT|FRICHTI|GLOVO|STUART FOOD)\b/ },
-  { id: "restaurants", name: "Restaurants & cafés", level: "sup", re: /\b(RESTAU|RESTAURANT|BRASSERIE|BISTRO|BISTROT|CAFE|BAR|PIZZA|PIZZERIA|SUSHI|BURGER|MCDO|MC DONALD|MCDONALD|MCDONALDS|BURGER KING|KFC|QUICK|SUBWAY|STARBUCKS|FIVE GUYS|TACOS|O TACOS|DOMINOS|KEBAB|CREPERIE|FLUNCH|BUFFALO GRILL|HIPPOPOTAMUS|COURTEPAILLE|DEL ARTE|BRIOCHE DOREE|COLUMBUS|PAUL|POKE|TRAITEUR)\b/ },
-  { id: "courses", name: "Courses alimentaires", level: "ess", re: /\b(CARREFOUR|LECLERC|AUCHAN|INTERMARCHE|LIDL|ALDI|MONOPRIX|FRANPRIX|CASINO|SUPER U|HYPER U|U EXPRESS|SYSTEME U|NETTO|LEADER PRICE|GRAND FRAIS|PICARD|BIOCOOP|NATURALIA|CORA|MATCH|SPAR|G20|PROXI|COLRUYT|LA VIE CLAIRE|BOULANGERIE|BOULANGER PATISSIER|BOUCHERIE|PRIMEUR|FROMAGERIE|MARCHE|EPICERIE|AMAZON FRESH)\b/ },
-  { id: "transport", name: "Transport & voiture", level: "ess", re: /\b(SNCF|OUIGO|TGV|TER|RATP|NAVIGO|TCL|TISSEO|RTM|TAN|STAR|BLABLACAR|UBER|BOLT|HEETCH|G7|TAXI|FREE NOW|TOTAL|TOTALENERGIES|ESSO|SHELL|BP|AVIA|STATION|CARBURANT|PEAGE|AUTOROUTE|VINCI|SANEF|APRR|PARKING|INDIGO|SAEMES|LIME|DOTT|TIER|NORAUTO|FEU VERT|SPEEDY|MIDAS|CONTROLE TECHNIQUE|GARAGE)\b/ },
+  { id: "livraison", name: "Livraison de repas", level: "sup", re: /\b(UBER ?EATS|DELIVEROO|JUST ?EAT|FRICHTI|GLOVO|STUART FOOD|LIEFERANDO|TAKEAWAY|WOLT)\b/ },
+  { id: "restaurants", name: "Restaurants & cafés", level: "sup", re: /\b(RESTAU|RESTAURANT|BRASSERIE|BISTRO|BISTROT|CAFE|BAR|PIZZA|PIZZERIA|SUSHI|BURGER|MCDO|MC DONALD|MCDONALD|MCDONALDS|BURGER KING|KFC|QUICK|SUBWAY|STARBUCKS|FIVE GUYS|TACOS|O TACOS|DOMINOS|KEBAB|CREPERIE|FLUNCH|BUFFALO GRILL|HIPPOPOTAMUS|COURTEPAILLE|DEL ARTE|BRIOCHE DOREE|COLUMBUS|PAUL|POKE|TRAITEUR|IMBISS|DONER|DOENER|GASTSTATTE|BURGERME)\b/ },
+  { id: "courses", name: "Courses alimentaires", level: "ess", re: /\b(CARREFOUR|LECLERC|AUCHAN|INTERMARCHE|LIDL|ALDI|MONOPRIX|FRANPRIX|CASINO|SUPER U|HYPER U|U EXPRESS|SYSTEME U|NETTO|LEADER PRICE|GRAND FRAIS|PICARD|BIOCOOP|NATURALIA|CORA|MATCH|SPAR|G20|PROXI|COLRUYT|LA VIE CLAIRE|BOULANGERIE|BOULANGER PATISSIER|BOUCHERIE|PRIMEUR|FROMAGERIE|MARCHE|EPICERIE|AMAZON FRESH|REWE|EDEKA|PENNY|KAUFLAND|NORMA|NETTO MARKEN|DM DROGERIE|ROSSMANN|MARIE BLACHERE|BIO C BON|SUPERMARCHE|SUPERMARKT|INTERSPAR|GLOBUS|BACKEREI|BAECKEREI|BACKHAUS|MIGROS|COOP)\b/ },
+  { id: "transport", name: "Transport & voiture", level: "ess", re: /\b(SNCF|OUIGO|TGV|TER|RATP|NAVIGO|TCL|TISSEO|RTM|TAN|STAR|BLABLACAR|UBER|BOLT|HEETCH|G7|TAXI|FREE NOW|TOTAL|TOTALENERGIES|ESSO|SHELL|BP|AVIA|STATION|CARBURANT|PEAGE|AUTOROUTE|VINCI|SANEF|APRR|PARKING|INDIGO|SAEMES|LIME|DOTT|TIER|NORAUTO|FEU VERT|SPEEDY|MIDAS|CONTROLE TECHNIQUE|GARAGE|TANKSTELLE|ARAL|JET|AGIP|Q8|OMV|DEUTSCHE BAHN|DB BAHN|FLIXBUS|PARKHAUS)\b/ },
   { id: "telecom", name: "Téléphone & internet", level: "ess", re: /\b(ORANGE(?! BLEUE)|SOSH|SFR|RED BY SFR|BOUYGUES|B YOU|FREE MOBILE|FREE TELECOM|FREEBOX|LA POSTE MOBILE|PRIXTEL|CORIOLIS|SYMA|NRJ MOBILE|LEBARA|LYCAMOBILE)\b/ },
-  { id: "abonnements", name: "Abonnements numériques", level: "sup", re: /\b(NETFLIX|SPOTIFY|DEEZER|DISNEY|DISNEY PLUS|PRIME VIDEO|AMAZON PRIME|CANAL|CANALPLUS|MYCANAL|APPLE COM BILL|APPLE COM|ITUNES|GOOGLE PLAY|YOUTUBE|YOUTUBE PREMIUM|HBO|MAX COM|PARAMOUNT|CRUNCHYROLL|DAZN|BEIN|MOLOTOV|OCS|AUDIBLE|KINDLE|ICLOUD|DROPBOX|CHATGPT|OPENAI|MICROSOFT|XBOX|PLAYSTATION|NINTENDO|STEAM|TWITCH|PATREON|TIDAL|QOBUZ|ADOBE|NORDVPN|TINDER|MEETIC|BUMBLE)\b/ },
+  { id: "jeuxvideo", name: "Jeux vidéo & achats in-app", level: "sup", re: /\b(TIKTOK|STEAM|STEAM MACHINE|STEAMPOWERED|XBOX|MICROSOFT XBOX|PLAYSTATION|PSN|NINTENDO|EPIC GAMES|ROBLOX|SUPERCELL|GOOGLE PLAY|RIOT|RIOT GAMES|BLIZZARD|UBISOFT|EA COM|ELECTRONIC ARTS|INSTANT GAMING|G2A|ENEBA|KING COM|MOONACTIVE)\b/ },
+  { id: "abonnements", name: "Abonnements numériques", level: "sup", re: /\b(NETFLIX|SPOTIFY|DEEZER|DISNEY|DISNEY PLUS|PRIME VIDEO|AMAZON PRIME|CANAL|CANALPLUS|MYCANAL|APPLE COM BILL|APPLE COM|ITUNES|YOUTUBE|YOUTUBE PREMIUM|HBO|MAX COM|PARAMOUNT|CRUNCHYROLL|DAZN|BEIN|MOLOTOV|OCS|AUDIBLE|KINDLE|ICLOUD|DROPBOX|CHATGPT|OPENAI|MICROSOFT|PATREON|TIDAL|QOBUZ|ADOBE|NORDVPN|TINDER|MEETIC|BUMBLE)\b/ },
   { id: "sport", name: "Sport & bien-être", level: "uti", re: /\b(BASIC FIT|FITNESS PARK|KEEP COOL|ON AIR|NEONESS|L ORANGE BLEUE|SALLE DE SPORT|PISCINE|CLUB|YOGA|COIFFEUR|COIFFURE|BARBIER|INSTITUT|SPA)\b/ },
   { id: "maison", name: "Maison & bricolage", level: "uti", re: /\b(IKEA|LEROY MERLIN|CASTORAMA|BRICO|BRICOMARCHE|BRICORAMA|MR BRICOLAGE|CONFORAMA|BUT|MAISONS DU MONDE|DARTY|BOULANGER|BHV|TRUFFAUT|JARDILAND)\b/ },
   { id: "animaux", name: "Animaux", level: "uti", re: /\b(VETERINAIRE|VETO|ANIMALERIE|ZOOPLUS|MAXI ZOO|MEDOR)\b/ },
   { id: "jeux", name: "Jeux d'argent", level: "sup", re: /\b(FDJ|FRANCAISE DES JEUX|PMU|BETCLIC|WINAMAX|UNIBET|PARIONS|ZEBET|PARIONSSPORT|CASINO BARRIERE|POKERSTARS)\b/ },
-  { id: "tabac", name: "Tabac", level: "sup", re: /\b(TABAC|BUREAU DE TABAC|CIGARETTE|VAPE|VAPOTEUSE|CIGARETTE ELECTRONIQUE|LE PETIT VAPOTEUR)\b/ },
+  { id: "tabac", name: "Tabac", level: "sup", re: /\b(TABAC|BUREAU DE TABAC|CIGARETTE|VAPE|VAPOTEUSE|CIGARETTE ELECTRONIQUE|LE PETIT VAPOTEUR|VAPOS|VAPO|VAPOTE|VAPOSHOP|TABAK)\b/ },
   { id: "loisirs", name: "Loisirs & sorties", level: "sup", re: /\b(CINEMA|UGC|PATHE|GAUMONT|MK2|CGR|KINEPOLIS|TICKETMASTER|FNAC SPECTACLES|BILLETREDUC|DIGITICK|SHOTGUN|THEATRE|CONCERT|MUSEE|BOWLING|ESCAPE|KARTING|LASER|DISNEYLAND|PARC ASTERIX|DISCOTHEQUE|CLUBBING)\b/ },
   { id: "voyages", name: "Voyages & vacances", level: "sup", re: /\b(AIRBNB|BOOKING|HOTEL|IBIS|ACCOR|NOVOTEL|EXPEDIA|RYANAIR|EASYJET|AIR FRANCE|TRANSAVIA|VOLOTEA|VUELING|LASTMINUTE|OPODO|ABRITEL|CLUB MED|PIERRE ET VACANCES|CAMPING)\b/ },
   { id: "shopping", name: "Shopping & achats en ligne", level: "sup", re: /\b(AMAZON|AMZN|CDISCOUNT|FNAC|ZARA|H M|PRIMARK|KIABI|UNIQLO|DECATHLON|ACTION|GIFI|SEPHORA|NOCIBE|MARIONNAUD|YVES ROCHER|ZALANDO|SHEIN|TEMU|ALIEXPRESS|VINTED|LEBONCOIN|ETSY|EBAY|WISH|APPLE STORE|LA REDOUTE|CELIO|JULES|BERSHKA|PULL BEAR|MANGO|GALERIES LAFAYETTE|PRINTEMPS|NIKE|ADIDAS|FOOT LOCKER|COURIR|MICROMANIA|CULTURA|LA HALLE|BOUYGUES STORE)\b/ },
@@ -442,6 +461,8 @@ function parseDate(v) {
   if (m) return mk(+m[1], +m[2], +m[3]);
   m = s.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2,4})/);
   if (m) { let y = +m[3]; if (y < 100) y += 2000; return mk(y, +m[2], +m[1]); }
+  const L = leadingDate(s);
+  if (L && L.y) return mk(L.y, L.m, L.d);
   return null;
   function mk(y, mo, d) {
     if (mo < 1 || mo > 12 || d < 1 || d > 31 || y < 1990 || y > 2100) return null;
@@ -459,7 +480,8 @@ const FIELDS = [
   { key: "bankcat", label: "Catégorie de la banque" },
   { key: "type", label: "Type d'opération" },
   { key: "state", label: "État" },
-  { key: "product", label: "Compte (courant / épargne)" }
+  { key: "product", label: "Compte (courant / épargne)" },
+  { key: "fee", label: "Frais" }
 ];
 const HEAD_RULES = {
   date: [/date (d )?op|date operation|started date|booking date|transaction date|date comptable|date de l operation|dateop/, /^date$|^date |date$/],
@@ -471,7 +493,8 @@ const HEAD_RULES = {
   bankcat: [/categor/],
   type: [/^type$|type d|nature|transaction type|operation type/],
   state: [/^state$|^statut$|^etat$|status/],
-  product: [/^product$|^produit$/]
+  product: [/^product$|^produit$/],
+  fee: [/^frais$|^fee$|^fees$|^commission$/]
 };
 const HEAD_EXCLUDE = /balance|solde|valeur date|date valeur|dateval|value date|fee|frais|currency|devise|account|compte|parent/;
 
@@ -503,7 +526,7 @@ function guessMapping(rows, headerIdx) {
     }
   };
   if (header.length) {
-    take("date"); take("amount"); take("debit"); take("credit"); take("bankcat"); take("type"); take("state"); take("product"); take("label"); take("detail");
+    take("date"); take("amount"); take("debit"); take("credit"); take("bankcat"); take("type"); take("state"); take("product"); take("fee", true); take("label"); take("detail");
     if (map.bankcat == null) take("bankcat", true);
   }
   // Complément par les données si l'en-tête ne suffit pas
@@ -543,7 +566,7 @@ function buildTransactions(rows, headerIdx, map, invert) {
     }
     if (map.state != null) {
       const st = low(r[map.state]);
-      if (/revert|declin|failed|annul|refus|pending|en attente/.test(st)) { skipped++; continue; }
+      if (/revert|renvoy|declin|failed|annul|refus|pending|en attente|en cours/.test(st)) { skipped++; continue; }
     }
     if (!date || isNaN(amt) || amt === 0) { skipped++; continue; }
     if (invert) amt = -amt;
@@ -552,8 +575,11 @@ function buildTransactions(rows, headerIdx, map, invert) {
       date: date.getTime(), amount: Math.round(amt * 100) / 100, label,
       type: map.type != null ? (r[map.type] || "") : "",
       bankcat: map.bankcat != null ? (r[map.bankcat] || "") : "",
-      acct: map.product != null && /savings|epargne|épargne|livret|coffre|vault/i.test(r[map.product] || "") ? "epargne" : ""
+      acct: map.product != null && /savings|epargne|épargne|livret|coffre|vault|d[ée]p[ôo]t|deposit/i.test(r[map.product] || "") ? "epargne" : ""
     });
+    // Frais facturés à part (colonne « Frais » de Revolut) : une opération de frais bancaires distincte.
+    const fee = map.fee != null ? parseAmount(r[map.fee]) : NaN;
+    if (!isNaN(fee) && fee !== 0) out.push({ date: date.getTime(), amount: -Math.round(Math.abs(fee) * 100) / 100, label: "Frais · " + label, type: "", bankcat: "", acct: out[out.length - 1].acct, forceCat: "frais" });
   }
   out.sort((a, b) => b.date - a.date);
   return { tx: out, skipped };
@@ -759,12 +785,135 @@ async function loadPdf(buf, name) {
   const note = guessed ? `Colonnes Débit / Crédit non trouvées pour ${guessed} opération${guessed > 1 ? "s" : ""} : leur sens (dépense ou entrée) a été deviné d'après le libellé. Vérifiez dans l'onglet Opérations.` : (!headerSeen ? "Relevé PDF lu sans en-tête de colonnes : vérifiez quelques montants dans l'onglet Opérations." : "");
   const meta = pdfMeta(res.lines, name);
   if (meta.acct) { state.metas[name] = { ...meta, at: Date.now() }; store.set("metas", state.metas); }
-  Object.assign(state, { rows, headerIdx: 0, map: { date: 0, label: 1, amount: 2 }, file: name, fileAcct: meta.acct, sample: false, invert: false, showAll: false, openCat: null, catFilter: "", pdfNote: note, histBefore: store.get("history", []) });
+  Object.assign(state, { rows, headerIdx: 0, map: { date: 0, label: 1, amount: 2 }, file: name, fileAcct: meta.acct, sample: false, invert: false, showAll: false, openCat: null, catFilter: "", pdfNote: note, infoNote: "", histBefore: store.get("history", []) });
+  applyMapping();
+}
+
+/* ============================== Lecture Excel (.xlsx) ============================== */
+// Un fichier .xlsx est une archive ZIP de fichiers XML. On l'ouvre ici avec les outils du
+// navigateur (DecompressionStream, DOMParser) : aucune bibliothèque, rien n'est envoyé.
+async function unzip(buf) {
+  const u8 = new Uint8Array(buf), dv = new DataView(buf);
+  let eocd = -1;
+  for (let i = u8.length - 22; i >= Math.max(0, u8.length - 65557); i--) if (dv.getUint32(i, true) === 0x06054b50) { eocd = i; break; }
+  if (eocd < 0) throw new Error("zip");
+  const n = dv.getUint16(eocd + 10, true); let p = dv.getUint32(eocd + 16, true);
+  const files = {};
+  for (let k = 0; k < n; k++) {
+    if (dv.getUint32(p, true) !== 0x02014b50) throw new Error("zip");
+    const method = dv.getUint16(p + 10, true), csize = dv.getUint32(p + 20, true), flags = dv.getUint16(p + 8, true);
+    const nlen = dv.getUint16(p + 28, true), xlen = dv.getUint16(p + 30, true), clen = dv.getUint16(p + 32, true), off = dv.getUint32(p + 42, true);
+    const name = new TextDecoder().decode(u8.subarray(p + 46, p + 46 + nlen));
+    files[name] = { method, csize, off, encrypted: !!(flags & 1) };
+    p += 46 + nlen + xlen + clen;
+  }
+  const read = async name => {
+    const f = files[name]; if (!f) return null;
+    const start = f.off + 30 + dv.getUint16(f.off + 26, true) + dv.getUint16(f.off + 28, true);
+    const data = u8.subarray(start, start + f.csize);
+    if (f.method === 0) return new TextDecoder().decode(data);
+    if (f.method !== 8 || typeof DecompressionStream === "undefined") throw new Error("zip");
+    return new Response(new Blob([data]).stream().pipeThrough(new DecompressionStream("deflate-raw"))).text();
+  };
+  return { names: Object.keys(files), read };
+}
+
+const xmlEls = (node, tag) => Array.from(node.getElementsByTagNameNS("*", tag));
+const xmlParse = s => new DOMParser().parseFromString(s, "application/xml");
+// Certains exports (Revolut) contiennent un texte encodé deux fois (« DÃ©but ») et des
+// caractères échappés (« _x0089_ ») : on les remet d'aplomb.
+function fixText(s) {
+  s = s.replace(/_x([0-9A-Fa-f]{4})_/g, (_, h) => String.fromCharCode(parseInt(h, 16)));
+  if (/[ÃÂ][\u0080-¿]/.test(s) && !/[^\u0000-ÿ]/.test(s)) {
+    try { return new TextDecoder("utf-8", { fatal: true }).decode(Uint8Array.from(s, c => c.charCodeAt(0))); } catch (e) { /* texte d'origine */ }
+  }
+  return s;
+}
+const colIndex = ref => { let n = 0; for (const ch of ref.replace(/\d+$/, "")) n = n * 26 + ch.charCodeAt(0) - 64; return n - 1; };
+function isDateFormat(id, code) {
+  if ((id >= 14 && id <= 22) || (id >= 45 && id <= 47) || (id >= 27 && id <= 36) || (id >= 50 && id <= 58)) return true;
+  if (!code) return false;
+  const c = code.replace(/"[^"]*"/g, "").replace(/\[[^\]]*\]/g, "").replace(/\\./g, "");
+  return /[dy]/i.test(c) && !/^general$/i.test(c);
+}
+
+async function readXlsx(buf) {
+  const z = await unzip(buf);
+  if (z.names.includes("EncryptedPackage")) throw new Error("password");
+  const wbXml = await z.read("xl/workbook.xml");
+  if (!wbXml) throw new Error("zip");
+  const wb = xmlParse(wbXml);
+  const date1904 = xmlEls(wb, "workbookPr").some(e => /^(1|true)$/.test(e.getAttribute("date1904") || ""));
+  const sheetNames = xmlEls(wb, "sheet").map(e => e.getAttribute("name"));
+  const rels = {}, relXml = await z.read("xl/_rels/workbook.xml.rels");
+  if (relXml) for (const e of xmlEls(xmlParse(relXml), "Relationship")) rels[e.getAttribute("Id")] = e.getAttribute("Target");
+  const sheetFiles = xmlEls(wb, "sheet").map((e, i) => {
+    const t = rels[e.getAttributeNS("http://schemas.openxmlformats.org/officeDocument/2006/relationships", "id") || e.getAttribute("r:id")];
+    return t ? "xl/" + t.replace(/^\/?xl\//, "").replace(/^\//, "") : `xl/worksheets/sheet${i + 1}.xml`;
+  });
+  const shared = [], ssXml = await z.read("xl/sharedStrings.xml");
+  if (ssXml) for (const si of xmlEls(xmlParse(ssXml), "si")) shared.push(fixText(xmlEls(si, "t").map(t => t.textContent).join("")));
+  const dateStyles = [], stXml = await z.read("xl/styles.xml");
+  if (stXml) {
+    const st = xmlParse(stXml), fmts = {};
+    for (const f of xmlEls(st, "numFmt")) fmts[f.getAttribute("numFmtId")] = f.getAttribute("formatCode");
+    const xfs = xmlEls(st, "cellXfs")[0];
+    if (xfs) xmlEls(xfs, "xf").forEach((xf, i) => { const id = +xf.getAttribute("numFmtId") || 0; dateStyles[i] = isDateFormat(id, fmts[id]); });
+  }
+  const serialToIso = v => {
+    const d = new Date(Date.UTC(date1904 ? 1904 : 1899, date1904 ? 0 : 11, date1904 ? 1 : 30) + Math.round(v * 864e5));
+    return d.toISOString().slice(0, 10);
+  };
+  const sheets = [];
+  for (let i = 0; i < sheetFiles.length; i++) {
+    const xml = await z.read(sheetFiles[i]); if (!xml) continue;
+    const rows = [];
+    for (const row of xmlEls(xmlParse(xml), "row")) {
+      const out = [];
+      for (const c of xmlEls(row, "c")) {
+        const t = c.getAttribute("t"), vEl = xmlEls(c, "v")[0], v = vEl ? vEl.textContent : "";
+        let val = v;
+        if (t === "s") val = shared[+v] || "";
+        else if (t === "inlineStr") val = fixText(xmlEls(c, "t").map(x => x.textContent).join(""));
+        else if (t === "str") val = fixText(v);
+        else if (t === "b") val = v === "1" ? "VRAI" : "FAUX";
+        else if (t === "e") val = "";
+        else if (v !== "" && dateStyles[+c.getAttribute("s") || 0] && isFinite(+v)) val = serialToIso(+v);
+        out[colIndex(c.getAttribute("r") || "A1")] = String(val).trim();
+      }
+      for (let k = 0; k < out.length; k++) if (out[k] == null) out[k] = "";
+      if (out.some(Boolean)) rows.push(out);
+    }
+    sheets.push({ name: sheetNames[i] || "Feuille " + (i + 1), rows });
+  }
+  return sheets;
+}
+
+async function loadExcel(buf, name) {
+  setStatus("Lecture du fichier Excel…");
+  let sheets;
+  try { sheets = await readXlsx(buf); }
+  catch (e) {
+    if (e && e.message === "password") return setStatus("Ce fichier Excel est protégé par un mot de passe. Enregistrez-le sans mot de passe, ou utilisez l'export CSV de votre banque.", "crit");
+    return setStatus("Ce fichier Excel n'a pas pu être ouvert. S'il s'agit d'un ancien format .xls, enregistrez-le en .xlsx ou en CSV depuis Excel ou Google Sheets.", "crit");
+  }
+  let best = null;
+  for (const sh of sheets) {
+    if (sh.rows.length < 2) continue;
+    const h = findHeaderRow(sh.rows), map = guessMapping(sh.rows, h);
+    const ok = map.date != null && map.label != null && (map.amount != null || map.debit != null || map.credit != null);
+    const score = (ok ? 1e7 : 0) + sh.rows.length;
+    if (!best || score > best.score) best = { ...sh, h, map, score };
+  }
+  if (!best) return setStatus("Ce fichier Excel ne contient pas de tableau d'opérations lisible.", "crit");
+  Object.assign(state, { rows: best.rows, headerIdx: best.h, map: best.map, file: name, sample: false, invert: false, showAll: false, openCat: null, catFilter: "", pdfNote: "",
+    infoNote: sheets.length > 1 ? `Feuille utilisée : « ${esc(best.name)} ».` : "",
+    fileAcct: /savings|epargne|épargne|livret/i.test(name) ? "epargne" : "", histBefore: store.get("history", []) });
   applyMapping();
 }
 
 /* ============================== Classement ============================== */
-const PREFIX = /^(CB|CARTE|CARTE X?\w*|PAIEMENT PAR CARTE|PAIEMENT CB|ACHAT CB|PAIEMENT|ACHAT|FACTURE CARTE|PRLV SEPA|PRLV|PRELEVEMENT SEPA|PRELEVEMENT|PRELEVEMENT EUROPEEN|VIR SEPA|VIREMENT SEPA|VIR INST|VIR|VIREMENT|VIREMENT EN VOTRE FAVEUR|AVOIR|RETRAIT DAB|DU|DE|EMIS|RECU)\s+/;
+const PREFIX = /^(CB|CARTE|CARTE X?\w*|PAIEMENT PAR CARTE|PAIEMENT CB|ACHAT CB|PAIEMENT|ACHAT|FACTURE CARTE|PRLV SEPA|PRLV|PRELEVEMENT SEPA|PRELEVEMENT|PRELEVEMENT EUROPEEN|VIR SEPA|VIREMENT SEPA|VIR INST|VIR|VIREMENT|VIREMENT EN VOTRE FAVEUR|AVOIR|RETRAIT DAB|DU|DE|EMIS|RECU|PAIEMENT ENVOYE PAR|ENVOYE PAR|PAYMENT FROM|VIREMENT A|VIREMENT DE|VIR A|VIR DE|TO|FROM|RETRAIT D ESPECES A|RETRAIT D ESPECES|SUR LA|A PARTIR DE|A)\s+/;
 function merchantKey(label) {
   let s = norm(label), prev;
   do { prev = s; s = s.replace(PREFIX, ""); } while (s !== prev);
@@ -793,7 +942,7 @@ function classify(txs, overrides) {
   for (const t of txs) {
     t.key = merchantKey(t.label);
     // Sur un compte d'épargne, tout est dépôt ou retrait d'épargne, sauf les intérêts versés.
-    t.cat = overrides[t.key] || (t.acct === "epargne" ? (t.amount > 0 && /\b(INTERETS?|INTEREST)\b/.test(norm(t.label)) ? "interets" : "epargne") : ruleCategory(t));
+    t.cat = overrides[t.key + (t.amount > 0 ? "|+" : "|-")] || overrides[t.key] || t.forceCat || (t.acct === "epargne" ? (t.amount > 0 && /\b(INTERETS?|INTEREST)\b/.test(norm(t.label)) ? "interets" : "epargne") : ruleCategory(t));
     // Un montant positif dans une catégorie de dépense = remboursement : il vient en déduction.
   }
 }
@@ -812,6 +961,15 @@ function analyse(txs, levels) {
   const savTx = txs.filter(t => t.acct === "epargne");
   const S = savTx.length ? { dep: 0, wd: 0, interest: 0, from: new Date(Math.min(...savTx.map(t => t.date))), to: new Date(Math.max(...savTx.map(t => t.date))), firstDep: null, lastWd: null } : null;
   res.sav = S; res.onlySavings = savTx.length === txs.length;
+  // Un virement du compte courant vers l'épargne apparaît aussi, en sens inverse, sur le compte
+  // d'épargne importé : on ne le compte qu'une fois (même montant, à 3 jours près).
+  const mirror = {};
+  for (const t of savTx) if ((CAT[t.cat] || {}).kind === "savings") (mirror[(-t.amount).toFixed(2)] = mirror[(-t.amount).toFixed(2)] || []).push(t.date);
+  const isMirrored = t => {
+    const L = mirror[t.amount.toFixed(2)]; if (!L) return false;
+    const i = L.findIndex(d => Math.abs(d - t.date) <= 3 * 864e5); if (i < 0) return false;
+    L.splice(i, 1); return true;
+  };
   for (const t of txs) {
     const c = CAT[t.cat] || CAT.autre;
     const mk = new Date(t.date); const k = mk.getFullYear() + "-" + String(mk.getMonth() + 1).padStart(2, "0");
@@ -824,7 +982,7 @@ function analyse(txs, levels) {
         if (v > 0) { S.dep += v; if (!S.firstDep || t.date < S.firstDep) S.firstDep = t.date; }
         else { S.wd -= v; if (!S.lastWd || t.date > S.lastWd) S.lastWd = t.date; }
       } else {
-        if (S && t.date >= S.from - 864e5 && t.date <= S.to.getTime() + 864e5) continue;
+        if (isMirrored(t)) continue;
         v = -t.amount;
       }
       res.savings += v; M.savings += v; continue;
@@ -921,6 +1079,8 @@ function buildAdvice(r, txs, lvl) {
 
   const jeux = monthly("jeux");
   if (jeux > 0) add("warn", "Jeux d'argent", `${eur.format(jeux)} par mois en jeux et paris. Fixer un plafond mensuel dans l'appli de jeu aide à garder le contrôle. En cas de besoin, Joueurs Info Service répond au 09 74 75 13 13 (appel non surtaxé).`, jeux * 12, "jeux");
+  const jv = monthly("jeuxvideo");
+  if (jv > 15) add("warn", "Jeux vidéo et achats in-app", `${eur.format(jv)} par mois, en ${r.byCat.jeuxvideo.count} achats sur la période (applis, jeux, monnaie virtuelle). Ces petits achats passent inaperçus un par un. Désactivez les achats intégrés ou fixez un budget mensuel dans Google Play : les réduire de moitié libère ${eur.format(jv / 2)} par mois.`, jv / 2 * 12, "jeuxvideo");
   const tabac = monthly("tabac");
   if (tabac > 0) add("info", "Tabac", `${eur.format(tabac)} par mois, soit ${eur.format(tabac * 12)} par an. Tabac Info Service (39 89) propose un accompagnement gratuit à l'arrêt, et les substituts nicotiniques sont remboursés par l'Assurance maladie.`, tabac * 12 * 0.5, "tabac");
 
@@ -965,8 +1125,10 @@ function savingsMeta() {
 function savingsAdvice(r, add) {
   const s = r.sav; if (!s) return;
   const m = savingsMeta() || {};
-  if (s.dep > 0 && s.wd >= s.dep * 0.9 && s.firstDep && s.lastWd) {
-    const kept = Math.max(1, Math.round((s.lastWd - s.firstDep) / 864e5));
+  const kept = s.firstDep && s.lastWd ? Math.max(1, Math.round((s.lastWd - s.firstDep) / 864e5)) : 0;
+  if (s.dep > 0 && s.wd >= s.dep * 0.9 && kept > 60) {
+    add("warn", "Votre épargne ne grossit pas", `Sur la période, ${eur.format(s.dep)} ont été mis de côté (Pockets et compte d'épargne) et ${eur.format(s.wd)} en ont été retirés. L'épargne sert de réserve, c'est normal d'y puiser ; pour qu'elle progresse, programmez un virement automatique le jour de la paie et gardez une Pocket « réserve » à laquelle vous ne touchez pas.`, 0, null, true);
+  } else if (s.dep > 0 && s.wd >= s.dep * 0.9 && kept) {
     add("warn", "L'épargne a été retirée rapidement", `${eur2.format(s.dep)} déposés puis ${eur2.format(s.wd)} retirés : l'argent est resté environ ${kept} jour${kept > 1 ? "s" : ""} sur le compte${s.interest > 0 ? ` et a rapporté ${eur2.format(s.interest)} d'intérêts` : ""}. Les intérêts sont calculés sur le solde de chaque jour : plus l'argent reste longtemps, plus il rapporte. Un virement automatique chaque mois, même de 20 €, aide à laisser l'épargne grandir.`, 0, null, true);
   } else if (s.dep > s.wd) {
     add("good", "Votre épargne progresse", `${eur2.format(s.dep - s.wd)} mis de côté sur la période (${eur2.format(s.dep)} déposés, ${eur2.format(s.wd)} retirés)${s.interest > 0 ? `, plus ${eur2.format(s.interest)} d'intérêts` : ""}. Continuez avec un virement automatique le jour de la paie.`, 0, null, true);
@@ -985,14 +1147,26 @@ const state = {
   overrides: store.get("overrides", {}),
   levels: store.get("levels", {}),
   budgets: store.get("budgets", {}), budgetMonth: null,
-  metas: store.get("metas", {}), histBefore: [], fileAcct: "", lastImport: null,
+  metas: store.get("metas", {}), histBefore: [], fileAcct: "", lastImport: null, infoNote: "", period: store.get("period", null),
   tx: [], file: null, sample: false, rows: null, headerIdx: -1, map: {}, invert: false,
   search: "", showAll: false, openCat: null, catFilter: "", res: null
 };
 
+// Période analysée : mois complets jusqu'au dernier mois du relevé.
+function periodTx() {
+  const tx = state.tx; if (!tx.length) return tx;
+  const last = new Date(Math.max(...tx.map(t => t.date))), first = Math.min(...tx.map(t => t.date));
+  const spanMonths = (last - first) / (30.44 * 864e5);
+  const box = $("#period-box"); if (box) box.hidden = spanMonths < 4;
+  let p = state.period || (spanMonths > 13 ? "12" : "all");
+  const sel = $("#period"); if (sel) sel.value = p;
+  if (p === "all" || spanMonths < 4) return tx;
+  const cut = new Date(last.getFullYear(), last.getMonth() - (+p - 1), 1).getTime();
+  return tx.filter(t => t.date >= cut);
+}
 function recompute() {
   classify(state.tx, state.overrides);
-  state.res = analyse(state.tx, state.levels);
+  state.res = analyse(periodTx(), state.levels);
   render();
 }
 
@@ -1004,7 +1178,7 @@ function loadText(text, name, isSample) {
   if (rows.length < 2) { setStatus("Ce fichier ne contient pas de lignes lisibles. Vérifiez qu'il s'agit bien d'un export CSV de vos opérations.", "crit"); return; }
   const headerIdx = findHeaderRow(rows);
   const map = guessMapping(rows, headerIdx);
-  Object.assign(state, { rows, headerIdx, map, file: name, sample: !!isSample, invert: false, showAll: false, openCat: null, catFilter: "", pdfNote: "",
+  Object.assign(state, { rows, headerIdx, map, file: name, sample: !!isSample, invert: false, showAll: false, openCat: null, catFilter: "", pdfNote: "", infoNote: "",
     fileAcct: /savings|epargne|épargne|livret/i.test(name) ? "epargne" : "", histBefore: isSample ? [] : store.get("history", []) });
   applyMapping();
 }
@@ -1031,7 +1205,7 @@ function applyMapping() {
     setStatus("<b>Exemple fictif</b> : trois mois de relevé inventés pour montrer l'appli. Importez votre propre fichier pour voir vos chiffres.");
   } else {
     const all = state.tx, d = x => new Date(x).toLocaleDateString("fr-FR");
-    setStatus(`<b>${esc(state.file)}</b>${state.fileAcct === "epargne" ? " (compte d'épargne)" : ""} : ${tx.length} opération${tx.length > 1 ? "s" : ""} lue${tx.length > 1 ? "s" : ""}, <b>${merged.added} nouvelle${merged.added > 1 ? "s" : ""}</b>${merged.known ? `, ${merged.known} déjà connue${merged.known > 1 ? "s" : ""}` : ""}${skipped ? `, ${skipped} ligne${skipped > 1 ? "s" : ""} ignorée${skipped > 1 ? "s" : ""}` : ""}.<br>Historique : ${all.length} opérations du ${d(Math.min(...all.map(t => t.date)))} au ${d(Math.max(...all.map(t => t.date)))}.${state.pdfNote ? "<br>" + state.pdfNote : ""}`, state.pdfNote ? "warn" : "");
+    setStatus(`<b>${esc(state.file)}</b>${state.fileAcct === "epargne" ? " (compte d'épargne)" : ""} : ${tx.length} opération${tx.length > 1 ? "s" : ""} lue${tx.length > 1 ? "s" : ""}, <b>${merged.added} nouvelle${merged.added > 1 ? "s" : ""}</b>${merged.known ? `, ${merged.known} déjà connue${merged.known > 1 ? "s" : ""}` : ""}${skipped ? `, ${skipped} ligne${skipped > 1 ? "s" : ""} ignorée${skipped > 1 ? "s" : ""}` : ""}.<br>Historique : ${all.length} opérations du ${d(Math.min(...all.map(t => t.date)))} au ${d(Math.max(...all.map(t => t.date)))}.${state.pdfNote ? "<br>" + state.pdfNote : ""}${state.infoNote ? "<br>" + state.infoNote : ""}`, state.pdfNote ? "warn" : "");
   }
   $("#mapping").hidden = false;
   if (!state.sample) { store.set("history", state.tx); state.lastImport = { file: state.file, added: merged.added }; }
@@ -1042,7 +1216,7 @@ function applyMapping() {
 // déjà connue n'est pas recomptée. Deux opérations identiques le même jour restent deux :
 // on garde le plus grand nombre d'exemplaires vus dans un même relevé.
 function mergeHistory(hist, fresh) {
-  const k = t => [t.date, t.amount.toFixed(2), norm(t.label), t.acct || ""].join("|");
+  const k = t => [t.date, t.amount.toFixed(2), t.acct === "epargne" ? (t.cat === "interets" || /INTERET|INTEREST/.test(norm(t.label)) ? "I" : "M") : norm(t.label), t.acct || ""].join("|");
   const have = {};
   for (const t of hist) have[k(t)] = (have[k(t)] || 0) + 1;
   const seen = {}; let added = 0, known = 0; const out = hist.map(t => ({ ...t }));
@@ -1171,7 +1345,7 @@ const view = $("#view");
 function render() {
   document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === state.tab)));
   updateBadge();
-  if (!state.tx.length) { view.innerHTML = `<div class="panel empty">Importez un relevé CSV ou PDF pour commencer, ou appuyez sur « Voir l'exemple ».</div>`; return; }
+  if (!state.tx.length) { view.innerHTML = `<div class="panel empty">Importez un relevé Excel, CSV ou PDF pour commencer, ou appuyez sur « Voir l'exemple ».</div>`; return; }
   const r = state.res;
   view.innerHTML = ({ synthese: vSynthese, conseils: vConseils, budgets: vBudgets, depenses: vDepenses, abos: vAbos, operations: vOperations })[state.tab](r);
   if (state.tab === "synthese") drawMonthly(r);
@@ -1185,14 +1359,39 @@ function savingsPanel(r, only) {
   const hasClose = m && m.close != null && only;
   return `<section class="panel" aria-labelledby="h-sav">
     <div><span class="eyebrow">Compte d'épargne · du ${s.from.toLocaleDateString("fr-FR")} au ${s.to.toLocaleDateString("fr-FR")}</span><h2 id="h-sav">Votre épargne</h2></div>
-    <div class="kpis">${stat(eur2.format(s.dep), "Déposé")}${stat(eur2.format(s.wd), "Retiré")}${stat(eur2.format(s.interest), "Intérêts reçus")}${hasClose ? stat(eur2.format(m.close), "Solde de clôture") : stat((s.dep - s.wd + s.interest < 0 ? "−" : "") + eur2.format(Math.abs(s.dep - s.wd + s.interest)), "Variation du solde")}</div>
+    <div class="kpis">${stat(eur2.format(s.dep), "Déposé")}${stat(eur2.format(s.wd), "Retiré")}${stat(eur2.format(s.interest), "Intérêts reçus")}${hasClose ? stat(eur2.format(m.close), "Solde de clôture") : (v => stat((v < 0 ? "−" : "") + eur2.format(Math.abs(v)), "Variation du solde"))(Math.round((s.dep - s.wd + s.interest) * 100) / 100)}</div>
     ${m && m.rate ? `<p class="small muted">Taux d'intérêt brut indiqué sur le relevé : <b class="num">${fmtPct(m.rate)}</b> par an${m.taxWithheld != null ? ` · impôt et prélèvements retenus : ${eur2.format(m.taxWithheld)}` : ""}.</p>` : ""}
     ${only ? `<div class="banner">Ce relevé est celui d'un compte d'épargne : il ne contient pas de dépenses. Importez aussi le relevé de votre compte courant pour analyser vos dépenses. Les deux s'additionnent dans l'historique, sans compter deux fois les virements vers l'épargne.</div><button class="btn" type="button" data-goto="conseils">Voir les conseils épargne</button>` : ""}
   </section>`;
 }
 
+// Virements fréquents dont l'appli ne peut pas deviner la nature (vous-même depuis une autre
+// banque, un salaire, un proche) : on pose la question une fois, la réponse vaut pour ce nom.
+function askPanel() {
+  const groups = {};
+  for (const t of state.tx) {
+    if (state.overrides[t.key] || !["entrees", "virements", "autre"].includes(t.cat) || t.acct === "epargne") continue;
+    const sk = t.key + (t.amount > 0 ? "|+" : "|-");
+    if (state.overrides[sk]) continue;
+    const g = groups[sk] || (groups[sk] = { key: t.key, sk, n: 0, total: 0, label: t.label });
+    g.n++; g.total += t.amount;
+  }
+  const list = Object.values(groups).filter(g => g.n >= 3).sort((a, b) => Math.abs(b.total) - Math.abs(a.total)).slice(0, 4);
+  if (!list.length) return "";
+  const btn = (g, cat, txt) => `<button class="btn" type="button" data-ask="${esc(g.sk)}" data-cat="${cat}">${txt}</button>`;
+  return `<section class="panel" aria-labelledby="h-ask">
+    <div><span class="eyebrow">À confirmer · une seule fois</span><h2 id="h-ask">D'où vient cet argent&nbsp;?</h2></div>
+    <p class="small muted">Ces virements reviennent souvent et l'appli ne peut pas deviner leur nature. Votre réponse s'applique à toutes les opérations de ce nom, et aux prochains relevés.</p>
+    <div class="ask-list">${list.map(g => `<div class="ask"><span><b>${esc(g.key.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()))}</b> <span class="muted small num">· ${g.n} fois · ${g.total > 0 ? "+" : "−"}${eur.format(Math.abs(g.total))} au total</span></span>
+      <div class="ask-btns">${g.total > 0
+        ? btn(g, "interne", "Moi, depuis un autre compte") + btn(g, "revenus", "Un revenu (salaire, aide…)") + btn(g, "entrees", "Autre entrée")
+        : btn(g, "interne", "Moi, vers un autre compte") + btn(g, "virements", "Un proche") + btn(g, "epargne", "Épargne ou placement")}</div></div>`).join("")}</div>
+  </section>`;
+}
+
 function vSynthese(r) {
   if (r.onlySavings) return savingsPanel(r, true);
+  const ask = askPanel();
   const mo = r.months, inc = r.income / mo, sp = r.spend / mo, left = inc - sp;
   const rate = inc > 0 ? left / inc : NaN;
   const totalSaving = r.advice.reduce((a, x) => a + x.saving, 0);
@@ -1203,9 +1402,9 @@ function vSynthese(r) {
     ["Envies (utile + superflu)", envies / inc, 0.3, "sup", "≤ 30 %", v => v <= 0.3],
     ["Reste pour épargner", Math.max(0, rate), 0.2, "uti", "≥ 20 %", v => v >= 0.2]
   ] : [];
-  return `${alertsPanel(r)}
+  return `${alertsPanel(r)}${ask}
   <section class="panel" aria-labelledby="h-syn">
-    <div><span class="eyebrow">Moyenne par mois · ${r.days} jours analysés</span><h2 id="h-syn">Où va votre argent</h2></div>
+    <div><span class="eyebrow">Moyenne par mois · du ${r.from.toLocaleDateString("fr-FR")} au ${r.to.toLocaleDateString("fr-FR")}</span><h2 id="h-syn">Où va votre argent</h2></div>
     <div class="kpis">
       <div class="kpi"><span class="v">${eur.format(inc)}</span><span class="l">Revenus</span></div>
       <div class="kpi"><span class="v">${eur.format(sp)}</span><span class="l">Dépenses</span></div>
@@ -1260,7 +1459,7 @@ function topSup(r) {
 
 function drawMonthly(r) {
   const box = $("#monthly"); if (!box) return;
-  const keys = Object.keys(r.byMonth).sort();
+  const keys = Object.keys(r.byMonth).sort().slice(-12);
   const W = Math.max(300, box.clientWidth), H = 220, padL = 44, padR = 8, padT = 12, padB = 26;
   const maxV = Math.max(1, ...keys.map(k => { const m = r.byMonth[k]; return Math.max(m.ess + m.uti + m.sup, m.income); }));
   const step = niceStep(maxV / 4), top = Math.ceil(maxV / step) * step;
@@ -1278,7 +1477,7 @@ function drawMonthly(r) {
       s += isTop && h > 4 ? `<path d="M${x},${y1} v${-(h - 4)} q0,-4 4,-4 h${bw - 8} q4,0 4,4 v${h - 4} z" fill="var(--${l})"/>` : `<rect x="${x}" y="${y1 - h}" width="${bw}" height="${h}" fill="var(--${l})"/>`;
     });
     if (m.income > 0) s += `<line x1="${cx - bw / 2 - 5}" x2="${cx + bw / 2 + 5}" y1="${y(m.income)}" y2="${y(m.income)}" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>`;
-    s += `<text x="${cx}" y="${H - 8}" text-anchor="middle">${monthLabel(k)}</text>`;
+    if (slot >= 44 || (keys.length - 1 - i) % 2 === 0) s += `<text x="${cx}" y="${H - 8}" text-anchor="middle">${monthLabel(k)}</text>`;
     s += `<rect x="${padL + slot * i}" y="${padT}" width="${slot}" height="${H - padT - padB}" fill="transparent" data-m="${k}" style="cursor:pointer"/>`;
   });
   s += `<line x1="${padL}" x2="${W - padR}" y1="${y(0)}" y2="${y(0)}" stroke="var(--muted)" stroke-width="1"/></svg><div class="tip" hidden></div>`;
@@ -1366,8 +1565,11 @@ function handleFile(f) {
   const rd = new FileReader();
   const isPdf = /\.pdf$/i.test(f.name) || f.type === "application/pdf";
   rd.onload = () => {
-    const head = new Uint8Array(rd.result.slice(0, 5));
-    if (isPdf || String.fromCharCode(...head) === "%PDF-") loadPdf(rd.result, f.name);
+    const head = new Uint8Array(rd.result.slice(0, 8));
+    const magic = String.fromCharCode(...head.slice(0, 5));
+    if (isPdf || magic === "%PDF-") loadPdf(rd.result, f.name);
+    else if (magic.startsWith("PK\x03\x04") || /\.(xlsx|xlsm)$/i.test(f.name)) loadExcel(rd.result, f.name);
+    else if (head[0] === 0xd0 && head[1] === 0xcf && head[2] === 0x11 && head[3] === 0xe0) setStatus("Ce fichier est au format Excel ancien (.xls). Ouvrez-le dans Excel ou Google Sheets et enregistrez-le en .xlsx ou en CSV, puis importez-le à nouveau.", "crit");
     else loadText(decode(rd.result), f.name, false);
   };
   rd.onerror = () => setStatus("Impossible de lire ce fichier. Réessayez ou exportez-le à nouveau depuis votre banque.", "crit");
@@ -1384,6 +1586,7 @@ $("#apply-map").addEventListener("click", () => {
   state.invert = $("#invert").checked;
   applyMapping();
 });
+$("#period").addEventListener("change", e => { state.period = e.target.value; store.set("period", state.period); state.budgetMonth = null; recompute(); });
 document.querySelectorAll(".tab").forEach(b => b.addEventListener("click", () => { state.tab = b.dataset.tab; store.set("tab", state.tab); render(); }));
 view.addEventListener("click", e => {
   const g = e.target.closest("[data-goto]"); if (g) { state.tab = g.dataset.goto; render(); window.scrollTo({ top: $("nav.tabs").offsetTop - 8 }); return; }
@@ -1392,6 +1595,8 @@ view.addEventListener("click", e => {
   const o = e.target.closest("[data-open]");
   if (o) { if (state.tab !== "depenses") state.tab = "depenses"; state.openCat = state.openCat === o.dataset.open ? null : o.dataset.open; render(); }
   if (e.target.id === "show-all") { state.showAll = true; render(); }
+  const ask = e.target.closest("[data-ask]");
+  if (ask) { state.overrides[ask.dataset.ask] = ask.dataset.cat; store.set("overrides", state.overrides); recompute(); return; }
   if (e.target.id === "suggest-budgets") { state.budgets = suggestBudgets(state.res); store.set("budgets", state.budgets); render(); }
   if (e.target.id === "clear-budgets") $("#clear-budgets-box").innerHTML = `<span class="small">Supprimer tous vos budgets&nbsp;?</span> <button class="btn" type="button" id="clear-yes" style="color:var(--crit)">Oui, supprimer</button> <button class="btn ghost" type="button" id="clear-no">Annuler</button>`;
   if (e.target.id === "clear-yes") { state.budgets = {}; store.set("budgets", state.budgets); render(); }

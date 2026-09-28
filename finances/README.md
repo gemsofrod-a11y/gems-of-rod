@@ -27,6 +27,21 @@ téléchargé une fois puis gardé en cache par le service worker.
   la colonne Solde/Balance, et ignore les lignes de solde et de total. Sans
   en-tête reconnu, le sens est deviné et l'appli le signale. Un PDF scanné
   (image sans texte) ou protégé par mot de passe donne un message explicite.
+- Fichiers Excel (`.xlsx`, ex. « account-statement » Revolut) lus sans
+  bibliothèque : l'archive est décompressée par le navigateur
+  (`DecompressionStream`) et les XML lus avec `DOMParser` (`readXlsx`).
+  Dates Excel (numéros de série, calendrier 1900/1904), textes partagés, texte
+  mal encodé réparé (`fixText` : « DÃ©but » → « Début », `_x0089_`), choix
+  automatique de la feuille qui contient les opérations. Colonnes Revolut :
+  `Produit` (Valeur actuelle / Épargne = Pockets / Dépôt = compte d'épargne),
+  `Frais` (opération de frais séparée), `État` (lignes « RENVOYÉ » ignorées).
+  L'ancien format `.xls` n'est pas lu : message pour l'enregistrer en `.xlsx`.
+- Période analysée (3, 6, 12 mois ou tout l'historique), proposée dès que
+  l'historique dépasse 4 mois ; 12 derniers mois par défaut au-delà d'un an.
+- « D'où vient cet argent ? » : pour les virements fréquents que l'appli ne
+  peut pas deviner (soi-même depuis une autre banque, salaire, proche), une
+  question posée une fois ; la réponse vaut pour ce nom et ce sens (entrée ou
+  sortie), y compris dans les prochains relevés.
 - Historique cumulé : chaque relevé importé (CSV ou PDF) s'ajoute aux
   précédents. Une opération déjà connue (même date, montant, libellé et
   compte) n'est pas recomptée : réimporter un relevé mis à jour n'ajoute que
