@@ -89,6 +89,14 @@
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
+.pf-list { display: flex; flex-direction: column; }
+.pf-row { display: flex; flex-direction: column; gap: 8px; padding-block: 12px; border-top: 1px solid var(--line); }
+.pf-row:first-child { border-top: 0; }
+.pf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.pf-grid label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); }
+.pf-grid input, .pf-grid select { font: 14px var(--body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; min-width: 0; }
+.pf-foot { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.btn.small { padding: 6px 10px; font-size: 12px; }
 .period-box { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 14px; color: var(--ink-2); margin-top: -8px; }
 .ask-list { display: flex; flex-direction: column; }
 .ask { display: flex; flex-direction: column; gap: 8px; padding-block: 12px; border-top: 1px solid var(--line); }
@@ -279,6 +287,7 @@ footer { font-size: 12px; color: var(--muted); display: flex; flex-direction: co
     <button class="tab" role="tab" id="tab-conseils" data-tab="conseils" aria-selected="false">Conseils</button>
     <button class="tab" role="tab" id="tab-budgets" data-tab="budgets" aria-selected="false">Budgets<span class="badge" id="budget-badge" hidden></span></button>
     <button class="tab" role="tab" id="tab-depenses" data-tab="depenses" aria-selected="false">Dépenses</button>
+    <button class="tab" role="tab" id="tab-profil" data-tab="profil" aria-selected="false">Mon budget</button>
     <button class="tab" role="tab" id="tab-abos" data-tab="abos" aria-selected="false">Abonnements</button>
     <button class="tab" role="tab" id="tab-operations" data-tab="operations" aria-selected="false">Opérations</button>
   </nav>
@@ -346,6 +355,7 @@ const CATS = [
   { id: "especes", name: "Retraits d'espèces", level: "uti", re: /\b(RETRAIT|RETRAIT DAB|DAB|ATM|CASH WITHDRAWAL|WITHDRAWAL)\b/ },
   { id: "dons", name: "Dons & cadeaux", level: "uti", re: /\b(DON|DONS|FONDATION|CROIX ROUGE|RESTOS DU COEUR|UNICEF|MEDECINS SANS FRONTIERES|SECOURS|HELLOASSO|CADEAU|LEETCHI|SAPEURS POMPIERS)\b/ },
   { id: "virements", name: "Virements à des proches", level: "uti", onlyNegative: true, re: /^(VIR|VIREMENT|VIR SEPA|VIREMENT SEPA|VIR INST|TRANSFER|PAIEMENT LYDIA|LYDIA|PAYPAL|PAYLIB|WERO)\b/ },
+  { id: "foyer", name: "Charges du foyer (électricité, nourriture…)", level: "ess", onlyNegative: true, re: null },
   { id: "pro", name: "Activité pro (hors budget perso)", kind: "pro", re: null },
   { id: "autre", name: "À classer", level: "uti", re: null },
   { id: "entrees", name: "Autres entrées d'argent", kind: "income", re: null }
@@ -945,9 +955,144 @@ function classify(txs, overrides) {
   for (const t of txs) {
     t.key = merchantKey(t.label);
     // Sur un compte d'épargne, tout est dépôt ou retrait d'épargne, sauf les intérêts versés.
-    t.cat = overrides[t.key + (t.amount > 0 ? "|+" : "|-")] || overrides[t.key] || t.forceCat || (t.acct === "epargne" ? (t.amount > 0 && /\b(INTERETS?|INTEREST)\b/.test(norm(t.label)) ? "interets" : "epargne") : ruleCategory(t));
+    t.pf = null;
+    t.cat = overrides[t.key + (t.amount > 0 ? "|+" : "|-")] || overrides[t.key] || (state.profile && profileCategory(t, state.profile)) || t.forceCat || (t.acct === "epargne" ? (t.amount > 0 && /\b(INTERETS?|INTEREST)\b/.test(norm(t.label)) ? "interets" : "epargne") : ruleCategory(t));
     // Un montant positif dans une catégorie de dépense = remboursement : il vient en déduction.
   }
+}
+
+/* ============================== Mon budget : revenus, charges fixes, crédits ============================== */
+// Profil saisi par l'utilisateur, gardé dans ce navigateur. Chaque ligne peut être reconnue dans
+// le relevé (« Nom dans le relevé ») et/ou avoir un montant mensuel saisi à la main, utilisé
+// les mois où elle n'apparaît pas dans le relevé (salaire versé sur une autre banque, loyer payé ailleurs…).
+const PROFILE_DEFAULT = { onlyDeclared: false, savingsNow: null, incomes: [], charges: [], credits: [] };
+const newId = () => Math.random().toString(36).slice(2, 9);
+function loadProfile() {
+  const p = { ...PROFILE_DEFAULT, ...(store.get("profile", {}) || {}) };
+  for (const k of ["incomes", "charges", "credits"]) p[k] = Array.isArray(p[k]) ? p[k].map(x => ({ id: x.id || newId(), ...x })) : [];
+  return p;
+}
+const saveProfile = () => store.set("profile", state.profile);
+const hasWord = (txt, m) => !!m && (" " + txt + " ").includes(" " + norm(m) + " ");
+
+// Classement par le profil : après vos choix explicites, avant les règles automatiques.
+function profileCategory(t, P) {
+  const txt = norm(t.type + " " + t.label);
+  if (t.amount > 0) { const s = P.incomes.find(x => hasWord(txt, x.match)); if (s) { t.pf = s.id; return "revenus"; } return null; }
+  const c = P.credits.find(x => hasWord(txt, x.match)); if (c) { t.pf = c.id; return "credit"; }
+  const f = P.charges.find(x => hasWord(txt, x.match)); if (f) { t.pf = f.id; return f.cat || "foyer"; }
+  return null;
+}
+
+const monthRange = (from, to) => { const out = []; const d = new Date(from.getFullYear(), from.getMonth(), 1); while (d <= to) { out.push(monthKey(d)); d.setMonth(d.getMonth() + 1); } return out; };
+const monthsBetween = (a, b) => (b.getFullYear() - a.getFullYear()) * 12 + b.getMonth() - a.getMonth();
+const monthName = k => { const [y, m] = k.split("-"); return new Date(+y, +m - 1, 1).toLocaleDateString("fr-FR", { month: "long", year: "numeric" }); };
+
+// Ajoute les montants saisis à la main pour les mois où la ligne n'apparaît pas dans le relevé.
+function applyProfile(res, txs, lvl) {
+  const P = state.profile; if (!res.from) return;
+  const months = monthRange(res.from, res.to);
+  // Montant trouvé dans le relevé, par ligne et par mois : le montant saisi à la main complète jusqu'à ce total.
+  const per = {}; for (const t of txs) if (t.pf) { const k = monthKey(new Date(t.date)); const m = per[t.pf] || (per[t.pf] = {}); m[k] = (m[k] || 0) + Math.abs(t.amount); }
+  const gap = (id, k, target) => Math.max(0, target - ((per[id] || {})[k] || 0));
+  const det = {}; for (const t of txs) if (t.pf) det[t.pf] = (det[t.pf] || 0) + Math.abs(t.amount);
+  res.pf = { detected: det, manual: {} };
+  const month = k => res.byMonth[k] || (res.byMonth[k] = { ess: 0, uti: 0, sup: 0, income: 0, savings: 0 });
+  const addSpend = (cat, k, v) => {
+    const C = res.byCat[cat] || (res.byCat[cat] = { id: cat, total: 0, count: 0, tx: [], merchants: {}, level: lvl(cat) });
+    C.total += v; C.count++;
+    const CM = res.byCatMonth[cat] || (res.byCatMonth[cat] = {}); CM[k] = (CM[k] || 0) + v;
+    const l = lvl(cat); res.lv[l] += v; month(k)[l] += v; res.spend += v;
+  };
+  const note = (id, v) => { res.pf.manual[id] = (res.pf.manual[id] || 0) + v; };
+  for (const s of P.incomes) if (s.manual > 0) for (const k of months) { const v = gap(s.id, k, s.manual); if (v) { month(k).income += v; res.income += v; note(s.id, v); } }
+  for (const c of P.charges) if (c.manual > 0) for (const k of months) { const v = gap(c.id, k, c.manual); if (v) { addSpend(c.cat || "foyer", k, v); note(c.id, v); } }
+  for (const c of P.credits) if (c.monthly > 0) for (const k of months) if (!c.end || k <= c.end) { const v = gap(c.id, k, c.monthly); if (v) { addSpend("credit", k, v); note(c.id, v); } }
+}
+
+// Taux et plafonds officiels au 1er août 2026 (Livret A, LDDS, LEP) et fiscalité 2026.
+const RATES_DATE = "1er août 2026";
+const RATES = { livretA: 1.7, ldds: 1.7, lep: 2.5, plafondA: 22950, plafondLdds: 12000, plafondLep: 10000, lepRfr: 22823, revolut: 2.25, pfu: 31.4, psPea: 18.6 };
+
+function placementPlan(r) {
+  const P = state.profile, mo = r.months;
+  const inc = r.income / mo, spend = r.spend / mo, surplus = inc - spend, ess = r.lv.ess / mo;
+  const out = [];
+  const step = (tone, title, html) => out.push({ tone, title, html });
+  const cushionLow = Math.round(ess * 3 / 100) * 100, cushionHigh = Math.round(ess * 6 / 100) * 100;
+  const now = P.savingsNow;
+  // Crédits : ce qu'il reste et l'argent libéré ensuite
+  const today = r.to;
+  for (const c of P.credits) {
+    if (!(c.monthly > 0) || !c.end) continue;
+    const [y, m] = c.end.split("-").map(Number), end = new Date(y, m - 1, 1);
+    const left = Math.max(0, monthsBetween(today, end) + (today.getDate() < 28 ? 1 : 0));
+    if (left > 0) step("info", `${c.label || "Crédit"} : ${left} mensualité${left > 1 ? "s" : ""} restante${left > 1 ? "s" : ""}`, `Reste environ <b>${eur.format(left * c.monthly)}</b> à rembourser, jusqu'en ${monthName(c.end)}. Ensuite, <b>${eur.format(c.monthly)} par mois</b> se libèrent : programmez dès maintenant un virement de ce montant vers votre épargne pour le mois suivant la dernière échéance, pour que l'argent ne se dilue pas dans les dépenses. Un remboursement anticipé peut coûter moins cher que les intérêts restants : vérifiez les indemnités prévues dans votre contrat.`);
+    else step("good", `${c.label || "Crédit"} terminé`, `La dernière échéance est passée : ${eur.format(c.monthly)} par mois sont désormais disponibles. S'ils ne partent pas déjà vers l'épargne, programmez un virement automatique de ce montant.`);
+  }
+  if (inc <= 0) { step("warn", "Revenus inconnus", "Indiquez vos revenus dans la section Revenus ci-dessus (ou importez le relevé où ils arrivent) pour obtenir un plan."); return { out, surplus, ess, cushionLow, cushionHigh }; }
+  if (surplus <= 0) {
+    step("crit", "D'abord dégager un surplus", `Sur la période, vos dépenses (${eur.format(spend)} par mois) atteignent ou dépassent vos revenus (${eur.format(inc)}). Avant tout placement, l'objectif est de réduire les postes superflus : voir l'onglet Conseils. Placer de l'argent dont on aura besoin le mois suivant expose à des frais de découvert plus élevés que n'importe quel rendement.`);
+    return { out, surplus, ess, cushionLow, cushionHigh };
+  }
+  // 1. Épargne de précaution
+  const lep = `<b>LEP ${fmtPct(RATES.lep)}</b>, le mieux rémunéré, si votre revenu fiscal de référence est inférieur à ${eur.format(RATES.lepRfr)} pour une part (voir votre avis d'imposition ; plafond ${eur.format(RATES.plafondLep)})`;
+  const livrets = `${lep}, puis <b>Livret A et LDDS à ${fmtPct(RATES.livretA)}</b>, nets d'impôt, disponibles à tout moment (plafonds ${eur.format(RATES.plafondA)} et ${eur.format(RATES.plafondLdds)}). Le compte d'épargne Revolut à ${fmtPct(RATES.revolut)} brut rapporte environ ${fmtPct(Math.round(RATES.revolut * (1 - RATES.pfu / 100) * 100) / 100)} après le prélèvement forfaitaire de ${fmtPct(RATES.pfu)} : moins qu'un Livret A pour la même disponibilité`;
+  if (now == null || now < cushionLow) {
+    const gap = Math.max(0, cushionLow - (now || 0));
+    const monthsTo = gap ? Math.ceil(gap / surplus) : 0;
+    step("warn", "1. Constituer une épargne de précaution", `Objectif : 3 à 6 mois de dépenses essentielles, soit <b>${eur.format(cushionLow)} à ${eur.format(cushionHigh)}</b> (vos dépenses essentielles : ${eur.format(ess)} par mois). ${now == null ? "Indiquez ci-dessus votre épargne disponible aujourd'hui pour savoir où vous en êtes." : `Vous avez ${eur.format(now)} : il manque ${eur.format(gap)}.`} Avec votre surplus actuel de ${eur.format(surplus)} par mois${monthsTo ? `, l'objectif est atteint en environ ${monthsTo} mois` : ""}. Où la placer : ${livrets}.`);
+  } else step("good", "1. Épargne de précaution en place", `Vous avez ${eur.format(now)}, pour un objectif de ${eur.format(cushionLow)} à ${eur.format(cushionHigh)}. Gardez-la sur des livrets disponibles : ${livrets}.`);
+  // 2. Long terme
+  const reached = now != null && now >= cushionLow;
+  step(reached ? "info" : "good", reached ? "2. Investir pour le long terme (5 ans et plus)" : "2. Ensuite : investir pour le long terme (5 ans et plus)", `Une fois la précaution en place, l'argent dont vous n'aurez pas besoin avant plusieurs années peut viser plus que les livrets, en acceptant des variations : <b>PEA</b> avec un fonds indiciel (ETF) « monde » diversifié, alimenté chaque mois du même montant pour lisser les hausses et les baisses ; après 5 ans, seuls les prélèvements sociaux (${fmtPct(RATES.psPea)}) s'appliquent aux gains. <b>Assurance-vie</b> (fonds en euros garanti et unités de compte) : après 8 ans, abattement annuel de 4 600 € sur les gains retirés (9 200 € pour un couple). Exemple avec votre surplus de ${eur.format(surplus)} : une fois la précaution atteinte, ${eur.format(Math.round(surplus * 0.5 / 10) * 10)} par mois sur un PEA et ${eur.format(Math.round(surplus * 0.3 / 10) * 10)} sur une assurance-vie, le reste en livret pour les projets proches.`);
+  // 3. Placements risqués repérés dans le relevé
+  const risky = [...new Set(state.tx.filter(t => /\b(ETORO|AVATRADE|KUCOIN|BINANCE|COINBASE|KRAKEN|BITPANDA|CRYPTO|DIGITAL ASSETS|PLUS500|XTB|IG MARKETS)\b/.test(norm(t.label))).map(t => t.key.toLowerCase()))];
+  if (risky.length) step("warn", "Trading et crypto : prudence", `Votre relevé contient des opérations vers ${risky.slice(0, 4).map(esc).join(", ")}. Les CFD et le trading à effet de levier font perdre de l'argent à la majorité des particuliers (les courtiers doivent afficher ce pourcentage), et les cryptomonnaies peuvent perdre une grande partie de leur valeur en peu de temps. Si vous y tenez, limitez-les à une petite part de votre épargne, jamais à l'épargne de précaution.`);
+  return { out, surplus, ess, cushionLow, cushionHigh };
+}
+
+function vProfil(r) {
+  const P = state.profile, mo = r.months || 1;
+  const det = (r.pf && r.pf.detected) || {}, man = (r.pf && r.pf.manual) || {};
+  const catOpts = sel => CATS.filter(c => !c.kind && c.id !== "autre").map(c => `<option value="${c.id}"${c.id === sel ? " selected" : ""}>${c.name}</option>`).join("");
+  const status = x => det[x.id] ? `<span class="chip good">✓ Trouvé dans le relevé : ${eur.format(det[x.id] / mo)} / mois</span>` : (x.match ? `<span class="chip warn">! Pas trouvé dans le relevé</span>` : "");
+  const input = (sec, i, f, v, ph, type = "text", extra = "") => `<input id="pf-${sec}-${i}-${f}" data-pf="${sec}|${i}|${f}" type="${type}" value="${v == null ? "" : esc(v)}" placeholder="${ph}"${extra}>`;
+  const row = (sec, x, i) => `<div class="pf-row">
+      <div class="pf-grid">
+        <label for="pf-${sec}-${i}-label">Intitulé${input(sec, i, "label", x.label, sec === "incomes" ? "Salaire, CAF…" : sec === "credits" ? "Crédit auto…" : "Loyer, électricité…")}</label>
+        <label for="pf-${sec}-${i}-match">Nom dans le relevé${input(sec, i, "match", x.match, "ex. le nom de l'employeur")}</label>
+        ${sec === "credits"
+          ? `<label for="pf-${sec}-${i}-monthly">Mensualité (€)${input(sec, i, "monthly", x.monthly, "0", "number", ' inputmode="decimal" min="0" step="1"')}</label>
+             <label for="pf-${sec}-${i}-end">Dernière échéance${input(sec, i, "end", x.end, "", "month")}</label>`
+          : `<label for="pf-${sec}-${i}-manual">Montant réel par mois (€)${input(sec, i, "manual", x.manual, "si différent du relevé", "number", ' inputmode="decimal" min="0" step="1"')}</label>`}
+        ${sec === "charges" ? `<label for="pf-${sec}-${i}-cat">Catégorie<select id="pf-${sec}-${i}-cat" data-pf="${sec}|${i}|cat">${catOpts(x.cat || "foyer")}</select></label>` : ""}
+      </div>
+      <div class="pf-foot">${status(x)}${man[x.id] ? `<span class="chip info">+ ${eur.format(man[x.id] / mo)} / mois ajoutés d'après votre montant</span>` : ""}<button class="btn ghost small" type="button" data-pf-del="${sec}|${i}">Supprimer</button></div>
+    </div>`;
+  const section = (sec, title, hint, addTxt) => `<section class="panel" aria-labelledby="h-pf-${sec}">
+    <div><span class="eyebrow">Mon budget</span><h2 id="h-pf-${sec}">${title}</h2></div>
+    <p class="small muted">${hint}</p>
+    ${sec === "incomes" ? `<label class="check"><input type="checkbox" id="pf-only"${P.onlyDeclared ? " checked" : ""}> Seules ces sources comptent comme revenus (les autres entrées d'argent, comme un virement d'un proche ou un remboursement, ne gonflent pas vos revenus)</label>` : ""}
+    <div class="pf-list">${P[sec].map((x, i) => row(sec, x, i)).join("") || `<p class="muted small">Aucune ligne pour l'instant.</p>`}</div>
+    <button class="btn" type="button" data-pf-add="${sec}">${addTxt}</button>
+  </section>`;
+  const plan = placementPlan(r);
+  const icon = { crit: "!", warn: "!", info: "i", good: "✓" };
+  return `${section("incomes", "Revenus", "Vos sources de revenus. Si elles apparaissent dans le relevé, l'appli les additionne automatiquement. Si une partie arrive sur une autre banque, indiquez le montant réel par mois : l'appli ajoute la différence avec ce qu'elle trouve dans le relevé.", "Ajouter un revenu")}
+  ${section("charges", "Charges fixes", "Les sorties les plus importantes : loyer, électricité, nourriture… Indiquez le nom qui apparaît dans le relevé (bénéficiaire du virement), et le montant réel par mois s'il est payé en partie ou en totalité ailleurs.", "Ajouter une charge")}
+  ${section("credits", "Crédits", "Chaque crédit en cours, avec sa mensualité et la date de sa dernière échéance : l'appli calcule ce qu'il reste à payer et l'argent libéré ensuite.", "Ajouter un crédit")}
+  <section class="panel" aria-labelledby="h-plan">
+    <div><span class="eyebrow">Placements</span><h2 id="h-plan">Où placer votre argent</h2></div>
+    <div class="kpis">
+      <div class="kpi"><span class="v">${eur.format(r.income / mo)}</span><span class="l">Revenus par mois</span></div>
+      <div class="kpi"><span class="v">${eur.format(r.spend / mo)}</span><span class="l">Dépenses par mois</span></div>
+      <div class="kpi"><span class="v" style="color:${plan.surplus < 0 ? "var(--crit)" : "var(--ink)"}">${plan.surplus < 0 ? "−" : ""}${eur.format(Math.abs(plan.surplus))}</span><span class="l">Surplus mensuel</span></div>
+      <div class="kpi"><label class="l" for="pf-savings">Épargne disponible aujourd'hui (€)</label><input id="pf-savings" type="number" inputmode="decimal" min="0" step="10" value="${P.savingsNow == null ? "" : P.savingsNow}" placeholder="0" style="font:600 16px var(--body);max-width:140px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)"></div>
+    </div>
+    <div class="advice-list">${plan.out.map(a => `<article class="advice ${a.tone}"><span class="ic" aria-hidden="true">${icon[a.tone]}</span><div class="body"><div class="head"><h3>${esc(a.title)}</h3></div><p>${a.html}</p></div></article>`).join("")}</div>
+    <p class="small muted">Informations générales calculées à partir de vos chiffres, pas un conseil en investissement personnalisé. Taux des livrets au ${RATES_DATE}, fiscalité 2026 ; ils évoluent, vérifiez-les avant d'ouvrir un placement. Tout placement autre que les livrets comporte un risque de perte.</p>
+  </section>`;
 }
 
 /* ============================== Analyse ============================== */
@@ -991,6 +1136,7 @@ function analyse(txs, levels) {
       }
       res.savings += v; M.savings += v; continue;
     }
+    if (c.kind === "income" && state.profile.onlyDeclared && state.profile.incomes.length && !t.pf && t.cat !== "interets") { res.otherIn = (res.otherIn || 0) + t.amount; continue; }
     if (c.kind === "income") { res.income += t.amount; M.income += t.amount; if (S && t.cat === "interets") S.interest += t.amount; continue; }
     const spent = -t.amount; // remboursement = dépense négative
     const C = res.byCat[t.cat] || (res.byCat[t.cat] = { id: t.cat, total: 0, count: 0, tx: [], merchants: {} });
@@ -999,6 +1145,7 @@ function analyse(txs, levels) {
     const CM = res.byCatMonth[t.cat] || (res.byCatMonth[t.cat] = {}); CM[k] = (CM[k] || 0) + spent;
     const l = lvl(t.cat); res.lv[l] += spent; M[l] += spent; res.spend += spent;
   }
+  applyProfile(res, txs, lvl);
   for (const C of Object.values(res.byCat)) { C.level = lvl(C.id); C.monthly = C.total / res.months; }
   res.recurring = detectRecurring(txs);
   res.advice = buildAdvice(res, txs, lvl);
@@ -1211,7 +1358,7 @@ const state = {
   tab: store.get("tab", "synthese"),
   overrides: store.get("overrides", {}),
   levels: store.get("levels", {}),
-  budgets: store.get("budgets", {}), budgetMonth: null,
+  budgets: store.get("budgets", {}), budgetMonth: null, profile: null,
   metas: store.get("metas", {}), histBefore: [], fileAcct: "", lastImport: null, infoNote: "", period: store.get("period", null),
   tx: [], file: null, sample: false, rows: null, headerIdx: -1, map: {}, invert: false,
   search: "", showAll: false, openCat: null, catFilter: "", res: null
@@ -1230,6 +1377,7 @@ function periodTx() {
   return tx.filter(t => t.date >= cut);
 }
 function recompute() {
+  if (!state.profile) state.profile = loadProfile();
   classify(state.tx, state.overrides);
   state.res = analyse(periodTx(), state.levels);
   render();
@@ -1419,7 +1567,7 @@ function render() {
   updateBadge();
   if (!state.tx.length) { view.innerHTML = `<div class="panel empty">Importez un relevé Excel, CSV ou PDF pour commencer, ou appuyez sur « Voir l'exemple ».</div>`; return; }
   const r = state.res;
-  view.innerHTML = ({ synthese: vSynthese, conseils: vConseils, budgets: vBudgets, depenses: vDepenses, abos: vAbos, operations: vOperations })[state.tab](r);
+  view.innerHTML = ({ synthese: vSynthese, conseils: vConseils, budgets: vBudgets, profil: vProfil, depenses: vDepenses, abos: vAbos, operations: vOperations })[state.tab](r);
   if (state.tab === "synthese") drawMonthly(r);
 }
 
@@ -1483,6 +1631,7 @@ function vSynthese(r) {
       <div class="kpi"><span class="v" style="color:${left < 0 ? "var(--crit)" : "var(--ink)"}">${left < 0 ? "−" : ""}${eur.format(Math.abs(left))}</span><span class="l">Reste en fin de mois</span></div>
       <div class="kpi"><span class="v">${eur.format(r.savings / mo)}</span><span class="l">Mis de côté (virements épargne)</span></div>
     </div>
+    ${r.otherIn ? `<p class="small muted">Autres entrées d'argent, non comptées comme revenus (réglage dans « Mon budget ») : <b class="num">${eur.format(r.otherIn / mo)}</b> par mois.</p>` : ""}
     ${r.pro ? `<p class="small muted">Dépenses classées « Activité pro », hors analyse : <b class="num">${eur.format(r.pro / mo)}</b> par mois.</p>` : ""}
     <div class="split" role="img" aria-label="Répartition des dépenses : essentiel ${pct(r.lv.ess / lvTot)}, utile ${pct(r.lv.uti / lvTot)}, superflu ${pct(r.lv.sup / lvTot)}">
       ${["ess", "uti", "sup"].map(l => r.lv[l] > 0 ? `<span style="width:${r.lv[l] / lvTot * 100}%;background:var(--${l})"></span>` : "").join("")}
@@ -1646,8 +1795,19 @@ function vOperations() {
 function loadClassement(text, name) {
   let data;
   try { data = JSON.parse(text); } catch (e) { return setStatus("Ce fichier n'est pas un fichier de classement valide.", "crit"); }
-  const ov = data && data.type === "budget-clair-classement" && data.overrides;
+  const ov = data && data.type === "budget-clair-classement" && (data.overrides || {});
   if (!ov || typeof ov !== "object") return setStatus("Ce fichier n'est pas un fichier de classement Budget Clair.", "crit");
+  let pfAdded = 0;
+  if (data.profile && typeof data.profile === "object") {
+    if (!state.profile) state.profile = loadProfile();
+    for (const sec of ["incomes", "charges", "credits"]) for (const x of data.profile[sec] || []) {
+      if (!x || typeof x.label !== "string" || state.profile[sec].some(y => norm(y.label) === norm(x.label))) continue;
+      state.profile[sec].push({ id: newId(), label: x.label, match: String(x.match || ""), manual: x.manual ?? null, monthly: x.monthly ?? null, end: x.end || "", cat: CAT[x.cat] ? x.cat : undefined });
+      pfAdded++;
+    }
+    if (typeof data.profile.onlyDeclared === "boolean") state.profile.onlyDeclared = data.profile.onlyDeclared;
+    saveProfile();
+  }
   let added = 0, kept = 0;
   for (const [k, cat] of Object.entries(ov)) {
     if (!CAT[cat] || typeof k !== "string") continue;
@@ -1655,7 +1815,7 @@ function loadClassement(text, name) {
     state.overrides[k] = cat; added++;
   }
   store.set("overrides", state.overrides);
-  setStatus(`<b>${esc(name)}</b> : ${added} commerçant${added > 1 ? "s" : ""} classé${added > 1 ? "s" : ""}${kept ? `, ${kept} déjà classé${kept > 1 ? "s" : ""} par vous (inchangé${kept > 1 ? "s" : ""})` : ""}.`);
+  setStatus(`<b>${esc(name)}</b> : ${added} commerçant${added > 1 ? "s" : ""} classé${added > 1 ? "s" : ""}${kept ? `, ${kept} déjà classé${kept > 1 ? "s" : ""} par vous (inchangé${kept > 1 ? "s" : ""})` : ""}${pfAdded ? `, ${pfAdded} ligne${pfAdded > 1 ? "s" : ""} ajoutée${pfAdded > 1 ? "s" : ""} dans « Mon budget »` : ""}.`);
   recompute();
 }
 function handleFile(f) {
@@ -1693,6 +1853,10 @@ view.addEventListener("click", e => {
   const o = e.target.closest("[data-open]");
   if (o) { if (state.tab !== "depenses") state.tab = "depenses"; state.openCat = state.openCat === o.dataset.open ? null : o.dataset.open; render(); }
   if (e.target.id === "show-all") { state.showAll = true; render(); }
+  const add = e.target.closest("[data-pf-add]");
+  if (add) { const sec = add.dataset.pfAdd; state.profile[sec].push(sec === "charges" ? { id: newId(), label: "", match: "", manual: null, cat: "foyer" } : sec === "credits" ? { id: newId(), label: "", match: "", monthly: null, end: "" } : { id: newId(), label: "", match: "", manual: null }); saveProfile(); const y = window.scrollY; recompute(); window.scrollTo({ top: y }); return; }
+  const del = e.target.closest("[data-pf-del]");
+  if (del) { const [sec, i] = del.dataset.pfDel.split("|"); state.profile[sec].splice(+i, 1); saveProfile(); const y = window.scrollY; recompute(); window.scrollTo({ top: y }); return; }
   const ask = e.target.closest("[data-ask]");
   if (ask) { state.overrides[ask.dataset.ask] = ask.dataset.cat; store.set("overrides", state.overrides); recompute(); return; }
   if (e.target.id === "suggest-budgets") { state.budgets = suggestBudgets(state.res); store.set("budgets", state.budgets); render(); }
@@ -1706,6 +1870,16 @@ view.addEventListener("change", e => {
   if (s.dataset.key) { state.overrides[s.dataset.key] = s.value; store.set("overrides", state.overrides); recompute(); }
   if (s.id === "cat-filter") { state.catFilter = s.value; render(); }
   if (s.id === "budget-month") { state.budgetMonth = s.value; render(); }
+  if (s.dataset.pf || s.id === "pf-only" || s.id === "pf-savings") {
+    if (s.id === "pf-only") state.profile.onlyDeclared = s.checked;
+    else if (s.id === "pf-savings") { const v = parseAmount(s.value); state.profile.savingsNow = isNaN(v) ? null : Math.abs(v); }
+    else {
+      const [sec, i, f] = s.dataset.pf.split("|"), row = state.profile[sec][+i];
+      if (["manual", "monthly"].includes(f)) { const v = parseAmount(s.value); row[f] = isNaN(v) ? null : Math.abs(v); }
+      else row[f] = s.value.trim();
+    }
+    saveProfile(); const y = window.scrollY; recompute(); window.scrollTo({ top: y });
+  }
   if (s.dataset.budget) {
     const v = parseAmount(s.value);
     setBudget(s.dataset.budget, isNaN(v) ? 0 : Math.abs(v));
@@ -1723,7 +1897,7 @@ $("#wipe").addEventListener("click", () => {
   $("#wipe-box").innerHTML = `<span class="small">Effacer tout l'historique importé, vos corrections de catégories et vos budgets&nbsp;?</span><button class="btn" id="wipe-yes" type="button" style="color:var(--crit)">Oui, effacer</button><button class="btn ghost" id="wipe-no" type="button">Annuler</button>`;
 });
 $("#wipe-box").addEventListener("click", e => {
-  if (e.target.id === "wipe-yes") { store.clear(); state.overrides = {}; state.levels = {}; state.budgets = {}; state.metas = {}; loadText(sampleCSV(), "exemple.csv", true); resetWipe(); }
+  if (e.target.id === "wipe-yes") { store.clear(); state.overrides = {}; state.levels = {}; state.budgets = {}; state.metas = {}; state.profile = loadProfile(); loadText(sampleCSV(), "exemple.csv", true); resetWipe(); }
   if (e.target.id === "wipe-no") resetWipe();
 });
 function resetWipe() { $("#wipe-box").innerHTML = `<button class="btn ghost" id="wipe" type="button">Effacer mes données de cet appareil</button>`; $("#wipe").addEventListener("click", () => $("#wipe-box").innerHTML = `<span class="small">Effacer tout l'historique importé, vos corrections de catégories et vos budgets&nbsp;?</span><button class="btn" id="wipe-yes" type="button" style="color:var(--crit)">Oui, effacer</button><button class="btn ghost" id="wipe-no" type="button">Annuler</button>`); }

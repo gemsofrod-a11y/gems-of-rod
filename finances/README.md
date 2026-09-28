@@ -55,6 +55,18 @@ téléchargé une fois puis gardé en cache par le service worker.
   sur les paiements par carte), virement programmé, blocage des jeux
   d'argent. Tarifs dans `REVOLUT_PLANS` (relevés au 9 juillet 2026) : à mettre
   à jour si Revolut les change.
+- Onglet « Mon budget » : revenus, charges fixes et crédits saisis par
+  l'utilisateur. Chaque ligne a un « nom dans le relevé » (reconnu
+  automatiquement, puis cumulé) et/ou un « montant réel par mois » : l'appli
+  ajoute chaque mois la différence avec ce qu'elle trouve dans le relevé
+  (salaire versé en partie ailleurs, loyer payé depuis une autre banque).
+  Crédits : mensualité et dernière échéance, avec reste à payer et argent
+  libéré ensuite. Option « seules ces sources comptent comme revenus ».
+  Plan « Où placer votre argent » : épargne de précaution (3 à 6 mois de
+  dépenses essentielles), livrets (LEP, Livret A, LDDS), puis long terme (PEA,
+  assurance-vie), mise en garde trading/crypto. Taux dans `RATES` (au
+  1er août 2026). Le profil peut aussi arriver par le fichier de classement
+  (`"profile": {...}`), pour ne jamais écrire de nom réel dans le code.
 - Historique cumulé : chaque relevé importé (CSV ou PDF) s'ajoute aux
   précédents. Une opération déjà connue (même date, montant, libellé et
   compte) n'est pas recomptée : réimporter un relevé mis à jour n'ajoute que
