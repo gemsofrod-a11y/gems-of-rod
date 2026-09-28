@@ -362,3 +362,17 @@ de Sébastien sur la suite ; aucune n'est indispensable à l'usage actuel,
 - **Mémoire des préférences de rédaction** : formules habituelles, signature,
   ton différent pour un client fidèle vs un prospect, pour des brouillons
   plus proches du style de Sébastien.
+
+---
+
+## Budget Clair — analyse de finances personnelles (usage personnel de Sébastien)
+
+Outil distinct du reste du dépôt, sans lien avec Gems of Rod : page web
+autonome `finances/index.html` (PWA installable, hors-ligne via `sw.js`) qui
+analyse un export CSV de compte bancaire **personnel** et classe les dépenses
+en Essentiel / Utile / Superflu avec des pistes d'économie. Choix faits avec
+Sébastien le 28/09/2026 : **100 % local** (aucun appel à une IA ni à un
+serveur, le relevé ne quitte jamais le téléphone), banque en ligne (détection
+automatique des colonnes), compte perso uniquement. Ne pas y ajouter d'appel
+réseau portant sur les opérations sans demande explicite. Voir
+`finances/README.md`.
