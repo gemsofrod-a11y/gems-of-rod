@@ -1,6 +1,7 @@
 // Budget Clair : met l'appli en cache pour qu'elle s'ouvre sans connexion.
 // Aucune donnée bancaire ne transite ici : le relevé est lu dans la page et reste dans le navigateur.
-const CACHE = "budget-clair-v2";
+const CACHE = "budget-clair-v3";
+const SHARE = "budget-clair-share";
 const FILES = ["./", "index.html", "manifest.webmanifest", "icon.svg"];
 // Lecteur de PDF (pdf.js), téléchargé à l'installation pour lire les relevés PDF hors-ligne.
 const PDFJS = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
@@ -17,12 +18,28 @@ self.addEventListener("install", e => {
 self.addEventListener("activate", e => {
   e.waitUntil(
     caches.keys()
-      .then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
+      .then(keys => Promise.all(keys.filter(k => k !== CACHE && k !== SHARE).map(k => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
 
 self.addEventListener("fetch", e => {
+  // Relevé partagé depuis une autre appli (menu « Partager » d'Android) : on le garde de côté
+  // dans le cache du téléphone, puis la page l'importe dès son ouverture.
+  if (e.request.method === "POST" && new URL(e.request.url).searchParams.has("share-target")) {
+    e.respondWith((async () => {
+      try {
+        const form = await e.request.formData();
+        const file = form.get("file");
+        if (file && typeof file !== "string") {
+          const c = await caches.open(SHARE);
+          await c.put("shared-file", new Response(file, { headers: { "content-type": file.type || "application/octet-stream", "x-file-name": encodeURIComponent(file.name || "releve") } }));
+        }
+      } catch (err) { /* page ouverte sans fichier */ }
+      return Response.redirect("./?shared=1", 303);
+    })());
+    return;
+  }
   if (e.request.method !== "GET") return;
   const url = e.request.url;
   // pdf.js : version figée, donc cache d'abord.

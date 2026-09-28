@@ -27,6 +27,20 @@ téléchargé une fois puis gardé en cache par le service worker.
   la colonne Solde/Balance, et ignore les lignes de solde et de total. Sans
   en-tête reconnu, le sens est deviné et l'appli le signale. Un PDF scanné
   (image sans texte) ou protégé par mot de passe donne un message explicite.
+- Historique cumulé : chaque relevé importé (CSV ou PDF) s'ajoute aux
+  précédents. Une opération déjà connue (même date, montant, libellé et
+  compte) n'est pas recomptée : réimporter un relevé mis à jour n'ajoute que
+  les nouvelles opérations. Deux opérations identiques le même jour restent
+  deux (on garde le plus grand nombre d'exemplaires vus dans un même relevé).
+- Relevés de compte d'épargne (ex. « Relevé d'épargne » Revolut, dont les
+  opérations tiennent sur 2 à 3 lignes serrées) : dépôts et retraits comptés
+  comme épargne, intérêts comme revenu, taux brut, prélèvement forfaitaire,
+  soldes et impôt retenu repris du relevé. Les virements « vers l'épargne »
+  du compte courant sur la même période ne sont pas comptés une deuxième fois.
+  Colonne `Product` des CSV Revolut (`Savings`) reconnue de la même façon.
+- Partage depuis une autre appli (Android, appli installée) : `share_target`
+  du manifeste + service worker. « Partager » sur un relevé dans l'appli de la
+  banque, puis Budget Clair : le fichier est importé à l'ouverture.
 - Classement automatique par mots-clés (commerçants français courants) en
   ~30 catégories, chacune rattachée à un niveau Essentiel / Utile / Superflu,
   modifiable. Les virements d'épargne et entre comptes sont exclus des dépenses.

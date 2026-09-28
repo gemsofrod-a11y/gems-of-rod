@@ -379,5 +379,10 @@ acceptés depuis le 28/09/2026 (demande de Sébastien) : lus dans la page par
 pdf.js (seule bibliothèque externe, chargée depuis cdnjs et mise en cache
 pour le hors-ligne — elle ne reçoit aucune donnée). Budgets mensuels par
 catégorie avec alertes ajoutés le 28/09/2026 (alertes dans l'appli
-uniquement, budgets gardés dans le navigateur). Voir
+uniquement, budgets gardés dans le navigateur). Même jour, à partir d'un relevé
+d'épargne Revolut fourni par Sébastien : historique cumulé sans doublon (un
+relevé retéléchargé met l'appli à jour directement), relevés de compte
+d'épargne, partage Android vers l'appli. Ne jamais versionner ni publier un
+relevé réel de Sébastien (nom, adresse, opérations) : tester avec des PDF
+fabriqués. Voir
 `finances/README.md`.
