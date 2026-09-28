@@ -374,5 +374,8 @@ en Essentiel / Utile / Superflu avec des pistes d'économie. Choix faits avec
 Sébastien le 28/09/2026 : **100 % local** (aucun appel à une IA ni à un
 serveur, le relevé ne quitte jamais le téléphone), banque en ligne (détection
 automatique des colonnes), compte perso uniquement. Ne pas y ajouter d'appel
-réseau portant sur les opérations sans demande explicite. Voir
+réseau portant sur les opérations sans demande explicite. Relevés PDF
+acceptés depuis le 28/09/2026 (demande de Sébastien) : lus dans la page par
+pdf.js (seule bibliothèque externe, chargée depuis cdnjs et mise en cache
+pour le hors-ligne — elle ne reçoit aucune donnée). Voir
 `finances/README.md`.

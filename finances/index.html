@@ -230,10 +230,10 @@ footer { font-size: 12px; color: var(--muted); display: flex; flex-direction: co
 
   <section class="panel import" aria-labelledby="import-title">
     <h2 id="import-title">Importer un relevé</h2>
-    <p class="small muted">Exportez vos opérations au format CSV depuis l'appli ou le site de votre banque, puis choisissez le fichier. Il est lu uniquement par ce téléphone&nbsp;: rien n'est envoyé sur Internet.</p>
+    <p class="small muted">Choisissez l'export CSV de vos opérations ou le relevé de compte PDF téléchargé depuis l'appli ou le site de votre banque. Le fichier est lu uniquement par ce téléphone&nbsp;: rien n'est envoyé sur Internet.</p>
     <div class="import-row">
-      <label class="btn primary" for="file">Choisir un fichier CSV</label>
-      <input id="file" type="file" accept=".csv,.txt,text/csv,text/plain">
+      <label class="btn primary" for="file">Choisir un relevé (CSV ou PDF)</label>
+      <input id="file" type="file" accept=".csv,.txt,.pdf,text/csv,text/plain,application/pdf">
       <button class="btn ghost" id="load-sample" type="button">Voir l'exemple</button>
     </div>
     <div id="status" class="banner" role="status"></div>
@@ -303,7 +303,7 @@ const CATS = [
   { id: "frais", name: "Frais bancaires", level: "sup", re: /\b(FRAIS|COMMISSION|COMMISSIONS|COTISATION CARTE|COTIS CARTE|AGIOS|INTERETS DEBITEURS|FRAIS TENUE|INCIDENT|OPPOSITION|REJET PRLV|FEE|FEES)\b/ },
   { id: "especes", name: "Retraits d'espèces", level: "uti", re: /\b(RETRAIT|RETRAIT DAB|DAB|ATM|CASH WITHDRAWAL|WITHDRAWAL)\b/ },
   { id: "dons", name: "Dons & cadeaux", level: "uti", re: /\b(DON|DONS|FONDATION|CROIX ROUGE|RESTOS DU COEUR|UNICEF|MEDECINS SANS FRONTIERES|SECOURS|HELLOASSO|CADEAU)\b/ },
-  { id: "virements", name: "Virements à des proches", level: "uti", re: /^(VIR|VIREMENT|VIR SEPA|VIREMENT SEPA|VIR INST|TRANSFER|PAIEMENT LYDIA|LYDIA|PAYPAL|PAYLIB|WERO)\b/ },
+  { id: "virements", name: "Virements à des proches", level: "uti", onlyNegative: true, re: /^(VIR|VIREMENT|VIR SEPA|VIREMENT SEPA|VIR INST|TRANSFER|PAIEMENT LYDIA|LYDIA|PAYPAL|PAYLIB|WERO)\b/ },
   { id: "autre", name: "À classer", level: "uti", re: null },
   { id: "entrees", name: "Autres entrées d'argent", kind: "income", re: null }
 ];
@@ -399,7 +399,7 @@ function detectDelimiter(text) {
 
 function parseAmount(v) {
   if (v == null) return NaN;
-  let s = String(v).replace(/[\s  ]/g, "").replace(/€|EUR|eur/g, "");
+  let s = String(v).replace(/[\s  ]/g, "").replace(/\u2212/g, "-").replace(/€|EUR|eur|\$|£/g, "");
   if (!s) return NaN;
   let neg = false;
   if (/^\(.*\)$/.test(s)) { neg = true; s = s.slice(1, -1); }
@@ -533,6 +533,166 @@ function buildTransactions(rows, headerIdx, map, invert) {
   return { tx: out, skipped };
 }
 
+/* ============================== Lecture PDF ============================== */
+// pdf.js est téléchargé une seule fois depuis cdnjs, puis gardé en cache pour le hors-ligne.
+// Le PDF lui-même est lu dans la page : son contenu ne part nulle part.
+const PDFJS = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
+let pdfReady = null;
+function loadScript(src) {
+  return new Promise((ok, ko) => {
+    const el = document.createElement("script");
+    el.src = src; el.crossOrigin = "anonymous"; el.onload = ok; el.onerror = () => ko(new Error("script"));
+    document.head.appendChild(el);
+  });
+}
+function loadPdfJs() {
+  // Le « worker » est chargé comme un script ordinaire : pdf.js l'exécute alors dans la page,
+  // ce qui évite un Worker d'une autre origine (refusé par les navigateurs) et marche hors-ligne.
+  if (!pdfReady) pdfReady = loadScript(PDFJS + "pdf.worker.min.js")
+    .then(() => loadScript(PDFJS + "pdf.min.js"))
+    .then(() => { window.pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS + "pdf.worker.min.js"; return window.pdfjsLib; })
+    .catch(e => { pdfReady = null; throw e; });
+  return pdfReady;
+}
+
+const AMT_RE = /^[-+−]?\s?(?:€|EUR|\$|£)?\s?\d{1,3}(?:[\s  .]\d{3})*[,.]\d{2}\s?(?:€|EUR)?\s?[-+]?$|^[-+−]?\s?(?:€|EUR|\$|£)?\s?\d+[,.]\d{2}\s?(?:€|EUR)?$/;
+const AMT_TAIL = /^(.*\S)\s+([-+−]?(?:€|\$|£)?\d{1,3}(?:[\s  .]\d{3})*,\d{2}|[-+−]?(?:€|\$|£)?\d+[.,]\d{2})\s?(?:€|EUR)?$/;
+const SHORT_DATE = /^\d{1,2}[\/.\-]\d{1,2}(?:[\/.\-]\d{2,4})?$/;
+const MONTH_NAMES = { JAN: 1, JANV: 1, JANVIER: 1, JANUARY: 1, FEV: 2, FEVR: 2, FEVRIER: 2, FEB: 2, FEBRUARY: 2, MAR: 3, MARS: 3, MARCH: 3, AVR: 4, AVRIL: 4, APR: 4, APRIL: 4, MAI: 5, MAY: 5, JUIN: 6, JUN: 6, JUNE: 6, JUIL: 7, JUILLET: 7, JUL: 7, JULY: 7, AOU: 8, AOUT: 8, AUG: 8, AUGUST: 8, SEP: 9, SEPT: 9, SEPTEMBRE: 9, SEPTEMBER: 9, OCT: 10, OCTOBRE: 10, OCTOBER: 10, NOV: 11, NOVEMBRE: 11, NOVEMBER: 11, DEC: 12, DECEMBRE: 12, DECEMBER: 12 };
+const PDF_SKIP = /^(SOLDE|ANCIEN SOLDE|NOUVEAU SOLDE|TOTAL|TOTAUX|SOUS TOTAL|REPORT|BALANCE|OPENING|CLOSING|MONTANT|DATE)\b/;
+
+// Date en tête de ligne : « 03/08 », « 03/08/2026 », « 3 août 2026 », « 3 Aug 2026 ».
+function leadingDate(text) {
+  let m = text.match(/^(\d{1,2})[\/.\-](\d{1,2})(?:[\/.\-](\d{2,4}))?(?=\s|$)/);
+  if (m) return { d: +m[1], m: +m[2], y: m[3] ? (+m[3] < 100 ? +m[3] + 2000 : +m[3]) : null, len: m[0].length };
+  m = text.match(/^(\d{1,2})\s+([A-Za-zÀ-ÿ]{3,9})\.?(?:\s+(\d{4}))?(?=\s|$)/);
+  if (m) { const mo = MONTH_NAMES[norm(m[2])]; if (mo) return { d: +m[1], m: mo, y: m[3] ? +m[3] : null, len: m[0].length }; }
+  return null;
+}
+
+async function pdfToLines(buf) {
+  const lib = await loadPdfJs();
+  const doc = await lib.getDocument({ data: new Uint8Array(buf), isEvalSupported: false }).promise;
+  const out = []; let chars = 0;
+  for (let p = 1; p <= doc.numPages; p++) {
+    const page = await doc.getPage(p);
+    const tc = await page.getTextContent();
+    const items = tc.items.filter(i => i.str && i.str.trim()).map(i => ({ s: i.str, x: i.transform[4], y: i.transform[5], w: i.width, h: Math.abs(i.transform[3]) || 8 }));
+    items.forEach(i => chars += i.s.length);
+    items.sort((a, b) => b.y - a.y || a.x - b.x);
+    const lines = [];
+    for (const it of items) {
+      const L = lines.slice(-3).find(l => Math.abs(l.y - it.y) <= Math.max(2, it.h * 0.4));
+      if (L) L.items.push(it); else lines.push({ y: it.y, page: p, items: [it] });
+    }
+    for (const L of lines) {
+      L.items.sort((a, b) => a.x - b.x);
+      const toks = [];
+      for (const it of L.items) {
+        const prev = toks[toks.length - 1];
+        const gap = prev ? it.x - prev.r : Infinity;
+        if (prev && gap < it.h * 0.25) { prev.s += it.s; prev.r = it.x + it.w; }
+        else if (prev && gap < it.h * 0.7 && /^[-+−]?\d{1,3}$/.test(prev.s.trim()) && /^\d{3}([.,]\d{2})?/.test(it.s.trim())) { prev.s += " " + it.s; prev.r = it.x + it.w; }
+        else toks.push({ s: it.s, x: it.x, r: it.x + it.w });
+      }
+      // Un bloc « libellé … 23,40 » dans un seul morceau de texte : on sépare le montant.
+      const split = [];
+      for (const t of toks) {
+        const s = t.s.trim(), m = s.match(AMT_TAIL);
+        if (m && !AMT_RE.test(s)) {
+          const cut = t.x + (t.r - t.x) * (m[1].length / s.length);
+          split.push({ s: m[1], x: t.x, r: cut }, { s: m[2], x: cut, r: t.r });
+        } else split.push({ s, x: t.x, r: t.r });
+      }
+      L.toks = split.filter(t => t.s);
+      L.text = L.toks.map(t => t.s).join(" ").replace(/\s+/g, " ").trim();
+      out.push(L);
+    }
+  }
+  return { lines: out, chars };
+}
+
+function pdfLinesToRows(lines) {
+  // Date de fin du relevé : la date complète la plus récente du document (sert à dater « 03/08 »).
+  let ref = null;
+  for (const L of lines) for (const m of L.text.matchAll(/\b(\d{1,2})[\/.](\d{1,2})[\/.](\d{4})\b|\b(\d{1,2})\s+([A-Za-zÀ-ÿ]{3,9})\.?\s+(\d{4})\b/g)) {
+    const mo = m[1] ? +m[2] : MONTH_NAMES[norm(m[5])];
+    if (!mo || mo > 12) continue;
+    const d = m[1] ? new Date(+m[3], mo - 1, +m[1]) : new Date(+m[6], mo - 1, +m[4]);
+    if (!isNaN(d) && d.getFullYear() > 1990 && d.getFullYear() < 2100 && (!ref || d > ref)) ref = d;
+  }
+  if (!ref) ref = new Date();
+  const rows = [["Date", "Libellé", "Montant"]];
+  let cols = null, guessed = 0, prevTx = null, headerSeen = false;
+  const colOf = (t, c) => Math.min(Math.abs((t.x + t.r) / 2 - c.c), Math.abs(t.r - c.r));
+  for (const L of lines) {
+    const lt = L.toks.map(t => low(t.s));
+    const deb = L.toks.find((t, i) => /^(debit|debits|montant debit|sorties?|money out|paid out|retraits?|depenses?)\b/.test(lt[i]));
+    const cre = L.toks.find((t, i) => /^(credit|credits|montant credit|entrees?|money in|paid in|versements?|recettes?)\b/.test(lt[i]));
+    if (deb && cre) {
+      const bal = L.toks.find((t, i) => /^(solde|balance)\b/.test(lt[i]));
+      cols = { deb: { c: (deb.x + deb.r) / 2, r: deb.r }, cre: { c: (cre.x + cre.r) / 2, r: cre.r }, bal: bal ? { c: (bal.x + bal.r) / 2, r: bal.r } : null };
+      headerSeen = true; prevTx = null; continue;
+    }
+    const dt = leadingDate(L.text);
+    const amts = L.toks.filter((t, i) => i > 0 && AMT_RE.test(t.s));
+    if (!dt || !amts.length) {
+      // Libellé sur deux lignes : la ligne suivante, sans date ni montant, complète le précédent.
+      if (prevTx && !dt && !amts.length && L.page === prevTx.page && L.text.length < 70 && !PDF_SKIP.test(norm(L.text)) && prevTx.extra < 1) { prevTx.row[1] += " " + L.text; prevTx.extra++; }
+      else prevTx = null;
+      continue;
+    }
+    let label = L.text.slice(dt.len).trim();
+    for (const a of amts) label = label.replace(a.s, " ");
+    label = label.split(" ").filter(w => !SHORT_DATE.test(w)).join(" ").replace(/\s+/g, " ").replace(/^[-–:·\s]+|[-–:·\s]+$/g, "").trim();
+    if (!label || PDF_SKIP.test(norm(label))) { prevTx = null; continue; }
+    let pick = null, sign = 0;
+    if (cols) {
+      let best = Infinity;
+      for (const a of amts) for (const k of ["deb", "cre", "bal"]) {
+        if (!cols[k]) continue;
+        const d = colOf(a, cols[k]);
+        if (d < best) { best = d; pick = a; sign = k === "deb" ? -1 : k === "cre" ? 1 : 0; }
+      }
+      if (sign === 0) { // le plus proche est le solde : prendre l'autre montant de la ligne
+        const others = amts.filter(a => a !== pick);
+        if (others.length) { pick = others[0]; sign = colOf(pick, cols.deb) <= colOf(pick, cols.cre) ? -1 : 1; } else pick = null;
+      }
+    } else {
+      pick = amts.length >= 2 ? amts[amts.length - 2] : amts[0];
+    }
+    if (!pick) { prevTx = null; continue; }
+    const v = parseAmount(pick.s);
+    if (isNaN(v) || v === 0) { prevTx = null; continue; }
+    if (/^[-−]|-$/.test(pick.s.trim())) sign = -1;
+    else if (/^\+/.test(pick.s.trim())) sign = 1;
+    if (!sign) { guessed++; sign = /\b(VIR(EMENT)? (RECU|DE|EN VOTRE FAVEUR)|SALAIRE|REMBOURSEMENT|REMB|AVOIR|CAF|CPAM|VERSEMENT|DEPOT|REFUND)\b/.test(norm(label)) ? 1 : -1; }
+    let y = dt.y;
+    if (!y) { y = ref.getFullYear(); if (dt.m > ref.getMonth() + 1) y--; }
+    const iso = `${y}-${String(dt.m).padStart(2, "0")}-${String(dt.d).padStart(2, "0")}`;
+    const row = [iso, label, (sign * Math.abs(v)).toFixed(2)];
+    rows.push(row); prevTx = { row, page: L.page, extra: 0 };
+  }
+  return { rows, headerSeen, guessed };
+}
+
+async function loadPdf(buf, name) {
+  setStatus("Lecture du PDF…");
+  let res;
+  try { res = await pdfToLines(buf); }
+  catch (e) {
+    if (e && e.name === "PasswordException") return setStatus("Ce PDF est protégé par un mot de passe. Téléchargez une version sans mot de passe depuis votre banque, ou utilisez l'export CSV.", "crit");
+    if (e && e.message === "script") return setStatus("Le lecteur de PDF n'a pas pu être téléchargé. Ouvrez l'appli une première fois avec une connexion Internet : il reste ensuite disponible hors-ligne. Les fichiers CSV marchent sans connexion.", "crit");
+    return setStatus("Ce fichier PDF n'a pas pu être ouvert. Vérifiez qu'il n'est pas abîmé, ou utilisez l'export CSV de votre banque.", "crit");
+  }
+  if (res.chars < 40) return setStatus("Ce PDF ne contient pas de texte : c'est probablement un document scanné. Téléchargez le relevé directement depuis l'appli de la banque, ou utilisez l'export CSV.", "crit");
+  const { rows, headerSeen, guessed } = pdfLinesToRows(res.lines);
+  if (rows.length < 2) return setStatus("Je n'ai pas trouvé de tableau d'opérations dans ce PDF (lignes qui commencent par une date et contiennent un montant). L'export CSV de votre banque sera plus fiable.", "crit");
+  const note = guessed ? `Colonnes Débit / Crédit non trouvées pour ${guessed} opération${guessed > 1 ? "s" : ""} : leur sens (dépense ou entrée) a été deviné d'après le libellé. Vérifiez dans l'onglet Opérations.` : (!headerSeen ? "Relevé PDF lu sans en-tête de colonnes : vérifiez quelques montants dans l'onglet Opérations." : "");
+  Object.assign(state, { rows, headerIdx: 0, map: { date: 0, label: 1, amount: 2 }, file: name, sample: false, invert: false, showAll: false, openCat: null, catFilter: "", pdfNote: note });
+  applyMapping();
+}
+
 /* ============================== Classement ============================== */
 const PREFIX = /^(CB|CARTE|CARTE X?\w*|PAIEMENT PAR CARTE|PAIEMENT CB|ACHAT CB|PAIEMENT|ACHAT|FACTURE CARTE|PRLV SEPA|PRLV|PRELEVEMENT SEPA|PRELEVEMENT|PRELEVEMENT EUROPEEN|VIR SEPA|VIREMENT SEPA|VIR INST|VIR|VIREMENT|VIREMENT EN VOTRE FAVEUR|AVOIR|RETRAIT DAB|DU|DE|EMIS|RECU)\s+/;
 function merchantKey(label) {
@@ -549,6 +709,7 @@ function ruleCategory(t) {
     if (!c.re) continue;
     if (c.onlyPositive && !pos) continue;
     if (c.id === "revenus" && !pos) continue;
+    if (c.onlyNegative && pos) continue;
     if (c.re.test(text)) return c.id;
   }
   if (t.bankcat) {
@@ -729,7 +890,7 @@ function loadText(text, name, isSample) {
   if (rows.length < 2) { setStatus("Ce fichier ne contient pas de lignes lisibles. Vérifiez qu'il s'agit bien d'un export CSV de vos opérations.", "crit"); return; }
   const headerIdx = findHeaderRow(rows);
   const map = guessMapping(rows, headerIdx);
-  Object.assign(state, { rows, headerIdx, map, file: name, sample: !!isSample, invert: false, showAll: false, openCat: null, catFilter: "" });
+  Object.assign(state, { rows, headerIdx, map, file: name, sample: !!isSample, invert: false, showAll: false, openCat: null, catFilter: "", pdfNote: "" });
   applyMapping();
 }
 
@@ -752,7 +913,7 @@ function applyMapping() {
   } else if (state.sample) {
     setStatus("<b>Exemple fictif</b> : trois mois de relevé inventés pour montrer l'appli. Importez votre propre fichier pour voir vos chiffres.");
   } else {
-    setStatus(`<b>${esc(state.file)}</b> : ${tx.length} opérations du ${dayFmt(new Date(Math.min(...tx.map(t => t.date))))} au ${new Date(Math.max(...tx.map(t => t.date))).toLocaleDateString("fr-FR")}${skipped ? `, ${skipped} ligne${skipped > 1 ? "s" : ""} ignorée${skipped > 1 ? "s" : ""}` : ""}.`);
+    setStatus(`<b>${esc(state.file)}</b> : ${tx.length} opérations du ${new Date(Math.min(...tx.map(t => t.date))).toLocaleDateString("fr-FR")} au ${new Date(Math.max(...tx.map(t => t.date))).toLocaleDateString("fr-FR")}${skipped ? `, ${skipped} ligne${skipped > 1 ? "s" : ""} ignorée${skipped > 1 ? "s" : ""}` : ""}.${state.pdfNote ? "<br>" + state.pdfNote : ""}`, state.pdfNote ? "warn" : "");
   }
   $("#mapping").hidden = false;
   if (!state.sample) store.set("last", { tx, file: state.file });
@@ -772,7 +933,7 @@ function renderMapping() {
 const view = $("#view");
 function render() {
   document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === state.tab)));
-  if (!state.tx.length) { view.innerHTML = `<div class="panel empty">Importez un relevé CSV pour commencer, ou appuyez sur « Voir l'exemple ».</div>`; return; }
+  if (!state.tx.length) { view.innerHTML = `<div class="panel empty">Importez un relevé CSV ou PDF pour commencer, ou appuyez sur « Voir l'exemple ».</div>`; return; }
   const r = state.res;
   view.innerHTML = ({ synthese: vSynthese, conseils: vConseils, depenses: vDepenses, abos: vAbos, operations: vOperations })[state.tab](r);
   if (state.tab === "synthese") drawMonthly(r);
@@ -951,7 +1112,12 @@ function vOperations() {
 $("#file").addEventListener("change", e => {
   const f = e.target.files[0]; if (!f) return;
   const rd = new FileReader();
-  rd.onload = () => loadText(decode(rd.result), f.name, false);
+  const isPdf = /\.pdf$/i.test(f.name) || f.type === "application/pdf";
+  rd.onload = () => {
+    const head = new Uint8Array(rd.result.slice(0, 5));
+    if (isPdf || String.fromCharCode(...head) === "%PDF-") loadPdf(rd.result, f.name);
+    else loadText(decode(rd.result), f.name, false);
+  };
   rd.onerror = () => setStatus("Impossible de lire ce fichier. Réessayez ou exportez-le à nouveau depuis votre banque.", "crit");
   rd.readAsArrayBuffer(f);
   e.target.value = "";
