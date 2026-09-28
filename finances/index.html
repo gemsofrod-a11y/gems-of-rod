@@ -159,6 +159,25 @@ nav.tabs::-webkit-scrollbar { display: none; }
 .chip.warn { background: var(--warn-bg); color: var(--warn); }
 .chip.crit { background: var(--crit-bg); color: var(--crit); }
 .chip.info { background: var(--info-bg); color: var(--accent); }
+.tab .badge { display: inline-block; min-width: 18px; margin-left: 6px; padding: 1px 6px; border-radius: 999px; background: var(--crit); color: #fff; font-size: 11px; line-height: 16px; text-align: center; font-variant-numeric: tabular-nums; }
+.bud-list { display: flex; flex-direction: column; }
+.bud { display: flex; flex-direction: column; gap: 8px; padding-block: 12px; border-top: 1px solid var(--line); }
+.bud:first-child { border-top: 0; }
+.bud-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.bud-head .name { font-weight: 600; }
+.bud .track { height: 8px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+.bud .fill { height: 100%; border-radius: 4px; }
+.bud-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 14px; }
+.bud-input { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; }
+.bud-input input { width: 88px; font: 600 14px var(--body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; font-variant-numeric: tabular-nums; }
+.bud-input input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.bud-sum { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 12px; font-size: 14px; padding: 10px 12px; border-radius: 10px; background: var(--surface-2); }
+.alert-panel { border-color: color-mix(in srgb, var(--crit) 40%, var(--line)); }
+.alert-list { display: flex; flex-direction: column; gap: 8px; }
+.alert-row { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; font-size: 14px; color: var(--ink-2); }
+.alert-row .ic { width: 22px; height: 22px; border-radius: 6px; display: grid; place-items: center; font-weight: 700; font-size: 13px; }
+.alert-row.crit .ic { background: var(--crit-bg); color: var(--crit); }
+.alert-row.warn .ic { background: var(--warn-bg); color: var(--warn); }
 
 .chart-box { position: relative; }
 .chart-box svg { display: block; width: 100%; height: auto; overflow: visible; }
@@ -250,6 +269,7 @@ footer { font-size: 12px; color: var(--muted); display: flex; flex-direction: co
   <nav class="tabs" role="tablist" aria-label="Sections">
     <button class="tab" role="tab" id="tab-synthese" data-tab="synthese" aria-selected="true">Synthèse</button>
     <button class="tab" role="tab" id="tab-conseils" data-tab="conseils" aria-selected="false">Conseils</button>
+    <button class="tab" role="tab" id="tab-budgets" data-tab="budgets" aria-selected="false">Budgets<span class="badge" id="budget-badge" hidden></span></button>
     <button class="tab" role="tab" id="tab-depenses" data-tab="depenses" aria-selected="false">Dépenses</button>
     <button class="tab" role="tab" id="tab-abos" data-tab="abos" aria-selected="false">Abonnements</button>
     <button class="tab" role="tab" id="tab-operations" data-tab="operations" aria-selected="false">Opérations</button>
@@ -259,7 +279,7 @@ footer { font-size: 12px; color: var(--muted); display: flex; flex-direction: co
 
   <footer>
     <p>Les conseils sont des estimations calculées à partir de votre relevé et de règles simples. Ils ne remplacent pas l'avis d'un conseiller financier.</p>
-    <p>Vos corrections de catégories et votre dernier relevé sont gardés dans ce navigateur uniquement.</p>
+    <p>Vos corrections de catégories, vos budgets et votre dernier relevé sont gardés dans ce navigateur uniquement.</p>
     <div class="confirm" id="wipe-box">
       <button class="btn ghost" id="wipe" type="button">Effacer mes données de cet appareil</button>
     </div>
@@ -730,7 +750,7 @@ function classify(txs, overrides) {
 /* ============================== Analyse ============================== */
 function analyse(txs, levels) {
   const lvl = id => levels[id] || CAT[id].level;
-  const res = { byCat: {}, byMonth: {}, income: 0, spend: 0, savings: 0, lv: { ess: 0, uti: 0, sup: 0 } };
+  const res = { byCat: {}, byMonth: {}, byCatMonth: {}, income: 0, spend: 0, savings: 0, lv: { ess: 0, uti: 0, sup: 0 } };
   if (!txs.length) return res;
   const min = Math.min(...txs.map(t => t.date)), max = Math.max(...txs.map(t => t.date));
   res.days = Math.round((max - min) / 864e5) + 1;
@@ -747,6 +767,7 @@ function analyse(txs, levels) {
     const C = res.byCat[t.cat] || (res.byCat[t.cat] = { id: t.cat, total: 0, count: 0, tx: [], merchants: {} });
     C.total += spent; if (spent > 0) C.count++; C.tx.push(t);
     C.merchants[t.key] = (C.merchants[t.key] || 0) + spent;
+    const CM = res.byCatMonth[t.cat] || (res.byCatMonth[t.cat] = {}); CM[k] = (CM[k] || 0) + spent;
     const l = lvl(t.cat); res.lv[l] += spent; M[l] += spent; res.spend += spent;
   }
   for (const C of Object.values(res.byCat)) { C.level = lvl(C.id); C.monthly = C.total / res.months; }
@@ -872,6 +893,7 @@ const state = {
   tab: store.get("tab", "synthese"),
   overrides: store.get("overrides", {}),
   levels: store.get("levels", {}),
+  budgets: store.get("budgets", {}), budgetMonth: null,
   tx: [], file: null, sample: false, rows: null, headerIdx: -1, map: {}, invert: false,
   search: "", showAll: false, openCat: null, catFilter: "", res: null
 };
@@ -929,13 +951,117 @@ function renderMapping() {
   $("#invert").checked = !!state.invert;
 }
 
+/* ============================== Budgets ============================== */
+// Budgets d'exemple, affichés seulement avec le relevé fictif tant qu'aucun budget n'est enregistré.
+const DEMO_BUDGETS = { courses: 520, restaurants: 110, livraison: 70, shopping: 200, tabac: 40, loisirs: 30, transport: 140, abonnements: 45 };
+const monthKey = d => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0");
+const budgetsDemo = () => state.sample && !Object.keys(state.budgets).length;
+const activeBudgets = () => (budgetsDemo() ? DEMO_BUDGETS : state.budgets);
+
+// État d'un budget pour un mois : dépensé, projection de fin de mois si le mois est en cours, niveau d'alerte.
+function budgetRows(r, month) {
+  const B = activeBudgets(), out = [];
+  const [y, m] = month.split("-").map(Number);
+  const daysIn = new Date(y, m, 0).getDate();
+  const partial = monthKey(r.to) === month && r.to.getDate() < daysIn && r.from <= new Date(y, m - 1, 1, 23);
+  for (const [cat, budget] of Object.entries(B)) {
+    if (!CAT[cat] || !(budget > 0)) continue;
+    const spent = Math.max(0, (r.byCatMonth[cat] || {})[month] || 0);
+    const proj = partial ? spent * daysIn / r.to.getDate() : spent;
+    const ratio = spent / budget;
+    let tone = "good", note = `Reste ${eur.format(budget - spent)}`;
+    if (spent > budget) { tone = "crit"; note = `Dépassé de ${eur.format(spent - budget)}`; }
+    else if (partial && proj > budget * 1.02) { tone = "warn"; note = `Au rythme actuel : ${eur.format(proj)} en fin de mois`; }
+    else if (ratio >= 0.8) { tone = "warn"; note = `${pct(ratio)} du budget utilisé`; }
+    out.push({ cat, budget, spent, proj, ratio, tone, note, partial });
+  }
+  const order = { crit: 0, warn: 1, good: 2 };
+  return out.sort((a, b) => order[a.tone] - order[b.tone] || b.ratio - a.ratio);
+}
+const budgetAlerts = (r, month) => budgetRows(r, month).filter(b => b.tone !== "good");
+
+function budgetMonths(r) { return Object.keys(r.byMonth).sort().reverse(); }
+
+// Proposition : moyenne mensuelle arrondie aux 5 € supérieurs, et 20 % de moins pour les postes superflus.
+function suggestBudgets(r) {
+  const B = { ...activeBudgets() };
+  for (const C of Object.values(r.byCat)) {
+    if (C.total <= 0 || C.id === "autre" || B[C.id] > 0) continue;
+    const base = C.monthly * (C.level === "sup" ? 0.8 : 1);
+    if (base >= 5) B[C.id] = Math.ceil(base / 5) * 5;
+  }
+  return B;
+}
+
+function setBudget(cat, value) {
+  if (budgetsDemo()) state.budgets = { ...DEMO_BUDGETS };
+  if (value > 0) state.budgets[cat] = Math.round(value * 100) / 100; else delete state.budgets[cat];
+  store.set("budgets", state.budgets);
+}
+
+function vBudgets(r) {
+  const months = budgetMonths(r);
+  if (!months.includes(state.budgetMonth)) state.budgetMonth = months[0];
+  const month = state.budgetMonth;
+  const rows = budgetRows(r, month);
+  const B = activeBudgets();
+  const alerts = rows.filter(b => b.tone !== "good");
+  const totB = rows.reduce((a, b) => a + b.budget, 0), totS = rows.reduce((a, b) => a + b.spent, 0);
+  const others = Object.values(r.byCat).filter(c => c.total > 0 && !(B[c.id] > 0)).sort((a, b) => b.total - a.total);
+  const tag = { crit: "! Dépassé", warn: "! Attention", good: "✓ OK" };
+  const fillCol = { crit: "var(--crit)", warn: "var(--warn)", good: "var(--good)" };
+  const row = b => {
+    const c = CAT[b.cat];
+    return `<div class="bud">
+      <div class="bud-head"><span class="name">${c.name}</span><span class="chip ${b.tone}">${tag[b.tone]}</span></div>
+      <div class="track"><div class="fill" style="width:${Math.min(100, b.ratio * 100)}%;background:${fillCol[b.tone]}"></div></div>
+      <div class="bud-foot"><span class="num"><b>${eur.format(b.spent)}</b> <span class="muted">sur</span></span>
+        <label class="bud-input" for="budget-${b.cat}"><input id="budget-${b.cat}" data-budget="${b.cat}" type="number" inputmode="decimal" min="0" step="5" value="${b.budget}" aria-label="Budget mensuel ${esc(c.name)}"><span class="muted">€ / mois</span></label>
+        <span class="small ${b.tone === "good" ? "muted" : ""}" style="${b.tone === "good" ? "" : `color:var(--${b.tone})`}">${b.note}</span></div>
+    </div>`;
+  };
+  return `<section class="panel">
+    <div class="saving-total"><div><span class="eyebrow">Budget mensuel par catégorie</span><h2>Budgets</h2></div>
+      <label class="small muted" for="budget-month">Mois <select id="budget-month">${months.map(k => `<option value="${k}"${k === month ? " selected" : ""}>${monthLabel(k)}</option>`).join("")}</select></label></div>
+    ${budgetsDemo() ? `<div class="banner">Budgets d'exemple, pour montrer les alertes. Modifiez un montant ou appuyez sur « Proposer des budgets » pour créer les vôtres.</div>` : ""}
+    <p class="small muted">Fixez un plafond par mois pour les catégories à surveiller. L'appli vous prévient à 80 % du budget, quand il est dépassé, et quand le rythme du mois en cours mène à un dépassement. Les budgets sont gardés sur ce téléphone et s'appliquent à chaque nouveau relevé importé.</p>
+    ${rows.length ? `<div class="bud-sum"><span>${alerts.length ? `<b style="color:var(--crit)">${alerts.length} alerte${alerts.length > 1 ? "s" : ""}</b> sur ${rows.length} budget${rows.length > 1 ? "s" : ""}` : `<b style="color:var(--good)">✓ Tous les budgets sont respectés</b>`}</span><span class="num">${eur.format(totS)} dépensés sur ${eur.format(totB)} budgétés</span></div>
+    <div class="bud-list">${rows.map(row).join("")}</div>` : `<p class="muted">Aucun budget défini pour l'instant.</p>`}
+    <div class="toolbar"><button class="btn primary" type="button" id="suggest-budgets">Proposer des budgets</button>${Object.keys(state.budgets).length ? `<span id="clear-budgets-box"><button class="btn ghost" type="button" id="clear-budgets">Supprimer tous les budgets</button></span>` : ""}</div>
+    <p class="small muted">« Proposer des budgets » remplit les catégories sans budget avec votre moyenne mensuelle, réduite de 20 % pour les dépenses superflues. Vous pouvez ensuite ajuster chaque montant.</p>
+  </section>
+  ${others.length ? `<section class="panel"><div><span class="eyebrow">Sans budget</span><h2>Autres catégories</h2></div>
+    <div class="bud-list">${others.map(c => `<div class="bud"><div class="bud-head"><span class="name">${CAT[c.id].name}</span>${lvBadge(c.level)}</div>
+      <div class="bud-foot"><span class="small muted num">Moyenne ${eur.format(c.monthly)} / mois</span><label class="bud-input" for="budget-${c.id}"><input id="budget-${c.id}" data-budget="${c.id}" type="number" inputmode="decimal" min="0" step="5" placeholder="${Math.ceil(c.monthly / 5) * 5}" aria-label="Budget mensuel ${esc(CAT[c.id].name)}"><span class="muted">€ / mois</span></label></div></div>`).join("")}</div>
+  </section>` : ""}`;
+}
+
+function alertsPanel(r) {
+  const month = budgetMonths(r)[0];
+  const al = budgetAlerts(r, month);
+  if (!al.length) return "";
+  return `<section class="panel alert-panel" aria-labelledby="h-alerts">
+    <div class="saving-total"><div><span class="eyebrow">Budgets · ${monthLabel(month)}</span><h2 id="h-alerts">${al.length} alerte${al.length > 1 ? "s" : ""} budget</h2></div></div>
+    <div class="alert-list">${al.slice(0, 4).map(b => `<div class="alert-row ${b.tone}"><span class="ic" aria-hidden="true">!</span><span><b>${CAT[b.cat].name}</b> : ${eur.format(b.spent)} sur ${eur.format(b.budget)}. ${b.note}.</span></div>`).join("")}</div>
+    <button class="btn" type="button" data-goto="budgets">Voir mes budgets</button>
+  </section>`;
+}
+
+function updateBadge() {
+  const el = $("#budget-badge"); if (!el) return;
+  const n = state.res && state.tx.length ? budgetAlerts(state.res, budgetMonths(state.res)[0]).length : 0;
+  el.textContent = n; el.hidden = !n;
+  el.setAttribute("aria-label", n + " alerte" + (n > 1 ? "s" : ""));
+}
+
 /* ============================== Rendu ============================== */
 const view = $("#view");
 function render() {
   document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === state.tab)));
+  updateBadge();
   if (!state.tx.length) { view.innerHTML = `<div class="panel empty">Importez un relevé CSV ou PDF pour commencer, ou appuyez sur « Voir l'exemple ».</div>`; return; }
   const r = state.res;
-  view.innerHTML = ({ synthese: vSynthese, conseils: vConseils, depenses: vDepenses, abos: vAbos, operations: vOperations })[state.tab](r);
+  view.innerHTML = ({ synthese: vSynthese, conseils: vConseils, budgets: vBudgets, depenses: vDepenses, abos: vAbos, operations: vOperations })[state.tab](r);
   if (state.tab === "synthese") drawMonthly(r);
 }
 
@@ -952,7 +1078,7 @@ function vSynthese(r) {
     ["Envies (utile + superflu)", envies / inc, 0.3, "sup", "≤ 30 %", v => v <= 0.3],
     ["Reste pour épargner", Math.max(0, rate), 0.2, "uti", "≥ 20 %", v => v >= 0.2]
   ] : [];
-  return `
+  return `${alertsPanel(r)}
   <section class="panel" aria-labelledby="h-syn">
     <div><span class="eyebrow">Moyenne par mois · ${r.days} jours analysés</span><h2 id="h-syn">Où va votre argent</h2></div>
     <div class="kpis">
@@ -1136,12 +1262,22 @@ view.addEventListener("click", e => {
   const o = e.target.closest("[data-open]");
   if (o) { if (state.tab !== "depenses") state.tab = "depenses"; state.openCat = state.openCat === o.dataset.open ? null : o.dataset.open; render(); }
   if (e.target.id === "show-all") { state.showAll = true; render(); }
+  if (e.target.id === "suggest-budgets") { state.budgets = suggestBudgets(state.res); store.set("budgets", state.budgets); render(); }
+  if (e.target.id === "clear-budgets") $("#clear-budgets-box").innerHTML = `<span class="small">Supprimer tous vos budgets&nbsp;?</span> <button class="btn" type="button" id="clear-yes" style="color:var(--crit)">Oui, supprimer</button> <button class="btn ghost" type="button" id="clear-no">Annuler</button>`;
+  if (e.target.id === "clear-yes") { state.budgets = {}; store.set("budgets", state.budgets); render(); }
+  if (e.target.id === "clear-no") render();
 });
 view.addEventListener("keydown", e => { if ((e.key === "Enter" || e.key === " ") && e.target.matches("[data-open]")) { e.preventDefault(); e.target.click(); } });
 view.addEventListener("change", e => {
   const s = e.target;
   if (s.dataset.key) { state.overrides[s.dataset.key] = s.value; store.set("overrides", state.overrides); recompute(); }
   if (s.id === "cat-filter") { state.catFilter = s.value; render(); }
+  if (s.id === "budget-month") { state.budgetMonth = s.value; render(); }
+  if (s.dataset.budget) {
+    const v = parseAmount(s.value);
+    setBudget(s.dataset.budget, isNaN(v) ? 0 : Math.abs(v));
+    const y = window.scrollY; render(); window.scrollTo({ top: y });
+  }
 });
 view.addEventListener("input", e => {
   if (e.target.id === "search") {
@@ -1151,13 +1287,13 @@ view.addEventListener("input", e => {
 });
 let rz; window.addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => state.tab === "synthese" && state.res && drawMonthly(state.res), 150); });
 $("#wipe").addEventListener("click", () => {
-  $("#wipe-box").innerHTML = `<span class="small">Effacer le dernier relevé et vos corrections de catégories&nbsp;?</span><button class="btn" id="wipe-yes" type="button" style="color:var(--crit)">Oui, effacer</button><button class="btn ghost" id="wipe-no" type="button">Annuler</button>`;
+  $("#wipe-box").innerHTML = `<span class="small">Effacer le dernier relevé, vos corrections de catégories et vos budgets&nbsp;?</span><button class="btn" id="wipe-yes" type="button" style="color:var(--crit)">Oui, effacer</button><button class="btn ghost" id="wipe-no" type="button">Annuler</button>`;
 });
 $("#wipe-box").addEventListener("click", e => {
-  if (e.target.id === "wipe-yes") { store.clear(); state.overrides = {}; state.levels = {}; loadText(sampleCSV(), "exemple.csv", true); resetWipe(); }
+  if (e.target.id === "wipe-yes") { store.clear(); state.overrides = {}; state.levels = {}; state.budgets = {}; loadText(sampleCSV(), "exemple.csv", true); resetWipe(); }
   if (e.target.id === "wipe-no") resetWipe();
 });
-function resetWipe() { $("#wipe-box").innerHTML = `<button class="btn ghost" id="wipe" type="button">Effacer mes données de cet appareil</button>`; $("#wipe").addEventListener("click", () => $("#wipe-box").innerHTML = `<span class="small">Effacer le dernier relevé et vos corrections de catégories&nbsp;?</span><button class="btn" id="wipe-yes" type="button" style="color:var(--crit)">Oui, effacer</button><button class="btn ghost" id="wipe-no" type="button">Annuler</button>`); }
+function resetWipe() { $("#wipe-box").innerHTML = `<button class="btn ghost" id="wipe" type="button">Effacer mes données de cet appareil</button>`; $("#wipe").addEventListener("click", () => $("#wipe-box").innerHTML = `<span class="small">Effacer le dernier relevé, vos corrections de catégories et vos budgets&nbsp;?</span><button class="btn" id="wipe-yes" type="button" style="color:var(--crit)">Oui, effacer</button><button class="btn ghost" id="wipe-no" type="button">Annuler</button>`); }
 
 /* ============================== Exemple fictif ============================== */
 function sampleCSV() {
