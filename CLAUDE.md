@@ -397,7 +397,9 @@ Sébastien, 28/09/2026) : conseils et plan de placements partent d'« un mois ty
 dont les crédits gratuits étaient épuisés : GitHub Pages sert le dossier `docs/`
 de `main` (où vit aussi la politique de confidentialité exigée par le Play Store,
 `docs/privacy-policy.html` — ne jamais remplacer ce mode de publication), d'où
-l'emplacement `docs/finances/`, publié automatiquement à chaque fusion. Ne jamais versionner ni publier un
+l'emplacement `docs/finances/`, publié automatiquement à chaque fusion. Interface refondue le 29/09/2026 (Sébastien la trouvait trop chargée) : 5 onglets
+(Accueil = reste à vivre du mois, Mouvements, Budgets, Conseils, Mon budget), moteur de
+calcul inchangé ; ne pas réempiler de panneaux sur l'accueil. Ne jamais versionner ni publier un
 relevé réel de Sébastien (nom, adresse, opérations) : tester avec des PDF
 fabriqués. Voir
 `docs/finances/README.md`.
