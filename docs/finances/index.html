@@ -990,6 +990,13 @@ function loadProfile() {
   return p;
 }
 const saveProfile = () => store.set("profile", state.profile);
+// Déclare un payeur du relevé comme revenu (bouton « C'est un revenu » ou « Un revenu (salaire, aide…) »).
+function addIncome(key) {
+  if (!state.profile) state.profile = loadProfile();
+  if (state.profile.incomes.some(x => norm(x.match) === norm(key))) return;
+  state.profile.incomes.push({ id: newId(), label: key.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()), match: key, manual: null, end: "" });
+  state.profile.onlyDeclared = true; saveProfile();
+}
 const hasWord = (txt, m) => !!m && (" " + txt + " ").includes(" " + norm(m) + " ");
 
 // Classement par le profil : après vos choix explicites, avant les règles automatiques.
@@ -1046,23 +1053,26 @@ function applyProfile(res, txs, lvl) {
 // Budget d'aujourd'hui : la moyenne de la période, moins les revenus, charges et crédits terminés
 // (une aide qui n'est plus versée ne doit plus compter dans le reste à vivre ni dans le plan d'épargne).
 const isEnded = x => !!x.end && x.end < monthKey(new Date());
-// Mois type d'un revenu : le montant saisi, sinon la médiane (fonction commune plus haut) des mois où il est arrivé. Un salaire
-// versé en avance ou en retard (deux fois un mois, zéro le suivant) fausse la moyenne, pas la médiane.
 // Revenus nets du dernier mois : uniquement les revenus déclarés dans « Mon budget » (salaire, CAF…)
 // encore actifs, tels qu'ils arrivent sur le compte. Chaque nouveau relevé fait avancer le mois.
-// Un mois où un revenu tombe deux fois (versement en avance) est ramené à sa valeur habituelle.
+// Un mois où un revenu tombe deux fois (versement en avance) est ramené à sa médiane. Le « mois type
+// aujourd'hui » part des mêmes montants, pour que les deux chiffres concordent.
+function incomeNow(x, pf) {
+  const bm = ((pf && pf.byMonth) || {})[x.id] || {}, keys = Object.keys(bm).sort(), vals = keys.map(k => bm[k]);
+  if (!keys.length && !(x.manual > 0)) return null;
+  const k = keys[keys.length - 1] || "";
+  let v = x.manual > 0 ? x.manual : bm[k];
+  if (!(x.manual > 0) && vals.length >= 3 && v > 1.5 * median(vals)) v = median(vals);
+  return { v, month: k };
+}
 function refIncome(r) {
   const P = state.profile, pf = r.pf; if (!P || !pf || !P.incomes.length) return null;
   let month = "", total = 0; const parts = [];
   for (const x of P.incomes) {
     if (isEnded(x)) continue;
-    const bm = (pf.byMonth || {})[x.id] || {}, keys = Object.keys(bm).sort(), vals = keys.map(k => bm[k]);
-    if (!keys.length && !(x.manual > 0)) continue;
-    const k = keys[keys.length - 1] || "";
-    let v = x.manual > 0 ? x.manual : bm[k];
-    if (!(x.manual > 0) && vals.length >= 3 && v > 1.5 * median(vals)) v = median(vals);
-    if (k > month) month = k;
-    parts.push({ label: x.label || "Revenu", v }); total += v;
+    const n = incomeNow(x, pf); if (!n) continue;
+    if (n.month > month) month = n.month;
+    parts.push({ label: x.label || "Revenu", v: n.v }); total += n.v;
   }
   return parts.length ? { total, month, parts } : null;
 }
@@ -1075,8 +1085,7 @@ function currentBudget(res) {
   const typical = [];
   for (const x of P.incomes) {
     if (isEnded(x)) continue;
-    const vals = Object.values((pf.byMonth || {})[x.id] || {});
-    const t = x.manual > 0 ? x.manual : vals.length >= 3 ? median(vals) : 0;
+    const n = incomeNow(x, pf), t = n ? n.v : 0;
     if (t > 0 && Math.abs(t - avg(x)) > Math.max(20, 0.03 * t)) typical.push({ x, v: t, avg: avg(x) });
   }
   const inc = res.income / mo - endedIn.reduce((a, e) => a + e.v, 0) + typical.reduce((a, e) => a + e.v - e.avg, 0);
@@ -1671,6 +1680,32 @@ function savingsPanel(r, only) {
 
 // Virements fréquents dont l'appli ne peut pas deviner la nature (vous-même depuis une autre
 // banque, un salaire, un proche) : on pose la question une fois, la réponse vaut pour ce nom.
+// Sans revenu déclaré dans « Mon budget », la Synthèse propose les entrées d'argent régulières du
+// relevé : un appui en fait un revenu déclaré (salaire, CAF…), sans fichier de classement.
+const niceName = k => k.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+function incomeSetupPanel(r) {
+  const P = state.profile; if (!P || (P.incomes.length && !state.incSetupOpen) || r.onlySavings) return "";
+  const groups = {};
+  for (const t of r.txs || []) {
+    const c = CAT[t.cat] || CAT.autre;
+    if (t.amount <= 0 || t.acct === "epargne" || ["internal", "savings", "pro"].includes(c.kind) || t.cat === "interets") continue;
+    const g = groups[t.key] || (groups[t.key] = { key: t.key, months: {}, total: 0, last: 0, lastAmt: 0 });
+    const k = monthKey(new Date(t.date)); g.months[k] = (g.months[k] || 0) + t.amount; g.total += t.amount;
+    if (t.date >= g.last) { g.last = t.date; g.lastAmt = t.amount; }
+  }
+  const list = Object.values(groups).filter(g => Object.keys(g.months).length >= 2).sort((a, b) => b.total - a.total).slice(0, 6);
+  if (!list.length) return "";
+  return `<section class="panel" aria-labelledby="h-inc-setup">
+    <div><span class="eyebrow">À faire une fois</span><h2 id="h-inc-setup">Quels sont vos revenus&nbsp;?</h2></div>
+    <p class="small muted">Touchez uniquement vos vrais revenus (salaire, CAF…). La case Revenus affichera alors leur montant net du dernier mois, sans les virements de proches ni les remboursements.</p>
+    <div class="ask-list">${list.map(g => `<div class="ask"><span><b>${esc(niceName(g.key))}</b> <span class="muted small num">· reçu ${Object.keys(g.months).length} mois · dernier versement ${eur2.format(g.lastAmt)} le ${new Date(g.last).toLocaleDateString("fr-FR")}</span></span>
+      <div class="ask-btns">${P.incomes.some(x => norm(x.match) === norm(g.key))
+        ? `<button class="btn" type="button" data-income-del="${esc(g.key)}" aria-pressed="true">✓ Revenu, annuler</button>`
+        : `<button class="btn" type="button" data-income-add="${esc(g.key)}">C'est un revenu</button>`}</div></div>`).join("")}</div>
+    ${P.incomes.length ? `<button class="btn primary" type="button" id="income-done">C'est tout</button> <span class="small muted">Vous pourrez modifier ces revenus dans « Mon budget ».</span>` : ""}
+  </section>`;
+}
+
 function askPanel() {
   const groups = {};
   for (const t of state.tx) {
@@ -1699,7 +1734,7 @@ function nowBox(r) {
   const why = [
     ...N.endedIn.map(e => `${esc(e.x.label || "un revenu")} n'est plus versé (−${eur.format(e.v)})`),
     ...N.endedOut.map(e => `${esc(e.x.label || "une charge")} est terminé (−${eur.format(e.v)} de dépenses)`),
-    ...N.typical.map(e => `${esc(e.x.label || "un revenu")} compté pour un mois normal, ${eur.format(e.v)}${e.v > e.avg ? " (des versements décalés d'un mois à l'autre font baisser la moyenne)" : ""}`)
+    ...N.typical.map(e => `${esc(e.x.label || "un revenu")} compté pour son dernier montant net, ${eur.format(e.v)}${e.v > e.avg ? " (des versements décalés d'un mois à l'autre font baisser la moyenne)" : " (moins que la moyenne passée)"}`)
   ];
   const left = N.inc - N.spend;
   return `<div class="now-box" role="note"><b>Un mois type aujourd'hui</b> : revenus <b class="num">${eur.format(N.inc)}</b>, dépenses <b class="num">${eur.format(N.spend)}</b>, reste <b class="num" style="color:${left < 0 ? "var(--crit)" : "var(--ink)"}">${left < 0 ? "−" : ""}${eur.format(Math.abs(left))}</b> par mois. Ce qui change par rapport à la moyenne ci-dessus : ${why.join(" ; ")}. Les conseils et le plan de placements partent de ces chiffres.</div>`;
@@ -1719,7 +1754,7 @@ function vSynthese(r) {
     ["Envies (utile + superflu)", envies / inc, 0.3, "sup", "≤ 30 %", v => v <= 0.3],
     ["Reste pour épargner", Math.max(0, rate), 0.2, "uti", "≥ 20 %", v => v >= 0.2]
   ] : [];
-  return `${alertsPanel(r)}${ask}
+  return `${alertsPanel(r)}${incomeSetupPanel(r)}${ask}
   <section class="panel" aria-labelledby="h-syn">
     <div><span class="eyebrow">Moyenne par mois · du ${r.from.toLocaleDateString("fr-FR")} au ${r.to.toLocaleDateString("fr-FR")}</span><h2 id="h-syn">Où va votre argent</h2></div>
     <div class="kpis">
@@ -2020,8 +2055,17 @@ view.addEventListener("click", e => {
   if (endB) { const [sec, i, k] = endB.dataset.pfEnd.split("|"); state.profile[sec][+i].end = k; saveProfile(); const y = window.scrollY; recompute(); window.scrollTo({ top: y }); return; }
   const del = e.target.closest("[data-pf-del]");
   if (del) { const [sec, i] = del.dataset.pfDel.split("|"); state.profile[sec].splice(+i, 1); saveProfile(); const y = window.scrollY; recompute(); window.scrollTo({ top: y }); return; }
+  const ia = e.target.closest("[data-income-add]");
+  const idl = e.target.closest("[data-income-del]");
+  if (idl) { state.profile.incomes = state.profile.incomes.filter(x => norm(x.match) !== norm(idl.dataset.incomeDel)); saveProfile(); const y = window.scrollY; recompute(); window.scrollTo({ top: y }); return; }
+  if (e.target.id === "income-done") { state.incSetupOpen = false; render(); return; }
+  if (ia) { state.incSetupOpen = true; addIncome(ia.dataset.incomeAdd); const y = window.scrollY; recompute(); window.scrollTo({ top: y }); return; }
   const ask = e.target.closest("[data-ask]");
-  if (ask) { state.overrides[ask.dataset.ask] = ask.dataset.cat; store.set("overrides", state.overrides); recompute(); return; }
+  if (ask) {
+    state.overrides[ask.dataset.ask] = ask.dataset.cat; store.set("overrides", state.overrides);
+    if (ask.dataset.cat === "revenus") addIncome(ask.dataset.ask.split("|")[0]);
+    recompute(); return;
+  }
   if (e.target.id === "suggest-budgets") { state.budgets = suggestBudgets(state.res); store.set("budgets", state.budgets); render(); }
   if (e.target.id === "clear-budgets") $("#clear-budgets-box").innerHTML = `<span class="small">Supprimer tous vos budgets&nbsp;?</span> <button class="btn" type="button" id="clear-yes" style="color:var(--crit)">Oui, supprimer</button> <button class="btn ghost" type="button" id="clear-no">Annuler</button>`;
   if (e.target.id === "clear-yes") { state.budgets = {}; store.set("budgets", state.budgets); render(); }
