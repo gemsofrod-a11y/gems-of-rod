@@ -973,7 +973,10 @@ function classify(txs, overrides) {
     // une ligne de « Mon budget » qui le reconnaît doit être comptée (revenu déclaré, charge fixe).
     t.pf = null;
     const pfCat = state.profile ? profileCategory(t, state.profile) : null;
-    t.cat = overrides[t.key + (t.amount > 0 ? "|+" : "|-")] || overrides[t.key] || pfCat || t.forceCat || (t.acct === "epargne" ? (t.amount > 0 && /\b(INTERETS?|INTEREST)\b/.test(norm(t.label)) ? "interets" : "epargne") : ruleCategory(t));
+    // Un nom classé en revenu (l'employeur, par exemple) ne vaut que pour l'argent reçu : un achat
+    // par carte dans le magasin du même nom reste une dépense.
+    const any = overrides[t.key], anyOk = any && !(t.amount < 0 && (CAT[any] || {}).kind === "income");
+    t.cat = overrides[t.key + (t.amount > 0 ? "|+" : "|-")] || (anyOk ? any : null) || pfCat || t.forceCat || (t.acct === "epargne" ? (t.amount > 0 && /\b(INTERETS?|INTEREST)\b/.test(norm(t.label)) ? "interets" : "epargne") : ruleCategory(t));
     // Un montant positif dans une catégorie de dépense = remboursement : il vient en déduction.
   }
 }
@@ -1679,11 +1682,13 @@ function monthView(r) {
     // Argent mis de côté ou envoyé vers un autre de vos comptes : pas une dépense, mais il n'est plus
     // disponible sur le compte ; ce qui en revient est une entrée.
     if (c.kind === "internal" || c.kind === "savings") { if (t.amount > 0) m.other += t.amount; else m.moved -= t.amount; continue; }
-    if (!C && (c.kind === "income" || (t.amount > 0 && t.pf))) { m.inc._all = (m.inc._all || 0) + t.amount; continue; }
+    // Une sortie d'argent n'est jamais un revenu : elle compte comme une dépense « à classer ».
+    const cat = c.kind === "income" && t.amount < 0 ? "autre" : t.cat;
+    if (!C && ((c.kind === "income" && t.amount > 0) || (t.amount > 0 && t.pf))) { m.inc._all = (m.inc._all || 0) + t.amount; continue; }
     if (t.amount > 0 && t.pf) { m.inc[t.pf] = (m.inc[t.pf] || 0) + t.amount; continue; }
-    if (c.kind === "income") { m.other += t.amount; continue; }
-    const spent = -t.amount, l = lvl(t.cat);
-    m[l] += spent; m.cats[t.cat] = (m.cats[t.cat] || 0) + spent;
+    if (c.kind === "income" && t.amount > 0) { m.other += t.amount; continue; }
+    const spent = -t.amount, l = lvl(cat);
+    m[l] += spent; m.cats[cat] = (m.cats[cat] || 0) + spent;
   }
   // Charges et crédits saisis à la main mais absents du relevé (payés depuis une autre banque).
   const det = (r.pf && r.pf.detected) || {};

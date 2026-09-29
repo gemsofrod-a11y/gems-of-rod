@@ -49,6 +49,10 @@ Cinq onglets dans un dock en bas de l'écran, pensés pour le téléphone :
   moyenne de la période. Une ligne terminée, ou payée à nouveau après son
   « dernier mois », propose « Toujours en cours ».
 
+Un nom classé en revenu (l'employeur, par exemple) ne vaut que pour l'argent
+reçu : un achat par carte dans le magasin du même nom reste une dépense, et une
+sortie d'argent n'est jamais comptée comme une entrée.
+
 Tous les montants s'affichent et se saisissent au centime près (ex. 120,74 €),
 sans arrondi, pour se retrouver tels quels dans le relevé. Une charge ou un
 crédit introuvable dans le relevé propose le bénéficiaire qui revient le plus
