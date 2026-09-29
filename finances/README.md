@@ -75,6 +75,12 @@ téléchargé une fois puis gardé en cache par le service worker.
   assurance-vie), mise en garde trading/crypto. Taux dans `RATES` (au
   1er août 2026). Le profil peut aussi arriver par le fichier de classement
   (`"profile": {...}`), pour ne jamais écrire de nom réel dans le code.
+- Onglet « Entrées / Sorties » : deux listes séparées (+ Entrées, − Sorties),
+  regroupées par payeur ou bénéficiaire, avec total, moyenne par mois et ce
+  que l'appli en fait (revenu compté, autre entrée non comptée,
+  remboursement, retrait d'épargne, entre vos comptes ; niveau et catégorie
+  pour les sorties). Touchez une ligne pour voir ses opérations et changer
+  leur catégorie. L'onglet Opérations a aussi un filtre + / −.
 - Historique cumulé : chaque relevé importé (CSV ou PDF) s'ajoute aux
   précédents. Une opération déjà connue (même date, montant, libellé et
   compte) n'est pas recomptée : réimporter un relevé mis à jour n'ajoute que
