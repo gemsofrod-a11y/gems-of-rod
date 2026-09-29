@@ -312,8 +312,8 @@ const CATS = [
   { id: "credit", name: "Remboursement de crédit", level: "ess", onlyNegative: true, re: /\b(LOAN PAYMENT|LOAN REPAYMENT|REPAYMENT|CREDIT CONSO|COFIDIS|CETELEM|SOFINCO|FLOA|ONEY|YOUNITED|FRANFINANCE|KLARNA|ALMA|PAIEMENT EN 4X|PAIEMENT EN 3X)\b/ },
   { id: "logement", name: "Logement", level: "ess", re: /\b(LOYER|FONCIA|NEXITY|CITYA|SYNDIC|ORPI|CENTURY 21|LAFORET|HABITAT|OPH|HLM|ECHEANCE PRET|PRET IMMO|CREDIT IMMO|REMBOURSEMENT PRET)\b/ },
   { id: "energie", name: "Énergie & eau", level: "ess", re: /\b(EDF|ENGIE|TOTAL ?ENERGIES (ELEC|GAZ|CLIENTS|ELECTRICITE)|EKWATEUR|ENI GAS|OHM ENERGIE|MINT ENERGIE|PLANETE OUI|ENERCOOP|VATTENFALL|GRDF|VEOLIA|SUEZ|SAUR|EAU DE)\b/ },
-  { id: "impots", name: "Impôts & taxes", level: "ess", re: /\b(IMPOT|IMPOTS|DGFIP|TRESOR PUBLIC|FINANCES PUBLIQUES|TAXE|ANTAI|AMENDE)\b/ },
-  { id: "assurances", name: "Assurances & mutuelle", level: "ess", re: /\b(ASSURANCE|ASSURANCES|MAIF|MACIF|MATMUT|AXA|ALLIANZ|GMF|MMA|GROUPAMA|MAAF|MUTUELLE|HARMONIE|MGEN|ALAN|LUKO|GENERALI|APRIL|SWISSLIFE|LEOCARE|DIRECT ASSURANCE|OLIVIER ASSURANCE|AG2R|MALAKOFF)\b/ },
+  { id: "impots", name: "Impôts & taxes", level: "ess", re: /\b(IMPOT|IMPOTS|DGFIP|TRESOR PUBLIC|FINANCES PUBLIQUES|TAXE|ANTAI|AMENDE|URSSAF)\b/ },
+  { id: "assurances", name: "Assurances & mutuelle", level: "ess", re: /\b(ASSURANCE|ASSURANCES|MAIF|MACIF|MATMUT|AXA|ALLIANZ|GMF|MMA|GROUPAMA|MAAF|MUTUELLE|OCIANE|HARMONIE|MGEN|ALAN|LUKO|GENERALI|APRIL|SWISSLIFE|LEOCARE|DIRECT ASSURANCE|OLIVIER ASSURANCE|AG2R|MALAKOFF)\b/ },
   { id: "sante", name: "Santé", level: "ess", re: /\b(PHARMA|PHARMACIE|DOCTOLIB|MEDECIN|DOCTEUR|DR|DENTISTE|DENTAIRE|KINE|OSTEO|OPTIC|OPTIQUE|OPTICIEN|KRYS|AFFLELOU|LABO|LABORATOIRE|HOPITAL|CLINIQUE|RADIOLOGIE|ORTHO|APOTHEKE)\b/ },
   { id: "education", name: "Enfants & éducation", level: "ess", re: /\b(ECOLE|CANTINE|CRECHE|NOUNOU|PAJEMPLOI|PERISCOLAIRE|UNIVERSITE|COLLEGE|LYCEE|CENTRE DE LOISIRS)\b/ },
   { id: "livraison", name: "Livraison de repas", level: "sup", re: /\b(UBER ?EATS|DELIVEROO|JUST ?EAT|FRICHTI|GLOVO|STUART FOOD|LIEFERANDO|TAKEAWAY|WOLT)\b/ },
@@ -334,7 +334,7 @@ const CATS = [
   { id: "frais", name: "Frais bancaires", level: "sup", re: /\b(FRAIS|COMMISSION|COMMISSIONS|COTISATION CARTE|COTIS CARTE|AGIOS|INTERETS DEBITEURS|FRAIS TENUE|INCIDENT|OPPOSITION|REJET PRLV|FEE|FEES)\b/ },
   { id: "especes", name: "Retraits d'espèces", level: "uti", re: /\b(RETRAIT|RETRAIT DAB|DAB|ATM|CASH WITHDRAWAL|WITHDRAWAL)\b/ },
   { id: "dons", name: "Dons & cadeaux", level: "uti", re: /\b(DON|DONS|FONDATION|CROIX ROUGE|RESTOS DU COEUR|UNICEF|MEDECINS SANS FRONTIERES|SECOURS|HELLOASSO|CADEAU|LEETCHI|SAPEURS POMPIERS)\b/ },
-  { id: "virements", name: "Virements à des proches", level: "uti", onlyNegative: true, re: /^(VIR|VIREMENT|VIR SEPA|VIREMENT SEPA|VIR INST|TRANSFER|PAIEMENT LYDIA|LYDIA|PAYPAL|PAYLIB|WERO)\b/ },
+  { id: "virements", name: "Virements à des proches", level: "uti", onlyNegative: true, re: /^(VIR|VIREMENT|VIR SEPA|VIREMENT SEPA|VIR INST|TRANSFER|TO|PAIEMENT LYDIA|LYDIA|PAYPAL|PAYLIB|WERO)\b/ },
   { id: "foyer", name: "Charges du foyer (électricité, nourriture…)", level: "ess", onlyNegative: true, re: null },
   { id: "pro", name: "Activité pro (hors budget perso)", kind: "pro", re: null },
   { id: "autre", name: "À classer", level: "uti", re: null },
@@ -1595,68 +1595,112 @@ function vWelcome() {
 }
 
 /* ------------------------------ Accueil ------------------------------ */
-// Revenus nets d'un mois : les revenus déclarés dans « Mon budget ». Un salaire versé en fin de
-// mois (le 28, le 31…) sert à vivre le mois suivant : chaque versement est rattaché au mois qui
-// commence dans les 7 jours qui suivent. Ainsi chaque mois reçoit un salaire, même quand il tombe
-// le 31 ou le 2. Un mois qui en reçoit deux malgré tout est ramené à sa médiane ; dans le mois en
-// cours, un revenu du début de mois (CAF…) pas encore arrivé est « attendu » tant que son jour
-// habituel n'est pas passé.
+// Mois de budget, de paie à paie. Le salaire versé le 31/08 sert à vivre septembre, et ce qu'il paie
+// le jour même (loyer, virements au foyer) aussi : un mois de budget commence le jour du salaire et
+// finit la veille du suivant. Il prend le nom du mois qui commence dans les 7 jours (31/08 → septembre,
+// 02/01 → janvier). Sans revenu déclaré dans « Mon budget », ce sont les mois du calendrier.
 const budgetMonth = d => monthKey(new Date(d + 7 * 864e5));
-function monthIncome(r, k) {
-  const P = state.profile;
-  if (!P || !P.incomes.length) return { total: (r.byMonth[k] || {}).income || 0, parts: [], declared: false };
-  const partial = k === monthKey(r.to) && r.to.getDate() < daysInMonth(k);
-  const by = {}, lastDay = {};
-  for (const t of state.tx) if (t.pf && t.amount > 0) { // tout l'historique : le salaire du 30 du mois d'avant compte
-    const m = by[t.pf] || (by[t.pf] = {}), bk = budgetMonth(t.date); m[bk] = (m[bk] || 0) + t.amount;
-    lastDay[t.pf] = new Date(t.date).getDate();
+const dayStart = d => { const x = new Date(d); return new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime(); };
+function payCycles() {
+  const P = state.profile; if (!P || !P.incomes.length) return null;
+  const tot = {}; for (const t of state.tx) if (t.pf && t.amount > 0) tot[t.pf] = (tot[t.pf] || 0) + t.amount;
+  const main = Object.keys(tot).sort((a, b) => tot[b] - tot[a])[0]; if (!main) return null;
+  const pays = state.tx.filter(t => t.pf === main && t.amount > 0).sort((a, b) => a.date - b.date);
+  const med = median(pays.map(t => t.amount)), starts = [];
+  for (const t of pays) {
+    if (t.amount < med * 0.5) continue; // petit versement annexe du même payeur : pas une nouvelle paie
+    const start = dayStart(t.date), key = budgetMonth(start);
+    if (starts.length && starts[starts.length - 1].key === key) continue;
+    starts.push({ key, start });
   }
-  const parts = []; let total = 0;
+  return starts.length ? { main, starts } : null;
+}
+function cycleOf(C, date) {
+  if (!C) return monthKey(new Date(date));
+  let s = null; for (const c of C.starts) { if (c.start <= date) s = c; else break; }
+  // Avant le premier salaire connu, ou si un salaire manque (plus de 40 jours) : mois du calendrier.
+  return s && date - s.start < 40 * 864e5 ? s.key : monthKey(new Date(date));
+}
+
+// Tout ce que montre l'accueil pour un mois de budget : revenus déclarés, autres entrées, dépenses
+// par niveau et par catégorie. Mêmes règles que l'analyse : virements internes, épargne et activité
+// pro ne sont pas des dépenses ; un remboursement vient en déduction.
+function monthView(r) {
+  const C = payCycles(), P = state.profile, lvl = id => state.levels[id] || CAT[id].level;
+  const M = {};
+  const get = k => M[k] || (M[k] = { key: k, ess: 0, uti: 0, sup: 0, cats: {}, inc: {}, other: 0, first: Infinity, last: 0 });
+  for (const t of r.txs || []) {
+    const c = CAT[t.cat] || CAT.autre, m = get(cycleOf(C, t.date));
+    m.first = Math.min(m.first, t.date); m.last = Math.max(m.last, t.date);
+    if (c.kind === "internal" || c.kind === "pro" || c.kind === "savings") { if (t.amount > 0 && c.kind !== "pro") m.other += t.amount; continue; }
+    if (!C && (c.kind === "income" || (t.amount > 0 && t.pf))) { m.inc._all = (m.inc._all || 0) + t.amount; continue; }
+    if (t.amount > 0 && t.pf) { m.inc[t.pf] = (m.inc[t.pf] || 0) + t.amount; continue; }
+    if (c.kind === "income") { m.other += t.amount; continue; }
+    const spent = -t.amount, l = lvl(t.cat);
+    m[l] += spent; m.cats[t.cat] = (m.cats[t.cat] || 0) + spent;
+  }
+  // Charges et crédits saisis à la main mais absents du relevé (payés depuis une autre banque).
+  const det = (r.pf && r.pf.detected) || {};
+  for (const m of Object.values(M)) {
+    for (const x of P.charges) if (x.manual > 0 && !det[x.id] && !(x.end && m.key > x.end)) { const cat = x.cat || "foyer"; m[lvl(cat)] += x.manual; m.cats[cat] = (m.cats[cat] || 0) + x.manual; }
+    for (const x of P.credits) if (x.monthly > 0 && !det[x.id] && !(x.end && m.key > x.end)) { m[lvl("credit")] += x.monthly; m.cats.credit = (m.cats.credit || 0) + x.monthly; }
+    m.spent = m.ess + m.uti + m.sup;
+  }
+  return { C, M, keys: Object.keys(M).sort().reverse().slice(0, 12) };
+}
+
+// Revenus nets d'un mois de budget. Un revenu reçu deux fois dans le même mois est ramené à sa
+// médiane ; dans le mois en cours, un revenu du début de mois (CAF…) pas encore arrivé est « attendu »
+// tant que son jour habituel n'est pas passé.
+function monthIncome(r, view, k) {
+  const P = state.profile, m = view.M[k];
+  if (!view.C) return { total: m.inc._all || 0, parts: [], declared: false };
+  const current = k === view.keys[0], parts = []; let total = 0;
+  const by = {}, lastDay = {};
+  for (const t of state.tx) if (t.pf && t.amount > 0) { const bk = cycleOf(view.C, t.date); (by[t.pf] = by[t.pf] || {})[bk] = (by[t.pf][bk] || 0) + t.amount; lastDay[t.pf] = new Date(t.date).getDate(); }
   for (const x of P.incomes) {
     if (x.end && k > x.end) continue;
-    const bm = by[x.id] || {}, keys = Object.keys(bm).sort(), vals = keys.map(m => bm[m]);
+    const bm = by[x.id] || {}, keys = Object.keys(bm).sort(), vals = keys.map(q => bm[q]);
     if (!keys.length && !(x.manual > 0)) continue;
-    if (keys.length && k < keys[0] && !(x.manual > 0)) continue;
-    let v = bm[k] || 0, st = "";
+    // Premier mois du relevé : le salaire qui le fait vivre a été versé juste avant le début du relevé.
+    const beforeStart = keys.length && k < keys[0] && x.id === view.C.main && k === view.keys[view.keys.length - 1] && m.first - dayStart(Math.min(...state.tx.map(t => t.date))) < 3 * 864e5;
+    if (keys.length && k < keys[0] && !(x.manual > 0) && !beforeStart) continue;
+    let v = m.inc[x.id] || 0, st = "";
+    if (beforeStart && !(x.manual > 0)) { v = median(vals); st = "versé avant le début du relevé, estimé"; parts.push({ label: x.label || "Revenu", v, st }); total += v; continue; }
     if (x.manual > 0) { v = x.manual; st = "montant saisi"; }
     else if (vals.length >= 3 && v > 1.5 * median(vals)) { v = median(vals); st = "versé 2 fois, compté 1"; }
-    else if (!v && partial && lastDay[x.id] < 24 && lastDay[x.id] >= r.to.getDate()) { v = median(vals); st = "attendu"; }
+    else if (!v && current && lastDay[x.id] < 24 && lastDay[x.id] >= r.to.getDate()) { v = median(vals); st = "attendu"; }
     else if (!v) st = "pas reçu pour ce mois";
     parts.push({ label: x.label || "Revenu", v, st }); total += v;
   }
-  return { total, parts, declared: true, partial };
-}
-// Autres entrées d'argent du mois (virements de proches, remboursements, retraits d'épargne…) :
-// ce sont elles, ou l'argent déjà sur le compte, qui couvrent des dépenses supérieures aux revenus.
-function monthOtherIn(r, k) {
-  let v = 0;
-  for (const t of r.txs || []) if (t.amount > 0 && !t.pf && monthKey(new Date(t.date)) === k) v += t.amount;
-  return v;
+  return { total, parts, declared: true };
 }
 
 function vHome(r) {
   if (r.onlySavings) return savingsCard(r, true);
-  const months = Object.keys(r.byMonth).sort().reverse().slice(0, 12);
-  if (!months.includes(state.month)) state.month = months[0];
-  const k = state.month, M = r.byMonth[k] || { ess: 0, uti: 0, sup: 0 };
+  const view = monthView(r);
+  if (!view.keys.includes(state.month)) state.month = view.keys[0];
+  const k = state.month, m = view.M[k];
   // Le compte ne peut pas être à découvert : le reste à vivre ne descend pas sous 0. Un dépassement
   // a forcément été payé par d'autres entrées d'argent ou par ce qui restait sur le compte.
-  const inc = monthIncome(r, k), spent = M.ess + M.uti + M.sup, left = inc.total - spent, other = inc.declared ? monthOtherIn(r, k) : 0;
-  const partial = k === monthKey(r.to) && r.to.getDate() < daysInMonth(k);
-  const ratio = inc.total > 0 ? spent / inc.total : 1;
+  const inc = monthIncome(r, view, k), spent = m.spent, left = inc.total - spent;
+  const current = k === view.keys[0], ratio = inc.total > 0 ? spent / inc.total : 1;
+  const span = view.C ? `du ${new Date(m.first).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" })} au ${new Date(m.last).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" })}` : (current && r.to.getDate() < daysInMonth(k) ? `au ${dayFmt(r.to)}` : "");
   const hero = `<section class="hero" aria-labelledby="h-left">
-    <div class="card-head" style="align-items:center"><span class="eyebrow" id="h-left">Reste à vivre · ${monthName(k)}</span>${partial ? `<span class="tag">au ${dayFmt(r.to)}</span>` : ""}</div>
+    <div class="card-head" style="align-items:center"><span class="eyebrow" id="h-left">Reste à vivre · ${monthName(k)}</span>${span ? `<span class="tag">${span}</span>` : ""}</div>
     <p class="hero-big">${eur.format(Math.max(0, left))}</p>
-    ${left < 0 ? `<p class="hero-sub">Dépenses supérieures aux revenus de <b style="color:var(--hero-ink)">${eur.format(-left)}</b>, payées ${other > 0 ? `par d'autres entrées d'argent (${eur.format(other)} ce mois-ci : proches, remboursements, épargne) et ` : ""}par l'argent qui restait sur le compte.</p>` : ""}
+    ${left < 0 ? `<p class="hero-sub">Dépenses supérieures aux revenus de <b style="color:var(--hero-ink)">${eur.format(-left)}</b>, payées ${m.other > 0 ? `par d'autres entrées d'argent (${eur.format(m.other)} ce mois-ci : proches, remboursements, épargne) et ` : ""}par l'argent qui restait sur le compte.</p>` : ""}
     <div class="meter${ratio > 1 ? " over" : ""}" role="img" aria-label="Dépenses : ${pct(ratio)} des revenus"><span style="width:${Math.min(100, ratio * 100)}%"></span></div>
     <div class="hero-split">
       <div><span class="v">${eur.format(inc.total)}</span><span class="l">${inc.declared ? "Revenus nets" : "Entrées d'argent"}</span></div>
       <div><span class="v">${eur.format(spent)}</span><span class="l">Dépenses (${pct(ratio)})</span></div>
     </div>
     ${inc.parts.length ? `<div class="parts">${inc.parts.map(p => `<div><span>${esc(p.label)}${p.st ? `<span class="tag">${p.st}</span>` : ""}</span><b class="num">${eur2.format(p.v)}</b></div>`).join("")}</div>` : ""}
+    ${view.C ? `<p class="hero-sub">Mois de budget de paie à paie : le salaire et tout ce qu'il paie le jour même comptent pour le mois qu'il fait vivre.</p>` : ""}
   </section>`;
-  const chips = months.length > 1 ? `<div class="months" role="group" aria-label="Choisir le mois">${months.map(m => `<button class="chip-btn" type="button" data-month="${m}" aria-pressed="${m === k}">${monthLabel(m)}</button>`).join("")}</div>` : "";
-  return chips + hero + incomeSetupCard(r) + alertsCard(r, k) + monthSpendCard(r, k, M, spent) + adviceTeaser(r) + askCard() + upcomingCard(r) + trendCard(r);
+  const chips = view.keys.length > 1 ? `<div class="months" role="group" aria-label="Choisir le mois">${view.keys.map(q => `<button class="chip-btn" type="button" data-month="${q}" aria-pressed="${q === k}">${monthLabel(q)}</button>`).join("")}</div>` : "";
+  const catMonth = {}; for (const [id, v] of Object.entries(m.cats)) catMonth[id] = { [k]: v };
+  return chips + hero + incomeSetupCard(r) + alertsCard({ ...r, byCatMonth: catMonth }, k) + monthSpendCard(r, k, m) + adviceTeaser(r) + askCard() + upcomingCard(r) + trendCard(r);
 }
 
 function alertsCard(r, k) {
@@ -1668,8 +1712,9 @@ function alertsCard(r, k) {
   </section>`;
 }
 
-function monthSpendCard(r, k, M, spent) {
-  const cats = Object.entries(r.byCatMonth).map(([id, m]) => ({ id, v: m[k] || 0 })).filter(c => c.v > 0.5).sort((a, b) => b.v - a.v);
+function monthSpendCard(r, k, M) {
+  const spent = M.spent;
+  const cats = Object.entries(M.cats).map(([id, v]) => ({ id, v })).filter(c => c.v > 0.5).sort((a, b) => b.v - a.v);
   if (!cats.length) return "";
   const lvl = id => state.levels[id] || CAT[id].level, max = cats[0].v;
   return `<section class="card" aria-labelledby="h-ms">
