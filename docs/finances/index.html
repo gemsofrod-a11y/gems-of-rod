@@ -985,7 +985,7 @@ function classify(txs, overrides) {
 // Profil saisi par l'utilisateur, gardé dans ce navigateur. Chaque ligne peut être reconnue dans
 // le relevé (« Nom dans le relevé ») et/ou avoir un montant mensuel saisi à la main, utilisé
 // les mois où elle n'apparaît pas dans le relevé (salaire versé sur une autre banque, loyer payé ailleurs…).
-const PROFILE_DEFAULT = { onlyDeclared: false, savingsNow: null, incomes: [], charges: [], credits: [] };
+const PROFILE_DEFAULT = { onlyDeclared: false, noAutoSalary: false, savingsNow: null, incomes: [], charges: [], credits: [] };
 const newId = () => Math.random().toString(36).slice(2, 9);
 function loadProfile() {
   const p = { ...PROFILE_DEFAULT, ...(store.get("profile", {}) || {}) };
@@ -1001,6 +1001,38 @@ function addIncome(key) {
   state.profile.onlyDeclared = true; saveProfile();
 }
 const hasWord = (txt, m) => !!m && (" " + txt + " ").includes(" " + norm(m) + " ");
+
+// Le salaire est reconnu tout seul, sans avoir à le déclarer : c'est lui qui donne le début du mois de
+// budget (voir payCycles). Un payeur est une paie possible s'il verse plus de 500 € et
+//  - est une société, une association ou une administration (« Paiement envoyé par SAS … »), ou un mot
+//    de paie (salaire, paie, rémunération), même reçu une seule fois : un relevé de deux mois ne
+//    contient parfois qu'un seul salaire ;
+//  - ou revient d'un mois sur l'autre avec un montant proche (un virement régulier).
+// Un virement d'un proche (« Virement de : Prénom Nom ») reçu une fois n'est jamais pris pour un salaire.
+const EMPLOYER = /\b(SAS|SASU|SARL|EURL|SNC|SCOP|SCI|ASSOCIATION|MAIRIE|COMMUNE|DEPARTEMENT|REGION|HOPITAL|CHU|ETAT|DGFIP|SALAIRE|PAIE|PAYE|REMUNERATION|TRAITEMENT)\b/;
+function salaryCandidates(txs) {
+  const groups = {};
+  for (const t of txs || []) {
+    const c = CAT[t.cat] || CAT.autre;
+    if (t.amount < 500 || t.acct === "epargne" || ["internal", "savings", "pro"].includes(c.kind) || t.cat === "interets") continue;
+    const g = groups[t.key] || (groups[t.key] = { key: t.key, months: {}, total: 0, min: Infinity, max: 0, employer: false });
+    const k = monthKey(new Date(t.date)); g.months[k] = (g.months[k] || 0) + t.amount; g.total += t.amount;
+    g.min = Math.min(g.min, t.amount); g.max = Math.max(g.max, t.amount);
+    if (t.cat === "revenus" || EMPLOYER.test(norm(t.type + " " + t.label))) g.employer = true;
+  }
+  return Object.values(groups)
+    .filter(g => g.employer || (Object.keys(g.months).length >= 2 && g.min >= 0.6 * g.max))
+    .sort((a, b) => b.total - a.total);
+}
+// Sans aucun revenu déclaré, le plus gros candidat devient le salaire. Il reste modifiable dans
+// « Mon budget » ; si on le retire, il ne revient pas (noAutoSalary).
+function autoDeclareSalary() {
+  const P = state.profile;
+  if (!P || state.sample || P.incomes.length || P.noAutoSalary) return false;
+  const top = salaryCandidates(state.tx)[0]; if (!top) return false;
+  addIncome(top.key); P.incomes[P.incomes.length - 1].auto = true; saveProfile();
+  return true;
+}
 
 // Classement par le profil : après vos choix explicites, avant les règles automatiques.
 function profileCategory(t, P) {
@@ -1427,6 +1459,7 @@ function periodTx() {
 function recompute() {
   if (!state.profile) state.profile = loadProfile();
   classify(state.tx, state.overrides);
+  if (autoDeclareSalary()) classify(state.tx, state.overrides);
   state.res = analyse(periodTx(), state.levels);
   render();
 }
@@ -1739,18 +1772,20 @@ function vHome(r) {
   // activité pro réglée depuis ce compte).
   const inc = monthIncome(r, view, k), spent = m.spent, left = inc.total + m.other - spent - m.moved + m.pro;
   const current = k === view.keys[0], ratio = inc.total > 0 ? spent / inc.total : 1;
+  // Un pourcentage n'a de sens que si les revenus sont réels (sinon « 2933933 % » pour 0,03 € d'intérêts).
+  const ratioTxt = inc.total >= 1 && ratio <= 9.99 ? ` (${pct(ratio)})` : "";
   const span = view.C ? `du ${new Date(m.first).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" })} au ${new Date(m.last).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" })}` : (current && r.to.getDate() < daysInMonth(k) ? `au ${dayFmt(r.to)}` : "");
   const hero = `<section class="hero" aria-labelledby="h-left">
     <div class="card-head" style="align-items:center"><span class="eyebrow" id="h-left">Reste à vivre · ${monthName(k)}</span>${span ? `<span class="tag">${span}</span>` : ""}</div>
     <p class="hero-big">${eur.format(Math.max(0, left))}</p>
     ${left < 0 ? `<p class="hero-sub">Il est sorti <b style="color:var(--hero-ink)">${eur2.format(-left)}</b> de plus qu'il n'est entré : la différence a été prise sur l'argent qui restait sur le compte au début du mois.</p>` : ""}
-    <div class="meter${ratio > 1 ? " over" : ""}" role="img" aria-label="Dépenses : ${pct(ratio)} des revenus"><span style="width:${Math.min(100, ratio * 100)}%"></span></div>
+    <div class="meter${ratio > 1 ? " over" : ""}" role="img" aria-label="Dépenses${ratioTxt} des revenus"><span style="width:${Math.min(100, ratio * 100)}%"></span></div>
     <div class="hero-split">
       <div><span class="v">${eur.format(inc.total)}</span><span class="l">${inc.declared ? "Revenus nets" : "Entrées d'argent"}</span></div>
-      <div><span class="v">${eur.format(spent)}</span><span class="l">Dépenses (${pct(ratio)})</span></div>
+      <div><span class="v">${eur.format(spent)}</span><span class="l">Dépenses${ratioTxt}</span></div>
     </div>
     ${inc.parts.length || m.other > 0.005 || m.moved > 0.005 || Math.abs(m.pro) > 0.005 ? `<div class="parts">${inc.parts.map(p => `<div><span>${esc(p.label)}${p.st ? `<span class="tag">${p.st}</span>` : ""}</span><b class="num">${eur2.format(p.v)}</b></div>`).join("")}${m.other > 0.005 ? `<div><span>Autres entrées</span><b class="num" style="white-space:nowrap">+ ${eur2.format(m.other)}</b></div>` : ""}${m.moved > 0.005 ? `<div><span>Mis de côté, viré vers vos comptes</span><b class="num" style="white-space:nowrap">− ${eur2.format(m.moved)}</b></div>` : ""}${Math.abs(m.pro) > 0.005 ? `<div><span>Activité pro sur ce compte</span><b class="num" style="white-space:nowrap">${m.pro > 0 ? "+" : "−"} ${eur2.format(Math.abs(m.pro))}</b></div>` : ""}</div>` : ""}
-    ${view.C ? `<p class="hero-sub">Mois de budget de paie à paie : le salaire et tout ce qu'il paie le jour même comptent pour le mois qu'il fait vivre.</p>` : ""}
+    ${view.C ? `<p class="hero-sub">Mois de budget de paie à paie : le salaire et tout ce qu'il paie le jour même comptent pour le mois qu'il fait vivre.${(state.profile.incomes.find(x => x.auto) || {}).label ? ` Salaire reconnu automatiquement : ${esc(state.profile.incomes.find(x => x.auto).label)}. Ce n'est pas le bon ? Retirez-le dans « Mon budget ».` : ""}</p>` : ""}
   </section>`;
   const chips = view.keys.length > 1 ? `<div class="months" role="group" aria-label="Choisir le mois">${view.keys.map(q => `<button class="chip-btn" type="button" data-month="${q}" aria-pressed="${q === k}">${monthLabel(q)}</button>`).join("")}</div>` : "";
   const catMonth = {}; for (const [id, v] of Object.entries(m.cats)) catMonth[id] = { [k]: v };
@@ -1875,7 +1910,8 @@ function incomeSetupCard(r) {
     const k = monthKey(new Date(t.date)); g.months[k] = (g.months[k] || 0) + t.amount; g.total += t.amount;
     if (t.date >= g.last) { g.last = t.date; g.lastAmt = t.amount; }
   }
-  const list = Object.values(groups).filter(g => Object.keys(g.months).length >= 2).sort((a, b) => b.total - a.total).slice(0, 6);
+  const salaryKeys = new Set(salaryCandidates(r.txs || []).map(x => x.key));
+  const list = Object.values(groups).filter(g => Object.keys(g.months).length >= 2 || salaryKeys.has(g.key)).sort((a, b) => b.total - a.total).slice(0, 6);
   if (!list.length) return "";
   return `<section class="card" aria-labelledby="h-inc">
     <div class="card-head"><div><span class="eyebrow">À faire une fois</span><h2 id="h-inc">Quels sont vos revenus&nbsp;?</h2></div></div>
@@ -2247,9 +2283,9 @@ view.addEventListener("click", e => {
     if (state.pfOpen) delete state.pfOpen[key];
     state.pfSaved = key; clearTimeout(pfTimer); saveProfile(); return keepScroll(recompute);
   }
-  if ((el = q("[data-pf-del]"))) { const [sec, i] = el.dataset.pfDel.split("|"); state.profile[sec].splice(+i, 1); saveProfile(); return keepScroll(recompute); }
+  if ((el = q("[data-pf-del]"))) { const [sec, i] = el.dataset.pfDel.split("|"); if (sec === "incomes") state.profile.noAutoSalary = true; state.profile[sec].splice(+i, 1); saveProfile(); return keepScroll(recompute); }
   if ((el = q("[data-income-add]"))) { state.incSetupOpen = true; addIncome(el.dataset.incomeAdd); return keepScroll(recompute); }
-  if ((el = q("[data-income-del]"))) { state.profile.incomes = state.profile.incomes.filter(x => norm(x.match) !== norm(el.dataset.incomeDel)); saveProfile(); return keepScroll(recompute); }
+  if ((el = q("[data-income-del]"))) { state.profile.noAutoSalary = true; state.profile.incomes = state.profile.incomes.filter(x => norm(x.match) !== norm(el.dataset.incomeDel)); saveProfile(); return keepScroll(recompute); }
   if (q("[data-income-done]")) { state.incSetupOpen = false; return keepScroll(render); }
   if ((el = q("[data-ask]"))) {
     state.overrides[el.dataset.ask] = el.dataset.cat; store.set("overrides", state.overrides);

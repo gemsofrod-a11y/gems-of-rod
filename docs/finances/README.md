@@ -26,7 +26,7 @@ Cinq onglets dans un dock en bas de l'écran, pensés pour le téléphone :
   le jour du salaire et finit la veille du suivant, et prend le nom du mois
   qui commence dans les 7 jours (salaire du 31/08 → septembre). Le salaire
   et tout ce qu'il paie le jour même (loyer, virements au foyer) comptent
-  donc dans le même mois. Sans revenu déclaré : mois du calendrier. Le compte ne pouvant
+  donc dans le même mois. Le salaire est reconnu automatiquement, sans déclaration : un paiement de plus de 500 € d'une société, association ou administration (même reçu une seule fois), ou un virement régulier de montant proche ; un virement isolé d'un proche n'en est jamais un. Il est modifiable ou retirable dans « Mon budget » (retiré, il ne revient pas). Sans revenu reconnu ni déclaré : mois du calendrier. Le compte ne pouvant
   pas être à découvert, le reste à vivre ne descend jamais sous 0 € : un
   dépassement est affiché à part, pris sur l'argent qui restait sur le
   compte au début du mois.
