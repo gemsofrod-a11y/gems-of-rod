@@ -392,7 +392,9 @@ budget » (revenus, charges fixes, crédits avec date de fin, plan de
 placements) : le profil réel de Sébastien (employeur, bénéficiaires) vit
 dans son navigateur et dans son fichier de classement, jamais dans le code ;
 taux des livrets dans `RATES` (au 1er août 2026). Revenus et charges avec « dernier mois » (fin de la CAF de
-Sébastien, 28/09/2026) : conseils et plan de placements partent d'« un mois type aujourd'hui », pas de la moyenne passée. Ne jamais versionner ni publier un
+Sébastien, 28/09/2026) : conseils et plan de placements partent d'« un mois type aujourd'hui », pas de la moyenne passée. Publiée depuis le 29/09/2026 sur GitHub Pages
+(`budget-clair-pages.yml`, https://gemsofrod-a11y.github.io/gems-of-rod/finances/)
+à la place de Netlify, dont les crédits gratuits étaient épuisés. Ne jamais versionner ni publier un
 relevé réel de Sébastien (nom, adresse, opérations) : tester avec des PDF
 fabriqués. Voir
 `finances/README.md`.
