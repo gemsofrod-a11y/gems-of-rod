@@ -401,7 +401,7 @@ l'emplacement `docs/finances/`, publié automatiquement à chaque fusion. Interf
 (Accueil = reste à vivre du mois, Mouvements, Budgets, Conseils, Mon budget), moteur de
 calcul inchangé ; ne pas réempiler de panneaux sur l'accueil. Le reste à vivre se calcule
 par mois de budget de paie à paie (le salaire de fin de mois et ce qu'il paie le jour même comptent
-pour le mois suivant) et ne descend jamais sous 0 € (Sébastien ne peut pas être à découvert). Ne jamais versionner ni publier un
+pour le mois suivant), suit le solde réel du compte courant (entrées − dépenses − argent mis de côté ; le compte d'un proche rattaché et les paiements renvoyés du PDF Revolut sont ignorés) et ne descend jamais sous 0 € (Sébastien ne peut pas être à découvert). Ne jamais versionner ni publier un
 relevé réel de Sébastien (nom, adresse, opérations) : tester avec des PDF
 fabriqués. Voir
 `docs/finances/README.md`.

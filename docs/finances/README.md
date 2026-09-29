@@ -15,7 +15,11 @@ téléchargé une fois puis gardé en cache par le service worker.
 Cinq onglets dans un dock en bas de l'écran, pensés pour le téléphone :
 
 - **Accueil** : le mois choisi (pastilles des 12 derniers mois). Bloc « Reste
-  à vivre » = revenus nets du mois − dépenses du mois, avec le détail de
+  à vivre » = tout ce qui est entré sur le compte courant ce mois-ci
+  (revenus nets, autres entrées, épargne récupérée) − tout ce qui en est
+  sorti (dépenses, argent mis de côté ou viré vers vos propres comptes,
+  activité pro réglée depuis le compte perso),
+  pour tomber sur ce que montre le solde du compte, avec le détail de
   chaque revenu déclaré (reçu, « attendu » si son jour habituel n'est pas
   encore passé, « pas reçu pour ce mois », ou ramené à un versement quand il
   tombe deux fois). Le mois de budget va de paie à paie : il commence
@@ -24,8 +28,8 @@ Cinq onglets dans un dock en bas de l'écran, pensés pour le téléphone :
   et tout ce qu'il paie le jour même (loyer, virements au foyer) comptent
   donc dans le même mois. Sans revenu déclaré : mois du calendrier. Le compte ne pouvant
   pas être à découvert, le reste à vivre ne descend jamais sous 0 € : un
-  dépassement est affiché à part, payé par les autres entrées du mois
-  (proches, remboursements, épargne) ou par l'argent déjà sur le compte.
+  dépassement est affiché à part, pris sur l'argent qui restait sur le
+  compte au début du mois.
   Puis, seulement quand il y a quelque chose à dire :
   déclaration des revenus, alertes budgets, où part l'argent (niveaux et 5
   premières catégories), conseils principaux, questions sur les virements
@@ -49,8 +53,16 @@ Relevé PDF Revolut du compte courant : le libellé garde le nom du commerçant 
 du bénéficiaire (comme l'export Excel) ; les lignes de détail (« À : … »,
 « Référence : … ») sont gardées à part, sans numéro de carte ni IBAN. Importer
 le PDF et l'export Excel d'une même période ne crée pas de doublon : une
-opération de l'autre format est reconnue au même montant, à 2 jours près, avec
-au moins un mot en commun. L'abonnement au forfait (Metal…) a son propre
+opération de l'autre format est reconnue au même montant, à 4 jours près (un
+paiement par carte peut apparaître 3 jours plus tard dans le PDF), avec au moins
+un mot en commun ; le candidat qui partage le nom du commerçant, puis le plus
+proche en date, l'emporte. Sections du PDF : compte courant, « Transactions de
+dépôt » (compte d'épargne), paiements « Renvoyés » (ignorés, jamais débités) et
+compte d'un proche rattaché, ex. compte d'un enfant (ignoré : ce n'est pas le
+compte de l'utilisateur, l'argent qu'il y envoie compte déjà comme virement).
+Réimporter un PDF Revolut remplace, sur sa période, les opérations du compte
+courant lues dans un PDF précédent (nettoie les lectures d'anciennes versions).
+L'abonnement au forfait (Metal…) a son propre
 conseil et n'est plus compté dans les « frais bancaires évitables ».
 
 Sans relevé, l'accueil explique la marche à suivre ; l'exemple fictif n'est
@@ -80,7 +92,8 @@ chargé qu'à la demande.
   mal encodé réparé (`fixText` : « DÃ©but » → « Début », `_x0089_`), choix
   automatique de la feuille qui contient les opérations. Colonnes Revolut :
   `Produit` (Valeur actuelle / Épargne = Pockets / Dépôt = compte d'épargne),
-  `Frais` (opération de frais séparée), `État` (lignes « RENVOYÉ » ignorées).
+  `Frais` (opération de frais séparée, y compris sur une ligne à 0 € comme
+  le forfait Metal), `État` (lignes « RENVOYÉ » ignorées).
   L'ancien format `.xls` n'est pas lu : message pour l'enregistrer en `.xlsx`.
 - Période analysée (3, 6, 12 mois ou tout l'historique), proposée dès que
   l'historique dépasse 4 mois ; 12 derniers mois par défaut au-delà d'un an.
