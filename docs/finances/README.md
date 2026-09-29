@@ -17,8 +17,14 @@ Cinq onglets dans un dock en bas de l'écran, pensés pour le téléphone :
 - **Accueil** : le mois choisi (pastilles des 12 derniers mois). Bloc « Reste
   à vivre » = revenus nets du mois − dépenses du mois, avec le détail de
   chaque revenu déclaré (reçu, « attendu » si son jour habituel n'est pas
-  encore passé, « pas reçu ce mois-ci », ou ramené à un versement quand il
-  tombe deux fois). Puis, seulement quand il y a quelque chose à dire :
+  encore passé, « pas reçu pour ce mois », ou ramené à un versement quand il
+  tombe deux fois). Un revenu versé en fin de mois (salaire du 28 au 31)
+  compte pour le mois suivant, celui qu'il sert à vivre : chaque versement
+  est rattaché au mois qui commence dans les 7 jours. Le compte ne pouvant
+  pas être à découvert, le reste à vivre ne descend jamais sous 0 € : un
+  dépassement est affiché à part, payé par les autres entrées du mois
+  (proches, remboursements, épargne) ou par l'argent déjà sur le compte.
+  Puis, seulement quand il y a quelque chose à dire :
   déclaration des revenus, alertes budgets, où part l'argent (niveaux et 5
   premières catégories), conseils principaux, questions sur les virements
   fréquents, prochains prélèvements, graphique mois par mois.
