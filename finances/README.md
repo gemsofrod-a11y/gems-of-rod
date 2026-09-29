@@ -116,9 +116,14 @@ téléchargé une fois puis gardé en cache par le service worker.
 
 ## Utilisation sur le téléphone
 
-1. Héberger le dossier `finances/` sur n'importe quel hébergement HTTPS
-   statique (GitHub Pages, Netlify…), ouvrir l'adresse dans Chrome sur Android
-   ou Safari sur iPhone, puis « Ajouter à l'écran d'accueil ».
+1. Adresse officielle : **https://gemsofrod-a11y.github.io/gems-of-rod/finances/**,
+   publiée par GitHub Pages (gratuit, sans crédits) à chaque fusion sur `main`
+   par `.github/workflows/budget-clair-pages.yml` (prérequis unique : Settings
+   > Pages > Source = « GitHub Actions »). Tout autre hébergement HTTPS
+   statique convient aussi. Ouvrir l'adresse dans Chrome sur Android ou Safari
+   sur iPhone, puis « Ajouter à l'écran d'accueil ». Les données sont gardées
+   par adresse : en changeant d'adresse, réimporter ses relevés et son fichier
+   de classement.
    Le service worker (`sw.js`) met l'appli en cache : elle s'ouvre ensuite
    sans connexion.
 2. Dans l'appli de la banque, exporter les opérations en CSV (le plus fiable)
