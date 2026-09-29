@@ -95,6 +95,18 @@
 .pf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
 .pf-grid label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); }
 .pf-grid input, .pf-grid select { font: 14px var(--body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; min-width: 0; }
+.flow-seg { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.flow-seg button { appearance: none; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 600 15px var(--body); cursor: pointer; text-align: left; }
+.flow-seg button small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.flow-seg .sg { font-size: 18px; line-height: 1; }
+.flow-seg button[data-flow="in"][aria-pressed="true"] { border-color: var(--good); background: color-mix(in srgb, var(--good) 12%, var(--surface)); }
+.flow-seg button[data-flow="out"][aria-pressed="true"] { border-color: var(--crit); background: color-mix(in srgb, var(--crit) 10%, var(--surface)); }
+.flow-seg button[data-flow="in"] .sg { color: var(--good); }
+.flow-seg button[data-flow="out"] .sg { color: var(--crit); }
+.flow-sum { display: flex; flex-direction: column; gap: 8px; }
+.flow-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.flow-chips .chip, .cat-head .chip { white-space: normal; max-width: 100%; }
+.cat-head .amt.pos { color: var(--good); }
 .now-box { padding: 12px 14px; border-radius: 10px; font-size: 14px; line-height: 1.5; color: var(--ink-2); background: color-mix(in srgb, var(--warn) 10%, var(--surface)); border: 1px solid color-mix(in srgb, var(--warn) 35%, var(--line)); }
 .pf-foot { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .btn.small { padding: 6px 10px; font-size: 12px; }
@@ -288,6 +300,7 @@ footer { font-size: 12px; color: var(--muted); display: flex; flex-direction: co
     <button class="tab" role="tab" id="tab-conseils" data-tab="conseils" aria-selected="false">Conseils</button>
     <button class="tab" role="tab" id="tab-budgets" data-tab="budgets" aria-selected="false">Budgets<span class="badge" id="budget-badge" hidden></span></button>
     <button class="tab" role="tab" id="tab-depenses" data-tab="depenses" aria-selected="false">Dépenses</button>
+    <button class="tab" role="tab" id="tab-flux" data-tab="flux" aria-selected="false">Entrées / Sorties</button>
     <button class="tab" role="tab" id="tab-profil" data-tab="profil" aria-selected="false">Mon budget</button>
     <button class="tab" role="tab" id="tab-abos" data-tab="abos" aria-selected="false">Abonnements</button>
     <button class="tab" role="tab" id="tab-operations" data-tab="operations" aria-selected="false">Opérations</button>
@@ -1147,7 +1160,7 @@ function vProfil(r) {
 /* ============================== Analyse ============================== */
 function analyse(txs, levels) {
   const lvl = id => levels[id] || CAT[id].level;
-  const res = { byCat: {}, byMonth: {}, byCatMonth: {}, income: 0, spend: 0, savings: 0, lv: { ess: 0, uti: 0, sup: 0 } };
+  const res = { byCat: {}, byMonth: {}, byCatMonth: {}, income: 0, spend: 0, savings: 0, lv: { ess: 0, uti: 0, sup: 0 }, txs };
   if (!txs.length) return res;
   const min = Math.min(...txs.map(t => t.date)), max = Math.max(...txs.map(t => t.date));
   res.days = Math.round((max - min) / 864e5) + 1;
@@ -1412,7 +1425,8 @@ const state = {
   budgets: store.get("budgets", {}), budgetMonth: null, profile: null,
   metas: store.get("metas", {}), histBefore: [], fileAcct: "", lastImport: null, infoNote: "", period: store.get("period", null),
   tx: [], file: null, sample: false, rows: null, headerIdx: -1, map: {}, invert: false,
-  search: "", showAll: false, openCat: null, catFilter: "", res: null
+  search: "", showAll: false, openCat: null, catFilter: "", signFilter: "", res: null,
+  flow: store.get("flow", "in"), openFlow: null
 };
 
 // Période analysée : mois complets jusqu'au dernier mois du relevé.
@@ -1618,7 +1632,7 @@ function render() {
   updateBadge();
   if (!state.tx.length) { view.innerHTML = `<div class="panel empty">Importez un relevé Excel, CSV ou PDF pour commencer, ou appuyez sur « Voir l'exemple ».</div>`; return; }
   const r = state.res;
-  view.innerHTML = ({ synthese: vSynthese, conseils: vConseils, budgets: vBudgets, profil: vProfil, depenses: vDepenses, abos: vAbos, operations: vOperations })[state.tab](r);
+  view.innerHTML = ({ synthese: vSynthese, conseils: vConseils, budgets: vBudgets, profil: vProfil, depenses: vDepenses, flux: vFlux, abos: vAbos, operations: vOperations })[state.tab](r);
   if (state.tab === "synthese") drawMonthly(r);
 }
 
@@ -1822,6 +1836,64 @@ function vDepenses(r) {
   </section>`;
 }
 
+// Entrées / Sorties : deux listes séparées, regroupées par nom (payeur ou bénéficiaire), avec ce que
+// l'appli fait de chaque ligne (revenu compté, autre entrée, remboursement, épargne…).
+function flowStatus(t) {
+  const c = CAT[t.cat] || CAT.autre, P = state.profile || PROFILE_DEFAULT;
+  if (t.amount > 0) {
+    if (c.kind === "internal") return { id: "internal", label: "Entre vos comptes", tone: "info" };
+    if (c.kind === "savings") return { id: "savings", label: "Retrait d'épargne", tone: "info" };
+    if (c.kind === "pro") return { id: "pro", label: "Activité pro", tone: "info" };
+    if (c.kind === "income") {
+      if (P.onlyDeclared && P.incomes.length && !t.pf && t.cat !== "interets") return { id: "other", label: "Autre entrée, non comptée en revenu", tone: "warn" };
+      return t.cat === "interets" ? { id: "interest", label: "Intérêts", tone: "good" } : { id: "income", label: "Revenu compté", tone: "good" };
+    }
+    return { id: "refund", label: `Remboursement · ${c.name}`, tone: "info" };
+  }
+  if (c.kind === "internal") return { id: "internal", label: "Entre vos comptes", tone: "info" };
+  if (c.kind === "savings") return { id: "savings", label: "Mis de côté", tone: "good" };
+  if (c.kind === "pro") return { id: "pro", label: "Activité pro", tone: "info" };
+  const l = state.levels[t.cat] || c.level;
+  return { id: l, label: c.name, tone: l === "ess" ? "good" : l === "uti" ? "info" : "warn", level: l };
+}
+function vFlux(r) {
+  const txs = r.txs || [], mo = r.months || 1, dir = state.flow === "out" ? "out" : "in";
+  const pick = t => (dir === "in" ? t.amount > 0 : t.amount < 0);
+  const all = { in: 0, out: 0 }; for (const t of txs) all[t.amount > 0 ? "in" : "out"] += Math.abs(t.amount);
+  const groups = {}, byStatus = {};
+  for (const t of txs) {
+    if (!pick(t)) continue;
+    const st = flowStatus(t), k = t.key + "|" + st.id + "|" + t.cat, v = Math.abs(t.amount);
+    const g = groups[k] || (groups[k] = { k, key: t.key, st, total: 0, tx: [] });
+    g.total += v; g.tx.push(t);
+    const S = byStatus[st.level ? "lv-" + st.level : st.id] || (byStatus[st.level ? "lv-" + st.level : st.id] = { label: st.level ? LEVELS[st.level].label : st.label.split(" · ")[0], tone: st.tone, total: 0 });
+    S.total += v;
+  }
+  const list = Object.values(groups).sort((a, b) => b.total - a.total);
+  const tot = dir === "in" ? all.in : all.out;
+  const seg = `<div class="flow-seg" role="group" aria-label="Choisir la liste">
+      <button type="button" data-flow="in" aria-pressed="${dir === "in"}"><span class="sg">+</span> Entrées<small class="num">${eur.format(all.in / mo)} / mois</small></button>
+      <button type="button" data-flow="out" aria-pressed="${dir === "out"}"><span class="sg">−</span> Sorties<small class="num">${eur.format(all.out / mo)} / mois</small></button>
+    </div>`;
+  if (!txs.length) return `<section class="panel empty">Importez un relevé pour voir vos entrées et vos sorties.</section>`;
+  return `<section class="panel" aria-labelledby="h-flux">
+    <div><span class="eyebrow">Du ${r.from.toLocaleDateString("fr-FR")} au ${r.to.toLocaleDateString("fr-FR")}</span><h2 id="h-flux">${dir === "in" ? "Tout l'argent qui entre" : "Tout l'argent qui sort"}</h2></div>
+    ${seg}
+    <p class="small muted">${dir === "in"
+      ? "Toutes les entrées d'argent du relevé, regroupées par payeur. Seuls les « Revenus comptés » entrent dans vos revenus ; les autres (virements de proches, remboursements, retraits d'épargne) sont listés pour que rien ne manque. Changez la catégorie d'une opération pour corriger."
+      : "Toutes les sorties d'argent du relevé, regroupées par bénéficiaire ou commerçant, de la plus grosse à la plus petite. Les virements vers votre épargne et entre vos comptes ne sont pas des dépenses."}</p>
+    <div class="flow-sum"><div class="kpi"><span class="v num">${dir === "in" ? "+" : "−"}${eur.format(tot)}</span><span class="l">sur la période, soit ${eur.format(tot / mo)} par mois</span></div>
+      <div class="flow-chips">${Object.values(byStatus).filter(S => S.total / mo >= 0.01).sort((a, b) => b.total - a.total).map(S => `<span class="chip ${S.tone}">${esc(S.label)} : ${(S.total / mo < 10 ? eur2 : eur).format(S.total / mo)} / mois</span>`).join("")}</div></div>
+    <div class="cat-list">${list.map(g => {
+      const open = state.openFlow === g.k;
+      return `<div class="cat">
+        <div class="cat-head" data-flow-open="${esc(g.k)}" role="button" tabindex="0" aria-expanded="${open}"><span class="name">${esc(g.key.toLowerCase())}</span><span class="amt ${dir === "in" ? "pos" : ""}">${dir === "in" ? "+" : "−"}${eur.format(g.total)}</span><span class="sub">${g.tx.length} op. · ${eur.format(g.total / mo)} / mois · dernière le ${new Date(Math.max(...g.tx.map(t => t.date))).toLocaleDateString("fr-FR")}</span><span class="sub"><span class="chip ${g.st.tone}">${esc(g.st.label)}</span></span></div>
+        ${open ? `<div class="tx-list">${g.tx.slice(0, 80).map(txRow).join("")}</div>` : ""}
+      </div>`;
+    }).join("") || `<p class="muted">Aucune ${dir === "in" ? "entrée" : "sortie"} sur la période.</p>`}</div>
+  </section>`;
+}
+
 function vAbos(r) {
   const rec = r.recurring;
   const tot = rec.reduce((a, s) => a + s.perMonth, 0);
@@ -1841,13 +1913,13 @@ function txRow(t) {
 
 function vOperations() {
   const q = norm(state.search);
-  let list = state.tx.filter(t => (!q || norm(t.label).includes(q)) && (!state.catFilter || t.cat === state.catFilter));
+  let list = state.tx.filter(t => (!q || norm(t.label).includes(q)) && (!state.catFilter || t.cat === state.catFilter) && (!state.signFilter || (state.signFilter === "in" ? t.amount > 0 : t.amount < 0)));
   const n = list.length; if (!state.showAll) list = list.slice(0, 150);
   const used = [...new Set(state.tx.map(t => t.cat))].map(id => CAT[id]).sort((a, b) => a.name.localeCompare(b.name, "fr"));
   return `<section class="panel">
     <div><span class="eyebrow">${n} opération${n > 1 ? "s" : ""}</span><h2>Toutes les opérations</h2></div>
     <p class="small muted">Si une opération est mal classée, changez sa catégorie : toutes les opérations du même commerçant suivent, et l'appli s'en souvient pour vos prochains relevés.</p>
-    <div class="toolbar"><input type="search" id="search" placeholder="Rechercher un libellé" value="${esc(state.search)}" aria-label="Rechercher"><select id="cat-filter" aria-label="Filtrer par catégorie"><option value="">Toutes catégories</option>${used.map(c => `<option value="${c.id}"${state.catFilter === c.id ? " selected" : ""}>${c.name}</option>`).join("")}</select></div>
+    <div class="toolbar"><input type="search" id="search" placeholder="Rechercher un libellé" value="${esc(state.search)}" aria-label="Rechercher"><select id="sign-filter" aria-label="Entrées ou sorties"><option value="">Entrées et sorties</option><option value="in"${state.signFilter === "in" ? " selected" : ""}>+ Entrées</option><option value="out"${state.signFilter === "out" ? " selected" : ""}>− Sorties</option></select><select id="cat-filter" aria-label="Filtrer par catégorie"><option value="">Toutes catégories</option>${used.map(c => `<option value="${c.id}"${state.catFilter === c.id ? " selected" : ""}>${c.name}</option>`).join("")}</select></div>
     <div class="tx-list">${list.map(txRow).join("") || `<p class="muted">Aucune opération ne correspond.</p>`}</div>
     ${!state.showAll && n > 150 ? `<button class="btn" type="button" id="show-all">Afficher les ${n - 150} suivantes</button>` : ""}
   </section>`;
@@ -1912,6 +1984,10 @@ $("#period").addEventListener("change", e => { state.period = e.target.value; st
 document.querySelectorAll(".tab").forEach(b => b.addEventListener("click", () => { state.tab = b.dataset.tab; store.set("tab", state.tab); render(); }));
 view.addEventListener("click", e => {
   const g = e.target.closest("[data-goto]"); if (g) { state.tab = g.dataset.goto; render(); window.scrollTo({ top: $("nav.tabs").offsetTop - 8 }); return; }
+  const fb = e.target.closest("[data-flow]");
+  if (fb) { state.flow = fb.dataset.flow; state.openFlow = null; store.set("flow", state.flow); render(); return; }
+  const fo = e.target.closest("[data-flow-open]");
+  if (fo) { state.openFlow = state.openFlow === fo.dataset.flowOpen ? null : fo.dataset.flowOpen; render(); return; }
   const lb = e.target.closest(".lvl-seg button");
   if (lb) { state.levels[lb.dataset.cat] = lb.dataset.l; store.set("levels", state.levels); recompute(); return; }
   const o = e.target.closest("[data-open]");
@@ -1930,11 +2006,12 @@ view.addEventListener("click", e => {
   if (e.target.id === "clear-yes") { state.budgets = {}; store.set("budgets", state.budgets); render(); }
   if (e.target.id === "clear-no") render();
 });
-view.addEventListener("keydown", e => { if ((e.key === "Enter" || e.key === " ") && e.target.matches("[data-open]")) { e.preventDefault(); e.target.click(); } });
+view.addEventListener("keydown", e => { if ((e.key === "Enter" || e.key === " ") && e.target.matches("[data-open], [data-flow-open]")) { e.preventDefault(); e.target.click(); } });
 view.addEventListener("change", e => {
   const s = e.target;
   if (s.dataset.key) { state.overrides[s.dataset.key] = s.value; store.set("overrides", state.overrides); recompute(); }
   if (s.id === "cat-filter") { state.catFilter = s.value; render(); }
+  if (s.id === "sign-filter") { state.signFilter = s.value; state.showAll = false; render(); }
   if (s.id === "budget-month") { state.budgetMonth = s.value; render(); }
   if (s.dataset.pf || s.id === "pf-only" || s.id === "pf-savings") {
     if (s.id === "pf-only") state.profile.onlyDeclared = s.checked;
