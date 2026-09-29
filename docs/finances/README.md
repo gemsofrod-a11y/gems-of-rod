@@ -38,6 +38,11 @@ Cinq onglets dans un dock en bas de l'écran, pensés pour le téléphone :
 - **Mon budget** : revenus, charges fixes, crédits, puis relevés et réglages
   (import, exemple, colonnes, période, effacement).
 
+Tous les montants s'affichent et se saisissent au centime près (ex. 120,74 €),
+sans arrondi, pour se retrouver tels quels dans le relevé. Une charge ou un
+crédit introuvable dans le relevé propose le bénéficiaire qui revient le plus
+souvent avec un montant proche de la mensualité (ex. « Repayment »).
+
 Sans relevé, l'accueil explique la marche à suivre ; l'exemple fictif n'est
 chargé qu'à la demande.
 

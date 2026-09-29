@@ -373,7 +373,8 @@ const BANK_CAT_MAP = [
 
 /* ============================== Utilitaires ============================== */
 const $ = s => document.querySelector(s);
-const eur = new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+// Montants toujours au centime près, comme sur le relevé : rien n'est arrondi à l'affichage.
+const eur = new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR", minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const eur2 = new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR", minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const pct = v => (isFinite(v) ? Math.round(v * 100) : 0) + " %";
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -1069,7 +1070,7 @@ function placementPlan(r) {
   const inc = N.inc, spend = N.spend, surplus = inc - spend, ess = r.lv.ess / mo;
   const out = [];
   const step = (tone, title, html) => out.push({ tone, title, html });
-  const cushionLow = Math.round(ess * 3 / 100) * 100, cushionHigh = Math.round(ess * 6 / 100) * 100;
+  const cushionLow = Math.round(ess * 300) / 100, cushionHigh = Math.round(ess * 600) / 100;
   const now = P.savingsNow;
   // Crédits : ce qu'il reste et l'argent libéré ensuite
   const today = r.to;
@@ -1095,7 +1096,7 @@ function placementPlan(r) {
   } else step("good", "1. Épargne de précaution en place", `Vous avez ${eur.format(now)}, pour un objectif de ${eur.format(cushionLow)} à ${eur.format(cushionHigh)}. Gardez-la sur des livrets disponibles : ${livrets}.`);
   // 2. Long terme
   const reached = now != null && now >= cushionLow;
-  step(reached ? "info" : "good", reached ? "2. Investir pour le long terme (5 ans et plus)" : "2. Ensuite : investir pour le long terme (5 ans et plus)", `Une fois la précaution en place, l'argent dont vous n'aurez pas besoin avant plusieurs années peut viser plus que les livrets, en acceptant des variations : <b>PEA</b> avec un fonds indiciel (ETF) « monde » diversifié, alimenté chaque mois du même montant pour lisser les hausses et les baisses ; après 5 ans, seuls les prélèvements sociaux (${fmtPct(RATES.psPea)}) s'appliquent aux gains. <b>Assurance-vie</b> (fonds en euros garanti et unités de compte) : après 8 ans, abattement annuel de 4 600 € sur les gains retirés (9 200 € pour un couple). Exemple avec votre surplus de ${eur.format(surplus)} : une fois la précaution atteinte, ${eur.format(Math.round(surplus * 0.5 / 10) * 10)} par mois sur un PEA et ${eur.format(Math.round(surplus * 0.3 / 10) * 10)} sur une assurance-vie, le reste en livret pour les projets proches.`);
+  step(reached ? "info" : "good", reached ? "2. Investir pour le long terme (5 ans et plus)" : "2. Ensuite : investir pour le long terme (5 ans et plus)", `Une fois la précaution en place, l'argent dont vous n'aurez pas besoin avant plusieurs années peut viser plus que les livrets, en acceptant des variations : <b>PEA</b> avec un fonds indiciel (ETF) « monde » diversifié, alimenté chaque mois du même montant pour lisser les hausses et les baisses ; après 5 ans, seuls les prélèvements sociaux (${fmtPct(RATES.psPea)}) s'appliquent aux gains. <b>Assurance-vie</b> (fonds en euros garanti et unités de compte) : après 8 ans, abattement annuel de 4 600 € sur les gains retirés (9 200 € pour un couple). Exemple avec votre surplus de ${eur.format(surplus)} : une fois la précaution atteinte, ${eur.format(surplus * 0.5)} par mois sur un PEA et ${eur.format(surplus * 0.3)} sur une assurance-vie, le reste en livret pour les projets proches.`);
   // 3. Placements risqués repérés dans le relevé
   const risky = [...new Set(state.tx.filter(t => /\b(ETORO|AVATRADE|KUCOIN|BINANCE|COINBASE|KRAKEN|BITPANDA|CRYPTO|DIGITAL ASSETS|PLUS500|XTB|IG MARKETS)\b/.test(norm(t.label))).map(t => t.key.toLowerCase()))];
   if (risky.length) step("warn", "Trading et crypto : prudence", `Votre relevé contient des opérations vers ${risky.slice(0, 4).map(esc).join(", ")}. Les CFD et le trading à effet de levier font perdre de l'argent à la majorité des particuliers (les courtiers doivent afficher ce pourcentage), et les cryptomonnaies peuvent perdre une grande partie de leur valeur en peu de temps. Si vous y tenez, limitez-les à une petite part de votre épargne, jamais à l'épargne de précaution.`);
@@ -1496,13 +1497,13 @@ const budgetAlerts = (r, month) => budgetRows(r, month).filter(b => b.tone !== "
 
 function budgetMonths(r) { return Object.keys(r.byMonth).sort().reverse(); }
 
-// Proposition : moyenne mensuelle arrondie aux 5 € supérieurs, et 20 % de moins pour les postes superflus.
+// Proposition : moyenne mensuelle au centime près, et 20 % de moins pour les postes superflus.
 function suggestBudgets(r) {
   const B = { ...activeBudgets() };
   for (const C of Object.values(r.byCat)) {
     if (C.total <= 0 || C.id === "autre" || B[C.id] > 0) continue;
     const base = C.monthly * (C.level === "sup" ? 0.8 : 1);
-    if (base >= 5) B[C.id] = Math.ceil(base / 5) * 5;
+    if (base >= 5) B[C.id] = Math.round(base * 100) / 100;
   }
   return B;
 }
@@ -1897,7 +1898,7 @@ function vBudgets(r) {
       <div class="bud-top"><b>${CAT[b.cat].name}</b><span class="chip ${b.tone}">${tag[b.tone]}</span></div>
       <div class="track"><span style="width:${Math.min(100, b.ratio * 100)}%;background:${fill[b.tone]}"></span></div>
       <div class="bud-bot"><span class="num"><b>${eur.format(b.spent)}</b> <span class="muted">· ${b.note}</span></span>
-        <label class="bud-in" for="budget-${b.cat}">sur <input id="budget-${b.cat}" data-budget="${b.cat}" type="number" inputmode="decimal" min="0" step="5" value="${b.budget}" aria-label="Budget mensuel ${esc(CAT[b.cat].name)}"> €</label></div>
+        <label class="bud-in" for="budget-${b.cat}">sur <input id="budget-${b.cat}" data-budget="${b.cat}" type="number" inputmode="decimal" min="0" step="0.01" value="${b.budget}" aria-label="Budget mensuel ${esc(CAT[b.cat].name)}"> €</label></div>
     </div>`;
   const rec = r.recurring, recTot = rec.reduce((a, s) => a + s.perMonth, 0);
   return `<div class="plain"><span class="eyebrow">Plafonds par mois</span><h2>${rows.length ? (alerts.length ? `${alerts.length} alerte${alerts.length > 1 ? "s" : ""} sur ${rows.length} budgets` : "Tous les budgets sont respectés") : "Aucun budget pour l'instant"}</h2></div>
@@ -1910,7 +1911,7 @@ function vBudgets(r) {
   </section>
   ${others.length ? `<details class="card" aria-labelledby="h-ob"${rows.length ? "" : " open"}><summary class="card-head"><div><span class="eyebrow">Sans plafond · ${others.length} catégories</span><h2 id="h-ob">Ajouter un plafond</h2></div><span class="chev">▼</span></summary>
     <div>${others.map(c => `<div class="bud"><div class="bud-top"><span>${lvDot(c.level)} <b>${CAT[c.id].name}</b></span><span class="small muted num">${eur.format(c.monthly)} / mois</span></div>
-      <div class="bud-bot"><span></span><label class="bud-in" for="budget-${c.id}">Plafond <input id="budget-${c.id}" data-budget="${c.id}" type="number" inputmode="decimal" min="0" step="5" placeholder="${Math.ceil(c.monthly / 5) * 5}" aria-label="Budget mensuel ${esc(CAT[c.id].name)}"> €</label></div></div>`).join("")}</div>
+      <div class="bud-bot"><span></span><label class="bud-in" for="budget-${c.id}">Plafond <input id="budget-${c.id}" data-budget="${c.id}" type="number" inputmode="decimal" min="0" step="0.01" placeholder="${(Math.round(c.monthly * 100) / 100).toFixed(2)}" aria-label="Budget mensuel ${esc(CAT[c.id].name)}"> €</label></div></div>`).join("")}</div>
   </details>` : ""}
   <section class="card" aria-labelledby="h-rec">
     <div class="card-head"><div><span class="eyebrow">Paiements qui reviennent</span><h2 id="h-rec">Abonnements et prélèvements</h2></div><span class="num" style="font-weight:700">${eur.format(recTot)} / mois</span></div>
@@ -1946,7 +1947,7 @@ function vConseils(r) {
     <div class="card-head"><div><span class="eyebrow">Épargne et placements</span><h2 id="h-plan">Où placer votre argent</h2></div></div>
     <div class="grid2">
       <div class="field">Surplus par mois<b class="num" style="font-size:22px;font-family:var(--display);color:${plan.surplus <= 0 ? "var(--crit)" : "var(--good)"}">${eur.format(Math.max(0, plan.surplus))}</b>${plan.surplus < 0 ? `<span>Dépenses au-dessus des revenus de ${eur.format(-plan.surplus)} par mois</span>` : ""}</div>
-      <label class="field" for="pf-savings">Épargne disponible aujourd'hui (€)<input id="pf-savings" type="number" inputmode="decimal" min="0" step="10" value="${P.savingsNow == null ? "" : P.savingsNow}" placeholder="0"></label>
+      <label class="field" for="pf-savings">Épargne disponible aujourd'hui (€)<input id="pf-savings" type="number" inputmode="decimal" min="0" step="0.01" value="${P.savingsNow == null ? "" : P.savingsNow}" placeholder="0"></label>
     </div>
     ${plan.out.map(a => adviceItem({ ...a, text: a.html, saving: 0 })).join("")}
     <p class="small muted">Informations générales calculées sur vos chiffres, pas un conseil personnalisé. Taux des livrets au ${RATES_DATE}, fiscalité 2026. Hors livrets, tout placement comporte un risque de perte.</p>
@@ -1955,18 +1956,30 @@ function vConseils(r) {
 }
 
 /* ------------------------------ Mon budget ------------------------------ */
+// Nom probable d'une charge ou d'un crédit introuvable : le bénéficiaire qui revient le plus souvent
+// avec un montant proche (à 3 % près) de la mensualité saisie.
+function nameGuess(x, sec) {
+  const target = sec === "credits" ? x.monthly : x.manual;
+  if (!(target > 0)) return null;
+  const g = {};
+  for (const t of state.tx) if (t.amount < 0 && Math.abs(-t.amount - target) <= target * 0.03) { const e = g[t.key] || (g[t.key] = { key: t.key, n: 0, sum: 0 }); e.n++; e.sum -= t.amount; }
+  const best = Object.values(g).filter(e => e.n >= 2).sort((a, b) => b.n - a.n)[0];
+  return best ? { key: best.key, n: best.n, amt: best.sum / best.n } : null;
+}
+
 function vProfil(r) {
   const P = state.profile, mo = r.months || 1;
   const det = (r.pf && r.pf.detected) || {}, man = (r.pf && r.pf.manual) || {}, last = (r.pf && r.pf.last) || {};
   const catOpts = sel => CATS.filter(c => !c.kind && c.id !== "autre").map(c => `<option value="${c.id}"${c.id === sel ? " selected" : ""}>${c.name}</option>`).join("");
   const stale = x => !x.end && last[x.id] && r.to - last[x.id] > 40 * 864e5;
   const input = (sec, i, f, v, ph, type = "text", extra = "") => `<input id="pf-${sec}-${i}-${f}" data-pf="${sec}|${i}|${f}" type="${type}" value="${v == null ? "" : esc(v)}" placeholder="${ph}"${extra}>`;
-  const num = ' inputmode="decimal" min="0" step="1"';
+  const num = ' inputmode="decimal" min="0" step="0.01"';
   const row = (sec, x, i) => {
     const nowInc = sec === "incomes" ? incomeNow(x, r.pf) : null;
     const amount = sec === "credits" ? x.monthly : nowInc ? nowInc.v : (det[x.id] || man[x.id] ? ((det[x.id] || 0) + (man[x.id] || 0)) / mo : x.manual);
     const chips = [
       det[x.id] ? `<span class="chip good">✓ trouvé dans le relevé</span>` : x.match ? `<span class="chip warn">pas trouvé dans le relevé</span>` : "",
+      !det[x.id] && sec !== "incomes" ? (g => g ? `<button class="btn small soft" type="button" data-pf-match="${sec}|${i}|${esc(g.key)}">Utiliser « ${esc(niceName(g.key))} » (${g.n} paiements de ${eur.format(g.amt)} environ)</button>` : "")(nameGuess(x, sec)) : "",
       x.end ? `<span class="chip info">${isEnded(x) ? "terminé" : "jusqu'en"} ${monthName(x.end)}</span>` : "",
       stale(x) ? `<span class="chip warn">plus vu depuis le ${new Date(last[x.id]).toLocaleDateString("fr-FR")}</span><button class="btn small" type="button" data-pf-end="${sec}|${i}|${monthKey(new Date(last[x.id]))}">C'est terminé</button>` : ""
     ].join("");
@@ -1974,7 +1987,7 @@ function vProfil(r) {
       <div class="pf-top"><span class="t">${esc(x.label || "Sans nom")}</span><b class="num" style="white-space:nowrap">${amount ? (nowInc ? eur2.format(amount) : eur.format(amount) + " / mois") : ""}</b></div>
       ${nowInc && !x.manual ? `<span class="small muted">Dernier montant net reçu${nowInc.month ? " (" + monthName(nowInc.month) + ")" : ""}</span>` : ""}
       ${chips ? `<div class="row">${chips}</div>` : ""}
-      <details${x.label ? "" : " open"}><summary>Modifier</summary><div class="grid2">
+      <details${x.label && !(state.pfOpen || {})[sec + "|" + i] ? "" : " open"}><summary>Modifier</summary><div class="grid2">
         <label class="field" for="pf-${sec}-${i}-label">Intitulé${input(sec, i, "label", x.label, sec === "incomes" ? "Salaire, CAF…" : sec === "credits" ? "Crédit auto…" : "Loyer, électricité…")}</label>
         <label class="field" for="pf-${sec}-${i}-match">Nom dans le relevé${input(sec, i, "match", x.match, "ex. le nom de l'employeur")}</label>
         ${sec === "credits"
@@ -2083,6 +2096,7 @@ view.addEventListener("click", e => {
     state.profile[sec].push(sec === "charges" ? { id: newId(), label: "", match: "", manual: null, end: "", cat: "foyer" } : sec === "credits" ? { id: newId(), label: "", match: "", monthly: null, end: "" } : { id: newId(), label: "", match: "", manual: null, end: "" });
     saveProfile(); return keepScroll(recompute);
   }
+  if ((el = q("[data-pf-match]"))) { const [sec, i, k] = el.dataset.pfMatch.split("|"); state.profile[sec][+i].match = k; saveProfile(); return keepScroll(recompute); }
   if ((el = q("[data-pf-end]"))) { const [sec, i, k] = el.dataset.pfEnd.split("|"); state.profile[sec][+i].end = k; saveProfile(); return keepScroll(recompute); }
   if ((el = q("[data-pf-del]"))) { const [sec, i] = el.dataset.pfDel.split("|"); state.profile[sec].splice(+i, 1); saveProfile(); return keepScroll(recompute); }
   if ((el = q("[data-income-add]"))) { state.incSetupOpen = true; addIncome(el.dataset.incomeAdd); return keepScroll(recompute); }
@@ -2113,6 +2127,7 @@ view.addEventListener("change", e => {
     else if (s.id === "pf-savings") { const v = parseAmount(s.value); state.profile.savingsNow = isNaN(v) ? null : Math.abs(v); }
     else {
       const [sec, i, f] = s.dataset.pf.split("|"), row = state.profile[sec][+i];
+      (state.pfOpen || (state.pfOpen = {}))[sec + "|" + i] = true; // le volet « Modifier » reste ouvert pendant la saisie
       if (["manual", "monthly"].includes(f)) { const v = parseAmount(s.value); row[f] = isNaN(v) ? null : Math.abs(v); }
       else row[f] = s.value.trim();
     }
