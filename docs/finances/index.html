@@ -2097,32 +2097,41 @@ function nameGuess(x, sec) {
 
 function vProfil(r) {
   const P = state.profile, mo = r.months || 1;
-  const det = (r.pf && r.pf.detected) || {}, man = (r.pf && r.pf.manual) || {}, last = (r.pf && r.pf.last) || {};
+  const det = (r.pf && r.pf.detected) || {}, man = (r.pf && r.pf.manual) || {}, last = (r.pf && r.pf.last) || {}, byMonth = (r.pf && r.pf.byMonth) || {};
   const catOpts = sel => CATS.filter(c => !c.kind && c.id !== "autre").map(c => `<option value="${c.id}"${c.id === sel ? " selected" : ""}>${c.name}</option>`).join("");
   const stale = x => !x.end && last[x.id] && r.to - last[x.id] > 40 * 864e5;
   const input = (sec, i, f, v, ph, type = "text", extra = "") => `<input id="pf-${sec}-${i}-${f}" data-pf="${sec}|${i}|${f}" type="${type}" value="${v == null ? "" : esc(v)}" placeholder="${ph}"${extra}>`;
   const num = ' inputmode="decimal" min="0" step="0.01"';
   const row = (sec, x, i) => {
     const nowInc = sec === "incomes" ? incomeNow(x, r.pf) : null;
-    const amount = sec === "credits" ? x.monthly : nowInc ? nowInc.v : (det[x.id] || man[x.id] ? ((det[x.id] || 0) + (man[x.id] || 0)) / mo : x.manual);
+    // Charge trouvée dans le relevé : le montant d'un mois où elle est payée (médiane), pas la moyenne
+    // sur toute la période, qui est tirée vers le bas quand la charge a commencé en cours de route.
+    const paid = sec === "charges" && !(x.manual > 0) && byMonth[x.id] ? Object.values(byMonth[x.id]) : null;
+    const amount = sec === "credits" ? x.monthly : nowInc ? nowInc.v : paid && paid.length ? median(paid) : (det[x.id] || man[x.id] ? ((det[x.id] || 0) + (man[x.id] || 0)) / mo : x.manual);
+    const key = sec + "|" + i, open = !x.label || (state.pfOpen || {})[key];
+    // Payée à nouveau après le « dernier mois » indiqué : la ligne n'est sans doute pas terminée.
+    const again = x.end && last[x.id] && monthKey(new Date(last[x.id])) > x.end;
     const chips = [
       det[x.id] ? `<span class="chip good">✓ trouvé dans le relevé</span>` : x.match ? `<span class="chip warn">pas trouvé dans le relevé</span>` : "",
       !det[x.id] && sec !== "incomes" ? (g => g ? `<button class="btn small soft" type="button" data-pf-match="${sec}|${i}|${esc(g.key)}">Utiliser « ${esc(niceName(g.key))} » (${g.n} paiements de ${eur.format(g.amt)} environ)</button>` : "")(nameGuess(x, sec)) : "",
       x.end ? `<span class="chip info">${isEnded(x) ? "terminé" : "jusqu'en"} ${monthName(x.end)}</span>` : "",
+      again ? `<span class="chip warn">payé à nouveau le ${new Date(last[x.id]).toLocaleDateString("fr-FR")}</span>` : "",
+      x.end && (isEnded(x) || again) ? `<button class="btn small" type="button" data-pf-end="${sec}|${i}|">Toujours en cours</button>` : "",
+      state.pfSaved === key ? `<span class="chip good">✓ enregistré</span>` : "",
       stale(x) ? `<span class="chip warn">plus vu depuis le ${new Date(last[x.id]).toLocaleDateString("fr-FR")}</span><button class="btn small" type="button" data-pf-end="${sec}|${i}|${monthKey(new Date(last[x.id]))}">C'est terminé</button>` : ""
     ].join("");
     return `<div class="pf">
       <div class="pf-top"><span class="t">${esc(x.label || "Sans nom")}</span><b class="num" style="white-space:nowrap">${amount ? (nowInc ? eur2.format(amount) : eur.format(amount) + " / mois") : ""}</b></div>
       ${nowInc && !x.manual ? `<span class="small muted">Dernier montant net reçu${nowInc.month ? " (" + monthName(nowInc.month) + ")" : ""}</span>` : ""}
       ${chips ? `<div class="row">${chips}</div>` : ""}
-      <details${x.label && !(state.pfOpen || {})[sec + "|" + i] ? "" : " open"}><summary>Modifier</summary><div class="grid2">
+      <details${open ? " open" : ""}><summary>Modifier</summary><div class="grid2">
         <label class="field" for="pf-${sec}-${i}-label">Intitulé${input(sec, i, "label", x.label, sec === "incomes" ? "Salaire, CAF…" : sec === "credits" ? "Crédit auto…" : "Loyer, électricité…")}</label>
         <label class="field" for="pf-${sec}-${i}-match">Nom dans le relevé${input(sec, i, "match", x.match, "ex. le nom de l'employeur")}</label>
         ${sec === "credits"
           ? `<label class="field" for="pf-${sec}-${i}-monthly">Mensualité (€)${input(sec, i, "monthly", x.monthly, "0", "number", num)}</label><label class="field" for="pf-${sec}-${i}-end">Dernière échéance${input(sec, i, "end", x.end, "", "month")}</label>`
           : `<label class="field" for="pf-${sec}-${i}-manual">Montant réel par mois (€)${input(sec, i, "manual", x.manual, "si différent du relevé", "number", num)}</label><label class="field" for="pf-${sec}-${i}-end">${sec === "incomes" ? "Dernier mois perçu" : "Dernier mois payé"}${input(sec, i, "end", x.end, "", "month")}</label>`}
         ${sec === "charges" ? `<label class="field" for="pf-${sec}-${i}-cat">Catégorie<select id="pf-${sec}-${i}-cat" data-pf="${sec}|${i}|cat">${catOpts(x.cat || "foyer")}</select></label>` : ""}
-      </div><div class="row" style="margin-top:10px"><button class="btn ghost small danger" type="button" data-pf-del="${sec}|${i}">Supprimer</button></div></details>
+      </div><div class="row" style="margin-top:10px"><button class="btn primary small" type="button" data-pf-ok="${sec}|${i}">Valider</button><button class="btn ghost small danger" type="button" data-pf-del="${sec}|${i}">Supprimer</button></div></details>
     </div>`;
   };
   const section = (sec, title, hint, addTxt) => `<section class="card" aria-labelledby="h-pf-${sec}">
@@ -2191,7 +2200,7 @@ function handleFile(f) {
   rd.readAsArrayBuffer(f);
 }
 const keepScroll = fn => { const y = window.scrollY; fn(); window.scrollTo({ top: y }); };
-function goTab(tab) { state.tab = tab; store.set("tab", tab); render(); window.scrollTo({ top: 0 }); }
+function goTab(tab) { state.pfSaved = null; state.tab = tab; store.set("tab", tab); render(); window.scrollTo({ top: 0 }); }
 
 $("#file").addEventListener("change", e => { const f = e.target.files[0]; if (!f) return; handleFile(f); e.target.value = ""; });
 $("#apply-map").addEventListener("click", () => {
@@ -2225,7 +2234,14 @@ view.addEventListener("click", e => {
     saveProfile(); return keepScroll(recompute);
   }
   if ((el = q("[data-pf-match]"))) { const [sec, i, k] = el.dataset.pfMatch.split("|"); state.profile[sec][+i].match = k; saveProfile(); return keepScroll(recompute); }
-  if ((el = q("[data-pf-end]"))) { const [sec, i, k] = el.dataset.pfEnd.split("|"); state.profile[sec][+i].end = k; saveProfile(); return keepScroll(recompute); }
+  if ((el = q("[data-pf-end]"))) { const [sec, i, k] = el.dataset.pfEnd.split("|"); state.profile[sec][+i].end = k; state.pfSaved = sec + "|" + i; saveProfile(); return keepScroll(recompute); }
+  // « Valider » : enregistre tous les champs du volet (même celui en cours de saisie), puis le referme.
+  if ((el = q("[data-pf-ok]"))) {
+    const key = el.dataset.pfOk;
+    el.closest("details").querySelectorAll("[data-pf]").forEach(setPfField);
+    if (state.pfOpen) delete state.pfOpen[key];
+    state.pfSaved = key; clearTimeout(pfTimer); saveProfile(); return keepScroll(recompute);
+  }
   if ((el = q("[data-pf-del]"))) { const [sec, i] = el.dataset.pfDel.split("|"); state.profile[sec].splice(+i, 1); saveProfile(); return keepScroll(recompute); }
   if ((el = q("[data-income-add]"))) { state.incSetupOpen = true; addIncome(el.dataset.incomeAdd); return keepScroll(recompute); }
   if ((el = q("[data-income-del]"))) { state.profile.incomes = state.profile.incomes.filter(x => norm(x.match) !== norm(el.dataset.incomeDel)); saveProfile(); return keepScroll(recompute); }
@@ -2244,6 +2260,13 @@ view.addEventListener("click", e => {
   if (q("[data-wipe-no]")) return keepScroll(render);
 });
 view.addEventListener("keydown", e => { if ((e.key === "Enter" || e.key === " ") && e.target.matches("[data-open-cat], [data-flow-open]")) { e.preventDefault(); e.target.click(); } });
+let pfTimer;
+function setPfField(s) {
+  const [sec, i, f] = s.dataset.pf.split("|"), row = state.profile[sec][+i];
+  if (!row) return;
+  if (["manual", "monthly"].includes(f)) { const v = parseAmount(s.value); row[f] = isNaN(v) ? null : Math.abs(v); }
+  else row[f] = s.value.trim();
+}
 view.addEventListener("change", e => {
   const s = e.target;
   if (s.dataset.key) { state.overrides[s.dataset.key] = s.value; store.set("overrides", state.overrides); return keepScroll(recompute); }
@@ -2253,13 +2276,10 @@ view.addEventListener("change", e => {
   if (s.dataset.pf || s.id === "pf-only" || s.id === "pf-savings") {
     if (s.id === "pf-only") state.profile.onlyDeclared = s.checked;
     else if (s.id === "pf-savings") { const v = parseAmount(s.value); state.profile.savingsNow = isNaN(v) ? null : Math.abs(v); }
-    else {
-      const [sec, i, f] = s.dataset.pf.split("|"), row = state.profile[sec][+i];
-      (state.pfOpen || (state.pfOpen = {}))[sec + "|" + i] = true; // le volet « Modifier » reste ouvert pendant la saisie
-      if (["manual", "monthly"].includes(f)) { const v = parseAmount(s.value); row[f] = isNaN(v) ? null : Math.abs(v); }
-      else row[f] = s.value.trim();
-    }
-    saveProfile(); return keepScroll(recompute);
+    else { setPfField(s); (state.pfOpen || (state.pfOpen = {}))[s.dataset.pf.split("|").slice(0, 2).join("|")] = true; } // le volet « Modifier » reste ouvert pendant la saisie
+    // Recalcul un instant plus tard : un appui sur « Valider » qui fait quitter le champ doit encore
+    // trouver son bouton avant que la page ne soit redessinée.
+    state.pfSaved = null; saveProfile(); clearTimeout(pfTimer); pfTimer = setTimeout(() => keepScroll(recompute), 300); return;
   }
   if (s.dataset.budget) { const v = parseAmount(s.value); setBudget(s.dataset.budget, isNaN(v) ? 0 : Math.abs(v)); return keepScroll(render); }
 });

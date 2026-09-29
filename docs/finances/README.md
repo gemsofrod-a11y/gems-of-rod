@@ -42,7 +42,12 @@ Cinq onglets dans un dock en bas de l'écran, pensés pour le téléphone :
 - **Conseils** : pistes d'économie, conseils Revolut, plan d'épargne et de
   placements.
 - **Mon budget** : revenus, charges fixes, crédits, puis relevés et réglages
-  (import, exemple, colonnes, période, effacement).
+  (import, exemple, colonnes, période, effacement). Chaque ligne a un volet
+  « Modifier » avec un bouton « Valider » (enregistre tous les champs, même
+  celui en cours de saisie, et referme le volet). Une charge trouvée dans le
+  relevé affiche le montant d'un mois où elle est payée (médiane), pas la
+  moyenne de la période. Une ligne terminée, ou payée à nouveau après son
+  « dernier mois », propose « Toujours en cours ».
 
 Tous les montants s'affichent et se saisissent au centime près (ex. 120,74 €),
 sans arrondi, pour se retrouver tels quels dans le relevé. Une charge ou un
