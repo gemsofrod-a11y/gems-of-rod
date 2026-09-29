@@ -75,6 +75,11 @@ téléchargé une fois puis gardé en cache par le service worker.
   assurance-vie), mise en garde trading/crypto. Taux dans `RATES` (au
   1er août 2026). Le profil peut aussi arriver par le fichier de classement
   (`"profile": {...}`), pour ne jamais écrire de nom réel dans le code.
+- Synthèse : quand des revenus sont déclarés dans « Mon budget », la case
+  Revenus affiche uniquement ces revenus (ex. salaire + CAF), en net tel que
+  reçu sur le compte le dernier mois ; elle avance à chaque nouveau relevé.
+  Un revenu terminé n'y figure plus ; un mois où un revenu tombe deux fois
+  est ramené à sa médiane. Sans revenu déclaré : moyenne de la période.
 - Onglet « Entrées / Sorties » : deux listes séparées (+ Entrées, − Sorties),
   regroupées par payeur ou bénéficiaire, avec total, moyenne par mois et ce
   que l'appli en fait (revenu compté, autre entrée non comptée,

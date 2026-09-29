@@ -1048,6 +1048,25 @@ function applyProfile(res, txs, lvl) {
 const isEnded = x => !!x.end && x.end < monthKey(new Date());
 // Mois type d'un revenu : le montant saisi, sinon la médiane (fonction commune plus haut) des mois où il est arrivé. Un salaire
 // versé en avance ou en retard (deux fois un mois, zéro le suivant) fausse la moyenne, pas la médiane.
+// Revenus nets du dernier mois : uniquement les revenus déclarés dans « Mon budget » (salaire, CAF…)
+// encore actifs, tels qu'ils arrivent sur le compte. Chaque nouveau relevé fait avancer le mois.
+// Un mois où un revenu tombe deux fois (versement en avance) est ramené à sa valeur habituelle.
+function refIncome(r) {
+  const P = state.profile, pf = r.pf; if (!P || !pf || !P.incomes.length) return null;
+  let month = "", total = 0; const parts = [];
+  for (const x of P.incomes) {
+    if (isEnded(x)) continue;
+    const bm = (pf.byMonth || {})[x.id] || {}, keys = Object.keys(bm).sort(), vals = keys.map(k => bm[k]);
+    if (!keys.length && !(x.manual > 0)) continue;
+    const k = keys[keys.length - 1] || "";
+    let v = x.manual > 0 ? x.manual : bm[k];
+    if (!(x.manual > 0) && vals.length >= 3 && v > 1.5 * median(vals)) v = median(vals);
+    if (k > month) month = k;
+    parts.push({ label: x.label || "Revenu", v }); total += v;
+  }
+  return parts.length ? { total, month, parts } : null;
+}
+
 function currentBudget(res) {
   const P = state.profile, mo = res.months, pf = res.pf || { detected: {}, manual: {}, byMonth: {} };
   const avg = x => ((pf.detected[x.id] || 0) + (pf.manual[x.id] || 0)) / mo;
@@ -1689,7 +1708,8 @@ function nowBox(r) {
 function vSynthese(r) {
   if (r.onlySavings) return savingsPanel(r, true);
   const ask = askPanel();
-  const mo = r.months, inc = r.income / mo, sp = r.spend / mo, left = inc - sp;
+  const ref = refIncome(r);
+  const mo = r.months, inc = ref ? ref.total : r.income / mo, sp = r.spend / mo, left = inc - sp;
   const rate = inc > 0 ? left / inc : NaN;
   const totalSaving = r.advice.reduce((a, x) => a + x.saving, 0);
   const lvTot = r.lv.ess + r.lv.uti + r.lv.sup || 1;
@@ -1703,11 +1723,12 @@ function vSynthese(r) {
   <section class="panel" aria-labelledby="h-syn">
     <div><span class="eyebrow">Moyenne par mois · du ${r.from.toLocaleDateString("fr-FR")} au ${r.to.toLocaleDateString("fr-FR")}</span><h2 id="h-syn">Où va votre argent</h2></div>
     <div class="kpis">
-      <div class="kpi"><span class="v">${eur.format(inc)}</span><span class="l">Revenus</span></div>
-      <div class="kpi"><span class="v">${eur.format(sp)}</span><span class="l">Dépenses</span></div>
+      <div class="kpi"><span class="v">${eur.format(inc)}</span><span class="l">${ref ? `Revenus nets${ref.month ? (/^[aeiouéh]/i.test(monthName(ref.month)) ? " d'" : " de ") + monthName(ref.month) : ""} (${ref.parts.map(p => esc(p.label)).join(" + ")})` : "Revenus"}</span></div>
+      <div class="kpi"><span class="v">${eur.format(sp)}</span><span class="l">Dépenses${ref ? " (moyenne par mois)" : ""}</span></div>
       <div class="kpi"><span class="v" style="color:${left < 0 ? "var(--crit)" : "var(--ink)"}">${left < 0 ? "−" : ""}${eur.format(Math.abs(left))}</span><span class="l">Reste en fin de mois</span></div>
       <div class="kpi"><span class="v">${eur.format(r.savings / mo)}</span><span class="l">Mis de côté (virements épargne)</span></div>
     </div>
+    ${ref ? `<p class="small muted">Revenus : ${ref.parts.map(p => `${esc(p.label)} ${eur2.format(p.v)}`).join(", ")}, montants nets reçus sur le compte le dernier mois (mis à jour à chaque nouveau relevé). Moyenne des revenus déclarés sur toute la période : ${eur.format(r.income / mo)} par mois.</p>` : ""}
     ${nowBox(r)}
     ${r.otherIn ? `<p class="small muted">Autres entrées d'argent, non comptées comme revenus (réglage dans « Mon budget ») : <b class="num">${eur.format(r.otherIn / mo)}</b> par mois.</p>` : ""}
     ${r.pro ? `<p class="small muted">Dépenses classées « Activité pro », hors analyse : <b class="num">${eur.format(r.pro / mo)}</b> par mois.</p>` : ""}
