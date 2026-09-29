@@ -368,7 +368,7 @@ de Sébastien sur la suite ; aucune n'est indispensable à l'usage actuel,
 ## Budget Clair — analyse de finances personnelles (usage personnel de Sébastien)
 
 Outil distinct du reste du dépôt, sans lien avec Gems of Rod : page web
-autonome `finances/index.html` (PWA installable, hors-ligne via `sw.js`) qui
+autonome `docs/finances/index.html` (PWA installable, hors-ligne via `sw.js`) qui
 analyse un export CSV de compte bancaire **personnel** et classe les dépenses
 en Essentiel / Utile / Superflu avec des pistes d'économie. Choix faits avec
 Sébastien le 28/09/2026 : **100 % local** (aucun appel à une IA ni à un
@@ -386,15 +386,18 @@ d'épargne, partage Android vers l'appli. Fichiers Excel `.xlsx` (export Revolut
 complet) lus par un lecteur intégré, sans bibliothèque externe. Les commerces
 locaux de Sébastien se classent par un fichier `.json` de classement qu'il
 importe dans l'appli (jamais dans le code : le dépôt est public). Conseils propres à Revolut (banque de
-Sébastien) : tarifs dans `REVOLUT_PLANS` (`finances/index.html`), relevés au
+Sébastien) : tarifs dans `REVOLUT_PLANS` (`docs/finances/index.html`), relevés au
 9 juillet 2026, à actualiser si Revolut change ses offres. Onglet « Mon
 budget » (revenus, charges fixes, crédits avec date de fin, plan de
 placements) : le profil réel de Sébastien (employeur, bénéficiaires) vit
 dans son navigateur et dans son fichier de classement, jamais dans le code ;
 taux des livrets dans `RATES` (au 1er août 2026). Revenus et charges avec « dernier mois » (fin de la CAF de
 Sébastien, 28/09/2026) : conseils et plan de placements partent d'« un mois type aujourd'hui », pas de la moyenne passée. Publiée depuis le 29/09/2026 sur GitHub Pages
-(`budget-clair-pages.yml`, https://gemsofrod-a11y.github.io/gems-of-rod/finances/)
-à la place de Netlify, dont les crédits gratuits étaient épuisés. Ne jamais versionner ni publier un
+(https://gemsofrod-a11y.github.io/gems-of-rod/finances/) à la place de Netlify,
+dont les crédits gratuits étaient épuisés : GitHub Pages sert le dossier `docs/`
+de `main` (où vit aussi la politique de confidentialité exigée par le Play Store,
+`docs/privacy-policy.html` — ne jamais remplacer ce mode de publication), d'où
+l'emplacement `docs/finances/`, publié automatiquement à chaque fusion. Ne jamais versionner ni publier un
 relevé réel de Sébastien (nom, adresse, opérations) : tester avec des PDF
 fabriqués. Voir
-`finances/README.md`.
+`docs/finances/README.md`.
