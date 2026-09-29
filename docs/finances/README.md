@@ -65,9 +65,8 @@ téléchargé une fois puis gardé en cache par le service worker.
   (ex. la CAF) reste dans l'historique mais ne compte plus dans « un mois type
   aujourd'hui » (Synthèse), les conseils ni le plan de placements. Une ligne
   qui n'apparaît plus depuis plus de 40 jours est signalée, avec un bouton
-  « C'est terminé ». Le mois type compte chaque revenu encore actif pour sa
-  médiane mensuelle (un salaire versé en avance ou en retard fausse la
-  moyenne, pas la médiane).
+  « C'est terminé ». Le mois type compte chaque revenu encore actif pour son
+  dernier montant net reçu (ramené à sa médiane si le mois l'a reçu deux fois).
   Crédits : mensualité et dernière échéance, avec reste à payer et argent
   libéré ensuite. Option « seules ces sources comptent comme revenus ».
   Plan « Où placer votre argent » : épargne de précaution (3 à 6 mois de
@@ -79,7 +78,10 @@ téléchargé une fois puis gardé en cache par le service worker.
   Revenus affiche uniquement ces revenus (ex. salaire + CAF), en net tel que
   reçu sur le compte le dernier mois ; elle avance à chaque nouveau relevé.
   Un revenu terminé n'y figure plus ; un mois où un revenu tombe deux fois
-  est ramené à sa médiane. Sans revenu déclaré : moyenne de la période.
+  est ramené à sa médiane. Sans revenu déclaré, la Synthèse propose les
+  entrées régulières du relevé avec un bouton « C'est un revenu » (le bouton
+  « Un revenu (salaire, aide…) » de « D'où vient cet argent ? » les déclare
+  aussi) ; en attendant, la case montre la moyenne de la période.
 - Onglet « Entrées / Sorties » : deux listes séparées (+ Entrées, − Sorties),
   regroupées par payeur ou bénéficiaire, avec total, moyenne par mois et ce
   que l'appli en fait (revenu compté, autre entrée non comptée,
