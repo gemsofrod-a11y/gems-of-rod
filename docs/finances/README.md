@@ -38,6 +38,19 @@ Cinq onglets dans un dock en bas de l'écran, pensés pour le téléphone :
 - **Mon budget** : revenus, charges fixes, crédits, puis relevés et réglages
   (import, exemple, colonnes, période, effacement).
 
+Tous les montants s'affichent et se saisissent au centime près (ex. 120,74 €),
+sans arrondi, pour se retrouver tels quels dans le relevé. Une charge ou un
+crédit introuvable dans le relevé propose le bénéficiaire qui revient le plus
+souvent avec un montant proche de la mensualité (ex. « Repayment »).
+
+Relevé PDF Revolut du compte courant : le libellé garde le nom du commerçant ou
+du bénéficiaire (comme l'export Excel) ; les lignes de détail (« À : … »,
+« Référence : … ») sont gardées à part, sans numéro de carte ni IBAN. Importer
+le PDF et l'export Excel d'une même période ne crée pas de doublon : une
+opération de l'autre format est reconnue au même montant, à 2 jours près, avec
+au moins un mot en commun. L'abonnement au forfait (Metal…) a son propre
+conseil et n'est plus compté dans les « frais bancaires évitables ».
+
 Sans relevé, l'accueil explique la marche à suivre ; l'exemple fictif n'est
 chargé qu'à la demande.
 
