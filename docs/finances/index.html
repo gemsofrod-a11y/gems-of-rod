@@ -576,20 +576,23 @@ function buildTransactions(rows, headerIdx, map, invert) {
       const st = low(r[map.state]);
       if (/revert|renvoy|declin|failed|annul|refus|pending|en attente|en cours/.test(st)) { skipped++; continue; }
     }
-    if (pm && date && !isNaN(amt)) plans.push({ plan: pm[1].toLowerCase(), date: date.getTime(), amount: Math.abs(amt) });
-    if (!date || isNaN(amt) || amt === 0) { skipped++; continue; }
+    // Frais facturés à part (colonne « Frais » de Revolut) : une opération de frais bancaires distincte.
+    // Le forfait Metal ou Premium arrive ainsi, sur une ligne à 0 € dont seuls les frais sont remplis.
+    const fee = map.fee != null ? parseAmount(r[map.fee]) : NaN, hasFee = !isNaN(fee) && fee !== 0;
+    if (pm && date && !isNaN(amt)) plans.push({ plan: pm[1].toLowerCase(), date: date.getTime(), amount: Math.abs(amt) || (hasFee ? Math.abs(fee) : 0) });
+    if (!date || isNaN(amt) || (amt === 0 && !hasFee)) { skipped++; continue; }
     if (invert) amt = -amt;
     const sp = splitLabel(r[map.label]);
     const label = [sp.label, map.detail != null ? r[map.detail] : ""].filter(Boolean).join(" · ") || "(sans libellé)";
+    const acct = map.product != null && /savings|epargne|épargne|livret|coffre|vault|d[ée]p[ôo]t|deposit/i.test(r[map.product] || "") ? "epargne" : "";
+    if (hasFee) out.push({ date: date.getTime(), amount: -Math.round(Math.abs(fee) * 100) / 100, label: amt === 0 ? label : "Frais · " + label, type: "", bankcat: "", src: state.fileSrc || "", acct, forceCat: "frais" });
+    if (amt === 0) continue;
     out.push({
       date: date.getTime(), amount: Math.round(amt * 100) / 100, label, detail: sp.detail, src: state.fileSrc || "",
       type: map.type != null ? (r[map.type] || "") : "",
       bankcat: map.bankcat != null ? (r[map.bankcat] || "") : "",
-      acct: map.product != null && /savings|epargne|épargne|livret|coffre|vault|d[ée]p[ôo]t|deposit/i.test(r[map.product] || "") ? "epargne" : ""
+      acct
     });
-    // Frais facturés à part (colonne « Frais » de Revolut) : une opération de frais bancaires distincte.
-    const fee = map.fee != null ? parseAmount(r[map.fee]) : NaN;
-    if (!isNaN(fee) && fee !== 0) out.push({ date: date.getTime(), amount: -Math.round(Math.abs(fee) * 100) / 100, label: "Frais · " + label, type: "", bankcat: "", acct: out[out.length - 1].acct, forceCat: "frais" });
   }
   out.sort((a, b) => b.date - a.date);
   return { tx: out, skipped, plans };
@@ -726,10 +729,21 @@ function pdfLinesToRows(lines) {
   }
   if (!ref) ref = new Date();
   lines = mergeBlocks(lines);
-  const rows = [["Date", "Libellé", "Montant"]];
-  let cols = null, guessed = 0, prevTx = null, headerSeen = false;
+  const rows = [["Date", "Libellé", "Montant", "Produit"]];
+  let cols = null, guessed = 0, prevTx = null, headerSeen = false, section = "", others = 0;
   const colOf = (t, c) => Math.min(Math.abs((t.x + t.r) / 2 - c.c), Math.abs(t.r - c.r));
   for (const L of lines) {
+    // Un relevé Revolut enchaîne plusieurs sections : le compte courant, le compte d'épargne
+    // (« Transactions de dépôt ») et le compte d'un proche rattaché (« compte appartenant à … »,
+    // compte d'un enfant par exemple). Ce dernier n'est pas le vôtre : ses opérations sont ignorées,
+    // l'argent que vous y envoyez compte déjà comme un virement depuis votre compte.
+    const head = norm(L.text);
+    if (/^TRANSACTIONS\b/.test(head)) {
+      section = /APPARTENANT A|BELONGING TO|OWNED BY/.test(head) ? "autre" : /\b(DEPOT|DEPOSIT|EPARGNE|SAVINGS)\b/.test(head) ? "Dépôt" : "";
+      prevTx = null; continue;
+    }
+    // Paiements renvoyés (annulés) ou encore en attente : jamais débités, donc pas des dépenses.
+    if (/^(RENVOYE|REVERTED|ANNULE|EN ATTENTE|PENDING)\b/.test(head) && !leadingDate(L.text)) { section = "annule"; prevTx = null; continue; }
     const lt = L.toks.map(t => low(t.s));
     const deb = L.toks.find((t, i) => /^(debit|debits|montant debit|sorties?|money out|paid out|retraits?|depenses?|argent sortant|sortant)\b/.test(lt[i]));
     const cre = L.toks.find((t, i) => /^(credit|credits|montant credit|entrees?|money in|paid in|versements?|recettes?|argent entrant|entrant)\b/.test(lt[i]));
@@ -774,10 +788,12 @@ function pdfLinesToRows(lines) {
     let y = dt.y;
     if (!y) { y = ref.getFullYear(); if (dt.m > ref.getMonth() + 1) y--; }
     const iso = `${y}-${String(dt.m).padStart(2, "0")}-${String(dt.d).padStart(2, "0")}`;
-    const row = [iso, label, (sign * Math.abs(v)).toFixed(2)];
+    if (section === "autre") { others++; prevTx = null; continue; }
+    if (section === "annule") { prevTx = null; continue; }
+    const row = [iso, label, (sign * Math.abs(v)).toFixed(2), section];
     rows.push(row); prevTx = { row, page: L.page, extra: 0, lastY: L.lastY, x0: L.toks[0].x };
   }
-  return { rows, headerSeen, guessed };
+  return { rows, headerSeen, guessed, others };
 }
 
 async function loadPdf(buf, name) {
@@ -790,12 +806,13 @@ async function loadPdf(buf, name) {
     return setStatus("Ce fichier PDF n'a pas pu être ouvert. Vérifiez qu'il n'est pas abîmé, ou utilisez l'export CSV de votre banque.", "crit");
   }
   if (res.chars < 40) return setStatus("Ce PDF ne contient pas de texte : c'est probablement un document scanné. Téléchargez le relevé directement depuis l'appli de la banque, ou utilisez l'export CSV.", "crit");
-  const { rows, headerSeen, guessed } = pdfLinesToRows(res.lines);
+  const { rows, headerSeen, guessed, others } = pdfLinesToRows(res.lines);
   if (rows.length < 2) return setStatus("Je n'ai pas trouvé de tableau d'opérations dans ce PDF (lignes qui commencent par une date et contiennent un montant). L'export CSV de votre banque sera plus fiable.", "crit");
-  const note = guessed ? `Colonnes Débit / Crédit non trouvées pour ${guessed} opération${guessed > 1 ? "s" : ""} : leur sens (dépense ou entrée) a été deviné d'après le libellé. Vérifiez dans l'onglet Opérations.` : (!headerSeen ? "Relevé PDF lu sans en-tête de colonnes : vérifiez quelques montants dans l'onglet Opérations." : "");
+  const note = [guessed ? `Colonnes Débit / Crédit non trouvées pour ${guessed} opération${guessed > 1 ? "s" : ""} : leur sens (dépense ou entrée) a été deviné d'après le libellé. Vérifiez dans l'onglet Opérations.` : (!headerSeen ? "Relevé PDF lu sans en-tête de colonnes : vérifiez quelques montants dans l'onglet Opérations." : ""),
+    others ? `${others} opération${others > 1 ? "s" : ""} du compte d'un proche rattaché à ce relevé ${others > 1 ? "ont été laissées" : "a été laissée"} de côté : ce n'est pas votre compte, l'argent que vous lui envoyez compte déjà comme un virement.` : ""].filter(Boolean).join(" ");
   const meta = pdfMeta(res.lines, name);
   if (meta.acct) { state.metas[name] = { ...meta, at: Date.now() }; store.set("metas", state.metas); }
-  Object.assign(state, { rows, headerIdx: 0, map: { date: 0, label: 1, amount: 2 }, file: name, fileSrc: "pdf", fileAcct: meta.acct, fileBank: /REVOLUT/.test(norm(res.lines.slice(0, 60).map(L => L.text).join(" "))) ? "revolut" : "", sample: false, invert: false, showAll: false, openCat: null, catFilter: "", pdfNote: note, infoNote: "", histBefore: store.get("history", []) });
+  Object.assign(state, { rows, headerIdx: 0, map: { date: 0, label: 1, amount: 2, product: 3 }, file: name, fileSrc: "pdf", fileAcct: meta.acct, fileBank: /REVOLUT/.test(norm(res.lines.slice(0, 60).map(L => L.text).join(" "))) ? "revolut" : "", sample: false, invert: false, showAll: false, openCat: null, catFilter: "", pdfNote: note, infoNote: "", histBefore: store.get("history", []) });
   applyMapping();
 }
 
@@ -1453,7 +1470,7 @@ function applyMapping() {
     setStatus("");
   } else {
     const all = state.tx, d = x => new Date(x).toLocaleDateString("fr-FR");
-    setStatus(`<b>${esc(state.file)}</b>${state.fileAcct === "epargne" ? " (compte d'épargne)" : ""} : ${tx.length} opération${tx.length > 1 ? "s" : ""} lue${tx.length > 1 ? "s" : ""}, <b>${merged.added} nouvelle${merged.added > 1 ? "s" : ""}</b>${merged.known ? `, ${merged.known} déjà connue${merged.known > 1 ? "s" : ""}` : ""}${skipped ? `, ${skipped} ligne${skipped > 1 ? "s" : ""} ignorée${skipped > 1 ? "s" : ""}` : ""}.<br>Historique : ${all.length} opérations du ${d(Math.min(...all.map(t => t.date)))} au ${d(Math.max(...all.map(t => t.date)))}.${state.pdfNote ? "<br>" + state.pdfNote : ""}${state.infoNote ? "<br>" + state.infoNote : ""}`, state.pdfNote ? "warn" : "");
+    setStatus(`<b>${esc(state.file)}</b>${state.fileAcct === "epargne" ? " (compte d'épargne)" : ""} : ${tx.length} opération${tx.length > 1 ? "s" : ""} lue${tx.length > 1 ? "s" : ""}, <b>${merged.added} nouvelle${merged.added > 1 ? "s" : ""}</b>${merged.known ? `, ${merged.known} déjà connue${merged.known > 1 ? "s" : ""}` : ""}${merged.removed ? `, ${merged.removed} ancienne${merged.removed > 1 ? "s" : ""} lecture${merged.removed > 1 ? "s" : ""} retirée${merged.removed > 1 ? "s" : ""}` : ""}${skipped ? `, ${skipped} ligne${skipped > 1 ? "s" : ""} ignorée${skipped > 1 ? "s" : ""}` : ""}.<br>Historique : ${all.length} opérations du ${d(Math.min(...all.map(t => t.date)))} au ${d(Math.max(...all.map(t => t.date)))}.${state.pdfNote ? "<br>" + state.pdfNote : ""}${state.infoNote ? "<br>" + state.infoNote : ""}`, state.pdfNote ? "warn" : "");
   }
   if (!state.sample) { store.set("history", state.tx); state.lastImport = { file: state.file, added: merged.added }; }
   recompute();
@@ -1464,31 +1481,53 @@ function applyMapping() {
 // on garde le plus grand nombre d'exemplaires vus dans un même relevé.
 function mergeHistory(hist, fresh) {
   const k = t => [t.date, t.amount.toFixed(2), t.acct === "epargne" ? (t.cat === "interets" || /INTERET|INTEREST/.test(norm(t.label)) ? "I" : "M") : norm(t.label), t.acct || ""].join("|");
+  // Un relevé PDF du compte courant réimporté remplace, sur sa période, les opérations du compte
+  // courant venues d'un PDF plus ancien : elles sont relues et recomparées à l'Excel, ce qui retire
+  // celles lues à tort par une version précédente (compte d'un proche, paiements renvoyés, doublons).
+  const dropped = {}; let nDropped = 0;
+  if (fresh.length && fresh[0].src === "pdf" && fresh[0].bank) {
+    const cur = fresh.filter(t => !t.acct), from = Math.min(...cur.map(t => t.date)), to = Math.max(...cur.map(t => t.date));
+    hist = hist.filter(t => {
+      if (t.src !== "pdf" || t.acct || t.bank !== fresh[0].bank || t.date < from || t.date > to) return true;
+      dropped[k(t)] = (dropped[k(t)] || 0) + 1; nDropped++; return false;
+    });
+  }
   const have = {};
   for (const t of hist) have[k(t)] = (have[k(t)] || 0) + 1;
   // Même opération vue dans un autre format (Excel, puis PDF de la même période) : la date peut différer
   // d'un jour (date de paiement ou de débit) et le libellé s'écrire autrement. On la reconnaît au même
-  // montant, à 2 jours près, avec au moins un mot en commun ; chaque opération déjà
+  // montant, à 4 jours près, avec au moins un mot en commun ; chaque opération déjà
   // connue ne sert qu'une fois.
   const words = t => new Set(norm(t.label + " " + (t.detail || "")).split(" ").filter(w => w.length >= 3 && !/^\d+$/.test(w)));
   const pool = {};
   // Le compte n'entre pas dans la comparaison : un relevé PDF du compte courant reprend aussi les
   // mouvements du compte d'épargne, que l'export Excel range à part.
   for (const t of hist) if ((t.src || "old") !== (fresh[0] && fresh[0].src || "")) (pool[t.amount.toFixed(2)] = pool[t.amount.toFixed(2)] || []).push(t);
+  // Un paiement par carte peut n'apparaître dans le PDF que 3 jours après sa date dans l'Excel. Parmi
+  // les candidats, on garde celui qui partage le plus de mots, puis le plus proche en date (un paiement
+  // TikTok réglé via PayPal ne doit pas prendre la place du paiement PayPal voisin du même montant).
   const sameOp = t => {
     const L = pool[t.amount.toFixed(2)]; if (!L) return false;
-    const w = words(t);
-    const i = L.findIndex(h => Math.abs(h.date - t.date) <= 2.5 * 864e5 && (w.size === 0 || [...words(h)].some(x => w.has(x))));
-    if (i < 0) return false;
-    L.splice(i, 1); return true;
+    const w = words(t), lw = words({ label: t.label });
+    let best = -1, bs = -1, bd = Infinity;
+    L.forEach((h, i) => {
+      const d = Math.abs(h.date - t.date); if (d > 4.5 * 864e5) return;
+      const hw = [...words(h)], s = hw.filter(x => w.has(x)).length; if (w.size && !s) return;
+      const sc = s + [...words({ label: h.label })].filter(x => lw.has(x)).length; // le nom du commerçant compte double
+      if (sc > bs || (sc === bs && d < bd)) { best = i; bs = sc; bd = d; }
+    });
+    if (best < 0) return false;
+    L.splice(best, 1); return true;
   };
   const seen = {}; let added = 0, known = 0; const out = hist.map(t => ({ ...t }));
   for (const t of fresh) {
     const key = k(t); seen[key] = (seen[key] || 0) + 1;
-    if (seen[key] <= (have[key] || 0) || sameOp(t)) known++; else { out.push(t); added++; }
+    if (seen[key] <= (have[key] || 0) || sameOp(t)) known++;
+    else if (dropped[key] > 0) { dropped[key]--; nDropped--; known++; out.push(t); } // déjà là avant : rien de neuf
+    else { out.push(t); added++; }
   }
   out.sort((a, b) => b.date - a.date);
-  return { tx: out, added, known };
+  return { tx: out, added, known, removed: nDropped };
 }
 
 function renderMapping() {
@@ -1628,11 +1667,18 @@ function cycleOf(C, date) {
 function monthView(r) {
   const C = payCycles(), P = state.profile, lvl = id => state.levels[id] || CAT[id].level;
   const M = {};
-  const get = k => M[k] || (M[k] = { key: k, ess: 0, uti: 0, sup: 0, cats: {}, inc: {}, other: 0, first: Infinity, last: 0 });
+  const get = k => M[k] || (M[k] = { key: k, ess: 0, uti: 0, sup: 0, cats: {}, inc: {}, other: 0, moved: 0, pro: 0, first: Infinity, last: 0 });
   for (const t of r.txs || []) {
+    // Le reste à vivre est celui du compte courant : l'autre côté des virements vers l'épargne
+    // (mouvements du compte d'épargne) ne compte pas.
+    if (t.acct === "epargne") continue;
     const c = CAT[t.cat] || CAT.autre, m = get(cycleOf(C, t.date));
     m.first = Math.min(m.first, t.date); m.last = Math.max(m.last, t.date);
-    if (c.kind === "internal" || c.kind === "pro" || c.kind === "savings") { if (t.amount > 0 && c.kind !== "pro") m.other += t.amount; continue; }
+    // Activité pro payée depuis le compte perso : hors budget, mais l'argent quitte bien le compte.
+    if (c.kind === "pro") { m.pro += t.amount; continue; }
+    // Argent mis de côté ou envoyé vers un autre de vos comptes : pas une dépense, mais il n'est plus
+    // disponible sur le compte ; ce qui en revient est une entrée.
+    if (c.kind === "internal" || c.kind === "savings") { if (t.amount > 0) m.other += t.amount; else m.moved -= t.amount; continue; }
     if (!C && (c.kind === "income" || (t.amount > 0 && t.pf))) { m.inc._all = (m.inc._all || 0) + t.amount; continue; }
     if (t.amount > 0 && t.pf) { m.inc[t.pf] = (m.inc[t.pf] || 0) + t.amount; continue; }
     if (c.kind === "income") { m.other += t.amount; continue; }
@@ -1683,19 +1729,22 @@ function vHome(r) {
   const k = state.month, m = view.M[k];
   // Le compte ne peut pas être à découvert : le reste à vivre ne descend pas sous 0. Un dépassement
   // a forcément été payé par d'autres entrées d'argent ou par ce qui restait sur le compte.
-  const inc = monthIncome(r, view, k), spent = m.spent, left = inc.total - spent;
+  // Reste à vivre = tout ce qui est entré sur le compte ce mois-ci (revenus, autres entrées, retraits
+  // d'épargne) moins tout ce qui en est sorti (dépenses, argent mis de côté ou viré vers vos comptes,
+  // activité pro réglée depuis ce compte).
+  const inc = monthIncome(r, view, k), spent = m.spent, left = inc.total + m.other - spent - m.moved + m.pro;
   const current = k === view.keys[0], ratio = inc.total > 0 ? spent / inc.total : 1;
   const span = view.C ? `du ${new Date(m.first).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" })} au ${new Date(m.last).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" })}` : (current && r.to.getDate() < daysInMonth(k) ? `au ${dayFmt(r.to)}` : "");
   const hero = `<section class="hero" aria-labelledby="h-left">
     <div class="card-head" style="align-items:center"><span class="eyebrow" id="h-left">Reste à vivre · ${monthName(k)}</span>${span ? `<span class="tag">${span}</span>` : ""}</div>
     <p class="hero-big">${eur.format(Math.max(0, left))}</p>
-    ${left < 0 ? `<p class="hero-sub">Dépenses supérieures aux revenus de <b style="color:var(--hero-ink)">${eur.format(-left)}</b>, payées ${m.other > 0 ? `par d'autres entrées d'argent (${eur.format(m.other)} ce mois-ci : proches, remboursements, épargne) et ` : ""}par l'argent qui restait sur le compte.</p>` : ""}
+    ${left < 0 ? `<p class="hero-sub">Il est sorti <b style="color:var(--hero-ink)">${eur2.format(-left)}</b> de plus qu'il n'est entré : la différence a été prise sur l'argent qui restait sur le compte au début du mois.</p>` : ""}
     <div class="meter${ratio > 1 ? " over" : ""}" role="img" aria-label="Dépenses : ${pct(ratio)} des revenus"><span style="width:${Math.min(100, ratio * 100)}%"></span></div>
     <div class="hero-split">
       <div><span class="v">${eur.format(inc.total)}</span><span class="l">${inc.declared ? "Revenus nets" : "Entrées d'argent"}</span></div>
       <div><span class="v">${eur.format(spent)}</span><span class="l">Dépenses (${pct(ratio)})</span></div>
     </div>
-    ${inc.parts.length ? `<div class="parts">${inc.parts.map(p => `<div><span>${esc(p.label)}${p.st ? `<span class="tag">${p.st}</span>` : ""}</span><b class="num">${eur2.format(p.v)}</b></div>`).join("")}</div>` : ""}
+    ${inc.parts.length || m.other > 0.005 || m.moved > 0.005 || Math.abs(m.pro) > 0.005 ? `<div class="parts">${inc.parts.map(p => `<div><span>${esc(p.label)}${p.st ? `<span class="tag">${p.st}</span>` : ""}</span><b class="num">${eur2.format(p.v)}</b></div>`).join("")}${m.other > 0.005 ? `<div><span>Autres entrées</span><b class="num" style="white-space:nowrap">+ ${eur2.format(m.other)}</b></div>` : ""}${m.moved > 0.005 ? `<div><span>Mis de côté, viré vers vos comptes</span><b class="num" style="white-space:nowrap">− ${eur2.format(m.moved)}</b></div>` : ""}${Math.abs(m.pro) > 0.005 ? `<div><span>Activité pro sur ce compte</span><b class="num" style="white-space:nowrap">${m.pro > 0 ? "+" : "−"} ${eur2.format(Math.abs(m.pro))}</b></div>` : ""}</div>` : ""}
     ${view.C ? `<p class="hero-sub">Mois de budget de paie à paie : le salaire et tout ce qu'il paie le jour même comptent pour le mois qu'il fait vivre.</p>` : ""}
   </section>`;
   const chips = view.keys.length > 1 ? `<div class="months" role="group" aria-label="Choisir le mois">${view.keys.map(q => `<button class="chip-btn" type="button" data-month="${q}" aria-pressed="${q === k}">${monthLabel(q)}</button>`).join("")}</div>` : "";
