@@ -1560,28 +1560,43 @@ function vWelcome() {
 }
 
 /* ------------------------------ Accueil ------------------------------ */
-// Revenus nets d'un mois : les revenus déclarés dans « Mon budget », tels que reçus ce mois-là.
-// Un mois où un revenu tombe deux fois (versement en avance) est ramené à sa médiane ; dans le mois
-// en cours, un revenu habituel pas encore arrivé est compté comme « attendu » tant que son jour de
-// versement habituel (celui du dernier versement) n'est pas passé.
+// Revenus nets d'un mois : les revenus déclarés dans « Mon budget ». Un salaire versé en fin de
+// mois (le 28, le 31…) sert à vivre le mois suivant : chaque versement est rattaché au mois qui
+// commence dans les 7 jours qui suivent. Ainsi chaque mois reçoit un salaire, même quand il tombe
+// le 31 ou le 2. Un mois qui en reçoit deux malgré tout est ramené à sa médiane ; dans le mois en
+// cours, un revenu du début de mois (CAF…) pas encore arrivé est « attendu » tant que son jour
+// habituel n'est pas passé.
+const budgetMonth = d => monthKey(new Date(d + 7 * 864e5));
 function monthIncome(r, k) {
-  const P = state.profile, pf = r.pf || {};
+  const P = state.profile;
   if (!P || !P.incomes.length) return { total: (r.byMonth[k] || {}).income || 0, parts: [], declared: false };
   const partial = k === monthKey(r.to) && r.to.getDate() < daysInMonth(k);
+  const by = {}, lastDay = {};
+  for (const t of state.tx) if (t.pf && t.amount > 0) { // tout l'historique : le salaire du 30 du mois d'avant compte
+    const m = by[t.pf] || (by[t.pf] = {}), bk = budgetMonth(t.date); m[bk] = (m[bk] || 0) + t.amount;
+    lastDay[t.pf] = new Date(t.date).getDate();
+  }
   const parts = []; let total = 0;
   for (const x of P.incomes) {
     if (x.end && k > x.end) continue;
-    const bm = (pf.byMonth || {})[x.id] || {}, keys = Object.keys(bm).sort(), vals = keys.map(m => bm[m]);
+    const bm = by[x.id] || {}, keys = Object.keys(bm).sort(), vals = keys.map(m => bm[m]);
     if (!keys.length && !(x.manual > 0)) continue;
     if (keys.length && k < keys[0] && !(x.manual > 0)) continue;
     let v = bm[k] || 0, st = "";
     if (x.manual > 0) { v = x.manual; st = "montant saisi"; }
     else if (vals.length >= 3 && v > 1.5 * median(vals)) { v = median(vals); st = "versé 2 fois, compté 1"; }
-    else if (!v && partial && new Date((pf.last || {})[x.id] || 0).getDate() >= r.to.getDate()) { const n = incomeNow(x, pf); v = n ? n.v : 0; st = "attendu"; }
-    else if (!v) st = "pas reçu ce mois-ci";
+    else if (!v && partial && lastDay[x.id] < 24 && lastDay[x.id] >= r.to.getDate()) { v = median(vals); st = "attendu"; }
+    else if (!v) st = "pas reçu pour ce mois";
     parts.push({ label: x.label || "Revenu", v, st }); total += v;
   }
   return { total, parts, declared: true, partial };
+}
+// Autres entrées d'argent du mois (virements de proches, remboursements, retraits d'épargne…) :
+// ce sont elles, ou l'argent déjà sur le compte, qui couvrent des dépenses supérieures aux revenus.
+function monthOtherIn(r, k) {
+  let v = 0;
+  for (const t of r.txs || []) if (t.amount > 0 && !t.pf && monthKey(new Date(t.date)) === k) v += t.amount;
+  return v;
 }
 
 function vHome(r) {
@@ -1589,12 +1604,15 @@ function vHome(r) {
   const months = Object.keys(r.byMonth).sort().reverse().slice(0, 12);
   if (!months.includes(state.month)) state.month = months[0];
   const k = state.month, M = r.byMonth[k] || { ess: 0, uti: 0, sup: 0 };
-  const inc = monthIncome(r, k), spent = M.ess + M.uti + M.sup, left = inc.total - spent;
+  // Le compte ne peut pas être à découvert : le reste à vivre ne descend pas sous 0. Un dépassement
+  // a forcément été payé par d'autres entrées d'argent ou par ce qui restait sur le compte.
+  const inc = monthIncome(r, k), spent = M.ess + M.uti + M.sup, left = inc.total - spent, other = inc.declared ? monthOtherIn(r, k) : 0;
   const partial = k === monthKey(r.to) && r.to.getDate() < daysInMonth(k);
   const ratio = inc.total > 0 ? spent / inc.total : 1;
   const hero = `<section class="hero" aria-labelledby="h-left">
     <div class="card-head" style="align-items:center"><span class="eyebrow" id="h-left">Reste à vivre · ${monthName(k)}</span>${partial ? `<span class="tag">au ${dayFmt(r.to)}</span>` : ""}</div>
-    <p class="hero-big" style="${left < 0 ? "color:#ff9d8f" : ""}">${signed(left)}</p>
+    <p class="hero-big">${eur.format(Math.max(0, left))}</p>
+    ${left < 0 ? `<p class="hero-sub">Dépenses supérieures aux revenus de <b style="color:var(--hero-ink)">${eur.format(-left)}</b>, payées ${other > 0 ? `par d'autres entrées d'argent (${eur.format(other)} ce mois-ci : proches, remboursements, épargne) et ` : ""}par l'argent qui restait sur le compte.</p>` : ""}
     <div class="meter${ratio > 1 ? " over" : ""}" role="img" aria-label="Dépenses : ${pct(ratio)} des revenus"><span style="width:${Math.min(100, ratio * 100)}%"></span></div>
     <div class="hero-split">
       <div><span class="v">${eur.format(inc.total)}</span><span class="l">${inc.declared ? "Revenus nets" : "Entrées d'argent"}</span></div>
@@ -1927,7 +1945,7 @@ function vConseils(r) {
   ${plan ? `<section class="card" aria-labelledby="h-plan">
     <div class="card-head"><div><span class="eyebrow">Épargne et placements</span><h2 id="h-plan">Où placer votre argent</h2></div></div>
     <div class="grid2">
-      <div class="field">Surplus par mois<b class="num" style="font-size:22px;font-family:var(--display);color:${plan.surplus < 0 ? "var(--crit)" : "var(--good)"}">${signed(plan.surplus)}</b></div>
+      <div class="field">Surplus par mois<b class="num" style="font-size:22px;font-family:var(--display);color:${plan.surplus <= 0 ? "var(--crit)" : "var(--good)"}">${eur.format(Math.max(0, plan.surplus))}</b>${plan.surplus < 0 ? `<span>Dépenses au-dessus des revenus de ${eur.format(-plan.surplus)} par mois</span>` : ""}</div>
       <label class="field" for="pf-savings">Épargne disponible aujourd'hui (€)<input id="pf-savings" type="number" inputmode="decimal" min="0" step="10" value="${P.savingsNow == null ? "" : P.savingsNow}" placeholder="0"></label>
     </div>
     ${plan.out.map(a => adviceItem({ ...a, text: a.html, saving: 0 })).join("")}
