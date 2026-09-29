@@ -10,6 +10,31 @@ et aucun ne reçoit de donnée : les polices Google Fonts (avec repli sur les
 polices du système hors-ligne) et le lecteur PDF pdf.js 3.11.174 (cdnjs),
 téléchargé une fois puis gardé en cache par le service worker.
 
+## Écrans (refonte du 29/09/2026)
+
+Cinq onglets dans un dock en bas de l'écran, pensés pour le téléphone :
+
+- **Accueil** : le mois choisi (pastilles des 12 derniers mois). Bloc « Reste
+  à vivre » = revenus nets du mois − dépenses du mois, avec le détail de
+  chaque revenu déclaré (reçu, « attendu » si son jour habituel n'est pas
+  encore passé, « pas reçu ce mois-ci », ou ramené à un versement quand il
+  tombe deux fois). Puis, seulement quand il y a quelque chose à dire :
+  déclaration des revenus, alertes budgets, où part l'argent (niveaux et 5
+  premières catégories), conseils principaux, questions sur les virements
+  fréquents, prochains prélèvements, graphique mois par mois.
+- **Mouvements** : − Sorties (par catégorie ou par nom), + Entrées (par
+  payeur, avec ce que l'appli en fait), Opérations (recherche, filtres,
+  reclassement). Période analysée.
+- **Budgets** : plafonds du mois, catégories sans plafond (repliées),
+  abonnements et prélèvements récurrents.
+- **Conseils** : pistes d'économie, conseils Revolut, plan d'épargne et de
+  placements.
+- **Mon budget** : revenus, charges fixes, crédits, puis relevés et réglages
+  (import, exemple, colonnes, période, effacement).
+
+Sans relevé, l'accueil explique la marche à suivre ; l'exemple fictif n'est
+chargé qu'à la demande.
+
 ## Fonctionnalités
 
 - Import CSV avec détection automatique du séparateur (`;` `,` tabulation),
@@ -74,20 +99,20 @@ téléchargé une fois puis gardé en cache par le service worker.
   assurance-vie), mise en garde trading/crypto. Taux dans `RATES` (au
   1er août 2026). Le profil peut aussi arriver par le fichier de classement
   (`"profile": {...}`), pour ne jamais écrire de nom réel dans le code.
-- Synthèse : quand des revenus sont déclarés dans « Mon budget », la case
-  Revenus affiche uniquement ces revenus (ex. salaire + CAF), en net tel que
-  reçu sur le compte le dernier mois ; elle avance à chaque nouveau relevé.
+- Accueil : quand des revenus sont déclarés dans « Mon budget », le reste à
+  vivre ne compte que ces revenus (ex. salaire + CAF), en net tels que reçus
+  sur le compte ce mois-là ; il avance à chaque nouveau relevé.
   Un revenu terminé n'y figure plus ; un mois où un revenu tombe deux fois
-  est ramené à sa médiane. Sans revenu déclaré, la Synthèse propose les
+  est ramené à sa médiane. Sans revenu déclaré, l'accueil propose les
   entrées régulières du relevé avec un bouton « C'est un revenu » (le bouton
-  « Un revenu (salaire, aide…) » de « D'où vient cet argent ? » les déclare
-  aussi) ; en attendant, la case montre la moyenne de la période.
-- Onglet « Entrées / Sorties » : deux listes séparées (+ Entrées, − Sorties),
+  « Un revenu » des questions sur les virements les déclare aussi) ; en
+  attendant, il compte toutes les entrées d'argent du mois.
+- Onglet « Mouvements » : deux listes séparées (+ Entrées, − Sorties),
   regroupées par payeur ou bénéficiaire, avec total, moyenne par mois et ce
   que l'appli en fait (revenu compté, autre entrée non comptée,
   remboursement, retrait d'épargne, entre vos comptes ; niveau et catégorie
   pour les sorties). Touchez une ligne pour voir ses opérations et changer
-  leur catégorie. L'onglet Opérations a aussi un filtre + / −.
+  leur catégorie. La vue Opérations a aussi un filtre + / −.
 - Historique cumulé : chaque relevé importé (CSV ou PDF) s'ajoute aux
   précédents. Une opération déjà connue (même date, montant, libellé et
   compte) n'est pas recomptée : réimporter un relevé mis à jour n'ajoute que
@@ -110,12 +135,12 @@ téléchargé une fois puis gardé en cache par le service worker.
 - Budgets mensuels par catégorie (onglet Budgets) : plafond en € par mois,
   barre de progression et alertes à 80 %, en cas de dépassement, et quand le
   rythme du mois en cours mène à un dépassement (projection de fin de mois).
-  Pastille du nombre d'alertes sur l'onglet et encart en tête de la Synthèse.
+  Pastille du nombre d'alertes sur l'onglet et carte d'alertes à l'accueil.
   « Proposer des budgets » part de la moyenne mensuelle (−20 % pour le
   superflu). Choix du mois à examiner. Les alertes sont affichées dans l'appli,
   pas en notification du téléphone (il faudrait un serveur).
-- Synthèse mensuelle, règle 50/30/20, graphique mois par mois, détection des
-  abonnements et prélèvements récurrents.
+- Graphique mois par mois, détection des abonnements et prélèvements
+  récurrents, avec les prochains prélèvements attendus à l'accueil.
 - Conseils : livraison de repas, restaurants, streaming en doublon, frais
   bancaires, jeux d'argent, tabac, shopping, petits achats, forfaits, assurances,
   retraits d'espèces… avec une estimation d'économie annuelle (sans double
