@@ -1149,10 +1149,17 @@ function placementPlan(r) {
     if (left > 0) step("info", `${c.label || "Crédit"} : ${left} mensualité${left > 1 ? "s" : ""} restante${left > 1 ? "s" : ""}`, `Reste environ <b>${eur.format(left * c.monthly)}</b> à rembourser, jusqu'en ${monthName(c.end)}. Ensuite, <b>${eur.format(c.monthly)} par mois</b> se libèrent : programmez dès maintenant un virement de ce montant vers votre épargne pour le mois suivant la dernière échéance, pour que l'argent ne se dilue pas dans les dépenses. Un remboursement anticipé peut coûter moins cher que les intérêts restants : vérifiez les indemnités prévues dans votre contrat.`);
     else step("good", `${c.label || "Crédit"} terminé`, `La dernière échéance est passée : ${eur.format(c.monthly)} par mois sont désormais disponibles. S'ils ne partent pas déjà vers l'épargne, programmez un virement automatique de ce montant.`);
   }
-  if (inc <= 0) { step("warn", "Revenus inconnus", "Indiquez vos revenus dans la section Revenus ci-dessus (ou importez le relevé où ils arrivent) pour obtenir un plan."); return { out, surplus, ess, cushionLow, cushionHigh }; }
+  if (inc <= 0) { step("warn", "Revenus inconnus", "Indiquez vos revenus dans la section Revenus ci-dessus (ou importez le relevé où ils arrivent) pour obtenir un plan."); return { out, surplus, ess, cushionLow, cushionHigh, inc, spend }; }
   if (surplus <= 0) {
     step("crit", "D'abord dégager un surplus", `${r.now && r.now.changed ? "Pour un mois type aujourd'hui" : "Sur la période"}, vos dépenses (${eur.format(spend)} par mois) atteignent ou dépassent vos revenus (${eur.format(inc)}). Avant tout placement, l'objectif est de réduire les postes superflus : voir l'onglet Conseils. Placer de l'argent dont on aura besoin le mois suivant expose à des frais de découvert plus élevés que n'importe quel rendement.`);
-    return { out, surplus, ess, cushionLow, cushionHigh };
+    // Le champ « Épargne disponible » doit avoir un effet visible même sans surplus : ce qu'on a déjà
+    // de côté, comparé à la réserve de 3 à 6 mois de dépenses essentielles.
+    if (now == null) step("info", "Votre épargne de précaution", `Indiquez ci-dessus votre épargne disponible aujourd'hui : je la comparerai à la réserve conseillée de <b>${eur.format(cushionLow)} à ${eur.format(cushionHigh)}</b> (3 à 6 mois de dépenses essentielles, soit ${eur.format(ess)} par mois).`);
+    else {
+      const covered = ess > 0 ? now / ess : 0, cov = ess > 0 ? ` C'est environ <b>${covered.toLocaleString("fr-FR", { maximumFractionDigits: 1 })} mois</b> de dépenses essentielles.` : "";
+      step(now >= cushionLow ? "good" : "warn", now >= cushionLow ? "Votre épargne de précaution est en place" : "Votre épargne de précaution est à constituer", `Vous avez <b>${eur.format(now)}</b> de côté, pour une réserve conseillée de ${eur.format(cushionLow)} à ${eur.format(cushionHigh)}.${cov} ${now >= cushionLow ? "Gardez-la disponible, sur un livret, et cherchez d'abord à équilibrer le mois avant de placer davantage." : `Il manque ${eur.format(cushionLow - now)} : tant que le mois n'est pas équilibré, cette réserve est votre filet de sécurité.`}`);
+    }
+    return { out, surplus, ess, cushionLow, cushionHigh, inc, spend };
   }
   // 1. Épargne de précaution
   const lep = `<b>LEP ${fmtPct(RATES.lep)}</b>, le mieux rémunéré, si votre revenu fiscal de référence est inférieur à ${eur.format(RATES.lepRfr)} pour une part (voir votre avis d'imposition ; plafond ${eur.format(RATES.plafondLep)})`;
@@ -1168,7 +1175,7 @@ function placementPlan(r) {
   // 3. Placements risqués repérés dans le relevé
   const risky = [...new Set(state.tx.filter(t => /\b(ETORO|AVATRADE|KUCOIN|BINANCE|COINBASE|KRAKEN|BITPANDA|CRYPTO|DIGITAL ASSETS|PLUS500|XTB|IG MARKETS)\b/.test(norm(t.label))).map(t => t.key.toLowerCase()))];
   if (risky.length) step("warn", "Trading et crypto : prudence", `Votre relevé contient des opérations vers ${risky.slice(0, 4).map(esc).join(", ")}. Les CFD et le trading à effet de levier font perdre de l'argent à la majorité des particuliers (les courtiers doivent afficher ce pourcentage), et les cryptomonnaies peuvent perdre une grande partie de leur valeur en peu de temps. Si vous y tenez, limitez-les à une petite part de votre épargne, jamais à l'épargne de précaution.`);
-  return { out, surplus, ess, cushionLow, cushionHigh };
+  return { out, surplus, ess, cushionLow, cushionHigh, inc, spend };
 }
 
 /* ============================== Analyse ============================== */
@@ -2115,7 +2122,7 @@ function vConseils(r) {
   ${plan ? `<section class="card" aria-labelledby="h-plan">
     <div class="card-head"><div><span class="eyebrow">Épargne et placements</span><h2 id="h-plan">Où placer votre argent</h2></div></div>
     <div class="grid2">
-      <div class="field">Surplus par mois<b class="num" style="font-size:22px;font-family:var(--display);color:${plan.surplus <= 0 ? "var(--crit)" : "var(--good)"}">${eur.format(Math.max(0, plan.surplus))}</b>${plan.surplus < 0 ? `<span>Dépenses au-dessus des revenus de ${eur.format(-plan.surplus)} par mois</span>` : ""}</div>
+      <div class="field">Surplus par mois<b class="num" style="font-size:22px;font-family:var(--display);color:${plan.surplus <= 0 ? "var(--crit)" : "var(--good)"}">${eur.format(Math.max(0, plan.surplus))}</b>${plan.surplus < 0 ? `<span>Dépenses au-dessus des revenus de ${eur.format(-plan.surplus)} par mois</span>` : ""}<span class="small muted">Calcul : revenus d'un mois type (${eur.format(plan.inc)}) moins dépenses moyennes par mois (${eur.format(plan.spend)}).</span></div>
       <label class="field" for="pf-savings">Épargne disponible aujourd'hui (€)<input id="pf-savings" type="number" inputmode="decimal" min="0" step="0.01" value="${P.savingsNow == null ? "" : P.savingsNow}" placeholder="0"></label>
     </div>
     ${plan.out.map(a => adviceItem({ ...a, text: a.html, saving: 0 })).join("")}

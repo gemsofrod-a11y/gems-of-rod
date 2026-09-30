@@ -1,6 +1,6 @@
 // Budget Clair : met l'appli en cache pour qu'elle s'ouvre sans connexion.
 // Aucune donnée bancaire ne transite ici : le relevé est lu dans la page et reste dans le navigateur.
-const CACHE = "budget-clair-v9";
+const CACHE = "budget-clair-v10";
 const SHARE = "budget-clair-share";
 const FILES = ["./", "index.html", "manifest.webmanifest", "icon.svg"];
 // Lecteur de PDF (pdf.js), téléchargé à l'installation pour lire les relevés PDF hors-ligne.
