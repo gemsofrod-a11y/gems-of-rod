@@ -15,8 +15,8 @@ android {
         applicationId = "fr.gemsofrod.gestion"
         minSdk = 26
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = 2
+        versionName = "1.1.0"
     }
 
     // Clé de signature de débogage FIXE, versionnée exprès : sans elle, chaque
@@ -30,6 +30,18 @@ android {
             storePassword = "android"
             keyAlias = "androiddebugkey"
             keyPassword = "android"
+        }
+    }
+
+    // Version « release » publiée en APK : R8 retire le code et les icônes
+    // inutilisés (~3 Mo au lieu de ~15). Signée avec la même clé que la
+    // version de débogage, pour s'installer par-dessus sans désinstaller.
+    buildTypes {
+        release {
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
 

@@ -41,8 +41,9 @@ jobs:
         working-directory: android
         run: |
           chmod +x gradlew
-          ./gradlew :gestion:assembleDebug --no-daemon
-          cp gestion/build/outputs/apk/debug/gestion-debug.apk ../gems-of-rod-gestion.apk
+          ./gradlew :gestion:assembleRelease --no-daemon
+          cp gestion/build/outputs/apk/release/gestion-release.apk ../gems-of-rod-gestion.apk
+          ls -la ../gems-of-rod-gestion.apk
 
       - name: Publish release gestion-latest
         env:
