@@ -1,0 +1,56 @@
+name: Gestion APK
+
+# Publie l'APK de l'app Gestion à une adresse fixe, téléchargeable en un
+# geste depuis le téléphone (les artefacts d'Actions ne le sont pas) :
+# https://github.com/gemsofrod-a11y/gems-of-rod/releases/download/gestion-latest/gems-of-rod-gestion.apk
+on:
+  push:
+    branches:
+      - "**"
+    paths:
+      - "android/gestion/**"
+      - ".github/workflows/gestion-apk.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gestion-apk
+  cancel-in-progress: false
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        # Voir android-build.yml : seul platform-tools est nécessaire.
+        uses: android-actions/setup-android@v3
+        with:
+          packages: "platform-tools"
+
+      - name: Build APK
+        working-directory: android
+        run: |
+          chmod +x gradlew
+          ./gradlew :gestion:assembleRelease --no-daemon
+          cp gestion/build/outputs/apk/release/gestion-release.apk ../gems-of-rod-gestion.apk
+          ls -la ../gems-of-rod-gestion.apk
+
+      - name: Publish release gestion-latest
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release delete gestion-latest --yes --cleanup-tag || true
+          gh release create gestion-latest gems-of-rod-gestion.apk \
+            --target "$GITHUB_SHA" --prerelease \
+            --title "Gems of Rod Gestion (dernière version)" \
+            --notes "APK de l'app Gestion, branche ${GITHUB_REF_NAME}, commit ${GITHUB_SHA::7}. Télécharger gems-of-rod-gestion.apk et l'ouvrir sur le téléphone."

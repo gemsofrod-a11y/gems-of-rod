@@ -365,6 +365,22 @@ de Sébastien sur la suite ; aucune n'est indispensable à l'usage actuel,
 
 ---
 
+## Gems of Rod Gestion — app Android de gestion (usage interne)
+
+Module `android/gestion` (`:gestion`), APK distribuée hors Play Store (comme
+`:assistant`, jamais dans `android-release.yml`) : commandes clients, stock,
+clients et tableau de bord avec graphiques dessinés en Compose (sans
+bibliothèque de graphiques). Demandée le 03/10/2026 par Sébastien,
+« minimaliste et simple » ; refondue le même jour au style d'une maquette
+fintech fournie par Sébastien (cartes blanches, violet, panneau marine,
+suivi des paiements : échéances, retards, délai de paiement). Données 100 % locales (`gestion.json`, export /
+import JSON depuis le menu), aucune permission ni accès réseau. Un devis ne
+touche pas le stock ; une commande confirmée, en préparation ou livrée sort
+ses quantités du stock, une annulation ou suppression les rend. Voir
+`android/gestion/README.md`.
+
+---
+
 ## Budget Clair — analyse de finances personnelles (usage personnel de Sébastien)
 
 Outil distinct du reste du dépôt, sans lien avec Gems of Rod : page web
