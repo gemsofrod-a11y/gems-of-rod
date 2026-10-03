@@ -5,14 +5,24 @@ Store) : commandes clients, stock, clients et tableau de bord avec
 graphiques. Module `:gestion`, indépendant de l'encyclopédie (`:app`) et de
 l'assistant vocal (`:assistant`).
 
+## Design
+
+Style « tableau de bord fintech » demandé par Sébastien le 03/10/2026 à
+partir d'une maquette d'exemple : fond gris très clair, cartes blanches
+arrondies à ombre douce, accent violet indigo, panneau marine pour la liste
+« À suivre », onglets en pilule, barre de navigation flottante marine.
+Captures à jour dans `screenshots/` (régénérées par le workflow
+« Gestion screenshots » à chaque modification du module).
+
 ## Écrans
 
-- **Accueil** : CA du mois (et évolution vs mois précédent), marge du mois,
-  commandes en cours, valeur du stock ; histogramme du CA sur 6 mois,
-  répartition des ventes par catégorie (12 mois), valeur du stock par
-  catégorie, commandes à traiter, alertes de stock bas.
-- **Commandes** : numérotation automatique, client (liste ou saisie libre),
-  date, statut (Devis → Confirmée → En préparation → Livrée, ou Annulée),
+- **Aperçu** : montant en retard, délai moyen de paiement, CA du mois
+  (histogramme 6 mois), encaissé (courbe 6 mois), reste à encaisser,
+  panneau « À suivre » (impayées / en retard / devis), ventes par catégorie,
+  stock et alertes.
+- **Commandes** : numérotation automatique (#CMD-0001), fiche façon
+  facture avec bouton « Encaisser le solde », échéance de paiement (15 jours
+  par défaut), client (liste ou saisie libre), date, statut (Devis → Confirmée → En préparation → Livrée, ou Annulée),
   articles du stock ou libres, acompte (bouton 30 %), reste à encaisser.
 - **Stock** : pierres précieuses, pierres fines, métaux, bijoux ; unité
   (pièce, carat, gramme), prix d'achat / de vente, marge, seuil d'alerte.

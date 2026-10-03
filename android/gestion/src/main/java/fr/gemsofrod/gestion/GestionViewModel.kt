@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import java.time.LocalDate
 
 class GestionViewModel(app: Application) : AndroidViewModel(app) {
 
@@ -69,8 +70,13 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
      * Enregistre la commande et met le stock à jour : les quantités réservées
      * par l'ancienne version sont rendues, celles de la nouvelle sont sorties.
      */
-    fun saveOrder(order: Order) = update { d ->
-        val old = d.orders.find { it.id == order.id }
+    fun saveOrder(input: Order) = update { d ->
+        val old = d.orders.find { it.id == input.id }
+        // Date de règlement : posée quand le solde tombe à zéro, retirée sinon.
+        val order = when {
+            input.isPaid -> input.copy(paidDate = input.paidDate ?: LocalDate.now().toEpochDay())
+            else -> input.copy(paidDate = null)
+        }
         val products = applyStock(d.products, old, order)
         val orders = if (old != null) d.orders.map { if (it.id == order.id) order else it } else d.orders + order
         d.copy(
@@ -78,6 +84,12 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
             orders = orders,
             nextOrderNumber = maxOf(d.nextOrderNumber, order.number + 1),
         )
+    }
+
+    /** Encaisse tout le solde restant aujourd'hui. */
+    fun markPaid(id: String) {
+        val order = _data.value.orders.find { it.id == id } ?: return
+        saveOrder(order.copy(deposit = order.total))
     }
 
     fun deleteOrder(id: String) = update { d ->

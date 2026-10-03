@@ -39,3 +39,6 @@ fun parseNumber(text: String): Double? = text.filterNot { it.isWhitespace() || i
 /** Affiche un nombre dans un champ de saisie, sans « ,0 » inutile. */
 fun editable(value: Double): String =
     if (value == 0.0) "" else if (value % 1.0 == 0.0) value.toLong().toString() else value.toString().replace('.', ',')
+
+/** Référence affichée d'une commande : « #CMD-0003 ». */
+fun orderRef(number: Int): String = "#CMD-" + number.toString().padStart(4, '0')

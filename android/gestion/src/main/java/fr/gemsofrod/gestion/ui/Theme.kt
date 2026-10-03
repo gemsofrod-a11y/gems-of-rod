@@ -1,71 +1,89 @@
 package fr.gemsofrod.gestion.ui
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.Typography
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 
-private val Gold = Color(0xFFB08A3E)
-private val GoldLight = Color(0xFFD9BC7F)
-private val Ink = Color(0xFF1F2A2E)
+/** Palette « fintech » : fond gris très clair, cartes blanches, violet indigo, panneau marine. */
+object Palette {
+    val Background = Color(0xFFF3F4F9)
+    val Card = Color.White
+    val Ink = Color(0xFF16172B)
+    val Muted = Color(0xFF8A8CA3)
+    val Line = Color(0xFFE9EAF2)
+    val Accent = Color(0xFF5546E8)
+    val AccentSoft = Color(0xFFB8B1F7)
+    val AccentPale = Color(0xFFEDEBFE)
+    val Navy = Color(0xFF1C1D33)
+    val NavyRow = Color(0xFF28294A)
+    val NavyMuted = Color(0xFF9A9BBE)
+    val Red = Color(0xFFE5484D)
+    val RedPale = Color(0xFFFDECEC)
+    val Green = Color(0xFF16A34A)
+    val GreenPale = Color(0xFFE6F6EC)
+    val Orange = Color(0xFFE38A1E)
+    val OrangePale = Color(0xFFFDF1E1)
 
-private val LightColors = lightColorScheme(
-    primary = Ink,
-    onPrimary = Color.White,
-    secondary = Gold,
-    onSecondary = Color.White,
-    tertiary = Color(0xFF2E6F5E),
-    background = Color(0xFFFAF9F6),
-    onBackground = Ink,
-    surface = Color(0xFFFAF9F6),
-    onSurface = Ink,
-    surfaceVariant = Color(0xFFEFEDE7),
-    onSurfaceVariant = Color(0xFF5B6366),
-    surfaceContainer = Color(0xFFF3F1EC),
-    surfaceContainerHigh = Color(0xFFEFEDE7),
-    secondaryContainer = Color(0xFFF1E6CF),
-    onSecondaryContainer = Ink,
-    outline = Color(0xFFD5D2CA),
-    outlineVariant = Color(0xFFE4E1DA),
-    error = Color(0xFFB3261E),
-)
+    val AccentGradient = Brush.linearGradient(listOf(Color(0xFF6D5EF5), Color(0xFF4335D6)))
+    val PanelGradient = Brush.linearGradient(listOf(Color(0xFF6A5CF0), Color(0xFF8B7FF6)))
+}
 
-private val DarkColors = darkColorScheme(
-    primary = GoldLight,
-    onPrimary = Ink,
-    secondary = GoldLight,
-    onSecondary = Ink,
-    tertiary = Color(0xFF7FC4AE),
-    background = Color(0xFF141A1C),
-    onBackground = Color(0xFFE8E6E1),
-    surface = Color(0xFF141A1C),
-    onSurface = Color(0xFFE8E6E1),
-    surfaceVariant = Color(0xFF232B2E),
-    onSurfaceVariant = Color(0xFFA9B0B2),
-    surfaceContainer = Color(0xFF1B2224),
-    surfaceContainerHigh = Color(0xFF232B2E),
-    secondaryContainer = Color(0xFF3B3322),
-    onSecondaryContainer = Color(0xFFE8E6E1),
-    outline = Color(0xFF3A4447),
-    outlineVariant = Color(0xFF2C3538),
-    error = Color(0xFFF2B8B5),
-)
-
-/** Couleurs des séries de graphiques (catégories), lisibles en clair et en sombre. */
+/** Couleurs des séries de graphiques (catégories). */
 val ChartColors = listOf(
-    Color(0xFFB08A3E),
-    Color(0xFF2E6F8E),
-    Color(0xFF2E8E6A),
-    Color(0xFF9A4E7A),
-    Color(0xFF7A7F84),
+    Color(0xFF5546E8),
+    Color(0xFF9B8CFF),
+    Color(0xFF22B8CF),
+    Color(0xFFF59E0B),
+    Color(0xFF8A8CA3),
 )
+
+private val Colors = lightColorScheme(
+    primary = Palette.Accent,
+    onPrimary = Color.White,
+    primaryContainer = Palette.AccentPale,
+    onPrimaryContainer = Palette.Accent,
+    secondary = Palette.Accent,
+    onSecondary = Color.White,
+    secondaryContainer = Palette.AccentPale,
+    onSecondaryContainer = Palette.Ink,
+    background = Palette.Background,
+    onBackground = Palette.Ink,
+    surface = Palette.Card,
+    onSurface = Palette.Ink,
+    surfaceVariant = Palette.Background,
+    onSurfaceVariant = Palette.Muted,
+    surfaceContainer = Palette.Card,
+    surfaceContainerHigh = Palette.Card,
+    surfaceContainerHighest = Palette.Card,
+    surfaceContainerLow = Palette.Card,
+    outline = Color(0xFFD9DAE6),
+    outlineVariant = Palette.Line,
+    error = Palette.Red,
+)
+
+private val Type = Typography().let { t ->
+    t.copy(
+        headlineLarge = t.headlineLarge.copy(fontWeight = FontWeight.Bold, fontSize = 30.sp, letterSpacing = (-0.5).sp),
+        headlineMedium = t.headlineMedium.copy(fontWeight = FontWeight.Bold, letterSpacing = (-0.5).sp),
+        headlineSmall = t.headlineSmall.copy(fontWeight = FontWeight.Bold, letterSpacing = (-0.3).sp),
+        titleLarge = t.titleLarge.copy(fontWeight = FontWeight.SemiBold),
+        titleMedium = t.titleMedium.copy(fontWeight = FontWeight.SemiBold),
+        titleSmall = t.titleSmall.copy(fontWeight = FontWeight.SemiBold),
+        labelLarge = t.labelLarge.copy(fontWeight = FontWeight.SemiBold),
+    )
+}
+
+/** Gros montant des cartes (« $ 24,850.00 » de la maquette). */
+val AmountStyle = TextStyle(fontSize = 26.sp, fontWeight = FontWeight.Bold, letterSpacing = (-0.5).sp, color = Palette.Ink)
 
 @Composable
 fun GestionTheme(content: @Composable () -> Unit) {
-    MaterialTheme(
-        colorScheme = if (isSystemInDarkTheme()) DarkColors else LightColors,
-        content = content,
-    )
+    // Thème clair uniquement : le design repose sur des cartes blanches sur fond clair.
+    MaterialTheme(colorScheme = Colors, typography = Type, content = content)
 }

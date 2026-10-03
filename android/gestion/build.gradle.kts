@@ -31,6 +31,13 @@ android {
     buildFeatures {
         compose = true
     }
+
+    // Captures d'écran (ScreenshotTest) : rendu Compose sur JVM via Robolectric.
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -46,4 +53,12 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
 
     debugImplementation("androidx.compose.ui:ui-tooling")
+    // Activité de test vide requise par createComposeRule (captures d'écran).
+    debugImplementation("androidx.compose.ui:ui-test-manifest:1.7.5")
+
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("androidx.test.ext:junit:1.2.1")
+    testImplementation("org.robolectric:robolectric:4.13")
+    testImplementation("androidx.compose.ui:ui-test-junit4:1.7.5")
+    testImplementation("androidx.compose.ui:ui-test-manifest:1.7.5")
 }

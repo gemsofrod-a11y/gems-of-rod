@@ -78,10 +78,20 @@ data class Order(
     val date: Long = LocalDate.now().toEpochDay(),
     val status: OrderStatus = OrderStatus.DEVIS,
     val lines: List<OrderLine> = emptyList(),
+    /** Montant déjà reçu (acompte et paiements). */
     val deposit: Double = 0.0,
     val note: String = "",
+    /** Échéance de paiement (epochDay), null = pas d'échéance. */
+    val dueDate: Long? = null,
+    /** Jour où le solde a été entièrement réglé (epochDay). */
+    val paidDate: Long? = null,
 ) {
     val total: Double get() = lines.sumOf { it.total }
+    val balance: Double get() = (total - deposit).coerceAtLeast(0.0)
+    val isPaid: Boolean get() = total > 0 && balance < 0.005
+    /** Vente (confirmée → livrée) dont il reste quelque chose à encaisser. */
+    val isUnpaid: Boolean get() = status.countsAsSale && balance >= 0.005
+    fun isOverdue(today: Long): Boolean = isUnpaid && dueDate != null && dueDate < today
     val margin: Double get() = lines.sumOf { it.margin }
     val localDate: LocalDate get() = LocalDate.ofEpochDay(date)
     val isOpen: Boolean get() = status == OrderStatus.CONFIRMEE || status == OrderStatus.EN_COURS

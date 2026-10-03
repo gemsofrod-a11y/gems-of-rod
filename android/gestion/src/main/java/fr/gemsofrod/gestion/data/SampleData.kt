@@ -19,32 +19,48 @@ object SampleData {
         val bague = Product(name = "Bague solitaire or blanc", category = Category.BIJOU, unit = StockUnit.PIECE, quantity = 1.0, cost = 950.0, price = 1650.0, threshold = 1.0)
         val products = listOf(saphir, rubis, emeraude, tanzanite, spinelle, tourmaline, or18, bague)
 
-        val c1 = Client(name = "Client exemple A", email = "client.a@exemple.fr", segment = Segment.VIP)
-        val c2 = Client(name = "Client exemple B", phone = "06 00 00 00 00", segment = Segment.REGULIER)
-        val c3 = Client(name = "Client exemple C", segment = Segment.REGULIER)
-        val c4 = Client(name = "Client exemple D", segment = Segment.PROSPECT)
+        val c1 = Client(name = "Claire Exemple", email = "claire@exemple.fr", segment = Segment.VIP)
+        val c2 = Client(name = "Marc Exemple", phone = "06 00 00 00 00", segment = Segment.REGULIER)
+        val c3 = Client(name = "Inès Exemple", segment = Segment.REGULIER)
+        val c4 = Client(name = "Paul Exemple", segment = Segment.PROSPECT)
         val clients = listOf(c1, c2, c3, c4)
 
         fun line(p: Product, q: Double) = OrderLine(p.id, p.name, q, p.price, p.cost)
         var n = 1
-        fun order(c: Client, daysAgo: Long, status: OrderStatus, vararg lines: OrderLine) = Order(
-            number = n++, clientId = c.id, clientName = c.name,
-            date = today.minusDays(daysAgo).toEpochDay(), status = status,
-            lines = lines.toList(), deposit = if (status == OrderStatus.DEVIS) 0.0 else lines.sumOf { it.total } * 0.3,
-        )
+
+        /**
+         * [paidAfter] : réglée intégralement N jours après la commande ;
+         * null = seul l'acompte de 30 % est reçu (rien pour un devis).
+         */
+        fun order(c: Client, daysAgo: Long, status: OrderStatus, paidAfter: Long?, vararg lines: OrderLine): Order {
+            val date = today.minusDays(daysAgo)
+            val total = lines.sumOf { it.total }
+            return Order(
+                number = n++, clientId = c.id, clientName = c.name,
+                date = date.toEpochDay(), status = status, lines = lines.toList(),
+                deposit = when {
+                    paidAfter != null -> total
+                    status == OrderStatus.DEVIS || status == OrderStatus.ANNULEE -> 0.0
+                    else -> Math.round(total * 30) / 100.0
+                },
+                dueDate = date.plusDays(15).toEpochDay(),
+                paidDate = paidAfter?.let { date.plusDays(it).toEpochDay() },
+            )
+        }
 
         val orders = listOf(
-            order(c1, 160, OrderStatus.LIVREE, line(saphir, 1.0)),
-            order(c2, 140, OrderStatus.LIVREE, line(tourmaline, 4.0), line(or18, 12.0)),
-            order(c3, 115, OrderStatus.LIVREE, line(tanzanite, 1.0)),
-            order(c1, 95, OrderStatus.LIVREE, line(emeraude, 1.0), line(or18, 8.0)),
-            order(c2, 70, OrderStatus.LIVREE, line(spinelle, 2.5)),
-            order(c3, 52, OrderStatus.ANNULEE, line(rubis, 1.0)),
-            order(c1, 38, OrderStatus.LIVREE, line(bague, 1.0)),
-            order(c2, 21, OrderStatus.LIVREE, line(tanzanite, 2.0)),
-            order(c3, 9, OrderStatus.EN_COURS, line(saphir, 1.0), line(or18, 6.0)),
-            order(c1, 4, OrderStatus.CONFIRMEE, line(rubis, 1.0)),
-            order(c4, 1, OrderStatus.DEVIS, line(emeraude, 1.0)),
+            order(c1, 160, OrderStatus.LIVREE, 12, line(saphir, 1.0)),
+            order(c2, 140, OrderStatus.LIVREE, 20, line(tourmaline, 4.0), line(or18, 12.0)),
+            order(c3, 115, OrderStatus.LIVREE, 18, line(tanzanite, 1.0)),
+            order(c1, 95, OrderStatus.LIVREE, 9, line(emeraude, 1.0), line(or18, 8.0)),
+            order(c2, 70, OrderStatus.LIVREE, 14, line(spinelle, 2.5)),
+            order(c3, 52, OrderStatus.ANNULEE, null, line(rubis, 1.0)),
+            order(c1, 38, OrderStatus.LIVREE, 7, line(bague, 1.0)),
+            order(c2, 33, OrderStatus.LIVREE, null, line(tanzanite, 2.0)),
+            order(c3, 24, OrderStatus.LIVREE, 10, line(tourmaline, 3.0)),
+            order(c3, 9, OrderStatus.EN_COURS, null, line(saphir, 1.0), line(or18, 6.0)),
+            order(c1, 4, OrderStatus.CONFIRMEE, null, line(rubis, 1.0)),
+            order(c4, 1, OrderStatus.DEVIS, null, line(emeraude, 1.0)),
         )
         return AppData(products, clients, orders, n)
     }

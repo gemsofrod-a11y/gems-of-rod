@@ -99,6 +99,7 @@ class Store(context: Context) {
             put("clientName", clientName); put("date", date); put("status", status.name)
             put("lines", JSONArray(lines.map { it.toJson() }))
             put("deposit", deposit); put("note", note)
+            put("dueDate", dueDate ?: JSONObject.NULL); put("paidDate", paidDate ?: JSONObject.NULL)
         }
 
         private fun JSONObject.toOrder() = Order(
@@ -111,6 +112,8 @@ class Store(context: Context) {
             lines = optJSONArray("lines")?.objects()?.map { it.toLine() } ?: emptyList(),
             deposit = optDouble("deposit", 0.0),
             note = optString("note", ""),
+            dueDate = if (isNull("dueDate")) null else optLong("dueDate"),
+            paidDate = if (isNull("paidDate")) null else optLong("paidDate"),
         )
     }
 }
