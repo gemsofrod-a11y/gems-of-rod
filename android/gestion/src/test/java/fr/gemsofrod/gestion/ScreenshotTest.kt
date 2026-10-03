@@ -1,12 +1,11 @@
 package fr.gemsofrod.gestion
 
 import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.os.Looper
+import androidx.activity.ComponentActivity
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.asAndroidBitmap
-import androidx.compose.ui.test.captureToImage
-import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onRoot
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import fr.gemsofrod.gestion.data.SampleData
 import fr.gemsofrod.gestion.ui.ClientsScreen
@@ -37,7 +36,7 @@ import java.io.FileOutputStream
 class ScreenshotTest {
 
     @get:Rule
-    val composeTestRule = createComposeRule()
+    val composeTestRule = createAndroidComposeRule<ComponentActivity>()
 
     private val outputDir = File("build/outputs/screenshots").apply { mkdirs() }
     private val data = SampleData.build()
@@ -45,7 +44,12 @@ class ScreenshotTest {
     private fun capture(name: String, content: @Composable () -> Unit) {
         composeTestRule.setContent { GestionTheme(content) }
         shadowOf(Looper.getMainLooper()).idle()
-        val bitmap = composeTestRule.onRoot().captureToImage().asAndroidBitmap()
+        // captureToImage() attend un rendu matériel qui n'arrive jamais sous
+        // Robolectric (délai dépassé) : on dessine la vue racine nous-mêmes
+        // dans un bitmap, en rendu logiciel.
+        val root = composeTestRule.activity.window.decorView.rootView
+        val bitmap = Bitmap.createBitmap(root.width, root.height, Bitmap.Config.ARGB_8888)
+        root.draw(Canvas(bitmap))
         FileOutputStream(File(outputDir, "$name.png")).use { out ->
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
         }
