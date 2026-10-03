@@ -32,6 +32,10 @@ object SampleData {
          * [paidAfter] : réglée intégralement N jours après la commande ;
          * null = seul l'acompte de 30 % est reçu (rien pour un devis).
          */
+        // Commandes « du mois » : jamais avant le 1er du mois en cours, pour que
+        // le CA et l'encaissé du mois soient toujours remplis, quel que soit le jour.
+        fun thisMonth(daysAgo: Long): Long = maxOf(0L, minOf(daysAgo, today.dayOfMonth - 1L))
+
         fun order(c: Client, daysAgo: Long, status: OrderStatus, paidAfter: Long?, vararg lines: OrderLine): Order {
             val date = today.minusDays(daysAgo)
             val total = lines.sumOf { it.total }
@@ -59,8 +63,11 @@ object SampleData {
             order(c2, 33, OrderStatus.LIVREE, null, line(tanzanite, 2.0)),
             order(c3, 24, OrderStatus.LIVREE, 10, line(tourmaline, 3.0)),
             order(c3, 9, OrderStatus.EN_COURS, null, line(saphir, 1.0), line(or18, 6.0)),
-            order(c1, 4, OrderStatus.CONFIRMEE, null, line(rubis, 1.0)),
-            order(c4, 1, OrderStatus.DEVIS, null, line(emeraude, 1.0)),
+            // Ventes du mois en cours (dont une déjà réglée).
+            order(c2, thisMonth(3), OrderStatus.LIVREE, 0, line(tanzanite, 1.0), line(tourmaline, 2.0)),
+            order(c1, thisMonth(2), OrderStatus.CONFIRMEE, null, line(rubis, 1.0)),
+            order(c4, thisMonth(1), OrderStatus.LIVREE, 0, line(spinelle, 1.5)),
+            order(c4, 0, OrderStatus.DEVIS, null, line(emeraude, 1.0)),
         )
         return AppData(products, clients, orders, n)
     }
