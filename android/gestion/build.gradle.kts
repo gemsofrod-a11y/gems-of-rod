@@ -19,6 +19,20 @@ android {
         versionName = "1.0.0"
     }
 
+    // Clé de signature de débogage FIXE, versionnée exprès : sans elle, chaque
+    // compilation sur GitHub Actions signe avec une clé nouvelle et le téléphone
+    // refuse la mise à jour (« application non installée »). Ce n'est PAS la clé
+    // de publication Play Store (celle-là ne se commite jamais) : cette app
+    // n'est distribuée qu'en APK direct.
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
