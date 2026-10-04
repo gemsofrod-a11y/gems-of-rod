@@ -43,11 +43,6 @@ class SumUpClient(private val apiKey: String) {
 
     private val base = "https://api.sumup.com"
 
-    private companion object {
-        /** Encaissements en boutique : un échec y est réglé sur place, pas à relancer. */
-        val IN_STORE_TYPES = setOf("POS", "CASH")
-    }
-
     /** Code marchand du compte lié à la clé (GET /v0.1/me). */
     fun merchantCode(): String {
         val me = JSONObject(request("GET", "$base/v0.1/me"))
@@ -200,6 +195,9 @@ class SumUpClient(private val apiKey: String) {
 
     companion object {
         private val timeFormat = DateTimeFormatter.ofPattern("HH:mm")
+
+        /** Encaissements en boutique : un échec y est réglé sur place, pas à relancer. */
+        private val IN_STORE_TYPES = setOf("POS", "CASH")
 
         fun parseMillis(text: String): Long =
             (runCatching { Instant.parse(text) }.getOrNull()
