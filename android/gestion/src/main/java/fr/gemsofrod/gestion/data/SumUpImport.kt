@@ -18,7 +18,7 @@ object SumUpImport {
 
     enum class Kind { ARTICLES, CLIENTS }
 
-    data class Result(val data: AppData, val kind: Kind, val created: Int, val updated: Int)
+    data class Result(val data: AppData, val kind: Kind, val created: Int, val updated: Int, val removed: Int = 0)
 
     class ImportException(message: String) : Exception(message)
 
@@ -47,6 +47,7 @@ object SumUpImport {
         var products = data.products
         var map = data.sumupProductMap
         var created = 0; var updated = 0
+        val seen = mutableSetOf<String>()
         for (r in rows) {
             fun cell(i: Int) = if (i in r.indices) fixText(r[i]).trim() else ""
             val base = cell(iName)
@@ -75,9 +76,18 @@ object SumUpImport {
             products = if (existing != null) products.map { if (it.id == existing.id) product else it } else products + product
             // Le nom SumUp sert aussi à reconnaître l'article dans les ventes.
             map = map + (normalizeName(base) to product.id) + (normalizeName(name) to product.id)
+            seen += product.id
             if (existing != null) updated++ else created++
         }
-        return Result(data.copy(products = products, sumupProductMap = map), Kind.ARTICLES, created, updated)
+        // L'export SumUp contient tout le catalogue : un article venu de SumUp
+        // qui n'y figure plus a été supprimé dans SumUp, on le retire aussi.
+        // Les produits créés dans l'app (sans identifiant SumUp) sont gardés ;
+        // les commandes passées gardent le libellé de leurs lignes.
+        val gone = if (seen.isEmpty()) emptySet()
+        else products.filter { it.sumupId != null && it.id !in seen }.map { it.id }.toSet()
+        products = products.filterNot { it.id in gone }
+        map = map.filterValues { it !in gone }
+        return Result(data.copy(products = products, sumupProductMap = map), Kind.ARTICLES, created, updated, gone.size)
     }
 
     private fun category(text: String, fallback: Category?): Category {

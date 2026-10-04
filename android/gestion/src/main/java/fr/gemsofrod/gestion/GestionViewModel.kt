@@ -402,11 +402,16 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
         update { result.data }
         val what = if (result.kind == fr.gemsofrod.gestion.data.SumUpImport.Kind.ARTICLES) "article" else "client"
         fun n(k: Int) = "$k $what${if (k > 1) "s" else ""}"
+        val removed = when (result.removed) {
+            0 -> ""
+            1 -> " 1 article retiré (supprimé dans SumUp)."
+            else -> " ${result.removed} articles retirés (supprimés dans SumUp)."
+        }
         return when {
             result.created + result.updated == 0 -> "Aucun $what trouvé dans ce fichier."
             result.updated == 0 -> "${n(result.created)} importé${if (result.created > 1) "s" else ""} depuis SumUp."
             else -> "${n(result.created)} ajouté${if (result.created > 1) "s" else ""}, ${result.updated} mis à jour depuis SumUp."
-        }
+        } + removed
     }
 
     // --- Fidélité ---

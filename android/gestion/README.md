@@ -94,7 +94,11 @@ automatiquement (`GET /v0.1/me`) ou saisi à la main.
   nom, prix, quantité, seuil, réf., catégorie, description ;
   `customers_export…xlsx` : nom, email, téléphone, adresse). Type reconnu par
   l'entête ; ré-import = mise à jour (article par `Item id`, client par
-  email/nom), jamais de doublon. Les accents abîmés de l'export
+  email/nom), jamais de doublon. L'export d'articles contenant tout le
+  catalogue, un article venu de SumUp absent du nouvel export (supprimé dans
+  SumUp) est retiré de l'app (produits créés dans l'app gardés ; demande de
+  Sébastien, 04/10/2026). Les clients ne sont jamais retirés (historique des
+  commandes). Les accents abîmés de l'export
   (« AmÃ©trine ») sont réparés (`SumUpImport.fixText`). Testé par
   `SumUpImportTest` sur des fichiers fabriqués — jamais de vrai export
   client dans le dépôt.

@@ -72,14 +72,18 @@ class SumUpImportTest {
         assertEquals(Category.PRECIEUSE, p[1].category)
         assertEquals(Category.AUTRE, p[2].category)
 
-        // Ré-import : mise à jour (nouvelle quantité), pas de doublon.
+        // Ré-import du catalogue où ne reste que la loupe : mise à jour
+        // (nouvelle quantité), pas de doublon, et les deux articles supprimés
+        // dans SumUp disparaissent de l'app (sauf un produit créé dans l'app).
         val again = xlsx(
             listOf(itemHeader, listOf("Loupe 15x", "", "", "", "22.0", "", "each.each", "Yes", "3.0", "0.0", "", "", "MatÃ©riel", "id-3")),
         )
-        val second = SumUpImport.import(again, result.data)
+        val withLocal = result.data.copy(products = result.data.products + fr.gemsofrod.gestion.data.Product(name = "Bague sur mesure", category = Category.BIJOU, unit = fr.gemsofrod.gestion.data.StockUnit.PIECE, quantity = 1.0, cost = 0.0, price = 900.0, threshold = 0.0))
+        val second = SumUpImport.import(again, withLocal)
         assertEquals(0, second.created)
         assertEquals(1, second.updated)
-        assertEquals(3, second.data.products.size)
+        assertEquals(2, second.removed)
+        assertEquals(listOf("Loupe 15x", "Bague sur mesure"), second.data.products.map { it.name })
         assertEquals(3.0, second.data.products.first { it.name == "Loupe 15x" }.quantity, 0.001)
     }
 
