@@ -61,6 +61,11 @@ data class Client(
     /** Ancienne saisie manuelle, ignorée : le segment est calculé par [segmentOf]. */
     val segment: Segment = Segment.OCCASIONNEL,
     val note: String = "",
+    /** Code personnel de livraison offerte, créé à la 3e commande. */
+    val shippingCode: String? = null,
+    /** Quand le message avec le code a été préparé pour envoi (millisecondes). */
+    val shippingCodeSentAt: Long? = null,
+    val shippingCodeUsed: Boolean = false,
 )
 
 data class OrderLine(
@@ -191,5 +196,29 @@ private fun AppData.salesLastYear(c: Client, today: LocalDate): List<Order> {
 fun AppData.ordersLastYear(c: Client, today: LocalDate = LocalDate.now()): Int = salesLastYear(c, today).size
 
 fun AppData.spentLastYear(c: Client, today: LocalDate = LocalDate.now()): Double = salesLastYear(c, today).sumOf { it.total }
+
+/**
+ * Code personnel de livraison offerte : « GEMS-PRENOM-XXX » (prénom sans
+ * accents, 3 caractères sans ambiguïté 0/O, 1/I), unique parmi [taken].
+ */
+fun shippingCodeFor(name: String, taken: Set<String>, random: java.util.Random = java.util.Random()): String {
+    val first = normalizeName(name).split(" ").firstOrNull().orEmpty()
+        .filter { it in 'a'..'z' }.take(8).uppercase().ifEmpty { "CLIENT" }
+    val alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
+    while (true) {
+        val suffix = (1..3).map { alphabet[random.nextInt(alphabet.length)] }.joinToString("")
+        val code = "GEMS-$first-$suffix"
+        if (code !in taken) return code
+    }
+}
+
+/** Donne un code de livraison offerte à chaque client qui atteint [REGULAR_MIN_ORDERS] commandes sur 12 mois. */
+fun AppData.withShippingCodes(today: LocalDate = LocalDate.now()): AppData {
+    val needs = clients.filter { it.shippingCode == null && ordersLastYear(it, today) >= REGULAR_MIN_ORDERS }
+    if (needs.isEmpty()) return this
+    val taken = clients.mapNotNull { it.shippingCode }.toMutableSet()
+    val codes = needs.associate { c -> c.id to shippingCodeFor(c.name, taken).also { taken += it } }
+    return copy(clients = clients.map { c -> codes[c.id]?.let { c.copy(shippingCode = it) } ?: c })
+}
 
 fun newId(): String = UUID.randomUUID().toString()

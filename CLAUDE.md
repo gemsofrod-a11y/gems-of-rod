@@ -379,7 +379,9 @@ or champagne, onyx, titres et montants en police à empattements, courbes
 fines dorées ; chaque carte de l'Aperçu s'ouvre sur une page de détail
 (`InsightScreen`). Segments clients calculés sur 12 mois (règles de
 Sébastien) : VIP dès 500 € d'achats, Régulier dès 3 commandes ou ancien
-VIP (un VIP sous 500 € retombe en Régulier), sinon Occasionnel (`segmentOf`, constantes `VIP_MIN_SPENT` / `REGULAR_MIN_ORDERS`). Données locales (`gestion.json`, export /
+VIP (un VIP sous 500 € retombe en Régulier), sinon Occasionnel ; à la 3e
+commande, code personnel de livraison offerte (`withShippingCodes`) envoyé
+par message préparé, à créer à la main dans la boutique SumUp (`segmentOf`, constantes `VIP_MIN_SPENT` / `REGULAR_MIN_ORDERS`). Données locales (`gestion.json`, export /
 import JSON depuis le menu). Seul accès réseau : SumUp (demande de Sébastien
 le 04/10/2026, il encaisse au Tap to Pay) — récupération des paiements
 (rattachables à une commande, sinon « ventes directes » comptées dans le CA)

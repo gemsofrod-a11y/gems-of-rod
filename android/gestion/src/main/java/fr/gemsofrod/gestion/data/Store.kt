@@ -75,6 +75,9 @@ class Store(context: Context) {
         private fun Client.toJson() = JSONObject().apply {
             put("id", id); put("name", name); put("email", email); put("phone", phone)
             put("segment", segment.name); put("note", note)
+            put("shippingCode", shippingCode ?: JSONObject.NULL)
+            put("shippingCodeSentAt", shippingCodeSentAt ?: JSONObject.NULL)
+            put("shippingCodeUsed", shippingCodeUsed)
         }
 
         private fun JSONObject.toClient() = Client(
@@ -84,6 +87,9 @@ class Store(context: Context) {
             phone = optString("phone", ""),
             segment = enum("segment", Segment.PROSPECT),
             note = optString("note", ""),
+            shippingCode = if (isNull("shippingCode")) null else optString("shippingCode"),
+            shippingCodeSentAt = if (isNull("shippingCodeSentAt")) null else optLong("shippingCodeSentAt"),
+            shippingCodeUsed = optBoolean("shippingCodeUsed", false),
         )
 
         private fun OrderLine.toJson() = JSONObject().apply {

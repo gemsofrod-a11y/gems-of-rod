@@ -81,6 +81,6 @@ object SampleData {
             pay("EXEMPLE04", 350.0, 12, "10:20", "POS"),
             pay("EXEMPLE05", 120.0, 40, "16:35", "POS"),
         )
-        return AppData(products, clients, orders, n, payments)
+        return AppData(products, clients, orders, n, payments).withShippingCodes(today)
     }
 }

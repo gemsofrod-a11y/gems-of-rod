@@ -221,6 +221,11 @@ private fun GestionApp(viewModel: GestionViewModel) {
                 onDelete = { viewModel.deleteClient(it); close() },
                 onOpenOrder = { open(Editor.OrderView(it)) },
                 onBack = ::close,
+                onSendCode = { c ->
+                    fr.gemsofrod.gestion.ui.sendShippingCode(context, c)
+                    viewModel.markShippingCodeSent(c.id)
+                },
+                onCodeUsed = { used -> e.id?.let { viewModel.setShippingCodeUsed(it, used) } },
             )
             is Editor.OrderView -> {
                 val order = data.orders.find { it.id == e.id }
@@ -319,6 +324,10 @@ private fun GestionApp(viewModel: GestionViewModel) {
                         onLoadSample = { viewModel.loadSample() },
                         onSeeOrders = { tab = Tab.COMMANDES },
                         onOpenInsight = { open(Editor.InsightE(it)) },
+                        onSendCode = { c ->
+                            fr.gemsofrod.gestion.ui.sendShippingCode(context, c)
+                            viewModel.markShippingCodeSent(c.id)
+                        },
                     )
                     Tab.COMMANDES -> OrdersScreen(data, onOpen = { open(Editor.OrderView(it)) }, onNew = { open(Editor.OrderE(null)) })
                     Tab.STOCK -> StockScreen(data, onOpen = { open(Editor.ProductE(it)) }, onNew = { open(Editor.ProductE(null)) })

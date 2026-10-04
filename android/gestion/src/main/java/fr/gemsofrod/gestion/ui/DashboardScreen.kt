@@ -17,6 +17,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.CalendarMonth
+import androidx.compose.material.icons.outlined.CardGiftcard
 import androidx.compose.material.icons.outlined.ErrorOutline
 import androidx.compose.material.icons.outlined.Inventory2
 import androidx.compose.material.icons.outlined.PieChart
@@ -71,6 +72,8 @@ fun DashboardScreen(
     onSeeOrders: () -> Unit,
     /** Ouvre la page de détail d'une carte. */
     onOpenInsight: (Insight) -> Unit = {},
+    /** Prépare l'envoi du code de livraison offerte à un client. */
+    onSendCode: (fr.gemsofrod.gestion.data.Client) -> Unit = {},
 ) {
     val stats = remember(data) { Stats(data) }
     val today = LocalDate.now().toEpochDay()
@@ -98,6 +101,29 @@ fun DashboardScreen(
                         modifier = Modifier.clip(RoundedCornerShape(50)).clickable(onClick = onLoadSample)
                             .padding(horizontal = 14.dp, vertical = 12.dp),
                     )
+                }
+            }
+        }
+
+        // Fidélité : nouveaux clients à 3 commandes dont le code reste à envoyer.
+        val toSend = data.clients.filter { it.shippingCode != null && it.shippingCodeSentAt == null }
+        if (toSend.isNotEmpty()) {
+            SectionCard(
+                if (toSend.size == 1) "Livraison offerte · 1 code à envoyer" else "Livraison offerte · ${toSend.size} codes à envoyer",
+                icon = Icons.Outlined.CardGiftcard,
+            ) {
+                Text("Ces clients viennent de passer leur 3e commande.", fontSize = 12.sp, color = Palette.Muted)
+                toSend.forEach { c ->
+                    HorizontalDivider(color = Palette.Line, modifier = Modifier.padding(top = 8.dp))
+                    Row(Modifier.fillMaxWidth().padding(top = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                        Avatar(c.name, 36.dp)
+                        Spacer(Modifier.width(10.dp))
+                        Column(Modifier.weight(1f)) {
+                            Text(c.name, fontSize = 14.sp, color = Palette.Ink, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                            Text(c.shippingCode.orEmpty(), fontSize = 12.sp, color = Palette.Accent, fontWeight = FontWeight.Medium)
+                        }
+                        PillButton("Envoyer", null, { onSendCode(c) })
+                    }
                 }
             }
         }

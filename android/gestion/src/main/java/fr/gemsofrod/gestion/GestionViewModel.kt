@@ -12,6 +12,7 @@ import fr.gemsofrod.gestion.data.Store
 import fr.gemsofrod.gestion.data.SumUpItem
 import fr.gemsofrod.gestion.data.SumUpPayment
 import fr.gemsofrod.gestion.data.normalizeName
+import fr.gemsofrod.gestion.data.withShippingCodes
 import fr.gemsofrod.gestion.sumup.SumUpCheckout
 import fr.gemsofrod.gestion.sumup.SumUpClient
 import fr.gemsofrod.gestion.sumup.SumUpSettings
@@ -47,7 +48,8 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
     val data: StateFlow<AppData> = _data.asStateFlow()
 
     private fun update(transform: (AppData) -> AppData) {
-        val next = transform(_data.value)
+        // Fidélité : chaque nouveau client à 3 commandes reçoit son code de livraison offerte.
+        val next = transform(_data.value).withShippingCodes()
         _data.value = next
         viewModelScope.launch(Dispatchers.IO) { saveLock.withLock { store.save(_data.value) } }
     }
@@ -365,6 +367,17 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
             result.updated == 0 -> "${n(result.created)} importé${if (result.created > 1) "s" else ""} depuis SumUp."
             else -> "${n(result.created)} ajouté${if (result.created > 1) "s" else ""}, ${result.updated} mis à jour depuis SumUp."
         }
+    }
+
+    // --- Fidélité ---
+
+    /** Le message avec le code a été préparé pour envoi. */
+    fun markShippingCodeSent(clientId: String) = update { d ->
+        d.copy(clients = d.clients.map { if (it.id == clientId) it.copy(shippingCodeSentAt = System.currentTimeMillis()) else it })
+    }
+
+    fun setShippingCodeUsed(clientId: String, used: Boolean) = update { d ->
+        d.copy(clients = d.clients.map { if (it.id == clientId) it.copy(shippingCodeUsed = used) else it })
     }
 
     // --- Sauvegarde ---

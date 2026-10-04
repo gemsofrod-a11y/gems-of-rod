@@ -135,6 +135,9 @@ object SumUpImport {
                 email = email.ifBlank { existing?.email.orEmpty() },
                 phone = cell(iPhone).ifBlank { existing?.phone.orEmpty() },
                 segment = existing?.segment ?: Segment.OCCASIONNEL,
+                shippingCode = existing?.shippingCode,
+                shippingCodeSentAt = existing?.shippingCodeSentAt,
+                shippingCodeUsed = existing?.shippingCodeUsed ?: false,
                 note = if (existing != null && existing.note.isNotBlank() && note.isNotBlank() && !existing.note.contains(note)) "${existing.note}\n$note"
                 else note.ifBlank { existing?.note.orEmpty() },
             )

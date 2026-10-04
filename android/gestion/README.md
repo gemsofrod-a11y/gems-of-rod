@@ -36,7 +36,11 @@ paiement, reste à encaisser, ventes par catégorie, stock).
 - **Clients** : segment entièrement calculé sur 12 mois glissants (hors
   devis et annulations, règles de Sébastien du 04/10/2026, `segmentOf`) :
   VIP dès 500 € d'achats, sinon Régulier dès 3 commandes ou s'il a déjà été
-  VIP (un ancien VIP retombe en Régulier), sinon Occasionnel, total des achats,
+  VIP (un ancien VIP retombe en Régulier), sinon Occasionnel. À la 3e
+  commande sur 12 mois, un code personnel de livraison offerte
+  (`GEMS-PRENOM-XXX`) est créé ; l'Aperçu signale les codes à envoyer et
+  prépare un message de la maison (email/SMS/WhatsApp). Le code doit être
+  créé à la main dans la boutique SumUp (pas d'API pour les réductions)., total des achats,
   historique des commandes, appel ou email en un geste.
 
 ## Règles de stock

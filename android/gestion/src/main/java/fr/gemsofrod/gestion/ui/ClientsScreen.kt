@@ -10,6 +10,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.clickable
+import androidx.compose.material.icons.automirrored.outlined.Send
+import androidx.compose.material.icons.outlined.CardGiftcard
 import androidx.compose.material.icons.outlined.Call
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Groups
@@ -98,6 +105,9 @@ fun ClientEditor(
     onDelete: (String) -> Unit,
     onOpenOrder: (String) -> Unit,
     onBack: () -> Unit,
+    /** Prépare l'envoi du code de livraison offerte au client. */
+    onSendCode: (Client) -> Unit = {},
+    onCodeUsed: (Boolean) -> Unit = {},
 ) {
     val context = LocalContext.current
     val today = LocalDate.now().toEpochDay()
@@ -115,6 +125,8 @@ fun ClientEditor(
                     Client(
                         id = client?.id ?: newId(), name = name.trim(), email = email.trim(),
                         phone = phone.trim(), segment = Segment.OCCASIONNEL, note = note.trim(),
+                        shippingCode = client?.shippingCode, shippingCodeSentAt = client?.shippingCodeSentAt,
+                        shippingCodeUsed = client?.shippingCodeUsed ?: false,
                     ),
                 )
             }
@@ -155,6 +167,7 @@ fun ClientEditor(
                 fontSize = 12.sp, color = Palette.Muted,
             )
         }
+        if (client?.shippingCode != null) ShippingCodeCard(client, onSendCode, onCodeUsed)
         Field("Notes (goûts, tailles, occasions…)", note, { note = it }, singleLine = false)
 
         if (client != null) {
@@ -174,4 +187,70 @@ fun ClientEditor(
             }
         }
     }
+}
+
+/** Carte « Livraison offerte » de la fiche client : code, état, envoi. */
+@Composable
+private fun ShippingCodeCard(client: Client, onSend: (Client) -> Unit, onUsed: (Boolean) -> Unit) {
+    val code = client.shippingCode ?: return
+    SoftCard(Modifier.fillMaxWidth()) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            IconBadge(Icons.Outlined.CardGiftcard, Palette.Accent, 34.dp)
+            Spacer(Modifier.width(10.dp))
+            Column(Modifier.weight(1f)) {
+                Text("LIVRAISON OFFERTE", fontSize = 10.sp, letterSpacing = 1.4.sp, fontWeight = FontWeight.Medium, color = Palette.Muted)
+                Text(code, fontFamily = Display, fontSize = 20.sp, color = Palette.Ink)
+            }
+            StatusChip(
+                when {
+                    client.shippingCodeUsed -> "Utilisé"
+                    client.shippingCodeSentAt != null -> "Envoyé"
+                    else -> "À envoyer"
+                },
+                when {
+                    client.shippingCodeUsed -> ChipKind.NEUTRAL
+                    client.shippingCodeSentAt != null -> ChipKind.GOOD
+                    else -> ChipKind.WARN
+                },
+            )
+        }
+        Spacer(Modifier.height(8.dp))
+        Text(
+            (client.shippingCodeSentAt?.let { "Message préparé le ${formatDay(it)}. " } ?: "Offert pour sa 3e commande sur 12 mois. ") +
+                "Pensez à créer ce code dans votre boutique SumUp, ou à offrir la livraison vous-même à la commande.",
+            fontSize = 12.sp, color = Palette.Muted,
+        )
+        Spacer(Modifier.height(10.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+            PillButton(if (client.shippingCodeSentAt == null) "Envoyer le code" else "Renvoyer", Icons.AutoMirrored.Outlined.Send, { onSend(client) })
+            Text(
+                if (client.shippingCodeUsed) "Marquer non utilisé" else "Marquer utilisé",
+                fontSize = 13.sp, color = Palette.Accent, fontWeight = FontWeight.Medium,
+                modifier = Modifier.clickable { onUsed(!client.shippingCodeUsed) }.padding(8.dp),
+            )
+        }
+    }
+}
+
+private fun formatDay(millis: Long): String =
+    date(java.time.Instant.ofEpochMilli(millis).atZone(java.time.ZoneId.systemDefault()).toLocalDate())
+
+/** Message de la maison accompagnant le code (envoi par email, SMS ou WhatsApp). */
+fun shippingCodeMessage(client: Client): String {
+    val first = client.name.trim().split(Regex("\\s+")).firstOrNull().orEmpty()
+    return "Cher $first,\n\n" +
+        "Pour vous remercier de votre fidélité, nous avons le plaisir de vous offrir la livraison " +
+        "sur votre prochaine commande, avec votre code personnel :\n\n" +
+        "${client.shippingCode}\n\n" +
+        "Ce sera toujours un plaisir de vous faire découvrir nos nouvelles pierres.\n\n" +
+        "Avec mes sincères salutations,\nL'équipe Gems of Rod"
+}
+
+/** Ouvre le choix d'application (email, SMS, WhatsApp…) avec le message prêt. */
+fun sendShippingCode(context: android.content.Context, client: Client) {
+    val send = Intent(Intent.ACTION_SEND).setType("text/plain")
+        .putExtra(Intent.EXTRA_SUBJECT, "Gems of Rod — votre livraison offerte")
+        .putExtra(Intent.EXTRA_TEXT, shippingCodeMessage(client))
+    if (client.email.isNotBlank()) send.putExtra(Intent.EXTRA_EMAIL, arrayOf(client.email))
+    runCatching { context.startActivity(Intent.createChooser(send, "Envoyer le code à ${client.name}")) }
 }
