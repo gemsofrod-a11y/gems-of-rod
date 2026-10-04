@@ -142,4 +142,10 @@ class ScreenshotTest {
         )
         OrderEditor(next, d, {}, {}, {})
     }
+
+    @Test
+    fun ficheClientPanier() = capture("13_fiche_client_panier") {
+        val c = data.clients.first { cl -> data.orders.count { it.clientId == cl.id } >= 2 }
+        fr.gemsofrod.gestion.ui.ClientEditor(c, data, {}, {}, {}, {})
+    }
 }

@@ -147,6 +147,28 @@ data class SumUpPayment(
 }
 
 /** Article d'une vente SumUp ; [productId] = produit du stock reconnu, null = à associer. */
+/**
+ * Paiement en ligne SumUp qui n'a pas abouti (carte refusée, page fermée…) :
+ * le seul « panier en cours » que SumUp laisse voir — un panier abandonné
+ * avant le paiement n'est pas exposé par l'API.
+ */
+data class SumUpAttempt(
+    val code: String,
+    val amount: Double,
+    val date: Long,
+    val time: String,
+    val paymentType: String,
+    /** « FAILED » ou « CANCELLED ». */
+    val status: String,
+    /** Articles, tels que résumés par SumUp (peut être vide). */
+    val summary: String = "",
+    /** Écarté à la main par Sébastien (déjà relancé, sans suite…). */
+    val dismissed: Boolean = false,
+) {
+    val localDate: LocalDate get() = LocalDate.ofEpochDay(date)
+    val statusLabel: String get() = if (status == "CANCELLED") "Annulé" else "Échoué"
+}
+
 data class SumUpItem(val name: String, val quantity: Double, val productId: String? = null)
 
 /** Nom d'article comparable : sans accents, minuscules, espaces simples. */
@@ -162,7 +184,29 @@ data class AppData(
     val sumupPayments: List<SumUpPayment> = emptyList(),
     /** Correspondances apprises : nom d'article SumUp normalisé → produit du stock. */
     val sumupProductMap: Map<String, String> = emptyMap(),
+    val sumupAttempts: List<SumUpAttempt> = emptyList(),
 )
+
+/** Le client a finalement payé : paiement réussi du même montant dans les 3 jours. */
+fun AppData.attemptPaidLater(a: SumUpAttempt): Boolean =
+    sumupPayments.any { kotlin.math.abs(it.amount - a.amount) < 0.01 && it.date in a.date..(a.date + 3) }
+
+/** Paiements non aboutis à relancer : ni écartés, ni payés ensuite. */
+fun AppData.openAttempts(): List<SumUpAttempt> = sumupAttempts.filter { !it.dismissed && !attemptPaidLater(it) }
+
+/** Article acheté par un client : libellé, quantité et montant cumulés. */
+data class BasketLine(val label: String, val quantity: Double, val total: Double)
+
+/**
+ * « Panier » d'un client : tout ce qu'il a acheté (commandes hors devis et
+ * annulations), regroupé par article, du plus gros montant au plus petit.
+ */
+fun AppData.basketOf(c: Client): List<BasketLine> =
+    orders.filter { it.clientId == c.id && it.status.countsAsSale }
+        .flatMap { it.lines }.filterNot { it.isLoyaltyDiscount() }
+        .groupBy { it.productId ?: ("#" + normalizeName(it.label)) }
+        .map { (_, l) -> BasketLine(l.first().label, l.sumOf { it.quantity }, l.sumOf { it.total }) }
+        .sortedByDescending { it.total }
 
 /** Achats minimum sur 12 mois pour qu'un client soit « VIP » (règle de Sébastien, 04/10/2026). */
 const val VIP_MIN_SPENT = 500.0

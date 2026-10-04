@@ -81,6 +81,11 @@ object SampleData {
             pay("EXEMPLE04", 350.0, 12, "10:20", "POS"),
             pay("EXEMPLE05", 120.0, 40, "16:35", "POS"),
         )
-        return AppData(products, clients, orders, n, payments).withShippingCodes(today)
+        // Paiements en ligne non aboutis fictifs (boutique en ligne SumUp).
+        val attempts = listOf(
+            SumUpAttempt("EXEMPLE-NA1", 640.0, today.minusDays(1).toEpochDay(), "21:14", "ECOM", "FAILED", "Saphir bleu de Ceylan 1,1 ct"),
+            SumUpAttempt("EXEMPLE-NA2", 185.0, today.minusDays(4).toEpochDay(), "09:37", "ECOM", "CANCELLED", "Boucles d'oreilles grenat"),
+        )
+        return AppData(products, clients, orders, n, payments, sumupAttempts = attempts).withShippingCodes(today)
     }
 }

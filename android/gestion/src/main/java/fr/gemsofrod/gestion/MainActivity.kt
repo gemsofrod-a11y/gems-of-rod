@@ -282,6 +282,22 @@ private fun GestionApp(viewModel: GestionViewModel) {
                 onLink = { code, orderId -> viewModel.linkPayment(code, orderId) },
                 onBack = ::close,
                 onMapItem = { name, productId -> viewModel.mapSumUpItem(name, productId) },
+                onDismissAttempt = { code -> viewModel.dismissAttempt(code) },
+                onRelaunchAttempt = { a ->
+                    viewModel.createAttemptLink(a.code) { url, error ->
+                        if (url == null) {
+                            toast(error ?: "Création du lien impossible.")
+                        } else {
+                            val text = "Bonjour,\n\n" +
+                                "Votre paiement de ${fr.gemsofrod.gestion.ui.euros(a.amount)} sur notre boutique n'a pas pu aboutir" +
+                                (if (a.summary.isNotBlank()) " (${a.summary})" else "") + ". " +
+                                "Si vous le souhaitez, voici un nouveau lien pour finaliser votre commande en toute sécurité :\n$url\n\n" +
+                                "Avec mes sincères salutations,\nL'équipe Gems of Rod"
+                            val send = Intent(Intent.ACTION_SEND).setType("text/plain").putExtra(Intent.EXTRA_TEXT, text)
+                            context.startActivity(Intent.createChooser(send, "Relancer le client"))
+                        }
+                    }
+                },
             )
             null -> AppFrame(
                 tab = tab,
@@ -328,6 +344,7 @@ private fun GestionApp(viewModel: GestionViewModel) {
                             fr.gemsofrod.gestion.ui.sendShippingCode(context, c)
                             viewModel.markShippingCodeSent(c.id)
                         },
+                        onOpenSumUp = { open(Editor.SumUpE) },
                     )
                     Tab.COMMANDES -> OrdersScreen(data, onOpen = { open(Editor.OrderView(it)) }, onNew = { open(Editor.OrderE(null)) })
                     Tab.STOCK -> StockScreen(data, onOpen = { open(Editor.ProductE(it)) }, onNew = { open(Editor.ProductE(null)) })

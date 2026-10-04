@@ -34,6 +34,7 @@ class Store(context: Context) {
             put("orders", JSONArray(data.orders.map { it.toJson() }))
             put("sumupPayments", JSONArray(data.sumupPayments.map { it.toJson() }))
             put("sumupProductMap", JSONObject(data.sumupProductMap as Map<*, *>))
+            put("sumupAttempts", JSONArray(data.sumupAttempts.map { it.toJson() }))
         }.toString(2)
 
         /** Lève une exception si le texte n'est pas une sauvegarde valide. */
@@ -45,7 +46,8 @@ class Store(context: Context) {
             val next = o.optInt("nextOrderNumber", (orders.maxOfOrNull { it.number } ?: 0) + 1)
             val payments = o.optJSONArray("sumupPayments")?.objects()?.map { it.toPayment() } ?: emptyList()
             val map = o.optJSONObject("sumupProductMap")?.let { m -> m.keys().asSequence().associateWith { m.getString(it) } } ?: emptyMap()
-            return AppData(products, clients, orders, next, payments, map)
+            val attempts = o.optJSONArray("sumupAttempts")?.objects()?.map { it.toAttempt() } ?: emptyList()
+            return AppData(products, clients, orders, next, payments, map, attempts)
         }
 
         private fun JSONArray.objects(): List<JSONObject> = (0 until length()).map { getJSONObject(it) }
@@ -136,6 +138,22 @@ class Store(context: Context) {
                 JSONObject().put("name", i.name).put("quantity", i.quantity).put("productId", i.productId ?: JSONObject.NULL)
             }))
         }
+
+        private fun SumUpAttempt.toJson() = JSONObject().apply {
+            put("code", code); put("amount", amount); put("date", date); put("time", time)
+            put("paymentType", paymentType); put("status", status); put("summary", summary); put("dismissed", dismissed)
+        }
+
+        private fun JSONObject.toAttempt() = SumUpAttempt(
+            code = getString("code"),
+            amount = optDouble("amount", 0.0),
+            date = optLong("date"),
+            time = optString("time", ""),
+            paymentType = optString("paymentType", ""),
+            status = optString("status", "FAILED"),
+            summary = optString("summary", ""),
+            dismissed = optBoolean("dismissed", false),
+        )
 
         private fun JSONObject.toPayment() = SumUpPayment(
             code = getString("code"),

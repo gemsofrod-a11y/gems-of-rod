@@ -400,7 +400,11 @@ ses quantités du stock, une annulation ou suppression les rend. Fidélité
 et annulations) : VIP dès 500 € d'achats, Régulier dès 3 commandes (ou ancien
 VIP), sinon Occasionnel ; code personnel de livraison offerte à la 3e
 commande ; remise de 5 % sur la commande suivante à 5 commandes, une fois par
-période de 12 mois. Voir `android/gestion/README.md`.
+période de 12 mois. Fiche client avec son « panier » (articles achetés, panier
+moyen). Paniers abandonnés : non exposés par l'API SumUp (vérifié le
+04/10/2026) ; l'app montre à la place les paiements en ligne non aboutis
+(échoués/annulés) à relancer par un nouveau lien de paiement. Voir
+`android/gestion/README.md`.
 
 ---
 

@@ -26,6 +26,10 @@ data class SumUpTransaction(
     val epochMillis: Long = 0L,
     /** Articles vendus (nom, quantité), lus à part pour les ventes récentes. */
     val items: List<Pair<String, Double>> = emptyList(),
+    /** « SUCCESSFUL », ou « FAILED » / « CANCELLED » pour un paiement en ligne non abouti. */
+    val status: String = "SUCCESSFUL",
+    /** Résumé des articles fourni par l'historique (« product_summary »). */
+    val summary: String = "",
 )
 
 data class SumUpCheckout(val id: String, val url: String?, val status: String, val amount: Double, val transactionCodes: List<String>)
@@ -39,6 +43,11 @@ class SumUpClient(private val apiKey: String) {
 
     private val base = "https://api.sumup.com"
 
+    private companion object {
+        /** Encaissements en boutique : un échec y est réglé sur place, pas à relancer. */
+        val IN_STORE_TYPES = setOf("POS", "CASH")
+    }
+
     /** Code marchand du compte lié à la clé (GET /v0.1/me). */
     fun merchantCode(): String {
         val me = JSONObject(request("GET", "$base/v0.1/me"))
@@ -49,8 +58,10 @@ class SumUpClient(private val apiKey: String) {
     }
 
     /**
-     * Paiements réussis, du plus récent au plus ancien, en s'arrêtant au
-     * premier déjà connu ([knownCodes]) ou au-delà de [maxPages] pages.
+     * Paiements réussis, et paiements en ligne non aboutis (échoués ou
+     * annulés, hors encaissements en boutique), du plus récent au plus ancien,
+     * en s'arrêtant au premier déjà connu ([knownCodes]) ou au-delà de
+     * [maxPages] pages.
      */
     fun transactions(merchantCode: String, knownCodes: Set<String>, maxPages: Int = 5): List<SumUpTransaction> {
         val result = mutableListOf<SumUpTransaction>()
@@ -66,11 +77,17 @@ class SumUpClient(private val apiKey: String) {
                 val code = t.optString("transaction_code")
                 if (code.isBlank()) continue
                 if (code in knownCodes) { reachedKnown = true; continue }
-                if (t.optString("status") != "SUCCESSFUL") continue
+                val status = t.optString("status")
+                val paymentType = t.optString("payment_type")
+                val failedOnline = (status == "FAILED" || status == "CANCELLED") && paymentType !in IN_STORE_TYPES
+                if (status != "SUCCESSFUL" && !failedOnline) continue
                 if (t.optString("type", "PAYMENT") != "PAYMENT") continue
                 val stamp = t.optString("timestamp")
                 val (day, time) = parseTimestamp(stamp)
-                result += SumUpTransaction(code, t.optDouble("amount", 0.0), day, time, t.optString("payment_type"), parseMillis(stamp))
+                result += SumUpTransaction(
+                    code, t.optDouble("amount", 0.0), day, time, paymentType, parseMillis(stamp),
+                    status = status, summary = t.optString("product_summary").takeIf { it != "null" }.orEmpty().trim(),
+                )
             }
             if (reachedKnown || items.length() == 0) break
             url = nextLink(body.optJSONArray("links"), merchantCode)

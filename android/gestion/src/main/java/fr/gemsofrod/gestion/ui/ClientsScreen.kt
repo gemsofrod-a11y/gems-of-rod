@@ -1,5 +1,7 @@
 package fr.gemsofrod.gestion.ui
 
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material.icons.outlined.ShoppingBag
 import androidx.compose.material.icons.outlined.Loyalty
 import android.content.Intent
 import android.net.Uri
@@ -47,6 +49,7 @@ import fr.gemsofrod.gestion.data.ordersLastYear
 import fr.gemsofrod.gestion.data.segmentOf
 import fr.gemsofrod.gestion.data.LOYALTY_DISCOUNT_ORDERS
 import fr.gemsofrod.gestion.data.loyaltyDiscountAvailable
+import fr.gemsofrod.gestion.data.basketOf
 import fr.gemsofrod.gestion.data.spentByClient
 import java.time.LocalDate
 
@@ -169,6 +172,36 @@ fun ClientEditor(
                     (if (seg == fr.gemsofrod.gestion.data.Segment.REGULIER && n < REGULAR_MIN_ORDERS) " (C'est le cas de ce client.)" else ""),
                 fontSize = 12.sp, color = Palette.Muted,
             )
+        }
+        if (client != null) {
+            val basket = data.basketOf(client)
+            val sales = data.orders.filter { it.clientId == client.id && it.status.countsAsSale }
+            if (basket.isNotEmpty()) {
+                SectionCard("Panier du client", icon = Icons.Outlined.ShoppingBag) {
+                    Row {
+                        Column(Modifier.weight(1f)) {
+                            Text("Panier moyen", fontSize = 12.sp, color = Palette.Muted)
+                            Text(euros(sales.sumOf { it.total } / sales.size), fontFamily = Display, fontSize = 20.sp, color = Palette.Ink)
+                        }
+                        Column(Modifier.weight(1f)) {
+                            Text("Total des achats", fontSize = 12.sp, color = Palette.Muted)
+                            Text(euros(sales.sumOf { it.total }), fontFamily = Display, fontSize = 20.sp, color = Palette.Ink)
+                        }
+                    }
+                    Text(
+                        "${sales.size} commande${if (sales.size > 1) "s" else ""} · dernier achat le ${date(sales.maxOf { it.localDate })}",
+                        fontSize = 12.sp, color = Palette.Muted, modifier = Modifier.padding(top = 4.dp),
+                    )
+                    basket.take(10).forEach { b ->
+                        HorizontalDivider(color = Palette.Line, modifier = Modifier.padding(top = 8.dp))
+                        Row(Modifier.fillMaxWidth().padding(top = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                            Text(b.label, fontSize = 14.sp, color = Palette.Ink, modifier = Modifier.weight(1f))
+                            Text("qté ${qty(b.quantity)} · ${euros(b.total)}", fontSize = 13.sp, color = Palette.Muted)
+                        }
+                    }
+                    if (basket.size > 10) Text("et ${basket.size - 10} autres articles", fontSize = 12.sp, color = Palette.Muted, modifier = Modifier.padding(top = 6.dp))
+                }
+            }
         }
         if (client?.shippingCode != null) ShippingCodeCard(client, onSendCode, onCodeUsed)
         if (client != null && data.loyaltyDiscountAvailable(client)) {

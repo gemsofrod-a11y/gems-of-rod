@@ -45,7 +45,15 @@ paiement, reste à encaisser, ventes par catégorie, stock).
   la commande suivante (`loyaltyDiscountAvailable`) : bouton « Appliquer »
   dans la saisie de commande, ligne « Remise fidélité 5 % » recalculée sur
   le sous-total ; une seule remise par période de 12 mois. Fiche client :
-  total des achats, historique des commandes, appel ou email en un geste.
+  « Panier du client » (articles achetés regroupés, panier moyen, dernier
+  achat, `basketOf`), historique des commandes, appel ou email en un geste.
+- **Paiements en ligne non aboutis** (demande de Sébastien, 04/10/2026) :
+  SumUp n'expose pas les paniers abandonnés avant paiement ; l'app récupère
+  en revanche les paiements en ligne échoués ou annulés (hors boutique :
+  `POS`/`CASH` exclus), affichés sur l'Aperçu et dans l'écran SumUp, avec
+  relance par nouveau lien de paiement du même montant ou « Écarter ». Ils
+  disparaissent quand le même montant est payé dans les 3 jours
+  (`openAttempts`). SumUp ne donne pas le nom du client de ces tentatives.
 
 ## Règles de stock
 

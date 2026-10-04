@@ -9,6 +9,7 @@ import fr.gemsofrod.gestion.data.Order
 import fr.gemsofrod.gestion.data.Product
 import fr.gemsofrod.gestion.data.SampleData
 import fr.gemsofrod.gestion.data.Store
+import fr.gemsofrod.gestion.data.SumUpAttempt
 import fr.gemsofrod.gestion.data.SumUpItem
 import fr.gemsofrod.gestion.data.SumUpPayment
 import fr.gemsofrod.gestion.data.normalizeName
@@ -198,10 +199,10 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
                     val checkouts = snapshot.orders.filter { it.sumupCheckoutId != null }.mapNotNull { o ->
                         runCatching { o.id to client.checkout(o.sumupCheckoutId!!) }.getOrNull()
                     }
-                    val known = snapshot.sumupPayments.map { it.code }.toSet()
+                    val known = (snapshot.sumupPayments.map { it.code } + snapshot.sumupAttempts.map { it.code }).toSet()
                     // Articles vendus : seulement pour les ventes récentes (au plus 40 par synchronisation).
                     val txs = client.transactions(code, known).mapIndexed { i, t ->
-                        if (t.epochMillis >= stockSince && i < 40) {
+                        if (t.status == "SUCCESSFUL" && t.epochMillis >= stockSince && i < 40) {
                             t.copy(items = runCatching { client.transactionItems(code, t.code) }.getOrDefault(emptyList()))
                         } else t
                     }
@@ -209,14 +210,20 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
                 }
             }.onSuccess { (checkouts, txs) ->
                 val before = _data.value.sumupPayments.size
+                val attemptsBefore = _data.value.sumupAttempts.size
                 update { d -> applySumUp(d, checkouts, txs) }
                 val added = _data.value.sumupPayments.size - before
+                val failed = _data.value.sumupAttempts.size - attemptsBefore
                 sumupSettings.lastSync = System.currentTimeMillis()
                 _sumup.value = sumupUi(
                     message = when (added) {
                         0 -> "À jour : aucun nouveau paiement."
                         1 -> "1 nouveau paiement récupéré."
                         else -> "$added nouveaux paiements récupérés."
+                    } + when (failed) {
+                        0 -> ""
+                        1 -> " 1 paiement en ligne non abouti."
+                        else -> " $failed paiements en ligne non aboutis."
                     },
                 )
             }.onFailure {
@@ -251,8 +258,13 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
             }
         }
         val added = mutableListOf<SumUpPayment>()
+        val attempts = d.sumupAttempts.toMutableList()
         for (tx in txs) {
-            if (tx.code in known) continue
+            if (tx.code in known || attempts.any { it.code == tx.code }) continue
+            if (tx.status != "SUCCESSFUL") {
+                attempts += SumUpAttempt(tx.code, tx.amount, tx.date, tx.time, tx.paymentType, tx.status, tx.summary)
+                continue
+            }
             val items = tx.items.map { (name, q) -> SumUpItem(name, q, matchProduct(d, name)) }
             added += SumUpPayment(tx.code, tx.amount, tx.date, tx.time, tx.paymentType, items = items)
             known += tx.code
@@ -262,6 +274,7 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
             orders = orders,
             products = applyEffects(d.products, added.map { it.stockEffect }),
             sumupPayments = payments.sortedWith(compareByDescending<SumUpPayment> { it.date }.thenByDescending { it.time }),
+            sumupAttempts = attempts.sortedWith(compareByDescending<SumUpAttempt> { it.date }.thenByDescending { it.time }),
         )
     }
 
@@ -319,6 +332,33 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
      * Crée un lien de paiement SumUp pour le reste dû de la commande, puis
      * renvoie l'adresse (ou un message d'erreur) à [onResult].
      */
+    /** Écarte (ou fait revenir) un paiement non abouti de la liste à relancer. */
+    fun dismissAttempt(code: String, dismissed: Boolean = true) = update { d ->
+        d.copy(sumupAttempts = d.sumupAttempts.map { if (it.code == code) it.copy(dismissed = dismissed) else it })
+    }
+
+    /** Nouveau lien de paiement SumUp du montant d'un paiement non abouti, pour relancer le client. */
+    fun createAttemptLink(code: String, onResult: (url: String?, error: String?) -> Unit) {
+        val attempt = _data.value.sumupAttempts.find { it.code == code } ?: return
+        if (!sumupSettings.isConfigured) {
+            onResult(null, "Connectez d'abord SumUp : menu ⋮ → SumUp.")
+            return
+        }
+        val key = sumupSettings.apiKey
+        val merchant = sumupSettings.merchantCode
+        viewModelScope.launch {
+            runCatching {
+                withContext(Dispatchers.IO) {
+                    SumUpClient(key).createCheckout(
+                        merchant, "GOR-R-${attempt.code}-${System.currentTimeMillis()}", attempt.amount,
+                        "Gems of Rod - ${attempt.summary.ifBlank { "votre commande" }}".take(120),
+                    )
+                }
+            }.onSuccess { co -> onResult(co.url, if (co.url == null) "SumUp n'a pas renvoyé de lien de paiement." else null) }
+                .onFailure { onResult(null, it.message ?: "Création du lien impossible.") }
+        }
+    }
+
     fun createPaymentLink(orderId: String, onResult: (url: String?, error: String?) -> Unit) {
         val order = _data.value.orders.find { it.id == orderId } ?: return
         if (!sumupSettings.isConfigured) {

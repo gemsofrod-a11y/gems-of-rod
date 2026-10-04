@@ -9,6 +9,10 @@ import fr.gemsofrod.gestion.data.Segment
 import fr.gemsofrod.gestion.data.LOYALTY_DISCOUNT_LABEL
 import fr.gemsofrod.gestion.data.loyaltyDiscountAvailable
 import fr.gemsofrod.gestion.data.segmentOf
+import fr.gemsofrod.gestion.data.SumUpAttempt
+import fr.gemsofrod.gestion.data.SumUpPayment
+import fr.gemsofrod.gestion.data.basketOf
+import fr.gemsofrod.gestion.data.openAttempts
 import fr.gemsofrod.gestion.data.withShippingCodes
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -74,5 +78,25 @@ class LoyaltyTest {
         assertFalse(after.loyaltyDiscountAvailable(client, today))
         // En modifiant la commande qui porte la remise, elle reste proposée.
         assertTrue(after.loyaltyDiscountAvailable(client, today, excludeOrderId = used.id))
+    }
+
+    @Test
+    fun panierDuClientRegroupeLesArticles() {
+        val d = data(order(10, 100.0, n = 1), order(20, 300.0, n = 2), order(30, 900.0, OrderStatus.DEVIS, n = 3))
+        val basket = d.basketOf(client)
+        assertEquals(1, basket.size)
+        assertEquals(2.0, basket.single().quantity, 0.0)
+        assertEquals(400.0, basket.single().total, 0.001)
+    }
+
+    @Test
+    fun paiementNonAboutiDisparaitSiPayeEnsuite() {
+        val day = today.toEpochDay()
+        val a = SumUpAttempt("A", 640.0, day - 2, "21:00", "ECOM", "FAILED")
+        val open = AppData(sumupAttempts = listOf(a))
+        assertEquals(1, open.openAttempts().size)
+        val paid = open.copy(sumupPayments = listOf(SumUpPayment("P", 640.0, day - 1, "10:00", "ECOM")))
+        assertTrue(paid.openAttempts().isEmpty())
+        assertTrue(open.copy(sumupAttempts = listOf(a.copy(dismissed = true))).openAttempts().isEmpty())
     }
 }

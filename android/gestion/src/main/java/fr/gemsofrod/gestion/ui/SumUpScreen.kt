@@ -23,6 +23,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.outlined.CreditCard
 import androidx.compose.material.icons.outlined.Inventory2
 import androidx.compose.material.icons.outlined.Link
+import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.material.icons.outlined.Sync
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
@@ -45,7 +46,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.gemsofrod.gestion.SumUpUi
 import fr.gemsofrod.gestion.data.AppData
+import fr.gemsofrod.gestion.data.SumUpAttempt
 import fr.gemsofrod.gestion.data.SumUpPayment
+import fr.gemsofrod.gestion.data.openAttempts
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import java.time.Instant
@@ -70,11 +73,17 @@ fun SumUpScreen(
     onBack: () -> Unit,
     /** Associe un nom d'article SumUp à un produit du stock. */
     onMapItem: (name: String, productId: String) -> Unit = { _, _ -> },
+    /** Écarte un paiement non abouti de la liste à relancer. */
+    onDismissAttempt: (code: String) -> Unit = {},
+    /** Crée un nouveau lien de paiement et prépare le message de relance. */
+    onRelaunchAttempt: (SumUpAttempt) -> Unit = {},
 ) {
     BackHandler(onBack = onBack)
     var filter by rememberSaveable { mutableStateOf(PayFilter.TOUS) }
     var linking by remember { mutableStateOf<SumUpPayment?>(null) }
     var mapping by remember { mutableStateOf<String?>(null) }
+    var attempt by remember { mutableStateOf<SumUpAttempt?>(null) }
+    val attempts = data.openAttempts()
     // Articles vendus en direct pas encore reconnus dans le stock (un par nom).
     val unmatched = data.sumupPayments.filter { it.orderId == null }.flatMap { it.items }
         .filter { it.productId == null }.groupBy { fr.gemsofrod.gestion.data.normalizeName(it.name) }
@@ -124,6 +133,40 @@ fun SumUpScreen(
             }
         }
 
+        if (ui.configured || attempts.isNotEmpty()) {
+            SectionCard(
+                if (attempts.isEmpty()) "Paiements en ligne non aboutis" else "Non aboutis · ${attempts.size} à relancer",
+                icon = Icons.Outlined.ShoppingCart, iconTint = if (attempts.isEmpty()) Palette.Accent else Palette.Orange,
+            ) {
+                Text(
+                    "Clients arrivés jusqu'au paiement de la boutique en ligne sans le régler (carte refusée, page fermée…). " +
+                        "Un panier rempli mais abandonné avant le paiement n'est pas transmis par SumUp. " +
+                        "Ils disparaissent d'ici quand le même montant est payé dans les 3 jours.",
+                    fontSize = 12.sp, color = Palette.Muted,
+                )
+                if (attempts.isEmpty()) {
+                    Spacer(Modifier.height(8.dp))
+                    Text("Aucun paiement en attente de relance.", fontSize = 14.sp, color = Palette.Ink)
+                }
+                attempts.forEach { a ->
+                    HorizontalDivider(color = Palette.Line, modifier = Modifier.padding(top = 8.dp))
+                    Row(
+                        Modifier.fillMaxWidth().clickable { attempt = a }.padding(vertical = 10.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Column(Modifier.weight(1f)) {
+                            Text(a.summary.ifBlank { "Articles non précisés" }, fontSize = 14.sp, color = Palette.Ink)
+                            Text("${date(a.localDate)} à ${a.time}", fontSize = 12.sp, color = Palette.Muted)
+                        }
+                        Column(horizontalAlignment = Alignment.End) {
+                            Text(euros(a.amount), fontFamily = Display, fontSize = 16.sp, color = Palette.Ink)
+                            StatusChip(a.statusLabel, ChipKind.WARN)
+                        }
+                    }
+                }
+            }
+        }
+
         if (data.sumupPayments.isNotEmpty()) {
             Text("Paiements SumUp", fontWeight = FontWeight.SemiBold, fontSize = 16.sp, color = Palette.Ink)
             SegmentedTabs(
@@ -151,6 +194,31 @@ fun SumUpScreen(
             }
         }
         Spacer(Modifier.height(24.dp))
+    }
+
+    attempt?.let { a ->
+        AlertDialog(
+            onDismissRequest = { attempt = null },
+            containerColor = Palette.Card,
+            title = { Text("${euros(a.amount)} du ${date(a.localDate)}") },
+            text = {
+                Column {
+                    Text(a.summary.ifBlank { "Articles non précisés par SumUp." }, fontSize = 14.sp, color = Palette.Ink)
+                    Spacer(Modifier.height(8.dp))
+                    Text(
+                        "Paiement ${a.statusLabel.lowercase()} à ${a.time}. SumUp ne donne pas le nom du client : " +
+                            "retrouvez-le dans votre boutique SumUp, puis envoyez-lui un nouveau lien de paiement du même montant.",
+                        fontSize = 13.sp, color = Palette.Muted,
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { onRelaunchAttempt(a); attempt = null }) { Text("Envoyer un lien de paiement") }
+            },
+            dismissButton = {
+                TextButton(onClick = { onDismissAttempt(a.code); attempt = null }) { Text("Écarter") }
+            },
+        )
     }
 
     mapping?.let { name ->

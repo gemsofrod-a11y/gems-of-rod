@@ -18,6 +18,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.CalendarMonth
 import androidx.compose.material.icons.outlined.CardGiftcard
+import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.material.icons.outlined.ErrorOutline
 import androidx.compose.material.icons.outlined.Inventory2
 import androidx.compose.material.icons.outlined.PieChart
@@ -41,6 +42,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import fr.gemsofrod.gestion.data.openAttempts
 import fr.gemsofrod.gestion.data.AppData
 import fr.gemsofrod.gestion.data.Order
 import fr.gemsofrod.gestion.data.OrderStatus
@@ -74,6 +76,8 @@ fun DashboardScreen(
     onOpenInsight: (Insight) -> Unit = {},
     /** Prépare l'envoi du code de livraison offerte à un client. */
     onSendCode: (fr.gemsofrod.gestion.data.Client) -> Unit = {},
+    /** Ouvre l'écran SumUp (paiements en ligne non aboutis). */
+    onOpenSumUp: () -> Unit = {},
 ) {
     val stats = remember(data) { Stats(data) }
     val today = LocalDate.now().toEpochDay()
@@ -123,6 +127,28 @@ fun DashboardScreen(
                             Text(c.shippingCode.orEmpty(), fontSize = 12.sp, color = Palette.Accent, fontWeight = FontWeight.Medium)
                         }
                         PillButton("Envoyer", null, { onSendCode(c) })
+                    }
+                }
+            }
+        }
+
+        // Paniers en ligne arrivés au paiement sans aboutir : clients à relancer.
+        val attempts = data.openAttempts()
+        if (attempts.isNotEmpty()) {
+            SectionCard(
+                if (attempts.size == 1) "Paiement en ligne non abouti" else "${attempts.size} paiements en ligne non aboutis",
+                icon = Icons.Outlined.ShoppingCart,
+                onClick = onOpenSumUp,
+            ) {
+                Text("Paniers arrivés jusqu'au paiement sans être réglés : clients à relancer.", fontSize = 12.sp, color = Palette.Muted)
+                attempts.take(3).forEach { a ->
+                    HorizontalDivider(color = Palette.Line, modifier = Modifier.padding(top = 8.dp))
+                    Row(Modifier.fillMaxWidth().padding(top = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                        Column(Modifier.weight(1f)) {
+                            Text(a.summary.ifBlank { "Articles non précisés" }, fontSize = 14.sp, color = Palette.Ink, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                            Text("${date(a.localDate)} à ${a.time} · ${a.statusLabel}", fontSize = 12.sp, color = Palette.Muted)
+                        }
+                        Text(euros(a.amount), fontFamily = Display, fontSize = 16.sp, color = Palette.Ink)
                     }
                 }
             }
