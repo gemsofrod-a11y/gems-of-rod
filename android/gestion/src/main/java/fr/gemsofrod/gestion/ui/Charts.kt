@@ -72,15 +72,19 @@ fun MiniBarChart(values: List<Pair<String, Double>>, modifier: Modifier = Modifi
         Row(Modifier.fillMaxWidth()) {
             values.forEachIndexed { i, (label, v) ->
                 Column(Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
+                    // Sur 12 mois, l'initiale suffit (« N D J F… ») pour que rien ne se chevauche.
+                    val dense = values.size > 8
                     Text(
-                        label.uppercase(),
+                        if (dense) label.take(1).uppercase() else label.uppercase(),
                         fontSize = 9.sp,
-                        letterSpacing = 1.sp,
+                        letterSpacing = if (dense) 0.sp else 1.sp,
                         fontWeight = if (i == values.lastIndex) FontWeight.SemiBold else FontWeight.Normal,
                         color = if (i == values.lastIndex) Palette.Accent else Palette.Muted,
+                        maxLines = 1,
+                        softWrap = false,
                     )
-                    if (i == values.lastIndex && v > 0) {
-                        Text(eurosShort(v), fontSize = 10.sp, color = Palette.Ink, maxLines = 1)
+                    if (i == values.lastIndex && v > 0 && !dense) {
+                        Text(eurosShort(v), fontSize = 10.sp, color = Palette.Ink, maxLines = 1, softWrap = false)
                     }
                 }
             }
@@ -138,7 +142,8 @@ fun LineAreaChart(values: List<Pair<String, Double>>, modifier: Modifier = Modif
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             values.forEachIndexed { i, (label, _) ->
                 Text(
-                    label.uppercase(), fontSize = 9.sp, letterSpacing = 1.sp,
+                    if (values.size > 8) label.take(1).uppercase() else label.uppercase(),
+                    fontSize = 9.sp, letterSpacing = if (values.size > 8) 0.sp else 1.sp, maxLines = 1, softWrap = false,
                     color = if (i == values.lastIndex) Palette.Accent else Palette.Muted,
                     fontWeight = if (i == values.lastIndex) FontWeight.SemiBold else FontWeight.Normal,
                 )
