@@ -62,6 +62,16 @@ automatiquement (`GET /v0.1/me`) ou saisi à la main.
   (`sumupProductMap`, à choisir une fois dans l'écran SumUp). Une vente
   rattachée à une commande ne touche pas le stock (c'est la commande qui le
   gère) : rattacher/détacher rend ou ressort les quantités.
+- **Import du catalogue et des clients** : SumUp n'ayant pas d'API pour
+  lister catalogue et clients, le menu ⋮ → « Importer un export SumUp
+  (Excel) » lit les exports .xlsx du tableau de bord (`items-export…xlsx` :
+  nom, prix, quantité, seuil, réf., catégorie, description ;
+  `customers_export…xlsx` : nom, email, téléphone, adresse). Type reconnu par
+  l'entête ; ré-import = mise à jour (article par `Item id`, client par
+  email/nom), jamais de doublon. Les accents abîmés de l'export
+  (« AmÃ©trine ») sont réparés (`SumUpImport.fixText`). Testé par
+  `SumUpImportTest` sur des fichiers fabriqués — jamais de vrai export
+  client dans le dépôt.
 - Clé gardée dans les préférences privées de l'app, exclue des sauvegardes
   (`res/xml/backup_rules.xml`), jamais dans l'export JSON.
 

@@ -8,6 +8,7 @@ enum class Category(val label: String) {
     FINE("Pierre fine"),
     METAL("Métal précieux"),
     BIJOU("Bijou"),
+    AUTRE("Autre"),
 }
 
 enum class StockUnit(val label: String) {
@@ -44,6 +45,8 @@ data class Product(
     val price: Double,
     val threshold: Double,
     val note: String = "",
+    /** Identifiant de l'article dans le catalogue SumUp (import), pour les mises à jour. */
+    val sumupId: String? = null,
 ) {
     val isLow: Boolean get() = quantity <= threshold
 }

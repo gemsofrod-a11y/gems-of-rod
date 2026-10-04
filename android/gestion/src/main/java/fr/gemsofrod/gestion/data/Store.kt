@@ -56,7 +56,7 @@ class Store(context: Context) {
         private fun Product.toJson() = JSONObject().apply {
             put("id", id); put("name", name); put("category", category.name); put("unit", unit.name)
             put("quantity", quantity); put("cost", cost); put("price", price)
-            put("threshold", threshold); put("note", note)
+            put("threshold", threshold); put("note", note); put("sumupId", sumupId ?: JSONObject.NULL)
         }
 
         private fun JSONObject.toProduct() = Product(
@@ -69,6 +69,7 @@ class Store(context: Context) {
             price = optDouble("price", 0.0),
             threshold = optDouble("threshold", 0.0),
             note = optString("note", ""),
+            sumupId = if (isNull("sumupId")) null else optString("sumupId"),
         )
 
         private fun Client.toJson() = JSONObject().apply {

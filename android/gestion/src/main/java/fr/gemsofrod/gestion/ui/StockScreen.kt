@@ -49,6 +49,7 @@ private fun Category.icon(): ImageVector = when (this) {
     Category.FINE -> Icons.Outlined.Spa
     Category.METAL -> Icons.Outlined.Savings
     Category.BIJOU -> Icons.Outlined.Workspaces
+    Category.AUTRE -> Icons.Outlined.Inventory2
 }
 
 private fun Category.tint(): Color = when (this) {
@@ -56,6 +57,7 @@ private fun Category.tint(): Color = when (this) {
     Category.FINE -> Color(0xFF0EA5A4)
     Category.METAL -> Palette.Orange
     Category.BIJOU -> Color(0xFFDB2777)
+    Category.AUTRE -> Palette.Muted
 }
 
 /** Champ de recherche arrondi, sur fond blanc. */

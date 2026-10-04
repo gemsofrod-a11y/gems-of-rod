@@ -380,7 +380,9 @@ le 04/10/2026, il encaisse au Tap to Pay) — récupération des paiements
 et liens de paiement SumUp pour le reste dû d'une commande ; le stock baisse
 avec les articles du catalogue SumUp vendus après la connexion (SumUp
 n'expose pas son catalogue/stock, seulement les articles de chaque vente),
-reconnus par nom ou par correspondance apprise ; clé API saisie
+reconnus par nom ou par correspondance apprise ; catalogue et clients
+importés depuis les exports Excel du tableau de bord SumUp (menu ⋮, pas
+d'API SumUp pour les lister) — ne jamais versionner un vrai export client ; clé API saisie
 par Sébastien dans l'app (menu ⋮ → SumUp), gardée dans les préférences
 privées, exclue des sauvegardes, jamais dans le code. APK publiée à adresse
 fixe par le workflow `gestion-apk.yml` (release `gestion-latest`). Un devis ne

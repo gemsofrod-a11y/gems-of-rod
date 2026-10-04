@@ -45,7 +45,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Run screenshot tests
-        run: ./gradlew :gestion:testDebugUnitTest --tests "fr.gemsofrod.gestion.ScreenshotTest" --no-daemon
+        run: ./gradlew :gestion:testDebugUnitTest --no-daemon
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v4

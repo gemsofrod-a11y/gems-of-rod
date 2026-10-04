@@ -185,6 +185,13 @@ private fun GestionApp(viewModel: GestionViewModel) {
             toast(if (ok) "Sauvegarde enregistrée" else "Échec de l'enregistrement")
         }
     }
+    var importReport by remember { mutableStateOf<String?>(null) }
+    val sumupImportLauncher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        if (uri != null) {
+            val bytes = runCatching { context.contentResolver.openInputStream(uri)!!.use { it.readBytes() } }.getOrNull()
+            importReport = if (bytes == null) "Fichier illisible." else viewModel.importSumUpExport(bytes)
+        }
+    }
     val importLauncher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         if (uri != null) {
             importText = runCatching {
@@ -271,6 +278,15 @@ private fun GestionApp(viewModel: GestionViewModel) {
                         RoundIcon(Icons.Outlined.MoreVert, "Menu") { menu = true }
                         DropdownMenu(expanded = menu, onDismissRequest = { menu = false }) {
                             DropdownMenuItem(text = { Text("SumUp") }, onClick = { menu = false; open(Editor.SumUpE) })
+                            DropdownMenuItem(text = { Text("Importer un export SumUp (Excel)") }, onClick = {
+                                menu = false
+                                sumupImportLauncher.launch(
+                                    arrayOf(
+                                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                                        "application/vnd.ms-excel", "application/octet-stream", "*/*",
+                                    ),
+                                )
+                            })
                             DropdownMenuItem(text = { Text("Exporter une sauvegarde") }, onClick = {
                                 menu = false
                                 exportLauncher.launch("gems-of-rod-gestion-${LocalDate.now()}.json")
@@ -301,6 +317,16 @@ private fun GestionApp(viewModel: GestionViewModel) {
                 }
             }
         }
+    }
+
+    importReport?.let { report ->
+        androidx.compose.material3.AlertDialog(
+            onDismissRequest = { importReport = null },
+            containerColor = Palette.Card,
+            title = { Text("Import SumUp") },
+            text = { Text(report) },
+            confirmButton = { androidx.compose.material3.TextButton(onClick = { importReport = null }) { Text("OK") } },
+        )
     }
 
     when (pending) {
