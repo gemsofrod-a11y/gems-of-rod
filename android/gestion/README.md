@@ -33,9 +33,9 @@ paiement, reste à encaisser, ventes par catégorie, stock).
   articles du stock ou libres, acompte (bouton 30 %), reste à encaisser.
 - **Stock** : pierres précieuses, pierres fines, métaux, bijoux ; unité
   (pièce, carat, gramme), prix d'achat / de vente, marge, seuil d'alerte.
-- **Clients** : VIP (choisi à la main), sinon Régulier dès 3 commandes sur
-  12 mois (hors devis et annulations) et Occasionnel en dessous — calculé
-  automatiquement (demande de Sébastien du 04/10/2026, `segmentOf`), total des achats,
+- **Clients** : segment entièrement calculé sur 12 mois glissants (hors
+  devis et annulations, règles de Sébastien du 04/10/2026, `segmentOf`) :
+  VIP dès 500 € d'achats, sinon Régulier dès 3 commandes, sinon Occasionnel, total des achats,
   historique des commandes, appel ou email en un geste.
 
 ## Règles de stock

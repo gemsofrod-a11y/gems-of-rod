@@ -17,10 +17,7 @@ enum class StockUnit(val label: String) {
     GRAMME("g"),
 }
 
-/**
- * VIP : choisi à la main. Régulier / Occasionnel : calculés (voir
- * [segmentOf]). Prospect : ancienne valeur, traitée comme non-VIP.
- */
+/** Segments calculés par [segmentOf] ; Prospect : ancienne valeur, plus utilisée. */
 enum class Segment(val label: String) {
     VIP("VIP"),
     REGULIER("Régulier"),
@@ -61,7 +58,7 @@ data class Client(
     val name: String,
     val email: String = "",
     val phone: String = "",
-    /** Seul VIP compte (choix manuel) ; le reste est calculé par [segmentOf]. */
+    /** Ancienne saisie manuelle, ignorée : le segment est calculé par [segmentOf]. */
     val segment: Segment = Segment.OCCASIONNEL,
     val note: String = "",
 )
@@ -162,22 +159,30 @@ data class AppData(
     val sumupProductMap: Map<String, String> = emptyMap(),
 )
 
-/** Seuil de commandes sur 12 mois pour qu'un client soit « Régulier ». */
+/** Achats minimum sur 12 mois pour qu'un client soit « VIP » (règle de Sébastien, 04/10/2026). */
+const val VIP_MIN_SPENT = 500.0
+
+/** Commandes minimum sur 12 mois pour qu'un client soit « Régulier ». */
 const val REGULAR_MIN_ORDERS = 3
 
 /**
- * Segment affiché d'un client : VIP s'il a été choisi comme tel, sinon
- * Régulier à partir de [REGULAR_MIN_ORDERS] commandes (hors devis et
- * annulations) sur les 12 derniers mois, sinon Occasionnel.
+ * Segment d'un client, entièrement calculé sur les 12 derniers mois (hors
+ * devis et annulations) : VIP dès [VIP_MIN_SPENT] € d'achats, sinon
+ * Régulier dès [REGULAR_MIN_ORDERS] commandes, sinon Occasionnel.
  */
-fun AppData.segmentOf(c: Client, today: LocalDate = LocalDate.now()): Segment {
-    if (c.segment == Segment.VIP) return Segment.VIP
-    return if (ordersLastYear(c, today) >= REGULAR_MIN_ORDERS) Segment.REGULIER else Segment.OCCASIONNEL
+fun AppData.segmentOf(c: Client, today: LocalDate = LocalDate.now()): Segment = when {
+    spentLastYear(c, today) >= VIP_MIN_SPENT -> Segment.VIP
+    ordersLastYear(c, today) >= REGULAR_MIN_ORDERS -> Segment.REGULIER
+    else -> Segment.OCCASIONNEL
 }
 
-fun AppData.ordersLastYear(c: Client, today: LocalDate = LocalDate.now()): Int {
+private fun AppData.salesLastYear(c: Client, today: LocalDate): List<Order> {
     val since = today.minusYears(1).toEpochDay()
-    return orders.count { it.clientId == c.id && it.status.countsAsSale && it.date >= since }
+    return orders.filter { it.clientId == c.id && it.status.countsAsSale && it.date >= since }
 }
+
+fun AppData.ordersLastYear(c: Client, today: LocalDate = LocalDate.now()): Int = salesLastYear(c, today).size
+
+fun AppData.spentLastYear(c: Client, today: LocalDate = LocalDate.now()): Double = salesLastYear(c, today).sumOf { it.total }
 
 fun newId(): String = UUID.randomUUID().toString()

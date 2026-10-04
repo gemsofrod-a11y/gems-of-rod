@@ -21,6 +21,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -32,6 +33,8 @@ import fr.gemsofrod.gestion.data.Client
 import fr.gemsofrod.gestion.data.Segment
 import fr.gemsofrod.gestion.data.newId
 import fr.gemsofrod.gestion.data.REGULAR_MIN_ORDERS
+import fr.gemsofrod.gestion.data.VIP_MIN_SPENT
+import fr.gemsofrod.gestion.data.spentLastYear
 import fr.gemsofrod.gestion.data.ordersLastYear
 import fr.gemsofrod.gestion.data.segmentOf
 import fr.gemsofrod.gestion.data.spentByClient
@@ -101,7 +104,6 @@ fun ClientEditor(
     var name by remember { mutableStateOf(client?.name ?: "") }
     var email by remember { mutableStateOf(client?.email ?: "") }
     var phone by remember { mutableStateOf(client?.phone ?: "") }
-    var vip by remember { mutableStateOf(client?.segment == Segment.VIP) }
     var note by remember { mutableStateOf(client?.note ?: "") }
 
     EditorScaffold(
@@ -112,7 +114,7 @@ fun ClientEditor(
                 onSave(
                     Client(
                         id = client?.id ?: newId(), name = name.trim(), email = email.trim(),
-                        phone = phone.trim(), segment = if (vip) Segment.VIP else Segment.OCCASIONNEL, note = note.trim(),
+                        phone = phone.trim(), segment = Segment.OCCASIONNEL, note = note.trim(),
                     ),
                 )
             }
@@ -137,17 +139,20 @@ fun ClientEditor(
                 }
             }
         }
-        ChoiceChips("Catégorie", listOf(false, true), vip, { if (it) "VIP" else "Automatique" }) { vip = it }
-        Text(
-            if (vip) "Client VIP, choisi par vous."
-            else {
-                val n = client?.let { data.ordersLastYear(it) } ?: 0
-                "Régulier dès $REGULAR_MIN_ORDERS commandes sur 12 mois, sinon Occasionnel. " +
-                    "Actuellement : $n commande${if (n > 1) "s" else ""} sur 12 mois → " +
-                    (if (n >= REGULAR_MIN_ORDERS) "Régulier" else "Occasionnel") + "."
-            },
-            fontSize = 12.sp, color = Palette.Muted,
-        )
+        if (client != null) {
+            val seg = data.segmentOf(client)
+            val n = data.ordersLastYear(client)
+            val spent = data.spentLastYear(client)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text("Catégorie : ", fontSize = 14.sp, color = Palette.Muted)
+                StatusChip(seg.label, seg.chip())
+            }
+            Text(
+                "Sur 12 mois : ${euros(spent)} d'achats, $n commande${if (n > 1) "s" else ""}. " +
+                    "VIP dès ${eurosRound(VIP_MIN_SPENT)} d'achats, Régulier dès $REGULAR_MIN_ORDERS commandes, sinon Occasionnel.",
+                fontSize = 12.sp, color = Palette.Muted,
+            )
+        }
         Field("Notes (goûts, tailles, occasions…)", note, { note = it }, singleLine = false)
 
         if (client != null) {
