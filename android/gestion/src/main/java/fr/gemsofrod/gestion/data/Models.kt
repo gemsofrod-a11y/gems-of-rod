@@ -166,14 +166,21 @@ const val VIP_MIN_SPENT = 500.0
 const val REGULAR_MIN_ORDERS = 3
 
 /**
- * Segment d'un client, entièrement calculé sur les 12 derniers mois (hors
- * devis et annulations) : VIP dès [VIP_MIN_SPENT] € d'achats, sinon
- * Régulier dès [REGULAR_MIN_ORDERS] commandes, sinon Occasionnel.
+ * Segment d'un client, calculé sur les 12 derniers mois (hors devis et
+ * annulations) : VIP dès [VIP_MIN_SPENT] € d'achats ; sinon Régulier dès
+ * [REGULAR_MIN_ORDERS] commandes, ou s'il a déjà été VIP (un ancien VIP
+ * retombe en Régulier, jamais en Occasionnel) ; sinon Occasionnel.
  */
 fun AppData.segmentOf(c: Client, today: LocalDate = LocalDate.now()): Segment = when {
     spentLastYear(c, today) >= VIP_MIN_SPENT -> Segment.VIP
-    ordersLastYear(c, today) >= REGULAR_MIN_ORDERS -> Segment.REGULIER
+    ordersLastYear(c, today) >= REGULAR_MIN_ORDERS || wasVip(c) -> Segment.REGULIER
     else -> Segment.OCCASIONNEL
+}
+
+/** Le client a-t-il, à un moment, atteint [VIP_MIN_SPENT] € d'achats sur 12 mois ? */
+fun AppData.wasVip(c: Client): Boolean {
+    val sales = orders.filter { it.clientId == c.id && it.status.countsAsSale }
+    return sales.any { end -> sales.filter { it.date in (end.date - 365)..end.date }.sumOf { it.total } >= VIP_MIN_SPENT }
 }
 
 private fun AppData.salesLastYear(c: Client, today: LocalDate): List<Order> {

@@ -35,7 +35,8 @@ paiement, reste à encaisser, ventes par catégorie, stock).
   (pièce, carat, gramme), prix d'achat / de vente, marge, seuil d'alerte.
 - **Clients** : segment entièrement calculé sur 12 mois glissants (hors
   devis et annulations, règles de Sébastien du 04/10/2026, `segmentOf`) :
-  VIP dès 500 € d'achats, sinon Régulier dès 3 commandes, sinon Occasionnel, total des achats,
+  VIP dès 500 € d'achats, sinon Régulier dès 3 commandes ou s'il a déjà été
+  VIP (un ancien VIP retombe en Régulier), sinon Occasionnel, total des achats,
   historique des commandes, appel ou email en un geste.
 
 ## Règles de stock

@@ -149,7 +149,9 @@ fun ClientEditor(
             }
             Text(
                 "Sur 12 mois : ${euros(spent)} d'achats, $n commande${if (n > 1) "s" else ""}. " +
-                    "VIP dès ${eurosRound(VIP_MIN_SPENT)} d'achats, Régulier dès $REGULAR_MIN_ORDERS commandes, sinon Occasionnel.",
+                    "VIP dès ${eurosRound(VIP_MIN_SPENT)} d'achats, Régulier dès $REGULAR_MIN_ORDERS commandes, sinon Occasionnel. " +
+                    "Un ancien VIP redescend en Régulier." +
+                    (if (seg == fr.gemsofrod.gestion.data.Segment.REGULIER && n < REGULAR_MIN_ORDERS) " (C'est le cas de ce client.)" else ""),
                 fontSize = 12.sp, color = Palette.Muted,
             )
         }
