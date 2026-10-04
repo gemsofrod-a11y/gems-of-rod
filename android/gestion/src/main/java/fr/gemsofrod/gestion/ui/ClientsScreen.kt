@@ -1,5 +1,6 @@
 package fr.gemsofrod.gestion.ui
 
+import androidx.compose.material.icons.outlined.Loyalty
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
@@ -44,6 +45,8 @@ import fr.gemsofrod.gestion.data.VIP_MIN_SPENT
 import fr.gemsofrod.gestion.data.spentLastYear
 import fr.gemsofrod.gestion.data.ordersLastYear
 import fr.gemsofrod.gestion.data.segmentOf
+import fr.gemsofrod.gestion.data.LOYALTY_DISCOUNT_ORDERS
+import fr.gemsofrod.gestion.data.loyaltyDiscountAvailable
 import fr.gemsofrod.gestion.data.spentByClient
 import java.time.LocalDate
 
@@ -168,6 +171,21 @@ fun ClientEditor(
             )
         }
         if (client?.shippingCode != null) ShippingCodeCard(client, onSendCode, onCodeUsed)
+        if (client != null && data.loyaltyDiscountAvailable(client)) {
+            SoftCard(Modifier.fillMaxWidth()) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    IconBadge(Icons.Outlined.Loyalty, Palette.Green, 34.dp)
+                    Spacer(Modifier.width(10.dp))
+                    Column(Modifier.weight(1f)) {
+                        Text("Remise 5 % disponible", fontFamily = Display, fontSize = 17.sp, color = Palette.Ink)
+                        Text(
+                            "$LOYALTY_DISCOUNT_ORDERS commandes sur 12 mois : 5 % offerts sur sa prochaine commande, à appliquer en la créant.",
+                            fontSize = 12.sp, color = Palette.Muted,
+                        )
+                    }
+                }
+            }
+        }
         Field("Notes (goûts, tailles, occasions…)", note, { note = it }, singleLine = false)
 
         if (client != null) {

@@ -6,9 +6,12 @@ import fr.gemsofrod.gestion.data.Order
 import fr.gemsofrod.gestion.data.OrderLine
 import fr.gemsofrod.gestion.data.OrderStatus
 import fr.gemsofrod.gestion.data.Segment
+import fr.gemsofrod.gestion.data.LOYALTY_DISCOUNT_LABEL
+import fr.gemsofrod.gestion.data.loyaltyDiscountAvailable
 import fr.gemsofrod.gestion.data.segmentOf
 import fr.gemsofrod.gestion.data.withShippingCodes
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
@@ -57,5 +60,19 @@ class LoyaltyTest {
         assertTrue(code!!, Regex("GEMS-ELODIE-[A-Z2-9]{3}").matches(code))
         // Le code reste le même ensuite.
         assertEquals(code, three.withShippingCodes(today).clients.single().shippingCode)
+    }
+
+    @Test
+    fun remiseCinqPourCentApresCinqCommandesUneFoisParAn() {
+        val four = data(*(1..4).map { order(it * 10L, 100.0, n = it) }.toTypedArray())
+        assertFalse(four.loyaltyDiscountAvailable(client, today))
+        val five = data(*(1..5).map { order(it * 10L, 100.0, n = it) }.toTypedArray())
+        assertTrue(five.loyaltyDiscountAvailable(client, today))
+        // Remise utilisée sur la 6e commande : plus disponible avant 12 mois.
+        val used = order(1, 95.0, n = 6).let { it.copy(lines = it.lines + OrderLine(null, LOYALTY_DISCOUNT_LABEL, 1.0, -5.0, 0.0)) }
+        val after = five.copy(orders = five.orders + used)
+        assertFalse(after.loyaltyDiscountAvailable(client, today))
+        // En modifiant la commande qui porte la remise, elle reste proposée.
+        assertTrue(after.loyaltyDiscountAvailable(client, today, excludeOrderId = used.id))
     }
 }

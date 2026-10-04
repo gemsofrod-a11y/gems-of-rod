@@ -30,6 +30,7 @@ import androidx.compose.material.icons.outlined.CalendarToday
 import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Event
+import androidx.compose.material.icons.outlined.Loyalty
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
@@ -61,6 +62,11 @@ import fr.gemsofrod.gestion.data.AppData
 import fr.gemsofrod.gestion.data.Order
 import fr.gemsofrod.gestion.data.OrderLine
 import fr.gemsofrod.gestion.data.OrderStatus
+import fr.gemsofrod.gestion.data.LOYALTY_DISCOUNT_LABEL
+import fr.gemsofrod.gestion.data.LOYALTY_DISCOUNT_ORDERS
+import fr.gemsofrod.gestion.data.LOYALTY_DISCOUNT_RATE
+import fr.gemsofrod.gestion.data.isLoyaltyDiscount
+import fr.gemsofrod.gestion.data.loyaltyDiscountAvailable
 import fr.gemsofrod.gestion.data.newId
 import fr.gemsofrod.gestion.data.segmentOf
 import java.time.LocalDate
@@ -296,9 +302,10 @@ fun OrderEditor(
     var status by remember { mutableStateOf(order?.status ?: OrderStatus.DEVIS) }
     var deposit by remember { mutableStateOf(order?.deposit?.let(::editable) ?: "") }
     var note by remember { mutableStateOf(order?.note ?: "") }
+    var loyalty by remember { mutableStateOf(order?.lines?.any { it.isLoyaltyDiscount() } == true) }
     val lines = remember {
         mutableStateListOf<LineDraft>().apply {
-            order?.lines?.forEach {
+            order?.lines?.filterNot { it.isLoyaltyDiscount() }?.forEach {
                 add(LineDraft(productId = it.productId, label = it.label, quantity = editable(it.quantity), price = editable(it.unitPrice), cost = it.unitCost))
             }
         }
@@ -313,7 +320,12 @@ fun OrderEditor(
         else OrderLine(d.productId, d.label.trim(), q, p, d.cost)
     }
     val depositValue = if (deposit.isBlank()) 0.0 else parseNumber(deposit)
-    val total = parsed.filterNotNull().sumOf { it.total }
+    val subtotal = parsed.filterNotNull().sumOf { it.total }
+    // Remise fidélité : recalculée sur le sous-total à chaque modification.
+    val discount = if (loyalty) -Math.round(subtotal * LOYALTY_DISCOUNT_RATE * 100) / 100.0 else 0.0
+    val total = subtotal + discount
+    val selectedClient = clientId?.let { id -> data.clients.find { it.id == id } }
+    val loyaltyAvailable = selectedClient != null && data.loyaltyDiscountAvailable(selectedClient, excludeOrderId = order?.id)
     val valid = parsed.none { it == null } && depositValue != null
 
     fun pickDate(initial: LocalDate, onPick: (LocalDate) -> Unit) {
@@ -329,7 +341,9 @@ fun OrderEditor(
                     Order(
                         id = order?.id ?: newId(), number = number, clientId = clientId,
                         clientName = clientName.trim(), date = day.toEpochDay(), status = status,
-                        lines = parsed.filterNotNull(), deposit = depositValue!!, note = note.trim(),
+                        lines = parsed.filterNotNull() +
+                            (if (loyalty) listOf(OrderLine(null, LOYALTY_DISCOUNT_LABEL, 1.0, discount, 0.0)) else emptyList()),
+                        deposit = depositValue!!, note = note.trim(),
                         dueDate = due.toEpochDay(), paidDate = order?.paidDate,
                     ),
                 )
@@ -434,7 +448,42 @@ fun OrderEditor(
             }
         }
 
+        if (loyaltyAvailable || loyalty) {
+            SoftCard(Modifier.fillMaxWidth()) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    IconBadge(Icons.Outlined.Loyalty, Palette.Accent, 34.dp)
+                    Spacer(Modifier.width(10.dp))
+                    Column(Modifier.weight(1f)) {
+                        Text("FIDÉLITÉ", fontSize = 10.sp, letterSpacing = 1.4.sp, fontWeight = FontWeight.Medium, color = Palette.Muted)
+                        Text(
+                            if (loyalty) "Remise de 5 % appliquée" else "5 % offerts sur cette commande",
+                            fontFamily = Display, fontSize = 17.sp, color = Palette.Ink,
+                        )
+                        Text("$LOYALTY_DISCOUNT_ORDERS commandes sur 12 mois · une remise par an", fontSize = 11.sp, color = Palette.Muted)
+                    }
+                    if (loyalty) {
+                        Text(
+                            "Retirer", fontSize = 13.sp, color = Palette.Accent, fontWeight = FontWeight.Medium,
+                            modifier = Modifier.clickable { loyalty = false }.padding(8.dp),
+                        )
+                    } else {
+                        PillButton("Appliquer", null, { loyalty = true })
+                    }
+                }
+            }
+        }
+
         SoftCard(Modifier.fillMaxWidth()) {
+            if (loyalty) {
+                Row {
+                    Text("Sous-total", fontSize = 13.sp, color = Palette.Muted, modifier = Modifier.weight(1f))
+                    Text(euros(subtotal), fontSize = 13.sp, color = Palette.Ink)
+                }
+                Row(Modifier.padding(bottom = 6.dp)) {
+                    Text(LOYALTY_DISCOUNT_LABEL, fontSize = 13.sp, color = Palette.Green, modifier = Modifier.weight(1f))
+                    Text(euros(discount), fontSize = 13.sp, color = Palette.Green)
+                }
+            }
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text("Total", fontSize = 15.sp, color = Palette.Muted, modifier = Modifier.weight(1f))
                 Text(euros(total), style = AmountStyle)

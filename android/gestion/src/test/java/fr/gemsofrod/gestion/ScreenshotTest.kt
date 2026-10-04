@@ -118,4 +118,28 @@ class ScreenshotTest {
     fun detailResteAEncaisser() = capture("11_detail_reste_a_encaisser") {
         fr.gemsofrod.gestion.ui.InsightScreen(fr.gemsofrod.gestion.ui.Insight.TO_COLLECT, data, {}, {}, {})
     }
+
+    @Test
+    fun remiseFidelite() = capture("12_remise_fidelite") {
+        // Client avec 5 commandes livrées sur 12 mois : la remise de 5 % est proposée et appliquée.
+        val c = data.clients.first()
+        val past = (1..5).map { i ->
+            fr.gemsofrod.gestion.data.Order(
+                number = 900 + i, clientId = c.id, clientName = c.name,
+                date = java.time.LocalDate.now().minusDays(20L * i).toEpochDay(),
+                status = fr.gemsofrod.gestion.data.OrderStatus.LIVREE,
+                lines = listOf(fr.gemsofrod.gestion.data.OrderLine(null, "Pierre", 1.0, 120.0, 0.0)),
+            )
+        }
+        val d = data.copy(orders = data.orders + past)
+        val next = fr.gemsofrod.gestion.data.Order(
+            number = d.nextOrderNumber, clientId = c.id, clientName = c.name,
+            status = fr.gemsofrod.gestion.data.OrderStatus.CONFIRMEE,
+            lines = listOf(
+                fr.gemsofrod.gestion.data.OrderLine(null, "Saphir bleu 1,2 ct", 1.0, 840.0, 0.0),
+                fr.gemsofrod.gestion.data.OrderLine(null, fr.gemsofrod.gestion.data.LOYALTY_DISCOUNT_LABEL, 1.0, -42.0, 0.0),
+            ),
+        )
+        OrderEditor(next, d, {}, {}, {})
+    }
 }

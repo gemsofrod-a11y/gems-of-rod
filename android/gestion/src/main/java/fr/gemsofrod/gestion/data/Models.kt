@@ -221,4 +221,23 @@ fun AppData.withShippingCodes(today: LocalDate = LocalDate.now()): AppData {
     return copy(clients = clients.map { c -> codes[c.id]?.let { c.copy(shippingCode = it) } ?: c })
 }
 
+/** Commandes sur 12 mois ouvrant droit à la remise fidélité (règle de Sébastien, 04/10/2026). */
+const val LOYALTY_DISCOUNT_ORDERS = 5
+const val LOYALTY_DISCOUNT_RATE = 0.05
+const val LOYALTY_DISCOUNT_LABEL = "Remise fidélité 5 %"
+
+fun OrderLine.isLoyaltyDiscount(): Boolean = productId == null && label == LOYALTY_DISCOUNT_LABEL
+
+/**
+ * Remise fidélité de 5 % disponible pour la prochaine commande : au moins
+ * [LOYALTY_DISCOUNT_ORDERS] commandes sur 12 mois, et pas de remise
+ * fidélité déjà utilisée sur ces 12 mois (une par an). [excludeOrderId] :
+ * commande en cours de modification, ignorée dans le calcul.
+ */
+fun AppData.loyaltyDiscountAvailable(c: Client, today: LocalDate = LocalDate.now(), excludeOrderId: String? = null): Boolean {
+    val since = today.minusYears(1).toEpochDay()
+    val sales = orders.filter { it.clientId == c.id && it.status.countsAsSale && it.date >= since && it.id != excludeOrderId }
+    return sales.size >= LOYALTY_DISCOUNT_ORDERS && sales.none { o -> o.lines.any { it.isLoyaltyDiscount() } }
+}
+
 fun newId(): String = UUID.randomUUID().toString()

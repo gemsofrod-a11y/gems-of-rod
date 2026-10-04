@@ -40,8 +40,12 @@ paiement, reste à encaisser, ventes par catégorie, stock).
   commande sur 12 mois, un code personnel de livraison offerte
   (`GEMS-PRENOM-XXX`) est créé ; l'Aperçu signale les codes à envoyer et
   prépare un message de la maison (email/SMS/WhatsApp). Le code doit être
-  créé à la main dans la boutique SumUp (pas d'API pour les réductions)., total des achats,
-  historique des commandes, appel ou email en un geste.
+  créé à la main dans la boutique SumUp (pas d'API pour les réductions).
+  À 5 commandes sur 12 mois, une remise fidélité de 5 % est proposée sur
+  la commande suivante (`loyaltyDiscountAvailable`) : bouton « Appliquer »
+  dans la saisie de commande, ligne « Remise fidélité 5 % » recalculée sur
+  le sous-total ; une seule remise par période de 12 mois. Fiche client :
+  total des achats, historique des commandes, appel ou email en un geste.
 
 ## Règles de stock
 

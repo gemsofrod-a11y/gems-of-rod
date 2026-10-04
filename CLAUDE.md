@@ -395,8 +395,12 @@ par Sébastien dans l'app (menu ⋮ → SumUp), gardée dans les préférences
 privées, exclue des sauvegardes, jamais dans le code. APK publiée à adresse
 fixe par le workflow `gestion-apk.yml` (release `gestion-latest`). Un devis ne
 touche pas le stock ; une commande confirmée, en préparation ou livrée sort
-ses quantités du stock, une annulation ou suppression les rend. Voir
-`android/gestion/README.md`.
+ses quantités du stock, une annulation ou suppression les rend. Fidélité
+(règles de Sébastien, 04/10/2026, calculées sur 12 mois glissants, hors devis
+et annulations) : VIP dès 500 € d'achats, Régulier dès 3 commandes (ou ancien
+VIP), sinon Occasionnel ; code personnel de livraison offerte à la 3e
+commande ; remise de 5 % sur la commande suivante à 5 commandes, une fois par
+période de 12 mois. Voir `android/gestion/README.md`.
 
 ---
 
