@@ -76,6 +76,8 @@ class MainActivity : ComponentActivity() {
     private val viewModel: GestionViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Thème choisi (Rubis nuit par défaut) ; GestionTheme règle les icônes de la barre d'état.
+        fr.gemsofrod.gestion.ui.AppTheme.load(this)
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContent {
@@ -106,7 +108,7 @@ fun AppFrame(tab: Tab, onTab: (Tab) -> Unit, menu: @Composable () -> Unit = {}, 
                 Box(
                     Modifier.size(40.dp).clip(RoundedCornerShape(12.dp)).background(Palette.AccentGradient),
                     contentAlignment = Alignment.Center,
-                ) { Icon(Icons.Outlined.Diamond, null, tint = Color.White, modifier = Modifier.size(22.dp)) }
+                ) { Icon(Icons.Outlined.Diamond, null, tint = Palette.OnAccent, modifier = Modifier.size(22.dp)) }
                 Spacer(Modifier.width(10.dp))
                 Column(Modifier.weight(1f)) {
                     Text("Gems of Rod", fontFamily = fr.gemsofrod.gestion.ui.Display, fontWeight = FontWeight.Medium, fontSize = 20.sp, color = Palette.Ink)
@@ -135,9 +137,9 @@ private fun FloatingNav(tab: Tab, onTab: (Tab) -> Unit, modifier: Modifier) {
                     Modifier.clip(RoundedCornerShape(50)).background(Palette.Accent).padding(horizontal = 16.dp, vertical = 12.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Icon(t.icon, null, tint = Color.White, modifier = Modifier.size(20.dp))
+                    Icon(t.icon, null, tint = Palette.OnAccent, modifier = Modifier.size(20.dp))
                     Spacer(Modifier.width(8.dp))
-                    Text(t.title, color = Color.White, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
+                    Text(t.title, color = Palette.OnAccent, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
                 }
             } else {
                 Box(
@@ -187,6 +189,7 @@ private fun GestionApp(viewModel: GestionViewModel) {
         }
     }
     var importReport by remember { mutableStateOf<String?>(null) }
+    var themePicker by remember { mutableStateOf(false) }
     val sumupImportLauncher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         if (uri != null) {
             val bytes = runCatching { context.contentResolver.openInputStream(uri)!!.use { it.readBytes() } }.getOrNull()
@@ -306,6 +309,7 @@ private fun GestionApp(viewModel: GestionViewModel) {
                     Box {
                         RoundIcon(Icons.Outlined.MoreVert, "Menu") { menu = true }
                         DropdownMenu(expanded = menu, onDismissRequest = { menu = false }) {
+                            DropdownMenuItem(text = { Text("Thème") }, onClick = { menu = false; themePicker = true })
                             DropdownMenuItem(text = { Text("SumUp") }, onClick = { menu = false; open(Editor.SumUpE) })
                             DropdownMenuItem(text = { Text("Importer un export SumUp (Excel)") }, onClick = {
                                 menu = false
@@ -352,6 +356,13 @@ private fun GestionApp(viewModel: GestionViewModel) {
                 }
             }
         }
+    }
+
+    if (themePicker) {
+        fr.gemsofrod.gestion.ui.ThemePicker(
+            onPick = { fr.gemsofrod.gestion.ui.AppTheme.choose(context, it) },
+            onDismiss = { themePicker = false },
+        )
     }
 
     importReport?.let { report ->

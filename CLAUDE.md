@@ -377,7 +377,11 @@ suivi des paiements : échéances, retards, délai de paiement) ; le 04/10/2026,
 style rendu « plus luxueux, couleurs moins agressives » à sa demande : ivoire,
 or champagne, onyx, titres et montants en police à empattements, courbes
 fines dorées ; chaque carte de l'Aperçu s'ouvre sur une page de détail
-(`InsightScreen`). Segments clients calculés sur 12 mois (règles de
+(`InsightScreen`) ; plus de blanc par défaut à sa demande (04/10/2026) :
+thème « Rubis nuit » (bordeaux profond, cartes vieux rose foncé, or) et menu
+⋮ → Thème pour en changer (Onyx, Émeraude, Saphir, Champagne, Ivoire ;
+`AppTheme` dans `ui/Theme.kt`, `Palette` lit le thème choisi — ne jamais
+figer une couleur de `Palette` dans une valeur calculée une fois). Segments clients calculés sur 12 mois (règles de
 Sébastien) : VIP dès 500 € d'achats, Régulier dès 3 commandes ou ancien
 VIP (un VIP sous 500 € retombe en Régulier), sinon Occasionnel ; à la 3e
 commande, code personnel de livraison offerte (`withShippingCodes`) envoyé

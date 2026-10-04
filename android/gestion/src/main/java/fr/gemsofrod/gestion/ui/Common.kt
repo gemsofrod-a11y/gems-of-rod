@@ -123,8 +123,8 @@ fun IconBadge(icon: ImageVector, tint: Color = Palette.Accent, size: Dp = 30.dp)
 
 /** Tons de pierres : émeraude, saphir, grenat, ambre, améthyste, tourmaline, onyx. */
 private val AvatarColors = listOf(
-    Color(0xFF3F6B52), Color(0xFF3E5A7E), Color(0xFF7E3B4B), Color(0xFFA9742C),
-    Color(0xFF6A4C7E), Color(0xFF2F6E6A), Color(0xFF4A443C),
+    Color(0xFF4F8466), Color(0xFF52709A), Color(0xFF9C4E60), Color(0xFFB48140),
+    Color(0xFF7E6196), Color(0xFF3F837E), Color(0xFF6E6058),
 )
 
 /** Pastille ronde aux initiales, couleur stable par nom. */
@@ -142,12 +142,26 @@ fun Avatar(name: String, size: Dp = 40.dp, ring: Boolean = false) {
     }
 }
 
-enum class ChipKind(val fg: Color, val bg: Color) {
-    NEUTRAL(Palette.Muted, Palette.Background),
-    ACCENT(Palette.Accent, Palette.AccentPale),
-    GOOD(Palette.Green, Palette.GreenPale),
-    WARN(Palette.Orange, Palette.OrangePale),
-    BAD(Palette.Red, Palette.RedPale),
+enum class ChipKind {
+    NEUTRAL, ACCENT, GOOD, WARN, BAD;
+
+    // Lues à chaque dessin pour suivre le thème choisi.
+    val fg: Color
+        get() = when (this) {
+            NEUTRAL -> Palette.Muted
+            ACCENT -> Palette.Accent
+            GOOD -> Palette.Green
+            WARN -> Palette.Orange
+            BAD -> Palette.Red
+        }
+    val bg: Color
+        get() = when (this) {
+            NEUTRAL -> Palette.Background
+            ACCENT -> Palette.AccentPale
+            GOOD -> Palette.GreenPale
+            WARN -> Palette.OrangePale
+            BAD -> Palette.RedPale
+        }
 }
 
 @Composable
@@ -196,7 +210,7 @@ fun <T> SegmentedTabs(
     dark: Boolean = false,
 ) {
     Row(
-        modifier.clip(RoundedCornerShape(50)).background(if (dark) Color.White else Palette.Card)
+        modifier.clip(RoundedCornerShape(50)).background(if (dark) Palette.NavyRow else Palette.Card)
             .horizontalScroll(rememberScrollState()).padding(4.dp),
         horizontalArrangement = Arrangement.spacedBy(2.dp),
     ) {
@@ -209,13 +223,13 @@ fun <T> SegmentedTabs(
             ) {
                 Text(
                     label(option), fontSize = 13.sp, fontWeight = FontWeight.SemiBold,
-                    color = if (on) Color.White else Palette.Ink,
+                    color = if (on) Palette.OnAccent else Palette.Ink,
                 )
                 val n = count(option)
                 if (n != null && n > 0) {
                     Spacer(Modifier.width(6.dp))
                     Box(
-                        Modifier.size(18.dp).clip(CircleShape).background(if (on) Color.White else Palette.AccentPale),
+                        Modifier.size(18.dp).clip(CircleShape).background(if (on) Palette.OnAccent else Palette.AccentPale),
                         contentAlignment = Alignment.Center,
                     ) { Text(n.toString(), fontSize = 10.sp, fontWeight = FontWeight.Bold, color = Palette.Accent) }
                 }
@@ -229,11 +243,11 @@ fun <T> SegmentedTabs(
 fun PillButton(text: String, icon: ImageVector?, onClick: () -> Unit, modifier: Modifier = Modifier, light: Boolean = false) {
     Row(
         modifier.clip(RoundedCornerShape(50))
-            .then(if (light) Modifier.background(Color.White) else Modifier.background(Palette.AccentGradient))
+            .then(if (light) Modifier.background(Palette.Background) else Modifier.background(Palette.AccentGradient))
             .clickable(onClick = onClick).padding(horizontal = 18.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        val fg = if (light) Palette.Ink else Color.White
+        val fg = if (light) Palette.Ink else Palette.OnAccent
         if (icon != null) {
             Icon(icon, null, tint = fg, modifier = Modifier.size(18.dp))
             Spacer(Modifier.width(8.dp))
@@ -382,7 +396,7 @@ fun <T> ChoiceChips(label: String?, options: List<T>, selected: T, text: (T) -> 
                     colors = FilterChipDefaults.filterChipColors(
                         containerColor = Palette.Card,
                         selectedContainerColor = Palette.Accent,
-                        selectedLabelColor = Color.White,
+                        selectedLabelColor = Palette.OnAccent,
                     ),
                 )
             }

@@ -148,4 +148,10 @@ class ScreenshotTest {
         val c = data.clients.first { cl -> data.orders.count { it.clientId == cl.id } >= 2 }
         fr.gemsofrod.gestion.ui.ClientEditor(c, data, {}, {}, {}, {})
     }
+
+    @Test
+    fun choixDuTheme() = capture("14_choix_du_theme") {
+        Dashboard()
+        fr.gemsofrod.gestion.ui.ThemePicker(onPick = {}, onDismiss = {})
+    }
 }

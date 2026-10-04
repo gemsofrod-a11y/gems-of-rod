@@ -21,6 +21,15 @@ fines dorées. Les cartes de l'Aperçu s'ouvrent sur une page de détail
 (`ui/InsightScreen.kt` : CA et encaissé sur 12 mois, retards, délai de
 paiement, reste à encaisser, ventes par catégorie, stock).
 
+Thèmes (04/10/2026, Sébastien n'aimait pas le blanc) : « Rubis nuit » par
+défaut (fond bordeaux très profond, cartes vieux rose foncé, or champagne),
+et menu ⋮ → Thème pour choisir Onyx et or, Émeraude nuit, Saphir nuit,
+Champagne (clair sans blanc) ou Ivoire (l'ancien style). Le choix est
+appliqué aussitôt et mémorisé (préférences « apparence »). Toutes les
+couleurs passent par `Palette`, qui lit `AppTheme.current` : ne jamais
+figer une couleur dans une valeur calculée une seule fois (constante,
+enum, `remember`), sinon elle ne suivrait pas un changement de thème.
+
 ## Écrans
 
 - **Aperçu** : montant en retard, délai moyen de paiement, CA du mois

@@ -45,8 +45,8 @@ private val Dotted = PathEffect.dashPathEffect(floatArrayOf(2f, 6f))
 @Composable
 fun MiniBarChart(values: List<Pair<String, Double>>, modifier: Modifier = Modifier, height: Dp = 120.dp) {
     val max = values.maxOfOrNull { it.second }?.takeIf { it > 0 } ?: 1.0
-    val strong = Brush.verticalGradient(listOf(Color(0xFFC9A66B), Color(0xFF8C6A37)))
-    val soft = Brush.verticalGradient(listOf(Color(0xFFE6D7B9), Color(0xFFF1E8D7)))
+    val strong = Brush.verticalGradient(listOf(Palette.AccentSoft, Palette.Accent))
+    val soft = Brush.verticalGradient(listOf(Palette.Accent.copy(alpha = 0.34f), Palette.Accent.copy(alpha = 0.18f)))
     Column(modifier) {
         Canvas(Modifier.fillMaxWidth().height(height)) {
             val slot = size.width / values.size
@@ -99,7 +99,7 @@ fun MiniBarChart(values: List<Pair<String, Double>>, modifier: Modifier = Modifi
 @Composable
 fun LineAreaChart(values: List<Pair<String, Double>>, modifier: Modifier = Modifier, height: Dp = 120.dp) {
     val max = values.maxOfOrNull { it.second }?.takeIf { it > 0 } ?: 1.0
-    val gold = Color(0xFFA8844C)
+    val gold = Palette.Accent
     Column(modifier) {
         Canvas(Modifier.fillMaxWidth().height(height)) {
             if (values.isEmpty()) return@Canvas
@@ -135,7 +135,7 @@ fun LineAreaChart(values: List<Pair<String, Double>>, modifier: Modifier = Modif
             drawPath(line, gold, style = Stroke(width = 1.8.dp.toPx(), cap = StrokeCap.Round))
             val last = points.last()
             drawCircle(gold.copy(alpha = 0.18f), radius = 9.dp.toPx(), center = last)
-            drawCircle(Color.White, radius = 4.dp.toPx(), center = last)
+            drawCircle(Palette.Card, radius = 4.dp.toPx(), center = last)
             drawCircle(gold, radius = 2.6.dp.toPx(), center = last)
         }
         Spacer(Modifier.height(10.dp))

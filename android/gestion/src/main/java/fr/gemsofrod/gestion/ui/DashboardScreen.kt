@@ -169,7 +169,7 @@ fun DashboardScreen(
                 onClick = { onOpenInsight(Insight.OVERDUE) },
             )
             KpiTile(
-                label = "Délai de paiement", icon = Icons.Outlined.Schedule, iconTint = Color(0xFF4A6585),
+                label = "Délai de paiement", icon = Icons.Outlined.Schedule, iconTint = ChartColors[2],
                 value = stats.avgDaysToPay?.let { "$it j" } ?: "–",
                 sub = stats.avgDaysTrend?.let { d ->
                     if (d == 0) "Stable" else "${if (d < 0) "↓" else "↑"} ${kotlin.math.abs(d)} j vs avant"
@@ -271,11 +271,11 @@ private fun CollectCard(stats: Stats, onClick: () -> Unit) {
         Modifier.fillMaxWidth().clip(CardShape).background(Palette.AccentGradient).clickable(onClick = onClick).padding(20.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text("RESTE À ENCAISSER", fontSize = 10.sp, letterSpacing = 1.6.sp, fontWeight = FontWeight.Medium, color = Color.White.copy(alpha = 0.85f), modifier = Modifier.weight(1f))
-            Icon(Icons.Outlined.AccountBalanceWallet, null, tint = Color.White)
+            Text("RESTE À ENCAISSER", fontSize = 10.sp, letterSpacing = 1.6.sp, fontWeight = FontWeight.Medium, color = Palette.OnAccent.copy(alpha = 0.85f), modifier = Modifier.weight(1f))
+            Icon(Icons.Outlined.AccountBalanceWallet, null, tint = Palette.OnAccent)
         }
         Spacer(Modifier.height(6.dp))
-        Text(euros(stats.toCollect), fontFamily = Display, fontSize = 32.sp, fontWeight = FontWeight.Medium, color = Color.White)
+        Text(euros(stats.toCollect), fontFamily = Display, fontSize = 32.sp, fontWeight = FontWeight.Medium, color = Palette.OnAccent)
         Spacer(Modifier.height(16.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             CollectTile("30 prochains jours", eurosShort(stats.dueNext30), Modifier.weight(1f))
@@ -288,10 +288,10 @@ private fun CollectCard(stats: Stats, onClick: () -> Unit) {
 @Composable
 private fun CollectTile(label: String, value: String, modifier: Modifier) {
     Column(
-        modifier.clip(RoundedCornerShape(16.dp)).background(Color.White.copy(alpha = 0.14f)).padding(12.dp),
+        modifier.clip(RoundedCornerShape(16.dp)).background(Palette.OnAccent.copy(alpha = 0.10f)).padding(12.dp),
     ) {
-        Text(value, fontWeight = FontWeight.Bold, fontSize = 16.sp, color = Color.White, maxLines = 1)
-        Text(label, fontSize = 11.sp, color = Color.White.copy(alpha = 0.75f), maxLines = 1, overflow = TextOverflow.Ellipsis)
+        Text(value, fontWeight = FontWeight.Bold, fontSize = 16.sp, color = Palette.OnAccent, maxLines = 1)
+        Text(label, fontSize = 11.sp, color = Palette.OnAccent.copy(alpha = 0.75f), maxLines = 1, overflow = TextOverflow.Ellipsis)
     }
 }
 

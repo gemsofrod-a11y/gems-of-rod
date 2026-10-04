@@ -354,30 +354,30 @@ private fun ConnectedCard(ui: SumUpUi, monthTotal: Double, onSync: () -> Unit, o
     Column(Modifier.fillMaxWidth().clip(CardShape).background(Palette.AccentGradient).padding(20.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f)) {
-                Text("Connecté à SumUp", color = Color.White, fontWeight = FontWeight.SemiBold, fontSize = 15.sp)
-                Text("Code marchand ${ui.merchantCode}", color = Color.White.copy(alpha = 0.75f), fontSize = 12.sp)
+                Text("Connecté à SumUp", color = Palette.OnAccent, fontWeight = FontWeight.SemiBold, fontSize = 15.sp)
+                Text("Code marchand ${ui.merchantCode}", color = Palette.OnAccent.copy(alpha = 0.75f), fontSize = 12.sp)
             }
-            Box(Modifier.size(10.dp).clip(RoundedCornerShape(5.dp)).background(Color(0xFF9CC7A6)))
+            Box(Modifier.size(10.dp).clip(RoundedCornerShape(5.dp)).background(Color(0xFF2F6B45)))
         }
         Spacer(Modifier.height(14.dp))
-        Text("Encaissé par SumUp ce mois-ci", color = Color.White.copy(alpha = 0.8f), fontSize = 12.sp)
-        Text(euros(monthTotal), color = Color.White, fontFamily = Display, fontWeight = FontWeight.Medium, fontSize = 30.sp)
+        Text("Encaissé par SumUp ce mois-ci", color = Palette.OnAccent.copy(alpha = 0.8f), fontSize = 12.sp)
+        Text(euros(monthTotal), color = Palette.OnAccent, fontFamily = Display, fontWeight = FontWeight.Medium, fontSize = 30.sp)
         Text(
             if (ui.lastSync > 0) "Dernière synchronisation : ${formatSync(ui.lastSync)}" else "Jamais synchronisé",
-            color = Color.White.copy(alpha = 0.75f), fontSize = 12.sp,
+            color = Palette.OnAccent.copy(alpha = 0.75f), fontSize = 12.sp,
         )
         Spacer(Modifier.height(14.dp))
         Row(verticalAlignment = Alignment.CenterVertically) {
             PillButton(if (ui.busy) "Synchronisation…" else "Synchroniser", Icons.Outlined.Sync, { if (!ui.busy) onSync() }, light = true)
             Spacer(Modifier.weight(1f))
             Text(
-                "Déconnecter", color = Color.White.copy(alpha = 0.85f), fontSize = 13.sp,
+                "Déconnecter", color = Palette.OnAccent.copy(alpha = 0.85f), fontSize = 13.sp,
                 modifier = Modifier.clip(RoundedCornerShape(50)).clickable { confirm = true }.padding(horizontal = 10.dp, vertical = 8.dp),
             )
         }
         if (ui.message != null) {
             Spacer(Modifier.height(10.dp))
-            Text(ui.message, color = if (ui.isError) Color(0xFFF2C9BD) else Color.White, fontSize = 13.sp)
+            Text(ui.message, color = if (ui.isError) Color(0xFF7A1F2E) else Palette.OnAccent, fontSize = 13.sp)
         }
     }
     if (confirm) {
