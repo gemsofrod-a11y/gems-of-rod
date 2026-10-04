@@ -15,8 +15,12 @@ android {
         applicationId = "fr.gemsofrod.gestion"
         minSdk = 26
         targetSdk = 36
-        versionCode = 2
-        versionName = "1.1.0"
+        // Numéro croissant à chaque publication (workflow gestion-apk.yml) :
+        // sans lui, le téléphone croit la version déjà installée et propose
+        // « Ouvrir » au lieu de l'installer.
+        val build = System.getenv("GESTION_BUILD")?.toIntOrNull()
+        versionCode = if (build != null) 100 + build else 3
+        versionName = if (build != null) "1.2.$build" else "1.2.0"
     }
 
     // Clé de signature de débogage FIXE, versionnée exprès : sans elle, chaque

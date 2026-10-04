@@ -39,6 +39,8 @@ jobs:
 
       - name: Build APK
         working-directory: android
+        env:
+          GESTION_BUILD: ${{ github.run_number }}
         run: |
           chmod +x gradlew
           ./gradlew :gestion:assembleRelease --no-daemon
