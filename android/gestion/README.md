@@ -37,6 +37,25 @@ annulée ou supprimée, elles y reviennent. Modifier une commande recalcule
 la différence. Le CA et la marge comptent les commandes confirmées, en
 préparation et livrées, à leur date de commande.
 
+## SumUp
+
+Menu ⋮ → **SumUp** : Sébastien colle sa clé API secrète (`sup_sk_…`, créée
+sur me.sumup.com → Paramètres → Clés API) ; le code marchand est trouvé
+automatiquement (`GET /v0.1/me`) ou saisi à la main.
+
+- **Paiements** : à l'ouverture de l'app et sur « Synchroniser », les
+  paiements réussis sont récupérés (`GET /v2.1/merchants/{code}/transactions/history`).
+  Chacun peut être rattaché à une commande (le montant s'ajoute au reçu) ;
+  sinon c'est une « vente directe », comptée dans le CA et l'encaissé.
+- **Lien de paiement** : sur une fiche commande impayée, « Lien SumUp » crée
+  un Hosted Checkout (`POST /v0.1/checkouts`) pour le reste dû et ouvre le
+  partage Android (SMS, WhatsApp, email). À la synchronisation suivante, un
+  lien payé encaisse la commande automatiquement. Nécessite que les
+  paiements en ligne soient activés sur le compte SumUp ; SumUp limite la
+  durée de validité de la page de paiement : recréer un lien si besoin.
+- Clé gardée dans les préférences privées de l'app, exclue des sauvegardes
+  (`res/xml/backup_rules.xml`), jamais dans l'export JSON.
+
 ## Données
 
 Tout reste sur le téléphone (`gestion.json` dans le stockage interne de

@@ -15,6 +15,7 @@ import fr.gemsofrod.gestion.ui.OrderDetail
 import fr.gemsofrod.gestion.ui.OrderEditor
 import fr.gemsofrod.gestion.ui.OrdersScreen
 import fr.gemsofrod.gestion.ui.StockScreen
+import fr.gemsofrod.gestion.ui.SumUpScreen
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -92,5 +93,19 @@ class ScreenshotTest {
     @Test
     fun clients() = capture("07_clients") {
         AppFrame(Tab.CLIENTS, {}) { ClientsScreen(data, {}, {}) }
+    }
+
+    @Test
+    fun sumup() = capture("08_sumup") {
+        SumUpScreen(
+            data,
+            SumUpUi(configured = true, merchantCode = "MEXEMPLE", message = "2 nouveaux paiements récupérés.", lastSync = System.currentTimeMillis()),
+            { _, _ -> }, {}, {}, { _, _ -> }, {},
+        )
+    }
+
+    @Test
+    fun sumupConnexion() = capture("09_sumup_connexion") {
+        SumUpScreen(data.copy(sumupPayments = emptyList()), SumUpUi(), { _, _ -> }, {}, {}, { _, _ -> }, {})
     }
 }

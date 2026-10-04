@@ -85,6 +85,8 @@ data class Order(
     val dueDate: Long? = null,
     /** Jour où le solde a été entièrement réglé (epochDay). */
     val paidDate: Long? = null,
+    /** Dernier lien de paiement SumUp créé pour cette commande (en attente). */
+    val sumupCheckoutId: String? = null,
 ) {
     val total: Double get() = lines.sumOf { it.total }
     val balance: Double get() = (total - deposit).coerceAtLeast(0.0)
@@ -97,11 +99,38 @@ data class Order(
     val isOpen: Boolean get() = status == OrderStatus.CONFIRMEE || status == OrderStatus.EN_COURS
 }
 
+/**
+ * Paiement encaissé par SumUp (Tap to Pay, lien de paiement…), récupéré par
+ * synchronisation. [orderId] : commande à laquelle il est rattaché ; null =
+ * vente directe, comptée telle quelle dans le CA et l'encaissé.
+ */
+data class SumUpPayment(
+    val code: String,
+    val amount: Double,
+    /** Jour du paiement (epochDay, fuseau du téléphone). */
+    val date: Long,
+    /** Heure affichée (HH:mm). */
+    val time: String,
+    /** « POS » (carte, Tap to Pay), « ECOM » (lien de paiement)… */
+    val paymentType: String,
+    val orderId: String? = null,
+) {
+    val localDate: LocalDate get() = LocalDate.ofEpochDay(date)
+    val typeLabel: String
+        get() = when (paymentType) {
+            "POS" -> "Carte (Tap to Pay)"
+            "ECOM" -> "Lien de paiement"
+            "CASH" -> "Espèces"
+            else -> paymentType.lowercase().replaceFirstChar { it.uppercase() }
+        }
+}
+
 data class AppData(
     val products: List<Product> = emptyList(),
     val clients: List<Client> = emptyList(),
     val orders: List<Order> = emptyList(),
     val nextOrderNumber: Int = 1,
+    val sumupPayments: List<SumUpPayment> = emptyList(),
 )
 
 fun newId(): String = UUID.randomUUID().toString()

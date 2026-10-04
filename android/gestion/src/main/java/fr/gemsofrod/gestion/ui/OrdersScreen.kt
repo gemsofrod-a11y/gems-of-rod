@@ -144,6 +144,9 @@ fun OrderDetail(
     onMarkPaid: () -> Unit,
     onStatus: (OrderStatus) -> Unit,
     onBack: () -> Unit,
+    /** Crée et partage un lien de paiement SumUp (null = bouton masqué). */
+    onPaymentLink: (() -> Unit)? = null,
+    paymentLinkBusy: Boolean = false,
 ) {
     BackHandler(onBack = onBack)
     val today = LocalDate.now().toEpochDay()
@@ -206,7 +209,25 @@ fun OrderDetail(
                 }
                 if (order.isUnpaid) {
                     Spacer(Modifier.height(12.dp))
-                    PillButton("Encaisser le solde", null, onMarkPaid, Modifier.align(Alignment.End), light = true)
+                    Row(Modifier.align(Alignment.End), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        if (onPaymentLink != null) {
+                            Text(
+                                if (paymentLinkBusy) "Création…" else "Lien SumUp",
+                                color = Color.White, fontWeight = FontWeight.SemiBold, fontSize = 14.sp,
+                                modifier = Modifier.clip(RoundedCornerShape(50)).background(Color.White.copy(alpha = 0.18f))
+                                    .clickable(enabled = !paymentLinkBusy, onClick = onPaymentLink)
+                                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                            )
+                        }
+                        PillButton("Encaisser le solde", null, onMarkPaid, light = true)
+                    }
+                    if (order.sumupCheckoutId != null) {
+                        Spacer(Modifier.height(8.dp))
+                        Text(
+                            "Lien SumUp envoyé : la commande sera encaissée automatiquement dès que le client aura payé (à la prochaine synchronisation).",
+                            color = Color.White.copy(alpha = 0.8f), fontSize = 12.sp,
+                        )
+                    }
                 }
             }
         }

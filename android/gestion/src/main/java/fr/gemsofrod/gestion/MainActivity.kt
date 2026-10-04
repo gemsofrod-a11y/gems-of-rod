@@ -1,5 +1,6 @@
 package fr.gemsofrod.gestion
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -66,6 +67,8 @@ import fr.gemsofrod.gestion.ui.Palette
 import fr.gemsofrod.gestion.ui.ProductEditor
 import fr.gemsofrod.gestion.ui.RoundIcon
 import fr.gemsofrod.gestion.ui.StockScreen
+import fr.gemsofrod.gestion.ui.SumUpScreen
+import fr.gemsofrod.gestion.ui.orderRef
 import java.time.LocalDate
 
 class MainActivity : ComponentActivity() {
@@ -152,6 +155,7 @@ private sealed interface Editor {
     data class ClientE(val id: String?) : Editor
     data class OrderView(val id: String) : Editor
     data class OrderE(val id: String?) : Editor
+    data object SumUpE : Editor
 }
 
 private enum class Pending { IMPORT, SAMPLE, CLEAR }
@@ -159,6 +163,8 @@ private enum class Pending { IMPORT, SAMPLE, CLEAR }
 @Composable
 private fun GestionApp(viewModel: GestionViewModel) {
     val data by viewModel.data.collectAsState()
+    val sumup by viewModel.sumup.collectAsState()
+    var linkBusy by remember { mutableStateOf(false) }
     val context = LocalContext.current
     var tab by rememberSaveable { mutableStateOf(Tab.ACCUEIL) }
     // Pile d'écrans : une commande peut s'ouvrir depuis la fiche d'un client.
@@ -188,6 +194,9 @@ private fun GestionApp(viewModel: GestionViewModel) {
         }
     }
 
+    // Récupère les nouveaux paiements SumUp à l'ouverture de l'app.
+    LaunchedEffect(Unit) { viewModel.syncSumUp() }
+
     // key : chaque écran ouvert repart de son propre état de saisie.
     key(editors.size) {
         when (val e = editors.lastOrNull()) {
@@ -214,6 +223,23 @@ private fun GestionApp(viewModel: GestionViewModel) {
                     onMarkPaid = { viewModel.markPaid(order.id) },
                     onStatus = { viewModel.saveOrder(order.copy(status = it)) },
                     onBack = ::close,
+                    paymentLinkBusy = linkBusy,
+                    onPaymentLink = {
+                        linkBusy = true
+                        viewModel.createPaymentLink(order.id) { url, error ->
+                            linkBusy = false
+                            if (url == null) {
+                                toast(error ?: "Création du lien impossible.")
+                            } else {
+                                val text = "Bonjour ${order.clientName.trim()},\n\n" +
+                                    "Voici le lien pour régler votre commande ${orderRef(order.number)} " +
+                                    "(${fr.gemsofrod.gestion.ui.euros(order.balance)}) en toute sécurité :\n$url\n\n" +
+                                    "Avec mes sincères salutations,\nL'équipe Gems of Rod"
+                                val send = Intent(Intent.ACTION_SEND).setType("text/plain").putExtra(Intent.EXTRA_TEXT, text)
+                                context.startActivity(Intent.createChooser(send, "Envoyer le lien de paiement"))
+                            }
+                        }
+                    },
                 )
             }
             is Editor.OrderE -> OrderEditor(
@@ -227,6 +253,15 @@ private fun GestionApp(viewModel: GestionViewModel) {
                 },
                 onBack = ::close,
             )
+            Editor.SumUpE -> SumUpScreen(
+                data = data,
+                ui = sumup,
+                onConnect = { key, code -> viewModel.connectSumUp(key, code) },
+                onDisconnect = { viewModel.disconnectSumUp() },
+                onSync = { viewModel.syncSumUp() },
+                onLink = { code, orderId -> viewModel.linkPayment(code, orderId) },
+                onBack = ::close,
+            )
             null -> AppFrame(
                 tab = tab,
                 onTab = { tab = it },
@@ -234,6 +269,7 @@ private fun GestionApp(viewModel: GestionViewModel) {
                     Box {
                         RoundIcon(Icons.Outlined.MoreVert, "Menu") { menu = true }
                         DropdownMenu(expanded = menu, onDismissRequest = { menu = false }) {
+                            DropdownMenuItem(text = { Text("SumUp") }, onClick = { menu = false; open(Editor.SumUpE) })
                             DropdownMenuItem(text = { Text("Exporter une sauvegarde") }, onClick = {
                                 menu = false
                                 exportLauncher.launch("gems-of-rod-gestion-${LocalDate.now()}.json")

@@ -32,6 +32,7 @@ class Store(context: Context) {
             put("products", JSONArray(data.products.map { it.toJson() }))
             put("clients", JSONArray(data.clients.map { it.toJson() }))
             put("orders", JSONArray(data.orders.map { it.toJson() }))
+            put("sumupPayments", JSONArray(data.sumupPayments.map { it.toJson() }))
         }.toString(2)
 
         /** Lève une exception si le texte n'est pas une sauvegarde valide. */
@@ -41,7 +42,8 @@ class Store(context: Context) {
             val clients = o.getJSONArray("clients").objects().map { it.toClient() }
             val orders = o.getJSONArray("orders").objects().map { it.toOrder() }
             val next = o.optInt("nextOrderNumber", (orders.maxOfOrNull { it.number } ?: 0) + 1)
-            return AppData(products, clients, orders, next)
+            val payments = o.optJSONArray("sumupPayments")?.objects()?.map { it.toPayment() } ?: emptyList()
+            return AppData(products, clients, orders, next, payments)
         }
 
         private fun JSONArray.objects(): List<JSONObject> = (0 until length()).map { getJSONObject(it) }
@@ -100,6 +102,7 @@ class Store(context: Context) {
             put("lines", JSONArray(lines.map { it.toJson() }))
             put("deposit", deposit); put("note", note)
             put("dueDate", dueDate ?: JSONObject.NULL); put("paidDate", paidDate ?: JSONObject.NULL)
+            put("sumupCheckoutId", sumupCheckoutId ?: JSONObject.NULL)
         }
 
         private fun JSONObject.toOrder() = Order(
@@ -114,6 +117,21 @@ class Store(context: Context) {
             note = optString("note", ""),
             dueDate = if (isNull("dueDate")) null else optLong("dueDate"),
             paidDate = if (isNull("paidDate")) null else optLong("paidDate"),
+            sumupCheckoutId = if (isNull("sumupCheckoutId")) null else optString("sumupCheckoutId"),
+        )
+
+        private fun SumUpPayment.toJson() = JSONObject().apply {
+            put("code", code); put("amount", amount); put("date", date); put("time", time)
+            put("paymentType", paymentType); put("orderId", orderId ?: JSONObject.NULL)
+        }
+
+        private fun JSONObject.toPayment() = SumUpPayment(
+            code = getString("code"),
+            amount = optDouble("amount", 0.0),
+            date = optLong("date"),
+            time = optString("time", ""),
+            paymentType = optString("paymentType", ""),
+            orderId = if (isNull("orderId")) null else optString("orderId"),
         )
     }
 }

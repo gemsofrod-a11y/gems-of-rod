@@ -9,6 +9,12 @@ import fr.gemsofrod.gestion.data.Order
 import fr.gemsofrod.gestion.data.Product
 import fr.gemsofrod.gestion.data.SampleData
 import fr.gemsofrod.gestion.data.Store
+import fr.gemsofrod.gestion.data.SumUpPayment
+import fr.gemsofrod.gestion.sumup.SumUpCheckout
+import fr.gemsofrod.gestion.sumup.SumUpClient
+import fr.gemsofrod.gestion.sumup.SumUpSettings
+import fr.gemsofrod.gestion.sumup.SumUpTransaction
+import fr.gemsofrod.gestion.ui.orderRef
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +22,20 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 import java.time.LocalDate
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
+
+/** État de la connexion SumUp affiché à l'écran. */
+data class SumUpUi(
+    val configured: Boolean = false,
+    val merchantCode: String = "",
+    val busy: Boolean = false,
+    val message: String? = null,
+    val isError: Boolean = false,
+    val lastSync: Long = 0L,
+)
 
 class GestionViewModel(app: Application) : AndroidViewModel(app) {
 
@@ -72,11 +91,7 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
      */
     fun saveOrder(input: Order) = update { d ->
         val old = d.orders.find { it.id == input.id }
-        // Date de règlement : posée quand le solde tombe à zéro, retirée sinon.
-        val order = when {
-            input.isPaid -> input.copy(paidDate = input.paidDate ?: LocalDate.now().toEpochDay())
-            else -> input.copy(paidDate = null)
-        }
+        val order = withPaidDate(input)
         val products = applyStock(d.products, old, order)
         val orders = if (old != null) d.orders.map { if (it.id == order.id) order else it } else d.orders + order
         d.copy(
@@ -97,6 +112,12 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
         d.copy(products = applyStock(d.products, old, null), orders = d.orders.filterNot { it.id == id })
     }
 
+    /** Date de règlement : posée quand le solde tombe à zéro, retirée sinon. */
+    private fun withPaidDate(o: Order): Order = when {
+        o.isPaid -> o.copy(paidDate = o.paidDate ?: LocalDate.now().toEpochDay())
+        else -> o.copy(paidDate = null)
+    }
+
     private fun applyStock(products: List<Product>, old: Order?, new: Order?): List<Product> {
         val delta = HashMap<String, Double>()
         old?.takeIf { it.status.reservesStock }?.lines?.forEach { l ->
@@ -107,6 +128,169 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
         }
         if (delta.isEmpty()) return products
         return products.map { p -> delta[p.id]?.let { p.copy(quantity = p.quantity + it) } ?: p }
+    }
+
+    // --- SumUp ---
+
+    private val sumupSettings = SumUpSettings(app)
+    private val _sumup = MutableStateFlow(sumupUi())
+    val sumup: StateFlow<SumUpUi> = _sumup.asStateFlow()
+
+    private fun sumupUi(busy: Boolean = false, message: String? = null, isError: Boolean = false) = SumUpUi(
+        configured = sumupSettings.isConfigured,
+        merchantCode = sumupSettings.merchantCode,
+        busy = busy,
+        message = message,
+        isError = isError,
+        lastSync = sumupSettings.lastSync,
+    )
+
+    /** Vérifie la clé auprès de SumUp, l'enregistre puis lance une synchronisation. */
+    fun connectSumUp(apiKey: String, merchantCode: String) {
+        val key = apiKey.trim()
+        if (key.isBlank()) return
+        _sumup.value = sumupUi(busy = true, message = "Connexion à SumUp…")
+        viewModelScope.launch {
+            runCatching {
+                withContext(Dispatchers.IO) {
+                    val client = SumUpClient(key)
+                    val code = merchantCode.trim().uppercase().ifBlank { client.merchantCode() }
+                    client.transactions(code, emptySet(), maxPages = 1) // test de la clé et du code
+                    code
+                }
+            }.onSuccess { code ->
+                sumupSettings.apiKey = key
+                sumupSettings.merchantCode = code
+                syncSumUp()
+            }.onFailure {
+                _sumup.value = sumupUi(message = it.message ?: "Connexion impossible.", isError = true)
+            }
+        }
+    }
+
+    fun disconnectSumUp() {
+        sumupSettings.clear()
+        _sumup.value = sumupUi(message = "SumUp déconnecté. Les paiements déjà récupérés restent dans l'app.")
+    }
+
+    /**
+     * Récupère les nouveaux paiements SumUp et vérifie les liens de paiement
+     * en attente (une commande dont le lien est payé est encaissée d'office).
+     */
+    fun syncSumUp() {
+        if (!sumupSettings.isConfigured || _sumup.value.busy && _sumup.value.message != "Connexion à SumUp…") return
+        _sumup.value = sumupUi(busy = true, message = "Synchronisation…")
+        val key = sumupSettings.apiKey
+        val code = sumupSettings.merchantCode
+        viewModelScope.launch {
+            val snapshot = _data.value
+            runCatching {
+                withContext(Dispatchers.IO) {
+                    val client = SumUpClient(key)
+                    val checkouts = snapshot.orders.filter { it.sumupCheckoutId != null }.mapNotNull { o ->
+                        runCatching { o.id to client.checkout(o.sumupCheckoutId!!) }.getOrNull()
+                    }
+                    val known = snapshot.sumupPayments.map { it.code }.toSet()
+                    checkouts to client.transactions(code, known)
+                }
+            }.onSuccess { (checkouts, txs) ->
+                val before = _data.value.sumupPayments.size
+                update { d -> applySumUp(d, checkouts, txs) }
+                val added = _data.value.sumupPayments.size - before
+                sumupSettings.lastSync = System.currentTimeMillis()
+                _sumup.value = sumupUi(
+                    message = when (added) {
+                        0 -> "À jour : aucun nouveau paiement."
+                        1 -> "1 nouveau paiement récupéré."
+                        else -> "$added nouveaux paiements récupérés."
+                    },
+                )
+            }.onFailure {
+                _sumup.value = sumupUi(message = it.message ?: "Synchronisation impossible.", isError = true)
+            }
+        }
+    }
+
+    private fun applySumUp(d: AppData, checkouts: List<Pair<String, SumUpCheckout>>, txs: List<SumUpTransaction>): AppData {
+        var orders = d.orders
+        val payments = d.sumupPayments.toMutableList()
+        val known = payments.map { it.code }.toMutableSet()
+        val nowTime = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm"))
+        for ((orderId, co) in checkouts) {
+            when (co.status) {
+                "PAID" -> {
+                    val codes = co.transactionCodes.ifEmpty { listOf("CO-" + co.id) }
+                    if (codes.none { it in known }) {
+                        val tx = txs.find { it.code == codes.first() }
+                        payments += SumUpPayment(
+                            code = codes.first(), amount = co.amount,
+                            date = tx?.date ?: LocalDate.now().toEpochDay(), time = tx?.time ?: nowTime,
+                            paymentType = "ECOM", orderId = orderId,
+                        )
+                        orders = orders.map { if (it.id == orderId) withPaidDate(it.copy(deposit = it.deposit + co.amount, sumupCheckoutId = null)) else it }
+                    } else {
+                        orders = orders.map { if (it.id == orderId) it.copy(sumupCheckoutId = null) else it }
+                    }
+                    known += codes
+                }
+                "FAILED", "EXPIRED" -> orders = orders.map { if (it.id == orderId) it.copy(sumupCheckoutId = null) else it }
+            }
+        }
+        for (tx in txs) {
+            if (tx.code in known) continue
+            payments += SumUpPayment(tx.code, tx.amount, tx.date, tx.time, tx.paymentType)
+            known += tx.code
+        }
+        return d.copy(
+            orders = orders,
+            sumupPayments = payments.sortedWith(compareByDescending<SumUpPayment> { it.date }.thenByDescending { it.time }),
+        )
+    }
+
+    /** Rattache un paiement SumUp à une commande (null = vente directe), en ajustant les montants reçus. */
+    fun linkPayment(code: String, orderId: String?) = update { d ->
+        val p = d.sumupPayments.find { it.code == code } ?: return@update d
+        if (p.orderId == orderId) return@update d
+        val orders = d.orders.map { o ->
+            when (o.id) {
+                p.orderId -> withPaidDate(o.copy(deposit = (o.deposit - p.amount).coerceAtLeast(0.0)))
+                orderId -> withPaidDate(o.copy(deposit = o.deposit + p.amount))
+                else -> o
+            }
+        }
+        d.copy(orders = orders, sumupPayments = d.sumupPayments.map { if (it.code == code) it.copy(orderId = orderId) else it })
+    }
+
+    /**
+     * Crée un lien de paiement SumUp pour le reste dû de la commande, puis
+     * renvoie l'adresse (ou un message d'erreur) à [onResult].
+     */
+    fun createPaymentLink(orderId: String, onResult: (url: String?, error: String?) -> Unit) {
+        val order = _data.value.orders.find { it.id == orderId } ?: return
+        if (!sumupSettings.isConfigured) {
+            onResult(null, "Connectez d'abord SumUp : menu ⋮ → SumUp.")
+            return
+        }
+        val key = sumupSettings.apiKey
+        val code = sumupSettings.merchantCode
+        val amount = Math.round(order.balance * 100) / 100.0
+        viewModelScope.launch {
+            runCatching {
+                withContext(Dispatchers.IO) {
+                    SumUpClient(key).createCheckout(
+                        code, "GOR-${order.number}-${System.currentTimeMillis()}", amount,
+                        "Gems of Rod - commande ${orderRef(order.number)}",
+                    )
+                }
+            }.onSuccess { co ->
+                if (co.url == null) {
+                    onResult(null, "SumUp n'a pas renvoyé de lien de paiement.")
+                } else {
+                    update { d -> d.copy(orders = d.orders.map { if (it.id == orderId) it.copy(sumupCheckoutId = co.id) else it }) }
+                    onResult(co.url, null)
+                }
+            }.onFailure { onResult(null, it.message ?: "Création du lien impossible.") }
+        }
     }
 
     // --- Sauvegarde ---

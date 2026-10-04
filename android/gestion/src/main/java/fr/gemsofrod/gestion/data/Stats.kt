@@ -10,6 +10,10 @@ class Stats(data: AppData, today: LocalDate = LocalDate.now()) {
 
     private val todayDay = today.toEpochDay()
     private val orders = data.orders
+    /** Ventes directes SumUp (non rattachées à une commande) : CA et encaissé. */
+    private val directSales = data.sumupPayments.filter { it.orderId == null }
+    private fun directIn(month: YearMonth) =
+        directSales.filter { YearMonth.from(it.localDate) == month }.sumOf { it.amount }
     private val sales = data.orders.filter { it.status.countsAsSale }
     private val thisMonth = YearMonth.from(today)
     private val months = (5 downTo 0).map { thisMonth.minusMonths(it.toLong()) }
@@ -46,7 +50,7 @@ class Stats(data: AppData, today: LocalDate = LocalDate.now()) {
     /** Commandes entièrement réglées par mois de règlement (6 mois). */
     val collectedByMonth: List<Pair<String, Double>> = months.map { m ->
         label(m) to data.orders.filter { o -> o.paidDate?.let { YearMonth.from(LocalDate.ofEpochDay(it)) == m } == true }
-            .sumOf { it.total }
+            .sumOf { it.total } + directIn(m)
     }
     val collectedThisMonth = collectedByMonth.last().second
     val collectedTrend: Double? = percent(collectedThisMonth, collectedByMonth[collectedByMonth.size - 2].second)
@@ -72,11 +76,13 @@ class Stats(data: AppData, today: LocalDate = LocalDate.now()) {
                 totals[key] = (totals[key] ?: 0.0) + line.total
             }
         }
+        val direct = directSales.filter { !it.localDate.isBefore(since) }.sumOf { it.amount }
+        if (direct > 0) totals["Ventes SumUp directes"] = direct
         totals.filterValues { it > 0 }.toList().sortedByDescending { it.second }
     }
 
     private fun revenueIn(month: YearMonth) =
-        sales.filter { YearMonth.from(it.localDate) == month }.sumOf { it.total }
+        sales.filter { YearMonth.from(it.localDate) == month }.sumOf { it.total } + directIn(month)
 
     private fun avgDays(from: Long, to: Long): Int? {
         val paid = orders.filter { o -> o.paidDate?.let { it in from..to } == true }

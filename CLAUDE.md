@@ -373,8 +373,14 @@ clients et tableau de bord avec graphiques dessinés en Compose (sans
 bibliothèque de graphiques). Demandée le 03/10/2026 par Sébastien,
 « minimaliste et simple » ; refondue le même jour au style d'une maquette
 fintech fournie par Sébastien (cartes blanches, violet, panneau marine,
-suivi des paiements : échéances, retards, délai de paiement). Données 100 % locales (`gestion.json`, export /
-import JSON depuis le menu), aucune permission ni accès réseau. Un devis ne
+suivi des paiements : échéances, retards, délai de paiement). Données locales (`gestion.json`, export /
+import JSON depuis le menu). Seul accès réseau : SumUp (demande de Sébastien
+le 04/10/2026, il encaisse au Tap to Pay) — récupération des paiements
+(rattachables à une commande, sinon « ventes directes » comptées dans le CA)
+et liens de paiement SumUp pour le reste dû d'une commande ; clé API saisie
+par Sébastien dans l'app (menu ⋮ → SumUp), gardée dans les préférences
+privées, exclue des sauvegardes, jamais dans le code. APK publiée à adresse
+fixe par le workflow `gestion-apk.yml` (release `gestion-latest`). Un devis ne
 touche pas le stock ; une commande confirmée, en préparation ou livrée sort
 ses quantités du stock, une annulation ou suppression les rend. Voir
 `android/gestion/README.md`.

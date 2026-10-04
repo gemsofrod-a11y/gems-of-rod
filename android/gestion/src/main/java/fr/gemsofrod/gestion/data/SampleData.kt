@@ -69,6 +69,18 @@ object SampleData {
             order(c4, thisMonth(1), OrderStatus.LIVREE, 0, line(spinelle, 1.5)),
             order(c4, 0, OrderStatus.DEVIS, null, line(emeraude, 1.0)),
         )
-        return AppData(products, clients, orders, n)
+        // Paiements SumUp fictifs : ventes directes au Tap to Pay, plus le
+        // règlement d'une commande du mois rattaché à celle-ci.
+        fun pay(code: String, amount: Double, daysAgo: Long, time: String, type: String, orderId: String? = null) =
+            SumUpPayment(code, amount, today.minusDays(daysAgo).toEpochDay(), time, type, orderId)
+        val paidThisMonth = orders.last { it.status == OrderStatus.LIVREE && it.isPaid }
+        val payments = listOf(
+            pay("EXEMPLE01", 180.0, thisMonth(0), "11:42", "POS"),
+            pay("EXEMPLE02", paidThisMonth.total, (today.toEpochDay() - paidThisMonth.date), "15:10", "ECOM", paidThisMonth.id),
+            pay("EXEMPLE03", 95.0, thisMonth(2), "17:05", "POS"),
+            pay("EXEMPLE04", 350.0, 12, "10:20", "POS"),
+            pay("EXEMPLE05", 120.0, 40, "16:35", "POS"),
+        )
+        return AppData(products, clients, orders, n, payments)
     }
 }
