@@ -54,9 +54,9 @@ private fun Category.icon(): ImageVector = when (this) {
 
 private fun Category.tint(): Color = when (this) {
     Category.PRECIEUSE -> Palette.Accent
-    Category.FINE -> Color(0xFF0EA5A4)
+    Category.FINE -> Color(0xFF4C7559)
     Category.METAL -> Palette.Orange
-    Category.BIJOU -> Color(0xFFDB2777)
+    Category.BIJOU -> Color(0xFF8E4A5A)
     Category.AUTRE -> Palette.Muted
 }
 

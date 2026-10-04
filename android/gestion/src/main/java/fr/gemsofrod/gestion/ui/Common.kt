@@ -29,6 +29,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -76,7 +77,7 @@ fun SoftCard(
 ) {
     Column(
         modifier
-            .shadow(14.dp, CardShape, ambientColor = Palette.Accent.copy(alpha = 0.10f), spotColor = Palette.Accent.copy(alpha = 0.10f))
+            .shadow(8.dp, CardShape, ambientColor = Color(0xFF6B5130).copy(alpha = 0.07f), spotColor = Color(0xFF6B5130).copy(alpha = 0.07f))
             .clip(CardShape)
             .background(Palette.Card)
             .then(if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier)
@@ -92,12 +93,20 @@ fun SectionCard(
     modifier: Modifier = Modifier,
     icon: ImageVector? = null,
     iconTint: Color = Palette.Accent,
+    /** Ouvre la page de détail ; une flèche l'indique à droite du titre. */
+    onClick: (() -> Unit)? = null,
     content: @Composable ColumnScope.() -> Unit,
 ) {
-    SoftCard(modifier.fillMaxWidth()) {
+    SoftCard(modifier.fillMaxWidth(), onClick = onClick) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(title, style = MaterialTheme.typography.titleSmall, color = Palette.Ink, modifier = Modifier.weight(1f))
+            Text(title.uppercase(), fontSize = 11.sp, letterSpacing = 1.4.sp, fontWeight = FontWeight.Medium, color = Palette.Muted, modifier = Modifier.weight(1f))
             if (icon != null) IconBadge(icon, iconTint)
+            if (onClick != null) {
+                Icon(
+                    Icons.AutoMirrored.Filled.KeyboardArrowRight, "Voir le détail", tint = Palette.AccentSoft,
+                    modifier = Modifier.padding(start = 4.dp).size(20.dp),
+                )
+            }
         }
         Spacer(Modifier.height(12.dp))
         content()
@@ -112,9 +121,10 @@ fun IconBadge(icon: ImageVector, tint: Color = Palette.Accent, size: Dp = 30.dp)
     ) { Icon(icon, null, tint = tint, modifier = Modifier.size(size * 0.55f)) }
 }
 
+/** Tons de pierres : émeraude, saphir, grenat, ambre, améthyste, tourmaline, onyx. */
 private val AvatarColors = listOf(
-    Color(0xFF5546E8), Color(0xFF0EA5A4), Color(0xFFE38A1E), Color(0xFFDB2777),
-    Color(0xFF2563EB), Color(0xFF7C3AED), Color(0xFF16A34A),
+    Color(0xFF3F6B52), Color(0xFF3E5A7E), Color(0xFF7E3B4B), Color(0xFFA9742C),
+    Color(0xFF6A4C7E), Color(0xFF2F6E6A), Color(0xFF4A443C),
 )
 
 /** Pastille ronde aux initiales, couleur stable par nom. */

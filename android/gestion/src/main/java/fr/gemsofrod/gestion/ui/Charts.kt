@@ -24,6 +24,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontWeight
@@ -34,25 +35,29 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlin.math.min
 
+/** Pointillés fins des lignes de repère. */
+private val Dotted = PathEffect.dashPathEffect(floatArrayOf(2f, 6f))
+
 /**
- * Histogramme en barres arrondies dégradées : la dernière barre (mois en
- * cours) en violet plein, les autres en violet pâle.
+ * Histogramme en barres fines : le mois en cours en or patiné avec sa
+ * valeur au-dessus, les autres en champagne pâle.
  */
 @Composable
-fun MiniBarChart(values: List<Pair<String, Double>>, modifier: Modifier = Modifier, height: Dp = 110.dp) {
+fun MiniBarChart(values: List<Pair<String, Double>>, modifier: Modifier = Modifier, height: Dp = 120.dp) {
     val max = values.maxOfOrNull { it.second }?.takeIf { it > 0 } ?: 1.0
-    val strong = Brush.verticalGradient(listOf(Color(0xFF7466F7), Palette.Accent))
-    val soft = Brush.verticalGradient(listOf(Palette.AccentSoft, Palette.AccentPale))
+    val strong = Brush.verticalGradient(listOf(Color(0xFFC9A66B), Color(0xFF8C6A37)))
+    val soft = Brush.verticalGradient(listOf(Color(0xFFE6D7B9), Color(0xFFF1E8D7)))
     Column(modifier) {
         Canvas(Modifier.fillMaxWidth().height(height)) {
             val slot = size.width / values.size
-            val barWidth = min(slot * 0.42f, 22.dp.toPx())
+            val barWidth = min(slot * 0.26f, 14.dp.toPx())
             val radius = CornerRadius(barWidth / 2)
+            val top = 18.dp.toPx()
+            // Ligne de base discrète.
+            drawLine(Palette.Line, Offset(0f, size.height), Offset(size.width, size.height), strokeWidth = 1.dp.toPx())
             values.forEachIndexed { i, (_, v) ->
                 val left = slot * i + (slot - barWidth) / 2
-                // Fond de barre discret pour garder le rythme même à zéro.
-                drawRoundRect(Palette.Background, Offset(left, 0f), Size(barWidth, size.height), radius)
-                val h = ((v / max).toFloat() * size.height).coerceAtLeast(if (v > 0) barWidth else 0f)
+                val h = ((v / max).toFloat() * (size.height - top)).coerceAtLeast(if (v > 0) barWidth else 0f)
                 if (h > 0f) {
                     drawRoundRect(
                         brush = if (i == values.lastIndex) strong else soft,
@@ -63,43 +68,53 @@ fun MiniBarChart(values: List<Pair<String, Double>>, modifier: Modifier = Modifi
                 }
             }
         }
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(10.dp))
         Row(Modifier.fillMaxWidth()) {
-            values.forEachIndexed { i, (label, _) ->
-                Text(
-                    label,
-                    modifier = Modifier.weight(1f),
-                    textAlign = TextAlign.Center,
-                    fontSize = 11.sp,
-                    fontWeight = if (i == values.lastIndex) FontWeight.SemiBold else FontWeight.Normal,
-                    color = if (i == values.lastIndex) Palette.Ink else Palette.Muted,
-                )
+            values.forEachIndexed { i, (label, v) ->
+                Column(Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
+                    Text(
+                        label.uppercase(),
+                        fontSize = 9.sp,
+                        letterSpacing = 1.sp,
+                        fontWeight = if (i == values.lastIndex) FontWeight.SemiBold else FontWeight.Normal,
+                        color = if (i == values.lastIndex) Palette.Accent else Palette.Muted,
+                    )
+                    if (i == values.lastIndex && v > 0) {
+                        Text(eurosShort(v), fontSize = 10.sp, color = Palette.Ink, maxLines = 1)
+                    }
+                }
             }
         }
     }
 }
 
-/** Courbe avec points et zone dégradée sous la ligne. */
+/**
+ * Courbe dorée fine et lissée, reflet dégradé dessous, repères en
+ * pointillés, un seul point lumineux sur le dernier mois.
+ */
 @Composable
-fun LineAreaChart(values: List<Pair<String, Double>>, modifier: Modifier = Modifier, height: Dp = 110.dp) {
+fun LineAreaChart(values: List<Pair<String, Double>>, modifier: Modifier = Modifier, height: Dp = 120.dp) {
     val max = values.maxOfOrNull { it.second }?.takeIf { it > 0 } ?: 1.0
+    val gold = Color(0xFFA8844C)
     Column(modifier) {
         Canvas(Modifier.fillMaxWidth().height(height)) {
             if (values.isEmpty()) return@Canvas
-            val pad = 6.dp.toPx()
-            val step = if (values.size > 1) (size.width - 2 * pad) / (values.size - 1) else 0f
+            val padX = 8.dp.toPx()
+            val padTop = 14.dp.toPx()
+            val bottom = size.height - 2.dp.toPx()
+            val step = if (values.size > 1) (size.width - 2 * padX) / (values.size - 1) else 0f
             val points = values.mapIndexed { i, (_, v) ->
-                Offset(pad + step * i, pad + (size.height - 2 * pad) * (1f - (v / max).toFloat()))
+                Offset(padX + step * i, padTop + (bottom - padTop) * (1f - (v / max).toFloat()))
             }
-            for (k in 1..3) {
-                val y = size.height * k / 4f
-                drawLine(Palette.Line, Offset(0f, y), Offset(size.width, y), strokeWidth = 1.dp.toPx())
+            for (k in 0..2) {
+                val y = padTop + (bottom - padTop) * k / 2f
+                drawLine(Palette.Line, Offset(0f, y), Offset(size.width, y), strokeWidth = 1.dp.toPx(), pathEffect = Dotted)
             }
             val line = Path().apply {
                 points.forEachIndexed { i, p ->
                     if (i == 0) moveTo(p.x, p.y)
                     else {
-                        // Courbe lissée entre deux points (contrôles horizontaux).
+                        // Courbe lissée (contrôles horizontaux à mi-chemin).
                         val prev = points[i - 1]
                         val midX = (prev.x + p.x) / 2
                         cubicTo(midX, prev.y, midX, p.y, p.x, p.y)
@@ -108,20 +123,26 @@ fun LineAreaChart(values: List<Pair<String, Double>>, modifier: Modifier = Modif
             }
             val area = Path().apply {
                 addPath(line)
-                lineTo(points.last().x, size.height)
-                lineTo(points.first().x, size.height)
+                lineTo(points.last().x, bottom)
+                lineTo(points.first().x, bottom)
                 close()
             }
-            drawPath(area, Brush.verticalGradient(listOf(Palette.Accent.copy(alpha = 0.22f), Color.Transparent)))
-            drawPath(line, Palette.Accent, style = Stroke(width = 2.5.dp.toPx(), cap = StrokeCap.Round))
-            points.forEach { p ->
-                drawCircle(Color.White, radius = 4.5.dp.toPx(), center = p)
-                drawCircle(Palette.Accent, radius = 4.5.dp.toPx(), center = p, style = Stroke(2.dp.toPx()))
-            }
+            drawPath(area, Brush.verticalGradient(listOf(gold.copy(alpha = 0.20f), gold.copy(alpha = 0.02f)), startY = padTop, endY = bottom))
+            drawPath(line, gold, style = Stroke(width = 1.8.dp.toPx(), cap = StrokeCap.Round))
+            val last = points.last()
+            drawCircle(gold.copy(alpha = 0.18f), radius = 9.dp.toPx(), center = last)
+            drawCircle(Color.White, radius = 4.dp.toPx(), center = last)
+            drawCircle(gold, radius = 2.6.dp.toPx(), center = last)
         }
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(10.dp))
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            values.forEach { (label, _) -> Text(label, fontSize = 11.sp, color = Palette.Muted) }
+            values.forEachIndexed { i, (label, _) ->
+                Text(
+                    label.uppercase(), fontSize = 9.sp, letterSpacing = 1.sp,
+                    color = if (i == values.lastIndex) Palette.Accent else Palette.Muted,
+                    fontWeight = if (i == values.lastIndex) FontWeight.SemiBold else FontWeight.Normal,
+                )
+            }
         }
     }
 }
@@ -133,14 +154,14 @@ fun DonutChart(slices: List<Pair<String, Double>>, modifier: Modifier = Modifier
     Row(modifier, verticalAlignment = Alignment.CenterVertically) {
         Box(contentAlignment = Alignment.Center) {
             Canvas(Modifier.size(120.dp)) {
-                val stroke = 16.dp.toPx()
+                val stroke = 10.dp.toPx()
                 val arcSize = Size(size.width - stroke, size.height - stroke)
                 val topLeft = Offset(stroke / 2, stroke / 2)
                 drawArc(Palette.Background, 0f, 360f, false, topLeft, arcSize, style = Stroke(stroke))
                 var start = -90f
                 slices.forEachIndexed { i, (_, v) ->
                     val sweep = (v / total * 360).toFloat()
-                    val gap = if (slices.size > 1) 4f else 0f
+                    val gap = if (slices.size > 1) 3f else 0f
                     drawArc(
                         ChartColors[i % ChartColors.size], start + gap / 2, (sweep - gap).coerceAtLeast(0.5f),
                         false, topLeft, arcSize, style = Stroke(stroke, cap = StrokeCap.Round),
@@ -149,7 +170,7 @@ fun DonutChart(slices: List<Pair<String, Double>>, modifier: Modifier = Modifier
                 }
             }
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(eurosShort(total), fontWeight = FontWeight.Bold, fontSize = 15.sp, color = Palette.Ink)
+                Text(eurosShort(total), fontFamily = Display, fontWeight = FontWeight.Medium, fontSize = 18.sp, color = Palette.Ink)
                 Text("12 mois", fontSize = 10.sp, color = Palette.Muted)
             }
         }

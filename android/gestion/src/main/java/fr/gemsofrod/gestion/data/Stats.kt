@@ -64,6 +64,11 @@ class Stats(data: AppData, today: LocalDate = LocalDate.now()) {
     val stockValueAtPrice = data.products.sumOf { it.quantity.coerceAtLeast(0.0) * it.price }
     val lowStock = data.products.filter { it.isLow }.sortedBy { it.quantity }
 
+    /** Valeur de vente du stock par catégorie (la plus forte en premier). */
+    val stockByCategoryAtPrice: List<Pair<String, Double>> = Category.entries.map { cat ->
+        cat.label to data.products.filter { it.category == cat }.sumOf { it.quantity.coerceAtLeast(0.0) * it.price }
+    }.filter { it.second > 0 }.sortedByDescending { it.second }
+
     /** Ventes des 12 derniers mois par catégorie de produit. */
     val salesByCategory: List<Pair<String, Double>> = run {
         val since = thisMonth.minusMonths(11).atDay(1)
@@ -80,6 +85,17 @@ class Stats(data: AppData, today: LocalDate = LocalDate.now()) {
         if (direct > 0) totals["Ventes SumUp directes"] = direct
         totals.filterValues { it > 0 }.toList().sortedByDescending { it.second }
     }
+
+    /** Chiffre d'affaires mois par mois sur [n] mois (le plus ancien en premier). */
+    fun revenueSeries(n: Int): List<Pair<String, Double>> =
+        (n - 1 downTo 0).map { thisMonth.minusMonths(it.toLong()) }.map { label(it) to revenueIn(it) }
+
+    /** Encaissé mois par mois sur [n] mois (le plus ancien en premier). */
+    fun collectedSeries(n: Int): List<Pair<String, Double>> =
+        (n - 1 downTo 0).map { thisMonth.minusMonths(it.toLong()) }.map { m ->
+            label(m) to orders.filter { o -> o.paidDate?.let { YearMonth.from(LocalDate.ofEpochDay(it)) == m } == true }
+                .sumOf { it.total } + directIn(m)
+        }
 
     private fun revenueIn(month: YearMonth) =
         sales.filter { YearMonth.from(it.localDate) == month }.sumOf { it.total } + directIn(month)

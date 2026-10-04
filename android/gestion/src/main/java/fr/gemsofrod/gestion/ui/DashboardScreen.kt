@@ -51,7 +51,7 @@ import java.time.LocalDate
 fun PageHeader(title: String, subtitle: String, action: String?, onAction: () -> Unit) {
     Row(Modifier.fillMaxWidth().padding(top = 4.dp, bottom = 4.dp), verticalAlignment = Alignment.CenterVertically) {
         Column(Modifier.weight(1f)) {
-            Text(title, fontSize = 30.sp, fontWeight = FontWeight.Bold, color = Palette.Ink, letterSpacing = (-0.5).sp)
+            Text(title, fontFamily = Display, fontSize = 32.sp, fontWeight = FontWeight.Medium, color = Palette.Ink)
             Text(subtitle, fontSize = 13.sp, color = Palette.Muted)
         }
         if (action != null) PillButton(action, Icons.Outlined.Add, onAction)
@@ -69,6 +69,8 @@ fun DashboardScreen(
     onNewProduct: () -> Unit,
     onLoadSample: () -> Unit,
     onSeeOrders: () -> Unit,
+    /** Ouvre la page de détail d'une carte. */
+    onOpenInsight: (Insight) -> Unit = {},
 ) {
     val stats = remember(data) { Stats(data) }
     val today = LocalDate.now().toEpochDay()
@@ -112,9 +114,10 @@ fun DashboardScreen(
                 },
                 subColor = if (stats.overdueOrders.isEmpty()) Palette.Green else Palette.Red,
                 modifier = Modifier.weight(1f),
+                onClick = { onOpenInsight(Insight.OVERDUE) },
             )
             KpiTile(
-                label = "Délai de paiement", icon = Icons.Outlined.Schedule, iconTint = Color(0xFF22B8CF),
+                label = "Délai de paiement", icon = Icons.Outlined.Schedule, iconTint = Color(0xFF4A6585),
                 value = stats.avgDaysToPay?.let { "$it j" } ?: "–",
                 sub = stats.avgDaysTrend?.let { d ->
                     if (d == 0) "Stable" else "${if (d < 0) "↓" else "↑"} ${kotlin.math.abs(d)} j vs avant"
@@ -125,34 +128,35 @@ fun DashboardScreen(
                     else -> Palette.Muted
                 },
                 modifier = Modifier.weight(1f),
+                onClick = { onOpenInsight(Insight.PAY_DELAY) },
             )
         }
 
-        SectionCard("Chiffre d'affaires du mois", icon = Icons.Outlined.CalendarMonth) {
+        SectionCard("Chiffre d'affaires du mois", icon = Icons.Outlined.CalendarMonth, onClick = { onOpenInsight(Insight.REVENUE) }) {
             Text(euros(stats.revenueThisMonth), style = AmountStyle)
             TrendText(stats.revenueTrend, "vs mois dernier", fallback = "Marge : ${eurosRound(stats.marginThisMonth)}")
             Spacer(Modifier.height(16.dp))
             MiniBarChart(stats.revenueByMonth)
         }
 
-        SectionCard("Encaissé ce mois", icon = Icons.AutoMirrored.Outlined.TrendingUp, iconTint = Palette.Green) {
+        SectionCard("Encaissé ce mois", icon = Icons.AutoMirrored.Outlined.TrendingUp, iconTint = Palette.Green, onClick = { onOpenInsight(Insight.COLLECTED) }) {
             Text(euros(stats.collectedThisMonth), style = AmountStyle)
             TrendText(stats.collectedTrend, "vs mois dernier", fallback = "Commandes réglées en totalité")
             Spacer(Modifier.height(16.dp))
             LineAreaChart(stats.collectedByMonth)
         }
 
-        CollectCard(stats)
+        CollectCard(stats) { onOpenInsight(Insight.TO_COLLECT) }
 
         UnpaidPanel(data, stats, today, onOpenOrder, onSeeOrders)
 
         if (stats.salesByCategory.isNotEmpty()) {
-            SectionCard("Ventes par catégorie", icon = Icons.Outlined.PieChart) {
+            SectionCard("Ventes par catégorie", icon = Icons.Outlined.PieChart, onClick = { onOpenInsight(Insight.CATEGORIES) }) {
                 DonutChart(stats.salesByCategory)
             }
         }
 
-        SectionCard("Stock", icon = Icons.Outlined.Inventory2) {
+        SectionCard("Stock", icon = Icons.Outlined.Inventory2, onClick = { onOpenInsight(Insight.STOCK) }) {
             Row {
                 Column(Modifier.weight(1f)) {
                     Text("Valeur d'achat", fontSize = 12.sp, color = Palette.Muted)
@@ -194,14 +198,15 @@ private fun KpiTile(
     sub: String,
     subColor: Color,
     modifier: Modifier = Modifier,
+    onClick: (() -> Unit)? = null,
 ) {
-    SoftCard(modifier, padding = 16.dp) {
+    SoftCard(modifier, onClick = onClick, padding = 16.dp) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(label, fontSize = 13.sp, color = Palette.Muted, modifier = Modifier.weight(1f), maxLines = 1, overflow = TextOverflow.Ellipsis)
+            Text(label.uppercase(), fontSize = 10.sp, letterSpacing = 1.4.sp, fontWeight = FontWeight.Medium, color = Palette.Muted, modifier = Modifier.weight(1f), maxLines = 1, overflow = TextOverflow.Ellipsis)
             IconBadge(icon, iconTint, 26.dp)
         }
         Spacer(Modifier.height(10.dp))
-        Text(value, fontSize = 22.sp, fontWeight = FontWeight.Bold, color = Palette.Ink, maxLines = 1, letterSpacing = (-0.3).sp)
+        Text(value, fontFamily = Display, fontSize = 24.sp, fontWeight = FontWeight.Medium, color = Palette.Ink, maxLines = 1)
         Spacer(Modifier.height(2.dp))
         Text(sub, fontSize = 12.sp, fontWeight = FontWeight.Medium, color = subColor, maxLines = 1)
     }
@@ -209,16 +214,16 @@ private fun KpiTile(
 
 /** Carte dégradée violette « À encaisser » (équivalent du « payout » de la maquette). */
 @Composable
-private fun CollectCard(stats: Stats) {
+private fun CollectCard(stats: Stats, onClick: () -> Unit) {
     Column(
-        Modifier.fillMaxWidth().clip(CardShape).background(Palette.AccentGradient).padding(20.dp),
+        Modifier.fillMaxWidth().clip(CardShape).background(Palette.AccentGradient).clickable(onClick = onClick).padding(20.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text("Reste à encaisser", fontSize = 13.sp, color = Color.White.copy(alpha = 0.8f), modifier = Modifier.weight(1f))
+            Text("RESTE À ENCAISSER", fontSize = 10.sp, letterSpacing = 1.6.sp, fontWeight = FontWeight.Medium, color = Color.White.copy(alpha = 0.85f), modifier = Modifier.weight(1f))
             Icon(Icons.Outlined.AccountBalanceWallet, null, tint = Color.White)
         }
         Spacer(Modifier.height(6.dp))
-        Text(euros(stats.toCollect), fontSize = 28.sp, fontWeight = FontWeight.Bold, color = Color.White, letterSpacing = (-0.5).sp)
+        Text(euros(stats.toCollect), fontFamily = Display, fontSize = 32.sp, fontWeight = FontWeight.Medium, color = Color.White)
         Spacer(Modifier.height(16.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             CollectTile("30 prochains jours", eurosShort(stats.dueNext30), Modifier.weight(1f))
@@ -250,7 +255,7 @@ private fun UnpaidPanel(data: AppData, stats: Stats, today: Long, onOpenOrder: (
     }
     Column(Modifier.fillMaxWidth().clip(CardShape).background(Palette.Navy).padding(16.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text("À suivre", fontWeight = FontWeight.SemiBold, fontSize = 16.sp, color = Color.White, modifier = Modifier.weight(1f))
+            Text("À suivre", fontFamily = Display, fontWeight = FontWeight.Medium, fontSize = 20.sp, color = Color.White, modifier = Modifier.weight(1f))
             Text(
                 "Tout voir", fontSize = 13.sp, color = Palette.AccentSoft, fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.clip(RoundedCornerShape(50)).clickable(onClick = onSeeOrders).padding(horizontal = 8.dp, vertical = 4.dp),

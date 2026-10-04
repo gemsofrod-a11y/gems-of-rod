@@ -373,7 +373,11 @@ clients et tableau de bord avec graphiques dessinés en Compose (sans
 bibliothèque de graphiques). Demandée le 03/10/2026 par Sébastien,
 « minimaliste et simple » ; refondue le même jour au style d'une maquette
 fintech fournie par Sébastien (cartes blanches, violet, panneau marine,
-suivi des paiements : échéances, retards, délai de paiement). Données locales (`gestion.json`, export /
+suivi des paiements : échéances, retards, délai de paiement) ; le 04/10/2026,
+style rendu « plus luxueux, couleurs moins agressives » à sa demande : ivoire,
+or champagne, onyx, titres et montants en police à empattements, courbes
+fines dorées ; chaque carte de l'Aperçu s'ouvre sur une page de détail
+(`InsightScreen`). Données locales (`gestion.json`, export /
 import JSON depuis le menu). Seul accès réseau : SumUp (demande de Sébastien
 le 04/10/2026, il encaisse au Tap to Pay) — récupération des paiements
 (rattachables à une commande, sinon « ventes directes » comptées dans le CA)

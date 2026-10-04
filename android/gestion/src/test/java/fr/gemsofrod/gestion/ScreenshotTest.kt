@@ -108,4 +108,14 @@ class ScreenshotTest {
     fun sumupConnexion() = capture("09_sumup_connexion") {
         SumUpScreen(data.copy(sumupPayments = emptyList()), SumUpUi(), { _, _ -> }, {}, {}, { _, _ -> }, {})
     }
+
+    @Test
+    fun detailChiffreAffaires() = capture("10_detail_chiffre_affaires") {
+        fr.gemsofrod.gestion.ui.InsightScreen(fr.gemsofrod.gestion.ui.Insight.REVENUE, data, {}, {}, {})
+    }
+
+    @Test
+    fun detailResteAEncaisser() = capture("11_detail_reste_a_encaisser") {
+        fr.gemsofrod.gestion.ui.InsightScreen(fr.gemsofrod.gestion.ui.Insight.TO_COLLECT, data, {}, {}, {})
+    }
 }

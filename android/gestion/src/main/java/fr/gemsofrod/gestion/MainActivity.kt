@@ -109,8 +109,8 @@ fun AppFrame(tab: Tab, onTab: (Tab) -> Unit, menu: @Composable () -> Unit = {}, 
                 ) { Icon(Icons.Outlined.Diamond, null, tint = Color.White, modifier = Modifier.size(22.dp)) }
                 Spacer(Modifier.width(10.dp))
                 Column(Modifier.weight(1f)) {
-                    Text("Gems of Rod", fontWeight = FontWeight.Bold, fontSize = 17.sp, color = Palette.Ink)
-                    Text("Gestion de la maison", fontSize = 11.sp, color = Palette.Muted)
+                    Text("Gems of Rod", fontFamily = fr.gemsofrod.gestion.ui.Display, fontWeight = FontWeight.Medium, fontSize = 20.sp, color = Palette.Ink)
+                    Text("GESTION DE LA MAISON", fontSize = 9.sp, letterSpacing = 2.sp, color = Palette.Muted)
                 }
                 menu()
             }
@@ -156,6 +156,7 @@ private sealed interface Editor {
     data class OrderView(val id: String) : Editor
     data class OrderE(val id: String?) : Editor
     data object SumUpE : Editor
+    data class InsightE(val insight: fr.gemsofrod.gestion.ui.Insight) : Editor
 }
 
 private enum class Pending { IMPORT, SAMPLE, CLEAR }
@@ -260,6 +261,13 @@ private fun GestionApp(viewModel: GestionViewModel) {
                 },
                 onBack = ::close,
             )
+            is Editor.InsightE -> fr.gemsofrod.gestion.ui.InsightScreen(
+                insight = e.insight,
+                data = data,
+                onOpenOrder = { open(Editor.OrderView(it)) },
+                onOpenProduct = { open(Editor.ProductE(it)) },
+                onBack = ::close,
+            )
             Editor.SumUpE -> SumUpScreen(
                 data = data,
                 ui = sumup,
@@ -310,6 +318,7 @@ private fun GestionApp(viewModel: GestionViewModel) {
                         onNewProduct = { open(Editor.ProductE(null)) },
                         onLoadSample = { viewModel.loadSample() },
                         onSeeOrders = { tab = Tab.COMMANDES },
+                        onOpenInsight = { open(Editor.InsightE(it)) },
                     )
                     Tab.COMMANDES -> OrdersScreen(data, onOpen = { open(Editor.OrderView(it)) }, onNew = { open(Editor.OrderE(null)) })
                     Tab.STOCK -> StockScreen(data, onOpen = { open(Editor.ProductE(it)) }, onNew = { open(Editor.ProductE(null)) })

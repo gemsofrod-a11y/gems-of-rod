@@ -90,7 +90,7 @@ fun SumUpScreen(
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             RoundIcon(Icons.AutoMirrored.Filled.ArrowBack, "Retour", onBack)
-            Text("SumUp", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Palette.Ink, modifier = Modifier.weight(1f).padding(start = 12.dp))
+            Text("SumUp", fontFamily = Display, fontSize = 24.sp, fontWeight = FontWeight.Medium, color = Palette.Ink, modifier = Modifier.weight(1f).padding(start = 12.dp))
         }
 
         if (ui.configured) ConnectedCard(ui, monthTotal, onSync, onDisconnect) else ConnectCard(ui, onConnect)
@@ -289,11 +289,11 @@ private fun ConnectedCard(ui: SumUpUi, monthTotal: Double, onSync: () -> Unit, o
                 Text("Connecté à SumUp", color = Color.White, fontWeight = FontWeight.SemiBold, fontSize = 15.sp)
                 Text("Code marchand ${ui.merchantCode}", color = Color.White.copy(alpha = 0.75f), fontSize = 12.sp)
             }
-            Box(Modifier.size(10.dp).clip(RoundedCornerShape(5.dp)).background(Color(0xFF4ADE80)))
+            Box(Modifier.size(10.dp).clip(RoundedCornerShape(5.dp)).background(Color(0xFF9CC7A6)))
         }
         Spacer(Modifier.height(14.dp))
         Text("Encaissé par SumUp ce mois-ci", color = Color.White.copy(alpha = 0.8f), fontSize = 12.sp)
-        Text(euros(monthTotal), color = Color.White, fontWeight = FontWeight.Bold, fontSize = 26.sp)
+        Text(euros(monthTotal), color = Color.White, fontFamily = Display, fontWeight = FontWeight.Medium, fontSize = 30.sp)
         Text(
             if (ui.lastSync > 0) "Dernière synchronisation : ${formatSync(ui.lastSync)}" else "Jamais synchronisé",
             color = Color.White.copy(alpha = 0.75f), fontSize = 12.sp,
@@ -309,7 +309,7 @@ private fun ConnectedCard(ui: SumUpUi, monthTotal: Double, onSync: () -> Unit, o
         }
         if (ui.message != null) {
             Spacer(Modifier.height(10.dp))
-            Text(ui.message, color = if (ui.isError) Color(0xFFFFD1D1) else Color.White, fontSize = 13.sp)
+            Text(ui.message, color = if (ui.isError) Color(0xFFF2C9BD) else Color.White, fontSize = 13.sp)
         }
     }
     if (confirm) {

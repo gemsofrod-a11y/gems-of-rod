@@ -158,14 +158,14 @@ fun OrderDetail(
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             RoundIcon(Icons.AutoMirrored.Filled.ArrowBack, "Retour", onBack)
-            Text("Commande", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Palette.Ink, modifier = Modifier.weight(1f).padding(start = 12.dp))
+            Text("Commande", fontFamily = Display, fontSize = 24.sp, fontWeight = FontWeight.Medium, color = Palette.Ink, modifier = Modifier.weight(1f).padding(start = 12.dp))
             RoundIcon(Icons.Outlined.Edit, "Modifier", onEdit)
         }
 
         Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(28.dp)).background(Palette.PanelGradient).padding(20.dp)) {
             Text("Détails de la commande", fontSize = 12.sp, color = Color.White.copy(alpha = 0.75f))
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(orderRef(order.number), fontSize = 26.sp, fontWeight = FontWeight.Bold, color = Color.White, modifier = Modifier.weight(1f))
+                Text(orderRef(order.number), fontFamily = Display, fontSize = 28.sp, fontWeight = FontWeight.Medium, color = Color.White, modifier = Modifier.weight(1f))
                 OrderChip(order, today)
             }
             Spacer(Modifier.height(14.dp))

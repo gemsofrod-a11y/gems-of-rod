@@ -7,40 +7,50 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
-/** Palette « fintech » : fond gris très clair, cartes blanches, violet indigo, panneau marine. */
+/**
+ * Palette « maison de joaillerie » : fond ivoire, cartes crème, or champagne,
+ * panneau noir onyx, couleurs d'état douces (émeraude, terracotta, ambre).
+ * Les noms historiques (Accent, Navy…) sont gardés pour ne pas toucher aux écrans.
+ */
 object Palette {
-    val Background = Color(0xFFF3F4F9)
-    val Card = Color.White
-    val Ink = Color(0xFF16172B)
-    val Muted = Color(0xFF8A8CA3)
-    val Line = Color(0xFFE9EAF2)
-    val Accent = Color(0xFF5546E8)
-    val AccentSoft = Color(0xFFB8B1F7)
-    val AccentPale = Color(0xFFEDEBFE)
-    val Navy = Color(0xFF1C1D33)
-    val NavyRow = Color(0xFF28294A)
-    val NavyMuted = Color(0xFF9A9BBE)
-    val Red = Color(0xFFE5484D)
-    val RedPale = Color(0xFFFDECEC)
-    val Green = Color(0xFF16A34A)
-    val GreenPale = Color(0xFFE6F6EC)
-    val Orange = Color(0xFFE38A1E)
-    val OrangePale = Color(0xFFFDF1E1)
+    val Background = Color(0xFFF6F2EA)
+    val Card = Color(0xFFFFFDF8)
+    val Ink = Color(0xFF1E1B17)
+    val Muted = Color(0xFF8B8478)
+    val Line = Color(0xFFECE5D8)
+    val Accent = Color(0xFF9C7A42)
+    val AccentSoft = Color(0xFFD8C39A)
+    val AccentPale = Color(0xFFF2EADB)
+    val Navy = Color(0xFF1F1C19)
+    val NavyRow = Color(0xFF2B2823)
+    val NavyMuted = Color(0xFFA89F90)
+    val Red = Color(0xFFA9533F)
+    val RedPale = Color(0xFFF4E4DE)
+    val Green = Color(0xFF4C7559)
+    val GreenPale = Color(0xFFE4EDE5)
+    val Orange = Color(0xFFA9742C)
+    val OrangePale = Color(0xFFF4EAD8)
 
-    val AccentGradient = Brush.linearGradient(listOf(Color(0xFF6D5EF5), Color(0xFF4335D6)))
-    val PanelGradient = Brush.linearGradient(listOf(Color(0xFF6A5CF0), Color(0xFF8B7FF6)))
+    /** Or patiné (boutons, pilule active, carte « Reste à encaisser »). */
+    val AccentGradient = Brush.linearGradient(listOf(Color(0xFFBF9B62), Color(0xFF8C6A37)))
+    /** Onyx (fiche commande façon facture). */
+    val PanelGradient = Brush.linearGradient(listOf(Color(0xFF2E2A25), Color(0xFF171513)))
 }
 
-/** Couleurs des séries de graphiques (catégories). */
+/** Police d'affichage (titres, montants) : à empattements, façon joaillerie. */
+val Display = FontFamily.Serif
+
+/** Couleurs des séries de graphiques : or, émeraude, saphir, grenat, taupe. */
 val ChartColors = listOf(
-    Color(0xFF5546E8),
-    Color(0xFF9B8CFF),
-    Color(0xFF22B8CF),
-    Color(0xFFF59E0B),
-    Color(0xFF8A8CA3),
+    Color(0xFFA8844C),
+    Color(0xFF4C7559),
+    Color(0xFF4A6585),
+    Color(0xFF8E4A5A),
+    Color(0xFFA89F90),
 )
 
 private val Colors = lightColorScheme(
@@ -62,14 +72,14 @@ private val Colors = lightColorScheme(
     surfaceContainerHigh = Palette.Card,
     surfaceContainerHighest = Palette.Card,
     surfaceContainerLow = Palette.Card,
-    outline = Color(0xFFD9DAE6),
+    outline = Color(0xFFDDD4C4),
     outlineVariant = Palette.Line,
     error = Palette.Red,
 )
 
 private val Type = Typography().let { t ->
     t.copy(
-        headlineLarge = t.headlineLarge.copy(fontWeight = FontWeight.Bold, fontSize = 30.sp, letterSpacing = (-0.5).sp),
+        headlineLarge = t.headlineLarge.copy(fontFamily = FontFamily.Serif, fontWeight = FontWeight.Medium, fontSize = 30.sp),
         headlineMedium = t.headlineMedium.copy(fontWeight = FontWeight.Bold, letterSpacing = (-0.5).sp),
         headlineSmall = t.headlineSmall.copy(fontWeight = FontWeight.Bold, letterSpacing = (-0.3).sp),
         titleLarge = t.titleLarge.copy(fontWeight = FontWeight.SemiBold),
@@ -80,7 +90,7 @@ private val Type = Typography().let { t ->
 }
 
 /** Gros montant des cartes (« $ 24,850.00 » de la maquette). */
-val AmountStyle = TextStyle(fontSize = 26.sp, fontWeight = FontWeight.Bold, letterSpacing = (-0.5).sp, color = Palette.Ink)
+val AmountStyle = TextStyle(fontFamily = FontFamily.Serif, fontSize = 30.sp, fontWeight = FontWeight.Medium, letterSpacing = 0.sp, color = Palette.Ink)
 
 @Composable
 fun GestionTheme(content: @Composable () -> Unit) {

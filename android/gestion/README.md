@@ -14,6 +14,13 @@ arrondies à ombre douce, accent violet indigo, panneau marine pour la liste
 Captures à jour dans `screenshots/` (régénérées par le workflow
 « Gestion screenshots » à chaque modification du module).
 
+Depuis le 04/10/2026 (demande de Sébastien : « plus luxueux, couleurs moins
+agressives ») : fond ivoire, or champagne, panneau onyx, titres et montants
+en police à empattements, libellés en petites capitales espacées, courbes
+fines dorées. Les cartes de l'Aperçu s'ouvrent sur une page de détail
+(`ui/InsightScreen.kt` : CA et encaissé sur 12 mois, retards, délai de
+paiement, reste à encaisser, ventes par catégorie, stock).
+
 ## Écrans
 
 - **Aperçu** : montant en retard, délai moyen de paiement, CA du mois
