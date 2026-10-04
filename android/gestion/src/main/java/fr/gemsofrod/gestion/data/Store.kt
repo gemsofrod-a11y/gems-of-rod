@@ -33,6 +33,7 @@ class Store(context: Context) {
             put("clients", JSONArray(data.clients.map { it.toJson() }))
             put("orders", JSONArray(data.orders.map { it.toJson() }))
             put("sumupPayments", JSONArray(data.sumupPayments.map { it.toJson() }))
+            put("sumupProductMap", JSONObject(data.sumupProductMap as Map<*, *>))
         }.toString(2)
 
         /** Lève une exception si le texte n'est pas une sauvegarde valide. */
@@ -43,7 +44,8 @@ class Store(context: Context) {
             val orders = o.getJSONArray("orders").objects().map { it.toOrder() }
             val next = o.optInt("nextOrderNumber", (orders.maxOfOrNull { it.number } ?: 0) + 1)
             val payments = o.optJSONArray("sumupPayments")?.objects()?.map { it.toPayment() } ?: emptyList()
-            return AppData(products, clients, orders, next, payments)
+            val map = o.optJSONObject("sumupProductMap")?.let { m -> m.keys().asSequence().associateWith { m.getString(it) } } ?: emptyMap()
+            return AppData(products, clients, orders, next, payments, map)
         }
 
         private fun JSONArray.objects(): List<JSONObject> = (0 until length()).map { getJSONObject(it) }
@@ -123,6 +125,9 @@ class Store(context: Context) {
         private fun SumUpPayment.toJson() = JSONObject().apply {
             put("code", code); put("amount", amount); put("date", date); put("time", time)
             put("paymentType", paymentType); put("orderId", orderId ?: JSONObject.NULL)
+            put("items", JSONArray(items.map { i ->
+                JSONObject().put("name", i.name).put("quantity", i.quantity).put("productId", i.productId ?: JSONObject.NULL)
+            }))
         }
 
         private fun JSONObject.toPayment() = SumUpPayment(
@@ -132,6 +137,9 @@ class Store(context: Context) {
             time = optString("time", ""),
             paymentType = optString("paymentType", ""),
             orderId = if (isNull("orderId")) null else optString("orderId"),
+            items = optJSONArray("items")?.objects()?.map { i ->
+                SumUpItem(i.optString("name"), i.optDouble("quantity", 1.0), if (i.isNull("productId")) null else i.optString("productId"))
+            } ?: emptyList(),
         )
     }
 }

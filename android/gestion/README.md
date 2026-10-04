@@ -53,6 +53,15 @@ automatiquement (`GET /v0.1/me`) ou saisi à la main.
   lien payé encaisse la commande automatiquement. Nécessite que les
   paiements en ligne soient activés sur le compte SumUp ; SumUp limite la
   durée de validité de la page de paiement : recréer un lien si besoin.
+- **Stock** : SumUp n'expose pas le catalogue ni le stock à une app tierce.
+  En revanche le détail d'une transaction (`GET /v2.1/merchants/{code}/transactions?transaction_code=…`)
+  donne les articles du catalogue SumUp vendus (`products` : nom, quantité).
+  Pour les ventes postérieures à la connexion (`stockSince`, jamais
+  rétroactif), l'app lit ces articles et les sort de son stock, reconnus par
+  nom (sans accents ni casse) ou par une correspondance apprise
+  (`sumupProductMap`, à choisir une fois dans l'écran SumUp). Une vente
+  rattachée à une commande ne touche pas le stock (c'est la commande qui le
+  gère) : rattacher/détacher rend ou ressort les quantités.
 - Clé gardée dans les préférences privées de l'app, exclue des sauvegardes
   (`res/xml/backup_rules.xml`), jamais dans l'export JSON.
 

@@ -22,6 +22,10 @@ data class SumUpTransaction(
     val date: Long,
     val time: String,
     val paymentType: String,
+    /** Instant du paiement (millisecondes). */
+    val epochMillis: Long = 0L,
+    /** Articles vendus (nom, quantité), lus à part pour les ventes récentes. */
+    val items: List<Pair<String, Double>> = emptyList(),
 )
 
 data class SumUpCheckout(val id: String, val url: String?, val status: String, val amount: Double, val transactionCodes: List<String>)
@@ -64,14 +68,29 @@ class SumUpClient(private val apiKey: String) {
                 if (code in knownCodes) { reachedKnown = true; continue }
                 if (t.optString("status") != "SUCCESSFUL") continue
                 if (t.optString("type", "PAYMENT") != "PAYMENT") continue
-                val (day, time) = parseTimestamp(t.optString("timestamp"))
-                result += SumUpTransaction(code, t.optDouble("amount", 0.0), day, time, t.optString("payment_type"))
+                val stamp = t.optString("timestamp")
+                val (day, time) = parseTimestamp(stamp)
+                result += SumUpTransaction(code, t.optDouble("amount", 0.0), day, time, t.optString("payment_type"), parseMillis(stamp))
             }
             if (reachedKnown || items.length() == 0) break
             url = nextLink(body.optJSONArray("links"), merchantCode)
             page++
         }
         return result
+    }
+
+    /**
+     * Articles du catalogue SumUp vendus dans une transaction (champ
+     * « products » du détail). Vide si la vente a été saisie en montant libre.
+     */
+    fun transactionItems(merchantCode: String, transactionCode: String): List<Pair<String, Double>> {
+        val t = JSONObject(request("GET", "$base/v2.1/merchants/${enc(merchantCode)}/transactions?transaction_code=${enc(transactionCode)}"))
+        val products = t.optJSONArray("products") ?: return emptyList()
+        return (0 until products.length()).mapNotNull { i ->
+            val p = products.optJSONObject(i) ?: return@mapNotNull null
+            val name = p.optString("name").trim()
+            if (name.isBlank()) null else name to p.optDouble("quantity", 1.0).let { if (it.isNaN() || it <= 0) 1.0 else it }
+        }
     }
 
     /** Crée un lien de paiement (Hosted Checkout) pour [amount] €. */
@@ -165,6 +184,10 @@ class SumUpClient(private val apiKey: String) {
     companion object {
         private val timeFormat = DateTimeFormatter.ofPattern("HH:mm")
 
+        fun parseMillis(text: String): Long =
+            (runCatching { Instant.parse(text) }.getOrNull()
+                ?: runCatching { OffsetDateTime.parse(text).toInstant() }.getOrNull())?.toEpochMilli() ?: 0L
+
         /** « 2026-10-03T14:05:12.345Z » → (jour local, « 16:05 »). */
         fun parseTimestamp(text: String): Pair<Long, String> {
             val instant = runCatching { Instant.parse(text) }.getOrNull()
@@ -196,6 +219,14 @@ class SumUpSettings(context: Context) {
     var lastSync: Long
         get() = prefs.getLong("lastSync", 0L)
         set(v) = prefs.edit().putLong("lastSync", v).apply()
+
+    /**
+     * Seules les ventes postérieures à cet instant sortent du stock : le stock
+     * saisi dans l'app tient déjà compte des ventes plus anciennes.
+     */
+    var stockSince: Long
+        get() = prefs.getLong("stockSince", 0L)
+        set(v) = prefs.edit().putLong("stockSince", v).apply()
 
     val isConfigured: Boolean get() = apiKey.isNotBlank() && merchantCode.isNotBlank()
 

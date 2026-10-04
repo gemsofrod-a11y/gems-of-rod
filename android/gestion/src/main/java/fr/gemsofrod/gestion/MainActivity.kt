@@ -261,6 +261,7 @@ private fun GestionApp(viewModel: GestionViewModel) {
                 onSync = { viewModel.syncSumUp() },
                 onLink = { code, orderId -> viewModel.linkPayment(code, orderId) },
                 onBack = ::close,
+                onMapItem = { name, productId -> viewModel.mapSumUpItem(name, productId) },
             )
             null -> AppFrame(
                 tab = tab,

@@ -21,6 +21,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.outlined.CreditCard
+import androidx.compose.material.icons.outlined.Inventory2
 import androidx.compose.material.icons.outlined.Link
 import androidx.compose.material.icons.outlined.Sync
 import androidx.compose.material3.AlertDialog
@@ -67,10 +68,17 @@ fun SumUpScreen(
     onSync: () -> Unit,
     onLink: (code: String, orderId: String?) -> Unit,
     onBack: () -> Unit,
+    /** Associe un nom d'article SumUp à un produit du stock. */
+    onMapItem: (name: String, productId: String) -> Unit = { _, _ -> },
 ) {
     BackHandler(onBack = onBack)
     var filter by rememberSaveable { mutableStateOf(PayFilter.TOUS) }
     var linking by remember { mutableStateOf<SumUpPayment?>(null) }
+    var mapping by remember { mutableStateOf<String?>(null) }
+    // Articles vendus en direct pas encore reconnus dans le stock (un par nom).
+    val unmatched = data.sumupPayments.filter { it.orderId == null }.flatMap { it.items }
+        .filter { it.productId == null }.groupBy { fr.gemsofrod.gestion.data.normalizeName(it.name) }
+        .map { (_, list) -> list.first().name to list.sumOf { it.quantity } }
     val payments = data.sumupPayments.filter { filter == PayFilter.TOUS || it.orderId == null }
     val today = java.time.LocalDate.now()
     val monthTotal = data.sumupPayments.filter { it.localDate.year == today.year && it.localDate.month == today.month }.sumOf { it.amount }
@@ -87,6 +95,35 @@ fun SumUpScreen(
 
         if (ui.configured) ConnectedCard(ui, monthTotal, onSync, onDisconnect) else ConnectCard(ui, onConnect)
 
+        if (unmatched.isNotEmpty()) {
+            SoftCard(Modifier.fillMaxWidth()) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    IconBadge(Icons.Outlined.Inventory2, Palette.Orange, 34.dp)
+                    Spacer(Modifier.width(10.dp))
+                    Text(
+                        if (unmatched.size == 1) "1 article SumUp à associer au stock" else "${unmatched.size} articles SumUp à associer au stock",
+                        fontWeight = FontWeight.SemiBold, fontSize = 15.sp, color = Palette.Ink,
+                    )
+                }
+                Spacer(Modifier.height(6.dp))
+                Text(
+                    "Ces noms du catalogue SumUp ne correspondent à aucun produit de l'app. " +
+                        "Touchez-en un pour choisir le produit : l'app s'en souviendra pour les prochaines ventes.",
+                    fontSize = 12.sp, color = Palette.Muted,
+                )
+                unmatched.forEach { (name, q) ->
+                    HorizontalDivider(color = Palette.Line, modifier = Modifier.padding(top = 8.dp))
+                    Row(
+                        Modifier.fillMaxWidth().clickable { mapping = name }.padding(vertical = 10.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(name, fontSize = 14.sp, color = Palette.Ink, modifier = Modifier.weight(1f))
+                        StatusChip("${qty(q)} vendu${if (q > 1) "s" else ""}", ChipKind.WARN)
+                    }
+                }
+            }
+        }
+
         if (data.sumupPayments.isNotEmpty()) {
             Text("Paiements SumUp", fontWeight = FontWeight.SemiBold, fontSize = 16.sp, color = Palette.Ink)
             SegmentedTabs(
@@ -102,7 +139,8 @@ fun SumUpScreen(
                 val order = p.orderId?.let { id -> data.orders.find { it.id == id } }
                 ItemCard(
                     title = euros(p.amount),
-                    subtitle = "${date(p.localDate)} à ${p.time} · ${p.typeLabel}",
+                    subtitle = "${date(p.localDate)} à ${p.time} · " +
+                        if (p.items.isEmpty()) p.typeLabel else p.items.joinToString(", ") { "${qty(it.quantity)} × ${it.name}" },
                     onClick = { linking = p },
                     leading = { IconBadge(if (p.paymentType == "ECOM") Icons.Outlined.Link else Icons.Outlined.CreditCard, Palette.Accent, 42.dp) },
                     chip = {
@@ -115,6 +153,10 @@ fun SumUpScreen(
         Spacer(Modifier.height(24.dp))
     }
 
+    mapping?.let { name ->
+        ProductPicker(name, data, onPick = { id -> onMapItem(name, id); mapping = null }, onDismiss = { mapping = null })
+    }
+
     linking?.let { p ->
         val candidates = data.orders.filter { it.isUnpaid || it.id == p.orderId }.sortedByDescending { it.date }
         AlertDialog(
@@ -123,6 +165,22 @@ fun SumUpScreen(
             title = { Text("${euros(p.amount)} du ${date(p.localDate)}") },
             text = {
                 Column(Modifier.verticalScroll(rememberScrollState())) {
+                    if (p.items.isNotEmpty()) {
+                        Text("Articles vendus :", fontSize = 13.sp, color = Palette.Muted)
+                        p.items.forEach { item ->
+                            val product = item.productId?.let { id -> data.products.find { it.id == id } }
+                            Text(
+                                "${qty(item.quantity)} × ${item.name}" +
+                                    when {
+                                        product == null -> " (non associé au stock)"
+                                        p.orderId == null -> " → sorti du stock"
+                                        else -> " (stock géré par la commande)"
+                                    },
+                                fontSize = 13.sp, color = Palette.Ink,
+                            )
+                        }
+                        Spacer(Modifier.height(10.dp))
+                    }
                     Text("Rattacher à une commande :", fontSize = 13.sp, color = Palette.Muted)
                     Spacer(Modifier.height(6.dp))
                     if (candidates.isEmpty()) Text("Aucune commande à encaisser.", fontSize = 14.sp, color = Palette.Muted)
@@ -150,6 +208,35 @@ fun SumUpScreen(
             dismissButton = { TextButton(onClick = { linking = null }) { Text("Fermer") } },
         )
     }
+}
+
+@Composable
+private fun ProductPicker(name: String, data: AppData, onPick: (String) -> Unit, onDismiss: () -> Unit) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        containerColor = Palette.Card,
+        title = { Text("« $name »") },
+        text = {
+            Column(Modifier.verticalScroll(rememberScrollState())) {
+                Text("Quel produit de votre stock est-ce ?", fontSize = 13.sp, color = Palette.Muted)
+                Spacer(Modifier.height(6.dp))
+                if (data.products.isEmpty()) Text("Aucun produit dans le stock : ajoutez-le d'abord dans l'onglet Stock.", fontSize = 14.sp, color = Palette.Muted)
+                data.products.sortedBy { it.name.lowercase() }.forEach { prod ->
+                    Row(
+                        Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).clickable { onPick(prod.id) }
+                            .padding(vertical = 10.dp, horizontal = 6.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(prod.name, fontSize = 14.sp, color = Palette.Ink, modifier = Modifier.weight(1f))
+                        Text(qty(prod.quantity, prod.unit), fontSize = 12.sp, color = Palette.Muted)
+                    }
+                    HorizontalDivider(color = Palette.Line)
+                }
+            }
+        },
+        confirmButton = {},
+        dismissButton = { TextButton(onClick = onDismiss) { Text("Annuler") } },
+    )
 }
 
 @Composable

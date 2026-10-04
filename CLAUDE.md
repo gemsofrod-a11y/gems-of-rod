@@ -377,7 +377,10 @@ suivi des paiements : échéances, retards, délai de paiement). Données locale
 import JSON depuis le menu). Seul accès réseau : SumUp (demande de Sébastien
 le 04/10/2026, il encaisse au Tap to Pay) — récupération des paiements
 (rattachables à une commande, sinon « ventes directes » comptées dans le CA)
-et liens de paiement SumUp pour le reste dû d'une commande ; clé API saisie
+et liens de paiement SumUp pour le reste dû d'une commande ; le stock baisse
+avec les articles du catalogue SumUp vendus après la connexion (SumUp
+n'expose pas son catalogue/stock, seulement les articles de chaque vente),
+reconnus par nom ou par correspondance apprise ; clé API saisie
 par Sébastien dans l'app (menu ⋮ → SumUp), gardée dans les préférences
 privées, exclue des sauvegardes, jamais dans le code. APK publiée à adresse
 fixe par le workflow `gestion-apk.yml` (release `gestion-latest`). Un devis ne

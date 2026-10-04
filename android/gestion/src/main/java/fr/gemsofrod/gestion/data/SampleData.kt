@@ -71,13 +71,13 @@ object SampleData {
         )
         // Paiements SumUp fictifs : ventes directes au Tap to Pay, plus le
         // règlement d'une commande du mois rattaché à celle-ci.
-        fun pay(code: String, amount: Double, daysAgo: Long, time: String, type: String, orderId: String? = null) =
-            SumUpPayment(code, amount, today.minusDays(daysAgo).toEpochDay(), time, type, orderId)
+        fun pay(code: String, amount: Double, daysAgo: Long, time: String, type: String, orderId: String? = null, items: List<SumUpItem> = emptyList()) =
+            SumUpPayment(code, amount, today.minusDays(daysAgo).toEpochDay(), time, type, orderId, items)
         val paidThisMonth = orders.last { it.status == OrderStatus.LIVREE && it.isPaid }
         val payments = listOf(
-            pay("EXEMPLE01", 180.0, thisMonth(0), "11:42", "POS"),
+            pay("EXEMPLE01", 190.0, thisMonth(0), "11:42", "POS", items = listOf(SumUpItem("Tourmaline verte", 2.0, tourmaline.id))),
             pay("EXEMPLE02", paidThisMonth.total, (today.toEpochDay() - paidThisMonth.date), "15:10", "ECOM", paidThisMonth.id),
-            pay("EXEMPLE03", 95.0, thisMonth(2), "17:05", "POS"),
+            pay("EXEMPLE03", 95.0, thisMonth(2), "17:05", "POS", items = listOf(SumUpItem("Pendentif goutte argent", 1.0))),
             pay("EXEMPLE04", 350.0, 12, "10:20", "POS"),
             pay("EXEMPLE05", 120.0, 40, "16:35", "POS"),
         )

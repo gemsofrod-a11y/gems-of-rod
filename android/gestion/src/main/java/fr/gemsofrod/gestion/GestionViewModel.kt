@@ -9,7 +9,9 @@ import fr.gemsofrod.gestion.data.Order
 import fr.gemsofrod.gestion.data.Product
 import fr.gemsofrod.gestion.data.SampleData
 import fr.gemsofrod.gestion.data.Store
+import fr.gemsofrod.gestion.data.SumUpItem
 import fr.gemsofrod.gestion.data.SumUpPayment
+import fr.gemsofrod.gestion.data.normalizeName
 import fr.gemsofrod.gestion.sumup.SumUpCheckout
 import fr.gemsofrod.gestion.sumup.SumUpClient
 import fr.gemsofrod.gestion.sumup.SumUpSettings
@@ -161,6 +163,7 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
             }.onSuccess { code ->
                 sumupSettings.apiKey = key
                 sumupSettings.merchantCode = code
+                sumupSettings.stockSince = System.currentTimeMillis()
                 syncSumUp()
             }.onFailure {
                 _sumup.value = sumupUi(message = it.message ?: "Connexion impossible.", isError = true)
@@ -182,6 +185,9 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
         _sumup.value = sumupUi(busy = true, message = "Synchronisation…")
         val key = sumupSettings.apiKey
         val code = sumupSettings.merchantCode
+        // Connexion antérieure à la gestion du stock : on part de maintenant.
+        if (sumupSettings.stockSince == 0L) sumupSettings.stockSince = System.currentTimeMillis()
+        val stockSince = sumupSettings.stockSince
         viewModelScope.launch {
             val snapshot = _data.value
             runCatching {
@@ -191,7 +197,13 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
                         runCatching { o.id to client.checkout(o.sumupCheckoutId!!) }.getOrNull()
                     }
                     val known = snapshot.sumupPayments.map { it.code }.toSet()
-                    checkouts to client.transactions(code, known)
+                    // Articles vendus : seulement pour les ventes récentes (au plus 40 par synchronisation).
+                    val txs = client.transactions(code, known).mapIndexed { i, t ->
+                        if (t.epochMillis >= stockSince && i < 40) {
+                            t.copy(items = runCatching { client.transactionItems(code, t.code) }.getOrDefault(emptyList()))
+                        } else t
+                    }
+                    checkouts to txs
                 }
             }.onSuccess { (checkouts, txs) ->
                 val before = _data.value.sumupPayments.size
@@ -236,21 +248,61 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
                 "FAILED", "EXPIRED" -> orders = orders.map { if (it.id == orderId) it.copy(sumupCheckoutId = null) else it }
             }
         }
+        val added = mutableListOf<SumUpPayment>()
         for (tx in txs) {
             if (tx.code in known) continue
-            payments += SumUpPayment(tx.code, tx.amount, tx.date, tx.time, tx.paymentType)
+            val items = tx.items.map { (name, q) -> SumUpItem(name, q, matchProduct(d, name)) }
+            added += SumUpPayment(tx.code, tx.amount, tx.date, tx.time, tx.paymentType, items = items)
             known += tx.code
         }
+        payments += added
         return d.copy(
             orders = orders,
+            products = applyEffects(d.products, added.map { it.stockEffect }),
             sumupPayments = payments.sortedWith(compareByDescending<SumUpPayment> { it.date }.thenByDescending { it.time }),
         )
+    }
+
+    /** Produit du stock correspondant à un article SumUp : correspondance apprise, sinon même nom. */
+    private fun matchProduct(d: AppData, name: String): String? {
+        val key = normalizeName(name)
+        d.sumupProductMap[key]?.let { id -> if (d.products.any { it.id == id }) return id }
+        return d.products.find { normalizeName(it.name) == key }?.id
+    }
+
+    /** Applique des variations de stock (produit → quantité) ; [sign] = -1 pour les annuler. */
+    private fun applyEffects(products: List<Product>, effects: List<Map<String, Double>>, sign: Double = 1.0): List<Product> {
+        val total = HashMap<String, Double>()
+        effects.forEach { e -> e.forEach { (id, q) -> total[id] = (total[id] ?: 0.0) + q * sign } }
+        if (total.isEmpty()) return products
+        return products.map { p -> total[p.id]?.let { p.copy(quantity = p.quantity + it) } ?: p }
+    }
+
+    /**
+     * Associe un article SumUp non reconnu à un produit du stock et retient la
+     * correspondance : toutes les ventes portant ce nom sont mises à jour et
+     * sortent du stock (si ce sont des ventes directes).
+     */
+    fun mapSumUpItem(name: String, productId: String) = update { d ->
+        val key = normalizeName(name)
+        val before = d.sumupPayments
+        val after = before.map { p ->
+            if (p.items.none { normalizeName(it.name) == key }) p
+            else p.copy(items = p.items.map { if (normalizeName(it.name) == key) it.copy(productId = productId) else it })
+        }
+        var products = applyEffects(d.products, before.map { it.stockEffect }, sign = -1.0)
+        products = applyEffects(products, after.map { it.stockEffect })
+        d.copy(products = products, sumupPayments = after, sumupProductMap = d.sumupProductMap + (key to productId))
     }
 
     /** Rattache un paiement SumUp à une commande (null = vente directe), en ajustant les montants reçus. */
     fun linkPayment(code: String, orderId: String?) = update { d ->
         val p = d.sumupPayments.find { it.code == code } ?: return@update d
         if (p.orderId == orderId) return@update d
+        val linked = p.copy(orderId = orderId)
+        // Vente directe ↔ commande : le stock suit (jamais compté deux fois).
+        var products = applyEffects(d.products, listOf(p.stockEffect), sign = -1.0)
+        products = applyEffects(products, listOf(linked.stockEffect))
         val orders = d.orders.map { o ->
             when (o.id) {
                 p.orderId -> withPaidDate(o.copy(deposit = (o.deposit - p.amount).coerceAtLeast(0.0)))
@@ -258,7 +310,7 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
                 else -> o
             }
         }
-        d.copy(orders = orders, sumupPayments = d.sumupPayments.map { if (it.code == code) it.copy(orderId = orderId) else it })
+        d.copy(products = products, orders = orders, sumupPayments = d.sumupPayments.map { if (it.code == code) linked else it })
     }
 
     /**

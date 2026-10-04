@@ -114,8 +114,18 @@ data class SumUpPayment(
     /** « POS » (carte, Tap to Pay), « ECOM » (lien de paiement)… */
     val paymentType: String,
     val orderId: String? = null,
+    /** Articles du catalogue SumUp vendus dans ce paiement (ventes récentes uniquement). */
+    val items: List<SumUpItem> = emptyList(),
 ) {
     val localDate: LocalDate get() = LocalDate.ofEpochDay(date)
+
+    /**
+     * Effet sur le stock de l'app : une vente directe sort ses articles
+     * reconnus ; rattachée à une commande, c'est la commande qui gère le stock.
+     */
+    val stockEffect: Map<String, Double>
+        get() = if (orderId != null) emptyMap()
+        else items.filter { it.productId != null }.groupBy { it.productId!! }.mapValues { (_, l) -> -l.sumOf { it.quantity } }
     val typeLabel: String
         get() = when (paymentType) {
             "POS" -> "Carte (Tap to Pay)"
@@ -125,12 +135,22 @@ data class SumUpPayment(
         }
 }
 
+/** Article d'une vente SumUp ; [productId] = produit du stock reconnu, null = à associer. */
+data class SumUpItem(val name: String, val quantity: Double, val productId: String? = null)
+
+/** Nom d'article comparable : sans accents, minuscules, espaces simples. */
+fun normalizeName(name: String): String =
+    java.text.Normalizer.normalize(name, java.text.Normalizer.Form.NFD)
+        .replace(Regex("\\p{M}+"), "").lowercase().trim().replace(Regex("\\s+"), " ")
+
 data class AppData(
     val products: List<Product> = emptyList(),
     val clients: List<Client> = emptyList(),
     val orders: List<Order> = emptyList(),
     val nextOrderNumber: Int = 1,
     val sumupPayments: List<SumUpPayment> = emptyList(),
+    /** Correspondances apprises : nom d'article SumUp normalisé → produit du stock. */
+    val sumupProductMap: Map<String, String> = emptyMap(),
 )
 
 fun newId(): String = UUID.randomUUID().toString()
