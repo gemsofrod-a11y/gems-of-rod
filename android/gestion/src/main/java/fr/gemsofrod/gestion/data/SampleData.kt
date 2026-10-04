@@ -20,9 +20,9 @@ object SampleData {
         val products = listOf(saphir, rubis, emeraude, tanzanite, spinelle, tourmaline, or18, bague)
 
         val c1 = Client(name = "Claire Exemple", email = "claire@exemple.fr", segment = Segment.VIP)
-        val c2 = Client(name = "Marc Exemple", phone = "06 00 00 00 00", segment = Segment.REGULIER)
-        val c3 = Client(name = "Inès Exemple", segment = Segment.REGULIER)
-        val c4 = Client(name = "Paul Exemple", segment = Segment.PROSPECT)
+        val c2 = Client(name = "Marc Exemple", phone = "06 00 00 00 00", segment = Segment.OCCASIONNEL)
+        val c3 = Client(name = "Inès Exemple", segment = Segment.OCCASIONNEL)
+        val c4 = Client(name = "Paul Exemple", segment = Segment.OCCASIONNEL)
         val clients = listOf(c1, c2, c3, c4)
 
         fun line(p: Product, q: Double) = OrderLine(p.id, p.name, q, p.price, p.cost)

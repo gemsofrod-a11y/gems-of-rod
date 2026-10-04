@@ -31,13 +31,16 @@ import fr.gemsofrod.gestion.data.AppData
 import fr.gemsofrod.gestion.data.Client
 import fr.gemsofrod.gestion.data.Segment
 import fr.gemsofrod.gestion.data.newId
+import fr.gemsofrod.gestion.data.REGULAR_MIN_ORDERS
+import fr.gemsofrod.gestion.data.ordersLastYear
+import fr.gemsofrod.gestion.data.segmentOf
 import fr.gemsofrod.gestion.data.spentByClient
 import java.time.LocalDate
 
 private fun Segment.chip(): ChipKind = when (this) {
     Segment.VIP -> ChipKind.ACCENT
     Segment.REGULIER -> ChipKind.GOOD
-    Segment.PROSPECT -> ChipKind.NEUTRAL
+    Segment.OCCASIONNEL, Segment.PROSPECT -> ChipKind.NEUTRAL
 }
 
 @Composable
@@ -46,7 +49,7 @@ fun ClientsScreen(data: AppData, onOpen: (String) -> Unit, onNew: () -> Unit) {
     var filter by rememberSaveable { mutableStateOf<Segment?>(null) }
     val spent = remember(data) { data.spentByClient() }
     val list = data.clients
-        .filter { filter == null || it.segment == filter }
+        .filter { filter == null || data.segmentOf(it) == filter }
         .filter { query.isBlank() || it.name.contains(query.trim(), ignoreCase = true) || it.email.contains(query.trim(), ignoreCase = true) }
         .sortedByDescending { spent[it.id] ?: 0.0 }
 
@@ -56,14 +59,14 @@ fun ClientsScreen(data: AppData, onOpen: (String) -> Unit, onNew: () -> Unit) {
             Spacer(Modifier.height(10.dp))
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 MiniStat("Clients", data.clients.size.toString(), Icons.Outlined.Groups, Palette.Accent, Modifier.weight(1f))
-                MiniStat("VIP", data.clients.count { it.segment == Segment.VIP }.toString(), Icons.Outlined.Star, Palette.Orange, Modifier.weight(1f))
+                MiniStat("VIP", data.clients.count { data.segmentOf(it) == Segment.VIP }.toString(), Icons.Outlined.Star, Palette.Orange, Modifier.weight(1f))
             }
             Spacer(Modifier.height(12.dp))
             SearchField(query) { query = it }
             Spacer(Modifier.height(10.dp))
             SegmentedTabs(
-                listOf<Segment?>(null) + Segment.entries, filter, { it?.label ?: "Tous" }, { filter = it },
-                count = { s -> s?.let { seg -> data.clients.count { it.segment == seg } } },
+                listOf(null, Segment.VIP, Segment.REGULIER, Segment.OCCASIONNEL), filter, { it?.label ?: "Tous" }, { filter = it },
+                count = { s -> s?.let { seg -> data.clients.count { data.segmentOf(it) == seg } } },
             )
             Spacer(Modifier.height(4.dp))
         }
@@ -78,7 +81,7 @@ fun ClientsScreen(data: AppData, onOpen: (String) -> Unit, onNew: () -> Unit) {
                 onClick = { onOpen(c.id) },
                 leading = { Avatar(c.name, 42.dp) },
                 trailing = spent[c.id]?.let { eurosRound(it) },
-                chip = { StatusChip(c.segment.label, c.segment.chip()) },
+                chip = { data.segmentOf(c).let { seg -> StatusChip(seg.label, seg.chip()) } },
             )
         }
     }
@@ -98,7 +101,7 @@ fun ClientEditor(
     var name by remember { mutableStateOf(client?.name ?: "") }
     var email by remember { mutableStateOf(client?.email ?: "") }
     var phone by remember { mutableStateOf(client?.phone ?: "") }
-    var segment by remember { mutableStateOf(client?.segment ?: Segment.PROSPECT) }
+    var vip by remember { mutableStateOf(client?.segment == Segment.VIP) }
     var note by remember { mutableStateOf(client?.note ?: "") }
 
     EditorScaffold(
@@ -109,7 +112,7 @@ fun ClientEditor(
                 onSave(
                     Client(
                         id = client?.id ?: newId(), name = name.trim(), email = email.trim(),
-                        phone = phone.trim(), segment = segment, note = note.trim(),
+                        phone = phone.trim(), segment = if (vip) Segment.VIP else Segment.OCCASIONNEL, note = note.trim(),
                     ),
                 )
             }
@@ -134,7 +137,17 @@ fun ClientEditor(
                 }
             }
         }
-        ChoiceChips("Segment", Segment.entries, segment, { it.label }) { segment = it }
+        ChoiceChips("Catégorie", listOf(false, true), vip, { if (it) "VIP" else "Automatique" }) { vip = it }
+        Text(
+            if (vip) "Client VIP, choisi par vous."
+            else {
+                val n = client?.let { data.ordersLastYear(it) } ?: 0
+                "Régulier dès $REGULAR_MIN_ORDERS commandes sur 12 mois, sinon Occasionnel. " +
+                    "Actuellement : $n commande${if (n > 1) "s" else ""} sur 12 mois → " +
+                    (if (n >= REGULAR_MIN_ORDERS) "Régulier" else "Occasionnel") + "."
+            },
+            fontSize = 12.sp, color = Palette.Muted,
+        )
         Field("Notes (goûts, tailles, occasions…)", note, { note = it }, singleLine = false)
 
         if (client != null) {

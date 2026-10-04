@@ -62,6 +62,7 @@ import fr.gemsofrod.gestion.data.Order
 import fr.gemsofrod.gestion.data.OrderLine
 import fr.gemsofrod.gestion.data.OrderStatus
 import fr.gemsofrod.gestion.data.newId
+import fr.gemsofrod.gestion.data.segmentOf
 import java.time.LocalDate
 
 /** « Dans 5 j », « Retard 3 j », « Payée »… pour une commande. */
@@ -174,7 +175,7 @@ fun OrderDetail(
                 Spacer(Modifier.width(12.dp))
                 Column(Modifier.weight(1f)) {
                     Text(order.clientName.ifBlank { "Sans client" }, color = Color.White, fontWeight = FontWeight.SemiBold, fontSize = 15.sp)
-                    Text(client?.segment?.label ?: "Client", color = Color.White.copy(alpha = 0.75f), fontSize = 12.sp)
+                    Text(client?.let { data.segmentOf(it).label } ?: "Client", color = Color.White.copy(alpha = 0.75f), fontSize = 12.sp)
                 }
                 Column(horizontalAlignment = Alignment.End) {
                     Text(date(order.localDate), color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)

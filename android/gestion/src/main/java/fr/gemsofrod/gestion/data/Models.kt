@@ -17,9 +17,14 @@ enum class StockUnit(val label: String) {
     GRAMME("g"),
 }
 
+/**
+ * VIP : choisi à la main. Régulier / Occasionnel : calculés (voir
+ * [segmentOf]). Prospect : ancienne valeur, traitée comme non-VIP.
+ */
 enum class Segment(val label: String) {
     VIP("VIP"),
     REGULIER("Régulier"),
+    OCCASIONNEL("Occasionnel"),
     PROSPECT("Prospect"),
 }
 
@@ -56,7 +61,8 @@ data class Client(
     val name: String,
     val email: String = "",
     val phone: String = "",
-    val segment: Segment = Segment.PROSPECT,
+    /** Seul VIP compte (choix manuel) ; le reste est calculé par [segmentOf]. */
+    val segment: Segment = Segment.OCCASIONNEL,
     val note: String = "",
 )
 
@@ -155,5 +161,23 @@ data class AppData(
     /** Correspondances apprises : nom d'article SumUp normalisé → produit du stock. */
     val sumupProductMap: Map<String, String> = emptyMap(),
 )
+
+/** Seuil de commandes sur 12 mois pour qu'un client soit « Régulier ». */
+const val REGULAR_MIN_ORDERS = 3
+
+/**
+ * Segment affiché d'un client : VIP s'il a été choisi comme tel, sinon
+ * Régulier à partir de [REGULAR_MIN_ORDERS] commandes (hors devis et
+ * annulations) sur les 12 derniers mois, sinon Occasionnel.
+ */
+fun AppData.segmentOf(c: Client, today: LocalDate = LocalDate.now()): Segment {
+    if (c.segment == Segment.VIP) return Segment.VIP
+    return if (ordersLastYear(c, today) >= REGULAR_MIN_ORDERS) Segment.REGULIER else Segment.OCCASIONNEL
+}
+
+fun AppData.ordersLastYear(c: Client, today: LocalDate = LocalDate.now()): Int {
+    val since = today.minusYears(1).toEpochDay()
+    return orders.count { it.clientId == c.id && it.status.countsAsSale && it.date >= since }
+}
 
 fun newId(): String = UUID.randomUUID().toString()
