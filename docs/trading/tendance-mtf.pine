@@ -1,0 +1,104 @@
+//@version=6
+// Tendance multi-unités de temps — Risque Clair (gems-of-rod)
+//
+// Règle appliquée à chaque unité de temps, sur la dernière bougie CLÔTURÉE (pas de repaint) :
+//   ▲ Haussier (+1) : clôture au-dessus de l'EMA ET EMA plus haute qu'il y a N bougies
+//   ▼ Baissier (−1) : clôture en dessous de l'EMA ET EMA plus basse qu'il y a N bougies
+//   • Neutre   (0)  : tous les autres cas
+// Biais pondéré = somme des (tendance × poids), ramenée sur 10.
+//
+// Ce n'est pas une IA et ça ne prédit rien : ça résume la tendance passée.
+// Un filtre pour éviter d'aller contre le courant, pas un signal d'achat ou de vente.
+indicator("Tendance multi-unités (Risque Clair)", shorttitle = "Tendance MTF", overlay = true)
+
+emaLen   = input.int(200, "Longueur de l'EMA", minval = 2)
+slopeLen = input.int(5, "Pente mesurée sur (bougies)", minval = 1)
+seuil    = input.int(6, "Seuil « aligné » (sur 10)", minval = 1, maxval = 10)
+showEma  = input.bool(true, "Afficher l'EMA de l'unité du graphique")
+posOpt   = input.string("En haut à droite", "Position du tableau", options = ["En haut à droite", "En bas à droite", "En haut à gauche", "En bas à gauche"])
+
+grpTf = "Unités de temps et poids"
+tf1 = input.timeframe("5", "Unité 1", group = grpTf, inline = "1")
+w1  = input.int(1, "poids", minval = 0, group = grpTf, inline = "1")
+tf2 = input.timeframe("15", "Unité 2", group = grpTf, inline = "2")
+w2  = input.int(1, "poids", minval = 0, group = grpTf, inline = "2")
+tf3 = input.timeframe("30", "Unité 3", group = grpTf, inline = "3")
+w3  = input.int(1, "poids", minval = 0, group = grpTf, inline = "3")
+tf4 = input.timeframe("60", "Unité 4", group = grpTf, inline = "4")
+w4  = input.int(2, "poids", minval = 0, group = grpTf, inline = "4")
+tf5 = input.timeframe("240", "Unité 5", group = grpTf, inline = "5")
+w5  = input.int(2, "poids", minval = 0, group = grpTf, inline = "5")
+tf6 = input.timeframe("D", "Unité 6", group = grpTf, inline = "6")
+w6  = input.int(3, "poids", minval = 0, group = grpTf, inline = "6")
+
+// État de la dernière bougie clôturée : [tendance, écart au-dessus/en dessous de l'EMA en %].
+f_state() =>
+    e = ta.ema(close, emaLen)
+    s = close > e and e > e[slopeLen] ? 1 : close < e and e < e[slopeLen] ? -1 : 0
+    d = (close - e) / e * 100
+    [s[1], d[1]]
+
+// [1] + lookahead_on = valeur de la bougie déjà clôturée sur l'unité demandée : pas de repaint.
+[s1, d1] = request.security(syminfo.tickerid, tf1, f_state(), lookahead = barmerge.lookahead_on)
+[s2, d2] = request.security(syminfo.tickerid, tf2, f_state(), lookahead = barmerge.lookahead_on)
+[s3, d3] = request.security(syminfo.tickerid, tf3, f_state(), lookahead = barmerge.lookahead_on)
+[s4, d4] = request.security(syminfo.tickerid, tf4, f_state(), lookahead = barmerge.lookahead_on)
+[s5, d5] = request.security(syminfo.tickerid, tf5, f_state(), lookahead = barmerge.lookahead_on)
+[s6, d6] = request.security(syminfo.tickerid, tf6, f_state(), lookahead = barmerge.lookahead_on)
+
+totalW = w1 + w2 + w3 + w4 + w5 + w6
+score  = nz(s1) * w1 + nz(s2) * w2 + nz(s3) * w3 + nz(s4) * w4 + nz(s5) * w5 + nz(s6) * w6
+biais  = totalW > 0 ? math.round(score * 10.0 / totalW) : 0
+
+plot(showEma ? ta.ema(close, emaLen) : na, "EMA", color = color.new(color.orange, 0), linewidth = 2)
+
+f_label(string tf) =>
+    int sec = timeframe.in_seconds(tf)
+    sec >= 604800 ? "Semaine" : sec >= 86400 ? "Jour" : sec >= 3600 ? str.tostring(math.round(sec / 3600)) + " h" : str.tostring(math.round(sec / 60)) + " min"
+
+f_trendText(s) =>
+    na(s) ? "—" : s == 1 ? "▲ Haussier" : s == -1 ? "▼ Baissier" : "• Neutre"
+
+f_trendColor(s) =>
+    na(s) ? color.gray : s == 1 ? color.new(color.green, 0) : s == -1 ? color.new(color.red, 0) : color.new(color.gray, 0)
+
+f_dist(d) =>
+    na(d) ? "—" : (d > 0 ? "+" : "") + str.tostring(d, "#.##") + " %"
+
+pos = switch posOpt
+    "En bas à droite" => position.bottom_right
+    "En haut à gauche" => position.top_left
+    "En bas à gauche" => position.bottom_left
+    => position.top_right
+
+var table t = table.new(pos, 4, 9, bgcolor = color.new(color.black, 15), border_color = color.new(color.gray, 60), border_width = 1)
+
+f_row(int r, string tf, s, d, int w) =>
+    table.cell(t, 0, r, f_label(tf), text_color = color.white, text_size = size.small)
+    table.cell(t, 1, r, f_trendText(s), text_color = color.white, bgcolor = f_trendColor(s), text_size = size.small)
+    table.cell(t, 2, r, f_dist(d), text_color = color.white, text_size = size.small)
+    table.cell(t, 3, r, str.tostring(w), text_color = color.silver, text_size = size.small)
+
+// Fusion des deux dernières lignes une seule fois (la refaire à chaque tick provoque une erreur).
+if barstate.isfirst
+    table.merge_cells(t, 0, 7, 3, 7)
+    table.merge_cells(t, 0, 8, 3, 8)
+
+if barstate.islast
+    table.cell(t, 0, 0, "Unité", text_color = color.silver, text_size = size.small)
+    table.cell(t, 1, 0, "Tendance", text_color = color.silver, text_size = size.small)
+    table.cell(t, 2, 0, "Écart EMA", text_color = color.silver, text_size = size.small)
+    table.cell(t, 3, 0, "Poids", text_color = color.silver, text_size = size.small)
+    f_row(1, tf1, s1, d1, w1)
+    f_row(2, tf2, s2, d2, w2)
+    f_row(3, tf3, s3, d3, w3)
+    f_row(4, tf4, s4, d4, w4)
+    f_row(5, tf5, s5, d5, w5)
+    f_row(6, tf6, s6, d6, w6)
+    biaisColor = biais >= seuil ? color.new(color.green, 0) : biais <= -seuil ? color.new(color.red, 0) : color.new(color.gray, 0)
+    table.cell(t, 0, 7, "Biais pondéré : " + (biais > 0 ? "+" : "") + str.tostring(biais) + " / 10", text_color = color.white, bgcolor = biaisColor, text_size = size.small)
+    verdict = biais >= seuil ? "Aligné haussier : ne chercher que des achats" : biais <= -seuil ? "Aligné baissier : ne chercher que des ventes" : "Mitigé : pas de tendance claire, rester à l'écart"
+    table.cell(t, 0, 8, verdict, text_color = color.white, text_size = size.small)
+
+alertcondition(biais >= seuil and biais[1] < seuil, "Tendance alignée à la hausse", "Tendance multi-unités alignée à la hausse")
+alertcondition(biais <= -seuil and biais[1] > -seuil, "Tendance alignée à la baisse", "Tendance multi-unités alignée à la baisse")
