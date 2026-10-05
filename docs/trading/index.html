@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1b2a3d">
+<title>Risque Clair</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b2a3d'/%3E%3Cpath d='M14 44l12-12 9 7 15-17' fill='none' stroke='%23f2f5f9' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Deux onglets (Calculatrice, Simulateur) dans une colonne de téléphone, même famille visuelle que
+   Budget Clair (docs/finances) mais bleu nuit pour qu'on ne confonde pas les deux outils. */
+:root {
+  --bg: #eef1f5;
+  --surface: #ffffff;
+  --surface-2: #f4f6f9;
+  --ink: #141b24;
+  --ink-2: #364353;
+  --muted: #637184;
+  --line: #d8dee7;
+  --accent: #2a5d9f;
+  --accent-ink: #ffffff;
+  --accent-soft: #e0e9f6;
+  --hero: #1b2a3d;
+  --hero-ink: #f2f5f9;
+  --hero-muted: #a9b8cc;
+  --good: #1b8756;
+  --warn: #b0741a;
+  --crit: #c0392b;
+  --good-bg: #e2f3ea;
+  --warn-bg: #fbf0dc;
+  --crit-bg: #fbe5e2;
+  --info-bg: #e6eef8;
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --r: 16px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1118; --surface: #151c26; --surface-2: #1a2330; --ink: #e6ebf2; --ink-2: #c5cfdc; --muted: #8d9aab; --line: #263142;
+    --accent: #79a8e8; --accent-ink: #0b1a2e; --accent-soft: #1b2b42; --hero: #16243a; --hero-ink: #f2f5f9; --hero-muted: #9fb0c7;
+    --good: #4cc48a; --warn: #e2a64a; --crit: #f06c60;
+    --good-bg: #13301f; --warn-bg: #33270f; --crit-bg: #3a1a17; --info-bg: #172638;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c1118; --surface: #151c26; --surface-2: #1a2330; --ink: #e6ebf2; --ink-2: #c5cfdc; --muted: #8d9aab; --line: #263142;
+  --accent: #79a8e8; --accent-ink: #0b1a2e; --accent-soft: #1b2b42; --hero: #16243a; --hero-ink: #f2f5f9; --hero-muted: #9fb0c7;
+  --good: #4cc48a; --warn: #e2a64a; --crit: #f06c60;
+  --good-bg: #13301f; --warn-bg: #33270f; --crit-bg: #3a1a17; --info-bg: #172638;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 var(--body); }
+[hidden] { display: none !important; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.num { font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+h1, h2, h3 { margin: 0; font-family: var(--display); letter-spacing: -0.01em; text-wrap: balance; }
+h2 { font-size: 20px; }
+h3 { font-size: 16px; }
+p { margin: 0; }
+.eyebrow { font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+.app { max-width: 600px; margin: 0 auto; padding: 0 16px calc(84px + env(safe-area-inset-bottom, 0px)); }
+.topbar { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: 10px; padding-block: 12px; background: var(--bg); }
+.topbar h1 { font-size: 21px; white-space: nowrap; }
+.logo { width: 30px; height: 30px; border-radius: 9px; background: var(--hero); display: grid; place-items: center; flex: none; }
+.logo svg { width: 18px; height: 18px; }
+.lock { margin-left: auto; font-size: 12px; color: var(--muted); text-align: right; }
+.view { display: flex; flex-direction: column; gap: 14px; }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 380px) { .grid { grid-template-columns: 1fr; } }
+label.f { display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 600; color: var(--ink-2); min-width: 0; }
+label.f span { font-weight: 400; color: var(--muted); font-size: 12px; }
+input, select { width: 100%; min-height: 42px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-2); font-variant-numeric: tabular-nums; }
+input:focus { border-color: var(--accent); outline: none; }
+.seg { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { appearance: none; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); border-radius: 999px; padding: 6px 12px; font-size: 13px; font-weight: 600; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.btn { appearance: none; min-height: 42px; padding: 8px 14px; border-radius: 12px; border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink); font-weight: 600; cursor: pointer; }
+
+.hero { background: var(--hero); color: var(--hero-ink); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+.hero .eyebrow { color: var(--hero-muted); }
+.hero-big { font-family: var(--display); font-size: 44px; line-height: 1; font-weight: 700; letter-spacing: -0.02em; }
+.hero-sub { color: var(--hero-muted); font-size: 13.5px; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.split > div { background: color-mix(in srgb, var(--hero-ink) 8%, transparent); border-radius: 12px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.split .v { font-family: var(--display); font-size: 21px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.split .k { font-size: 12px; color: var(--hero-muted); }
+
+.rows { display: flex; flex-direction: column; }
+.rows > div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-top: 1px solid var(--line); font-size: 14px; }
+.rows > div:first-child { border-top: 0; }
+.rows b { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pos { color: var(--good); }
+.neg { color: var(--crit); }
+
+.banner { border-radius: 12px; padding: 10px 12px; font-size: 13.5px; background: var(--info-bg); }
+.banner.warn { background: var(--warn-bg); }
+.banner.crit { background: var(--crit-bg); }
+.banner.good { background: var(--good-bg); }
+.notes { display: flex; flex-direction: column; gap: 8px; }
+.notes:empty { display: none; }
+
+.dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.dock nav { max-width: 600px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; }
+.tab { appearance: none; background: none; border: 0; padding: 14px 8px; font-weight: 600; color: var(--muted); cursor: pointer; }
+.tab[aria-selected="true"] { color: var(--accent); box-shadow: inset 0 3px 0 var(--accent); }
+details summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 13.5px; }
+details p { margin-top: 6px; font-size: 13.5px; color: var(--ink-2); }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 3 8-9" fill="none" stroke="#f2f5f9" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <h1>Risque Clair</h1>
+    <span class="lock">Calcul local, rien n'est envoyé</span>
+  </header>
+
+  <!-- Calculatrice -->
+  <section class="view" id="v-calc" role="tabpanel" aria-labelledby="t-calc">
+    <div class="card">
+      <h2>Mon trade</h2>
+      <div class="seg" id="asset" role="group" aria-label="Actif">
+        <button class="chip" data-asset="gold" aria-pressed="true">Or (XAU/USD)</button>
+        <button class="chip" data-asset="silver" aria-pressed="false">Argent (XAG/USD)</button>
+        <button class="chip" data-asset="custom" aria-pressed="false">Autre</button>
+      </div>
+      <div class="grid">
+        <label class="f">Capital du compte (€)<input id="c-capital" inputmode="decimal"></label>
+        <label class="f">Risque par trade (%)<input id="c-pct" inputmode="decimal"><span>1 % est une limite prudente</span></label>
+        <label class="f">Prix d'entrée ($)<input id="c-entry" inputmode="decimal"></label>
+        <label class="f">Stop loss ($)<input id="c-stop" inputmode="decimal"></label>
+        <label class="f">Objectif / take profit ($)<input id="c-target" inputmode="decimal"></label>
+        <label class="f">Spread ($)<input id="c-spread" inputmode="decimal"><span>Écart achat/vente affiché par le broker</span></label>
+      </div>
+      <details>
+        <summary>Réglages du broker</summary>
+        <div class="grid" style="margin-top:10px">
+          <label class="f">Unités par lot<input id="c-contract" inputmode="decimal"><span>Or : 100 onces le plus souvent</span></label>
+          <label class="f">Pas de lot<input id="c-step" inputmode="decimal"><span>Plus petit lot : ce pas</span></label>
+          <label class="f">Effet de levier (1:x)<input id="c-lev" inputmode="decimal"><span>Particulier en Europe : 20 sur l'or</span></label>
+          <label class="f">Cours EUR/USD<input id="c-fx" inputmode="decimal"><span>1 € = x $</span></label>
+        </div>
+        <p>Vérifiez la taille du contrat dans la fiche de l'actif chez votre broker : certains utilisent 1 lot = 1 once ou 10 onces, ce qui change tout.</p>
+      </details>
+    </div>
+    <div id="c-out" class="view"></div>
+  </section>
+
+  <!-- Simulateur -->
+  <section class="view" id="v-sim" role="tabpanel" aria-labelledby="t-sim" hidden>
+    <div class="card">
+      <h2>Ma stratégie</h2>
+      <div class="seg" role="group" aria-label="Exemples">
+        <button class="chip" data-preset="live">Chiffres du live</button>
+        <button class="chip" data-preset="real">Bon trader</button>
+        <button class="chip" data-preset="bad">Débutant</button>
+      </div>
+      <div class="grid">
+        <label class="f">Capital de départ (€)<input id="s-capital" inputmode="decimal"></label>
+        <label class="f">Risque par trade (€)<input id="s-risk" inputmode="decimal"><span>Ce que coûte un trade perdant</span></label>
+        <label class="f">Trades gagnants (%)<input id="s-win" inputmode="decimal"></label>
+        <label class="f">Gain / risque<input id="s-rr" inputmode="decimal"><span>3 = un gain vaut 3 pertes</span></label>
+        <label class="f">Frais par trade (€)<input id="s-fees" inputmode="decimal"><span>Spread + glissement</span></label>
+        <label class="f">Trades par mois<input id="s-trades" inputmode="numeric"></label>
+        <label class="f">Durée (mois)<input id="s-months" inputmode="numeric"></label>
+      </div>
+      <button class="btn" id="s-run">Simuler 2 000 parcours</button>
+    </div>
+    <div id="s-out" class="view"></div>
+  </section>
+</div>
+
+<div class="dock">
+  <nav role="tablist">
+    <button class="tab" id="t-calc" role="tab" aria-selected="true" aria-controls="v-calc">Calculatrice</button>
+    <button class="tab" id="t-sim" role="tab" aria-selected="false" aria-controls="v-sim">Simulateur</button>
+  </nav>
+</div>
+
+<script>
+"use strict";
+const $ = (s) => document.querySelector(s);
+const eur = new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+const eur2 = new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR", minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const nf = (d) => new Intl.NumberFormat("fr-FR", { minimumFractionDigits: d, maximumFractionDigits: d });
+const pct = (x, d = 1) => nf(d).format(x) + " %";
+const num = (id) => { const v = parseFloat(String($(id).value).replace(/\s/g, "").replace(",", ".")); return Number.isFinite(v) ? v : NaN; };
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const banner = (kind, html) => `<div class="banner ${kind}">${html}</div>`;
+const signed = (v) => `<b class="${v >= 0 ? "pos" : "neg"}">${v > 0 ? "+" : ""}${eur.format(v)}</b>`;
+
+// Réglages gardés dans ce navigateur seulement (commodité) : la page fonctionne sans.
+const STORE = "risque-clair-v1";
+function load() { try { return JSON.parse(localStorage.getItem(STORE)) || {}; } catch { return {}; } }
+function save() {
+  const data = { asset };
+  document.querySelectorAll("input[id]").forEach((i) => { data[i.id] = i.value; });
+  try { localStorage.setItem(STORE, JSON.stringify(data)); } catch {}
+}
+
+/* ---------- Onglets ---------- */
+document.querySelectorAll(".tab").forEach((t) => t.addEventListener("click", () => {
+  document.querySelectorAll(".tab").forEach((x) => x.setAttribute("aria-selected", String(x === t)));
+  $("#v-calc").hidden = t.id !== "t-calc";
+  $("#v-sim").hidden = t.id !== "t-sim";
+  window.scrollTo(0, 0);
+}));
+
+/* ---------- Calculatrice ---------- */
+const ASSETS = {
+  gold:   { contract: 100,  step: 0.01, lev: 20, spread: 0.30, entry: 4640, stop: 4630, target: 4670 },
+  silver: { contract: 5000, step: 0.01, lev: 10, spread: 0.03, entry: 48,   stop: 47.6, target: 49.2 },
+  custom: {},
+};
+let asset = "gold";
+
+function setAsset(a, fill) {
+  asset = a;
+  document.querySelectorAll("[data-asset]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.asset === a)));
+  if (!fill) return;
+  const d = ASSETS[a];
+  const map = { contract: "#c-contract", step: "#c-step", lev: "#c-lev", spread: "#c-spread", entry: "#c-entry", stop: "#c-stop", target: "#c-target" };
+  for (const k in map) if (d[k] !== undefined) $(map[k]).value = String(d[k]).replace(".", ",");
+}
+
+function calc() {
+  const out = $("#c-out");
+  const cap = num("#c-capital"), p = num("#c-pct"), entry = num("#c-entry"), stop = num("#c-stop"), target = num("#c-target");
+  const spread = Math.max(0, num("#c-spread") || 0), contract = num("#c-contract"), step = num("#c-step"), lev = num("#c-lev"), fx = num("#c-fx");
+  if (![cap, p, entry, stop, target, contract, step, lev, fx].every((v) => Number.isFinite(v) && v > 0)) {
+    out.innerHTML = banner("", "Remplissez toutes les cases avec des nombres positifs.");
+    return;
+  }
+  const long = target > entry;
+  if ((long && stop >= entry) || (!long && stop <= entry)) {
+    out.innerHTML = banner("crit", `Le stop doit être de l'autre côté du prix d'entrée par rapport à l'objectif : ${long ? "en dessous" : "au-dessus"} de ${nf(2).format(entry)} $ pour un${long ? " achat" : "e vente"}.`);
+    return;
+  }
+  const stopDist = Math.abs(entry - stop), tpDist = Math.abs(target - entry);
+  const riskEur = cap * p / 100;
+  const lossPerLotUsd = (stopDist + spread) * contract;      // perte si le stop est touché, spread compris
+  const rawLots = (riskEur * fx) / lossPerLotUsd;
+  const ideal = Math.floor(rawLots / step + 1e-9) * step;
+  const tooSmall = ideal < step;
+  const lots = tooSmall ? step : ideal;
+  const loss = lots * lossPerLotUsd / fx;
+  const gain = lots * (tpDist - spread) * contract / fx;
+  const rr = tpDist / stopDist;
+  const netRR = gain / loss;
+  const be = 1 / (1 + netRR) * 100;                           // taux de réussite pour ne rien perdre
+  const margin = entry * contract * lots / lev / fx;
+  const perDollar = lots * contract / fx;
+  const lossPct = loss / cap * 100;
+  const after5 = cap - 5 * loss;
+  const decimals = step < 0.1 ? 2 : step < 1 ? 1 : 0;
+
+  const notes = [];
+  if (tooSmall) notes.push(banner("crit", `<b>Capital trop petit pour ce stop.</b> Même le plus petit lot (${nf(decimals).format(step)}) fait perdre ${eur2.format(loss)} si le stop est touché, soit ${pct(lossPct)} du compte au lieu des ${pct(p)} voulus. Rapprochez le stop, ou ne prenez pas ce trade.`));
+  if (p > 2) notes.push(banner("crit", `Risquer ${pct(p)} par trade est élevé : 10 pertes d'affilée (ça arrive) emportent environ ${pct(100 - 100 * Math.pow(1 - p / 100, 10), 0)} du compte.`));
+  else if (p > 1) notes.push(banner("warn", `${pct(p)} par trade, c'est au-dessus de la limite prudente de 1 %.`));
+  if (netRR < 1) notes.push(banner("warn", `L'objectif rapporte moins que ce que coûte le stop (gain/risque de ${nf(2).format(netRR)} après spread) : il faudra gagner plus de ${pct(be, 0)} des trades pour ne pas perdre.`));
+  if (margin > cap) notes.push(banner("crit", `La marge demandée (${eur.format(margin)}) dépasse le capital : le broker refusera l'ordre ou le fermera de force.`));
+  else if (margin > cap * 0.5) notes.push(banner("warn", `La marge immobilise ${pct(margin / cap * 100, 0)} du compte : il reste peu de marge de manœuvre.`));
+  if (spread * contract * lots / fx > loss * 0.1) notes.push(banner("warn", `Le spread coûte à lui seul ${eur2.format(spread * contract * lots / fx)}, plus de 10 % du risque : le stop est très serré par rapport aux frais.`));
+
+  out.innerHTML = `
+    <div class="hero">
+      <div class="eyebrow">Taille de position</div>
+      <div class="hero-big num">${nf(decimals).format(lots)} lot${lots >= 2 ? "s" : ""}</div>
+      <div class="hero-sub">${long ? "Achat" : "Vente"} · stop à ${nf(2).format(stopDist)} $ · objectif à ${nf(2).format(tpDist)} $ · 1 $ de mouvement = ${eur2.format(perDollar)}</div>
+      <div class="split">
+        <div><span class="k">Si le stop est touché</span><span class="v neg" style="color:inherit">−${eur2.format(loss)}</span><span class="k">${pct(lossPct, 2)} du compte</span></div>
+        <div><span class="k">Si l'objectif est atteint</span><span class="v">+${eur2.format(gain)}</span><span class="k">gain/risque ${nf(2).format(netRR)}</span></div>
+      </div>
+    </div>
+    <div class="notes">${notes.join("")}</div>
+    <div class="card">
+      <h3>Le détail</h3>
+      <div class="rows">
+        <div><span>Risque visé</span><b>${eur2.format(riskEur)}</b></div>
+        <div><span>Gain/risque affiché (sans spread)</span><b>${nf(2).format(rr)}</b></div>
+        <div><span>Trades gagnants nécessaires pour ne rien perdre</span><b>${pct(be, 0)}</b></div>
+        <div><span>Marge immobilisée (levier 1:${nf(0).format(lev)})</span><b>${eur.format(margin)}</b></div>
+        <div><span>Coût du spread</span><b>${eur2.format(spread * contract * lots / fx)}</b></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Et si ça tourne mal</h3>
+      <div class="rows">
+        <div><span>Après 5 pertes d'affilée</span><b>${eur.format(after5)} (${after5 < cap ? "−" : ""}${pct(5 * lossPct, 1)})</b></div>
+        <div><span>Après 10 pertes d'affilée</span><b>${eur.format(cap - 10 * loss)}</b></div>
+      </div>
+      <p class="small muted">Avec 35 % de trades gagnants, une série de 10 pertes sur 200 trades arrive environ une fois sur deux. Ce n'est pas un scénario catastrophe, c'est le quotidien d'une stratégie qui suit la tendance.</p>
+    </div>`;
+}
+
+/* ---------- Simulateur ---------- */
+const PRESETS = {
+  live: { win: 70, rr: 3, risk: 50, fees: 0, trades: 20 },
+  real: { win: 35, rr: 3, risk: 50, fees: 3, trades: 20 },
+  bad:  { win: 25, rr: 3, risk: 50, fees: 3, trades: 20 },
+};
+const NOTE = {
+  live: "Les chiffres annoncés dans le live : 70 % de trades gagnants avec des gains 3 fois plus grands que le risque, sans frais. Aucun fonds professionnel connu n'affiche ça durablement.",
+  real: "Un trader expérimenté et discipliné : une stratégie qui suit la tendance avec un objectif à 3 fois le risque gagne en général 30 à 40 % de ses trades. Frais inclus. La plupart des particuliers n'atteignent jamais ce niveau : 70 à 89 % des comptes de particuliers sur CFD perdent de l'argent.",
+  bad:  "Un débutant, ou une mauvaise période pour n'importe qui : 1 trade gagnant sur 4. Avec les frais, la stratégie perd de l'argent.",
+};
+let presetNote = "";
+
+function quantile(sorted, q) { return sorted[Math.min(sorted.length - 1, Math.max(0, Math.floor(q * (sorted.length - 1))))]; }
+
+function simulate() {
+  const out = $("#s-out");
+  const cap = num("#s-capital"), risk = num("#s-risk"), win = num("#s-win"), rr = num("#s-rr");
+  const fees = Math.max(0, num("#s-fees") || 0), trades = Math.round(num("#s-trades")), months = Math.round(num("#s-months"));
+  if (![cap, risk, rr].every((v) => v > 0) || !(win >= 0 && win <= 100) || !(trades >= 1 && trades <= 500) || !(months >= 1 && months <= 120)) {
+    out.innerHTML = banner("", "Remplissez toutes les cases (trades par mois entre 1 et 500, durée entre 1 et 120 mois).");
+    return;
+  }
+  const p = win / 100, N = 2000;
+  const perTrade = p * rr * risk - (1 - p) * risk - fees;     // espérance par trade
+  const be = (risk + fees) / (risk * (rr + 1)) * 100;
+  const finals = [], dds = [], streaks = [], worstMonths = [];
+  let ruined = 0, losingRuns = 0, negMonths = 0, totalMonths = 0;
+
+  for (let s = 0; s < N; s++) {
+    let c = cap, peak = cap, dd = 0, run = 0, maxRun = 0, worst = Infinity, dead = false;
+    for (let m = 0; m < months && !dead; m++) {
+      const start = c;
+      for (let t = 0; t < trades; t++) {
+        if (c < risk + fees) { dead = true; break; }
+        if (Math.random() < p) { c += rr * risk - fees; run = 0; }
+        else { c -= risk + fees; run++; if (run > maxRun) maxRun = run; }
+        if (c > peak) peak = c;
+        if (peak - c > dd) dd = peak - c;
+      }
+      const res = c - start;
+      if (res < worst) worst = res;
+      if (res < 0) negMonths++;
+      totalMonths++;
+    }
+    if (dead) ruined++;
+    if (c < cap) losingRuns++;
+    finals.push(c - cap); dds.push(dd); streaks.push(maxRun); worstMonths.push(worst);
+  }
+  [finals, dds, streaks, worstMonths].forEach((a) => a.sort((x, y) => x - y));
+  const med = quantile(finals, 0.5), p10 = quantile(finals, 0.1), p90 = quantile(finals, 0.9);
+  const ruinPct = ruined / N * 100, losePct = losingRuns / N * 100;
+
+  const notes = [];
+  if (presetNote) notes.push(banner("", presetNote));
+  if (perTrade <= 0) notes.push(banner("crit", `<b>Cette stratégie perd de l'argent en moyenne</b> (${eur2.format(perTrade)} par trade). Il faudrait plus de ${pct(be, 0)} de trades gagnants pour ne rien perdre.`));
+  if (p >= 0.6 && rr >= 2) notes.push(banner("warn", `${pct(win, 0)} de trades gagnants <i>avec</i> des gains ${nf(1).format(rr)} fois plus grands que le risque : cette combinaison est exceptionnelle. Plus l'objectif est loin, moins souvent on l'atteint. Exigez des résultats vérifiés par un tiers avant d'y croire.`));
+  if (ruinPct >= 1) notes.push(banner("crit", `Dans ${pct(ruinPct, 0)} des parcours, le compte ne peut plus payer un trade perdant avant la fin : il est vidé.`));
+  if (risk / cap > 0.02) notes.push(banner("warn", `${eur.format(risk)} de risque sur ${eur.format(cap)}, c'est ${pct(risk / cap * 100, 0)} du compte par trade (limite prudente : 1 %).`));
+
+  out.innerHTML = `
+    <div class="hero">
+      <div class="eyebrow">Sur ${months} mois, ${trades * months} trades</div>
+      <div class="hero-big num" style="color:${med >= 0 ? "inherit" : "#ffb4ab"}">${med > 0 ? "+" : ""}${eur.format(med)}</div>
+      <div class="hero-sub">Résultat du parcours médian : la moitié des 2 000 simulations font mieux, la moitié moins bien.</div>
+      <div class="split">
+        <div><span class="k">1 parcours sur 10 fait moins de</span><span class="v">${p10 > 0 ? "+" : ""}${eur.format(p10)}</span></div>
+        <div><span class="k">1 parcours sur 10 fait plus de</span><span class="v">${p90 > 0 ? "+" : ""}${eur.format(p90)}</span></div>
+      </div>
+    </div>
+    <div class="notes">${notes.join("")}</div>
+    <div class="card">
+      <h3>Ce que la stratégie rapporte vraiment</h3>
+      <div class="rows">
+        <div><span>Gain moyen par trade, frais déduits</span>${signed(perTrade)}</div>
+        <div><span>Gain moyen par mois</span>${signed(perTrade * trades)}</div>
+        <div><span>Trades gagnants nécessaires pour ne rien perdre</span><b>${pct(be, 0)}</b></div>
+        <div><span>Frais payés par mois</span><b>${eur.format(fees * trades)}</b></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Ce qu'on ressent en chemin</h3>
+      <div class="rows">
+        <div><span>Parcours qui finissent en perte</span><b>${pct(losePct, 0)}</b></div>
+        <div><span>Mois perdants</span><b>${pct(negMonths / totalMonths * 100, 0)}</b></div>
+        <div><span>Pire série de pertes d'affilée (parcours médian)</span><b>${quantile(streaks, 0.5)} trades</b></div>
+        <div><span>Pire mois (parcours médian)</span>${signed(quantile(worstMonths, 0.5))}</div>
+        <div><span>Plus forte baisse depuis un sommet (médiane)</span><b class="neg">−${eur.format(quantile(dds, 0.5))}</b></div>
+        <div><span>Comptes vidés avant la fin</span><b>${pct(ruinPct, 1)}</b></div>
+      </div>
+      <p class="small muted">Chaque parcours tire au hasard le résultat de chaque trade avec votre taux de réussite. La simulation suppose que vous respectez parfaitement vos règles, ce qui est rarement le cas après une série de pertes.</p>
+    </div>`;
+}
+
+function applyPreset(k) {
+  const d = PRESETS[k];
+  for (const [key, v] of Object.entries(d)) $(SIM_IDS[key]).value = v;
+  presetNote = NOTE[k];
+  save(); simulate();
+}
+
+/* ---------- Démarrage ---------- */
+const saved = load();
+const DEFAULTS = { "c-capital": "1000", "c-pct": "1", "c-fx": "1,17", "s-capital": "1000", "s-months": "12" };
+setAsset(saved.asset && ASSETS[saved.asset] ? saved.asset : "gold", true);
+for (const [id, v] of Object.entries(DEFAULTS)) $("#" + id).value = v;
+const SIM_IDS = { win: "#s-win", rr: "#s-rr", risk: "#s-risk", fees: "#s-fees", trades: "#s-trades" };
+for (const [k, v] of Object.entries(PRESETS.real)) $(SIM_IDS[k]).value = v;
+for (const [id, v] of Object.entries(saved)) { const el = document.getElementById(id); if (el && el.tagName === "INPUT" && typeof v === "string") el.value = v; }
+
+document.querySelectorAll("[data-asset]").forEach((b) => b.addEventListener("click", () => { setAsset(b.dataset.asset, true); save(); calc(); }));
+document.querySelectorAll("#v-calc input").forEach((i) => i.addEventListener("input", () => { save(); calc(); }));
+document.querySelectorAll("#v-sim input").forEach((i) => i.addEventListener("input", () => { presetNote = ""; save(); }));
+document.querySelectorAll("[data-preset]").forEach((b) => b.addEventListener("click", () => applyPreset(b.dataset.preset)));
+$("#s-run").addEventListener("click", () => { save(); simulate(); });
+calc();
+simulate();
+</script>
+</body>
+</html>
