@@ -144,6 +144,29 @@ ol.steps { margin: 0; padding-left: 20px; display: flex; flex-direction: column;
 
   <!-- Calculatrice -->
   <section class="view" id="v-calc" role="tabpanel" aria-labelledby="t-calc">
+    <div class="seg" role="group" aria-label="Type de broker">
+      <button class="chip" data-mode="broker" aria-pressed="true">Montant × levier</button>
+      <button class="chip" data-mode="lots" aria-pressed="false">En lots (MT5)</button>
+    </div>
+    <div id="m-broker" class="view">
+      <div class="card">
+        <h2>Mon trade</h2>
+        <p class="small muted">Pour un broker où l'on saisit un montant, un levier, puis le stop loss et le take profit en dollars (CFD sur l'or).</p>
+        <div class="grid">
+          <label class="f">Sens<select id="b-side"><option value="achat">Acheter</option><option value="vente">Short (vendre)</option></select></label>
+          <label class="f">Montant ($)<input id="b-margin" inputmode="decimal"><span>Ce que vous engagez</span></label>
+          <label class="f">Effet de levier<input id="b-lev" inputmode="decimal"><span>×20 = exposition 20 fois le montant</span></label>
+          <label class="f">Prix de l'or ($)<input id="b-price" inputmode="decimal"></label>
+          <label class="f">Gain visé ($)<input id="b-target" inputmode="decimal"><span>Net, après les frais</span></label>
+          <label class="f">Gain / risque<input id="b-rr" inputmode="decimal"><span>3 = le gain vaut 3 fois la perte</span></label>
+          <label class="f">Coûts d'ouverture ($)<input id="b-cost" inputmode="decimal"></label>
+          <label class="f">Frais par nuit ($)<input id="b-night" inputmode="decimal"><span>Si le trade reste ouvert</span></label>
+          <label class="f">Disponible ($)<input id="b-balance" inputmode="decimal"><span>Solde du compte</span></label>
+        </div>
+      </div>
+      <div id="b-out" class="view"></div>
+    </div>
+    <div id="m-lots" class="view" hidden>
     <div class="card">
       <h2>Mon trade</h2>
       <div class="seg" id="asset" role="group" aria-label="Actif">
@@ -171,6 +194,7 @@ ol.steps { margin: 0; padding-left: 20px; display: flex; flex-direction: column;
       </details>
     </div>
     <div id="c-out" class="view"></div>
+    </div>
   </section>
 
   <!-- Simulateur -->
@@ -178,18 +202,20 @@ ol.steps { margin: 0; padding-left: 20px; display: flex; flex-direction: column;
     <div class="card">
       <h2>Ma stratégie</h2>
       <div class="seg" role="group" aria-label="Exemples">
+        <button class="chip" data-preset="mine">Mon broker</button>
         <button class="chip" data-preset="live">Chiffres du live</button>
         <button class="chip" data-preset="real">Bon trader</button>
         <button class="chip" data-preset="bad">Débutant</button>
       </div>
       <div class="grid">
-        <label class="f">Capital de départ (€)<input id="s-capital" inputmode="decimal"></label>
-        <label class="f">Risque par trade (€)<input id="s-risk" inputmode="decimal"><span>Ce que coûte un trade perdant</span></label>
+        <label class="f" data-label="Capital de départ ({c})">Capital de départ (€)<input id="s-capital" inputmode="decimal"></label>
+        <label class="f" data-label="Risque par trade ({c})">Risque par trade (€)<input id="s-risk" inputmode="decimal"><span>Ce que coûte un trade perdant</span></label>
         <label class="f">Trades gagnants (%)<input id="s-win" inputmode="decimal"></label>
         <label class="f">Gain / risque<input id="s-rr" inputmode="decimal"><span>3 = un gain vaut 3 pertes</span></label>
-        <label class="f">Frais par trade (€)<input id="s-fees" inputmode="decimal"><span>Spread + glissement</span></label>
+        <label class="f" data-label="Frais par trade ({c})">Frais par trade (€)<input id="s-fees" inputmode="decimal"><span>Spread + glissement</span></label>
         <label class="f">Trades par mois<input id="s-trades" inputmode="numeric"></label>
         <label class="f">Durée (mois)<input id="s-months" inputmode="numeric"></label>
+        <label class="f">Devise du compte<select class="cur-select"><option value="USD">Dollar ($)</option><option value="EUR">Euro (€)</option></select></label>
       </div>
       <button class="btn" id="s-run">Simuler 2 000 parcours</button>
     </div>
@@ -224,8 +250,8 @@ ol.steps { margin: 0; padding-left: 20px; display: flex; flex-direction: column;
         <label class="f">Prix d'entrée<input id="jf-entry" inputmode="decimal"></label>
         <label class="f">Prix de sortie<input id="jf-exit" inputmode="decimal"></label>
         <label class="f">Lots<input id="jf-lots" inputmode="decimal"></label>
-        <label class="f">Risque prévu (€)<input id="jf-risk" inputmode="decimal"><span>Perte si le stop était touché</span></label>
-        <label class="f">Résultat (€)<input id="jf-pnl" inputmode="decimal" required><span>Négatif si perte, frais compris</span></label>
+        <label class="f" data-label="Risque prévu ({c})">Risque prévu (€)<input id="jf-risk" inputmode="decimal"><span>Perte si le stop était touché</span></label>
+        <label class="f" data-label="Résultat ({c})">Résultat (€)<input id="jf-pnl" inputmode="decimal" required><span>Négatif si perte, frais compris</span></label>
         <label class="f">Note<input id="jf-note" placeholder="ce que j'ai ressenti, erreur…"></label>
       </div>
       <label class="tick"><input type="checkbox" id="jf-rules" checked> J'ai respecté toutes mes règles sur ce trade</label>
@@ -238,7 +264,8 @@ ol.steps { margin: 0; padding-left: 20px; display: flex; flex-direction: column;
       <h3>Mes limites</h3>
       <div class="grid">
         <label class="f">Trades maximum par jour<input id="jr-max" inputmode="numeric"></label>
-        <label class="f">Perte maximum par jour (€)<input id="jr-loss" inputmode="decimal"></label>
+        <label class="f" data-label="Perte maximum par jour ({c})">Perte maximum par jour (€)<input id="jr-loss" inputmode="decimal"></label>
+        <label class="f">Devise du compte<select class="cur-select"><option value="USD">Dollar ($)</option><option value="EUR">Euro (€)</option></select></label>
       </div>
     </div>
     <div class="card">
@@ -305,14 +332,22 @@ const pct = (x, d = 1) => nf(d).format(x) + " %";
 const num = (id) => { const v = parseFloat(String($(id).value).replace(/\s/g, "").replace(",", ".")); return Number.isFinite(v) ? v : NaN; };
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const banner = (kind, html) => `<div class="banner ${kind}">${html}</div>`;
-const signed = (v) => `<b class="${v >= 0 ? "pos" : "neg"}">${v > 0 ? "+" : ""}${eur.format(v)}</b>`;
+const signed = (v) => `<b class="${v >= 0 ? "pos" : "neg"}">${v > 0 ? "+" : ""}${m0(v)}</b>`;
+// Devise du compte (simulateur et journal) : réglée une fois, synchronisée entre les deux onglets.
+let cur = "USD";
+const fmtCache = {};
+// Format français dans les deux devises (« 1 234,50 $ ») ; centimes affichés sous 100, utiles pour un petit compte.
+function money(v, d) { const k = String(d); fmtCache[k] = fmtCache[k] || new Intl.NumberFormat("fr-FR", { minimumFractionDigits: d, maximumFractionDigits: d }); return fmtCache[k].format(v) + " " + curSym(); }
+const m0 = (v) => money(v, Math.abs(v) < 100 ? 2 : 0);
+const m2 = (v) => money(v, 2);
+const curSym = () => (cur === "EUR" ? "€" : "$");
 
 // Réglages gardés dans ce navigateur seulement (commodité) : la page fonctionne sans.
 const STORE = "risque-clair-v1";
 function load() { try { return JSON.parse(localStorage.getItem(STORE)) || {}; } catch { return {}; } }
 function save() {
-  const data = { asset };
-  document.querySelectorAll("#v-calc input, #v-sim input, #jr-max, #jr-loss").forEach((i) => { data[i.id] = i.value; });
+  const data = { asset, mode, cur };
+  document.querySelectorAll("#v-calc input, #v-calc select, #v-sim input, #jr-max, #jr-loss").forEach((i) => { if (i.id) data[i.id] = i.value; });
   try { localStorage.setItem(STORE, JSON.stringify(data)); } catch {}
 }
 
@@ -399,7 +434,7 @@ function calc() {
       </div>
     </div>
     <div class="notes">${notes.join("")}</div>
-    <button class="btn" id="c-to-journal" type="button">Noter ce trade dans le journal</button>
+    <button class="btn to-journal" type="button">Noter ce trade dans le journal</button>
     <div class="card">
       <h3>Le détail</h3>
       <div class="rows">
@@ -420,6 +455,82 @@ function calc() {
     </div>`;
 }
 
+/* ---------- Calculatrice « montant × levier » (broker CFD en dollars) ---------- */
+let mode = "broker";
+function setMode(m) {
+  mode = m;
+  document.querySelectorAll("[data-mode]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.mode === m)));
+  $("#m-broker").hidden = m !== "broker";
+  $("#m-lots").hidden = m !== "lots";
+}
+const usd = (v) => nf(2).format(v) + " $";
+
+function calcBroker() {
+  const out = $("#b-out");
+  const margin = num("#b-margin"), lev = num("#b-lev"), price = num("#b-price"), target = num("#b-target"), rr = num("#b-rr");
+  const cost = Math.max(0, num("#b-cost") || 0), night = Math.max(0, num("#b-night") || 0), balance = num("#b-balance");
+  if (![margin, lev, price, target, rr].every((v) => Number.isFinite(v) && v > 0)) {
+    out.innerHTML = banner("", "Remplissez le montant, le levier, le prix, le gain visé et le rapport gain/risque.");
+    lastBroker = null; return;
+  }
+  const long = $("#b-side").value !== "vente";
+  const exposure = margin * lev;
+  const oz = exposure / price;                 // onces achetées : 1 $ de mouvement de l'or = oz $ de gain ou de perte
+  const risk = target / rr;                    // perte prévue hors frais
+  const tpEnter = target + cost;               // à saisir pour toucher le gain visé après les frais
+  const slEnter = risk;                        // à saisir (en négatif)
+  const lossTotal = risk + cost;
+  const tpDist = tpEnter / oz, slDist = slEnter / oz;
+  const tpPrice = long ? price + tpDist : price - tpDist;
+  const slPrice = long ? price - slDist : price + slDist;
+  const netRR = target / lossTotal;
+  const be = lossTotal / (target + lossTotal) * 100;
+  const hasBal = Number.isFinite(balance) && balance > 0;
+  const riskPct = hasBal ? lossTotal / balance * 100 : null;
+  lastBroker = { risk, target, cost, balance: hasBal ? balance : 0, rr };
+  lastCalc = { asset: "XAU/USD", side: long ? "achat" : "vente", entry: price, lots: null, risk: lossTotal };
+
+  const notes = [];
+  if (hasBal && margin > balance) notes.push(banner("crit", `Le montant (${usd(margin)}) dépasse votre solde disponible (${usd(balance)}) : le broker refusera l'ordre.`));
+  else if (hasBal && margin / balance > 0.5) notes.push(banner("warn", `Ce trade immobilise ${pct(margin / balance * 100, 0)} de votre solde. Avec un levier ×${nf(0).format(lev)}, une baisse de ${pct(100 / lev, 0)} de l'or contre vous ferait perdre tout le montant engagé : gardez toujours le stop loss.`));
+  if (riskPct !== null && riskPct > 2) notes.push(banner("crit", `Une perte coûte ${pct(riskPct)} de votre solde : au-dessus de 2 %, 10 pertes d'affilée (ça arrive) emportent environ ${pct(100 - 100 * Math.pow(1 - riskPct / 100, 10), 0)} du compte. Baissez le gain visé ou le montant.`));
+  else if (riskPct !== null && riskPct > 1) notes.push(banner("warn", `Une perte coûte ${pct(riskPct)} de votre solde, au-dessus de la limite prudente de 1 %.`));
+  if (slDist < 3) notes.push(banner("warn", `Le stop est à seulement ${usd(slDist)} du prix. L'or bouge souvent de plusieurs dollars en quelques minutes : un stop aussi serré risque d'être touché par le simple bruit du marché. Pour l'éloigner sans risquer plus, il faut un montant plus petit.`));
+  if (cost > target * 0.1) notes.push(banner("warn", `Les frais (${usd(cost)}) mangent plus de 10 % du gain visé.`));
+
+  out.innerHTML = `
+    <div class="hero">
+      <div class="eyebrow">À saisir chez le broker</div>
+      <div class="split">
+        <div><span class="k">Stop Loss</span><span class="v">−${usd(slEnter)}</span><span class="k">prix ≈ ${nf(2).format(slPrice)} $</span></div>
+        <div><span class="k">Take Profit</span><span class="v">${usd(tpEnter)}</span><span class="k">prix ≈ ${nf(2).format(tpPrice)} $</span></div>
+      </div>
+      <div class="hero-sub">${long ? "Achat" : "Short"} · exposition ${usd(exposure)} · ${nf(3).format(oz)} once · 1 $ de mouvement de l'or = ${usd(oz)}</div>
+    </div>
+    <div class="notes">${notes.join("")}</div>
+    <button class="btn to-journal" type="button">Noter ce trade dans le journal</button>
+    <div class="card">
+      <h3>Ce que ça donne</h3>
+      <div class="rows">
+        <div><span>Si le take profit est atteint (frais déduits)</span><b class="pos">+${usd(target)}</b></div>
+        <div><span>Si le stop est touché (frais compris)</span><b class="neg">−${usd(lossTotal)}</b></div>
+        <div><span>Gain/risque réel, frais compris</span><b>${nf(2).format(netRR)}</b></div>
+        <div><span>Trades gagnants nécessaires pour ne rien perdre</span><b>${pct(be, 0)}</b></div>
+        <div><span>Distance du stop / de l'objectif</span><b>${usd(slDist)} / ${usd(tpDist)}</b></div>
+        ${riskPct !== null ? `<div><span>Perte en % du solde</span><b>${pct(riskPct, 1)}</b></div>` : ""}
+        ${night > 0 ? `<div><span>Si le trade reste ouvert la nuit</span><b>−${usd(night)} par nuit</b></div>` : ""}
+      </div>
+    </div>
+    ${hasBal ? `<div class="card">
+      <h3>Et si ça tourne mal</h3>
+      <div class="rows">
+        <div><span>Après 5 pertes d'affilée</span><b>${usd(balance - 5 * lossTotal)}</b></div>
+        <div><span>Après 10 pertes d'affilée</span><b>${usd(balance - 10 * lossTotal)}</b></div>
+      </div>
+      <p class="small muted">Pour savoir si ce réglage rapporte sur la durée : onglet Simulateur, bouton « Mon broker ».</p>
+    </div>` : ""}`;
+}
+
 /* ---------- Simulateur ---------- */
 const PRESETS = {
   live: { win: 70, rr: 3, risk: 50, fees: 0, trades: 20 },
@@ -432,6 +543,7 @@ const NOTE = {
   bad:  "Un débutant, ou une mauvaise période pour n'importe qui : 1 trade gagnant sur 4. Avec les frais, la stratégie perd de l'argent.",
 };
 let presetNote = "";
+let lastBroker = null;
 
 function quantile(sorted, q) { return sorted[Math.min(sorted.length - 1, Math.max(0, Math.floor(q * (sorted.length - 1))))]; }
 
@@ -475,19 +587,19 @@ function simulate() {
 
   const notes = [];
   if (presetNote) notes.push(banner("", presetNote));
-  if (perTrade <= 0) notes.push(banner("crit", `<b>Cette stratégie perd de l'argent en moyenne</b> (${eur2.format(perTrade)} par trade). Il faudrait plus de ${pct(be, 0)} de trades gagnants pour ne rien perdre.`));
+  if (perTrade <= 0) notes.push(banner("crit", `<b>Cette stratégie perd de l'argent en moyenne</b> (${m2(perTrade)} par trade). Il faudrait plus de ${pct(be, 0)} de trades gagnants pour ne rien perdre.`));
   if (p >= 0.6 && rr >= 2) notes.push(banner("warn", `${pct(win, 0)} de trades gagnants <i>avec</i> des gains ${nf(1).format(rr)} fois plus grands que le risque : cette combinaison est exceptionnelle. Plus l'objectif est loin, moins souvent on l'atteint. Exigez des résultats vérifiés par un tiers avant d'y croire.`));
   if (ruinPct >= 1) notes.push(banner("crit", `Dans ${pct(ruinPct, 0)} des parcours, le compte ne peut plus payer un trade perdant avant la fin : il est vidé.`));
-  if (risk / cap > 0.02) notes.push(banner("warn", `${eur.format(risk)} de risque sur ${eur.format(cap)}, c'est ${pct(risk / cap * 100, 0)} du compte par trade (limite prudente : 1 %).`));
+  if (risk / cap > 0.02) notes.push(banner("warn", `${m0(risk)} de risque sur ${m0(cap)}, c'est ${pct(risk / cap * 100, 0)} du compte par trade (limite prudente : 1 %).`));
 
   out.innerHTML = `
     <div class="hero">
       <div class="eyebrow">Sur ${months} mois, ${trades * months} trades</div>
-      <div class="hero-big num" style="color:${med >= 0 ? "inherit" : "#ffb4ab"}">${med > 0 ? "+" : ""}${eur.format(med)}</div>
+      <div class="hero-big num" style="color:${med >= 0 ? "inherit" : "#ffb4ab"}">${med > 0 ? "+" : ""}${m0(med)}</div>
       <div class="hero-sub">Résultat du parcours médian : la moitié des 2 000 simulations font mieux, la moitié moins bien.</div>
       <div class="split">
-        <div><span class="k">1 parcours sur 10 fait moins de</span><span class="v">${p10 > 0 ? "+" : ""}${eur.format(p10)}</span></div>
-        <div><span class="k">1 parcours sur 10 fait plus de</span><span class="v">${p90 > 0 ? "+" : ""}${eur.format(p90)}</span></div>
+        <div><span class="k">1 parcours sur 10 fait moins de</span><span class="v">${p10 > 0 ? "+" : ""}${m0(p10)}</span></div>
+        <div><span class="k">1 parcours sur 10 fait plus de</span><span class="v">${p90 > 0 ? "+" : ""}${m0(p90)}</span></div>
       </div>
     </div>
     <div class="notes">${notes.join("")}</div>
@@ -497,7 +609,7 @@ function simulate() {
         <div><span>Gain moyen par trade, frais déduits</span>${signed(perTrade)}</div>
         <div><span>Gain moyen par mois</span>${signed(perTrade * trades)}</div>
         <div><span>Trades gagnants nécessaires pour ne rien perdre</span><b>${pct(be, 0)}</b></div>
-        <div><span>Frais payés par mois</span><b>${eur.format(fees * trades)}</b></div>
+        <div><span>Frais payés par mois</span><b>${m0(fees * trades)}</b></div>
       </div>
     </div>
     <div class="card">
@@ -507,7 +619,7 @@ function simulate() {
         <div><span>Mois perdants</span><b>${pct(negMonths / totalMonths * 100, 0)}</b></div>
         <div><span>Pire série de pertes d'affilée (parcours médian)</span><b>${quantile(streaks, 0.5)} trades</b></div>
         <div><span>Pire mois (parcours médian)</span>${signed(quantile(worstMonths, 0.5))}</div>
-        <div><span>Plus forte baisse depuis un sommet (médiane)</span><b class="neg">−${eur.format(quantile(dds, 0.5))}</b></div>
+        <div><span>Plus forte baisse depuis un sommet (médiane)</span><b class="neg">−${m0(quantile(dds, 0.5))}</b></div>
         <div><span>Comptes vidés avant la fin</span><b>${pct(ruinPct, 1)}</b></div>
       </div>
       <p class="small muted">Chaque parcours tire au hasard le résultat de chaque trade avec votre taux de réussite. La simulation suppose que vous respectez parfaitement vos règles, ce qui est rarement le cas après une série de pertes.</p>
@@ -515,6 +627,15 @@ function simulate() {
 }
 
 function applyPreset(k) {
+  if (k === "mine") {
+    if (!lastBroker) { showTab("t-calc"); setMode("broker"); return; }
+    const b = lastBroker;
+    // Gain net = objectif (TP saisi = objectif + frais), perte = risque + frais : même modèle que le simulateur.
+    for (const [key, v] of Object.entries({ win: 35, rr: +((b.target + b.cost) / b.risk).toFixed(2), risk: +b.risk.toFixed(2), fees: b.cost, trades: 20 })) $(SIM_IDS[key]).value = String(v).replace(".", ",");
+    if (b.balance > 0) $("#s-capital").value = String(b.balance).replace(".", ",");
+    presetNote = `Vos réglages de l'onglet Calculatrice : ${m2(b.risk + b.cost)} de perte par trade perdant et ${m2(b.target)} de gain net par trade gagnant, sur un solde de ${m2(b.balance)}. Le taux de réussite de 35 % est une hypothèse : remplacez-le par celui de votre journal dès que vous aurez au moins 30 trades.`;
+    save(); simulate(); return;
+  }
   const d = PRESETS[k];
   for (const [key, v] of Object.entries(d)) $(SIM_IDS[key]).value = v;
   presetNote = NOTE[k];
@@ -552,12 +673,12 @@ function renderToday() {
   const list = trades.filter((t) => t.date === today);
   const pnl = list.reduce((s, t) => s + t.pnl, 0);
   const max = Math.round(num("#jr-max")), maxLoss = num("#jr-loss");
-  const stats = `${list.length} trade${list.length > 1 ? "s" : ""}${max > 0 ? ` sur ${max}` : ""} · résultat ${pnl > 0 ? "+" : ""}${eur2.format(pnl)}`;
+  const stats = `${list.length} trade${list.length > 1 ? "s" : ""}${max > 0 ? ` sur ${max}` : ""} · résultat ${pnl > 0 ? "+" : ""}${m2(pnl)}`;
   let html;
   if (maxLoss > 0 && pnl <= -maxLoss) html = banner("crit", `<b>Limite de perte du jour atteinte</b> (${stats}). Fermez les graphiques : vouloir se refaire est l'erreur qui coûte le plus cher.`);
   else if (max > 0 && list.length >= max) html = banner("crit", `<b>Quota du jour atteint</b> (${stats}). La journée de trading est terminée${pnl > 0 ? ", profitez du gain" : ""}.`);
   else if (list.length) html = banner("", `Aujourd'hui : ${stats}.`);
-  else html = banner("", `Aucun trade aujourd'hui${max > 0 ? ` · limite : ${max} trade${max > 1 ? "s" : ""}` : ""}${maxLoss > 0 ? ` et ${eur.format(maxLoss)} de perte` : ""}.`);
+  else html = banner("", `Aucun trade aujourd'hui${max > 0 ? ` · limite : ${max} trade${max > 1 ? "s" : ""}` : ""}${maxLoss > 0 ? ` et ${m0(maxLoss)} de perte` : ""}.`);
   $("#j-today").innerHTML = html;
 }
 
@@ -606,7 +727,7 @@ function renderStats() {
 
   const notes = [];
   if (n < 20) notes.push(banner("warn", `Seulement ${n} trade${n > 1 ? "s" : ""} : les chiffres ci-dessous sont encore surtout du hasard. Il en faut au moins 30 à 50 pour juger une stratégie.`));
-  if (ko.length && sumOf(ko) < 0) notes.push(banner("crit", `Les trades où vous n'avez pas respecté vos règles vous ont coûté ${eur2.format(-sumOf(ko))}.`));
+  if (ko.length && sumOf(ko) < 0) notes.push(banner("crit", `Les trades où vous n'avez pas respecté vos règles vous ont coûté ${m2(-sumOf(ko))}.`));
 
   const hours = groupBest(list, (t) => (minutes(t.tIn) === null ? null : t.tIn.slice(0, 2)), (k) => `${k} h – ${pad((Number(k) + 1) % 24)} h`);
   const days = groupBest(list, (t) => weekday(t.date), (k) => k);
@@ -632,7 +753,7 @@ function renderStats() {
   out.innerHTML = `
     <div class="hero">
       <div class="eyebrow">${n} trade${n > 1 ? "s" : ""} notés</div>
-      <div class="hero-big num">${total > 0 ? "+" : ""}${eur2.format(total)}</div>
+      <div class="hero-big num">${total > 0 ? "+" : ""}${m2(total)}</div>
       <div class="hero-sub">Résultat total (P&amp;L), du ${frDate(list[0].date)} au ${frDate(list[n - 1].date)}</div>
       <div class="split">
         <div><span class="k">Trades gagnants</span><span class="v">${pct(wins.length / n * 100, 0)}</span><span class="k">${wins.length} sur ${n}</span></div>
@@ -648,16 +769,16 @@ function renderStats() {
         <div><span>Résultat moyen par trade</span>${signed2(total / n)}</div>
         ${avgR !== null ? `<div><span>Résultat moyen en multiples du risque</span><b class="${avgR >= 0 ? "pos" : "neg"}">${avgR > 0 ? "+" : ""}${nf(2).format(avgR)} R</b></div>` : ""}
         <div><span>Ratio de Sharpe (par jour tradé, annualisé)</span><b>${sharpe === null ? "— (5 jours minimum)" : nf(2).format(sharpe)}</b></div>
-        <div><span>Plus forte baisse depuis un sommet</span><b class="neg">${dd > 0 ? "−" : ""}${eur2.format(dd)}</b></div>
+        <div><span>Plus forte baisse depuis un sommet</span><b class="neg">${dd > 0 ? "−" : ""}${m2(dd)}</b></div>
         <div><span>Pire série de pertes d'affilée</span><b>${maxRun}</b></div>
         ${avgDur !== null ? `<div><span>Durée moyenne d'un trade</span><b>${fmtDur(avgDur)}</b></div>` : ""}
-        <div><span>Règles respectées</span><b>${ok.length} / ${n} · ${sumOf(ok) > 0 ? "+" : ""}${eur2.format(sumOf(ok))}</b></div>
+        <div><span>Règles respectées</span><b>${ok.length} / ${n} · ${sumOf(ok) > 0 ? "+" : ""}${m2(sumOf(ok))}</b></div>
       </div>
     </div>
     ${analysis.length ? `<div class="card"><h3>Analyse</h3><div class="rows">${analysis.map(([k, v, p]) => `<div><span>${k}<br>${v}</span>${signed2(p)}</div>`).join("")}</div></div>` : ""}
     <div class="card"><h3>Mes trades</h3><div class="trades">${rows}</div></div>`;
 }
-const signed2 = (v) => `<b class="${v >= 0 ? "pos" : "neg"}">${v > 0 ? "+" : ""}${eur2.format(v)}</b>`;
+const signed2 = (v) => `<b class="${v >= 0 ? "pos" : "neg"}">${v > 0 ? "+" : ""}${m2(v)}</b>`;
 
 function renderJournal() { renderToday(); renderStats(); }
 
@@ -693,7 +814,7 @@ $("#j-stats").addEventListener("click", (e) => {
   const del = e.target.closest("[data-del]"), ed = e.target.closest("[data-edit]");
   if (del) {
     const t = trades.find((x) => x.id === del.dataset.del);
-    if (t && confirm(`Supprimer le trade du ${frDate(t.date)} (${eur2.format(t.pnl)}) ?`)) { trades = trades.filter((x) => x !== t); saveTrades(); renderJournal(); }
+    if (t && confirm(`Supprimer le trade du ${frDate(t.date)} (${m2(t.pnl)}) ?`)) { trades = trades.filter((x) => x !== t); saveTrades(); renderJournal(); }
   } else if (ed) {
     const t = trades.find((x) => x.id === ed.dataset.edit);
     if (!t) return;
@@ -760,12 +881,15 @@ $("#j-file").addEventListener("change", async (e) => {
 });
 
 // Depuis la calculatrice : pré-remplir le journal avec le trade calculé.
-$("#c-out").addEventListener("click", (e) => {
-  if (!e.target.closest("#c-to-journal") || !lastCalc) return;
+$("#v-calc").addEventListener("click", (e) => {
+  if (!e.target.closest(".to-journal")) return;
+  if (mode === "broker") calcBroker(); else calc();   // le trade affiché dans le mode actif
+  if (!lastCalc) return;
   resetForm();
+  const dec = (v) => (v === null || v === undefined ? "" : String(v).replace(".", ","));
   $("#jf-asset").value = lastCalc.asset; $("#jf-side").value = lastCalc.side;
-  $("#jf-entry").value = String(lastCalc.entry).replace(".", ",");
-  $("#jf-lots").value = String(lastCalc.lots).replace(".", ",");
+  $("#jf-entry").value = dec(lastCalc.entry);
+  $("#jf-lots").value = dec(lastCalc.lots);
   $("#jf-risk").value = lastCalc.risk.toFixed(2).replace(".", ",");
   showTab("t-jour");
   $("#j-form").scrollIntoView();
@@ -805,20 +929,33 @@ $("#i-copy").addEventListener("click", async () => {
 
 /* ---------- Démarrage ---------- */
 const saved = load();
-const DEFAULTS = { "c-capital": "1000", "c-pct": "1", "c-fx": "1,17", "s-capital": "1000", "s-months": "12", "jr-max": "2", "jr-loss": "20" };
+const DEFAULTS = { "c-capital": "1000", "c-pct": "1", "c-fx": "1,17", "s-capital": "1000", "s-months": "12", "jr-max": "2", "jr-loss": "5",
+  "b-margin": "50", "b-lev": "20", "b-price": "4140,27", "b-target": "5", "b-rr": "3", "b-cost": "0,10", "b-night": "0,24", "b-balance": "67,11" };
 setAsset(saved.asset && ASSETS[saved.asset] ? saved.asset : "gold", true);
 for (const [id, v] of Object.entries(DEFAULTS)) $("#" + id).value = v;
 const SIM_IDS = { win: "#s-win", rr: "#s-rr", risk: "#s-risk", fees: "#s-fees", trades: "#s-trades" };
 for (const [k, v] of Object.entries(PRESETS.real)) $(SIM_IDS[k]).value = v;
-for (const [id, v] of Object.entries(saved)) { const el = document.getElementById(id); if (el && el.tagName === "INPUT" && typeof v === "string") el.value = v; }
+for (const [id, v] of Object.entries(saved)) { const el = document.getElementById(id); if (el && (el.tagName === "INPUT" || el.tagName === "SELECT") && typeof v === "string") el.value = v; }
+function setCur(c) {
+  cur = c === "EUR" ? "EUR" : "USD";
+  document.querySelectorAll(".cur-select").forEach((s) => { s.value = cur; });
+  // Le libellé est le premier nœud texte du <label> (colonne flex : pas de <span> au milieu du texte).
+  document.querySelectorAll("[data-label]").forEach((l) => { l.firstChild.nodeValue = l.dataset.label.replace("{c}", curSym()); });
+}
+setCur(saved.cur || "USD");
+setMode(saved.mode === "lots" ? "lots" : "broker");
 
 document.querySelectorAll("[data-asset]").forEach((b) => b.addEventListener("click", () => { setAsset(b.dataset.asset, true); save(); calc(); }));
-document.querySelectorAll("#v-calc input").forEach((i) => i.addEventListener("input", () => { save(); calc(); }));
+document.querySelectorAll("#m-lots input").forEach((i) => i.addEventListener("input", () => { save(); calc(); }));
+document.querySelectorAll("#m-broker input, #m-broker select").forEach((i) => i.addEventListener(i.tagName === "SELECT" ? "change" : "input", () => { save(); calcBroker(); }));
+document.querySelectorAll("[data-mode]").forEach((b) => b.addEventListener("click", () => { setMode(b.dataset.mode); save(); mode === "broker" ? calcBroker() : calc(); }));
+document.querySelectorAll(".cur-select").forEach((sel) => sel.addEventListener("change", () => { setCur(sel.value); save(); simulate(); renderJournal(); }));
 document.querySelectorAll("#v-sim input").forEach((i) => i.addEventListener("input", () => { presetNote = ""; save(); }));
 document.querySelectorAll("[data-preset]").forEach((b) => b.addEventListener("click", () => applyPreset(b.dataset.preset)));
 $("#s-run").addEventListener("click", () => { save(); simulate(); });
 document.querySelectorAll("#jr-max, #jr-loss").forEach((i) => i.addEventListener("input", () => { save(); renderToday(); }));
 calc();
+calcBroker();
 simulate();
 resetForm();
 countChecks();
