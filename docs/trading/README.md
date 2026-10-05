@@ -24,6 +24,21 @@ petit pour le stop (même le plus petit lot dépasse le risque voulu), risque
 au-dessus de 1 % ou 2 %, objectif plus petit que le stop, marge trop forte,
 spread qui mange plus de 10 % du risque.
 
+### Mode « Montant × levier » (par défaut, ajouté le 05/10/2026)
+
+Pour le broker de Sébastien (CFD sur l'or en dollars : on saisit un montant,
+un levier, puis le stop loss et le take profit **en dollars**). Valeurs par
+défaut tirées de sa capture d'écran : montant 50 $, levier ×20 (exposition
+1 000 $, 0,24 once), coûts d'ouverture 0,10 $, frais de nuit 0,24 $, solde
+67,11 $ ; sa règle : au moins 5 $ de gain par trade, gain/risque 3 : 1
+(compris comme gain = 3 × perte).
+
+Sorties : stop loss et take profit à saisir (le TP inclut les frais pour
+toucher le gain visé net), prix correspondants, gain/risque réel frais
+compris, perte en % du solde, alertes (montant > 50 % du solde, perte > 1 %
+ou 2 % du solde, stop à moins de 3 $ du prix), solde après 5 et 10 pertes.
+Le bouton « Mon broker » du simulateur reprend ces réglages.
+
 ## Simulateur
 
 Entrées : capital, risque par trade (€), taux de réussite, rapport
@@ -74,6 +89,11 @@ ordre.
 Le script n'a pas pu être compilé là où il a été écrit (pas d'accès à
 TradingView) : en cas d'erreur à l'ajout au graphique, le message du Pine
 Editor indique la ligne à corriger.
+
+## Devise du compte
+
+Le simulateur et le journal affichent les montants dans la devise du compte
+(dollar par défaut, euro au choix), réglée dans l'un ou l'autre onglet.
 
 ## Données
 
