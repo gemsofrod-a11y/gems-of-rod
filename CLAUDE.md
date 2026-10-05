@@ -421,3 +421,6 @@ TradingView (`docs/trading/tendance-mtf.pine`, règles EMA écrites, filtre
 seulement, jamais de signal ni d'ordre). Ne prédit rien,
 ne passe aucun ordre, aucune connexion à un broker : ne pas en ajouter sans
 demande explicite de Sébastien. Voir `docs/trading/README.md`.
+Analyses de graphiques de l'or demandées par Sébastien : suivre
+`docs/trading/methode.md` (ses règles, écrites le 05/10/2026) ; ne jamais y
+versionner ses trades réels (le dépôt est public).

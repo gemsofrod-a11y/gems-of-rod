@@ -90,6 +90,15 @@ Le script n'a pas pu être compilé là où il a été écrit (pas d'accès à
 TradingView) : en cas d'erreur à l'ajout au graphique, le message du Pine
 Editor indique la ligne à corriger.
 
+## Méthode d'analyse (ajoutée le 05/10/2026)
+
+`methode.md` : les règles écrites qu'utilise Claude pour analyser les
+graphiques de l'or de Sébastien (tendance par EMA 200 sur Jour / 4 h / 1 h /
+15 min, order blocks, conditions de décision, entrée et stop, calcul du
+montant pour garder 1,67 $ de risque, format du plan, interdits, suivi par le
+journal). À recoller au début de chaque séance d'analyse ; ne modifier qu'à
+partir des statistiques du journal.
+
 ## Devise du compte
 
 Le simulateur et le journal affichent les montants dans la devise du compte
