@@ -112,11 +112,22 @@ input:focus { border-color: var(--accent); outline: none; }
 .notes:empty { display: none; }
 
 .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); }
-.dock nav { max-width: 600px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; }
+.dock nav { max-width: 600px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; }
 .tab { appearance: none; background: none; border: 0; padding: 14px 8px; font-weight: 600; color: var(--muted); cursor: pointer; }
 .tab[aria-selected="true"] { color: var(--accent); box-shadow: inset 0 3px 0 var(--accent); }
 details summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 13.5px; }
 details p { margin-top: 6px; font-size: 13.5px; color: var(--ink-2); }
+input[type="checkbox"] { width: auto; min-height: 0; accent-color: var(--accent); margin: 3px 0 0; flex: none; }
+.checks { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.checks label, .tick { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; }
+.trades { display: flex; flex-direction: column; }
+.trade { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+.trade:first-child { border-top: 0; }
+.trade > div:first-child { display: flex; flex-direction: column; min-width: 0; overflow-wrap: anywhere; }
+.trade-r { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; white-space: nowrap; }
+.tag { font-size: 11.5px; font-weight: 600; color: var(--crit); background: var(--crit-bg); border-radius: 999px; padding: 1px 8px; }
+.link { appearance: none; background: none; border: 0; padding: 0; color: var(--accent); font-weight: 600; font-size: 13px; cursor: pointer; }
+.link.danger { color: var(--crit); }
 </style>
 </head>
 <body>
@@ -180,12 +191,70 @@ details p { margin-top: 6px; font-size: 13.5px; color: var(--ink-2); }
     </div>
     <div id="s-out" class="view"></div>
   </section>
+
+  <!-- Journal -->
+  <section class="view" id="v-jour" role="tabpanel" aria-labelledby="t-jour" hidden>
+    <div id="j-today"></div>
+    <details class="card" id="j-check">
+      <summary>Avant de trader : la checklist <span id="j-check-count" class="muted"></span></summary>
+      <div class="checks">
+        <label><input type="checkbox"> Je trade pendant ma session : le marché est actif à cette heure</label>
+        <label><input type="checkbox"> La tendance de fond (4 h, jour) va dans le sens de mon trade</label>
+        <label><input type="checkbox"> Mon stop est placé avant d'entrer, et je ne le déplacerai pas contre moi</label>
+        <label><input type="checkbox"> Je risque 1 % du compte ou moins (onglet Calculatrice)</label>
+        <label><input type="checkbox"> Mon objectif vaut au moins 2 fois mon risque</label>
+        <label><input type="checkbox"> Je n'ai pas atteint ma limite du jour</label>
+        <label><input type="checkbox"> Je ne cherche pas à me refaire après une perte</label>
+      </div>
+      <button class="chip" id="j-check-reset" type="button">Tout décocher</button>
+    </details>
+    <form class="card" id="j-form" autocomplete="off">
+      <h2 id="j-form-title">Noter un trade</h2>
+      <div class="grid">
+        <label class="f">Date<input id="jf-date" type="date" required></label>
+        <label class="f">Actif<input id="jf-asset" list="j-assets" value="XAU/USD"></label>
+        <label class="f">Heure d'entrée<input id="jf-in" type="time"></label>
+        <label class="f">Heure de sortie<input id="jf-out" type="time"></label>
+        <label class="f">Sens<select id="jf-side"><option value="achat">Achat</option><option value="vente">Vente</option></select></label>
+        <label class="f">Setup<input id="jf-setup" list="j-setups" placeholder="ex. order block en tendance"></label>
+        <label class="f">Prix d'entrée<input id="jf-entry" inputmode="decimal"></label>
+        <label class="f">Prix de sortie<input id="jf-exit" inputmode="decimal"></label>
+        <label class="f">Lots<input id="jf-lots" inputmode="decimal"></label>
+        <label class="f">Risque prévu (€)<input id="jf-risk" inputmode="decimal"><span>Perte si le stop était touché</span></label>
+        <label class="f">Résultat (€)<input id="jf-pnl" inputmode="decimal" required><span>Négatif si perte, frais compris</span></label>
+        <label class="f">Note<input id="jf-note" placeholder="ce que j'ai ressenti, erreur…"></label>
+      </div>
+      <label class="tick"><input type="checkbox" id="jf-rules" checked> J'ai respecté toutes mes règles sur ce trade</label>
+      <div class="seg"><button class="btn" type="submit">Enregistrer</button><button class="chip" type="button" id="j-cancel" hidden>Annuler la modification</button></div>
+      <datalist id="j-assets"><option value="XAU/USD"><option value="XAG/USD"><option value="EUR/USD"><option value="BTC/USD"><option value="Nasdaq"><option value="DAX"></datalist>
+      <datalist id="j-setups"></datalist>
+    </form>
+    <div id="j-stats" class="view"></div>
+    <div class="card">
+      <h3>Mes limites</h3>
+      <div class="grid">
+        <label class="f">Trades maximum par jour<input id="jr-max" inputmode="numeric"></label>
+        <label class="f">Perte maximum par jour (€)<input id="jr-loss" inputmode="decimal"></label>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Sauvegarde</h3>
+      <p class="small muted">Le journal est gardé dans ce navigateur seulement. Vider les données du navigateur l'efface : exportez une sauvegarde de temps en temps.</p>
+      <div class="seg">
+        <button class="chip" id="j-export-json" type="button">Sauvegarder (.json)</button>
+        <button class="chip" id="j-import" type="button">Restaurer une sauvegarde</button>
+        <button class="chip" id="j-export-csv" type="button">Exporter pour Excel (.csv)</button>
+      </div>
+      <input type="file" id="j-file" accept=".json,application/json" hidden>
+    </div>
+  </section>
 </div>
 
 <div class="dock">
   <nav role="tablist">
     <button class="tab" id="t-calc" role="tab" aria-selected="true" aria-controls="v-calc">Calculatrice</button>
     <button class="tab" id="t-sim" role="tab" aria-selected="false" aria-controls="v-sim">Simulateur</button>
+    <button class="tab" id="t-jour" role="tab" aria-selected="false" aria-controls="v-jour">Journal</button>
   </nav>
 </div>
 
@@ -206,17 +275,19 @@ const STORE = "risque-clair-v1";
 function load() { try { return JSON.parse(localStorage.getItem(STORE)) || {}; } catch { return {}; } }
 function save() {
   const data = { asset };
-  document.querySelectorAll("input[id]").forEach((i) => { data[i.id] = i.value; });
+  document.querySelectorAll("#v-calc input, #v-sim input, #jr-max, #jr-loss").forEach((i) => { data[i.id] = i.value; });
   try { localStorage.setItem(STORE, JSON.stringify(data)); } catch {}
 }
 
 /* ---------- Onglets ---------- */
-document.querySelectorAll(".tab").forEach((t) => t.addEventListener("click", () => {
-  document.querySelectorAll(".tab").forEach((x) => x.setAttribute("aria-selected", String(x === t)));
-  $("#v-calc").hidden = t.id !== "t-calc";
-  $("#v-sim").hidden = t.id !== "t-sim";
+function showTab(id) {
+  document.querySelectorAll(".tab").forEach((x) => x.setAttribute("aria-selected", String(x.id === id)));
+  $("#v-calc").hidden = id !== "t-calc";
+  $("#v-sim").hidden = id !== "t-sim";
+  $("#v-jour").hidden = id !== "t-jour";
   window.scrollTo(0, 0);
-}));
+}
+document.querySelectorAll(".tab").forEach((t) => t.addEventListener("click", () => showTab(t.id)));
 
 /* ---------- Calculatrice ---------- */
 const ASSETS = {
@@ -241,10 +312,12 @@ function calc() {
   const spread = Math.max(0, num("#c-spread") || 0), contract = num("#c-contract"), step = num("#c-step"), lev = num("#c-lev"), fx = num("#c-fx");
   if (![cap, p, entry, stop, target, contract, step, lev, fx].every((v) => Number.isFinite(v) && v > 0)) {
     out.innerHTML = banner("", "Remplissez toutes les cases avec des nombres positifs.");
+    lastCalc = null;
     return;
   }
   const long = target > entry;
   if ((long && stop >= entry) || (!long && stop <= entry)) {
+    lastCalc = null;
     out.innerHTML = banner("crit", `Le stop doit être de l'autre côté du prix d'entrée par rapport à l'objectif : ${long ? "en dessous" : "au-dessus"} de ${nf(2).format(entry)} $ pour un${long ? " achat" : "e vente"}.`);
     return;
   }
@@ -265,6 +338,7 @@ function calc() {
   const lossPct = loss / cap * 100;
   const after5 = cap - 5 * loss;
   const decimals = step < 0.1 ? 2 : step < 1 ? 1 : 0;
+  lastCalc = { asset: { gold: "XAU/USD", silver: "XAG/USD" }[asset] || "", side: long ? "achat" : "vente", entry, lots: +lots.toFixed(decimals), risk: loss };
 
   const notes = [];
   if (tooSmall) notes.push(banner("crit", `<b>Capital trop petit pour ce stop.</b> Même le plus petit lot (${nf(decimals).format(step)}) fait perdre ${eur2.format(loss)} si le stop est touché, soit ${pct(lossPct)} du compte au lieu des ${pct(p)} voulus. Rapprochez le stop, ou ne prenez pas ce trade.`));
@@ -286,6 +360,7 @@ function calc() {
       </div>
     </div>
     <div class="notes">${notes.join("")}</div>
+    <button class="btn" id="c-to-journal" type="button">Noter ce trade dans le journal</button>
     <div class="card">
       <h3>Le détail</h3>
       <div class="rows">
@@ -407,9 +482,251 @@ function applyPreset(k) {
   save(); simulate();
 }
 
+/* ---------- Journal ---------- */
+const JSTORE = "risque-clair-journal-v1";
+const DAYS = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
+let trades = loadTrades();
+let editing = null;
+let lastCalc = null;
+
+function loadTrades() {
+  try { const t = JSON.parse(localStorage.getItem(JSTORE)); return Array.isArray(t) ? t.filter(validTrade) : []; } catch { return []; }
+}
+function saveTrades() {
+  try { localStorage.setItem(JSTORE, JSON.stringify(trades)); return true; }
+  catch { $("#j-today").innerHTML = banner("crit", "Ce navigateur refuse d'enregistrer le journal (navigation privée ?). Exportez une sauvegarde avant de fermer la page."); return false; }
+}
+function validTrade(t) { return t && typeof t.id === "string" && /^\d{4}-\d{2}-\d{2}$/.test(t.date) && Number.isFinite(t.pnl); }
+const pad = (n) => String(n).padStart(2, "0");
+function todayStr() { const d = new Date(); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; }
+function nowTime() { const d = new Date(); return `${pad(d.getHours())}:${pad(d.getMinutes())}`; }
+function frDate(s) { const [y, m, d] = s.split("-"); return `${d}/${m}/${y}`; }
+function weekday(s) { const [y, m, d] = s.split("-").map(Number); return DAYS[new Date(y, m - 1, d).getDay()]; }
+function minutes(t) { if (!/^\d{2}:\d{2}$/.test(t || "")) return null; const [h, m] = t.split(":").map(Number); return h * 60 + m; }
+function duration(t) { const a = minutes(t.tIn), b = minutes(t.tOut); if (a === null || b === null) return null; return b >= a ? b - a : b + 1440 - a; }
+function fmtDur(m) { return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${pad(m % 60)}`; }
+const sorted = () => [...trades].sort((a, b) => (a.date + (a.tIn || "")).localeCompare(b.date + (b.tIn || "")));
+const optNum = (id) => { const v = num(id); return Number.isFinite(v) ? v : null; };
+
+function renderToday() {
+  const today = todayStr();
+  const list = trades.filter((t) => t.date === today);
+  const pnl = list.reduce((s, t) => s + t.pnl, 0);
+  const max = Math.round(num("#jr-max")), maxLoss = num("#jr-loss");
+  const stats = `${list.length} trade${list.length > 1 ? "s" : ""}${max > 0 ? ` sur ${max}` : ""} · résultat ${pnl > 0 ? "+" : ""}${eur2.format(pnl)}`;
+  let html;
+  if (maxLoss > 0 && pnl <= -maxLoss) html = banner("crit", `<b>Limite de perte du jour atteinte</b> (${stats}). Fermez les graphiques : vouloir se refaire est l'erreur qui coûte le plus cher.`);
+  else if (max > 0 && list.length >= max) html = banner("crit", `<b>Quota du jour atteint</b> (${stats}). La journée de trading est terminée${pnl > 0 ? ", profitez du gain" : ""}.`);
+  else if (list.length) html = banner("", `Aujourd'hui : ${stats}.`);
+  else html = banner("", `Aucun trade aujourd'hui${max > 0 ? ` · limite : ${max} trade${max > 1 ? "s" : ""}` : ""}${maxLoss > 0 ? ` et ${eur.format(maxLoss)} de perte` : ""}.`);
+  $("#j-today").innerHTML = html;
+}
+
+function groupBest(list, keyFn, label) {
+  const g = new Map();
+  for (const t of list) { const k = keyFn(t); if (k === null || k === "") continue; const e = g.get(k) || { pnl: 0, n: 0 }; e.pnl += t.pnl; e.n++; g.set(k, e); }
+  if (g.size < 2) return null;
+  const arr = [...g.entries()].sort((a, b) => b[1].pnl - a[1].pnl);
+  const line = ([k, e]) => `${esc(label(k))} <span class="muted">(${e.n} trade${e.n > 1 ? "s" : ""})</span>`;
+  return { best: arr[0], worst: arr[arr.length - 1], line };
+}
+
+function renderStats() {
+  const out = $("#j-stats");
+  const list = sorted();
+  const setups = [...new Set(trades.map((t) => t.setup).filter(Boolean))];
+  $("#j-setups").innerHTML = setups.map((s) => `<option value="${esc(s)}">`).join("");
+  if (!list.length) { out.innerHTML = `<div class="card"><p class="muted">Aucun trade noté pour l'instant. Les statistiques apparaîtront ici dès le premier.</p></div>`; return; }
+
+  const n = list.length;
+  const wins = list.filter((t) => t.pnl > 0), losses = list.filter((t) => t.pnl < 0);
+  const sumW = wins.reduce((s, t) => s + t.pnl, 0), sumL = losses.reduce((s, t) => s + t.pnl, 0);
+  const total = sumW + sumL;
+  const avgW = wins.length ? sumW / wins.length : 0, avgL = losses.length ? sumL / losses.length : 0;
+  const pf = sumL < 0 ? sumW / -sumL : null;
+  let cum = 0, peak = 0, dd = 0, run = 0, maxRun = 0;
+  for (const t of list) {
+    cum += t.pnl; if (cum > peak) peak = cum; if (peak - cum > dd) dd = peak - cum;
+    if (t.pnl < 0) { run++; if (run > maxRun) maxRun = run; } else run = 0;
+  }
+  const withR = list.filter((t) => t.risk > 0);
+  const avgR = withR.length ? withR.reduce((s, t) => s + t.pnl / t.risk, 0) / withR.length : null;
+  const durs = list.map(duration).filter((d) => d !== null);
+  const avgDur = durs.length ? Math.round(durs.reduce((a, b) => a + b, 0) / durs.length) : null;
+  // Sharpe sur les résultats par jour tradé, annualisé (252 jours de bourse).
+  const byDay = new Map(); for (const t of list) byDay.set(t.date, (byDay.get(t.date) || 0) + t.pnl);
+  const daily = [...byDay.values()];
+  let sharpe = null;
+  if (daily.length >= 5) {
+    const mean = daily.reduce((a, b) => a + b, 0) / daily.length;
+    const sd = Math.sqrt(daily.reduce((s, x) => s + (x - mean) ** 2, 0) / (daily.length - 1));
+    if (sd > 0) sharpe = mean / sd * Math.sqrt(252);
+  }
+  const ok = list.filter((t) => t.rules), ko = list.filter((t) => !t.rules);
+  const sumOf = (a) => a.reduce((s, t) => s + t.pnl, 0);
+
+  const notes = [];
+  if (n < 20) notes.push(banner("warn", `Seulement ${n} trade${n > 1 ? "s" : ""} : les chiffres ci-dessous sont encore surtout du hasard. Il en faut au moins 30 à 50 pour juger une stratégie.`));
+  if (ko.length && sumOf(ko) < 0) notes.push(banner("crit", `Les trades où vous n'avez pas respecté vos règles vous ont coûté ${eur2.format(-sumOf(ko))}.`));
+
+  const hours = groupBest(list, (t) => (minutes(t.tIn) === null ? null : t.tIn.slice(0, 2)), (k) => `${k} h – ${pad((Number(k) + 1) % 24)} h`);
+  const days = groupBest(list, (t) => weekday(t.date), (k) => k);
+  const sets = groupBest(list, (t) => t.setup || null, (k) => k);
+  const dates = groupBest(list, (t) => t.date, (k) => `${weekday(k)} ${frDate(k)}`);
+  const analysis = [
+    hours && [`Heure la plus rentable`, hours.line(hours.best), hours.best[1].pnl], hours && [`Pire heure`, hours.line(hours.worst), hours.worst[1].pnl],
+    days && [`Jour de semaine le plus rentable`, days.line(days.best), days.best[1].pnl], days && [`Pire jour de semaine`, days.line(days.worst), days.worst[1].pnl],
+    sets && [`Meilleur setup`, sets.line(sets.best), sets.best[1].pnl], sets && [`Pire setup`, sets.line(sets.worst), sets.worst[1].pnl],
+    dates && [`Meilleure journée`, dates.line(dates.best), dates.best[1].pnl], dates && [`Pire journée`, dates.line(dates.worst), dates.worst[1].pnl],
+  ].filter(Boolean);
+
+  const rows = [...list].reverse().map((t) => {
+    const d = duration(t);
+    const meta = [t.tIn && `${t.tIn}${t.tOut ? `–${t.tOut}` : ""}`, d !== null && fmtDur(d), t.lots && `${nf(2).format(t.lots)} lot`, t.entry && t.exit && `${t.entry} → ${t.exit}`].filter(Boolean).join(" · ");
+    return `<div class="trade">
+      <div><b>${frDate(t.date)} · ${esc(t.asset || "")} ${t.side === "vente" ? "vente" : "achat"}</b>${t.rules ? "" : ` <span class="tag">règles non respectées</span>`}
+      <span class="small muted">${esc(meta)}${t.setup ? ` · ${esc(t.setup)}` : ""}${t.note ? ` · « ${esc(t.note)} »` : ""}</span></div>
+      <div class="trade-r">${signed2(t.pnl)}<span><button class="link" data-edit="${t.id}">Modifier</button> <button class="link danger" data-del="${t.id}">Supprimer</button></span></div>
+    </div>`;
+  }).join("");
+
+  out.innerHTML = `
+    <div class="hero">
+      <div class="eyebrow">${n} trade${n > 1 ? "s" : ""} notés</div>
+      <div class="hero-big num">${total > 0 ? "+" : ""}${eur2.format(total)}</div>
+      <div class="hero-sub">Résultat total (P&amp;L), du ${frDate(list[0].date)} au ${frDate(list[n - 1].date)}</div>
+      <div class="split">
+        <div><span class="k">Trades gagnants</span><span class="v">${pct(wins.length / n * 100, 0)}</span><span class="k">${wins.length} sur ${n}</span></div>
+        <div><span class="k">Profit factor</span><span class="v">${pf === null ? "—" : nf(2).format(pf)}</span><span class="k">gains ÷ pertes${pf !== null && pf < 1 ? " : perdant" : ""}</span></div>
+      </div>
+    </div>
+    <div class="notes">${notes.join("")}</div>
+    <div class="card">
+      <h3>Performances</h3>
+      <div class="rows">
+        <div><span>Gain moyen (trades gagnants)</span>${signed2(avgW)}</div>
+        <div><span>Perte moyenne (trades perdants)</span>${signed2(avgL)}</div>
+        <div><span>Résultat moyen par trade</span>${signed2(total / n)}</div>
+        ${avgR !== null ? `<div><span>Résultat moyen en multiples du risque</span><b class="${avgR >= 0 ? "pos" : "neg"}">${avgR > 0 ? "+" : ""}${nf(2).format(avgR)} R</b></div>` : ""}
+        <div><span>Ratio de Sharpe (par jour tradé, annualisé)</span><b>${sharpe === null ? "— (5 jours minimum)" : nf(2).format(sharpe)}</b></div>
+        <div><span>Plus forte baisse depuis un sommet</span><b class="neg">${dd > 0 ? "−" : ""}${eur2.format(dd)}</b></div>
+        <div><span>Pire série de pertes d'affilée</span><b>${maxRun}</b></div>
+        ${avgDur !== null ? `<div><span>Durée moyenne d'un trade</span><b>${fmtDur(avgDur)}</b></div>` : ""}
+        <div><span>Règles respectées</span><b>${ok.length} / ${n} · ${sumOf(ok) > 0 ? "+" : ""}${eur2.format(sumOf(ok))}</b></div>
+      </div>
+    </div>
+    ${analysis.length ? `<div class="card"><h3>Analyse</h3><div class="rows">${analysis.map(([k, v, p]) => `<div><span>${k}<br>${v}</span>${signed2(p)}</div>`).join("")}</div></div>` : ""}
+    <div class="card"><h3>Mes trades</h3><div class="trades">${rows}</div></div>`;
+}
+const signed2 = (v) => `<b class="${v >= 0 ? "pos" : "neg"}">${v > 0 ? "+" : ""}${eur2.format(v)}</b>`;
+
+function renderJournal() { renderToday(); renderStats(); }
+
+function resetForm() {
+  editing = null;
+  $("#j-form").reset();
+  $("#jf-date").value = todayStr();
+  $("#jf-in").value = nowTime();
+  $("#jf-rules").checked = true;
+  $("#j-form-title").textContent = "Noter un trade";
+  $("#j-cancel").hidden = true;
+}
+
+$("#j-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const pnl = num("#jf-pnl");
+  if (!Number.isFinite(pnl)) { $("#jf-pnl").focus(); return; }
+  const t = {
+    id: editing || Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+    date: $("#jf-date").value || todayStr(), tIn: $("#jf-in").value, tOut: $("#jf-out").value,
+    asset: $("#jf-asset").value.trim(), side: $("#jf-side").value, setup: $("#jf-setup").value.trim(),
+    entry: optNum("#jf-entry"), exit: optNum("#jf-exit"), lots: optNum("#jf-lots"), risk: optNum("#jf-risk"),
+    pnl, rules: $("#jf-rules").checked, note: $("#jf-note").value.trim(),
+  };
+  trades = editing ? trades.map((x) => (x.id === editing ? t : x)) : [...trades, t];
+  saveTrades();
+  resetForm();
+  renderJournal();
+});
+$("#j-cancel").addEventListener("click", resetForm);
+
+$("#j-stats").addEventListener("click", (e) => {
+  const del = e.target.closest("[data-del]"), ed = e.target.closest("[data-edit]");
+  if (del) {
+    const t = trades.find((x) => x.id === del.dataset.del);
+    if (t && confirm(`Supprimer le trade du ${frDate(t.date)} (${eur2.format(t.pnl)}) ?`)) { trades = trades.filter((x) => x !== t); saveTrades(); renderJournal(); }
+  } else if (ed) {
+    const t = trades.find((x) => x.id === ed.dataset.edit);
+    if (!t) return;
+    editing = t.id;
+    const set = (id, v) => { $(id).value = v === null || v === undefined ? "" : String(v).replace(".", ","); };
+    set("#jf-date", t.date); set("#jf-in", t.tIn); set("#jf-out", t.tOut); set("#jf-asset", t.asset); $("#jf-side").value = t.side;
+    set("#jf-setup", t.setup); set("#jf-entry", t.entry); set("#jf-exit", t.exit); set("#jf-lots", t.lots); set("#jf-risk", t.risk);
+    set("#jf-pnl", t.pnl); set("#jf-note", t.note); $("#jf-rules").checked = !!t.rules;
+    $("#j-form-title").textContent = `Modifier le trade du ${frDate(t.date)}`;
+    $("#j-cancel").hidden = false;
+    $("#j-form").scrollIntoView({ behavior: "smooth" });
+  }
+});
+
+// Checklist : simple aide-mémoire, rien n'est enregistré.
+function countChecks() {
+  const boxes = [...document.querySelectorAll("#j-check .checks input")];
+  const done = boxes.filter((b) => b.checked).length;
+  $("#j-check-count").textContent = `· ${done}/${boxes.length}${done === boxes.length ? " ✓" : ""}`;
+}
+document.querySelectorAll("#j-check .checks input").forEach((b) => b.addEventListener("change", countChecks));
+$("#j-check-reset").addEventListener("click", () => { document.querySelectorAll("#j-check .checks input").forEach((b) => { b.checked = false; }); countChecks(); });
+
+function download(name, type, text) {
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([text], { type }));
+  a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+$("#j-export-json").addEventListener("click", () => download(`journal-trades-${todayStr()}.json`, "application/json", JSON.stringify(trades, null, 1)));
+$("#j-export-csv").addEventListener("click", () => {
+  const cols = ["date", "tIn", "tOut", "asset", "side", "setup", "entry", "exit", "lots", "risk", "pnl", "rules", "note"];
+  const head = ["Date", "Entrée", "Sortie", "Actif", "Sens", "Setup", "Prix entrée", "Prix sortie", "Lots", "Risque €", "Résultat €", "Règles respectées", "Note"];
+  const cell = (v) => { const s = v === null || v === undefined ? "" : typeof v === "number" ? String(v).replace(".", ",") : typeof v === "boolean" ? (v ? "oui" : "non") : String(v); return /[;"\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
+  const lines = [head.join(";"), ...sorted().map((t) => cols.map((c) => cell(t[c])).join(";"))];
+  download(`journal-trades-${todayStr()}.csv`, "text/csv;charset=utf-8", "﻿" + lines.join("\r\n"));
+});
+$("#j-import").addEventListener("click", () => $("#j-file").click());
+$("#j-file").addEventListener("change", async (e) => {
+  const f = e.target.files[0]; e.target.value = "";
+  if (!f) return;
+  try {
+    const data = JSON.parse(await f.text());
+    const incoming = Array.isArray(data) ? data.filter(validTrade) : [];
+    if (!incoming.length) throw new Error();
+    const known = new Set(trades.map((t) => t.id));
+    const added = incoming.filter((t) => !known.has(t.id));
+    trades = [...trades, ...added];
+    saveTrades(); renderJournal();
+    $("#j-today").insertAdjacentHTML("afterbegin", banner("good", `${added.length} trade${added.length > 1 ? "s" : ""} ajouté${added.length > 1 ? "s" : ""} depuis la sauvegarde (${incoming.length - added.length} déjà présent${incoming.length - added.length > 1 ? "s" : ""}).`));
+  } catch {
+    $("#j-today").insertAdjacentHTML("afterbegin", banner("crit", "Ce fichier n'est pas une sauvegarde du journal Risque Clair."));
+  }
+});
+
+// Depuis la calculatrice : pré-remplir le journal avec le trade calculé.
+$("#c-out").addEventListener("click", (e) => {
+  if (!e.target.closest("#c-to-journal") || !lastCalc) return;
+  resetForm();
+  $("#jf-asset").value = lastCalc.asset; $("#jf-side").value = lastCalc.side;
+  $("#jf-entry").value = String(lastCalc.entry).replace(".", ",");
+  $("#jf-lots").value = String(lastCalc.lots).replace(".", ",");
+  $("#jf-risk").value = lastCalc.risk.toFixed(2).replace(".", ",");
+  showTab("t-jour");
+  $("#j-form").scrollIntoView();
+  $("#jf-pnl").focus();
+});
+
 /* ---------- Démarrage ---------- */
 const saved = load();
-const DEFAULTS = { "c-capital": "1000", "c-pct": "1", "c-fx": "1,17", "s-capital": "1000", "s-months": "12" };
+const DEFAULTS = { "c-capital": "1000", "c-pct": "1", "c-fx": "1,17", "s-capital": "1000", "s-months": "12", "jr-max": "2", "jr-loss": "20" };
 setAsset(saved.asset && ASSETS[saved.asset] ? saved.asset : "gold", true);
 for (const [id, v] of Object.entries(DEFAULTS)) $("#" + id).value = v;
 const SIM_IDS = { win: "#s-win", rr: "#s-rr", risk: "#s-risk", fees: "#s-fees", trades: "#s-trades" };
@@ -421,8 +738,12 @@ document.querySelectorAll("#v-calc input").forEach((i) => i.addEventListener("in
 document.querySelectorAll("#v-sim input").forEach((i) => i.addEventListener("input", () => { presetNote = ""; save(); }));
 document.querySelectorAll("[data-preset]").forEach((b) => b.addEventListener("click", () => applyPreset(b.dataset.preset)));
 $("#s-run").addEventListener("click", () => { save(); simulate(); });
+document.querySelectorAll("#jr-max, #jr-loss").forEach((i) => i.addEventListener("input", () => { save(); renderToday(); }));
 calc();
 simulate();
+resetForm();
+countChecks();
+renderJournal();
 </script>
 </body>
 </html>

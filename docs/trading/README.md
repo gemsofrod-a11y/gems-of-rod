@@ -34,8 +34,33 @@ série de pertes, la plus forte baisse et la part de comptes vidés.
 Exemples : « Chiffres du live » (70 % de réussite à 3 fois le risque, sans
 frais), « Bon trader » (35 %), « Débutant » (25 %).
 
+## Journal (ajouté le 05/10/2026)
+
+Onglet « Journal » : chaque trade est noté (date, heures d'entrée et de
+sortie, actif, sens, setup, prix, lots, risque prévu, résultat en €, règles
+respectées ou non, note). Le bouton « Noter ce trade dans le journal » de la
+calculatrice pré-remplit le formulaire.
+
+- **Garde-fous du jour** : nombre maximum de trades et perte maximum par jour
+  (2 trades et 20 € par défaut, modifiables). Une fois l'un ou l'autre
+  atteint, un bandeau rouge dit d'arrêter pour la journée.
+- **Checklist avant de trader** : 7 points tirés des conseils utiles du live
+  (session, tendance de fond, stop placé, risque ≤ 1 %, objectif ≥ 2 fois le
+  risque, limite du jour, pas de revanche). Aide-mémoire, rien n'est bloqué.
+- **Statistiques** : taux de réussite, gain et perte moyens, profit factor,
+  résultat moyen (en € et en multiples du risque), ratio de Sharpe (résultats
+  par jour tradé, annualisé, 5 jours minimum), plus forte baisse, pire série
+  de pertes, durée moyenne, coût des trades hors règles.
+- **Analyse** : heure, jour de la semaine, setup et journée les plus et les
+  moins rentables. Un bandeau rappelle qu'en dessous de 20 trades, ces
+  classements sont surtout du hasard.
+- **Sauvegarde** : export/import `.json` (fusion sans doublon) et export `.csv`
+  pour Excel (séparateur `;`, virgule décimale).
+
 ## Données
 
 Aucun appel réseau autre que les polices Google Fonts (repli sur les polices
 du système). Les valeurs saisies sont gardées dans le navigateur
 (`localStorage`, clé `risque-clair-v1`) par commodité ; la page marche sans.
+Le journal est dans la clé `risque-clair-journal-v1` : il ne vit que dans ce
+navigateur, d'où l'export de sauvegarde.

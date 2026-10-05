@@ -412,8 +412,10 @@ fabriqués. Voir
 
 Page autonome `docs/trading/index.html`, publiée par GitHub Pages
 (https://gemsofrod-a11y.github.io/gems-of-rod/trading/), créée le 05/10/2026
-après analyse d'un live de vente de formation au trading. Deux onglets :
-calculatrice de taille de position (or/argent, risque réel en €, alertes) et
-simulateur de stratégie (2 000 parcours tirés au hasard). Ne prédit rien,
+après analyse d'un live de vente de formation au trading. Trois onglets :
+calculatrice de taille de position (or/argent, risque réel en €, alertes),
+simulateur de stratégie (2 000 parcours tirés au hasard) et journal de trades
+(statistiques, garde-fous du jour, checklist, sauvegarde .json/.csv, gardé
+dans le navigateur seulement). Ne prédit rien,
 ne passe aucun ordre, aucune connexion à un broker : ne pas en ajouter sans
 demande explicite de Sébastien. Voir `docs/trading/README.md`.
