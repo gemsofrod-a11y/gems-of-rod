@@ -112,8 +112,8 @@ input:focus { border-color: var(--accent); outline: none; }
 .notes:empty { display: none; }
 
 .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); }
-.dock nav { max-width: 600px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; }
-.tab { appearance: none; background: none; border: 0; padding: 14px 8px; font-weight: 600; color: var(--muted); cursor: pointer; }
+.dock nav { max-width: 600px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+.tab { appearance: none; background: none; border: 0; padding: 14px 2px; font-size: 13.5px; font-weight: 600; color: var(--muted); cursor: pointer; }
 .tab[aria-selected="true"] { color: var(--accent); box-shadow: inset 0 3px 0 var(--accent); }
 details summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 13.5px; }
 details p { margin-top: 6px; font-size: 13.5px; color: var(--ink-2); }
@@ -128,6 +128,10 @@ input[type="checkbox"] { width: auto; min-height: 0; accent-color: var(--accent)
 .tag { font-size: 11.5px; font-weight: 600; color: var(--crit); background: var(--crit-bg); border-radius: 999px; padding: 1px 8px; }
 .link { appearance: none; background: none; border: 0; padding: 0; color: var(--accent); font-weight: 600; font-size: 13px; cursor: pointer; }
 .link.danger { color: var(--crit); }
+pre.code { margin: 0; max-height: 360px; overflow: auto; background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px; font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; }
+ol.steps { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+.legend { display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+.legend b.pos, .legend b.neg { white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -248,6 +252,38 @@ input[type="checkbox"] { width: auto; min-height: 0; accent-color: var(--accent)
       <input type="file" id="j-file" accept=".json,application/json" hidden>
     </div>
   </section>
+
+  <!-- Indicateur TradingView -->
+  <section class="view" id="v-ind" role="tabpanel" aria-labelledby="t-ind" hidden>
+    <div class="card">
+      <h2>Indicateur de tendance</h2>
+      <p>Un tableau sur votre graphique TradingView qui dit, pour 6 unités de temps (5 min à 1 jour), si la tendance est haussière, baissière ou neutre. C'est l'équivalent du « Momentum Indicator » du live, avec des règles écrites noir sur blanc.</p>
+      <div class="legend">
+        <span><b class="pos">▲ Haussier</b> : la bougie clôturée est au-dessus de sa moyenne mobile (EMA 50), et cette moyenne monte depuis 5 bougies.</span>
+        <span><b class="neg">▼ Baissier</b> : en dessous de l'EMA 50, et l'EMA descend.</span>
+        <span><b>• Neutre</b> : tous les autres cas.</span>
+        <span><b>Biais pondéré</b> : les unités longues comptent plus (1 h et 4 h : ×2, jour : ×3), résultat de −10 à +10. À partir de ±6, le tableau dit « aligné ».</span>
+      </div>
+      <p class="small muted">Tout est réglable dans les paramètres de l'indicateur (longueur de l'EMA, unités, poids, seuil). Des alertes TradingView sont disponibles quand la tendance devient alignée.</p>
+    </div>
+    <div class="banner warn">Ce n'est pas une IA et ça ne prédit rien : ça résume la tendance <i>passée</i>. Quand tout est aligné, une bonne partie du mouvement a souvent déjà eu lieu. Servez-vous-en comme filtre (ne pas acheter quand tout est baissier), jamais comme signal d'entrée.</div>
+    <div class="card">
+      <h3>L'installer</h3>
+      <ol class="steps">
+        <li>Ouvrez <b>tradingview.com</b> sur un ordinateur (l'éditeur de code n'existe pas dans l'appli mobile) et ouvrez un graphique, par exemple XAU/USD.</li>
+        <li>En bas de l'écran, cliquez sur <b>Pine Editor</b>.</li>
+        <li>Effacez tout ce qu'il contient, puis collez le code copié ci-dessous.</li>
+        <li>Cliquez sur <b>Enregistrer</b>, puis sur <b>Ajouter au graphique</b> (« Add to chart »).</li>
+        <li>Ensuite, il apparaît aussi sur le téléphone : Indicateurs › Mes scripts.</li>
+      </ol>
+      <div class="seg">
+        <button class="btn" id="i-copy" type="button" disabled>Copier le code</button>
+        <a class="chip" href="tendance-mtf.pine" download>Télécharger (.pine)</a>
+      </div>
+      <p class="small" id="i-status" aria-live="polite"></p>
+      <pre class="code" id="i-code">Chargement du code…</pre>
+    </div>
+  </section>
 </div>
 
 <div class="dock">
@@ -255,6 +291,7 @@ input[type="checkbox"] { width: auto; min-height: 0; accent-color: var(--accent)
     <button class="tab" id="t-calc" role="tab" aria-selected="true" aria-controls="v-calc">Calculatrice</button>
     <button class="tab" id="t-sim" role="tab" aria-selected="false" aria-controls="v-sim">Simulateur</button>
     <button class="tab" id="t-jour" role="tab" aria-selected="false" aria-controls="v-jour">Journal</button>
+    <button class="tab" id="t-ind" role="tab" aria-selected="false" aria-controls="v-ind">Tendance</button>
   </nav>
 </div>
 
@@ -285,6 +322,8 @@ function showTab(id) {
   $("#v-calc").hidden = id !== "t-calc";
   $("#v-sim").hidden = id !== "t-sim";
   $("#v-jour").hidden = id !== "t-jour";
+  $("#v-ind").hidden = id !== "t-ind";
+  if (id === "t-ind") loadPine();
   window.scrollTo(0, 0);
 }
 document.querySelectorAll(".tab").forEach((t) => t.addEventListener("click", () => showTab(t.id)));
@@ -722,6 +761,31 @@ $("#c-out").addEventListener("click", (e) => {
   showTab("t-jour");
   $("#j-form").scrollIntoView();
   $("#jf-pnl").focus();
+});
+
+/* ---------- Indicateur TradingView ---------- */
+// Le code vit dans tendance-mtf.pine (une seule source), chargé à la première ouverture de l'onglet.
+let pineCode = null;
+async function loadPine() {
+  if (pineCode !== null) return;
+  try {
+    const r = await fetch("tendance-mtf.pine", { cache: "no-cache" });
+    if (!r.ok) throw new Error(r.status);
+    pineCode = await r.text();
+    $("#i-code").textContent = pineCode;
+    $("#i-copy").disabled = false;
+  } catch {
+    $("#i-code").textContent = "Le code n'a pas pu être chargé (pas de connexion ?). Utilisez le bouton « Télécharger » quand vous serez en ligne.";
+  }
+}
+$("#i-copy").addEventListener("click", async () => {
+  if (!pineCode) return;
+  try { await navigator.clipboard.writeText(pineCode); $("#i-status").textContent = "Code copié. Collez-le dans le Pine Editor de TradingView."; }
+  catch {
+    const range = document.createRange(); range.selectNodeContents($("#i-code"));
+    const sel = getSelection(); sel.removeAllRanges(); sel.addRange(range);
+    $("#i-status").textContent = "Copie automatique refusée : le code est sélectionné, copiez-le avec le menu du téléphone.";
+  }
 });
 
 /* ---------- Démarrage ---------- */

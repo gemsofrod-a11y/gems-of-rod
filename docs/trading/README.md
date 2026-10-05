@@ -57,6 +57,24 @@ calculatrice pré-remplit le formulaire.
 - **Sauvegarde** : export/import `.json` (fusion sans doublon) et export `.csv`
   pour Excel (séparateur `;`, virgule décimale).
 
+## Indicateur de tendance TradingView (ajouté le 05/10/2026)
+
+Onglet « Tendance » : explication des règles, mode d'installation et bouton
+« Copier le code ». Le script Pine Script v6 vit dans un seul fichier,
+`tendance-mtf.pine`, chargé par la page (et téléchargeable).
+
+Règle par unité de temps (5 min, 15 min, 30 min, 1 h, 4 h, jour — réglables),
+sur la dernière bougie **clôturée** (`[1]` + `lookahead_on`, pas de repaint) :
+haussier si la clôture est au-dessus de l'EMA 50 et que l'EMA monte sur 5
+bougies, baissier dans le cas inverse, neutre sinon. Biais pondéré de −10 à
++10 (poids 1, 1, 1, 2, 2, 3), « aligné » à partir de ±6, avec deux alertes
+TradingView. Filtre de tendance seulement : aucun signal d'entrée, aucun
+ordre.
+
+Le script n'a pas pu être compilé là où il a été écrit (pas d'accès à
+TradingView) : en cas d'erreur à l'ajout au graphique, le message du Pine
+Editor indique la ligne à corriger.
+
 ## Données
 
 Aucun appel réseau autre que les polices Google Fonts (repli sur les polices
