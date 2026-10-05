@@ -259,12 +259,12 @@ ol.steps { margin: 0; padding-left: 20px; display: flex; flex-direction: column;
       <h2>Indicateur de tendance</h2>
       <p>Un tableau sur votre graphique TradingView qui dit, pour 6 unités de temps (5 min à 1 jour), si la tendance est haussière, baissière ou neutre. C'est l'équivalent du « Momentum Indicator » du live, avec des règles écrites noir sur blanc.</p>
       <div class="legend">
-        <span><b class="pos">▲ Haussier</b> : la bougie clôturée est au-dessus de sa moyenne mobile (EMA 50), et cette moyenne monte depuis 5 bougies.</span>
-        <span><b class="neg">▼ Baissier</b> : en dessous de l'EMA 50, et l'EMA descend.</span>
+        <span><b class="pos">▲ Haussier</b> : la bougie clôturée est au-dessus de sa moyenne mobile sur 200 bougies (EMA 200), et cette moyenne monte depuis 5 bougies.</span>
+        <span><b class="neg">▼ Baissier</b> : en dessous de l'EMA 200, et l'EMA descend.</span>
         <span><b>• Neutre</b> : tous les autres cas.</span>
         <span><b>Biais pondéré</b> : les unités longues comptent plus (1 h et 4 h : ×2, jour : ×3), résultat de −10 à +10. À partir de ±6, le tableau dit « aligné ».</span>
       </div>
-      <p class="small muted">Tout est réglable dans les paramètres de l'indicateur (longueur de l'EMA, unités, poids, seuil). Des alertes TradingView sont disponibles quand la tendance devient alignée.</p>
+      <p class="small muted">Tout est réglable dans les paramètres de l'indicateur (longueur de l'EMA, unités, poids, seuil). L'EMA 200 suit la tendance de fond ; une valeur plus courte (50) réagit plus vite mais change plus souvent d'avis. Des alertes TradingView sont disponibles quand la tendance devient alignée.</p>
     </div>
     <div class="banner warn">Ce n'est pas une IA et ça ne prédit rien : ça résume la tendance <i>passée</i>. Quand tout est aligné, une bonne partie du mouvement a souvent déjà eu lieu. Servez-vous-en comme filtre (ne pas acheter quand tout est baissier), jamais comme signal d'entrée.</div>
     <div class="card">

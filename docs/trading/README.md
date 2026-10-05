@@ -65,7 +65,7 @@ Onglet « Tendance » : explication des règles, mode d'installation et bouton
 
 Règle par unité de temps (5 min, 15 min, 30 min, 1 h, 4 h, jour — réglables),
 sur la dernière bougie **clôturée** (`[1]` + `lookahead_on`, pas de repaint) :
-haussier si la clôture est au-dessus de l'EMA 50 et que l'EMA monte sur 5
+haussier si la clôture est au-dessus de l'EMA 200 et que l'EMA monte sur 5
 bougies, baissier dans le cas inverse, neutre sinon. Biais pondéré de −10 à
 +10 (poids 1, 1, 1, 2, 2, 3), « aligné » à partir de ±6, avec deux alertes
 TradingView. Filtre de tendance seulement : aucun signal d'entrée, aucun

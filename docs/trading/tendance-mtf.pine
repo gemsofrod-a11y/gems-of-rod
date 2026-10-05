@@ -11,7 +11,7 @@
 // Un filtre pour éviter d'aller contre le courant, pas un signal d'achat ou de vente.
 indicator("Tendance multi-unités (Risque Clair)", shorttitle = "Tendance MTF", overlay = true)
 
-emaLen   = input.int(50, "Longueur de l'EMA", minval = 2)
+emaLen   = input.int(200, "Longueur de l'EMA", minval = 2)
 slopeLen = input.int(5, "Pente mesurée sur (bougies)", minval = 1)
 seuil    = input.int(6, "Seuil « aligné » (sur 10)", minval = 1, maxval = 10)
 showEma  = input.bool(true, "Afficher l'EMA de l'unité du graphique")
