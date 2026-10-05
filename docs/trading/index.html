@@ -278,7 +278,7 @@ ol.steps { margin: 0; padding-left: 20px; display: flex; flex-direction: column;
       </ol>
       <div class="seg">
         <button class="btn" id="i-copy" type="button" disabled>Copier le code</button>
-        <a class="chip" href="tendance-mtf.pine" download>Télécharger (.pine)</a>
+        <button class="chip" id="i-download" type="button">Télécharger le fichier</button>
       </div>
       <p class="small" id="i-status" aria-live="polite"></p>
       <pre class="code" id="i-code">Chargement du code…</pre>
@@ -717,7 +717,16 @@ function countChecks() {
 document.querySelectorAll("#j-check .checks input").forEach((b) => b.addEventListener("change", countChecks));
 $("#j-check-reset").addEventListener("click", () => { document.querySelectorAll("#j-check .checks input").forEach((b) => { b.checked = false; }); countChecks(); });
 
-function download(name, type, text) {
+// Sur un lien claude.ai, la page est dans un cadre qui bloque les téléchargements classiques :
+// on passe alors par la capacité « downloads » (le visiteur confirme). Ailleurs, lien blob.
+const dlReady = window.claude && typeof window.claude.use === "function" ? window.claude.use("downloads").catch(() => null) : Promise.resolve(null);
+async function download(name, type, text) {
+  const dl = await dlReady;
+  if (dl) {
+    try { await dl.save({ filename: name, data: text }); }
+    catch (e) { if (!e || e.code !== "declined") alert("Le fichier n'a pas pu être enregistré ici (" + ((e && e.code) || "erreur") + ")."); }
+    return;
+  }
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([text], { type }));
   a.download = name;
@@ -778,6 +787,12 @@ async function loadPine() {
     $("#i-code").textContent = "Le code n'a pas pu être chargé (pas de connexion ?). Utilisez le bouton « Télécharger » quand vous serez en ligne.";
   }
 }
+$("#i-download").addEventListener("click", async () => {
+  await loadPine();
+  if (!pineCode) return;
+  // .pine n'est pas accepté par les téléchargements claude.ai : .txt dans ce cas.
+  download((await dlReady) ? "tendance-mtf.pine.txt" : "tendance-mtf.pine", "text/plain", pineCode);
+});
 $("#i-copy").addEventListener("click", async () => {
   if (!pineCode) return;
   try { await navigator.clipboard.writeText(pineCode); $("#i-status").textContent = "Code copié. Collez-le dans le Pine Editor de TradingView."; }
