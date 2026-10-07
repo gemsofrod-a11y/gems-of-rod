@@ -97,6 +97,14 @@ automatiquement (`GET /v0.1/me`) ou saisi à la main.
   (`sumupProductMap`, à choisir une fois dans l'écran SumUp). Une vente
   rattachée à une commande ne touche pas le stock (c'est la commande qui le
   gère) : rattacher/détacher rend ou ressort les quantités.
+- **Prix repris des ventes** (demande de Sébastien, 07/10/2026) : SumUp
+  n'expose pas son catalogue, donc un changement de tarif dans SumUp n'est
+  pas visible tout de suite ; chaque vente récupérée garde le prix unitaire
+  TTC de l'article (`SumUpItem.unitPrice`) et, quand les deux ventes les plus
+  récentes d'un produit ont le même prix, différent de celui de l'app, le
+  prix de l'app est mis à jour (`withSalePrices`) — une remise isolée ne
+  change rien. Le message de synchronisation liste les prix changés. Pour un
+  changement immédiat, réimporter l'export d'articles.
 - **Import du catalogue et des clients** : SumUp n'ayant pas d'API pour
   lister catalogue et clients, le menu ⋮ → « Importer un export SumUp
   (Excel) » lit les exports .xlsx du tableau de bord (`items-export…xlsx` :

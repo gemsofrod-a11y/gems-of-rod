@@ -407,7 +407,10 @@ commande ; remise de 5 % sur la commande suivante à 5 commandes, une fois par
 période de 12 mois. Fiche client avec son « panier » (articles achetés, panier
 moyen). Paniers abandonnés : non exposés par l'API SumUp (vérifié le
 04/10/2026) ; l'app montre à la place les paiements en ligne non aboutis
-(échoués/annulés) à relancer par un nouveau lien de paiement. Voir
+(échoués/annulés) à relancer par un nouveau lien de paiement. Changement de
+tarif dans SumUp (07/10/2026) : pas d'API catalogue, donc prix repris des
+ventes synchronisées après deux ventes au même prix (`withSalePrices`), ou
+tout de suite par réimport de l'export d'articles. Voir
 `android/gestion/README.md`.
 
 ---

@@ -13,6 +13,7 @@ import fr.gemsofrod.gestion.data.SumUpAttempt
 import fr.gemsofrod.gestion.data.SumUpItem
 import fr.gemsofrod.gestion.data.SumUpPayment
 import fr.gemsofrod.gestion.data.normalizeName
+import fr.gemsofrod.gestion.data.withSalePrices
 import fr.gemsofrod.gestion.data.withShippingCodes
 import fr.gemsofrod.gestion.sumup.SumUpCheckout
 import fr.gemsofrod.gestion.sumup.SumUpClient
@@ -220,7 +221,7 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
                         0 -> "À jour : aucun nouveau paiement."
                         1 -> "1 nouveau paiement récupéré."
                         else -> "$added nouveaux paiements récupérés."
-                    } + when (failed) {
+                    } + priceMessage() + when (failed) {
                         0 -> ""
                         1 -> " 1 paiement en ligne non abouti."
                         else -> " $failed paiements en ligne non aboutis."
@@ -265,18 +266,26 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
                 attempts += SumUpAttempt(tx.code, tx.amount, tx.date, tx.time, tx.paymentType, tx.status, tx.summary)
                 continue
             }
-            val items = tx.items.map { (name, q) -> SumUpItem(name, q, matchProduct(d, name)) }
+            val items = tx.items.map { SumUpItem(it.name, it.quantity, matchProduct(d, it.name), it.unitPrice) }
             added += SumUpPayment(tx.code, tx.amount, tx.date, tx.time, tx.paymentType, items = items)
             known += tx.code
         }
         payments += added
-        return d.copy(
+        val synced = d.copy(
             orders = orders,
             products = applyEffects(d.products, added.map { it.stockEffect }),
             sumupPayments = payments.sortedWith(compareByDescending<SumUpPayment> { it.date }.thenByDescending { it.time }),
             sumupAttempts = attempts.sortedWith(compareByDescending<SumUpAttempt> { it.date }.thenByDescending { it.time }),
         )
+        // Tarifs changés dans SumUp : repris des ventes de cette synchronisation.
+        val sold = added.flatMap { it.items }.mapNotNull { it.productId }.toSet()
+        val (priced, changes) = synced.withSalePrices(sold)
+        lastPriceChanges = changes
+        return priced
     }
+
+    /** Prix repris des ventes lors de la dernière synchronisation (pour le message). */
+    private var lastPriceChanges: List<fr.gemsofrod.gestion.data.PriceChange> = emptyList()
 
     /** Produit du stock correspondant à un article SumUp : correspondance apprise, sinon même nom. */
     private fun matchProduct(d: AppData, name: String): String? {
@@ -332,6 +341,15 @@ class GestionViewModel(app: Application) : AndroidViewModel(app) {
      * Crée un lien de paiement SumUp pour le reste dû de la commande, puis
      * renvoie l'adresse (ou un message d'erreur) à [onResult].
      */
+    private fun priceMessage(): String {
+        val c = lastPriceChanges
+        if (c.isEmpty()) return ""
+        val list = c.take(3).joinToString(", ") {
+            "${it.productName} ${fr.gemsofrod.gestion.ui.euros(it.before)} → ${fr.gemsofrod.gestion.ui.euros(it.after)}"
+        }
+        return " Prix mis à jour : $list" + (if (c.size > 3) " et ${c.size - 3} autre(s)." else ".")
+    }
+
     /** Écarte (ou fait revenir) un paiement non abouti de la liste à relancer. */
     fun dismissAttempt(code: String, dismissed: Boolean = true) = update { d ->
         d.copy(sumupAttempts = d.sumupAttempts.map { if (it.code == code) it.copy(dismissed = dismissed) else it })

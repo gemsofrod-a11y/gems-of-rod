@@ -136,6 +136,7 @@ class Store(context: Context) {
             put("paymentType", paymentType); put("orderId", orderId ?: JSONObject.NULL)
             put("items", JSONArray(items.map { i ->
                 JSONObject().put("name", i.name).put("quantity", i.quantity).put("productId", i.productId ?: JSONObject.NULL)
+                    .put("unitPrice", i.unitPrice ?: JSONObject.NULL)
             }))
         }
 
@@ -163,7 +164,11 @@ class Store(context: Context) {
             paymentType = optString("paymentType", ""),
             orderId = if (isNull("orderId")) null else optString("orderId"),
             items = optJSONArray("items")?.objects()?.map { i ->
-                SumUpItem(i.optString("name"), i.optDouble("quantity", 1.0), if (i.isNull("productId")) null else i.optString("productId"))
+                SumUpItem(
+                    i.optString("name"), i.optDouble("quantity", 1.0),
+                    if (i.isNull("productId")) null else i.optString("productId"),
+                    if (!i.has("unitPrice") || i.isNull("unitPrice")) null else i.optDouble("unitPrice"),
+                )
             } ?: emptyList(),
         )
     }

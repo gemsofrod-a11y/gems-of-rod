@@ -25,12 +25,15 @@ data class SumUpTransaction(
     /** Instant du paiement (millisecondes). */
     val epochMillis: Long = 0L,
     /** Articles vendus (nom, quantité), lus à part pour les ventes récentes. */
-    val items: List<Pair<String, Double>> = emptyList(),
+    val items: List<SoldItem> = emptyList(),
     /** « SUCCESSFUL », ou « FAILED » / « CANCELLED » pour un paiement en ligne non abouti. */
     val status: String = "SUCCESSFUL",
     /** Résumé des articles fourni par l'historique (« product_summary »). */
     val summary: String = "",
 )
+
+/** Article vendu dans une transaction : nom, quantité, prix unitaire TTC (si SumUp le donne). */
+data class SoldItem(val name: String, val quantity: Double, val unitPrice: Double? = null)
 
 data class SumUpCheckout(val id: String, val url: String?, val status: String, val amount: Double, val transactionCodes: List<String>)
 
@@ -95,13 +98,17 @@ class SumUpClient(private val apiKey: String) {
      * Articles du catalogue SumUp vendus dans une transaction (champ
      * « products » du détail). Vide si la vente a été saisie en montant libre.
      */
-    fun transactionItems(merchantCode: String, transactionCode: String): List<Pair<String, Double>> {
+    fun transactionItems(merchantCode: String, transactionCode: String): List<SoldItem> {
         val t = JSONObject(request("GET", "$base/v2.1/merchants/${enc(merchantCode)}/transactions?transaction_code=${enc(transactionCode)}"))
         val products = t.optJSONArray("products") ?: return emptyList()
         return (0 until products.length()).mapNotNull { i ->
             val p = products.optJSONObject(i) ?: return@mapNotNull null
             val name = p.optString("name").trim()
-            if (name.isBlank()) null else name to p.optDouble("quantity", 1.0).let { if (it.isNaN() || it <= 0) 1.0 else it }
+            val quantity = p.optDouble("quantity", 1.0).let { if (it.isNaN() || it <= 0) 1.0 else it }
+            // Prix TTC, comme dans le catalogue SumUp : prix unitaire TTC, sinon total TTC ÷ quantité, sinon prix.
+            fun positive(key: String) = p.optDouble(key, Double.NaN).takeIf { !it.isNaN() && it > 0 }
+            val unitPrice = positive("price_with_vat") ?: positive("total_with_vat")?.div(quantity) ?: positive("price")
+            if (name.isBlank()) null else SoldItem(name, quantity, unitPrice?.let { Math.round(it * 100) / 100.0 })
         }
     }
 

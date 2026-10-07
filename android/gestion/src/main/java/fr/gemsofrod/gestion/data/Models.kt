@@ -169,7 +169,40 @@ data class SumUpAttempt(
     val statusLabel: String get() = if (status == "CANCELLED") "Annulé" else "Échoué"
 }
 
-data class SumUpItem(val name: String, val quantity: Double, val productId: String? = null)
+data class SumUpItem(
+    val name: String,
+    val quantity: Double,
+    val productId: String? = null,
+    /** Prix unitaire TTC de la vente (récupéré de SumUp), pour suivre les changements de tarif. */
+    val unitPrice: Double? = null,
+)
+
+/** Changement de prix repris des ventes SumUp. */
+data class PriceChange(val productName: String, val before: Double, val after: Double)
+
+/**
+ * Prix des produits [sold] repris des ventes SumUp (demande de Sébastien,
+ * 07/10/2026) : SumUp n'expose pas son catalogue, mais chaque vente donne le
+ * prix de l'article. Le prix de l'app n'est changé que si les deux ventes
+ * les plus récentes de ce produit ont le même prix, différent de l'actuel —
+ * une remise faite à la main sur une seule vente ne change donc rien.
+ */
+fun AppData.withSalePrices(sold: Set<String>): Pair<AppData, List<PriceChange>> {
+    if (sold.isEmpty()) return this to emptyList()
+    val sales = sumupPayments.sortedWith(compareByDescending<SumUpPayment> { it.date }.thenByDescending { it.time })
+    val changes = mutableListOf<PriceChange>()
+    val updated = products.map { p ->
+        if (p.id !in sold) return@map p
+        val lastTwo = sales.asSequence().flatMap { it.items.asSequence() }
+            .filter { it.productId == p.id && it.unitPrice != null }.take(2).map { it.unitPrice!! }.toList()
+        if (lastTwo.size < 2 || kotlin.math.abs(lastTwo[0] - lastTwo[1]) >= 0.01 || kotlin.math.abs(lastTwo[0] - p.price) < 0.01) p
+        else {
+            changes += PriceChange(p.name, p.price, lastTwo[0])
+            p.copy(price = lastTwo[0])
+        }
+    }
+    return copy(products = updated) to changes
+}
 
 /** Nom d'article comparable : sans accents, minuscules, espaces simples. */
 fun normalizeName(name: String): String =
