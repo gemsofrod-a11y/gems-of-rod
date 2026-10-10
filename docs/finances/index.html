@@ -1493,9 +1493,16 @@ function applyMapping() {
     setStatus("Je n'ai pas reconnu toutes les colonnes. Indiquez ci-dessous laquelle contient la date, le libellé et le montant, puis appuyez sur Appliquer.", "warn");
     return;
   }
-  const { tx, skipped, plans } = buildTransactions(rows, headerIdx, map, invert);
   const head = headerIdx >= 0 ? rows[headerIdx].map(low).join("|") : "";
   const bank = state.fileBank || (/revolut|account.statement/i.test(state.file || "") || (/produit|product/.test(head) && /etat|state/.test(head)) ? "revolut" : "");
+  // Revolut signe toujours ses montants (dépenses en négatif) : la case « dépenses en positif »
+  // cochée par erreur inverserait tout le relevé (salaire compté en dépense). Elle est ignorée.
+  let inv = invert;
+  if (bank === "revolut" && inv) {
+    inv = false; state.invert = false;
+    state.infoNote = "Relevé Revolut : les dépenses y sont déjà en négatif, la case « Les dépenses sont en positif » a été décochée.";
+  }
+  const { tx, skipped, plans } = buildTransactions(rows, headerIdx, map, inv);
   tx.forEach(t => { if (!t.acct) t.acct = state.fileAcct || ""; if (bank) t.bank = bank; });
   if (plans.length && !state.sample) {
     const last = plans.reduce((a, b) => (b.date > a.date ? b : a));
@@ -1506,12 +1513,14 @@ function applyMapping() {
   const merged = mergeHistory(state.histBefore, tx);
   state.tx = merged.tx;
   const negs = tx.filter(t => t.amount < 0).length;
-  if (negs / tx.length < 0.2 && !invert && map.amount != null && state.fileAcct !== "epargne" && !tx.some(t => t.acct === "epargne")) {
+  if (negs / tx.length < 0.2 && !inv && map.amount != null && state.fileAcct !== "epargne" && !tx.some(t => t.acct === "epargne")) {
     setStatus(`Presque toutes les opérations sont positives. Si vos dépenses apparaissent sans signe moins, cochez « Les dépenses sont en positif » ci-dessous.`, "warn");
     $("#mapping").hidden = false; $("#mapping").open = true;
   } else if (state.sample) {
     setStatus("");
   } else {
+    // Import réussi : le panneau des colonnes se referme (il reste accessible depuis le menu).
+    $("#mapping").open = false; $("#mapping").hidden = true;
     const all = state.tx, d = x => new Date(x).toLocaleDateString("fr-FR");
     setStatus(`<b>${esc(state.file)}</b>${state.fileAcct === "epargne" ? " (compte d'épargne)" : ""} : ${tx.length} opération${tx.length > 1 ? "s" : ""} lue${tx.length > 1 ? "s" : ""}, <b>${merged.added} nouvelle${merged.added > 1 ? "s" : ""}</b>${merged.known ? `, ${merged.known} déjà connue${merged.known > 1 ? "s" : ""}` : ""}${merged.removed ? `, ${merged.removed} ancienne${merged.removed > 1 ? "s" : ""} lecture${merged.removed > 1 ? "s" : ""} retirée${merged.removed > 1 ? "s" : ""}` : ""}${skipped ? `, ${skipped} ligne${skipped > 1 ? "s" : ""} ignorée${skipped > 1 ? "s" : ""}` : ""}.<br>Historique : ${all.length} opérations du ${d(Math.min(...all.map(t => t.date)))} au ${d(Math.max(...all.map(t => t.date)))}.${state.pdfNote ? "<br>" + state.pdfNote : ""}${state.infoNote ? "<br>" + state.infoNote : ""}`, state.pdfNote ? "warn" : "");
   }

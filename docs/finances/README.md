@@ -216,3 +216,14 @@ Tout est dans `index.html` :
 - `BANK_CAT_MAP` : correspondance avec les catégories fournies par la banque ;
 - `pdfLinesToRows` : reconnaissance des lignes d'opérations dans un PDF ;
 - `buildAdvice` : seuils et hypothèses de chaque conseil.
+
+## Relevés Revolut : montants déjà signés (10/10/2026)
+
+Revolut met toujours ses dépenses en négatif. La case « Les dépenses sont en
+positif » est donc ignorée (et décochée, avec un message) pour un relevé
+Revolut : cochée par erreur, elle inversait tout le relevé. Après un import
+réussi, le panneau « Colonnes du fichier » se referme ; il reste accessible
+par le bouton « Corriger les colonnes ». Les opérations encore « en attente »
+chez Revolut ne figurent pas dans son export : un relevé téléchargé le 10 peut
+s'arrêter à la dernière opération terminée (ex. le 07).
+
