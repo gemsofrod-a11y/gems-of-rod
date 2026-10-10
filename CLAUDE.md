@@ -365,6 +365,56 @@ de Sébastien sur la suite ; aucune n'est indispensable à l'usage actuel,
 
 ---
 
+## Gems of Rod Gestion — app Android de gestion (usage interne)
+
+Module `android/gestion` (`:gestion`), APK distribuée hors Play Store (comme
+`:assistant`, jamais dans `android-release.yml`) : commandes clients, stock,
+clients et tableau de bord avec graphiques dessinés en Compose (sans
+bibliothèque de graphiques). Demandée le 03/10/2026 par Sébastien,
+« minimaliste et simple » ; refondue le même jour au style d'une maquette
+fintech fournie par Sébastien (cartes blanches, violet, panneau marine,
+suivi des paiements : échéances, retards, délai de paiement) ; le 04/10/2026,
+style rendu « plus luxueux, couleurs moins agressives » à sa demande : ivoire,
+or champagne, onyx, titres et montants en police à empattements, courbes
+fines dorées ; chaque carte de l'Aperçu s'ouvre sur une page de détail
+(`InsightScreen`) ; plus de blanc par défaut à sa demande (04/10/2026) :
+thème « Rubis nuit » (bordeaux profond, cartes vieux rose foncé, or) et menu
+⋮ → Thème pour en changer (Onyx, Émeraude, Saphir, Champagne, Ivoire ;
+`AppTheme` dans `ui/Theme.kt`, `Palette` lit le thème choisi — ne jamais
+figer une couleur de `Palette` dans une valeur calculée une fois). Segments clients calculés sur 12 mois (règles de
+Sébastien) : VIP dès 500 € d'achats, Régulier dès 3 commandes ou ancien
+VIP (un VIP sous 500 € retombe en Régulier), sinon Occasionnel ; à la 3e
+commande, code personnel de livraison offerte (`withShippingCodes`) envoyé
+par message préparé, à créer à la main dans la boutique SumUp (`segmentOf`, constantes `VIP_MIN_SPENT` / `REGULAR_MIN_ORDERS`). Données locales (`gestion.json`, export /
+import JSON depuis le menu). Seul accès réseau : SumUp (demande de Sébastien
+le 04/10/2026, il encaisse au Tap to Pay) — récupération des paiements
+(rattachables à une commande, sinon « ventes directes » comptées dans le CA)
+et liens de paiement SumUp pour le reste dû d'une commande ; le stock baisse
+avec les articles du catalogue SumUp vendus après la connexion (SumUp
+n'expose pas son catalogue/stock, seulement les articles de chaque vente),
+reconnus par nom ou par correspondance apprise ; catalogue et clients
+importés depuis les exports Excel du tableau de bord SumUp (menu ⋮, pas
+d'API SumUp pour les lister) — ne jamais versionner un vrai export client ; clé API saisie
+par Sébastien dans l'app (menu ⋮ → SumUp), gardée dans les préférences
+privées, exclue des sauvegardes, jamais dans le code. APK publiée à adresse
+fixe par le workflow `gestion-apk.yml` (release `gestion-latest`). Un devis ne
+touche pas le stock ; une commande confirmée, en préparation ou livrée sort
+ses quantités du stock, une annulation ou suppression les rend. Fidélité
+(règles de Sébastien, 04/10/2026, calculées sur 12 mois glissants, hors devis
+et annulations) : VIP dès 500 € d'achats, Régulier dès 3 commandes (ou ancien
+VIP), sinon Occasionnel ; code personnel de livraison offerte à la 3e
+commande ; remise de 5 % sur la commande suivante à 5 commandes, une fois par
+période de 12 mois. Fiche client avec son « panier » (articles achetés, panier
+moyen). Paniers abandonnés : non exposés par l'API SumUp (vérifié le
+04/10/2026) ; l'app montre à la place les paiements en ligne non aboutis
+(échoués/annulés) à relancer par un nouveau lien de paiement. Changement de
+tarif dans SumUp (07/10/2026) : pas d'API catalogue, donc prix repris des
+ventes synchronisées après deux ventes au même prix (`withSalePrices`), ou
+tout de suite par réimport de l'export d'articles. Voir
+`android/gestion/README.md`.
+
+---
+
 ## Budget Clair — analyse de finances personnelles (usage personnel de Sébastien)
 
 Outil distinct du reste du dépôt, sans lien avec Gems of Rod : page web
@@ -401,7 +451,7 @@ l'emplacement `docs/finances/`, publié automatiquement à chaque fusion. Interf
 (Accueil = reste à vivre du mois, Mouvements, Budgets, Conseils, Mon budget), moteur de
 calcul inchangé ; ne pas réempiler de panneaux sur l'accueil. Le reste à vivre se calcule
 par mois de budget de paie à paie (le salaire de fin de mois et ce qu'il paie le jour même comptent
-pour le mois suivant), suit le solde réel du compte courant (entrées − dépenses − argent mis de côté ; le compte d'un proche rattaché et les paiements renvoyés du PDF Revolut sont ignorés) et ne descend jamais sous 0 € (Sébastien ne peut pas être à découvert). Le salaire est reconnu automatiquement (paiement de plus de 500 € d'une société/association/administration, même reçu une seule fois, ou virement régulier de montant proche ; jamais un virement isolé d'un proche) : sans lui, la coupure de mois de paie à paie ne s'applique pas et un salaire du 31/08 reste compté en août. Retiré à la main dans « Mon budget », il ne revient pas (`noAutoSalary`). Le pourcentage de dépenses n'est affiché que si les revenus dépassent 1 €. Ne jamais versionner ni publier un
+pour le mois suivant), suit le solde réel du compte courant (entrées − dépenses − argent mis de côté ; le compte d'un proche rattaché et les paiements renvoyés du PDF Revolut sont ignorés) et ne descend jamais sous 0 € (Sébastien ne peut pas être à découvert). Le salaire est reconnu automatiquement (paiement de plus de 500 € d'une société/association/administration, même reçu une seule fois, ou virement régulier de montant proche ; jamais un virement isolé d'un proche) : sans lui, la coupure de mois de paie à paie ne s'applique pas et un salaire du 31/08 reste compté en août. Retiré à la main dans « Mon budget », il ne revient pas (`noAutoSalary`). Le pourcentage de dépenses n'est affiché que si les revenus dépassent 1 €. Relevé Revolut : la case « dépenses en positif » est ignorée (montants toujours signés), panneau des colonnes refermé après un import réussi (10/10/2026). Ne jamais versionner ni publier un
 relevé réel de Sébastien (nom, adresse, opérations) : tester avec des PDF
 fabriqués. Voir
 `docs/finances/README.md`.

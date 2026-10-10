@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- La clé API SumUp (préférences « sumup ») ne part jamais dans la sauvegarde Google. -->
+<full-backup-content>
+    <exclude domain="sharedpref" path="sumup.xml" />
+</full-backup-content>

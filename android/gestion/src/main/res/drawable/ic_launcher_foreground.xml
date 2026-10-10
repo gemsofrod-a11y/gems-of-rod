@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gemme taillée stylisée (couronne + pavillon), or sur anthracite. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#C9A45C"
+        android:pathData="M40,38 L68,38 L78,50 L54,76 L30,50 Z" />
+    <path
+        android:fillColor="#E3C88E"
+        android:pathData="M40,38 L48,50 L30,50 Z M68,38 L78,50 L60,50 Z M48,50 L54,38 L60,50 Z" />
+    <path
+        android:fillColor="#A8843F"
+        android:pathData="M48,50 L60,50 L54,76 Z" />
+</vector>
