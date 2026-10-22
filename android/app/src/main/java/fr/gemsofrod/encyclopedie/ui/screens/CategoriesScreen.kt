@@ -83,6 +83,7 @@ fun HomeScreen(
     onFossilesClick: () -> Unit,
     onCoquillagesClick: () -> Unit,
     onGemmesOrganiquesClick: () -> Unit,
+    onLithotherapieClick: () -> Unit,
     onLearningPathClick: () -> Unit,
     onAchievementsClick: () -> Unit,
     onLabClick: () -> Unit,
@@ -174,6 +175,12 @@ fun HomeScreen(
                 subtitle = stringResource(R.string.home_gemmes_organiques_subtitle),
                 onClick = onGemmesOrganiquesClick,
                 backgroundDrawable = "gem_perle_facette"
+            )
+            HomeSectionCard(
+                title = stringResource(R.string.home_lithotherapie_title),
+                subtitle = stringResource(R.string.home_lithotherapie_subtitle),
+                onClick = onLithotherapieClick,
+                backgroundDrawable = "gem_amethyste_brute"
             )
             HomeSectionCard(
                 title = stringResource(R.string.home_learning_path_title),

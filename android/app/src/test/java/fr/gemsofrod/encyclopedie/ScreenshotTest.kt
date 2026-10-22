@@ -77,6 +77,7 @@ class ScreenshotTest {
             onFossilesClick = {},
             onCoquillagesClick = {},
             onGemmesOrganiquesClick = {},
+            onLithotherapieClick = {},
             onLearningPathClick = {},
             onAchievementsClick = {},
             onLabClick = {},

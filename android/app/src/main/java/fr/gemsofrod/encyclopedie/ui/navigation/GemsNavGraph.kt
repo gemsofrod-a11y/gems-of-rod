@@ -291,6 +291,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onFossilesClick = { navController.navigate(Routes.FOSSILES) },
                 onCoquillagesClick = { navController.navigate(Routes.COQUILLAGES) },
                 onGemmesOrganiquesClick = { navController.navigate(Routes.GEMMES_ORGANIQUES) },
+                onLithotherapieClick = { navController.navigate(Routes.LITHOTHERAPIE_MENU) },
                 onAchievementsClick = { navController.navigate(Routes.ACHIEVEMENTS) },
                 onLabClick = { navController.navigate(Routes.LAB_MENU) },
                 onLapidaireClick = { navController.navigate(Routes.LAPIDAIRE) },
@@ -613,7 +614,6 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onFamillesClick = { navController.navigate(Routes.FAMILLES_LIST) },
                 onCristauxClick = { navController.navigate(Routes.CRYSTAL_SYSTEMS) },
                 onAchatClick = { navController.navigate(Routes.BUYING_GUIDES) },
-                onLithotherapieClick = { navController.navigate(Routes.LITHOTHERAPIE_MENU) },
                 onQuizClick = { navController.navigate(Routes.QUIZ) }
             )
         }
