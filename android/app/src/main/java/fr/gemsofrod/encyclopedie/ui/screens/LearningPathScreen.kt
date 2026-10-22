@@ -46,10 +46,11 @@ private data class LearningPathStep(
 
 /**
  * Progression guidée à travers les bases de la gemmologie déjà présentes
- * dans l'app (vocabulaire, familles, cristallographie, achat, lithothérapie,
- * quiz) : chaque étape ouvre un écran existant et se marque comme vue dès
- * qu'elle est ouverte — pas de nouveau contenu, juste un ordre suggéré et
- * une progression visible ([LearningPathRepository]).
+ * dans l'app (vocabulaire, familles, cristallographie, achat, quiz) :
+ * chaque étape ouvre un écran existant et se marque comme vue dès qu'elle
+ * est ouverte — pas de nouveau contenu, juste un ordre suggéré et une
+ * progression visible ([LearningPathRepository]). La lithothérapie a son
+ * propre onglet depuis l'accueil, indépendant de ce parcours.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -59,7 +60,6 @@ fun LearningPathScreen(
     onFamillesClick: () -> Unit,
     onCristauxClick: () -> Unit,
     onAchatClick: () -> Unit,
-    onLithotherapieClick: () -> Unit,
     onQuizClick: () -> Unit
 ) {
     val steps = listOf(
@@ -67,7 +67,6 @@ fun LearningPathScreen(
         LearningPathStep("familles", R.string.learning_path_step_familles_title, R.string.learning_path_step_familles_subtitle, onFamillesClick),
         LearningPathStep("cristaux", R.string.learning_path_step_cristaux_title, R.string.learning_path_step_cristaux_subtitle, onCristauxClick),
         LearningPathStep("achat", R.string.learning_path_step_achat_title, R.string.learning_path_step_achat_subtitle, onAchatClick),
-        LearningPathStep("lithotherapie", R.string.learning_path_step_lithotherapie_title, R.string.learning_path_step_lithotherapie_subtitle, onLithotherapieClick),
         LearningPathStep("quiz", R.string.learning_path_step_quiz_title, R.string.learning_path_step_quiz_subtitle, onQuizClick)
     )
     val completed = steps.count { LearningPathRepository.isCompleted(it.id) }
