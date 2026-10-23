@@ -10,6 +10,10 @@ name: Build signed Android App Bundle (Play Store)
 #   ANDROID_KEYSTORE_PASSWORD
 #   ANDROID_KEY_ALIAS
 #   ANDROID_KEY_PASSWORD
+#   MAPS_API_KEY             -> clé Google Maps (Maps SDK for Android) ;
+#                                optionnel, une absence désactive juste les
+#                                tuiles de la carte des origines sans faire
+#                                échouer le build
 on:
   workflow_dispatch: {}
 
@@ -56,6 +60,7 @@ jobs:
           STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          MAPS_API_KEY: ${{ secrets.MAPS_API_KEY }}
         run: ./gradlew :app:bundleRelease --no-daemon
 
       - name: Nettoie le keystore du runner

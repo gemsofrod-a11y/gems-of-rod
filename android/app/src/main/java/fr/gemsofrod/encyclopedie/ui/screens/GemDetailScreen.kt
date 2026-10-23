@@ -69,9 +69,12 @@ import fr.gemsofrod.encyclopedie.data.GemDiagnostics
 import fr.gemsofrod.encyclopedie.data.GemImages
 import fr.gemsofrod.encyclopedie.data.GemRarete
 import fr.gemsofrod.encyclopedie.data.GemsRepository
+import fr.gemsofrod.encyclopedie.data.geoPointForOrigin
 import fr.gemsofrod.encyclopedie.data.googleMapsSearchUrl
 import fr.gemsofrod.encyclopedie.data.priceRangePerCarat
+import fr.gemsofrod.encyclopedie.ui.components.ApproximateLocationCaption
 import fr.gemsofrod.encyclopedie.ui.components.FavoriteToggleButton
+import fr.gemsofrod.encyclopedie.ui.components.OriginsMap
 import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.localizedInclusions
@@ -330,6 +333,15 @@ private fun GemDetailBody(gem: Gem, onCertificateClick: () -> Unit) {
                     origine = origine,
                     onClick = { uriHandler.openUri(googleMapsSearchUrl(origine)) }
                 )
+            }
+            val originPoints = remember(gem.id) { gem.origines.mapNotNull { geoPointForOrigin(it) } }
+            if (originPoints.isNotEmpty()) {
+                OriginsMap(
+                    points = originPoints,
+                    modifier = Modifier.padding(top = 8.dp),
+                    onMarkerClick = { point -> uriHandler.openUri(googleMapsSearchUrl(point.label)) }
+                )
+                ApproximateLocationCaption()
             }
         }
     }

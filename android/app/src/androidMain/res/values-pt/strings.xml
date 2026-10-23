@@ -34,6 +34,9 @@
     <string name="gemmologie_couleur_title">Cor</string>
     <string name="gemmologie_couleur_subtitle">O catálogo organizado por tonalidade: vermelho, azul, verde…</string>
     <string name="gemmologie_pays_title">País de origem</string>
+    <string name="pays_map_action">Ver o mapa</string>
+    <string name="map_approximate_location">Localização aproximada</string>
+    <string name="map_unavailable">Mapa indisponível neste aparelho</string>
     <string name="gemmologie_pays_subtitle">O catálogo organizado por proveniência geográfica.</string>
     <plurals name="gem_count">
         <item quantity="one">%1$d gema</item>

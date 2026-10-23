@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Map
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -36,8 +37,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import fr.gemsofrod.encyclopedie.R
+import fr.gemsofrod.encyclopedie.data.CountryCoordinates
 import fr.gemsofrod.encyclopedie.data.GemOrigins
+import fr.gemsofrod.encyclopedie.ui.components.ApproximateLocationCaption
 import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
+import fr.gemsofrod.encyclopedie.ui.components.OriginsMap
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 
 /**
@@ -46,7 +50,7 @@ import fr.gemsofrod.encyclopedie.ui.localizedLabel
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PaysListScreen(onPaysClick: (String) -> Unit, onBackClick: () -> Unit) {
+fun PaysListScreen(onPaysClick: (String) -> Unit, onMapClick: () -> Unit, onBackClick: () -> Unit) {
     val groups = GemOrigins.groups()
 
     Scaffold(
@@ -56,6 +60,11 @@ fun PaysListScreen(onPaysClick: (String) -> Unit, onBackClick: () -> Unit) {
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
+                    }
+                },
+                actions = {
+                    IconButton(onClick = onMapClick) {
+                        Icon(Icons.Filled.Map, contentDescription = stringResource(R.string.pays_map_action))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -136,6 +145,51 @@ private fun PaysRow(name: String, count: Int, onClick: () -> Unit) {
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
+        }
+    }
+}
+
+/**
+ * Vue carte de l'écran Pays : un repère par pays représenté dans le
+ * catalogue (centre approximatif, voir [CountryCoordinates]) ; appuyer sur
+ * un repère ouvre la liste des gemmes de ce pays, comme une ligne de
+ * [PaysListScreen].
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PaysMapScreen(onPaysClick: (String) -> Unit, onBackClick: () -> Unit) {
+    val countries = remember { GemOrigins.groups().map { (country, _) -> country } }
+    // GeoPoint.label est forcé au nom de pays non localisé (clé de
+    // GemOrigins), pas au nom affiché dans la liste : il sert ici de clé de
+    // retour pour la navigation (onPaysClick attend ce même nom de pays).
+    val points = remember(countries) {
+        countries.mapNotNull { country -> CountryCoordinates.of(country)?.copy(label = country) }
+    }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.gemmologie_pays_title)) },
+                navigationIcon = {
+                    IconButton(onClick = onBackClick) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back))
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background,
+                    titleContentColor = MaterialTheme.colorScheme.onBackground
+                )
+            )
+        },
+        containerColor = MaterialTheme.colorScheme.background
+    ) { padding ->
+        Column(modifier = Modifier.fillMaxSize().padding(padding).padding(16.dp)) {
+            OriginsMap(
+                points = points,
+                mapHeight = 520.dp,
+                onMarkerClick = { point -> onPaysClick(point.label) }
+            )
+            ApproximateLocationCaption()
         }
     }
 }
