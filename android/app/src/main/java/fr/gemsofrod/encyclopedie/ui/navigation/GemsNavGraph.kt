@@ -76,6 +76,7 @@ import fr.gemsofrod.encyclopedie.ui.screens.MeteoriteClassificationScreen
 import fr.gemsofrod.encyclopedie.ui.screens.MeteoriteDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.MeteoritesMenuScreen
 import fr.gemsofrod.encyclopedie.ui.screens.PaysListScreen
+import fr.gemsofrod.encyclopedie.ui.screens.PaysMapScreen
 import fr.gemsofrod.encyclopedie.ui.screens.QuizScreen
 import fr.gemsofrod.encyclopedie.ui.screens.NuancierScreen
 import fr.gemsofrod.encyclopedie.ui.screens.DiamondGradingScreen
@@ -113,6 +114,7 @@ private object Routes {
     const val COULEUR_LIST = "couleur_list"
     const val GEMS_LIST = "gems/{colorName}"
     const val PAYS_LIST = "pays_list"
+    const val PAYS_MAP = "pays_map"
     const val PAYS_DETAIL = "pays/{country}"
     const val ANALYSE = "analyse"
     const val COMPARER = "comparer"
@@ -660,6 +662,13 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         }
         composable(Routes.PAYS_LIST) {
             PaysListScreen(
+                onPaysClick = { country -> navController.navigate(Routes.paysDetail(country)) },
+                onMapClick = { navController.navigate(Routes.PAYS_MAP) },
+                onBackClick = { navController.popBackStack() }
+            )
+        }
+        composable(Routes.PAYS_MAP) {
+            PaysMapScreen(
                 onPaysClick = { country -> navController.navigate(Routes.paysDetail(country)) },
                 onBackClick = { navController.popBackStack() }
             )

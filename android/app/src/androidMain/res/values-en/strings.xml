@@ -34,6 +34,9 @@
     <string name="gemmologie_couleur_title">Color</string>
     <string name="gemmologie_couleur_subtitle">The catalog sorted by hue: red, blue, green…</string>
     <string name="gemmologie_pays_title">Country of Origin</string>
+    <string name="pays_map_action">View map</string>
+    <string name="map_approximate_location">Approximate location</string>
+    <string name="map_unavailable">Map unavailable on this device</string>
     <string name="gemmologie_pays_subtitle">The catalog sorted by geographic origin.</string>
     <plurals name="gem_count">
         <item quantity="one">%1$d gem</item>

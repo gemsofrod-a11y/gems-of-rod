@@ -34,6 +34,9 @@
     <string name="gemmologie_couleur_title">Kleur</string>
     <string name="gemmologie_couleur_subtitle">De catalogus ingedeeld per tint: rood, blauw, groen…</string>
     <string name="gemmologie_pays_title">Land van herkomst</string>
+    <string name="pays_map_action">Kaart bekijken</string>
+    <string name="map_approximate_location">Geschatte locatie</string>
+    <string name="map_unavailable">Kaart niet beschikbaar op dit apparaat</string>
     <string name="gemmologie_pays_subtitle">De catalogus ingedeeld per geografische herkomst.</string>
     <plurals name="gem_count">
         <item quantity="one">%1$d edelsteen</item>

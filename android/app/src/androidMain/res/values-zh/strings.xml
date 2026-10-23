@@ -34,6 +34,9 @@
     <string name="gemmologie_couleur_title">颜色</string>
     <string name="gemmologie_couleur_subtitle">按色调分类的目录：红色、蓝色、绿色……</string>
     <string name="gemmologie_pays_title">原产国</string>
+    <string name="pays_map_action">查看地图</string>
+    <string name="map_approximate_location">大致位置</string>
+    <string name="map_unavailable">此设备上地图不可用</string>
     <string name="gemmologie_pays_subtitle">按地理产地分类的目录。</string>
     <plurals name="gem_count">
         <item quantity="one">%1$d 颗宝石</item>
