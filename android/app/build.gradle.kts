@@ -15,10 +15,6 @@ val keystorePropertiesFile = rootProject.file("keystore.properties")
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(keystorePropertiesFile.inputStream())
 }
-// Malgré son nom (hérité de la signature), cette fonction lit n'importe
-// quelle valeur de keystore.properties (local, jamais commité) ou d'une
-// variable d'environnement (secret CI) — réutilisée ci-dessous pour la clé
-// Google Maps.
 fun signingProp(key: String): String? =
     keystoreProperties.getProperty(key) ?: System.getenv(key)
 
@@ -30,17 +26,8 @@ android {
         applicationId = "fr.gemsofrod.encyclopedie"
         minSdk = 26
         targetSdk = 36
-        versionCode = 190
-        versionName = "9.87"
-
-        // Carte des origines (Gemmologie > Pays, fiche d'une gemme) : clé à
-        // créer dans Google Cloud Console (API "Maps SDK for Android"), à
-        // placer dans keystore.properties (MAPS_API_KEY=..., jamais commité,
-        // voir keystore.properties.template) ou dans la variable
-        // d'environnement MAPS_API_KEY (secret CI pour android-release.yml).
-        // Une valeur vide désactive simplement l'affichage des tuiles de
-        // carte, sans faire échouer la compilation.
-        manifestPlaceholders["MAPS_API_KEY"] = signingProp("MAPS_API_KEY") ?: ""
+        versionCode = 191
+        versionName = "9.88"
     }
 
     signingConfigs {
@@ -173,10 +160,6 @@ kotlin {
                 // Génération d'étiquettes QR/code-barres pour le stock (pas de scan,
                 // seul le module "core" est nécessaire — pur Java, sans dépendance).
                 implementation("com.google.zxing:core:3.5.3")
-                // Carte interactive des origines (Gemmologie > Pays, fiche d'une
-                // gemme) : nécessite la clé Google Maps ci-dessus.
-                implementation("com.google.android.gms:play-services-maps:18.2.0")
-                implementation("com.google.maps.android:maps-compose:2.15.0")
             }
         }
 

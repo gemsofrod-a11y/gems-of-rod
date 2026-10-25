@@ -34,9 +34,6 @@
     <string name="gemmologie_couleur_title">Farbe</string>
     <string name="gemmologie_couleur_subtitle">Der Katalog nach Farbton geordnet: Rot, Blau, Grün…</string>
     <string name="gemmologie_pays_title">Herkunftsland</string>
-    <string name="pays_map_action">Karte anzeigen</string>
-    <string name="map_approximate_location">Ungefähre Position</string>
-    <string name="map_unavailable">Karte auf diesem Gerät nicht verfügbar</string>
     <string name="gemmologie_pays_subtitle">Der Katalog nach geografischer Herkunft geordnet.</string>
     <plurals name="gem_count">
         <item quantity="one">%1$d Edelstein</item>

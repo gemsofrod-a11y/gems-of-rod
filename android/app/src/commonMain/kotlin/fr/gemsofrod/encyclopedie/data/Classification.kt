@@ -54,10 +54,8 @@ object GemOrigins {
     )
 
     /** Pays d'une entrée d'origine (ex. "Sri Lanka (Ratnapura)" -> "Sri Lanka"),
-     * plusieurs pays si l'entrée en combine deux (ex. "Égypte / Libye").
-     * Public : réutilisé par la carte d'origines ([GeoCoordinates.kt]) pour
-     * retomber sur le repère pays quand aucune localité précise n'est reconnue. */
-    fun countriesOf(origin: String): List<String> =
+     * plusieurs pays si l'entrée en combine deux (ex. "Égypte / Libye"). */
+    private fun countriesOf(origin: String): List<String> =
         origin.substringBefore(" (").trim()
             .split(" / ")
             .map { countryAliases[it.trim()] ?: it.trim() }
