@@ -1435,6 +1435,13 @@ object GemTranslationsEn {
             particularites = "Its high porosity makes it particularly receptive to dyes, behind many of the turquoise or lapis lazuli imitations found on the market.",
             lithotherapie = "Howlite is reputed to calm a restless mind and promote more peaceful sleep."
         ),
+        "selenite" to GemTranslation(
+            nom = "Selenite",
+            descriptionCourte = "The translucent, pearly variety of gypsum, soft enough to scratch with a fingernail.",
+            descriptionLongue = "Selenite takes its name from Selene, the Greek goddess of the Moon, for its milky, pearly sheen. It is the transparent to translucent variety of gypsum, forming blade-like or fibrous crystals — the reference mineral for hardness 2 on the Mohs scale, soft enough to scratch with a fingernail. Mexico's Naica mine revealed its most spectacular form: the \"Cave of the Crystals,\" where selenite beams over 10 metres long grew over hundreds of thousands of years in a hot-water-saturated underground chamber.",
+            particularites = "Hardness 2 (the Mohs scale's reference mineral); slightly soluble in water, so never clean it with more than a dry wipe.",
+            lithotherapie = "Widely used in crystal healing to cleanse and recharge other stones, selenite is said to calm the mind and promote mental clarity."
+        ),
         "rhodizite" to GemTranslation(
             nom = "Rhodizite",
             descriptionCourte = "An ultra-rare borate, one of the hardest minerals after corundum.",

@@ -1435,6 +1435,13 @@ object GemTranslationsEs {
             particularites = "Su fuerte porosidad la hace especialmente receptiva a los tintes, origen de numerosas imitaciones de turquesa o de lapislázuli en el mercado.",
             lithotherapie = "Se dice que la howlita calma la mente agitada y favorece un sueño más sereno."
         ),
+        "selenite" to GemTranslation(
+            nom = "Selenita",
+            descriptionCourte = "La variedad translúcida y nacarada del yeso, tan blanda que se raya con la uña.",
+            descriptionLongue = "La selenita debe su nombre a Selene, la diosa griega de la Luna, por su brillo nacarado y lechoso. Es la variedad transparente a translúcida del yeso, en cristales laminares o fibrosos — el mineral de referencia del grado 2 en la escala de dureza de Mohs, lo bastante blando como para rayarse con la uña. La mina de Naica, en México, reveló su forma más espectacular: la «cueva de los cristales gigantes», donde vigas de selenita de más de 10 metros se formaron durante cientos de miles de años en una cámara subterránea saturada de agua caliente.",
+            particularites = "Dureza 2 (mineral de referencia de la escala de Mohs); ligeramente soluble en agua, nunca limpiar más allá de un paño seco.",
+            lithotherapie = "Muy utilizada en litoterapia para purificar y recargar otras piedras, la selenita se dice que calma la mente y favorece la claridad mental."
+        ),
         "rhodizite" to GemTranslation(
             nom = "Rodizita",
             descriptionCourte = "Un borato ultrarraro, uno de los minerales más duros después del corindón.",

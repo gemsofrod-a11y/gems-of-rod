@@ -1435,6 +1435,13 @@ object GemTranslationsNl {
             particularites = "De sterke porositeit maakt het bijzonder gevoelig voor verven, wat aan de basis ligt van talrijke imitaties van turkoois of lapis lazuli op de markt.",
             lithotherapie = "Howliet zou een onrustige geest kalmeren en een vrediger slaap bevorderen."
         ),
+        "selenite" to GemTranslation(
+            nom = "Seleniet",
+            descriptionCourte = "De doorschijnende, parelmoerachtige variëteit van gips, zo zacht dat ze met de vingernagel te krassen is.",
+            descriptionLongue = "Seleniet dankt zijn naam aan Selene, de Griekse maangodin, vanwege zijn melkachtige, parelmoerachtige glans. Het is de doorzichtige tot doorschijnende variëteit van gips, met bladvormige of vezelige kristallen — het referentiemineraal voor hardheid 2 op de schaal van Mohs, zacht genoeg om met de vingernagel te krassen. De Naica-mijn in Mexico onthulde zijn spectaculairste vorm: de \"grot van de reuzenkristallen\", waar selenietbalken van meer dan 10 meter zich honderdduizenden jaren lang vormden in een met heet water verzadigde ondergrondse kamer.",
+            particularites = "Hardheid 2 (referentiemineraal van de Mohs-schaal); licht oplosbaar in water, nooit meer dan droog afvegen.",
+            lithotherapie = "Veelvuldig gebruikt in kristalgenezing om andere stenen te zuiveren en op te laden; seleniet zou de geest kalmeren en mentale helderheid bevorderen."
+        ),
         "rhodizite" to GemTranslation(
             nom = "Rhodiziet",
             descriptionCourte = "Een uiterst zeldzaam boraat, een van de hardste mineralen na korund.",
