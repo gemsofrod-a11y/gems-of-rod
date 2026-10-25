@@ -2548,6 +2548,24 @@ object GemsRepository {
             rarete = GemRarete.COURANTE
         ),
         Gem(
+            id = "selenite",
+            nom = "Sélénite",
+            nomLatin = "Gypse (variété sélénite)",
+            famille = "Gypse (sulfate de calcium hydraté)",
+            couleur = GemColorCategory.INCOLORE,
+            descriptionCourte = "La variété translucide et nacrée du gypse, si tendre qu'elle se raye à l'ongle.",
+            descriptionLongue = "La sélénite tire son nom de Séléné, déesse grecque de la Lune, en référence à son éclat nacré et laiteux. C'est la variété transparente à translucide, en cristaux lamellaires ou fibreux, du gypse — le minéral de référence du degré 2 sur l'échelle de dureté de Mohs, assez tendre pour se rayer à l'ongle. La mine de Naica, au Mexique, en a révélé la forme la plus spectaculaire : la « grotte aux cristaux géants », où des poutres de sélénite dépassant 10 mètres se sont formées sur des centaines de milliers d'années dans une chambre souterraine saturée en eau chaude.",
+            formuleChimique = "CaSO₄ · 2H₂O",
+            systemeCristallin = "Monoclinique",
+            durete = "2",
+            indiceRefraction = "1,520 – 1,530",
+            origines = listOf("Mexique (mine de Naica, Chihuahua)", "États-Unis (Great Salt Plains, comté d'Alfalfa, Oklahoma — sélénite « sablier »)", "Maroc"),
+            particularites = "Dureté 2 (minéral de référence de l'échelle de Mohs) ; légèrement soluble dans l'eau, à ne jamais nettoyer au-delà d'un essuyage sec.",
+            lithotherapie = "Très utilisée en lithothérapie pour purifier et recharger les autres pierres, la sélénite est réputée apaiser l'esprit et favoriser la clarté mentale.",
+            prixCaratEur = "0,20 – 2 €/ct (vendue en spécimens ou objets polis, rarement taillée)",
+            rarete = GemRarete.COURANTE
+        ),
+        Gem(
             id = "rhodizite",
             nom = "Rhodizite",
             nomLatin = "Borate de césium et de béryllium",

@@ -1435,6 +1435,13 @@ object GemTranslationsDe {
             particularites = "Seine hohe Porosität macht ihn besonders aufnahmefähig für Farbstoffe, was auf dem Markt zu zahlreichen Türkis- oder Lapislazuli-Imitationen geführt hat.",
             lithotherapie = "Howlith soll einen unruhigen Geist beruhigen und einen erholsameren Schlaf fördern."
         ),
+        "selenite" to GemTranslation(
+            nom = "Selenit",
+            descriptionCourte = "Die durchscheinende, perlmuttartige Varietät des Gips, so weich, dass sie sich mit dem Fingernagel ritzen lässt.",
+            descriptionLongue = "Selenit verdankt seinen Namen Selene, der griechischen Mondgöttin, wegen seines milchig-perlmuttartigen Glanzes. Es ist die transparente bis durchscheinende Varietät des Gips, in blättrigen oder faserigen Kristallen — das Referenzmineral für die Härte 2 der Mohs-Skala, weich genug, um sich mit dem Fingernagel ritzen zu lassen. Die Mine von Naica in Mexiko brachte seine spektakulärste Form zutage: die „Höhle der Riesenkristalle“, in der über 10 Meter lange Selenitbalken über Hunderttausende von Jahren in einer heißwassergesättigten unterirdischen Kammer wuchsen.",
+            particularites = "Härte 2 (Referenzmineral der Mohs-Skala); leicht wasserlöslich, daher nie mehr als trocken abwischen.",
+            lithotherapie = "In der Kristallheilkunde häufig verwendet, um andere Steine zu reinigen und aufzuladen; Selenit soll den Geist beruhigen und die geistige Klarheit fördern."
+        ),
         "rhodizite" to GemTranslation(
             nom = "Rhodizit",
             descriptionCourte = "Ein extrem seltenes Borat, eines der härtesten Minerale nach dem Korund.",

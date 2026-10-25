@@ -1435,6 +1435,13 @@ object GemTranslationsZh {
             particularites = "其高孔隙率使其极易吸收染料，是市场上众多绿松石或青金石仿制品的成因。",
             lithotherapie = "白纹石据信能舒缓躁动的心绪，促进更为安稳的睡眠。"
         ),
+        "selenite" to GemTranslation(
+            nom = "透石膏",
+            descriptionCourte = "石膏的透明珍珠光泽变种，质地极软，指甲即可划伤。",
+            descriptionLongue = "透石膏得名于希腊月亮女神塞勒涅（Selene），因其乳白珍珠般的光泽而得名。它是石膏的透明至半透明变种，呈片状或纤维状晶体——是摩氏硬度表中硬度2的标准矿物，柔软到用指甲就能划伤。墨西哥纳伊卡矿（Naica）揭示了它最壮观的形态：「水晶洞」，洞内长达10余米的透石膏晶柱历经数十万年，在饱含热水的地下洞室中生长而成。",
+            particularites = "硬度2（摩氏硬度表标准矿物）；微溶于水，清洁时只能干擦，切勿用水。",
+            lithotherapie = "在水晶疗愈中被广泛用于净化和为其他石头充能，据称透石膏能安定心神、促进思维清晰。"
+        ),
         "rhodizite" to GemTranslation(
             nom = "红硼铍石",
             descriptionCourte = "一种极为稀有的硼酸盐矿物，是继刚玉之后硬度最高的矿物之一。",
