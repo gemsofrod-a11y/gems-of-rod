@@ -139,7 +139,7 @@ object GemTranslationsEn {
             lithotherapie = "Imperial topaz is said to promote personal success, generosity, and openness to others."
         ),
         "hessonite" to GemTranslation(
-            nom = "Hessonite",
+            nom = "Hessonite garnet",
             descriptionCourte = "Nicknamed the \"cinnamon stone\".",
             descriptionLongue = "A grossular garnet variety rich in iron and manganese, hessonite displays a warm orange color reminiscent of cinnamon syrup, with an internal shimmer effect (\"treacle effect\") due to its characteristic inclusions.",
             particularites = "A typical oily to honey-like appearance caused by internal inclusions.",

@@ -139,7 +139,7 @@ object GemTranslationsPt {
             lithotherapie = "O topázio imperial é reputado por favorecer o sucesso pessoal, a generosidade e a abertura aos outros."
         ),
         "hessonite" to GemTranslation(
-            nom = "Hessonita",
+            nom = "Granada hessonita",
             descriptionCourte = "Apelidada de «pedra da canela».",
             descriptionLongue = "Variedade de granada grossulária rica em ferro e manganês, a hessonita apresenta uma cor laranja quente evocativa de xarope de canela, com um efeito de cintilação interna («efeito melaço») devido às suas inclusões características.",
             particularites = "Um aspeto oleoso a amelado típico, causado pelas inclusões internas.",

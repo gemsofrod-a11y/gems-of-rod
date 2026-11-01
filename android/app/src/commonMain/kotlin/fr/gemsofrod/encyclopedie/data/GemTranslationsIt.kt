@@ -139,7 +139,7 @@ object GemTranslationsIt {
             lithotherapie = "Il topazio imperiale è ritenuto in grado di favorire la realizzazione personale, la generosità e l'apertura verso gli altri."
         ),
         "hessonite" to GemTranslation(
-            nom = "Essonite",
+            nom = "Granato essonite",
             descriptionCourte = "Soprannominata «pietra di cannella».",
             descriptionLongue = "Varietà di granato grossularia ricca di ferro e manganese, l'essonite presenta un colore arancione caldo che evoca lo sciroppo di cannella, con un effetto di chatoyance interna («treacle effect») dovuto alle sue inclusioni caratteristiche.",
             particularites = "Aspetto tipico oleoso-mielato dovuto alle inclusioni interne.",
