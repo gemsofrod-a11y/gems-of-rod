@@ -65,6 +65,8 @@ import fr.gemsofrod.encyclopedie.ui.components.FavoriteToggleButton
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
+import androidx.compose.foundation.clickable
+import fr.gemsofrod.encyclopedie.ui.components.FullscreenDrawablePhoto
 
 /** Identifiants des sous-catégories de la section Lithothérapie. */
 object LithotherapieSchemes {
@@ -643,6 +645,10 @@ private fun LithotherapieImageCard(credit: GemImageCredit) {
     val imagePainter = rememberSampledDrawablePainter(credit.drawableName, 220.dp) ?: return
 
     val caption = stringResource(if (credit.type == GemImageType.BRUTE) R.string.gem_photo_raw else R.string.gem_photo_cut_or_cabochon)
+    var showFullscreen by remember { mutableStateOf(false) }
+    if (showFullscreen) {
+        FullscreenDrawablePhoto(credit.drawableName, caption) { showFullscreen = false }
+    }
     Column(modifier = Modifier.width(220.dp)) {
         Image(
             painter = imagePainter,
@@ -652,6 +658,7 @@ private fun LithotherapieImageCard(credit: GemImageCredit) {
                 .fillMaxWidth()
                 .aspectRatio(1f)
                 .clip(RoundedCornerShape(16.dp))
+                .clickable { showFullscreen = true }
         )
         Text(
             text = caption,

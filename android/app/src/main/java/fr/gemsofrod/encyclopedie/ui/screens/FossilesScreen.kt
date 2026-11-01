@@ -68,6 +68,8 @@ import fr.gemsofrod.encyclopedie.ui.components.premiumCardBorder
 import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
+import androidx.compose.foundation.clickable
+import fr.gemsofrod.encyclopedie.ui.components.FullscreenDrawablePhoto
 
 /**
  * Écran d'entrée de la section Fossiles, distincte du catalogue Gemmologie et
@@ -521,6 +523,10 @@ private fun FossileImageCard(credit: GemImageCredit) {
     val imagePainter = rememberSampledDrawablePainter(credit.drawableName, 220.dp) ?: return
 
     val caption = stringResource(if (credit.type == GemImageType.BRUTE) R.string.gem_photo_raw else R.string.gem_photo_cut)
+    var showFullscreen by remember { mutableStateOf(false) }
+    if (showFullscreen) {
+        FullscreenDrawablePhoto(credit.drawableName, caption) { showFullscreen = false }
+    }
     Column(modifier = Modifier.width(220.dp)) {
         Image(
             painter = imagePainter,
@@ -530,6 +536,7 @@ private fun FossileImageCard(credit: GemImageCredit) {
                 .fillMaxWidth()
                 .aspectRatio(1f)
                 .clip(RoundedCornerShape(16.dp))
+                .clickable { showFullscreen = true }
         )
         Text(
             text = caption,

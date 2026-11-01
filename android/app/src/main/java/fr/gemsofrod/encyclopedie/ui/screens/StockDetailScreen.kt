@@ -70,6 +70,7 @@ import kotlinx.coroutines.withContext
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Locale
+import fr.gemsofrod.encyclopedie.ui.components.FullscreenBitmapPhoto
 
 private val displayDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE)
 
@@ -137,14 +138,24 @@ fun StockDetailScreen(
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
             if (bitmap != null) {
+                val imageBitmap = remember(bitmap) { bitmap.asImageBitmap() }
+                var showFullscreen by remember { mutableStateOf(false) }
+                if (showFullscreen) {
+                    // Redécodée plus grande que l'aperçu (320 dp) pour garder du
+                    // détail au zoom, sans charger la photo d'origine en entier.
+                    val fullBitmap = rememberStockPhotoBitmap(item.photoFileName, 800.dp)
+                    val fullImage = remember(fullBitmap) { fullBitmap?.asImageBitmap() } ?: imageBitmap
+                    FullscreenBitmapPhoto(fullImage, item.nom) { showFullscreen = false }
+                }
                 Image(
-                    bitmap = bitmap.asImageBitmap(),
+                    bitmap = imageBitmap,
                     contentDescription = item.nom,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(220.dp)
                         .clip(RoundedCornerShape(16.dp))
+                        .clickable { showFullscreen = true }
                 )
             }
 
