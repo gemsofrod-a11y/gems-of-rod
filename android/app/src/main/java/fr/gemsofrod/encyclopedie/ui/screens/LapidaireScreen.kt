@@ -70,6 +70,7 @@ import fr.gemsofrod.encyclopedie.ui.components.DropdownField
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
+import fr.gemsofrod.encyclopedie.ui.components.FullscreenDrawablePhoto
 
 /**
  * Section éditoriale dédiée au métier de lapidaire (taille des facettes) :
@@ -735,6 +736,10 @@ private fun MachineFicheCard(
 ) {
     val credit = LapidaireDiagrams.creditFor(machine.photoId)
     val painter = rememberSampledDrawablePainter(credit?.drawableName, 220.dp)
+    var showFullscreen by remember { mutableStateOf(false) }
+    if (showFullscreen && credit != null) {
+        FullscreenDrawablePhoto(credit.drawableName, machine.nom) { showFullscreen = false }
+    }
     Card(
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
@@ -749,6 +754,7 @@ private fun MachineFicheCard(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 4.dp)
+                        .clickable { showFullscreen = true }
                 )
             }
             Text(
@@ -809,6 +815,10 @@ private fun MachineFicheCard(
 private fun DiagramCard(diagram: LapidaireDiagram) {
     val credit = LapidaireDiagrams.creditFor(diagram.id)
     val painter = rememberSampledDrawablePainter(credit?.drawableName, 220.dp)
+    var showFullscreen by remember { mutableStateOf(false) }
+    if (showFullscreen && credit != null) {
+        FullscreenDrawablePhoto(credit.drawableName, diagram.legende) { showFullscreen = false }
+    }
     Card(
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
@@ -823,6 +833,7 @@ private fun DiagramCard(diagram: LapidaireDiagram) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 4.dp)
+                        .clickable { showFullscreen = true }
                 )
             }
             Text(

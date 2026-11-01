@@ -82,6 +82,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.ui.draw.alpha
 import java.text.NumberFormat
 import java.util.Locale
+import fr.gemsofrod.encyclopedie.ui.components.FullscreenDrawablePhoto
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
@@ -465,6 +466,10 @@ private fun GemImageCard(credit: GemImageCredit) {
             GemImageType.INCLUSION -> R.string.gem_photo_inclusion
         }
     )
+    var showFullscreen by remember { mutableStateOf(false) }
+    if (showFullscreen) {
+        FullscreenDrawablePhoto(credit.drawableName, caption) { showFullscreen = false }
+    }
     Column(modifier = Modifier.width(220.dp)) {
         Image(
             painter = imagePainter,
@@ -474,6 +479,7 @@ private fun GemImageCard(credit: GemImageCredit) {
                 .fillMaxWidth()
                 .aspectRatio(1f)
                 .clip(RoundedCornerShape(16.dp))
+                .clickable { showFullscreen = true }
                 .alpha(imageAlpha.value)
         )
         Text(
