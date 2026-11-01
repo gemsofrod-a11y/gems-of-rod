@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <title>Trading Or</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="instrument"><span class="dot">●</span> OR <span class="pair">XAU/USD</span></div>
+  </header>
+
+  <main>
+    <!-- Onglet Graphique -->
+    <section class="tab-panel" data-tab="chart">
+      <div class="price-block">
+        <button class="tip" data-tip="Cours actuel de l'once d'or en dollars, mis à jour toutes les quelques secondes. En dessous : variation depuis le début du graphique affiché, puis la source du cours (réel ou simulé si hors ligne).">ⓘ</button>
+        <div class="price-value" id="price-value">--</div>
+        <div class="price-change" id="price-change"></div>
+        <div class="badge" id="price-source">…</div>
+      </div>
+
+      <div class="panel chart-panel">
+        <div class="timeframes" id="timeframes">
+          <button data-tf="1m" class="active">1m</button>
+          <button data-tf="5m">5m</button>
+          <button data-tf="15m">15m</button>
+          <button data-tf="1h">1h</button>
+          <button data-tf="4h">4h</button>
+          <button data-tf="1d">1j</button>
+        </div>
+        <div class="ohlc-legend" id="ohlc-legend"></div>
+        <div id="price-chart" class="chart-container"></div>
+        <div class="badge chart-badge" id="chart-provider">…</div>
+      </div>
+
+      <button class="cta" id="cta-invest">Investir <span>↗</span></button>
+
+      <div class="panel" id="order-panel" hidden>
+        <h2>Passer un ordre <button class="tip" data-tip="Achetez ou vendez de l'or avec votre portefeuille virtuel, en indiquant soit un montant en dollars, soit une quantité en onces. L'ordre s'exécute immédiatement au cours affiché.">ⓘ</button></h2>
+        <form id="order-form">
+          <div class="row seg">
+            <label><input type="radio" name="side" value="buy" checked /> Acheter</label>
+            <label><input type="radio" name="side" value="sell" /> Vendre</label>
+          </div>
+          <div class="row">
+            <select id="order-mode">
+              <option value="amount">Montant (USD)</option>
+              <option value="qty">Quantité (oz)</option>
+            </select>
+            <input id="order-value" type="number" step="0.0001" min="0" placeholder="ex: 100" required />
+          </div>
+          <button type="submit" class="primary">Exécuter l'ordre</button>
+          <p class="error" id="order-error"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Onglet Portefeuille -->
+    <section class="tab-panel" data-tab="wallet" hidden>
+      <div class="hero-balance">
+        <div class="hero-label">Valeur totale <button class="tip" data-tip="Solde disponible + valeur de votre position en or au cours actuel. Le pourcentage en dessous se calcule par rapport aux 1000 $ de départ.">ⓘ</button></div>
+        <div class="hero-value" id="hero-equity">--</div>
+        <div class="hero-pnl" id="hero-pnl"></div>
+      </div>
+
+      <div class="panel">
+        <dl class="summary" id="wallet-summary"></dl>
+        <button class="ghost" id="reset-wallet">Réinitialiser à 1000 $</button>
+      </div>
+
+      <div class="panel">
+        <h2>Historique <span class="count-pill" id="trades-count">0</span> <button class="tip" data-tip="Vos 30 derniers achats/ventes, manuels ou passés par le bot. La colonne Gain/Perte compare chaque vente à l'achat qui l'a précédée.">ⓘ</button></h2>
+        <div class="table-wrap">
+          <table id="trades-table">
+            <thead><tr><th>Sens</th><th>Qté</th><th>Prix</th><th>Gain/Perte</th><th>Origine</th></tr></thead>
+            <tbody></tbody>
+          </table>
+          <p class="empty-state" id="trades-empty" hidden>Aucun trade pour l'instant. Investissez depuis l'onglet Graphique, ou laissez le bot s'en charger.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Onglet Bot -->
+    <section class="tab-panel" data-tab="bot" hidden>
+      <div class="panel">
+        <h2>Bot de trading <button class="tip" data-tip="Le bot surveille le cours et décide seul quand acheter puis revendre, selon la stratégie choisie. Il continue de tourner même si vous fermez l'app (notification persistante en bas de l'écran du téléphone).">ⓘ</button></h2>
+        <div class="bot-state" id="bot-state"><span class="dot"></span><span id="bot-state-label">Arrêté</span></div>
+        <p class="note">Appuyez sur « Démarrer » : le bot devient actif immédiatement (le badge ci-dessus passe au vert) et vérifie le cours toutes les quelques secondes. Il ne passera un ordre que lorsqu'un signal d'achat apparaît — ça peut prendre du temps, ce n'est pas un échec.</p>
+        <form id="bot-form">
+          <div class="row">
+            <select id="bot-strategy">
+              <option value="adaptive">Adaptative (recommandé)</option>
+              <option value="sma_crossover">Croisement de moyennes</option>
+              <option value="rsi_mean_reversion">RSI</option>
+            </select>
+            <button type="button" class="tip" data-tip="Adaptative : le bot choisit lui-même la meilleure stratégie selon les résultats déjà obtenus. Croisement de moyennes : achète quand la tendance courte dépasse la tendance longue. RSI : achète après une baisse jugée excessive, vend après une hausse jugée excessive.">ⓘ</button>
+          </div>
+          <p class="note" id="bot-adaptive-note">Choisit automatiquement, à partir des trades déjà passés, la stratégie qui a le mieux fonctionné récemment.</p>
+          <div class="row" id="bot-params-sma" style="display:none">
+            <label>Rapide <input id="sma-fast" type="number" value="3" min="2" /></label>
+            <label>Lente <input id="sma-slow" type="number" value="6" min="3" /></label>
+          </div>
+          <div class="row" id="bot-params-rsi" style="display:none">
+            <label>Période <input id="rsi-period" type="number" value="5" min="2" /></label>
+            <label>Survente <input id="rsi-oversold" type="number" value="45" /></label>
+            <label>Surachat <input id="rsi-overbought" type="number" value="55" /></label>
+          </div>
+
+          <div class="row">
+            <label class="full">Mise de départ (USD) <input id="bot-amount" type="number" value="50" min="1" step="1" /></label>
+            <button type="button" class="tip" data-tip="Montant sorti de votre portefeuille et confié au bot. L'objectif ci-dessous porte sur CETTE mise, pas sur le reste du portefeuille. Le bot n'investit jamais plus que cette mise. Il ajuste seul la taille de chaque trade (parfois 1 $, parfois plus) selon la conviction du signal — ce n'est pas un montant fixe à chaque fois.">ⓘ</button>
+          </div>
+          <div class="row">
+            <label class="full">Objectif pour cette mise (USD, optionnel) <input id="bot-target" type="number" min="0" step="1" placeholder="ex: 500" /></label>
+            <button type="button" class="tip" data-tip="Le bot s'arrête tout seul dès que la mise (cash encore réservé + position en cours) atteint ce montant — indépendamment de la valeur du reste du portefeuille. Ex : mise de 50 $, objectif 500 $ → le bot vise à multiplier par 10 les 50 $ confiés. Laissez vide pour qu'il continue indéfiniment (jusqu'à ce que vous l'arrêtiez).">ⓘ</button>
+          </div>
+
+          <button type="button" class="ghost" id="bot-advanced-toggle">Réglages avancés ▾</button>
+          <div id="bot-advanced" hidden>
+            <div class="row">
+              <label>Intervalle (s) <input id="bot-interval" type="number" value="5" min="2" /></label>
+              <label>Seuil protection (%) <input id="bot-floor" type="number" value="20" min="1" max="90" /></label>
+              <button type="button" class="tip" data-tip="Intervalle : fréquence à laquelle le bot vérifie le cours. Seuil de protection : le bot s'arrête si la mise tombe sous ce pourcentage de sa valeur de départ, pour limiter la perte sur cette mise.">ⓘ</button>
+            </div>
+            <div class="row">
+              <label>Take-profit (%) <input id="bot-tp" type="number" value="0.15" min="0.05" step="0.05" /></label>
+              <label>Stop-loss (%) <input id="bot-sl" type="number" value="0.1" min="0.05" step="0.05" /></label>
+              <button type="button" class="tip" data-tip="Take-profit : le bot revend dès que la position gagne ce pourcentage. Stop-loss : il revend aussi dès qu'elle perd ce pourcentage, pour couper la perte court. Réglages resserrés pour un rythme de trading rapide (mini-trades fréquents).">ⓘ</button>
+            </div>
+            <div class="row">
+              <label>Détention max (min) <input id="bot-hold" type="number" value="1" min="1" /></label>
+              <button type="button" class="tip" data-tip="Durée maximale pendant laquelle le bot garde une position ouverte avant de la revendre automatiquement, même sans avoir atteint le take-profit ou le stop-loss.">ⓘ</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <button type="submit" class="primary">Démarrer</button>
+            <button type="button" id="bot-stop" class="ghost">Arrêter</button>
+          </div>
+          <p class="status" id="bot-status"></p>
+          <p class="note">Le bot continue de tourner même app fermée (notification persistante). Aucun résultat n'est garanti.</p>
+        </form>
+      </div>
+    </section>
+
+    <footer class="disclaimer">
+      Portefeuille virtuel (1000 $ de départ) sur cours réel — aucun courtier, aucun argent réel. Pas un conseil en investissement.
+    </footer>
+  </main>
+
+  <nav class="tabbar" id="tabbar">
+    <button data-tab="chart" class="active">
+      <span class="icon">📈</span>Graphique
+    </button>
+    <button data-tab="wallet">
+      <span class="icon">💼</span>Portefeuille
+    </button>
+    <button data-tab="bot">
+      <span class="icon">🤖</span>Bot
+    </button>
+  </nav>
+
+  <script src="lightweight-charts.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
