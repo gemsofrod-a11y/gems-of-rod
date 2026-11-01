@@ -139,7 +139,7 @@ object GemTranslationsNl {
             lithotherapie = "Keizertopaas zou persoonlijk succes, vrijgevigheid en openheid naar anderen bevorderen."
         ),
         "hessonite" to GemTranslation(
-            nom = "Hessoniet",
+            nom = "Hessonietgranaat",
             descriptionCourte = "Bijgenaamd de \"kaneelsteen\".",
             descriptionLongue = "Een variëteit van grossulaargranaat, rijk aan ijzer en mangaan, vertoont hessoniet een warme oranje kleur die aan kaneelstroop doet denken, met een intern glinstereffect (\"treacle effect\") door zijn karakteristieke insluitsels.",
             particularites = "Een typisch olieachtig tot honingachtig uiterlijk, veroorzaakt door interne insluitsels.",

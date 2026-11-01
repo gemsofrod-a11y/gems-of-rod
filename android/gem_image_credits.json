@@ -1478,6 +1478,22 @@
       "source_url": "https://commons.wikimedia.org/wiki/File:Garnet-Group-Grossular-20680.jpg",
       "title": "File:Garnet-Group-Grossular-20680.jpg",
       "type": "BRUTE"
+    },
+    {
+      "artist": "Gems of Rod",
+      "license": "© Gems of Rod",
+      "resource_name": "gem_hessonite_facette_gemsofrod",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Grenat Hessonite taillé en poire sur apatites brutes — photo Gems of Rod",
+      "type": "FACETTEE"
+    },
+    {
+      "artist": "Gems of Rod",
+      "license": "© Gems of Rod",
+      "resource_name": "gem_hessonite_inclusion_gemsofrod",
+      "source_url": "https://gems-of-rod.fr",
+      "title": "Grenat Hessonite à la pince, intérieur mielleux typique — photo Gems of Rod",
+      "type": "INCLUSION"
     }
   ],
   "hiddenite": [

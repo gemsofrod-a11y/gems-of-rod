@@ -139,7 +139,7 @@ object GemTranslationsDe {
             lithotherapie = "Der Imperialtopas soll persönlichen Erfolg, Großzügigkeit und Offenheit gegenüber anderen fördern."
         ),
         "hessonite" to GemTranslation(
-            nom = "Hessonit",
+            nom = "Hessonit-Granat",
             descriptionCourte = "Auch „Zimtstein“ genannt.",
             descriptionLongue = "Als eisen- und manganreiche Varietät des Grossular-Granats zeigt Hessonit eine warme orangefarbene, an Zimtsirup erinnernde Farbe mit einem inneren Schillereffekt (dem sogenannten „Treacle-Effekt“), der auf seine charakteristischen Einschlüsse zurückzuführen ist.",
             particularites = "Typisch öliges bis honigartiges Erscheinungsbild aufgrund innerer Einschlüsse.",

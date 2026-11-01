@@ -340,7 +340,7 @@ object GemsRepository {
         ),
         Gem(
             id = "hessonite",
-            nom = "Hessonite",
+            nom = "Grenat Hessonite",
             nomLatin = "Grenat grossulaire (variété orangée)",
             famille = "Grenat (grossulaire)",
             couleur = GemColorCategory.ORANGE,

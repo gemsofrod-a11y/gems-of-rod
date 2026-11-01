@@ -139,7 +139,7 @@ object GemTranslationsEs {
             lithotherapie = "Se dice que el topacio imperial favorece el éxito personal, la generosidad y la apertura hacia los demás."
         ),
         "hessonite" to GemTranslation(
-            nom = "Hesonita",
+            nom = "Granate hesonita",
             descriptionCourte = "Apodada la «piedra de canela».",
             descriptionLongue = "Variedad de granate grosularia rica en hierro y manganeso, la hesonita presenta un color anaranjado cálido que evoca el jarabe de canela, con un efecto de tornasolado interno («treacle effect») debido a sus inclusiones características.",
             particularites = "Aspecto aceitoso a amielado típico debido a las inclusiones internas.",
