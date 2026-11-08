@@ -34,6 +34,7 @@ object GemDetailsRepository {
         putAll(GemDetailsLot12.data)
         putAll(GemDetailsLot13.data)
         putAll(GemDetailsLot14.data)
+        putAll(GemDetailsLot15.data)
     }
 
     /** Rubriques dans la langue demandée, en français à défaut, ou null. */
