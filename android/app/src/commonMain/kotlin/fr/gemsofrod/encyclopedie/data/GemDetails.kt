@@ -21,6 +21,7 @@ data class GemDetails(
 object GemDetailsRepository {
     private val byGem: Map<String, Map<String, GemDetails>> = buildMap {
         putAll(GemDetailsLot01.data)
+        putAll(GemDetailsLot02.data)
     }
 
     /** Rubriques dans la langue demandée, en français à défaut, ou null. */
