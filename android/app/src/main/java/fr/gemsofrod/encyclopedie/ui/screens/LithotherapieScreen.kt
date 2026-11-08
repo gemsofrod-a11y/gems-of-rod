@@ -64,6 +64,7 @@ import fr.gemsofrod.encyclopedie.ui.components.CatalogSearchField
 import fr.gemsofrod.encyclopedie.ui.components.FavoriteToggleButton
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
+import fr.gemsofrod.encyclopedie.ui.localizedGemDetails
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
 import androidx.compose.foundation.clickable
 import fr.gemsofrod.encyclopedie.ui.components.FullscreenDrawablePhoto
@@ -598,6 +599,29 @@ fun LithotherapieDetailScreen(
                         style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.onSurface
                     )
+                }
+            }
+
+            val details = localizedGemDetails(gem.id)
+            if (details != null) {
+                Card(
+                    shape = RoundedCornerShape(16.dp),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                        Text(
+                            text = stringResource(R.string.litho_details_title),
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                        Text(
+                            text = details.lithotherapie,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                    }
                 }
             }
 
