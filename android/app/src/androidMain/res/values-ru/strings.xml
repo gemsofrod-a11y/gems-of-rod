@@ -92,6 +92,10 @@
     <string name="create_certificate_button">Создать сертификат</string>
     <string name="particularites_title">Особенности</string>
     <string name="inclusions_title">Типичные включения</string>
+    <string name="gem_details_formation_title">Геологическое происхождение</string>
+    <string name="gem_details_crystallography_title">Кристаллография</string>
+    <string name="gem_details_deposits_title">Месторождения подробно</string>
+    <string name="litho_details_title">Традиции и уход</string>
     <string name="origins_title">Месторождения и регионы происхождения</string>
     <string name="origins_hint">Нажмите на место, чтобы открыть его в Google Maps.</string>
     <string name="share_chooser_title">Поделиться карточкой</string>

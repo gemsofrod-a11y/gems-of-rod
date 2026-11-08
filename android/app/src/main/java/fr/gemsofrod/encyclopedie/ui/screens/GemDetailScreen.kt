@@ -75,6 +75,7 @@ import fr.gemsofrod.encyclopedie.ui.components.FavoriteToggleButton
 import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localized
 import fr.gemsofrod.encyclopedie.ui.localizedInclusions
+import fr.gemsofrod.encyclopedie.ui.localizedGemDetails
 import fr.gemsofrod.encyclopedie.ui.localizedLabel
 import fr.gemsofrod.encyclopedie.ui.rememberSampledDrawablePainter
 import androidx.compose.animation.core.Animatable
@@ -289,6 +290,12 @@ private fun GemDetailBody(gem: Gem, onCertificateClick: () -> Unit) {
             )
         }
 
+        val details = localizedGemDetails(gem.id)
+        if (details != null) {
+            DetailTextSection(stringResource(R.string.gem_details_formation_title), details.formation)
+            DetailTextSection(stringResource(R.string.gem_details_crystallography_title), details.cristallographie)
+        }
+
         val inclusions = localizedInclusions(gem.id)
         if (!inclusions.isNullOrBlank()) {
             Column {
@@ -333,6 +340,27 @@ private fun GemDetailBody(gem: Gem, onCertificateClick: () -> Unit) {
                 )
             }
         }
+
+        if (details != null) {
+            DetailTextSection(stringResource(R.string.gem_details_deposits_title), details.gisements)
+        }
+    }
+}
+
+@Composable
+private fun DetailTextSection(title: String, text: String) {
+    Column {
+        Text(
+            text = title,
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.SemiBold,
+            color = MaterialTheme.colorScheme.onBackground
+        )
+        Text(
+            text = text,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
     }
 }
 

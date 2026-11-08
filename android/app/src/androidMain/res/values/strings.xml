@@ -92,6 +92,10 @@
     <string name="create_certificate_button">Créer un certificat</string>
     <string name="particularites_title">Particularités</string>
     <string name="inclusions_title">Inclusions typiques</string>
+    <string name="gem_details_formation_title">Formation géologique</string>
+    <string name="gem_details_crystallography_title">Cristallographie</string>
+    <string name="gem_details_deposits_title">Gisements en détail</string>
+    <string name="litho_details_title">Traditions et entretien</string>
     <string name="origins_title">Mines et régions d\'origine</string>
     <string name="origins_hint">Touchez un lieu pour l\'ouvrir dans Google Maps.</string>
     <string name="share_chooser_title">Partager la fiche</string>

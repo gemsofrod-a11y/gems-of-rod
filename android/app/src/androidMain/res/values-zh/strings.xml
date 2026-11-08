@@ -92,6 +92,10 @@
     <string name="create_certificate_button">创建证书</string>
     <string name="particularites_title">特殊性状</string>
     <string name="inclusions_title">典型内含物</string>
+    <string name="gem_details_formation_title">地质成因</string>
+    <string name="gem_details_crystallography_title">晶体学</string>
+    <string name="gem_details_deposits_title">产地详解</string>
+    <string name="litho_details_title">传统与养护</string>
     <string name="origins_title">矿区与产地</string>
     <string name="origins_hint">点击一个地点即可在 Google 地图中打开。</string>
     <string name="share_chooser_title">分享卡片</string>
