@@ -28,6 +28,7 @@ object CollectionDetailsRepository {
         putAll(CoquillageDetailsLot03.data)
         putAll(CoquillageDetailsLot04.data)
         putAll(CoquillageDetailsLot05.data)
+        putAll(MeteoriteDetailsLot01.data)
     }
 
     fun detailsFor(id: String, languageCode: String): GemDetails? {
