@@ -19,6 +19,7 @@ object CollectionDetailsRepository {
     private val byId: Map<String, Map<String, GemDetails>> = buildMap {
         putAll(FossileDetailsLot01.data)
         putAll(FossileDetailsLot02.data)
+        putAll(FossileDetailsLot03.data)
     }
 
     fun detailsFor(id: String, languageCode: String): GemDetails? {
