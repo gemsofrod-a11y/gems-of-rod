@@ -501,6 +501,8 @@ private fun MeteoriteDetailBody(meteorite: Meteorite) {
                 FicheRow(stringResource(R.string.meteorite_fiche_prix), meteorite.prixApproxGramme)
             }
         }
+
+        CollectionDetailsSections(meteorite.id)
     }
 }
 

@@ -505,6 +505,8 @@ private fun FossileDetailBody(fossile: Fossile) {
                 FossileFicheRow(stringResource(R.string.fossile_fiche_prix), fossile.prixApproxGramme)
             }
         }
+
+        CollectionDetailsSections(fossile.id)
     }
 }
 

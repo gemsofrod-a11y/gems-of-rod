@@ -499,6 +499,8 @@ private fun CoquillageDetailBody(coquillage: Coquillage) {
                 CoquillageFicheRow(stringResource(R.string.coquillage_fiche_prix), coquillage.prixApprox)
             }
         }
+
+        CollectionDetailsSections(coquillage.id)
     }
 }
 

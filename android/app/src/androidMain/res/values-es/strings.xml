@@ -96,6 +96,10 @@
     <string name="gem_details_crystallography_title">Cristalografía</string>
     <string name="gem_details_deposits_title">Yacimientos en detalle</string>
     <string name="litho_details_title">Tradiciones y cuidados</string>
+    <string name="collection_details_origin_title">Formación y origen</string>
+    <string name="collection_details_structure_title">Estructura y composición</string>
+    <string name="collection_details_provenance_title">Procedencia en detalle</string>
+    <string name="collection_details_traditions_title">Tradiciones y litoterapia</string>
     <string name="origins_title">Minas y regiones de origen</string>
     <string name="origins_hint">Toca un lugar para abrirlo en Google Maps.</string>
     <string name="share_chooser_title">Compartir la ficha</string>
