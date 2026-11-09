@@ -6,6 +6,7 @@ import fr.gemsofrod.encyclopedie.data.Association
 import fr.gemsofrod.encyclopedie.data.AssociationLocalization
 import fr.gemsofrod.encyclopedie.data.Coquillage
 import fr.gemsofrod.encyclopedie.data.CoquillageLocalization
+import fr.gemsofrod.encyclopedie.data.CollectionDetailsRepository
 import fr.gemsofrod.encyclopedie.data.Fossile
 import fr.gemsofrod.encyclopedie.data.FossileLocalization
 import fr.gemsofrod.encyclopedie.data.Gem
@@ -31,6 +32,16 @@ import fr.gemsofrod.encyclopedie.data.MeteoriteLocalization
 fun localizedGemDetails(gemId: String): GemDetails? {
     val languageCode = LocalConfiguration.current.locales[0].language
     return GemDetailsRepository.detailsFor(gemId, languageCode)
+}
+
+/**
+ * Rubriques approfondies d'une fiche fossile, coquillage ou météorite dans la
+ * langue d'interface actuelle, ou null si la fiche n'a pas été enrichie.
+ */
+@Composable
+fun localizedCollectionDetails(id: String): GemDetails? {
+    val languageCode = LocalConfiguration.current.locales[0].language
+    return CollectionDetailsRepository.detailsFor(id, languageCode)
 }
 
 @Composable

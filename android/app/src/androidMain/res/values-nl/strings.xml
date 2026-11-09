@@ -96,6 +96,10 @@
     <string name="gem_details_crystallography_title">Kristallografie</string>
     <string name="gem_details_deposits_title">Afzettingen in detail</string>
     <string name="litho_details_title">Tradities en verzorging</string>
+    <string name="collection_details_origin_title">Ontstaan en oorsprong</string>
+    <string name="collection_details_structure_title">Structuur en samenstelling</string>
+    <string name="collection_details_provenance_title">Herkomst in detail</string>
+    <string name="collection_details_traditions_title">Tradities en edelsteentherapie</string>
     <string name="origins_title">Mijnen en herkomstregio\'s</string>
     <string name="origins_hint">Tik op een plaats om deze in Google Maps te openen.</string>
     <string name="share_chooser_title">Fiche delen</string>

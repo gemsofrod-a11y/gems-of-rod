@@ -96,6 +96,10 @@
     <string name="gem_details_crystallography_title">Кристаллография</string>
     <string name="gem_details_deposits_title">Месторождения подробно</string>
     <string name="litho_details_title">Традиции и уход</string>
+    <string name="collection_details_origin_title">Образование и происхождение</string>
+    <string name="collection_details_structure_title">Строение и состав</string>
+    <string name="collection_details_provenance_title">Происхождение подробно</string>
+    <string name="collection_details_traditions_title">Традиции и литотерапия</string>
     <string name="origins_title">Месторождения и регионы происхождения</string>
     <string name="origins_hint">Нажмите на место, чтобы открыть его в Google Maps.</string>
     <string name="share_chooser_title">Поделиться карточкой</string>
