@@ -95,6 +95,7 @@
     <string name="gem_details_formation_title">地质成因</string>
     <string name="gem_details_crystallography_title">晶体学</string>
     <string name="gem_details_deposits_title">产地详解</string>
+    <string name="gem_details_varieties_title">品种</string>
     <string name="litho_details_title">传统与养护</string>
     <string name="collection_details_origin_title">形成与起源</string>
     <string name="collection_details_structure_title">结构与成分</string>

@@ -804,6 +804,13 @@ object GemTranslationsIt {
             particularites = "Quasi sempre opaca e lavorata a cabochon; le pietre sfaccettate trasparenti sono rare.",
             lithotherapie = "La tulite è ritenuta ravvivare la gioia e la vitalità affettiva, un sostegno per ritrovare le proprie emozioni positive."
         ),
+        "rubis-zoisite" to GemTranslation(
+            nom = "Rubino in zoisite",
+            descriptionCourte = "Roccia verde di zoisite costellata di cristalli di rubino, bordati di nero.",
+            descriptionLongue = "Il rubino in zoisite, detto anche anyolite (dal masai «anyoli», verde), è una roccia metamorfica in cui cristalli di rubino rosso rosato, in genere opachi, sono inglobati in una zoisite verde vivo e spesso orlati di orneblenda nera. Scoperto nel 1954 vicino a Longido, in Tanzania, offre uno dei più bei contrasti di colori complementari del mondo minerale; si lavora in cabochon, sfere, sculture e oggetti d'arte.",
+            particularites = "I rubini, troppo opachi e fratturati, non si sfaccettano quasi mai; la loro durezza (9), molto superiore a quella della zoisite (6–7), li lascia spesso in leggero rilievo alla lucidatura. Da distinguere dal rubino in fuchsite dell'India, su fondo di mica verde più tenera, e dal rubino in cianite, su fondo blu.",
+            lithotherapie = "Si dice che il rubino in zoisite unisca la passione del rubino alla crescita della zoisite: gli si attribuisce il potere di ravvivare l'energia vitale, sostenere la creatività e accordare il cuore e l'azione."
+        ),
         "rhodonite" to GemTranslation(
             nom = "Rodonite",
             descriptionCourte = "Un rosa profondo venato di nero manganesifero.",
@@ -1170,7 +1177,7 @@ object GemTranslationsIt {
             nom = "Ossidiana",
             descriptionCourte = "Vetro naturale dalla frattura tagliente.",
             descriptionLongue = "Formata dal rapido raffreddamento di lava ricca di silice, l'ossidiana è un vetro vulcanico amorfo. La sua frattura concoide estremamente tagliente ne ha fatto uno strumento d'elezione fin dalla preistoria, in particolare per punte di frecce e lame.",
-            particularites = "Alcune varietà presentano un effetto cangiante dorato o iridescente (ossidiana arcobaleno).",
+            particularites = "Numerose varietà a seconda delle inclusioni: nera, fiocco di neve, mogano, dorata, argentata, arcobaleno, di fuoco, velluto, verde e lacrime apache. Le «ossidiane» blu o verde vivo trasparenti sono quasi sempre vetro artificiale.",
             lithotherapie = "L'ossidiana è ritenuta offrire una potente protezione, agendo come un vero e proprio scudo psichico, rivelando al contempo le verità nascoste e favorendo una profonda trasformazione interiore."
         ),
         "rubis-etoile" to GemTranslation(

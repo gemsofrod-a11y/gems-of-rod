@@ -804,6 +804,13 @@ object GemTranslationsZh {
             particularites = "几乎总是不透明并加工成凸圆面；透明的刻面成品十分罕见。",
             lithotherapie = "粉红黝帘石据信能重燃喜悦与情感活力，有助于重新连结积极的情绪。"
         ),
+        "rubis-zoisite" to GemTranslation(
+            nom = "红宝石黝帘石",
+            descriptionCourte = "绿色黝帘石岩中点缀着红宝石晶体，周围镶着黑边。",
+            descriptionLongue = "红宝石黝帘石又称安约利石（源自马赛语“anyoli”，意为绿色），是一种变质岩：粉红至红色、通常不透明的红宝石晶体嵌在鲜绿色的黝帘石中，周围常环绕黑色角闪石。1954年在坦桑尼亚隆吉多附近被发现，呈现出矿物世界中最美的互补色对比之一；常被加工成弧面石、圆球、雕件和艺术摆件。",
+            particularites = "其中的红宝石过于不透明且多裂隙，几乎从不刻面；它的硬度（9）远高于黝帘石（6至7），抛光后常微微凸起。需与印度的红宝石铬云母（底色为较软的绿色云母）以及底色为蓝色的红宝石蓝晶石相区分。",
+            lithotherapie = "据说红宝石黝帘石融合了红宝石的热情与黝帘石的成长之力：人们认为它能重燃生命能量、支持创造力，并让内心与行动协调一致。"
+        ),
         "rhodonite" to GemTranslation(
             nom = "蔷薇辉石",
             descriptionCourte = "浓郁的粉红色，被黑色锰质脉纹穿插。",
@@ -1170,7 +1177,7 @@ object GemTranslationsZh {
             nom = "黑曜石",
             descriptionCourte = "断口锋利的天然玻璃。",
             descriptionLongue = "黑曜石由富含二氧化硅的熔岩快速冷却形成，是一种非晶质火山玻璃。其极为锋利的贝壳状断口使其自史前时代起便成为制作工具的首选材料，尤其用于箭头与刀刃。",
-            particularites = "部分品种呈现出金色或彩虹般的闪光效果（彩虹黑曜石）。",
+            particularites = "因包裹体不同而有众多品种：黑色、雪花、红褐（桃花心木）、金曜石、银曜石、彩虹、火黑曜石、天鹅绒、绿色及阿帕奇之泪。透明的蓝色或鲜绿色“黑曜石”几乎都是人造玻璃。",
             lithotherapie = "黑曜石据信能提供强大的保护，如同真正的心灵防护屏障，同时揭示隐藏的真相，促进深层的内在转变。"
         ),
         "rubis-etoile" to GemTranslation(

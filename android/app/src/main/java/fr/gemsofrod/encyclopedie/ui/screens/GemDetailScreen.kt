@@ -294,6 +294,9 @@ private fun GemDetailBody(gem: Gem, onCertificateClick: () -> Unit) {
         if (details != null) {
             DetailTextSection(stringResource(R.string.gem_details_formation_title), details.formation)
             DetailTextSection(stringResource(R.string.gem_details_crystallography_title), details.cristallographie)
+            if (details.varietes.isNotBlank()) {
+                DetailTextSection(stringResource(R.string.gem_details_varieties_title), details.varietes)
+            }
         }
 
         val inclusions = localizedInclusions(gem.id)

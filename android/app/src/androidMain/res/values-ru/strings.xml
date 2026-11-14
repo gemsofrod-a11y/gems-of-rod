@@ -95,6 +95,7 @@
     <string name="gem_details_formation_title">Геологическое происхождение</string>
     <string name="gem_details_crystallography_title">Кристаллография</string>
     <string name="gem_details_deposits_title">Месторождения подробно</string>
+    <string name="gem_details_varieties_title">Разновидности</string>
     <string name="litho_details_title">Традиции и уход</string>
     <string name="collection_details_origin_title">Образование и происхождение</string>
     <string name="collection_details_structure_title">Строение и состав</string>

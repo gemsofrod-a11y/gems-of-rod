@@ -804,6 +804,13 @@ object GemTranslationsNl {
             particularites = "Vrijwel altijd ondoorzichtig en gevormd als cabochon; transparante geslepen stenen zijn zeldzaam.",
             lithotherapie = "Thuliet zou vreugde en emotionele vitaliteit doen herleven, een steun om weer contact te maken met positieve emoties."
         ),
+        "rubis-zoisite" to GemTranslation(
+            nom = "Robijn-zoïsiet",
+            descriptionCourte = "Groen zoïsietgesteente bezaaid met robijnkristallen, zwart omrand.",
+            descriptionLongue = "Robijn-zoïsiet, ook anyoliet genoemd (van het Masai „anyoli”, groen), is een metamorf gesteente waarin roze-rode, meestal ondoorzichtige robijnkristallen in felgroen zoïsiet zitten, vaak omzoomd door zwarte hoornblende. In 1954 ontdekt bij Longido in Tanzania, biedt het een van de mooiste contrasten van complementaire kleuren in de mineralenwereld; het wordt verwerkt tot cabochons, bollen, beeldjes en kunstvoorwerpen.",
+            particularites = "De robijnen zijn te ondoorzichtig en gebarsten om gefacetteerd te worden; hun hardheid (9), veel hoger dan die van zoïsiet (6 tot 7), laat ze na het polijsten vaak licht in reliëf staan. Te onderscheiden van Indiaas robijn-fuchsiet, met een zachtere groene micagrond, en van robijn-kyaniet, met een blauwe grond.",
+            lithotherapie = "Robijn-zoïsiet zou de passie van robijn verenigen met de groei van zoïsiet: men schrijft hem toe de levensenergie te doen opleven, de creativiteit te steunen en hart en daad met elkaar in harmonie te brengen."
+        ),
         "rhodonite" to GemTranslation(
             nom = "Rhodoniet",
             descriptionCourte = "Een diep roze geaderd met zwart mangaan.",
@@ -1170,7 +1177,7 @@ object GemTranslationsNl {
             nom = "Obsidiaan",
             descriptionCourte = "Natuurlijk glas met een scherpe breuk.",
             descriptionLongue = "Gevormd door de snelle afkoeling van silicarijke lava, is obsidiaan een amorf vulkanisch glas. De uiterst scherpe schelpvormige breuk maakte er al sinds de prehistorie een gereedschap van eerste keuze van, met name voor pijlpunten en messen.",
-            particularites = "Sommige variëteiten vertonen een gouden of iriserende chatoyance (regenboogobsidiaan).",
+            particularites = "Talrijke variëteiten afhankelijk van de insluitsels: zwart, sneeuwvlok, mahonie, goud, zilver, regenboog, vuur, fluweel, groen en apachetranen. Doorzichtige blauwe of felgroene „obsidianen” zijn bijna altijd kunstmatig glas.",
             lithotherapie = "Obsidiaan zou een krachtige bescherming bieden, als een waar psychisch schild, en tegelijk verborgen waarheden onthullen en een diepe innerlijke transformatie bevorderen."
         ),
         "rubis-etoile" to GemTranslation(
