@@ -735,6 +735,9 @@
     <string name="ring_sim_pdf_number">Simulation Nr. %1$s</string>
     <string name="ring_sim_pdf_footer">Unverbindliche Simulation: ein Gestaltungswerkzeug, kein endgültiges Angebot. Schematische Darstellung; Maße und Preise nach Auswahl der Steine zu bestätigen.</string>
     <string name="ring_sim_tagline">Edelsteine &amp; außergewöhnlicher Schmuck</string>
+    <string name="ring_3d_hint">Drehen Sie den Ring mit dem Finger, um ihn von allen Seiten zu sehen.</string>
+    <string name="ring_sim_sheet_title">Technisches Datenblatt</string>
+    <string name="ring_sim_sheet_preparing">3D-Datenblatt wird vorbereitet…</string>
     <string name="ring_summary_solo">%1$s im %2$s-Schliff (%3$s-Fassung) in %4$s, Solitär, ohne Pavé.</string>
     <string name="ring_summary_with_cote">%1$s im %2$s-Schliff (%3$s-Fassung) in %4$s, pavégefasst mit %5$d %6$s (%7$s-Schliff, %8$s-Fassung).</string>
 

@@ -735,6 +735,9 @@
     <string name="ring_sim_pdf_number">Simulación n.º %1$s</string>
     <string name="ring_sim_pdf_footer">Simulación no contractual: una herramienta de composición, no un presupuesto definitivo. Representación esquemática; dimensiones y precios por confirmar tras elegir las piedras.</string>
     <string name="ring_sim_tagline">Piedras preciosas y joyas excepcionales</string>
+    <string name="ring_3d_hint">Gire el anillo con el dedo para verlo desde todos los ángulos.</string>
+    <string name="ring_sim_sheet_title">Ficha técnica</string>
+    <string name="ring_sim_sheet_preparing">Preparando la ficha 3D…</string>
     <string name="ring_summary_solo">%1$s talla %2$s (engaste %3$s) en %4$s, solitario, sin pavé.</string>
     <string name="ring_summary_with_cote">%1$s talla %2$s (engaste %3$s) en %4$s, pavé de %5$d %6$s (talla %7$s, engaste %8$s).</string>
 

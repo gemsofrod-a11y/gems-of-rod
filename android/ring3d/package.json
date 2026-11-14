@@ -1,0 +1,12 @@
+{
+  "name": "gems-of-rod-ring3d",
+  "private": true,
+  "description": "Moteur 3D du compositeur de bague, empaqueté dans app/src/androidMain/assets/ring3d/ring3d.js",
+  "scripts": {
+    "build": "esbuild src/main.js --bundle --minify --format=iife --legal-comments=inline --target=es2020 --outfile=../app/src/androidMain/assets/ring3d/ring3d.js"
+  },
+  "devDependencies": {
+    "esbuild": "0.24.0",
+    "three": "0.169.0"
+  }
+}

@@ -735,6 +735,9 @@
     <string name="ring_sim_pdf_number">Simulation no. %1$s</string>
     <string name="ring_sim_pdf_footer">Non-binding simulation: a composition tool, not a final quote. Schematic rendering; dimensions and prices to be confirmed once the stones are chosen.</string>
     <string name="ring_sim_tagline">Precious stones &amp; exceptional jewellery</string>
+    <string name="ring_3d_hint">Turn the ring with your finger to see it from every angle.</string>
+    <string name="ring_sim_sheet_title">Technical sheet</string>
+    <string name="ring_sim_sheet_preparing">Preparing the 3D sheet…</string>
     <string name="ring_summary_solo">%1$s %2$s cut (%3$s setting) in %4$s, solitaire, no pavé.</string>
     <string name="ring_summary_with_cote">%1$s %2$s cut (%3$s setting) in %4$s, paved with %5$d %6$s (%7$s cut, %8$s setting).</string>
 
