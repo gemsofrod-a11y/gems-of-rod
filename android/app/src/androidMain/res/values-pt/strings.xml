@@ -735,6 +735,9 @@
     <string name="ring_sim_pdf_number">Simulação n.º %1$s</string>
     <string name="ring_sim_pdf_footer">Simulação não contratual: uma ferramenta de composição, não um orçamento definitivo. Representação esquemática; dimensões e preços a confirmar após a escolha das pedras.</string>
     <string name="ring_sim_tagline">Pedras preciosas e joias de exceção</string>
+    <string name="ring_3d_hint">Rode o anel com o dedo para o ver de todos os ângulos.</string>
+    <string name="ring_sim_sheet_title">Ficha técnica</string>
+    <string name="ring_sim_sheet_preparing">A preparar a ficha 3D…</string>
     <string name="ring_summary_solo">%1$s lapidação %2$s (engaste %3$s) em %4$s, solitário, sem pavê.</string>
     <string name="ring_summary_with_cote">%1$s lapidação %2$s (engaste %3$s) em %4$s, pavê com %5$d %6$s (lapidação %7$s, engaste %8$s).</string>
 

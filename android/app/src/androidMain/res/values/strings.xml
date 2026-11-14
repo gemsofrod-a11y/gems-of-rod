@@ -735,6 +735,9 @@
     <string name="ring_sim_pdf_number">Simulation n° %1$s</string>
     <string name="ring_sim_pdf_footer">Simulation non contractuelle : un outil de composition, pas un devis définitif. Rendu schématique ; dimensions et prix à confirmer après le choix des pierres.</string>
     <string name="ring_sim_tagline">Pierres précieuses &amp; bijoux d\'exception</string>
+    <string name="ring_3d_hint">Faites tourner la bague du doigt pour la voir sous tous les angles.</string>
+    <string name="ring_sim_sheet_title">Fiche technique</string>
+    <string name="ring_sim_sheet_preparing">Préparation de la fiche 3D…</string>
     <string name="ring_summary_solo">%1$s taille %2$s (serti %3$s) en monture %4$s, solitaire, sans pavage.</string>
     <string name="ring_summary_with_cote">%1$s taille %2$s (serti %3$s) en monture %4$s, pavée de %5$d %6$s (taille %7$s, serti %8$s).</string>
 

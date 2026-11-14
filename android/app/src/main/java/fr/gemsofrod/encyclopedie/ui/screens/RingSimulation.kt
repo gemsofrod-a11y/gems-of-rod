@@ -12,6 +12,10 @@ import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Canvas
+import fr.gemsofrod.encyclopedie.ui.components.Ring3DView
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -158,7 +162,36 @@ internal object RingSimulationPdfGenerator {
     private const val MARGIN = 40f
     private const val SCALE = 3
 
-    fun generate(context: Context, config: RingConfiguration, pricing: RingPricingResult, reference: String): File {
+    /** Fiche 3D (4 vues cotées) sur une page A4 paysage. */
+    private fun generateFromSheet(context: Context, sheet: Bitmap, reference: String): File {
+        val document = PdfDocument()
+        val page = document.startPage(PdfDocument.PageInfo.Builder(PAGE_HEIGHT, PAGE_WIDTH, 1).create())
+        val canvas = page.canvas
+        canvas.drawColor(android.graphics.Color.WHITE)
+        val margin = 24f
+        val footerH = 18f
+        val availW = PAGE_HEIGHT - 2 * margin
+        val availH = PAGE_WIDTH - 2 * margin - footerH
+        val scale = minOf(availW / sheet.width, availH / sheet.height)
+        val w = sheet.width * scale
+        val h = sheet.height * scale
+        val left = (PAGE_HEIGHT - w) / 2f
+        canvas.drawBitmap(sheet, null, RectF(left, margin, left + w, margin + h), Paint(Paint.FILTER_BITMAP_FLAG))
+        val footPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = android.graphics.Color.rgb(107, 102, 90); textSize = 7.5f }
+        canvas.drawText(
+            context.getString(R.string.ring_sim_pdf_footer) + " Gems of Rod · gems-of-rod.fr",
+            margin, PAGE_WIDTH - margin + 4f, footPaint
+        )
+        document.finishPage(page)
+        val outDir = File(context.cacheDir, "ring_simulations").apply { mkdirs() }
+        val outFile = File(outDir, "simulation-bague-$reference.pdf")
+        FileOutputStream(outFile).use { document.writeTo(it) }
+        document.close()
+        return outFile
+    }
+
+    fun generate(context: Context, config: RingConfiguration, pricing: RingPricingResult, reference: String, sheet: Bitmap? = null): File {
+        if (sheet != null) return generateFromSheet(context, sheet, reference)
         val document = PdfDocument()
         val page = document.startPage(PdfDocument.PageInfo.Builder(PAGE_WIDTH, PAGE_HEIGHT, 1).create())
         val canvas = page.canvas
@@ -261,6 +294,13 @@ fun RingSimulationScreen(config: RingConfiguration, pricing: RingPricingResult, 
     val sectionTops = remember { mutableStateListOf(0, 0, 0) }
     var selectedTab by remember { mutableIntStateOf(0) }
     var busy by remember { mutableStateOf(false) }
+    var sheet by remember { mutableStateOf<Bitmap?>(null) }
+    var unavailable3d by remember { mutableStateOf(false) }
+    val sheetLines = remember(config) {
+        listOf(context.getString(R.string.ring_sim_pdf_number, reference)) +
+            ringSimulationRows(context, config, pricing).map { (label, value) -> "$label : $value" } +
+            "${context.getString(R.string.ring_sim_row_estimate)} : ${ringPriceRange(pricing)}"
+    }
     val chooserTitle = stringResource(R.string.ring_sim_share_chooser)
     val savedMessage = stringResource(R.string.ring_sim_saved)
     val labelTextPx = with(density) { 12.dp.toPx() }
@@ -269,7 +309,7 @@ fun RingSimulationScreen(config: RingConfiguration, pricing: RingPricingResult, 
         if (uri == null) return@rememberLauncherForActivityResult
         scope.launch {
             withContext(Dispatchers.IO) {
-                val file = RingSimulationPdfGenerator.generate(context, config, pricing, reference)
+                val file = RingSimulationPdfGenerator.generate(context, config, pricing, reference, sheet)
                 context.contentResolver.openOutputStream(uri)?.use { out -> file.inputStream().use { it.copyTo(out) } }
             }
             Toast.makeText(context, savedMessage, Toast.LENGTH_SHORT).show()
@@ -295,7 +335,7 @@ fun RingSimulationScreen(config: RingConfiguration, pricing: RingPricingResult, 
     ) { padding ->
         Column(modifier = Modifier.fillMaxSize().padding(padding)) {
             val tabs = listOf(R.string.ring_view_top, R.string.ring_view_front, R.string.ring_view_side)
-            Row(
+            if (unavailable3d) Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp)
             ) {
@@ -318,7 +358,53 @@ fun RingSimulationScreen(config: RingConfiguration, pricing: RingPricingResult, 
                     .padding(horizontal = 20.dp, vertical = 12.dp),
                 verticalArrangement = Arrangement.spacedBy(14.dp)
             ) {
-                val viewTitles = listOf(R.string.ring_view_top, R.string.ring_view_front, R.string.ring_view_side)
+                if (!unavailable3d) {
+                    Card(
+                        shape = RoundedCornerShape(16.dp),
+                        colors = CardDefaults.cardColors(containerColor = Color(0xFFECEBE7)),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Ring3DView(
+                            config = config,
+                            modifier = Modifier.fillMaxWidth().aspectRatio(1f),
+                            sheetRequest = sheetLines,
+                            onSheet = { sheet = it },
+                            onUnavailable = { unavailable3d = true }
+                        )
+                    }
+                    Text(
+                        text = stringResource(R.string.ring_3d_hint),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Text(
+                        text = stringResource(R.string.ring_sim_sheet_title).uppercase(Locale.getDefault()),
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    val currentSheet = sheet
+                    if (currentSheet != null) {
+                        Card(
+                            shape = RoundedCornerShape(12.dp),
+                            colors = CardDefaults.cardColors(containerColor = Color.White),
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Image(
+                                bitmap = currentSheet.asImageBitmap(),
+                                contentDescription = stringResource(R.string.ring_sim_sheet_title),
+                                modifier = Modifier.fillMaxWidth().aspectRatio(currentSheet.width.toFloat() / currentSheet.height)
+                            )
+                        }
+                    } else {
+                        Text(
+                            text = stringResource(R.string.ring_sim_sheet_preparing),
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontStyle = FontStyle.Italic,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+                val viewTitles = if (unavailable3d) listOf(R.string.ring_view_top, R.string.ring_view_front, R.string.ring_view_side) else emptyList()
                 viewTitles.forEachIndexed { index, titleRes ->
                     Column(
                         verticalArrangement = Arrangement.spacedBy(6.dp),
@@ -373,7 +459,7 @@ fun RingSimulationScreen(config: RingConfiguration, pricing: RingPricingResult, 
                             if (busy) return@Button
                             busy = true
                             scope.launch {
-                                val file = withContext(Dispatchers.IO) { RingSimulationPdfGenerator.generate(context, config, pricing, reference) }
+                                val file = withContext(Dispatchers.IO) { RingSimulationPdfGenerator.generate(context, config, pricing, reference, sheet) }
                                 busy = false
                                 val uri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file)
                                 val send = Intent(Intent.ACTION_SEND).apply {
@@ -384,11 +470,12 @@ fun RingSimulationScreen(config: RingConfiguration, pricing: RingPricingResult, 
                                 context.startActivity(Intent.createChooser(send, chooserTitle))
                             }
                         },
-                        enabled = !busy,
+                        enabled = !busy && (sheet != null || unavailable3d),
                         modifier = Modifier.weight(1f)
                     ) { Text(stringResource(R.string.ring_sim_share_pdf), maxLines = 1) }
                     OutlinedButton(
                         onClick = { saveLauncher.launch("simulation-bague-$reference.pdf") },
+                        enabled = sheet != null || unavailable3d,
                         modifier = Modifier.weight(1f)
                     ) { Text(stringResource(R.string.ring_sim_save_pdf), maxLines = 1) }
                 }

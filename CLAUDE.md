@@ -221,6 +221,10 @@ Pour traduire un nouveau contenu :
 
 ---
 
+**Compositeur de bague — rendu 3D (14/11/2026) :** la bague est modélisée en vraie 3D par le moteur embarqué `android/ring3d` (three.js, sans réseau), affichée par `Ring3DView` (WebView) dans le compositeur et dans la fiche « Simuler la bague » (4 vues cotées → PDF A4 paysage). Après toute modification de `android/ring3d/src`, reconstruire `app/src/androidMain/assets/ring3d/ring3d.js` (`npm install && npm run build`) et le committer ; garder les contours de taille identiques à `RingStoneGeometry.kt`. Repli automatique sur l'aperçu 2D si WebGL est indisponible.
+
+---
+
 ## Assistant vocal Gmail (usage personnel de Sébastien)
 
 Application distincte de l'agent Python et de l'app encyclopédie : un service

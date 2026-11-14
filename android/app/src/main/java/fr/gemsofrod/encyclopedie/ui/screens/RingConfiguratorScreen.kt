@@ -1,6 +1,8 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
+import fr.gemsofrod.encyclopedie.ui.components.Ring3DView
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.Alignment
@@ -96,6 +98,7 @@ fun RingConfiguratorScreen(onBackClick: () -> Unit) {
 
     var coteSpecies by remember { mutableStateOf<RingGemSpecies?>(RingGemSpecies.SAPHIR) }
     var showSimulation by remember { mutableStateOf(false) }
+    var preview3dUnavailable by remember { mutableStateOf(false) }
     var coteColor by remember { mutableStateOf(RingGemSpecies.SAPHIR.defaultColor) }
     var coteCut by remember { mutableStateOf(RingCutShape.RONDE) }
     var coteSertissage by remember { mutableStateOf(RingSertissage.PAVE) }
@@ -223,7 +226,23 @@ fun RingConfiguratorScreen(onBackClick: () -> Unit) {
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
                 modifier = Modifier.fillMaxWidth()
             ) {
-                RingIllustrationCanvas(config = config, modifier = Modifier.padding(12.dp))
+                if (preview3dUnavailable) {
+                    RingIllustrationCanvas(config = config, modifier = Modifier.padding(12.dp))
+                } else {
+                    Ring3DView(
+                        config = config,
+                        modifier = Modifier.fillMaxWidth().aspectRatio(1.05f),
+                        onUnavailable = { preview3dUnavailable = true }
+                    )
+                }
+            }
+
+            if (!preview3dUnavailable) {
+                Text(
+                    text = stringResource(R.string.ring_3d_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
             }
 
             RingSectionCard(stringResource(R.string.ring_section_metal_title)) {

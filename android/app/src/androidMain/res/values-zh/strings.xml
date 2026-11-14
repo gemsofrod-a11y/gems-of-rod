@@ -735,6 +735,9 @@
     <string name="ring_sim_pdf_number">模拟编号 %1$s</string>
     <string name="ring_sim_pdf_footer">非合同性模拟：仅为设计工具，并非最终报价。示意图；尺寸和价格需在选定宝石后确认。</string>
     <string name="ring_sim_tagline">珍贵宝石与非凡珠宝</string>
+    <string name="ring_3d_hint">用手指转动戒指，从各个角度查看。</string>
+    <string name="ring_sim_sheet_title">技术图纸</string>
+    <string name="ring_sim_sheet_preparing">正在生成 3D 图纸…</string>
     <string name="ring_summary_solo">%1$s %2$s形切工（%3$s镶嵌）%4$s，单钻款，无副石。</string>
     <string name="ring_summary_with_cote">%1$s %2$s形切工（%3$s镶嵌）%4$s，两侧共镶 %5$d 颗%6$s（%7$s形切工，%8$s镶嵌）。</string>
 

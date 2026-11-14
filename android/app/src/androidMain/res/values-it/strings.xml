@@ -735,6 +735,9 @@
     <string name="ring_sim_pdf_number">Simulazione n. %1$s</string>
     <string name="ring_sim_pdf_footer">Simulazione non vincolante: uno strumento di composizione, non un preventivo definitivo. Rappresentazione schematica; dimensioni e prezzi da confermare dopo la scelta delle pietre.</string>
     <string name="ring_sim_tagline">Pietre preziose e gioielli d\'eccezione</string>
+    <string name="ring_3d_hint">Ruota l\'anello con il dito per vederlo da ogni angolazione.</string>
+    <string name="ring_sim_sheet_title">Scheda tecnica</string>
+    <string name="ring_sim_sheet_preparing">Preparazione della scheda 3D…</string>
     <string name="ring_summary_solo">%1$s taglio %2$s (incastonatura %3$s) in %4$s, solitario, senza pavé.</string>
     <string name="ring_summary_with_cote">%1$s taglio %2$s (incastonatura %3$s) in %4$s, pavé con %5$d %6$s (taglio %7$s, incastonatura %8$s).</string>
 

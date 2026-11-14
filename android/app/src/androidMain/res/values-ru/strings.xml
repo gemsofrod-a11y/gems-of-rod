@@ -735,6 +735,9 @@
     <string name="ring_sim_pdf_number">Модель № %1$s</string>
     <string name="ring_sim_pdf_footer">Модель не является договором: это инструмент композиции, а не окончательная смета. Схематичное изображение; размеры и цены уточняются после выбора камней.</string>
     <string name="ring_sim_tagline">Драгоценные камни и исключительные украшения</string>
+    <string name="ring_3d_hint">Поворачивайте кольцо пальцем, чтобы рассмотреть его со всех сторон.</string>
+    <string name="ring_sim_sheet_title">Технический лист</string>
+    <string name="ring_sim_sheet_preparing">Подготовка 3D-листа…</string>
     <string name="ring_summary_solo">%1$s огранки %2$s (закрепка %3$s) в оправе %4$s, солитер, без дорожки камней.</string>
     <string name="ring_summary_with_cote">%1$s огранки %2$s (закрепка %3$s) в оправе %4$s, с дорожкой из %5$d %6$s (огранка %7$s, закрепка %8$s).</string>
 
