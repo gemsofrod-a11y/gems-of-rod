@@ -804,6 +804,13 @@ object GemTranslationsEs {
             particularites = "Casi siempre opaca y trabajada en cabujón; las piedras facetadas transparentes son raras.",
             lithotherapie = "La thulita tiene fama de reavivar la alegría y la vitalidad afectiva, un apoyo para reconectar con las emociones positivas."
         ),
+        "rubis-zoisite" to GemTranslation(
+            nom = "Rubí en zoisita",
+            descriptionCourte = "Roca verde de zoisita salpicada de cristales de rubí, perfilados de negro.",
+            descriptionLongue = "El rubí en zoisita, también llamado anyolita (del masái «anyoli», verde), es una roca metamórfica en la que cristales de rubí rojo rosado, por lo general opacos, están englobados en una zoisita verde viva y a menudo rodeados de hornblenda negra. Descubierto en 1954 cerca de Longido, en Tanzania, ofrece uno de los contrastes de colores complementarios más bellos del mundo mineral; se trabaja en cabujones, esferas, tallas y objetos de arte.",
+            particularites = "Los rubíes, demasiado opacos y fracturados, casi nunca se facetan; su dureza (9), muy superior a la de la zoisita (6 a 7), los deja a menudo en ligero relieve al pulir. No confundir con el rubí en fucsita de la India, con fondo de mica verde más blando, ni con el rubí en cianita, de fondo azul.",
+            lithotherapie = "Se dice que el rubí en zoisita une la pasión del rubí al crecimiento de la zoisita: se le atribuye el poder de reavivar la energía vital, apoyar la creatividad y armonizar el corazón y la acción."
+        ),
         "rhodonite" to GemTranslation(
             nom = "Rodonita",
             descriptionCourte = "Un rosa intenso veteado de negro manganesífero.",
@@ -1170,7 +1177,7 @@ object GemTranslationsEs {
             nom = "Obsidiana",
             descriptionCourte = "Vidrio natural de fractura cortante.",
             descriptionLongue = "Formada por el enfriamiento rápido de lava rica en sílice, la obsidiana es un vidrio volcánico amorfo. Su fractura concoidea extremadamente cortante la convirtió en una herramienta de elección desde la Prehistoria, especialmente para puntas de flecha y hojas.",
-            particularites = "Algunas variedades presentan un tornasolado dorado o irisado (obsidiana arcoíris).",
+            particularites = "Numerosas variedades según las inclusiones: negra, copo de nieve, caoba, dorada, plateada, arcoíris, de fuego, terciopelo, verde y lágrimas de apache. Las «obsidianas» azules o verde vivo transparentes son casi siempre vidrio artificial.",
             lithotherapie = "Se dice que la obsidiana ofrece una protección poderosa, actuando como un verdadero escudo psíquico, a la vez que revela verdades ocultas y favorece una profunda transformación interior."
         ),
         "rubis-etoile" to GemTranslation(

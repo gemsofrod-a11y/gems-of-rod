@@ -2041,6 +2041,24 @@ object GemsRepository {
             rarete = GemRarete.PEU_COMMUNE
         ),
         Gem(
+            id = "rubis-zoisite",
+            nom = "Rubis-zoïsite",
+            nomLatin = "Zoïsite verte à rubis (anyolite)",
+            famille = "Zoïsite",
+            couleur = GemColorCategory.VERT,
+            descriptionCourte = "Roche verte de zoïsite constellée de cristaux de rubis, soulignés de noir.",
+            descriptionLongue = "Le rubis-zoïsite, aussi appelé anyolite (du masaï « anyoli », vert), est une roche métamorphique où des cristaux de rubis rouge-rose, généralement opaques, sont pris dans une zoïsite vert vif et souvent cernés de hornblende noire. Découvert en 1954 près de Longido, en Tanzanie, il offre l'un des plus beaux contrastes de couleurs complémentaires du monde minéral ; on le travaille en cabochons, sphères, sculptures et objets d'art.",
+            formuleChimique = "Ca₂Al₃(SiO₄)₃(OH) + Al₂O₃ (Cr) + hornblende",
+            systemeCristallin = "Orthorhombique (zoïsite) ; trigonal (rubis)",
+            durete = "6 - 7 (zoïsite) ; 9 (rubis)",
+            indiceRefraction = "1,69 – 1,70 (zoïsite) ; 1,76 – 1,77 (rubis)",
+            origines = listOf("Tanzanie (Longido, Mundarara)"),
+            particularites = "Les rubis, trop opaques et fracturés, ne se facettent presque jamais ; leur dureté (9) bien supérieure à celle de la zoïsite (6 à 7) les laisse souvent en léger relief au polissage. À distinguer du rubis-fuchsite d'Inde, à fond de mica vert plus tendre, et du rubis-kyanite, à fond bleu.",
+            lithotherapie = "Le rubis-zoïsite est réputé unir la passion du rubis à la croissance de la zoïsite : on lui prête le pouvoir de raviver l'énergie vitale, de soutenir la créativité et d'accorder le cœur et l'action.",
+            prixCaratEur = "0,2 – 3 €/ct",
+            rarete = GemRarete.PEU_COMMUNE
+        ),
+        Gem(
             id = "rhodonite",
             nom = "Rhodonite",
             nomLatin = "Silicate de manganèse",
@@ -3031,7 +3049,7 @@ object GemsRepository {
             durete = "5 - 5,5",
             indiceRefraction = "1,480 – 1,510",
             origines = listOf("Mexique (Sierra de Pachuca)", "Islande (Hrafntinnusker)", "Arménie (mont Artanish)"),
-            particularites = "Certaines variétés présentent un chatoiement doré ou irisé (obsidienne arc-en-ciel).",
+            particularites = "Nombreuses variétés selon les inclusions : noire, flocon de neige, acajou, dorée, argentée, arc-en-ciel, de feu, velours, verte et larmes d'Apache. Les « obsidiennes » bleues ou vert vif transparentes sont presque toujours du verre artificiel.",
             lithotherapie = "L'obsidienne est réputée offrir une protection puissante, agissant comme un véritable bouclier psychique, tout en révélant les vérités cachées et favorisant une transformation intérieure profonde.",
             prixCaratEur = "1 – 5 €/ct",
             rarete = GemRarete.COURANTE

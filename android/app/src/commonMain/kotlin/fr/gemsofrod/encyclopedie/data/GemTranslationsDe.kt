@@ -804,6 +804,13 @@ object GemTranslationsDe {
             particularites = "Fast immer opak und als Cabochon verarbeitet; transparente facettierte Steine sind selten.",
             lithotherapie = "Thulit soll Freude und emotionale Vitalität neu entfachen und dabei helfen, wieder Zugang zu positiven Gefühlen zu finden."
         ),
+        "rubis-zoisite" to GemTranslation(
+            nom = "Rubin-Zoisit",
+            descriptionCourte = "Grünes Zoisitgestein mit eingestreuten Rubinkristallen, schwarz umrandet.",
+            descriptionLongue = "Rubin-Zoisit, auch Anyolith genannt (vom Massai-Wort „anyoli“, grün), ist ein metamorphes Gestein, in dem meist undurchsichtige, rosarote Rubinkristalle in leuchtend grünem Zoisit sitzen, oft von schwarzer Hornblende umsäumt. 1954 bei Longido in Tansania entdeckt, bietet er einen der schönsten Komplementärfarbkontraste der Mineralwelt; er wird zu Cabochons, Kugeln, Skulpturen und Kunstgegenständen verarbeitet.",
+            particularites = "Die Rubine sind zu undurchsichtig und rissig, um facettiert zu werden; ihre Härte (9), weit höher als die des Zoisits (6 bis 7), lässt sie beim Polieren oft leicht erhaben stehen. Zu unterscheiden von indischem Rubin-Fuchsit mit weicherem grünem Glimmergrund und von Rubin-Kyanit mit blauem Grund.",
+            lithotherapie = "Rubin-Zoisit soll die Leidenschaft des Rubins mit dem Wachstum des Zoisits verbinden: Man sagt ihm nach, die Lebensenergie neu zu entfachen, die Kreativität zu unterstützen und Herz und Handeln in Einklang zu bringen."
+        ),
         "rhodonite" to GemTranslation(
             nom = "Rhodonit",
             descriptionCourte = "Ein tiefes Rosa, durchzogen von schwarzen Manganadern.",
@@ -1170,7 +1177,7 @@ object GemTranslationsDe {
             nom = "Obsidian",
             descriptionCourte = "Natürliches Glas mit scharfkantigem Bruch.",
             descriptionLongue = "Obsidian entsteht durch die schnelle Abkühlung kieselsäurereicher Lava und ist ein amorphes vulkanisches Glas. Sein extrem scharfer muscheliger Bruch machte ihn bereits in der Vorgeschichte zu einem bevorzugten Werkzeugmaterial, insbesondere für Pfeilspitzen und Klingen.",
-            particularites = "Manche Varietäten zeigen ein goldenes oder irisierendes Schillern (Regenbogenobsidian).",
+            particularites = "Zahlreiche Varietäten je nach Einschlüssen: schwarz, Schneeflocke, Mahagoni, Gold- und Silberobsidian, Regenbogen, Feuer, Samt, grün und Apachentränen. Durchsichtige blaue oder leuchtend grüne „Obsidiane“ sind fast immer künstliches Glas.",
             lithotherapie = "Obsidian gilt als kraftvoller Schutzstein, der wie ein echter psychischer Schutzschild wirkt, während er zugleich verborgene Wahrheiten offenbaren und eine tiefgreifende innere Transformation begünstigen soll."
         ),
         "rubis-etoile" to GemTranslation(

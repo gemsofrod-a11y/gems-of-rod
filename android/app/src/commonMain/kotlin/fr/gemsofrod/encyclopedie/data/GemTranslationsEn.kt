@@ -804,6 +804,13 @@ object GemTranslationsEn {
             particularites = "Almost always opaque and shaped as cabochons; transparent faceted stones are rare.",
             lithotherapie = "Thulite is reputed to rekindle joy and emotional vitality, offering support for reconnecting with positive emotions."
         ),
+        "rubis-zoisite" to GemTranslation(
+            nom = "Ruby in zoisite",
+            descriptionCourte = "Green zoisite rock studded with ruby crystals, outlined in black.",
+            descriptionLongue = "Ruby in zoisite, also called anyolite (from the Maasai “anyoli”, green), is a metamorphic rock in which pinkish-red ruby crystals, usually opaque, are set in vivid green zoisite and often rimmed with black hornblende. Discovered in 1954 near Longido, Tanzania, it offers one of the finest contrasts of complementary colours in the mineral world; it is worked into cabochons, spheres, carvings and objets d'art.",
+            particularites = "The rubies, too opaque and fractured, are almost never faceted; their hardness (9), far greater than that of zoisite (6 to 7), often leaves them slightly raised after polishing. To be distinguished from Indian ruby in fuchsite, with a softer green mica ground, and ruby in kyanite, with a blue ground.",
+            lithotherapie = "Ruby in zoisite is said to unite the passion of ruby with the growth of zoisite: it is credited with rekindling vital energy, supporting creativity and bringing heart and action into harmony."
+        ),
         "rhodonite" to GemTranslation(
             nom = "Rhodonite",
             descriptionCourte = "A deep pink veined with manganese black.",
@@ -1170,7 +1177,7 @@ object GemTranslationsEn {
             nom = "Obsidian",
             descriptionCourte = "Natural glass with a razor-sharp fracture.",
             descriptionLongue = "Formed by the rapid cooling of silica-rich lava, obsidian is an amorphous volcanic glass. Its extremely sharp conchoidal fracture made it a tool of choice as early as prehistoric times, notably for arrowheads and blades.",
-            particularites = "Some varieties display a golden or iridescent sheen (rainbow obsidian).",
+            particularites = "Many varieties depending on inclusions: black, snowflake, mahogany, golden sheen, silver sheen, rainbow, fire, velvet, green and Apache tears. Transparent blue or bright green “obsidians” are almost always man-made glass.",
             lithotherapie = "Obsidian is said to offer powerful protection, acting as a true psychic shield, while revealing hidden truths and fostering deep inner transformation."
         ),
         "rubis-etoile" to GemTranslation(

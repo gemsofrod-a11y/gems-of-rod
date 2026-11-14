@@ -95,6 +95,7 @@
     <string name="gem_details_formation_title">Formación geológica</string>
     <string name="gem_details_crystallography_title">Cristalografía</string>
     <string name="gem_details_deposits_title">Yacimientos en detalle</string>
+    <string name="gem_details_varieties_title">Variedades</string>
     <string name="litho_details_title">Tradiciones y cuidados</string>
     <string name="collection_details_origin_title">Formación y origen</string>
     <string name="collection_details_structure_title">Estructura y composición</string>

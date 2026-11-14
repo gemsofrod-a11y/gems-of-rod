@@ -15,7 +15,9 @@ data class GemDetails(
     val formation: String,
     val cristallographie: String,
     val gisements: String,
-    val lithotherapie: String
+    val lithotherapie: String,
+    /** Variétés commerciales et naturelles de la pierre (vide si sans objet). */
+    val varietes: String = ""
 )
 
 object GemDetailsRepository {
@@ -61,6 +63,7 @@ object GemDetailsRepository {
         putAll(GemDetailsLot39.data)
         putAll(GemDetailsLot40.data)
         putAll(GemDetailsLot41.data)
+        putAll(GemDetailsLot42.data)
     }
 
     /** Rubriques dans la langue demandée, en français à défaut, ou null. */
