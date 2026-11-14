@@ -1,6 +1,20 @@
 package fr.gemsofrod.encyclopedie.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.Alignment
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.Button
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material.icons.filled.ViewInAr
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -80,7 +94,8 @@ fun RingConfiguratorScreen(onBackClick: () -> Unit) {
     var centralHeight by remember { mutableStateOf("6.0") }
     var centralOrientation by remember { mutableFloatStateOf(0f) }
 
-    var coteSpecies by remember { mutableStateOf(RingGemSpecies.SAPHIR) }
+    var coteSpecies by remember { mutableStateOf<RingGemSpecies?>(RingGemSpecies.SAPHIR) }
+    var showSimulation by remember { mutableStateOf(false) }
     var coteColor by remember { mutableStateOf(RingGemSpecies.SAPHIR.defaultColor) }
     var coteCut by remember { mutableStateOf(RingCutShape.RONDE) }
     var coteSertissage by remember { mutableStateOf(RingSertissage.PAVE) }
@@ -117,7 +132,7 @@ fun RingConfiguratorScreen(onBackClick: () -> Unit) {
     val coteWidthMm = parseDecimalOrNull(coteWidth)?.takeIf { it > 0.0 } ?: 1.0
     val coteHeightMm = if (coteCut.isSingleDimension) coteWidthMm
         else parseDecimalOrNull(coteHeight)?.takeIf { it > 0.0 } ?: 1.0
-    val nombre = coteNombre.roundToInt()
+    val nombre = if (coteSpecies == null) 0 else coteNombre.roundToInt()
 
     val config = remember(
         metal, gramsMetal, centralSpecies, centralColor, centralCut, centralSertissage,
@@ -134,7 +149,7 @@ fun RingConfiguratorScreen(onBackClick: () -> Unit) {
             ),
             cote = RingSideStoneSelection(
                 stone = RingStoneSelection(
-                    coteSpecies, coteColor, coteSertissage, coteCut,
+                    coteSpecies ?: RingGemSpecies.DIAMANT, coteColor, coteSertissage, coteCut,
                     coteWidthMm, coteHeightMm, 0f
                 ),
                 nombre = nombre,
@@ -144,6 +159,11 @@ fun RingConfiguratorScreen(onBackClick: () -> Unit) {
         )
     }
     val pricing = remember(config) { RingPricingCalculator.compute(config) }
+
+    if (showSimulation) {
+        RingSimulationScreen(config = config, pricing = pricing, onBackClick = { showSimulation = false })
+        return
+    }
 
     Scaffold(
         topBar = {
@@ -177,14 +197,24 @@ fun RingConfiguratorScreen(onBackClick: () -> Unit) {
             )
 
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
-                OutlinedButton(onClick = { applyPreset(RingPresets.SOLITAIRE) }, modifier = Modifier.weight(1f)) {
-                    Text(stringResource(R.string.ring_preset_solitaire))
-                }
-                OutlinedButton(onClick = { applyPreset(RingPresets.TRILOGIE) }, modifier = Modifier.weight(1f)) {
-                    Text(stringResource(R.string.ring_preset_trilogie))
-                }
-                OutlinedButton(onClick = { applyPreset(RingPresets.PAVE_COMPLET) }, modifier = Modifier.weight(1f)) {
-                    Text(stringResource(R.string.ring_preset_pave))
+                listOf(
+                    RingPresets.SOLITAIRE to R.string.ring_preset_solitaire,
+                    RingPresets.TRILOGIE to R.string.ring_preset_trilogie,
+                    RingPresets.PAVE_COMPLET to R.string.ring_preset_pave
+                ).forEach { (preset, labelRes) ->
+                    OutlinedButton(
+                        onClick = { applyPreset(preset) },
+                        contentPadding = PaddingValues(horizontal = 4.dp, vertical = 8.dp),
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        Text(
+                            stringResource(labelRes),
+                            style = MaterialTheme.typography.labelLarge,
+                            maxLines = 1,
+                            softWrap = false,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                    }
                 }
             }
 
@@ -254,23 +284,38 @@ fun RingConfiguratorScreen(onBackClick: () -> Unit) {
                         )
                     }
                 }
-                RingSliderField(
+                RingOrientationField(
                     label = stringResource(R.string.ring_field_orientation_label),
-                    valueText = formatDegrees(centralOrientation),
                     value = centralOrientation,
-                    onValueChange = { centralOrientation = it },
-                    valueRange = -180f..180f
+                    onValueChange = { centralOrientation = it }
                 )
             }
 
             RingSectionCard(stringResource(R.string.ring_section_cote_title)) {
-                RequiredDropdownField(
+                val noneLabel = stringResource(R.string.ring_cote_none)
+                RequiredDropdownField<RingGemSpecies?>(
                     label = stringResource(R.string.ring_field_species_label),
-                    selectedLabel = stringResource(coteSpecies.labelRes),
-                    options = RingGemSpecies.entries.map { it to stringResource(it.labelRes) },
-                    onSelect = { coteSpecies = it; coteColor = it.defaultColor }
+                    selectedLabel = coteSpecies?.let { stringResource(it.labelRes) } ?: noneLabel,
+                    options = listOf<Pair<RingGemSpecies?, String>>(null to noneLabel) +
+                        RingGemSpecies.entries.map { it to stringResource(it.labelRes) },
+                    onSelect = { selected ->
+                        coteSpecies = selected
+                        if (selected != null) {
+                            coteColor = selected.defaultColor
+                            if (coteNombre < 1f) coteNombre = 1f
+                        }
+                    }
                 )
-                ColorSwatchRow(baseColor = coteSpecies.defaultColor, selected = coteColor, onSelect = { coteColor = it })
+                val activeCoteSpecies = coteSpecies
+                if (activeCoteSpecies == null) {
+                    Text(
+                        text = stringResource(R.string.ring_cote_none_hint),
+                        style = MaterialTheme.typography.bodySmall,
+                        fontStyle = FontStyle.Italic,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                } else {
+                ColorSwatchRow(baseColor = activeCoteSpecies.defaultColor, selected = coteColor, onSelect = { coteColor = it })
                 RequiredDropdownField(
                     label = stringResource(R.string.ring_field_cut_label),
                     selectedLabel = stringResource(coteCut.labelRes),
@@ -320,13 +365,12 @@ fun RingConfiguratorScreen(onBackClick: () -> Unit) {
                     onValueChange = { coteEspacement = it },
                     valueRange = 0f..1f
                 )
-                RingSliderField(
+                RingOrientationField(
                     label = stringResource(R.string.ring_field_orientation_offset_label),
-                    valueText = formatDegrees(coteOrientationOffset),
                     value = coteOrientationOffset,
-                    onValueChange = { coteOrientationOffset = it },
-                    valueRange = -180f..180f
+                    onValueChange = { coteOrientationOffset = it }
                 )
+                }
             }
 
             RingSectionCard(stringResource(R.string.ring_section_price_title)) {
@@ -349,6 +393,18 @@ fun RingConfiguratorScreen(onBackClick: () -> Unit) {
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
+
+            Button(onClick = { showSimulation = true }, modifier = Modifier.fillMaxWidth()) {
+                Icon(Icons.Filled.ViewInAr, contentDescription = null, modifier = Modifier.size(20.dp))
+                Spacer(Modifier.width(10.dp))
+                Text(stringResource(R.string.ring_simulate_button), style = MaterialTheme.typography.titleSmall)
+            }
+            Text(
+                text = stringResource(R.string.ring_simulate_hint),
+                style = MaterialTheme.typography.bodySmall,
+                fontStyle = FontStyle.Italic,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
         }
     }
 }
@@ -432,5 +488,75 @@ private fun RingSliderField(
             Text(text = valueText, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.SemiBold)
         }
         Slider(value = value, onValueChange = onValueChange, valueRange = valueRange, steps = steps)
+    }
+}
+
+/**
+ * Orientation d'une pierre : curseur de −180° à 180°, valeur touchable pour
+ * saisir directement le degré au clavier, et raccourcis 0° / 45° / 90° / −45°
+ * (demande de Sébastien du 14/11/2026).
+ */
+@Composable
+private fun RingOrientationField(label: String, value: Float, onValueChange: (Float) -> Unit) {
+    var editing by remember { mutableStateOf(false) }
+    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(text = label, style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            OutlinedButton(
+                onClick = { editing = true },
+                contentPadding = PaddingValues(horizontal = 10.dp, vertical = 2.dp),
+                modifier = Modifier.height(32.dp)
+            ) {
+                Text(formatDegrees(value), style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.SemiBold)
+                Spacer(Modifier.width(6.dp))
+                Icon(Icons.Filled.Edit, contentDescription = stringResource(R.string.ring_orientation_edit_cd), modifier = Modifier.size(14.dp))
+            }
+        }
+        Slider(value = value, onValueChange = onValueChange, valueRange = -180f..180f)
+        Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            for (preset in floatArrayOf(0f, 45f, 90f, -45f)) {
+                FilterChip(
+                    selected = value.roundToInt() == preset.roundToInt(),
+                    onClick = { onValueChange(preset) },
+                    label = { Text("${preset.roundToInt()}°") }
+                )
+            }
+        }
+    }
+    if (editing) {
+        var text by remember { mutableStateOf(value.roundToInt().toString()) }
+        val parsed = text.trim().replace(',', '.').replace('−', '-').toFloatOrNull()
+        val valid = parsed != null && parsed in -180f..180f
+        AlertDialog(
+            onDismissRequest = { editing = false },
+            title = { Text(stringResource(R.string.ring_orientation_dialog_title)) },
+            text = {
+                OutlinedTextField(
+                    value = text,
+                    onValueChange = { text = it },
+                    singleLine = true,
+                    isError = !valid,
+                    suffix = { Text("°") },
+                    supportingText = { Text(stringResource(R.string.ring_orientation_dialog_hint)) },
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                )
+            },
+            confirmButton = {
+                TextButton(
+                    enabled = valid,
+                    onClick = {
+                        parsed?.let { onValueChange(it.coerceIn(-180f, 180f)) }
+                        editing = false
+                    }
+                ) { Text(stringResource(R.string.ring_dialog_ok)) }
+            },
+            dismissButton = {
+                TextButton(onClick = { editing = false }) { Text(stringResource(R.string.ring_dialog_cancel)) }
+            }
+        )
     }
 }
