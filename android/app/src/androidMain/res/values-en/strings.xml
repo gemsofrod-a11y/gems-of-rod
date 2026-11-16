@@ -927,8 +927,8 @@
     <string name="facet_rule_value">Depth slider</string>
     <string name="facet_field_width">Distance from axis (1 = reference width)</string>
     <string name="facet_field_table">Table width</string>
-    <string name="facet_field_depth">Depth</string>
     <string name="facet_fine">Fine</string>
     <string name="facet_meet_none">Cut other tiers to meet first.</string>
+    <string name="facet_value_hint">Set the depth with the slider under the stone: the facet grows live as you move right.</string>
     <string name="facet_cut_depth">Resulting depth: %1$s · %2$d of %3$d facet(s) visible</string>
 </resources>

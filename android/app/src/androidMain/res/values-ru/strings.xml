@@ -927,8 +927,8 @@
     <string name="facet_rule_value">Глубина ползунком</string>
     <string name="facet_field_width">Расстояние до оси (1 = эталонная ширина)</string>
     <string name="facet_field_table">Ширина площадки</string>
-    <string name="facet_field_depth">Глубина</string>
     <string name="facet_fine">Точно</string>
     <string name="facet_meet_none">Сначала ограните другие ряды для встречи.</string>
+    <string name="facet_value_hint">Задайте глубину ползунком под камнем: грань растёт в реальном времени при движении вправо.</string>
     <string name="facet_cut_depth">Глубина: %1$s · видно граней: %2$d из %3$d</string>
 </resources>

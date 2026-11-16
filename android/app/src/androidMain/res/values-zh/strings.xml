@@ -927,8 +927,8 @@
     <string name="facet_rule_value">滑块深度</string>
     <string name="facet_field_width">距轴距离（1 = 参考宽度）</string>
     <string name="facet_field_table">台面宽度</string>
-    <string name="facet_field_depth">深度</string>
     <string name="facet_fine">微调</string>
     <string name="facet_meet_none">请先切磨要相交的其他刻面层。</string>
+    <string name="facet_value_hint">用宝石下方的滑块设置深度：向右拖动时刻面会实时变大。</string>
     <string name="facet_cut_depth">所得深度：%1$s · 可见刻面 %2$d / %3$d</string>
 </resources>

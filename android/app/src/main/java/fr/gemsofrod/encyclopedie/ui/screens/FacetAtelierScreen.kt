@@ -462,6 +462,7 @@ internal fun FacetDesignScreen(
     var menu by remember { mutableStateOf(false) }
     var dialog by remember { mutableStateOf<String?>(null) }
     var view3dUnavailable by remember { mutableStateOf(!allow3d) }
+    var fineDepth by remember { mutableStateOf(false) }
     // retour Android pendant une coupe : abandonner la coupe en cours
     BackHandler(enabled = draft != null) { draft = null }
 
@@ -547,6 +548,19 @@ internal fun FacetDesignScreen(
                         )
                     }
                 }
+            }
+
+            draft?.let { d ->
+                val i = highlight ?: -1
+                DepthBar(
+                    side = d.tier.side,
+                    depth = stone.depths[i] ?: d.tier.value,
+                    visible = stone.visibleCount[i] ?: 0,
+                    total = d.tier.indices.size,
+                    fine = fineDepth,
+                    onFine = { fineDepth = !fineDepth },
+                    onDepth = { v -> draft = d.copy(tier = d.tier.copy(rule = FacetRule.VALUE, value = v)) }
+                )
             }
 
             if (draft == null) {
@@ -836,6 +850,53 @@ private fun NumberDialog(title: String, value: Double, min: Double, max: Double,
 
 // ---------- Couper une passe ----------
 
+/** Profondeur de coupe affichée : 0 au bord de la plage (la facette n'entame pas la pierre), croît en coupant. */
+private fun cutOf(side: FacetSide, d: Double) = depthRange(side).endInclusive - d
+private fun depthOf(side: FacetSide, cut: Double) = depthRange(side).endInclusive - cut
+
+/**
+ * Curseur de profondeur placé juste sous la pierre (demande de Sébastien du 17/11/2026) :
+ * il agit en direct sur la taille des facettes de la passe en cours. Vers la droite on
+ * coupe plus profond et la facette grandit ; « Fin » resserre la plage pour les petits réglages.
+ */
+@Composable
+private fun DepthBar(
+    side: FacetSide,
+    depth: Double,
+    visible: Int,
+    total: Int,
+    fine: Boolean,
+    onFine: () -> Unit,
+    onDepth: (Double) -> Unit
+) {
+    val span = (depthRange(side).endInclusive - depthRange(side).start).toFloat()
+    val cut = cutOf(side, depth).toFloat()
+    val range = if (fine) (cut - 0.08f)..(cut + 0.08f) else 0f..span
+    val step = if (fine) 0.001 else 0.01
+    Column(Modifier.fillMaxWidth().padding(horizontal = 12.dp)) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            TextButton(onClick = { onDepth(depth + step) }) { Text("−", color = accent(), fontSize = 20.sp) }
+            Slider(
+                value = cut.coerceIn(range.start, range.endInclusive),
+                onValueChange = { c -> onDepth(depthOf(side, c.toDouble())) },
+                valueRange = range,
+                modifier = Modifier.weight(1f),
+                colors = SliderDefaults.colors(
+                    thumbColor = Gold, activeTrackColor = Gold,
+                    inactiveTrackColor = Gold.copy(alpha = 0.25f), activeTickColor = Gold, inactiveTickColor = Gold
+                )
+            )
+            TextButton(onClick = { onDepth(depth - step) }) { Text("+", color = accent(), fontSize = 20.sp) }
+            FilterChip(colors = chipColors(), selected = fine, onClick = onFine, label = { Text(stringResource(R.string.facet_fine)) })
+        }
+        Text(
+            stringResource(R.string.facet_cut_depth, num(cutOf(side, depth), 3), visible, total),
+            style = MaterialTheme.typography.bodySmall, color = accent(),
+            modifier = Modifier.padding(start = 12.dp)
+        )
+    }
+}
+
 /** Plage du curseur de profondeur selon le côté (distance du plan dans le repère du cube). */
 private fun depthRange(side: FacetSide): ClosedFloatingPointRange<Float> = when (side) {
     FacetSide.PAVILION -> -0.6f..2.6f
@@ -866,7 +927,6 @@ private fun CutPanel(
         else -> num(v)
     }
     var valueText by remember(draft.index, t.rule) { mutableStateOf(valueTextFor(t.rule, t.value)) }
-    var fine by remember { mutableStateOf(false) }
     val angleOk = parseNumber(angleText)?.let { it in 0.0..90.0 } == true || t.side == FacetSide.GIRDLE
     val before = design.tiers.take(draft.index ?: design.tiers.size).map { it.name }
 
@@ -989,34 +1049,8 @@ private fun CutPanel(
                     FilterChip(colors = chipColors(), selected = n in t.meet, onClick = { set(t.copy(meet = if (n in t.meet) t.meet - n else t.meet + n)) }, label = { Text(n) })
                 }
             }
-            FacetRule.VALUE -> {
-                val full = depthRange(t.side)
-                val range = if (fine) (t.value.toFloat() - 0.08f)..(t.value.toFloat() + 0.08f) else full
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    TextButton(onClick = { val v = t.value - if (fine) 0.001 else 0.01; valueText = num(v, 3); set(t.copy(value = v)) }) { Text("−", color = accent(), fontSize = 18.sp) }
-                    Slider(
-                        value = t.value.toFloat().coerceIn(range.start, range.endInclusive),
-                        onValueChange = { v -> valueText = num(v.toDouble(), 3); set(t.copy(value = v.toDouble())) },
-                        valueRange = range, modifier = Modifier.weight(1f),
-                        colors = SliderDefaults.colors(
-                            thumbColor = Gold, activeTrackColor = Gold,
-                            inactiveTrackColor = Gold.copy(alpha = 0.25f), activeTickColor = Gold, inactiveTickColor = Gold
-                        )
-                    )
-                    TextButton(onClick = { val v = t.value + if (fine) 0.001 else 0.01; valueText = num(v, 3); set(t.copy(value = v)) }) { Text("+", color = accent(), fontSize = 18.sp) }
-                    FilterChip(colors = chipColors(), selected = fine, onClick = { fine = !fine }, label = { Text(stringResource(R.string.facet_fine)) })
-                }
-                OutlinedTextField(
-                    value = valueText,
-                    onValueChange = { valueText = it; parseNumber(it)?.let { v -> set(t.copy(value = v)) } },
-                    singleLine = true, label = { Text(stringResource(R.string.facet_field_depth)) },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal), modifier = Modifier.fillMaxWidth()
-                )
-            }
+            FacetRule.VALUE -> Text(stringResource(R.string.facet_value_hint), style = MaterialTheme.typography.bodySmall)
             else -> {}
-        }
-        computedDepth?.let {
-            Text(stringResource(R.string.facet_cut_depth, num(it, 3), visible, t.indices.size), style = MaterialTheme.typography.bodySmall, color = accent())
         }
         issue?.let { Text(issueLabel(it), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error) }
 

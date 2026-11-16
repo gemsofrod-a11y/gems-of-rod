@@ -927,8 +927,8 @@
     <string name="facet_rule_value">Profundidade por cursor</string>
     <string name="facet_field_width">Distância ao eixo (1 = largura de referência)</string>
     <string name="facet_field_table">Largura da mesa</string>
-    <string name="facet_field_depth">Profundidade</string>
     <string name="facet_fine">Fino</string>
     <string name="facet_meet_none">Corte primeiro outros passes a encontrar.</string>
+    <string name="facet_value_hint">Ajuste a profundidade com o cursor sob a pedra: a faceta cresce em direto para a direita.</string>
     <string name="facet_cut_depth">Profundidade obtida: %1$s · %2$d de %3$d faceta(s) visíveis</string>
 </resources>

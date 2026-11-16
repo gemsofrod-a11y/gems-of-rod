@@ -927,8 +927,8 @@
     <string name="facet_rule_value">Profondeur au curseur</string>
     <string name="facet_field_width">Distance à l\'axe (1 = largeur de référence)</string>
     <string name="facet_field_table">Largeur de table</string>
-    <string name="facet_field_depth">Profondeur</string>
     <string name="facet_fine">Fin</string>
     <string name="facet_meet_none">Coupez d\'abord d\'autres passes à rencontrer.</string>
+    <string name="facet_value_hint">Réglez la profondeur avec le curseur sous la pierre : la facette grandit en direct vers la droite.</string>
     <string name="facet_cut_depth">Profondeur obtenue : %1$s · %2$d facette(s) visible(s) sur %3$d</string>
 </resources>

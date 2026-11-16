@@ -927,8 +927,8 @@
     <string name="facet_rule_value">Tiefe per Regler</string>
     <string name="facet_field_width">Abstand zur Achse (1 = Referenzbreite)</string>
     <string name="facet_field_table">Tafelbreite</string>
-    <string name="facet_field_depth">Tiefe</string>
     <string name="facet_fine">Fein</string>
     <string name="facet_meet_none">Schleifen Sie zuerst andere Reihen, die getroffen werden sollen.</string>
+    <string name="facet_value_hint">Stellen Sie die Tiefe mit dem Regler unter dem Stein ein: Die Facette wächst live nach rechts.</string>
     <string name="facet_cut_depth">Erreichte Tiefe: %1$s · %2$d von %3$d Facette(n) sichtbar</string>
 </resources>

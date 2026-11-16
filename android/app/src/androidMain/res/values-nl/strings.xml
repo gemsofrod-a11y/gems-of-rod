@@ -927,8 +927,8 @@
     <string name="facet_rule_value">Diepte met schuif</string>
     <string name="facet_field_width">Afstand tot de as (1 = referentiebreedte)</string>
     <string name="facet_field_table">Tafelbreedte</string>
-    <string name="facet_field_depth">Diepte</string>
     <string name="facet_fine">Fijn</string>
     <string name="facet_meet_none">Slijp eerst andere rijen om te raken.</string>
+    <string name="facet_value_hint">Stel de diepte in met de schuif onder de steen: het facet groeit live naar rechts.</string>
     <string name="facet_cut_depth">Bereikte diepte: %1$s · %2$d van %3$d facet(ten) zichtbaar</string>
 </resources>

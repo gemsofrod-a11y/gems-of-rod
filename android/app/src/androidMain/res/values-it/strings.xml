@@ -927,8 +927,8 @@
     <string name="facet_rule_value">Profondità a cursore</string>
     <string name="facet_field_width">Distanza dall\'asse (1 = larghezza di riferimento)</string>
     <string name="facet_field_table">Larghezza della tavola</string>
-    <string name="facet_field_depth">Profondità</string>
     <string name="facet_fine">Fine</string>
     <string name="facet_meet_none">Taglia prima altri giri da incontrare.</string>
+    <string name="facet_value_hint">Regola la profondità con il cursore sotto la pietra: la faccetta cresce in diretta verso destra.</string>
     <string name="facet_cut_depth">Profondità ottenuta: %1$s · %2$d di %3$d faccette visibili</string>
 </resources>
