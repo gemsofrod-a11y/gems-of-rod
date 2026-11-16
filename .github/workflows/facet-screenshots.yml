@@ -2,8 +2,17 @@ name: Facet screenshots
 
 # Captures de l'Atelier de facettage rendues par l'app compilée (Robolectric,
 # FacetAtelierScreenshotTest), pour relire les écrans avant chaque publication.
+# Déclenchée à chaque envoi de code sur une branche (comme gestion-screenshots) :
+# le déclenchement par pull request seul n'a pas toujours suivi les nouveaux envois.
 on:
   workflow_dispatch: {}
+  push:
+    branches-ignore:
+      - facet-screenshots
+    paths:
+      - "android/app/src/**/Facet*"
+      - "android/app/src/androidMain/res/values*/strings.xml"
+      - ".github/workflows/facet-screenshots.yml"
   pull_request:
     paths:
       - "android/app/src/**/Facet*"
@@ -14,7 +23,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: facet-screenshots-${{ github.ref }}
+  group: facet-screenshots-${{ github.head_ref || github.ref }}
   cancel-in-progress: true
 
 jobs:
