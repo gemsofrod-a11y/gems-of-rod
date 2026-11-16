@@ -11,7 +11,7 @@ on:
       - ".github/workflows/facet-screenshots.yml"
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: facet-screenshots-${{ github.ref }}
@@ -49,6 +49,20 @@ jobs:
           name: facet-screenshots
           path: android/app/build/outputs/facet-screenshots/*.png
           if-no-files-found: error
+
+      # Les captures sont aussi poussées (écrasées à chaque fois) sur la branche
+      # « facet-screenshots », pour les relire sans télécharger l'artifact.
+      - name: Publish screenshots to branch facet-screenshots
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SRC_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          out="$RUNNER_TEMP/facet-shots"
+          rm -rf "$out" && mkdir -p "$out" && cp app/build/outputs/facet-screenshots/*.png "$out/"
+          cd "$out"
+          git init -q && git checkout -q -b facet-screenshots
+          git add . && git -c user.name="github-actions[bot]" -c user.email="github-actions[bot]@users.noreply.github.com" commit -qm "Captures de l'atelier de facettage ($SRC_SHA)"
+          git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:facet-screenshots
 
       - name: Print test failure stack traces on failure
         if: failure()
