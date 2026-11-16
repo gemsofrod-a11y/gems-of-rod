@@ -141,7 +141,7 @@ internal fun ringSimulationRows(context: Context, config: RingConfiguration, pri
 }
 
 internal fun ringPriceRange(pricing: RingPricingResult): String {
-    val currency = NumberFormat.getCurrencyInstance(Locale.FRANCE)
+    val currency = NumberFormat.getCurrencyInstance(Locale.FRANCE).apply { maximumFractionDigits = 0 }
     return "${currency.format(pricing.rangeMinRounded)} – ${currency.format(pricing.rangeMaxRounded)}"
 }
 
@@ -445,15 +445,15 @@ fun RingSimulationScreen(config: RingConfiguration, pricing: RingPricingResult, 
                             }
                             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                         }
-                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
                             Text(stringResource(R.string.ring_sim_row_estimate), style = MaterialTheme.typography.bodyLarge)
-                            Text(ringPriceRange(pricing), style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+                            Text(ringPriceRange(pricing), style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
                         }
                         Text(stringResource(R.string.ring_sim_pdf_footer), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                 }
 
-                Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth()) {
+                Column(verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth()) {
                     Button(
                         onClick = {
                             if (busy) return@Button
@@ -471,12 +471,12 @@ fun RingSimulationScreen(config: RingConfiguration, pricing: RingPricingResult, 
                             }
                         },
                         enabled = !busy && (sheet != null || unavailable3d),
-                        modifier = Modifier.weight(1f)
+                        modifier = Modifier.fillMaxWidth()
                     ) { Text(stringResource(R.string.ring_sim_share_pdf), maxLines = 1) }
                     OutlinedButton(
                         onClick = { saveLauncher.launch("simulation-bague-$reference.pdf") },
                         enabled = sheet != null || unavailable3d,
-                        modifier = Modifier.weight(1f)
+                        modifier = Modifier.fillMaxWidth()
                     ) { Text(stringResource(R.string.ring_sim_save_pdf), maxLines = 1) }
                 }
             }
