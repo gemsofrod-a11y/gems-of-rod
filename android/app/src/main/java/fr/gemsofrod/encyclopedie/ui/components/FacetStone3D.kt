@@ -78,7 +78,7 @@ fun facetMaterialColor(material: FacetMaterial): String = when (material) {
     FacetMaterial.TOPAZE -> "#7FB6DA"
     FacetMaterial.BERYL -> "#7EC8D2"
     FacetMaterial.QUARTZ -> "#9A6FC4"
-    FacetMaterial.CHRYSOBERYL -> "#C9B24A"
+    FacetMaterial.CHRYSOBERYL -> "#A9B53C"
     FacetMaterial.ZIRCON -> "#5BB7C9"
     else -> "#FFFFFF"
 }

@@ -1,0 +1,55 @@
+name: Facet screenshots
+
+# Captures de l'Atelier de facettage rendues par l'app compilée (Robolectric,
+# FacetAtelierScreenshotTest), pour relire les écrans avant chaque publication.
+on:
+  workflow_dispatch: {}
+  pull_request:
+    paths:
+      - "android/app/src/**/Facet*"
+      - "android/app/src/androidMain/res/values*/strings.xml"
+      - ".github/workflows/facet-screenshots.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: facet-screenshots-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: android
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          packages: "platform-tools"
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Run facet screenshot tests
+        run: ./gradlew :app:testDebugUnitTest --tests "fr.gemsofrod.encyclopedie.FacetAtelierScreenshotTest" --no-daemon
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: facet-screenshots
+          path: android/app/build/outputs/facet-screenshots/*.png
+          if-no-files-found: error
+
+      - name: Print test failure stack traces on failure
+        if: failure()
+        run: cat app/build/test-results/testDebugUnitTest/*.xml || true
