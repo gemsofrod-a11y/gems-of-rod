@@ -26,8 +26,8 @@ android {
         applicationId = "fr.gemsofrod.encyclopedie"
         minSdk = 26
         targetSdk = 36
-        versionCode = 203
-        versionName = "10.00"
+        versionCode = 204
+        versionName = "10.01"
     }
 
     signingConfigs {

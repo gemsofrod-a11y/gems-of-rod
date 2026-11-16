@@ -73,34 +73,35 @@ object GemOrigins {
             .sortedBy { it.nom }
 }
 
+// Regroupements complémentaires des gemmes, utilisés par les sous-catégories
+// de la section Lithothérapie : chakras et signes d'après les fiches
+// ([LithoGuideData]), bienfaits d'après le texte lithothérapie, mois de
+// naissance d'après une courte table statique.
+
 /**
- * Regroupements complémentaires des gemmes, utilisés par les sous-catégories
- * de la section Lithothérapie. Tout est dérivé des champs existants de [Gem]
- * (couleur, texte lithothérapie) ou de tables de correspondance statiques
- * courtes (signe astrologique, mois de naissance) — aucune donnée
- * supplémentaire n'est stockée sur [Gem].
+ * Classement des pierres par chakra. Source unique : le ou les chakras
+ * indiqués dans la rubrique lithothérapie de chaque fiche (repris dans
+ * [LithoGuideData]) — et non plus une déduction d'après la couleur, qui
+ * contredisait 45 fiches (ex. topaze impériale rangée au chakra sacré alors
+ * que sa fiche la dit au plexus solaire). Alignement demandé par Sébastien
+ * le 16/11/2026. Une pierre liée à plusieurs chakras apparaît sous chacun.
  */
 object Chakras {
-    private fun chakraFor(couleur: GemColorCategory): String = when (couleur) {
-        GemColorCategory.ROUGE, GemColorCategory.BRUN, GemColorCategory.NOIR -> "Racine"
-        GemColorCategory.ORANGE -> "Sacré"
-        GemColorCategory.JAUNE -> "Plexus solaire"
-        GemColorCategory.VERT, GemColorCategory.ROSE -> "Cœur"
-        GemColorCategory.BLEU -> "Gorge"
-        GemColorCategory.VIOLET -> "Troisième œil"
-        GemColorCategory.INCOLORE, GemColorCategory.MULTICOLORE -> "Couronne"
-    }
+    private const val ALL_CHAKRAS = "ALL"
 
     /** Ordre traditionnel du bas vers le haut du corps. */
     private val ORDER = listOf("Racine", "Sacré", "Plexus solaire", "Cœur", "Gorge", "Troisième œil", "Couronne")
 
-    fun groups(): List<Pair<String, List<Gem>>> {
-        val byChakra = GemsRepository.gems.groupBy { chakraFor(it.couleur) }
-        return ORDER.map { it to (byChakra[it].orEmpty().sortedBy { g -> g.nom }) }
-    }
+    val labels: List<String> get() = ORDER
+
+    private fun chakrasOf(gem: Gem): List<String> = LithoGuideData.entries[gem.id]?.chakras.orEmpty()
 
     fun gemsFor(chakra: String): List<Gem> =
-        GemsRepository.gems.filter { chakraFor(it.couleur) == chakra }.sortedBy { it.nom }
+        GemsRepository.gems
+            .filter { gem -> chakrasOf(gem).let { chakra in it || ALL_CHAKRAS in it } }
+            .sortedWith(compareBy<Gem>({ ALL_CHAKRAS in chakrasOf(it) }, { it.nom }))
+
+    fun groups(): List<Pair<String, List<Gem>>> = ORDER.map { it to gemsFor(it) }
 }
 
 object Bienfaits {
