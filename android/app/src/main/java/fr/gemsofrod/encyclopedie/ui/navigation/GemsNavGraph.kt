@@ -34,6 +34,7 @@ import fr.gemsofrod.encyclopedie.ui.labelRes
 import fr.gemsofrod.encyclopedie.ui.localizedBadgeTitle
 import fr.gemsofrod.encyclopedie.ui.screens.AchievementsScreen
 import fr.gemsofrod.encyclopedie.ui.screens.AnalyseScreen
+import fr.gemsofrod.encyclopedie.ui.screens.FacetAtelierScreen
 import fr.gemsofrod.encyclopedie.ui.screens.CertificateScreen
 import fr.gemsofrod.encyclopedie.ui.screens.ColorListScreen
 import fr.gemsofrod.encyclopedie.ui.screens.FamillesListScreen
@@ -171,6 +172,7 @@ private object Routes {
     const val BUYING_GUIDES = "buying_guides"
     const val MINERAL_FORMATION = "mineral_formation"
     const val LAPIDAIRE = "lapidaire"
+    const val FACET_ATELIER = "facet_atelier"
     const val STOCK_LIST = "stock_list"
     const val STOCK_NEW = "stock_new"
     const val STOCK_EDIT = "stock_edit/{itemId}"
@@ -295,6 +297,7 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
                 onAchievementsClick = { navController.navigate(Routes.ACHIEVEMENTS) },
                 onLabClick = { navController.navigate(Routes.LAB_MENU) },
                 onLapidaireClick = { navController.navigate(Routes.LAPIDAIRE) },
+                onFacetAtelierClick = { navController.navigate(Routes.FACET_ATELIER) },
                 onSearchClick = { navController.navigate(Routes.GLOBAL_SEARCH) }
             )
         }
@@ -349,6 +352,9 @@ fun GemsNavGraph(navController: NavHostController = rememberNavController()) {
         }
         composable(Routes.LAPIDAIRE) {
             LapidaireScreen(onBackClick = { navController.popBackStack() })
+        }
+        composable(Routes.FACET_ATELIER) {
+            FacetAtelierScreen(onBackClick = { navController.popBackStack() })
         }
         composable(Routes.STOCK_LIST) {
             StockListScreen(

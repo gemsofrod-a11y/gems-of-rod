@@ -225,6 +225,10 @@ Pour traduire un nouveau contenu :
 
 ---
 
+**Atelier de facettage (16/11/2026, étape 1) :** entrée du menu principal (`FacetAtelierScreen`). Une taille se décrit en passes (angle, index sur roue 64/72/80/96/120, symétrie ± miroir ou index libres, profondeur : rondiste / table / valeur), saisie manuelle de ses propres angles. Le moteur `FacetDesign.kt` (commonMain, testé par `FacetGeometryTest`) découpe la pierre facette par facette et en tire les proportions et le poids ; la 3D passe par `window.ring.setStone` du moteur `android/ring3d`. Étapes suivantes validées par Sébastien : simulation de la lumière (lancer de rayons), puis fiche de taille PDF et autres tailles de départ.
+
+---
+
 ## Assistant vocal Gmail (usage personnel de Sébastien)
 
 Application distincte de l'agent Python et de l'app encyclopédie : un service
