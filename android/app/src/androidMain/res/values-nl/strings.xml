@@ -885,7 +885,8 @@
     <string name="facet_delete_title">‘%1$s’ verwijderen?</string>
     <string name="facet_delete_text">De slijpvorm en al zijn rijen worden van deze telefoon gewist.</string>
     <string name="facet_view_material">%1$s · BI %2$s</string>
-    <string name="facet_view_info">L/B %1$s · %2$d facetten · %3$s ct\n%4$s × %5$s × %6$s mm</string>
+    <string name="facet_view_info">L/B %1$s · %2$d facetten + %7$d op de rondist · %3$s ct
+%4$s × %5$s × %6$s mm</string>
     <string name="facet_chip_cube">Kubus %1$s mm</string>
     <string name="facet_critical_line">Grenshoek van het materiaal: %1$s°</string>
     <string name="facet_empty_hint">Nog geen rij: de steen is een ruwe kubus. Tik op ‘Slijpen’ voor de eerste rij, bijvoorbeeld het paviljoen ‘tot het midden’.</string>

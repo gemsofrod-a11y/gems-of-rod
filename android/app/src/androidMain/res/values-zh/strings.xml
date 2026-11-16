@@ -885,7 +885,8 @@
     <string name="facet_delete_title">删除“%1$s”？</string>
     <string name="facet_delete_text">该切工及其所有刻面层将从本手机中删除。</string>
     <string name="facet_view_material">%1$s · 折射率 %2$s</string>
-    <string name="facet_view_info">长宽比 %1$s · %2$d 个刻面 · %3$s 克拉\n%4$s × %5$s × %6$s 毫米</string>
+    <string name="facet_view_info">长宽比 %1$s · %2$d 个刻面 + 腰棱 %7$d 个 · %3$s 克拉
+%4$s × %5$s × %6$s 毫米</string>
     <string name="facet_chip_cube">立方体 %1$s 毫米</string>
     <string name="facet_critical_line">材料临界角：%1$s°</string>
     <string name="facet_empty_hint">还没有刻面层：宝石仍是原石立方体。点击“切磨”开始第一层，例如“切至中心”的亭部。</string>

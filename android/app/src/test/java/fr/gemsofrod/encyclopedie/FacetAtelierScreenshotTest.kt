@@ -92,7 +92,9 @@ class FacetAtelierScreenshotTest {
     fun cutSlider() = capture("atelier_06_couper_curseur") {
         val d = FacetPresets.cushionGor
         val i = d.tiers.indexOfFirst { it.name == "P3" }
-        val slid = d.copy(tiers = d.tiers.mapIndexed { k, t -> if (k == i) t.copy(rule = fr.gemsofrod.encyclopedie.data.FacetRule.VALUE, value = 0.43) else t })
+        // curseur réglé un peu plus profond que « niveler le rondiste »
+        val depth = fr.gemsofrod.encyclopedie.data.FacetGeometry.build(d).depths.getValue(i)
+        val slid = d.copy(tiers = d.tiers.mapIndexed { k, t -> if (k == i) t.copy(rule = fr.gemsofrod.encyclopedie.data.FacetRule.VALUE, value = depth - 0.01) else t })
         FacetDesignScreen(slid, {}, {}, {}, {}, allow3d = false, startEditing = i)
     }
 

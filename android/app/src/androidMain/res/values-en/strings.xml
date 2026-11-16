@@ -885,7 +885,8 @@
     <string name="facet_delete_title">Delete “%1$s”?</string>
     <string name="facet_delete_text">The cut and all its tiers will be erased from this phone.</string>
     <string name="facet_view_material">%1$s · RI %2$s</string>
-    <string name="facet_view_info">L/W %1$s · %2$d facets · %3$s ct\n%4$s × %5$s × %6$s mm</string>
+    <string name="facet_view_info">L/W %1$s · %2$d facets + %7$d on the girdle · %3$s ct
+%4$s × %5$s × %6$s mm</string>
     <string name="facet_chip_cube">Cube %1$s mm</string>
     <string name="facet_critical_line">Critical angle of the material: %1$s°</string>
     <string name="facet_empty_hint">No tier yet: the stone is a rough cube. Tap “Cut” for the first tier, for example the pavilion “to centre”.</string>

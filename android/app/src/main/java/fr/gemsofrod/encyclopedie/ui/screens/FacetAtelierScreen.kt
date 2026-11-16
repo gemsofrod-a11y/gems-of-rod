@@ -50,6 +50,7 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -75,6 +76,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -118,6 +120,19 @@ private const val PREFS = "facet_atelier"
 private const val KEY_DESIGNS = "designs_v2"
 
 private val Gold = Color(0xFFD6B872)
+
+/** Or lisible : plus foncé sur fond clair (contraste), or de la marque sur fond sombre. */
+@Composable
+private fun accent(): Color = if (MaterialTheme.colorScheme.background.luminance() > 0.5f) Color(0xFF7E5F1A) else Gold
+
+@Composable
+private fun cardColors() = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+
+@Composable
+private fun chipColors() = FilterChipDefaults.filterChipColors(
+    selectedContainerColor = Gold.copy(alpha = 0.35f),
+    selectedLabelColor = MaterialTheme.colorScheme.onSurface
+)
 
 private fun parseNumber(text: String): Double? = text.trim().replace(',', '.').toDoubleOrNull()
 
@@ -299,12 +314,13 @@ private fun LibraryCard(item: LibraryItem, modifier: Modifier) {
         onClick = item.onClick,
         modifier = modifier,
         shape = RoundedCornerShape(14.dp),
+        colors = cardColors(),
         border = if (d == null) BorderStroke(1.dp, MaterialTheme.colorScheme.outline) else null
     ) {
         Column(Modifier.fillMaxWidth().padding(10.dp), horizontalAlignment = Alignment.CenterHorizontally) {
             Box(Modifier.fillMaxWidth().aspectRatio(1f), contentAlignment = Alignment.Center) {
                 if (d == null) {
-                    Icon(Icons.Default.Add, contentDescription = null, tint = Gold, modifier = Modifier.size(48.dp))
+                    Icon(Icons.Default.Add, contentDescription = null, tint = accent(), modifier = Modifier.size(48.dp))
                 } else {
                     val stone = remember(d) { FacetGeometry.build(d) }
                     if (stone.closed) FacetDiagram(d, stone, FacetSide.CROWN, Modifier.fillMaxSize(0.92f))
@@ -313,7 +329,7 @@ private fun LibraryCard(item: LibraryItem, modifier: Modifier) {
             }
             Text(
                 d?.name ?: stringResource(R.string.facet_lib_new),
-                style = MaterialTheme.typography.titleMedium, color = Gold, maxLines = 1, overflow = TextOverflow.Ellipsis
+                style = MaterialTheme.typography.titleMedium, color = accent(), maxLines = 1, overflow = TextOverflow.Ellipsis
             )
             Text(item.hint, style = MaterialTheme.typography.bodySmall, maxLines = 2, overflow = TextOverflow.Ellipsis)
         }
@@ -351,7 +367,7 @@ private fun NewDesignDialog(defaultName: String, onDismiss: () -> Unit, onCreate
                 OutlinedTextField(value = name, onValueChange = { name = it.take(40) }, singleLine = true, label = { Text(stringResource(R.string.facet_field_name)) })
                 Text(stringResource(R.string.facet_wheel_title), style = MaterialTheme.typography.labelMedium)
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                    FacetWheels.sizes.forEach { w -> FilterChip(selected = w == wheel, onClick = { wheel = w }, label = { Text(w.toString()) }) }
+                    FacetWheels.sizes.forEach { w -> FilterChip(colors = chipColors(), selected = w == wheel, onClick = { wheel = w }, label = { Text(w.toString()) }) }
                 }
                 OutlinedButton(onClick = { pickMaterial = true }, modifier = Modifier.fillMaxWidth()) {
                     Text(stringResource(R.string.facet_chip_material, materialLabel(material), num(material.ri, 3)), maxLines = 1, overflow = TextOverflow.Ellipsis)
@@ -402,8 +418,12 @@ private data class Draft(val index: Int?, val tier: FacetTier, val symmetry: Int
 private fun draftFor(design: FacetDesign, index: Int?, tier: FacetTier): Draft {
     val w = design.wheel
     val sorted = tier.indices.map { it % w }.sorted()
-    for (n in FacetWheels.symmetriesFor(w)) for (m in 0..w / (2 * n)) for (s in 0 until w / n) {
-        if (FacetWheels.indicesFor(s, n, w, m).map { it % w }.sorted() == sorted) return Draft(index, tier, n, s, m)
+    // l'écriture la plus simple d'abord : sans miroir, puis avec le plus petit miroir
+    for (m in 0..w / 2) for (n in FacetWheels.symmetriesFor(w)) {
+        if (m > w / (2 * n)) continue
+        for (s in 0 until w / n) {
+            if (FacetWheels.indicesFor(s, n, w, m).map { it % w }.sorted() == sorted) return Draft(index, tier, n, s, m)
+        }
     }
     return Draft(index, tier, null, tier.indices.firstOrNull() ?: 0, 0)
 }
@@ -500,12 +520,14 @@ internal fun FacetDesignScreen(
             }
 
             // pierre en 3D
-            Card(shape = RoundedCornerShape(16.dp), modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp).height(230.dp)) {
+            Card(shape = RoundedCornerShape(16.dp), colors = cardColors(), modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp).height(230.dp)) {
                 Box(Modifier.fillMaxSize()) {
                     if (!view3dUnavailable) {
                         FacetStone3DView(meshJson, shown.material, Modifier.fillMaxSize(), onUnavailable = { view3dUnavailable = true })
                     } else {
-                        Row(Modifier.fillMaxSize().padding(8.dp), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.CenterVertically) {
+                        if (stone.faces.none { it.plane != null }) {
+                            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) { CubeIcon(Modifier.size(140.dp)) }
+                        } else Row(Modifier.fillMaxSize().padding(8.dp), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.CenterVertically) {
                             FacetDiagram(shown, stone, FacetSide.PAVILION, Modifier.size(150.dp), highlightTier = highlight)
                             FacetDiagram(shown, stone, FacetSide.CROWN, Modifier.size(150.dp), highlightTier = highlight)
                         }
@@ -517,7 +539,7 @@ internal fun FacetDesignScreen(
                     )
                     metrics?.let { m ->
                         Text(
-                            stringResource(R.string.facet_view_info, num(m.lengthToWidth), m.facetCount, num(m.carats), num(m.lengthMm), num(m.widthMm), num(m.heightMm)),
+                            stringResource(R.string.facet_view_info, num(m.lengthToWidth), m.facetCount - m.girdleFacetCount, num(m.carats), num(m.lengthMm), num(m.widthMm), num(m.heightMm), m.girdleFacetCount),
                             style = MaterialTheme.typography.labelSmall, color = Color(0xFF4A4A42),
                             modifier = Modifier.align(Alignment.BottomEnd).padding(8.dp)
                         )
@@ -624,7 +646,7 @@ internal fun FacetDesignScreen(
                     Spacer(Modifier.height(8.dp))
                     Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                         FacetWheels.sizes.forEach { w ->
-                            FilterChip(selected = w == design.wheel, onClick = {
+                            FilterChip(colors = chipColors(), selected = w == design.wheel, onClick = {
                                 update(FacetWheels.convert(design, w))
                                 if (w % symmetry != 0) symmetry = FacetWheels.symmetriesFor(w).last { it <= 8 }
                                 mirror = 0; dialog = null
@@ -662,24 +684,24 @@ internal fun FacetDesignScreen(
 private fun WheelRuler(wheel: Int, marked: List<Int>, onWheelClick: () -> Unit) {
     val measurer = rememberTextMeasurer()
     val line = MaterialTheme.colorScheme.onSurfaceVariant
-    Card(shape = RoundedCornerShape(14.dp), modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp)) {
+    Card(shape = RoundedCornerShape(14.dp), colors = cardColors(), modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp)) {
         Row(Modifier.padding(horizontal = 10.dp, vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
             Box(
-                Modifier.size(42.dp).border(2.dp, Gold, CircleShape).clickable(onClick = onWheelClick),
+                Modifier.size(42.dp).border(2.dp, accent(), CircleShape).clickable(onClick = onWheelClick),
                 contentAlignment = Alignment.Center
-            ) { Text(wheel.toString(), color = Gold, fontWeight = FontWeight.Bold) }
+            ) { Text(wheel.toString(), color = accent(), fontWeight = FontWeight.Bold) }
             Spacer(Modifier.width(10.dp))
             val center = marked.firstOrNull()?.let { it % wheel } ?: 0
             val markSet = marked.map { it % wheel }.toSet()
             Canvas(Modifier.weight(1f).height(40.dp)) {
-                drawRuler(measurer, wheel, center, markSet, line)
+                drawRuler(measurer, wheel, center, markSet, line, accent())
             }
         }
     }
 }
 
 private fun androidx.compose.ui.graphics.drawscope.DrawScope.drawRuler(
-    measurer: TextMeasurer, wheel: Int, center: Int, marks: Set<Int>, line: Color
+    measurer: TextMeasurer, wheel: Int, center: Int, marks: Set<Int>, line: Color, mark: Color
 ) {
     val span = 28 // dents visibles de chaque côté
     val step = size.width / (2 * span)
@@ -689,13 +711,13 @@ private fun androidx.compose.ui.graphics.drawscope.DrawScope.drawRuler(
         val major = idx % 4 == 0
         val isMark = idx in marks
         drawLine(
-            if (isMark) Gold else line,
+            if (isMark) mark else line,
             Offset(x, size.height), Offset(x, size.height * if (isMark) 0.35f else if (major) 0.55f else 0.72f),
             strokeWidth = if (isMark) 3.5f else 1.2f
         )
         if (major && abs(k) < span - 1) {
             val label = FacetWheels.normalize(idx, wheel).toString()
-            val r = measurer.measure(label, TextStyle(fontSize = 9.sp, color = if (isMark) Gold else line))
+            val r = measurer.measure(label, TextStyle(fontSize = 9.sp, color = if (isMark) mark else line))
             drawText(r, topLeft = Offset(x - r.size.width / 2f, 0f))
         }
     }
@@ -703,12 +725,12 @@ private fun androidx.compose.ui.graphics.drawscope.DrawScope.drawRuler(
 
 @Composable
 private fun Stepper(label: String, value: String, modifier: Modifier, onMinus: () -> Unit, onPlus: () -> Unit) {
-    Card(modifier = modifier, shape = RoundedCornerShape(12.dp)) {
+    Card(modifier = modifier, shape = RoundedCornerShape(12.dp), colors = cardColors()) {
         Row(Modifier.padding(start = 12.dp), verticalAlignment = Alignment.CenterVertically) {
             Text(label, style = MaterialTheme.typography.labelMedium, modifier = Modifier.weight(1f), maxLines = 1, overflow = TextOverflow.Ellipsis)
-            TextButton(onClick = onMinus) { Text("−", color = Gold, fontSize = 18.sp) }
+            TextButton(onClick = onMinus) { Text("−", color = accent(), fontSize = 18.sp) }
             Text(value, fontWeight = FontWeight.SemiBold, fontSize = 17.sp)
-            TextButton(onClick = onPlus) { Text("+", color = Gold, fontSize = 18.sp) }
+            TextButton(onClick = onPlus) { Text("+", color = accent(), fontSize = 18.sp) }
         }
     }
 }
@@ -749,7 +771,7 @@ private fun InstructionTable(design: FacetDesign, issues: Map<Int, TierIssue>, s
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(t.name, Modifier.width(34.dp), fontWeight = FontWeight.SemiBold)
-                Text(num(t.angleDeg) + "°", Modifier.width(64.dp), color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
+                Text(num(t.angleDeg) + "°", Modifier.width(64.dp), color = accent(), fontWeight = FontWeight.SemiBold)
                 Text(indicesShort(t, design.wheel), Modifier.width(96.dp), style = MaterialTheme.typography.bodySmall, maxLines = 1, overflow = TextOverflow.Ellipsis)
                 Column(Modifier.weight(1f)) {
                     Text(
@@ -774,7 +796,7 @@ private fun RowScope.ToolButton(icon: androidx.compose.ui.graphics.vector.ImageV
         Modifier.weight(1f).clickable(enabled = enabled, onClick = onClick).padding(vertical = 6.dp).alpha(if (enabled) 1f else 0.38f),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Icon(icon, contentDescription = null, tint = Gold, modifier = Modifier.size(22.dp))
+        Icon(icon, contentDescription = null, tint = accent(), modifier = Modifier.size(22.dp))
         Text(label, style = MaterialTheme.typography.labelSmall, maxLines = 1, overflow = TextOverflow.Ellipsis)
     }
 }
@@ -858,14 +880,14 @@ private fun CutPanel(
     ) {
         Text(
             if (draft.index != null) stringResource(R.string.facet_cut_title, t.name) else stringResource(R.string.facet_cut_new),
-            style = MaterialTheme.typography.titleLarge, color = Gold
+            style = MaterialTheme.typography.titleLarge, color = accent()
         )
         Text(stringResource(R.string.facet_cut_hint), style = MaterialTheme.typography.bodySmall)
 
         // côté
         FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
             listOf(FacetSide.PAVILION to R.string.facet_tab_pavilion, FacetSide.GIRDLE to R.string.facet_tab_girdle, FacetSide.CROWN to R.string.facet_tab_crown).forEach { (s, label) ->
-                FilterChip(selected = t.side == s, onClick = {
+                FilterChip(colors = chipColors(), selected = t.side == s, onClick = {
                     if (s != t.side) {
                         val rule = when {
                             s == FacetSide.GIRDLE && t.rule in listOf(FacetRule.GIRDLE_TOP, FacetRule.TABLE, FacetRule.CENTER) -> FacetRule.WIDTH
@@ -899,9 +921,9 @@ private fun CutPanel(
         Text(stringResource(R.string.facet_symmetry), style = MaterialTheme.typography.labelMedium)
         FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
             FacetWheels.symmetriesFor(wheel).forEach { n ->
-                FilterChip(selected = draft.symmetry == n, onClick = { regen(n, draft.start, draft.mirror.coerceAtMost(wheel / (2 * n))) }, label = { Text(n.toString()) })
+                FilterChip(colors = chipColors(), selected = draft.symmetry == n, onClick = { regen(n, draft.start, draft.mirror.coerceAtMost(wheel / (2 * n))) }, label = { Text(n.toString()) })
             }
-            FilterChip(selected = draft.symmetry == null, onClick = { onDraft(draft.copy(symmetry = null)) }, label = { Text(stringResource(R.string.facet_symmetry_free)) })
+            FilterChip(colors = chipColors(), selected = draft.symmetry == null, onClick = { onDraft(draft.copy(symmetry = null)) }, label = { Text(stringResource(R.string.facet_symmetry_free)) })
         }
         if (draft.symmetry != null) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -937,7 +959,7 @@ private fun CutPanel(
         }
         FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
             rules.forEach { r ->
-                FilterChip(selected = t.rule == r, onClick = {
+                FilterChip(colors = chipColors(), selected = t.rule == r, onClick = {
                     val v = when (r) {
                         FacetRule.WIDTH -> 1.0
                         FacetRule.TABLE -> 0.55
@@ -961,21 +983,21 @@ private fun CutPanel(
             FacetRule.MEET -> FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 if (before.isEmpty()) Text(stringResource(R.string.facet_meet_none), style = MaterialTheme.typography.bodySmall)
                 before.forEach { n ->
-                    FilterChip(selected = n in t.meet, onClick = { set(t.copy(meet = if (n in t.meet) t.meet - n else t.meet + n)) }, label = { Text(n) })
+                    FilterChip(colors = chipColors(), selected = n in t.meet, onClick = { set(t.copy(meet = if (n in t.meet) t.meet - n else t.meet + n)) }, label = { Text(n) })
                 }
             }
             FacetRule.VALUE -> {
                 val full = depthRange(t.side)
                 val range = if (fine) (t.value.toFloat() - 0.08f)..(t.value.toFloat() + 0.08f) else full
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    TextButton(onClick = { val v = t.value - if (fine) 0.001 else 0.01; valueText = num(v, 3); set(t.copy(value = v)) }) { Text("−", color = Gold, fontSize = 18.sp) }
+                    TextButton(onClick = { val v = t.value - if (fine) 0.001 else 0.01; valueText = num(v, 3); set(t.copy(value = v)) }) { Text("−", color = accent(), fontSize = 18.sp) }
                     Slider(
                         value = t.value.toFloat().coerceIn(range.start, range.endInclusive),
                         onValueChange = { v -> valueText = num(v.toDouble(), 3); set(t.copy(value = v.toDouble())) },
                         valueRange = range, modifier = Modifier.weight(1f)
                     )
-                    TextButton(onClick = { val v = t.value + if (fine) 0.001 else 0.01; valueText = num(v, 3); set(t.copy(value = v)) }) { Text("+", color = Gold, fontSize = 18.sp) }
-                    FilterChip(selected = fine, onClick = { fine = !fine }, label = { Text(stringResource(R.string.facet_fine)) })
+                    TextButton(onClick = { val v = t.value + if (fine) 0.001 else 0.01; valueText = num(v, 3); set(t.copy(value = v)) }) { Text("+", color = accent(), fontSize = 18.sp) }
+                    FilterChip(colors = chipColors(), selected = fine, onClick = { fine = !fine }, label = { Text(stringResource(R.string.facet_fine)) })
                 }
                 OutlinedTextField(
                     value = valueText,
@@ -987,19 +1009,19 @@ private fun CutPanel(
             else -> {}
         }
         computedDepth?.let {
-            Text(stringResource(R.string.facet_cut_depth, num(it, 3), visible, t.indices.size), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary)
+            Text(stringResource(R.string.facet_cut_depth, num(it, 3), visible, t.indices.size), style = MaterialTheme.typography.bodySmall, color = accent())
         }
         issue?.let { Text(issueLabel(it), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error) }
 
-        Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.padding(top = 4.dp)) {
-            if (onDelete != null) TextButton(onClick = onDelete) { Text(stringResource(R.string.facet_delete), color = MaterialTheme.colorScheme.error) }
-            Spacer(Modifier.weight(1f))
-            OutlinedButton(onClick = onCancel) { Text(stringResource(R.string.facet_cancel)) }
+        if (onDelete != null) TextButton(onClick = onDelete) { Text(stringResource(R.string.facet_delete), color = MaterialTheme.colorScheme.error) }
+        Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth().padding(top = 4.dp)) {
+            OutlinedButton(onClick = onCancel, modifier = Modifier.weight(1f)) { Text(stringResource(R.string.facet_cancel), maxLines = 1) }
             Button(
+                modifier = Modifier.weight(1f),
                 enabled = angleOk && t.indices.isNotEmpty() && t.name.isNotBlank() && (t.rule != FacetRule.MEET || t.meet.isNotEmpty()) &&
                     design.tiers.withIndex().none { (k, o) -> o.name == t.name && k != draft.index },
                 onClick = { onConfirm(draft) }
-            ) { Text(stringResource(R.string.facet_tool_cut)) }
+            ) { Text(stringResource(R.string.facet_tool_cut), maxLines = 1) }
         }
         Spacer(Modifier.height(8.dp))
     }

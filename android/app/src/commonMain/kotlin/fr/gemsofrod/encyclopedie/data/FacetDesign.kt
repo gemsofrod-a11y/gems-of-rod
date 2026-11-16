@@ -270,6 +270,8 @@ data class FacetMetrics(
     val totalPercent: Double,
     val carats: Double,
     val facetCount: Int,
+    /** Facettes du rondiste (comptées à part, comme pour le « brillant 57 facettes »). */
+    val girdleFacetCount: Int,
     /** Proportions mesurables (pierre fermée, rondiste présent). */
     val complete: Boolean
 )
@@ -548,6 +550,7 @@ object FacetGeometry {
             totalPercent = if (width > 1e-9) (top - bottom) / width * 100 else 0.0,
             carats = carats,
             facetCount = stone.faces.count { it.plane != null },
+            girdleFacetCount = stone.faces.count { f -> f.plane?.let { abs(it.n.y) < 1e-6 } == true },
             complete = complete
         )
     }

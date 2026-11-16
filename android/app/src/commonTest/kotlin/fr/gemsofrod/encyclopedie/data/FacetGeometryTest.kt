@@ -90,7 +90,8 @@ class FacetGeometryTest {
         val d = FacetPresets.brilliantRound
         val m = assertNotNull(FacetGeometry.metrics(d, FacetGeometry.build(d)))
         assertTrue(m.complete)
-        assertEquals(57, m.facetCount - 32, "57 facettes hors rondiste")
+        assertEquals(32, m.girdleFacetCount, "32 facettes de rondiste")
+        assertEquals(57, m.facetCount - m.girdleFacetCount, "57 facettes hors rondiste")
         assertTrue(abs(m.lengthToWidth - 1.0) < 1e-9)
         // pavillon coupé au centre : profondeur = tan(41°) × rayon
         assertTrue(abs(m.pavilionPercent - tan(41 * PI / 180) * 50) < 1e-6, "pavillon ${m.pavilionPercent}")
