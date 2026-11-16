@@ -3,4 +3,5 @@
     <cache-path name="certificates" path="certificates/" />
     <cache-path name="stock_exports" path="stock_exports/" />
     <cache-path name="ring_simulations" path="ring_simulations/" />
+    <cache-path name="facet_renders" path="facet_renders/" />
 </paths>

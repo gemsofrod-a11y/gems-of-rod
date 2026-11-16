@@ -66,20 +66,10 @@ fun FacetStone3DView(
     }
 }
 
-/** Teinte de rendu par matière (le blanc donne le rendu « diamant » du moteur). */
-fun facetMaterialColor(material: FacetMaterial): String = when (material) {
-    FacetMaterial.CORINDON -> "#2F5DB8"
-    FacetMaterial.GRENAT -> "#8E1F2E"
-    FacetMaterial.SPINELLE -> "#C23A5A"
-    FacetMaterial.PERIDOT -> "#8DB33A"
-    FacetMaterial.TANZANITE -> "#5B4BB0"
-    FacetMaterial.TOURMALINE -> "#2E8A62"
-    FacetMaterial.TOPAZE -> "#7FB6DA"
-    FacetMaterial.BERYL -> "#7EC8D2"
-    FacetMaterial.QUARTZ -> "#9A6FC4"
-    FacetMaterial.CHRYSOBERYL -> "#A9B53C"
-    FacetMaterial.ZIRCON -> "#5BB7C9"
-    else -> "#FFFFFF"
+/** Teinte de la pierre pour la 3D (incolore : blanc, rendu « diamant » du moteur). */
+fun facetMaterialColor(material: FacetMaterial): String {
+    val c = fr.gemsofrod.encyclopedie.data.hslToRgb(material.hue, material.saturation, material.lightness)
+    return "#%02X%02X%02X".format(*c.map { (it * 255).toInt().coerceIn(0, 255) }.toTypedArray())
 }
 
 /**
