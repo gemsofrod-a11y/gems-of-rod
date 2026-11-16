@@ -1,6 +1,7 @@
 package fr.gemsofrod.encyclopedie.ui.components
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Handler
@@ -65,6 +66,32 @@ fun ringConfigJson(config: RingConfiguration): String {
     return json.toString()
 }
 
+/**
+ * WebView du moteur 3D embarqué (`assets/ring3d`), partagée par la bague
+ * et par l'Atelier de facettage.
+ */
+@SuppressLint("SetJavaScriptEnabled", "ClickableViewAccessibility")
+internal fun createEngineWebView(
+    context: Context,
+    onReady: () -> Unit,
+    onSheet: (Bitmap) -> Unit = {},
+    onError: (String) -> Unit
+): WebView = WebView(context).apply {
+    layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+    setBackgroundColor(android.graphics.Color.rgb(236, 235, 231))
+    settings.javaScriptEnabled = true
+    settings.allowFileAccess = false
+    settings.allowContentAccess = false
+    webViewClient = WebViewClient()
+    addJavascriptInterface(RingBridge(onReady, onSheet, onError), "AndroidRing")
+    // l'objet se fait tourner au doigt : on empêche la page de défiler pendant le geste
+    setOnTouchListener { v, event ->
+        if (event.actionMasked == MotionEvent.ACTION_DOWN) v.parent?.requestDisallowInterceptTouchEvent(true)
+        false
+    }
+    loadUrl("file:///android_asset/ring3d/viewer.html")
+}
+
 /** Pont JavaScript → app : les rappels arrivent sur un fil du moteur, on les ramène sur le fil principal. */
 private class RingBridge(
     private val onReady: () -> Unit,
@@ -110,29 +137,12 @@ fun Ring3DView(
     Box(modifier) {
         AndroidView(
             factory = { context ->
-                WebView(context).apply {
-                    layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-                    setBackgroundColor(android.graphics.Color.rgb(236, 235, 231))
-                    settings.javaScriptEnabled = true
-                    settings.allowFileAccess = false
-                    settings.allowContentAccess = false
-                    webViewClient = WebViewClient()
-                    addJavascriptInterface(
-                        RingBridge(
-                            onReady = { ready = true },
-                            onSheet = { onSheet(it) },
-                            onError = { onUnavailable() }
-                        ),
-                        "AndroidRing"
-                    )
-                    // la bague se fait tourner au doigt : on empêche la page de défiler pendant le geste
-                    setOnTouchListener { v, event ->
-                        if (event.actionMasked == MotionEvent.ACTION_DOWN) v.parent?.requestDisallowInterceptTouchEvent(true)
-                        false
-                    }
-                    loadUrl("file:///android_asset/ring3d/viewer.html")
-                    webView = this
-                }
+                createEngineWebView(
+                    context,
+                    onReady = { ready = true },
+                    onSheet = { onSheet(it) },
+                    onError = { onUnavailable() }
+                ).also { webView = it }
             },
             modifier = Modifier.fillMaxSize()
         )

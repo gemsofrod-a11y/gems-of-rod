@@ -88,6 +88,7 @@ fun HomeScreen(
     onAchievementsClick: () -> Unit,
     onLabClick: () -> Unit,
     onLapidaireClick: () -> Unit,
+    onFacetAtelierClick: () -> Unit,
     onSearchClick: () -> Unit
 ) {
     val context = LocalContext.current
@@ -145,6 +146,13 @@ fun HomeScreen(
                 subtitle = stringResource(R.string.home_lapidaire_subtitle),
                 onClick = onLapidaireClick,
                 backgroundDrawable = "lapidaire_machine_facettage_moderne"
+            )
+            HomeSectionCard(
+                title = stringResource(R.string.home_facet_title),
+                subtitle = stringResource(R.string.home_facet_subtitle),
+                onClick = onFacetAtelierClick,
+                backgroundDrawable = "gem_diamant_facette",
+                badge = stringResource(R.string.home_new_badge)
             )
             HomeSectionCard(
                 title = stringResource(R.string.home_lab_title),
@@ -216,7 +224,8 @@ private fun HomeSectionCard(
     subtitle: String,
     onClick: () -> Unit,
     backgroundDrawable: String?,
-    leadingEmoji: String? = null
+    leadingEmoji: String? = null,
+    badge: String? = null
 ) {
     Card(
         onClick = onClick,
@@ -281,6 +290,19 @@ private fun HomeSectionCard(
                     Icons.AutoMirrored.Filled.KeyboardArrowRight,
                     contentDescription = null,
                     tint = Color.White
+                )
+            }
+            if (badge != null) {
+                Text(
+                    text = badge,
+                    style = MaterialTheme.typography.labelSmall,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF241C1A),
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(10.dp)
+                        .background(Color(0xFFD6B872), RoundedCornerShape(10.dp))
+                        .padding(horizontal = 8.dp, vertical = 3.dp)
                 )
             }
         }

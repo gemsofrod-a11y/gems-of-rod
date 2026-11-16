@@ -3,9 +3,11 @@
 // - window.ring.renderSheet(json, lines) : compose la fiche technique 4 vues
 //   (dessus, perspective, face, côté) avec cotes et bloc de texte, et la
 //   renvoie à l'app en JPEG via AndroidRing.onSheet(dataUrl).
+// - window.ring.setStone(json) : Atelier de facettage, affiche une pierre
+//   facettée calculée par l'app ({v:[x,y,z,…], f:[[i,j,k,…],…], color}).
 // L'app reçoit AndroidRing.onReady() quand le moteur est prêt, et
 // AndroidRing.onError(message) si WebGL n'est pas disponible.
-import { buildRing, makeRenderer, makeScene, orthoCamera, disposeObject, THREE } from './engine.js';
+import { buildRing, makeRenderer, makeScene, orthoCamera, disposeObject, gemMaterial, THREE } from './engine.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 const bridge = window.AndroidRing || { onReady() {}, onSheet() {}, onError(m) { console.error(m); } };
@@ -135,5 +137,38 @@ function renderSheet(json, linesJson) {
   }
 }
 
-window.ring = { setConfig, renderSheet };
+// ---------- Atelier de facettage ----------
+// La géométrie (polygones convexes) est calculée côté app (FacetGeometry) :
+// ici on la triangule et on la montre avec le matériau « pierre » de la bague,
+// plus le tracé des arêtes, utile pour lire le dessin des facettes.
+let stoneFramed = false;
+function setStone(json) {
+  const data = typeof json === 'string' ? JSON.parse(json) : json;
+  if (ring) { scene.remove(ring); disposeObject(ring); ring = null; }
+  const v = data.v, pos = [];
+  for (const f of data.f) for (let i = 1; i < f.length - 1; i++) {
+    for (const k of [f[0], f[i + 1], f[i]]) pos.push(v[3 * k], v[3 * k + 1], v[3 * k + 2]);
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  geo.computeVertexNormals();
+  const group = new THREE.Group();
+  group.add(new THREE.Mesh(geo, gemMaterial(data.color || '#ffffff')));
+  const lines = [];
+  for (const f of data.f) for (let i = 0; i < f.length; i++) {
+    const a = f[i], b = f[(i + 1) % f.length];
+    lines.push(v[3 * a], v[3 * a + 1], v[3 * a + 2], v[3 * b], v[3 * b + 1], v[3 * b + 2]);
+  }
+  const lg = new THREE.BufferGeometry(); lg.setAttribute('position', new THREE.Float32BufferAttribute(lines, 3));
+  group.add(new THREE.LineSegments(lg, new THREE.LineBasicMaterial({ color: 0x4a4e55, transparent: true, opacity: 0.4 })));
+  ring = group; scene.add(ring);
+  if (!stoneFramed) {
+    stoneFramed = true;
+    controls.target.set(0, -0.6, 0);
+    camera.position.set(14, 12, 20);
+    controls.minDistance = 10; controls.maxDistance = 60;
+  }
+}
+
+window.ring = { setConfig, renderSheet, setStone };
 window.addEventListener('load', init);
