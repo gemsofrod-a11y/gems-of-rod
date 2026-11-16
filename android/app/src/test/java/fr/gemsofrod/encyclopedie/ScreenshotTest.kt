@@ -82,6 +82,7 @@ class ScreenshotTest {
             onAchievementsClick = {},
             onLabClick = {},
             onLapidaireClick = {},
+            onFacetAtelierClick = {},
             onSearchClick = {}
         )
     }
