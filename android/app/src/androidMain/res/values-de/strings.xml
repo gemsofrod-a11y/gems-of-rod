@@ -931,4 +931,25 @@
     <string name="facet_meet_none">Schleifen Sie zuerst andere Reihen, die getroffen werden sollen.</string>
     <string name="facet_value_hint">Stellen Sie die Tiefe mit dem Regler unter dem Stein ein: Die Facette wächst live nach rechts.</string>
     <string name="facet_cut_depth">Erreichte Tiefe: %1$s · %2$d von %3$d Facette(n) sichtbar</string>
+    <!-- Atelier de facettage, rendu réaliste (17/11/2026) -->
+    <string name="facet_tool_render">Rendering</string>
+    <string name="facet_render_title">Realistisches Rendering</string>
+    <string name="facet_render_info">Raytracing · Lichtrückgabe %1$s %%</string>
+    <string name="facet_render_computing">Berechnung…</string>
+    <string name="facet_render_hint">Berechnetes Bild: Das Licht wird Strahl für Strahl im Stein verfolgt (Brechung, Reflexe, Totalreflexion, Feuer, Farbe). Eine Vorschau folgt Ihren Einstellungen, danach erscheint das feine Bild.</string>
+    <string name="facet_render_unfinished">Stein nicht fertig: Die Rohflächen des Würfels werden wie poliert dargestellt.</string>
+    <string name="facet_render_ri">Brechungsindex</string>
+    <string name="facet_render_dispersion">Dispersion</string>
+    <string name="facet_render_hue">Farbton</string>
+    <string name="facet_render_saturation">Sättigung</string>
+    <string name="facet_render_lightness">Helligkeit</string>
+    <string name="facet_render_density">Farbdichte</string>
+    <string name="facet_render_tilt_x">Neigung vorne / hinten</string>
+    <string name="facet_render_tilt_y">Neigung links / rechts</string>
+    <string name="facet_render_lighting">Beleuchtung</string>
+    <string name="facet_light_studio">Studio</string>
+    <string name="facet_light_sun">Sonne</string>
+    <string name="facet_light_soft">Weiches Licht</string>
+    <string name="facet_render_reset">Zurück zu den Materialeinstellungen</string>
+    <string name="facet_render_share">Bild teilen</string>
 </resources>

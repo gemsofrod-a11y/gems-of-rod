@@ -33,6 +33,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.Redo
 import androidx.compose.material.icons.automirrored.filled.Undo
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.ContentCut
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.KeyboardArrowDown
@@ -462,6 +463,11 @@ internal fun FacetDesignScreen(
     var menu by remember { mutableStateOf(false) }
     var dialog by remember { mutableStateOf<String?>(null) }
     var view3dUnavailable by remember { mutableStateOf(!allow3d) }
+    var showRender by remember { mutableStateOf(false) }
+    if (showRender) {
+        FacetRenderScreen(design, onBack = { showRender = false })
+        return
+    }
     var fineDepth by remember { mutableStateOf(false) }
     // retour Android pendant une coupe : abandonner la coupe en cours
     BackHandler(enabled = draft != null) { draft = null }
@@ -604,6 +610,9 @@ internal fun FacetDesignScreen(
                     ToolButton(if (hidden) Icons.Default.Visibility else Icons.Default.VisibilityOff,
                         stringResource(if (hidden) R.string.facet_tool_show else R.string.facet_tool_hide), enabled = sel != null) {
                         val i = sel!!; update(design.copy(tiers = design.tiers.mapIndexed { k, t -> if (k == i) t.copy(hidden = !t.hidden) else t }))
+                    }
+                    ToolButton(Icons.Default.AutoAwesome, stringResource(R.string.facet_tool_render), enabled = design.tiers.isNotEmpty()) {
+                        showRender = true
                     }
                     ToolButton(Icons.Default.ContentCut, stringResource(R.string.facet_tool_cut), enabled = true) {
                         val side = when {

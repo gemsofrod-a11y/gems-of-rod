@@ -931,4 +931,25 @@
     <string name="facet_meet_none">Corte primeiro outros passes a encontrar.</string>
     <string name="facet_value_hint">Ajuste a profundidade com o cursor sob a pedra: a faceta cresce em direto para a direita.</string>
     <string name="facet_cut_depth">Profundidade obtida: %1$s · %2$d de %3$d faceta(s) visíveis</string>
+    <!-- Atelier de facettage, rendu réaliste (17/11/2026) -->
+    <string name="facet_tool_render">Render</string>
+    <string name="facet_render_title">Render realista</string>
+    <string name="facet_render_info">Traçado de raios · retorno de luz %1$s %%</string>
+    <string name="facet_render_computing">a calcular…</string>
+    <string name="facet_render_hint">Imagem calculada: a luz é seguida raio a raio na pedra (refração, reflexos, reflexão total, fogo, cor). Uma pré-visualização segue os seus ajustes e depois surge a imagem fina.</string>
+    <string name="facet_render_unfinished">Pedra por terminar: as faces em bruto do cubo são mostradas como se estivessem polidas.</string>
+    <string name="facet_render_ri">Índice (IR)</string>
+    <string name="facet_render_dispersion">Dispersão</string>
+    <string name="facet_render_hue">Tonalidade</string>
+    <string name="facet_render_saturation">Saturação</string>
+    <string name="facet_render_lightness">Claridade</string>
+    <string name="facet_render_density">Densidade de cor</string>
+    <string name="facet_render_tilt_x">Inclinação frente / trás</string>
+    <string name="facet_render_tilt_y">Inclinação esquerda / direita</string>
+    <string name="facet_render_lighting">Iluminação</string>
+    <string name="facet_light_studio">Estúdio</string>
+    <string name="facet_light_sun">Sol</string>
+    <string name="facet_light_soft">Luz suave</string>
+    <string name="facet_render_reset">Voltar aos ajustes do material</string>
+    <string name="facet_render_share">Partilhar a imagem</string>
 </resources>

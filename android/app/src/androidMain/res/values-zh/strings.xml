@@ -931,4 +931,25 @@
     <string name="facet_meet_none">请先切磨要相交的其他刻面层。</string>
     <string name="facet_value_hint">用宝石下方的滑块设置深度：向右拖动时刻面会实时变大。</string>
     <string name="facet_cut_depth">所得深度：%1$s · 可见刻面 %2$d / %3$d</string>
+    <!-- Atelier de facettage, rendu réaliste (17/11/2026) -->
+    <string name="facet_tool_render">渲染</string>
+    <string name="facet_render_title">真实渲染</string>
+    <string name="facet_render_info">光线追踪 · 回光率 %1$s %%</string>
+    <string name="facet_render_computing">计算中…</string>
+    <string name="facet_render_hint">计算生成的图像：逐条追踪光线在宝石中的路径（折射、反光、全反射、火彩、颜色）。预览会随设置变化，随后显示精细图像。</string>
+    <string name="facet_render_unfinished">宝石尚未完成：立方体的未加工面按抛光面渲染。</string>
+    <string name="facet_render_ri">折射率</string>
+    <string name="facet_render_dispersion">色散</string>
+    <string name="facet_render_hue">色调</string>
+    <string name="facet_render_saturation">饱和度</string>
+    <string name="facet_render_lightness">明度</string>
+    <string name="facet_render_density">颜色浓度</string>
+    <string name="facet_render_tilt_x">前后倾斜</string>
+    <string name="facet_render_tilt_y">左右倾斜</string>
+    <string name="facet_render_lighting">照明</string>
+    <string name="facet_light_studio">影棚</string>
+    <string name="facet_light_sun">阳光</string>
+    <string name="facet_light_soft">柔光</string>
+    <string name="facet_render_reset">恢复材料默认设置</string>
+    <string name="facet_render_share">分享图片</string>
 </resources>

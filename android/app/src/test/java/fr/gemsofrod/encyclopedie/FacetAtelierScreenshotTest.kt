@@ -14,6 +14,8 @@ import fr.gemsofrod.encyclopedie.data.FacetPresets
 import fr.gemsofrod.encyclopedie.data.FacetWheels
 import fr.gemsofrod.encyclopedie.ui.screens.FacetDesignScreen
 import fr.gemsofrod.encyclopedie.ui.screens.FacetLibraryScreen
+import fr.gemsofrod.encyclopedie.ui.screens.FacetRenderScreen
+import fr.gemsofrod.encyclopedie.data.FacetMaterial
 import fr.gemsofrod.encyclopedie.ui.theme.GemsEncyclopedieTheme
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -110,5 +112,15 @@ class FacetAtelierScreenshotTest {
             }
         })
         FacetDesignScreen(bad, {}, {}, {}, {}, allow3d = false)
+    }
+
+    @Test
+    fun renderDiamond() = capture("atelier_08_rendu_diamant") {
+        FacetRenderScreen(FacetPresets.brilliantRound, {}, synchronous = true)
+    }
+
+    @Test
+    fun renderCitrine() = capture("atelier_09_rendu_citrine") {
+        FacetRenderScreen(FacetPresets.cushionGor.copy(material = FacetMaterial.QUARTZ), {}, synchronous = true)
     }
 }

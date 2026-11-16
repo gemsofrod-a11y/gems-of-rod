@@ -931,4 +931,25 @@
     <string name="facet_meet_none">Сначала ограните другие ряды для встречи.</string>
     <string name="facet_value_hint">Задайте глубину ползунком под камнем: грань растёт в реальном времени при движении вправо.</string>
     <string name="facet_cut_depth">Глубина: %1$s · видно граней: %2$d из %3$d</string>
+    <!-- Atelier de facettage, rendu réaliste (17/11/2026) -->
+    <string name="facet_tool_render">Рендер</string>
+    <string name="facet_render_title">Реалистичный рендер</string>
+    <string name="facet_render_info">Трассировка лучей · возврат света %1$s %%</string>
+    <string name="facet_render_computing">расчёт…</string>
+    <string name="facet_render_hint">Расчётное изображение: свет прослеживается луч за лучом внутри камня (преломление, блики, полное отражение, игра, цвет). Сначала быстрый просмотр, затем детальное изображение.</string>
+    <string name="facet_render_unfinished">Камень не закончен: необработанные грани куба показаны как полированные.</string>
+    <string name="facet_render_ri">Показатель (ПП)</string>
+    <string name="facet_render_dispersion">Дисперсия</string>
+    <string name="facet_render_hue">Оттенок</string>
+    <string name="facet_render_saturation">Насыщенность</string>
+    <string name="facet_render_lightness">Светлота</string>
+    <string name="facet_render_density">Плотность цвета</string>
+    <string name="facet_render_tilt_x">Наклон вперёд / назад</string>
+    <string name="facet_render_tilt_y">Наклон влево / вправо</string>
+    <string name="facet_render_lighting">Освещение</string>
+    <string name="facet_light_studio">Студия</string>
+    <string name="facet_light_sun">Солнце</string>
+    <string name="facet_light_soft">Мягкий свет</string>
+    <string name="facet_render_reset">Вернуть настройки материала</string>
+    <string name="facet_render_share">Поделиться изображением</string>
 </resources>

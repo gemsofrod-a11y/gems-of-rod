@@ -931,4 +931,25 @@
     <string name="facet_meet_none">Slijp eerst andere rijen om te raken.</string>
     <string name="facet_value_hint">Stel de diepte in met de schuif onder de steen: het facet groeit live naar rechts.</string>
     <string name="facet_cut_depth">Bereikte diepte: %1$s · %2$d van %3$d facet(ten) zichtbaar</string>
+    <!-- Atelier de facettage, rendu réaliste (17/11/2026) -->
+    <string name="facet_tool_render">Render</string>
+    <string name="facet_render_title">Realistische weergave</string>
+    <string name="facet_render_info">Raytracing · lichtrendement %1$s %%</string>
+    <string name="facet_render_computing">berekenen…</string>
+    <string name="facet_render_hint">Berekend beeld: het licht wordt straal voor straal door de steen gevolgd (breking, reflecties, totale reflectie, vuur, kleur). Een voorbeeld volgt uw instellingen, daarna verschijnt het fijne beeld.</string>
+    <string name="facet_render_unfinished">Steen niet af: de ruwe vlakken van de kubus worden weergegeven alsof ze gepolijst zijn.</string>
+    <string name="facet_render_ri">Index (BI)</string>
+    <string name="facet_render_dispersion">Dispersie</string>
+    <string name="facet_render_hue">Tint</string>
+    <string name="facet_render_saturation">Verzadiging</string>
+    <string name="facet_render_lightness">Helderheid</string>
+    <string name="facet_render_density">Kleurdichtheid</string>
+    <string name="facet_render_tilt_x">Kanteling voor / achter</string>
+    <string name="facet_render_tilt_y">Kanteling links / rechts</string>
+    <string name="facet_render_lighting">Verlichting</string>
+    <string name="facet_light_studio">Studio</string>
+    <string name="facet_light_sun">Zon</string>
+    <string name="facet_light_soft">Zacht licht</string>
+    <string name="facet_render_reset">Terug naar de instellingen van het materiaal</string>
+    <string name="facet_render_share">Afbeelding delen</string>
 </resources>

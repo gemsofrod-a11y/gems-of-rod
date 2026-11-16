@@ -931,4 +931,25 @@
     <string name="facet_meet_none">Cut other tiers to meet first.</string>
     <string name="facet_value_hint">Set the depth with the slider under the stone: the facet grows live as you move right.</string>
     <string name="facet_cut_depth">Resulting depth: %1$s · %2$d of %3$d facet(s) visible</string>
+    <!-- Atelier de facettage, rendu réaliste (17/11/2026) -->
+    <string name="facet_tool_render">Render</string>
+    <string name="facet_render_title">Realistic render</string>
+    <string name="facet_render_info">Ray tracing · light return %1$s %%</string>
+    <string name="facet_render_computing">computing…</string>
+    <string name="facet_render_hint">Computed image: light is followed ray by ray through the stone (refraction, reflections, total internal reflection, fire, colour). A preview follows your settings, then the fine image appears.</string>
+    <string name="facet_render_unfinished">Stone not finished: the rough faces of the cube are rendered as if polished.</string>
+    <string name="facet_render_ri">Index (RI)</string>
+    <string name="facet_render_dispersion">Dispersion</string>
+    <string name="facet_render_hue">Hue</string>
+    <string name="facet_render_saturation">Saturation</string>
+    <string name="facet_render_lightness">Lightness</string>
+    <string name="facet_render_density">Colour density</string>
+    <string name="facet_render_tilt_x">Tilt front / back</string>
+    <string name="facet_render_tilt_y">Tilt left / right</string>
+    <string name="facet_render_lighting">Lighting</string>
+    <string name="facet_light_studio">Studio</string>
+    <string name="facet_light_sun">Sun</string>
+    <string name="facet_light_soft">Soft light</string>
+    <string name="facet_render_reset">Back to the material\'s settings</string>
+    <string name="facet_render_share">Share the image</string>
 </resources>
