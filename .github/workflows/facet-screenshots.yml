@@ -1,0 +1,78 @@
+name: Facet screenshots
+
+# Captures de l'Atelier de facettage rendues par l'app compilée (Robolectric,
+# FacetAtelierScreenshotTest), pour relire les écrans avant chaque publication.
+# Déclenchée à chaque envoi de code sur une branche (comme gestion-screenshots) :
+# le déclenchement par pull request seul n'a pas toujours suivi les nouveaux envois.
+on:
+  workflow_dispatch: {}
+  push:
+    branches-ignore:
+      - facet-screenshots
+    paths:
+      - "android/app/src/**/Facet*"
+      - "android/app/src/androidMain/res/values*/strings.xml"
+      - ".github/workflows/facet-screenshots.yml"
+  pull_request:
+    paths:
+      - "android/app/src/**/Facet*"
+      - "android/app/src/androidMain/res/values*/strings.xml"
+      - ".github/workflows/facet-screenshots.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: facet-screenshots-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: android
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          packages: "platform-tools"
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Run facet screenshot tests
+        run: ./gradlew :app:testDebugUnitTest --tests "fr.gemsofrod.encyclopedie.FacetAtelierScreenshotTest" --no-daemon
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: facet-screenshots
+          path: android/app/build/outputs/facet-screenshots/*.png
+          if-no-files-found: error
+
+      # Les captures sont aussi poussées (écrasées à chaque fois) sur la branche
+      # « facet-screenshots », pour les relire sans télécharger l'artifact.
+      - name: Publish screenshots to branch facet-screenshots
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SRC_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          out="$RUNNER_TEMP/facet-shots"
+          rm -rf "$out" && mkdir -p "$out" && cp app/build/outputs/facet-screenshots/*.png "$out/"
+          cd "$out"
+          git init -q && git checkout -q -b facet-screenshots
+          git add . && git -c user.name="github-actions[bot]" -c user.email="github-actions[bot]@users.noreply.github.com" commit -qm "Captures de l'atelier de facettage ($SRC_SHA)"
+          git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:facet-screenshots
+
+      - name: Print test failure stack traces on failure
+        if: failure()
+        run: cat app/build/test-results/testDebugUnitTest/*.xml || true

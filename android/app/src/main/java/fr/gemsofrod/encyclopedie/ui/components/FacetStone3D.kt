@@ -21,7 +21,6 @@ import fr.gemsofrod.encyclopedie.data.FacetDesign
 import fr.gemsofrod.encyclopedie.data.FacetMaterial
 import fr.gemsofrod.encyclopedie.data.FacetSide
 import fr.gemsofrod.encyclopedie.data.FacetStone
-import kotlinx.coroutines.delay
 import org.json.JSONObject
 import kotlin.math.max
 
@@ -53,8 +52,8 @@ fun FacetStone3DView(
             modifier = Modifier.fillMaxSize()
         )
     }
+    // pas de délai : la pierre suit le curseur de profondeur en direct
     LaunchedEffect(ready, payload) {
-        delay(60)
         if (ready) webView?.evaluateJavascript("window.ring.setStone(${JSONObject.quote(payload)})", null)
     }
     DisposableEffect(Unit) {
@@ -78,7 +77,7 @@ fun facetMaterialColor(material: FacetMaterial): String = when (material) {
     FacetMaterial.TOPAZE -> "#7FB6DA"
     FacetMaterial.BERYL -> "#7EC8D2"
     FacetMaterial.QUARTZ -> "#9A6FC4"
-    FacetMaterial.CHRYSOBERYL -> "#C9B24A"
+    FacetMaterial.CHRYSOBERYL -> "#A9B53C"
     FacetMaterial.ZIRCON -> "#5BB7C9"
     else -> "#FFFFFF"
 }

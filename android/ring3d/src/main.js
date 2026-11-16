@@ -138,35 +138,47 @@ function renderSheet(json, linesJson) {
 }
 
 // ---------- Atelier de facettage ----------
-// La géométrie (polygones convexes) est calculée côté app (FacetGeometry) :
-// ici on la triangule et on la montre avec le matériau « pierre » de la bague,
-// plus le tracé des arêtes, utile pour lire le dessin des facettes.
+// La géométrie (polygones convexes) est calculée côté app (FacetGeometry.meshJson) :
+// {v:[x,y,z,…], f:[[i,j,k,…],…], raw:[0|1], hl:[0|1], color}. Les faces brutes du
+// cube de départ sont dépolies, les facettes polies prennent le matériau « pierre »
+// de la bague, la passe sélectionnée est en or ; arêtes tracées pour lire le dessin.
 let stoneFramed = false;
 function setStone(json) {
   const data = typeof json === 'string' ? JSON.parse(json) : json;
   if (ring) { scene.remove(ring); disposeObject(ring); ring = null; }
-  const v = data.v, pos = [];
-  for (const f of data.f) for (let i = 1; i < f.length - 1; i++) {
-    for (const k of [f[0], f[i + 1], f[i]]) pos.push(v[3 * k], v[3 * k + 1], v[3 * k + 2]);
-  }
-  const geo = new THREE.BufferGeometry();
-  geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
-  geo.computeVertexNormals();
+  const v = data.v, raw = data.raw || [], hl = data.hl || [];
+  const buckets = { polish: [], raw: [], hl: [] };
+  data.f.forEach((f, fi) => {
+    const out = raw[fi] ? buckets.raw : hl[fi] ? buckets.hl : buckets.polish;
+    for (let i = 1; i < f.length - 1; i++) {
+      for (const k of [f[0], f[i], f[i + 1]]) out.push(v[3 * k], v[3 * k + 1], v[3 * k + 2]);
+    }
+  });
   const group = new THREE.Group();
-  group.add(new THREE.Mesh(geo, gemMaterial(data.color || '#ffffff')));
+  const add = (pos, material) => {
+    if (!pos.length) return;
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+    geo.computeVertexNormals();
+    group.add(new THREE.Mesh(geo, material));
+  };
+  add(buckets.polish, gemMaterial(data.color || '#ffffff'));
+  add(buckets.raw, new THREE.MeshStandardMaterial({ color: 0xc9c7c0, roughness: 0.92, metalness: 0, flatShading: true, side: THREE.DoubleSide }));
+  add(buckets.hl, new THREE.MeshStandardMaterial({ color: 0xd6b872, roughness: 0.25, metalness: 0.6, flatShading: true, side: THREE.DoubleSide, emissive: 0x3a2a08 }));
   const lines = [];
   for (const f of data.f) for (let i = 0; i < f.length; i++) {
     const a = f[i], b = f[(i + 1) % f.length];
     lines.push(v[3 * a], v[3 * a + 1], v[3 * a + 2], v[3 * b], v[3 * b + 1], v[3 * b + 2]);
   }
   const lg = new THREE.BufferGeometry(); lg.setAttribute('position', new THREE.Float32BufferAttribute(lines, 3));
-  group.add(new THREE.LineSegments(lg, new THREE.LineBasicMaterial({ color: 0x4a4e55, transparent: true, opacity: 0.4 })));
+  group.add(new THREE.LineSegments(lg, new THREE.LineBasicMaterial({ color: 0x4a4e55, transparent: true, opacity: 0.45 })));
   ring = group; scene.add(ring);
   if (!stoneFramed) {
+    // cadrage sur le cube de départ (le plus grand volume possible)
     stoneFramed = true;
-    controls.target.set(0, -0.6, 0);
-    camera.position.set(14, 12, 20);
-    controls.minDistance = 10; controls.maxDistance = 60;
+    controls.target.set(0, 0, 0);
+    camera.position.set(22, 16, 30);
+    controls.minDistance = 14; controls.maxDistance = 90;
   }
 }
 
