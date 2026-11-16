@@ -693,8 +693,9 @@ private fun WheelRuler(wheel: Int, marked: List<Int>, onWheelClick: () -> Unit) 
             Spacer(Modifier.width(10.dp))
             val center = marked.firstOrNull()?.let { it % wheel } ?: 0
             val markSet = marked.map { it % wheel }.toSet()
+            val markColor = accent()
             Canvas(Modifier.weight(1f).height(40.dp)) {
-                drawRuler(measurer, wheel, center, markSet, line, accent())
+                drawRuler(measurer, wheel, center, markSet, line, markColor)
             }
         }
     }
