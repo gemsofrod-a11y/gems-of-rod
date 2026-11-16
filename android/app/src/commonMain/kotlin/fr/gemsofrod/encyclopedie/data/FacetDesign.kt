@@ -48,22 +48,65 @@ enum class FacetRole { NONE, PAVILION_MAIN, PAVILION_HALF, GIRDLE, CROWN_MAIN, S
  */
 enum class FacetRule { CENTER, WIDTH, LEVEL, GIRDLE_TOP, MEET, TABLE, VALUE }
 
-/** Matières proposées : indice de réfraction, densité (poids) et dispersion (feu, pour le rendu). */
-enum class FacetMaterial(val ri: Double, val sg: Double, val dispersion: Double) {
+/**
+ * Pierres facettables : indice de réfraction (moyen, celui que l'on règle sur le
+ * logiciel de taille), densité (poids), dispersion (feu) et couleur typique pour le
+ * rendu (teinte 0..360, saturation et clarté 0..1 ; saturation 0 = incolore).
+ * Les noms d'origine (DIAMANT … QUARTZ) restent : les tailles enregistrées s'y réfèrent.
+ */
+enum class FacetMaterial(
+    val ri: Double, val sg: Double, val dispersion: Double,
+    val hue: Double = 0.0, val saturation: Double = 0.0, val lightness: Double = 1.0
+) {
     DIAMANT(2.417, 3.52, 0.044),
     MOISSANITE(2.65, 3.22, 0.104),
     ZIRCONE_CUBIQUE(2.15, 5.80, 0.060),
-    ZIRCON(1.95, 4.65, 0.039),
-    GRENAT(1.79, 4.05, 0.024),
-    CORINDON(1.762, 4.00, 0.018),
-    CHRYSOBERYL(1.75, 3.72, 0.015),
-    SPINELLE(1.718, 3.60, 0.020),
-    TANZANITE(1.70, 3.35, 0.021),
-    PERIDOT(1.67, 3.34, 0.020),
-    TOURMALINE(1.624, 3.06, 0.017),
-    TOPAZE(1.619, 3.53, 0.014),
-    BERYL(1.577, 2.72, 0.014),
-    QUARTZ(1.544, 2.65, 0.013);
+    ZIRCON(1.95, 4.65, 0.039, 195.0, 0.35, 0.78),
+    GRENAT(1.79, 4.05, 0.024, 350.0, 0.75, 0.42),
+    CORINDON(1.762, 4.00, 0.018, 222.0, 0.70, 0.62),
+    CHRYSOBERYL(1.75, 3.72, 0.015, 62.0, 0.55, 0.65),
+    SPINELLE(1.718, 3.60, 0.020, 340.0, 0.60, 0.60),
+    TANZANITE(1.70, 3.35, 0.021, 250.0, 0.55, 0.60),
+    PERIDOT(1.67, 3.34, 0.020, 78.0, 0.62, 0.62),
+    TOURMALINE(1.624, 3.06, 0.017, 150.0, 0.55, 0.55),
+    TOPAZE(1.619, 3.53, 0.014, 200.0, 0.40, 0.75),
+    BERYL(1.577, 2.72, 0.014, 188.0, 0.40, 0.75),
+    QUARTZ(1.544, 2.65, 0.013, 42.0, 0.88, 0.58),
+    RUBIS(1.762, 4.00, 0.018, 350.0, 0.82, 0.48),
+    PADPARADSCHA(1.762, 4.00, 0.018, 12.0, 0.70, 0.72),
+    EMERAUDE(1.577, 2.72, 0.014, 145.0, 0.70, 0.42),
+    MORGANITE(1.585, 2.80, 0.014, 350.0, 0.45, 0.82),
+    HELIODORE(1.577, 2.72, 0.014, 50.0, 0.70, 0.62),
+    AMETHYSTE(1.544, 2.65, 0.013, 275.0, 0.55, 0.55),
+    CRISTAL_DE_ROCHE(1.544, 2.65, 0.013),
+    QUARTZ_FUME(1.544, 2.65, 0.013, 30.0, 0.35, 0.40),
+    ALEXANDRITE(1.75, 3.73, 0.015, 150.0, 0.40, 0.45),
+    DEMANTOIDE(1.888, 3.84, 0.057, 95.0, 0.70, 0.50),
+    TSAVORITE(1.74, 3.61, 0.028, 135.0, 0.70, 0.48),
+    SPESSARTITE(1.80, 4.15, 0.027, 25.0, 0.85, 0.55),
+    PYROPE(1.746, 3.78, 0.022, 355.0, 0.75, 0.40),
+    RHODOLITE(1.76, 3.84, 0.026, 330.0, 0.55, 0.50),
+    RUBELLITE(1.624, 3.06, 0.017, 340.0, 0.70, 0.50),
+    TOPAZE_IMPERIALE(1.630, 3.53, 0.014, 30.0, 0.75, 0.60),
+    KUNZITE(1.666, 3.18, 0.017, 310.0, 0.40, 0.80),
+    APATITE(1.638, 3.18, 0.013, 185.0, 0.70, 0.55),
+    IOLITE(1.542, 2.61, 0.017, 240.0, 0.40, 0.55),
+    SPHENE(1.93, 3.52, 0.051, 70.0, 0.60, 0.60),
+    FLUORITE(1.434, 3.18, 0.007, 270.0, 0.40, 0.70),
+    SCAPOLITE(1.55, 2.68, 0.017, 48.0, 0.60, 0.70),
+    ANDALOUSITE(1.64, 3.17, 0.016, 35.0, 0.50, 0.45),
+    KYANITE(1.72, 3.68, 0.020, 220.0, 0.60, 0.50),
+    DIOPSIDE(1.68, 3.29, 0.016, 130.0, 0.60, 0.35),
+    SINHALITE(1.69, 3.48, 0.018, 40.0, 0.50, 0.50),
+    BENITOITE(1.77, 3.68, 0.044, 230.0, 0.70, 0.60),
+    EUCLASE(1.655, 3.10, 0.016, 200.0, 0.40, 0.75),
+    ORTHOCLASE(1.52, 2.56, 0.012, 50.0, 0.60, 0.70),
+    OPALE_DE_FEU(1.45, 2.00, 0.010, 20.0, 0.85, 0.55),
+    CERUSITE(2.08, 6.55, 0.055),
+    CASSITERITE(2.00, 6.95, 0.071, 30.0, 0.50, 0.45),
+    YAG(1.833, 4.55, 0.028),
+    GGG(1.97, 7.05, 0.045),
+    VERRE(1.52, 2.50, 0.010);
 
     /** Angle critique (degrés) : sous cet angle d'incidence, la lumière sort de la pierre. */
     val criticalAngleDeg: Double get() = asin(1.0 / ri) * 180.0 / PI

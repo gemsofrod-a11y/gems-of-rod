@@ -63,6 +63,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import fr.gemsofrod.encyclopedie.R
+import fr.gemsofrod.encyclopedie.ui.components.FacetMaterialMenu
+import fr.gemsofrod.encyclopedie.ui.components.facetMaterialName
+import fr.gemsofrod.encyclopedie.ui.components.facetMaterialSwatch
 import fr.gemsofrod.encyclopedie.data.FacetDesign
 import fr.gemsofrod.encyclopedie.data.FacetGeometry
 import fr.gemsofrod.encyclopedie.data.FacetLighting
@@ -208,13 +211,22 @@ internal fun FacetRenderScreen(design: FacetDesign, onBack: () -> Unit, synchron
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 4.dp)
             ) {
                 Column(Modifier.padding(horizontal = 12.dp, vertical = 6.dp)) {
-                    Row(
-                        Modifier.fillMaxWidth().clickable { pickMaterial = true }.padding(vertical = 8.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(stringResource(R.string.facet_material_title), style = MaterialTheme.typography.labelMedium, modifier = Modifier.width(110.dp))
-                        Text(materialName(material), modifier = Modifier.weight(1f), maxLines = 1, overflow = TextOverflow.Ellipsis)
-                        Text("▾", color = accentColor)
+                    Box {
+                        Row(
+                            Modifier.fillMaxWidth().clickable { pickMaterial = true }.padding(vertical = 8.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(stringResource(R.string.facet_material_title), style = MaterialTheme.typography.labelMedium, modifier = Modifier.width(110.dp))
+                            Box(Modifier.padding(end = 8.dp).size(14.dp).clip(CircleShape).background(facetMaterialSwatch(material)))
+                            Text(facetMaterialName(material), modifier = Modifier.weight(1f), maxLines = 1, overflow = TextOverflow.Ellipsis)
+                            Text("▾", color = accentColor)
+                        }
+                        FacetMaterialMenu(pickMaterial, material, onDismiss = { pickMaterial = false }) { m ->
+                            // la pierre choisie règle d'elle-même indice, dispersion et couleur
+                            material = m
+                            settings = FacetRenderSettings.forMaterial(m).copy(tiltX = settings.tiltX, tiltY = settings.tiltY, lighting = settings.lighting)
+                            pickMaterial = false
+                        }
                     }
                     SettingSlider(stringResource(R.string.facet_render_ri), settings.ri, 1.3, 2.8, fmt(settings.ri, 3)) { settings = settings.copy(ri = it) }
                     SettingSlider(stringResource(R.string.facet_render_dispersion), settings.dispersion, 0.0, 0.2, fmt(settings.dispersion, 3)) { settings = settings.copy(dispersion = it) }
@@ -245,27 +257,6 @@ internal fun FacetRenderScreen(design: FacetDesign, onBack: () -> Unit, synchron
         }
     }
 
-    if (pickMaterial) {
-        AlertDialog(
-            onDismissRequest = { pickMaterial = false },
-            title = { Text(stringResource(R.string.facet_material_title)) },
-            text = {
-                Column(Modifier.verticalScroll(rememberScrollState())) {
-                    FacetMaterial.entries.forEach { m ->
-                        Text(
-                            stringResource(R.string.facet_material_item, materialName(m), fmt(m.ri, 3), fmt(m.sg, 2)),
-                            fontWeight = if (m == material) FontWeight.Bold else FontWeight.Normal,
-                            modifier = Modifier.fillMaxWidth().clickable {
-                                material = m; settings = FacetRenderSettings.forMaterial(m).copy(tiltX = settings.tiltX, tiltY = settings.tiltY, lighting = settings.lighting)
-                                pickMaterial = false
-                            }.padding(vertical = 10.dp)
-                        )
-                    }
-                }
-            },
-            confirmButton = { TextButton(onClick = { pickMaterial = false }) { Text(stringResource(R.string.facet_close)) } }
-        )
-    }
 }
 
 @Composable
@@ -283,23 +274,3 @@ private fun SettingSlider(label: String, value: Double, min: Double, max: Double
         Text(shown, style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.SemiBold, modifier = Modifier.width(56.dp).padding(start = 6.dp), maxLines = 1)
     }
 }
-
-@Composable
-private fun materialName(m: FacetMaterial): String = stringResource(
-    when (m) {
-        FacetMaterial.DIAMANT -> R.string.facet_mat_diamant
-        FacetMaterial.MOISSANITE -> R.string.facet_mat_moissanite
-        FacetMaterial.ZIRCONE_CUBIQUE -> R.string.facet_mat_zircone_cubique
-        FacetMaterial.ZIRCON -> R.string.facet_mat_zircon
-        FacetMaterial.GRENAT -> R.string.facet_mat_grenat
-        FacetMaterial.CORINDON -> R.string.facet_mat_corindon
-        FacetMaterial.CHRYSOBERYL -> R.string.facet_mat_chrysoberyl
-        FacetMaterial.SPINELLE -> R.string.facet_mat_spinelle
-        FacetMaterial.TANZANITE -> R.string.facet_mat_tanzanite
-        FacetMaterial.PERIDOT -> R.string.facet_mat_peridot
-        FacetMaterial.TOURMALINE -> R.string.facet_mat_tourmaline
-        FacetMaterial.TOPAZE -> R.string.facet_mat_topaze
-        FacetMaterial.BERYL -> R.string.facet_mat_beryl
-        FacetMaterial.QUARTZ -> R.string.facet_mat_quartz
-    }
-)

@@ -68,13 +68,21 @@ class FacetRenderTest {
 
     @Test
     fun pavilionBelowTheCriticalAngleLeaksLight() {
-        // quartz (angle critique 40,4°) : pavillon à 43° contre pavillon à 37°
-        fun lr(angle: Double): Double {
-            val d = FacetPresets.brilliantRound.let { b -> b.copy(tiers = b.tiers.map { if (it.name == "P1") it.copy(angleDeg = angle) else if (it.name == "P2") it.copy(angleDeg = angle + 1) else it }) }
-            return FacetRenderer.render(FacetGeometry.build(d), FacetRenderSettings(ri = 1.544, dispersion = 0.0), 40, samples = 1).lightReturn
-        }
-        val good = lr(43.0); val leaky = lr(37.0)
-        assertTrue(good > leaky + 0.2, "pavillon 43° : $good, 37° : $leaky")
+        // quartz (angle critique 40,4°) : pavillon à 41° contre pavillon à 34°
+        val good = lr(1.544, 41.0); val leaky = lr(1.544, 34.0)
+        assertTrue(good > leaky + 0.4, "pavillon 41° : $good, 34° : $leaky")
+    }
+
+    @Test
+    fun diamondReturnsMostLightNearTheIdealPavilion() {
+        // diamant : le pavillon idéal (≈ 40,75°) rend plus de lumière qu'un pavillon plat ou creux
+        val ideal = lr(2.417, 40.75)
+        assertTrue(ideal > lr(2.417, 34.0) + 0.1 && ideal > lr(2.417, 47.0) + 0.1, "idéal $ideal")
+    }
+
+    private fun lr(ri: Double, angle: Double): Double {
+        val d = FacetPresets.brilliantRound.let { b -> b.copy(tiers = b.tiers.map { if (it.name == "P1") it.copy(angleDeg = angle) else if (it.name == "P2") it.copy(angleDeg = angle + 1) else it }) }
+        return FacetRenderer.render(FacetGeometry.build(d), FacetRenderSettings(ri = ri, dispersion = 0.0), 50, samples = 1).lightReturn
     }
 
     @Test
@@ -90,6 +98,22 @@ class FacetRenderTest {
         val r = FacetRenderer.render(brilliant, FacetRenderSettings.forMaterial(FacetMaterial.DIAMANT), 32, samples = 1, background = 0xFF000000.toInt())
         assertEquals(32 * 32, r.pixels.size)
         assertEquals(0xFF000000.toInt(), r.pixels[0]) // coin : hors de la pierre
+    }
+
+    @Test
+    fun everyFacetableGemHasPlausibleConstantsAndSurvivesSaving() {
+        assertTrue(FacetMaterial.entries.size >= 45)
+        for (m in FacetMaterial.entries) {
+            assertTrue(m.ri in 1.40..2.70 && m.sg in 1.9..7.2 && m.dispersion in 0.005..0.11, m.name)
+            assertTrue(m.hue in 0.0..360.0 && m.saturation in 0.0..1.0 && m.lightness in 0.0..1.0, m.name)
+            val s = FacetRenderSettings.forMaterial(m)
+            assertEquals(m.ri, s.ri); assertEquals(m.dispersion, s.dispersion)
+            val d = FacetPresets.blank("t", material = m)
+            assertEquals(m, FacetDesignCodec.decode(FacetDesignCodec.encode(d))?.material)
+        }
+        // repères de laboratoire
+        assertEquals(1.762, FacetMaterial.RUBIS.ri); assertEquals(1.577, FacetMaterial.EMERAUDE.ri)
+        assertEquals(1.888, FacetMaterial.DEMANTOIDE.ri); assertEquals(0.057, FacetMaterial.DEMANTOIDE.dispersion)
     }
 
     @Test

@@ -104,6 +104,8 @@ import fr.gemsofrod.encyclopedie.data.FacetTier
 import fr.gemsofrod.encyclopedie.data.FacetWheels
 import fr.gemsofrod.encyclopedie.data.TierIssue
 import fr.gemsofrod.encyclopedie.ui.components.FacetDiagram
+import fr.gemsofrod.encyclopedie.ui.components.FacetMaterialMenu
+import fr.gemsofrod.encyclopedie.ui.components.facetMaterialName
 import fr.gemsofrod.encyclopedie.ui.components.FacetStone3DView
 import java.util.Locale
 import kotlin.math.abs
@@ -150,24 +152,7 @@ private fun saveDesigns(context: Context, list: List<FacetDesign>) {
 }
 
 @Composable
-private fun materialLabel(m: FacetMaterial): String = stringResource(
-    when (m) {
-        FacetMaterial.DIAMANT -> R.string.facet_mat_diamant
-        FacetMaterial.MOISSANITE -> R.string.facet_mat_moissanite
-        FacetMaterial.ZIRCONE_CUBIQUE -> R.string.facet_mat_zircone_cubique
-        FacetMaterial.ZIRCON -> R.string.facet_mat_zircon
-        FacetMaterial.GRENAT -> R.string.facet_mat_grenat
-        FacetMaterial.CORINDON -> R.string.facet_mat_corindon
-        FacetMaterial.CHRYSOBERYL -> R.string.facet_mat_chrysoberyl
-        FacetMaterial.SPINELLE -> R.string.facet_mat_spinelle
-        FacetMaterial.TANZANITE -> R.string.facet_mat_tanzanite
-        FacetMaterial.PERIDOT -> R.string.facet_mat_peridot
-        FacetMaterial.TOURMALINE -> R.string.facet_mat_tourmaline
-        FacetMaterial.TOPAZE -> R.string.facet_mat_topaze
-        FacetMaterial.BERYL -> R.string.facet_mat_beryl
-        FacetMaterial.QUARTZ -> R.string.facet_mat_quartz
-    }
-)
+private fun materialLabel(m: FacetMaterial): String = facetMaterialName(m)
 
 @Composable
 private fun roleLabel(role: FacetRole): String? = when (role) {
@@ -371,8 +356,12 @@ private fun NewDesignDialog(defaultName: String, onDismiss: () -> Unit, onCreate
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                     FacetWheels.sizes.forEach { w -> FilterChip(colors = chipColors(), selected = w == wheel, onClick = { wheel = w }, label = { Text(w.toString()) }) }
                 }
-                OutlinedButton(onClick = { pickMaterial = true }, modifier = Modifier.fillMaxWidth()) {
-                    Text(stringResource(R.string.facet_chip_material, materialLabel(material), num(material.ri, 3)), maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Box {
+                    OutlinedButton(onClick = { pickMaterial = true }, modifier = Modifier.fillMaxWidth()) {
+                        Text(stringResource(R.string.facet_chip_material, materialLabel(material), num(material.ri, 3)), maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(1f))
+                        Text("▾")
+                    }
+                    FacetMaterialMenu(pickMaterial, material, onDismiss = { pickMaterial = false }) { material = it; pickMaterial = false }
                 }
                 OutlinedTextField(
                     value = cubeText, onValueChange = { cubeText = it }, singleLine = true, isError = cube == null,
@@ -387,28 +376,6 @@ private fun NewDesignDialog(defaultName: String, onDismiss: () -> Unit, onCreate
             }) { Text(stringResource(R.string.facet_create)) }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.facet_cancel)) } }
-    )
-    if (pickMaterial) MaterialDialog(material, onDismiss = { pickMaterial = false }) { material = it; pickMaterial = false }
-}
-
-@Composable
-private fun MaterialDialog(current: FacetMaterial, onDismiss: () -> Unit, onPick: (FacetMaterial) -> Unit) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text(stringResource(R.string.facet_material_title)) },
-        text = {
-            Column(Modifier.verticalScroll(rememberScrollState())) {
-                FacetMaterial.entries.forEach { m ->
-                    Text(
-                        stringResource(R.string.facet_material_item, materialLabel(m), num(m.ri, 3), num(m.sg)),
-                        fontWeight = if (m == current) FontWeight.Bold else FontWeight.Normal,
-                        color = if (m == current) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
-                        modifier = Modifier.fillMaxWidth().clickable { onPick(m) }.padding(vertical = 10.dp)
-                    )
-                }
-            }
-        },
-        confirmButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.facet_close)) } }
     )
 }
 
@@ -572,7 +539,14 @@ internal fun FacetDesignScreen(
             if (draft == null) {
                 // réglages de la pierre
                 Row(Modifier.horizontalScroll(rememberScrollState()).padding(horizontal = 12.dp, vertical = 4.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    AssistChip(onClick = { dialog = "material" }, label = { Text(materialLabel(design.material)) })
+                    Box {
+                        AssistChip(
+                            onClick = { dialog = "material" },
+                            label = { Text(materialLabel(design.material) + " · IR " + num(design.material.ri, 3)) },
+                            trailingIcon = { Text("▾") }
+                        )
+                        FacetMaterialMenu(dialog == "material", design.material, onDismiss = { dialog = null }) { update(design.copy(material = it)); dialog = null }
+                    }
                     AssistChip(onClick = { dialog = "cube" }, label = { Text(stringResource(R.string.facet_chip_cube, num(design.cubeMm))) })
                     AssistChip(onClick = { dialog = "girdle" }, label = { Text(stringResource(R.string.facet_chip_girdle, num(design.girdlePercent, 1))) })
                 }
@@ -661,7 +635,6 @@ internal fun FacetDesignScreen(
     }
 
     when (dialog) {
-        "material" -> MaterialDialog(design.material, onDismiss = { dialog = null }) { update(design.copy(material = it)); dialog = null }
         "wheel" -> AlertDialog(
             onDismissRequest = { dialog = null },
             title = { Text(stringResource(R.string.facet_wheel_title)) },

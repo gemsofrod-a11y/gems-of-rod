@@ -40,21 +40,7 @@ data class FacetRenderSettings(
     companion object {
         /** Réglages de départ d'une matière (couleur typique de la gemme). */
         fun forMaterial(m: FacetMaterial): FacetRenderSettings {
-            val (h, s, l) = when (m) {
-                FacetMaterial.CORINDON -> Triple(222.0, 0.70, 0.62)
-                FacetMaterial.GRENAT -> Triple(350.0, 0.75, 0.42)
-                FacetMaterial.SPINELLE -> Triple(340.0, 0.60, 0.60)
-                FacetMaterial.PERIDOT -> Triple(78.0, 0.62, 0.62)
-                FacetMaterial.TANZANITE -> Triple(250.0, 0.55, 0.60)
-                FacetMaterial.TOURMALINE -> Triple(150.0, 0.55, 0.55)
-                FacetMaterial.TOPAZE -> Triple(200.0, 0.40, 0.75)
-                FacetMaterial.BERYL -> Triple(188.0, 0.40, 0.75)
-                FacetMaterial.QUARTZ -> Triple(42.0, 0.88, 0.58)
-                FacetMaterial.CHRYSOBERYL -> Triple(62.0, 0.55, 0.65)
-                FacetMaterial.ZIRCON -> Triple(195.0, 0.35, 0.78)
-                else -> Triple(0.0, 0.0, 1.0)
-            }
-            return FacetRenderSettings(ri = m.ri, dispersion = m.dispersion, hue = h, saturation = s, lightness = l, density = 0.9)
+            return FacetRenderSettings(ri = m.ri, dispersion = m.dispersion, hue = m.hue, saturation = m.saturation, lightness = m.lightness, density = 0.9)
         }
     }
 
@@ -83,7 +69,7 @@ class FacetRenderResult(
     val size: Int,
     /** Pixels ARGB (fond compris). */
     val pixels: IntArray,
-    /** Part de la lumière reçue d'en haut qui repart vers le haut (reflet de surface compris), canal vert, 0..1. */
+    /** Part de la lumière reçue d'en haut qui repart vers l'observateur, à moins de 60° de la verticale (reflet de surface compris), canal vert, 0..1. */
     val lightReturn: Double,
     /** Sommes brutes, pour assembler un calcul réparti par lignes sur plusieurs cœurs. */
     val returnedSum: Double = 0.0,
@@ -116,11 +102,20 @@ object FacetRenderer {
         val head = 1 - 0.55 * ((y - 0.94) / 0.05).coerceIn(0.0, 1.0)
         return when (lighting) {
             FacetLighting.STUDIO -> {
-                if (y < -0.2) return 0.08
-                var v = 0.35 + 0.75 * max(0.0, y)
+                // studio de photo de joaillerie : pièce sombre, couronne de boîtes à lumière
+                // séparées par des intervalles noirs (le contraste qui dessine les facettes),
+                // petites lampes vives (le feu), et l'observateur qui masque le zénith
+                if (y < 0.0) return 0.02
+                var v = 0.10 + 0.22 * y
                 val az = atan2(z, x)
-                if (y > 0.15 && y < 0.8) v += 1.4 * max(0.0, cos(az * 3 + y * 2)).pow(10)
-                v * head
+                // boîtes à lumière : de 15° à 75° au-dessus de l'horizon, plafond diffus au-dessus
+                val ring = smooth((y - 0.26) / 0.1) * smooth((0.97 - y) / 0.04)
+                val panel = smooth((cos(az * 4 + 0.4) + 0.1) / 0.3)
+                v += 1.3 * ring * panel + 0.55 * smooth((y - 0.95) / 0.03)
+                for (sp in SPOTS) if (x * sp[0] + y * sp[1] + z * sp[2] > 0.99945) v += 14.0
+                // l'observateur (tête et appareil) masque une petite zone au zénith
+                val viewer = 1 - 0.8 * smooth((y - 0.982) / 0.008)
+                v * viewer
             }
             FacetLighting.SUN -> {
                 // ciel sombre, un soleil franc : beaucoup de contraste et de feu
@@ -132,6 +127,19 @@ object FacetRenderer {
             FacetLighting.SOFT -> ((0.45 + 0.55 * max(0.0, y)) * head).coerceAtLeast(0.15)
         }
     }
+
+    private fun smooth(t: Double): Double { val c = t.coerceIn(0.0, 1.0); return c * c * (3 - 2 * c) }
+
+    /** Petites lampes du studio (azimut, élévation en degrés), sources du feu. */
+    private val SPOTS: List<DoubleArray> = listOf(
+        20.0 to 52.0, 95.0 to 34.0, 150.0 to 63.0, 215.0 to 44.0, 290.0 to 57.0, 335.0 to 31.0
+    ).map { (a, e) ->
+        val ar = a * PI / 180; val er = e * PI / 180
+        doubleArrayOf(cos(er) * cos(ar), sin(er), cos(er) * sin(ar))
+    }
+
+    /** Lumière qui ressort vers l'observateur : à moins de 60° de la verticale. */
+    private const val VIEW_Y = 0.5
 
     /**
      * Calcule l'image vue de dessus (pierre centrée, [size] × [size] pixels,
@@ -205,7 +213,7 @@ object FacetRenderer {
                     // reflet de surface
                     val rdx = 0 - 2 * (-hit.ny) * hit.nx; val rdy = -1 - 2 * (-hit.ny) * hit.ny; val rdz = 0 - 2 * (-hit.ny) * hit.nz
                     var col = f * env(rdx, rdy, rdz)
-                    if (ch == 1 && rdy > 0) returned += f
+                    if (ch == 1 && rdy > VIEW_Y) returned += f
                     var dir = refract(0.0, -1.0, 0.0, hit.nx, hit.ny, hit.nz, 1 / eta)
                     var px0 = p0x; var py0 = p0y; var pz0 = p0z
                     var k = 1 - f
@@ -229,7 +237,7 @@ object FacetRenderer {
                         if (ex != null) {
                             val fo = fresnel(ci, 1 / eta)
                             col += k * (1 - fo) * att * env(ex[0], ex[1], ex[2])
-                            if (ch == 1 && ex[1] > 0) returned += k * (1 - fo) // mesure de la taille : sans l'absorption de la couleur
+                            if (ch == 1 && ex[1] > VIEW_Y) returned += k * (1 - fo) // mesure de la taille : sans l'absorption de la couleur
                             k *= fo
                         }
                         // la part réfléchie continue dans la pierre

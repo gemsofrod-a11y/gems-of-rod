@@ -123,4 +123,9 @@ class FacetAtelierScreenshotTest {
     fun renderCitrine() = capture("atelier_09_rendu_citrine") {
         FacetRenderScreen(FacetPresets.cushionGor.copy(material = FacetMaterial.QUARTZ), {}, synchronous = true)
     }
+
+    @Test
+    fun renderRuby() = capture("atelier_10_rendu_rubis") {
+        FacetRenderScreen(FacetPresets.brilliantRound.copy(material = FacetMaterial.RUBIS), {}, synchronous = true)
+    }
 }
