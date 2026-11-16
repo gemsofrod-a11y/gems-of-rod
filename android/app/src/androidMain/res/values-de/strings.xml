@@ -885,8 +885,8 @@
     <string name="facet_delete_title">„%1$s“ löschen?</string>
     <string name="facet_delete_text">Der Schliff und alle seine Reihen werden von diesem Telefon gelöscht.</string>
     <string name="facet_view_material">%1$s · BI %2$s</string>
-    <string name="facet_view_info">L/B %1$s · %2$d Facetten + %7$d an der Rundiste · %3$s ct
-%4$s × %5$s × %6$s mm</string>
+    <string name="facet_view_raw">Rohwürfel · %1$s ct\n%2$s × %3$s × %4$s mm</string>
+    <string name="facet_view_info">L/B %1$s · %2$d Facetten + %7$d an der Rundiste · %3$s ct\n%4$s × %5$s × %6$s mm</string>
     <string name="facet_chip_cube">Würfel %1$s mm</string>
     <string name="facet_critical_line">Grenzwinkel des Materials: %1$s°</string>
     <string name="facet_empty_hint">Noch keine Reihe: Der Stein ist ein Rohwürfel. Tippen Sie auf „Schleifen“ für die erste Reihe, z. B. den Pavillon „zur Mitte“.</string>

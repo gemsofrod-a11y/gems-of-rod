@@ -885,8 +885,8 @@
     <string name="facet_delete_title">¿Eliminar «%1$s»?</string>
     <string name="facet_delete_text">La talla y todas sus pasadas se borrarán de este teléfono.</string>
     <string name="facet_view_material">%1$s · IR %2$s</string>
-    <string name="facet_view_info">L/A %1$s · %2$d facetas + %7$d en el filetín · %3$s ct
-%4$s × %5$s × %6$s mm</string>
+    <string name="facet_view_raw">Cubo en bruto · %1$s ct\n%2$s × %3$s × %4$s mm</string>
+    <string name="facet_view_info">L/A %1$s · %2$d facetas + %7$d en el filetín · %3$s ct\n%4$s × %5$s × %6$s mm</string>
     <string name="facet_chip_cube">Cubo %1$s mm</string>
     <string name="facet_critical_line">Ángulo crítico del material: %1$s°</string>
     <string name="facet_empty_hint">Aún no hay pasadas: la piedra es un cubo en bruto. Toque «Cortar» para la primera pasada, por ejemplo el pabellón «al centro».</string>

@@ -885,8 +885,8 @@
     <string name="facet_delete_title">Удалить «%1$s»?</string>
     <string name="facet_delete_text">Огранка и все её ряды будут удалены с этого телефона.</string>
     <string name="facet_view_material">%1$s · ПП %2$s</string>
-    <string name="facet_view_info">Д/Ш %1$s · граней: %2$d + %7$d на рундисте · %3$s кар
-%4$s × %5$s × %6$s мм</string>
+    <string name="facet_view_raw">Необработанный куб · %1$s кар\n%2$s × %3$s × %4$s мм</string>
+    <string name="facet_view_info">Д/Ш %1$s · граней: %2$d + %7$d на рундисте · %3$s кар\n%4$s × %5$s × %6$s мм</string>
     <string name="facet_chip_cube">Куб %1$s мм</string>
     <string name="facet_critical_line">Критический угол материала: %1$s°</string>
     <string name="facet_empty_hint">Рядов пока нет: камень — необработанный куб. Нажмите «Огранить» для первого ряда, например павильон «до центра».</string>

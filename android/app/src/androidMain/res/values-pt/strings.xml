@@ -885,8 +885,8 @@
     <string name="facet_delete_title">Eliminar «%1$s»?</string>
     <string name="facet_delete_text">A lapidação e todos os seus passes serão apagados deste telemóvel.</string>
     <string name="facet_view_material">%1$s · IR %2$s</string>
-    <string name="facet_view_info">C/L %1$s · %2$d facetas + %7$d na cintura · %3$s ct
-%4$s × %5$s × %6$s mm</string>
+    <string name="facet_view_raw">Cubo em bruto · %1$s ct\n%2$s × %3$s × %4$s mm</string>
+    <string name="facet_view_info">C/L %1$s · %2$d facetas + %7$d na cintura · %3$s ct\n%4$s × %5$s × %6$s mm</string>
     <string name="facet_chip_cube">Cubo %1$s mm</string>
     <string name="facet_critical_line">Ângulo crítico do material: %1$s°</string>
     <string name="facet_empty_hint">Ainda não há passes: a pedra é um cubo em bruto. Toque em «Cortar» para o primeiro passe, por exemplo o pavilhão «ao centro».</string>

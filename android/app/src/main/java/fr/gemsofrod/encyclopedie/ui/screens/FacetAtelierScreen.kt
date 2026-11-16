@@ -59,6 +59,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
+import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -539,7 +540,8 @@ internal fun FacetDesignScreen(
                     )
                     metrics?.let { m ->
                         Text(
-                            stringResource(R.string.facet_view_info, num(m.lengthToWidth), m.facetCount - m.girdleFacetCount, num(m.carats), num(m.lengthMm), num(m.widthMm), num(m.heightMm), m.girdleFacetCount),
+                            if (m.facetCount == 0) stringResource(R.string.facet_view_raw, num(m.carats), num(m.lengthMm), num(m.widthMm), num(m.heightMm))
+                            else stringResource(R.string.facet_view_info, num(m.lengthToWidth), m.facetCount - m.girdleFacetCount, num(m.carats), num(m.lengthMm), num(m.widthMm), num(m.heightMm), m.girdleFacetCount),
                             style = MaterialTheme.typography.labelSmall, color = Color(0xFF4A4A42),
                             modifier = Modifier.align(Alignment.BottomEnd).padding(8.dp)
                         )
@@ -995,7 +997,11 @@ private fun CutPanel(
                     Slider(
                         value = t.value.toFloat().coerceIn(range.start, range.endInclusive),
                         onValueChange = { v -> valueText = num(v.toDouble(), 3); set(t.copy(value = v.toDouble())) },
-                        valueRange = range, modifier = Modifier.weight(1f)
+                        valueRange = range, modifier = Modifier.weight(1f),
+                        colors = SliderDefaults.colors(
+                            thumbColor = Gold, activeTrackColor = Gold,
+                            inactiveTrackColor = Gold.copy(alpha = 0.25f), activeTickColor = Gold, inactiveTickColor = Gold
+                        )
                     )
                     TextButton(onClick = { val v = t.value + if (fine) 0.001 else 0.01; valueText = num(v, 3); set(t.copy(value = v)) }) { Text("+", color = accent(), fontSize = 18.sp) }
                     FilterChip(colors = chipColors(), selected = fine, onClick = { fine = !fine }, label = { Text(stringResource(R.string.facet_fine)) })
@@ -1016,7 +1022,7 @@ private fun CutPanel(
 
         if (onDelete != null) TextButton(onClick = onDelete) { Text(stringResource(R.string.facet_delete), color = MaterialTheme.colorScheme.error) }
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth().padding(top = 4.dp)) {
-            OutlinedButton(onClick = onCancel, modifier = Modifier.weight(1f)) { Text(stringResource(R.string.facet_cancel), maxLines = 1) }
+            OutlinedButton(onClick = onCancel, modifier = Modifier.weight(1f)) { Text(stringResource(R.string.facet_cancel), maxLines = 1, color = MaterialTheme.colorScheme.onSurface) }
             Button(
                 modifier = Modifier.weight(1f),
                 enabled = angleOk && t.indices.isNotEmpty() && t.name.isNotBlank() && (t.rule != FacetRule.MEET || t.meet.isNotEmpty()) &&

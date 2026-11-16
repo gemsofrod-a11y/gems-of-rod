@@ -885,8 +885,8 @@
     <string name="facet_delete_title">Eliminare «%1$s»?</string>
     <string name="facet_delete_text">Il taglio e tutti i suoi giri saranno cancellati da questo telefono.</string>
     <string name="facet_view_material">%1$s · IR %2$s</string>
-    <string name="facet_view_info">L/l %1$s · %2$d faccette + %7$d in cintura · %3$s ct
-%4$s × %5$s × %6$s mm</string>
+    <string name="facet_view_raw">Cubo grezzo · %1$s ct\n%2$s × %3$s × %4$s mm</string>
+    <string name="facet_view_info">L/l %1$s · %2$d faccette + %7$d in cintura · %3$s ct\n%4$s × %5$s × %6$s mm</string>
     <string name="facet_chip_cube">Cubo %1$s mm</string>
     <string name="facet_critical_line">Angolo critico del materiale: %1$s°</string>
     <string name="facet_empty_hint">Ancora nessun giro: la pietra è un cubo grezzo. Tocca «Taglia» per il primo giro, ad esempio il padiglione «al centro».</string>
