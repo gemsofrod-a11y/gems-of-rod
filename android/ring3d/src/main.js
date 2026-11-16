@@ -12,8 +12,14 @@ const bridge = window.AndroidRing || { onReady() {}, onSheet() {}, onError(m) { 
 
 let renderer, scene, camera, controls, ring = null;
 
+// La page peut se charger avant que la vue ait sa taille à l'écran (0 × 0) :
+// on recale la surface de dessin dès que la taille réelle du canevas change.
+let lastW = 0, lastH = 0;
 function fitCamera() {
-  const w = window.innerWidth, h = window.innerHeight;
+  const canvas = renderer.domElement;
+  const w = canvas.clientWidth || window.innerWidth, h = canvas.clientHeight || window.innerHeight;
+  if (w <= 0 || h <= 0 || (w === lastW && h === lastH)) return;
+  lastW = w; lastH = h;
   renderer.setSize(w, h, false);
   camera.aspect = w / h; camera.updateProjectionMatrix();
 }
@@ -21,7 +27,7 @@ function fitCamera() {
 function init() {
   const canvas = document.getElementById('view');
   try {
-    renderer = makeRenderer(canvas, window.innerWidth, window.innerHeight);
+    renderer = makeRenderer(canvas, Math.max(1, window.innerWidth), Math.max(1, window.innerHeight));
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   } catch (e) {
     bridge.onError(String(e && e.message || e));
@@ -38,7 +44,7 @@ function init() {
   controls.addEventListener('start', () => { controls.autoRotate = false; });
   fitCamera();
   window.addEventListener('resize', fitCamera);
-  const loop = () => { controls.update(); renderer.render(scene, camera); requestAnimationFrame(loop); };
+  const loop = () => { fitCamera(); controls.update(); renderer.render(scene, camera); requestAnimationFrame(loop); };
   loop();
   bridge.onReady();
 }
@@ -116,9 +122,9 @@ function renderSheet(json, linesJson) {
       const words = String(line).split(' '); let cur = '';
       for (const wd of words) {
         const cand = cur ? cur + ' ' + wd : wd;
-        if (ctx.measureText(cand).width > 640 && cur) { ctx.fillText(cur, 1000, y); y += 40; cur = wd; } else cur = cand;
+        if (ctx.measureText(cand).width > 500 && cur) { ctx.fillText(cur, 1190, y); y += 40; cur = wd; } else cur = cand;
       }
-      if (cur) { ctx.fillText(cur, 1000, y); y += i === 0 ? 52 : 44; }
+      if (cur) { ctx.fillText(cur, 1190, y); y += i === 0 ? 52 : 44; }
     });
     ctx.font = 'italic 44px serif'; ctx.fillStyle = '#7a5f22'; ctx.fillText('Gems of Rod', 60, 80);
 

@@ -143,29 +143,32 @@ object Bienfaits {
     }
 }
 
+/**
+ * Classement des pierres par signe du zodiaque. Source unique : le signe
+ * indiqué dans la rubrique lithothérapie de chaque fiche (repris dans
+ * [LithoGuideData]), pour que la liste d'un signe ne contredise jamais la
+ * fiche d'une pierre (correction demandée par Sébastien le 16/11/2026 —
+ * l'ancienne liste écrite à la main classait par ex. le rubis en Bélier
+ * alors que sa fiche le dit Lion). Une pierre associée à plusieurs signes
+ * apparaît sous chacun ; les pierres dites « de tous les signes » viennent
+ * après les pierres propres au signe.
+ */
 object ZodiacSigns {
-    private val SIGNS: List<Pair<String, List<String>>> = listOf(
-        "Bélier" to listOf("diamant", "rubis", "grenat-pyrope", "cornaline", "hematite"),
-        "Taureau" to listOf("emeraude", "quartz-rose", "topaze-imperiale", "lapis-lazuli"),
-        "Gémeaux" to listOf("agate", "citrine", "perle", "tourmaline-verte"),
-        "Cancer" to listOf("pierre-de-lune", "perle", "emeraude", "rubis"),
-        "Lion" to listOf("oeil-de-tigre", "peridot", "citrine", "ambre"),
-        "Vierge" to listOf("saphir-bleu", "jade-nephrite", "amethyste", "cornaline"),
-        "Balance" to listOf("opale-noire", "lapis-lazuli", "tourmaline-rose", "saphir-rose"),
-        "Scorpion" to listOf("topaze-imperiale", "obsidienne", "malachite", "grenat-almandin"),
-        "Sagittaire" to listOf("turquoise", "topaze-bleue", "amethyste", "lapis-lazuli"),
-        "Capricorne" to listOf("grenat-almandin", "onyx", "hematite", "rubis"),
-        "Verseau" to listOf("amethyste", "aigue-marine", "labradorite", "saphir-bleu"),
-        "Poissons" to listOf("aigue-marine", "amethyste", "perle", "labradorite")
+    private const val ALL_SIGNS = "ALL"
+
+    val labels: List<String> = listOf(
+        "Bélier", "Taureau", "Gémeaux", "Cancer", "Lion", "Vierge",
+        "Balance", "Scorpion", "Sagittaire", "Capricorne", "Verseau", "Poissons"
     )
 
-    val labels: List<String> = SIGNS.map { it.first }
-
-    fun groups(): List<Pair<String, List<Gem>>> =
-        SIGNS.map { (sign, ids) -> sign to ids.mapNotNull { GemsRepository.byId(it) } }
+    private fun signsOf(gem: Gem): List<String> = LithoGuideData.entries[gem.id]?.signs.orEmpty()
 
     fun gemsFor(sign: String): List<Gem> =
-        SIGNS.firstOrNull { it.first == sign }?.second.orEmpty().mapNotNull { GemsRepository.byId(it) }
+        GemsRepository.gems
+            .filter { gem -> signsOf(gem).let { sign in it || ALL_SIGNS in it } }
+            .sortedWith(compareBy<Gem>({ ALL_SIGNS in signsOf(it) }, { it.nom }))
+
+    fun groups(): List<Pair<String, List<Gem>>> = labels.map { it to gemsFor(it) }
 }
 
 object BirthMonths {

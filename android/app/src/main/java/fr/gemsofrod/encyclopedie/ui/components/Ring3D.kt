@@ -7,10 +7,12 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Base64
 import android.view.MotionEvent
+import android.view.ViewGroup
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -109,7 +111,8 @@ fun Ring3DView(
         AndroidView(
             factory = { context ->
                 WebView(context).apply {
-                    setBackgroundColor(android.graphics.Color.TRANSPARENT)
+                    layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+                    setBackgroundColor(android.graphics.Color.rgb(236, 235, 231))
                     settings.javaScriptEnabled = true
                     settings.allowFileAccess = false
                     settings.allowContentAccess = false
@@ -131,7 +134,7 @@ fun Ring3DView(
                     webView = this
                 }
             },
-            modifier = Modifier.matchParentSize()
+            modifier = Modifier.fillMaxSize()
         )
     }
 
