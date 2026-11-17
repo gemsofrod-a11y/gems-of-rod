@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -67,7 +68,8 @@ class FacetDemoVideoTest {
         activity.setContent {
             GemsEncyclopedieTheme {
                 Box(Modifier.fillMaxSize()) {
-                    Surface(modifier = Modifier.fillMaxSize(), content = content)
+                    // état neuf à chaque image : sinon Compose garde celui de la première
+                    key(n) { Surface(modifier = Modifier.fillMaxSize(), content = content) }
                     if (finger != null) androidx.compose.foundation.Canvas(Modifier.fillMaxSize()) {
                         val c = Offset(finger.x.dp.toPx(), finger.y.dp.toPx())
                         val r = 17.dp.toPx()
