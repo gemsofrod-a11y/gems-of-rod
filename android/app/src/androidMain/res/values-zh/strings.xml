@@ -989,4 +989,8 @@
     <string name="facet_mat_yag">钇铝榴石（合成）</string>
     <string name="facet_mat_ggg">钆镓榴石（合成）</string>
     <string name="facet_mat_verre">玻璃</string>
+    <!-- Atelier : vidéo de démonstration -->
+    <string name="facet_demo_button">演示</string>
+    <string name="facet_demo_title">工坊新功能</string>
+    <string name="facet_demo_text">视频由工坊自身的引擎计算生成。一块立方体毛坯逐层切磨成圆形明亮式。随后真实渲染追踪光线在宝石内部的路径：反光、全反射以及倾斜时钻石的火彩。接着是同一款式的红宝石、蓝宝石、祖母绿、黄水晶、坦桑石、翠榴石和帕德玛蓝宝石：在列表中选择宝石即可自动设定其折射率、色散和颜色。</string>
 </resources>

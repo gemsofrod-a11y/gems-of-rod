@@ -989,4 +989,8 @@
     <string name="facet_mat_yag">YAG (synthetische granaat)</string>
     <string name="facet_mat_ggg">GGG (synthetische granaat)</string>
     <string name="facet_mat_verre">Glas</string>
+    <!-- Atelier : vidéo de démonstration -->
+    <string name="facet_demo_button">Demo</string>
+    <string name="facet_demo_title">Nieuw in het atelier</string>
+    <string name="facet_demo_text">De video wordt berekend door de motor van het atelier zelf. Een ruwe kubus wordt rij na rij geslepen tot een ronde briljant. De realistische weergave volgt daarna het licht in de steen: reflecties, totale reflectie en het vuur van de diamant bij het kantelen. Daarna dezelfde slijpvorm in robijn, saffier, smaragd, citrien, tanzaniet, demantoïde granaat en padparadscha-saffier: een steen kiezen in de lijst stelt vanzelf de index, dispersie en kleur in.</string>
 </resources>

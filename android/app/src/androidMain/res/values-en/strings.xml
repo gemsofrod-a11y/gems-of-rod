@@ -989,4 +989,8 @@
     <string name="facet_mat_yag">YAG (synthetic garnet)</string>
     <string name="facet_mat_ggg">GGG (synthetic garnet)</string>
     <string name="facet_mat_verre">Glass</string>
+    <!-- Atelier : vidéo de démonstration -->
+    <string name="facet_demo_button">Demo</string>
+    <string name="facet_demo_title">What\'s new in the workshop</string>
+    <string name="facet_demo_text">This video is computed by the workshop\'s own engine. A rough cube is cut tier by tier into a round brilliant. The realistic render then follows the light inside the stone: reflections, total internal reflection and the diamond\'s fire as it tilts. Then the same cut in ruby, sapphire, emerald, citrine, tanzanite, demantoid garnet and padparadscha sapphire: picking a stone from the list sets its index, dispersion and colour by itself.</string>
 </resources>

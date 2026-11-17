@@ -989,4 +989,8 @@
     <string name="facet_mat_yag">YAG (granada sintética)</string>
     <string name="facet_mat_ggg">GGG (granada sintética)</string>
     <string name="facet_mat_verre">Vidro</string>
+    <!-- Atelier : vidéo de démonstration -->
+    <string name="facet_demo_button">Demo</string>
+    <string name="facet_demo_title">Novidades do atelier</string>
+    <string name="facet_demo_text">O vídeo é calculado pelo próprio motor do atelier. Um cubo em bruto é lapidado passagem a passagem até ao brilhante redondo. O render realista segue depois a luz dentro da pedra: reflexos, reflexão total e o fogo do diamante ao incliná-lo. Depois a mesma lapidação em rubi, safira, esmeralda, citrino, tanzanite, granada demantoide e safira padparadscha: escolher uma pedra na lista ajusta sozinho o índice, a dispersão e a cor.</string>
 </resources>

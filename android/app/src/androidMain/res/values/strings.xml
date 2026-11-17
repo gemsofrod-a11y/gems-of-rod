@@ -989,4 +989,8 @@
     <string name="facet_mat_yag">YAG (grenat synthétique)</string>
     <string name="facet_mat_ggg">GGG (grenat synthétique)</string>
     <string name="facet_mat_verre">Verre</string>
+    <!-- Atelier : vidéo de démonstration -->
+    <string name="facet_demo_button">Démo</string>
+    <string name="facet_demo_title">Nouveautés de l\'atelier</string>
+    <string name="facet_demo_text">La vidéo est calculée par le moteur de l\'atelier lui-même. Un cube brut est taillé passe après passe jusqu\'au brillant rond. Le rendu réaliste suit ensuite la lumière dans la pierre : reflets, réflexion totale et feu du diamant quand on l\'incline. Puis la même taille en rubis, saphir, émeraude, citrine, tanzanite, grenat démantoïde et saphir padparadscha : choisir une pierre dans la liste règle seul son indice, sa dispersion et sa couleur.</string>
 </resources>

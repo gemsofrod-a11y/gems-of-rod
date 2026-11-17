@@ -989,4 +989,8 @@
     <string name="facet_mat_yag">YAG (granato sintetico)</string>
     <string name="facet_mat_ggg">GGG (granato sintetico)</string>
     <string name="facet_mat_verre">Vetro</string>
+    <!-- Atelier : vidéo de démonstration -->
+    <string name="facet_demo_button">Demo</string>
+    <string name="facet_demo_title">Novità del laboratorio</string>
+    <string name="facet_demo_text">Il video è calcolato dal motore stesso del laboratorio. Un cubo grezzo viene tagliato passata dopo passata fino al brillante rotondo. Il render realistico segue poi la luce nella pietra: riflessi, riflessione totale e fuoco del diamante quando lo si inclina. Poi lo stesso taglio in rubino, zaffiro, smeraldo, citrino, tanzanite, granato demantoide e zaffiro padparadscha: scegliere una pietra dall\'elenco ne regola da solo indice, dispersione e colore.</string>
 </resources>

@@ -39,6 +39,7 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.PlayCircle
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material.icons.filled.Warning
@@ -235,12 +236,21 @@ internal fun FacetLibraryScreen(
     onBack: () -> Unit
 ) {
     var newDialog by remember { mutableStateOf(false) }
+    var demo by remember { mutableStateOf(false) }
+    if (demo) { FacetDemoScreen(onBack = { demo = false }); return }
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.home_facet_title)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.cd_back)) }
+                },
+                actions = {
+                    // petit bouton : vidéo de démonstration des nouveautés
+                    TextButton(onClick = { demo = true }) {
+                        Icon(Icons.Default.PlayCircle, contentDescription = null, tint = accent(), modifier = Modifier.size(18.dp))
+                        Text(stringResource(R.string.facet_demo_button), color = accent(), modifier = Modifier.padding(start = 4.dp))
+                    }
                 }
             )
         }

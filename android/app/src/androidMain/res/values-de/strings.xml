@@ -989,4 +989,8 @@
     <string name="facet_mat_yag">YAG (synthetischer Granat)</string>
     <string name="facet_mat_ggg">GGG (synthetischer Granat)</string>
     <string name="facet_mat_verre">Glas</string>
+    <!-- Atelier : vidéo de démonstration -->
+    <string name="facet_demo_button">Demo</string>
+    <string name="facet_demo_title">Neu in der Werkstatt</string>
+    <string name="facet_demo_text">Das Video wird von der Engine der Werkstatt selbst berechnet. Ein Rohwürfel wird Facettenreihe für Facettenreihe zum runden Brillanten geschliffen. Das realistische Rendering verfolgt dann das Licht im Stein: Reflexe, Totalreflexion und das Feuer des Diamanten beim Neigen. Danach derselbe Schliff in Rubin, Saphir, Smaragd, Citrin, Tansanit, Demantoid-Granat und Padparadscha-Saphir: Die Wahl eines Steins in der Liste stellt Brechungsindex, Dispersion und Farbe von selbst ein.</string>
 </resources>

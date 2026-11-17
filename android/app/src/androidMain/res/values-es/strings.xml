@@ -989,4 +989,8 @@
     <string name="facet_mat_yag">YAG (granate sintético)</string>
     <string name="facet_mat_ggg">GGG (granate sintético)</string>
     <string name="facet_mat_verre">Vidrio</string>
+    <!-- Atelier : vidéo de démonstration -->
+    <string name="facet_demo_button">Demo</string>
+    <string name="facet_demo_title">Novedades del taller</string>
+    <string name="facet_demo_text">El vídeo lo calcula el propio motor del taller. Un cubo en bruto se talla pasada a pasada hasta el brillante redondo. El render realista sigue después la luz dentro de la piedra: reflejos, reflexión total y el fuego del diamante al inclinarlo. Luego la misma talla en rubí, zafiro, esmeralda, citrino, tanzanita, granate demantoide y zafiro padparadscha: elegir una piedra de la lista ajusta por sí solo su índice, su dispersión y su color.</string>
 </resources>
