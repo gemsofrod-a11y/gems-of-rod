@@ -989,4 +989,15 @@
     <string name="facet_mat_yag">钇铝榴石（合成）</string>
     <string name="facet_mat_ggg">钆镓榴石（合成）</string>
     <string name="facet_mat_verre">玻璃</string>
+    <!-- Atelier : vidéo de démonstration -->
+    <string name="facet_demo_button">演示</string>
+    <string name="facet_demo_title">工坊新功能</string>
+    <string name="facet_demo_c1">资料库：从预设款式、您自己的款式或新款式开始。</string>
+    <string name="facet_demo_c2">新款式从立方体毛坯开始。“切磨”工具添加一层刻面。</string>
+    <string name="facet_demo_c3">宝石下方的滑块实时调节深度：金色刻面向右变大。逐层切磨：亭部、腰棱、冠部、台面。</string>
+    <string name="facet_demo_c4">完成的宝石。工具：修改、上移、下移、隐藏、切磨，以及“渲染”。</string>
+    <string name="facet_demo_c5">真实渲染追踪光线在宝石内部的路径。用滑块倾斜宝石：反光和火彩会像在灯下一样变化。</string>
+    <string name="facet_demo_c6">从列表中选择宝石：折射率、色散和颜色会自动设定。</string>
+    <string name="facet_demo_c7">色调、饱和度、明度和浓度仍可调节，以贴近您的宝石。</string>
+    <string name="facet_demo_c8">三种照明：影棚、阳光和柔光。一键即可分享图片。</string>
 </resources>

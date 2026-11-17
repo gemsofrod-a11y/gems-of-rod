@@ -989,4 +989,15 @@
     <string name="facet_mat_yag">YAG (granato sintetico)</string>
     <string name="facet_mat_ggg">GGG (granato sintetico)</string>
     <string name="facet_mat_verre">Vetro</string>
+    <!-- Atelier : vidéo de démonstration -->
+    <string name="facet_demo_button">Demo</string>
+    <string name="facet_demo_title">Novità del laboratorio</string>
+    <string name="facet_demo_c1">La libreria: parti da un taglio di base, da uno dei tuoi o da un nuovo taglio.</string>
+    <string name="facet_demo_c2">Un nuovo taglio parte da un cubo grezzo. Lo strumento «Taglia» aggiunge una passata.</string>
+    <string name="facet_demo_c3">Il cursore sotto la pietra regola la profondità in diretta: la faccetta, in oro, cresce verso destra. Passata dopo passata: padiglione, cintura, corona, tavola.</string>
+    <string name="facet_demo_c4">La pietra finita. Strumenti: Modifica, Su, Giù, Nascondi, Taglia e «Render».</string>
+    <string name="facet_demo_c5">Il render realistico segue la luce nella pietra. Inclinala con il cursore: riflessi e fuoco cambiano come sotto una lampada.</string>
+    <string name="facet_demo_c6">Scegli la pietra dall\'elenco: indice, dispersione e colore si regolano da soli.</string>
+    <string name="facet_demo_c7">Tinta, saturazione, chiarezza e densità restano regolabili per somigliare alla tua pietra.</string>
+    <string name="facet_demo_c8">Tre illuminazioni: studio, sole e luce morbida. L\'immagine si condivide con un gesto.</string>
 </resources>

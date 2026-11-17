@@ -989,4 +989,15 @@
     <string name="facet_mat_yag">YAG (granada sintética)</string>
     <string name="facet_mat_ggg">GGG (granada sintética)</string>
     <string name="facet_mat_verre">Vidro</string>
+    <!-- Atelier : vidéo de démonstration -->
+    <string name="facet_demo_button">Demo</string>
+    <string name="facet_demo_title">Novidades do atelier</string>
+    <string name="facet_demo_c1">A biblioteca: parta de uma lapidação base, de uma das suas ou de uma nova lapidação.</string>
+    <string name="facet_demo_c2">Uma nova lapidação parte de um cubo em bruto. A ferramenta «Cortar» acrescenta uma passagem.</string>
+    <string name="facet_demo_c3">O cursor sob a pedra regula a profundidade em direto: a faceta, a ouro, cresce para a direita. Passagem a passagem: pavilhão, rondiz, coroa, mesa.</string>
+    <string name="facet_demo_c4">A pedra terminada. Ferramentas: Modificar, Subir, Descer, Ocultar, Cortar e «Render».</string>
+    <string name="facet_demo_c5">O render realista segue a luz dentro da pedra. Incline-a com o cursor: reflexos e fogo mudam como sob uma lâmpada.</string>
+    <string name="facet_demo_c6">Escolha a pedra na lista: índice, dispersão e cor ajustam-se sozinhos.</string>
+    <string name="facet_demo_c7">Tonalidade, saturação, claridade e densidade continuam ajustáveis para se parecer com a sua pedra.</string>
+    <string name="facet_demo_c8">Três iluminações: estúdio, sol e luz suave. A imagem partilha-se com um gesto.</string>
 </resources>

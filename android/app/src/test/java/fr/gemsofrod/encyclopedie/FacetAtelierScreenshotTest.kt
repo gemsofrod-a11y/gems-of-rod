@@ -15,6 +15,7 @@ import fr.gemsofrod.encyclopedie.data.FacetWheels
 import fr.gemsofrod.encyclopedie.ui.screens.FacetDesignScreen
 import fr.gemsofrod.encyclopedie.ui.screens.FacetLibraryScreen
 import fr.gemsofrod.encyclopedie.ui.screens.FacetRenderScreen
+import fr.gemsofrod.encyclopedie.ui.screens.FacetDemoScreen
 import fr.gemsofrod.encyclopedie.data.FacetMaterial
 import fr.gemsofrod.encyclopedie.ui.theme.GemsEncyclopedieTheme
 import org.junit.Test
@@ -127,5 +128,11 @@ class FacetAtelierScreenshotTest {
     @Test
     fun renderRuby() = capture("atelier_10_rendu_rubis") {
         FacetRenderScreen(FacetPresets.brilliantRound.copy(material = FacetMaterial.RUBIS), {}, synchronous = true)
+    }
+
+    @Test
+    fun demo() = capture("atelier_11_demo") {
+        // la vidéo elle-même ne se lit pas sous Robolectric : on vérifie la page et ses textes
+        FacetDemoScreen {}
     }
 }

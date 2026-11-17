@@ -989,4 +989,15 @@
     <string name="facet_mat_yag">YAG (synthetische granaat)</string>
     <string name="facet_mat_ggg">GGG (synthetische granaat)</string>
     <string name="facet_mat_verre">Glas</string>
+    <!-- Atelier : vidéo de démonstration -->
+    <string name="facet_demo_button">Demo</string>
+    <string name="facet_demo_title">Nieuw in het atelier</string>
+    <string name="facet_demo_c1">De bibliotheek: begin met een basisslijpvorm, een eigen slijpvorm of een nieuwe.</string>
+    <string name="facet_demo_c2">Een nieuwe slijpvorm begint met een ruwe kubus. Het gereedschap ‘Slijpen’ voegt een rij toe.</string>
+    <string name="facet_demo_c3">De schuifregelaar onder de steen stelt de diepte live in: het gouden facet groeit naar rechts. Rij na rij: paviljoen, rondist, kroon, tafel.</string>
+    <string name="facet_demo_c4">De afgewerkte steen. Gereedschap: Wijzigen, Omhoog, Omlaag, Verbergen, Slijpen en ‘Render’.</string>
+    <string name="facet_demo_c5">De realistische weergave volgt het licht in de steen. Kantel hem met de schuifregelaar: reflecties en vuur veranderen zoals onder een lamp.</string>
+    <string name="facet_demo_c6">Kies de steen in de lijst: index, dispersie en kleur stellen zich vanzelf in.</string>
+    <string name="facet_demo_c7">Tint, verzadiging, helderheid en dichtheid blijven instelbaar, passend bij uw steen.</string>
+    <string name="facet_demo_c8">Drie verlichtingen: studio, zon en zacht licht. De afbeelding deel je met één tik.</string>
 </resources>

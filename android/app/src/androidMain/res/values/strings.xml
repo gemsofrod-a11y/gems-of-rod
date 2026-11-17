@@ -989,4 +989,15 @@
     <string name="facet_mat_yag">YAG (grenat synthétique)</string>
     <string name="facet_mat_ggg">GGG (grenat synthétique)</string>
     <string name="facet_mat_verre">Verre</string>
+    <!-- Atelier : vidéo de démonstration -->
+    <string name="facet_demo_button">Démo</string>
+    <string name="facet_demo_title">Nouveautés de l\'atelier</string>
+    <string name="facet_demo_c1">La bibliothèque : partez d\'une taille de départ, d\'une de vos tailles, ou d\'une nouvelle taille.</string>
+    <string name="facet_demo_c2">Une nouvelle taille part d\'un cube brut. L\'outil « Couper » ajoute une passe.</string>
+    <string name="facet_demo_c3">Le curseur sous la pierre règle la profondeur en direct : la facette, en or, grandit vers la droite. Passe après passe : pavillon, rondiste, couronne, table.</string>
+    <string name="facet_demo_c4">La pierre finie. Outils : Modifier, Monter, Descendre, Masquer, Couper, et « Rendu ».</string>
+    <string name="facet_demo_c5">Le rendu réaliste suit la lumière dans la pierre. Inclinez-la au curseur : reflets et feu changent comme sous la lampe.</string>
+    <string name="facet_demo_c6">Choisissez la pierre dans la liste : indice, dispersion et couleur se règlent tout seuls.</string>
+    <string name="facet_demo_c7">La teinte, la saturation, la clarté et la densité restent réglables pour coller à votre pierre.</string>
+    <string name="facet_demo_c8">Trois éclairages : studio, soleil et lumière douce. L\'image se partage d\'un geste.</string>
 </resources>
