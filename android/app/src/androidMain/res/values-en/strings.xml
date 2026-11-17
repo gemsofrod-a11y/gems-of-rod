@@ -992,5 +992,12 @@
     <!-- Atelier : vidéo de démonstration -->
     <string name="facet_demo_button">Demo</string>
     <string name="facet_demo_title">What\'s new in the workshop</string>
-    <string name="facet_demo_text">This video is computed by the workshop\'s own engine. A rough cube is cut tier by tier into a round brilliant. The realistic render then follows the light inside the stone: reflections, total internal reflection and the diamond\'s fire as it tilts. Then the same cut in ruby, sapphire, emerald, citrine, tanzanite, demantoid garnet and padparadscha sapphire: picking a stone from the list sets its index, dispersion and colour by itself.</string>
+    <string name="facet_demo_c1">The library: start from a preset cut, one of your own, or a new cut.</string>
+    <string name="facet_demo_c2">A new cut starts from a rough cube. The “Cut” tool adds a tier.</string>
+    <string name="facet_demo_c3">The slider under the stone sets the depth live: the gold facet grows to the right. Tier after tier: pavilion, girdle, crown, table.</string>
+    <string name="facet_demo_c4">The finished stone. Tools: Edit, Move up, Move down, Hide, Cut, and “Render”.</string>
+    <string name="facet_demo_c5">The realistic render follows the light inside the stone. Tilt it with the slider: reflections and fire change as under a lamp.</string>
+    <string name="facet_demo_c6">Pick the stone from the list: index, dispersion and colour set themselves.</string>
+    <string name="facet_demo_c7">Hue, saturation, lightness and density stay adjustable to match your stone.</string>
+    <string name="facet_demo_c8">Three lightings: studio, sun and soft light. Share the image in one tap.</string>
 </resources>

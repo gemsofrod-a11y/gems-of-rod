@@ -123,13 +123,22 @@ private fun toBitmap(r: FacetRenderResult): Bitmap = Bitmap.createBitmap(r.pixel
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
-internal fun FacetRenderScreen(design: FacetDesign, onBack: () -> Unit, synchronous: Boolean = false) {
+internal fun FacetRenderScreen(
+    design: FacetDesign,
+    onBack: () -> Unit,
+    synchronous: Boolean = false,
+    // réglages de départ, taille de l'image et défilement imposés : vidéo de démonstration
+    initial: FacetRenderSettings? = null,
+    syncSize: Int = 320,
+    syncSamples: Int = 1,
+    initialScroll: Int = 0
+) {
     BackHandler(onBack = onBack)
     val context = LocalContext.current
-    var settings by remember(design.material) { mutableStateOf(FacetRenderSettings.forMaterial(design.material)) }
+    var settings by remember(design.material) { mutableStateOf(initial ?: FacetRenderSettings.forMaterial(design.material)) }
     var material by remember { mutableStateOf(design.material) }
     // [synchronous] : image calculée tout de suite (captures de test, sans attendre les cœurs)
-    val first = remember { if (synchronous) FacetRenderer.render(FacetGeometry.build(design), settings, 320, 1, RenderBackground) else null }
+    val first = remember { if (synchronous) FacetRenderer.render(FacetGeometry.build(design), settings, syncSize, syncSamples, RenderBackground) else null }
     var image by remember { mutableStateOf(first?.let { toBitmap(it) }) }
     var lightReturn by remember { mutableStateOf(first?.lightReturn) }
     var computing by remember { mutableStateOf(!synchronous) }
@@ -176,7 +185,7 @@ internal fun FacetRenderScreen(design: FacetDesign, onBack: () -> Unit, synchron
             )
         }
     ) { padding ->
-        Column(Modifier.fillMaxSize().padding(padding).verticalScroll(rememberScrollState())) {
+        Column(Modifier.fillMaxSize().padding(padding).verticalScroll(rememberScrollState(initialScroll))) {
             Card(
                 shape = RoundedCornerShape(16.dp),
                 colors = CardDefaults.cardColors(containerColor = Color(0xFF141D17)),

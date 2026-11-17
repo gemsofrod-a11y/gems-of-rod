@@ -992,5 +992,12 @@
     <!-- Atelier : vidéo de démonstration -->
     <string name="facet_demo_button">Demo</string>
     <string name="facet_demo_title">Novedades del taller</string>
-    <string name="facet_demo_text">El vídeo lo calcula el propio motor del taller. Un cubo en bruto se talla pasada a pasada hasta el brillante redondo. El render realista sigue después la luz dentro de la piedra: reflejos, reflexión total y el fuego del diamante al inclinarlo. Luego la misma talla en rubí, zafiro, esmeralda, citrino, tanzanita, granate demantoide y zafiro padparadscha: elegir una piedra de la lista ajusta por sí solo su índice, su dispersión y su color.</string>
+    <string name="facet_demo_c1">La biblioteca: parta de una talla de base, de una de las suyas o de una talla nueva.</string>
+    <string name="facet_demo_c2">Una talla nueva parte de un cubo en bruto. La herramienta «Cortar» añade una pasada.</string>
+    <string name="facet_demo_c3">El cursor bajo la piedra ajusta la profundidad en directo: la faceta, en oro, crece hacia la derecha. Pasada a pasada: pabellón, filetín, corona, mesa.</string>
+    <string name="facet_demo_c4">La piedra terminada. Herramientas: Modificar, Subir, Bajar, Ocultar, Cortar y «Render».</string>
+    <string name="facet_demo_c5">El render realista sigue la luz dentro de la piedra. Inclínela con el cursor: reflejos y fuego cambian como bajo una lámpara.</string>
+    <string name="facet_demo_c6">Elija la piedra en la lista: índice, dispersión y color se ajustan solos.</string>
+    <string name="facet_demo_c7">Tono, saturación, claridad y densidad siguen siendo ajustables para parecerse a su piedra.</string>
+    <string name="facet_demo_c8">Tres iluminaciones: estudio, sol y luz suave. La imagen se comparte con un gesto.</string>
 </resources>

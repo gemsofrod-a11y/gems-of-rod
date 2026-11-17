@@ -992,5 +992,12 @@
     <!-- Atelier : vidéo de démonstration -->
     <string name="facet_demo_button">Demo</string>
     <string name="facet_demo_title">Neu in der Werkstatt</string>
-    <string name="facet_demo_text">Das Video wird von der Engine der Werkstatt selbst berechnet. Ein Rohwürfel wird Facettenreihe für Facettenreihe zum runden Brillanten geschliffen. Das realistische Rendering verfolgt dann das Licht im Stein: Reflexe, Totalreflexion und das Feuer des Diamanten beim Neigen. Danach derselbe Schliff in Rubin, Saphir, Smaragd, Citrin, Tansanit, Demantoid-Granat und Padparadscha-Saphir: Die Wahl eines Steins in der Liste stellt Brechungsindex, Dispersion und Farbe von selbst ein.</string>
+    <string name="facet_demo_c1">Die Bibliothek: Starten Sie mit einem Vorlageschliff, einem eigenen Schliff oder einem neuen.</string>
+    <string name="facet_demo_c2">Ein neuer Schliff beginnt mit einem Rohwürfel. Das Werkzeug „Schleifen“ fügt eine Facettenreihe hinzu.</string>
+    <string name="facet_demo_c3">Der Regler unter dem Stein stellt die Tiefe live ein: Die goldene Facette wächst nach rechts. Reihe für Reihe: Pavillon, Rondiste, Krone, Tafel.</string>
+    <string name="facet_demo_c4">Der fertige Stein. Werkzeuge: Bearbeiten, Hoch, Runter, Ausblenden, Schleifen und „Rendering“.</string>
+    <string name="facet_demo_c5">Das realistische Rendering verfolgt das Licht im Stein. Neigen Sie ihn mit dem Regler: Reflexe und Feuer ändern sich wie unter der Lampe.</string>
+    <string name="facet_demo_c6">Wählen Sie den Stein in der Liste: Brechungsindex, Dispersion und Farbe stellen sich selbst ein.</string>
+    <string name="facet_demo_c7">Farbton, Sättigung, Helligkeit und Dichte bleiben einstellbar, passend zu Ihrem Stein.</string>
+    <string name="facet_demo_c8">Drei Beleuchtungen: Studio, Sonne und weiches Licht. Das Bild lässt sich mit einem Tipp teilen.</string>
 </resources>
