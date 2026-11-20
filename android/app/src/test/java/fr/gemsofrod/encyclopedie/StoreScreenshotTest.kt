@@ -45,7 +45,9 @@ import fr.gemsofrod.encyclopedie.ui.screens.GemComparisonScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GemDetailScreen
 import fr.gemsofrod.encyclopedie.ui.screens.GlossaryScreen
 import fr.gemsofrod.encyclopedie.ui.screens.HomeScreen
-import fr.gemsofrod.encyclopedie.ui.screens.QuizScreen
+import fr.gemsofrod.encyclopedie.ui.screens.GemsListScreen
+import fr.gemsofrod.encyclopedie.data.GemsRepository
+import fr.gemsofrod.encyclopedie.data.GemColorCategory
 import fr.gemsofrod.encyclopedie.ui.theme.GemsEncyclopedieTheme
 import fr.gemsofrod.encyclopedie.ui.theme.GorBodyFont
 import fr.gemsofrod.encyclopedie.ui.theme.GorDisplayFont
@@ -160,12 +162,12 @@ class StoreScreenshotTest {
     }
 
     @Test
-    fun s3_atelier() = shot("03_atelier_facettage", "Concevez\nvos tailles", "L'atelier de facettage : un cube brut taillé passe par passe, instructions écrites pour vous.") {
+    fun s3_atelier() = shot("04_atelier_facettage", "Concevez\nvos tailles", "L'atelier de facettage : un cube brut taillé passe par passe, instructions écrites pour vous.") {
         FacetDesignScreen(FacetPresets.brilliantRound, {}, {}, {}, {}, allow3d = false)
     }
 
     @Test
-    fun s4_render() = shot("04_rendu_realiste", "Voyez la lumière\navant de tailler", "Rendu réaliste par lancer de rayons : reflets, feu et couleur de 49 pierres facettables.") {
+    fun s4_render() = shot("03_rendu_realiste", "Voyez la lumière\navant de tailler", "Rendu réaliste par lancer de rayons : reflets, feu et couleur de 49\u00A0pierres facettables.") {
         FacetRenderScreen(
             FacetPresets.brilliantRound.copy(material = FacetMaterial.RUBIS), {}, synchronous = true,
             initial = FacetRenderSettings.forMaterial(FacetMaterial.RUBIS).copy(tiltX = -12.0), syncSize = 520, syncSamples = 2
@@ -173,22 +175,22 @@ class StoreScreenshotTest {
     }
 
     @Test
-    fun s5_compare() = shot("05_comparer", "Comparez\ndeux pierres", "Rubis ou saphir ? Indices, densités et propriétés côte à côte.") {
+    fun s5_compare() = shot("06_comparer", "Comparez\ndeux pierres", "Rubis ou saphir ? Indices, densités et propriétés côte\u00A0à\u00A0côte.") {
         GemComparisonScreen(onBackClick = {}, initialGemAId = "rubis", initialGemBId = "saphir-bleu")
     }
 
     @Test
-    fun s6_analyse() = shot("06_analyse", "Identifiez\nune pierre", "Instruments, mesures et méthode pas à pas du gemmologue.") {
+    fun s6_analyse() = shot("07_analyse", "Identifiez\nune pierre", "Instruments, mesures et méthode pas à pas du gemmologue.") {
         AnalyseScreen(onGemClick = {}, onInstrumentsClick = {}, onGlossaireClick = {}, onBackClick = {})
     }
 
     @Test
-    fun s7_quiz() = shot("07_quiz", "Apprenez\nen jouant", "Quiz, parcours d'apprentissage et trophées pour progresser.") {
-        QuizScreen(onBackClick = {})
+    fun s7_catalogue() = shot("05_catalogue_bleu", "Un catalogue\nclassé par couleur", "Photos, familles et rareté : retrouvez une pierre en un coup d'œil.") {
+        GemsListScreen(title = "Bleu", gems = GemsRepository.byColor(GemColorCategory.BLEU), onGemClick = {}, onBackClick = {})
     }
 
     @Test
-    fun s8_lexique() = shot("08_lexique", "Le vocabulaire\ndu métier", "Un lexique de gemmologie et de lapidairerie, en 9 langues.") {
+    fun s8_lexique() = shot("08_lexique", "Le vocabulaire\ndu métier", "Un lexique de gemmologie et de lapidairerie, en 9\u00A0langues.") {
         GlossaryScreen(onBackClick = {})
     }
 }
