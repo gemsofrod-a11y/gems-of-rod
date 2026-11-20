@@ -46,7 +46,7 @@ https://gemsofrod-a11y.github.io/gems-of-rod/privacy-policy.html
 ## Assets graphiques encore à produire
 - Icône 512x512 px (32 bits PNG, avec canal alpha)
 - Image de couverture ("feature graphic") 1024x500 px
-- Au moins 2 captures d'écran téléphone (min. 320px, max. 3840px, ratio 16:9 ou 9:16)
+- Captures d'écran téléphone : 8 captures « vitrine » 1440 × 2560 px dans `docs/store-assets/screenshots/` (20/11/2026), produites par `StoreScreenshotTest` (workflow « Store screenshots », branche `store-screenshots`) ; ordre : accueil, fiche rubis, rendu réaliste, atelier, catalogue, comparateur, analyse, lexique
 
 ## Classification du contenu
 Questionnaire à remplir dans Play Console — réponses attendues : pas de
